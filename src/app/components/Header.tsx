@@ -13,7 +13,7 @@ const Header = () => {
       /> */}
 
       <div className="flex-1 items-start flex-col sm:px-16 px-6">
-        <p className="font-gotham text-slate-500 my-2">Connecting industry to government procurement opportunities</p>
+        <p className="font-gotham text-slate-500 my-2">Connecting industry to government procurement opportunities.</p>
         <div className="flex flex-row justify-between items-center w-full">
           <h1 className="flex-1 font-gotham font-bold ss:text-[72px] text-[64px] text-slate-900">
             AMERICAN <br className="lg:hidden block"></br>DEFENSE ALLIANCE

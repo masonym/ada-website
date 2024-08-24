@@ -4,11 +4,11 @@ import { EVENTS } from '@/constants/events'
 
 const UpcomingEvents = () => {
   return (
-    <section className="max-container flex flex-col gap-20 md:gap-28 items-center my-8 ">
+    <section className="max-container flex flex-col gap-20 md:gap-28 items-center mt-12 ">
 
 
       <h1 className="self-end text-right font-gotham font-bold ss:text-[72px] text-[64px] text-slate-900 sm:px-16 px-6">
-        DON'T MISS OUR EVENTS!
+        Don't miss our upcoming events!
       </h1>
       <div className="flex lg:flex-row flex-col gap-10 mx-12">
         {/* get these from data file  */}
