@@ -59,7 +59,7 @@ const NavBar = () => {
           onClose={() => setIsMenuOpen(false)}
         />
       </nav>
-      <hr className="h-px mb-4 bg-gray-200 border-0 dark:bg-gray-700 flexBetween max-container px-2 lg:px-10 3xl:px-0 relative z-30">
+      <hr className="h-px mb-4 bg-gray-200 border-0 dark:bg-gray-700 flexBetween max-container px-2 lg:px-10 3xl:px-0 relative">
       </hr>
     </>
   )
