@@ -1,8 +1,18 @@
+import Header from '@/app/components/Header'
+import UpcomingEvents from '@/app/components/UpcomingEvents'
+import AboutUs from '@/app/components/AboutUs'
+import Blogs from '@/app/components/Blogs'
+import ContactUs from '@/app/components/ContactUs'
+
+
 export default function Home() {
   return (
     <>
-      <h1 className="font-extralight text-red-600">Hello</h1>
-      <p className="text-red-600 border-red-500 bg-black">test</p>
+    <Header/>
+    <UpcomingEvents/>
+    <AboutUs/>
+    <Blogs/>
+    <ContactUs/>
     </>
   )
 }

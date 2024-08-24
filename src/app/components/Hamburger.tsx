@@ -29,16 +29,16 @@ const Hamburger = ({ isOpen, onClose }: HamburgerMenuProps) => {
   return (
     <div
       ref={menuRef}
-      className={`fixed top-0 right-0 h-full w-96 bg-gray-900 text-white z-40 transform transition-transform duration-300 ease-in-out ${
+      className={`fixed top-0 right-0 h-full w-3/6 bg-gray-900 text-white z-40 transform transition-transform duration-300 ease-in-out ${
         isOpen ? 'translate-x-0' : 'translate-x-full'
       }`}
     >
-      <div className="flex flex-col items-end p-8">
+      <div className="flex flex-col text-end items-end p-6">
         {NAV_LINKS.map((link) => (
           <Link
             href={link.href}
             key={link.key}
-            className="text-lg font-semibold py-2"
+            className="text-lg font-gotham py-2 text-gray-10 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold"
           >
             {link.label}
           </Link>
