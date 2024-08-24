@@ -1,5 +1,6 @@
 import React from 'react'
 import EventCard from './EventCard'
+import { EVENTS } from '@/constants/events'
 
 const UpcomingEvents = () => {
   return (
@@ -11,20 +12,16 @@ const UpcomingEvents = () => {
       </h1>
       <div className="flex lg:flex-row flex-col gap-10 mx-12">
         {/* get these from data file  */}
-        <EventCard
-          title="2025 Defense Industry Forecast"
-          date="November 14th, 2024"
-          description="A Description!"
-          image="/2025_DefenseIndustryForecast.png"
-          link="http://google.com/"
-        />
-{/* 
-        <EventCard
-          title="2026 Defense Industry Forecast"
-          date="November 14th, 2025"
-          description="A different description!"
-          image="/2025_DefenseIndustryForecast.png"
-        /> */}
+        {EVENTS.map(event => (
+          <EventCard
+            key={event.id}
+            title={event.title}
+            date={event.date}
+            description={event.description}
+            image={event.image}
+            link={event.link}
+          />
+        ))}
 
       </div>
     </section >

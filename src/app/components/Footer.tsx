@@ -14,11 +14,11 @@ const Footer = () => {
             <Image
               src="/logo.png"
               alt="ADA Logo"
-              width={64}
-              height={64}
+              width={128}
+              height={128}
             />
           </Link>
-          <div className="flex flex-wrap gap-10 sm:justify-between md:flex-1">
+          <div className="flex flex-wrap gap-10 sm:justify-around md:flex-1">
             {FOOTER_LINKS.map((columns) => (
               <FooterColumn title={columns.title}>
                 <ul className="regular-14 flex flex-col gap-4 text-gray-30">
@@ -51,11 +51,11 @@ const Footer = () => {
                 <ul className="regular-14 flex gap-4 text-gray-30">
                   {SOCIALS.links.map((link) => (
                     <Link
-                      href="/"
-                      key={link}
+                      href={link.href}
+                      key={link.title}
 
                     >
-                      <Image src={link} alt={`Logo for ${link}`} width={24} height={24} />
+                      <Image src={link.logo} alt={`Logo for ${link.title}`} width={24} height={24} />
                     </Link>
                   ))}
                 </ul>
