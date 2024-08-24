@@ -16,10 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-gradient-to-b from-slate-50 to-slate-300">
-        <NavBar/>
+      <body className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-300">
+        <NavBar />
         <main className="relative overflow-hidden ">
-        {children}
+          {children}
         </main>
         <Footer />
       </body>

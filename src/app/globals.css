@@ -162,12 +162,12 @@ body {
   @font-face {
     font-family: Gotham;
     font-weight: medium;
-    src: url('./assets/Gotham-Medium.otf') format("woff");
+    src: url('/Gotham-Medium.otf') format("woff");
   }
 
   @font-face {
     font-family: Gotham;
     font-weight: bold;
-    src: url('./assets/Gotham-Bold.otf') format("woff");
+    src: url('/Gotham-Bold.otf') format("woff");
   }
 }

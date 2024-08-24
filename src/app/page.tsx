@@ -9,9 +9,9 @@ export default function Home() {
   return (
     <>
     <Header/>
-    <UpcomingEvents/>
     <AboutUs/>
-    <Blogs/>
+    <UpcomingEvents/>
+    {/* <Blogs/> */}
     <ContactUs/>
     </>
   )

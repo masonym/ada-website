@@ -19,17 +19,18 @@ const Footer = () => {
             />
           </Link>
           <div className="flex flex-wrap gap-10 sm:justify-around md:flex-1">
-            {FOOTER_LINKS.map((columns) => (
-              <FooterColumn title={columns.title}>
+            {FOOTER_LINKS.map((columns, index) => (
+              <FooterColumn key={index} title={columns.title}>
                 <ul className="regular-14 flex flex-col gap-4 text-gray-30">
                   {columns.links.map((link) => (
-                    <Link href="/" key={link}>
-                      {link}
+                    <Link href={link.href} key={link.label}>
+                      {link.label}
                     </Link>
                   ))}
                 </ul>
               </FooterColumn>
             ))}
+
 
             <div className="flex flex-col gap-5">
               <FooterColumn title={FOOTER_CONTACT_INFO.title}>
@@ -63,7 +64,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="border bg-gray-20"/>
+        <div className="border border-gray-700" />
         <p className="regular-14 w-full text-center text-gray-30">2024 American Defense Alliance | All Rights Reserved</p>
       </div>
 

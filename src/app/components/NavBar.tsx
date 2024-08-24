@@ -16,8 +16,7 @@ const NavBar = () => {
   }
 
   return (
-    <>
-      <nav className="flexBetween max-container px-3 py-5 lg:px-10 3xl:px-0 relative z-30">
+      <nav className="flexBetween max-container padding-container py-5 relative z-30 border-b-2 border-b-gray-700">
         <Link href="/">
           <div className="flexBetween maxContainer relative">
             <Image
@@ -29,7 +28,7 @@ const NavBar = () => {
             <p className="pl-5 pr-5 font-bold text-xl font-gotham">American Defense Alliance</p>
           </div>
         </Link>
-        <ul className="hidden h-full gap-12 lg:flex">
+        <ul className="hidden h-full gap-8 lg:flex">
           {NAV_LINKS.map((link) => (
             <Link
               href={link.href}
@@ -59,9 +58,6 @@ const NavBar = () => {
           onClose={() => setIsMenuOpen(false)}
         />
       </nav>
-      <hr className="h-px mb-4 bg-gray-200 border-0 dark:bg-gray-700 flexBetween max-container px-2 lg:px-10 3xl:px-0 relative">
-      </hr>
-    </>
   )
 }
 
