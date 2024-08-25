@@ -5,6 +5,8 @@ import { EVENTS } from '@/constants/events';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Button from '@/app/components/Button';
+import SponsorOptions from '@/app/components/SponsorOptions';
+import CountdownTimer from '@/app/components/CountdownTimer';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -30,6 +32,11 @@ export default function EventPage({ params }: { params: { slug: string } }) {
         alt={`Event image for ${event.title}`}
         className="mb-6"
       />
+      <CountdownTimer
+        targetDate={event.timeStart}
+      >
+
+      </CountdownTimer>
       <div className="flex md:flex-row flex-col my-8 gap-4 w-full">
         <Button
           title="REGISTER"
@@ -56,9 +63,9 @@ export default function EventPage({ params }: { params: { slug: string } }) {
         className="prose prose-zinc max-w-none mb-12"
       />
 
-      {/* Link to Speakers Page */}
-      <div className="my-8">
-      </div>
+      <SponsorOptions
+      event={event}
+      ></SponsorOptions>
 
       {/* register */}
       <div className="">
