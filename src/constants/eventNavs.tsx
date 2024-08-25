@@ -6,6 +6,7 @@ export const EVENT_NAVS = [
           label: 'About',
           path: '/',
           subItems: [
+            { label: 'About the Event', path: 'about' },
             { label: 'FAQs', path: 'faqs' },
             { label: 'Venue', path: 'venue' },
             { label: 'Event Recap', path: 'event-recap' },

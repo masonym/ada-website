@@ -48,30 +48,34 @@ export default function SpeakersPage({ params }: { params: { slug: string } }) {
                     <ChevronLeft /> Back
                 </Link>
             </div> */}
-            <div className="py-8 flex flex-col items-center">
-                <Image
-                    src={event.image}
-                    width={1000}
-                    height={400}
-                    alt={`Event image for ${event.title}`}
-                    unoptimized={true}
-                    className="mb-6 w-full max-w-[1536px]"
-                />
-
-                <Speakers
-                    event={event}
-                    isAuthenticated={isAuthenticated}
-                    onRequestPassword={() => setShowPasswordModal(true)}
-                />
-
-                <PasswordModal
-                    isOpen={showPasswordModal}
-                    onClose={() => setShowPasswordModal(false)}
-                    onSubmit={handlePasswordSubmit}
-                    error={error}
-                    setEnteredPassword={setEnteredPassword}
-                />
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex flex-col items-center">
+                    <div className="w-full mb-6">
+                        <Image
+                            src={event.image}
+                            width={2000}
+                            height={800}
+                            layout="responsive"
+                            alt={`Event image for ${event.title}`}
+                            className="rounded-lg"
+                        />
+                    </div>
+                </div>
             </div>
+
+            <Speakers
+                event={event}
+                isAuthenticated={isAuthenticated}
+                onRequestPassword={() => setShowPasswordModal(true)}
+            />
+
+            <PasswordModal
+                isOpen={showPasswordModal}
+                onClose={() => setShowPasswordModal(false)}
+                onSubmit={handlePasswordSubmit}
+                error={error}
+                setEnteredPassword={setEnteredPassword}
+            />
         </div>
     );
 }

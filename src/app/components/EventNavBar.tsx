@@ -50,16 +50,19 @@ export default function Navbar() {
             {isMobileMenuOpen && (
                 <ul className="md:hidden flex flex-col bg-gray-700 pl-8 rounded-md shadow-lg absolute left-0 right-0 z-10 mx-4 text-[16px]">
                     {params?.slug && navItems.map((navItem, index) => (
-                        <li key={index} className="hover:bg-lightBlue-400 text-white p-2 rounded-md">
+                        <li key={index} className="text-white p-2 rounded-md">
                             {navItem.subItems ? (
                                 <>
-                                    <Link href={`/events/${params.slug}/${navItem.path}`} className="cursor-pointer">
+                                    <Link href={`/events/${params.slug}/${navItem.path}`} className="block hover:bg-lightBlue-400 p-2 rounded-md">
                                         {navItem.label}
                                     </Link>
                                     <ul className="mt-2 text-[14px]">
                                         {navItem.subItems.map(subItem => (
-                                            <li key={subItem.path} className="hover:bg-gray-600 rounded-md px-4 py-2">
-                                                <Link href={`/events/${params.slug}/about/${subItem.path}`}>
+                                            <li key={subItem.path}>
+                                                <Link 
+                                                    href={`/events/${params.slug}/about/${subItem.path}`} 
+                                                    className="block hover:bg-gray-600 rounded-md px-4 py-2 text-white"
+                                                >
                                                     {subItem.label}
                                                 </Link>
                                             </li>
@@ -67,7 +70,7 @@ export default function Navbar() {
                                     </ul>
                                 </>
                             ) : (
-                                <Link href={`/events/${params.slug}/${navItem.path}`}>
+                                <Link href={`/events/${params.slug}/${navItem.path}`} className="block hover:bg-lightBlue-400 p-2 rounded-md">
                                     {navItem.label}
                                 </Link>
                             )}
@@ -81,23 +84,26 @@ export default function Navbar() {
                 {params?.slug && navItems.map((navItem, index) => (
                     <li
                         key={index}
-                        className="relative hover:bg-lightBlue-400 hover:text-white p-2 px-4 rounded-full"
+                        className="relative p-2 rounded-full"
                         onMouseEnter={() => handleMouseEnter(index)}
                         onMouseLeave={handleMouseLeave}
                     >
                         {navItem.subItems ? (
                             <>
-                                <Link href={`/events/${params.slug}/${navItem.path}`} className="cursor-pointer">
+                                <Link 
+                                    href={`/events/${params.slug}/${navItem.path}`} 
+                                    className="hover:bg-lightBlue-400 hover:text-white p-2 px-4 rounded-full"
+                                >
                                     {navItem.label}
                                 </Link>
                                 {isDropdownOpen && dropdownIndex === index && (
-                                    <ul className="mt-4 absolute left-1/2 -translate-x-1/2 bg-gray-700 rounded-md shadow-lg list-none">
+                                    <ul className="mt-4 absolute left-1/2 -translate-x-1/2 bg-gray-700 rounded-md shadow-lg list-none whitespace-nowrap">
                                         {navItem.subItems.map(subItem => (
-                                            <li
-                                                key={subItem.path}
-                                                className="hover:bg-gray-600 hover:rounded-md px-12 py-4 text-white"
-                                            >
-                                                <Link href={`/events/${params.slug}/about/${subItem.path}`}>
+                                            <li key={subItem.path}>
+                                                <Link 
+                                                    href={`/events/${params.slug}/about/${subItem.path}`} 
+                                                    className="block hover:bg-gray-600 hover:rounded-md px-12 py-4 text-white"
+                                                >
                                                     {subItem.label}
                                                 </Link>
                                             </li>
@@ -106,7 +112,10 @@ export default function Navbar() {
                                 )}
                             </>
                         ) : (
-                            <Link href={`/events/${params.slug}/${navItem.path}`}>
+                            <Link 
+                                href={`/events/${params.slug}/${navItem.path}`} 
+                                className="hover:bg-lightBlue-400 hover:text-white p-2 px-4 rounded-full"
+                            >
                                 {navItem.label}
                             </Link>
                         )}

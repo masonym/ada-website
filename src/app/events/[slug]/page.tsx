@@ -24,20 +24,31 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="py-4 sm:py-8">
-        {/* <Link href="/events" className="inline-flex items-center text-blue-500 hover:underline mb-4">
+      <div className="flex flex-col items-center">
+        <div className="w-full mb-6">
+          <Image
+            src={event.image}
+            width={2000}
+            height={800}
+            layout="responsive"
+            alt={`Event image for ${event.title}`}
+            className="rounded-lg"
+          />
+        </div>
+        <div className="py-4 sm:py-8">
+          {/* <Link href="/events" className="inline-flex items-center text-blue-500 hover:underline mb-4">
           <ChevronLeft className="w-4 h-4 mr-1" />
           Back to Events
         </Link> */}
 
-        <div className="flex flex-col md:flex-row flexBetween gap-4 sm:gap-8 items-center sm:items-start mb-8 w-auto">
-          <Button
-            title="REGISTER"
-            variant="btn_sqr_blue"
-            link={event.registerLink}
+          <div className="flex flex-col md:flex-row flexBetween gap-4 sm:gap-8 items-center sm:items-start mb-8 w-auto">
+            <Button
+              title="REGISTER"
+              variant="btn_sqr_blue"
+              link={event.registerLink}
             // className="w-full sm:w-auto"
-          />
-          {/* <Button
+            />
+            {/* <Button
             title="SPONSORSHIP OPPORTUNITIES"
             variant="btn_sqr_navy_blue"
             link={`/events/${event.slug}/sponsor`}
@@ -49,19 +60,8 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             link={`/events/${event.slug}/speakers`}
             // className="w-full sm:w-auto"
           /> */}
-        </div>
-
-        <div className="flex flex-col items-center">
-          <div className="w-full mb-6">
-            <Image
-              src={event.image}
-              width={2000}
-              height={800}
-              layout="responsive"
-              alt={`Event image for ${event.title}`}
-              className="rounded-lg"
-            />
           </div>
+
           <CountdownTimer targetDate={event.timeStart} />
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
