@@ -17,8 +17,8 @@ export const SPONSORSHIP_TYPES = [
                 ]
             },
             {
-                title: "Executive",
-                cost: "$7,500",
+                title: "Prestige",
+                cost: "$7,000",
                 perks: [
                     "Recognition in pre-conference digital marketing invitations",
                     "Prominent placement of your logo on conference materials and event signage (printed & digital)",
@@ -31,8 +31,8 @@ export const SPONSORSHIP_TYPES = [
                 ]
             },
             {
-                title: "Prestige",
-                cost: "$5,000",
+                title: "Executive",
+                cost: "$4,000",
                 perks: [
                     "Recognition in pre-conference digital marketing invitations",
                     "Prime placement of your logo on conference materials and event signage (printed & digital)",
