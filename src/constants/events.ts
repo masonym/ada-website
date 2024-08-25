@@ -35,7 +35,7 @@ export const EVENTS = [
       </ul>
 
       <br></br>
-      <img src="/location.png"></img>
+      <img src="/location.png" class="rounded-lg"></img>
       `,
     image: "/2025_DefenseIndustryForecast.png",
     slug: "2025-defense-industry-forecast",

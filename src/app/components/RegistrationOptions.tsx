@@ -20,16 +20,7 @@ const RegistrationOptions = ({ event }: SponsorProps) => {
     }
 
     return (
-        <div className="max-w-4xl mx-auto py-8 px-4 flex flex-col items-center ">
-            <h1 className="text-[48px] font-gotham font-bold mb-2  text-slate-700">{event.title}</h1>
-            <p className="text-[28px] mb-4  text-slate-700">{event.date}</p>
-            <Image
-                src={event.image}
-                width={1000}
-                height={400}
-                alt={`Event image for ${event.title}`}
-                className="mb-6"
-            />
+        <div className="max-w-4xl mx-auto pt-0 pb-8 px-4 flex flex-col items-center ">
             <div className="flex flex-col items-center">
                 <h1 className="text-[48px] text-left font-gotham font-bold mb-2  text-slate-700">
                     Registration Options
@@ -37,7 +28,7 @@ const RegistrationOptions = ({ event }: SponsorProps) => {
                 <p className="text-[20px] font-gotham text-slate-600 w-full max-w-2xl mx-auto mb-6">
                     Join us for a premiere opportunity to network with key leaders.
                 </p>
-                <div className="flex flex-row gap-4">
+                <div className="flex flex-col gap-4 md:flex-row">
                     {currentEvent.registrations.map((item, index) => (
                         <RegistrationCard
                             key={index}
