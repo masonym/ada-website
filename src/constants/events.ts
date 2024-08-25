@@ -7,6 +7,6 @@ export const EVENTS = [
       image: "/2025_DefenseIndustryForecast.png",
       link: "http://google.com/",
     },
-    // Add more events here if needed
+    // Add more events here
   ];
   
