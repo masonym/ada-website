@@ -11,7 +11,10 @@ type SpeakerProps = {
 export type EventProps = {
     id: number;
     title: string;
+    date: string;
+    timeStart: string;
     description: string;
+    eventText: string;
     image: string;
     slug: string;
     registerLink: string;

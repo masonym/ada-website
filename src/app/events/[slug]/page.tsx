@@ -63,10 +63,6 @@ export default function EventPage({ params }: { params: { slug: string } }) {
         className="prose prose-zinc max-w-none mb-12"
       />
 
-      <SponsorOptions
-      event={event}
-      ></SponsorOptions>
-
       {/* register */}
       <div className="">
         <h3 className="text-[32px] font-bold font-gotham text-red-500 mb-4">

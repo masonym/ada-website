@@ -3,7 +3,7 @@ export const SPONSORSHIP_TYPES = [
         id: 1,
         sponsorships: [
             {
-                title: "Elite",
+                title: "Premiere",
                 cost: "$10,000",
                 perks: [
                     "Premium recognition in pre-conference digital marketing invitations",
