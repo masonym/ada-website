@@ -6,23 +6,20 @@ export const EVENTS = [
     description: "The 2025 Defense Industry Forecast Will provide actionable business intelligence on upcoming acquisition opportunities — covering Defense Dept. and Combat Command mission priorities — Army, Navy, Air Force, Marine Corps, Space Force and Coast Guard — focused on all major sectors from advanced IT, AI and Cyber, all-domain command & control, and weapons system development & sustainment, to logistics & transport, facility management, Military base building design & construction, energy resiliency and environmental remediation, to new Government-Private Sector collaborations in critical infrastructure security, U.S. manufacturing base revitalization, ship building and shipyard modernization, Space defense and other major initiatives.",
     eventText: `
       <p>
-      The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities – covering Defense Dept. mission priorities focused on advanced IT, AI and Cyber, to weapons system development & sustainment, to forward logistics, facility support,
+      The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities – covering Defense Dept. mission priorities focused on advanced IT, AI and Cyber, to weapons system development & sustainment, to forward logistics, facility support, Military base construction, shipyard modernization, Space defense and other major buying programs.
+
       <br></br>
-      Military base construction, shipyard modernization, Space defense
-
-      and other major buying programs.
-
-      ​
 
       Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers and Small Business Program Directors from across the Defense Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors.
 
+      <br></br>
       ​
 
       To colleagues and friends –
 
-      Just a message that I am now serving as President & CEO of the American Defense Alliance – which is carrying forward the critical mission of supporting U.S. National Security and our Warfighters, by informing the Defense Industrial Base of acquisition priorities, and helping Small Businesses/Diversity Suppliers and Prime Contractors connect with each other in identifying, pursuing and performing Government contracts.  We greatly look forward to your joining us at our Government and Defense
+      <br></br>
 
-      procurement conferences!
+      Just a message that I am now serving as President & CEO of the American Defense Alliance – which is carrying forward the critical mission of supporting U.S. National Security and our Warfighters, by informing the Defense Industrial Base of acquisition priorities, and helping Small Businesses/Diversity Suppliers and Prime Contractors connect with each other in identifying, pursuing and performing Government contracts.  We greatly look forward to your joining us at our Government and Defense procurement conferences!
       </p>
      <p>
         Charles F. Sills<br>

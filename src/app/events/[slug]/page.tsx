@@ -1,9 +1,10 @@
+// app/events/[slug]/page.tsx
+
 import React from 'react';
 import { EVENTS } from '@/constants/events';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Button from '@/app/components/Button';
-import Speakers from '@/app/components/Speakers';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -32,16 +33,19 @@ export default function EventPage({ params }: { params: { slug: string } }) {
       <div className="flex sm:flex-row flex-col my-8 gap-4 w-full">
         <Button
           title="REGISTER"
-          // icon="/logo.png"
           variant="btn_sqr_blue"
           link={event.registerLink}
         />
 
         <Button
           title="SPONSORSHIP OPPORTUNITIES"
-          // icon="/logo.png"
-          variant="btn_sqr_red"
+          variant="btn_sqr_navy_blue"
           link={event.registerLink}
+        />
+        <Button
+          title="EVENT SPEAKERS"
+          variant="btn_sqr_navy_blue"
+          link={`/events/${event.slug}/speakers`}
         />
       </div>
       <h2 className="text-[48px] font-bold font-gotham text-slate-700">
@@ -52,7 +56,9 @@ export default function EventPage({ params }: { params: { slug: string } }) {
         className="prose prose-zinc max-w-none mb-12"
       />
 
-      <Speakers id={event.id}></Speakers>
+      {/* Link to Speakers Page */}
+      <div className="my-8">
+      </div>
 
       {/* register */}
       <div className="">
@@ -61,7 +67,6 @@ export default function EventPage({ params }: { params: { slug: string } }) {
         </h3>
         <Button
           title="REGISTER"
-          // icon="/logo.png"
           variant="btn_blue"
           link={event.registerLink}
         />

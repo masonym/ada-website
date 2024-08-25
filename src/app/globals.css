@@ -44,6 +44,10 @@ body {
   .btn_sqr_blue {
     @apply bg-lightBlue-400 px-8 py-4 text-white transition-all hover:bg-blue-950 w-full rounded-md
   }
+
+  .btn_sqr_navy_blue {
+    @apply bg-navy-800 px-8 py-4 text-white transition-all hover:bg-blue-950 w-full rounded-md
+  }
   
   .max-container {
     @apply mx-auto max-w-[1440px];
