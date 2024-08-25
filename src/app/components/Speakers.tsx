@@ -1,6 +1,7 @@
+
 import { SPEAKERS } from '@/constants/speakers';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
-import React from 'react';
 
 type SpeakerProps = {
     event: EventProps;
@@ -20,6 +21,12 @@ type EventProps = {
 
 const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) => {
     const currentEvent = SPEAKERS.find((e) => e.id === event.id);
+    const [expandedBioIndex, setExpandedBioIndex] = useState<number | null>(null);
+    const bioRefs = useRef<Array<HTMLDivElement | null>>([]);
+
+    const toggleBio = (index: number) => {
+        setExpandedBioIndex(expandedBioIndex === index ? null : index);
+    };
 
     const handlePresentationClick = (presentation: string | undefined) => {
         if (isAuthenticated) {
@@ -54,7 +61,6 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                             <p className="text-sm text-gray-600 whitespace-nowrap">{speaker.position}</p>
                             <p className="text-sm text-gray-600 whitespace-nowrap">{speaker.company}</p>
                             {speaker.presentation && (
-
                                 <button
                                     onClick={() => handlePresentationClick(speaker.presentation)}
                                     className={`mt-2 text-white p-2 rounded-md transition-all ${isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
@@ -62,6 +68,38 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                                 >
                                     Presentation
                                 </button>
+                            )}
+                            {/* Optional Bio Section */}
+                            {speaker.bio && (
+                                <>
+                                    <button
+                                        onClick={() => toggleBio(index)}
+                                        className="text-blue-600 mt-2 flex items-center"
+                                    >
+                                        Click to read bio
+                                        <svg
+                                            className={`w-4 h-4 ml-2 transform transition-transform ${expandedBioIndex === index ? '-rotate-90' : 'rotate-0'
+                                                }`}
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div
+                                        ref={(el) => (bioRefs.current[index] = el)}
+                                        style={{
+                                            height: expandedBioIndex === index ? `${bioRefs.current[index]?.scrollHeight}px` : '0px',
+                                        }}
+                                        className={`overflow-hidden transition-all duration-500 ease-in-out`}
+                                    >
+                                        <div className="text-sm text-gray-600 mt-2 text-left">
+                                            <p dangerouslySetInnerHTML={{ __html: speaker.bio }}></p>
+                                        </div>
+                                    </div>
+                                </>
                             )}
                         </div>
                     ))}
