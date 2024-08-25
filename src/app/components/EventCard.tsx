@@ -14,12 +14,14 @@ type EventCardProps = {
 const EventCard = ({ title, date, description, image, link }: EventCardProps) => {
   return (
     <div className="border-2 border-gray-20 rounded-md max-w-[640px]">
-      <Image
-        src={image}
-        width={1000}
-        height={400}
-        alt={`Event image for ${title}`}
-      />
+      <Link href={link}>
+        <Image
+          src={image}
+          width={1000}
+          height={400}
+          alt={`Event image for ${title}`}
+        />
+      </Link>
       <div className="p-5">
         <h1 className="flex-1 font-gotham font-bold ss:text-[72px] text-[32px] text-slate-900">{title}</h1>
         <p className="flex-1 font-gotham font-bold ss:text-[72px] text-[24px] text-slate-700">{date}</p>
