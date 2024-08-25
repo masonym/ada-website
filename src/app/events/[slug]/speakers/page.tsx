@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { EVENTS } from '@/constants/events';
 import { notFound } from 'next/navigation';
 import Speakers from '@/app/components/Speakers';
@@ -18,11 +18,21 @@ export default function SpeakersPage({ params }: { params: { slug: string } }) {
     notFound();
   }
 
+  // Check local storage for authentication state
+  useEffect(() => {
+    const storedAuth = localStorage.getItem(`auth-${event.slug}`);
+    if (storedAuth === 'true') {
+      setIsAuthenticated(true);
+    }
+  }, [event.slug]);
+
   const handlePasswordSubmit = (password: string) => {
     if (password === event.password) {
       setIsAuthenticated(true);
       setError('');
       setShowPasswordModal(false);
+      // Store authentication state in local storage
+      localStorage.setItem(`auth-${event.slug}`, 'true');
     } else {
       setError('Incorrect password. Please try again.');
     }

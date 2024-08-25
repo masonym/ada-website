@@ -20,7 +20,8 @@ const PasswordModal = ({ isOpen, onClose, onSubmit, error, setEnteredPassword }:
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center z-50">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-xl font-bold mb-4 text-gray-700">Enter Password</h2>
+        <h2 className="text-xl font-bold mb-1 text-gray-700">Enter password to view presentations</h2>
+        <p className="text-sm mb-2 font-gotham text-gray-600">Check your registration confirmation email for details</p>
         <form onSubmit={handleFormSubmit}>
           <input
             type="password"
