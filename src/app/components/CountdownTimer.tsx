@@ -41,7 +41,7 @@ const CountdownTimer = ({ targetDate }: TimerProps) => {
     const padNumber = (num: number) => num.toString().padStart(2, '0');
 
     return (
-        <div className="flex flex-wrap justify-center items-center gap-4 bg-navy-800 p-4 sm:p-8 rounded-xl">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-navy-800 p-4 sm:p-8 rounded-xl">
             {Object.entries(timeLeft).map(([key, value]) => (
                 <div key={key} className="flex flex-col items-center">
                     <div className="bg-white rounded-lg p-4 shadow-lg mb-2 w-24 h-24 flex items-center justify-center">
