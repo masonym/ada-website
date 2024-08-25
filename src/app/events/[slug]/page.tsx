@@ -30,14 +30,14 @@ export default function EventPage({ params }: { params: { slug: string } }) {
           Back to Events
         </Link> */}
 
-        <div className="flex flex-col md:flex-row flexBetween gap-4 sm:gap-8 items-center sm:items-start mb-8">
+        <div className="flex flex-col md:flex-row flexBetween gap-4 sm:gap-8 items-center sm:items-start mb-8 w-auto">
           <Button
             title="REGISTER"
             variant="btn_sqr_blue"
             link={event.registerLink}
             // className="w-full sm:w-auto"
           />
-          <Button
+          {/* <Button
             title="SPONSORSHIP OPPORTUNITIES"
             variant="btn_sqr_navy_blue"
             link={`/events/${event.slug}/sponsor`}
@@ -48,7 +48,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             variant="btn_sqr_navy_blue"
             link={`/events/${event.slug}/speakers`}
             // className="w-full sm:w-auto"
-          />
+          /> */}
         </div>
 
         <div className="flex flex-col items-center">
