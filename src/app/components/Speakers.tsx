@@ -1,4 +1,3 @@
-
 import { SPEAKERS } from '@/constants/speakers';
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
@@ -21,11 +20,15 @@ type EventProps = {
 
 const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) => {
     const currentEvent = SPEAKERS.find((e) => e.id === event.id);
-    const [expandedBioIndex, setExpandedBioIndex] = useState<number | null>(null);
+    const [expandedBios, setExpandedBios] = useState<boolean[]>([]);
     const bioRefs = useRef<Array<HTMLDivElement | null>>([]);
 
     const toggleBio = (index: number) => {
-        setExpandedBioIndex(expandedBioIndex === index ? null : index);
+        setExpandedBios((prevExpandedBios) => {
+            const newExpandedBios = [...prevExpandedBios];
+            newExpandedBios[index] = !newExpandedBios[index];
+            return newExpandedBios;
+        });
     };
 
     const handlePresentationClick = (presentation: string | undefined) => {
@@ -46,15 +49,15 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                 className="mb-6"
             />
             <h3 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Speaker Spotlight</h3>
-            <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {currentEvent &&
                     currentEvent.speakers.map((speaker, index) => (
                         <div key={index} className="flex flex-col items-center text-center">
                             <Image
                                 src={speaker.image}
-                                width={128}
-                                height={128}
-                                alt={`Image of ${speaker.name}`}
+                                width={256}
+                                height={256}
+                                alt={`${speaker.name}`}
                                 className="rounded-lg"
                             />
                             <p className="mt-4 font-semibold whitespace-nowrap">{speaker.name}</p>
@@ -78,7 +81,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                                     >
                                         Click to read bio
                                         <svg
-                                            className={`w-4 h-4 ml-2 transform transition-transform ${expandedBioIndex === index ? '-rotate-90' : 'rotate-0'
+                                            className={`w-4 h-4 ml-2 transform transition-transform ${expandedBios[index] ? '-rotate-90' : 'rotate-0'
                                                 }`}
                                             xmlns="http://www.w3.org/2000/svg"
                                             fill="none"
@@ -91,11 +94,11 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                                     <div
                                         ref={(el) => (bioRefs.current[index] = el)}
                                         style={{
-                                            height: expandedBioIndex === index ? `${bioRefs.current[index]?.scrollHeight}px` : '0px',
+                                            height: expandedBios[index] ? `${bioRefs.current[index]?.scrollHeight}px` : '0px',
                                         }}
                                         className={`overflow-hidden transition-all duration-500 ease-in-out`}
                                     >
-                                        <div className="text-sm text-gray-600 mt-2 text-left">
+                                        <div className="text-sm text-gray-600 mt-2 text-center">
                                             <p dangerouslySetInnerHTML={{ __html: speaker.bio }}></p>
                                         </div>
                                     </div>
