@@ -47,7 +47,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
         <Button
           title="SPONSORSHIP OPPORTUNITIES"
           variant="btn_sqr_navy_blue"
-          link={event.registerLink}
+          link={`/events/${event.slug}/sponsor`}
         />
         <Button
           title="EVENT SPEAKERS"
