@@ -17,11 +17,11 @@ const page = ({ params }: { params: { slug: string } }) => {
 
     return (
         <>
-            <div className="max-container mx-auto pt-8 px-4 flex flex-col items-start underline">
+            {/* <div className="max-container mx-auto pt-8 px-4 flex flex-col items-start underline">
                 <Link href={`/events/${params.slug}`} className="text-[24px] items-center font-bold text-gray-700 hover:text-gray-900 flex">
                     <ChevronLeft /> Back
                 </Link>
-            </div>
+            </div> */}
             <div className="py-8 flex flex-col items-center">
                 <Image
                     src={event.image}

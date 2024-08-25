@@ -14,7 +14,7 @@ export default function Navbar() {
     const [dropdownIndex, setDropdownIndex] = useState<number | null>(null);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-    
+
 
     const handleMouseEnter = (index: number) => {
         if (timeoutRef.current) {
@@ -46,7 +46,9 @@ export default function Navbar() {
                     >
                         {navItem.subItems ? (
                             <>
-                                <span className="cursor-pointer">{navItem.label}</span>
+                                <Link href={`/events/${params.slug}/${navItem.path}`} className="cursor-pointer">
+                                    {navItem.label}
+                                </Link>
                                 {isDropdownOpen && dropdownIndex === index && (
                                     <ul className="mt-4 absolute left-1/2 -translate-x-1/2 bg-gray-700 rounded-md shadow-lg list-none">
                                         {navItem.subItems.map(subItem => (
