@@ -59,10 +59,9 @@ export default function EventPage({ params }: { params: { slug: string } }) {
       <h2 className="text-[48px] font-bold font-gotham text-slate-700">
         Event Info
       </h2>
-      <div
-        dangerouslySetInnerHTML={{ __html: event.eventText }}
-        className="prose prose-zinc max-w-none mb-12"
-      />
+      <div className="flex flex-col leading-loose text-slate-600">
+        {event.eventText}
+      </div>
 
       <RegistrationOptions
         event={event}

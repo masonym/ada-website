@@ -14,7 +14,7 @@ export type EventProps = {
     date: string;
     timeStart: string;
     description: string;
-    eventText: string;
+    eventText: React.ReactNode;
     image: string;
     slug: string;
     registerLink: string;
