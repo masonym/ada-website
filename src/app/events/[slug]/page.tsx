@@ -1,5 +1,3 @@
-// app/events/[slug]/page.tsx
-
 import React from 'react';
 import { EVENTS } from '@/constants/events';
 import Image from 'next/image';
@@ -25,63 +23,67 @@ export default function EventPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <div>
-      <div className="max-container mx-auto pr-2 pt-8 px-4 flex md:flex-row gap-8 items-start flex-col">
-        <Button
-          title="REGISTER"
-          variant="btn_sqr_blue"
-          link={event.registerLink}
-        />
-        <Button
-          title="SPONSORSHIP OPPORTUNITIES"
-          variant="btn_sqr_navy_blue"
-          link={`/events/${event.slug}/sponsor`}
-        />
-        <Button
-          title="EVENT SPEAKERS"
-          variant="btn_sqr_navy_blue"
-          link={`/events/${event.slug}/speakers`}
-        />
-      </div>
-      <div className="py-8 flex flex-col items-center">
-        <Image
-          src={event.image}
-          width={2000}
-          height={800}
-          unoptimized={true}
-          alt={`Event image for ${event.title}`}
-          className="mb-6 w-full max-w-[1536px]"
-        />
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="py-4 sm:py-8">
+        {/* <Link href="/events" className="inline-flex items-center text-blue-500 hover:underline mb-4">
+          <ChevronLeft className="w-4 h-4 mr-1" />
+          Back to Events
+        </Link> */}
 
-        <CountdownTimer
-          targetDate={event.timeStart}
-        >
-
-        </CountdownTimer>
-
-        <h2 className="text-[48px] font-bold text-center font-gotham text-slate-700 ">
-          Event Info
-        </h2>
-        <div className="flex flex-col leading-loose text-slate-600 max-w-4xl">
-          {event.eventText}
-        </div>
-
-        <RegistrationOptions
-          event={event}
-        >
-
-        </RegistrationOptions>
-
-        {/* register */}
-        <div className="">
-          <h3 className="text-[32px] font-bold font-gotham text-red-500 mb-4">
-            Register Now!
-          </h3>
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 items-center sm:items-start mb-8">
           <Button
             title="REGISTER"
-            variant="btn_blue"
+            variant="btn_sqr_blue"
             link={event.registerLink}
+            className="w-full sm:w-auto"
           />
+          <Button
+            title="SPONSORSHIP OPPORTUNITIES"
+            variant="btn_sqr_navy_blue"
+            link={`/events/${event.slug}/sponsor`}
+            className="w-full sm:w-auto"
+          />
+          <Button
+            title="EVENT SPEAKERS"
+            variant="btn_sqr_navy_blue"
+            link={`/events/${event.slug}/speakers`}
+            className="w-full sm:w-auto"
+          />
+        </div>
+
+        <div className="flex flex-col items-center">
+          <div className="w-full mb-6">
+            <Image
+              src={event.image}
+              width={2000}
+              height={800}
+              layout="responsive"
+              alt={`Event image for ${event.title}`}
+              className="rounded-lg"
+            />
+          </div>
+          <CountdownTimer targetDate={event.timeStart} />
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+            Event Info
+          </h2>
+          <div className="flex flex-col leading-relaxed text-slate-600 max-w-4xl text-lg">
+            {event.eventText}
+          </div>
+
+          <RegistrationOptions event={event} />
+
+          <div className="mt-12 text-center">
+            <h3 className="text-2xl sm:text-3xl font-bold font-gotham text-red-500 mb-4">
+              Register Now!
+            </h3>
+            <Button
+              title="REGISTER"
+              variant="btn_blue"
+              link={event.registerLink}
+              className="w-full sm:w-auto"
+            />
+          </div>
         </div>
       </div>
     </div>
