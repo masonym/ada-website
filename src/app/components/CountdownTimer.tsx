@@ -16,7 +16,13 @@ const CountdownTimer = ({ targetDate }: TimerProps) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            const distance = new Date(targetDate).getTime() - new Date().getTime();
+            // Parse the targetDate as UTC
+            const targetDateUTC = new Date(targetDate).getTime();
+            // Get the current time in UTC
+            const nowUTC = new Date().getTime(); // This gets the current time in milliseconds since the epoch, which is UTC
+
+            const distance = targetDateUTC - nowUTC;
+
             if (distance > 0) {
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -28,6 +34,7 @@ const CountdownTimer = ({ targetDate }: TimerProps) => {
                 setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
             }
         }, 1000);
+
         return () => clearInterval(interval);
     }, [targetDate]);
 
