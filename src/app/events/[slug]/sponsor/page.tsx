@@ -4,26 +4,34 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react'
 import { ChevronLeft } from 'lucide-react'
+import Image from 'next/image';
 
 
 
 const page = ({ params }: { params: { slug: string } }) => {
-    const currentEvent = EVENTS.find((e) => e.slug === params.slug);
+    const event = EVENTS.find((e) => e.slug === params.slug);
 
-    if (!currentEvent) {
+    if (!event) {
         notFound();
     }
 
     return (
         <>
-            <div className="max-w-4xl mx-auto pt-8 px-4 flex flex-col items-start underline">
+            <div className="max-container mx-auto pt-8 px-4 flex flex-col items-start underline">
                 <Link href={`/events/${params.slug}`} className="text-[24px] items-center font-bold text-gray-700 hover:text-gray-900 flex">
-                    <ChevronLeft/> Back
+                    <ChevronLeft /> Back
                 </Link>
             </div>
-            <div>
+            <div className="py-8 flex flex-col items-center">
+                <Image
+                    src={event.image}
+                    width={1000}
+                    height={400}
+                    alt={`Event image for ${event.title}`}
+                    className="mb-6 w-full max-w-[1536px]"
+                />
                 <SponsorOptions
-                    event={currentEvent}
+                    event={event}
                 ></SponsorOptions>
             </div>
         </>

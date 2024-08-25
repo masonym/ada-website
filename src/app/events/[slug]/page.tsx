@@ -8,6 +8,8 @@ import Button from '@/app/components/Button';
 import SponsorOptions from '@/app/components/SponsorOptions';
 import CountdownTimer from '@/app/components/CountdownTimer';
 import RegistrationOptions from '@/app/components/RegistrationOptions';
+import Link from 'next/link';
+import { ChevronLeft } from 'lucide-react';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -23,28 +25,16 @@ export default function EventPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto py-8 px-4 flex flex-col items-center">
-      <h1 className="text-[48px] font-gotham font-bold mb-2  text-slate-700">{event.title}</h1>
-      <p className="text-[28px] mb-4  text-slate-700">{event.date}</p>
-      <Image
-        src={event.image}
-        width={1000}
-        height={400}
-        alt={`Event image for ${event.title}`}
-        className="mb-6"
-      />
-      <CountdownTimer
-        targetDate={event.timeStart}
-      >
-
-      </CountdownTimer>
-      <div className="flex md:flex-row flex-col my-8 gap-4 w-full">
+    <div>
+      <div className="max-container mx-auto pt-8 px-4 flex flex-row gap-8 items-start underline">
+        <Link href={`/events`} className="text-[24px] items-center font-bold text-gray-700 hover:text-gray-900 flex">
+          <ChevronLeft /> Back
+        </Link>
         <Button
           title="REGISTER"
           variant="btn_sqr_blue"
           link={event.registerLink}
         />
-
         <Button
           title="SPONSORSHIP OPPORTUNITIES"
           variant="btn_sqr_navy_blue"
@@ -56,29 +46,45 @@ export default function EventPage({ params }: { params: { slug: string } }) {
           link={`/events/${event.slug}/speakers`}
         />
       </div>
-      <h2 className="text-[48px] font-bold font-gotham text-slate-700">
-        Event Info
-      </h2>
-      <div className="flex flex-col leading-loose text-slate-600">
-        {event.eventText}
-      </div>
-
-      <RegistrationOptions
-        event={event}
-      >
-
-      </RegistrationOptions>
-
-      {/* register */}
-      <div className="">
-        <h3 className="text-[32px] font-bold font-gotham text-red-500 mb-4">
-          Register Now!
-        </h3>
-        <Button
-          title="REGISTER"
-          variant="btn_blue"
-          link={event.registerLink}
+      <div className="py-8 flex flex-col items-center">
+        <Image
+          src={event.image}
+          width={1000}
+          height={400}
+          alt={`Event image for ${event.title}`}
+          className="mb-6 w-full max-w-[1536px]"
         />
+
+        <CountdownTimer
+          targetDate={event.timeStart}
+        >
+
+        </CountdownTimer>
+
+        <h2 className="text-[48px] font-bold text-center font-gotham text-slate-700 ">
+          Event Info
+        </h2>
+        <div className="flex flex-col leading-loose text-slate-600 max-w-4xl">
+          {event.eventText}
+        </div>
+
+        <RegistrationOptions
+          event={event}
+        >
+
+        </RegistrationOptions>
+
+        {/* register */}
+        <div className="">
+          <h3 className="text-[32px] font-bold font-gotham text-red-500 mb-4">
+            Register Now!
+          </h3>
+          <Button
+            title="REGISTER"
+            variant="btn_blue"
+            link={event.registerLink}
+          />
+        </div>
       </div>
     </div>
   );

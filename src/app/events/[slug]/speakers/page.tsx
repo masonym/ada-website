@@ -7,6 +7,7 @@ import Speakers from '@/app/components/Speakers';
 import PasswordModal from '@/app/components/PasswordModal';
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
+import Image from 'next/image';
 
 export default function SpeakersPage({ params }: { params: { slug: string } }) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -42,15 +43,19 @@ export default function SpeakersPage({ params }: { params: { slug: string } }) {
 
     return (
         <div>
-
-            <div className="max-w-4xl mx-auto pt-8 px-4 flex flex-col items-start underline">
+            <div className="max-container mx-auto pt-8 px-4 flex flex-col items-start underline">
                 <Link href={`/events/${params.slug}`} className="text-[24px] items-center font-bold text-gray-700 hover:text-gray-900 flex">
                     <ChevronLeft /> Back
                 </Link>
             </div>
-            <div className="max-w-4xl mx-auto py-8 px-4 flex flex-col items-center ">
-                <h1 className="text-[48px] font-gotham font-bold mb-2  text-slate-700 text-center">{event.title}</h1>
-                <p className="text-[28px] mb-4  text-slate-700">{event.date}</p>
+            <div className="py-8 flex flex-col items-center">
+                <Image
+                    src={event.image}
+                    width={1000}
+                    height={400}
+                    alt={`Event image for ${event.title}`}
+                    className="mb-6 w-full max-w-[1536px]"
+                />
 
                 <Speakers
                     event={event}
