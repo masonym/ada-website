@@ -28,6 +28,15 @@ module.exports = {
         yellow: {
           50: '#FEC601',
         },
+        lightBlue: {
+          400: '#3FB4E6',
+        },
+        red: {
+          999: '#FF3131'
+        },
+        navy: {
+          800: '#1B212B'
+        }
       },
       backgroundImage: {
         'bg-img-1': "url('/img-1.png')",

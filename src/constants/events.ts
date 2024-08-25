@@ -28,7 +28,7 @@ export const EVENTS = [
         Charles F. Sills<br>
         President & CEO<br>
         AMERICAN DEFENSE ALLIANCE<br>
-        csills@americandefensealliance.org<br>
+        <a href="mailto:csills@americandefensealliance.org">csills@americandefensealliance.org</a><br>
         Cell: 248 514-2293
       </p>
       <h2>2025 Defense Industry Forecast – Topical Coverage:</h2>
@@ -53,7 +53,8 @@ export const EVENTS = [
       </ul>
       `,
     image: "/2025_DefenseIndustryForecast.png",
-    slug: "2025-defense-industry-forecast"
+    slug: "2025-defense-industry-forecast",
+    registerLink: "/"
   },
   // Add more events here
 ];

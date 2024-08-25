@@ -1,23 +1,24 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type ButtonProps = {
-    type: 'button' | 'submit';
     title: string;
     icon?: string;
     variant?: string;
+    link: string;
 }
 
-const Button = ({ type, title, icon, variant }: ButtonProps) => {
+const Button = ({ title, icon, variant, link }: ButtonProps) => {
     return (
-        <button
-        className={`flexCenter gap-3 rounded-full border ${variant}`}
-            type={type}
+        <Link
+            href={link}
+            className={`flexCenter gap-3 rounded-full border ${variant}`}
         >
-            {icon && <Image src={icon} width={24} height={24} alt={title}/>}
-            <label className="bold-16 whitespace-nowrap">
+            {icon && <Image src={icon} width={24} height={24} alt={title} />}
+            <span className="bold-16 whitespace-nowrap">
                 {title}
-            </label>
-        </button>
+            </span>
+        </Link>
     )
 }
 
