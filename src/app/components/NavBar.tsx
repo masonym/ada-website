@@ -25,7 +25,7 @@ const NavBar = () => {
               height={100}
               alt="ADA Logo"
             />
-            <p className="pl-5 pr-5 font-bold text-xl font-gotham">American Defense Alliance</p>
+            <p className="pl-5 pr-5 font-bold text-xl font-gotham text-white">American Defense Alliance</p>
           </div>
         </Link>
         <ul className="hidden h-full gap-8 lg:flex">
@@ -33,7 +33,7 @@ const NavBar = () => {
             <Link
               href={link.href}
               key={link.key}
-              className="regular-16 text-gray-90 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold"
+              className="regular-16 text-gray-100 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold"
             >
               {link.label}
             </Link>
@@ -50,7 +50,7 @@ const NavBar = () => {
         </div> */}
 
         <button onClick={toggleMenu} className="lg:hidden flex items-center justify-center">
-          <Menu className="cursor-pointer" size={48} />
+          <Menu className="cursor-pointer" size={48} color="white"/>
         </button>
 
         <Hamburger
