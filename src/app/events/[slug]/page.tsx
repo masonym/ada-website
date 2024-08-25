@@ -25,16 +25,6 @@ export default function EventPage({ params }: { params: { slug: string } }) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col items-center">
-        <div className="w-full mb-6">
-          <Image
-            src={event.image}
-            width={2000}
-            height={800}
-            layout="responsive"
-            alt={`Event image for ${event.title}`}
-            className="rounded-lg"
-          />
-        </div>
         <div className="py-4 sm:py-8">
           {/* <Link href="/events" className="inline-flex items-center text-blue-500 hover:underline mb-4">
           <ChevronLeft className="w-4 h-4 mr-1" />

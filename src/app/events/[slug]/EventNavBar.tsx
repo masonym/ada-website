@@ -37,7 +37,7 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="text-navy-800 text-[24px] mt-4 p-4">
+        <nav className="text-navy-800 text-[24px] my-4 p-4">
             {/* Hamburger Icon for Mobile */}
             <div className="md:hidden flex items-center justify-between">
                 <button onClick={toggleMobileMenu} className="focus:outline-none">
