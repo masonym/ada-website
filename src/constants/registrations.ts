@@ -5,11 +5,11 @@ export const REGISTRATION_TYPES = [
             {
                 title: "In-Person",
                 perks: [
-                    "Registration for one person",
-                    "Access to all event sessions",
-                    "Buffet lunch",
-                    "Post-event happy hour",
-                    "On-demand sessions",
+                    "TBD",
+                    "TBD",
+                    "TBD",
+                    "TBD",
+
                 ],
                 subtitle: "Includes:",
                 buttonText: "Purchase Ticket"
@@ -17,11 +17,13 @@ export const REGISTRATION_TYPES = [
             {
                 title: "Government Registration",
                 perks: [
-                    "Registration for one person",
-                    "Access to all event sessions",
-                    "Buffet lunch",
-                    "Post-event happy hour",
-                    "On-demand sessions",
+                    "TBD",
+                    "TBD",
+                    "TBD",
+                    "TBD",
+                    "TBD",
+                    "TBD",
+                    
                 ],
                 subtitle: "Includes:",
                 buttonText: "Purchase Ticket"
