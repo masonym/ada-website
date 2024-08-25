@@ -26,7 +26,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
   return (
     <div>
-      <div className="max-container mx-auto pt-8 px-4 flex flex-row gap-8 items-start underline">
+      <div className="max-container mx-auto pt-8 px-4 flex flex-row gap-8 items-start">
         <Button
           title="REGISTER"
           variant="btn_sqr_blue"
