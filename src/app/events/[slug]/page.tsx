@@ -27,9 +27,6 @@ export default function EventPage({ params }: { params: { slug: string } }) {
   return (
     <div>
       <div className="max-container mx-auto pt-8 px-4 flex flex-row gap-8 items-start underline">
-        <Link href={`/events`} className="text-[24px] items-center font-bold text-gray-700 hover:text-gray-900 flex">
-          <ChevronLeft /> Back
-        </Link>
         <Button
           title="REGISTER"
           variant="btn_sqr_blue"
