@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import Button from '@/app/components/Button';
 import SponsorOptions from '@/app/components/SponsorOptions';
 import CountdownTimer from '@/app/components/CountdownTimer';
+import RegistrationOptions from '@/app/components/RegistrationOptions';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -62,6 +63,12 @@ export default function EventPage({ params }: { params: { slug: string } }) {
         dangerouslySetInnerHTML={{ __html: event.eventText }}
         className="prose prose-zinc max-w-none mb-12"
       />
+
+      <RegistrationOptions
+        event={event}
+      >
+
+      </RegistrationOptions>
 
       {/* register */}
       <div className="">

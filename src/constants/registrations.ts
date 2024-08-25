@@ -10,7 +10,9 @@ export const REGISTRATION_TYPES = [
                     "Buffet lunch",
                     "Post-event happy hour",
                     "On-demand sessions",
-                ]
+                ],
+                subtitle: "Includes:",
+                buttonText: "Purchase Ticket"
             },
             {
                 title: "Live Virtual Access",
@@ -19,7 +21,9 @@ export const REGISTRATION_TYPES = [
                     "Access to all event sessions",
                     "Q&A audience access through chat",
                     "On-demand sessions",
-                ]
+                ],
+                subtitle: "Includes:",
+                buttonText: "Purchase Ticket"
             },
             // {
             //     title: "Access for Government",
