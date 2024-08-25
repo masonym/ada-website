@@ -16,7 +16,7 @@ const NavBar = () => {
   }
 
   return (
-      <nav className="flexBetween max-container padding-container py-5 relative z-30 border-b-2 border-b-gray-700">
+      <nav className="flexBetween max-container padding-container py-5 relative z-30 border-b-2 border-b-gray-700 bg-lightBlue-400">
         <Link href="/">
           <div className="flexBetween maxContainer relative">
             <Image
@@ -33,7 +33,7 @@ const NavBar = () => {
             <Link
               href={link.href}
               key={link.key}
-              className="regular-16 text-gray-50 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold"
+              className="regular-16 text-gray-90 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold"
             >
               {link.label}
             </Link>

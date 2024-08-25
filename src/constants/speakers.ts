@@ -7,7 +7,6 @@ export const SPEAKERS = [
                 name: "Jon Snow",
                 position: "King",
                 company: "The North",
-                presentation: "/link.pdf"
             },
             {
                 image: "/guy.png",

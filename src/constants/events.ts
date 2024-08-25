@@ -51,7 +51,8 @@ export const EVENTS = [
       `,
     image: "/2025_DefenseIndustryForecast.png",
     slug: "2025-defense-industry-forecast",
-    registerLink: "/"
+    registerLink: "/",
+    password: "ADA2025DIF"
   },
   // Add more events here
 ];
