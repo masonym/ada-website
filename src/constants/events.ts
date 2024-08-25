@@ -30,8 +30,11 @@ export const EVENTS = [
       <li>Cybersecurity Compliance Mandates and CMMC Training Options</li>
       <li>Defense Contract Audit Agency Support for Small & Medium-size Contractors</li>
       <li>Special Preferential Contracting/Set-Aside Opportunities for Small Disadvantaged</li>
-      <li>Businesses, 8(a) Certified Companies, Woman-Owned Small Businesses, Veteran and Service-Disabled Veteran Owned Small Businesses, HUBZone Firms, and Native American, Alaska Native, and Native Hawaiian Companie</li>
+      <li>Businesses, 8(a) Certified Companies, Woman-Owned Small Businesses, Veteran and Service-Disabled Veteran Owned Small Businesses, HUBZone Firms, and Native American, Alaska Native, and Native Hawaiian Companies</li>
       </ul>
+
+      <br></br>
+      <img src="/location.png"></img>
       `,
     image: "/2025_DefenseIndustryForecast.png",
     slug: "2025-defense-industry-forecast",
