@@ -92,7 +92,9 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                                         </svg>
                                     </button>
                                     <div
-                                        ref={(el) => (bioRefs.current[index] = el)}
+                                        ref={(el) => {
+                                            bioRefs.current[index] = el;
+                                        }}
                                         style={{
                                             height: expandedBios[index] ? `${bioRefs.current[index]?.scrollHeight}px` : '0px',
                                         }}
