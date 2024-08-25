@@ -15,11 +15,12 @@ export const REGISTRATION_TYPES = [
                 buttonText: "Purchase Ticket"
             },
             {
-                title: "Live Virtual Access",
+                title: "Government Registration",
                 perks: [
                     "Registration for one person",
                     "Access to all event sessions",
-                    "Q&A audience access through chat",
+                    "Buffet lunch",
+                    "Post-event happy hour",
                     "On-demand sessions",
                 ],
                 subtitle: "Includes:",

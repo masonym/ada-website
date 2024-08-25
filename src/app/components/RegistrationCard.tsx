@@ -15,7 +15,7 @@ type RegistrationProp = {
 const RegistrationCard = ({ item }: RegistrationProp) => {
     return (
         <div className="w-full max-w-sm mx-auto overflow-hidden rounded-lg bg-white shadow-md">
-            <div className="h-40 bg-gradient-to-r from-blue-900 to-blue-700 flex items-center justify-center">
+            <div className="h-40 bg-gradient-to-r from-blue-900 to-blue-700 flex flex-wrap text-center items-center justify-center">
                 <h4 className="text-2xl font-bold text-white">{item.title}</h4>
             </div>
             <div className="p-6">
