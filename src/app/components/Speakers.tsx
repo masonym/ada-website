@@ -30,8 +30,15 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
     };
 
     return (
-        <div className="max-container my-12 flex flex-col items-center">
-            <h3 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Speaker Presentations</h3>
+        <div className="max-container flex flex-col items-center">
+            <Image
+                src={event.image}
+                width={1000}
+                height={400}
+                alt={`Event image for ${event.title}`}
+                className="mb-6"
+            />
+            <h3 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Speaker Spotlight</h3>
             <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {currentEvent &&
                     currentEvent.speakers.map((speaker, index) => (

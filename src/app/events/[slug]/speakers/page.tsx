@@ -39,10 +39,9 @@ export default function SpeakersPage({ params }: { params: { slug: string } }) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto py-8 px-4 flex flex-col items-center">
-      <h1 className="text-[48px] font-gotham font-bold mb-2 text-slate-700">
-        {event.title} - Speakers
-      </h1>
+    <div className="max-w-4xl mx-auto py-8 px-4 flex flex-col items-center ">
+      <h1 className="text-[48px] font-gotham font-bold mb-2  text-slate-700">{event.title}</h1>
+      <p className="text-[28px] mb-4  text-slate-700">{event.date}</p>
 
       <Speakers
         event={event}
