@@ -19,7 +19,7 @@ const UpcomingEvents = () => {
             date={event.date}
             description={event.description}
             image={event.image}
-            link={event.link}
+            link={`/events/${event.slug}`}
           />
         ))}
 

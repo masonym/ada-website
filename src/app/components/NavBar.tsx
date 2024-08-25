@@ -40,14 +40,14 @@ const NavBar = () => {
           ))}
         </ul>
 
-        <div className="lg:flexCenter hidden">
+        {/* <div className="lg:flexCenter hidden">
           <Button
             type="button"
             title="idk yet"
             icon="/logo.png"
             variant="btn_dark_green"
           />
-        </div>
+        </div> */}
 
         <button onClick={toggleMenu} className="lg:hidden flex items-center justify-center">
           <Menu className="cursor-pointer" size={48} />

@@ -171,3 +171,12 @@ body {
     src: url('/Gotham-Bold.otf') format("woff");
   }
 }
+
+/* Customize bullet color within prose */
+.prose ul > li::marker {
+  color: #253877; /* Change this to your desired color */
+}
+
+.prose ol > li::marker {
+  color: #253877; /* Change this to your desired color */
+}
