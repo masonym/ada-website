@@ -46,8 +46,9 @@ export default function EventPage({ params }: { params: { slug: string } }) {
       <div className="py-8 flex flex-col items-center">
         <Image
           src={event.image}
-          width={1000}
-          height={400}
+          width={2000}
+          height={800}
+          unoptimized={true}
           alt={`Event image for ${event.title}`}
           className="mb-6 w-full max-w-[1536px]"
         />

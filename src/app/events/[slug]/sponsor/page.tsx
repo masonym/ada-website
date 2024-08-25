@@ -28,6 +28,7 @@ const page = ({ params }: { params: { slug: string } }) => {
                     width={1000}
                     height={400}
                     alt={`Event image for ${event.title}`}
+                    unoptimized={true}
                     className="mb-6 w-full max-w-[1536px]"
                 />
                 <SponsorOptions
