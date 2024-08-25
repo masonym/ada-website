@@ -11,22 +11,6 @@ export const EVENTS = [
       <br></br>
 
       Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers and Small Business Program Directors from across the Defense Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors.
-
-      <br></br>
-      ​
-
-      To colleagues and friends –
-
-      <br></br>
-
-      Just a message that I am now serving as President & CEO of the American Defense Alliance – which is carrying forward the critical mission of supporting U.S. National Security and our Warfighters, by informing the Defense Industrial Base of acquisition priorities, and helping Small Businesses/Diversity Suppliers and Prime Contractors connect with each other in identifying, pursuing and performing Government contracts.  We greatly look forward to your joining us at our Government and Defense procurement conferences!
-      </p>
-     <p>
-        Charles F. Sills<br>
-        President & CEO<br>
-        AMERICAN DEFENSE ALLIANCE<br>
-        <a href="mailto:csills@americandefensealliance.org">csills@americandefensealliance.org</a><br>
-        Cell: 248 514-2293
       </p>
       <h2>2025 Defense Industry Forecast – Topical Coverage:</h2>
       <ul>
