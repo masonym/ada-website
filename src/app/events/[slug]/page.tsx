@@ -30,7 +30,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
         alt={`Event image for ${event.title}`}
         className="mb-6"
       />
-      <div className="flex sm:flex-row flex-col my-8 gap-4 w-full">
+      <div className="flex md:flex-row flex-col my-8 gap-4 w-full">
         <Button
           title="REGISTER"
           variant="btn_sqr_blue"
