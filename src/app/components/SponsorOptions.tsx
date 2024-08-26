@@ -21,7 +21,7 @@ const SponsorOptions = ({ event }: SponsorProps) => {
         <div className="max-container mx-auto pb-8 pt-0 px-4 flex flex-col items-center ">
             <div className="flex flex-col items-center">
                 <h1 className="text-[48px] text-left font-gotham font-bold mb-2  text-slate-700">
-                    Sponsorship
+                    Sponsorship Opportunities
                 </h1>
                 <p className="text-[20px] font-gotham text-slate-600 w-full max-w-2xl mx-auto mb-6">
                     Join us for a premiere opportunity to network with key leaders. We are pleased to offer the following Sponsorship Opportunities.
