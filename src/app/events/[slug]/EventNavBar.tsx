@@ -102,68 +102,81 @@ export default function Navbar() {
             )}
 
             {/* Desktop Menu */}
-            <ul className="hidden md:flex space-x-4 relative items-center justify-center list-none">
-                <li className="relative p-2 flex grow">
-                    {/* Optional space for additional elements */}
-                </li>
-                {params?.slug && navItems.map((navItem, index) => (
-                    <li
-                        key={index}
-                        className="relative p-2 rounded-full"
-                        onMouseEnter={() => handleMouseEnter(index)}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        {navItem.subItems ? (
-                            <>
-                                {navItem.path ? (
-                                    <Link
-                                        href={`/events/${params.slug}/${navItem.path}`}
-                                        className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full"
-                                    >
-                                        {navItem.label}
-                                    </Link>
-                                ) : (
-                                    <span className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full text-navy-800">
-                                        {navItem.label} {/* Fallback text for items without a path */}
-                                    </span>
-                                )}
-                                {isDropdownOpen && dropdownIndex === index && (
-                                    <ul className="mt-4 absolute left-1/2 -translate-x-1/2 bg-gray-700 rounded-md shadow-lg list-none whitespace-nowrap">
-                                        {navItem.subItems.map(subItem => (
-                                            <li key={subItem.path}>
-                                                <Link
-                                                    href={`/events/${params.slug}/about/${subItem.path}`}
-                                                    className="block hover:bg-gray-600 hover:text-white transition-colors duration-300 rounded-md px-12 py-4 text-white"
-                                                >
-                                                    {subItem.label}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-                            </>
-                        ) : navItem.path ? ( // Only render Link if path exists
-                            <Link
-                                href={`/events/${params.slug}/${navItem.path}`}
-                                className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full"
-                            >
-                                {navItem.label}
-                            </Link>
-                        ) : (
-                            <span className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full text-navy-800">
-                                {navItem.label}  {/* Fallback text for items without a path */}
-                            </span>
-                        )}
+            <ul className="hidden lg:grid lg:grid-cols-10 relative items-center list-none md:flex md:flex-wrap md:justify-center">
+
+                {/* Centered Nav Items */}
+                <div className="col-span-2 flex justify-end">
+                    <li className="relative p-2 hidden grow max-w-[440px]">
+                        <Button
+                            title="REGISTER"
+                            variant="btn_sqr_blue"
+                            link={event.registerLink}
+                        />
                     </li>
-                ))}
-                <li className="relative p-2 flex grow">
-                    <Button
-                        title="REGISTER"
-                        variant="btn_sqr_blue"
-                        link={event.registerLink}
-                    />
-                </li>
-                <li className="relative p-2 flex grow" />
+                </div>
+                <div className="col-span-6 flex items-center justify-center">
+                    {params?.slug && navItems.map((navItem, index) => (
+                        <li
+                            key={index}
+                            className="relative p-2 rounded-full"
+                            onMouseEnter={() => handleMouseEnter(index)}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            {navItem.subItems ? (
+                                <>
+                                    {navItem.path ? (
+                                        <Link
+                                            href={`/events/${params.slug}/${navItem.path}`}
+                                            className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full"
+                                        >
+                                            {navItem.label}
+                                        </Link>
+                                    ) : (
+                                        <span className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full text-navy-800">
+                                            {navItem.label} {/* Fallback text for items without a path */}
+                                        </span>
+                                    )}
+                                    {isDropdownOpen && dropdownIndex === index && (
+                                        <ul className="mt-4 absolute left-1/2 -translate-x-1/2 bg-gray-700 rounded-md shadow-lg list-none whitespace-nowrap">
+                                            {navItem.subItems.map(subItem => (
+                                                <li key={subItem.path}>
+                                                    <Link
+                                                        href={`/events/${params.slug}/about/${subItem.path}`}
+                                                        className="block hover:bg-gray-600 hover:text-white transition-colors duration-300 rounded-md px-12 py-4 text-white"
+                                                    >
+                                                        {subItem.label}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </>
+                            ) : navItem.path ? ( // Only render Link if path exists
+                                <Link
+                                    href={`/events/${params.slug}/${navItem.path}`}
+                                    className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full"
+                                >
+                                    {navItem.label}
+                                </Link>
+                            ) : (
+                                <span className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full text-navy-800">
+                                    {navItem.label}  {/* Fallback text for items without a path */}
+                                </span>
+                            )}
+                        </li>
+                    ))}
+                </div>
+
+                {/* Register Button Aligned Right */}
+                {/* <div className="col-span-2 flex justify-end"> */}
+                    <li className="relative p-2 flex grow max-w-[440px] mt-4 md:mt-0 lg:col-span-2 lg:justify-end md:flex-1">
+                        <Button
+                            title="REGISTER"
+                            variant="btn_sqr_blue"
+                            link={event.registerLink}
+                        />
+                    </li>
+                {/* </div> */}
             </ul>
         </nav>
     );
