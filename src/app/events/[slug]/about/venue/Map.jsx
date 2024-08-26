@@ -31,7 +31,7 @@ const Map = ({ placeId }) => {
 
   const mapContainerStyle = {
     height: '400px',
-    width: '800px',
+    width: 'auto',
     position: 'relative',
   };
 

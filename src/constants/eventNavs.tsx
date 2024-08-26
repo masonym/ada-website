@@ -2,9 +2,9 @@ export const EVENT_NAVS = [
     {
       eventId: 1, // This should match the event ID from EVENTS
       items: [
+        { label: 'Home', path: '/'},
         {
           label: 'About',
-          path: '/',
           subItems: [
             { label: 'About the Event', path: 'about' },
             { label: 'Location & Venue', path: 'venue' },
