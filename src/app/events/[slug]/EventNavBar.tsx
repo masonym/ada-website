@@ -43,13 +43,13 @@ export default function Navbar() {
 
     return (
         <nav className="text-navy-800 text-[24px] my-0 p-4">
-            <div className="md:hidden flex items-center justify-between">
+            {/* <div className="md:hidden flex items-center justify-between">
                 <button onClick={toggleMobileMenu} className="focus:outline-none">
                     <Menu className="text-navy-800" size={64} />
                 </button>
-            </div>
+            </div> */}
 
-            {isMobileMenuOpen && (
+            {/* {isMobileMenuOpen && (
                 <ul className="md:hidden flex flex-col bg-gray-700 pl-8 rounded-md shadow-lg absolute left-0 right-0 z-10 mx-4 text-[16px]">
                     {params?.slug && navItems.map((navItem, index) => (
                         <li key={index} className="text-white p-2 rounded-md font-gotham">
@@ -87,9 +87,9 @@ export default function Navbar() {
                         />
                     </span>
                 </ul>
-            )}
+            )} */}
 
-            <ul className="hidden md:flex relative items-center justify-center list-none">
+            <ul className="flex-col md:flex-row flex relative items-center justify-center list-none">
                 <div className="flex items-center">
                     <li className="relative p-2 flex grow" />
                     {params?.slug && navItems.map((navItem, index) => (
