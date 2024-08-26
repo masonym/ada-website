@@ -90,7 +90,7 @@ export default function Navbar() {
             )} */}
 
             <ul className="flex-col md:flex-row flex relative items-center justify-center list-none">
-                <div className="flex items-center">
+                <div className="flex-col md:flex-row flex items-center">
                     <li className="relative p-2 flex grow" />
                     {params?.slug && navItems.map((navItem, index) => (
                         <li
