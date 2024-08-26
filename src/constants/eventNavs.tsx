@@ -14,7 +14,12 @@ export const EVENT_NAVS = [
         },
         { label: 'Agenda', path: 'agenda' },
         { label: 'Speakers', path: 'speakers' },
-        { label: 'Sponsorship', path: 'sponsor' },
+        { 
+          label: 'Sponsors',
+          subItems: [
+            { label: "Sponsorship Opportunities", path: 'sponsor' }
+          ],
+        },
       ],
     },
     // Add more event-specific navigation items here

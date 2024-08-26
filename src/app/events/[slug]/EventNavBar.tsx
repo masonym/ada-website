@@ -30,18 +30,16 @@ export default function Navbar() {
             setDropdownIndex(null);
         }, 200); // Adjust the delay as needed
     };
+
     if (!event) {
         notFound();
     }
-
 
     const navItems = EVENT_NAVS.find(nav => nav.eventId === event.id)?.items || [];
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
-
-
 
     return (
         <nav className="text-navy-800 text-[24px] my-0 p-4">
@@ -60,12 +58,14 @@ export default function Navbar() {
                         <li key={index} className="text-white p-2 rounded-md font-gotham">
                             {navItem.subItems ? (
                                 <>
-                                    <Link
-                                        href={`/events/${params.slug}/${navItem.path}`}
-                                        className="block hover:bg-lightBlue-400 transition-colors duration-300 p-2 rounded-md"
-                                    >
-                                        {navItem.label}
-                                    </Link>
+                                    {navItem.path && (
+                                        <Link
+                                            href={`/events/${params.slug}/${navItem.path}`}
+                                            className="block hover:bg-lightBlue-400 transition-colors duration-300 p-2 rounded-md"
+                                        >
+                                            {navItem.label}
+                                        </Link>
+                                    )}
                                     <ul className="mt-2 text-[14px]">
                                         {navItem.subItems.map(subItem => (
                                             <li key={subItem.path}>
@@ -79,13 +79,15 @@ export default function Navbar() {
                                         ))}
                                     </ul>
                                 </>
-                            ) : (
+                            ) : navItem.path ? ( // Only render Link if path exists
                                 <Link
                                     href={`/events/${params.slug}/${navItem.path}`}
                                     className="block hover:bg-lightBlue-400 transition-colors duration-300 p-2 rounded-md"
                                 >
                                     {navItem.label}
                                 </Link>
+                            ) : (
+                                <span className="block p-2 text-gray-400">{navItem.label}</span> // Fallback text
                             )}
                         </li>
                     ))}
@@ -102,10 +104,9 @@ export default function Navbar() {
             {/* Desktop Menu */}
             <ul className="hidden md:flex space-x-4 relative items-center justify-center list-none">
                 <li className="relative p-2 flex grow">
-
+                    {/* Optional space for additional elements */}
                 </li>
                 {params?.slug && navItems.map((navItem, index) => (
-
                     <li
                         key={index}
                         className="relative p-2 rounded-full"
@@ -114,12 +115,18 @@ export default function Navbar() {
                     >
                         {navItem.subItems ? (
                             <>
-                                <Link
-                                    href={`/events/${params.slug}/${navItem.path}`}
-                                    className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full"
-                                >
-                                    {navItem.label}
-                                </Link>
+                                {navItem.path ? (
+                                    <Link
+                                        href={`/events/${params.slug}/${navItem.path}`}
+                                        className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full"
+                                    >
+                                        {navItem.label}
+                                    </Link>
+                                ) : (
+                                    <span className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full text-navy-800">
+                                        {navItem.label} {/* Fallback text for items without a path */}
+                                    </span>
+                                )}
                                 {isDropdownOpen && dropdownIndex === index && (
                                     <ul className="mt-4 absolute left-1/2 -translate-x-1/2 bg-gray-700 rounded-md shadow-lg list-none whitespace-nowrap">
                                         {navItem.subItems.map(subItem => (
@@ -135,13 +142,17 @@ export default function Navbar() {
                                     </ul>
                                 )}
                             </>
-                        ) : (
+                        ) : navItem.path ? ( // Only render Link if path exists
                             <Link
                                 href={`/events/${params.slug}/${navItem.path}`}
                                 className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full"
                             >
                                 {navItem.label}
                             </Link>
+                        ) : (
+                            <span className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full text-navy-800">
+                                {navItem.label}  {/* Fallback text for items without a path */}
+                            </span>
                         )}
                     </li>
                 ))}
