@@ -39,13 +39,12 @@ export const EVENTS = [
             <li>Businesses, 8(a) Certified Companies, Woman-Owned Small Businesses, Veteran and Service-Disabled Veteran Owned Small Businesses, HUBZone Firms, and Native American, Alaska Native, and Native Hawaiian Companies</li>
           </ul>
         </div>
-        <div className="mt-12">
-          <Image src="/location.png" className="rounded-lg mb-4" alt="Location Map" width={1000} height={400} />
-        </div>
       </div>
     ),
     image: "/2025_DefenseIndustryForecast.png",
     slug: "2025-defense-industry-forecast",
+    locationImage: "/locations/location_NPC.png",
+    locationAddress: "529 14th Street NW, Washington, DC 20045",
     registerLink: "/",
     password: "ADA2025DIF"
   },
