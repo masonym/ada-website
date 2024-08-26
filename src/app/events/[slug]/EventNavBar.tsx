@@ -102,19 +102,11 @@ export default function Navbar() {
             )}
 
             {/* Desktop Menu */}
-            <ul className="hidden lg:grid lg:grid-cols-10 relative items-center list-none md:flex md:flex-wrap md:justify-center">
-
+            <ul className="hidden md:flex relative items-center justify-center list-none">
                 {/* Centered Nav Items */}
-                <div className="col-span-2 flex justify-end">
-                    <li className="relative p-2 hidden grow max-w-[440px]">
-                        <Button
-                            title="REGISTER"
-                            variant="btn_sqr_blue"
-                            link={event.registerLink}
-                        />
-                    </li>
-                </div>
-                <div className="col-span-6 flex items-center justify-center">
+                <div className="flex items-center">
+                    {/* Optional space for additional elements */}
+                    <li className="relative p-2 flex grow" />
                     {params?.slug && navItems.map((navItem, index) => (
                         <li
                             key={index}
@@ -165,18 +157,20 @@ export default function Navbar() {
                             )}
                         </li>
                     ))}
+                    <li className="relative p-2 flex grow" />
                 </div>
 
                 {/* Register Button Aligned Right */}
-                {/* <div className="col-span-2 flex justify-end"> */}
-                    <li className="relative p-2 flex grow max-w-[440px] mt-4 md:mt-0 lg:col-span-2 lg:justify-end md:flex-1">
+                <div className="flex justify-end">
+                    <li className="relative p-2 flex grow max-w-[840px]">
                         <Button
                             title="REGISTER"
                             variant="btn_sqr_blue"
                             link={event.registerLink}
                         />
                     </li>
-                {/* </div> */}
+                    <li className="relative p-2 flex grow" />
+                </div>
             </ul>
         </nav>
     );

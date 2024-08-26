@@ -44,7 +44,8 @@ export const EVENTS = [
     image: "/2025_DefenseIndustryForecast.png",
     slug: "2025-defense-industry-forecast",
     locationImage: "/locations/location_NPC.png",
-    locationAddress: "529 14th Street NW, Washington, DC 20045",
+    locationAddress: "529 14th St NW, Washington, DC 20045, United States",
+    placeID: "ChIJ44HT0_u3t4kR9J5_0CQu3ic",
     registerLink: "/",
     password: "ADA2025DIF"
   },

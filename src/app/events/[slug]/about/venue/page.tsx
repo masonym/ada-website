@@ -17,23 +17,23 @@ const Page = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col items-center">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-700 text-center mb-8">
-                Event Venue & Location
+                Event Location & Venue
             </h2>
             <div className="space-y-6">
                 <p className="text-center">(placeholder) stuff goes here</p>
             </div>
             <div className="mt-12">
-                <Image 
-                    src={event.locationImage} 
-                    className="rounded-lg mb-4" 
-                    alt="Location Map" 
-                    width={1000} 
-                    height={400} 
+                <Image
+                    src={event.locationImage}
+                    className="rounded-lg mb-4"
+                    alt="Location Map"
+                    width={1000}
+                    height={400}
                 />
             </div>
-            <div className="mt-12 " style={{ width: "100%", height: "400px" }}>
+            <div className="mt-12 self-center" style={{ width: "100%", height: "400px" }}>
                 {/* Pass the address instead of latitude/longitude */}
-                <Map address={event.locationAddress} />
+                <Map placeId={event.placeID}/>
             </div>
         </div>
     );
