@@ -105,7 +105,7 @@ export default function Navbar() {
                                         {navItem.label}
                                     </span>
                                     {isDropdownOpen && dropdownIndex === index && (
-                                        <ul className="mt-4 absolute left-1/2 -translate-x-1/2 bg-gray-700 rounded-md shadow-lg list-none whitespace-nowrap">
+                                        <ul className="mt-4 absolute left-1/2 -translate-x-1/2 bg-gray-700 rounded-md shadow-lg list-none whitespace-nowrap z-30">
                                             {navItem.subItems.map(subItem => (
                                                 <li key={subItem.path}>
                                                     <Link
