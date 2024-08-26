@@ -31,6 +31,11 @@ export default function Navbar() {
         }, 200);
     };
 
+    const handleLinkClick = () => {
+        setIsDropdownOpen(false);
+        setDropdownIndex(null);
+    };
+
     if (!event) {
         notFound();
     }
@@ -111,6 +116,7 @@ export default function Navbar() {
                                                     <Link
                                                         href={`/events/${params.slug}/about/${subItem.path}`}
                                                         className="block hover:bg-gray-600 hover:text-white transition-colors duration-300 rounded-md px-12 py-4 text-white"
+                                                        onClick={handleLinkClick}
                                                     >
                                                         {subItem.label}
                                                     </Link>
@@ -123,6 +129,7 @@ export default function Navbar() {
                                 <Link
                                     href={`/events/${params.slug}/${navItem.path}`}
                                     className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full"
+                                    onClick={handleLinkClick}
                                 >
                                     {navItem.label}
                                 </Link>

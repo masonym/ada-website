@@ -39,6 +39,7 @@ const Hamburger = ({ isOpen, onClose }: HamburgerMenuProps) => {
             href={link.href}
             key={link.key}
             className="text-lg font-gotham py-2 text-gray-10 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold"
+            onClick={onClose}
           >
             {link.label}
           </Link>
