@@ -17,30 +17,26 @@ export const EVENTS = [
         <p className="mb-4">
           Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers, and Small Business Program Directors from across the Defense Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors.
         </p>
-        <div className="flex flex-col border-0 bg-slate-300 rounded-lg p-4 pt-0 mb-0">
-          <h2 className="text-xl text-white font-semibold mb-2 bg-navy-800 p-4 rounded-md mt-4">2025 Defense Industry Forecast – Topical Coverage:</h2>
-          <ul className="list-disc pl-5">
-            <li>Defense Dept., Service, and Combat Command Acquisition Priorities</li>
-            <li>DoD Small Business Contracting Programs</li>
-            <li>Prime Defense Contractors – Subcontracting & Teaming</li>
-            <li>Accelerated Contracting Opportunities for Innovative Technology Solutions (DIU, DEFENSEWERX, Etc.)</li>
-            <li>Description of GWAC’s (Government-Wide Acquisition Contracts) and Their Small Business Tracks</li>
-            <li>Mentor-Protégé Programs as Business Accelerators for Smalls and Primes</li>
-            <li>Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC) Projects Coming Down the Pike</li>
-            <li>Military Base-Community Partnerships Driving Construction and Facility Support Contracts</li>
-            <li>Contract and Grant Opportunities Financed by Infrastructure and Energy Resiliency Legislation</li>
-            <li>Navy’s Critical Maintenance & Shipbuilding Issues and Resulting Support Needs</li>
-            <li>Indo-Pacific Deployment/Logistics Challenges and New Contracting Initiatives</li>
-            <li>The New Unmanned/Autonomous Platforms and How to Engage </li>
-            <li>The Race to Develop AI, Advanced Computing and Machine Learning for Defense</li>
-            <li>Cybersecurity Compliance Mandates and CMMC Training Options</li>
-            <li>Defense Contract Audit Agency Support for Small & Medium-size Contractors</li>
-            <li>Special Preferential Contracting/Set-Aside Opportunities for Small Disadvantaged</li>
-            <li>Businesses, 8(a) Certified Companies, Woman-Owned Small Businesses, Veteran and Service-Disabled Veteran Owned Small Businesses, HUBZone Firms, and Native American, Alaska Native, and Native Hawaiian Companies</li>
-          </ul>
-        </div>
       </div>
     ),
+    topicalCoverage: [
+      "Defense Dept., Service, and Combat Command Acquisition Priorities",
+      "DoD Small Business Contracting Programs",
+      "Prime Defense Contractors – Subcontracting & Teaming",
+      "Accelerated Contracting Opportunities for Innovative Technology Solutions (DIU, DEFENSEWERX, Etc.)",
+      "Description of GWAC's (Government-Wide Acquisition Contracts) and Their Small Business Tracks",
+      "Mentor-Protégé Programs as Business Accelerators for Smalls and Primes",
+      "Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC) Projects Coming Down the Pike",
+      "Military Base-Community Partnerships Driving Construction and Facility Support Contracts",
+      "Contract and Grant Opportunities Financed by Infrastructure and Energy Resiliency Legislation",
+      "Navy's Critical Maintenance & Shipbuilding Issues and Resulting Support Needs",
+      "Indo-Pacific Deployment/Logistics Challenges and New Contracting Initiatives",
+      "The New Unmanned/Autonomous Platforms and How to Engage",
+      "The Race to Develop AI, Advanced Computing and Machine Learning for Defense",
+      "Cybersecurity Compliance Mandates and CMMC Training Options",
+      "Defense Contract Audit Agency Support for Small & Medium-size Contractors",
+      "Special Preferential Contracting/Set-Aside Opportunities for Small Disadvantaged Businesses, 8(a) Certified Companies, Woman-Owned Small Businesses, Veteran and Service-Disabled Veteran Owned Small Businesses, HUBZone Firms, and Native American, Alaska Native, and Native Hawaiian Companies"
+    ],
     image: "/2025_DefenseIndustryForecast.png",
     slug: "2025-defense-industry-forecast",
     locationImage: "/locations/location_NPC.png",
