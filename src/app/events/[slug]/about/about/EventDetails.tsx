@@ -25,7 +25,7 @@ const EventDetails: React.FC<EventProps> = ({ title, eventText, topicalCoverage,
                 key={index}
                 className="bg-white/10 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 flex-grow-0 flex-shrink-0 basis-full sm:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)]"
               >
-                <p className="text-lg">{topic}</p>
+                <p className="text-lg font-semibold">{topic}</p>
               </div>
             ))}
           </div>

@@ -25,14 +25,14 @@ export default function EventPage({ params }: { params: { slug: string } }) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col items-center">
-        <div className="py-4 sm:py-8">
+        <div className="py-4 sm:py-8 flex flex-col items-center">
           {/* <Link href="/events" className="inline-flex items-center text-blue-500 hover:underline mb-4">
           <ChevronLeft className="w-4 h-4 mr-1" />
           Back to Events
         </Link> */}
 
-          
-            {/* <Button
+
+          {/* <Button
             title="SPONSORSHIP OPPORTUNITIES"
             variant="btn_sqr_navy_blue"
             link={`/events/${event.slug}/sponsor`}
@@ -56,10 +56,8 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
           <RegistrationOptions event={event} />
 
-          <div className="mt-12 text-center">
-            <h3 className="text-2xl sm:text-3xl font-bold font-gotham text-red-500 mb-4">
-              Register Now!
-            </h3>
+          <div className="mt-12 text-center max-w-sm">
+            <p className="text-2xl text-navy-500 mb-6 w-fit text-center text-nowrap ">Don't miss this event, register now!</p>
             <Button
               title="REGISTER"
               variant="btn_blue"

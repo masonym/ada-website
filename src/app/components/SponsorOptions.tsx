@@ -35,7 +35,7 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                 ))
                 }
                 <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mb-6">
-                    For more information and to secure your Sponsorship, contact: <br></br>
+                    For more information and to secure your sponsorship, contact: <br></br>
                     <a href="mailto:marketing@americandefensealliance.org" className='underline'>marketing@americandefensealliance.org</a>
                 </p>
             </div>
