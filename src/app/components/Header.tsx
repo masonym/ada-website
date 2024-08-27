@@ -1,27 +1,44 @@
 import Image from 'next/image'
 import React from 'react'
+import Button from './Button'
 
 const Header = () => {
   return (
-    <section id="home" className="max-container flex flex-col gap-20 md:gap-28 xl:flex-row">
-      {/* <Image
-      src="/header_banner.jpg"
-      width={0}
-      height={0}
-      unoptimized={true}
-      className='h-auto w-full rounded-3xl'
-      /> */}
-
-      <div className="flex-1 items-start flex-col sm:px-16 px-6">
-        <p className="font-gotham text-slate-500 mt-8 text-[12px] md:text-[20px]">Connecting industry to government procurement opportunities.</p>
-        <div className="flex flex-row justify-between items-center w-full">
-          <h1 className="flex-1 font-gotham font-bold ss:text-[72px] text-[40px] md:text-[64px] text-slate-900">
-            AMERICAN <br className="lg:hidden block"></br>DEFENSE ALLIANCE
-          </h1>
-        </div>
-        <p className="text-[16px] md:text-[24px] font-gotham text-slate-500 max-w-[1000px] mt-5">
-        The American Defense Alliance is dedicated to the critical mission of supporting U.S. National Security and our Warfighters, by informing the private-sector Defense Industrial Base of Federal acquisition requirements and priorities, and helping Small Businesses/Diversity Suppliers and Prime Contractors connect with each other in identifying, pursuing and performing Government contracts. 
+    <section id="home" className="max-container flex flex-col gap-20 md:gap-28 relative">
+      <div className="absolute inset-0 opacity-10 z-0"></div>
+      <div className="flex-1 items-start flex-col sm:px-16 px-6 relative z-10">
+        <p className="font-gotham text-blue-600 mt-8 text-[16px] md:text-[24px] font-semibold">
+        Connecting Industry to Government Procurement Opportunities
         </p>
+        <h1 className="flex-1 font-gotham font-bold ss:text-[72px] text-[40px] md:text-[64px] text-slate-900 mt-4">
+          AMERICAN <br className="lg:hidden block"></br>DEFENSE ALLIANCE
+        </h1>
+        <p className="text-[18px] md:text-[24px] font-gotham text-slate-700 max-w-[1000px] mt-6 leading-relaxed">
+          Dedicated to supporting U.S. National Security and our Warfighters by bridging the gap between the private-sector Defense Industrial Base and Federal acquisition requirements.
+        </p>
+        <div className="mt-8 flex flex-col sm:flex-row gap-4 max-w-[480px]">
+          <Button
+            title="Explore Events"
+            variant="btn_blue"
+            link="#upcoming-events"
+            className="text-lg py-3 px-6"
+          />
+          <Button
+            title="Learn More"
+            variant="btn_white_text"
+            link="/about"
+            className="text-lg py-3 px-6 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300"
+          />
+        </div>
+      </div>
+      <div className="flex-1 flex justify-center items-center">
+        {/* <Image
+          src="/header_image.jpg"
+          alt="Defense technology"
+          width={600}
+          height={400}
+          className="rounded-lg shadow-2xl"
+        /> */}
       </div>
     </section>
   )
