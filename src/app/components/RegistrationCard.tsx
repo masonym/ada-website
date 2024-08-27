@@ -1,6 +1,10 @@
+"use client";
+
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 type RegistrationTypes = {
     title: string;
@@ -8,6 +12,7 @@ type RegistrationTypes = {
     subtitle: string;
     perks: string[];
     buttonText: string;
+    buttonLink: string;
     type: string;
     earlyBirdPrice?: string;
     regularPrice?: string;
@@ -20,6 +25,7 @@ type RegistrationProp = {
 };
 
 const RegistrationCard = ({ item }: RegistrationProp) => {
+    const params = useParams()
     const isPaid = item.type === 'paid';
     const isEarlyBird = isPaid && new Date() < new Date(item.earlyBirdDeadline!);
     const currentPrice = isPaid ? (isEarlyBird ? item.earlyBirdPrice : item.regularPrice) : 'Complimentary';
@@ -64,7 +70,7 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                     )}
                     {isPaid && !isEarlyBird && (
                         <p className="text-sm text-center text-gray-600 mb-2">
-                            Regular price
+                            {/* Regular price */}
                         </p>
                     )}
                     {!isPaid && item.availabilityInfo && (
@@ -72,9 +78,12 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                             {item.availabilityInfo}
                         </p>
                     )}
-                    <button className="w-full py-2 px-4 bg-blue-800  text-white font-semibold rounded-md hover:bg-navy-200 transition duration-300">
-                        {item.buttonText}
-                    </button>
+                    <Link
+                        href={`${params.slug}/${item.buttonLink}`}>
+                        <button className="w-full py-2 px-4 bg-blue-800  text-white font-semibold rounded-md hover:bg-navy-200 transition duration-300">
+                            {item.buttonText}
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>
