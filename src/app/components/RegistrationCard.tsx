@@ -79,6 +79,11 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                             {/* Regular price */}
                         </p>
                     )}
+                    {isFree && (
+                        <div className="text-center">
+                            <p className="text-sm text-gray-600">Register with .gov or .mil email</p>
+                        </div>
+                    )}
                     {isSponsor && (
                         <div className="text-center">
                             <p className="text-sm text-gray-600">For more information and to secure your sponsorship, contact:</p>

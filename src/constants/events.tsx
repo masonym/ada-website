@@ -46,9 +46,9 @@ export const EVENTS = [
         title: "Traveling from Baltimore",
         description: `
                     <ol class="list-decimal pl-4">
-                      <li>Take the Baltimore-Washington Parkway south and exit at New York Ave (Route 50)</li>
-                      <li>Follow New York Ave all the way to 14th St and turn left (South).</li>
-                      <li>The National Press Building is at the corner of 14th and F St next to the J.W. Marriott Hotel.</li>
+                      <li>Take the Baltimore-Washington Parkway south and exit at New York Ave.(Route 50)</li>
+                      <li>Follow New York Ave. all the way to 14th St. and turn left (South).</li>
+                      <li>The National Press Building is at the corner of 14th and F St. next to the J.W. Marriott Hotel.</li>
                     </ol>
         `
       },
@@ -70,26 +70,26 @@ export const EVENTS = [
         description: `
                     <ol class="list-decimal pl-4">
                       <h4 class="text-[20px] font-bold mt-4 mb-2">I-395 North</h4>
-                      <li>Follow signs to 14th Street Bridge; Exit to 14th St</li>
-                      <li>Continue north on 14th St past Washington Monument past Freedom Plaza and Pennsylvania Ave</li>
+                      <li>Follow signs to 14th Street Bridge; Exit to 14th St.</li>
+                      <li>Continue north on 14th St. past Washington Monument past Freedom Plaza and Pennsylvania Ave.</li>
                       <li>The National Press Building is in the next block, next door to the J.W. Marriott Hotel</li>
                       <h4 class="text-[20px] font-bold mt-4 mb-2">Memorial Bridge</h4>
                     </ol>
                     <ol class="list-decimal pl-4">        
                       <li>Cross Memorial Bridge to D.C.</li>
                       <li>Bear left at the Lincoln Memorial.</li>
-                      <li>Right on Constitution Ave</li>
-                      <li>Left on 15th St</li>
-                      <li>Right on F St</li>
-                      <li>The National Press Building is at the corner of 14th and F St next to the J.W. Marriott Hotel</li>
+                      <li>Right on Constitution Ave.</li>
+                      <li>Left on 15th St.</li>
+                      <li>Right on F St.</li>
+                      <li>The National Press Building is at the corner of 14th and F St. next to the J.W. Marriott Hotel</li>
                     </ol>         
                     <ol class="list-decimal pl-4">
                       <h4 class="text-[20px] font-bold mt-4 mb-2">I-66</h4>
                       <li>Take I-66 east across the Roosevelt Bridge into D.C.</li>
                       <li>This becomes Constitution Ave.</li>
-                      <li>Left on 15th St</li>
-                      <li>Right on F St</li>
-                      <li>The National Press Building is at the corner of 14th and F St next to the J.W. Marriott Hotel</li>
+                      <li>Left on 15th St.</li>
+                      <li>Right on F St.</li>
+                      <li>The National Press Building is at the corner of 14th and F St. next to the J.W. Marriott Hotel</li>
                     </ol>
         `
       },
