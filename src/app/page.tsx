@@ -1,18 +1,27 @@
-import Header from '@/app/components/Header'
-import UpcomingEvents from '@/app/components/UpcomingEvents'
-import AboutUs from '@/app/components/AboutUs'
-import Blogs from '@/app/components/Blogs'
-import ContactUs from '@/app/components/ContactUs'
+import { FC } from 'react';
 
-
-export default function Home() {
+const ConstructionPage: FC = () => {
   return (
-    <>
-    <Header/>
-    {/* <AboutUs/> */}
-    <UpcomingEvents/>
-    {/* <Blogs/> */}
-    <ContactUs/>
-    </>
-  )
-}
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+      fontFamily: 'Arial, sans-serif',
+      backgroundColor: '#f0f0f0',
+    }}>
+      <div style={{
+        textAlign: 'center',
+        padding: '20px',
+        backgroundColor: 'white',
+        borderRadius: '10px',
+        boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+      }}>
+        <h1 style={{ color: '#333' }}>Site Under Construction</h1>
+        <p style={{ color: '#666' }}>Please check back soon!</p>
+      </div>
+    </div>
+  );
+};
+
+export default ConstructionPage;
