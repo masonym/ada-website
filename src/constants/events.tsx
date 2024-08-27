@@ -94,6 +94,12 @@ export const EVENTS = [
         `
       },
     ],
+    images: [
+      { id: "main", src: "/events/2025-defense-industry-forecast/main.jpeg", alt: "Main event image" },
+      { id: "location", src: "/events/2025-defense-industry-forecast/location.jpeg", alt: "Event location" },
+      // { id: "recap", src: "/events/2025-defense-industry-forecast/recap-placeholder.jpg", alt: "Event recap placeholder" },
+      // Add more images as needed
+    ],
     parkingInfo: [
       {
         title: "For Guaranteed Parking Reservations",
