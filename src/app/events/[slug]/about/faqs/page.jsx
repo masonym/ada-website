@@ -23,7 +23,8 @@ const FAQsPage = () => {
                     eventFAQs.map((faq, index) => (
                         <div key={index} className="border-b border-gray-300 pb-4">
                             <h3 className="text-xl font-semibold text-slate-800">{faq.question}</h3>
-                            <p className="text-slate-600">{faq.answer}</p>
+                            {/* setting html due account for line breaks */}
+                            <p className="text-slate-600" dangerouslySetInnerHTML={{ __html: faq.answer }}></p>
                         </div>
                     ))
                 ) : (
