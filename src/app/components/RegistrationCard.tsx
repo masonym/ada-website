@@ -27,8 +27,14 @@ type RegistrationProp = {
 const RegistrationCard = ({ item }: RegistrationProp) => {
     const params = useParams()
     const isPaid = item.type === 'paid';
+    const isSponsor = item.type === 'sponsor';
+    const isFree = item.type === 'complimentary';
     const isEarlyBird = isPaid && new Date() < new Date(item.earlyBirdDeadline!);
-    const currentPrice = isPaid ? (isEarlyBird ? item.earlyBirdPrice : item.regularPrice) : 'Complimentary';
+    const currentPrice = isPaid
+        ? (isEarlyBird ? item.earlyBirdPrice : item.regularPrice)
+        : isFree
+            ? 'Complimentary'
+            : '';
     const deadlineDate = isPaid ? new Date(item.earlyBirdDeadline!).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
@@ -73,11 +79,18 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                             {/* Regular price */}
                         </p>
                     )}
-                    {!isPaid && item.availabilityInfo && (
+                    {isSponsor && (
+                        <div className="text-center">
+                            <p className="text-sm text-gray-600">For more information and to secure your sponsorship, contact:</p>
+                            <p className="text-sm text-blue-600 hover:underline text-nowrap mb-2"><a href="mailto:marketing@americandefensealliance.org">marketing@americandefensealliance.org</a></p>
+                        </div>
+                    )}
+                    {item.availabilityInfo && (
                         <p className="text-sm text-center text-blue-600 mb-2">
                             {item.availabilityInfo}
                         </p>
                     )}
+
                     <Link
                         href={`${params.slug}/${item.buttonLink}`}>
                         <button className="w-full py-2 px-4 bg-blue-800  text-white font-semibold rounded-md hover:bg-navy-200 transition duration-300">

@@ -56,7 +56,8 @@ export const REGISTRATION_TYPES = [
                 subtitle: "Includes:",
                 buttonText: "Explore Sponsorship Opportunities",
                 buttonLink: "/about/sponsor",
-                type: "paid",
+                type: "sponsor",
+                availabilityInfo: "Limited availability."
             },
         ],
         addOns: [
