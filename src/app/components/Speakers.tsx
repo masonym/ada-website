@@ -21,6 +21,15 @@ export type EventProps = {
     password: string;
 };
 
+type Speaker = {
+    image: string;
+    name: string;
+    position: string;
+    company: string;
+    bio?: string;
+    presentation?: string;
+};
+
 const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) => {
     const currentEvent = SPEAKERS.find((e) => e.id === event.id);
     const [expandedBios, setExpandedBios] = useState<boolean[]>([]);
@@ -35,9 +44,9 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
     };
 
     const handlePresentationClick = (presentation: string | undefined) => {
-        if (isAuthenticated) {
+        if (isAuthenticated && presentation) {
             window.open(presentation, '_blank');
-        } else {
+        } else if (!isAuthenticated) {
             onRequestPassword();
         }
     };
@@ -47,7 +56,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
             <h3 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Speaker Spotlight</h3>
             <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {currentEvent &&
-                    currentEvent.speakers.map((speaker, index) => (
+                    currentEvent.speakers.map((speaker: Speaker, index: number) => (
                         <div key={index} className="flex flex-col items-center text-center">
                             <Image
                                 src={speaker.image}
@@ -68,7 +77,6 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                                     Presentation
                                 </button>
                             )}
-                            {/* Optional Bio Section */}
                             {speaker.bio && (
                                 <>
                                     <button
