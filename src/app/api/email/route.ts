@@ -29,10 +29,11 @@ export async function POST(request: NextRequest) {
     const mailOptions: Mail.Options = {
       from: process.env.MY_EMAIL,
       to: process.env.MY_EMAIL,
+      replyTo: email,
       subject: `Message from ${name} (${email})`,
       text: message,
       html: `
-        <h1>New message from your website</h1>
+        <h2><a href="https://americandefensealliance.org/">americandefensealliance.org</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong></p>
