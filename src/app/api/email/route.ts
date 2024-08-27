@@ -30,10 +30,10 @@ export async function POST(request: NextRequest) {
       from: process.env.MY_EMAIL,
       to: process.env.MY_EMAIL,
       replyTo: email,
-      subject: `Message from ${name} (${email})`,
+      subject: `Message Received: American Defense Alliance Contact Form Submission (${email})`,
       text: message,
       html: `
-        <h2><a href="https://americandefensealliance.org/">americandefensealliance.org</h2>
+        <h3><a href="https://americandefensealliance.org/">American Defense Alliance</h3>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong></p>
