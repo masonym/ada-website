@@ -44,7 +44,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                         <span className="block sm:inline"> Register before {deadlineDate}.</span>
                     </div>
                 )}
-                <div className="flex flex-col gap-8 md:flex-row mb-12">
+                <div className="flex flex-col gap-8 lg:flex-row mb-12">
                     {currentEvent.registrations.map((item, index) => (
                         <RegistrationCard key={index} item={item} />
                     ))}
