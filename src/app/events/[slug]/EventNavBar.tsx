@@ -147,7 +147,6 @@ export default function Navbar() {
                             link={event.registerLink}
                         />
                     </li>
-                    <li className="relative p-2 flex grow" />
                 </div>
             </ul>
         </nav>
