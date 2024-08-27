@@ -15,15 +15,19 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
         notFound();
     }
 
-    const paidRegistrations = currentEvent.registrations.filter(reg => reg.type === 'paid');
-    const complimentaryRegistrations = currentEvent.registrations.filter(reg => reg.type === 'complimentary');
+    const earlyBirdDeadline = currentEvent.registrations.length > 0 ? currentEvent.registrations[0].earlyBirdDeadline : null;
 
-    const isEarlyBird = paidRegistrations.length > 0 && new Date() < new Date(paidRegistrations[0].earlyBirdDeadline!);
-    const deadlineDate = paidRegistrations.length > 0 ? new Date(paidRegistrations[0].earlyBirdDeadline!).toLocaleDateString('en-US', {
+    // Determine if we're still in the early bird period
+    const isEarlyBird = earlyBirdDeadline && new Date() < new Date(earlyBirdDeadline);
+
+    // Format the deadline date, ignoring timezone differences
+    const deadlineDate = earlyBirdDeadline ? new Date(earlyBirdDeadline).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
-        day: 'numeric'
+        day: 'numeric',
+        timeZone: 'EST'  // Ensure consistent date across timezones
     }) : null;
+
 
     return (
         <div className="max-w-7xl mx-auto pt-0 pb-8 px-4 flex flex-col items-center">
