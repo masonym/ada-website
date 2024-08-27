@@ -16,7 +16,7 @@ export const REGISTRATION_TYPES = [
                 buttonText: "Register Now",
                 earlyBirdPrice: "$550",
                 regularPrice: "$750",
-                earlyBirdDeadline: "2024-09-31T03:00:00Z",
+                earlyBirdDeadline: "2024-10-01T03:00:00Z",
                 type: "paid"
             },
             {
