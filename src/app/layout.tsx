@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function RootLayout({
         <div className="bg-navy-800">
         <NavBar />
         </div>
+        <SpeedInsights/>
         <main className="relative overflow-hidden ">
           {children}
         </main>
