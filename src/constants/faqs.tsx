@@ -10,8 +10,8 @@ export const FAQs = [
             },
             {
                 question: "When and where will the event take place?",
-                answer: `Date: November 14, 2024<br></br>
-                Time: 8:00 AM - 7:00 PM<br></br>
+                answer: `Date: November 14, 2024<br>
+                Time: 8:00 AM - 7:00 PM<br>
                 Venue: National Press Club, 529 14th St NW, Washington, D.C.
                 `,
             },
