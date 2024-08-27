@@ -1,11 +1,18 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 type RegistrationTypes = {
     title: string;
+    headerImage: string;
     subtitle: string;
     perks: string[];
     buttonText: string;
+    type: string;
+    earlyBirdPrice?: string;
+    regularPrice?: string;
+    earlyBirdDeadline?: string;
+    availabilityInfo?: string;
 };
 
 type RegistrationProp = {
@@ -13,10 +20,28 @@ type RegistrationProp = {
 };
 
 const RegistrationCard = ({ item }: RegistrationProp) => {
+    const isPaid = item.type === 'paid';
+    const isEarlyBird = isPaid && new Date() < new Date(item.earlyBirdDeadline!);
+    const currentPrice = isPaid ? (isEarlyBird ? item.earlyBirdPrice : item.regularPrice) : 'Complimentary';
+    const deadlineDate = isPaid ? new Date(item.earlyBirdDeadline!).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    }) : null;
+
     return (
-        <div className="w-full max-w-sm mx-auto overflow-hidden rounded-lg bg-white shadow-md flex flex-col">
-            <div className="h-40 bg-gradient-to-r from-blue-900 to-blue-700 flex text-center items-center justify-center px-4">
-                <h4 className="text-2xl font-bold text-white">{item.title}</h4>
+        <div className="w-full mx-auto overflow-hidden rounded-lg bg-white shadow-md flex flex-col">
+            <div className="h-40 relative">
+                <Image
+                    src={item.headerImage}
+                    alt={item.title}
+                    layout="fill"
+                    objectFit="cover"
+                    unoptimized={true}
+                />
+                {/* <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <h4 className="text-2xl font-bold text-white text-center">{item.title}</h4>
+                </div> */}
             </div>
             <div className="p-6 flex-grow flex flex-col justify-between">
                 <div>
@@ -30,9 +55,27 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                         ))}
                     </ul>
                 </div>
-                <button className="w-full py-2 px-4 bg-purple-600 text-white font-semibold rounded-md hover:bg-purple-700 transition duration-300 mt-auto">
-                    {item.buttonText}
-                </button>
+                <div className="mt-4">
+                    <p className="text-2xl font-bold text-center mb-2">{currentPrice}</p>
+                    {isPaid && isEarlyBird && (
+                        <p className="text-sm text-center text-green-600 mb-2">
+                            Early-bird price! Increases to {item.regularPrice} after {deadlineDate}
+                        </p>
+                    )}
+                    {isPaid && !isEarlyBird && (
+                        <p className="text-sm text-center text-gray-600 mb-2">
+                            Regular price
+                        </p>
+                    )}
+                    {!isPaid && item.availabilityInfo && (
+                        <p className="text-sm text-center text-blue-600 mb-2">
+                            {item.availabilityInfo}
+                        </p>
+                    )}
+                    <button className="w-full py-2 px-4 bg-blue-800  text-white font-semibold rounded-md hover:bg-navy-200 transition duration-300">
+                        {item.buttonText}
+                    </button>
+                </div>
             </div>
         </div>
     );
