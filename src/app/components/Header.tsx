@@ -20,7 +20,7 @@ const Header = () => {
           <Button
             title="Explore Events"
             variant="btn_blue"
-            link="#upcoming-events"
+            link="/events"
             className="text-lg py-3 px-6"
           />
           <Button
