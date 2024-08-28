@@ -45,7 +45,7 @@ export const REGISTRATION_TYPES = [
                     "Brand Visibility",
                     "Speaking Opportunity",
                     "Recognition",
-                    "Reception Hosting (Premiere)",
+                    "Reception Hosting (Premier)",
                     "Luncheon Hosting (Prestige)",
                     "Display Table",
                     "Event Access",

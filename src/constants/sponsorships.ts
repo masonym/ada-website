@@ -20,7 +20,7 @@ export const SPONSORSHIP_TYPES = [
                 cost: "$7,000",
                 perks: [
                     { tagline: "Brand Visibility", description: "Prominent logo placement on conference materials and signage" },
-                    { tagline: "Speaking Opportunity", description: "A brief segment during the conference for a representative’s presentation" },
+                    { tagline: "Speaking Opportunity", description: "A brief segment during the conference for a company principal's presentation" },
                     { tagline: "Recognition", description: "Acknowledgment during key moments of the conference, such as opening remarks" },
                     { tagline: "Luncheon Hosting", description: "Host of the Networking Lunch" },
                     { tagline: "Display Table", description: "Ability to host a company exhibit booth" },

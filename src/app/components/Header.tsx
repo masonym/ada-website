@@ -7,7 +7,7 @@ const Header = () => {
     <section id="home" className="max-container flex flex-col gap-20 md:gap-28 relative">
       <div className="absolute inset-0 opacity-10 z-0"></div>
       <div className="flex-1 items-start flex-col sm:px-16 px-6 relative z-10">
-        <p className="font-gotham text-blue-600 mt-8 text-[16px] md:text-[24px] font-semibold">
+        <p className="italic font-gotham text-blue-600 mt-8 text-[16px] md:text-[24px] font-semibold">
         Connecting Industry to Government Procurement Opportunities
         </p>
         <h1 className="flex-1 font-gotham font-bold ss:text-[72px] text-[40px] md:text-[64px] text-slate-900 mt-4">

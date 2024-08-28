@@ -36,7 +36,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                     Registration Options
                 </h1>
                 <p className="text-[20px] font-gotham text-slate-600 w-full max-w-2xl mx-auto mb-6 text-center">
-                    Join us for a premiere opportunity to network with key leaders.
+                    Join us for a premier opportunity to network with key leaders.
                 </p>
                 {isEarlyBird && (
                     <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6 text-xl" role="alert">
