@@ -3,7 +3,7 @@ export const SPONSORSHIP_TYPES = [
         id: 1,
         sponsorships: [
             {
-                title: "Premiere",
+                title: "Premier",
                 cost: "$10,000",
                 perks: [
                     { tagline: "Brand Visibility", description: "Prime logo placement on all conference materials, including banners, marketing emails, website, and programs" },

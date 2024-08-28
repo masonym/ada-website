@@ -17,7 +17,7 @@ export const FAQs = [
             },
             {
                 question: "Who should attend this event?",
-                answer: "Attendees will include senior defense industry executives, government officials, Program Managers, Contracting Officers, Small Business Program Directors, and representatives from various military branches, along with prime defense contractors and industry analysts.",
+                answer: "Attendees will include senior defense industry executives, Government officials, program managers, contracting officers, small business program directors, and representatives from various Military branches, along with prime defense contractors and industry analysts.",
             },
             {
                 question: "How can I register for the event?",
@@ -37,7 +37,7 @@ export const FAQs = [
             },
             {
                 question: "What is the dress code for the event?",
-                answer: "The dress code for the event is Business Attire.",
+                answer: "The dress code for the event is Business Attire or Uniform of the Day.",
             },
             {
                 question: "Will the speaker presentations be available for download?",

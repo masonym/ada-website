@@ -14,8 +14,8 @@ const Footer = () => {
             <Image
               src="/logo.png"
               alt="ADA Logo"
-              width={128}
-              height={128}
+              width={192}
+              height={192}
             />
           </Link>
           <div className="flex flex-wrap gap-10 sm:justify-around md:flex-1">
