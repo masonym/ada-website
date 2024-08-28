@@ -62,7 +62,7 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                         {item.perks.map((perk, index) => (
                             <li key={index} className="flex items-start">
                                 <ChevronRight className="h-5 w-5 mr-2 text-blue-600 flex-shrink-0" />
-                                <span className="text-md">{perk}</span>
+                                <span className="text-sm">{perk}</span>
                             </li>
                         ))}
                     </ul>
