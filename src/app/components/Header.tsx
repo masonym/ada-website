@@ -31,15 +31,15 @@ const Header = () => {
           />
         </div>
       </div>
-      <div className="flex-1 flex justify-center items-center">
-        {/* <Image
+      {/* <div className="flex-1 flex justify-center items-center">
+        <Image
           src="/header_image.jpg"
           alt="Defense technology"
           width={600}
           height={400}
           className="rounded-lg shadow-2xl"
-        /> */}
-      </div>
+        />
+      </div> */}
     </section>
   )
 }

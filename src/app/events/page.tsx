@@ -8,12 +8,12 @@ const page = () => {
     return (
         <div className="flex flex-col max-content mt-12">
             <h1 className="text-[48px] font-gotham font-bold mb-0 text-slate-900 text-center">UPCOMING EVENTS</h1>
-            <h2 className="text-[24px] font-gotham font-bold mb-4 text-slate-700 text-center">Presented by ADA</h2>
+            <h2 className="text-[24px] font-gotham font-bold mb-4 text-slate-700 text-center">Presented by American Defense Alliance</h2>
 
             <section id="upcoming-events" className="max-container flex flex-col items-center mt-24 mb-16">
-                <h2 className="text-center font-gotham font-bold text-[36px] md:text-[64px] text-slate-900 sm:px-16 px-6 mb-8">
+                {/* <h2 className="text-center font-gotham font-bold text-[36px] md:text-[64px] text-slate-900 sm:px-16 px-6 mb-8">
                     Don't miss our upcoming events!
-                </h2>
+                </h2> */}
                 <p className="text-center text-slate-600 text-xl mb-12 max-w-3xl">
                     Join us for industry-leading conferences and networking opportunities. Discover the latest in defense technology and procurement strategies.
                 </p>
