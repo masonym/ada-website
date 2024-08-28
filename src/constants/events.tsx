@@ -115,7 +115,7 @@ export const EVENTS = [
       },
     ],
     placeID: "ChIJ44HT0_u3t4kR9J5_0CQu3ic",
-    registerLink: "/",
+    registerLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
     password: "ADA2025DIF"
   },
   // Add more events here

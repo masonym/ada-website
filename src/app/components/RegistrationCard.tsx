@@ -97,7 +97,7 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                     )}
 
                     <Link
-                        href={`${params.slug}/${item.buttonLink}`}>
+                        href={`${item.buttonLink}`}>
                         <button className="w-full py-2 px-4 bg-blue-800  text-white font-semibold rounded-md hover:bg-navy-200 transition duration-300">
                             {item.buttonText}
                         </button>

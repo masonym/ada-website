@@ -15,7 +15,7 @@ export const REGISTRATION_TYPES = [
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "/",
+                buttonLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
                 earlyBirdPrice: "$550",
                 regularPrice: "$750",
                 earlyBirdDeadline: "2024-10-01T03:00:00Z",
@@ -34,7 +34,7 @@ export const REGISTRATION_TYPES = [
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "/",
+                buttonLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
                 type: "complimentary",
                 availabilityInfo: "Limited availability."
             },
@@ -53,7 +53,7 @@ export const REGISTRATION_TYPES = [
                 ],
                 subtitle: "Includes:",
                 buttonText: "Explore Sponsorship Opportunities",
-                buttonLink: "/about/sponsor",
+                buttonLink: `2025-defense-industry-forecast/about/sponsor`,
                 type: "sponsor",
                 availabilityInfo: "Limited availability."
             },
