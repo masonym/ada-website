@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react"
+import ScrollToTop from "./components/ScrollToTop";
 
 export const metadata: Metadata = {
   title: "American Defense Alliance",
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-300">
+        <ScrollToTop/>
         <div className="bg-navy-800">
           <NavBar />
         </div>
