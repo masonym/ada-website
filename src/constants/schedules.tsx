@@ -9,24 +9,24 @@ export const SCHEDULES = [
                             time: "8:00 AM - 9:00 AM",
                             title: "Registration, Networking, and Coffee Service",
                             // duration: "1 hour"
-                            Location: "Ballroom and Foyer",
+                            location: "Ballroom and Foyer",
                         },
                         {
                             time: "9:00 AM - 12:30 PM",
                             title: "General Sessions",
-                            Location: "Ballroom",
+                            location: "Ballroom",
                             // duration: "3 hours 30 minutes",
                         },
                         {
                             time: "12:30 PM - 1:30 PM",
                             title: "Lunch Break",
-                            Location: "Ballroom",
+                            location: "Ballroom",
                             // duration: "1 hour",
                         },
                         {
                             time: "1:30 PM - 5:00 PM",
                             title: "General Sessions",
-                            Location: "Ballroom",
+                            location: "Ballroom",
                             // duration: "3 hours 30 minutes",
                         },
                         {
