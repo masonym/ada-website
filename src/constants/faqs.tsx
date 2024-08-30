@@ -12,7 +12,7 @@ export const FAQs = [
                 question: "When and where will the event take place?",
                 answer: `Date: November 14, 2024<br>
                 Time: 8:00 AM - 7:00 PM<br>
-                Venue: National Press Club, 529 14th St NW, Washington, D.C.
+                Venue: National Press Club (13th floor), 529 14th St NW, Washington, D.C.
                 `,
             },
             {
@@ -29,11 +29,11 @@ export const FAQs = [
             },
             {
                 question: "Will there be networking opportunities?",
-                answer: "Yes, the event will include designated networking sessions, allowing attendees to connect with industry peers, policymakers, and other professionals. As well as a special ticketed Networking Reception from 5:30 PM - 7:00 PM ($100 Add-On option).",
+                answer: "Yes, the event will include designated networking sessions, allowing attendees to connect with industry peers, policymakers, and other professionals. As well as a special ticketed Networking Reception from 5:30 PM - 7:30 PM ($100 Add-On option).",
             },
             {
                 question: "What is the agenda for the event?",
-                answer: "The detailed agenda will be provided to registered attendees closer to the event date. It will include session times, speaker information, and other important details.",
+                answer: "You will find expected session topics within the event information on the event website. The detailed agenda will be provided to registered attendees closer to the event date and will include session times, speaker information, and other important details.",
             },
             {
                 question: "What is the dress code for the event?",
@@ -45,7 +45,7 @@ export const FAQs = [
             },
             {
                 question: "Is there a refund policy for the event?",
-                answer: `All event registrations are final, and refunds are not available under any circumstances. If you cannot attend, you may transfer your registration to another individual up to one week before the event by contacting us at <a href="mailto:info@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">info@americandefensealliance.org</a>.`,
+                answer: `All event registrations are final, and refunds are not available under any circumstances.  We understand that the unexpected can occur, therefore, if you cannot attend, you may transfer your registration to another individual up to one week before the event by contacting us at <a href="mailto:info@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">info@americandefensealliance.org</a>.`,
             },
             {
                 question: "Will photos or videos be taken at the event?",
