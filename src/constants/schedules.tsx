@@ -19,7 +19,7 @@ export const SCHEDULES = [
                         },
                         {
                             time: "12:30 PM - 1:30 PM",
-                            title: "Lunch Break",
+                            title: "Networking Lunch",
                             location: "Ballroom",
                             // duration: "1 hour",
                         },
