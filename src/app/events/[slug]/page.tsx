@@ -8,6 +8,7 @@ import CountdownTimer from '@/app/components/CountdownTimer';
 import RegistrationOptions from '@/app/components/RegistrationOptions';
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
+import Script from 'next/script';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -24,6 +25,18 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
   return (
     <>
+    <Script id="event-schema" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Event",
+          "name": event.title,
+          "description": event.description,
+          "startDate": event.date,
+          "locationAddress": event.locationAddress,
+          "topicalCoverage": event.topicalCoverage,
+          
+        })}
+      </Script>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center">
           <div className="py-4 sm:py-8 flex flex-col items-center">

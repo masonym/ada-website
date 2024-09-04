@@ -7,9 +7,12 @@ import { Analytics } from "@vercel/analytics/react"
 import ScrollToTop from "./components/ScrollToTop";
 
 export const metadata: Metadata = {
-  title: "American Defense Alliance",
-  description: "Industry, Resource, Marketplace", // change this
-};
+  title: {
+    default: 'American Defense Alliance',
+    template: '%s | American Defense Alliance',
+  },
+  description: 'Industry, Resource, Marketplace',
+}
 
 export default function RootLayout({
   children,
