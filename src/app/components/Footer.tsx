@@ -13,7 +13,7 @@ const Footer = () => {
           >
             <Image
               src="/logo.png"
-              alt="ADA Logo"
+              alt="American Defense Alliance Logo"
               width={192}
               height={192}
             />

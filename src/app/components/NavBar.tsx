@@ -56,7 +56,7 @@ const NavBar = () => {
             src="/logo.png"
             width={100}
             height={100}
-            alt="ADA Logo"
+            alt="American Defense Alliance Logo"
           />
           <p className="pl-5 pr-5 font-bold text-xl font-gotham text-white">American Defense Alliance</p>
         </div>

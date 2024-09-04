@@ -9,7 +9,7 @@ import ScrollToTop from "./components/ScrollToTop";
 export const metadata: Metadata = {
   title: {
     default: 'American Defense Alliance',
-    template: '%s | American Defense Alliance',
+    template: '%s',
   },
   description: 'American Defense Alliance: Connecting industry leaders with U.S. defense opportunities. Access forecasts, events, and resources for government contractors and military suppliers.',
 }
