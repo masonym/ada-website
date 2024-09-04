@@ -23,50 +23,52 @@ export default function EventPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-col items-center">
-        <div className="py-4 sm:py-8 flex flex-col items-center">
-          {/* <Link href="/events" className="inline-flex items-center text-blue-500 hover:underline mb-4">
+    <>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center">
+          <div className="py-4 sm:py-8 flex flex-col items-center">
+            {/* <Link href="/events" className="inline-flex items-center text-blue-500 hover:underline mb-4">
           <ChevronLeft className="w-4 h-4 mr-1" />
           Back to Events
-        </Link> */}
+          </Link> */}
 
 
-          {/* <Button
+            {/* <Button
             title="SPONSORSHIP OPPORTUNITIES"
             variant="btn_sqr_navy_blue"
             link={`/events/${event.slug}/sponsor`}
             // className="w-full sm:w-auto"
-          />
-          <Button
+            />
+            <Button
             title="EVENT SPEAKERS"
             variant="btn_sqr_navy_blue"
             link={`/events/${event.slug}/speakers`}
             // className="w-full sm:w-auto"
-          /> */}
+            /> */}
 
-          <CountdownTimer targetDate={event.timeStart} />
+            <CountdownTimer targetDate={event.timeStart} />
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
-            Event Info
-          </h2>
-          <div className="flex flex-col leading-relaxed text-slate-600 max-w-4xl text-lg text-center">
-            {event.eventText}
-          </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+              Event Info
+            </h2>
+            <div className="flex flex-col leading-relaxed text-slate-600 max-w-4xl text-lg text-center">
+              {event.eventText}
+            </div>
 
-          <RegistrationOptions event={event} />
+            <RegistrationOptions event={event} />
 
-          <div className="mt-12 text-center max-w-sm">
-            <p className="text-2xl text-navy-500 mb-6 w-fit text-center text-nowrap ">Don't miss this event, register now!</p>
-            <Button
-              title="REGISTER"
-              variant="btn_blue"
-              link={event.registerLink}
-              className="w-full sm:w-auto"
-            />
+            <div className="mt-12 text-center max-w-sm">
+              <p className="text-2xl text-navy-500 mb-6 w-fit text-center text-nowrap ">Don't miss this event, register now!</p>
+              <Button
+                title="REGISTER"
+                variant="btn_blue"
+                link={event.registerLink}
+                className="w-full sm:w-auto"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

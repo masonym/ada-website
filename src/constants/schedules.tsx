@@ -32,7 +32,8 @@ export const SCHEDULES = [
                         },
                         
                     ]
-                }
+                },
+                
             ]
         // sample:
         //   schedule: [
