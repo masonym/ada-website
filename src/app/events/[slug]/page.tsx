@@ -25,7 +25,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
   return (
     <>
-    <Script id="event-schema" type="application/ld+json">
+      <Script id="event-schema" type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Event",
@@ -34,7 +34,12 @@ export default function EventPage({ params }: { params: { slug: string } }) {
           "startDate": event.date,
           "locationAddress": event.locationAddress,
           "topicalCoverage": event.topicalCoverage,
-          
+          "organizer": {
+            "@type": "Organization",
+            "name": "American Defense Alliance",
+            "url": "https://www.americandefensealliance.org"
+          }
+
         })}
       </Script>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
