@@ -9,11 +9,49 @@ import RegistrationOptions from '@/app/components/RegistrationOptions';
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
 import Script from 'next/script';
+import { Metadata } from 'next';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
     slug: event.slug,
   }));
+}
+
+type Props = {
+  params: { slug: string }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const event = EVENTS.find(event => event.slug === params.slug)
+  
+  if (!event) {
+    return {
+      title: 'Event Not Found',
+      description: 'The requested event could not be found.',
+    }
+  }
+
+  return {
+    title: `${event.title} | American Defense Alliance`,
+    description: event.description.substring(0, 160) + (event.description.length > 160 ? '...' : ''),
+    openGraph: {
+      title: event.title,
+      description: event.description,
+      images: [
+        {
+          url: event.image,
+          width: 1200,
+          height: 630,
+          alt: event.title,
+        }
+      ],
+      type: 'website',
+    },
+    other: {
+      'og:type': 'event',
+      'og:event:start_time': event.timeStart,
+    },
+  }
 }
 
 export default function EventPage({ params }: { params: { slug: string } }) {
