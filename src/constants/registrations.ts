@@ -45,8 +45,8 @@ export const REGISTRATION_TYPES = [
                     "Brand Visibility",
                     "Speaking Opportunity",
                     "Recognition",
-                    "Reception Hosting (Premier)",
-                    "Luncheon Hosting (Prestige)",
+                    "<i>Reception Hosting</i> (Premier)",
+                    "<i>Luncheon Hosting </i>(Prestige)",
                     "Display Table",
                     "Event Access",
                     "Media Coverage",
@@ -61,7 +61,7 @@ export const REGISTRATION_TYPES = [
         addOns: [
             {
                 title: "Networking Reception",
-                description: "Join us for an exclusive evening networking event from 5:30 PM - 7:00 PM",
+                description: "Join us for an exclusive evening networking event from 5:30 PM - 7:30 PM",
                 price: "+$100"
             }
         ]

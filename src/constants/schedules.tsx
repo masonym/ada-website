@@ -7,28 +7,33 @@ export const SCHEDULES = [
                     items: [
                         {
                             time: "8:00 AM - 9:00 AM",
-                            title: "Registration & Networking Breakfast",
-                            duration: "1 hour"
+                            title: "Registration, Networking, and Coffee Service",
+                            // duration: "1 hour"
+                            location: "Ballroom and Foyer",
                         },
                         {
                             time: "9:00 AM - 12:30 PM",
                             title: "General Sessions",
-                            duration: "3 hours 30 minutes",
+                            location: "Ballroom",
+                            // duration: "3 hours 30 minutes",
                         },
                         {
-                            time: "12:30 PM - 1:15 PM",
-                            title: "Lunch Break",
-                            duration: "45 minutes",
+                            time: "12:30 PM - 1:30 PM",
+                            title: "Networking Lunch",
+                            location: "Ballroom",
+                            // duration: "1 hour",
                         },
                         {
-                            time: "1:15 PM - 5:15 PM",
+                            time: "1:30 PM - 5:00 PM",
                             title: "General Sessions",
-                            duration: "4 hours",
+                            location: "Ballroom",
+                            // duration: "3 hours 30 minutes",
                         },
                         {
-                            time: "5:30 PM - 7:00 PM",
+                            time: "5:30 PM - 7:30 PM",
                             title: "Networking Reception",
-                            duration: "1 hour 30 minutes",
+                            location: "Fourth Estate Meeting Room"
+                            // duration: "2 hours",
                         },
                         
                     ]
