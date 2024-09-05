@@ -6,7 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.americandefensealliance.org';
 
   // List of sub-pages for each event slug
-  const eventSubPages = ['about', 'sponsor', 'agenda', 'speakers', 'venue', 'faqs', 'event-recap'];
+  const eventSubPages = ['about/about', 'sponsor', 'agenda', 'speakers', 'about/venue', 'about/faqs', 'about/event-recap'];
 
   // Generate URLs for each event and its sub-pages
   const eventUrls = EVENTS.flatMap((event) => {
