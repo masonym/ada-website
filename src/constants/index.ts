@@ -41,7 +41,7 @@ export const SOCIALS = {
   title: 'Social',
   links: [
     // { logo: '/facebook.svg', title: 'Facebook', href: '/' },
-    // { logo: '/x.svg', title: 'X/Twitter', href: '/' },
+    { logo: '/x.svg', title: 'X/Twitter', href: 'https://x.com/AmDefAlliance' },
     { logo: '/instagram.svg', title: 'Instagram', href: 'https://www.instagram.com/americandefensealliance/' },
     { logo: '/youtube.svg', title: 'YouTube', href: 'https://www.youtube.com/@AmericanDefenseAlliance' },
     { logo: '/linkedin.svg', title: 'LinkedIn', href: 'https://www.linkedin.com/in/american-defense-alliance-284773325/' },
