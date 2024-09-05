@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     default: 'American Defense Alliance',
     template: '%s',
   },
-  description: 'American Defense Alliance: Connecting industry leaders with U.S. defense opportunities. Access forecasts, events, and resources for government contractors and military suppliers.',
+  description: 'Connecting industry leaders with U.S. defense opportunities. Access forecasts, events, and resources for government contractors and military suppliers.',
 }
 
 export default function RootLayout({

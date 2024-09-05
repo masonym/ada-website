@@ -44,9 +44,9 @@ const ContactUs: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="padding-container max-container flex w-full flex-col">
-      <h2 className="self-start text-left font-gotham font-bold ss:text-[72px] text-[40px] md:text-[64px] text-slate-900">
+      <h1 className="self-start text-left font-gotham font-bold ss:text-[72px] text-[40px] md:text-[64px] text-slate-900">
         Have a question?
-      </h2>
+      </h1>
       <p className="flex-1 font-gotham font-bold ss:text-[72px] text-[16px] text-slate-500 mb-6">Send us your inquiry below.</p>
       
       {submitStatus && (
