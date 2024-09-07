@@ -24,7 +24,7 @@ const Header = () => {
             className="text-lg py-3 px-6"
           />
           <Button
-            title="Learn More"
+            title="Learn More About Us"
             variant="btn_white_text"
             link="/about"
             className="text-lg py-3 px-6 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300"
