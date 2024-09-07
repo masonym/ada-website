@@ -13,7 +13,7 @@ const Header = () => {
         <h1 className="flex-1 font-gotham font-bold ss:text-[72px] text-[40px] md:text-[64px] text-slate-900 mt-4">
           AMERICAN <br className="lg:hidden block"></br>DEFENSE ALLIANCE
         </h1>
-        <p className="text-[18px] md:text-[24px] font-gotham text-slate-700 max-w-[1000px] mt-6 leading-relaxed">
+        <p className="text-[18px] md:text-[24px] font-gotham font-medium text-slate-700 max-w-[1000px] mt-6 leading-relaxed">
         The American Defense Alliance is dedicated to the critical mission of supporting U.S. National Security and our Warfighters. We serve as a vital bridge between the private-sector Defense Industrial Base and Federal acquisition requirements and priorities.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-4 max-w-[480px]">

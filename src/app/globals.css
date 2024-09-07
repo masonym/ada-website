@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
 @import "tailwindcss/base";
 
 @import "tailwindcss/components";
@@ -13,8 +11,29 @@
 }
 
 body {
-  font-family: Inter;
+  font-family: theme('fontFamily.gotham');
 }
+
+@layer base {
+  @font-face {
+    font-family: 'Gotham';
+    font-weight: 400;
+    src: url('/Gotham-Book.otf') format('opentype');
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    font-weight: 500;
+    src: url('/Gotham-Medium.otf') format('opentype');
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    font-weight: 700;
+    src: url('/Gotham-Bold.otf') format('opentype');
+  }
+}
+
 
 @layer utilities {
   .btn_white { 
@@ -142,26 +161,6 @@ body {
     @apply text-[16px] font-[700];
   }
 
-  /* Hero */
-  .hero-map {
-    @apply absolute right-0 top-0 h-screen w-screen bg-pattern-2 bg-cover bg-center md:-right-28 xl:-top-60;
-  }
-
-  /* Camp */
-  .camp-quote {
-    @apply absolute -right-6 bottom-4 w-[140px] lg:bottom-10 xl:-right-8 xl:w-[186px] 3xl:right-0;
-  }
-
-  /* Feature */
-  .feature-phone {
-    @apply absolute top-[13%] z-10 hidden max-w-[1500px] rotate-[15deg] md:-left-16 lg:flex  3xl:left-20;
-  }
-
-  /* Get App */
-  .get-app {
-    @apply max-container relative flex w-full  flex-col justify-between gap-32 overflow-hidden bg-green-90 bg-pattern bg-cover bg-center bg-no-repeat px-6 py-12 text-white sm:flex-row sm:gap-12 sm:py-24 lg:px-20 xl:max-h-[598px] 2xl:rounded-5xl;
-  }
-
   ul, ol {
     list-style: revert;
   }
@@ -176,18 +175,4 @@ body {
 .hide-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-}
-
-@layer base {
-  @font-face {
-    font-family: Gotham;
-    font-weight: medium;
-    src: url('/Gotham-Medium.otf') format("woff");
-  }
-
-  @font-face {
-    font-family: Gotham;
-    font-weight: bold;
-    src: url('/Gotham-Bold.otf') format("woff");
-  }
 }
