@@ -23,7 +23,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const event = EVENTS.find(event => event.slug === params.slug)
-  
+
   if (!event) {
     return {
       title: 'Event Not Found',
@@ -60,6 +60,17 @@ export default function EventPage({ params }: { params: { slug: string } }) {
   if (!event) {
     notFound();
   }
+
+  const now = new Date().getTime();
+  const targetTime = new Date(event.timeStart).getTime();
+  const distance = targetTime - now;
+
+  const initialTimeLeft = {
+    days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+    minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+    seconds: Math.floor((distance % (1000 * 60)) / 1000)
+  };
 
   return (
     <>
@@ -102,7 +113,8 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             // className="w-full sm:w-auto"
             /> */}
 
-            <CountdownTimer targetDate={event.timeStart} />
+            <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} />
+
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
               Event Info
