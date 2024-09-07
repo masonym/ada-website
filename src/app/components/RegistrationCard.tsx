@@ -47,9 +47,9 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                 <Image
                     src={item.headerImage}
                     alt={item.title}
-                    layout="fill"
-                    objectFit="cover"
-                    unoptimized={true}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover"
                 />
                 {/* <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                     <h4 className="text-2xl font-bold text-white text-center">{item.title}</h4>
