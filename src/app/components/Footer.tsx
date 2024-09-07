@@ -56,7 +56,13 @@ const Footer = () => {
                       key={link.title}
 
                     >
-                      <Image src={link.logo} alt={`Logo for ${link.title}`} width={24} height={24} />
+                      <Image
+                        src={link.logo}
+                        alt={`Logo for ${link.title}`}
+                        width="0"
+                        height="0"
+                        style={{ width: '24px', height: 'auto' }}
+                      />
                     </Link>
                   ))}
                 </ul>
