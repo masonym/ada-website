@@ -4,7 +4,8 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ScrollToTop from "./components/ScrollToTop";
-import GoogleAnalytics from "./components/GoogleAnalytics";
+import { GoogleAnalytics } from '@next/third-parties/google'
+
 
 export const metadata: Metadata = {
   title: {
@@ -63,7 +64,7 @@ export default function RootLayout({
         <main className="relative overflow-hidden ">
           {children}
         </main>
-        <GoogleAnalytics GA_MEASUREMENT_ID="G-166BFD7CN0" />
+        <GoogleAnalytics gaId="G-166BFD7CN0" />
         <SpeedInsights />
         <Footer />
       </body>
