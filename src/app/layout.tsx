@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/logo.png',
-        width: 1200,
-        height: 630,
+        width: 625,
+        height: 625,
         alt: 'American Defense Alliance Logo',
       },
     ],
@@ -39,6 +39,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/logo.png',
+        width: 625,
+        height: 625,
         alt: 'American Defense Alliance Logo',
       },
     ],
