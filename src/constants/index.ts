@@ -32,7 +32,7 @@ export const FOOTER_LINKS = [
 export const FOOTER_CONTACT_INFO = {
   title: 'Contact Us',
   links: [
-    { label: 'Phone', value: '(771) 474-1077' },
+    { label: 'Phone', value: '(771) 474-1077', href: "tel:7714741077" },
     { label: 'Email', value: 'info@americandefensealliance.org', href: "mailto:info@americandefensealliance.org" },
   ],
 };
