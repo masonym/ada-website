@@ -12,7 +12,39 @@ export const metadata: Metadata = {
     template: '%s',
   },
   description: 'Connecting industry leaders with U.S. defense opportunities. Access forecasts, events, and resources for government contractors and military suppliers.',
+  
+  // Open Graph metadata
+  openGraph: {
+    type: 'website',
+    url: 'https://www.americandefensealliance.org/',
+    title: 'American Defense Alliance',
+    description: 'Connecting industry leaders with U.S. defense opportunities. Access forecasts, events, and resources for government contractors and military suppliers.',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'American Defense Alliance Logo',
+      },
+    ],
+    siteName: 'American Defense Alliance',
+  },
+
+  // Twitter Card metadata
+  twitter: {
+    card: 'summary_large_image',
+    site: '@AmDefAlliance',
+    title: 'American Defense Alliance',
+    description: 'Connecting industry leaders with U.S. defense opportunities. Access forecasts, events, and resources for government contractors and military suppliers.',
+    images: [
+      {
+        url: '/logo.png',
+        alt: 'American Defense Alliance Logo',
+      },
+    ],
+  },
 }
+
 
 export default function RootLayout({
   children,
