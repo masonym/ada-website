@@ -7,7 +7,7 @@ export const SCHEDULES = [
                     items: [
                         {
                             time: "8:00 AM - 9:00 AM",
-                            title: "Registration, Networking, and Coffee Service",
+                            title: "Registration & Networking Breakfast",
                             // duration: "1 hour"
                             location: "Ballroom and Foyer",
                         },
