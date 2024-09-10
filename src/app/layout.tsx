@@ -3,8 +3,8 @@ import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react"
 import ScrollToTop from "./components/ScrollToTop";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 
 export const metadata: Metadata = {
   title: {
@@ -64,7 +64,6 @@ export default function RootLayout({
           {children}
         </main>
         <SpeedInsights />
-        <Analytics />
         <Footer />
       </body>
     </html>
