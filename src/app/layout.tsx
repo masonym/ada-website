@@ -63,6 +63,7 @@ export default function RootLayout({
         <main className="relative overflow-hidden ">
           {children}
         </main>
+        <GoogleAnalytics GA_MEASUREMENT_ID="G-166BFD7CN0" />
         <SpeedInsights />
         <Footer />
       </body>
