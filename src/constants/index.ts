@@ -40,7 +40,7 @@ export const FOOTER_CONTACT_INFO = {
 export const SOCIALS = {
   title: 'Social',
   links: [
-    // { logo: '/facebook.svg', title: 'Facebook', href: '/' },
+    { logo: '/facebook.svg', title: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61565887852430' },
     { logo: '/x.svg', title: 'X/Twitter', href: 'https://x.com/AmDefAlliance' },
     { logo: '/instagram.svg', title: 'Instagram', href: 'https://www.instagram.com/americandefensealliance/' },
     { logo: '/youtube.svg', title: 'YouTube', href: 'https://www.youtube.com/@AmericanDefenseAlliance' },
