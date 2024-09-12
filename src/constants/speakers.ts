@@ -4,7 +4,7 @@ export const SPEAKERS = [
         speakers: [
             {
                 image: "/speakers/joachim_christian.png",
-                name: "His Royal Highness Prince Joachim",
+                name: "His Royal Highness, Brigadier General Prince Joachim",
                 position: "Prince of Denmark",
                 company: "",
                 bio: `
