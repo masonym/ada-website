@@ -66,7 +66,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                                 alt={`${speaker.name}`}
                                 className="rounded-lg"
                             />
-                            <p className="mt-4 font-semibold whitespace-nowrap">{speaker.name}</p>
+                            <p className="mt-4 font-semibold whitespace-nowrap text-wrap">{speaker.name}</p>
                             <p className="text-sm text-gray-600 whitespace-nowrap">{speaker.position}</p>
                             <p className="text-sm text-gray-600 whitespace-nowrap">{speaker.company}</p>
                             {speaker.presentation && (
