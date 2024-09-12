@@ -105,7 +105,7 @@ const Page = () => {
                                 <h4 className="text-[18px] leading-10 font-semibold mb-2">{option.title}</h4>
                                 <p className="mt-4">{option.description}</p>
                                 {option.link && (
-                                    <Link href={option.link.href} className="text-blue-600 hover:underline text-nowrap">
+                                    <Link href={option.link.href} className="text-blue-600 hover:underline text-wrap lg:text-nowrap">
                                         <p className="mt-4">{option.link.linkText}</p>
                                     </Link>
                                 )

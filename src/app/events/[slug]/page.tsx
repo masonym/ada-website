@@ -119,14 +119,14 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
               Event Info
             </h2>
-            <div className="flex flex-col leading-relaxed text-slate-600 max-w-4xl text-lg text-center">
+            <div className="flex flex-col leading-relaxed text-slate-600 max-w-4xl text-lg text-center mx-8">
               {event.eventText}
             </div>
 
             <RegistrationOptions event={event} />
 
-            <div className="mt-12 text-center max-w-sm">
-              <p className="text-2xl text-navy-500 mb-6 w-fit text-center text-nowrap ">Don't miss this event, register now!</p>
+            <div className="mt-12 text-center w-[80%] max-w-sm">
+              <p className="text-2xl text-navy-500 mb-6 w-fit text-center mx-8">Don't miss this event, register now!</p>
               <Button
                 title="REGISTER"
                 variant="btn_blue"

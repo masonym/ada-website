@@ -10,10 +10,10 @@ const UpcomingEvents = () => {
       <h2 className="text-center font-gotham font-bold text-[36px] md:text-[64px] text-slate-900 sm:px-16 px-6 mb-8">
         Don't miss our upcoming events!
       </h2>
-      <p className="text-center text-slate-600 text-xl mb-12 max-w-3xl">
+      <p className="text-center text-slate-600 text-xl mb-12 max-w-3xl mx-2">
         Join us for industry-leading conferences and networking opportunities. Discover the latest in defense technology and procurement strategies.
       </p>
-      <div className="flex lg:flex-row flex-col gap-10 mx-12">
+      <div className="flex lg:flex-row flex-col gap-10 mx-4">
         {EVENTS.map(event => (
           <div key={event.id} className="relative group cursor-pointer transition-all duration-300 hover:scale-105">
             <EventCard
