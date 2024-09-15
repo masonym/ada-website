@@ -1,38 +1,55 @@
 "use client"
 
 import { NAV_LINKS } from "@/constants"
+import { EVENTS } from "@/constants/events"
 import Image from "next/image"
 import Link from "next/link"
-import Button from "./Button"
-import { Menu } from 'lucide-react'
-import { useState } from "react"
+import { Menu, ChevronDown } from 'lucide-react'
+import { useState, useRef, useEffect } from "react"
 import Hamburger from "./Hamburger"
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLLIElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   }
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setIsDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setIsDropdownOpen(false);
+    }, 300);
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
-<<<<<<< Updated upstream
-      <nav className="flexBetween max-container padding-container py-5 relative z-30 border-b-2 border-b-gray-700 ">
-        <Link href="/">
-          <div className="flexBetween maxContainer relative">
-            <Image
-              src="/logo.png"
-              width={100}
-              height={100}
-              alt="ADA Logo"
-            />
-            <p className="pl-5 pr-5 font-bold text-xl font-gotham text-white">American Defense Alliance</p>
-          </div>
-        </Link>
-        <ul className="hidden h-full gap-8 lg:flex">
-          {NAV_LINKS.map((link) => (
-=======
-    <nav className="flexBetween max-container padding-container py-5 relative z-30 border-b-gray-700">
+    <nav className="flexBetween max-container padding-container py-5 relative z-30 border-b-2 border-b-gray-700">
       <Link href="/">
         <div className="flexBetween maxContainer relative">
           <Image
@@ -79,7 +96,6 @@ const NavBar = () => {
             );
           }
           return (
->>>>>>> Stashed changes
             <Link
               href={link.href}
               key={link.key}
@@ -87,27 +103,19 @@ const NavBar = () => {
             >
               {link.label}
             </Link>
-          ))}
-        </ul>
+          );
+        })}
+      </ul>
 
-        {/* <div className="lg:flexCenter hidden">
-          <Button
-            type="button"
-            title="idk yet"
-            icon="/logo.png"
-            variant="btn_dark_green"
-          />
-        </div> */}
+      <button onClick={toggleMenu} className="lg:hidden flex items-center justify-center">
+        <Menu className="cursor-pointer" size={48} color="white"/>
+      </button>
 
-        <button onClick={toggleMenu} className="lg:hidden flex items-center justify-center">
-          <Menu className="cursor-pointer" size={48} color="white"/>
-        </button>
-
-        <Hamburger
-          isOpen={isMenuOpen}
-          onClose={() => setIsMenuOpen(false)}
-        />
-      </nav>
+      <Hamburger
+        isOpen={isMenuOpen}
+        onClose={() => setIsMenuOpen(false)}
+      />
+    </nav>
   )
 }
 
