@@ -49,7 +49,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className="flexBetween max-container padding-container py-5 relative z-30 border-b-2 border-b-gray-700">
+    <nav className="flexBetween max-container padding-container py-5 relative z-30 border-b-gray-700">
       <Link href="/">
         <div className="flexBetween maxContainer relative">
           <Image
