@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
 
 const API_APP_ID = process.env.ICONTACT_APP_ID;
 const API_USERNAME = process.env.ICONTACT_EMAIL;
@@ -6,14 +6,10 @@ const API_PASSWORD = process.env.ICONTACT_PASSWORD;
 const ACCOUNT_ID = process.env.ICONTACT_ACCOUNT_ID;
 const CLIENT_FOLDER_ID = process.env.ICONTACT_CLIENT_FOLDER_ID;
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
-  }
-
-  const { email, firstName, lastName } = req.body;
-
+export async function POST(request: Request) {
   try {
+    const { email, firstName, lastName } = await request.json();
+
     const response = await fetch(`https://app.icontact.com/icp/a/${ACCOUNT_ID}/c/${CLIENT_FOLDER_ID}/contacts/`, {
       method: 'POST',
       headers: {
@@ -38,9 +34,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const data = await response.json();
-    res.status(200).json({ message: 'Subscription successful', data });
+    return NextResponse.json({ message: 'Subscription successful', data }, { status: 200 });
   } catch (error) {
     console.error('Error:', error);
-    res.status(500).json({ message: 'An error occurred while subscribing' });
+    return NextResponse.json({ message: 'An error occurred while subscribing' }, { status: 500 });
   }
 }
