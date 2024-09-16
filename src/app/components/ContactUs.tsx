@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { sendEmail } from '@/utils/send-email';
-import { Check, AlertCircle } from 'lucide-react';
+import { Check, AlertCircle, Send } from 'lucide-react';
 
 export type FormData = {
   name: string;
@@ -15,105 +15,109 @@ const ContactUs: React.FC = () => {
   const { register, handleSubmit, reset } = useForm<FormData>();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
-  const [statusMessage, setStatusMessage] = useState('');
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      const result = await sendEmail(data);
-      if (result.success) {
-        reset();
-        setSubmitStatus('success');
-        setStatusMessage(result.message);
-      } else {
-        setSubmitStatus('error');
-        setStatusMessage(result.message);
-      }
+      await sendEmail(data);
+      reset();
+      setSubmitStatus('success');
     } catch (error) {
-      console.error('Error in form submission:', error);
+      console.error('Error sending email:', error);
       setSubmitStatus('error');
-      setStatusMessage('An unexpected error occurred. Please try again.');
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => {
-        setSubmitStatus(null);
-        setStatusMessage('');
-      }, 5000); // Clear status after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="padding-container max-container flex w-full flex-col">
-      <h1 className="self-start text-left font-gotham font-bold ss:text-[72px] text-[40px] md:text-[64px] text-slate-900">
-        Have a question?
-      </h1>
-      <p className="flex-1 font-gotham font-bold ss:text-[72px] text-[16px] text-slate-500 mb-6">Send us your inquiry below.</p>
-      
-      {submitStatus && (
-        <div className={`mb-4 p-4 rounded-md flex items-start ${
-          submitStatus === 'success' ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'
-        }`}>
-          {submitStatus === 'success' ? (
-            <Check className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
-          ) : (
-            <AlertCircle className="h-5 w-5 text-red-500 mr-3 mt-0.5" />
-          )}
-          <div>
-            <h3 className="font-semibold">{submitStatus === 'success' ? 'Success!' : 'Error'}</h3>
-            <p className="text-sm">
-              {submitStatus === 'success' 
-                ? 'Your message has been sent successfully.' 
-                : 'There was an error sending your message. Please try again.'}
-            </p>
-          </div>
-        </div>
-      )}
+    <section className="py-16 bg-navy-800 text-white">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-8">Contact Us</h2>
+        <div className="max-w-2xl mx-auto">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            {submitStatus && (
+              <div className={`p-4 rounded-md flex items-start ${
+                submitStatus === 'success' ? 'bg-green-800' : 'bg-red-800'
+              }`}>
+                {submitStatus === 'success' ? (
+                  <Check className="h-5 w-5 text-green-400 mr-3 mt-0.5" />
+                ) : (
+                  <AlertCircle className="h-5 w-5 text-red-400 mr-3 mt-0.5" />
+                )}
+                <div>
+                  <h3 className="font-semibold">{submitStatus === 'success' ? 'Success!' : 'Error'}</h3>
+                  <p className="text-sm">
+                    {submitStatus === 'success' 
+                      ? 'Your message has been sent successfully.' 
+                      : 'There was an error sending your message. Please try again.'}
+                  </p>
+                </div>
+              </div>
+            )}
 
-      <div className='mb-5'>
-        <label htmlFor='name' className='mb-3 block text-base font-medium text-black'>
-          Full Name
-        </label>
-        <input
-          type='text'
-          placeholder='Full Name'
-          className='w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-blue-500 focus:shadow-md'
-          {...register('name', { required: true })}
-        />
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium mb-2">
+                Full Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                {...register('name', { required: true })}
+                className="w-full px-3 py-2 bg-navy-700 border border-navy-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="John Doe"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium mb-2">
+                Email Address
+              </label>
+              <input
+                type="email"
+                id="email"
+                {...register('email', { required: true })}
+                className="w-full px-3 py-2 bg-navy-700 border border-navy-600 rounded-md text-navy-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="john@example.com"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium mb-2">
+                Message
+              </label>
+              <textarea
+                id="message"
+                rows={4}
+                {...register('message', { required: true })}
+                className="w-full px-3 py-2 bg-navy-700 border border-navy-600 rounded-md text-navy-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Your message here..."
+              ></textarea>
+            </div>
+
+            <div>
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
+                  isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
+              >
+                {isSubmitting ? (
+                  'Sending...'
+                ) : (
+                  <>
+                    <Send className="w-5 h-5 mr-2" />
+                    Send Message
+                  </>
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div className='mb-5'>
-        <label htmlFor='email' className='mb-3 block text-base font-medium text-black'>
-          Email Address
-        </label>
-        <input
-          type='email'
-          placeholder='example@domain.com'
-          className='w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-blue-500 focus:shadow-md'
-          {...register('email', { required: true })}
-        />
-      </div>
-      <div className='mb-5'>
-        <label htmlFor='message' className='mb-3 block text-base font-medium text-black'>
-          Message
-        </label>
-        <textarea
-          rows={4}
-          placeholder='Type your message'
-          className='w-full resize-none rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-blue-500 focus:shadow-md'
-          {...register('message', { required: true })}
-        ></textarea>
-      </div>
-      <div>
-        <button 
-          type="submit"
-          disabled={isSubmitting}
-          className={`rounded-md py-3 px-8 text-base font-semibold text-white outline-none transition-all duration-300 ${
-            isSubmitting ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
-          }`}
-        >
-          {isSubmitting ? 'Sending...' : 'Submit'}
-        </button>
-      </div>
-    </form>
+    </section>
   );
 };
 
