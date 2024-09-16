@@ -3,12 +3,6 @@
 import React, { useState } from 'react';
 import { Mail, User } from 'lucide-react';
 
-const API_APP_ID = process.env.NEXT_PUBLIC_ICONTACT_APP_ID;
-const API_USERNAME = process.env.NEXT_PUBLIC_ICONTACT_EMAIL;
-const API_PASSWORD = process.env.NEXT_PUBLIC_ICONTACT_PASSWORD;
-const ACCOUNT_ID = process.env.NEXT_PUBLIC_ICONTACT_ACCOUNT_ID;
-const CLIENT_FOLDER_ID = process.env.NEXT_PUBLIC_ICONTACT_CLIENT_FOLDER_ID;
-
 interface FormData {
   email: string;
   firstName: string;
@@ -35,22 +29,12 @@ const MailingListSubscription: React.FC = () => {
     setMessage('');
 
     try {
-      const response = await fetch(`https://app.icontact.com/icp/a/${ACCOUNT_ID}/c/${CLIENT_FOLDER_ID}/contacts/`, {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
-          'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'API-Version': '2.2',
-          'API-AppId': API_APP_ID || '',
-          'API-Username': API_USERNAME || '',
-          'API-Password': API_PASSWORD || '',
         },
-        body: JSON.stringify([{
-          email: formData.email,
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          status: 'normal',
-        }]),
+        body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
@@ -74,7 +58,8 @@ const MailingListSubscription: React.FC = () => {
     <div className="bg-navy-800 text-white py-16 px-4">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-4">Stay Informed</h2>
-        <p className="mb-8">Join our mailing list to receive updates on events, industry news, and opportunities.</p>
+        <p className="">Join our mailing list to receive updates on events, industry news, and opportunities.</p>
+        <p className="mb-8">We host events nationwide, so stay tuned for an event coming near you!</p>
         <form onSubmit={handleSubmit} className="flex flex-col items-center gap-4">
           <div className="relative w-full max-w-md">
             <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
