@@ -34,6 +34,10 @@ const Footer = () => {
 
             <div className="flex flex-col gap-5">
               <FooterColumn title={FOOTER_CONTACT_INFO.title}>
+                <div className="medium-14 whitespace-nowrap text-blue-70 h-fit">
+                  <p>1300 Pennsylvania Avenue, N.W., Ste. 700</p>
+                  <p>Washington, DC 20004</p>
+                </div>
                 {FOOTER_CONTACT_INFO.links.map((link) => (
                   <Link href={link.href} key={link.label} className="flex gap-4 md:flex-col lg:flex-row items-center">
                     <p className="whitespace-nowrap">
@@ -71,7 +75,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="border border-gray-700" />
-        <p className="regular-14 w-full text-center text-gray-30">2024 American Defense Alliance | All Rights Reserved</p>
+        <p className="regular-14 w-full text-center text-gray-30">&copy; 2024 American Defense Alliance | All Rights Reserved</p>
       </div>
 
     </footer>
