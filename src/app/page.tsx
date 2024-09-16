@@ -8,6 +8,7 @@ import LatestNews from './components/LatestNews';
 import FAQSection from './components/FAQSection';
 import ContactUs from './components/ContactUs';
 import MailingListSubscription from './components/MailingListSubscription';
+import ListsPage from './components/ListsPage';
 
 const HomePage = () => {
   return (
@@ -21,6 +22,7 @@ const HomePage = () => {
       {/* <LatestNews /> */}
       <FAQSection />
       <ContactUs />
+      <ListsPage/>
     </div>
   );
 };
