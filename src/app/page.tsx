@@ -7,6 +7,7 @@ import Testimonials from './components/Testimonials';
 import LatestNews from './components/LatestNews';
 import FAQSection from './components/FAQSection';
 import ContactUs from './components/ContactUs';
+import MailingListSubscription from './components/MailingListSubscription';
 
 const HomePage = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage = () => {
       <MissionStatement />
       <UpcomingEvents />
       <FocusAreas />
+      <MailingListSubscription/>
       {/* <Testimonials /> */}
       {/* <LatestNews /> */}
       <FAQSection />
