@@ -15,7 +15,7 @@ const FAQ = () => {
         },
         {
             question: "Does American Defense Alliance offer resources for small businesses?",
-            answer: "Yes, American Defense Alliance provides various resources for small businesses, including networking opportunities, educational events, and connections to prime contractors in the defense industry."
+            answer: "Yes, American Defense Alliance provides various resources for small businesses, including networking opportunities, insightful events, and connections to prime contractors in the defense industry."
         },
         {
             question: "How can I sponsor an event?",

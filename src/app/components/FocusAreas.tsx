@@ -3,7 +3,7 @@ import React from 'react';
 const FocusAreas = () => {
   const areas = [
     { title: "Defense Acquisition", icon: "🎯", description: "We provide actionable insights on upcoming defense acquisition opportunities, helping businesses navigate complex federal procurement processes and align with DoD priorities." },
-    { title: "Small Business Support", icon: "🏢", description: "We offer resources, education, and connections to empower small businesses and diversity suppliers to compete effectively in the defense industry." },
+    { title: "Small Business Support", icon: "🏢", description: "We offer resources and connections to empower small businesses and diversity suppliers to compete effectively in the defense industry." },
     { title: "Industry Networking", icon: "🤝", description: "We facilitate valuable connections between small businesses, prime contractors, and government agencies, fostering collaboration and growth within the defense industrial base." },
   ];
 
