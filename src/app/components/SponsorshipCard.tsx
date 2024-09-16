@@ -30,7 +30,7 @@ const SponsorshipCard = ({ item }: SponsorProp) => {
                             <ChevronRight className="h-5 w-5 mr-2 text-navy-800 flex-shrink-0 mt-1" />
                             <div>
                                 <span className="font-bold">{perk.tagline}: </span>
-                                <span>{perk.description}</span>
+                                <span dangerouslySetInnerHTML={{ __html: perk.description}}></span>
                             </div>
                         </li>
                     ))}

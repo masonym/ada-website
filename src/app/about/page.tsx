@@ -48,6 +48,34 @@ const AboutUsPage = () => {
         </p>
       </div>
       
+      {/* New section for the company president */}
+      <div className="mb-12">
+        <h2 className="text-3xl font-semibold text-navy-800 mb-4 text-center">Leadership</h2>
+        <div className="flex flex-col md:flex-row items-start">
+          <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+            <Image
+              src="/charles_president_photo.png"
+              alt="Charles Sills - President & CEO"
+              width={600}
+              height={300}
+              className="rounded-3xl shadow-lg"
+            />
+          </div>
+          <div className="md:w-2/3">
+            <h3 className="text-xl font-semibold text-navy-800 mb-2">Charles Sills - President & CEO</h3>
+            <p className="text-gray-700 mb-4">
+            Charles F. Sills is a recognized authority on U.S. Government contracting, and an advocate for Small Business/Diversity Supplier access to Federal and Military acquisition opportunities, serving as the President & CEO of the American Defense Alliance – which hosts major Defense Requirements conferences across the country, connecting private sector innovators with the Pentagon, Military commands, and Congress to accelerate National Security solutions.
+            </p>
+            <p className="text-gray-700 mb-4">
+            Concurrently, he serves as Chief Operating Officer of the Minority Business Development Agency’s Federal Procurement Center, under the U.S. Commerce Dept.; and manages the partnership under which MBDA affiliated companies attend and benefit from ADA conferences.  He is a member of the U.S. Chamber of Commerce's Small Business Council, and the Executive Committee of the Veterans Entrepreneurship Task Force (VET-Force).  He is also a Member of the Board of the American-Eurasian Business Coalition, focusing on international infrastructure, energy and investment initiatives, and serving on multinational task forces such as the Danube Basin Environmental Restoration Program and the Japan-U.S. Joint Fund for Social & Economic Development.
+            </p>
+            <p className="text-gray-700 mb-4">
+            As a former Naval Intelligence Officer, he held positions at the Defense Intelligence Agency, the U.S. Middle East Force, and NATO Supreme Allied Command/Atlantic; and subsequently worked in Lockheed Martin’s International Division managing strategic marketing and export licensing for defense systems as well as renewable energy technologies.  His education includes an M.A. from the Fletcher School of Law and Diplomacy and an A.B. from Princeton University’s Woodrow Wilson School of Public & International Affairs.
+            </p>
+          </div>
+        </div>
+      </div>
+      
     </div>
   );
 };

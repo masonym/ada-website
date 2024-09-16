@@ -11,12 +11,11 @@ export const REGISTRATION_TYPES = [
                     "Speaker Presentations and Materials",
                     "Digital/Physical Copies of Agenda",
                     "Breakfast & Buffet Lunch",
-                    "Coffee Service",
                     "Access to Photos & Videos from Conference",
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "/",
+                buttonLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
                 earlyBirdPrice: "$550",
                 regularPrice: "$750",
                 earlyBirdDeadline: "2024-10-01T03:00:00Z",
@@ -31,12 +30,11 @@ export const REGISTRATION_TYPES = [
                     "Speaker Presentations and Materials",
                     "Digital/Physical Copies of Agenda",
                     "Breakfast & Buffet Lunch",
-                    "Coffee Service",
                     "Access to Photos & Videos from Conference",
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "/",
+                buttonLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
                 type: "complimentary",
                 availabilityInfo: "Limited availability."
             },
@@ -47,15 +45,15 @@ export const REGISTRATION_TYPES = [
                     "Brand Visibility",
                     "Speaking Opportunity",
                     "Recognition",
-                    "Reception Hosting (Premiere)",
-                    "Luncheon Hosting (Prestige)",
+                    "<i>Reception Hosting</i> (Premier)",
+                    "<i>Luncheon Hosting </i>(Prestige)",
                     "Display Table",
                     "Event Access",
                     "Media Coverage",
                 ],
                 subtitle: "Includes:",
                 buttonText: "Explore Sponsorship Opportunities",
-                buttonLink: "/about/sponsor",
+                buttonLink: `2025-defense-industry-forecast/about/sponsor`,
                 type: "sponsor",
                 availabilityInfo: "Limited availability."
             },
@@ -63,7 +61,7 @@ export const REGISTRATION_TYPES = [
         addOns: [
             {
                 title: "Networking Reception",
-                description: "Join us for an exclusive evening networking event from 5:30 PM - 7:00 PM",
+                description: "Join us for an exclusive evening networking event from 5:30 PM - 7:30 PM",
                 price: "+$100"
             }
         ]

@@ -13,9 +13,9 @@ const Footer = () => {
           >
             <Image
               src="/logo.png"
-              alt="ADA Logo"
-              width={128}
-              height={128}
+              alt="American Defense Alliance Logo"
+              width={192}
+              height={192}
             />
           </Link>
           <div className="flex flex-wrap gap-10 sm:justify-around md:flex-1">
@@ -35,7 +35,7 @@ const Footer = () => {
             <div className="flex flex-col gap-5">
               <FooterColumn title={FOOTER_CONTACT_INFO.title}>
                 {FOOTER_CONTACT_INFO.links.map((link) => (
-                  <Link href="/" key={link.label} className="flex gap-4 md:flex-col lg:flex-row items-center">
+                  <Link href={link.href} key={link.label} className="flex gap-4 md:flex-col lg:flex-row items-center">
                     <p className="whitespace-nowrap">
                       {link.label}:
                     </p>
@@ -56,7 +56,13 @@ const Footer = () => {
                       key={link.title}
 
                     >
-                      <Image src={link.logo} alt={`Logo for ${link.title}`} width={24} height={24} />
+                      <Image
+                        src={link.logo}
+                        alt={`Logo for ${link.title}`}
+                        width="0"
+                        height="0"
+                        style={{ width: '24px', height: 'auto' }}
+                      />
                     </Link>
                   ))}
                 </ul>

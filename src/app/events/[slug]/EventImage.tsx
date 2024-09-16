@@ -5,34 +5,30 @@ import Image from 'next/image';
 import { notFound, useParams } from 'next/navigation';
 import React from 'react';
 
-interface EventImageProps {
-  slug: string;
-}
-
 const EventImage = () => {
-    const params = useParams(); // Get the dynamic slug
-    const event = EVENTS.find(event => event.slug === params?.slug); // Find the event ID based on the slug
+    const params = useParams();
+    const event = EVENTS.find(event => event.slug === params?.slug);
 
     if (!event) {
-    notFound();
-  }
+        notFound();
+    }
 
-  return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-col items-center">
-        <div className="w-full mb-6">
-          <Image
-            src={event.image}
-            width={2000}
-            height={800}
-            layout="responsive"
-            alt={`Event image for ${event.title}`}
-            className="rounded-lg"
-          />
+    return (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col items-center">
+                <div className="w-full mb-6 relative aspect-[5/2]">
+                    <Image
+                        src={event.image}
+                        alt={`Event image for ${event.title}`}
+                        fill
+                        sizes="(max-width: 1280px) 100vw, 1280px"
+                        className="rounded-lg object-cover"
+                        priority
+                    />
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default EventImage;

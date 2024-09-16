@@ -31,7 +31,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({ schedule }) => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h2 className="text-3xl font-bold text-center mb-8">Schedule at a Glance</h2>
+      <h1 className="text-3xl font-bold text-center mb-8">Schedule at a Glance</h1>
       <p className="text-l font-bold text-center mb-8 text-slate-600">This event schedule is still pending, please check back later as more information is added!</p>
       <div className="bg-white shadow-md rounded-lg overflow-hidden">
         <div className="flex border-b">

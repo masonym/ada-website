@@ -11,17 +11,17 @@ export const FAQs = [
             {
                 question: "When and where will the event take place?",
                 answer: `Date: November 14, 2024<br>
-                Time: 8:00 AM - 7:00 PM<br>
-                Venue: National Press Club, 529 14th St NW, Washington, D.C.
+                Time: 8:00 AM - 7:30 PM<br>
+                Venue: National Press Club (13th floor), 529 14th St NW, Washington, D.C.
                 `,
             },
             {
                 question: "Who should attend this event?",
-                answer: "Attendees will include senior defense industry executives, government officials, Program Managers, Contracting Officers, Small Business Program Directors, and representatives from various military branches, along with prime defense contractors and industry analysts.",
+                answer: "Attendees will include senior defense industry executives, Government officials, program managers, contracting officers, small business program directors, and representatives from various Military branches, along with prime defense contractors and industry analysts.",
             },
             {
                 question: "How can I register for the event?",
-                answer: `You can register for the event online through the <a href="/" class="text-blue-600 hover:underline text-nowrap">official event website [UPDATE EVENT LINK]</a>. Early registration is encouraged due to limited seating availability.`,
+                answer: `You can register for the event online through the <a href="https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817 target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged due to limited seating availability.`,
             },
             {
                 question: "Is there a cost to attend the event?",
@@ -29,15 +29,15 @@ export const FAQs = [
             },
             {
                 question: "Will there be networking opportunities?",
-                answer: "Yes, the event will include designated networking sessions, allowing attendees to connect with industry peers, policymakers, and other professionals. As well as a special ticketed Networking Reception from 5:30 PM - 7:00 PM ($100 Add-On option).",
+                answer: "Yes, the event will include designated networking sessions, allowing attendees to connect with industry peers, policymakers, and other professionals. As well as a special ticketed Networking Reception from 5:30 PM - 7:30 PM ($100 Add-On option).",
             },
             {
                 question: "What is the agenda for the event?",
-                answer: "The detailed agenda will be provided to registered attendees closer to the event date. It will include session times, speaker information, and other important details.",
+                answer: "You will find expected session topics within the event information on the event website. The detailed agenda will be provided to registered attendees closer to the event date and will include session times, speaker information, and other important details.",
             },
             {
                 question: "What is the dress code for the event?",
-                answer: "The dress code for the event is Business Attire.",
+                answer: "The dress code for the event is Business Attire or Uniform of the Day.",
             },
             {
                 question: "Will the speaker presentations be available for download?",
@@ -45,7 +45,7 @@ export const FAQs = [
             },
             {
                 question: "Is there a refund policy for the event?",
-                answer: `All event registrations are final, and refunds are not available under any circumstances. If you cannot attend, you may transfer your registration to another individual up to one week before the event by contacting us at <a href="mailto:info@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">info@americandefensealliance.org</a>.`,
+                answer: `All event registrations are final, and refunds are not available under any circumstances.  We understand that the unexpected can occur, therefore, if you cannot attend, you may transfer your registration to another individual up to one week before the event by contacting us at <a href="mailto:info@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">info@americandefensealliance.org</a>.`,
             },
             {
                 question: "Will photos or videos be taken at the event?",

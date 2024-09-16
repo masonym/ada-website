@@ -47,9 +47,9 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                 <Image
                     src={item.headerImage}
                     alt={item.title}
-                    layout="fill"
-                    objectFit="cover"
-                    unoptimized={true}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover"
                 />
                 {/* <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                     <h4 className="text-2xl font-bold text-white text-center">{item.title}</h4>
@@ -62,7 +62,7 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                         {item.perks.map((perk, index) => (
                             <li key={index} className="flex items-start">
                                 <ChevronRight className="h-5 w-5 mr-2 text-blue-600 flex-shrink-0" />
-                                <span className="text-sm">{perk}</span>
+                                <span className="text-sm" dangerouslySetInnerHTML={{ __html: perk }}></span>
                             </li>
                         ))}
                     </ul>
@@ -70,7 +70,7 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                 <div className="mt-4">
                     <p className="text-2xl font-bold text-center mb-2">{currentPrice}</p>
                     {isPaid && isEarlyBird && (
-                        <p className="text-sm text-center text-green-600 mb-2">
+                        <p className="text-md font-semibold text-center text-green-600 mb-2">
                             Early-bird price! Increases to {item.regularPrice} after {deadlineDate}
                         </p>
                     )}
@@ -81,23 +81,23 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                     )}
                     {isFree && (
                         <div className="text-center">
-                            <p className="text-sm text-gray-600">Register with .gov or .mil email</p>
+                            <p className="text-md font-semibold text-gray-600">Register with .gov or .mil email</p>
                         </div>
                     )}
                     {isSponsor && (
                         <div className="text-center">
-                            <p className="text-sm text-gray-600">For more information and to secure your sponsorship, contact:</p>
-                            <p className="text-sm text-blue-600 hover:underline text-nowrap mb-2"><a href="mailto:marketing@americandefensealliance.org">marketing@americandefensealliance.org</a></p>
+                            <p className="text-md font-semibold text-gray-600">For more information and to secure your sponsorship, contact:</p>
+                            <p className="text-md font-semibold text-blue-600 hover:underline text-nowrap mb-2"><a href="mailto:marketing@americandefensealliance.org">marketing@americandefensealliance.org</a></p>
                         </div>
                     )}
                     {item.availabilityInfo && (
-                        <p className="text-sm text-center text-blue-600 mb-2">
+                        <p className="text-md font-semibold text-center text-blue-600 mb-2">
                             {item.availabilityInfo}
                         </p>
                     )}
 
                     <Link
-                        href={`${params.slug}/${item.buttonLink}`}>
+                        href={`${item.buttonLink}`}>
                         <button className="w-full py-2 px-4 bg-blue-800  text-white font-semibold rounded-md hover:bg-navy-200 transition duration-300">
                             {item.buttonText}
                         </button>

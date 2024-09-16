@@ -32,7 +32,7 @@ export const FOOTER_LINKS = [
 export const FOOTER_CONTACT_INFO = {
   title: 'Contact Us',
   links: [
-    { label: 'Phone', value: '(771) 474-1077' },
+    { label: 'Phone', value: '(771) 474-1077', href: "tel:7714741077" },
     { label: 'Email', value: 'info@americandefensealliance.org', href: "mailto:info@americandefensealliance.org" },
   ],
 };
@@ -40,10 +40,11 @@ export const FOOTER_CONTACT_INFO = {
 export const SOCIALS = {
   title: 'Social',
   links: [
-    { logo: '/facebook.svg', title: 'Facebook', href: '/' },
-    { logo: '/x.svg', title: 'X/Twitter', href: '/' },
-    { logo: '/instagram.svg', title: 'Instagram', href: '/' },
-    { logo: '/youtube.svg', title: 'YouTube', href: '/' },
+    { logo: '/facebook.svg', title: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61565887852430' },
+    { logo: '/x.svg', title: 'X/Twitter', href: 'https://x.com/AmDefAlliance' },
+    { logo: '/instagram.svg', title: 'Instagram', href: 'https://www.instagram.com/americandefensealliance/' },
+    { logo: '/youtube.svg', title: 'YouTube', href: 'https://www.youtube.com/@AmericanDefenseAlliance' },
+    { logo: '/linkedin.svg', title: 'LinkedIn', href: 'https://www.linkedin.com/in/american-defense-alliance-b6b019329/' },
   ],
 };
 

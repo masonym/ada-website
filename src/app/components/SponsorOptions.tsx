@@ -24,7 +24,7 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                     Sponsorship Opportunities
                 </h1>
                 <p className="text-[20px] font-gotham text-slate-600 w-full max-w-2xl mx-auto mb-6">
-                    Join us for a premiere opportunity to network with key leaders. We are pleased to offer the following Sponsorship Opportunities.
+                    Join us for a premier opportunity to network with key leaders. We are pleased to offer the following Sponsorship Opportunities.
                 </p>
                 {currentEvent.sponsorships.map((item, index) => (
                     <SponsorshipCard

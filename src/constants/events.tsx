@@ -8,7 +8,7 @@ export const EVENTS = [
     title: "2025 Defense Industry Forecast",
     date: "November 14th, 2024",
     timeStart: "2024-11-14T14:00:00Z",
-    description: "The 2025 Defense Industry Forecast Will provide actionable business intelligence on upcoming acquisition opportunities — covering Defense Dept. and Combat Command mission priorities — Army, Navy, Air Force, Marine Corps, Space Force and Coast Guard — focused on all major sectors from advanced IT, AI and Cyber, all-domain command & control, and weapons system development & sustainment, to logistics & transport, facility management, Military base building design & construction, energy resiliency and environmental remediation, to new Government-Private Sector collaborations in critical infrastructure security, U.S. manufacturing base revitalization, ship building and shipyard modernization, Space defense and other major initiatives.",
+    description: "The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities — covering Defense Dept. and Combat Command mission priorities — Army, Navy, Air Force, Marine Corps, Space Force and Coast Guard — focused on all major sectors from advanced IT, AI and Cyber, all-domain command & control, and weapons system development & sustainment, to logistics & transport, facility management, Military base building design & construction, energy resiliency and environmental remediation, to new Government-Private Sector collaborations in critical infrastructure security, U.S. manufacturing base revitalization, ship building and shipyard modernization, Space defense and other major initiatives.",
     eventText: (
       <div className="max-container font-light">
         <p className="mb-4 leading-9">
@@ -115,7 +115,7 @@ export const EVENTS = [
       },
     ],
     placeID: "ChIJ44HT0_u3t4kR9J5_0CQu3ic",
-    registerLink: "/",
+    registerLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
     password: "ADA2025DIF"
   },
   // Add more events here
