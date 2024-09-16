@@ -22,7 +22,7 @@ const HomePage = () => {
       {/* <LatestNews /> */}
       <FAQSection />
       <ContactUs />
-      <ListsPage/>
+      {/* <ListsPage/> this is for showing iContact list IDs lol */}
     </div>
   );
 };
