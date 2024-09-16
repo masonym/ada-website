@@ -58,7 +58,7 @@ const Footer = () => {
                     <Link
                       href={link.href}
                       key={link.title}
-
+                      target='_blank'
                     >
                       <Image
                         src={link.logo}
