@@ -49,7 +49,7 @@ const HeroSection = () => {
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 break-words">
           American Defense Alliance
         </h1>
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl mx-auto italic font-semibold">
+        <p className="text-base sm:text-lg md:text-xl text-balance md:text-nowrap lg:text-2xl mb-8 max-w-3xl mx-auto italic font-semibold">
           Connecting Industry to Government Procurement Opportunities
         </p>
         <Link 
