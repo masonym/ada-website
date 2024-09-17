@@ -80,8 +80,8 @@ export default function EventPage({ params }: { params: { slug: string } }) {
           "@type": "Event",
           "name": event.title,
           "description": event.description,
-          "startDate": event.date,
-          "locationAddress": event.locationAddress,
+          "startDate": event.timeStart,
+          "location": event.locationAddress,
           "topicalCoverage": event.topicalCoverage,
           "organizer": {
             "@type": "Organization",
