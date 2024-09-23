@@ -76,8 +76,8 @@ export const SPEAKERS = [
             {
                 image: "/speakers/arveice_washington.jpg",
                 name: "Arveice Washington",
-                position: "Director",
-                company: "Office of Small Business Programs",
+                position: "Director, Office of Small Business Programs",
+                company: "Office of the Secretary of the Navy",
                 bio: `
                 Ms. Arveice Washington was appointed Director of the Office of Small Business Programs in November 2023, advising the Secretary of the Navy on small business acquisition and partnerships. She previously served as Deputy Director (2018-2023) and held leadership roles in NAVSEA’s Program Executive Office for Submarines, overseeing acquisition, contracts, and financial management. Earlier, she managed Team Submarine’s support services, handling contracts worth $125 million annually. With over 15 years of civilian service, Ms. Washington is recognized for her expertise in the DOD acquisition lifecycle and program management. She holds MBAs in Business Administration and Financial Management, with credentials in Program Management and Small Business.
                 `
@@ -85,8 +85,8 @@ export const SPEAKERS = [
             // {
             //     image: "/speakers/kimberly_buhler.png",
             //     name: "Kimberly Buhler",
-            //     position: "Director",
-            //     company: "Office of Small Business Programs",
+            //     position: "Director, Office of Small Business Programs",
+            //     company: "U.S. Army, Department of Defense",
             //     bio: `
             //     Ms. Kimberly D. Buehler was appointed to the Senior Executive Service in August 2019. She currently serves as the Director for the Army Office of Small Business Programs, where she provides executive leadership for all aspects of the Army's small business mission, including advocacy and outreach for all small business programs, development and dissemination of policies and procedures for execution of small business functions, and oversight for the execution of the small business program at the Army’s contracting activities--equating to more than $20 billion dollars of annual spending.
             //     <br></br>
