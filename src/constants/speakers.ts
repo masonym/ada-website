@@ -3,6 +3,15 @@ export const SPEAKERS = [
         id: 1,
         speakers: [
             {
+                image: "/speakers/mark_cancian.jpg",
+                name: "Mark Cancian",
+                position: "Senior Adviser, International Security Program",
+                company: "Center for Strategic & International Studies",
+                bio: `
+                Mark Cancian (Colonel, USMCR, ret.) is a senior adviser with the CSIS International Security Program. He joined CSIS in April 2015 from the Office of Management and Budget, where he spent more than seven years as chief of the Force Structure and Investment Division, working on issues such as Department of Defense budget strategy, war funding, and procurement programs, as well as nuclear weapons development and nonproliferation activities in the Department of Energy. Previously, he worked on force structure and acquisition issues in the Office of the Secretary of Defense and ran research and executive programs at Harvard University’s Kennedy School of Government. In the military, Colonel Cancian spent over three decades in the U.S. Marine Corps, active and reserve, serving as an infantry, artillery, and civil affairs officer and on overseas tours in Vietnam, Desert Storm, and Iraq (twice). Since 2000, he has been an adjunct faculty member at the Johns Hopkins School of Advanced International Studies, where he teaches a course on the connection between policy and analysis. A prolific author, he has published over 40 articles on military operations, acquisition, budgets, and strategy and received numerous writing awards. He graduated with high honors (magna cum laude) from Harvard College and with highest honors (Baker scholar) from Harvard Business School.
+                `
+            },
+            {
                 image: "/speakers/joachim_christian.png",
                 name: "Brigadier General Prince Joachim",
                 position: "His Royal Highness",
@@ -16,15 +25,6 @@ export const SPEAKERS = [
                 From November 2015 to June 2019 Prince Joachim served as special advisor to the Danish Chief of Defence in relation to the implementation of the new total force concept, focusing on the Home Guard and personnel of the Reserve.
                 From August 2019 to June 2020 Prince Joachim attended the 69th session of the Center for Advanced Military Studies (CHEM) and the 72nd session of the Institute of Advanced National Defense Studies (IHEDN) at École Militaire in Paris.
                 Since September 2020 Prince Joachim is Defense Attache at the Royal Danish Embassy in Paris.
-                `
-            },
-            {
-                image: "/speakers/mark_cancian.jpg",
-                name: "Mark Cancian",
-                position: "Senior Adviser, International Security Program",
-                company: "Center for Strategic & International Studies",
-                bio: `
-                Mark Cancian (Colonel, USMCR, ret.) is a senior adviser with the CSIS International Security Program. He joined CSIS in April 2015 from the Office of Management and Budget, where he spent more than seven years as chief of the Force Structure and Investment Division, working on issues such as Department of Defense budget strategy, war funding, and procurement programs, as well as nuclear weapons development and nonproliferation activities in the Department of Energy. Previously, he worked on force structure and acquisition issues in the Office of the Secretary of Defense and ran research and executive programs at Harvard University’s Kennedy School of Government. In the military, Colonel Cancian spent over three decades in the U.S. Marine Corps, active and reserve, serving as an infantry, artillery, and civil affairs officer and on overseas tours in Vietnam, Desert Storm, and Iraq (twice). Since 2000, he has been an adjunct faculty member at the Johns Hopkins School of Advanced International Studies, where he teaches a course on the connection between policy and analysis. A prolific author, he has published over 40 articles on military operations, acquisition, budgets, and strategy and received numerous writing awards. He graduated with high honors (magna cum laude) from Harvard College and with highest honors (Baker scholar) from Harvard Business School.
                 `
             },
             {
