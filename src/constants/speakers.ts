@@ -19,6 +19,15 @@ export const SPEAKERS = [
                 `
             },
             {
+                image: "/speakers/mark_cancian.jpg",
+                name: "Mark Cancian",
+                position: "Senior Adviser, International Security Program",
+                company: "Center for Strategic & International Studies",
+                bio: `
+                Mark Cancian (Colonel, USMCR, ret.) is a senior adviser with the CSIS International Security Program. He joined CSIS in April 2015 from the Office of Management and Budget, where he spent more than seven years as chief of the Force Structure and Investment Division, working on issues such as Department of Defense budget strategy, war funding, and procurement programs, as well as nuclear weapons development and nonproliferation activities in the Department of Energy. Previously, he worked on force structure and acquisition issues in the Office of the Secretary of Defense and ran research and executive programs at Harvard University’s Kennedy School of Government. In the military, Colonel Cancian spent over three decades in the U.S. Marine Corps, active and reserve, serving as an infantry, artillery, and civil affairs officer and on overseas tours in Vietnam, Desert Storm, and Iraq (twice). Since 2000, he has been an adjunct faculty member at the Johns Hopkins School of Advanced International Studies, where he teaches a course on the connection between policy and analysis. A prolific author, he has published over 40 articles on military operations, acquisition, budgets, and strategy and received numerous writing awards. He graduated with high honors (magna cum laude) from Harvard College and with highest honors (Baker scholar) from Harvard Business School.
+                `
+            },
+            {
                 image: "/speakers/dave_leinberger.png",
                 name: "Dave Leinberger",
                 position: "Chief of Army Community Partnerships",
@@ -62,15 +71,6 @@ export const SPEAKERS = [
                 Charles Sills is a recognized authority on U.S. Government Contracting and an advocate for Small Business access to Federal and Military procurement. He is President of FED/Contracting, LLC, a Washington D.C. based consultancy that assists Small Businesses to succeed in the Government Sector, helps Prime Contractors qualify Diversity Suppliers, and facilitates Federal ‘Mentor-Protégé’ partnerships. He is a former Naval Intelligence Officer who served in National Security positions in the Pentagon and the Middle East/Indian Ocean Theater. Later he directed Defense Systems and Renewable Energy Strategic Marketing in Lockheed Martin’s International Division.
                 <br></br>
                 He has an M.A. from the Fletcher School of Law & Diplomacy (Tufts & Harvard), and an A.B. from Princeton University/Woodrow Wilson School of Public & Int’l Affairs.
-                `
-            },
-            {
-                image: "/speakers/mark_cancian.jpg",
-                name: "Mark Cancian",
-                position: "Senior Adviser, International Security Program",
-                company: "Center for Strategic & International Studies",
-                bio: `
-                Mark Cancian (Colonel, USMCR, ret.) is a senior adviser with the CSIS International Security Program. He joined CSIS in April 2015 from the Office of Management and Budget, where he spent more than seven years as chief of the Force Structure and Investment Division, working on issues such as Department of Defense budget strategy, war funding, and procurement programs, as well as nuclear weapons development and nonproliferation activities in the Department of Energy. Previously, he worked on force structure and acquisition issues in the Office of the Secretary of Defense and ran research and executive programs at Harvard University’s Kennedy School of Government. In the military, Colonel Cancian spent over three decades in the U.S. Marine Corps, active and reserve, serving as an infantry, artillery, and civil affairs officer and on overseas tours in Vietnam, Desert Storm, and Iraq (twice). Since 2000, he has been an adjunct faculty member at the Johns Hopkins School of Advanced International Studies, where he teaches a course on the connection between policy and analysis. A prolific author, he has published over 40 articles on military operations, acquisition, budgets, and strategy and received numerous writing awards. He graduated with high honors (magna cum laude) from Harvard College and with highest honors (Baker scholar) from Harvard Business School.
                 `
             },
             {
