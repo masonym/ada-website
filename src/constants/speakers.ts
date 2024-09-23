@@ -23,8 +23,8 @@ export const SPEAKERS = [
                 name: "Dave Leinberger",
                 position: "Chief of Army Community Partnerships",
                 company: "ODCS G-9 (Installations), HQDA, Pentagon",
-                bio: 
-                `
+                bio:
+                    `
                 Dave Leinberger assumed the role as the Chief of Army Community Partnerships in July 2024.
                 In this position, Mr. Leinberger encourages innovation and collaboration between our
                 installations and local communities to develop partnerships that are mutually beneficial,
@@ -64,12 +64,34 @@ export const SPEAKERS = [
                 He has an M.A. from the Fletcher School of Law & Diplomacy (Tufts & Harvard), and an A.B. from Princeton University/Woodrow Wilson School of Public & Int’l Affairs.
                 `
             },
+            {
+                image: "/speakers/mark_cancian.jpg",
+                name: "Mark Cancian",
+                position: "Senior Adviser, International Security Program",
+                company: "Center for Strategic & International Studies",
+                bio: `
+                Mark Cancian (Colonel, USMCR, ret.) is a senior adviser with the CSIS International Security Program. He joined CSIS in April 2015 from the Office of Management and Budget, where he spent more than seven years as chief of the Force Structure and Investment Division, working on issues such as Department of Defense budget strategy, war funding, and procurement programs, as well as nuclear weapons development and nonproliferation activities in the Department of Energy. Previously, he worked on force structure and acquisition issues in the Office of the Secretary of Defense and ran research and executive programs at Harvard University’s Kennedy School of Government. In the military, Colonel Cancian spent over three decades in the U.S. Marine Corps, active and reserve, serving as an infantry, artillery, and civil affairs officer and on overseas tours in Vietnam, Desert Storm, and Iraq (twice). Since 2000, he has been an adjunct faculty member at the Johns Hopkins School of Advanced International Studies, where he teaches a course on the connection between policy and analysis. A prolific author, he has published over 40 articles on military operations, acquisition, budgets, and strategy and received numerous writing awards. He graduated with high honors (magna cum laude) from Harvard College and with highest honors (Baker scholar) from Harvard Business School.
+                `
+            },
+            {
+                image: "/speakers/arveice_washington.jpg",
+                name: "Arveice Washington",
+                position: "Director",
+                company: "Office of Small Business Programs",
+                bio: `
+                Ms. Arveice Washington was appointed Director of the Office of Small Business Programs in November 2023, advising the Secretary of the Navy on small business acquisition and partnerships. She previously served as Deputy Director (2018-2023) and held leadership roles in NAVSEA’s Program Executive Office for Submarines, overseeing acquisition, contracts, and financial management. Earlier, she managed Team Submarine’s support services, handling contracts worth $125 million annually. With over 15 years of civilian service, Ms. Washington is recognized for her expertise in the DOD acquisition lifecycle and program management. She holds MBAs in Business Administration and Financial Management, with credentials in Program Management and Small Business.
+                `
+            },
             // {
-            //     image: "",
-            //     name: "",
-            //     position: "",
-            //     company: "",
-            //     bio: ``
+            //     image: "/speakers/kimberly_buhler.png",
+            //     name: "Kimberly Buhler",
+            //     position: "Director",
+            //     company: "Office of Small Business Programs",
+            //     bio: `
+            //     Ms. Kimberly D. Buehler was appointed to the Senior Executive Service in August 2019. She currently serves as the Director for the Army Office of Small Business Programs, where she provides executive leadership for all aspects of the Army's small business mission, including advocacy and outreach for all small business programs, development and dissemination of policies and procedures for execution of small business functions, and oversight for the execution of the small business program at the Army’s contracting activities--equating to more than $20 billion dollars of annual spending.
+            //     <br></br>
+            //     Ms. Buehler represents the Secretary of the Army at congressional committee and subcommittee hearings on small business matters, and leads strategic inter-agency communication with the Small Business Administration, the Office of Federal Procurement Policy, the Minority Business Development Agency (Department of Commerce), and other agencies and presidential commissions.
+            //     `
             // },
 
         ]
