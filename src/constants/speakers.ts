@@ -8,7 +8,9 @@ export const SPEAKERS = [
                 position: "Senior Adviser, International Security Program",
                 company: "Center for Strategic & International Studies",
                 bio: `
-                Mark Cancian (Colonel, USMCR, ret.) is a senior adviser with the CSIS International Security Program. He joined CSIS in April 2015 from the Office of Management and Budget, where he spent more than seven years as Chief of the Force Structure and Investment Division, working on issues such as Department of Defense budget strategy, war funding, and procurement programs, as well as nuclear weapons development and nonproliferation activities in the Department of Energy. Previously, he worked on force structure and acquisition issues in the Office of the Secretary of Defense and ran research and executive programs at Harvard University’s Kennedy School of Government. In the military, Colonel Cancian spent over three decades in the U.S. Marine Corps, active and reserve, serving as an infantry, artillery, and civil affairs officer and on overseas tours in Vietnam, Desert Storm, and Iraq (twice). Since 2000, he has been an adjunct faculty member at the Johns Hopkins School of Advanced International Studies, where he teaches a course on the connection between policy and analysis. A prolific author, he has published over 40 articles on military operations, acquisition, budgets, and strategy and received numerous writing awards. He graduated with high honors (magna cum laude) from Harvard College and with highest honors (Baker scholar) from Harvard Business School.
+                Mark Cancian (Colonel, USMCR, ret.) is a Senior Adviser with the CSIS International Security Program. He joined CSIS in April 2015 from the Office of Management and Budget, where he spent more than seven years as Chief of the Force Structure and Investment Division, working on issues such as Department of Defense budget strategy, war funding, and procurement programs, as well as nuclear weapons development and nonproliferation activities in the Department of Energy. Previously, he worked on force structure and acquisition issues in the Office of the Secretary of Defense and ran research and executive programs at Harvard University’s Kennedy School of Government.
+                <br></br>
+                In the military, Colonel Cancian spent over three decades in the U.S. Marine Corps, active and reserve, serving as an infantry, artillery, and civil affairs officer and on overseas tours in Vietnam, Desert Storm, and Iraq (twice). Since 2000, he has been an adjunct faculty member at the Johns Hopkins School of Advanced International Studies, where he teaches a course on the connection between policy and analysis. A prolific author, he has published over 40 articles on military operations, acquisition, budgets, and strategy and received numerous writing awards. He graduated with high honors (magna cum laude) from Harvard College and with highest honors (Baker scholar) from Harvard Business School.
                 `
             },
             {
@@ -68,9 +70,11 @@ export const SPEAKERS = [
                 position: "President & CEO",
                 company: "American Defense Alliance",
                 bio: `
-                Charles Sills is a recognized authority on U.S. Government Contracting and an advocate for Small Business access to Federal and Military procurement. He is President of FED/Contracting, LLC, a Washington D.C. based consultancy that assists Small Businesses to succeed in the Government Sector, helps Prime Contractors qualify Diversity Suppliers, and facilitates Federal ‘Mentor-Protégé’ partnerships. He is a former Naval Intelligence Officer who served in National Security positions in the Pentagon and the Middle East/Indian Ocean Theater. Later he directed Defense Systems and Renewable Energy Strategic Marketing in Lockheed Martin’s International Division.
+                Charles F. Sills is a recognized authority on U.S. Government contracting, and an advocate for Small Business/Diversity Supplier access to Federal and Military acquisition opportunities, serving as the President & CEO of the American Defense Alliance – which hosts major Defense Requirements conferences across the country, connecting private sector innovators with the Pentagon, Military commands, and Congress to accelerate National Security solutions.
                 <br></br>
-                He has an M.A. from the Fletcher School of Law & Diplomacy (Tufts & Harvard), and an A.B. from Princeton University/Woodrow Wilson School of Public & Int’l Affairs.
+                Concurrently, he serves as Chief Operating Officer of the Minority Business Development Agency’s Federal Procurement Center, under the U.S. Commerce Dept.; and manages the partnership under which MBDA affiliated companies attend and benefit from ADA conferences. He is a member of the U.S. Chamber of Commerce's Small Business Council, and the Executive Committee of the Veterans Entrepreneurship Task Force (VET-Force). He is also a Member of the Board of the American-Eurasian Business Coalition, focusing on international infrastructure, energy and investment initiatives, and serving on multinational task forces such as the Danube Basin Environmental Restoration Program and the Japan-U.S. Joint Fund for Social & Economic Development.
+                <br></br>
+                As a former Naval Intelligence Officer, he held positions at the Defense Intelligence Agency, the U.S. Middle East Force, and NATO Supreme Allied Command/Atlantic; and subsequently worked in Lockheed Martin’s International Division managing strategic marketing and export licensing for defense systems as well as renewable energy technologies. His education includes an M.A. from the Fletcher School of Law and Diplomacy and an A.B. from Princeton University’s Woodrow Wilson School of Public & International Affairs.
                 `
             },
             {
@@ -79,7 +83,28 @@ export const SPEAKERS = [
                 position: "Director, Office of Small Business Programs",
                 company: "Office of the Secretary of the Navy",
                 bio: `
-                Ms. Arveice Washington was appointed Director of the Office of Small Business Programs in November 2023, advising the Secretary of the Navy on small business acquisition and partnerships. She previously served as Deputy Director (2018-2023) and held leadership roles in NAVSEA’s Program Executive Office for Submarines, overseeing acquisition, contracts, and financial management. Earlier, she managed Team Submarine’s support services, handling contracts worth $125 million annually. With over 15 years of civilian service, Ms. Washington is recognized for her expertise in the DOD acquisition lifecycle and program management. She holds MBAs in Business Administration and Financial Management, with credentials in Program Management and Small Business.
+                Ms. Washington was appointed to the Senior Executive Service in November 2023 as the
+                Director, Office of Small Business Programs after 15 years of civilian service. In this role
+                she serves as the principal advisor to the Secretary of the Navy on all small business
+                matters. Ms. Washington has been charged with overseeing small business acquisition
+                policy; strengthening government and private sector partnerships; and fostering
+                opportunities to leverage small business as a strategic advantage for the benefit of our
+                warfighters. From April 2018 until October 2023, Ms. Washington served as the Deputy
+                Director in this office.
+                <br></br>
+                Ms. Washington’s previous experience includes serving as the Director of Acquisition
+                and Contracts for the Naval Sea Systems (NAVSEA) Command Program Executive
+                Office for Submarines from October 2016 until March 2018. In this capacity, she was
+                responsible for directing, prioritizing and coordinating all acquisition initiatives across
+                Team Submarine.
+                <br></br>
+                From June 2009 until January 2016, Ms. Washington assumed the duties as the Team
+                Submarine Enterprise Wide Contractor Support Services Manager. She was the subject
+                matter expert for management responsibilities for five support services contracts totaling
+                execution of over $125 million annually and oversight of 600 contractors. As the
+                Contracting Officer Representative (COR) for these contracts, Ms. Washington was
+                responsible for cradle to grave requirements generation, contract award and post-award
+                execution.
                 `
             },
             // {
