@@ -119,7 +119,7 @@ export const SPEAKERS = [
             //     `
             // },
             {
-                image: "/speakers/david_canada.jpg",
+                image: "/speakers/david_canada.png",
                 name: "David Canada",
                 position: "Director, Global Supplier Diversity",
                 company: "Boeing Defense Space & Security",
