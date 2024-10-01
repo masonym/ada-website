@@ -18,7 +18,7 @@ export const REGISTRATION_TYPES = [
                 buttonLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
                 earlyBirdPrice: "$550",
                 regularPrice: "$750",
-                earlyBirdDeadline: "2024-10-15T03:00:00Z",
+                earlyBirdDeadline: "2024-10-18T03:00:00Z",
                 type: "paid"
             },
             {
