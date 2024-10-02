@@ -39,9 +39,10 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                     Join us for a premier opportunity to network with key leaders.
                 </p>
                 {isEarlyBird && (
-                    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6 text-xl mx-4" role="alert">
+                    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6 text-xl mx-4 text-center" role="alert">
                         <strong className="font-bold">Early-bird pricing available!</strong>
                         <span className="block sm:inline"> Register before {deadlineDate}.</span>
+                        <p className="block"> To accommodate your requests and budget timeframes, we are making a  one-time, 2-week extension of our Early Bird attendance fee offering for the 2025 Defense Industry Forecast conference on Nov. 14th – so please take advantage, and reserve your place now!</p>
                     </div>
                 )}
                 <div className="flex flex-col gap-8 lg:flex-row mb-12">
