@@ -15,7 +15,7 @@ export const SPEAKERS = [
             },
             {
                 image: "/speakers/joachim_christian.png",
-                name: "Brigadier General Prince Joachim",
+                name: "Brigadier General Prince Joachim (Invited)",
                 position: "Prince of Denmark",
                 company: "Danish Military Industry Attaché to the United States",
                 bio: `
@@ -107,17 +107,17 @@ export const SPEAKERS = [
                 execution.
                 `
             },
-            // {
-            //     image: "/speakers/kimberly_buhler.png",
-            //     name: "Kimberly Buehler",
-            //     position: "Director, Office of Small Business Programs",
-            //     company: "U.S. Army, Department of Defense",
-            //     bio: `
-            //     Ms. Kimberly D. Buehler was appointed to the Senior Executive Service in August 2019. She currently serves as the Director for the Army Office of Small Business Programs, where she provides executive leadership for all aspects of the Army's small business mission, including advocacy and outreach for all small business programs, development and dissemination of policies and procedures for execution of small business functions, and oversight for the execution of the small business program at the Army’s contracting activities--equating to more than $20 billion dollars of annual spending.
-            //     <br></br>
-            //     Ms. Buehler represents the Secretary of the Army at congressional committee and subcommittee hearings on small business matters, and leads strategic inter-agency communication with the Small Business Administration, the Office of Federal Procurement Policy, the Minority Business Development Agency (Department of Commerce), and other agencies and presidential commissions.
-            //     `
-            // },
+            {
+                image: "/speakers/kimberly_buhler.png",
+                name: "Kimberly Buehler (Invited)",
+                position: "Director, Office of Small Business Programs",
+                company: "U.S. Army, Department of Defense",
+                bio: `
+                Ms. Kimberly D. Buehler was appointed to the Senior Executive Service in August 2019. She currently serves as the Director for the Army Office of Small Business Programs, where she provides executive leadership for all aspects of the Army's small business mission, including advocacy and outreach for all small business programs, development and dissemination of policies and procedures for execution of small business functions, and oversight for the execution of the small business program at the Army’s contracting activities--equating to more than $20 billion dollars of annual spending.
+                <br></br>
+                Ms. Buehler represents the Secretary of the Army at congressional committee and subcommittee hearings on small business matters, and leads strategic inter-agency communication with the Small Business Administration, the Office of Federal Procurement Policy, the Minority Business Development Agency (Department of Commerce), and other agencies and presidential commissions.
+                `
+            },
             {
                 image: "/speakers/david_canada.png",
                 name: "David Canada",
