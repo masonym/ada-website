@@ -132,7 +132,21 @@ export const SPEAKERS = [
                 <br></br>Giving back is a part of who David is. He serves on the board of the following non-profit organizations:  Black Alliance of Colleges & Employers (BACE), Step Afrika, Wearable Tech Ventures and Positive Deposits. David is also very passionate about STEM education and increasing the number of minorities in technology fields.  He serves as an active corporate representative for the Black Engineer of the Year Awards, Advancing Minorities Interest in Engineering as well as the National Society of Black Engineers. In addition, he was selected to be a member of the Racial Equity Task Force and is co-leader of the BGS Diversity & Inclusion Council.
 
                 `
-            }
+            },
+            {
+                image: "/speakers/patricia_waddell.png",
+                name: "Patricia Waddell (Invited)",
+                position: "Director, Office of IT Services",
+                company: "U.S. General Services Administration",
+                bio: `
+                Ms. Patricia Waddell is the Director, Office of IT Services, Information Technology Category (ITC), Federal Acquisition Service (FAS). The Federal Acquisition Service provides buying platforms and acquisition services to Federal, DoD, State and Local governments for a broad range of items from office supplies to motor vehicles to information technology and telecommunications products and services. 
+                <br></br>Ms. Waddell is responsible for a portfolio of contracts that offer government agencies a diverse set of IT services valued at nearly $25 billion annually. Some of these offerings include Alliant 2, 8(a) STARS III, VETS 2, Multiple Award Schedule Special Item Numbers (SINs) for IT Professional Services, Training Courses, Electronic Commerce, Health IT Services, and Automated Contact Center Solutions. Her team is also working on the launch of Polaris, GSA’s next-generation small business GWAC and Alliant 3.
+                <br></br>Before leading IT Services Patricia served as the Director for the IT Business and Operations Division, managing business operations, budget, and financial management. She previously led the Office of IT Business Programs for GSA’s largest Multiple Award Schedule, MAS 70. As Deputy Director of that program, she managed a major acquisition and business program with more than 5,000 contracts and $16.5 billion dollars in annual sales. During her tenure, she established the business development and marketing strategies that set a strategic direction for the program that led to an increase in business outcomes. 
+                <br></br>Patricia received her Master of Arts in Public Administration (MPA) from Bowie State University, Bowie MD, and Bachelor of Science (BS) in Adult Education and Nutrition from Cornell University, Ithaca NY. Patricia is a Certified Federal Internal Coach and trained at the Treasury Executive Institute. 
+
+                `
+            },
+            
 
         ]
     }

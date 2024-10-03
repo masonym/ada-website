@@ -53,9 +53,13 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
 
     // for speaker sorting
     const getLastName = (name: string) => {
-        const nameParts = name.split(' ');
+        // Remove anything inside parentheses at the end
+        // This is for things like (Invited)
+        const cleanedName = name.replace(/\s*\(.*\)$/, '');
+        const nameParts = cleanedName.split(' ');
         return nameParts[nameParts.length - 1]; // Returns the last part as the last name
     };
+    
 
     return (
         <div className="max-container flex flex-col items-center">
