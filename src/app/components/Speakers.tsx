@@ -65,7 +65,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
         <div className="max-container flex flex-col items-center">
             <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Speaker Spotlight</h1>
             <p className="text-l font-bold text-center mb-8 text-slate-600">More speaker information will be added as we get closer to the event date, please check back later for updates.</p>
-            <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-4">
                 {currentEvent &&
                     currentEvent.speakers
                     .sort((a: Speaker, b: Speaker) => getLastName(a.name).localeCompare(getLastName(b.name)))

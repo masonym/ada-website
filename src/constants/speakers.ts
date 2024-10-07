@@ -146,7 +146,39 @@ export const SPEAKERS = [
 
                 `
             },
-            
+            {
+                image: "/speakers/iryna_andrukh.png",
+                name: "Dr. Iryna Andrukh",
+                position: "Ukraine Program Director",
+                company: "Progress Humanity",
+                bio: `
+                Dr. Andrukh is the Ukraine Program Director for Progress Humanity. She is a highly decorated psychologist, military veteran, and international negotiator with a rich background in psychology and law. She served 17 years in the Ukrainian military, where she earned numerous awards, including the prestigious Order of Princess Olga 2d degree, for her heroic efforts in negotiating the release of hostages during the 2014 invasion and evacuating orphanages during 2022. Her career is marked by significant contributions to international negotiation and conflict resolution, having worked in various crisis situations, including the Syrian refugee crisis and the conflict in Eastern Ukraine. Dr. Andrukh’s expertise extends to academia as well, where she has taught at top Ukrainian institutions and authored 11 peer-reviewed publications focused on emotional burnout among operatives.
+                <br></br>Throughout her career, Dr. Andrukh has been involved in high-stakes negotiations that have saved countless lives. Notably, she played a key role in the Minsk and Normandy Format talks, offering strategic psychological insights to Ukrainian leaders and negotiating the exchange of prisoners of war during the Donbas conflict. Her work has been recognized internationally, particularly for her efforts in Afghanistan, where she orchestrated the evacuation of Fatema Hosseini, a journalist targeted by the Taliban. This mission, along with her subsequent efforts to evacuate nearly 800 children during the 2022 Russian invasion of Ukraine, has earned her international acclaim and several awards, including the silver medal “For courage while performing special assignments.”            
+                <br></br>Dr. Andrukh’s contributions extend beyond the battlefield. Following her retirement from the military due to medical reasons, she continued her work in international negotiation and conflict resolution as a civilian. She has collaborated with the United Nations and Red Cross in refugee crises and served as a volunteer at the Polish border during the early days of the 2022 war in Ukraine. Her work in these areas, coupled with her academic achievements and media recognition—including a documentary that won a gold award at the New York Film Festival—solidifies her reputation as a leading figure in conflict resolution and humanitarian efforts on the global stage.
+                `
+            },
+            {
+                image: "/speakers/amir_bagherpour.png",
+                name: "Amir Bagherpour",
+                position: "Managing Director",
+                company: "Accenture",
+                bio: `
+                Amir grew up in Irvine, California, and enlisted in the United States Army after high school. He later attended West Point, where he developed ethical leadership skills and excelled as an NCAA Division 1 tennis player and Army Brigade Open Boxing Champion. After graduating, Amir served as an Armor Officer until injuries cut his military career short.
+                <br></br>He then worked as a Mechanical Engineer and Project Manager at NSK Corporation, leading automation projects while earning his MBA from UC Irvine. Amir later pursued doctoral studies in computational social science at Claremont Graduate University, specializing in game theory, decision science, and econometrics. His PhD dissertation accurately predicted the outcomes of the Arab Spring using agent-based modeling and game theory.
+                <br></br>Amir's success in anticipating world events led to his recruitment by the U.S. Department of State. He established and led the Department's predictive analytics efforts, serving as Senior Advisor to the Assistant Secretary for Conflict Stabilization and Director of Data Analytics for the Office of the Secretary of State. In these roles, he advised high-level government officials on sensitive global conflicts across three Presidential administrations.
+                <br></br>After his government service, Amir co-founded a predictive software startup before joining Accenture. Currently, he serves as a Managing Director and capability lead for Data and Artificial Intelligence services in Accenture's federal Strategy and Consulting group, leading hundreds of data scientists and engineers. Amir is an expert in developing and deploying advanced data and AI platforms.
+                <br></br>Additionally, Amir is an Adjunct Senior Fellow at the Federation of American Scientists (FAS) and serves on the advisory board of Progress Humanity, a Washington, DC-based non-profit.
+                `
+            },
+            // {
+            //     image: "/speakers/placeholder.png",
+            //     name: "Placeholder Name",
+            //     position: "Placeholder Title",
+            //     company: "Placeholder Company",
+            //     bio: `
+            //     Placeholder Bio
+            //     `
+            // },
 
         ]
     }
