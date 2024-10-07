@@ -79,7 +79,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                                 className="rounded-lg"
                             />
                             <p className="mt-4 font-semibold whitespace-nowrap text-wrap">{speaker.name}</p>
-                            <p className="text-sm text-gray-600 whitespace-nowrap">{speaker.position}</p>
+                            <p className="text-sm text-gray-600">{speaker.position}</p>
                             <p className="text-sm text-gray-600 whitespace-nowrap">{speaker.company}</p>
                             {speaker.presentation && (
                                 <button

@@ -109,7 +109,7 @@ export const SPEAKERS = [
             },
             {
                 image: "/speakers/kimberly_buhler.png",
-                name: "Kimberly Buehler (Invited)",
+                name: "Kimberly Buehler",
                 position: "Director, Office of Small Business Programs",
                 company: "U.S. Army, Department of Defense",
                 bio: `
@@ -136,7 +136,7 @@ export const SPEAKERS = [
             {
                 image: "/speakers/patricia_waddell.png",
                 name: "Patricia Waddell (Invited)",
-                position: "Director, Office of IT Services",
+                position: "Director, Office of IT Services, Information Technology Category (ITC), Federal Acquisition Service (FAS)",
                 company: "U.S. General Services Administration",
                 bio: `
                 Ms. Patricia Waddell is the Director, Office of IT Services, Information Technology Category (ITC), Federal Acquisition Service (FAS). The Federal Acquisition Service provides buying platforms and acquisition services to Federal, DoD, State and Local governments for a broad range of items from office supplies to motor vehicles to information technology and telecommunications products and services. 
