@@ -36,7 +36,7 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId }) => {
           </div>
         </div>
         <div 
-          className="text-base text-center sm:text-lg leading-relaxed max-w-3xl mx-auto mt-8"
+          className="text-base text-center sm:text-lg leading-relaxed max-w-4xl mx-auto mt-8"
           dangerouslySetInnerHTML={{ __html: keynoteSpeaker.bio.substring(0, 800) }} 
         />
       </div>
