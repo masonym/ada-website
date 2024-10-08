@@ -9,18 +9,19 @@ type KeynoteSpeakerProps = {
 
 const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [height, setHeight] = useState<number | undefined>(undefined);
+  const [collapsedHeight, setCollapsedHeight] = useState<number>(0);
+  const [fullHeight, setFullHeight] = useState<number>(0);
   const bioRef = useRef<HTMLDivElement>(null);
+  const collapsedRef = useRef<HTMLDivElement>(null);
   const eventSpeakers = SPEAKERS.find(event => event.id === eventId)?.speakers;
   const keynoteSpeaker = eventSpeakers?.find(speaker => speaker.keynote);
 
   useEffect(() => {
-    if (isExpanded) {
-      setHeight(bioRef.current?.scrollHeight);
-    } else {
-      setHeight(200); // Adjust this value to match the height of the collapsed bio
+    if (bioRef.current && collapsedRef.current) {
+      setFullHeight(bioRef.current.scrollHeight);
+      setCollapsedHeight(collapsedRef.current.scrollHeight);
     }
-  }, [isExpanded]);
+  }, [keynoteSpeaker]);
 
   if (!keynoteSpeaker) {
     return null;
@@ -51,12 +52,20 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId }) => {
             <p className="text-lg sm:text-xl mb-6 text-blue-300">{keynoteSpeaker.company}</p>
           </div>
         </div>
-        <div 
-          ref={bioRef}
-          className="text-base text-center sm:text-lg leading-relaxed max-w-4xl mx-auto overflow-hidden transition-all duration-500 ease-in-out"
-          style={{ height: height }}
-        >
-          <div dangerouslySetInnerHTML={{ __html: keynoteSpeaker.bio }} />
+        <div className="relative">
+          <div 
+            ref={bioRef}
+            className="text-base text-center sm:text-lg leading-relaxed max-w-4xl mx-auto overflow-hidden transition-all duration-500 ease-in-out"
+            style={{ height: isExpanded ? fullHeight : collapsedHeight }}
+          >
+            <div dangerouslySetInnerHTML={{ __html: keynoteSpeaker.bio }} />
+          </div>
+          <div 
+            ref={collapsedRef} 
+            className="absolute top-0 left-0 right-0 text-base text-center sm:text-lg leading-relaxed opacity-0 pointer-events-none"
+          >
+            <div dangerouslySetInnerHTML={{ __html: keynoteSpeaker.bio.split('<br')[0] }} />
+          </div>
         </div>
         <div className="text-center mt-4">
           <button 
@@ -65,7 +74,7 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId }) => {
           >
             {isExpanded ? (
               <>
-                Read Less <ChevronUp className="ml-2 h-5 w-5" />
+                Hide bio <ChevronUp className="ml-2 h-5 w-5" />
               </>
             ) : (
               <>
