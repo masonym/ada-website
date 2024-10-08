@@ -64,7 +64,7 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId }) => {
             ref={collapsedRef} 
             className="absolute top-0 left-0 right-0 text-base text-center sm:text-lg leading-relaxed opacity-0 pointer-events-none"
           >
-            <div dangerouslySetInnerHTML={{ __html: keynoteSpeaker.bio.split('<br')[0] }} />
+            <div dangerouslySetInnerHTML={{ __html: keynoteSpeaker.bio.split('<br>')[0] }} />
           </div>
         </div>
         <div className="text-center mt-4">
