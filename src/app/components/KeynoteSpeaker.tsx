@@ -15,11 +15,11 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId }) => {
   }
 
   return (
-    <section className="bg-navy-500 text-white mb-8 pt-12 pb-8 sm:pt-16 lg:pt-20 px-4 rounded-xl shadow-2xl">
+    <section className="bg-navy-500 text-white mb-8 py-8 px-4 rounded-xl shadow-2xl">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-12 text-lightBlue-400">Keynote Speaker</h2>
         <div className="flex flex-col items-center md:flex-row md:items-start">
-          <div className="mb-8 md:mb-0 md:mr-12 flex-shrink-0">
+          <div className="mb-8 md:mb-0 mr-4 flex-shrink-0">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-lightBlue-400 to-blue-600 rounded-full opacity-75 blur-md"></div>
               <Image
@@ -37,7 +37,7 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId }) => {
             <p className="text-lg sm:text-xl mb-6 text-blue-200">{keynoteSpeaker.company}</p>
             <div 
               className="text-base sm:text-lg leading-relaxed max-w-none"
-              dangerouslySetInnerHTML={{ __html: keynoteSpeaker.bio }} 
+              dangerouslySetInnerHTML={{ __html: keynoteSpeaker.bio.substring(0, 800) }} 
             />
           </div>
         </div>
