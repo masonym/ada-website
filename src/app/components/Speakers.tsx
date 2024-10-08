@@ -29,6 +29,7 @@ type Speaker = {
     company: string;
     bio?: string;
     presentation?: string;
+    keynote?: boolean;
 };
 
 const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) => {
@@ -52,24 +53,21 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
         }
     };
 
-    // for speaker sorting
     const getLastName = (name: string) => {
-        // Remove anything inside parentheses at the end
-        // This is for things like (Invited)
         const cleanedName = name.replace(/\s*\(.*\)$/, '');
         const nameParts = cleanedName.split(' ');
-        return nameParts[nameParts.length - 1]; // Returns the last part as the last name
+        return nameParts[nameParts.length - 1];
     };
-    
+
+    const nonKeynoteSpeakers = currentEvent ? currentEvent.speakers.filter(speaker => !speaker.keynote) : [];
 
     return (
         <div className="max-container flex flex-col items-center">
-            <KeynoteSpeakerSpotlight  eventId={event.id} />
+            <KeynoteSpeakerSpotlight eventId={event.id} />
             <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Speaker Spotlight</h1>
             <p className="text-l font-bold text-center mb-8 text-slate-600">More speaker information will be added as we get closer to the event date, please check back later for updates.</p>
             <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-4">
-                {currentEvent &&
-                    currentEvent.speakers
+                {nonKeynoteSpeakers
                     .sort((a: Speaker, b: Speaker) => getLastName(a.name).localeCompare(getLastName(b.name)))
                     .map((speaker: Speaker, index: number) => (
                         <div key={index} className="flex flex-col items-center text-center">
