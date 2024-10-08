@@ -170,6 +170,52 @@ export const SPEAKERS = [
                 <br></br>Additionally, Amir is an Adjunct Senior Fellow at the Federation of American Scientists (FAS) and serves on the advisory board of Progress Humanity, a Washington, DC-based non-profit.
                 `
             },
+            {
+                image: "/speakers/john_coffey.png",
+                name: "Honorable John P. Coffey",
+                position: "General Counsel",
+                company: "Department of the Navy",
+                bio: `
+                John P. (“Sean”) Coffey was sworn into office on February 16, 2022, as the 24th General
+                Counsel of the Department of the Navy after his confirmation by the U.S. Senate on
+                February 9, 2022. As General Counsel, Mr. Coffey is the Department of the Navy’s
+                (DON) Chief Legal Officer and head of the Office of the General Counsel (OGC). He
+                leads more than 1,100 attorneys and professional support staff in 140 offices
+                worldwide. DON OGC provides legal advice to the Secretary of the Navy, the Under
+                Secretary of the Navy, the Assistant Secretaries of the Navy, their staffs, and the multiple
+                components of the Department, including the Navy and the Marine Corps.
+                <br></br>
+                A native of New York City, Mr. Coffey is the oldest of seven children born to Irish
+                immigrants. He is an honors graduate of the United States Naval Academy and
+                Georgetown University Law Center. After graduating from Annapolis, Mr. Coffey
+                completed Naval Flight Officer training and served eight years on active duty, including
+                assignments as a P-3C Orion mission commander hunting Soviet submarines during the
+                Cold War, a junior officer intern to the Strategy Division in the Organization of the Joint
+                Chiefs of Staff, and the special military assistant (personal aide) to Vice President George
+                H.W. Bush. Mr. Coffey attended Georgetown Law’s evening program while assigned to
+                the Pentagon and White House. After graduating from Georgetown, Mr. Coffey
+                transitioned to the Navy Reserve and returned to New York, where he practiced law for
+                over thirty-five years, including several years as an Assistant United States Attorney in
+                the Southern District of New York and most recently as Chair of Complex Litigation at
+                Kramer Levin Naftalis & Frankel LLP.
+                <br></br>
+                After leaving active duty, Mr. Coffey continued to serve in the Navy Reserve for eighteen
+                years. Among other things, he flew anti-submarine missions in the North Atlantic and
+                Mediterranean, counter-narcotics missions in the Caribbean, and armed missions in
+                support of the blockade of the former Yugoslavia. Mr. Coffey was selected to serve as
+                commanding officer both of a reserve P-3C squadron (VP-92) and the reserve component
+                of the Enterprise carrier battle group staff (CCDG-12), and served as a staff officer in the Office of the Secretary of Defense (Reserve Affairs). Mr. Coffey retired at the rank of
+                Captain in 2004.
+                <br></br>
+                Prior to returning to public service, Mr. Coffey served as the President of the Federal Bar
+                Foundation and on the boards of various non-profit organizations, including ThanksUSA,
+                Common Cause New York, Georgetown Law’s Board of Visitors, and the Holocaust and
+                Human Rights Education Center. Mr. Coffey has been married for over thirty years to
+                Anne Churchill, an actress whose credits include This is Spinal Tap. They have three
+                grown children. 
+                `,
+                keynote: true,
+            },
             // {
             //     image: "/speakers/placeholder.png",
             //     name: "Placeholder Name",
