@@ -160,7 +160,7 @@ export const SPEAKERS = [
             {
                 image: "/speakers/amir_bagherpour.png",
                 name: "Amir Bagherpour",
-                position: "Chief, Technology Office and Vice-President of Strategic Missions and Technologies",
+                position: "Managing Director",
                 company: "Accenture",
                 bio: `
                 Amir grew up in Irvine, California, and enlisted in the United States Army after high school. He later attended West Point, where he developed ethical leadership skills and excelled as an NCAA Division 1 tennis player and Army Brigade Open Boxing Champion. After graduating, Amir served as an Armor Officer until injuries cut his military career short.
