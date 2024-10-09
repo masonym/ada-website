@@ -159,7 +159,7 @@ export const SPEAKERS = [
             },
             {
                 image: "/speakers/amir_bagherpour.png",
-                name: "Amir Bagherpour",
+                name: "Amir Bagherpour (Invited)",
                 position: "Managing Director",
                 company: "Accenture",
                 bio: `
