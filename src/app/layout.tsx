@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: '%s',
   },
   description: 'Connecting industry leaders with U.S. defense opportunities. Access forecasts, events, and resources for government contractors and military suppliers.',
-  
+
   // Open Graph metadata
   openGraph: {
     type: 'website',
@@ -46,6 +46,7 @@ export const metadata: Metadata = {
       },
     ],
   },
+
 }
 
 
@@ -56,8 +57,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="canonical" href="https://www.americandefensealliance.org/" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "American Defense Alliance",
+            "url": "https://www.americandefensealliance.org/"
+          })}
+        </script>
+      </head>
       <body className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-300">
-        <ScrollToTop/>
+        <ScrollToTop />
         <div className="bg-navy-800">
           <NavBar />
         </div>
