@@ -5,6 +5,8 @@ import Footer from "./components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ScrollToTop from "./components/ScrollToTop";
 import { GoogleAnalytics } from '@next/third-parties/google'
+import Head from "next/head";
+import Script from "next/script";
 
 
 export const metadata: Metadata = {
@@ -49,6 +51,14 @@ export const metadata: Metadata = {
 
 }
 
+const jsonData = `
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "American Defense Alliance",
+    "url": "https://www.americandefensealliance.org/"
+  }
+`;
 
 export default function RootLayout({
   children,
@@ -57,17 +67,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
+      <Head>
         <link rel="canonical" href="https://www.americandefensealliance.org/" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "American Defense Alliance",
-            "url": "https://www.americandefensealliance.org/"
-          })}
-        </script>
-      </head>
+        <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonData) }}
+        >
+        </Script>
+      </Head>
       <body className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-300">
         <ScrollToTop />
         <div className="bg-navy-800">
