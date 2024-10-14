@@ -135,7 +135,7 @@ export const SPEAKERS = [
             },
             {
                 image: "/speakers/patricia_waddell.png",
-                name: "Patricia Waddell (Invited)",
+                name: "Patricia Waddell",
                 position: "Director, Office of IT Services, Information Technology Category (ITC), Federal Acquisition Service (FAS)",
                 company: "U.S. General Services Administration",
                 bio: `
@@ -159,8 +159,8 @@ export const SPEAKERS = [
             },
             {
                 image: "/speakers/amir_bagherpour.png",
-                name: "Amir Bagherpour (Invited)",
-                position: "Managing Director",
+                name: "Amir Bagherpour, PhD (Invited)",
+                position: "Managing Director, AI Services and Advanced Analytics, Accenture Federal Services",
                 company: "Accenture",
                 bio: `
                 Amir grew up in Irvine, California, and enlisted in the United States Army after high school. He later attended West Point, where he developed ethical leadership skills and excelled as an NCAA Division 1 tennis player and Army Brigade Open Boxing Champion. After graduating, Amir served as an Armor Officer until injuries cut his military career short.
