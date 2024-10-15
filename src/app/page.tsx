@@ -14,8 +14,8 @@ const HomePage = () => {
   return (
     <div className="bg-slate-50">
       <HeroSection />
-      <MissionStatement />
       <UpcomingEvents />
+      <MissionStatement />
       <FocusAreas />
       <MailingListSubscription/>
       {/* <Testimonials /> */}

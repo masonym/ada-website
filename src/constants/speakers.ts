@@ -160,8 +160,8 @@ export const SPEAKERS = [
             {
                 image: "/speakers/amir_bagherpour.png",
                 name: "Amir Bagherpour, PhD (Invited)",
-                position: "Managing Director, AI Services and Advanced Analytics, Accenture Federal Services",
-                company: "Accenture",
+                position: "Managing Director, AI Services and Advanced Analytics",
+                company: "Accenture Federal Services",
                 bio: `
                 Amir grew up in Irvine, California, and enlisted in the United States Army after high school. He later attended West Point, where he developed ethical leadership skills and excelled as an NCAA Division 1 tennis player and Army Brigade Open Boxing Champion. After graduating, Amir served as an Armor Officer until injuries cut his military career short.
                 <br></br>He then worked as a Mechanical Engineer and Project Manager at NSK Corporation, leading automation projects while earning his MBA from UC Irvine. Amir later pursued doctoral studies in computational social science at Claremont Graduate University, specializing in game theory, decision science, and econometrics. His PhD dissertation accurately predicted the outcomes of the Arab Spring using agent-based modeling and game theory.
@@ -184,6 +184,22 @@ export const SPEAKERS = [
                 worldwide. DON OGC provides legal advice to the Secretary of the Navy, the Under
                 Secretary of the Navy, the Assistant Secretaries of the Navy, their staffs, and the multiple
                 components of the Department, including the Navy and the Marine Corps.
+                <br></br>
+                In addition to managing OGC’s traditional legal services to its many DON clients, Mr.
+                Coffey has launched several initiatives intended to advance DON financial, readiness,
+                and personnel interests. For example, the Taxpayer Advocacy Project (TAP) seeks to
+                leverage legal authorities and strategies to ensure that the DON is obtaining the
+                maximum return on taxpayer investments from contractual counterparties. The
+                Promoting Individual Accountability (PINACL) project directs the DON’s Suspension
+                and Debarment Officers to identify and if appropriate sanction individuals who cause
+                DON vendors to engage in fraud or grossly poor performance. Mr. Coffey has worked
+                closely with the Judge Advocate General of the Navy and Staff Judge Advocate to the
+                Commandant of the Marine Corps in implementing historic changes to the military
+                justice system intended to combat sexual misconduct in the DON, including the
+                establishment of each Services’ Office of Special Trial Counsel. Mr. Coffey initiated the
+                in-depth review of the World War Two-era “Port Chicago” courts-martial, which
+                culminated with Navy Secretary Carlos Del Toro setting aside the convictions and
+                sentences of 256 African-American Sailors wrongfully convicted in those 1944 trials.
                 <br></br>
                 A native of New York City, Mr. Coffey is the oldest of seven children born to Irish
                 immigrants. He is an honors graduate of the United States Naval Academy and

@@ -4,7 +4,7 @@ import { EVENTS } from '@/constants/events';
 
 const HeroSection = () => {
   return (
-    <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[35vh] flex items-center justify-center overflow-hidden">
       <svg
         className="absolute inset-0 w-full h-full"
         preserveAspectRatio="xMidYMid slice"
