@@ -15,7 +15,7 @@ export const SPEAKERS = [
             },
             {
                 image: "/speakers/joachim_christian.png",
-                name: "Brigadier General Prince Joachim (Invited)",
+                name: "Brigadier General Prince Joachim",
                 position: "Prince of Denmark",
                 company: "Danish Military Industry Attaché to the United States",
                 bio: `
