@@ -87,7 +87,11 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                     {isSponsor && (
                         <div className="text-center">
                             <p className="text-md font-semibold text-gray-600">For more information and to secure your sponsorship, contact:</p>
-                            <p className="text-md font-semibold text-blue-600 hover:underline text-nowrap mb-2"><a href="mailto:marketing@americandefensealliance.org">marketing@americandefensealliance.org</a></p>
+                            <p className="text-md font-semibold text-blue-600 hover:underline break-words mb-2">
+                                <a href="mailto:marketing@americandefensealliance.org">
+                                    marketing@<wbr />americandefensealliance.org
+                                </a>
+                            </p>
                         </div>
                     )}
                     {item.availabilityInfo && (
