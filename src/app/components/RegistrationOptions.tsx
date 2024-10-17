@@ -45,7 +45,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                         <p className="block font-gotham"> To accommodate your requests and budget timeframes, we are making a  one-time, 2-week extension of our early-bird attendance fee offering for the 2025 Defense Industry Forecast conference on Nov. 14th – so please take advantage, and reserve your place now!</p>
                     </div>
                 )}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 xl:w-[110%] gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 w-[80vw] xl:min-w-[1288px] md:min-w-[738px] lg:min-w-[1024px] sm:min-w-[640px] gap-8">
                     {currentEvent.registrations.map((item, index) => (
                         <RegistrationCard key={index} item={item} />
                     ))}
