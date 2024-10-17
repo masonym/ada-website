@@ -234,6 +234,18 @@ export const SPEAKERS = [
             },
             // {
             //     image: "/speakers/placeholder.png",
+            //     name: "Bianca Henderson",
+            //     position: "Small Business Director",
+            //     company: "NAVFAC HQ, Department of the Navy",
+            //     bio: `
+            //     Placeholder Bio
+            //     `
+            // },
+
+
+            
+            // {
+            //     image: "/speakers/placeholder.png",
             //     name: "Placeholder Name",
             //     position: "Placeholder Title",
             //     company: "Placeholder Company",

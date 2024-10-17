@@ -49,7 +49,7 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                     alt={item.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover"
+                    className="object-cover object-center w-full h-full"
                 />
                 {/* <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                     <h4 className="text-2xl font-bold text-white text-center">{item.title}</h4>

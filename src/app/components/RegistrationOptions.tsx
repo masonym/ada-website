@@ -45,12 +45,12 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                         <p className="block font-gotham"> To accommodate your requests and budget timeframes, we are making a  one-time, 2-week extension of our early-bird attendance fee offering for the 2025 Defense Industry Forecast conference on Nov. 14th – so please take advantage, and reserve your place now!</p>
                     </div>
                 )}
-                <div className="flex flex-col gap-8 lg:flex-row mb-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 xl:w-[110%] gap-8">
                     {currentEvent.registrations.map((item, index) => (
                         <RegistrationCard key={index} item={item} />
                     ))}
                 </div>
-                
+
                 {/* {complimentaryRegistrations.length > 0 && (
                     <div className="w-full max-w-2xl mb-12">
                         <h2 className="text-3xl font-bold text-center mb-6">Complimentary Registrations</h2>
@@ -65,10 +65,10 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                         </div>
                     </div>
                 )} */}
-                
+
                 {currentEvent.addOns && currentEvent.addOns.length > 0 && (
                     <div className="w-full max-w-2xl">
-                        <h2 className="text-3xl font-bold text-center mb-6">Add-Ons</h2>
+                        <h2 className="text-3xl font-bold text-center mb-6 mt-4">Add-Ons</h2>
                         <div className="bg-white shadow-md rounded-lg overflow-hidden">
                             {currentEvent.addOns.map((addOn, index) => (
                                 <div key={index} className="p-6 border-b border-gray-200 last:border-b-0">
