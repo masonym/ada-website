@@ -36,6 +36,7 @@ export const REGISTRATION_TYPES = [
                     "Digital/Physical Copies of Agenda",
                     "Breakfast & Buffet Lunch",
                     "Access to Photos & Videos from Conference",
+                    "Use code SPONSORSHIP to Register 2nd Attendee"
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
