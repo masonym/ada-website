@@ -8,6 +8,12 @@ export type RegistrationProps = {
     event: EventProps;
 };
 
+type AddOn = {
+    title: string;
+    price: string;
+    description: string;
+};
+
 const RegistrationOptions = ({ event }: RegistrationProps) => {
     const currentEvent = REGISTRATION_TYPES.find((e) => e.id === event.id);
 
@@ -70,7 +76,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                     <div className="w-full max-w-2xl">
                         <h2 className="text-3xl font-bold text-center mb-6 mt-4">Add-Ons</h2>
                         <div className="bg-white shadow-md rounded-lg overflow-hidden">
-                            {currentEvent.addOns.map((addOn, index) => (
+                            {currentEvent.addOns.map((addOn: AddOn, index: number) => (
                                 <div key={index} className="p-6 border-b border-gray-200 last:border-b-0">
                                     <div className="flex justify-between items-center mb-2">
                                         <h3 className="text-xl font-semibold">{addOn.title}</h3>
