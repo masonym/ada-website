@@ -17,9 +17,10 @@ export const REGISTRATION_TYPES = [
                 buttonText: "Register Now",
                 buttonLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
                 earlyBirdPrice: "$550",
-                regularPrice: "$750",
+                regularPrice: "$395",
                 earlyBirdDeadline: "2024-10-18T08:00:00Z",
-                type: "paid"
+                type: "paid",
+                receptionPrice: "$450" // Add this line
             },
 
             
@@ -36,7 +37,7 @@ export const REGISTRATION_TYPES = [
                     "Digital/Physical Copies of Agenda",
                     "Breakfast & Buffet Lunch",
                     "Access to Photos & Videos from Conference",
-                    "Use code SPONSORSHIP to Register 2nd Attendee"
+                    "Use code ADDITIONAL to Register 2nd Attendee"
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
@@ -85,11 +86,12 @@ export const REGISTRATION_TYPES = [
             },
         ],
         addOns: [
-            {
-                title: "Networking Reception",
-                description: "Join us for an exclusive evening networking event from 5:30 PM - 7:30 PM",
-                price: "+$100"
-            }
+            // {
+            //     title: "Networking Reception",
+            //     description: "Join us for an exclusive evening networking event from 5:30 PM - 7:30 PM",
+            //     price: "+$100"
+            // }
         ]
+
     }
 ];

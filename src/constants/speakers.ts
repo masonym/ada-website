@@ -172,7 +172,7 @@ export const SPEAKERS = [
             },
             {
                 image: "/speakers/john_coffey.png",
-                name: "Honorable John P. Coffey",
+                name: "Honorable John P. (\"Sean\") Coffey",
                 position: "General Counsel",
                 company: "Department of the Navy",
                 bio: `
@@ -243,7 +243,7 @@ export const SPEAKERS = [
             // },
 
 
-            
+
             // {
             //     image: "/speakers/placeholder.png",
             //     name: "Placeholder Name",

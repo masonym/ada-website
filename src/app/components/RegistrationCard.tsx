@@ -18,6 +18,7 @@ type RegistrationTypes = {
     regularPrice?: string;
     earlyBirdDeadline?: string;
     availabilityInfo?: string;
+    receptionPrice?: string;
 };
 
 type RegistrationProp = {
@@ -77,6 +78,11 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                     {isPaid && !isEarlyBird && (
                         <p className="text-sm text-center text-gray-600 mb-2">
                             {/* Regular price */}
+                        </p>
+                    )}
+                    {item.receptionPrice && (
+                        <p className="text-md font-semibold text-center text-blue-600 mb-2">
+                            {item.receptionPrice} with Networking Reception Included
                         </p>
                     )}
                     {isFree && (

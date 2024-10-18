@@ -82,6 +82,8 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                         </div>
                     </div>
                 )}
+
+                
             </div>
         </div>
     );

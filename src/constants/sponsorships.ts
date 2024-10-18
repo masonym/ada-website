@@ -4,7 +4,7 @@ export const SPONSORSHIP_TYPES = [
         sponsorships: [
             {
                 title: "Premier",
-                cost: "$7,000",
+                cost: "$5,000",
                 perks: [
                     { tagline: "Brand Visibility", description: "Prime logo placement on all conference materials, including banners, marketing emails, website, and programs" },
                     { tagline: "Speaking Opportunity", description: "An expanded speaking segment during the conference for a company principal" },
@@ -17,7 +17,7 @@ export const SPONSORSHIP_TYPES = [
             },
             {
                 title: "Prestige",
-                cost: "$5,000",
+                cost: "$3,000",
                 perks: [
                     { tagline: "Brand Visibility", description: "Prominent logo placement on conference materials and signage" },
                     { tagline: "Speaking Opportunity", description: "A brief segment during the conference for a company principal" },
@@ -30,7 +30,7 @@ export const SPONSORSHIP_TYPES = [
             },
             {
                 title: "Executive",
-                cost: "$3,000",
+                cost: "$1,500",
                 perks: [
                     { tagline: "Brand Visibility", description: "Logo placement on select conference materials and signage" },
                     { tagline: "Recognition", description: "Acknowledgment during key moments of the conference, such as opening remarks" },
