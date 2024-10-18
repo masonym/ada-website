@@ -81,8 +81,8 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                         </p>
                     )}
                     {item.receptionPrice && (
-                        <p className="text-md font-semibold text-center text-blue-600 mb-2">
-                            {item.receptionPrice} with Networking Reception Included
+                        <p className="text-md font-semibold text-center text-nowrap text-blue-600 mb-2">
+                            {item.receptionPrice} with VIP Networking Reception
                         </p>
                     )}
                     {isFree && (
