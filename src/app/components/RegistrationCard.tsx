@@ -44,18 +44,20 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
 
     return (
         <div className="w-full mx-auto overflow-hidden rounded-lg bg-white shadow-md flex flex-col">
-            <div className="h-40 relative">
-                <Image
-                    src={item.headerImage}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover object-center w-full h-full"
-                />
-                {/* <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <h4 className="text-2xl font-bold text-white text-center">{item.title}</h4>
-                </div> */}
+            {/* Image container with aspect ratio box */}
+            <div className="relative w-full pt-[50%]"> {/* 2:1 aspect ratio */}
+                <div className="absolute inset-0">
+                    <Image
+                        src={item.headerImage}
+                        alt={item.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority
+                    />
+                </div>
             </div>
+            
             <div className="p-6 flex-grow flex flex-col justify-between">
                 <div>
                     <p className="text-sm text-gray-600 mb-4">{item.subtitle}</p>
@@ -73,11 +75,6 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                     {isPaid && isEarlyBird && (
                         <p className="text-md font-semibold text-center text-green-600 mb-2">
                             Early-bird price! Increases to {item.regularPrice} after {deadlineDate}
-                        </p>
-                    )}
-                    {isPaid && !isEarlyBird && (
-                        <p className="text-sm text-center text-gray-600 mb-2">
-                            {/* Regular price */}
                         </p>
                     )}
                     {item.receptionPrice && (
@@ -106,9 +103,8 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                         </p>
                     )}
 
-                    <Link
-                        href={`${item.buttonLink}`}>
-                        <button className="w-full py-2 px-4 bg-blue-800  text-white font-semibold rounded-md hover:bg-navy-200 transition duration-300">
+                    <Link href={item.buttonLink}>
+                        <button className="w-full py-2 px-4 bg-blue-800 text-white font-semibold rounded-md hover:bg-navy-200 transition duration-300">
                             {item.buttonText}
                         </button>
                     </Link>

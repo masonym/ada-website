@@ -34,7 +34,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
         switch (itemCount) {
             case 1: return 'grid-cols-1';
             case 2: return 'sm:grid-cols-2';
-            case 3: return 'sm:grid-cols-2 lg:grid-cols-2';
+            case 3: return 'sm:grid-cols-1 lg:grid-cols-3';
             default: return 'sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4';
         }
     };
