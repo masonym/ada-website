@@ -22,22 +22,26 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
     }
 
     const earlyBirdDeadline = currentEvent.registrations.length > 0 ? currentEvent.registrations[0].earlyBirdDeadline : null;
-
-    // Determine if we're still in the early bird period
     const isEarlyBird = earlyBirdDeadline && new Date() < new Date(earlyBirdDeadline);
-
-    // Format the deadline date, ignoring timezone differences
     const deadlineDate = earlyBirdDeadline ? new Date(earlyBirdDeadline).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-        timeZone: 'EST'  // Ensure consistent date across timezones
+        timeZone: 'EST'
     }) : null;
 
+    const getGridClass = (itemCount: number) => {
+        switch (itemCount) {
+            case 1: return 'grid-cols-1';
+            case 2: return 'sm:grid-cols-2';
+            case 3: return 'sm:grid-cols-2 lg:grid-cols-2';
+            default: return 'sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4';
+        }
+    };
 
     return (
         <div className="max-w-7xl mx-auto pt-0 pb-8 px-4 flex flex-col items-center">
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center w-full">
                 <h1 className="text-[48px] text-center font-gotham font-bold mb-2 text-slate-700">
                     Registration Options
                 </h1>
@@ -48,14 +52,8 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                     <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6 text-xl mx-4 text-center" role="alert">
                         <strong className="font-bold">Early-bird pricing available!</strong>
                         <span className="block sm:inline"> Register before {deadlineDate}.</span>
-                        <p className="block font-gotham"> To accommodate your requests and budget timeframes, we are making a  one-time, 2-week extension of our early-bird attendance fee offering for the 2025 Defense Industry Forecast conference on Nov. 14th – so please take advantage, and reserve your place now!</p>
                     </div>
                 )}
-                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 w-[80vw] xl:min-w-[1288px] md:min-w-[738px] lg:min-w-[1024px] sm:min-w-[640px] gap-8">
-                    {currentEvent.registrations.map((item, index) => (
-                        <RegistrationCard key={index} item={item} />
-                    ))}
-                </div>
 
                 {/* {complimentaryRegistrations.length > 0 && (
                     <div className="w-full max-w-2xl mb-12">
@@ -72,9 +70,15 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                     </div>
                 )} */}
 
+                <div className={`grid ${getGridClass(currentEvent.registrations.length)} gap-8 justify-center max-w-[85vw] xl:min-w-[1320px] md:min-w-[738px] lg:min-w-[1024px] sm:min-w-[640px] min-w-[320px]`}>
+                    {currentEvent.registrations.map((item, index) => (
+                        <RegistrationCard key={index} item={item} />
+                    ))}
+                </div>
+
                 {currentEvent.addOns && currentEvent.addOns.length > 0 && (
-                    <div className="w-full max-w-2xl">
-                        <h2 className="text-3xl font-bold text-center mb-6 mt-4">Add-Ons</h2>
+                    <div className="w-full max-w-2xl mt-12">
+                        <h2 className="text-3xl font-bold text-center mb-6">Add-Ons</h2>
                         <div className="bg-white shadow-md rounded-lg overflow-hidden">
                             {currentEvent.addOns.map((addOn: AddOn, index: number) => (
                                 <div key={index} className="p-6 border-b border-gray-200 last:border-b-0">
@@ -88,8 +92,6 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                         </div>
                     </div>
                 )}
-
-                
             </div>
         </div>
     );
