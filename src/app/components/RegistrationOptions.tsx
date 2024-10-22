@@ -107,7 +107,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                         <p className="text-center mb-4">
                             Enhance your visibility and connect with key decision makers through our exclusive sponsorship opportunities
                         </p>
-                        <Link href={`/events/${event.slug}/sponsor`}>
+                        <Link href={`/events/${event.slug}/sponsors-exhibitors/sponsorship-opportunities`}>
                             <button className="w-full py-3 px-6 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition duration-300 flex items-center justify-center">
                                 View Sponsorship Packages
                                 <ChevronRight className="ml-2 w-5 h-5" />
