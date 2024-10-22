@@ -55,7 +55,8 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Exhibit Space", description: "Ability to host a company exhibit during the conference" },
                     { tagline: "Event Access", description: "(5) conference passes and (5) complimentary tickets to the VIP Networking Reception" },
                     { tagline: "Media Coverage", description: "Inclusion in press releases, promotional materials, social media mentions, and post- conference coverage" },
-                ]
+                ],
+                colour: "#FFD700"
             },
             {
                 title: "Silver Sponsor",
@@ -68,7 +69,8 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Exhibit Space", description: "Ability to host a company exhibit during the conference" },
                     { tagline: "Event Access", description: "(4) conference passes and (4) complimentary tickets to the VIP Networking Reception" },
                     { tagline: "Media Coverage", description: "Inclusion in select materials, social media mentions, and post-conference coverage" },
-                ]
+                ],
+                colour: "#C0C0C0"
             },
             {
                 title: "Bronze Sponsor",
@@ -79,7 +81,8 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Exhibit Space", description: "Ability to host a company exhibit during the conference" },
                     { tagline: "Event Access", description: "(3) conference passes and (3) complimentary tickets to the VIP Networking Reception" },
                     { tagline: "Media Coverage", description: "Basic inclusion in social media mentions or post-conference coverage" },
-                ]
+                ],
+                colour: "#CD7F32"
             },
             {
                 title: "Small Business Sponsor",
