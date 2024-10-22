@@ -10,6 +10,7 @@ type SponsorTypes = {
     title: string;
     cost: string;
     perks: Perk[];
+    colour?: string;
 };
 
 type SponsorProp = {
@@ -19,7 +20,10 @@ type SponsorProp = {
 const SponsorshipCard = ({ item }: SponsorProp) => {
     return (
         <div className="w-full max-w-2xl mx-auto mb-6 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md">
-            <div className="flex items-center justify-between bg-navy-800 p-4">
+            <div
+                className={`flex items-center justify-between p-4 ${item.colour || 'bg-navy-800'}`}
+                style={item.colour ? { backgroundColor: item.colour } : undefined}
+            >
                 <h4 className="text-2xl font-bold text-white">{item.title}</h4>
                 <span className="text-2xl font-bold text-white">{item.cost}</span>
             </div>
@@ -30,7 +34,7 @@ const SponsorshipCard = ({ item }: SponsorProp) => {
                             <ChevronRight className="h-5 w-5 mr-2 text-navy-800 flex-shrink-0 mt-1" />
                             <div>
                                 <span className="font-bold">{perk.tagline}: </span>
-                                <span dangerouslySetInnerHTML={{ __html: perk.description}}></span>
+                                <span dangerouslySetInnerHTML={{ __html: perk.description }}></span>
                             </div>
                         </li>
                     ))}
