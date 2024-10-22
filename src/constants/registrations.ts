@@ -4,7 +4,7 @@ export const REGISTRATION_TYPES = [
         registrations: [
             {
                 title: "In-Person",
-                headerImage: "/registration-cards/attendee-pass.png",
+                headerImage: "/registration-cards/2024DIF/attendee-pass.png",
                 perks: [
                     "Registration for 1 Person",
                     "Access to All Event Sessions",
@@ -27,7 +27,7 @@ export const REGISTRATION_TYPES = [
             // display table
             {
                 title: "Display Table",
-                headerImage: "/registration-cards/display-table-pass.png",
+                headerImage: "/registration-cards/2024DIF/display-table-pass.png",
                 perks: [
                     "Registration for 2 People",
                     "2 Networking Reception Tickets",
@@ -50,7 +50,7 @@ export const REGISTRATION_TYPES = [
 
             {
                 title: "Government/Military Personnel Registration",
-                headerImage: "/registration-cards/gov-pass.png",
+                headerImage: "/registration-cards/2024DIF/gov-pass.png",
                 perks: [
                     "Registration for 1 Person",
                     "Access to All Event Sessions",
@@ -67,7 +67,7 @@ export const REGISTRATION_TYPES = [
             },
             {
                 title: "Sponsor",
-                headerImage: "/registration-cards/sponsor-pass.png",
+                headerImage: "/registration-cards/2024DIF/sponsor-pass.png",
                 perks: [
                     "Brand Visibility",
                     "Speaking Opportunity",
@@ -99,14 +99,16 @@ export const REGISTRATION_TYPES = [
         registrations: [
             {
                 title: "In-Person",
-                headerImage: "/registration-cards/attendee-pass.png",
+                headerImage: "/registration-cards/2025SPDC/attendee-pass.png",
                 perks: [
                     "Registration for 1 Person",
                     "Access to All Event Sessions",
-                    "Speaker Presentations and Materials",
+                    "Access to Exhibit Hall",
+                    "Speaker Presentations",
                     "Digital/Physical Copies of Agenda",
                     "Breakfast & Buffet Lunch",
                     "Access to Photos & Videos from Conference",
+                    "Access to VIP Networking Reception on March 18th, 2025 from 5:00 PM - 7:00 PM with purchase",
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
@@ -119,8 +121,8 @@ export const REGISTRATION_TYPES = [
             },
 
             {
-                title: "Display Table",
-                headerImage: "/registration-cards/display-table-pass.png",
+                title: "Exhibit Table",
+                headerImage: "/registration-cards/2025SPDC/exhibit-table-pass.png",
                 perks: [
                     "Registration for 2 People",
                     "2 Networking Reception Tickets",
@@ -143,7 +145,7 @@ export const REGISTRATION_TYPES = [
 
             {
                 title: "Government/Military Personnel Registration",
-                headerImage: "/registration-cards/gov-pass.png",
+                headerImage: "/registration-cards/2025SPDC/gov-pass.png",
                 perks: [
                     "Registration for 1 Person",
                     "Access to All Event Sessions",
@@ -160,7 +162,7 @@ export const REGISTRATION_TYPES = [
             },
             {
                 title: "Sponsor",
-                headerImage: "/registration-cards/sponsor-pass.png",
+                headerImage: "/registration-cards/2025SPDC/sponsor-pass.png",
                 perks: [
                     "Brand Visibility",
                     "Speaking Opportunity",
