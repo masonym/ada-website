@@ -56,7 +56,7 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Event Access", description: "(5) conference passes and (5) complimentary tickets to the VIP Networking Reception" },
                     { tagline: "Media Coverage", description: "Inclusion in press releases, promotional materials, social media mentions, and post- conference coverage" },
                 ],
-                colour: "#FFD700"
+                colour: "#ffbf00"
             },
             {
                 title: "Silver Sponsor",
