@@ -80,7 +80,7 @@ export const REGISTRATION_TYPES = [
                 ],
                 subtitle: "Includes:",
                 buttonText: "Explore Sponsorship Opportunities",
-                buttonLink: `2025-defense-industry-forecast/about/sponsor`,
+                buttonLink: `2025-defense-industry-forecast/sponsors-exhibitors/sponsorship-opportunities`,
                 type: "sponsor",
                 availabilityInfo: "Limited availability."
             },
