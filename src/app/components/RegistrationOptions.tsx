@@ -3,6 +3,9 @@ import { REGISTRATION_TYPES } from '@/constants/registrations';
 import { EventProps } from './Speakers';
 import { notFound } from 'next/navigation';
 import RegistrationCard from './RegistrationCard';
+import Link from 'next/link';
+import Button from './Button';
+import { Award, ChevronRight, Mail } from 'lucide-react';
 
 export type RegistrationProps = {
     event: EventProps;
@@ -21,7 +24,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
         notFound();
     }
 
-    const earlyBirdDeadline = currentEvent.registrations.find(reg => reg.earlyBirdDeadline)?.earlyBirdDeadline || null;    const isEarlyBird = earlyBirdDeadline && new Date() < new Date(earlyBirdDeadline);
+    const earlyBirdDeadline = currentEvent.registrations.find(reg => reg.earlyBirdDeadline)?.earlyBirdDeadline || null; const isEarlyBird = earlyBirdDeadline && new Date() < new Date(earlyBirdDeadline);
     const deadlineDate = earlyBirdDeadline ? new Date(earlyBirdDeadline).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
@@ -91,6 +94,40 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                         </div>
                     </div>
                 )}
+
+                <div className="mt-4 pt-8">
+                    <div className="flex items-center justify-center mb-4">
+                        <Award className="w-8 h-8 text-gold-500 mr-3" />
+                        <h3 className="text-2xl font-bold text-navy-800">
+                            Become a Sponsor
+                        </h3>
+                    </div>
+
+                    <div className="bg-gradient-to-r from-navy-500 to-navy-800 text-white p-6 rounded-lg mb-6">
+                        <p className="text-center mb-4">
+                            Enhance your visibility and connect with key decision makers through our exclusive sponsorship opportunities
+                        </p>
+                        <Link href={`/events/${event.slug}/sponsor`}>
+                            <button className="w-full py-3 px-6 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition duration-300 flex items-center justify-center">
+                                View Sponsorship Packages
+                                <ChevronRight className="ml-2 w-5 h-5" />
+                            </button>
+                        </Link>
+                    </div>
+
+                    <div className="text-center">
+                        <div className="flex items-center justify-center text-gray-600 mb-2">
+                            <Mail className="w-5 h-5 mr-2" />
+                            <p className="font-medium">Contact our sponsorship team:</p>
+                        </div>
+                        <a
+                            href="mailto:marketing@americandefensealliance.org"
+                            className="text-blue-600 hover:text-blue-800 transition-colors duration-300 font-medium break-words"
+                        >
+                            marketing@americandefensealliance.org
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     );

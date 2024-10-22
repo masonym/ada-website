@@ -46,6 +46,16 @@ export default function Navbar() {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
 
+    const labelToPath = (label: string) => {
+        // replace & with dash
+        // label = label.split(' ')[0];
+        label = label.replace('&', '-');
+        // replace all spaces with empty string
+        label = label.replace(/\s/g, '');
+        // get just first word
+        return label.toLowerCase();
+    }
+
     return (
         <nav className="text-navy-800 text-[24px] my-0 p-4">
             <ul className="flex-col md:flex-row flex relative items-center justify-center list-none">
@@ -69,7 +79,7 @@ export default function Navbar() {
                                             {navItem.subItems.map(subItem => (
                                                 <li key={subItem.path}>
                                                     <Link
-                                                        href={`/events/${params.slug}/about/${subItem.path}`}
+                                                        href={`/events/${params.slug}/${labelToPath(navItem.label)}/${subItem.path}`}
                                                         className="block hover:bg-gray-600 hover:text-white transition-colors duration-300 rounded-md px-12 py-4 text-white"
                                                         onClick={handleLinkClick}
                                                     >

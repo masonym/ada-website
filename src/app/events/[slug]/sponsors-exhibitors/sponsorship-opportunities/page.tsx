@@ -23,9 +23,9 @@ const page = ({ params }: { params: { slug: string } }) => {
                 </Link>
             </div> */}
 
-                    <SponsorOptions
-                        event={event}
-                    ></SponsorOptions>
+            <SponsorOptions
+                event={event}
+            ></SponsorOptions>
         </>
     )
 }

@@ -108,7 +108,6 @@ export const REGISTRATION_TYPES = [
                     "Digital/Physical Copies of Agenda",
                     "Breakfast & Buffet Lunch",
                     "Access to Photos & Videos from Conference",
-                    "Access to VIP Networking Reception on March 18th, 2025 from 5:00 PM - 7:00 PM with purchase",
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
@@ -117,7 +116,29 @@ export const REGISTRATION_TYPES = [
                 regularPrice: "$495",
                 // earlyBirdDeadline: "2025-02-18T08:00:00Z",
                 type: "paid",
-                receptionPrice: "$550"
+                // receptionPrice: "$550"
+            },
+
+            {
+                title: "In-Person",
+                headerImage: "/registration-cards/2025SPDC/vip-attendee-pass.png",
+                perks: [
+                    "Registration for 1 Person",
+                    "Access to All Event Sessions",
+                    "Access to Exhibit Hall",
+                    "Speaker Presentations",
+                    "Digital/Physical Copies of Agenda",
+                    "Breakfast & Buffet Lunch",
+                    "Access to Photos & Videos from Conference",
+                    "Access to VIP Networking Reception on March 18th, 2025 from 5:00 PM - 7:00 PM",
+                ],
+                subtitle: "Includes:",
+                buttonText: "Register Now",
+                buttonLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-tickets-997306910817",
+                earlyBirdPrice: "$550",
+                regularPrice: "$550",
+                // earlyBirdDeadline: "2025-02-18T08:00:00Z",
+                type: "paid",
             },
 
             {
@@ -160,25 +181,26 @@ export const REGISTRATION_TYPES = [
                 type: "complimentary",
                 availabilityInfo: "Limited availability."
             },
-            {
-                title: "Sponsor",
-                headerImage: "/registration-cards/2025SPDC/sponsor-pass.png",
-                perks: [
-                    "Brand Visibility",
-                    "Speaking Opportunity",
-                    "Recognition",
-                    "<i>Reception Hosting</i> (Premier)",
-                    "<i>Luncheon Hosting </i>(Prestige)",
-                    "Display Table",
-                    "Event Access",
-                    "Media Coverage",
-                ],
-                subtitle: "Includes:",
-                buttonText: "Explore Sponsorship Opportunities",
-                buttonLink: `2025-southeast-defense-procurement-conference/about/sponsor`,
-                type: "sponsor",
-                availabilityInfo: "Limited availability."
-            },
+
+            // {
+            //     title: "Sponsor",
+            //     headerImage: "/registration-cards/2025SPDC/sponsor-pass.png",
+            //     perks: [
+            //         "Brand Visibility",
+            //         "Speaking Opportunity",
+            //         "Recognition",
+            //         "<i>Reception Hosting</i> (Premier)",
+            //         "<i>Luncheon Hosting </i>(Prestige)",
+            //         "Display Table",
+            //         "Event Access",
+            //         "Media Coverage",
+            //     ],
+            //     subtitle: "Includes:",
+            //     buttonText: "Explore Sponsorship Opportunities",
+            //     buttonLink: `2025-southeast-defense-procurement-conference/about/sponsor`,
+            //     type: "sponsor",
+            //     availabilityInfo: "Limited availability."
+            // },
         ],
         addOns: [
             // {
