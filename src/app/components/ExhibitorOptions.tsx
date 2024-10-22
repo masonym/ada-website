@@ -19,7 +19,7 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
         <div className="max-container mx-auto pb-8 pt-0 px-4 flex flex-col items-center">
             <div className="flex flex-col items-center">
                 <h1 className="text-[48px] text-left font-gotham font-bold mb-2 text-slate-700">
-                    Exhibitor Options
+                    Exhibitor Opportunities
                 </h1>
                 <p className="text-[20px] font-gotham text-slate-600 w-full max-w-4xl mx-auto mb-6 text-center">
                     Showcase your products and services at our premier defense industry event. <br /> We are pleased to offer the following Exhibitor Opportunities.
