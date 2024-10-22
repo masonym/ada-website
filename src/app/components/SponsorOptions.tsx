@@ -26,14 +26,17 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                 <p className="text-[20px] font-gotham text-slate-600 w-full max-w-2xl mx-auto mb-6 text-center">
                     Join us for a premier opportunity to network with key leaders. <br></br> We are pleased to offer the following Sponsorship Opportunities.
                 </p>
-                {currentEvent.sponsorships.map((item, index) => (
-                    <SponsorshipCard
-                        key={index}
-                        item={item}
-                    >
-                    </SponsorshipCard>
-                ))
-                }
+                {/* NOTE: may need to change this later for events with 5th/6th sponsors */}
+                <div className="grid md:grid-cols-3 grid-cols-1 gap-8 [&>*:nth-child(4)]:md:col-span-3 [&>*:nth-child(4)]:md:mx-auto [&>*:nth-child(4)]:md:max-w-[29rem]">
+                    {currentEvent.sponsorships.map((item, index) => (
+                        <SponsorshipCard
+                            key={index}
+                            item={item}
+                        >
+                        </SponsorshipCard>
+                    ))
+                    }
+                </div>
                 <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mb-6">
                     For more information and to secure your sponsorship, contact: <br></br>
                     <a href="mailto:marketing@americandefensealliance.org" className='underline'>marketing@americandefensealliance.org</a>
