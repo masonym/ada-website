@@ -20,7 +20,7 @@ const SponsorOptions = ({ event }: SponsorProps) => {
     return (
         <div className="max-container mx-auto pb-8 pt-0 px-4 flex flex-col items-center ">
             <div className="flex flex-col items-center">
-                <h1 className="text-[48px] text-left font-gotham font-bold mb-2  text-slate-700">
+                <h1 className="text-[48px] text-center font-gotham font-bold mb-2  text-slate-700">
                     Sponsorship Opportunities
                 </h1>
                 <p className="text-[20px] font-gotham text-slate-600 w-full max-w-2xl mx-auto mb-6 text-center">
