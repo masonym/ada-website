@@ -146,7 +146,7 @@ export const EVENTS = [
     ],
     image: "/2025_SoutheastDefenseProcurementConference.png",
     slug: "2025-southeast-defense-procurement-conference",
-    // locationImage: "/locations/location_NPC.png",
+    locationImage: "/locations/location_NPC.png",
     locationAddress: "TBD",
     directions: [],
     images: [],
