@@ -23,8 +23,8 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                 <h1 className="text-[48px] text-left font-gotham font-bold mb-2  text-slate-700">
                     Sponsorship Opportunities
                 </h1>
-                <p className="text-[20px] font-gotham text-slate-600 w-full max-w-2xl mx-auto mb-6">
-                    Join us for a premier opportunity to network with key leaders. We are pleased to offer the following Sponsorship Opportunities.
+                <p className="text-[20px] font-gotham text-slate-600 w-full max-w-2xl mx-auto mb-6 text-center">
+                    Join us for a premier opportunity to network with key leaders. <br></br> We are pleased to offer the following Sponsorship Opportunities.
                 </p>
                 {currentEvent.sponsorships.map((item, index) => (
                     <SponsorshipCard

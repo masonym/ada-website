@@ -17,7 +17,8 @@ export const EVENT_NAVS = [
       {
         label: 'Sponsors & Exhibitors',
         subItems: [
-          { label: "Sponsorship Opportunities", path: 'sponsorship-opportunities' }
+          { label: "Sponsorship Opportunities", path: 'sponsorship-opportunities' },
+          { label: "Exhibitor Opportunities", path: 'exhibitor-opportunities' },
         ],
       },
     ],
