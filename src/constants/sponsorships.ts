@@ -82,19 +82,8 @@ export const SPONSORSHIP_TYPES = [
                 ]
             },
             {
-                title: "Small Business",
+                title: "Small Business Sponsor",
                 cost: "$1,500",
-                perks: [
-                    { tagline: "Brand Visibility", description: "Logo placement on select conference materials and signage" },
-                    { tagline: "Recognition", description: "Acknowledgment during key moments of the conference, such as opening remarks" },
-                    { tagline: "Display Table", description: "Ability to host a company exhibit during the conference" },
-                    { tagline: "Event Access", description: "(2) conference passes with reserved seating and (2) complimentary tickets to the Networking Reception" },
-                    { tagline: "Media Coverage", description: "Basic inclusion in social media mentions or post-conference coverage" },
-                ]
-            },
-            {
-                title: "Exhibit",
-                cost: "$1,250",
                 perks: [
                     { tagline: "Brand Visibility", description: "Logo placement on select conference materials and signage" },
                     { tagline: "Recognition", description: "Acknowledgment during key moments of the conference, such as opening remarks" },
