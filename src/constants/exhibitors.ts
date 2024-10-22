@@ -23,7 +23,7 @@ export const EXHIBITOR_TYPES = [
         exhibitors: [
             {
                 title: "Exhibit Table",
-                cost: "$1,000",
+                cost: "$1,250",
                 perks: [
                     { tagline: "Team Access", description: "Registration for 2 People" },
                     { tagline: "Networking", description: "2 VIP Networking Reception Passes" },
