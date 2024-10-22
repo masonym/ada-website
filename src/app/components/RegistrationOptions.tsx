@@ -21,8 +21,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
         notFound();
     }
 
-    const earlyBirdDeadline = currentEvent.registrations.length > 0 ? currentEvent.registrations[0].earlyBirdDeadline : null;
-    const isEarlyBird = earlyBirdDeadline && new Date() < new Date(earlyBirdDeadline);
+    const earlyBirdDeadline = currentEvent.registrations.find(reg => reg.earlyBirdDeadline)?.earlyBirdDeadline || null;    const isEarlyBird = earlyBirdDeadline && new Date() < new Date(earlyBirdDeadline);
     const deadlineDate = earlyBirdDeadline ? new Date(earlyBirdDeadline).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
