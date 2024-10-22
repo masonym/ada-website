@@ -15,9 +15,9 @@ export const EVENT_NAVS = [
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {
-        label: 'Sponsors',
+        label: 'Sponsors & Exhibitors',
         subItems: [
-          { label: "Sponsorship Opportunities", path: 'sponsor' }
+          { label: "Sponsorship Opportunities", path: 'sponsorship-opportunities' }
         ],
       },
     ],
@@ -38,9 +38,10 @@ export const EVENT_NAVS = [
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {
-        label: 'Sponsors',
+        label: 'Sponsors & Exhibitors',
         subItems: [
-          { label: "Sponsorship Opportunities", path: 'sponsor' }
+          { label: "Sponsorship Opportunities", path: 'sponsorship-opportunities' },
+          { label: "Exhibitor Opportunities", path: 'exhibitor-opportunities' },
         ],
       },
     ],

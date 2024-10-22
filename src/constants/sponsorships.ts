@@ -45,7 +45,7 @@ export const SPONSORSHIP_TYPES = [
         id: 2,
         sponsorships: [
             {
-                title: "Gold",
+                title: "Gold Sponsor",
                 cost: "$7,000",
                 perks: [
                     { tagline: "Brand Visibility", description: "Prime logo placement on all conference materials, including banners, marketing emails, website, and programs" },
@@ -58,7 +58,7 @@ export const SPONSORSHIP_TYPES = [
                 ]
             },
             {
-                title: "Silver",
+                title: "Silver Sponsor",
                 cost: "$5,000",
                 perks: [
                     { tagline: "Brand Visibility", description: "Prominent logo placement on conference materials and signage" },
@@ -71,7 +71,7 @@ export const SPONSORSHIP_TYPES = [
                 ]
             },
             {
-                title: "Bronze",
+                title: "Bronze Sponsor",
                 cost: "$3,000",
                 perks: [
                     { tagline: "Brand Visibility", description: "Logo placement on select conference materials and signage" },
