@@ -118,7 +118,7 @@ export const EVENTS = [
     id: 2,
     title: "2025 Southeast Defense Procurement Conference",
     date: "March 18th - 19th, 2025",
-    timeStart: "2025-03-18T14:00:00Z", // TODO: change to actual time
+    timeStart: "2025-03-18T14:30:00Z", // TODO: change to actual time
     description: "The Southeast Defense Procurement Conference is a unique opportunity to engage with the U.S. Army Corps of Engineers, Naval Facilities Engineering Systems Command, and other key acquisition agencies in the Southeast region. This event will provide actionable business intelligence on upcoming acquisition opportunities, including advanced IT, AI, and Cyber, to weapons system development & sustainment, to forward logistics, facility support, Military base construction, shipyard modernization, Space defense and other major buying programs.",
     eventText: (
       <div className="max-container font-light">
