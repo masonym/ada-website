@@ -94,7 +94,7 @@ export const SPONSORSHIP_TYPES = [
             },
             {
                 title: "Exhibit",
-                cost: "$1,250 > $1,500",
+                cost: "$1,250",
                 perks: [
                     { tagline: "Brand Visibility", description: "Logo placement on select conference materials and signage" },
                     { tagline: "Recognition", description: "Acknowledgment during key moments of the conference, such as opening remarks" },
