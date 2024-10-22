@@ -114,5 +114,45 @@ export const EVENTS = [
     registerLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
     password: "ADA2025DIF"
   },
-  // Add more events here
+  {
+    id: 2,
+    title: "2025 Southeast Defense Procurement Conference",
+    date: "March 18th - 19th, 2025",
+    timeStart: "2025-03-18T14:00:00Z", // TODO: change to actual time
+    description: "The Southeast Defense Procurement Conference is a unique opportunity to engage with the U.S. Army Corps of Engineers, Naval Facilities Engineering Systems Command, and other key acquisition agencies in the Southeast region. This event will provide actionable business intelligence on upcoming acquisition opportunities, including advanced IT, AI, and Cyber, to weapons system development & sustainment, to forward logistics, facility support, Military base construction, shipyard modernization, Space defense and other major buying programs.",
+    eventText: (
+      <div className="max-container font-light">
+        <p className="mb-4 leading-9">
+          The Southeast Defense Procurement Conference is a unique opportunity to engage with the U.S. Army Corps of Engineers, Naval Facilities Engineering Systems Command, and other key acquisition agencies in the Southeast region. This event will provide actionable business intelligence on upcoming acquisition opportunities, including advanced IT, AI, and Cyber, to weapons system development & sustainment, to forward logistics, facility support, Military base construction, shipyard modernization, Space defense and other major buying programs.
+        </p>
+        <p className="mb-4">
+          Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers, and Small Business Program Directors from across the Defense Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors.
+        </p>
+      </div>
+    ),
+    topicalCoverage: [
+      "Defense Department, Service, and Combat Command Acquisition Priorities",
+      "DoD Small Business Contracting Programs",
+      "Prime Defense Contractors — Subcontracting & Teaming",
+      "Accelerated Contracting Opportunities for Innovative Technology Solutions (DARPA, DIU, DEFENSEWERX)",
+      "GWAC's (Government-Wide Acquisition Contracts) and Their Small Business Tracks",
+      "Mentor-Protégé Programs as Business Accelerators for Smalls and Primes",
+      "Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC) Projects Coming Down the Pike",
+      "Military Base-Community Partnerships Driving Construction and Facility Support Contracts",
+      "Contract & Grant Opportunities Financed by Infrastructure and Energy Resiliency Legislation",
+      "Navy's Critical Maintenance & Repair and Shipbuilding Issues and Resulting Support Needs",
+      "Indo-Pacific Deployment/Logistics Challenges and New Contracting Initiatives",
+      "The New Unmanned/Autonomous Platforms and How to Engage",
+    ],
+    image: "/2025_SoutheastDefenseProcurementConference.png",
+    slug: "2025-southeast-defense-procurement-conference",
+    // locationImage: "/locations/location_NPC.png",
+    locationAddress: "TBD",
+    directions: [],
+    images: [],
+    parkingInfo: [],
+    placeID: "TBD",
+    registerLink: "https://www.eventbrite.com/e/southeast-defense-procurement-conference-tickets",
+    password: "ADA2025SDPC"
+  }
 ];
