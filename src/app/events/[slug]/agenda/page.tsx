@@ -17,7 +17,7 @@ export default function AgendaPage({ params }: { params: { slug: string } }) {
     return (
       <div className="text-center py-8">
         {/* <h1 className="text-3xl font-bold mb-4">{event.title} - Agenda</h1> */}
-        <p>Schedule not available at this time. Please check back later.</p>
+        <p className="text-l font-bold text-center mb-8 text-slate-600">Schedule not available at this time. Please check back later.</p>
       </div>
     );
   }
