@@ -232,15 +232,16 @@ export const SPEAKERS = [
                 `,
                 keynote: true,
             },
-            // {
-            //     image: "/speakers/placeholder.png",
-            //     name: "Bianca Henderson",
-            //     position: "Small Business Director",
-            //     company: "NAVFAC HQ, Department of the Navy",
-            //     bio: `
-            //     Placeholder Bio
-            //     `
-            // },
+            
+            {
+                image: "/speakers/bianca_henderson.png",
+                name: "Bianca Henderson",
+                position: "Small Business Director",
+                company: "NAVFAC HQ, Department of the Navy",
+                bio: `
+                Bianca Henderson serves as the Director for the Naval Facilities Engineering System Command (NAVFAC), Office of Small Business Programs (OSBP). Bianca leads 13 Small Business Professional’s across the NAVFAC enterprise with a small business spend that exceeded $5.6 billion dollars in FY-24. Bianca, has 28 years of Gov’t Contracting experience, and obtained DAWIA/FAC-C Level III Acquisition certifications. Bianca has worked for NAVFAC for 7 years and is passionate about advocating for small business utilization. She finds her job as a small business leader very meaningful and impactful. Bianca is also 11-year Marine Corps veteran.
+                `
+            },
 
 
 
