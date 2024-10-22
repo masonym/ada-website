@@ -57,7 +57,7 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                     />
                 </div>
             </div>
-            
+
             <div className="p-6 flex-grow flex flex-col justify-between">
                 <div>
                     <p className="text-sm text-gray-600 mb-4">{item.subtitle}</p>
@@ -71,7 +71,6 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                     </ul>
                 </div>
                 <div className="mt-4">
-                    <p className="text-2xl font-bold text-center mb-2">{currentPrice}</p>
                     {isPaid && isEarlyBird && (
                         <p className="text-md font-semibold text-center text-green-600 mb-2">
                             Early-bird price! Increases to {item.regularPrice} after {deadlineDate}
@@ -102,7 +101,7 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                             {item.availabilityInfo}
                         </p>
                     )}
-
+                    <p className="text-2xl font-bold text-center mb-2">{currentPrice}</p>
                     <Link href={item.buttonLink}>
                         <button className="w-full py-2 px-4 bg-blue-800 text-white font-semibold rounded-md hover:bg-navy-200 transition duration-300">
                             {item.buttonText}

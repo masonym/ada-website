@@ -146,14 +146,13 @@ export const REGISTRATION_TYPES = [
                 headerImage: "/registration-cards/2025SPDC/exhibit-table-pass.png",
                 perks: [
                     "Registration for 2 People",
-                    "2 Networking Reception Tickets",
-                    "6' Display Table in General Session",
+                    "2 VIP Networking Reception Passes",
+                    "6' Exhibit Table in Exhibit Hall",
                     "Access to All Event Sessions",
-                    "Speaker Presentations and Materials",
+                    "Speaker Presentations",
                     "Digital/Physical Copies of Agenda",
                     "Breakfast & Buffet Lunch",
                     "Access to Photos & Videos from Conference",
-                    "Use code ADDITIONAL to Register 2nd Attendee"
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
@@ -170,7 +169,8 @@ export const REGISTRATION_TYPES = [
                 perks: [
                     "Registration for 1 Person",
                     "Access to All Event Sessions",
-                    "Speaker Presentations and Materials",
+                    "Access to Exhibit Hall",
+                    "Speaker Presentations",
                     "Digital/Physical Copies of Agenda",
                     "Breakfast & Buffet Lunch",
                     "Access to Photos & Videos from Conference",
