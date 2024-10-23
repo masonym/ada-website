@@ -101,8 +101,8 @@ export const REGISTRATION_TYPES = [
                 title: "In-Person",
                 headerImage: "/registration-cards/2025SPDC/attendee-pass.png",
                 perks: [
-                    "Registration for (1) Attendee Pass",
-                    "Access to all General Sessions",
+                    "(1) Attendee Pass",
+                    "Access to General Sessions",
                     "Access to Exhibits",
                     "Onsite Sign-up for Matchmaking Sessions",
                     "Breakfast & Buffet Lunch",
@@ -122,8 +122,8 @@ export const REGISTRATION_TYPES = [
                 title: "In-Person",
                 headerImage: "/registration-cards/2025SPDC/vip-attendee-pass.png",
                 perks: [
-                    "Registration for (1) VIP Attendee Pass",
-                    "Access to all General Sessions",
+                    "(1) VIP Attendee Pass",
+                    "Access to General Sessions",
                     "Access to Exhibits",
                     "Onsite Sign-up for Matchmaking Sessions",
                     "Breakfast & Buffet Lunch",
@@ -143,7 +143,8 @@ export const REGISTRATION_TYPES = [
                 title: "Table-Top Exhibit",
                 headerImage: "/registration-cards/2025SPDC/exhibit-table-pass.png",
                 perks: [
-                    "Registration for (1) VIP Attendee Pass",
+                    "(1) Exhibitor Pass",
+                    "(1) VIP Networking Reception Pass",
                     "Additional Exhibitor Passes can be purchased at a Discounted Rate of $395 each",
                     "Table-Top Exhibit",
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
@@ -161,8 +162,8 @@ export const REGISTRATION_TYPES = [
                 title: "Government/Military Personnel Registration",
                 headerImage: "/registration-cards/2025SPDC/gov-pass.png",
                 perks: [
-                    "Registration for (1) Attendee Pass",
-                    "Access to all General Sessions",
+                    "(1) Attendee Pass",
+                    "Access to General Sessions",
                     "Access to Exhibits",
                     "Onsite Sign-up for Matchmaking Sessions",
                     "Breakfast & Buffet Lunch",

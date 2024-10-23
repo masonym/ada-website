@@ -26,7 +26,7 @@ export const EXHIBITOR_TYPES = [
                 cost: "$1,250",
                 perks: [
                     { tagline: "Event Access", description: "(2) VIP Attendee Passes. Additional VIP Attendee Passes can be Purchased for $395 each" },
-                    { tagline: "Exhibit Space", description: "8'x10' Exhibit Space in Exhibit Hall/Foyer. 6' Exhibit Table and 2 Chairs" },
+                    { tagline: "Exhibit Space", description: "8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and 2 Chairs" },
                     { tagline: "Brand Visibility", description: "Logo Placement on select Conference Materials, including Marketing Emails and Website" },
                     { tagline: "Media Coverage", description: "Photographs of your Participation" },
                 ]
