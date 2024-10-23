@@ -73,7 +73,8 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                 <div className="mt-4">
                     {isPaid && isEarlyBird && (
                         <p className="text-md font-semibold text-center text-green-600 mb-2">
-                            Early-bird price! Increases to {item.regularPrice} after {deadlineDate}
+                            Early-bird price! 
+                            {/* Increases to {item.regularPrice} after {deadlineDate} */}
                         </p>
                     )}
                     {item.receptionPrice && (

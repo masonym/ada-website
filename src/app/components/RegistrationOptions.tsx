@@ -53,7 +53,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                 {isEarlyBird && (
                     <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6 text-xl mx-4 text-center" role="alert">
                         <strong className="font-bold">Early-bird pricing available!</strong>
-                        <span className="block sm:inline"> Register before {deadlineDate}.</span>
+                        {/* <span className="block sm:inline"> Register before {deadlineDate}.</span> */}
                     </div>
                 )}
 

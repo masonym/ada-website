@@ -109,36 +109,65 @@ export const SCHEDULES = [
         id: 2,
         schedule: [
             {
+                date: "March 17th, 2025",
+                items: [
+                    {
+                        time: "3:00 PM - 6:00 PM",
+                        title: "Exhibitor Set-up",
+                    },
+                ],
+            },
+            {
                 date: "March 18th, 2025",
                 items: [
                     {
                         time: "7:30 AM - 8:30 AM",
-                        title: "Registration & Networking Breakfast",
+                        title: "Registration & Networking Breakfast, On-Site Sign-up for Matchmaking Sessions",
                         // location: "Ballroom and Foyer",
                     },
                     {
-                        time: "8:30 AM - 12:30 PM",
+                        time: "8:30 AM - 10:00 AM",
+                        title: "General Sessions",
+                        // location: "Ballroom",
+                    },
+                    {
+                        time: "10:00 AM - 10:15 AM",
+                        title: "Networking Break",
+                        // location: "Fourth Estate Meeting Room"
+                    },
+                    {
+                        time: "10:15 AM - 12:30 PM",
                         title: "General Sessions",
                         // location: "Ballroom",
                     },
                     {
                         time: "12:30 PM - 1:30 PM",
-                        title: "Networking Lunch",
+                        title: "Networking Lunch for Speakers, Sponsors, Exhibitors, and Attendees",
                         // location: "Ballroom",
                     },
                     {
-                        time: "1:30 PM - 4:00 PM",
+                        time: "1:30 PM - 3:00 PM",
                         title: "General Sessions",
                         // location: "Ballroom",
                     },
                     {
-                        time: "4:00 PM - 5:00 PM",
+                        time: "3:00 PM - 3:15 PM",
+                        title: "Networking Break",
+                        // location: "Fourth Estate Meeting Room"
+                    },
+                    {
+                        time: "3:15 PM - 4:00 PM",
+                        title: "General Sessions",
+                        // location: "Ballroom",
+                    },
+                    {
+                        time: "4:00 PM - 5:30 PM",
                         title: "Matchmaking Sessions",
                         // location: "Fourth Estate Meeting Room"
                     },
                     {
-                        time: "5:00 PM - 7:00 PM",
-                        title: "VIP Networking Reception",
+                        time: "5:30 PM - 7:30 PM",
+                        title: "VIP Networking Reception with Speakers, Sponsors, Exhibitors, and VIP Attendees",
                         // location: "Fourth Estate Meeting Room"
                     },
                     
@@ -148,12 +177,42 @@ export const SCHEDULES = [
                 date: "March 19th, 2025",
                 items: [
                     {
-                        time: "8:00 AM - 9:00 AM",
-                        title: "Registration & Networking Breakfast",
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Registration & Networking Breakfast, On-Site Signup for Matchmaking Sessions",
                         // location: "Ballroom and Foyer",
                     },
                     {
-                        time: "8:30 AM - 12:00 PM",
+                        time: "8:30 AM - 10:30 AM",
+                        title: "General Sessions",
+                        // location: "Ballroom",
+                    },
+                    {
+                        time: "10:30 AM - 10:45 AM",
+                        title: "Networking Break",
+                        // location: "Fourth Estate Meeting Room"
+                    },
+                    {
+                        time: "10:45 AM - 12:00 PM",
+                        title: "General Sessions",
+                        // location: "Ballroom",
+                    },
+                    {
+                        time: "12:00 PM - 1:00 PM",
+                        title: "Networking Lunch",
+                        // location: "Ballroom",
+                    },
+                    {
+                        time: "1:00 PM - 3:00 PM",
+                        title: "General Sessions",
+                        // location: "Ballroom",
+                    },
+                    {
+                        time: "3:00 PM - 3:15 PM",
+                        title: "Networking Break",
+                        // location: "Fourth Estate Meeting Room"
+                    },
+                    {
+                        time: "3:15 PM - 4:00 PM",
                         title: "General Sessions",
                         // location: "Ballroom",
                     },
