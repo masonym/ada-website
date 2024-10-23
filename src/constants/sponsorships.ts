@@ -95,7 +95,7 @@ export const SPONSORSHIP_TYPES = [
                 cost: "$1,500",
                 perks: [
                     { tagline: "Event Access", description: "(2) VIP Attendee Passes. Additional VIP Attendee Passes can be Purchased for $395 each" },
-                    { tagline: "Exhibit Space", description: ": 8'x10' Exhibit Space in Exhibit Hall/Foyer. 6' Exhibit Table and 2 Chairs" },
+                    { tagline: "Exhibit Space", description: ": 8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and 2 Chairs" },
                     { tagline: "Brand Visibility", description: "Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
                     { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
                     { tagline: "Media Coverage", description: "Photographs and Videos of your Participation" },
