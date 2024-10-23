@@ -196,31 +196,6 @@ export const SCHEDULES = [
                         title: "General Sessions",
                         // location: "Ballroom",
                     },
-                    {
-                        time: "12:00 PM - 1:00 PM",
-                        title: "Networking Lunch",
-                        // location: "Ballroom",
-                    },
-                    {
-                        time: "1:00 PM - 3:00 PM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
-                    },
-                    {
-                        time: "3:00 PM - 3:15 PM",
-                        title: "Networking Break",
-                        // location: "Fourth Estate Meeting Room"
-                    },
-                    {
-                        time: "3:15 PM - 4:00 PM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
-                    },
-                    {
-                        time: "12:00 PM - 1:00 PM",
-                        title: "Matchmaking Sessions",
-                        // location: "Ballroom",
-                    },
                 ],
             }
             
