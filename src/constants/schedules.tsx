@@ -105,5 +105,67 @@ export const SCHEDULES = [
         //     // Add more days as needed...
         //   ]
     },
+    {
+        id: 2,
+        schedule: [
+            {
+                date: "March 18th, 2025",
+                items: [
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Registration & Networking Breakfast",
+                        // location: "Ballroom and Foyer",
+                    },
+                    {
+                        time: "8:30 AM - 12:30 PM",
+                        title: "General Sessions",
+                        // location: "Ballroom",
+                    },
+                    {
+                        time: "12:30 PM - 1:30 PM",
+                        title: "Networking Lunch",
+                        // location: "Ballroom",
+                    },
+                    {
+                        time: "1:30 PM - 4:00 PM",
+                        title: "General Sessions",
+                        // location: "Ballroom",
+                    },
+                    {
+                        time: "4:00 PM - 5:00 PM",
+                        title: "Matchmaking Sessions",
+                        // location: "Fourth Estate Meeting Room"
+                    },
+                    {
+                        time: "5:00 PM - 7:00 PM",
+                        title: "VIP Networking Reception",
+                        // location: "Fourth Estate Meeting Room"
+                    },
+                    
+                ],
+            },
+            {
+                date: "March 19th, 2025",
+                items: [
+                    {
+                        time: "8:00 AM - 9:00 AM",
+                        title: "Registration & Networking Breakfast",
+                        // location: "Ballroom and Foyer",
+                    },
+                    {
+                        time: "8:30 AM - 12:00 PM",
+                        title: "General Sessions",
+                        // location: "Ballroom",
+                    },
+                    {
+                        time: "12:00 PM - 1:00 PM",
+                        title: "Matchmaking Sessions",
+                        // location: "Ballroom",
+                    },
+                ],
+            }
+            
+        ]
+    }
     // Add more event schedules here...
 ];
