@@ -93,11 +93,11 @@ export const SPONSORSHIP_TYPES = [
                 title: "Small Business Sponsor",
                 cost: "$1,500",
                 perks: [
-                    { tagline: "Event Access", description: "(2) conference passes and (2) complimentary tickets to the VIP Networking Reception" },
-                    { tagline: "Brand Visibility", description: "Logo placement on select conference materials and signage" },
-                    { tagline: "Exhibit Space", description: "Ability to host a company exhibit during the conference" },
-                    { tagline: "Recognition", description: "Acknowledgment during key moments of the conference, such as opening remarks" },
-                    { tagline: "Media Coverage", description: "Basic inclusion in social media mentions or post-conference coverage" },
+                    { tagline: "Event Access", description: "(2) VIP Attendee Passes. Additional VIP Attendee Passes can be Purchased for $395 each" },
+                    { tagline: "Exhibit Space", description: ": 8'x10' Exhibit Space in Exhibit Hall/Foyer. 6' Exhibit Table and 2 Chairs" },
+                    { tagline: "Brand Visibility", description: "Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
+                    { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
+                    { tagline: "Media Coverage", description: "Photographs and Videos of your Participation" },
                 ]
             },
         ],

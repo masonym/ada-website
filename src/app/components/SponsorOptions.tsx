@@ -24,7 +24,10 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                     Sponsorship Opportunities
                 </h1>
                 <p className="text-[20px] font-gotham text-slate-600 w-full max-w-2xl mx-auto mb-6 text-center">
-                    Join us for a premier opportunity to network with key leaders. <br></br> We are pleased to offer the following Sponsorship Opportunities.
+                    Increase your Brand Visibility and gain a Competitive Advantage! <br></br> Engaging in Sponsorship Opportunities is a Strategic way to effectively Promote your Products or Services.
+                </p>
+                <p className="text-[20px] font-gotham text-slate-600 w-full max-w-2xl mx-auto mb-6 text-center">
+                    Registered Sponsors: Please submit a high-quality logo for inclusion in the conference materials, along with the desired link for the logo on the event website, to marketing@americandefencealliance.org.
                 </p>
                 {/* NOTE: may need to change this later for events with 5th/6th sponsors */}
                 <div className="grid md:grid-cols-3 grid-cols-1 gap-8 [&>*:nth-child(4)]:md:col-span-3 [&>*:nth-child(4)]:md:mx-auto [&>*:nth-child(4)]:md:max-w-[29rem]">
