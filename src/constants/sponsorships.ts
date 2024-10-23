@@ -54,7 +54,7 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "VIP Introductions", description: "Strategic Introductions to Key Speakers and VIP Guests"},
                     { tagline: "Exhibit Space", description: "8'x10' Exhibit Space Strategically Placed in Exhibit Area/Foyer. 6' Exhibit Table and 2 Chairs" },
                     { tagline: "Matchmaking Host", description: "Invitation to Host a One-on-One Matchmaking Session" },
-                    { tagline: "Featured Sponsor Email", description: "(1) Promotional Email sent to all Registered Attendees Pre-Conference" },
+                    { tagline: "Sponsor Spotlight Email", description: "(1) Promotional Email sent to all Registered Attendees Pre-Conference" },
                     { tagline: "Brand Visibility", description: "Prime Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
                     { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
                     { tagline: "Media Coverage", description: "Inclusion in Press Releases, Promotional Materials and Social Media Mentions. Photographs and Videos of your Participation" },
