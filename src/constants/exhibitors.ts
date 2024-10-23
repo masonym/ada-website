@@ -25,14 +25,10 @@ export const EXHIBITOR_TYPES = [
                 title: "Exhibit Table",
                 cost: "$1,250",
                 perks: [
-                    { tagline: "Team Access", description: "Registration for 2 People" },
-                    { tagline: "Networking", description: "2 VIP Networking Reception Passes" },
-                    { tagline: "Exhibit Space", description: "6' Display Table in General Session" },
-                    { tagline: "Full Access", description: "Access to All Event Sessions" },
-                    { tagline: "Resources", description: "Speaker Presentations and Materials" },
-                    { tagline: "Documentation", description: "Digital/Physical Copies of Agenda" },
-                    { tagline: "Dining", description: "Breakfast & Buffet Lunch" },
-                    { tagline: "Media Access", description: "Access to Photos & Videos from Conference" },
+                    { tagline: "Event Access", description: "(2) VIP Attendee Passes. Additional VIP Attendee Passes can be Purchased for $395 each" },
+                    { tagline: "Exhibit Space", description: "8'x10' Exhibit Space in Exhibit Hall/Foyer. 6' Exhibit Table and 2 Chairs" },
+                    { tagline: "Brand Visibility", description: "Logo Placement on select Conference Materials, including Marketing Emails and Website" },
+                    { tagline: "Media Coverage", description: "Photographs of your Participation" },
                 ]
             },
         ]
