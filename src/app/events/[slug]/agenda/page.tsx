@@ -2,7 +2,7 @@ import React from 'react';
 import { EVENTS } from '@/constants/events';
 import { SCHEDULES } from '@/constants/schedules';
 import { notFound } from 'next/navigation';
-import Schedule from '@/constants/Schedule';
+import Schedule from '@/app/components/Schedule';
 
 export default function AgendaPage({ params }: { params: { slug: string } }) {
   const event = EVENTS.find((e) => e.slug === params.slug);

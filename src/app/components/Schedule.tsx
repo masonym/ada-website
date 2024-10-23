@@ -41,7 +41,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({ schedule }) => {
               className={`flex-1 text-center py-4 px-4 font-semibold ${
                 selectedDay === index
                   ? 'bg-navy-800 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-300'
               }`}
               onClick={() => setSelectedDay(index)}
             >
@@ -51,9 +51,9 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({ schedule }) => {
         </div>
         <div className="p-6">
           {schedule[selectedDay].items.map((item, itemIndex, array) => (
-            <div key={itemIndex} className={`relative pl-8 ${itemIndex !== array.length - 1 ? 'mb-8 pb-8 border-b border-gray-200' : ''}`}>
-              <div className="absolute left-0 top-0 bottom-0 w-px bg-gray-300"></div>
-              <div className="absolute left-[-4px] top-2 w-3 h-3 rounded-full bg-navy-800 border-2 border-white"></div>
+            <div key={itemIndex} className={`relative pl-0 ${itemIndex !== array.length - 1 ? 'mb-8 pb-8 border-b border-gray-200' : ''}`}>
+              {/* <div className="absolute left-0 top-0 bottom-0 w-px bg-gray-300"></div> */}
+              {/* <div className="absolute left-[-5px] top-2 w-3 h-3 rounded-full bg-navy-800 border-2 border-white"></div> */}
               <div className="font-bold text-xl text-navy-800 mb-2">{item.time}</div>
               <div className="text-xl font-semibold mb-2">{item.title}</div>
               {item.location && (
