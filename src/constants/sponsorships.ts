@@ -56,7 +56,7 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Featured Sponsor Email", description: "(1) Promotional Email sent to all Registered Attendees Pre-Conference" },
                     { tagline: "Brand Visibility", description: "Prime Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
                     { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
-                    { tagline: "Media Coverage", description: "Inclusion in Press Releases, Promotional Materials, Social Media Mentions. Photographs and Videos of your Participation" },
+                    { tagline: "Media Coverage", description: "Inclusion in Press Releases, Promotional Materials and Social Media Mentions. Photographs and Videos of your Participation" },
                 ],
                 colour: "#ffaf00"
             },
@@ -71,7 +71,7 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Matchmaking Host", description: "Invitation to Host a One-on-One Matchmaking Session" },
                     { tagline: "Brand Visibility", description: " Prominent Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
                     { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
-                    { tagline: "Media Coverage", description: "Inclusion in Promotional Materials, Social Media Mentions. Photographs and Videos of your Participation" },
+                    { tagline: "Media Coverage", description: "Inclusion in Promotional Materials and Social Media Mentions. Photographs and Videos of your Participation" },
                 ],
                 colour: "#C0C0C0"
             },
@@ -79,11 +79,13 @@ export const SPONSORSHIP_TYPES = [
                 title: "Bronze Sponsor",
                 cost: "$3,000",
                 perks: [
-                    { tagline: "Event Access", description: "(3) conference passes and (3) complimentary tickets to the VIP Networking Reception" },
-                    { tagline: "Brand Visibility", description: "Logo placement on select conference materials and signage" },
-                    { tagline: "Exhibit Space", description: "Ability to host a company exhibit during the conference" },
-                    { tagline: "Recognition", description: "Acknowledgment during key moments of the conference, such as opening remarks" },
-                    { tagline: "Media Coverage", description: "Basic inclusion in social media mentions or post-conference coverage" },
+                    { tagline: "Event Access", description: "(3) VIP Attendee Passes. Additional VIP Attendee Passes can be Purchased for $395 each" },
+                    { tagline: "Speaking Opportunity", description: "5-Minute Speaking Session for a Representative of your Company" },
+                    { tagline: "Exhibit Space", description: "8'x10' Exhibit Space in Exhibit Hall/Foyer. 6' Exhibit Table and 2 Chairs" },
+                    { tagline: "Matchmaking Host", description: "Invitation to Host a One-on-One Matchmaking Session" },
+                    { tagline: "Brand Visibility", description: "Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
+                    { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
+                    { tagline: "Media Coverage", description: " Inclusion in Social Media Mentions. Photographs and Videos of your Participation" },
                 ],
                 colour: "#CD7F32"
             },
