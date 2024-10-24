@@ -51,7 +51,7 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Event Access", description: " (4) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Speaking Opportunity", description: "15-Minute Speaking Session for a Representative of your Company" },
                     // { tagline: "VIP Networking Reception Hosting", description: "Exclusive Host of the VIP Networking Reception on Day 1 of the Conference from 5:00 PM - 7:00 PM." },
-                    { tagline: "VIP Introductions", description: "Strategic Introductions to Key Speakers and VIP Guests"},
+                    { tagline: "VIP Introductions", description: "Strategic Introductions to Key Speakers and VIP Guests" },
                     { tagline: "Exhibit Space", description: "8'x10' Exhibit Space Strategically Placed in Exhibit Area/Foyer. 6' Exhibit Table and 2 Chairs" },
                     { tagline: "Matchmaking Host", description: "Invitation to Host a One-on-One Matchmaking Session" },
                     { tagline: "Sponsor Spotlight Email", description: "(1) Promotional Email sent to all Registered Attendees Pre-Conference Highlighting your Capabilities" },
@@ -91,32 +91,33 @@ export const SPONSORSHIP_TYPES = [
                 colour: "#CD7F32"
             },
             {
-                title: "Networking Luncheon Sponsor",
-                cost: "$6,000",
-                perks: [
-                    { tagline: "Event Access", description: "(3) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
-                    { tagline: "Speaking Opportunity", description: "10-Minute Speaking Session for a Representative of your Company before the Networking Luncheon" },
-                    { tagline: "Exhibit Space", description: "8'x10' Exhibit Space Strategically Placed in Exhibit Area/Foyer. 6' Exhibit Table and 2 Chairs" },
-                    { tagline: "Networking Luncheon Hosting", description: "Exclusive Host of the Networking Luncheon" },
-                    { tagline: "Matchmaking Host", description: "Invitation to Host a One-on-One Matchmaking Session" },
-                    { tagline: "Brand Visibility", description: "Prominent Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
-                    { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
-                    { tagline: "Media Coverage", description: "Inclusion in Promotional Materials and Social Media Mentions. Photographs and Videos of your Participation" },
-                ],
-            },
-            {
                 title: "VIP Networking Reception Sponsor",
-                cost: "$4,000",
+                cost: "$3,500",
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
-                    { tagline: "Speaking Opportunity", description: "5-Minute Speaking Session for a Representative of your Company before the VIP Networking Reception" },
-                    { tagline: "Exhibit Space", description: "8'x10' Exhibit Space Strategically Placed in Exhibit Area/Foyer. 6' Exhibit Table and 2 Chairs" },
                     { tagline: "VIP Networking Reception Hosting", description: "Exclusive Host of the VIP Networking Reception on March 18 from 5:30 PM - 7:30 PM" },
+                    { tagline: "Speaking Opportunity", description: "Provide Welcoming Remarks to the VIP Networking Reception" },
+                    { tagline: "Exhibit Space", description: "8'x10' Exhibit Space Strategically Placed in Exhibit Area/Foyer. 6' Exhibit Table and 2 Chairs" },
                     { tagline: "Matchmaking Host", description: "Invitation to Host a One-on-One Matchmaking Session" },
                     { tagline: "Brand Visibility", description: "Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
                     { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
                     { tagline: "Media Coverage", description: "Inclusion in Promotional Materials and Social Media Mentions. Photographs and Videos of your Participation" },
                 ],
+                colour: "#3FB4E6"
+            },
+            {
+                title: "Networking Luncheon Sponsor",
+                cost: "$2,500",
+                perks: [
+                    { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
+                    { tagline: "Networking Luncheon Hosting", description: "Host of the Networking Luncheon" },
+                    { tagline: "Exhibit Space", description: "8'x10' Exhibit Space Strategically Placed in Exhibit Area/Foyer. 6' Exhibit Table and 2 Chairs" },
+                    { tagline: "Matchmaking Host", description: "Invitation to Host a One-on-One Matchmaking Session" },
+                    { tagline: "Brand Visibility", description: "Prominent Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
+                    { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
+                    { tagline: "Media Coverage", description: "Inclusion in Promotional Materials and Social Media Mentions. Photographs and Videos of your Participation" },
+                ],
+                colour: "#3FB4E6"
             },
             {
                 title: "Small Business Sponsor",
@@ -127,7 +128,7 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Brand Visibility", description: "Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
                     { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
                     { tagline: "Media Coverage", description: "Photographs and Videos of your Participation" },
-                ]
+                ],
             },
         ],
     },

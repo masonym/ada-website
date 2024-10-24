@@ -1,10 +1,15 @@
 import React from 'react';
 import Button from '@/app/components/Button';
 
+type TopicalCoverage = {
+  tagline: string;
+  description: string;
+};
+
 type EventProps = {
   title: string;
   eventText: React.ReactNode;
-  topicalCoverage: string[];
+  topicalCoverage: TopicalCoverage[];
   registerLink: string;
 };
 
@@ -13,9 +18,9 @@ const EventDetails: React.FC<EventProps> = ({ title, eventText, topicalCoverage,
     <div className="min-h-screen text-navy-800 text-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col items-center">
         <div className="bg-white/10 backdrop-blur-md rounded-xl p-8 mb-12 shadow-xl">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
-          About the Event
-        </h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+            About the Event
+          </h2>
           <div className="text-lg leading-relaxed">{eventText}</div>
         </div>
 
@@ -27,7 +32,10 @@ const EventDetails: React.FC<EventProps> = ({ title, eventText, topicalCoverage,
                 key={index}
                 className="bg-white/10 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 flex-grow-0 flex-shrink-0 basis-full sm:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)]"
               >
-                <p className="text-lg font-semibold">{topic}</p>
+                <h3 className="text-lg font-bold mb-2 text-center text-navy-800">
+                  {topic.tagline}
+                </h3>
+                <p className="text-base place-self-center text-gray-700">{topic.description}</p>
               </div>
             ))}
           </div>

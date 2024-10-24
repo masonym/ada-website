@@ -6,7 +6,7 @@ export const EVENT_NAVS = [
       {
         label: 'About',
         subItems: [
-          { label: 'About the Event', path: 'about' },
+          { label: 'About the Event', path: 'about-the-event' },
           { label: 'Location & Parking', path: 'venue' },
           { label: 'FAQs', path: 'faqs' },
           { label: 'Event Recap', path: 'event-recap' },
@@ -30,7 +30,7 @@ export const EVENT_NAVS = [
       {
         label: 'About',
         subItems: [
-          { label: 'About the Event', path: 'about' },
+          { label: 'About the Event', path: 'about-the-event' },
           // { label: 'Location & Parking', path: 'venue' },
           { label: 'FAQs', path: 'faqs' },
           { label: 'Event Recap', path: 'event-recap' },

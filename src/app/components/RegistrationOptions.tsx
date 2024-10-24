@@ -47,9 +47,6 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                 <h1 className="text-[48px] text-center font-gotham font-bold mb-2 text-slate-700">
                     Registration Options
                 </h1>
-                <p className="text-[20px] font-gotham text-slate-600 w-full max-w-2xl mx-auto mb-6 text-center">
-                    Join us for a premier opportunity to network with key leaders.
-                </p>
                 {isEarlyBird && (
                     <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6 text-xl mx-4 text-center" role="alert">
                         <strong className="font-bold">Early-bird pricing available!</strong>

@@ -20,18 +20,18 @@ export const EVENTS = [
       </div>
     ),
     topicalCoverage: [
-      "Defense Department, Service, and Combat Command Acquisition Priorities",
-      "DoD Small Business Contracting Programs",
-      "Prime Defense Contractors — Subcontracting & Teaming",
-      "Accelerated Contracting Opportunities for Innovative Technology Solutions (DARPA, DIU, DEFENSEWERX)",
-      "GWAC's (Government-Wide Acquisition Contracts) and Their Small Business Tracks",
-      "Mentor-Protégé Programs as Business Accelerators for Smalls and Primes",
-      "Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC) Projects Coming Down the Pike",
-      "Military Base-Community Partnerships Driving Construction and Facility Support Contracts",
-      "Indo-Pacific Deployment/Logistics Challenges and New Contracting Initiatives",
-      "The Race to Develop AI, Advanced Computing and Machine Learning for Defense",
-      "Cybersecurity Compliance Mandates and CMMC Training Options",
-      "Special Preferential Contracting/Set-Aside Opportunities for Small Disadvantaged Businesses, 8(a) Certified Companies, Woman-Owned Small Businesses, Veteran and Service-Disabled Veteran Owned Small Businesses, HUBZone Firms, and Native American, Alaska Native, and Native Hawaiian Companies",
+      { tagline: "", description: "Defense Department, Service, and Combat Command Acquisition Priorities", },
+      { tagline: "", description: "DoD Small Business Contracting Programs", },
+      { tagline: "", description: "Prime Defense Contractors — Subcontracting & Teaming", },
+      { tagline: "", description: "Accelerated Contracting Opportunities for Innovative Technology Solutions (DARPA, DIU, DEFENSEWERX)", },
+      { tagline: "", description: "GWAC's (Government-Wide Acquisition Contracts) and Their Small Business Tracks", },
+      { tagline: "", description: "Mentor-Protégé Programs as Business Accelerators for Smalls and Primes", },
+      { tagline: "", description: "Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC) Projects Coming Down the Pike", },
+      { tagline: "", description: "Military Base-Community Partnerships Driving Construction and Facility Support Contracts", },
+      { tagline: "", description: "Indo-Pacific Deployment/Logistics Challenges and New Contracting Initiatives", },
+      { tagline: "", description: "The Race to Develop AI, Advanced Computing and Machine Learning for Defense", },
+      { tagline: "", description: "Cybersecurity Compliance Mandates and CMMC Training Options", },
+      { tagline: "", description: "Special Preferential Contracting/Set-Aside Opportunities for Small Disadvantaged Businesses, 8(a) Certified Companies, Woman-Owned Small Businesses, Veteran and Service-Disabled Veteran Owned Small Businesses, HUBZone Firms, and Native American, Alaska Native, and Native Hawaiian Companies", },
     ],
     image: "/2025_DefenseIndustryForecast.png",
     slug: "2025-defense-industry-forecast",
@@ -123,7 +123,7 @@ export const EVENTS = [
     eventText: (
       <div className="max-container font-light">
         <p className="mb-4 leading-9">
-          Join us for the 2025 Southeast Defense Procurement Conference, a premier gathering designed to equip businesses with essential insights into defense procurement across the Southeastern United States—from North Carolina to Mississippi. This conference focuses on current and upcoming purchasing requirements and contracting opportunities that can drive your business forward. You will hear from representatives at multiple Air Force Bases located in Florida, Georgia, and throughout the Southeast, as well as Marine Corps facilities in North and South Carolina, including the Blount Island Logistic Support Facility. Key Army installations such as Ft. Liberty, the Army Anniston Depot, and Redstone Arsenal will also be featured, alongside the Army Corps of Engineers’ District Headquarters in Mobile, Savannah, Charleston, Jacksonville, and Wilmington. Additionally, NAVFAC's 22 Field Offices and Public Works Departments across the region will provide vital insights, along with Navy facilities like King’s Bay Naval Sub Base and various Naval Air Stations, including those in Pensacola, Jacksonville, and Key West. Major commands such as CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, and SPACECENT will be represented as well.
+          Join us for the 2025 Southeast Defense Procurement Conference, a premier gathering designed to equip businesses with essential insights into defense procurement across the Southeastern United States—from North Carolina to Mississippi. This conference focuses on current and upcoming purchasing requirements and contracting opportunities that can drive your business forward. <br /><br /> You will hear from representatives at multiple Air Force Bases located in Florida, Georgia, and throughout the Southeast, as well as Marine Corps facilities in North and South Carolina, including the Blount Island Logistic Support Facility. Key Army installations such as Ft. Liberty, the Army Anniston Depot, and Redstone Arsenal will also be featured, alongside the Army Corps of Engineers’ District Headquarters in Mobile, Savannah, Charleston, Jacksonville, and Wilmington. Additionally, NAVFAC's 22 Field Offices and Public Works Departments across the region will provide vital insights, along with Navy facilities like King’s Bay Naval Sub Base and various Naval Air Stations, including those in Pensacola, Jacksonville, and Key West. Major commands such as CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, and SPACECENT will be represented as well.
         </p>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
@@ -140,18 +140,17 @@ export const EVENTS = [
       </div>
     ),
     topicalCoverage: [
-      "Defense Department, Service, and Combat Command Acquisition Priorities",
-      "DoD Small Business Contracting Programs",
-      "Prime Defense Contractors — Subcontracting & Teaming",
-      "Accelerated Contracting Opportunities for Innovative Technology Solutions (DARPA, DIU, DEFENSEWERX)",
-      "GWAC's (Government-Wide Acquisition Contracts) and Their Small Business Tracks",
-      "Mentor-Protégé Programs as Business Accelerators for Smalls and Primes",
-      "Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC) Projects Coming Down the Pike",
-      "Military Base-Community Partnerships Driving Construction and Facility Support Contracts",
-      "Contract & Grant Opportunities Financed by Infrastructure and Energy Resiliency Legislation",
-      "Navy's Critical Maintenance & Repair and Shipbuilding Issues and Resulting Support Needs",
-      "Indo-Pacific Deployment/Logistics Challenges and New Contracting Initiatives",
-      "The New Unmanned/Autonomous Platforms and How to Engage",
+      { tagline: "Defense Acquisition Priorities", description: " Understand the Latest Acquisition Strategies from the Department of Defense, Service, and Combat Commands" },
+      { tagline: "Small Business Contracting Programs", description: "Learn about Initiatives that Support Small Businesses in Defense Contracting" },
+      { tagline: "Subcontracting and Teaming Opportunities", description: " Connect with Prime Defense Contractors to Explore Collaborative Ventures" },
+      { tagline: "Innovative Technology Solutions", description: " Discover Accelerated Contracting Opportunities through DARPA, DIU, and DEFENSEWERX" },
+      { tagline: "Government-Wide Acquisition Contracts (GWACs)", description: " Navigate the Intricacies of GWACs and their Small Business Tracks" },
+      { tagline: "Mentor-Protégé Programs", description: " Explore Programs Designed to Accelerate the Growth of Small Businesses through Strategic Partnerships" },
+      { tagline: "Upcoming Projects", description: "Get Insights into Future Projects from the Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC)" },
+      { tagline: "Military Base-Community Partnerships", description: " Learn how these Partnerships are Driving Construction and Facility Support Contracts" },
+      { tagline: "Cybersecurity Compliance", description: "Understand the Mandates and Training Options Available for Compliance with CMMC" },
+      { tagline: "Support for Small & Medium Contractors", description: "Gain Access toResources from the Defense Contract Audit Agency" },
+      { tagline: "Special Contracting Opportunities", description: " Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms" },
     ],
     image: "/2025_SoutheastDefenseProcurementConference.png",
     slug: "2025-southeast-defense-procurement-conference",
