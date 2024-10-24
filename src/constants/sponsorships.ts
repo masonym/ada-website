@@ -96,7 +96,7 @@ export const SPONSORSHIP_TYPES = [
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "VIP Networking Reception Hosting", description: "Exclusive Host of the VIP Networking Reception on March 18 from 5:30 PM - 7:30 PM" },
-                    { tagline: "Speaking Opportunity", description: "Provide Welcoming Remarks to the VIP Networking Reception" },
+                    { tagline: "Speaking Opportunity", description: "Provide Welcoming Remarks at the VIP Networking Reception" },
                     { tagline: "Exhibit Space", description: "8'x10' Exhibit Space Strategically Placed in Exhibit Area/Foyer. 6' Exhibit Table and 2 Chairs" },
                     { tagline: "Matchmaking Host", description: "Invitation to Host a One-on-One Matchmaking Session" },
                     { tagline: "Brand Visibility", description: "Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
