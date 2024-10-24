@@ -22,11 +22,11 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                 <h1 className="text-[48px] text-center font-gotham font-bold mb-2 text-slate-700">
                     Exhibitor Opportunities
                 </h1>
-                <p className="text-[20px] font-gotham text-slate-600 w-full max-w-4xl mx-auto mb-6 text-center">
+                <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
                 Increase your Brand Visibility and gain a Competitive Advantage!
                  <br /> Engaging in Exhibitor Opportunities is a Strategic way to effectively Promote your Products or Services.
                 </p>
-                <p className="text-[20px] font-gotham text-slate-600 w-full max-w-2xl mx-auto mb-6 text-center">
+                <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
                     Registered Exhibitors: Please submit a high-quality logo for inclusion in the conference materials, along with the desired link for the logo on the event website, to <Link className="text-blue-600 hover:underline text-nowrap" href="mailto:marketing@americandefensealliance.org">marketing@americandefencealliance.org</Link>.
                 </p>
                 {currentEvent.exhibitors.map((item, index) => (
