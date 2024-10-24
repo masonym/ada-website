@@ -29,7 +29,7 @@ export const FAQs = [
             },
             {
                 question: "Will there be networking opportunities?",
-                answer: "Yes, the event will include designated networking sessions, allowing attendees to connect with industry peers, policymakers, and other professionals. As well as a special ticketed Networking Reception from 5:30 PM - 7:30 PM for Speakers, Sponsors, Exhibitors and VIP Attendees.",
+                answer: "Yes, the event will include designated networking sessions, allowing attendees to connect with industry peers, policymakers, and other professionals. As well as a special ticketed Networking Reception from 5:30 PM - 7:30 PM ($100 Add-On option).",
             },
             {
                 question: "What is the agenda for the event?",
@@ -87,7 +87,7 @@ export const FAQs = [
             },
             {
                 question: "Will there be networking opportunities?",
-                answer: "Yes, the event will include designated networking sessions, allowing attendees to connect with industry peers, policymakers, and other professionals. As well as a special ticketed Networking Reception from 5:30 PM - 7:30 PM ($100 Add-On option).",
+                answer: "Yes, the event will include designated networking sessions, allowing attendees to connect with industry peers, policymakers, and other professionals. As well as a special ticketed Networking Reception from 5:30 PM - 7:30 PM for Speakers, Sponsors, Exhibitors and VIP Attendees.",
             },
             {
                 question: "What is the agenda for the event?",
