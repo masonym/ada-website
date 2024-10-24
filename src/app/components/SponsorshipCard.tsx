@@ -21,7 +21,7 @@ const SponsorshipCard = ({ item }: SponsorProp) => {
     return (
         <div className="w-full max-w-2xl mx-auto mb-6 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md">
             <div
-                className={`flex items-center justify-between p-4 ${item.colour || 'bg-navy-800'}`}
+                className={`flex items-center gap-4 justify-between p-4 ${item.colour || 'bg-navy-800'}`}
                 style={item.colour ? { backgroundColor: item.colour } : undefined}
             >
                 <h4 className="text-2xl font-bold text-white">{item.title}</h4>

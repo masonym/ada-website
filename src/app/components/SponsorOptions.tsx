@@ -31,7 +31,8 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                     Registered Sponsors: Please submit a high-quality logo for inclusion in the conference materials, along with the desired link for the logo on the event website, to <Link className="text-blue-600 hover:underline text-nowrap" href="mailto:marketing@americandefensealliance.org">marketing@americandefencealliance.org</Link>.
                 </p>
                 {/* NOTE: may need to change this later for events with 5th/6th sponsors */}
-                <div className="grid md:grid-cols-3 grid-cols-1 gap-8 [&>*:nth-child(4)]:md:col-span-3 [&>*:nth-child(4)]:md:mx-auto [&>*:nth-child(4)]:md:max-w-[29rem]">
+                {/* [&>*:nth-child(4)]:md:col-span-3 [&>*:nth-child(4)]:md:mx-auto [&>*:nth-child(4)]:md:max-w-[29rem] */}
+                <div className="grid md:grid-cols-3 grid-cols-1 gap-8 ">
                     {currentEvent.sponsorships.map((item, index) => (
                         <SponsorshipCard
                             key={index}
