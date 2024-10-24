@@ -123,10 +123,19 @@ export const EVENTS = [
     eventText: (
       <div className="max-container font-light">
         <p className="mb-4 leading-9">
-          The Southeast Defense Procurement Conference is a unique opportunity to engage with the U.S. Army Corps of Engineers, Naval Facilities Engineering Systems Command, and other key acquisition agencies in the Southeast region. This event will provide actionable business intelligence on upcoming acquisition opportunities, including advanced IT, AI, and Cyber, to weapons system development & sustainment, to forward logistics, facility support, Military base construction, shipyard modernization, Space defense and other major buying programs.
+          Join us for the 2025 Southeast Defense Procurement Conference, a premier gathering designed to equip businesses with essential insights into defense procurement across the Southeastern United States—from North Carolina to Mississippi. This conference focuses on current and upcoming purchasing requirements and contracting opportunities that can drive your business forward. You will hear from representatives at multiple Air Force Bases located in Florida, Georgia, and throughout the Southeast, as well as Marine Corps facilities in North and South Carolina, including the Blount Island Logistic Support Facility. Key Army installations such as Ft. Liberty, the Army Anniston Depot, and Redstone Arsenal will also be featured, alongside the Army Corps of Engineers’ District Headquarters in Mobile, Savannah, Charleston, Jacksonville, and Wilmington. Additionally, NAVFAC's 22 Field Offices and Public Works Departments across the region will provide vital insights, along with Navy facilities like King’s Bay Naval Sub Base and various Naval Air Stations, including those in Pensacola, Jacksonville, and Key West. Major commands such as CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, and SPACECENT will be represented as well.
         </p>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+          What to Expect
+        </h2>
         <p className="mb-4">
-          Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers, and Small Business Program Directors from across the Defense Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors.
+          Attendees will have the unique opportunity to engage directly with key decision-makers, including Program Managers, Contracting Officers, and Small Business Program Directors from the Army, Navy, Air Force, Marine Corps, Space Force Commands, and leading Prime Defense Contractors.
+        </p>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+          Why Attend?
+        </h2>
+        <p>
+          This event is an invaluable opportunity to network with industry leaders, gain insights into emerging trends, and position your business for success in the competitive defense contracting landscape. Don’t miss out on the chance to be at the forefront of defense procurement. Secure your spot today!
         </p>
       </div>
     ),
