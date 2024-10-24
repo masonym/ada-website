@@ -92,7 +92,7 @@ export const SPONSORSHIP_TYPES = [
             },
             {
                 title: "Networking Luncheon Sponsor",
-                cost: "$5,500",
+                cost: "$6,000",
                 perks: [
                     { tagline: "Event Access", description: "(3) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Speaking Opportunity", description: "10-Minute Speaking Session for a Representative of your Company before the Networking Luncheon" },
