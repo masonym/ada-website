@@ -24,8 +24,8 @@ const SponsorshipCard = ({ item }: SponsorProp) => {
                 className={`flex items-center gap-4 justify-between p-4 ${item.colour || 'bg-navy-800'}`}
                 style={item.colour ? { backgroundColor: item.colour } : undefined}
             >
-                <h4 className="text-2xl font-bold text-white">{item.title}</h4>
-                <span className="text-2xl font-bold text-white">{item.cost}</span>
+                <h4 className="text-[1rem] font-bold text-white">{item.title}</h4>
+                <span className="text-xl font-bold text-white">{item.cost}</span>
             </div>
             <div className="p-6">
                 <ul className="space-y-4">
