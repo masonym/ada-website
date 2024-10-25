@@ -30,7 +30,8 @@ export const EXHIBITOR_TYPES = [
                     { tagline: "Brand Visibility", description: "Logo Placement on select Conference Materials, including Marketing Emails and Website" },
                     { tagline: "Recognition", description: "Acknowledgement before Networking Breaks at the Conference" },
                     { tagline: "Media Coverage", description: "Photographs of your Participation" },
-                ]
+                ],
+                colour: "#3FB4E6"
             },
         ]
     }
