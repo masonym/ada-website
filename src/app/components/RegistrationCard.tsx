@@ -103,7 +103,7 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                         </p>
                     )}
                     <p className="text-2xl font-bold text-center mb-2">{currentPrice}</p>
-                    <Link href={item.buttonLink}>
+                    <Link href={item.buttonLink} target="_blank">
                         <button className="w-full py-2 px-4 bg-blue-800 text-white font-semibold rounded-md hover:bg-navy-200 transition duration-300">
                             {item.buttonText}
                         </button>

@@ -14,6 +14,7 @@ const Button = ({ title, icon, variant, link, className }: ButtonProps) => {
         <Link
             href={link}
             className={`flexCenter gap-3 rounded-full border ${variant} ${className}`}
+            target="_blank"
         >
             {icon && <Image src={icon} width={24} height={24} alt={title} />}
             <span className="bold-16 whitespace-nowrap">

@@ -79,7 +79,7 @@ export const FAQs = [
             },
             {
                 question: "How can I register for the event?",
-                answer: `You can register for the event online through the <a href="https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817 target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot and Table-Top Exhibit Spaces tend to sell out fast!`,
+                answer: `You can register for the event online through the <a href="https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389" target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot and Table-Top Exhibit Spaces tend to sell out fast!`,
             },
             {
                 question: "Is there a cost to attend the event?",

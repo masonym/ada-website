@@ -163,7 +163,7 @@ export const EVENTS = [
     images: [],
     parkingInfo: [],
     placeID: "TBD",
-    registerLink: "https://www.eventbrite.com/e/southeast-defense-procurement-conference-tickets",
+    registerLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
     password: "ADA2025SDPC"
   }
 ];
