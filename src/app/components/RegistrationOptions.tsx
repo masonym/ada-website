@@ -100,7 +100,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                         </h3>
                     </div>
 
-                    <div className="bg-gradient-to-r from-navy-500 to-navy-800 text-white p-6 rounded-lg mb-6">
+                    <div className="bg-gradient-to-r from-navy-500 to-navy-800 text-white p-6 rounded-lg mb-6 max-w-4xl">
                         <p className="text-center mb-4">
                         Enhance your Visibility and Connect with Key Decision-Makers through our Exclusive Sponsorship Opportunities. This is your chance to elevate your brand and make a lasting impact in the Defense Sector.
                         </p>
