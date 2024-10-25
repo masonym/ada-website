@@ -25,7 +25,7 @@ const EventDetails: React.FC<EventProps> = ({ title, eventText, topicalCoverage,
         </div>
 
         <div className="w-full">
-          <h2 className="text-3xl font-semibold mb-6 text-navy-500">Topical Coverage</h2>
+          <h2 className="text-3xl font-semibold mb-6 text-navy-500">Key Insights</h2>
           <div className="flex flex-wrap justify-center gap-6">
             {topicalCoverage.map((topic, index) => (
               <div
