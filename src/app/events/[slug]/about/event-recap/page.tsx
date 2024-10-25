@@ -18,7 +18,7 @@ export default function EventRecapPage({ params }: { params: { slug: string } })
     <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">
 
-        Highlights & Photographs of {event.title}
+        Highlights & Photographs of the <br/>{event.title}
       </h1>
 
       {eventHasOccurred ? (
