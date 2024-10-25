@@ -103,7 +103,7 @@ export const REGISTRATION_TYPES = [
                 perks: [
                     "(1) Attendee Pass",
                     "Access to General Sessions",
-                    "Access to Exhibits",
+                    "Access to Exhibit Area",
                     "Onsite Sign-up for Matchmaking Sessions",
                     "Breakfast & Buffet Lunch",
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
@@ -124,11 +124,11 @@ export const REGISTRATION_TYPES = [
                 perks: [
                     "(1) VIP Attendee Pass",
                     "Access to General Sessions",
-                    "Access to Exhibits",
+                    "Access to Exhibit Area",
                     "Onsite Sign-up for Matchmaking Sessions",
                     "Breakfast & Buffet Lunch",
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
-                    "<b>Access to VIP Networking Reception on March 18th, 2025 from 5:30 PM - 7:30 PM</b>",
+                    "<b>Access to VIP Networking Reception on March 18, 2025 from 5:30 PM - 7:30 PM</b>",
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
@@ -144,10 +144,10 @@ export const REGISTRATION_TYPES = [
                 headerImage: "/registration-cards/2025SPDC/exhibit-table-pass.png",
                 perks: [
                     "(1) Exhibitor Pass",
-                    "(1) VIP Networking Reception Pass",
-                    "Additional Exhibitor Passes can be purchased at a Discounted Rate of $395 each",
-                    "Table-Top Exhibit",
+                    "Additional Passes can be purchased for $395 each",
+                    "8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and 2 Chairs",
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
+                    "<b>Access to VIP Networking Reception on March 18, 2025 from 5:30 PM - 7:30 PM</b>",
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
@@ -164,7 +164,7 @@ export const REGISTRATION_TYPES = [
                 perks: [
                     "(1) Attendee Pass",
                     "Access to General Sessions",
-                    "Access to Exhibits",
+                    "Access to Exhibit Area",
                     "Onsite Sign-up for Matchmaking Sessions",
                     "Breakfast & Buffet Lunch",
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
@@ -173,7 +173,7 @@ export const REGISTRATION_TYPES = [
                 buttonText: "Register Now",
                 buttonLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-tickets-997306910817",
                 type: "complimentary",
-                availabilityInfo: "Limited availability."
+                // availabilityInfo: "Limited availability."
             },
 
             // {

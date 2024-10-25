@@ -94,7 +94,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
       </Script>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center">
-          <div className="py-4 sm:py-8 flex flex-col items-center">
+          <div className="py-2 sm:py-2 flex flex-col items-center">
             {/* <Link href="/events" className="inline-flex items-center text-blue-500 hover:underline mb-4">
           <ChevronLeft className="w-4 h-4 mr-1" />
           Back to Events
@@ -118,7 +118,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
-              Event Info
+              Event Overview
             </h2>
             <div className="flex flex-col leading-relaxed text-slate-600 text-lg text-center mx-8">
               {event.eventText}
@@ -128,13 +128,13 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             <RegistrationOptions event={event} />
 
-            <div className="mt-12 text-center w-[80%] max-w-sm">
-              <p className="text-2xl text-navy-500 mb-6 w-fit text-center mx-8">Don't miss this event, register now!</p>
+            <div className="mt-12 text-center flex flex-col items-center">
+              <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Seat at this Groundbreaking Conference!</p>
               <Button
                 title="REGISTER"
                 variant="btn_blue"
                 link={event.registerLink}
-                className="w-full sm:w-auto"
+                className="max-w-xs sm:max-w-sm"
               />
             </div>
           </div>

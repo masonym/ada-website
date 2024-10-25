@@ -123,20 +123,22 @@ export const EVENTS = [
     eventText: (
       <div className="max-container font-light">
         <p className="mb-4 leading-9">
-          Join us for the 2025 Southeast Defense Procurement Conference, a premier gathering designed to equip businesses with essential insights into defense procurement across the Southeastern United States—from North Carolina to Mississippi. This conference focuses on current and upcoming purchasing requirements and contracting opportunities that can drive your business forward. <br /><br /> You will hear from representatives at multiple Air Force Bases located in Florida, Georgia, and throughout the Southeast, as well as Marine Corps facilities in North and South Carolina, including the Blount Island Logistic Support Facility. Key Army installations such as Ft. Liberty, the Army Anniston Depot, and Redstone Arsenal will also be featured, alongside the Army Corps of Engineers’ District Headquarters in Mobile, Savannah, Charleston, Jacksonville, and Wilmington. Additionally, NAVFAC's 22 Field Offices and Public Works Departments across the region will provide vital insights, along with Navy facilities like King’s Bay Naval Sub Base and various Naval Air Stations, including those in Pensacola, Jacksonville, and Key West. Major commands such as CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, and SPACECENT will be represented as well.
+          Join us for the <b>2025 Southeast Defense Procurement Conference</b> on March 18-19, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This conference will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.
+          <br/><br/>
+          Engage with Key Representatives from multiple Air Force Bases in Florida, Georgia and throughout the Southeast, as well as Marine Corps facilities in North and South Carolina, including the Blount Island Logistic Support Facility. Discover vital information from prominent Army Installations like Ft. Liberty, Ft. Moore, the Army Anniston Depot, and Redstone Arsenal, as well as insights from the Army Corps of Engineers' District Headquarters in Mobile, Savannah, Charlestone, Jacksonville, and Wilmington. Gain essential knowledge from NAVFAC's 22 Field Officers and Public Works Departments, and connect with Navy Facilities, including King's Bay Naval Sub Base and Naval Air Stations in Pensacola, Jacksonville, and Key West. Major Commands such as CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, and SPACECENT will also be represented. Don't miss this opportunity to elevate your business in the Defense Sector!
         </p>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
         <p className="mb-4">
-          Attendees will have the unique opportunity to engage directly with key decision-makers, including Program Managers, Contracting Officers, and Small Business Program Directors from the Army, Navy, Air Force, Marine Corps, Space Force Commands, and leading Prime Defense Contractors.
+        Attendees will gain unparalleled access to key decision-makers, including Program Managers, Contracting Officers, and Small Business Program Directors from the Army, Navy, Air Force, Marine Corps, Space Force Commands, and top Prime Defense Contractors. This is your chance to forge invaluable connections that can shape the future of your business.
         </p>
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+        {/* <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           Why Attend?
         </h2>
         <p>
           This event is an invaluable opportunity to network with industry leaders, gain insights into emerging trends, and position your business for success in the competitive defense contracting landscape. Don’t miss out on the chance to be at the forefront of defense procurement. Secure your spot today!
-        </p>
+        </p> */}
       </div>
     ),
     topicalCoverage: [

@@ -47,13 +47,13 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                 <h1 className="text-[48px] text-center font-gotham font-bold mb-2 text-slate-700">
                     Registration Options
                 </h1>
-                {isEarlyBird && (
+                {/* {isEarlyBird && (
                     <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6 text-xl mx-4 text-center" role="alert">
                         <strong className="font-bold">Early-bird pricing available!</strong>
-                        {/* <span className="block sm:inline"> Register before {deadlineDate}.</span> */}
+                        <span className="block sm:inline"> Register before {deadlineDate}.</span>
                     </div>
                 )}
-
+                */}
                 {/* {complimentaryRegistrations.length > 0 && (
                     <div className="w-full max-w-2xl mb-12">
                         <h2 className="text-3xl font-bold text-center mb-6">Complimentary Registrations</h2>
@@ -102,7 +102,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
 
                     <div className="bg-gradient-to-r from-navy-500 to-navy-800 text-white p-6 rounded-lg mb-6">
                         <p className="text-center mb-4">
-                            Enhance your visibility and connect with key decision makers through our exclusive sponsorship opportunities
+                        Enhance your Visibility and Connect with Key Decision-Makers through our Exclusive Sponsorship Opportunities. This is your chance to elevate your brand and make a lasting impact in the Defense Sector.
                         </p>
                         <Link href={`/events/${event.slug}/sponsors-exhibitors/sponsorship-opportunities`}>
                             <button className="w-full py-3 px-6 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition duration-300 flex items-center justify-center">
@@ -115,7 +115,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                     <div className="text-center">
                         <div className="flex items-center justify-center text-gray-600 mb-2">
                             <Mail className="w-5 h-5 mr-2" />
-                            <p className="font-medium">Contact our sponsorship team:</p>
+                            <p className="font-medium">Contact our Sponsorship Team:</p>
                         </div>
                         <a
                             href="mailto:marketing@americandefensealliance.org"

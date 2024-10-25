@@ -16,8 +16,8 @@ type EventProps = {
 const EventDetails: React.FC<EventProps> = ({ title, eventText, topicalCoverage, registerLink }) => {
   return (
     <div className="min-h-screen text-navy-800 text-center">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col items-center">
-        <div className="bg-white/10 backdrop-blur-md rounded-xl p-8 mb-12 shadow-xl">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+        <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 mb-12 shadow-xl">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
             About the Event
           </h2>
@@ -41,13 +41,13 @@ const EventDetails: React.FC<EventProps> = ({ title, eventText, topicalCoverage,
           </div>
         </div>
 
-        <div className="mt-16 text-center w-fit">
-          <p className="text-2xl text-navy-500 mb-6 w-fit text-center">Don't miss this groundbreaking event!</p>
+        <div className="mt-12 text-center flex flex-col items-center">
+          <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Seat at this Groundbreaking Conference!</p>
           <Button
             title="REGISTER"
             variant="btn_blue"
             link={registerLink}
-            className="w-full"
+            className="max-w-xs sm:max-w-sm"
           />
         </div>
       </div>
