@@ -92,7 +92,16 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                     </div>
                 )}
 
-                <div className="mt-4 pt-8">
+                <div>
+                    <p className="text-center font-bold text-gray-700 text-lg my-4">
+                        The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from
+                        <br/>5:30 PM - 7:30 PM on March 18, 2025.
+                    </p>
+                </div>
+
+                <div className="pt-0">
+
+
                     <div className="flex items-center justify-center mb-4">
                         <Award className="w-8 h-8 text-gold-500 mr-3" />
                         <h3 className="text-2xl font-bold text-navy-800">
@@ -102,7 +111,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
 
                     <div className="bg-gradient-to-r from-navy-500 to-navy-800 text-white p-6 rounded-lg mb-6 max-w-4xl">
                         <p className="text-center mb-4">
-                        Enhance your Visibility and Connect with Key Decision-Makers through our Exclusive Sponsorship Opportunities. This is your chance to elevate your brand and make a lasting impact in the Defense Sector.
+                            Enhance your Visibility and Connect with Key Decision-Makers through our Exclusive Sponsorship Opportunities. This is your chance to elevate your brand and make a lasting impact in the Defense Sector.
                         </p>
                         <Link href={`/events/${event.slug}/sponsors-exhibitors/sponsorship-opportunities`}>
                             <button className="w-full py-3 px-6 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition duration-300 flex items-center justify-center">
