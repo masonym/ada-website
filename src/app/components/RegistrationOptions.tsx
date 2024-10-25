@@ -93,9 +93,9 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                 )}
 
                 <div>
-                    <p className="text-center font-bold text-gray-700 text-lg my-4">
+                    <p className="text-center font-bold text-gray-700 max-w-4xl text-lg my-4">
                         The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from
-                        <br/>5:30 PM - 7:30 PM on March 18, 2025.
+                        5:30 PM - 7:30 PM on March 18, 2025.
                     </p>
                 </div>
 
