@@ -14,7 +14,7 @@ const FAQsPage = () => {
     const eventFAQs = FAQs.find(faq => faq.id === eventId)?.faqs || [];
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-700 text-center mb-8">
                 Frequently Asked Questions
             </h2>

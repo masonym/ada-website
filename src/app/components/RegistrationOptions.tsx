@@ -42,7 +42,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
     };
 
     return (
-        <div className="max-w-7xl mx-auto pt-0 pb-8 px-4 flex flex-col items-center">
+        <div className="max-w-[90rem] mx-auto pt-0 pb-8 px-4 flex flex-col items-center">
             <div className="flex flex-col items-center w-full">
                 <h1 className="text-[48px] text-center font-gotham font-bold mb-2 text-slate-700">
                     Registration Options

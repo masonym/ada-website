@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const AboutUsPage = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <h1 className="text-4xl font-bold text-center text-navy-800 mb-8">About American Defense Alliance</h1>
       
       <div className="flex flex-col md:flex-row items-center mb-12">
