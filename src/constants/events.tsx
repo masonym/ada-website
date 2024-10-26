@@ -130,13 +130,15 @@ export const EVENTS = [
           Featured Contracting Commands:
         </p>
         <p className="">
-          Multiple Air Force Bases in Florida, Georgia & throughout the Southeast
-          <br/>Marine Corps Bases in North & South Carolina and the Blount Island Logistic Support Facility
-          <br/>Ft. Liberty, Army Anniston Depot and Red Stone Arsenal
-          <br/>Army Corps of Engineers District Headquarters in Mobile, Savannah, Charleston, Jacksonville & Wilmington
-          <br/>NAVFAC Field Offices & Public Works Dept.’s
-          <br/>King’s Bay Naval Sub Base, and Naval Air Stations in Pensacola, Jacksonville & Key West
-          <br/>Major Contracting Commands including CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, & SPACECENT
+          <ul className="list-inside">
+            <li>Multiple Air Force Bases in Florida, Georgia & throughout the Southeast</li>
+            <li>Marine Corps Bases in North & South Carolina and the Blount Island Logistic Support Facility</li>
+            <li>Ft. Liberty, Army Anniston Depot and Red Stone Arsenal</li>
+            <li>Army Corps of Engineers District Headquarters in Mobile, Savannah, Charleston, Jacksonville & Wilmington</li>
+            <li>NAVFAC Field Offices & Public Works Dept.’s</li>
+            <li>King’s Bay Naval Sub Base, and Naval Air Stations in Pensacola, Jacksonville & Key West</li>
+            <li>Major Contracting Commands including CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, & SPACECENT</li>
+          </ul>
         </p>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
