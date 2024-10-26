@@ -145,9 +145,9 @@ export const REGISTRATION_TYPES = [
                 perks: [
                     "(1) Exhibitor Pass",
                     "Additional Passes can be purchased for $395 each",
-                    "8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and 2 Chairs",
+                    "<b>8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and Chairs</b>",
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
-                    "<b>Access to VIP Networking Reception on March 18, 2025 from 5:30 PM - 7:30 PM</b>",
+                    "Access to VIP Networking Reception on March 18, 2025 from 5:30 PM - 7:30 PM",
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
