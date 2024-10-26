@@ -197,6 +197,9 @@ export const REGISTRATION_TYPES = [
             // },
         ],
         addOns: [
+            {
+
+            },
             // {
             //     title: "Networking Reception",
             //     description: "Join us for an exclusive evening networking

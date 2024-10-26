@@ -75,7 +75,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                     ))}
                 </div>
 
-                {currentEvent.addOns && currentEvent.addOns.length > 0 && (
+                {/* {currentEvent.addOns && currentEvent.addOns.length > 0 && (
                     <div className="w-full max-w-2xl mt-12">
                         <h2 className="text-3xl font-bold text-center mb-6">Add-Ons</h2>
                         <div className="bg-white shadow-md rounded-lg overflow-hidden">
@@ -90,19 +90,22 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                             ))}
                         </div>
                     </div>
+                )} */}
+
+                {currentEvent.addOns && currentEvent.addOns.length > 0 && (
+                    <div>
+                        <p className="text-center font-bold text-gray-700 max-w-4xl text-lg my-4">
+                            The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from
+                            5:30 PM - 7:30 PM on March 18, 2025.
+                        </p>
+                    </div>
                 )}
 
-                <div>
-                    <p className="text-center font-bold text-gray-700 max-w-4xl text-lg my-4">
-                        The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from
-                        5:30 PM - 7:30 PM on March 18, 2025.
-                    </p>
-                </div>
 
                 <div className="pt-0">
 
 
-                    <div className="flex items-center justify-center mb-4">
+                    <div className="flex items-center justify-center my-4">
                         <Award className="w-8 h-8 text-gold-500 mr-3" />
                         <h3 className="text-2xl font-bold text-navy-800">
                             Become a Sponsor
