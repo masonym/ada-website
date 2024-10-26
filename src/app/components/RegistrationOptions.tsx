@@ -93,11 +93,19 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                 )} */}
 
                 {currentEvent.addOns && currentEvent.addOns.length > 0 && (
-                    <div>
-                        <p className="text-center font-bold text-gray-700 max-w-4xl text-lg my-4">
-                            The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from
-                            5:30 PM - 7:30 PM on March 18, 2025.
-                        </p>
+                    <div className="w-full max-w-4xl mt-4 text-center">
+                        {/* <h2 className="text-3xl font-bold text-center mb-6">Add-Ons</h2> */}
+                        <div className="bg-white shadow-md rounded-lg overflow-hidden">
+                            {currentEvent.addOns.map((addOn: AddOn, index: number) => (
+                                <div key={index} className="p-6 border-b border-gray-200 last:border-b-0">
+                                    <div className="flex flex-col justify-between text-center items-center gap-2">
+                                        <h3 className="text-xl  font-semibold">{addOn.title}</h3>
+                                        {/* <span className="text-lg font-bold">{addOn.price}</span> */}
+                                        <p className="text-gray-600">{addOn.description}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 )}
 
