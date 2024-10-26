@@ -113,9 +113,9 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                 <div className="pt-0">
 
 
-                    <div className="flex items-center justify-center my-4">
+                    <div className="flex items-center justify-center mt-8 mb-4">
                         <Award className="w-8 h-8 text-gold-500 mr-3" />
-                        <h3 className="text-2xl font-bold text-navy-800">
+                        <h3 className="text-4xl font-bold text-navy-800">
                             Become a Sponsor
                         </h3>
                     </div>
