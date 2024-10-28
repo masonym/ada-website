@@ -122,7 +122,7 @@ export const EVENTS = [
     description: "The 2025 Southeast Defense Procurement Conference is a premier gathering designed to equip businesses with essential insights into defense procurement across the Southeastern United States—from North Carolina to Mississippi. This event focuses on current and upcoming purchasing requirements and contracting opportunities that can drive your business forward. ",
     eventText: (
       <div className="max-container font-light">
-        <p className="mb-4 leading-9">
+        <p className="mb-0 leading-9">
           Join us for the <b>2025 Southeast Defense Procurement Conference</b> on March 18-19, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.
           <br /><br />
         </p>
