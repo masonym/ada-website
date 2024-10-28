@@ -7,7 +7,7 @@ export const EVENTS = [
     id: 1,
     title: "2025 Defense Industry Forecast",
     date: "November 14th, 2024",
-    timeStart: "2024-11-14T14:00:00Z",
+    timeStart: "2024-11-14T12:00:00Z",
     description: "The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities — covering Defense Dept. and Combat Command mission priorities — Army, Navy, Air Force, Marine Corps, Space Force and Coast Guard — focused on all major sectors from advanced IT, AI and Cyber, all-domain command & control, and weapons system development & sustainment, to logistics & transport, facility management, Military base building design & construction, energy resiliency and environmental remediation, to new Government-Private Sector collaborations in critical infrastructure security, U.S. manufacturing base revitalization, ship building and shipyard modernization, Space defense and other major initiatives.",
     eventText: (
       <div className="max-container font-light">
@@ -117,8 +117,8 @@ export const EVENTS = [
   {
     id: 2,
     title: "2025 Southeast Defense Procurement Conference",
-    date: "March 18th - 19th, 2025",
-    timeStart: "2025-03-18T14:30:00Z", // TODO: change to actual time
+    date: "March 18th-19th, 2025",
+    timeStart: "2025-03-18T11:30:00Z", // TODO: change to actual time
     description: "Join us for the 2025 Southeast Defense Procurement Conference on March 18-19, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
     eventText: (
       <div className="max-container font-light">
@@ -155,7 +155,7 @@ export const EVENTS = [
       </div>
     ),
     topicalCoverage: [
-      { tagline: "Defense Acquisition Priorities", description: " Understand the Latest Acquisition Strategies from the Department of Defense, Service, and Combat Commands" },
+      { tagline: "Defense Acquisition Priorities", description: "Understand the Latest Acquisition Strategies from the Department of Defense, Service Components, and Combat Commands" },
       // { tagline: "Small Business Contracting Programs", description: "Learn about Initiatives that Support Small Businesses in Defense Contracting" },
       { tagline: "Subcontracting and Teaming Opportunities", description: " Connect with Prime Defense Contractors to Explore Collaborative Ventures" },
       { tagline: "Innovative Technology Solutions", description: " Discover Accelerated Contracting Opportunities through DARPA, DIU, and DEFENSEWERX" },

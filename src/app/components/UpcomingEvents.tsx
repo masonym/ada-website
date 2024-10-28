@@ -10,9 +10,9 @@ const UpcomingEvents = () => {
       <h2 className="text-center font-gotham font-bold text-[36px] md:text-[64px] text-slate-900 sm:px-16 px-6">
         Don't miss our upcoming events!
       </h2>
-      <h3 className="text-center font-gotham font-semibold text-[20px] md:text-[28px] text-slate-900 sm:px-16 px-6 mb-8">
+      {/* <h3 className="text-center font-gotham font-semibold text-[20px] md:text-[28px] text-slate-900 sm:px-16 px-6 mb-8">
         We host events nationwide, so stay tuned for an event coming near you!
-      </h3>
+      </h3> */}
       <p className="text-center text-slate-600 text-xl mb-12 max-w-3xl mx-2">
         Join us for industry-leading conferences and networking opportunities. Discover the latest in defense technology and procurement strategies.
       </p>
