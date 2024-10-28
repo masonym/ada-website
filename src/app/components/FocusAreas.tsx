@@ -2,9 +2,9 @@ import React from 'react';
 
 const FocusAreas = () => {
   const areas = [
-    { title: "Defense Acquisition", icon: "🎯", description: "We provide actionable insights on upcoming defense acquisition opportunities, helping businesses navigate complex federal procurement processes and align with DoD priorities." },
-    { title: "Small Business Support", icon: "🏢", description: "We offer resources and connections to empower small businesses and diversity suppliers to compete effectively in the defense industry." },
-    { title: "Industry Networking", icon: "🤝", description: "We facilitate valuable connections between small businesses, prime contractors, and government agencies, fostering collaboration and growth within the defense industrial base." },
+    { title: "Defense Acquisition", icon: "🎯", description: "We provide actionable insights on upcoming Defense Acquisition Opportunities, helping businesses navigate complex Federal Procurement Processes and align with DoD Priorities." },
+    { title: "Small Business Support", icon: "🏢", description: "We offer resources and connections to empower Small Businesses and Diversity Suppliers to compete effectively in the Defense Industry." },
+    { title: "Industry Networking", icon: "🤝", description: "We facilitate valuable connections between Small Businesses, Prime Contractors, and Government Agencies, fostering collaboration and growth within the Defense Industrial Base." },
   ];
 
   return (
