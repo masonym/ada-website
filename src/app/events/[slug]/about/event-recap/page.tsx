@@ -15,9 +15,10 @@ export default function EventRecapPage({ params }: { params: { slug: string } })
   const eventHasOccurred = eventDate < currentDate;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl sm:text-4xl lg:text-4xl font-bold text-center mb-8">
-        Highlights & Photographs of {event.title}
+    <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">
+
+        Highlights & Photographs of the <br/>{event.title}
       </h1>
 
       {eventHasOccurred ? (

@@ -30,8 +30,8 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({ schedule }) => {
   const [selectedDay, setSelectedDay] = useState(0);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl font-bold text-center mb-8">Schedule at a Glance</h1>
+    <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+      <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Schedule at a Glance</h1>
       <p className="text-l font-bold text-center mb-8 text-slate-600">This event schedule is still pending, please check back later as more information is added!</p>
       <div className="bg-white shadow-md rounded-lg overflow-hidden">
         <div className="flex border-b">
@@ -41,7 +41,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({ schedule }) => {
               className={`flex-1 text-center py-4 px-4 font-semibold ${
                 selectedDay === index
                   ? 'bg-navy-800 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-300'
               }`}
               onClick={() => setSelectedDay(index)}
             >
@@ -51,9 +51,9 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({ schedule }) => {
         </div>
         <div className="p-6">
           {schedule[selectedDay].items.map((item, itemIndex, array) => (
-            <div key={itemIndex} className={`relative pl-8 ${itemIndex !== array.length - 1 ? 'mb-8 pb-8 border-b border-gray-200' : ''}`}>
-              <div className="absolute left-0 top-0 bottom-0 w-px bg-gray-300"></div>
-              <div className="absolute left-[-4px] top-2 w-3 h-3 rounded-full bg-navy-800 border-2 border-white"></div>
+            <div key={itemIndex} className={`relative pl-0 ${itemIndex !== array.length - 1 ? 'mb-8 pb-8 border-b border-gray-200' : ''}`}>
+              {/* <div className="absolute left-0 top-0 bottom-0 w-px bg-gray-300"></div> */}
+              {/* <div className="absolute left-[-5px] top-2 w-3 h-3 rounded-full bg-navy-800 border-2 border-white"></div> */}
               <div className="font-bold text-xl text-navy-800 mb-2">{item.time}</div>
               <div className="text-xl font-semibold mb-2">{item.title}</div>
               {item.location && (

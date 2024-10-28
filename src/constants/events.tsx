@@ -11,7 +11,7 @@ export const EVENTS = [
     description: "The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities — covering Defense Dept. and Combat Command mission priorities — Army, Navy, Air Force, Marine Corps, Space Force and Coast Guard — focused on all major sectors from advanced IT, AI and Cyber, all-domain command & control, and weapons system development & sustainment, to logistics & transport, facility management, Military base building design & construction, energy resiliency and environmental remediation, to new Government-Private Sector collaborations in critical infrastructure security, U.S. manufacturing base revitalization, ship building and shipyard modernization, Space defense and other major initiatives.",
     eventText: (
       <div className="max-container font-light">
-        <p className="mb-4 leading-9">
+        <p className="mb-4 leading-relaxed">
           The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities – covering Defense Dept. mission priorities focused on advanced IT, AI and Cyber, to weapons system development & sustainment, to forward logistics, facility support, Military base construction, shipyard modernization, Space defense and other major buying programs.
         </p>
         <p className="mb-4">
@@ -20,18 +20,18 @@ export const EVENTS = [
       </div>
     ),
     topicalCoverage: [
-      "Defense Department, Service, and Combat Command Acquisition Priorities",
-      "DoD Small Business Contracting Programs",
-      "Prime Defense Contractors — Subcontracting & Teaming",
-      "Accelerated Contracting Opportunities for Innovative Technology Solutions (DARPA, DIU, DEFENSEWERX)",
-      "GWAC's (Government-Wide Acquisition Contracts) and Their Small Business Tracks",
-      "Mentor-Protégé Programs as Business Accelerators for Smalls and Primes",
-      "Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC) Projects Coming Down the Pike",
-      "Military Base-Community Partnerships Driving Construction and Facility Support Contracts",
-      "Indo-Pacific Deployment/Logistics Challenges and New Contracting Initiatives",
-      "The Race to Develop AI, Advanced Computing and Machine Learning for Defense",
-      "Cybersecurity Compliance Mandates and CMMC Training Options",
-      "Special Preferential Contracting/Set-Aside Opportunities for Small Disadvantaged Businesses, 8(a) Certified Companies, Woman-Owned Small Businesses, Veteran and Service-Disabled Veteran Owned Small Businesses, HUBZone Firms, and Native American, Alaska Native, and Native Hawaiian Companies",
+      { tagline: "", description: "Defense Department, Service, and Combat Command Acquisition Priorities", },
+      { tagline: "", description: "DoD Small Business Contracting Programs", },
+      { tagline: "", description: "Prime Defense Contractors — Subcontracting & Teaming", },
+      { tagline: "", description: "Accelerated Contracting Opportunities for Innovative Technology Solutions (DARPA, DIU, DEFENSEWERX)", },
+      { tagline: "", description: "GWAC's (Government-Wide Acquisition Contracts) and Their Small Business Tracks", },
+      { tagline: "", description: "Mentor-Protégé Programs as Business Accelerators for Smalls and Primes", },
+      { tagline: "", description: "Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC) Projects Coming Down the Pike", },
+      { tagline: "", description: "Military Base-Community Partnerships Driving Construction and Facility Support Contracts", },
+      { tagline: "", description: "Indo-Pacific Deployment/Logistics Challenges and New Contracting Initiatives", },
+      { tagline: "", description: "The Race to Develop AI, Advanced Computing and Machine Learning for Defense", },
+      { tagline: "", description: "Cybersecurity Compliance Mandates and CMMC Training Options", },
+      { tagline: "", description: "Special Preferential Contracting/Set-Aside Opportunities for Small Disadvantaged Businesses, 8(a) Certified Companies, Woman-Owned Small Businesses, Veteran and Service-Disabled Veteran Owned Small Businesses, HUBZone Firms, and Native American, Alaska Native, and Native Hawaiian Companies", },
     ],
     image: "/2025_DefenseIndustryForecast.png",
     slug: "2025-defense-industry-forecast",
@@ -114,5 +114,68 @@ export const EVENTS = [
     registerLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
     password: "ADA2025DIF"
   },
-  // Add more events here
+  {
+    id: 2,
+    title: "2025 Southeast Defense Procurement Conference",
+    date: "March 18th - 19th, 2025",
+    timeStart: "2025-03-18T14:30:00Z", // TODO: change to actual time
+    description: "The 2025 Southeast Defense Procurement Conference is a premier gathering designed to equip businesses with essential insights into defense procurement across the Southeastern United States—from North Carolina to Mississippi. This event focuses on current and upcoming purchasing requirements and contracting opportunities that can drive your business forward. ",
+    eventText: (
+      <div className="max-container font-light">
+        <p className="mb-0 leading-9">
+          Join us for the <b>2025 Southeast Defense Procurement Conference</b> on March 18-19, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.
+          <br /><br />
+        </p>
+        <p className="font-bold text-xl text-center font-gotham">
+          Featured Contracting Commands:
+        </p>
+        <p className="">
+          <ul className="list-inside">
+            <li>Multiple Air Force Bases in Florida, Georgia & throughout the Southeast</li>
+            <li>Marine Corps Bases in North & South Carolina and the Blount Island Logistic Support Facility</li>
+            <li>Ft. Liberty, Army Anniston Depot and Red Stone Arsenal</li>
+            <li>Army Corps of Engineers District Headquarters in Mobile, Savannah, Charleston, Jacksonville & Wilmington</li>
+            <li>NAVFAC Field Offices & Public Works Dept.’s</li>
+            <li>King’s Bay Naval Sub Base, and Naval Air Stations in Pensacola, Jacksonville & Key West</li>
+            <li>Major Contracting Commands including CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, & SPACECENT</li>
+          </ul>
+        </p>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+          What to Expect
+        </h2>
+        <p className="mb-4">
+          Attendees will gain unparalleled access to key decision-makers, including Program Managers, Contracting Officers, and Small Business Program Directors from the Army, Navy, Air Force, Marine Corps, and Space Force Commands, and top Prime Defense Contractors. This is your chance to forge invaluable connections that can shape the future of your business.
+        </p>
+        {/* <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+          Why Attend?
+        </h2>
+        <p>
+          This event is an invaluable opportunity to network with industry leaders, gain insights into emerging trends, and position your business for success in the competitive defense contracting landscape. Don’t miss out on the chance to be at the forefront of defense procurement. Secure your spot today!
+        </p> */}
+      </div>
+    ),
+    topicalCoverage: [
+      { tagline: "Defense Acquisition Priorities", description: " Understand the Latest Acquisition Strategies from the Department of Defense, Service, and Combat Commands" },
+      // { tagline: "Small Business Contracting Programs", description: "Learn about Initiatives that Support Small Businesses in Defense Contracting" },
+      { tagline: "Subcontracting and Teaming Opportunities", description: " Connect with Prime Defense Contractors to Explore Collaborative Ventures" },
+      { tagline: "Innovative Technology Solutions", description: " Discover Accelerated Contracting Opportunities through DARPA, DIU, and DEFENSEWERX" },
+      { tagline: "Government-Wide Acquisition Contracts (GWACs)", description: " Navigate the Intricacies of GWACs and their Small Business Tracks" },
+      { tagline: "Mentor-Protégé Programs", description: " Explore Programs Designed to Accelerate the Growth of Small Businesses through Strategic Partnerships" },
+      { tagline: "Upcoming Projects", description: "Get Insights into Future Projects from the Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC)" },
+      { tagline: "Military Base-Community Partnerships", description: " Learn how these Partnerships are Driving Construction and Facility Support Contracts" },
+      { tagline: "Cybersecurity Compliance", description: "Understand the Mandates and Training Options Available for Compliance with CMMC" },
+      // { tagline: "Support for Small & Medium Contractors", description: "Gain Access to Resources from the Defense Contract Audit Agency" },
+      { tagline: "Special Contracting Opportunities", description: " Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms" },
+    ],
+    image: "/2025_SoutheastDefenseProcurementConference.png",
+    slug: "2025-southeast-defense-procurement-conference",
+    locationImage: "/locations/location_NPC.png",
+    locationAddress: "TBD",
+    directions: [],
+    images: [],
+    parkingInfo: [],
+    placeID: "TBD",
+    registerLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
+    password: "ADA2025SDPC"
+  }
 ];

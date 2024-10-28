@@ -1,10 +1,7 @@
-import SponsorOptions from '@/app/components/SponsorOptions'
 import { EVENTS } from '@/constants/events';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react'
-import { ChevronLeft } from 'lucide-react'
-import Image from 'next/image';
+import ExhibitorOptions from '@/app/components/ExhibitorOptions';
 
 
 
@@ -23,9 +20,9 @@ const page = ({ params }: { params: { slug: string } }) => {
                 </Link>
             </div> */}
 
-                    <SponsorOptions
-                        event={event}
-                    ></SponsorOptions>
+            <ExhibitorOptions
+                event={event}
+            ></ExhibitorOptions>
         </>
     )
 }

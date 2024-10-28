@@ -18,7 +18,7 @@ const UpcomingEvents = () => {
       </p>
       <div className="flex lg:flex-row flex-col gap-10 mx-4">
         {EVENTS.map(event => (
-          <div key={event.id} className="relative group cursor-pointer transition-all duration-300 hover:scale-105">
+          <div key={event.id} className="relative group h-fit cursor-pointer transition-all duration-300 hover:scale-105">
             <EventCard
               title={event.title}
               date={event.date}
