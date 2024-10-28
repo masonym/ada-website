@@ -99,7 +99,7 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Speaking Opportunity", description: "Provide Welcoming Remarks at the VIP Networking Reception" },
                     { tagline: "Exhibit Space", description: "8'x10' Exhibit Space Strategically Placed in Exhibit Area/Foyer. 6' Exhibit Table and Chairs" },
                     { tagline: "Matchmaking Host", description: "Invitation to Host a One-on-One Matchmaking Session" },
-                    { tagline: "Brand Visibility", description: "Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
+                    { tagline: "Brand Visibility", description: "Prime Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
                     { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
                     { tagline: "Media Coverage", description: "Inclusion in Promotional Materials and Social Media Mentions. Photographs and Videos of your Participation" },
                 ],
