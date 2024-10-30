@@ -14,13 +14,12 @@ type EventCardProps = {
 const EventCard = ({ title, date, description, image, link }: EventCardProps) => {
   return (
     <div className="border-2 border-gray-20 rounded-md w-full h-full">
-      <Link href={link} className="block relative aspect-[16/9] w-full">
+      <Link href={link} className="block relative aspect-[5/2] w-full">
         <Image
           src={image}
           fill
-          style={{ objectFit: 'cover' }}
           alt={`Event image for ${title}`}
-          className="rounded-t-md"
+          className="rounded-t-md object-fill"
         />
       </Link>
       <div className="p-6">
