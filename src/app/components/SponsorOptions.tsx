@@ -32,16 +32,26 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                 <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
                     Registered Sponsors: Please submit a high-quality logo for inclusion in the conference materials, along with the desired link for the logo on the event website, to <Link className="text-blue-600 hover:underline text-nowrap" href="mailto:marketing@americandefensealliance.org">marketing@americandefencealliance.org</Link>.
                 </p>
-                <div className="grid md:grid-cols-3 grid-cols-1 gap-8 justify-items-center md:justify-items-stretch items-stretch [&>*]:w-full">
-                    {currentEvent.sponsorships.map((item, index) => (
-                        <SponsorshipCard
-                            key={index}
-                            item={item}
-                        >
-                        </SponsorshipCard>
-                    ))}
+                <div className="grid md:grid-cols-3 grid-cols-1 gap-8 justify-items-stretch items-stretch">
+                    {currentEvent.sponsorships.map((item, index) => {
+                        const isLastRow = index >= Math.floor(currentEvent.sponsorships.length / 3) * 3;
+                        const isLastRowCenter = currentEvent.sponsorships.length % 3 === 1;
+                        const isLastRowTwoItems = currentEvent.sponsorships.length % 3 === 2;
+
+                        return (
+                            <div
+                                key={index}
+                                className={`
+                    ${isLastRow && isLastRowCenter ? 'md:col-start-2' : ''}
+                    ${isLastRow && isLastRowTwoItems ? 'md:col-span-1 first:md:col-start-2' : ''}
+                `}
+                            >
+                                <SponsorshipCard item={item} />
+                            </div>
+                        );
+                    })}
                 </div>
-                <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-6xl mx-auto mb-6">
+                <p className="text-[16px] mt-4 font-gotham text-slate-600 text-center w-full max-w-6xl mx-auto mb-6">
                     <b>Exhibitor Spaces:</b> The configuration of Exhibitor Areas varies by event and may encompass locations such as the General Session room, Pre-Function Areas, or a dedicated Exhibit Hall. For detailed information about each event, please reach out to us directly. Exhibitor Spaces are designed for table-top displays only, with no carpeting or pipe and drape required. Each Exhibitor will receive a 6' Table and Chairs. An Exhibit Space display area accommodates up to 8'x10'. We recommend using a maximum of (2) Pop-up Banners or (1) Backdrop. Please note that Electrical Services and other add-on items, including Internet Connections are not part of the Exhibit Space and will need to be purchased separately. A comprehensive Exhibitor Document will be available for download on the Event Page of our website.
                 </p>
                 <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mb-6">
