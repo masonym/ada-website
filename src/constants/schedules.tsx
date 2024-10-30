@@ -1,45 +1,45 @@
 export const SCHEDULES = [
     {
         id: 1, // This should match the event ID from EVENTS
-            schedule: [
-                {
-                    date: "November 14th, 2024",
-                    items: [
-                        {
-                            time: "8:00 AM - 9:00 AM",
-                            title: "Registration & Networking Breakfast",
-                            // duration: "1 hour"
-                            location: "Ballroom and Foyer",
-                        },
-                        {
-                            time: "9:00 AM - 12:30 PM",
-                            title: "General Sessions",
-                            location: "Ballroom",
-                            // duration: "3 hours 30 minutes",
-                        },
-                        {
-                            time: "12:30 PM - 1:30 PM",
-                            title: "Networking Lunch",
-                            location: "Ballroom",
-                            // duration: "1 hour",
-                        },
-                        {
-                            time: "1:30 PM - 5:00 PM",
-                            title: "General Sessions",
-                            location: "Ballroom",
-                            // duration: "3 hours 30 minutes",
-                        },
-                        {
-                            time: "5:30 PM - 7:30 PM",
-                            title: "Networking Reception",
-                            location: "Fourth Estate Meeting Room"
-                            // duration: "2 hours",
-                        },
-                        
-                    ]
-                },
-                
-            ]
+        schedule: [
+            {
+                date: "November 14th, 2024",
+                items: [
+                    {
+                        time: "8:00 AM - 9:00 AM",
+                        title: "Registration & Networking Breakfast",
+                        // duration: "1 hour"
+                        location: "Ballroom and Foyer",
+                    },
+                    {
+                        time: "9:00 AM - 12:30 PM",
+                        title: "General Sessions",
+                        location: "Ballroom",
+                        // duration: "3 hours 30 minutes",
+                    },
+                    {
+                        time: "12:30 PM - 1:30 PM",
+                        title: "Networking Lunch",
+                        location: "Ballroom",
+                        // duration: "1 hour",
+                    },
+                    {
+                        time: "1:30 PM - 5:00 PM",
+                        title: "General Sessions",
+                        location: "Ballroom",
+                        // duration: "3 hours 30 minutes",
+                    },
+                    {
+                        time: "5:30 PM - 7:30 PM",
+                        title: "Networking Reception",
+                        location: "Fourth Estate Meeting Room"
+                        // duration: "2 hours",
+                    },
+
+                ]
+            },
+
+        ]
         // sample:
         //   schedule: [
         //     {
@@ -170,7 +170,7 @@ export const SCHEDULES = [
                         title: "VIP Networking Reception with Speakers, Sponsors, Exhibitors, and VIP Attendees",
                         // location: "Fourth Estate Meeting Room"
                     },
-                    
+
                 ],
             },
             {
@@ -198,7 +198,80 @@ export const SCHEDULES = [
                     },
                 ],
             }
-            
+
+        ]
+    },
+    {
+        id: 3,
+        schedule: [
+            {
+                date: "December 8th, 2024",
+                items: [
+                    {
+                        time: "6:00 PM - 8:00 PM",
+                        title: "Meet & Greet Bourbon Tasting with Astronauts",
+                        location: "Zarrellas, 8801 Astronaut Blvd. Cape Canaveral, FL 32920",
+                    },
+
+                ],
+            },
+            {
+                date: "December 9th, 2024",
+                items: [
+                    {
+                        time: "10:00 AM - 10:30 AM",
+                        title: "Overview – Exponential Space Sector Activity – The Commercial, Government & Defense Dimensions"
+                    },
+                    {
+                        time: "10:30 AM - 11:15 AM",
+                        title: "NASA & Space Force – Engaging the Innovative Private Sector"
+                    },
+                    {
+                        time: "11:15 AM - 12:00 PM",
+                        title: "Funding Space Industrialization – Space Industry Investment"
+                    },
+                    {
+                        time: "12:00 PM - 12:30 PM",
+                        title: "Manufacturing Opportunities in Space"
+                    },
+                    {
+                        time: "12:30 PM - 1:15 PM",
+                        title: "Lunch Networking Break"
+                    },
+                    {
+                        time: "1:15 PM - 1:55 PM",
+                        title: "Spaceport Infrastructure Needs – the State of Florida Role"
+                    },
+                    {
+                        time: "1:55 PM - 2:30 PM",
+                        title: "Attracting Local Tech Companies to the U.S. Space Enterprise"
+                    },
+                    {
+                        time: "2:30 PM - 3:15 PM",
+                        title: "U.S. Space Defense – Challenges & Imperatives"
+                    },
+                    {
+                        time: "3:15 PM - 4:00 PM",
+                        title: "Quantum & AI Driving New Frontiers in Space"
+                    },
+                    {
+                        time: "4:00 PM - 4:30 PM",
+                        title: "Cybersecurity – Protecting the Industrialization of Space"
+                    },
+                    {
+                        time: "4:30 PM - 5:00 PM",
+                        title: "Propulsion, Propellants & Fuels"
+                    },
+                    {
+                        time: "5:00 PM - 5:30 PM",
+                        title: "Space Asset Supply Chain Challenges"
+                    },
+                    {
+                        time: "5:30 PM",
+                        title: "Closing Comments"
+                    }
+                ]
+            }
         ]
     }
     // Add more event schedules here...
