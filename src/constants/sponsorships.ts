@@ -132,4 +132,50 @@ export const SPONSORSHIP_TYPES = [
             },
         ],
     },
+    {
+        id: 3,
+        sponsorships: [
+            {
+                title: "Gold Sponsor",
+                cost: "$10,000",
+                perks: [
+                    { tagline: "TBD", description: "8 Minute Audience Address" },
+                    { tagline: "TBD", description: "3 Attendee Event Passes" },
+                    { tagline: "TBD", description: "3 Passes to Meet & Greet Bourbon Tasting with Astronauts" },
+                    { tagline: "TBD", description: "Table-top display" },
+                    { tagline: "TBD", description: "Branding on Event marketing materials and on event screen" },
+                ],
+            },
+            {
+                title: "Silver Sponsor",
+                cost: "$5,000",
+                perks: [
+                    { tagline: "TBD", description: "3 Minute Audience Address" },
+                    { tagline: "TBD", description: "2 Attendee Event Passes" },
+                    { tagline: "TBD", description: "2 Passes to Meet & Greet Bourbon Tasting with Astronauts" },
+                    { tagline: "TBD", description: "Table-top display" },
+                    { tagline: "TBD", description: "Branding on Event marketing materials and on event screen" },
+                ],
+            },
+            {
+                title: "Bronze Sponsor",
+                cost: "$3,000",
+                perks: [
+                    { tagline: "TBD", description: "1 Attendee Event Pass" },
+                    { tagline: "TBD", description: "1 Pass to Meet & Greet Bourbon Tasting with Astronauts" },
+                    { tagline: "TBD", description: "Table-top display" },
+                    { tagline: "TBD", description: "Branding on Event marketing materials and on event screen" },
+                ],
+            },
+            {
+                title: "Meet & Greet Bourbon Tasting with Astronauts",
+                cost: "$2,000",
+                perks: [
+                    { tagline: "TBD", description: "1 Attendee Event Pass" },
+                    { tagline: "TBD", description: "3 Passes to Meet & Greet Bourbon Tasting with Astronauts" },
+                    { tagline: "TBD", description: "Branding on Event marketing materials and on event screen" },
+                ],
+            },
+        ]
+    }
 ];

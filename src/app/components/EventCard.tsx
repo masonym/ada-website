@@ -13,7 +13,7 @@ type EventCardProps = {
 
 const EventCard = ({ title, date, description, image, link }: EventCardProps) => {
   return (
-    <div className="border-2 border-gray-20 rounded-md max-w-[640px]">
+    <div className="border-2 border-gray-20 rounded-md max-w-[340px]">
       <Link href={link}>
         <Image
           src={image}

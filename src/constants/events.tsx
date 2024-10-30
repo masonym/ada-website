@@ -177,5 +177,34 @@ export const EVENTS = [
     placeID: "TBD",
     registerLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
     password: "ADA2025SDPC"
+  },
+  {
+    id: 3,
+    title: "Driving the Industrialization of Space",
+    date: "December 8th-9th, 2024",
+    timeStart: "2024-12-08T09:00:00Z",
+    description: "The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems.",
+    eventText: (
+      <div className="max-container font-light">
+        <p className="mb-4 leading-relaxed">
+        The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems. We invite you to connect with the pioneers and visionaries who are leading this new era of Department of Defense and commercial Space industrialization. Meet the experts and program managers eager to collaborate with those who recognize the vast potential in this rapidly expanding sector. Seize this opportunity to be at the forefront of this exciting frontier!
+        </p>
+        <p className="mb-4">
+          {/* Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers, and Small Business Program Directors from across the Defense Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors. */}
+        </p>
+      </div>
+    ),
+    topicalCoverage: [
+    ],
+    image: "/2025_IndustrializingSpace.png",
+    slug: "2025-driving-the-industrialization-of-space",
+    locationImage: "/locations/location_NPC.png",
+    locationAddress: "TBD",
+    directions: [],
+    images: [],
+    parkingInfo: [],
+    placeID: "TBD",
+    registerLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
+    password: "2025DTIOS"
   }
 ];
