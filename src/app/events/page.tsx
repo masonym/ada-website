@@ -5,6 +5,13 @@ import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 const page = () => {
+
+    const sortedEvents = [...EVENTS].sort((a, b) => {
+        const dateA = new Date(a.timeStart);
+        const dateB = new Date(b.timeStart);
+        return dateA.getTime() - dateB.getTime();
+      });
+
     return (
         <div className="flex flex-col max-content mt-12">
             <h1 className="text-[48px] font-gotham font-bold mb-0 text-slate-900 text-center">UPCOMING EVENTS</h1>
@@ -18,7 +25,7 @@ const page = () => {
                     Join us for industry-leading conferences and networking opportunities. Discover the latest in defense technology and procurement strategies.
                 </p>
                 <div className="flex lg:flex-row flex-col gap-10 mx-12">
-                    {EVENTS.map(event => (
+                    {sortedEvents.map(event => (
                         <div key={event.id} className="relative group h-fit cursor-pointer transition-all duration-300 hover:scale-105">
                             <EventCard
                                 title={event.title}
