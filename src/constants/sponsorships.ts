@@ -145,6 +145,7 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Exhibit Space", description: "Table-top display" },
                     { tagline: "Brand Visibility", description: "Branding on Event marketing materials and on event screen" },
                 ],
+                colour: "#ffaf00"
             },
             {
                 title: "Silver Sponsor",
@@ -156,6 +157,7 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Exhibit Space", description: "Table-top display" },
                     { tagline: "Brand Visibility", description: "Branding on Event marketing materials and on event screen" },
                 ],
+                colour: "#C0C0C0"
             },
             {
                 title: "Bronze Sponsor",
@@ -166,6 +168,7 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Exhibit Space", description: "Table-top display" },
                     { tagline: "Brand Visibility", description: "Branding on Event marketing materials and on event screen" },
                 ],
+                colour: "#CD7F32"
             },
             {
                 title: "Meet & Greet Bourbon Tasting with Astronauts",
