@@ -235,16 +235,6 @@ export const EVENTS = [
       This Event is Organized and Presented by:
     </h2>
     <div className="flex justify-center items-center gap-8 max-w-full">
-      <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
-        <Image 
-          src="/logo.png" 
-          alt="American Defense Alliance Logo" 
-          layout="responsive"
-          width={100}
-          height={100}
-          style={{ maxWidth: '100%', height: 'auto' }}
-        />
-      </div>
       <div className="w-[200px] sm:w-[300px] md:w-[400px] relative">
         <Image 
           src="/logos/nass-logo.png" 
@@ -252,6 +242,16 @@ export const EVENTS = [
           layout="responsive"
           width={100}
           height={33}
+          style={{ maxWidth: '100%', height: 'auto' }}
+        />
+      </div>
+      <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
+        <Image 
+          src="/logo.png" 
+          alt="American Defense Alliance Logo" 
+          layout="responsive"
+          width={100}
+          height={100}
           style={{ maxWidth: '100%', height: 'auto' }}
         />
       </div>
