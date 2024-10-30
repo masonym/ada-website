@@ -211,7 +211,7 @@ export const EVENTS = [
     ),
     topicalCoverage: [
     ],
-    image: "/2025_IndustrializingSpace.png",
+    image: "/header_final.jpg",
     slug: "2025-driving-the-industrialization-of-space",
     locationImage: "/locations/location_NPC.png",
     locationAddress: "TBD",
