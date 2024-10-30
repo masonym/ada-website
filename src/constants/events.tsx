@@ -210,14 +210,6 @@ export const EVENTS = [
       </div>
     ),
     topicalCoverage: [
-      "How rapidly evolving new technologies and geopolitical rivalries are moving the Space sector into a new phase",
-      "NASA and Space Force – engaging the innovative commercial players – new outreach initiatives and programs",
-      "Funding Space industrialization – capital sourcing for new Space technologies and the supporting terrestrial infrastructure",
-      "Spaceport launch infrastructure and ground support requirements",
-      "U.S. Space Defense – challenges and imperatives – Space as the likely first battleground in any future major conflict, and how Space Force Guardians are being integrated into our worldwide Combat Commands",
-      "Quantum and AI driving new frontiers in Space – and the clear and present dangers to U.S. Space assets and operations",
-      "Space supply chain challenges – Cybersecurity imperatives – and how to ensure availability of essential Space asset components",
-      "New developments in fabrication of Space equipment, on-orbit maintenance/repair",
     ],
     image: "/2025_IndustrializingSpace.png",
     slug: "2025-driving-the-industrialization-of-space",
