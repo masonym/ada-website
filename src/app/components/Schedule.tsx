@@ -15,6 +15,7 @@ type ScheduleItem = {
     photo?: string;
   };
   description?: string;
+  sponsorLogo?: string;
 };
 
 type DaySchedule = {
@@ -51,40 +52,58 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({ schedule }) => {
         </div>
         <div className="p-6">
           {schedule[selectedDay].items.map((item, itemIndex, array) => (
-            <div key={itemIndex} className={`relative pl-0 ${itemIndex !== array.length - 1 ? 'mb-8 pb-8 border-b border-gray-200' : ''}`}>
-              {/* <div className="absolute left-0 top-0 bottom-0 w-px bg-gray-300"></div> */}
-              {/* <div className="absolute left-[-5px] top-2 w-3 h-3 rounded-full bg-navy-800 border-2 border-white"></div> */}
-              <div className="font-bold text-xl text-navy-800 mb-2">{item.time}</div>
-              <div className="text-xl font-semibold mb-2">{item.title}</div>
-              {item.location && (
-                <div className="text-sm text-gray-600 mb-1">
-                  <span className="font-semibold">Location:</span> {item.location}
-                </div>
-              )}
-              {item.duration && (
-                <div className="text-sm text-gray-600 mb-2">
-                  <span className="font-semibold">Duration:</span> {item.duration}
-                </div>
-              )}
-              {item.speaker && (
-                <div className="flex items-center mt-3 mb-2">
-                  {item.speaker.photo && (
-                    <Image
-                      src={item.speaker.photo}
-                      alt={item.speaker.name}
-                      width={48}
-                      height={48}
-                      className="rounded-full mr-4"
+            <div 
+              key={itemIndex} 
+              className={`flex justify-between items-center min-h-[120px] ${
+                itemIndex !== array.length - 1 ? 'mb-8 pb-8 border-b border-gray-200' : ''
+              }`}
+            >
+              <div className="flex-grow pr-8">
+                <div className="font-bold text-xl text-navy-800 mb-2">{item.time}</div>
+                <div className="text-xl font-semibold mb-2">{item.title}</div>
+                {item.location && (
+                  <div className="text-sm text-gray-600 mb-1">
+                    <span className="font-semibold">Location:</span> {item.location}
+                  </div>
+                )}
+                {item.duration && (
+                  <div className="text-sm text-gray-600 mb-2">
+                    <span className="font-semibold">Duration:</span> {item.duration}
+                  </div>
+                )}
+                {item.speaker && (
+                  <div className="flex items-center mt-3 mb-2">
+                    {item.speaker.photo && (
+                      <Image
+                        src={item.speaker.photo}
+                        alt={item.speaker.name}
+                        width={48}
+                        height={48}
+                        className="rounded-full mr-4"
+                      />
+                    )}
+                    <div>
+                      <div className="font-semibold text-lg">{item.speaker.name}</div>
+                      {item.speaker.title && <div className="text-sm text-gray-600">{item.speaker.title}</div>}
+                      {item.speaker.affiliation && <div className="text-sm text-gray-600">{item.speaker.affiliation}</div>}
+                    </div>
+                  </div>
+                )}
+                {item.description && <div className="text-sm mt-2 text-gray-700">{item.description}</div>}
+              </div>
+              {item.sponsorLogo && (
+                <div className="flex-shrink-0 w-48 h-full flex items-center justify-center">
+                  <div className="relative w-full h-24">
+                    <Image 
+                      src={item.sponsorLogo} 
+                      alt="Sponsor Logo" 
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                  )}
-                  <div>
-                    <div className="font-semibold text-lg">{item.speaker.name}</div>
-                    {item.speaker.title && <div className="text-sm text-gray-600">{item.speaker.title}</div>}
-                    {item.speaker.affiliation && <div className="text-sm text-gray-600">{item.speaker.affiliation}</div>}
                   </div>
                 </div>
               )}
-              {item.description && <div className="text-sm mt-2 text-gray-700">{item.description}</div>}
             </div>
           ))}
         </div>
