@@ -10,7 +10,7 @@ const page = () => {
         const dateA = new Date(a.timeStart);
         const dateB = new Date(b.timeStart);
         return dateA.getTime() - dateB.getTime();
-      });
+    });
 
     return (
         <div className="flex flex-col max-content mt-12">
@@ -24,9 +24,9 @@ const page = () => {
                 <p className="text-center text-slate-600 text-xl mb-12 max-w-3xl">
                     Join us for industry-leading conferences and networking opportunities. Discover the latest in defense technology and procurement strategies.
                 </p>
-                <div className="flex lg:flex-row flex-col gap-10 mx-12">
+                <div className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-3 gap-10 mx-4 justify-items-center w-full xl:max-w-[1900px] px-4">
                     {sortedEvents.map(event => (
-                        <div key={event.id} className="relative group h-fit cursor-pointer transition-all duration-300 hover:scale-105">
+                        <div key={event.id} className="relative group h-fit cursor-pointer transition-all duration-300 hover:scale-105 w-full max-w-[640px]">
                             <EventCard
                                 title={event.title}
                                 date={event.date}
@@ -47,6 +47,10 @@ const page = () => {
                         </div>
                     ))}
                 </div>
+                {/* If there's an odd number of events, add an empty div to maintain centering */}
+                {sortedEvents.length % 2 !== 0 && sortedEvents.length > 1 && (
+                    <div className="hidden md:block w-full max-w-[640px]" />
+                )}
                 <p className="text-center text-slate-600 text-lg mt-8">
                     Click on any event card to view full details and registration information.
                 </p>
