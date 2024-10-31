@@ -112,7 +112,7 @@ export const EVENTS = [
     ],
     placeID: "ChIJ44HT0_u3t4kR9J5_0CQu3ic",
     registerLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
-    password: "ADA2025DIF"
+    password: "ADA2025DIF",
   },
   {
     id: 2,
@@ -176,7 +176,8 @@ export const EVENTS = [
     parkingInfo: [],
     placeID: "TBD",
     registerLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
-    password: "ADA2025SDPC"
+    password: "ADA2025SDPC",
+    sponsorProspectusPath: "/events/2025SDPC/2025SDPC-SponsorProspectus.pdf",
   },
   {
     id: 3,
@@ -224,50 +225,50 @@ export const EVENTS = [
     sponsorshipInfo: {
       additionalSponsorText: (
         <>
-  <b>Contact:</b> Lana Corrigan, Meetings & Events Executive
-  <br />
-  Phone: (202) 256-3028 | Email:{' '}
-  <a href="mailto:lana@americandefensealliance.org" className="underline">
-    lana@americandefensealliance.org
-  </a>
-  <div className="mt-4">
-    <h2 className="text-xl font-gotham font-bold mb-4 text-slate-700 text-center">
-      This Event is Organized and Presented by:
-    </h2>
-    <div className="flex justify-center items-center gap-8 max-w-full">
-      <div className="w-[200px] sm:w-[300px] md:w-[400px] relative">
-        <Image 
-          src="/logos/nass-logo.png" 
-          alt="NASS Logo" 
-          layout="responsive"
-          width={100}
-          height={33}
-          style={{ maxWidth: '100%', height: 'auto' }}
-        />
-      </div>
-      <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
-        <Image 
-          src="/logo.png" 
-          alt="American Defense Alliance Logo" 
-          layout="responsive"
-          width={100}
-          height={100}
-          style={{ maxWidth: '100%', height: 'auto' }}
-        />
-      </div>
-      <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
-        <Image 
-          src="/logos/amf-logo.png" 
-          alt="The Astronauts Memorial Foundation Logo" 
-          layout="responsive"
-          width={100}
-          height={100}
-          style={{ maxWidth: '100%', height: 'auto' }}
-        />
-      </div>
-    </div>
-  </div>
-</>
+          <b>Contact:</b> Lana Corrigan, Meetings & Events Executive
+          <br />
+          Phone: (202) 256-3028 | Email:{' '}
+          <a href="mailto:lana@americandefensealliance.org" className="underline">
+            lana@americandefensealliance.org
+          </a>
+          <div className="mt-4">
+            <h2 className="text-xl font-gotham font-bold mb-4 text-slate-700 text-center">
+              This Event is Organized and Presented by:
+            </h2>
+            <div className="flex justify-center items-center gap-8 max-w-full">
+              <div className="w-[200px] sm:w-[300px] md:w-[400px] relative">
+                <Image
+                  src="/logos/nass-logo.png"
+                  alt="NASS Logo"
+                  layout="responsive"
+                  width={100}
+                  height={33}
+                  style={{ maxWidth: '100%', height: 'auto' }}
+                />
+              </div>
+              <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
+                <Image
+                  src="/logo.png"
+                  alt="American Defense Alliance Logo"
+                  layout="responsive"
+                  width={100}
+                  height={100}
+                  style={{ maxWidth: '100%', height: 'auto' }}
+                />
+              </div>
+              <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
+                <Image
+                  src="/logos/amf-logo.png"
+                  alt="The Astronauts Memorial Foundation Logo"
+                  layout="responsive"
+                  width={100}
+                  height={100}
+                  style={{ maxWidth: '100%', height: 'auto' }}
+                />
+              </div>
+            </div>
+          </div>
+        </>
       ),
     },
   }

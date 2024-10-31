@@ -24,6 +24,7 @@ export type EventProps = {
         exhibitorSpacesText?: React.ReactNode;
         additionalSponsorText?: React.ReactNode;
     };
+    sponsorProspectusPath?: string;
 };
 
 type Speaker = {
