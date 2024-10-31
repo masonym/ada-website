@@ -226,7 +226,6 @@ export const REGISTRATION_TYPES = [
                 regularPrice: "$299",
                 earlyBirdDeadline: "2024-10-18T08:00:00Z",
                 type: "paid",
-                receptionPrice: "$450"
             },
         ],
     }
