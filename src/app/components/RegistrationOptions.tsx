@@ -6,6 +6,7 @@ import RegistrationCard from './RegistrationCard';
 import Link from 'next/link';
 import Button from './Button';
 import { Award, ChevronRight, Mail } from 'lucide-react';
+import SponsorProspectus from './SponsorProspectus';
 
 export type RegistrationProps = {
     event: EventProps;
@@ -110,12 +111,12 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                 )}
 
 
-                <div className="pt-0">
+                <div className="pt-0 items-center flex flex-col">
 
 
-                    <div className="flex items-center justify-center mt-8 mb-4">
-                        <Award className="w-8 h-8 text-gold-500 mr-3" />
-                        <h3 className="text-4xl font-bold text-navy-800">
+                    <div className="flex flex-wrap items-center justify-center mt-8 mb-4 gap-3">
+                        <Award className="w-8 h-8 text-gold-500 shrink-0" />
+                        <h3 className="text-4xl font-bold text-navy-800 text-center">
                             Become a Sponsor
                         </h3>
                     </div>
@@ -131,6 +132,8 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                             </button>
                         </Link>
                     </div>
+
+                    <SponsorProspectus event={event}/>
 
                     <div className="text-center">
                         <div className="flex items-center justify-center text-gray-600 mb-2">

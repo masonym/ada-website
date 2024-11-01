@@ -132,4 +132,53 @@ export const SPONSORSHIP_TYPES = [
             },
         ],
     },
+    {
+        id: 3,
+        sponsorships: [
+            {
+                title: "Gold Sponsor",
+                cost: "$10,000",
+                perks: [
+                    { tagline: "Speaking Opportunity", description: "8-Minute Audience Address" },
+                    { tagline: "Event Access", description: "(3) Attendee Event Passes" },
+                    { tagline: "Networking", description: "(3) Passes to Meet & Greet Bourbon Tasting with Astronauts" },
+                    { tagline: "Exhibit Space", description: "Table-Top Display" },
+                    { tagline: "Brand Visibility", description: "Logo on Event Marketing Materials and on Event Screen" },
+                ],
+                colour: "#ffaf00"
+            },
+            {
+                title: "Silver Sponsor",
+                cost: "$5,000",
+                perks: [
+                    { tagline: "Speaking Opportunity", description: "3-Minute Audience Address" },
+                    { tagline: "Event Access", description: "(2) Attendee Event Passes" },
+                    { tagline: "Networking", description: "(2) Passes to Meet & Greet Bourbon Tasting with Astronauts" },
+                    { tagline: "Exhibit Space", description: "Table-Top Display" },
+                    { tagline: "Brand Visibility", description: "Logo on Event Marketing Materials and on Event Screen" },
+                ],
+                colour: "#C0C0C0"
+            },
+            {
+                title: "Bronze Sponsor",
+                cost: "$3,000",
+                perks: [
+                    { tagline: "Event Access", description: "(1) Attendee Event Pass" },
+                    { tagline: "Networking", description: "(1) Pass to Meet & Greet Bourbon Tasting with Astronauts" },
+                    { tagline: "Exhibit Space", description: "Table-Top Display" },
+                    { tagline: "Brand Visibility", description: "Logo on Event Marketing Materials and on Event Screen" },
+                ],
+                colour: "#CD7F32"
+            },
+            {
+                title: "Meet & Greet Bourbon Tasting with Astronauts",
+                cost: "$2,000",
+                perks: [
+                    { tagline: "Event Access", description: "(1) Attendee Event Pass" },
+                    { tagline: "Networking", description: "(3) Passes to Meet & Greet Bourbon Tasting with Astronauts" },
+                    { tagline: "Brand Visibility", description: "Logo on Event Marketing Materials and on Event Screen" },
+                ],
+            },
+        ]
+    }
 ];

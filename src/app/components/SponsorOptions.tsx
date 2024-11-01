@@ -6,6 +6,7 @@ import SponsorshipCard from './SponsorshipCard'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from './Button'
+import SponsorProspectus from './SponsorProspectus'
 
 export type SponsorProps = {
     event: EventProps;
@@ -19,6 +20,32 @@ const SponsorOptions = ({ event }: SponsorProps) => {
         notFound();
     }
 
+    const defaultExhibitorText = (
+        <>
+            The configuration of Exhibitor Areas varies by event and may encompass locations such as 
+            the General Session room, Pre-Function Areas, or a dedicated Exhibit Hall. For detailed 
+            information about each event, please reach out to us directly. Exhibitor Spaces are 
+            designed for table-top displays only, with no carpeting or pipe and drape required. 
+            Each Exhibitor will receive a 6' Table and Chairs. An Exhibit Space display area 
+            accommodates up to 8'x10'. We recommend using a maximum of (2) Pop-up Banners or (1) 
+            Backdrop. Please note that Electrical Services and other add-on items, including 
+            Internet Connections are not part of the Exhibit Space and will need to be purchased 
+            separately. A comprehensive Exhibitor Document will be available for download on the 
+            Event Page of our website.
+        </>
+    );
+
+    const defaultSponsorText = (
+        <>
+            Explore our discounted Sponsorship Opportunities available when you Register for Multiple 
+            Events. Inquire about Sponsorship Opportunities available without an Exhibit Space at a 
+            reduced rate. For more information and to secure your sponsorship, contact:{' '}
+            <a href="mailto:marketing@americandefensealliance.org" className='underline'>
+                marketing@americandefensealliance.org
+            </a>
+        </>
+    );
+
     return (
         <div className="max-container mx-auto pb-8 pt-0 px-4 flex flex-col items-center ">
             <div className="flex flex-col items-center">
@@ -26,29 +53,39 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                     Sponsorship Opportunities
                 </h1>
                 <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
-                    Increase your Brand Visibility and gain a Competitive Advantage! 
+                    Increase your Brand Visibility and gain a Competitive Advantage!
                     {/* <br></br> Engaging in Sponsorship Opportunities is a Strategic way to effectively Promote your Products or Services. */}
                 </p>
+                <SponsorProspectus event={event}/>
                 <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
                     Registered Sponsors: Please submit a high-quality logo for inclusion in the conference materials, along with the desired link for the logo on the event website, to <Link className="text-blue-600 hover:underline text-nowrap" href="mailto:marketing@americandefensealliance.org">marketing@americandefencealliance.org</Link>.
                 </p>
-                {/* NOTE: may need to change this later for events with 5th/6th sponsors */}
-                {/* [&>*:nth-child(4)]:md:col-span-3 [&>*:nth-child(4)]:md:mx-auto [&>*:nth-child(4)]:md:max-w-[29rem] */}
-                <div className="grid md:grid-cols-3 grid-cols-1 gap-8 ">
-                    {currentEvent.sponsorships.map((item, index) => (
-                        <SponsorshipCard
-                            key={index}
-                            item={item}
-                        >
-                        </SponsorshipCard>
-                    ))
-                    }
+                <div className="grid md:grid-cols-3 grid-cols-1 gap-8 justify-items-stretch items-stretch">
+                    {currentEvent.sponsorships.map((item, index) => {
+                        const isLastRow = index >= Math.floor(currentEvent.sponsorships.length / 3) * 3;
+                        const isLastRowCenter = currentEvent.sponsorships.length % 3 === 1;
+                        const isLastRowTwoItems = currentEvent.sponsorships.length % 3 === 2;
+
+                        return (
+                            <div
+                                key={index}
+                                className={`
+                    ${isLastRow && isLastRowCenter ? 'md:col-start-2' : ''}
+                    ${isLastRow && isLastRowTwoItems ? 'md:col-span-1 first:md:col-start-2' : ''}
+                `}
+                            >
+                                <SponsorshipCard item={item} />
+                            </div>
+                        );
+                    })}
                 </div>
-                <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-6xl mx-auto mb-6">
-                    <b>Exhibitor Spaces:</b> The configuration of Exhibitor Areas varies by event and may encompass locations such as the General Session room, Pre-Function Areas, or a dedicated Exhibit Hall. For detailed information about each event, please reach out to us directly. Exhibitor Spaces are designed for table-top displays only, with no carpeting or pipe and drape required. Each Exhibitor will receive a 6' Table and Chairs. An Exhibit Space display area accommodates up to 8'x10'. We recommend using a maximum of (2) Pop-up Banners or (1) Backdrop. Please note that Electrical Services and other add-on items, including Internet Connections are not part of the Exhibit Space and will need to be purchased separately. A comprehensive Exhibitor Document will be available for download on the Event Page of our website.
+                <p className="text-[16px] mt-4 font-gotham text-slate-600 text-center w-full max-w-6xl mx-auto mb-6">
+                    <b>Exhibitor Spaces:</b>{' '}
+                    {event.sponsorshipInfo?.exhibitorSpacesText || defaultExhibitorText}
                 </p>
+
                 <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mb-6">
-                    Explore our discounted Sponsorship Opportunities available when you Register for Multiple Events. Inquire about Sponsorship Opportunities available without an Exhibit Space at a reduced rate. For more information and to secure your sponsorship, contact:  <a href="mailto:marketing@americandefensealliance.org" className='underline'>marketing@americandefensealliance.org</a>
+                    {event.sponsorshipInfo?.additionalSponsorText || defaultSponsorText}
                 </p>
                 <div className="mt-4 text-center flex flex-col items-center">
                     <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Seat at this Groundbreaking Event!</p>

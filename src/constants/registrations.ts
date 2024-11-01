@@ -207,4 +207,26 @@ export const REGISTRATION_TYPES = [
             //     description: "Join us for an exclusive evening networking
         ],
     },
+    {
+        id: 3,
+        registrations: [
+            {
+                title: "In-Person",
+                headerImage: "/registration-cards/DTIOS/attendee-pass.png",
+                perks: [
+                    "Registration for 1 Person",
+                    "Access to General Sessions",
+                    "1 complimentary pass to the KSC's Visitor Center attractions",
+                    "Meals",
+                ],
+                subtitle: "Includes:",
+                buttonText: "Register Now",
+                buttonLink: "https://shop.michman.org/",
+                earlyBirdPrice: "$550",
+                regularPrice: "$299",
+                earlyBirdDeadline: "2024-10-18T08:00:00Z",
+                type: "paid",
+            },
+        ],
+    }
 ];

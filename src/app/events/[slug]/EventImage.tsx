@@ -22,7 +22,7 @@ const EventImage = () => {
                         alt={`Event image for ${event.title}`}
                         fill
                         sizes="(max-width: 1280px) 100vw, 1280px"
-                        className="rounded-lg object-cover"
+                        className="rounded-lg object-contain"
                         priority
                     />
                 </div>

@@ -13,26 +13,19 @@ type EventCardProps = {
 
 const EventCard = ({ title, date, description, image, link }: EventCardProps) => {
   return (
-    <div className="border-2 border-gray-20 rounded-md max-w-[640px]">
-      <Link href={link}>
+    <div className="border-2 border-gray-20 rounded-md w-full h-full">
+      <Link href={link} className="block relative aspect-[5/2] w-full">
         <Image
           src={image}
-          width={1000}
-          height={400}
+          fill
           alt={`Event image for ${title}`}
+          className="rounded-t-md object-fill"
         />
       </Link>
-      <div className="p-5">
-        <h1 className="flex-1 font-gotham font-bold ss:text-[72px] text-[32px] text-slate-900">{title}</h1>
-        <p className="flex-1 font-gotham font-bold ss:text-[72px] text-[24px] text-slate-700">{date}</p>
-        <p className="flex-1 font-gotham font-bold ss:text-[72px] text-[16px] text-slate-500">{description}</p>
-
-        {/* <div className="mt-4 flex items-center gap-1">
-          <Link href={link} className="underline text-blue-950 font-bold flex items-center gap-1">
-            <span>Learn more</span>
-            <ArrowRight size={20} />
-          </Link>
-        </div> */}
+      <div className="p-6">
+        <h1 className="font-gotham font-bold text-2xl md:text-3xl text-slate-900 mb-2">{title}</h1>
+        <p className="font-gotham font-bold text-lg md:text-xl text-slate-700 mb-3">{date}</p>
+        <p className="font-gotham text-base text-slate-500">{description}</p>
       </div>
     </div>
   )

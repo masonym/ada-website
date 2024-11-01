@@ -48,6 +48,12 @@ const NavBar = () => {
     };
   }, []);
 
+  const sortedEvents = [...EVENTS].sort((a, b) => {
+    const dateA = new Date(a.timeStart);
+    const dateB = new Date(b.timeStart);
+    return dateA.getTime() - dateB.getTime();
+  });
+
   return (
     <nav className="flexBetween max-container padding-container py-5 relative z-30 border-b-gray-700">
       <Link href="/">
@@ -80,7 +86,7 @@ const NavBar = () => {
                 </Link>
                 {isDropdownOpen && (
                   <ul className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-auto rounded-md shadow-lg bg-white list-none">
-                    {EVENTS.map((event) => (
+                    {sortedEvents.map((event) => (
                       <li key={event.id} className="py-1 whitespace-nowrap">
                         <Link
                           href={`/events/${event.slug}`}

@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import ExhibitorCard from './ExhibitorCard';
 import Link from 'next/link';
 import Button from './Button';
+import SponsorProspectus from './SponsorProspectus';
 
 export type ExhibitorProps = {
     event: EventProps;
@@ -27,6 +28,7 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                 Increase your Brand Visibility and gain a Competitive Advantage!
                  {/* <br /> Engaging in Exhibitor Opportunities is a Strategic way to effectively Promote your Products or Services. */}
                 </p>
+                <SponsorProspectus event={event} />
                 <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
                     Registered Exhibitors: Please submit a high-quality logo for inclusion in the conference materials, along with the desired link for the logo on the event website, to <Link className="text-blue-600 hover:underline text-nowrap" href="mailto:marketing@americandefensealliance.org">marketing@americandefencealliance.org</Link>.
                 </p>

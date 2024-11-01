@@ -5,20 +5,25 @@ import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 const UpcomingEvents = () => {
+  // Sort events by date
+  const sortedEvents = [...EVENTS].sort((a, b) => {
+    const dateA = new Date(a.timeStart);
+    const dateB = new Date(b.timeStart);
+    return dateA.getTime() - dateB.getTime();
+  });
+
   return (
     <section id="upcoming-events" className="max-container flex flex-col items-center mt-24 mb-16">
       <h2 className="text-center font-gotham font-bold text-[36px] md:text-[64px] text-slate-900 sm:px-16 px-6">
         Don't miss our upcoming events!
       </h2>
-      {/* <h3 className="text-center font-gotham font-semibold text-[20px] md:text-[28px] text-slate-900 sm:px-16 px-6 mb-8">
-        We host events nationwide, so stay tuned for an event coming near you!
-      </h3> */}
       <p className="text-center text-slate-600 text-xl mb-12 max-w-3xl mx-2">
         Join us for industry-leading conferences and networking opportunities. Discover the latest in defense technology and procurement strategies.
       </p>
-      <div className="flex lg:flex-row flex-col gap-10 mx-4">
-        {EVENTS.map(event => (
-          <div key={event.id} className="relative group h-fit cursor-pointer transition-all duration-300 hover:scale-105">
+      {/* Changed to grid layout */}
+      <div className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-3 gap-10 mx-4 justify-items-center w-full xl:max-w-[1900px] px-4">
+        {sortedEvents.map(event => (
+          <div key={event.id} className="relative group h-fit cursor-pointer transition-all duration-300 hover:scale-105 w-full max-w-[640px]">
             <EventCard
               title={event.title}
               date={event.date}
@@ -39,6 +44,10 @@ const UpcomingEvents = () => {
           </div>
         ))}
       </div>
+      {/* If there's an odd number of events, add an empty div to maintain centering */}
+      {sortedEvents.length % 2 !== 0 && sortedEvents.length > 1 && (
+        <div className="hidden md:block w-full max-w-[640px]" />
+      )}
       <p className="text-center text-slate-600 text-lg mt-8">
         Click on any event card to view full details and registration information.
       </p>

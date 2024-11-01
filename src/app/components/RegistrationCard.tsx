@@ -43,7 +43,7 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
     }) : null;
 
     return (
-        <div className="w-full mx-auto overflow-hidden rounded-lg bg-white shadow-md flex flex-col">
+        <div className=" mx-auto overflow-hidden rounded-lg bg-white shadow-md flex flex-col">
             {/* Image container with aspect ratio box */}
             <div className="relative w-full pt-[50%]"> {/* 2:1 aspect ratio */}
                 <div className="absolute inset-0">
