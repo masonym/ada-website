@@ -12,6 +12,19 @@ const page = () => {
         return dateA.getTime() - dateB.getTime();
     });
 
+    const getGridClass = (count: number) => {
+        switch (count) {
+            case 1:
+                return 'xl:grid-cols-1 max-w-[640px]';
+            case 2:
+                return 'xl:grid-cols-2 xl:max-w-[1300px]';
+            default:
+                return 'xl:grid-cols-3 xl:max-w-[1900px]';
+        }
+    };
+
+    const gridClass = getGridClass(sortedEvents.length);
+
     return (
         <div className="flex flex-col max-content mt-12">
             <h1 className="text-[48px] font-gotham font-bold mb-0 text-slate-900 text-center">UPCOMING EVENTS</h1>
@@ -24,7 +37,7 @@ const page = () => {
                 <p className="text-center text-slate-600 text-xl mb-12 max-w-3xl">
                     Join us for industry-leading conferences and networking opportunities. Discover the latest in defense technology and procurement strategies.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-3 gap-10 mx-4 justify-items-center w-full xl:max-w-[1900px] px-4">
+                <div className={`grid grid-cols-1 md:grid-cols-1 ${gridClass} gap-10 mx-4 justify-items-center w-full px-4`}>
                     {sortedEvents.map(event => (
                         <div key={event.id} className="relative group h-fit cursor-pointer transition-all duration-300 hover:scale-105 w-full max-w-[640px]">
                             <EventCard

@@ -12,6 +12,20 @@ const UpcomingEvents = () => {
     return dateA.getTime() - dateB.getTime();
   });
 
+  // Determine grid columns based on number of events
+  const getGridClass = (count: number) => {
+    switch (count) {
+      case 1:
+        return 'xl:grid-cols-1 max-w-[640px]';
+      case 2:
+        return 'xl:grid-cols-2 xl:max-w-[1300px]';
+      default:
+        return 'xl:grid-cols-3 xl:max-w-[1900px]';
+    }
+  };
+
+  const gridClass = getGridClass(sortedEvents.length);
+
   return (
     <section id="upcoming-events" className="max-container flex flex-col items-center mt-24 mb-16">
       <h2 className="text-center font-gotham font-bold text-[36px] md:text-[64px] text-slate-900 sm:px-16 px-6">
@@ -20,8 +34,8 @@ const UpcomingEvents = () => {
       <p className="text-center text-slate-600 text-xl mb-12 max-w-3xl mx-2">
         Join us for industry-leading conferences and networking opportunities. Discover the latest in defense technology and procurement strategies.
       </p>
-      {/* Changed to grid layout */}
-      <div className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-3 gap-10 mx-4 justify-items-center w-full xl:max-w-[1900px] px-4">
+      {/* Dynamic grid columns and max-width based on number of events */}
+      <div className={`grid grid-cols-1 md:grid-cols-1 ${gridClass} gap-10 mx-4 justify-items-center w-full px-4`}>
         {sortedEvents.map(event => (
           <div key={event.id} className="relative group h-fit cursor-pointer transition-all duration-300 hover:scale-105 w-full max-w-[640px]">
             <EventCard
@@ -44,10 +58,6 @@ const UpcomingEvents = () => {
           </div>
         ))}
       </div>
-      {/* If there's an odd number of events, add an empty div to maintain centering */}
-      {sortedEvents.length % 2 !== 0 && sortedEvents.length > 1 && (
-        <div className="hidden md:block w-full max-w-[640px]" />
-      )}
       <p className="text-center text-slate-600 text-lg mt-8">
         Click on any event card to view full details and registration information.
       </p>
