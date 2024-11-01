@@ -181,98 +181,98 @@ export const EVENTS = [
     sponsorProspectusPath: "/events/2025SDPC/2025SDPC-SponsorProspectus.pdf",
   },
 
-  // {
-  //   id: 3,
-  //   title: "Driving the Industrialization of Space",
-  //   date: "December 8th-9th, 2024",
-  //   timeStart: "2024-12-08T09:00:00Z",
-  //   description: "The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems.",
-  //   eventText: (
-  //     <div className="max-container font-light">
-  //       <p className="mb-4 leading-relaxed">
-  //         The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems. We invite you to connect with the pioneers and visionaries who are leading this new era of Department of Defense and commercial Space industrialization. Meet the experts and program managers eager to collaborate with those who recognize the vast potential in this rapidly expanding sector. Seize this opportunity to be at the forefront of this exciting frontier!
-  //       </p>
-  //       <p className="mb-4">
-  //         {/* Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers, and Small Business Program Directors from across the Defense Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors. */}
-  //       </p>
-  //       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
-  //         Conference Topics Spotlight:
-  //       </h2>
-  //       <p className="">
-  //         <ul className="list-inside">
-  //           <li>How rapidly evolving new technologies and geopolitical rivalries are moving the Space sector into a new phase</li>
-  //           <li>NASA and Space Force – engaging the innovative commercial players – new outreach initiatives and programs</li>
-  //           <li>Funding Space industrialization – capital sourcing for new Space technologies and the supporting terrestrial infrastructure</li>
-  //           <li>Spaceport launch infrastructure and ground support requirements</li>
-  //           <li>U.S. Space Defense – challenges and imperatives – Space as the likely first battleground in any future major conflict, and how Space Force Guardians are being integrated into our worldwide Combat Commands</li>
-  //           <li>Quantum and AI driving new frontiers in Space – and the clear and present dangers to U.S. Space assets and operations</li>
-  //           <li>Space supply chain challenges – Cybersecurity imperatives – and how to ensure availability of essential Space asset components</li>
-  //           <li>New developments in fabrication of Space equipment, on-orbit maintenance/repair</li>
-  //         </ul>
-  //       </p>
-  //     </div>
-  //   ),
-  //   topicalCoverage: [
-  //   ],
-  //   image: "/header_final.jpg",
-  //   slug: "2025-driving-the-industrialization-of-space",
-  //   locationImage: "/locations/location_NPC.png",
-  //   locationAddress: "TBD",
-  //   directions: [],
-  //   images: [],
-  //   parkingInfo: [],
-  //   placeID: "TBD",
-  //   registerLink: "https://shop.michman.org/",
-  //   password: "2025DTIOS",
-  //   sponsorshipInfo: {
-  //     additionalSponsorText: (
-  //       <>
-  //         <b>Contact:</b> Lana Corrigan, Meetings & Events Executive
-  //         <br />
-  //         Phone: (202) 256-3028 | Email:{' '}
-  //         <a href="mailto:lana@americandefensealliance.org" className="underline">
-  //           lana@americandefensealliance.org
-  //         </a>
-  //         <div className="mt-4">
-  //           <h2 className="text-xl font-gotham font-bold mb-4 text-slate-700 text-center">
-  //             This Event is Organized and Presented by:
-  //           </h2>
-  //           <div className="flex justify-center items-center gap-8 max-w-full">
-  //             <div className="w-[200px] sm:w-[300px] md:w-[400px] relative">
-  //               <Image
-  //                 src="/logos/nass-logo.png"
-  //                 alt="NASS Logo"
-  //                 layout="responsive"
-  //                 width={100}
-  //                 height={33}
-  //                 style={{ maxWidth: '100%', height: 'auto' }}
-  //               />
-  //             </div>
-  //             <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
-  //               <Image
-  //                 src="/logo.png"
-  //                 alt="American Defense Alliance Logo"
-  //                 layout="responsive"
-  //                 width={100}
-  //                 height={100}
-  //                 style={{ maxWidth: '100%', height: 'auto' }}
-  //               />
-  //             </div>
-  //             <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
-  //               <Image
-  //                 src="/logos/amf-logo.png"
-  //                 alt="The Astronauts Memorial Foundation Logo"
-  //                 layout="responsive"
-  //                 width={100}
-  //                 height={100}
-  //                 style={{ maxWidth: '100%', height: 'auto' }}
-  //               />
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </>
-  //     ),
-  //   },
-  // }
+  {
+    id: 3,
+    title: "Driving the Industrialization of Space",
+    date: "December 8th-9th, 2024",
+    timeStart: "2024-12-08T09:00:00Z",
+    description: "The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems.",
+    eventText: (
+      <div className="max-container font-light">
+        <p className="mb-4 leading-relaxed">
+          The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems. We invite you to connect with the pioneers and visionaries who are leading this new era of Department of Defense and commercial Space industrialization. Meet the experts and program managers eager to collaborate with those who recognize the vast potential in this rapidly expanding sector. Seize this opportunity to be at the forefront of this exciting frontier!
+        </p>
+        <p className="mb-4">
+          {/* Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers, and Small Business Program Directors from across the Defense Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors. */}
+        </p>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+          Conference Topics Spotlight:
+        </h2>
+        <p className="">
+          <ul className="list-inside">
+            <li>How rapidly evolving new technologies and geopolitical rivalries are moving the Space sector into a new phase</li>
+            <li>NASA and Space Force – engaging the innovative commercial players – new outreach initiatives and programs</li>
+            <li>Funding Space industrialization – capital sourcing for new Space technologies and the supporting terrestrial infrastructure</li>
+            <li>Spaceport launch infrastructure and ground support requirements</li>
+            <li>U.S. Space Defense – challenges and imperatives – Space as the likely first battleground in any future major conflict, and how Space Force Guardians are being integrated into our worldwide Combat Commands</li>
+            <li>Quantum and AI driving new frontiers in Space – and the clear and present dangers to U.S. Space assets and operations</li>
+            <li>Space supply chain challenges – Cybersecurity imperatives – and how to ensure availability of essential Space asset components</li>
+            <li>New developments in fabrication of Space equipment, on-orbit maintenance/repair</li>
+          </ul>
+        </p>
+      </div>
+    ),
+    topicalCoverage: [
+    ],
+    image: "/header_final.jpg",
+    slug: "2025-driving-the-industrialization-of-space",
+    locationImage: "/locations/location_NPC.png",
+    locationAddress: "TBD",
+    directions: [],
+    images: [],
+    parkingInfo: [],
+    placeID: "TBD",
+    registerLink: "https://shop.michman.org/",
+    password: "2025DTIOS",
+    sponsorshipInfo: {
+      additionalSponsorText: (
+        <>
+          <b>Contact:</b> Lana Corrigan, Meetings & Events Executive
+          <br />
+          Phone: (202) 256-3028 | Email:{' '}
+          <a href="mailto:lana@americandefensealliance.org" className="underline">
+            lana@americandefensealliance.org
+          </a>
+          <div className="mt-4">
+            <h2 className="text-xl font-gotham font-bold mb-4 text-slate-700 text-center">
+              This Event is Organized and Presented by:
+            </h2>
+            <div className="flex justify-center items-center gap-8 max-w-full">
+              <div className="w-[200px] sm:w-[300px] md:w-[400px] relative">
+                <Image
+                  src="/logos/nass-logo.png"
+                  alt="NASS Logo"
+                  layout="responsive"
+                  width={100}
+                  height={33}
+                  style={{ maxWidth: '100%', height: 'auto' }}
+                />
+              </div>
+              <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
+                <Image
+                  src="/logo.png"
+                  alt="American Defense Alliance Logo"
+                  layout="responsive"
+                  width={100}
+                  height={100}
+                  style={{ maxWidth: '100%', height: 'auto' }}
+                />
+              </div>
+              <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
+                <Image
+                  src="/logos/amf-logo.png"
+                  alt="The Astronauts Memorial Foundation Logo"
+                  layout="responsive"
+                  width={100}
+                  height={100}
+                  style={{ maxWidth: '100%', height: 'auto' }}
+                />
+              </div>
+            </div>
+          </div>
+        </>
+      ),
+    },
+  }
 
 ];
