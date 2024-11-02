@@ -23,14 +23,14 @@ export const SCHEDULES = [
                     },
                     {
                         time: "9:10 AM",
-                        title: "Congressional Keynote Address",
+                        title: "Congressional Keynote Address (Pending)",
                         location: "National Press Club Ballroom",
-                        speakers: [{
-                            name: "Congressman Michael Waltz (6th District, Florida)",
-                            title: "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
-                            affiliation: "U.S. House of Representatives",
-                            photo: "/speakers/michael_waltz.png"
-                        }],
+                        // speakers: [{
+                        //     name: "Congressman Michael Waltz (6th District, Florida)",
+                        //     title: "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
+                        //     affiliation: "U.S. House of Representatives",
+                        //     photo: "/speakers/michael_waltz.png"
+                        // }],
                     },
                     {
                         time: "9:45 AM",
@@ -61,22 +61,22 @@ export const SCHEDULES = [
                         speakers: [
                             {
                                 name: "Kimberly Diane Buehler",
-                                title: "Director",
-                                affiliation: "Army Small Business Programs Office",
+                                title: "Director, Office of Small Business Programs (OSBP)",
+                                affiliation: "U.S. Army, Department of Defense",
                                 photo: "/speakers/kimberly_buhler.png"
                             },
                             {
                                 name: "Arveice Washington",
-                                title: "Director",
-                                affiliation: "Office of Small Business Programs, Office of the Secretary of the Navy",
+                                title: "Director, Office of Small Business Programs (OSBP)",
+                                affiliation: "Office of the Secretary of the Navy",
                                 photo: "/speakers/arveice_washington.jpg"
                             },
-                            {
-                                name: "Scott Kiser",
-                                title: "Director",
-                                affiliation: "Office of Small Business Programs, Office of the Secretary of the Air Force",
-                                photo: "/speakers/scott_kiser.png"
-                            }
+                            // {
+                            //     name: "Scott Kiser",
+                            //     title: "Director, Office of Small Business Programs (OSBP)",
+                            //     affiliation: "Office of the Secretary of the Air Force",
+                            //     photo: "/speakers/scott_kiser.png"
+                            // }
                         ]
                     },
                     {
