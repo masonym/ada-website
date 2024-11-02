@@ -1,15 +1,41 @@
-import React from 'react';
+"use client";
+
+import React, { useEffect, useState } from 'react';
 import { EVENTS } from '@/constants/events';
 import { SCHEDULES } from '@/constants/schedules';
 import { notFound } from 'next/navigation';
-import Schedule from '@/app/components/Schedule';
+import ScheduleAtAGlance from '@/app/components/Schedule';
+import PasswordModal from '@/app/components/PasswordModal';
 
 export default function AgendaPage({ params }: { params: { slug: string } }) {
   const event = EVENTS.find((e) => e.slug === params.slug);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [error, setError] = useState('');
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [enteredPassword, setEnteredPassword] = useState('');
 
   if (!event) {
     notFound();
   }
+
+  useEffect(() => {
+    const storedAuth = localStorage.getItem(`auth-${event.slug}`);
+    if (storedAuth === 'true') {
+      setIsAuthenticated(true);
+    }
+  }, [event.slug]);
+
+  const handlePasswordSubmit = (password: string) => {
+    if (password === event.password) {
+        setIsAuthenticated(true);
+        setError('');
+        setShowPasswordModal(false);
+        // Store authentication state in local storage
+        localStorage.setItem(`auth-${event.slug}`, 'true');
+    } else {
+        setError('Incorrect password. Please try again.');
+    }
+};
 
   const eventSchedule = SCHEDULES.find((s) => s.id === event.id);
 
@@ -25,8 +51,19 @@ export default function AgendaPage({ params }: { params: { slug: string } }) {
 
   return (
     <div>
-      {/* <h1 className="text-3xl font-bold text-center my-8">{event.title} - Agenda</h1> */}
-      <Schedule schedule={eventSchedule.schedule} />
-    </div>
+    <ScheduleAtAGlance
+        schedule={eventSchedule.schedule}
+        isAuthenticated={isAuthenticated}
+        onRequestPassword={() => setShowPasswordModal(true)}
+    />
+
+    <PasswordModal
+        isOpen={showPasswordModal}
+        onClose={() => setShowPasswordModal(false)}
+        onSubmit={handlePasswordSubmit}
+        error={error}
+        setEnteredPassword={setEnteredPassword}
+    />
+</div>
   );
 }

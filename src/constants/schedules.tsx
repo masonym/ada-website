@@ -6,104 +6,219 @@ export const SCHEDULES = [
                 date: "November 14th, 2024",
                 items: [
                     {
-                        time: "8:00 AM - 9:00 AM",
-                        title: "Registration & Networking Breakfast",
-                        // duration: "1 hour"
-                        location: "Ballroom and Foyer",
+                        time: "8:00 AM",
+                        title: "On-Site Attendee Registration",
+                        location: "National Press Club"
                     },
                     {
-                        time: "9:00 AM - 12:30 PM",
-                        title: "General Sessions",
-                        location: "Ballroom",
-                        // duration: "3 hours 30 minutes",
+                        time: "9:00 AM",
+                        title: "Welcoming Remarks",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Charles F. Sills",
+                            title: "President & CEO",
+                            affiliation: "American Defense Alliance",
+                            photo: "/speakers/charles_sills.png"
+                        }],
                     },
                     {
-                        time: "12:30 PM - 1:30 PM",
-                        title: "Networking Lunch",
-                        location: "Ballroom",
-                        // duration: "1 hour",
+                        time: "9:10 AM",
+                        title: "Congressional Keynote Address",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Congressman Michael Waltz (6th District, Florida)",
+                            title: "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
+                            affiliation: "U.S. House of Representatives",
+                            photo: "/speakers/michael_waltz.png"
+                        }],
                     },
                     {
-                        time: "1:30 PM - 5:00 PM",
-                        title: "General Sessions",
-                        location: "Ballroom",
-                        // duration: "3 hours 30 minutes",
+                        time: "9:45 AM",
+                        title: "Artificial Intelligence — Impact on Defense Acquisition",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Amir Bagherpour, PhD",
+                            title: "Managing Director and Analytics & Visualization Lead for Data & AI",
+                            affiliation: "Accenture Federal Services",
+                            photo: "/speakers/amir_bagherpour.jpg"
+                        }]
+                    },
+                    {
+                        time: "10:15 AM",
+                        title: "How To Do Business With The Primes I",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Mark Correll, P.E.",
+                            title: "Vice President, Federal Strategy Director",
+                            affiliation: "HDR",
+                            photo: "/speakers/mark_correll.png"
+                        }]
+                    },
+                    {
+                        time: "10:45 AM",
+                        title: "Defense Dept. Small Business Programs",
+                        location: "National Press Club Ballroom",
+                        speakers: [
+                            {
+                                name: "Kimberly Diane Buehler",
+                                title: "Director",
+                                affiliation: "Army Small Business Programs Office",
+                                photo: "/speakers/kimberly_buhler.png"
+                            },
+                            {
+                                name: "Arveice Washington",
+                                title: "Director",
+                                affiliation: "Office of Small Business Programs, Office of the Secretary of the Navy",
+                                photo: "/speakers/arveice_washington.jpg"
+                            },
+                            {
+                                name: "Scott Kiser",
+                                title: "Director",
+                                affiliation: "Office of Small Business Programs, Office of the Secretary of the Air Force",
+                                photo: "/speakers/scott_kiser.png"
+                            }
+                        ]
+                    },
+                    {
+                        time: "11:30 PM",
+                        title: "Defense Department Keynote Address",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Honorable John P. (\"Sean\") Coffey",
+                            title: "General Counsel",
+                            affiliation: "Department of the Navy",
+                            photo: "/speakers/john_coffey.png"
+                        }]
+                    },
+                    {
+                        time: "12:05 PM",
+                        title: "Ukraine — Report from the Front — and the Military Support Effort",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Dr. Iryna Andrukh",
+                            title: "Ukraine Program Director",
+                            affiliation: "Progress Humanity",
+                            photo: "/speakers/iryna_andrukh.png"
+                        }]
+                    },
+                    {
+                        time: "12:35 PM",
+                        title: "Sponsor Remarks",
+                        location: "National Press Club Ballroom"
+                    },
+                    {
+                        time: "12:45 PM",
+                        title: "Lunch Networking Break",
+                        location: "National Press Club Ballroom"
+                    },
+                    {
+                        time: "1:30 PM",
+                        title: "Defense Budget Analysis & Highlights",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Mark Cancian",
+                            title: "Senior Advisor, International Security Program",
+                            affiliation: "Center for Strategic and International Studies (CSIS)",
+                            photo: "/speakers/mark_cancian.jpg"
+                        }]
+                    },
+                    {
+                        time: "2:00 PM",
+                        title: "NATO Acquisition Expansion and Ukraine Arms Support",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Prince Joachim",
+                            title: "His Royal Highness, Brigadier General Prince of Denmark",
+                            affiliation: "Danish Military Industry Attaché to the United States",
+                            photo: "/speakers/joachim_christian.png"
+                        }]
+                    },
+                    {
+                        time: "2:30 PM",
+                        title: "Defense Department 'Innovation Hubs' — Champions for Innovative Small Business",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Brian Liesveld",
+                            title: "Chief Executive Officer",
+                            affiliation: "DEFENSEWERX",
+                            photo: "/speakers/brian_liesveld.jpg"
+                        }]
+                    },
+                    {
+                        time: "3:00 PM",
+                        title: "Army Corps of Engineers — Acquisition Plans & Upcoming Projects",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "David Morrow",
+                            title: "Acting Director, Military Programs",
+                            affiliation: "U.S. Army Corps of Engineers",
+                            photo: "/speakers/david_morrow.png"
+                        }]
+                    },
+                    {
+                        time: "3:30 PM",
+                        title: "Military Base-Community Partnership Programs",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Dave Leinberger",
+                            title: "Acting Director, Army Partnerships",
+                            affiliation: "Deputy Chief of Staff, G-9 (Installations)",
+                            photo: "/speakers/dave_leinberger.png"
+                        }]
+                    },
+                    {
+                        time: "4:00 PM",
+                        title: "NAVFAC Opportunities Briefing",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Bianca Henderson",
+                            title: "Director, Office of Small Business Programs (OSBP)",
+                            affiliation: "Naval Facilities Engineering Systems Command (NAVFAC)",
+                            photo: "/speakers/bianca_henderson.png"
+                        }]
+                    },
+                    {
+                        time: "4:30 PM",
+                        title: "How To Do Business With The Primes II",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "David Canada",
+                            title: "Director, Global Supplier Diversity",
+                            affiliation: "Boeing Defense Space & Security",
+                            photo: "/speakers/david_canada.png"
+                        }]
+                    },
+                    {
+                        time: "5:00 PM",
+                        title: "Strategies for Accessing Major GWACs (Government-Wide Acquisition Contracts)",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Patricia Waddell",
+                            title: "Director, Office of IT Services",
+                            affiliation: "Information Technology Category (ITC), Federal Acquisition Service (FAS), U.S. General Services Administration (GSA)",
+                            photo: "/speakers/patricia_waddell.png"
+                        }]
+                    },
+                    {
+                        time: "5:30 PM",
+                        title: "Closing Remarks",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Charles F. Sills",
+                            title: "President & CEO",
+                            affiliation: "American Defense Alliance",
+                            photo: "/speakers/charles_sills.png"
+                        }],
                     },
                     {
                         time: "5:30 PM - 7:30 PM",
-                        title: "Networking Reception",
-                        location: "Fourth Estate Meeting Room"
-                        // duration: "2 hours",
-                    },
-
+                        title: "VIP Networking Reception",
+                        description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests"
+                    }
                 ]
-            },
+            }
 
         ]
-        // sample:
-        //   schedule: [
-        //     {
-        //       date: "September 24, 2024",
-        //       items: [
-        //         {
-        //           time: "10:00 AM",
-        //           title: "Registration",
-        //           location: "Exhibit Hall A",
-        //           duration: "510 mins"
-        //         },
-        //         {
-        //           time: "12:30 PM",
-        //           title: "Capability Briefing: DoD Fuze Integrated Product Team (IPT)",
-        //           location: "Suite 1BCD",
-        //           duration: "210 mins",
-        //           speaker: {
-        //             name: "Philip Gorman, Jr.",
-        //             title: "Senior Consultant",
-        //             affiliation: "Booz Allen Hamilton",
-        //             photo: "/speakers/philip-gorman.png" // You'll need to add this image to your public folder
-        //           },
-        //           description: "Presentations from OSD and the Services on IPT topics to include industrial base analytic survey results, Fuze National Plan, and Small Business tools and assistance."
-        //         },
-        //         {
-        //           time: "2:00 PM",
-        //           title: "Capability Briefing",
-        //           location: "Suite 2A-D",
-        //           duration: "60 mins"
-        //         },
-        //         {
-        //           time: "3:00 PM",
-        //           title: "Capability Briefing",
-        //           location: "Suite 2A-D",
-        //           duration: "60 mins"
-        //         }
-        //       ]
-        //     },
-        //     {
-        //       date: "September 25, 2024",
-        //       items: [
-        //         {
-        //           time: "9:00 AM",
-        //           title: "Keynote Address",
-        //           location: "Main Hall",
-        //           duration: "60 mins",
-        //           speaker: {
-        //             name: "John Doe",
-        //             title: "Chief Technology Officer",
-        //             affiliation: "Department of Defense",
-        //             photo: "/speakers/john-doe.png" // You'll need to add this image to your public folder
-        //           }
-        //         },
-        //         {
-        //           time: "10:30 AM",
-        //           title: "Panel Discussion: Future of Defense Technology",
-        //           location: "Suite 3A-C",
-        //           duration: "90 mins"
-        //         },
-        //         // Add more items for this day...
-        //       ]
-        //     },
-        //     // Add more days as needed...
-        //   ]
     },
     {
         id: 2,
@@ -142,7 +257,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "12:30 PM - 1:30 PM",
-                        title: "Networking Lunch for Speakers, Sponsors, Exhibitors, and Attendees",
+                        title: "Networking Lunch for speakerss, Sponsors, Exhibitors, and Attendees",
                         // location: "Ballroom",
                     },
                     {
@@ -167,7 +282,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "5:30 PM - 7:30 PM",
-                        title: "VIP Networking Reception with Speakers, Sponsors, Exhibitors, and VIP Attendees",
+                        title: "VIP Networking Reception with speakerss, Sponsors, Exhibitors, and VIP Attendees",
                         // location: "Fourth Estate Meeting Room"
                     },
 
