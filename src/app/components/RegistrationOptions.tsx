@@ -27,6 +27,16 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
     const earlyBirdDeadline = currentEvent.registrations.find(reg => reg.earlyBirdDeadline)?.earlyBirdDeadline || null;
     const isEarlyBird = earlyBirdDeadline && new Date() < new Date(earlyBirdDeadline);
 
+    // Determine grid columns based on number of cards
+    const getGridCols = (count: number) => {
+        if (count === 1) return 'md:grid-cols-1';
+        if (count === 2) return 'md:grid-cols-2';
+        if (count === 3) return 'md:grid-cols-3';
+        return 'md:grid-cols-4';
+    };
+
+    const gridCols = getGridCols(currentEvent.registrations.length);
+
     return (
         <div className="w-full py-8 px-4">
             <div className="flex flex-col items-center max-w-7xl mx-auto">
@@ -34,11 +44,12 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                     Registration Options
                 </h1>
                 
-                {/* Registration Cards Grid - Responsive */}
-                <div className="w-full">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center">
+                {/* Registration Cards Grid - Responsive and Centered */}
+                <div className="w-full flex justify-center">
+                    <div className={`grid grid-cols-1 ${gridCols} gap-6 justify-center`}
+                         style={{ maxWidth: `${currentEvent.registrations.length * 320 + (currentEvent.registrations.length - 1) * 24}px` }}>
                         {currentEvent.registrations.map((item, index) => (
-                            <div key={index} className="w-full max-w-sm">
+                            <div key={index} className="w-full max-w-[320px]">
                                 <RegistrationCard item={item} />
                             </div>
                         ))}
