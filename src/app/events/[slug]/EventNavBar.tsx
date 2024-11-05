@@ -70,7 +70,7 @@ export default function Navbar() {
                         >
                             {navItem.subItems ? (
                                 <>
-                                    <span className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full cursor-pointer flex items-center">
+                                    <span className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full cursor-pointer flex items-center text-center">
                                         {navItem.label}
                                         <ChevronDown className="ml-1 h-4 w-4" />
                                     </span>
