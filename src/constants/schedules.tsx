@@ -97,7 +97,7 @@ export const SCHEDULES = [
                         speakers: [{
                             name: "Dr. Iryna Andrukh",
                             title: "Ukraine Program Director",
-                            affiliation: "Progress Humanity",
+                            affiliation: "Progress Humanity (Formerly  Colonel in the Ukraine Army and Recipient of 4 Ukraine Presidential Medals of Honor)",
                             photo: "/speakers/iryna_andrukh.png"
                         }]
                     },
