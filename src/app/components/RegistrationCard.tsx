@@ -59,6 +59,7 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
             <div className="flex flex-col flex-grow p-6">
                 {/* Scrollable content area */}
                 <div className="flex-grow overflow-y-auto">
+                    <p className="text-md text-center text-slate-700 mb-4">{item.title}</p>
                     <p className="text-sm text-gray-600 mb-4">{item.subtitle}</p>
                     <ul className="space-y-2 mb-6">
                         {item.perks.map((perk, index) => (

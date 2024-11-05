@@ -3,7 +3,7 @@ export const REGISTRATION_TYPES = [
         id: 1,
         registrations: [
             {
-                title: "In-Person",
+                title: "Attendee Pass",
                 headerImage: "/registration-cards/2024DIF/attendee-pass.png",
                 perks: [
                     "Registration for 1 Person",
@@ -66,7 +66,7 @@ export const REGISTRATION_TYPES = [
                 availabilityInfo: "Limited availability."
             },
             {
-                title: "Sponsor",
+                title: "Sponsorship Opportunities",
                 headerImage: "/registration-cards/2024DIF/sponsor-pass.png",
                 perks: [
                     "Brand Visibility",
@@ -98,7 +98,7 @@ export const REGISTRATION_TYPES = [
         id: 2,
         registrations: [
             {
-                title: "In-Person",
+                title: "Attendee Pass",
                 headerImage: "/registration-cards/2025SPDC/attendee-pass.png",
                 perks: [
                     "(1) Attendee Pass",
@@ -119,7 +119,7 @@ export const REGISTRATION_TYPES = [
             },
 
             {
-                title: "In-Person",
+                title: "VIP Attendee Pass",
                 headerImage: "/registration-cards/2025SPDC/vip-attendee-pass.png",
                 perks: [
                     "(1) VIP Attendee Pass",
@@ -140,7 +140,7 @@ export const REGISTRATION_TYPES = [
             },
 
             {
-                title: "Table-Top Exhibit",
+                title: "Table-Top Exhibit Space",
                 headerImage: "/registration-cards/2025SPDC/exhibit-table-pass.png",
                 perks: [
                     "(1) Exhibitor Pass",
@@ -159,7 +159,7 @@ export const REGISTRATION_TYPES = [
             },
 
             {
-                title: "Government/Military Personnel Registration",
+                title: "Government/Military Personnel",
                 headerImage: "/registration-cards/2025SPDC/gov-pass.png",
                 perks: [
                     "(1) Attendee Pass",
@@ -211,7 +211,7 @@ export const REGISTRATION_TYPES = [
         id: 3,
         registrations: [
             {
-                title: "In-Person",
+                title: "Attendee Pass",
                 headerImage: "/registration-cards/DTIOS/attendee-pass.png",
                 perks: [
                     "Registration for 1 Person",
@@ -228,7 +228,7 @@ export const REGISTRATION_TYPES = [
                 type: "paid",
             },
             {
-                title: "Bourbon Tasting",
+                title: "Meet & Greet Bourbon Tasting with Astronauts Pass",
                 headerImage: "/registration-cards/DTIOS/bourbon-tasting-pass.png",
                 perks: [
                     "Mix and mingle with our guest star astronauts at Zarrella’s Italian & Wood Fired Pizza in Cape Canaveral, FL while sampling select and smooth bourbons."
