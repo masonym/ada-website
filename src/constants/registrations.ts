@@ -231,7 +231,7 @@ export const REGISTRATION_TYPES = [
                 title: "Meet & Greet Bourbon Tasting with Astronauts Pass",
                 headerImage: "/registration-cards/DTIOS/bourbon-tasting-pass.png",
                 perks: [
-                    "Mix and mingle with our guest star astronauts at Zarrella’s Italian & Wood Fired Pizza in Cape Canaveral, FL while sampling select and smooth bourbons."
+                    "Mix and Mingle with our Guest Star Astronauts and other VIP Guests at Zarrella’s Italian & Wood Fired Pizza in Cape Canaveral, FL while Sampling Select Smooth Bourbons."
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",

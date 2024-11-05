@@ -27,7 +27,7 @@ export const SPECIAL_FEATURES: EventSpecialFeatures[] = [
           <br/>
           8801 Astronaut Blvd, Cape Canaveral, FL 32920
           `,
-          description: "Mix and Mingle with our Guest Star Astronauts and other VIP Guests while Sampling Select Smooth Bourbons."
+          description: "Mix and Mingle with our Guest Star Astronauts and other VIP Guests at Zarrella’s Italian & Wood Fired Pizza in Cape Canaveral, FL while Sampling Select Smooth Bourbons."
         }
       ],
       additionalPerks: [
