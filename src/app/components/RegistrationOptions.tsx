@@ -141,10 +141,10 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                             <p className="font-medium">Contact our Sponsorship Team:</p>
                         </div>
                         <a
-                            href="mailto:marketing@americandefensealliance.org"
+                            href={`mailto:${event.contactEmail || 'marketing@americandefensealliance.org'}`}
                             className="text-blue-600 hover:text-blue-800 transition-colors duration-300 font-medium break-words"
                         >
-                            marketing@americandefensealliance.org
+                            {event.contactEmail || 'marketing@americandefensealliance.org'}
                         </a>
                     </div>
                 </div>

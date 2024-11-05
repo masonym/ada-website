@@ -11,6 +11,7 @@ import { ChevronLeft } from 'lucide-react';
 import Script from 'next/script';
 import { Metadata } from 'next';
 import KeynoteSpeaker from '@/app/components/KeynoteSpeaker';
+import SponsorLogos from '@/app/components/SponsorLogos';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -125,6 +126,8 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             <KeynoteSpeaker eventId={event.id} />
 
             <RegistrationOptions event={event} />
+
+            <SponsorLogos event={event} />
 
             <div className="mt-0 text-center flex flex-col items-center">
               <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Seat at this Groundbreaking Event!</p>
