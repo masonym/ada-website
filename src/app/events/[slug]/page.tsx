@@ -126,11 +126,13 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             <KeynoteSpeaker eventId={event.id} />
 
-            <RegistrationOptions event={event} />
-
             <SponsorLogos event={event} />
 
             <SpecialFeatures event={event} />
+            
+            <RegistrationOptions event={event} />
+
+
 
             <div className="mt-0 text-center flex flex-col items-center">
               <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Seat at this Groundbreaking Event!</p>

@@ -242,8 +242,8 @@ export const EVENTS = [
       sponsorSection: (
         <>
           <div className="mt-4">
-            <h2 className="text-xl font-gotham font-bold mb-4 text-slate-700 text-center">
-              This Event is Organized and Presented by:
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+              Sponsors and Event Partners
             </h2>
             <div className="flex justify-center items-center gap-8 max-w-full">
               <div className="w-[200px] sm:w-[300px] md:w-[400px] relative">
