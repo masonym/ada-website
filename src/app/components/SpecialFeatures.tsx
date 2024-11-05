@@ -17,7 +17,7 @@ const SpecialFeatures: React.FC<SpecialFeaturesProps> = ({ event }) => {
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col items-center">
-            <h2 className="text-4xl font-bold text-navy-800 mb-8">Conference Special Features</h2>
+            <h2 className="text-4xl font-bold text-navy-800 mb-8 text-center">Conference Special Features</h2>
 
             <div className="grid md:gap-8 gap-4 md:grid-cols-2 items-start">
                 {eventFeatures.features.map((feature, index) => (
