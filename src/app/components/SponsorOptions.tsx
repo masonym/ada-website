@@ -85,7 +85,11 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                 </p>
 
                 <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mb-6">
-                    {event.sponsorshipInfo?.additionalSponsorText || defaultSponsorText}
+                    {event.sponsorshipInfo?.customContactText}
+                </p>
+
+                <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mb-6">
+                    {event.sponsorshipInfo?.sponsorSection || defaultSponsorText}
                 </p>
                 <div className="mt-4 text-center flex flex-col items-center">
                     <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Seat at this Groundbreaking Event!</p>

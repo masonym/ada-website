@@ -199,9 +199,8 @@ export const EVENTS = [
           Industrializing Space
         </h2>
         <p className="mb-4 leading-relaxed">
-          The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the <i>INDUSTRIALIZATION</i> of space. Are you ready to be part of this transformative phase?
-          <br />This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems.
-          <br />We invite you to connect with the pioneers and visionaries who are leading this new era of Department of Defense and commercial Space industrialization. Meet the experts and program managers eager to collaborate with those who recognize the vast potential in this rapidly expanding sector. Seize this opportunity to be at the forefront of this exciting frontier!
+        The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems.
+        <br/><br/>We invite you to connect with the pioneers and visionaries who are leading this new era of Department of Defense and commercial Space industrialization. Meet the experts and program managers eager to collaborate with those who recognize the vast potential in this rapidly expanding sector. Seize this opportunity to be at the forefront of this exciting frontier!
         </p>
         <p className="mb-4">
           {/* Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers, and Small Business Program Directors from across the Defense Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors. */}
@@ -235,15 +234,10 @@ export const EVENTS = [
     placeID: "TBD",
     registerLink: "https://shop.michman.org/",
     password: "2025DTIOS",
+    contactEmail: "info@industralizing.space",
     sponsorshipInfo: {
-      additionalSponsorText: (
+      sponsorSection: (
         <>
-          <b>Contact:</b> Lana Corrigan, Meetings & Events Executive
-          <br />
-          Phone: (202) 256-3028 | Email:{' '}
-          <a href="mailto:lana@americandefensealliance.org" className="underline">
-            lana@americandefensealliance.org
-          </a>
           <div className="mt-4">
             <h2 className="text-xl font-gotham font-bold mb-4 text-slate-700 text-center">
               This Event is Organized and Presented by:
@@ -283,6 +277,16 @@ export const EVENTS = [
           </div>
         </>
       ),
+      customContactText: (
+        <>
+          <b>Contact:</b> Lana Corrigan, Meetings & Events Executive
+          <br />
+          Phone: (202) 256-3028 | Email:{' '}
+          <a href="mailto:lana@americandefensealliance.org" className="underline">
+            lana@americandefensealliance.org
+          </a>
+        </>
+      )
     },
   }
 
