@@ -117,9 +117,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} />
 
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
-              Event Overview
-            </h2>
+
             <div className="flex flex-col leading-relaxed text-slate-600 text-lg text-center mx-8">
               {event.eventText}
             </div>

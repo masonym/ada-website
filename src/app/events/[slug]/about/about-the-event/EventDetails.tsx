@@ -18,9 +18,9 @@ const EventDetails: React.FC<EventProps> = ({ title, eventText, topicalCoverage,
     <div className="min-h-screen text-navy-800 text-center">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 mb-12 shadow-xl">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+          {/* <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
             About the Event
-          </h2>
+          </h2> */}
           <div className="text-lg leading-relaxed">{eventText}</div>
         </div>
 
