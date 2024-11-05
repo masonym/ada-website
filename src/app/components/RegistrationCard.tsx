@@ -43,23 +43,22 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
     }) : null;
 
     return (
-        <div className=" mx-auto overflow-hidden rounded-lg bg-white shadow-md flex flex-col">
-            {/* Image container with aspect ratio box */}
-            <div className="relative w-full pt-[50%]"> {/* 2:1 aspect ratio */}
-                <div className="absolute inset-0">
-                    <Image
-                        src={item.headerImage}
-                        alt={item.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        priority
-                    />
-                </div>
+        <div className="flex flex-col bg-white rounded-lg shadow-md overflow-hidden max-w-sm mx-auto h-full">
+            {/* Image container with responsive dimensions */}
+            <div className="relative w-full h-32">
+                <Image
+                    src={item.headerImage}
+                    alt={item.title}
+                    fill
+                    className="object-contain"
+                    priority
+                />
             </div>
 
-            <div className="p-6 flex-grow flex flex-col justify-between">
-                <div>
+            {/* Content container */}
+            <div className="flex flex-col flex-grow p-6">
+                {/* Scrollable content area */}
+                <div className="flex-grow overflow-y-auto">
                     <p className="text-sm text-gray-600 mb-4">{item.subtitle}</p>
                     <ul className="space-y-2 mb-6">
                         {item.perks.map((perk, index) => (
@@ -70,27 +69,28 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                         ))}
                     </ul>
                 </div>
-                <div className="mt-4">
+
+                {/* Footer section */}
+                <div className="mt-auto pt-4 border-t border-gray-200">
                     {isPaid && isEarlyBird && (
-                        <p className="text-md font-semibold text-center text-green-600 mb-2">
-                            Early-bird price! 
-                            {/* Increases to {item.regularPrice} after {deadlineDate} */}
+                        <p className="text-sm font-semibold text-center text-green-600 mb-2">
+                            Early-bird price available!
                         </p>
                     )}
                     {item.receptionPrice && (
-                        <p className="text-md font-semibold text-center break-words text-blue-600 mb-2">
+                        <p className="text-sm font-semibold text-center break-words text-blue-600 mb-2">
                             {item.receptionPrice} with<wbr /> VIP Networking Reception
                         </p>
                     )}
                     {isFree && (
                         <div className="text-center">
-                            <p className="text-md font-semibold text-gray-600">Register with .gov or .mil email</p>
+                            <p className="text-sm font-semibold text-gray-600">Register with .gov or .mil email</p>
                         </div>
                     )}
                     {isSponsor && (
                         <div className="text-center">
-                            <p className="text-md font-semibold text-gray-600">For more information and to secure your sponsorship, contact:</p>
-                            <p className="text-md font-semibold text-blue-600 hover:underline break-words mb-2">
+                            <p className="text-sm font-semibold text-gray-600">For more information and to secure your sponsorship, contact:</p>
+                            <p className="text-sm font-semibold text-blue-600 hover:underline break-words mb-2">
                                 <a href="mailto:marketing@americandefensealliance.org">
                                     marketing@<wbr />americandefensealliance.org
                                 </a>
@@ -98,12 +98,12 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                         </div>
                     )}
                     {item.availabilityInfo && (
-                        <p className="text-md font-semibold text-center text-blue-600 mb-2">
+                        <p className="text-sm font-semibold text-center text-blue-600 mb-2">
                             {item.availabilityInfo}
                         </p>
                     )}
-                    <p className="text-2xl font-bold text-center mb-2">{currentPrice}</p>
-                    <Link href={item.buttonLink} target="_blank">
+                    <p className="text-xl font-bold text-center mb-2">{currentPrice}</p>
+                    <Link href={item.buttonLink} target="_blank" className="block w-full">
                         <button className="w-full py-2 px-4 bg-blue-800 text-white font-semibold rounded-md hover:bg-navy-200 transition duration-300">
                             {item.buttonText}
                         </button>
