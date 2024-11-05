@@ -50,7 +50,7 @@ export const SCHEDULES = [
                         speakers: [{
                             name: "Mark Correll, P.E.",
                             title: "Vice President, Federal Strategy Director",
-                            affiliation: "HDR",
+                            affiliation: "HDR (Former Deputy Assistant Secretary of the Air Force for Environment, Safety and Infrastructure)",
                             photo: "/speakers/mark_correll.png"
                         }]
                     },
@@ -71,16 +71,16 @@ export const SCHEDULES = [
                                 affiliation: "Office of the Secretary of the Navy",
                                 photo: "/speakers/arveice_washington.jpg"
                             },
-                            // {
-                            //     name: "Scott Kiser",
-                            //     title: "Director, Office of Small Business Programs (OSBP)",
-                            //     affiliation: "Office of the Secretary of the Air Force",
-                            //     photo: "/speakers/scott_kiser.png"
-                            // }
+                            {
+                                name: "Scott Kiser",
+                                title: "Director, Office of Small Business Programs (OSBP)",
+                                affiliation: "Office of the Secretary of the Air Force",
+                                photo: "/speakers/scott_kiser.png"
+                            }
                         ]
                     },
                     {
-                        time: "11:30 PM",
+                        time: "11:40 AM",
                         title: "Defense Department Keynote Address",
                         location: "National Press Club Ballroom",
                         speakers: [{
@@ -91,7 +91,7 @@ export const SCHEDULES = [
                         }]
                     },
                     {
-                        time: "12:05 PM",
+                        time: "12:15 PM",
                         title: "Ukraine — Report from the Front — and the Military Support Effort",
                         location: "National Press Club Ballroom",
                         speakers: [{
@@ -100,11 +100,6 @@ export const SCHEDULES = [
                             affiliation: "Progress Humanity",
                             photo: "/speakers/iryna_andrukh.png"
                         }]
-                    },
-                    {
-                        time: "12:35 PM",
-                        title: "Sponsor Remarks",
-                        location: "National Press Club Ballroom"
                     },
                     {
                         time: "12:45 PM",
@@ -124,7 +119,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "2:00 PM",
-                        title: "NATO Acquisition Expansion and Ukraine Arms Support",
+                        title: "Transatlantic Defense Partnerships to Strengthen Industrial Resilience",
                         location: "National Press Club Ballroom",
                         speakers: [{
                             name: "Prince Joachim",
@@ -213,7 +208,8 @@ export const SCHEDULES = [
                     {
                         time: "5:30 PM - 7:30 PM",
                         title: "VIP Networking Reception",
-                        description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests"
+                        description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
+                        location: "Fourth Estate"
                     }
                 ]
             }

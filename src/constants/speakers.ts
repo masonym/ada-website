@@ -249,7 +249,7 @@ export const SPEAKERS = [
             //     `
             // },
             // {
-            //     image: "/speakers/placeholder.png",
+            //     image: "/speakers/mark_correll.png",
             //     name: "Mark Correll",
             //     position: "Vice President, Federal Strategy Director",
             //     company: "HDR",
@@ -257,17 +257,17 @@ export const SPEAKERS = [
             //     Placeholder Bio
             //     `
             // },
-            // {
-            //     image: "/speakers/scott_kiser.png",
-            //     name: "Scott Kiser",
-            //     position: "Director, Office of Small Business Programs",
-            //     company: "Office of the Secretary of the Air Force",
-            //     bio: `
-            //     Scott A. Kiser, a member of the Senior Executive Service, is the Director of Air Force Small Business Programs, located at the Pentagon, Arlington, Virginia. He is responsible for policy, advocacy, execution and advice pertaining to Small Business Programs and personnel throughout the department.
-            //     <br></br>
-            //     Mr. Kiser, a Manhattan, Kansas, native, was commissioned in the U.S. Air Force in 1985 and served 27 years on active duty. He garnered extensive experience in international, major weapons system, operational and logistical contracting. Throughout his career, he held other key positions, to include Senior Contracting Official as Chief of Contracting, Headquarters Air Combat Command; Director of Contracting, Oklahoma City Air Logistics Center; the Alternate Principal Assistant Responsible for Contracting and Chief, Contracts Policy, Headquarters, U.S. Army Intelligence and Security Command; the Director of Contracting, Air Force Life Cycle Management Center, Hanscom Air Force Base, Mass; and most recently as Associate Deputy Assistant Secretary for Contracting at Headquarters U.S. Air Force, the Pentagon, Arlington, Virginia. He aided the Deputy Assistant Secretary for Contracting in leading an 8,000 military and civilian contracting organization responsible for annually executing $70 billion for acquisition of major weapon systems, logistics, special access program, operational supplies and services and resourcing worldwide contingency operations. He served as the Air Force Head of the Contracting Authority and provided policy, guidance and oversight of Air Force Acquisition and Contracting Operations. Mr. Kiser retired from active duty as a colonel in August 2012 and entered Senior Executive Service in June 2014. 
-            //     `
-            // },
+            {
+                image: "/speakers/scott_kiser.png",
+                name: "Scott Kiser",
+                position: "Director, Office of Small Business Programs",
+                company: "Office of the Secretary of the Air Force",
+                bio: `
+                Scott A. Kiser, a member of the Senior Executive Service, is the Director of Air Force Small Business Programs, located at the Pentagon, Arlington, Virginia. He is responsible for policy, advocacy, execution and advice pertaining to Small Business Programs and personnel throughout the Department for both Air Forces and Space Forces.
+                <br></br>
+                Mr. Kiser, a Manhattan, Kansas, native, was commissioned in the U.S. Air Force in 1985 and served 27 years on active duty. He garnered extensive experience in international, major weapons system, operational and logistical contracting. Throughout his career, he held other key positions, to include Senior Contracting Official as Chief of Contracting, Headquarters Air Combat Command; Director of Contracting, Oklahoma City Air Logistics Center; the Alternate Principal Assistant Responsible for Contracting and Chief, Contracts Policy, Headquarters, U.S. Army Intelligence and Security Command; the Director of Contracting, Air Force Life Cycle Management Center, Hanscom Air Force Base, Mass; and most recently as Associate Deputy Assistant Secretary for Contracting at Headquarters U.S. Air Force, the Pentagon, Arlington, Virginia. He aided the Deputy Assistant Secretary for Contracting in leading an 8,000 military and civilian contracting organization responsible for annually executing $70 billion for acquisition of major weapon systems, logistics, special access program, operational supplies and services and resourcing worldwide contingency operations. He served as the Air Force Head of the Contracting Authority and provided policy, guidance and oversight of Air Force Acquisition and Contracting Operations. Mr. Kiser retired from active duty as a colonel in August 2012 and entered Senior Executive Service in June 2014. 
+                `
+            },
 
             // {
             //     image: "/speakers/placeholder.png",
