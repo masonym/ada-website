@@ -199,8 +199,8 @@ export const EVENTS = [
           Industrializing Space
         </h2>
         <p className="mb-4 leading-relaxed">
-        The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems.
-        <br/><br/>We invite you to connect with the pioneers and visionaries who are leading this new era of Department of Defense and commercial Space industrialization. Meet the experts and program managers eager to collaborate with those who recognize the vast potential in this rapidly expanding sector. Seize this opportunity to be at the forefront of this exciting frontier!
+          The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems.
+          <br /><br />We invite you to connect with the pioneers and visionaries who are leading this new era of Department of Defense and commercial Space industrialization. Meet the experts and program managers eager to collaborate with those who recognize the vast potential in this rapidly expanding sector. Seize this opportunity to be at the forefront of this exciting frontier!
         </p>
         <p className="mb-4">
           {/* Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers, and Small Business Program Directors from across the Defense Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors. */}
@@ -210,14 +210,14 @@ export const EVENTS = [
         </h2>
         <p className="">
           <ul className="list-inside">
-            <li>How rapidly evolving new technologies and geopolitical rivalries are moving the Space sector into a new phase</li>
-            <li>NASA and Space Force – engaging the innovative commercial players – new outreach initiatives and programs</li>
-            <li>Funding Space industrialization – capital sourcing for new Space technologies and the supporting terrestrial infrastructure</li>
-            <li>Spaceport launch infrastructure and ground support requirements</li>
-            <li>U.S. Space Defense – challenges and imperatives – Space as the likely first battleground in any future major conflict, and how Space Force Guardians are being integrated into our worldwide Combat Commands</li>
-            <li>Quantum and AI driving new frontiers in Space – and the clear and present dangers to U.S. Space assets and operations</li>
-            <li>Space supply chain challenges – Cybersecurity imperatives – and how to ensure availability of essential Space asset components</li>
-            <li>New developments in fabrication of Space equipment, on-orbit maintenance/repair</li>
+            <li>How Rapidly Evolving New Technologies and Geopolitical Rivalries are moving the Space Sector into a New Phase</li>
+            <li>NASA and Space Force – Engaging the Innovative Commercial Players – New Outreach Initiatives and Programs</li>
+            <li>Funding Space Industrialization – Capital Sourcing for New Space Technologies and the Supporting Terrestrial Infrastructure</li>
+            <li>Spaceport Launch Infrastructure and Ground Support Requirements</li>
+            <li>U.S. Space Defense – Challenges and Imperatives – Space as the likely First Battleground in any Future Major Conflict, and how Space Force Guardians are being integrated into our Worldwide Combat Commands</li>
+            <li>Quantum and AI Driving New Frontiers in Space – and the Clear and Present Dangers to U.S. Space Assets and Operations</li>
+            <li>Space Supply Chain Challenges – Cybersecurity Imperatives – and How to Ensure Availability of Essential Space Asset Components</li>
+            <li>New Developments in Fabrication of Space Equipment, On-Orbit Maintenance/Repair</li>
           </ul>
         </p>
       </div>
