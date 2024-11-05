@@ -234,7 +234,10 @@ export const EVENTS = [
     placeID: "TBD",
     registerLink: "https://shop.michman.org/",
     password: "2025DTIOS",
-    contactEmail: "info@industralizing.space",
+    contactInfo: {
+      contactText: "General Inquiries",
+      contactEmail: "info@industralizing.space",
+    },
     sponsorshipInfo: {
       sponsorSection: (
         <>
