@@ -236,7 +236,7 @@ export const REGISTRATION_TYPES = [
                 subtitle: "Includes:",
                 buttonText: "Register Now",
                 buttonLink: "https://shop.michman.org/",
-                price: "$100",
+                regularPrice: "$100",
                 type: "paid",
             },
         ],

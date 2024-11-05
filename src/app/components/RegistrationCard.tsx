@@ -71,7 +71,7 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                 </div>
 
                 {/* Footer section */}
-                <div className="mt-auto pt-4 border-t border-gray-200">
+                <div className="mt-auto pt-4">
                     {isPaid && isEarlyBird && (
                         <p className="text-sm font-semibold text-center text-green-600 mb-2">
                             Early-bird price available!
