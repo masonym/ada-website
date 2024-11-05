@@ -20,7 +20,10 @@ export type EventProps = {
     slug: string;
     registerLink: string;
     password: string;
-    contactEmail?: string;
+    contactInfo?: {
+        contactEmail?: string;
+        contactText?: string;
+    };
     sponsorshipInfo?: {
         exhibitorSpacesText?: React.ReactNode;
         customContactText?: React.ReactNode;
