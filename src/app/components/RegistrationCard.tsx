@@ -50,7 +50,7 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                     src={item.headerImage}
                     alt={item.title}
                     fill
-                    className="object-contain"
+                    className="object-cover"
                     priority
                 />
             </div>
