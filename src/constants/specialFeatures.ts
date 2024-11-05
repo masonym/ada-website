@@ -22,12 +22,16 @@ export const SPECIAL_FEATURES: EventSpecialFeatures[] = [
           title: "Meet & Greet Bourbon Tasting with Astronauts",
           date: "Dec 08",
           time: "6:00pm to 8:00pm",
-          location: "Zarrella's Italian & Wood Fired Pizza in Cape Canaveral, FL",
-          description: "Mix and mingle with our guest star astronauts while sampling select and smooth bourbons."
+          location: 
+          `Zarrella's Italian & Wood Fired Pizza in Cape Canaveral, FL
+          <br/>
+          8801 Astronaut Blvd, Cape Canaveral, FL 32920
+          `,
+          description: "Mix and Mingle with our Guest Star Astronauts and other VIP Guests while Sampling Select Smooth Bourbons."
         }
       ],
       additionalPerks: [
-        "Each conference registration includes one complimentary pass to the KSC's Visitor Center attractions."
+        "Each Conference Registration includes (1) Complimentary Pass to the KSC's Visitor Center Attractions"
       ]
     }
   ];

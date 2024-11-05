@@ -34,7 +34,7 @@ const SpecialFeatures: React.FC<SpecialFeaturesProps> = ({ event }) => {
                         {feature.location && (
                             <div className="flex items-center gap-2 text-gray-600 mb-4">
                                 <MapPin className="h-5 w-5" />
-                                <span>{feature.location}</span>
+                                <span dangerouslySetInnerHTML={{__html: feature.location}}></span>
                             </div>
                         )}
 
