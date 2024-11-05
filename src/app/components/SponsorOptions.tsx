@@ -85,7 +85,7 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                     {event.sponsorshipInfo?.exhibitorSpacesText || defaultExhibitorText}
                 </p>
 
-                <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mb-6">
+                <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto">
                     {event.sponsorshipInfo?.customContactText}
                 </p>
 
