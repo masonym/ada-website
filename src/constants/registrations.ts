@@ -214,9 +214,9 @@ export const REGISTRATION_TYPES = [
                 title: "Attendee Pass",
                 headerImage: "/registration-cards/DTIOS/attendee-pass.png",
                 perks: [
-                    "Registration for 1 Person",
+                    "(1) Attendee Pass",
                     "Access to General Sessions",
-                    "1 complimentary pass to the KSC's Visitor Center attractions",
+                    "(1) Complimentary Pass to the KSC's Visitor Center attractions",
                     "Meals",
                 ],
                 subtitle: "Includes:",
