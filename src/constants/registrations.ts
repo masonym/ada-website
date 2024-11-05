@@ -227,6 +227,18 @@ export const REGISTRATION_TYPES = [
                 earlyBirdDeadline: "2024-10-18T08:00:00Z",
                 type: "paid",
             },
+            {
+                title: "Bourbon Tasting",
+                headerImage: "/registration-cards/DTIOS/bourbon-tasting-pass.png",
+                perks: [
+                    "Mix and mingle with our guest star astronauts at Zarrella’s Italian & Wood Fired Pizza in Cape Canaveral, FL while sampling select and smooth bourbons."
+                ],
+                subtitle: "Includes:",
+                buttonText: "Register Now",
+                buttonLink: "https://shop.michman.org/",
+                price: "$100",
+                type: "paid",
+            },
         ],
     }
 ];
