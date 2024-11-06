@@ -8,12 +8,12 @@ type Hotel = {
   zip: string;
   phone: string;
   image: string;
-  note?: string;
 };
 
 type LodgingInfo = {
   eventId: number;
   hotels: Hotel[];
+  note?: string;
 };
 
 
@@ -39,7 +39,8 @@ export const LODGING_INFO: LodgingInfo[] = [
           phone: "321-966-9200",
           image: "/hotels/courtyard-marriott.png"
         }
-      ]
+      ],
+      note: "Please note there is no room block for this event."
     }
     // Add more events' lodging info here
   ];
