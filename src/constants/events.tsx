@@ -294,6 +294,7 @@ export const EVENTS = [
     `
       }
     ],
+    images: [],
     parkingInfo: [
       {
         title: "General Parking Information",
