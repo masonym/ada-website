@@ -1,25 +1,40 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { EVENT_SPONSORS } from '@/constants/eventSponsors';
+import { EVENT_SPONSORS, Sponsor } from '@/constants/eventSponsors';
 import { EventProps } from './Speakers';
 
 type SponsorProps = {
   event: EventProps;
+  showTypes?: Array<Sponsor['type']>;  // Array of sponsor types to show
+  titleOverride?: string;  // Optional title override
 };
 
-const SponsorLogos = ({ event }: SponsorProps) => {
+const SponsorLogos = ({ 
+  event, 
+  showTypes = ['organizer', 'partner', 'food', 'other'],  // Default to showing all types
+  titleOverride 
+}: SponsorProps) => {
   const eventSponsors = EVENT_SPONSORS.find((e) => e.id === event.id);
 
   if (!eventSponsors || eventSponsors.sponsors.length === 0) {
     return null;
   }
 
+  // Filter sponsors based on showTypes prop
+  const filteredSponsors = eventSponsors.sponsors.filter(
+    sponsor => showTypes.includes(sponsor.type)
+  );
+
+  if (filteredSponsors.length === 0) {
+    return null;
+  }
+
   return (
     <div className="w-full max-w-7xl mx-auto mt-12 px-4">
-      {eventSponsors.title && (
+      {(titleOverride || eventSponsors.title) && (
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mb-8">
-          {eventSponsors.title}
+          {titleOverride || eventSponsors.title}
         </h2>
       )}
       
@@ -30,7 +45,7 @@ const SponsorLogos = ({ event }: SponsorProps) => {
       )}
 
       <div className="flex justify-center items-center gap-8 flex-wrap">
-        {eventSponsors.sponsors.map((sponsor, index) => (
+        {filteredSponsors.map((sponsor, index) => (
           <div 
             key={index} 
             className="relative"
