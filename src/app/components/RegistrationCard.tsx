@@ -45,6 +45,10 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
         day: 'numeric'
     }) : null;
 
+    const formatEmail = (email: string) => {
+        return email.replace('@', '\u200B@');
+    };
+
     return (
         <div className="flex flex-col bg-white rounded-lg shadow-md overflow-hidden max-w-sm mx-auto h-full">
             {/* Image container with responsive dimensions */}
@@ -97,7 +101,7 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                             <p className="text-sm font-semibold text-gray-600">For more information and to secure your sponsorship, contact:</p>
                             <p className="text-sm font-semibold text-blue-600 hover:underline break-words mb-2">
                                 <a href={`mailto:${event?.contactInfo?.contactEmail2 || 'marketing@americandefensealliance.org'}`}>
-                                    {event?.contactInfo?.contactEmail2 || 'marketing@americandefensealliance.org'}
+                                    {formatEmail(event?.contactInfo?.contactEmail2 || 'marketing@americandefensealliance.org')}
                                 </a>
                             </p>
                         </div>
