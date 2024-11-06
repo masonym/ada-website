@@ -103,7 +103,7 @@ const Page = () => {
                         {event.parkingInfo.map((option, index) => (
                             <div key={index}>
                                 <h4 className="text-[18px] leading-10 font-semibold mb-2">{option.title}</h4>
-                                <p className="mt-4">{option.description}</p>
+                                <p className="mt-4" dangerouslySetInnerHTML={{__html: option.description}}></p>
                                 {'link' in option && option.link && (
                                     <Link href={option.link.href} className="text-blue-600 hover:underline text-wrap lg:text-nowrap">
                                         <p className="mt-4">{option.link.linkText}</p>

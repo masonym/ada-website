@@ -231,50 +231,96 @@ export const EVENTS = [
     locationAddress: "SR 405, Building M6-306, Kennedy Space Center, FL 32899",
     directions: [
       {
-        title: "From Orlando International Airport (MCO)",
+        title: "From Cocoa Beach (SR 528)",
         description: `
-          <ol class="list-decimal pl-4">
-            <li>Exit the airport and take SR 528 East (Beachline Expressway) towards Cocoa/Cape Canaveral</li>
-            <li>Follow SR 528 East for approximately 35 miles</li>
-            <li>Take exit 49 for Space Commerce Way toward Kennedy Space Center</li>
-            <li>Turn left onto Space Commerce Way</li>
-            <li>Continue onto NASA Parkway/SR 405</li>
-            <li>Follow signs to Kennedy Space Center Visitor Complex</li>
-          </ol>
-        `
+      <ol class="list-decimal pl-4">
+        <li>Travel north on A1A to SR 528 west</li>
+        <li>Take exit #49 for SR 3 toward Merritt Island/Kennedy Space Center</li>
+        <li>Turn right/north onto SR 3 and continue north for approximately 8 miles/13 km</li>
+        <li>Turn left/west onto Space Commerce Way and go approximately 1.5 miles/2.4 km</li>
+        <li>Kennedy Space Center Visitor Complex is located on the right</li>
+      </ol>
+    `
       },
       {
-        title: "From Melbourne/South",
+        title: "From Orlando (SR 50)",
         description: `
-          <ol class="list-decimal pl-4">
-            <li>Take I-95 North to Exit 215 (SR 50)</li>
-            <li>Turn right onto SR 50 East</li>
-            <li>Turn left onto SR 405/Columbia Blvd</li>
-            <li>Follow SR 405 to Kennedy Space Center</li>
-          </ol>
-        `
+      <ol class="list-decimal pl-4">
+        <li>From Orlando, travel east on SR 50 for approximately 50 miles/80 km</li>
+        <li>Passing I-95, turn right/east at the next intersection onto SR 405</li>
+        <li>Follow signs for approximately 10 miles/16 km</li>
+        <li>Turn right onto Space Commerce Way and go approximately 1.2 miles/2 km</li>
+        <li>Kennedy Space Center Visitor Complex is located on the left</li>
+      </ol>
+    `
       },
       {
-        title: "From Jacksonville/North",
+        title: "From Orlando (SR 528)",
         description: `
-          <ol class="list-decimal pl-4">
-            <li>Take I-95 South to Exit 215 (SR 50)</li>
-            <li>Turn left onto SR 50 East</li>
-            <li>Turn left onto SR 405/Columbia Blvd</li>
-            <li>Follow SR 405 to Kennedy Space Center</li>
-          </ol>
-        `
+      <ol class="list-decimal pl-4">
+        <li>From Orlando, travel east on SR 528 for approximately 50 miles/80 km</li>
+        <li>Take SR 407 exit on left for Kennedy Space Center and Titusville</li>
+        <li>Continue on SR 407 to end at SR 405</li>
+        <li>Turn right/east onto SR 405 and follow signs for Kennedy Space Center for approximately 7.5 miles/12 km</li>
+        <li>Turn right onto Space Commerce Way and go approximately 1.2 miles/2 km</li>
+        <li>Kennedy Space Center Visitor Complex is located on the left</li>
+      </ol>
+    `
+      },
+      {
+        title: "From Daytona Beach (I-95)",
+        description: `
+      <ol class="list-decimal pl-4">
+        <li>Travel I-95 South to Exit #215 onto Highway 50</li>
+        <li>Turn left/east onto Highway 50</li>
+        <li>Take a right onto SR 405 and continue straight, following signs for Kennedy Space Center</li>
+        <li>Travel for approximately 10 miles/16 km</li>
+        <li>Turn right onto Space Commerce Way and go approximately 1.2 miles/2 km</li>
+        <li>Kennedy Space Center Visitor Complex is located on the left</li>
+      </ol>
+    `
+      },
+      {
+        title: "From Miami (I-95)",
+        description: `
+      <ol class="list-decimal pl-4">
+        <li>Travel I-95 North to Exit #212 SR 407</li>
+        <li>Turn right on SR 407</li>
+        <li>Continue on SR 407 to end at SR 405</li>
+        <li>Turn right/east onto SR 405 and follow signs for Kennedy Space Center for approximately 7.5 miles/12 km</li>
+        <li>Turn right onto Space Commerce Way and go approximately 1.2 miles/2 km</li>
+        <li>Kennedy Space Center Visitor Complex is located on the left</li>
+      </ol>
+    `
       }
-    ],
-    images: [
-      { id: "ksc-entrance", src: "/locations/ksc-entrance.jpg", alt: "Kennedy Space Center Entrance" },
-      { id: "ksc-aerial", src: "/locations/ksc-aerial.jpg", alt: "Aerial view of Kennedy Space Center" }
     ],
     parkingInfo: [
       {
-        title: "Valet Parking Options",
-        description: `Valet Parking is available at the JW Marriott hotel (next to the Press Club) or the Willard Hotel (across the street from the Press Club).`,
+        title: "General Parking Information",
+        description: `The visitor complex parking lot accommodates motorcycles, automobiles and oversized vehicles such as RVs. Parking fees are collected at the entrance to the lot. Parking is accessible 30 minutes before complex opening.`
       },
+      {
+        title: "Parking Rates",
+        description: `
+        <ul class="list-none">
+        <li>Motorcycles - $5.00</li>
+        <li>Automobiles - $15.00</li>
+        <li>Oversized vehicles, motor homes or RVs - $20.00</li>
+        </ul>
+    `
+      },
+      {
+        title: "Accessible Parking",
+        description: `Parking for visitors with disabilities is available in Lot 2 with valid parking permit.`
+      },
+      {
+        title: "Rideshare & Taxi Information",
+        description: `Rideshare and taxi drop offs and pick-ups in Lot 4 are permitted with proof of fare.`
+      },
+      {
+        title: "GPS Information",
+        description: `For GPS navigation, use coordinates 28°30'56.0"N and 80°40'54"W or search for "Kennedy Space Center Visitor Complex". Important: Do not use "Kennedy Space Center" as this will direct you to an incorrect location.`
+      }
     ],
     placeID: "ChIJY0BfjTOu4IgRxNjxFMIAkQ0",
     registerLink: "https://shop.michman.org/",
