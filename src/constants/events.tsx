@@ -191,7 +191,7 @@ export const EVENTS = [
     id: 3,
     title: "Driving the Industrialization of Space",
     date: "December 8th-9th, 2024",
-    timeStart: "2024-12-08T09:00:00Z",
+    timeStart: "2024-12-09T15:00:00Z",
     description: "The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems.",
     eventText: (
       <div className="max-container font-light">

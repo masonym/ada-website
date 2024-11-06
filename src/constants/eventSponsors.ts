@@ -22,7 +22,7 @@ export type Sponsor = {
       sponsors: [
         {
           name: "National Association of Spaceports",
-          logo: "/logos/nass-logo.png",
+          logo: "/events/2025DTIOS/sponsors/nass-logo.png",
           website: "https://www.thenass.org/",
           width: 400,
           height: 133
@@ -36,10 +36,14 @@ export type Sponsor = {
         },
         {
           name: "The Astronauts Memorial Foundation",
-          logo: "/logos/amf-logo.png",
+          logo: "/events/2025DTIOS/sponsors/amf-logo.png",
           website: "https://www.amfcse.org",
           width: 150,
           height: 150
+        },
+        {
+            name: "Zarrellas Italian & Wood Fired Pizza",
+            logo: "/events/2025DTIOS/sponsors/zarrellas.png",
         }
       ]
     }
