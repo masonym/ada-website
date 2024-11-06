@@ -207,7 +207,7 @@ export const EVENTS = [
           {/* Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers, and Small Business Program Directors from across the Defense Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors. */}
         </p>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
-          Conference Topics Spotlight:
+          Conference Topics Spotlight
         </h2>
         <p className="">
           <ul className="list-inside">
