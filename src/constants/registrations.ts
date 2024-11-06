@@ -23,7 +23,7 @@ export const REGISTRATION_TYPES = [
                 receptionPrice: "$450"
             },
 
-            
+
             // display table
             {
                 title: "Display Table",
@@ -239,6 +239,21 @@ export const REGISTRATION_TYPES = [
                 regularPrice: "$100",
                 type: "paid",
             },
+            {
+                title: "Sponsorship Opportunities",
+                headerImage: "/registration-cards/DTIOS/sponsors.png",
+                perks: [
+                    "Event Access",
+                    "Meet & Greet Bourbon Tasting with Astronauts",
+                    "Speaking Opportunity",
+                    "Exhibit Space: Table-Top Display",
+                    "Brand Visibility",
+                ],
+                subtitle: "Includes:",
+                buttonText: "Explore Sponsorship Opportunities",
+                buttonLink: "https://www.industrializing.space/sponsorship-opportunities/",
+                type: "sponsor",
+            }
         ],
     }
 ];

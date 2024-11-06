@@ -5,6 +5,8 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { EVENTS } from '@/constants/events';
+import { EventProps } from './Speakers';
 
 type RegistrationTypes = {
     title: string;
@@ -27,6 +29,7 @@ type RegistrationProp = {
 
 const RegistrationCard = ({ item }: RegistrationProp) => {
     const params = useParams()
+    const event = EVENTS.find((event: EventProps) => event.slug === params?.slug);
     const isPaid = item.type === 'paid';
     const isSponsor = item.type === 'sponsor';
     const isFree = item.type === 'complimentary';
@@ -88,12 +91,13 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
                             <p className="text-sm font-semibold text-gray-600">Register with .gov or .mil email</p>
                         </div>
                     )}
+
                     {isSponsor && (
                         <div className="text-center">
                             <p className="text-sm font-semibold text-gray-600">For more information and to secure your sponsorship, contact:</p>
                             <p className="text-sm font-semibold text-blue-600 hover:underline break-words mb-2">
-                                <a href="mailto:marketing@americandefensealliance.org">
-                                    marketing@<wbr />americandefensealliance.org
+                                <a href={`mailto:${event?.contactInfo?.contactEmail2 || 'marketing@americandefensealliance.org'}`}>
+                                    {event?.contactInfo?.contactEmail2 || 'marketing@americandefensealliance.org'}
                                 </a>
                             </p>
                         </div>

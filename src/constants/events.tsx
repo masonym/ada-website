@@ -238,6 +238,7 @@ export const EVENTS = [
     contactInfo: {
       contactText: "General Inquiries",
       contactEmail: "info@industralizing.space",
+      contactEmail2: "lana@americandefensealliance.org"
     },
     sponsorshipInfo: {
       sponsorSection: (
