@@ -30,6 +30,7 @@ export type EventProps = {
         sponsorSection?: React.ReactNode;
     };
     sponsorProspectusPath?: string;
+    customFooterText?: React.ReactNode;
 };
 
 type Speaker = {

@@ -13,6 +13,7 @@ import { Metadata } from 'next';
 import KeynoteSpeaker from '@/app/components/KeynoteSpeaker';
 import SponsorLogos from '@/app/components/SponsorLogos';
 import SpecialFeatures from '@/app/components/SpecialFeatures';
+import FooterEventText from '@/app/components/FooterEventText';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -129,7 +130,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             <SponsorLogos event={event} />
 
             <SpecialFeatures event={event} />
-            
+
             <RegistrationOptions event={event} />
 
 
@@ -143,6 +144,9 @@ export default function EventPage({ params }: { params: { slug: string } }) {
                 className="max-w-xs sm:max-w-sm"
               />
             </div>
+
+            <FooterEventText event={event} />
+            
           </div>
         </div>
       </div>

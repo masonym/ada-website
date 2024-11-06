@@ -308,6 +308,12 @@ export const EVENTS = [
         </div>
       )
     },
+    customFooterText: (
+      <div>
+        <p>The Industrializing Space Conference is a Program of the Michigan Aerospace Manufacturing Association, a 501(c)(6) Organization in Partnership with American Defense Alliance and The Astronaut Memorial Foundation.
+        </p>
+      </div>
+    ),
   }
 
 ];
