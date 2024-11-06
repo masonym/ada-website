@@ -285,7 +285,8 @@ export const EVENTS = [
         <div className="flex flex-col items-center space-y-4 bg-white rounded-lg shadow-lg p-8">
           <h3 className="text-3xl font-bold">Contact Information</h3>
           <div className="text-center">
-            <p className="text-xl font-bold">Lana Corrigan</p>
+            <p className="text-xl font-bold">Lana Corrigan, Meetings & Events Executive</p>
+            {/* <p className="text-lg text-gray-200 italic mb-4">Meetings & Events Executive</p> */}
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
