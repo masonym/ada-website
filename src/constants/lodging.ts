@@ -40,7 +40,7 @@ export const LODGING_INFO: LodgingInfo[] = [
           image: "/hotels/courtyard-marriott.png"
         }
       ],
-      note: "Please note there is no room block for this event."
+      note: "PLEASE NOTE THERE IS NO ROOM BLOCK FOR THIS EVENT."
     }
     // Add more events' lodging info here
   ];
