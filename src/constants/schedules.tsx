@@ -331,6 +331,11 @@ export const SCHEDULES = [
                 date: "December 9th, 2024",
                 items: [
                     {
+                        time: "Event Location",
+                        title: "The Center for Space Education at the Astronauts Memorial Foundation",
+                        location: "SR 405, Building M6-306, Kennedy Space Center, FL 32899"
+                    },
+                    {
                         time: "10:00 AM - 10:30 AM",
                         title: "Overview – Exponential Space Sector Activity – The Commercial, Government & Defense Dimensions"
                     },
