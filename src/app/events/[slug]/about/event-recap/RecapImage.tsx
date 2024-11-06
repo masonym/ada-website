@@ -11,7 +11,7 @@ const RecapImage = () => {
         notFound();
     }
 
-    const mainImage = event.images.find(img => img.id === "main");
+    const mainImage = event.images?.find(img => img.id === "main");
 
     if (!mainImage) {
         return <div>No main image available</div>;

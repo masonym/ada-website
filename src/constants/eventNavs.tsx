@@ -54,7 +54,7 @@ export const EVENT_NAVS = [
       {
         label: 'About',
         subItems: [
-          { label: 'Lodging', path: 'lodging' },
+          { label: 'Hotel Lodging', path: 'lodging' },
           { label: 'Location & Parking', path: 'venue' },
         ],
       },
