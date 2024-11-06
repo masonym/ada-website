@@ -49,7 +49,7 @@ export const REGISTRATION_TYPES = [
             },
 
             {
-                title: "Government/Military Personnel Registration",
+                title: "Government Official & Military Pass",
                 headerImage: "/registration-cards/2024DIF/gov-pass.png",
                 perks: [
                     "Registration for 1 Person",
@@ -159,7 +159,7 @@ export const REGISTRATION_TYPES = [
             },
 
             {
-                title: "Government/Military Personnel",
+                title: "Government Official & Military Pass",
                 headerImage: "/registration-cards/2025SPDC/gov-pass.png",
                 perks: [
                     "(1) Attendee Pass",
