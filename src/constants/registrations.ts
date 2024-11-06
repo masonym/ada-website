@@ -250,8 +250,8 @@ export const REGISTRATION_TYPES = [
                     "Brand Visibility",
                 ],
                 subtitle: "Includes:",
-                buttonText: "Explore Sponsorship Opportunities",
-                buttonLink: "https://www.industrializing.space/sponsorship-opportunities/",
+                buttonText: "View Sponsorship Packages",
+                buttonLink: "/events/2025-driving-the-industrialization-of-space/sponsors-exhibitors/sponsorship-opportunities",
                 type: "sponsor",
             }
         ],
