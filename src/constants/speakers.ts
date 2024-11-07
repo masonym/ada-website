@@ -248,15 +248,30 @@ export const SPEAKERS = [
             //     Placeholder Bio
             //     `
             // },
-            // {
-            //     image: "/speakers/mark_correll.png",
-            //     name: "Mark Correll",
-            //     position: "Vice President, Federal Strategy Director",
-            //     company: "HDR",
-            //     bio: `
-            //     Placeholder Bio
-            //     `
-            // },
+            {
+                image: "/speakers/mark_correll.png",
+                name: "Mark Correll",
+                position: "Vice President, Federal Strategy Director",
+                company: "HDR",
+                bio: `
+                Mark Correll is the Federal Strategy Director and Director of
+                Air Force programs for the full-service Architect-Engineer firm
+                HDR, Inc. In his role at HDR he spearheads development of
+                strategic action plans and ensures goals are translated into
+                actionable capture opportunities for future program directions
+                as well as engaging the Department of the Air Force in all
+                aspects of client development. Prior to joining HDR in 2022,
+                Mr. Correll was a member of the Senior Executive Service as
+                Deputy Assistant Secretary of the Air Force for Environment,
+                Safety, and Infrastructure, the Air Force Deputy Civil Engineer
+                as well as serving on active duty in the Air Force for over 29
+                years where he commanded squadron, group and wing levels
+                before retiring as a Colonel in 2010. He is a graduate of the
+                U.S. Air Force Academy, earned his Master of Science in
+                Engineering Management from the Air Force Institute of
+                Technology, and is a licensed professional engineer in the State of Texas.
+                `
+            },
             {
                 image: "/speakers/scott_kiser.png",
                 name: "Scott Kiser",
