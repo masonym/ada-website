@@ -3,7 +3,7 @@ export const REGISTRATION_TYPES = [
         id: 1,
         registrations: [
             {
-                title: "In-Person",
+                title: "Attendee Pass",
                 headerImage: "/registration-cards/2024DIF/attendee-pass.png",
                 perks: [
                     "Registration for 1 Person",
@@ -23,7 +23,7 @@ export const REGISTRATION_TYPES = [
                 receptionPrice: "$450"
             },
 
-            
+
             // display table
             {
                 title: "Display Table",
@@ -49,7 +49,7 @@ export const REGISTRATION_TYPES = [
             },
 
             {
-                title: "Government/Military Personnel Registration",
+                title: "Government Official & Military Pass",
                 headerImage: "/registration-cards/2024DIF/gov-pass.png",
                 perks: [
                     "Registration for 1 Person",
@@ -66,7 +66,7 @@ export const REGISTRATION_TYPES = [
                 availabilityInfo: "Limited availability."
             },
             {
-                title: "Sponsor",
+                title: "Sponsorship Opportunities",
                 headerImage: "/registration-cards/2024DIF/sponsor-pass.png",
                 perks: [
                     "Brand Visibility",
@@ -98,7 +98,7 @@ export const REGISTRATION_TYPES = [
         id: 2,
         registrations: [
             {
-                title: "In-Person",
+                title: "Attendee Pass",
                 headerImage: "/registration-cards/2025SPDC/attendee-pass.png",
                 perks: [
                     "(1) Attendee Pass",
@@ -119,7 +119,7 @@ export const REGISTRATION_TYPES = [
             },
 
             {
-                title: "In-Person",
+                title: "VIP Attendee Pass",
                 headerImage: "/registration-cards/2025SPDC/vip-attendee-pass.png",
                 perks: [
                     "(1) VIP Attendee Pass",
@@ -140,7 +140,7 @@ export const REGISTRATION_TYPES = [
             },
 
             {
-                title: "Table-Top Exhibit",
+                title: "Table-Top Exhibit Space",
                 headerImage: "/registration-cards/2025SPDC/exhibit-table-pass.png",
                 perks: [
                     "(1) Exhibitor Pass",
@@ -159,7 +159,7 @@ export const REGISTRATION_TYPES = [
             },
 
             {
-                title: "Government/Military Personnel Registration",
+                title: "Government Official & Military Pass",
                 headerImage: "/registration-cards/2025SPDC/gov-pass.png",
                 perks: [
                     "(1) Attendee Pass",
@@ -211,22 +211,49 @@ export const REGISTRATION_TYPES = [
         id: 3,
         registrations: [
             {
-                title: "In-Person",
+                title: "Attendee Pass",
                 headerImage: "/registration-cards/DTIOS/attendee-pass.png",
                 perks: [
-                    "Registration for 1 Person",
+                    "(1) Attendee Pass",
                     "Access to General Sessions",
-                    "1 complimentary pass to the KSC's Visitor Center attractions",
+                    "(1) Complimentary Pass to the KSC's Visitor Center attractions",
                     "Meals",
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "https://shop.michman.org/",
+                buttonLink: "https://www.industrializing.space/product/attendee-pass/",
                 earlyBirdPrice: "$550",
                 regularPrice: "$299",
                 earlyBirdDeadline: "2024-10-18T08:00:00Z",
                 type: "paid",
             },
+            {
+                title: "Meet & Greet Bourbon Tasting with Astronauts Pass",
+                headerImage: "/registration-cards/DTIOS/bourbon-tasting-pass.png",
+                perks: [
+                    "Mix and Mingle with our Guest Star Astronauts and other VIP Guests at Zarrella’s Italian & Wood Fired Pizza in Cape Canaveral, FL while Sampling Select Smooth Bourbons."
+                ],
+                subtitle: "Includes:",
+                buttonText: "Register Now",
+                buttonLink: "https://www.industrializing.space/product/pass-to-meet-greet-bourbon-tasting-with-astronauts/",
+                regularPrice: "$100",
+                type: "paid",
+            },
+            {
+                title: "Sponsorship Opportunities",
+                headerImage: "/registration-cards/DTIOS/sponsors.png",
+                perks: [
+                    "Event Access",
+                    "Meet & Greet Bourbon Tasting with Astronauts",
+                    "Speaking Opportunity",
+                    "Exhibit Space: Table-Top Display",
+                    "Brand Visibility",
+                ],
+                subtitle: "Includes:",
+                buttonText: "View Sponsorship Packages",
+                buttonLink: "/events/2025-driving-the-industrialization-of-space/sponsors-exhibitors/sponsorship-opportunities",
+                type: "sponsor",
+            }
         ],
     }
 ];

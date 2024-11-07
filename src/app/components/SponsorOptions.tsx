@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Button from './Button'
 import SponsorProspectus from './SponsorProspectus'
+import SponsorLogos from './SponsorLogos'
 
 export type SponsorProps = {
     event: EventProps;
@@ -84,10 +85,13 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                     {event.sponsorshipInfo?.exhibitorSpacesText || defaultExhibitorText}
                 </p>
 
-                <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mb-6">
-                    {event.sponsorshipInfo?.additionalSponsorText || defaultSponsorText}
+                <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto">
+                    {event.sponsorshipInfo?.customContactText}
                 </p>
-                <div className="mt-4 text-center flex flex-col items-center">
+
+                <SponsorLogos event={event} showTypes={['organizer']} titleOverride='This Event is Organized and Presented by'/>
+
+                <div className="mt-8 text-center flex flex-col items-center">
                     <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Seat at this Groundbreaking Event!</p>
                     <Button
                         title="REGISTER"

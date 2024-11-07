@@ -55,6 +55,7 @@ export default function AgendaPage({ params }: { params: { slug: string } }) {
         schedule={eventSchedule.schedule}
         isAuthenticated={isAuthenticated}
         onRequestPassword={() => setShowPasswordModal(true)}
+        eventStartDate={event.timeStart}
     />
 
     <PasswordModal

@@ -1,5 +1,6 @@
 // app/events/[slug]/page.tsx
 
+import { Mail, Phone } from "lucide-react";
 import Image from "next/image";
 
 export const EVENTS = [
@@ -11,6 +12,9 @@ export const EVENTS = [
     description: "The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities — covering Defense Dept. and Combat Command mission priorities — Army, Navy, Air Force, Marine Corps, Space Force and Coast Guard — focused on all major sectors from advanced IT, AI and Cyber, all-domain command & control, and weapons system development & sustainment, to logistics & transport, facility management, Military base building design & construction, energy resiliency and environmental remediation, to new Government-Private Sector collaborations in critical infrastructure security, U.S. manufacturing base revitalization, ship building and shipyard modernization, Space defense and other major initiatives.",
     eventText: (
       <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Event Overview
+        </h2>
         <p className="mb-4 leading-relaxed">
           The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities – covering Defense Dept. mission priorities focused on advanced IT, AI and Cyber, to weapons system development & sustainment, to forward logistics, facility support, Military base construction, shipyard modernization, Space defense and other major buying programs.
         </p>
@@ -123,6 +127,9 @@ export const EVENTS = [
     description: "Join us for the 2025 Southeast Defense Procurement Conference on March 18-19, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
     eventText: (
       <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Event Overview
+        </h2>
         <p className="mb-0 leading-9">
           Join us for the <b>2025 Southeast Defense Procurement Conference</b> on March 18-19, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.
           <br /><br />
@@ -181,98 +188,226 @@ export const EVENTS = [
     sponsorProspectusPath: "/events/2025SDPC/2025SDPC-SponsorProspectus.pdf",
   },
 
-  // {
-  //   id: 3,
-  //   title: "Driving the Industrialization of Space",
-  //   date: "December 8th-9th, 2024",
-  //   timeStart: "2024-12-08T09:00:00Z",
-  //   description: "The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems.",
-  //   eventText: (
-  //     <div className="max-container font-light">
-  //       <p className="mb-4 leading-relaxed">
-  //         The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems. We invite you to connect with the pioneers and visionaries who are leading this new era of Department of Defense and commercial Space industrialization. Meet the experts and program managers eager to collaborate with those who recognize the vast potential in this rapidly expanding sector. Seize this opportunity to be at the forefront of this exciting frontier!
-  //       </p>
-  //       <p className="mb-4">
-  //         {/* Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers, and Small Business Program Directors from across the Defense Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors. */}
-  //       </p>
-  //       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
-  //         Conference Topics Spotlight:
-  //       </h2>
-  //       <p className="">
-  //         <ul className="list-inside">
-  //           <li>How rapidly evolving new technologies and geopolitical rivalries are moving the Space sector into a new phase</li>
-  //           <li>NASA and Space Force – engaging the innovative commercial players – new outreach initiatives and programs</li>
-  //           <li>Funding Space industrialization – capital sourcing for new Space technologies and the supporting terrestrial infrastructure</li>
-  //           <li>Spaceport launch infrastructure and ground support requirements</li>
-  //           <li>U.S. Space Defense – challenges and imperatives – Space as the likely first battleground in any future major conflict, and how Space Force Guardians are being integrated into our worldwide Combat Commands</li>
-  //           <li>Quantum and AI driving new frontiers in Space – and the clear and present dangers to U.S. Space assets and operations</li>
-  //           <li>Space supply chain challenges – Cybersecurity imperatives – and how to ensure availability of essential Space asset components</li>
-  //           <li>New developments in fabrication of Space equipment, on-orbit maintenance/repair</li>
-  //         </ul>
-  //       </p>
-  //     </div>
-  //   ),
-  //   topicalCoverage: [
-  //   ],
-  //   image: "/header_final.jpg",
-  //   slug: "2025-driving-the-industrialization-of-space",
-  //   locationImage: "/locations/location_NPC.png",
-  //   locationAddress: "TBD",
-  //   directions: [],
-  //   images: [],
-  //   parkingInfo: [],
-  //   placeID: "TBD",
-  //   registerLink: "https://shop.michman.org/",
-  //   password: "2025DTIOS",
-  //   sponsorshipInfo: {
-  //     additionalSponsorText: (
-  //       <>
-  //         <b>Contact:</b> Lana Corrigan, Meetings & Events Executive
-  //         <br />
-  //         Phone: (202) 256-3028 | Email:{' '}
-  //         <a href="mailto:lana@americandefensealliance.org" className="underline">
-  //           lana@americandefensealliance.org
-  //         </a>
-  //         <div className="mt-4">
-  //           <h2 className="text-xl font-gotham font-bold mb-4 text-slate-700 text-center">
-  //             This Event is Organized and Presented by:
-  //           </h2>
-  //           <div className="flex justify-center items-center gap-8 max-w-full">
-  //             <div className="w-[200px] sm:w-[300px] md:w-[400px] relative">
-  //               <Image
-  //                 src="/logos/nass-logo.png"
-  //                 alt="NASS Logo"
-  //                 layout="responsive"
-  //                 width={100}
-  //                 height={33}
-  //                 style={{ maxWidth: '100%', height: 'auto' }}
-  //               />
-  //             </div>
-  //             <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
-  //               <Image
-  //                 src="/logo.png"
-  //                 alt="American Defense Alliance Logo"
-  //                 layout="responsive"
-  //                 width={100}
-  //                 height={100}
-  //                 style={{ maxWidth: '100%', height: 'auto' }}
-  //               />
-  //             </div>
-  //             <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
-  //               <Image
-  //                 src="/logos/amf-logo.png"
-  //                 alt="The Astronauts Memorial Foundation Logo"
-  //                 layout="responsive"
-  //                 width={100}
-  //                 height={100}
-  //                 style={{ maxWidth: '100%', height: 'auto' }}
-  //               />
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </>
-  //     ),
-  //   },
-  // }
+  {
+    id: 3,
+    title: "Driving the Industrialization of Space",
+    date: "December 8th-9th, 2024",
+    timeStart: "2024-12-09T15:00:00Z",
+    description: "The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems.",
+    eventText: (
+      <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Industrializing Space
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the <b><i>INDUSTRIALIZATION</i></b> of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for Space Sector Companies, including Advanced Mass Production Systems, Innovative Propellant Solutions for Launches and Orbital Positioning, Cutting-edge Industry Analytics, and Next-generation Satellite Communication Systems.
+          <br /><br />We invite you to connect with the pioneers and visionaries who are leading this new era of Department of Defense and Commercial Space Industrialization. Meet the experts and program Managers eager to collaborate with those who recognize the vast potential in this rapidly expanding sector. Seize this opportunity to be at the forefront of this exciting frontier!
+        </p>
+        <p className="mb-4">
+          {/* Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers, and Small Business Program Directors from across the Defense Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors. */}
+        </p>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+          Conference Topics Spotlight
+        </h2>
+        <p className="">
+          <ul className="list-inside">
+            <li>How Rapidly Evolving New Technologies and Geopolitical Rivalries are Moving the Space Sector into a New Phase</li>
+            <li>NASA and Space Force – Engaging the Innovative Commercial Players – New Outreach Initiatives and Programs</li>
+            <li>Funding Space Industrialization – Capital Sourcing for New Space Technologies and the Supporting Terrestrial Infrastructure</li>
+            <li>Spaceport Launch Infrastructure and Ground Support Requirements</li>
+            <li>U.S. Space Defense – Challenges and Imperatives – Space as the Likely First Battleground in any Future Major Conflict, and how Space Force Guardians are Being Integrated into our Worldwide Combat Commands</li>
+            <li>Quantum and AI Driving New Frontiers in Space – and the Clear and Present Dangers to U.S. Space Assets and Operations</li>
+            <li>Space Supply Chain Challenges – Cybersecurity Imperatives – and How to Ensure Availability of Essential Space Asset Components</li>
+            <li>New Developments in Fabrication of Space Equipment, at On-Orbit Maintenance/Repair</li>
+          </ul>
+        </p>
+      </div>
+    ),
+    topicalCoverage: [
+    ],
+    image: "/header_final.png",
+    slug: "2025-driving-the-industrialization-of-space",
+    locationImage: "/locations/kennedy-space-center.jpg",
+    locationAddress: `
+    The Center for Space Education at The Astronauts Memorial Foundation
+    <br/>SR 405, Building M6-306, Kennedy Space Center, FL 32899`,
+    directions: [
+      {
+        title: "From Cocoa Beach (SR 528)",
+        description: `
+      <ol class="list-decimal pl-4">
+        <li>Travel north on A1A to SR 528 west</li>
+        <li>Take exit #49 for SR 3 toward Merritt Island/Kennedy Space Center</li>
+        <li>Turn right/north onto SR 3 and continue north for approximately 8 miles/13 km</li>
+        <li>Turn left/west onto Space Commerce Way and go approximately 1.5 miles/2.4 km</li>
+        <li>Kennedy Space Center Visitor Complex is located on the right</li>
+      </ol>
+    `
+      },
+      {
+        title: "From Orlando (SR 50)",
+        description: `
+      <ol class="list-decimal pl-4">
+        <li>From Orlando, travel east on SR 50 for approximately 50 miles/80 km</li>
+        <li>Passing I-95, turn right/east at the next intersection onto SR 405</li>
+        <li>Follow signs for approximately 10 miles/16 km</li>
+        <li>Turn right onto Space Commerce Way and go approximately 1.2 miles/2 km</li>
+        <li>Kennedy Space Center Visitor Complex is located on the left</li>
+      </ol>
+    `
+      },
+      {
+        title: "From Orlando (SR 528)",
+        description: `
+      <ol class="list-decimal pl-4">
+        <li>From Orlando, travel east on SR 528 for approximately 50 miles/80 km</li>
+        <li>Take SR 407 exit on left for Kennedy Space Center and Titusville</li>
+        <li>Continue on SR 407 to end at SR 405</li>
+        <li>Turn right/east onto SR 405 and follow signs for Kennedy Space Center for approximately 7.5 miles/12 km</li>
+        <li>Turn right onto Space Commerce Way and go approximately 1.2 miles/2 km</li>
+        <li>Kennedy Space Center Visitor Complex is located on the left</li>
+      </ol>
+    `
+      },
+      {
+        title: "From Daytona Beach (I-95)",
+        description: `
+      <ol class="list-decimal pl-4">
+        <li>Travel I-95 South to Exit #215 onto Highway 50</li>
+        <li>Turn left/east onto Highway 50</li>
+        <li>Take a right onto SR 405 and continue straight, following signs for Kennedy Space Center</li>
+        <li>Travel for approximately 10 miles/16 km</li>
+        <li>Turn right onto Space Commerce Way and go approximately 1.2 miles/2 km</li>
+        <li>Kennedy Space Center Visitor Complex is located on the left</li>
+      </ol>
+    `
+      },
+      {
+        title: "From Miami (I-95)",
+        description: `
+      <ol class="list-decimal pl-4">
+        <li>Travel I-95 North to Exit #212 SR 407</li>
+        <li>Turn right on SR 407</li>
+        <li>Continue on SR 407 to end at SR 405</li>
+        <li>Turn right/east onto SR 405 and follow signs for Kennedy Space Center for approximately 7.5 miles/12 km</li>
+        <li>Turn right onto Space Commerce Way and go approximately 1.2 miles/2 km</li>
+        <li>Kennedy Space Center Visitor Complex is located on the left</li>
+      </ol>
+    `
+      }
+    ],
+    images: [],
+    parkingInfo: [
+      {
+        title: "General Parking Information",
+        description: `The Kennedy Space Center Visitor Complex Parking Lot accommodates Motorcycles, Automobiles, and Oversized Vehicles such as RVs. Parking fees are collected at the entrance to the lot. Parking is accessible 30 minutes before complex opening.`
+      },
+      {
+        title: "Parking Rates",
+        description: `
+        <ul class="list-none">
+        <li>Motorcycles - $5.00</li>
+        <li>Automobiles - $15.00</li>
+        <li>Oversized Vehicles, Motor Homes or RVs - $20.00</li>
+        </ul>
+    `
+      },
+      {
+        title: "Accessible Parking",
+        description: `Parking for Visitors with Disabilities is available in Lot 2 with Valid Parking Permit.`
+      },
+      {
+        title: "Rideshare & Taxi Information",
+        description: `Rideshare and Taxi Drop-offs and Pick-ups in Lot 4 are permitted with Proof of Fare.`
+      },
+      {
+        title: "GPS Information",
+        description: `For GPS navigation, use coordinates 28°30'56.0"N and 80°40'54"W or search for "Kennedy Space Center Visitor Complex". Important: Do not use "Kennedy Space Center" as this will direct you to an incorrect location.`
+      }
+    ],
+    placeID: "ChIJY0BfjTOu4IgRxNjxFMIAkQ0",
+    registerLink: "https://www.industrializing.space/shop/",
+    password: "2025DTIOS",
+    contactInfo: {
+      contactText: "General Inquiries",
+      contactEmail: "info@industralizing.space",
+      contactEmail2: "lana@americandefensealliance.org"
+    },
+    sponsorshipInfo: {
+      sponsorSection: (
+        <>
+          <div className="mt-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+              Sponsors and Event Partners
+            </h2>
+            <div className="flex justify-center items-center gap-8 max-w-full">
+              <div className="w-[200px] sm:w-[300px] md:w-[400px] relative">
+                <Image
+                  src="/logos/nass-logo.png"
+                  alt="NASS Logo"
+                  layout="responsive"
+                  width={100}
+                  height={33}
+                  style={{ maxWidth: '100%', height: 'auto' }}
+                />
+              </div>
+              <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
+                <Image
+                  src="/logo.png"
+                  alt="American Defense Alliance Logo"
+                  layout="responsive"
+                  width={100}
+                  height={100}
+                  style={{ maxWidth: '100%', height: 'auto' }}
+                />
+              </div>
+              <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
+                <Image
+                  src="/logos/amf-logo.png"
+                  alt="The Astronauts Memorial Foundation Logo"
+                  layout="responsive"
+                  width={100}
+                  height={100}
+                  style={{ maxWidth: '100%', height: 'auto' }}
+                />
+              </div>
+            </div>
+          </div>
+        </>
+      ),
+      customContactText: (
+        <div className="flex flex-col items-center space-y-4 bg-white rounded-lg shadow-lg p-8">
+          <h3 className="text-3xl font-bold">Contact Information</h3>
+          <div className="text-center">
+            <p className="text-xl font-bold">Lana Corrigan, Meetings & Events Executive</p>
+            {/* <p className="text-lg text-gray-200 italic mb-4">Meetings & Events Executive</p> */}
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
+            <div className="flex items-center gap-2">
+              <Phone className="w-5 h-5" />
+              <span>(202) 256-3028</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Mail className="w-5 h-5" />
+              <a
+                href="mailto:lana@americandefensealliance.org"
+                className="hover:text-blue-200 underline transition-colors duration-300"
+              >
+                lana@americandefensealliance.org
+              </a>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    customFooterText: (
+      <div>
+        <p>The Industrializing Space Conference is a Program of the Michigan Aerospace Manufacturing Association, a 501(c)(6) Organization in Partnership with American Defense Alliance and The Astronaut Memorial Foundation.
+        </p>
+      </div>
+    ),
+  }
 
 ];

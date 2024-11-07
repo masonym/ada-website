@@ -51,15 +51,13 @@ export const EVENT_NAVS = [
     eventId: 3, // This should match the event ID from EVENTS
     items: [
       { label: 'Home', path: '/' },
-      // {
-      //   label: 'About',
-      //   subItems: [
-      //     { label: 'About the Event', path: 'about-the-event' },
-      //     { label: 'Location & Parking', path: 'venue' },
-      //     { label: 'FAQs', path: 'faqs' },
-      //     { label: 'Event Recap', path: 'event-recap' },
-      //   ],
-      // },
+      {
+        label: 'About',
+        subItems: [
+          { label: 'Hotel Lodging', path: 'lodging' },
+          { label: 'Location & Parking', path: 'venue' },
+        ],
+      },
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {

@@ -11,6 +11,9 @@ import { ChevronLeft } from 'lucide-react';
 import Script from 'next/script';
 import { Metadata } from 'next';
 import KeynoteSpeaker from '@/app/components/KeynoteSpeaker';
+import SponsorLogos from '@/app/components/SponsorLogos';
+import SpecialFeatures from '@/app/components/SpecialFeatures';
+import FooterEventText from '@/app/components/FooterEventText';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -117,16 +120,20 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} />
 
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
-              Event Overview
-            </h2>
+
             <div className="flex flex-col leading-relaxed text-slate-600 text-lg text-center mx-8">
               {event.eventText}
             </div>
 
             <KeynoteSpeaker eventId={event.id} />
 
+            <SponsorLogos event={event} />
+
+            <SpecialFeatures event={event} />
+
             <RegistrationOptions event={event} />
+
+
 
             <div className="mt-0 text-center flex flex-col items-center">
               <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Seat at this Groundbreaking Event!</p>
@@ -137,6 +144,9 @@ export default function EventPage({ params }: { params: { slug: string } }) {
                 className="max-w-xs sm:max-w-sm"
               />
             </div>
+
+            <FooterEventText event={event} />
+            
           </div>
         </div>
       </div>

@@ -20,11 +20,17 @@ export type EventProps = {
     slug: string;
     registerLink: string;
     password: string;
+    contactInfo?: {
+        contactEmail?: string;
+        contactText?: string;
+    };
     sponsorshipInfo?: {
         exhibitorSpacesText?: React.ReactNode;
-        additionalSponsorText?: React.ReactNode;
+        customContactText?: React.ReactNode;
+        sponsorSection?: React.ReactNode;
     };
     sponsorProspectusPath?: string;
+    customFooterText?: React.ReactNode;
 };
 
 type Speaker = {
