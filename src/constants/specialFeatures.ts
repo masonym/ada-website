@@ -31,7 +31,7 @@ export const SPECIAL_FEATURES: EventSpecialFeatures[] = [
         }
       ],
       additionalPerks: [
-        "Each Conference Registration includes (1) Complimentary Pass to the KSC's Visitor Center Attractions"
+        "Each Conference Registration includes (1) Complimentary Pass to the Kennedy Space Center's Visitor Center Attractions"
       ]
     }
   ];

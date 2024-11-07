@@ -358,7 +358,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "1:15 PM - 1:55 PM",
-                        title: "Spaceport Infrastructure Needs – the State of Florida Role",
+                        title: "Spaceport Infrastructure Needs",
                         location: "The Center for Space Education at the Astronauts Memorial Foundation"
                     },
                     {
