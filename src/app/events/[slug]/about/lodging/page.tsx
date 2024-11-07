@@ -58,7 +58,7 @@ export default function LodgingPage({ params }: { params: { slug: string } }) {
       )}
 
       {lodging?.note && (
-        <p className="mt-8 text-center text-gray-600 italic">
+        <p className="mt-8 text-center text-gray-600">
           {lodging.note}
         </p>
       )}

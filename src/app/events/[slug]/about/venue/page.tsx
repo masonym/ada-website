@@ -53,7 +53,7 @@ const Page = () => {
 
             <div className="mb-2 flex flex-col items-center text-slate-700">
                 <h3 className="text-2xl font-bold mb-4">Address</h3>
-                <p className="text-lg">{event.locationAddress}</p>
+                <p className="text-lg text-center" dangerouslySetInnerHTML={{__html: event.locationAddress}}></p>
             </div>
             <div className="mt-6 flex justify-center">
                 <Image

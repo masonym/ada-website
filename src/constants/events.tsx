@@ -228,7 +228,9 @@ export const EVENTS = [
     image: "/header_final.png",
     slug: "2025-driving-the-industrialization-of-space",
     locationImage: "/locations/kennedy-space-center.jpg",
-    locationAddress: "SR 405, Building M6-306, Kennedy Space Center, FL 32899",
+    locationAddress: `
+    The Center for Space Education at The Astronauts Memorial Foundation
+    <br/>SR 405, Building M6-306, Kennedy Space Center, FL 32899`,
     directions: [
       {
         title: "From Cocoa Beach (SR 528)",
@@ -298,7 +300,7 @@ export const EVENTS = [
     parkingInfo: [
       {
         title: "General Parking Information",
-        description: `The visitor complex parking lot accommodates motorcycles, automobiles and oversized vehicles such as RVs. Parking fees are collected at the entrance to the lot. Parking is accessible 30 minutes before complex opening.`
+        description: `The Kennedy Space Center Visitor Complex Parking Lot accommodates Motorcycles, Automobiles, and Oversized Vehicles such as RVs. Parking fees are collected at the entrance to the lot. Parking is accessible 30 minutes before complex opening.`
       },
       {
         title: "Parking Rates",
@@ -306,17 +308,17 @@ export const EVENTS = [
         <ul class="list-none">
         <li>Motorcycles - $5.00</li>
         <li>Automobiles - $15.00</li>
-        <li>Oversized vehicles, motor homes or RVs - $20.00</li>
+        <li>Oversized Vehicles, Motor Homes or RVs - $20.00</li>
         </ul>
     `
       },
       {
         title: "Accessible Parking",
-        description: `Parking for visitors with disabilities is available in Lot 2 with valid parking permit.`
+        description: `Parking for Visitors with Disabilities is available in Lot 2 with Valid Parking Permit.`
       },
       {
         title: "Rideshare & Taxi Information",
-        description: `Rideshare and taxi drop offs and pick-ups in Lot 4 are permitted with proof of fare.`
+        description: `Rideshare and Taxi Drop-offs and Pick-ups in Lot 4 are permitted with Proof of Fare.`
       },
       {
         title: "GPS Information",
