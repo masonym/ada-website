@@ -326,7 +326,7 @@ export const EVENTS = [
       }
     ],
     placeID: "ChIJY0BfjTOu4IgRxNjxFMIAkQ0",
-    registerLink: "https://shop.michman.org/",
+    registerLink: "https://www.industrializing.space/shop/",
     password: "2025DTIOS",
     contactInfo: {
       contactText: "General Inquiries",
