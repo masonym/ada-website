@@ -65,7 +65,9 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
     };
 
     const getLastName = (name: string) => {
-        const cleanedName = name.replace(/\s*\(.*\)$/, '');
+        // remove parentheses and words after commas from name
+
+        const cleanedName = name.replace(/\([^)]*\)/g, '').replace(/,.*/, '');
         const nameParts = cleanedName.split(' ');
         return nameParts[nameParts.length - 1];
     };
