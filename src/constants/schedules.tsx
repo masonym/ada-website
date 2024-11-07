@@ -56,6 +56,17 @@ export const SCHEDULES = [
                     },
                     {
                         time: "10:45 AM",
+                        title: "Defense Department Keynote Address",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Honorable John P. (\"Sean\") Coffey",
+                            title: "General Counsel",
+                            affiliation: "Department of the Navy",
+                            photo: "/speakers/john_coffey.png"
+                        }]
+                    },
+                    {
+                        time: "11:20 AM",
                         title: "Defense Dept. Small Business Programs",
                         location: "National Press Club Ballroom",
                         speakers: [
@@ -78,17 +89,6 @@ export const SCHEDULES = [
                                 photo: "/speakers/scott_kiser.png"
                             }
                         ]
-                    },
-                    {
-                        time: "11:40 AM",
-                        title: "Defense Department Keynote Address",
-                        location: "National Press Club Ballroom",
-                        speakers: [{
-                            name: "Honorable John P. (\"Sean\") Coffey",
-                            title: "General Counsel",
-                            affiliation: "Department of the Navy",
-                            photo: "/speakers/john_coffey.png"
-                        }]
                     },
                     {
                         time: "12:15 PM",
@@ -152,39 +152,6 @@ export const SCHEDULES = [
                     },
                     {
                         time: "3:30 PM",
-                        title: "Military Base-Community Partnership Programs",
-                        location: "National Press Club Ballroom",
-                        speakers: [{
-                            name: "Dave Leinberger",
-                            title: "Acting Director, Army Partnerships",
-                            affiliation: "Deputy Chief of Staff, G-9 (Installations)",
-                            photo: "/speakers/dave_leinberger.png"
-                        }]
-                    },
-                    {
-                        time: "4:00 PM",
-                        title: "NAVFAC Opportunities Briefing",
-                        location: "National Press Club Ballroom",
-                        speakers: [{
-                            name: "Bianca Henderson",
-                            title: "Director, Office of Small Business Programs (OSBP)",
-                            affiliation: "Naval Facilities Engineering Systems Command (NAVFAC)",
-                            photo: "/speakers/bianca_henderson.png"
-                        }]
-                    },
-                    {
-                        time: "4:30 PM",
-                        title: "How To Do Business With The Primes II",
-                        location: "National Press Club Ballroom",
-                        speakers: [{
-                            name: "David Canada",
-                            title: "Director, Global Supplier Diversity",
-                            affiliation: "Boeing Defense Space & Security",
-                            photo: "/speakers/david_canada.png"
-                        }]
-                    },
-                    {
-                        time: "5:00 PM",
                         title: "Strategies for Accessing Major GWACs (Government-Wide Acquisition Contracts)",
                         location: "National Press Club Ballroom",
                         speakers: [{
@@ -195,7 +162,40 @@ export const SCHEDULES = [
                         }]
                     },
                     {
-                        time: "5:30 PM",
+                        time: "4:00 PM",
+                        title: "Military Base-Community Partnership Programs",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Dave Leinberger",
+                            title: "Acting Director, Army Partnerships",
+                            affiliation: "Deputy Chief of Staff, G-9 (Installations)",
+                            photo: "/speakers/dave_leinberger.png"
+                        }]
+                    },
+                    {
+                        time: "4:30 PM",
+                        title: "NAVFAC Opportunities Briefing",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Bianca Henderson",
+                            title: "Director, Office of Small Business Programs (OSBP)",
+                            affiliation: "Naval Facilities Engineering Systems Command (NAVFAC)",
+                            photo: "/speakers/bianca_henderson.png"
+                        }]
+                    },
+                    {
+                        time: "5:00 PM",
+                        title: "How To Do Business With The Primes II",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "David Canada",
+                            title: "Director, Global Supplier Diversity",
+                            affiliation: "Boeing Defense Space & Security",
+                            photo: "/speakers/david_canada.png"
+                        }]
+                    },
+                    {
+                        time: "5:15 PM",
                         title: "Closing Remarks",
                         location: "National Press Club Ballroom",
                         speakers: [{
@@ -322,7 +322,8 @@ export const SCHEDULES = [
                         time: "6:00 PM - 8:00 PM",
                         title: "Meet & Greet Bourbon Tasting with Astronauts",
                         location: "Zarrellas, 8801 Astronaut Blvd. Cape Canaveral, FL 32920",
-                        sponsorLogo: '/events/2025DTIOS/sponsors/zarrellas.png'
+                        sponsorLogo: '/events/2025DTIOS/sponsors/zarrellas.png',
+                        description: "(Add-On Registration and Payment is Required for this Event)"
                     },
 
                 ],
@@ -332,55 +333,68 @@ export const SCHEDULES = [
                 items: [
                     {
                         time: "10:00 AM - 10:30 AM",
-                        title: "Overview – Exponential Space Sector Activity – The Commercial, Government & Defense Dimensions"
+                        title: "Overview – Exponential Space Sector Activity – The Commercial, Government & Defense Dimensions",
+                        location: "The Center for Space Education at the Astronauts Memorial Foundation"
                     },
                     {
                         time: "10:30 AM - 11:15 AM",
-                        title: "NASA & Space Force – Engaging the Innovative Private Sector"
+                        title: "NASA & Space Force – Engaging the Innovative Private Sector",
+                        location: "The Center for Space Education at the Astronauts Memorial Foundation"
                     },
                     {
                         time: "11:15 AM - 12:00 PM",
-                        title: "Funding Space Industrialization – Space Industry Investment"
+                        title: "Funding Space Industrialization – Space Industry Investment",
+                        location: "The Center for Space Education at the Astronauts Memorial Foundation"
                     },
                     {
                         time: "12:00 PM - 12:30 PM",
-                        title: "Manufacturing Opportunities in Space"
+                        title: "Manufacturing Opportunities in Space",
+                        location: "The Center for Space Education at the Astronauts Memorial Foundation"
                     },
                     {
                         time: "12:30 PM - 1:15 PM",
-                        title: "Lunch Networking Break"
+                        title: "Lunch Networking Break",
+                        location: "The Center for Space Education at the Astronauts Memorial Foundation"
                     },
                     {
                         time: "1:15 PM - 1:55 PM",
-                        title: "Spaceport Infrastructure Needs – the State of Florida Role"
+                        title: "Spaceport Infrastructure Needs – the State of Florida Role",
+                        location: "The Center for Space Education at the Astronauts Memorial Foundation"
                     },
                     {
                         time: "1:55 PM - 2:30 PM",
-                        title: "Attracting Local Tech Companies to the U.S. Space Enterprise"
+                        title: "Attracting Local Tech Companies to the U.S. Space Enterprise",
+                        location: "The Center for Space Education at the Astronauts Memorial Foundation"
                     },
                     {
                         time: "2:30 PM - 3:15 PM",
-                        title: "U.S. Space Defense – Challenges & Imperatives"
+                        title: "U.S. Space Defense – Challenges & Imperatives",
+                        location: "The Center for Space Education at the Astronauts Memorial Foundation"
                     },
                     {
                         time: "3:15 PM - 4:00 PM",
-                        title: "Quantum & AI Driving New Frontiers in Space"
+                        title: "Quantum & AI Driving New Frontiers in Space",
+                        location: "The Center for Space Education at the Astronauts Memorial Foundation"
                     },
                     {
                         time: "4:00 PM - 4:30 PM",
-                        title: "Cybersecurity – Protecting the Industrialization of Space"
+                        title: "Cybersecurity – Protecting the Industrialization of Space",
+                        location: "The Center for Space Education at the Astronauts Memorial Foundation"
                     },
                     {
                         time: "4:30 PM - 5:00 PM",
-                        title: "Propulsion, Propellants & Fuels"
+                        title: "Propulsion, Propellants & Fuels",
+                        location: "The Center for Space Education at the Astronauts Memorial Foundation"
                     },
                     {
                         time: "5:00 PM - 5:30 PM",
-                        title: "Space Asset Supply Chain Challenges"
+                        title: "Space Asset Supply Chain Challenges",
+                        location: "The Center for Space Education at the Astronauts Memorial Foundation"
                     },
                     {
                         time: "5:30 PM",
-                        title: "Closing Comments"
+                        title: "Closing Comments",
+                        location: "The Center for Space Education at the Astronauts Memorial Foundation"
                     }
                 ]
             }
