@@ -56,6 +56,17 @@ export const SCHEDULES = [
                     },
                     {
                         time: "10:45 AM",
+                        title: "Defense Department Keynote Address",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Honorable John P. (\"Sean\") Coffey",
+                            title: "General Counsel",
+                            affiliation: "Department of the Navy",
+                            photo: "/speakers/john_coffey.png"
+                        }]
+                    },
+                    {
+                        time: "11:20 AM",
                         title: "Defense Dept. Small Business Programs",
                         location: "National Press Club Ballroom",
                         speakers: [
@@ -78,17 +89,6 @@ export const SCHEDULES = [
                                 photo: "/speakers/scott_kiser.png"
                             }
                         ]
-                    },
-                    {
-                        time: "11:40 AM",
-                        title: "Defense Department Keynote Address",
-                        location: "National Press Club Ballroom",
-                        speakers: [{
-                            name: "Honorable John P. (\"Sean\") Coffey",
-                            title: "General Counsel",
-                            affiliation: "Department of the Navy",
-                            photo: "/speakers/john_coffey.png"
-                        }]
                     },
                     {
                         time: "12:15 PM",
@@ -152,39 +152,6 @@ export const SCHEDULES = [
                     },
                     {
                         time: "3:30 PM",
-                        title: "Military Base-Community Partnership Programs",
-                        location: "National Press Club Ballroom",
-                        speakers: [{
-                            name: "Dave Leinberger",
-                            title: "Acting Director, Army Partnerships",
-                            affiliation: "Deputy Chief of Staff, G-9 (Installations)",
-                            photo: "/speakers/dave_leinberger.png"
-                        }]
-                    },
-                    {
-                        time: "4:00 PM",
-                        title: "NAVFAC Opportunities Briefing",
-                        location: "National Press Club Ballroom",
-                        speakers: [{
-                            name: "Bianca Henderson",
-                            title: "Director, Office of Small Business Programs (OSBP)",
-                            affiliation: "Naval Facilities Engineering Systems Command (NAVFAC)",
-                            photo: "/speakers/bianca_henderson.png"
-                        }]
-                    },
-                    {
-                        time: "4:30 PM",
-                        title: "How To Do Business With The Primes II",
-                        location: "National Press Club Ballroom",
-                        speakers: [{
-                            name: "David Canada",
-                            title: "Director, Global Supplier Diversity",
-                            affiliation: "Boeing Defense Space & Security",
-                            photo: "/speakers/david_canada.png"
-                        }]
-                    },
-                    {
-                        time: "5:00 PM",
                         title: "Strategies for Accessing Major GWACs (Government-Wide Acquisition Contracts)",
                         location: "National Press Club Ballroom",
                         speakers: [{
@@ -195,7 +162,40 @@ export const SCHEDULES = [
                         }]
                     },
                     {
-                        time: "5:30 PM",
+                        time: "4:00 PM",
+                        title: "Military Base-Community Partnership Programs",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Dave Leinberger",
+                            title: "Acting Director, Army Partnerships",
+                            affiliation: "Deputy Chief of Staff, G-9 (Installations)",
+                            photo: "/speakers/dave_leinberger.png"
+                        }]
+                    },
+                    {
+                        time: "4:30 PM",
+                        title: "NAVFAC Opportunities Briefing",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Bianca Henderson",
+                            title: "Director, Office of Small Business Programs (OSBP)",
+                            affiliation: "Naval Facilities Engineering Systems Command (NAVFAC)",
+                            photo: "/speakers/bianca_henderson.png"
+                        }]
+                    },
+                    {
+                        time: "5:00 PM",
+                        title: "How To Do Business With The Primes II",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "David Canada",
+                            title: "Director, Global Supplier Diversity",
+                            affiliation: "Boeing Defense Space & Security",
+                            photo: "/speakers/david_canada.png"
+                        }]
+                    },
+                    {
+                        time: "5:15 PM",
                         title: "Closing Remarks",
                         location: "National Press Club Ballroom",
                         speakers: [{
