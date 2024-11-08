@@ -288,8 +288,8 @@ export const SPEAKERS = [
             {
                 image: "/speakers/david_morrow.png",
                 name: "Dave Morrow",
-                position: "Director, Office of Small Business Programs",
-                company: "Office of the Secretary of the Army",
+                position: "Acting Director, Military Programs",
+                company: "U.S. Army Corps of Engineers",
                 bio: `
                 Deputy District Engineer for Programs and Project
                 Management; Baltimore District, U.S. Army Corps of
