@@ -284,6 +284,33 @@ export const SPEAKERS = [
                 `
             },
 
+            // dave morrow
+            {
+                image: "/speakers/david_morrow.png",
+                name: "Dave Morrow",
+                position: "Director, Office of Small Business Programs",
+                company: "Office of the Secretary of the Army",
+                bio: `
+                Deputy District Engineer for Programs and Project
+                Management; Baltimore District, U.S. Army Corps of
+                Engineers. Baltimore District is one of six Districts in the North
+                Atlantic Division. Baltimore District employs aver 1100 people
+                executing hundreds of projects annually including military
+                design & construction, civil planning, design & construction,
+                and environmental restoration.
+                
+                <br/><br/>Previous assignments include Chief, Environmental &
+                Munitions Design Center, program manager for Washington,
+                D.C. area, Baltimore District program manager for
+                Environmental Protection Agency, Base Operations Engineer
+                for a U.S. Army Reserve command, and industrial engineer at the Directorate of Public Works, Fort
+                Meade, MD.
+                
+                <br/><br/>Mr Morrow holds a Bachelors of Science degree in Systems Engineering, University of Virginia,
+                Charlottesville, Virginia, 1982.
+                `
+            }
+
             // {
             //     image: "/speakers/placeholder.png",
             //     name: "Placeholder Name",
