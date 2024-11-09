@@ -69,7 +69,7 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, showExpandedBi
   }
 
   return (
-    <div className="flex flex-col items-center gap-6 px-4 sm:px-0 lg:px-6 mb-4">
+    <div className="flex flex-col items-center gap-6 px-4 sm:px-4 lg:px-6 mb-4">
       <div className="grid grid-flow-row sm:grid-flow-col gap-6 w-full max-w-6xl lg:max-w-full">
         {keynoteSpeakers.map((speaker, index) => (
           <section 
