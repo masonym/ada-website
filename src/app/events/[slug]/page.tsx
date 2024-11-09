@@ -125,7 +125,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
               {event.eventText}
             </div>
 
-            <KeynoteSpeaker eventId={event.id} />
+            <KeynoteSpeaker eventId={event.id} showExpandedBio={false}/>
 
             <SponsorLogos event={event} />
 

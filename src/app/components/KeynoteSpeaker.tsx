@@ -1,46 +1,143 @@
-import React from 'react';
+"use client";
+
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { SPEAKERS } from '@/constants/speakers';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+
+type KeynoteSpeaker = {
+  image: string;
+  name: string;
+  position: string;
+  company: string;
+  bio: string;
+  keynote: {
+    isKeynote: boolean;
+    headerText?: string;
+  };
+};
 
 type KeynoteSpeakerProps = {
   eventId: number;
+  showExpandedBio?: boolean;
 };
 
-const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId }) => {
-  const eventSpeakers = SPEAKERS.find(event => event.id === eventId)?.speakers;
-  const keynoteSpeaker = eventSpeakers?.find(speaker => speaker.keynote);
+const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, showExpandedBio = true }) => {
+  const [expandedStates, setExpandedStates] = useState<{ [key: string]: boolean }>({});
+  const [heightStates, setHeightStates] = useState<{
+    [key: string]: {
+      collapsed: number;
+      full: number;
+    };
+  }>({});
 
-  if (!keynoteSpeaker) {
+  const bioRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const collapsedRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  
+  const eventSpeakers = SPEAKERS.find(event => event.id === eventId)?.speakers;
+  const keynoteSpeakers = eventSpeakers?.filter(speaker => speaker.keynote);
+
+  useEffect(() => {
+    if (!keynoteSpeakers) return;
+
+    const newHeightStates: { [key: string]: { collapsed: number; full: number } } = {};
+
+    keynoteSpeakers.forEach(speaker => {
+      const bioRef = bioRefs.current[speaker.name];
+      const collapsedRef = collapsedRefs.current[speaker.name];
+
+      if (bioRef && collapsedRef) {
+        newHeightStates[speaker.name] = {
+          full: bioRef.scrollHeight,
+          collapsed: collapsedRef.scrollHeight
+        };
+      }
+    });
+
+    setHeightStates(newHeightStates);
+  }, [keynoteSpeakers?.length]);
+
+  const toggleBio = (speakerName: string) => {
+    setExpandedStates(prev => ({
+      ...prev,
+      [speakerName]: !prev[speakerName]
+    }));
+  };
+
+  if (!keynoteSpeakers || keynoteSpeakers.length === 0) {
     return null;
   }
 
   return (
-    <section className="bg-navy-500 text-white mb-8 py-8 px-4 rounded-xl shadow-2xl">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-12 text-lightBlue-400">Keynote Speaker</h2>
-        <div className="flex flex-col items-center">
-          <div className="relative mb-8">
-            <div className="absolute inset-0 bg-gradient-to-br from-lightBlue-400 to-blue-600 rounded-full opacity-75 blur-md"></div>
-            <Image
-              src={keynoteSpeaker.image}
-              alt={keynoteSpeaker.name}
-              width={300}
-              height={300}
-              className="rounded-full relative z-10 border-4 border-white shadow-lg"
-            />
-          </div>
-          <div className="text-center max-w-2xl">
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 text-white-400">{keynoteSpeaker.name}</h3>
-            <p className="text-xl sm:text-2xl mb-2 text-red-400">{keynoteSpeaker.position}</p>
-            <p className="text-lg sm:text-xl mb-6 text-blue-300">{keynoteSpeaker.company}</p>
-          </div>
-        </div>
-        <div 
-          className="text-base text-center sm:text-lg leading-relaxed max-w-4xl mx-auto"
-          dangerouslySetInnerHTML={{ __html: keynoteSpeaker.bio.substring(0, 800) }} 
-        />
+    <div className="flex flex-col items-center gap-6 px-4 sm:px-0 lg:px-6 mb-4">
+      <div className="grid grid-flow-row sm:grid-flow-col gap-6 w-full max-w-6xl lg:max-w-full">
+        {keynoteSpeakers.map((speaker, index) => (
+          <section 
+            key={index} 
+            className="bg-navy-500 text-white rounded-xl shadow-2xl h-fit"
+          >
+            <div className="p-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-lightBlue-400">
+                {speaker.keynote?.headerText || "Keynote Speaker"}
+              </h2>
+              <div className="flex flex-col items-center">
+                <div className="relative w-48 h-48 mb-6">
+                  <div className="absolute inset-0 bg-gradient-to-br from-lightBlue-400 to-blue-600 rounded-full opacity-75 blur-md"></div>
+                  <Image
+                    src={speaker.image}
+                    alt={speaker.name}
+                    fill
+                    className="rounded-full relative z-10 border-4 border-white shadow-lg object-cover"
+                  />
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-2 text-white">{speaker.name}</h3>
+                  <p className="text-lg mb-2 text-red-400">{speaker.position}</p>
+                  <p className="text-base mb-6 text-blue-300">{speaker.company}</p>
+                </div>
+              </div>
+              <div className="relative">
+                <div 
+                  ref={el => { bioRefs.current[speaker.name] = el; }}
+                  className="text-base text-center leading-relaxed overflow-hidden transition-all duration-500 ease-in-out"
+                  style={{ 
+                    height: expandedStates[speaker.name] 
+                      ? heightStates[speaker.name]?.full || 'auto'
+                      : heightStates[speaker.name]?.collapsed || 'auto'
+                  }}
+                >
+                  <div dangerouslySetInnerHTML={{ __html: speaker.bio }} />
+                </div>
+                <div 
+                  ref={el => { collapsedRefs.current[speaker.name] = el; }}
+                  className="absolute top-0 left-0 right-0 text-base text-center leading-relaxed opacity-0 pointer-events-none"
+                >
+                  <div dangerouslySetInnerHTML={{ __html: speaker.bio.split('<br>')[0] }} />
+                </div>
+              </div>
+              {showExpandedBio && (
+                <div className="text-center mt-4">
+                  <button 
+                    onClick={() => toggleBio(speaker.name)}
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  >
+                    {expandedStates[speaker.name] ? (
+                      <>
+                        Hide bio <ChevronUp className="ml-2 h-5 w-5" />
+                      </>
+                    ) : (
+                      <>
+                        Click to read bio <ChevronDown className="ml-2 h-5 w-5" />
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
+            </div>
+          </section>
+        ))}
       </div>
-    </section>
+    </div>
   );
 };
 

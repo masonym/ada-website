@@ -23,14 +23,14 @@ export const SCHEDULES = [
                     },
                     {
                         time: "9:10 AM",
-                        title: "Congressional Keynote Address (Pending)",
+                        title: "Congressional Keynote Address",
                         location: "National Press Club Ballroom",
-                        // speakers: [{
-                        //     name: "Congressman Michael Waltz (6th District, Florida)",
-                        //     title: "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
-                        //     affiliation: "U.S. House of Representatives",
-                        //     photo: "/speakers/michael_waltz.png"
-                        // }],
+                        speakers: [{
+                            name: "Congressman Michael Waltz (6th District, Florida)",
+                            title: "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
+                            affiliation: "U.S. House of Representatives",
+                            photo: "/speakers/michael_waltz.png"
+                        }],
                     },
                     {
                         time: "9:45 AM",

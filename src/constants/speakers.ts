@@ -3,6 +3,43 @@ export const SPEAKERS = [
         id: 1,
         speakers: [
             {
+                image: "/speakers/michael_waltz.png",
+                name: "Congressman Michael Waltz (6th District, Florida)",
+                position: "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
+                company: "U.S. House of Representatives",
+                bio: `
+                Congressman Mike Waltz is a Colonel (Ret.) in the National Guard, a combat-decorated Green Beret, former White House and Pentagon policy advisor, a small business owner, an author, and a proud father. He is the first Green Beret to be elected to Congress.
+                Mike was born in Boynton Beach, Florida and grew up in Jacksonville, Florida. He was raised by a hard-working single mother and is the son and grandson of Navy Chiefs.
+                Mike has served his country his entire life. He graduated from the Virginia Military Institute with Honors and served 27 years in the U.S. Army and National Guard, retiring during his second term in Congress. After being commissioned as an Army lieutenant, Mike graduated Ranger School and was selected for the elite Green Berets, serving worldwide as a Special Forces officer with multiple combat tours in Afghanistan, the Middle East and Africa. For his actions in combat, Mike was awarded four Bronze Stars, including two for Valor.
+                <br></br>
+                During his time in Afghanistan, Mike led the teams searching for deserter Pvt. Bowe Berghdal. Mike was one of the first to publicly call into question then-President Obama’s labeling of Berghdal as a hero and has continued to lead the call for justice on behalf of all the service-members Berghdal’s desertion put in harm's way.
+                <br></br>
+                Mike’s servant leadership continued in the White House, as well as the Pentagon, as a defense policy director for Secretaries of Defense Donald Rumsfeld and Robert Gates. He also advised the Bush Administration on policy he then carried out in the military.
+                <br></br>
+                His experiences as a soldier and a policy advisor inspired him to write the book, “Warrior Diplomat: A Green Beret’s Battles from Washington to Afghanistan,” the proceeds of which continue to benefit the Green Beret and Matthew Pucino Foundations. He also wrote a children’s book, “Dawn of the Brave,” a Christian children's book that teaches children the importance of service.
+                <br></br>
+                Following his time in the White House, Mike built a small business to over 400 employees, which was repeatedly listed in the Inc. 500 index as one of the fastest-growing private companies in America.
+                <br></br>
+                A former Fox News Channel contributor, Mike, provides expert commentary on foreign policy, defense, and business issues to viewers around the world.
+                <br></br>
+                Mike is determined to be part of the new generation of leadership in Congress: Servant leaders who lead by example with their values and deliver results. 
+                <br></br>
+                As the Chairman of the House Armed Services Subcommittee on Readiness and member of the House Oversight and Accountability Committee and House Permanent Select Committee on Intelligence, Mike has championed legislation to restore our military back to be merit-based and mission-focused.
+                <br></br>
+                Mike serves on the House China Task Force with 15 Republican lawmakers representing 14 committees of jurisdiction to coordinate policy on China. Mike sponsored legislation to reduce American reliance on Chinese critical minerals and pioneered legislation to secure American universities and academies from Chinese espionage.
+                <br></br>
+                As a Floridian, Mike has fought to help maintain Florida’s way of life, introducing legislation to help prevent harmful algae blooms and keep Florida’s water clean, and protect Florida’s farmers and growers. He is a strong advocate for school choice and a return to civics in education. He has also championed the growing space industry on Florida’s Space Coast and the science, technology, engineering, and math (STEM) programs at Florida’s universities.
+                <br></br>
+                His commitment in Washington, D.C. is the same now as it was in combat: To serve with everything he has, without regard for his own self and with a sense of duty.
+                <br></br>
+                Mike has a daughter in college and a baby boy. He is married to Dr. Julia Nesheiwat, a combat veteran who served in multiple presidential administrations, as well as most recently as Homeland Security Advisor to President Trump. They live in St. Johns County, Florida.
+                `,
+                keynote: {
+                    isKeynote: true,
+                    headerText: "Congressional Keynote Speaker",
+                }
+            },
+            {
                 image: "/speakers/mark_cancian.jpg",
                 name: "Mark Cancian",
                 position: "Senior Adviser, International Security Program",
@@ -226,7 +263,9 @@ export const SPEAKERS = [
                 Anne Churchill, an actress whose credits include This is Spinal Tap. They have three
                 grown children. 
                 `,
-                keynote: true,
+                keynote: {
+                    isKeynote: true,
+                }
             },
 
             {
@@ -238,16 +277,6 @@ export const SPEAKERS = [
                 Bianca Henderson serves as the Director for the Naval Facilities Engineering System Command (NAVFAC), Office of Small Business Programs (OSBP). Bianca leads 13 Small Business Professional’s across the NAVFAC enterprise with a small business spend that exceeded $5.6 billion dollars in FY-24. Bianca, has 28 years of Gov’t Contracting experience, and obtained DAWIA/FAC-C Level III Acquisition certifications. Bianca has worked for NAVFAC for 7 years and is passionate about advocating for small business utilization. She finds her job as a small business leader very meaningful and impactful. Bianca is also 11-year Marine Corps veteran.
                 `
             },
-
-            // {
-            //     image: "/speakers/michael_waltz.png",
-            //     name: "Congressman Michael Waltz (6th District, Florida)",
-            //     position: "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
-            //     company: "U.S. House of Representatives",
-            //     bio: `
-            //     Placeholder Bio
-            //     `
-            // },
             {
                 image: "/speakers/mark_correll.png",
                 name: "Mark Correll",

@@ -36,12 +36,14 @@ const CountdownTimer = ({ targetDate, initialTimeLeft }: TimerProps) => {
       }
     };
 
-    const animationFrameId = requestAnimationFrame(function update() {
-      calculateTimeLeft();
-      requestAnimationFrame(update);
-    });
+    // Initial calculation
+    calculateTimeLeft();
 
-    return () => cancelAnimationFrame(animationFrameId);
+    // Update every second using setInterval instead of requestAnimationFrame
+    const interval = setInterval(calculateTimeLeft, 1000);
+
+    // Cleanup function
+    return () => clearInterval(interval);
   }, []);
 
   const padNumber = (num: number) => num.toString().padStart(2, '0');
