@@ -49,7 +49,8 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
     }
   };
 
-  const isEventFuture = new Date(eventStartDate) > new Date();
+  // Check if event is in the next week or future
+  const isEventFuture = new Date(new Date(eventStartDate).getTime() - 7 * 24 * 60 * 60 * 1000) > new Date();
 
   return (
     <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 pb-8">

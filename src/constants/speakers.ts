@@ -265,6 +265,7 @@ export const SPEAKERS = [
                 `,
                 keynote: {
                     isKeynote: true,
+                    headerText: "Defense Department Keynote Speaker",
                 }
             },
 
