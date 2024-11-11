@@ -50,6 +50,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://www.amfcse.org",
                         width: 150,
                         height: 150,
+                    },
+                    {
+                        name: "Zarrellas Italian & Wood Fired Pizza",
+                        logo: "/events/2025DTIOS/sponsors/zarrellas.png",
+                        website: "https://www.zarrellasitalian.com/",
+                        width: 150,
+                        height: 150,
                     }
                 ]
             },
@@ -66,18 +73,6 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     }
                 ]
             },
-            {
-                name: "Venue Sponsor",
-                sponsors: [
-                    {
-                        name: "Zarrellas Italian & Wood Fired Pizza",
-                        logo: "/events/2025DTIOS/sponsors/zarrellas.png",
-                        website: "https://www.zarrellasitalian.com/",
-                        width: 150,
-                        height: 150,
-                    }
-                ]
-            }
         ]
     }
 ];
