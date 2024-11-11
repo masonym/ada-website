@@ -67,7 +67,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 ]
             },
             {
-                name: "Food & Beverage Partners",
+                name: "Venue Sponsor",
                 sponsors: [
                     {
                         name: "Zarrellas Italian & Wood Fired Pizza",
