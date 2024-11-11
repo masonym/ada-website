@@ -12,7 +12,7 @@ export const EXHIBITOR_TYPES = [
                     { tagline: "Full Access", description: "Access to All Event Sessions" },
                     { tagline: "Resources", description: "Speaker Presentations and Materials" },
                     { tagline: "Documentation", description: "Digital/Physical Copies of Agenda" },
-                    { tagline: "Dining", description: "Breakfast & Buffet Lunch" },
+                    { tagline: "Dining", description: "Buffet Lunch" },
                     { tagline: "Media Access", description: "Access to Photos & Videos from Conference" },
                 ]
             },

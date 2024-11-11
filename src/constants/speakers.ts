@@ -336,7 +336,7 @@ export const SPEAKERS = [
                 for a U.S. Army Reserve command, and industrial engineer at the Directorate of Public Works, Fort
                 Meade, MD.
                 
-                <br/><br/>Mr Morrow holds a Bachelors of Science degree in Systems Engineering, University of Virginia,
+                <br/><br/>Mr. Morrow holds a Bachelors of Science degree in Systems Engineering, University of Virginia,
                 Charlottesville, Virginia, 1982.
                 `
             }

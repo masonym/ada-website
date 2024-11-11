@@ -8,7 +8,7 @@ export const SCHEDULES = [
                     {
                         time: "8:00 AM",
                         title: "On-Site Attendee Registration",
-                        location: "National Press Club"
+                        location: "Ballroom Pre-function"
                     },
                     {
                         time: "9:00 AM",
@@ -209,7 +209,7 @@ export const SCHEDULES = [
                         time: "5:30 PM - 7:30 PM",
                         title: "VIP Networking Reception",
                         description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
-                        location: "Fourth Estate"
+                        location: "Fourth Estate Meeting Room"
                     }
                 ]
             }
