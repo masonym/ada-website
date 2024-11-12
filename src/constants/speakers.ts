@@ -54,7 +54,7 @@ export const SPEAKERS = [
                 image: "/speakers/joachim_christian.png",
                 name: "His Royal Highness, Brigadier General Prince Joachim, Prince of Denmark",
                 position: "Danish Military Industry Attaché",
-                company: "Embassy of Denmark",
+                company: "Royal Embassy of Denmark",
                 bio: `
                 Joachim Holger Waldemar Christian, Prince of Denmark, Count of Monpezat, was born on 7 June 1969. His Royal Highness Prince Joachim is the son of HM Queen Margrethe II and Prince Henrik of Denmark (d. 2018). He is included in the order of succession to the Throne and may act as Regent when HM The Queen and HRH Crown Prince Frederik are abroad.
                 <br><br>

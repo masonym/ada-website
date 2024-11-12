@@ -124,7 +124,7 @@ export const SCHEDULES = [
                         speakers: [{
                             name: "His Royal Highness, Brigadier General Prince Joachim, Prince of Denmark",
                             title: "Danish Military Industry Attaché",
-                            affiliation: "Embassy of Denmark",
+                            affiliation: "Royal Embassy of Denmark",
                             photo: "/speakers/joachim_christian.png"
                         }]
                     },
