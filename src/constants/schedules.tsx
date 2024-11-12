@@ -50,7 +50,7 @@ export const SCHEDULES = [
                         speakers: [{
                             name: "Mark Correll, P.E.",
                             title: "Vice President, Federal Strategy Director",
-                            affiliation: "HDR (Former Deputy Assistant Secretary of the Air Force for Environment, Safety and Infrastructure)",
+                            affiliation: "HDR, Inc. (Former Deputy Assistant Secretary of the Air Force for Environment, Safety and Infrastructure)",
                             photo: "/speakers/mark_correll.png"
                         }]
                     },
@@ -123,8 +123,8 @@ export const SCHEDULES = [
                         location: "National Press Club Ballroom",
                         speakers: [{
                             name: "Prince Joachim",
-                            title: "His Royal Highness, Brigadier General Prince of Denmark",
-                            affiliation: "Danish Military Industry Attaché to the United States",
+                            title: "His Royal Highness, Brigadier General Prince Joachim, Prince of Denmark",
+                            affiliation: "Embassy of Denmark to the United States",
                             photo: "/speakers/joachim_christian.png"
                         }]
                     },
