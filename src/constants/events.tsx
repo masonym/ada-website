@@ -122,7 +122,7 @@ export const EVENTS = [
   {
     id: 2,
     title: "2025 Southeast Defense Procurement Conference",
-    date: "March 18th-19th, 2025",
+    date: "March 18-19, 2025",
     timeStart: "2025-03-18T12:30:00Z", // TODO: change to actual time
     description: "Join us for the 2025 Southeast Defense Procurement Conference on March 18-19, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
     eventText: (
@@ -191,7 +191,7 @@ export const EVENTS = [
   {
     id: 3,
     title: "Driving the Industrialization of Space",
-    date: "December 8th-9th, 2024",
+    date: "December 8-9, 2024",
     timeStart: "2024-12-09T15:00:00Z",
     description: "The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems.",
     eventText: (
