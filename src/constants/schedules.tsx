@@ -122,9 +122,9 @@ export const SCHEDULES = [
                         title: "Transatlantic Defense Partnerships to Strengthen Industrial Resilience",
                         location: "National Press Club Ballroom",
                         speakers: [{
-                            name: "Prince Joachim",
-                            title: "His Royal Highness, Brigadier General Prince Joachim, Prince of Denmark",
-                            affiliation: "Embassy of Denmark to the United States",
+                            name: "His Royal Highness, Brigadier General Prince Joachim, Prince of Denmark",
+                            title: "Danish Military Industry Attaché",
+                            affiliation: "Embassy of Denmark",
                             photo: "/speakers/joachim_christian.png"
                         }]
                     },

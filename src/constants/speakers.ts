@@ -52,9 +52,9 @@ export const SPEAKERS = [
             },
             {
                 image: "/speakers/joachim_christian.png",
-                name: "Brigadier General Prince Joachim",
-                position: "Prince of Denmark",
-                company: "Danish Military Industry Attaché to the United States",
+                name: "His Royal Highness, Brigadier General Prince Joachim, Prince of Denmark",
+                position: "Danish Military Industry Attaché",
+                company: "Embassy of Denmark",
                 bio: `
                 Joachim Holger Waldemar Christian, Prince of Denmark, Count of Monpezat, was born on 7 June 1969. His Royal Highness Prince Joachim is the son of HM Queen Margrethe II and Prince Henrik of Denmark (d. 2018). He is included in the order of succession to the Throne and may act as Regent when HM The Queen and HRH Crown Prince Frederik are abroad.
                 <br><br>
@@ -69,8 +69,8 @@ export const SPEAKERS = [
             {
                 image: "/speakers/dave_leinberger.png",
                 name: "Dave Leinberger",
-                position: "Chief of Army Community Partnerships",
-                company: "ODCS G-9 (Installations), HQDA, Pentagon",
+                position: "Acting Director, Army Partnerships",
+                company: "Deputy Chief of Staff, G-9 (Installations)",
                 bio:
                     `
                 Dave Leinberger assumed the role as the Chief of Army Community Partnerships in July 2024.
