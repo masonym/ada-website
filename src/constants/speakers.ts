@@ -282,7 +282,7 @@ export const SPEAKERS = [
                 image: "/speakers/mark_correll.png",
                 name: "Mark Correll",
                 position: "Vice President, Federal Strategy Director",
-                company: "HDR",
+                company: "HDR, Inc.",
                 bio: `
                 Mark Correll is the Federal Strategy Director and Director of
                 Air Force programs for the full-service Architect-Engineer firm
