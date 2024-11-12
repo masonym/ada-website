@@ -7,7 +7,7 @@ export const EVENTS = [
   {
     id: 1,
     title: "2025 Defense Industry Forecast",
-    date: "November 14th, 2024",
+    date: "November 14, 2024",
     timeStart: "2024-11-14T13:00:00Z",
     description: "The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities — covering Defense Dept. and Combat Command mission priorities — Army, Navy, Air Force, Marine Corps, Space Force and Coast Guard — focused on all major sectors from advanced IT, AI and Cyber, all-domain command & control, and weapons system development & sustainment, to logistics & transport, facility management, Military base building design & construction, energy resiliency and environmental remediation, to new Government-Private Sector collaborations in critical infrastructure security, U.S. manufacturing base revitalization, ship building and shipyard modernization, Space defense and other major initiatives.",
     eventText: (
@@ -40,7 +40,7 @@ export const EVENTS = [
     image: "/2025_DefenseIndustryForecast.png",
     slug: "2025-defense-industry-forecast",
     locationImage: "/locations/location_NPC.png",
-    locationAddress: "529 14th St NW, Washington, DC 20045, United States",
+    locationAddress: `National Press Club</br>529 14th St NW, Washington, DC 20045, United States`,
     directions: [
       {
         title: "Traveling from Baltimore",

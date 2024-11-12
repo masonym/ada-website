@@ -3,7 +3,7 @@ export const SCHEDULES = [
         id: 1, // This should match the event ID from EVENTS
         schedule: [
             {
-                date: "November 14th, 2024",
+                date: "November 14, 2024",
                 items: [
                     {
                         time: "8:00 AM",
@@ -220,7 +220,7 @@ export const SCHEDULES = [
         id: 2,
         schedule: [
             {
-                date: "March 17th, 2025",
+                date: "March 17, 2025",
                 items: [
                     {
                         time: "3:00 PM - 6:00 PM",
@@ -229,7 +229,7 @@ export const SCHEDULES = [
                 ],
             },
             {
-                date: "March 18th, 2025",
+                date: "March 18, 2025",
                 items: [
                     {
                         time: "7:30 AM - 8:30 AM",
@@ -285,7 +285,7 @@ export const SCHEDULES = [
                 ],
             },
             {
-                date: "March 19th, 2025",
+                date: "March 19, 2025",
                 items: [
                     {
                         time: "7:30 AM - 8:30 AM",
@@ -316,7 +316,7 @@ export const SCHEDULES = [
         id: 3,
         schedule: [
             {
-                date: "December 8th, 2024",
+                date: "December 8, 2024",
                 items: [
                     {
                         time: "6:00 PM - 8:00 PM",
@@ -329,7 +329,7 @@ export const SCHEDULES = [
                 ],
             },
             {
-                date: "December 9th, 2024",
+                date: "December 9, 2024",
                 items: [
                     {
                         time: "10:00 AM - 10:30 AM",

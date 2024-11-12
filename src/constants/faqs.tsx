@@ -67,7 +67,7 @@ export const FAQs = [
             },
             {
                 question: "When and where will the event take place?",
-                answer: `Date: March 18th - 19th, 2025<br>
+                answer: `Date: March 18 - 19, 2025<br>
                 Time: March 18, 2025: 7:30 AM - 7:30 PM and March 19, 2025: 7:30 AM - 12:00 PM<br>
                 Venue: TBD in Atlanta, Georgia
                 `,
