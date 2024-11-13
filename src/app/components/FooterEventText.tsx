@@ -14,7 +14,7 @@ const FooterEventText = ({ event }: FooterEventTextProps) => {
     <div className="max-w-4xl mx-auto mt-8 px-4">
       {/* Render sponsor section if it exists */}
       {event.customFooterText && (
-        <div className="max-w-2xl text-center text-slate-700">
+        <div className="max-w-2xl text-center text-slate-700 px-2">
           {event.customFooterText}
         </div>
       )}
