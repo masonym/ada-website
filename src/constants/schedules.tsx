@@ -36,24 +36,24 @@ export const SCHEDULES = [
                         time: "9:45 AM",
                         title: "Artificial Intelligence — Impact on Defense Acquisition",
                         location: "National Press Club Ballroom",
-                        presentation: "2025 Defense Industry Forecast - Amir Bagherpour, PhD.pdf",
                         speakers: [{
                             name: "Amir Bagherpour, PhD",
                             title: "Managing Director and Analytics & Visualization Lead for Data & AI",
                             affiliation: "Accenture Federal Services",
-                            photo: "/speakers/amir_bagherpour.jpg"
+                            photo: "/speakers/amir_bagherpour.jpg",
+                            presentation: "2025 Defense Industry Forecast - Amir Bagherpour, PhD.pdf",
                         }]
                     },
                     {
                         time: "10:15 AM",
                         title: "How To Do Business With The Primes I",
                         location: "National Press Club Ballroom",
-                        presentation: "2025 Defense Industry Forecast - Mark Correll, P.E..pdf",
                         speakers: [{
                             name: "Mark Correll, P.E.",
                             title: "Vice President, Federal Strategy Director",
                             affiliation: "HDR, Inc. (Former Deputy Assistant Secretary of the Air Force for Environment, Safety and Infrastructure)",
-                            photo: "/speakers/mark_correll.png"
+                            photo: "/speakers/mark_correll.png",
+                            presentation: "2025 Defense Industry Forecast - Mark Correll, P.E..pdf",
                         }]
                     },
                     {
@@ -64,7 +64,7 @@ export const SCHEDULES = [
                             name: "Honorable John P. (\"Sean\") Coffey",
                             title: "General Counsel",
                             affiliation: "Department of the Navy",
-                            photo: "/speakers/john_coffey.png"
+                            photo: "/speakers/john_coffey.png",
                         }]
                     },
                     {
@@ -76,19 +76,20 @@ export const SCHEDULES = [
                                 name: "Kimberly Diane Buehler",
                                 title: "Director, Office of Small Business Programs (OSBP)",
                                 affiliation: "U.S. Army, Department of Defense",
-                                photo: "/speakers/kimberly_buhler.png"
+                                photo: "/speakers/kimberly_buhler.png",
+                                presentation: "2025 Defense Industry Forecast - Kimberly Diane Buehler.pdf",
                             },
                             {
                                 name: "Arveice Washington",
                                 title: "Director, Office of Small Business Programs (OSBP)",
                                 affiliation: "Office of the Secretary of the Navy",
-                                photo: "/speakers/arveice_washington.jpg"
+                                photo: "/speakers/arveice_washington.jpg",
                             },
                             {
                                 name: "Scott Kiser",
                                 title: "Director, Office of Small Business Programs (OSBP)",
                                 affiliation: "Office of the Secretary of the Air Force",
-                                photo: "/speakers/scott_kiser.png"
+                                photo: "/speakers/scott_kiser.png",
                             }
                         ]
                     },

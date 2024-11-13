@@ -4,12 +4,13 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { EventProps } from './Speakers';
 
-// Updated types with presentation and video at the ScheduleItem level
 type Speaker = {
   name: string;
   title?: string;
   affiliation?: string;
   photo?: string;
+  presentation?: string;  // Added presentation to Speaker type
+  video?: string;        // Added video to Speaker type
 };
 
 type ScheduleItem = {
@@ -20,8 +21,6 @@ type ScheduleItem = {
   speakers?: Speaker[];
   description?: string;
   sponsorLogo?: string;
-  presentation?: string;  // Moved to ScheduleItem level
-  video?: string;        // Moved to ScheduleItem level
 };
 
 type ScheduleAtAGlanceProps = {
@@ -49,9 +48,8 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
       onRequestPassword();
     }
   };
-  const eventStartDate = event.timeStart;
 
-  // Check if event is in the next week or future
+  const eventStartDate = event.timeStart;
   const isEventFuture = new Date(new Date(eventStartDate).getTime() - 7 * 24 * 60 * 60 * 1000) > new Date();
   const isEventPassed = new Date(eventStartDate) < new Date();
 
@@ -68,10 +66,11 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
           {schedule.map((day, index) => (
             <button
               key={index}
-              className={`flex-1 text-center py-4 px-4 font-semibold ${selectedDay === index
+              className={`flex-1 text-center py-4 px-4 font-semibold ${
+                selectedDay === index
                   ? 'bg-navy-800 text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-300'
-                }`}
+              }`}
               onClick={() => setSelectedDay(index)}
             >
               {day.date}
@@ -82,8 +81,9 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
           {schedule[selectedDay].items.map((item, itemIndex, array) => (
             <div
               key={itemIndex}
-              className={`flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center min-h-[120px] ${itemIndex !== array.length - 1 ? 'mb-8 pb-8 border-b border-gray-200' : ''
-                }`}
+              className={`flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center min-h-[120px] ${
+                itemIndex !== array.length - 1 ? 'mb-8 pb-8 border-b border-gray-200' : ''
+              }`}
             >
               <div className="flex-grow pr-2">
                 <div className="flex justify-between items-start mb-2">
@@ -91,7 +91,6 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                     <div className="font-bold text-xl text-navy-800">{item.time}</div>
                     <div className="text-xl font-semibold">{item.title}</div>
                   </div>
-
                 </div>
                 {item.location && (
                   <div className="text-sm text-gray-600 mb-1">
@@ -106,46 +105,50 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                 {item.speakers && item.speakers.length > 0 && (
                   <div className="space-y-4 mt-3">
                     {item.speakers.map((speaker, speakerIndex) => (
-                      <div key={speakerIndex} className="flex items-center">
-                        {speaker.photo && (
-                          <Image
-                            src={speaker.photo}
-                            alt={speaker.name}
-                            width={48}
-                            height={48}
-                            className="rounded-full mr-4"
-                          />
-                        )}
-                        <div>
-                          <div className="font-semibold text-lg">{speaker.name}</div>
-                          {speaker.title && <div className="text-sm text-gray-600">{speaker.title}</div>}
-                          {speaker.affiliation && <div className="text-sm text-gray-600">{speaker.affiliation}</div>}
+                      <div key={speakerIndex} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                        <div className="flex items-center flex-grow">
+                          {speaker.photo && (
+                            <Image
+                              src={speaker.photo}
+                              alt={speaker.name}
+                              width={48}
+                              height={48}
+                              className="rounded-full mr-4"
+                            />
+                          )}
+                          <div>
+                            <div className="font-semibold text-lg">{speaker.name}</div>
+                            {speaker.title && <div className="text-sm text-gray-600">{speaker.title}</div>}
+                            {speaker.affiliation && <div className="text-sm text-gray-600">{speaker.affiliation}</div>}
+                          </div>
+                        </div>
+                        <div className="flex gap-2">
+                          {speaker.presentation && isEventPassed && (
+                            <button
+                              onClick={() => handleMediaClick(`/events/${event.eventShorthand}/presentations/${speaker.presentation}`)}
+                              className={`text-white px-4 py-2 rounded-md transition-all text-nowrap ${
+                                isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
+                              }`}
+                            >
+                              Presentation Slides
+                            </button>
+                          )}
+                          {speaker.video && (
+                            <button
+                              onClick={() => handleMediaClick(speaker.video)}
+                              className={`text-white px-4 py-2 rounded-md transition-all text-nowrap ${
+                                isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
+                              }`}
+                            >
+                              Watch Video
+                            </button>
+                          )}
                         </div>
                       </div>
                     ))}
                   </div>
                 )}
                 {item.description && <div className="text-sm mt-2 text-gray-700">{item.description}</div>}
-              </div>
-              <div className="mx-2 flex gap-2 flex-col">
-                {item.presentation && isEventPassed && (
-                  <button
-                    onClick={() => handleMediaClick(`/events/${event.eventShorthand}/presentations/${item.presentation}`)}
-                    className={`text-white px-4 py-2 rounded-md transition-all text-nowrap ${isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
-                      }`}
-                  >
-                    Presentation Slides
-                  </button>
-                )}
-                {item.video && (
-                  <button
-                    onClick={() => handleMediaClick(item.video)}
-                    className={`text-white px-4 py-2 rounded-md transition-all text-nowrap ${isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
-                      }`}
-                  >
-                    Watch Video
-                  </button>
-                )}
               </div>
               {item.sponsorLogo && (
                 <div className="flex-shrink-0 w-48 h-full flex items-center justify-center">
