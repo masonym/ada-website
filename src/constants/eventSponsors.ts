@@ -68,8 +68,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         name: "Lockheed Martin",
                         logo: "/events/2025DTIOS/sponsors/lockheed-martin.png",
                         website: "https://www.lockheedmartin.com/",
-                        width: 450,
-                        height: 80,
+                        width: 360,
+                        height: 64,
                     }
                 ]
             },
