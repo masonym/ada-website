@@ -36,6 +36,7 @@ export const SCHEDULES = [
                         time: "9:45 AM",
                         title: "Artificial Intelligence — Impact on Defense Acquisition",
                         location: "National Press Club Ballroom",
+                        presentation: "2025 Defense Industry Forecast - Amir Bagherpour, PhD.pdf",
                         speakers: [{
                             name: "Amir Bagherpour, PhD",
                             title: "Managing Director and Analytics & Visualization Lead for Data & AI",
@@ -47,6 +48,7 @@ export const SCHEDULES = [
                         time: "10:15 AM",
                         title: "How To Do Business With The Primes I",
                         location: "National Press Club Ballroom",
+                        presentation: "2025 Defense Industry Forecast - Mark Correll, P.E..pdf",
                         speakers: [{
                             name: "Mark Correll, P.E.",
                             title: "Vice President, Federal Strategy Director",

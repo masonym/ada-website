@@ -31,6 +31,7 @@ export type EventProps = {
     };
     sponsorProspectusPath?: string;
     customFooterText?: React.ReactNode;
+    eventShorthand?: string;
 };
 
 type Speaker = {

@@ -58,7 +58,7 @@ export default function Navbar() {
 
     return (
         <nav className="text-navy-800 text-[24px] my-0 p-4">
-            <ul className="flex-col md:flex-row flex relative items-center justify-center list-none">
+            <ul className="flex-col lg:flex-row flex relative items-center justify-center list-none">
                 <div className="flex-col md:flex-row flex items-center">
                     <li className="relative p-2 flex grow" />
                     {params?.slug && navItems.map((navItem, index) => (

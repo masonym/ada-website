@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { EventProps } from './Speakers';
 
 // Updated types with presentation and video at the ScheduleItem level
 type Speaker = {
@@ -30,14 +31,14 @@ type ScheduleAtAGlanceProps = {
   }[];
   isAuthenticated: boolean;
   onRequestPassword: () => void;
-  eventStartDate: string;
+  event: EventProps;
 };
 
 const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
   schedule,
   isAuthenticated,
   onRequestPassword,
-  eventStartDate
+  event
 }) => {
   const [selectedDay, setSelectedDay] = useState(0);
 
@@ -48,9 +49,11 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
       onRequestPassword();
     }
   };
+  const eventStartDate = event.timeStart;
 
   // Check if event is in the next week or future
   const isEventFuture = new Date(new Date(eventStartDate).getTime() - 7 * 24 * 60 * 60 * 1000) > new Date();
+  const isEventPassed = new Date(eventStartDate) < new Date();
 
   return (
     <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 pb-8">
@@ -79,7 +82,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
           {schedule[selectedDay].items.map((item, itemIndex, array) => (
             <div
               key={itemIndex}
-              className={`flex justify-between items-center min-h-[120px] ${itemIndex !== array.length - 1 ? 'mb-8 pb-8 border-b border-gray-200' : ''
+              className={`flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center min-h-[120px] ${itemIndex !== array.length - 1 ? 'mb-8 pb-8 border-b border-gray-200' : ''
                 }`}
             >
               <div className="flex-grow pr-2">
@@ -125,9 +128,9 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                 {item.description && <div className="text-sm mt-2 text-gray-700">{item.description}</div>}
               </div>
               <div className="mx-2 flex gap-2 flex-col">
-                {item.presentation && (
+                {item.presentation && isEventPassed && (
                   <button
-                    onClick={() => handleMediaClick(item.presentation)}
+                    onClick={() => handleMediaClick(`/events/${event.eventShorthand}/presentations/${item.presentation}`)}
                     className={`text-white px-4 py-2 rounded-md transition-all text-nowrap ${isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
                       }`}
                   >
