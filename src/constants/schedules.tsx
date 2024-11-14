@@ -84,12 +84,14 @@ export const SCHEDULES = [
                                 title: "Director, Office of Small Business Programs (OSBP)",
                                 affiliation: "Office of the Secretary of the Navy",
                                 photo: "/speakers/arveice_washington.jpg",
+                                presentation: "2025 Defense Industry Forecast - Arveice Washington.pdf",
                             },
                             {
                                 name: "Scott Kiser",
                                 title: "Director, Office of Small Business Programs (OSBP)",
                                 affiliation: "Office of the Secretary of the Air Force",
                                 photo: "/speakers/scott_kiser.png",
+                                presentation: "2025 Defense Industry Forecast - Scott Kiser.pdf"
                             }
                         ]
                     },
@@ -117,7 +119,8 @@ export const SCHEDULES = [
                             name: "Mark Cancian",
                             title: "Senior Advisor, International Security Program",
                             affiliation: "Center for Strategic and International Studies (CSIS)",
-                            photo: "/speakers/mark_cancian.jpg"
+                            photo: "/speakers/mark_cancian.jpg",
+                            presentation: "2025 Defense Industry Forecast - Mark Cancian.pdf"
                         }]
                     },
                     {
@@ -139,7 +142,8 @@ export const SCHEDULES = [
                             name: "Brian Liesveld",
                             title: "Chief Executive Officer",
                             affiliation: "DEFENSEWERX",
-                            photo: "/speakers/brian_liesveld.jpg"
+                            photo: "/speakers/brian_liesveld.jpg",
+                            presentation: "2025 Defense Industry Forecast - Brian Liesveld.pdf"
                         }]
                     },
                     {
@@ -150,7 +154,8 @@ export const SCHEDULES = [
                             name: "David Morrow",
                             title: "Acting Director, Military Programs",
                             affiliation: "U.S. Army Corps of Engineers",
-                            photo: "/speakers/david_morrow.png"
+                            photo: "/speakers/david_morrow.png",
+                            presentation: "2025 Defense Industry Forecast - David Morrow.pdf"
                         }]
                     },
                     {
@@ -161,7 +166,8 @@ export const SCHEDULES = [
                             name: "Patricia Waddell",
                             title: "Director, Office of IT Services",
                             affiliation: "Information Technology Category (ITC), Federal Acquisition Service (FAS), U.S. General Services Administration (GSA)",
-                            photo: "/speakers/patricia_waddell.png"
+                            photo: "/speakers/patricia_waddell.png",
+                            presentation: "2025 Defense Industry Forecast - Patricia Waddell.pdf"
                         }]
                     },
                     {
@@ -172,7 +178,8 @@ export const SCHEDULES = [
                             name: "Dave Leinberger",
                             title: "Acting Director, Army Partnerships",
                             affiliation: "Deputy Chief of Staff, G-9 (Installations)",
-                            photo: "/speakers/dave_leinberger.png"
+                            photo: "/speakers/dave_leinberger.png",
+                            presentation: "2025 Defense Industry Forecast - Dave Leinberger.pdf"
                         }]
                     },
                     {
@@ -183,7 +190,8 @@ export const SCHEDULES = [
                             name: "Bianca Henderson",
                             title: "Director, Office of Small Business Programs (OSBP)",
                             affiliation: "Naval Facilities Engineering Systems Command (NAVFAC)",
-                            photo: "/speakers/bianca_henderson.png"
+                            photo: "/speakers/bianca_henderson.png",
+                            presentation: "2025 Defense Industry Forecast - Bianca Henderson.pdf"
                         }]
                     },
                     {
@@ -194,7 +202,8 @@ export const SCHEDULES = [
                             name: "David Canada",
                             title: "Director, Global Supplier Diversity",
                             affiliation: "Boeing Defense Space & Security",
-                            photo: "/speakers/david_canada.png"
+                            photo: "/speakers/david_canada.png",
+                            presentation: "2025 Defense Industry Forecast - David Canada.pdf"
                         }]
                     },
                     {
