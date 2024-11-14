@@ -50,7 +50,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
   };
 
   const eventStartDate = event.timeStart;
-  const isEventFuture = new Date(new Date(eventStartDate).getTime() - 7 * 24 * 60 * 60 * 1000) > new Date();
+  const isEventFuture = new Date(new Date(eventStartDate).getTime() - 3 * 24 * 60 * 60 * 1000) > new Date();
   const isEventPassed = new Date(eventStartDate) < new Date();
 
   return (
