@@ -21,7 +21,7 @@ export default function EventRecapPage({ params }: { params: { slug: string } })
         Highlights & Photographs of the <br/>{event.title}
       </h1>
 
-      {eventHasOccurred ? (
+      {false ? (
         <div>
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4">Event Highlights</h2>
@@ -30,7 +30,7 @@ export default function EventRecapPage({ params }: { params: { slug: string } })
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4">Photo Gallery</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {event.images.map((img, index) => (
+              {event?.images.map((img, index) => (
                 <Image
                   key={index}
                   src={img.src}
