@@ -41,7 +41,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 ],
             },
             {
-                name: "Event Organizers",
+                name: "Event Partners",
                 style: "bg-navy-800 text-white", // Custom styling for organizers
                 sponsors: [
                     {
