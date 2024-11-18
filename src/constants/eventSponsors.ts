@@ -48,8 +48,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         name: "Anamo",
                         logo: "/events/2025DTIOS/sponsors/anamo.png",
                         website: "https://anamo.io/",
-                        width: 250,
-                        height: 150,
+                        width: 300,
+                        height: 200,
                     },
                     {
                         name: "US ProTech",

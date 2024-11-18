@@ -81,12 +81,12 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                     )}
 
                     <div className="bg-white p-4 md:p-8 rounded-lg shadow-md">
-                        <div className={`grid ${getGridCols(tier.sponsors.length)} gap-2 justify-items-center`}>
+                        <div className={`grid ${getGridCols(tier.sponsors.length)} gap-4 justify-items-center`}>
                             {tier.sponsors.map((sponsor, sponsorIndex) => (
                                 <div 
                                     key={sponsorIndex} 
                                     className={`flex items-center justify-center w-full transition-transform hover:scale-105 duration-300
-                                        ${tier.sponsors.length === 1 ? 'mx-auto' : 'max-w-md'}`}
+                                        ${tier.sponsors.length === 1 ? '' : 'max-w-md'}`}
                                 >
                                     {sponsor.website ? (
                                         <Link 
@@ -100,7 +100,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                                 alt={`${sponsor.name} Logo`}
                                                 width={sponsor.width || 300}
                                                 height={sponsor.height || 150}
-                                                className="w-auto max-h-40 object-contain filter drop-shadow-md"
+                                                className="w-auto object-contain filter drop-shadow-md min-h-[100px]"
                                                 priority={sponsor.priority}
                                                 style={{ maxWidth: '100%' }}
                                             />
@@ -111,7 +111,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                             alt={`${sponsor.name} Logo`}
                                             width={sponsor.width || 300}
                                             height={sponsor.height || 150}
-                                            className="w-auto max-h-40 object-contain filter drop-shadow-md"
+                                            className="w-auto object-contain filter drop-shadow-md min-h-[50px]"
                                             priority={sponsor.priority}
                                             style={{ maxWidth: '100%' }}
                                         />
