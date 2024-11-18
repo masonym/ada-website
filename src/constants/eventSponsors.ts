@@ -28,6 +28,19 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         title: "Our Sponsors and Partners",
         tiers: [
             {
+                name: "Gold Sponsors",
+                style: "bg-amber-400 text-slate-900",
+                sponsors: [
+                    {
+                        name: "Lockheed Martin",
+                        logo: "/events/2025DTIOS/sponsors/lockheed-martin.png",
+                        website: "https://www.lockheedmartin.com/",
+                        width: 720,
+                        height: 128,
+                    }
+                ],
+            },
+            {
                 name: "Event Organizers",
                 style: "bg-navy-800 text-white", // Custom styling for organizers
                 sponsors: [
@@ -60,19 +73,6 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         height: 150,
                     }
                 ]
-            },
-            {
-                name: "Gold Sponsors",
-                style: "bg-amber-400 text-slate-900",
-                sponsors: [
-                    {
-                        name: "Lockheed Martin",
-                        logo: "/events/2025DTIOS/sponsors/lockheed-martin.png",
-                        website: "https://www.lockheedmartin.com/",
-                        width: 360,
-                        height: 64,
-                    }
-                ],
             },
             {
                 name: "Silver Sponsors",
