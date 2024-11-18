@@ -41,6 +41,26 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 ],
             },
             {
+                name: "Silver Sponsors",
+                style: "bg-gray-300 text-slate-900",
+                sponsors: [
+                    {
+                        name: "Anamo",
+                        logo: "/events/2025DTIOS/sponsors/anamo.png",
+                        website: "https://anamo.io/",
+                        width: 200,
+                        height: 120,
+                    },
+                    {
+                        name: "US ProTech",
+                        logo: "/events/2025DTIOS/sponsors/usprotech.png",
+                        website: "https://www.usprotech.com/",
+                        width: 126,
+                        height: 37.5,
+                    }
+                ],
+            },
+            {
                 name: "Event Partners",
                 style: "bg-navy-800 text-white", // Custom styling for organizers
                 sponsors: [
@@ -74,26 +94,6 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     }
                 ]
             },
-            {
-                name: "Silver Sponsors",
-                style: "bg-gray-300 text-slate-900",
-                sponsors: [
-                    {
-                        name: "Anamo",
-                        logo: "/events/2025DTIOS/sponsors/anamo.png",
-                        website: "https://anamo.io/",
-                        width: 200,
-                        height: 120,
-                    },
-                    {
-                        name: "US ProTech",
-                        logo: "/events/2025DTIOS/sponsors/usprotech.png",
-                        website: "https://www.usprotech.com/",
-                        width: 126,
-                        height: 37.5,
-                    }
-                ],
-            }
         ]
     }
 ];
