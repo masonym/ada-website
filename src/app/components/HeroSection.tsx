@@ -3,6 +3,19 @@ import Link from 'next/link';
 import { EVENTS } from '@/constants/events';
 
 const HeroSection = () => {
+  // Get current date at the start of the day for consistent comparison
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+
+  // Find the next upcoming event
+  const nextEvent = EVENTS
+    .map(event => ({
+      ...event,
+      dateObj: new Date(event.timeStart)
+    }))
+    .filter(event => event.dateObj >= now)
+    .sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime())[0];
+
   return (
     <section className="relative h-[35vh] flex items-center justify-center overflow-hidden">
       <svg
@@ -52,12 +65,21 @@ const HeroSection = () => {
         <p className="text-base sm:text-lg md:text-xl text-balance md:text-nowrap lg:text-2xl mb-8 max-w-3xl mx-auto italic font-semibold">
           Connecting Industry to Government Procurement Opportunities
         </p>
-        <Link 
-          href={`/events/${EVENTS[0].slug}`} 
-          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 text-sm sm:text-base md:text-lg"
-        >
-          Learn About Our Next Event
-        </Link>
+        {nextEvent ? (
+          <Link 
+            href={`/events/${nextEvent.slug}`} 
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 text-sm sm:text-base md:text-lg"
+          >
+            Learn About Our Next Event
+          </Link>
+        ) : (
+          <Link 
+            href="/events" 
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 text-sm sm:text-base md:text-lg"
+          >
+            View All Events
+          </Link>
+        )}
       </div>
     </section>
   );
