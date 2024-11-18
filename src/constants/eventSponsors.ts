@@ -28,7 +28,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         title: "Our Sponsors and Partners",
         tiers: [
             {
-                name: "Gold Sponsors",
+                name: "Gold Sponsor",
                 style: "bg-amber-400 text-slate-900",
                 sponsors: [
                     {
