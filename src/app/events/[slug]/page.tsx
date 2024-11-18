@@ -121,11 +121,11 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
 
 
-            <div className="flex flex-col leading-relaxed text-slate-600 text-lg text-center mx-8">
+            <div className="flex flex-col leading-relaxed text-slate-600 text-center text-lg px-4 sm:px-6 lg:px-8 max-w-[95vw] mx-auto">
               {event.eventText}
             </div>
 
-            <KeynoteSpeaker eventId={event.id} showExpandedBio={false}/>
+            <KeynoteSpeaker eventId={event.id} showExpandedBio={false} />
 
             <SponsorLogos event={event} />
 
@@ -146,7 +146,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             </div>
 
             <FooterEventText event={event} />
-            
+
           </div>
         </div>
       </div>
