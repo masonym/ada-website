@@ -35,12 +35,23 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
         return 'bg-blue-600 text-white';
     };
 
-    // Helper function to determine grid columns based on number of sponsors
     const getGridCols = (sponsorCount: number) => {
         if (sponsorCount === 1) return 'grid-cols-1';
         if (sponsorCount === 2) return 'grid-cols-1 sm:grid-cols-2';
         if (sponsorCount === 3) return 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
         return 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+    };
+
+    const getSponsorImageSize = (sponsor: any, isMobile: boolean) => {
+        // Calculate responsive dimensions while maintaining aspect ratio
+        const aspectRatio = sponsor.width / sponsor.height;
+        const maxWidth = isMobile ? 280 : sponsor.width || 300;
+        const height = Math.round(maxWidth / aspectRatio);
+        
+        return {
+            width: maxWidth,
+            height: height
+        };
     };
 
     return (
@@ -82,42 +93,50 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
 
                     <div className="bg-white p-4 md:p-8 rounded-lg shadow-md">
                         <div className={`grid ${getGridCols(tier.sponsors.length)} gap-4 justify-items-center`}>
-                            {tier.sponsors.map((sponsor, sponsorIndex) => (
-                                <div 
-                                    key={sponsorIndex} 
-                                    className={`flex items-center justify-center w-full transition-transform hover:scale-105 duration-300
-                                        ${tier.sponsors.length === 1 ? '' : 'max-w-md'}`}
-                                >
-                                    {sponsor.website ? (
-                                        <Link 
-                                            href={sponsor.website} 
-                                            target="_blank" 
-                                            rel="noopener noreferrer"
-                                            className="transition-opacity hover:opacity-80 w-full flex justify-center"
-                                        >
-                                            <Image
-                                                src={sponsor.logo}
-                                                alt={`${sponsor.name} Logo`}
-                                                width={sponsor.width || 300}
-                                                height={sponsor.height || 150}
-                                                className="w-auto object-contain filter drop-shadow-md min-h-[100px]"
-                                                priority={sponsor.priority}
-                                                style={{ maxWidth: '100%' }}
-                                            />
-                                        </Link>
-                                    ) : (
-                                        <Image
-                                            src={sponsor.logo}
-                                            alt={`${sponsor.name} Logo`}
-                                            width={sponsor.width || 300}
-                                            height={sponsor.height || 150}
-                                            className="w-auto object-contain filter drop-shadow-md min-h-[50px]"
-                                            priority={sponsor.priority}
-                                            style={{ maxWidth: '100%' }}
-                                        />
-                                    )}
-                                </div>
-                            ))}
+                            {tier.sponsors.map((sponsor, sponsorIndex) => {
+                                const mobileSize = getSponsorImageSize(sponsor, true);
+                                const desktopSize = getSponsorImageSize(sponsor, false);
+                                
+                                return (
+                                    <div 
+                                        key={sponsorIndex} 
+                                        className="flex items-center justify-center w-full transition-transform hover:scale-105 duration-300"
+                                    >
+                                        {sponsor.website ? (
+                                            <Link 
+                                                href={sponsor.website} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                className="transition-opacity hover:opacity-80 w-full flex justify-center items-center"
+                                            >
+                                                <div className="relative w-full flex items-center justify-center">
+                                                    <Image
+                                                        src={sponsor.logo}
+                                                        alt={`${sponsor.name} Logo`}
+                                                        width={desktopSize.width}
+                                                        height={desktopSize.height}
+                                                        // className="w-auto object-contain min-h-[45px]"
+                                                        priority={sponsor.priority}
+                                                        sizes="(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px"
+                                                    />
+                                                </div>
+                                            </Link>
+                                        ) : (
+                                            <div className="relative w-full flex items-center justify-center">
+                                                <Image
+                                                    src={sponsor.logo}
+                                                    alt={`${sponsor.name} Logo`}
+                                                    width={desktopSize.width}
+                                                    height={desktopSize.height}
+                                                    // className="w-auto h-auto max-h-full object-contain"
+                                                    priority={sponsor.priority}
+                                                    sizes="(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px"
+                                                />
+                                            </div>
+                                        )}
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
