@@ -21,6 +21,7 @@ export default function EventRecapPage({ params }: { params: { slug: string } })
         Highlights & Photographs of the <br/>{event.title}
       </h1>
 
+      {/*  change this to eventHasOccurred */}
       {false ? (
         <div>
           <section className="mb-12">
@@ -48,9 +49,9 @@ export default function EventRecapPage({ params }: { params: { slug: string } })
       ) : (
         <div className="text-center py-12">
           <h2 className="text-2xl font-bold mb-4">Event Recap Coming Soon</h2>
-          <p className="text-lg">
+          {/* <p className="text-lg">
             The {event.title} hasn't taken place yet. Please check back after {event.date} for highlights, photographs, and video content from the event.
-          </p>
+          </p> */}
         </div>
       )}
     </div>
