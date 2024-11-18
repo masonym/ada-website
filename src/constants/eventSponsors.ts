@@ -1,6 +1,7 @@
 export type SponsorTier = {
     name: string;  // e.g., "Gold", "Silver", "Bronze"
     description?: string;
+    style?: string;  // Tailwind classes for styling the tier label
     sponsors: Sponsor[];
 };
 
@@ -25,10 +26,10 @@ export const EVENT_SPONSORS: EventSponsors[] = [
     {
         id: 3, // Matches the event ID from events.ts
         title: "Our Sponsors and Partners",
-        // description: "Thank you to our sponsors who make this event possible",
         tiers: [
             {
                 name: "Event Organizers",
+                style: "bg-navy-800 text-white", // Custom styling for organizers
                 sponsors: [
                     {
                         name: "National Association of Spaceports",
@@ -62,7 +63,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
             },
             {
                 name: "Gold Sponsors",
-                // description: "Premier event sponsors",
+                style: "bg-amber-400 text-slate-900",
                 sponsors: [
                     {
                         name: "Lockheed Martin",
@@ -75,7 +76,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
             },
             {
                 name: "Silver Sponsors",
-                // description: "Supporting event sponsors",
+                style: "bg-gray-300 text-slate-900",
                 sponsors: [
                     {
                         name: "Anamo",
