@@ -58,7 +58,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
             )}
 
             {filteredTiers.map((tier, tierIndex) => (
-                <div key={tierIndex} className="mb-16 last:mb-0">
+                <div key={tierIndex} className="mb-8 last:mb-0">
                     <div className="relative mb-8">
                         <div className="absolute inset-0 flex items-center">
                             <div className="w-full border-t border-gray-300"></div>

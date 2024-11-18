@@ -68,8 +68,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         name: "National Association of Spaceports",
                         logo: "/events/2025DTIOS/sponsors/nass-logo.png",
                         website: "https://www.thenass.org/",
-                        width: 400,
-                        height: 133,
+                        width: 225,
+                        height: 84,
                     },
                     {
                         name: "American Defense Alliance",
