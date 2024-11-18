@@ -71,8 +71,28 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         width: 360,
                         height: 64,
                     }
-                ]
+                ],
             },
+            {
+                name: "Silver Sponsors",
+                // description: "Supporting event sponsors",
+                sponsors: [
+                    {
+                        name: "Anamo",
+                        logo: "/events/2025DTIOS/sponsors/anamo.png",
+                        website: "https://anamo.io/",
+                        width: 200,
+                        height: 120,
+                    },
+                    {
+                        name: "US ProTech",
+                        logo: "/events/2025DTIOS/sponsors/usprotech.png",
+                        website: "https://www.usprotech.com/",
+                        width: 126,
+                        height: 37.5,
+                    }
+                ],
+            }
         ]
     }
 ];
