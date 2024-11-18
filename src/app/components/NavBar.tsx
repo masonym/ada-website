@@ -48,11 +48,14 @@ const NavBar = () => {
     };
   }, []);
 
-  const sortedEvents = [...EVENTS].sort((a, b) => {
-    const dateA = new Date(a.timeStart);
-    const dateB = new Date(b.timeStart);
-    return dateA.getTime() - dateB.getTime();
-  });
+  const now = new Date();
+  const sortedEvents = [...EVENTS]
+    .filter(event => new Date(event.timeStart) >= now)
+    .sort((a, b) => {
+      const dateA = new Date(a.timeStart);
+      const dateB = new Date(b.timeStart);
+      return dateA.getTime() - dateB.getTime();
+    });
 
   return (
     <nav className="flexBetween max-container padding-container py-5 relative z-30 border-b-gray-700">

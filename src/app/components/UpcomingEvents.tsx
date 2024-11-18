@@ -4,13 +4,30 @@ import { EVENTS } from '@/constants/events'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
-const UpcomingEvents = () => {
-  // Sort events by date
-  const sortedEvents = [...EVENTS].sort((a, b) => {
-    const dateA = new Date(a.timeStart);
-    const dateB = new Date(b.timeStart);
-    return dateA.getTime() - dateB.getTime();
-  });
+type UpcomingEventsProps = {
+  showMainTitle?: boolean;
+  customTitle?: React.ReactNode;
+  customSubtitle?: React.ReactNode;
+  hideBottomText?: boolean;
+};
+
+const UpcomingEvents = ({
+  showMainTitle = true,
+  customTitle,
+  customSubtitle,
+  hideBottomText = false,
+}: UpcomingEventsProps) => {
+  // Get current date
+  const now = new Date();
+
+  // Filter and sort upcoming events
+  const upcomingEvents = [...EVENTS]
+    .filter(event => new Date(event.timeStart) >= now)
+    .sort((a, b) => {
+      const dateA = new Date(a.timeStart);
+      const dateB = new Date(b.timeStart);
+      return dateA.getTime() - dateB.getTime();
+    });
 
   // Determine grid columns based on number of events
   const getGridClass = (count: number) => {
@@ -24,19 +41,37 @@ const UpcomingEvents = () => {
     }
   };
 
-  const gridClass = getGridClass(sortedEvents.length);
+  const gridClass = getGridClass(upcomingEvents.length);
+
+  // If no upcoming events, show a message
+  if (upcomingEvents.length === 0) {
+    return (
+      <section className="max-container flex flex-col items-center mt-8 mb-16">
+        <h2 className="text-center font-gotham font-bold text-[36px] md:text-[64px] text-slate-900 sm:px-16 px-6">
+          Upcoming Events
+        </h2>
+        <p className="text-center text-slate-600 text-xl mt-8 max-w-3xl mx-2">
+          No upcoming events at this time. Please check back soon for new events or view our past events below.
+        </p>
+      </section>
+    );
+  }
 
   return (
-    <section id="upcoming-events" className="max-container flex flex-col items-center mt-24 mb-16">
-      <h2 className="text-center font-gotham font-bold text-[36px] md:text-[64px] text-slate-900 sm:px-16 px-6">
-        Don't miss our upcoming events!
-      </h2>
-      <p className="text-center text-slate-600 text-xl mb-12 max-w-3xl mx-2">
-        Join us for industry-leading conferences and networking opportunities. Discover the latest in defense technology and procurement strategies.
-      </p>
-      {/* Dynamic grid columns and max-width based on number of events */}
+    <section id="upcoming-events" className="max-container flex flex-col items-center mt-8 mb-16">
+      {customTitle || (showMainTitle && (
+        <h2 className="text-center font-gotham font-bold text-[36px] md:text-[64px] text-slate-900 sm:px-16 px-6">
+          Don't miss our upcoming events!
+        </h2>
+      ))}
+      {customSubtitle || (
+        <p className="text-center text-slate-600 text-xl mb-12 max-w-3xl mx-2">
+          Join us for industry-leading conferences and networking opportunities. Discover the latest in defense technology and procurement strategies.
+        </p>
+      )}
+      
       <div className={`grid grid-cols-1 md:grid-cols-1 ${gridClass} gap-10 mx-4 justify-items-center w-full px-4`}>
-        {sortedEvents.map(event => (
+        {upcomingEvents.map(event => (
           <div key={event.id} className="relative group h-fit cursor-pointer transition-all duration-300 hover:scale-105 w-full max-w-[640px]">
             <EventCard
               title={event.title}
@@ -58,9 +93,11 @@ const UpcomingEvents = () => {
           </div>
         ))}
       </div>
-      <p className="text-center text-slate-600 text-lg mt-8">
-        Click on any event card to view full details and registration information.
-      </p>
+      {!hideBottomText && (
+        <p className="text-center text-slate-600 text-lg mt-8">
+          Click on any event card to view full details and registration information.
+        </p>
+      )}
     </section>
   )
 }
