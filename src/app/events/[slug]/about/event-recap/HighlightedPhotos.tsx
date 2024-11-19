@@ -45,6 +45,7 @@ const HighlightedPhotos: React.FC<HighlightedPhotosProps> = ({ images }) => {
                 alt={img.alt}
                 width={img.width}
                 height={img.height}
+                placeholder='blur'
                 className="rounded-lg cursor-pointer"
                 onClick={(e) => handleClick(e, { index })}
               />
