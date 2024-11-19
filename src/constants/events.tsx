@@ -122,6 +122,7 @@ export const EVENTS = [
   },
   {
     id: 2,
+    eventShorthand: "2025SDPC",
     title: "2025 Southeast Defense Procurement Conference",
     date: "March 18-19, 2025",
     timeStart: "2025-03-18T12:30:00Z", // TODO: change to actual time
@@ -191,6 +192,7 @@ export const EVENTS = [
 
   {
     id: 3,
+    eventShorthand: "2025DTIOS",
     title: "Driving the Industrialization of Space",
     date: "December 8-9, 2024",
     timeStart: "2024-12-09T15:00:00Z",
