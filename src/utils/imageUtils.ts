@@ -34,7 +34,6 @@ export async function getEventImages(eventSlug: string): Promise<EventImage[]> {
       const imagePath = path.join(eventDir, file);
       // Get image dimensions using sharp
       const metadata = await sharp(imagePath).metadata();
-      
       return {
         src: `/events/${eventSlug}/photos/${file}`,
         alt: `Image ${index + 1} from ${eventSlug.replace(/-/g, ' ')}`,

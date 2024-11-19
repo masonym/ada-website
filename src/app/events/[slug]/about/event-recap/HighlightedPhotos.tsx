@@ -46,6 +46,7 @@ const HighlightedPhotos: React.FC<HighlightedPhotosProps> = ({ images }) => {
                 width={img.width}
                 height={img.height}
                 placeholder='blur'
+                blurDataURL="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
                 className="rounded-lg cursor-pointer"
                 onClick={(e) => handleClick(e, { index })}
               />
