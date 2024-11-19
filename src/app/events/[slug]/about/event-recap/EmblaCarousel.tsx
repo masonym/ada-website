@@ -3,29 +3,42 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoHeight from 'embla-carousel-auto-height';
+import Autoplay from 'embla-carousel-autoplay';
 import { EventImage } from '@/utils/imageUtils';
 import { EmblaCarouselType, EmblaEventType } from 'embla-carousel';
+
 
 const TWEEN_FACTOR = 0.75; // Reduced for smoother transitions
 
 type PropType = {
-  slides: EventImage[];
-  options?: any;
-};
+    slides: EventImage[];
+    options?: any;
+    autoplayDelay?: number;
+  };
 
 const EmblaCarouselNew: React.FC<PropType> = (props) => {
-  const { slides } = props;
+  const { slides, autoplayDelay = 2500 } = props;
   const tweenFactor = useRef(0);
+
+  const autoplayOptions = {
+    delay: autoplayDelay,
+    rootNode: (emblaRoot: HTMLElement) => emblaRoot.parentElement,
+    stopOnInteraction: false,
+    stopOnMouseEnter: true,
+  };
   
   // Main carousel
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: 'center',
-    containScroll: false,
-    loop: true,
-    skipSnaps: false,
-    duration: 20, // Faster base transition
-    dragFree: false
-  }, [AutoHeight()]);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      align: 'center',
+      containScroll: false,
+      loop: true,
+      skipSnaps: false,
+      duration: 20,
+      dragFree: false
+    },
+    [AutoHeight(), Autoplay(autoplayOptions)]
+  );
   
   // Thumbs carousel
   const [thumbsRef, thumbsApi] = useEmblaCarousel({
@@ -130,7 +143,7 @@ const EmblaCarouselNew: React.FC<PropType> = (props) => {
           {slides.map((slide, index) => (
             <div 
               key={index} 
-              className="relative flex-[0_0_80%] mx-[10%] will-change-[opacity] cursor-pointer"
+              className="relative flex-[0_0_80%] mx-[2.5%] will-change-[opacity] cursor-pointer"
               onClick={(e: React.MouseEvent<HTMLDivElement>) => {
                 if (!emblaApi) return;
                 
