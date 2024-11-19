@@ -8,6 +8,7 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
+import Image from 'next/image';
 
 interface HighlightedPhotosProps {
   images: EventImage[];
@@ -34,12 +35,23 @@ const HighlightedPhotos: React.FC<HighlightedPhotosProps> = ({ images }) => {
 
   return (
     <div className="rounded-lg overflow-hidden">
-      <Gallery
-        photos={galleryPhotos}
-        onClick={handleClick}
-        margin={8}
-        // targetRowHeight={300}
-      />
+
+      <div className="columns-1 sm:columns-2 lg:columns-3 py-10 md:py-20 gap-4 gap-y-5">
+        {
+          images.map((img, index) => (
+            <div key={img.src} className="relative mb-4 break-inside-avoid">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                width={img.width}
+                height={img.height}
+                className="rounded-lg cursor-pointer"
+                onClick={(e) => handleClick(e, { index })}
+              />
+            </div>
+          ))
+        }
+      </div>
 
       {currentImage !== null && (
         <Lightbox
