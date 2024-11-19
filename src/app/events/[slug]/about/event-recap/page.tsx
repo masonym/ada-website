@@ -74,7 +74,7 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
 
       {regularImages.length > 0 && (
         <div className="mb-12">
-          <h2 className="text-center text-3xl text-slate-700 font-bold mb-6">Photo Gallery</h2>
+          <h2 className="text-center text-5xl text-slate-700 font-bold mb-6">Photo Gallery</h2>
           <EmblaCarousel slides={regularImages} options={{loop: true}} />
         </div>
       )}
