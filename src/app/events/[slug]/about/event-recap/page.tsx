@@ -40,7 +40,7 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
   }
 
   // Get all event images
-  const allImages = await getEventImages(event.eventShorthand);
+  const allImages = await getEventImages(event);
   const highlightedImages = allImages.filter(img => img.highlighted);
   const regularImages = allImages.filter(img => !img.highlighted);
 

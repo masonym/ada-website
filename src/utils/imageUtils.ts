@@ -1,5 +1,6 @@
 // utils/imageUtils.ts
 
+import { EventProps } from '@/app/components/Speakers';
 import { promises as fs } from 'fs';
 import path from 'path';
 import sharp from 'sharp';
@@ -12,10 +13,10 @@ export type EventImage = {
   highlighted?: boolean;
 };
 
-export async function getEventImages(eventSlug: string): Promise<EventImage[]> {
+export async function getEventImages(event: EventProps): Promise<EventImage[]> {
   try {
     // Define the directory path where event images are stored
-    const eventDir = path.join(process.cwd(), 'public', 'events', eventSlug, 'photos');
+    const eventDir = path.join(process.cwd(), 'public', 'events', event.eventShorthand, 'photos');
     
     // Read all files in the directory
     const files = await fs.readdir(eventDir);
@@ -35,8 +36,8 @@ export async function getEventImages(eventSlug: string): Promise<EventImage[]> {
       // Get image dimensions using sharp
       const metadata = await sharp(imagePath).metadata();
       return {
-        src: `/events/${eventSlug}/photos/${file}`,
-        alt: `Image ${index + 1} from ${eventSlug.replace(/-/g, ' ')}`,
+        src: `/events/${event.eventShorthand}/photos/${file}`,
+        alt: `Image ${index + 1} from ${event.title.replace(/-/g, ' ')}`,
         width: metadata.width || 1920, // fallback dimension if metadata fails
         height: metadata.height || 1080,
         highlighted: index < 15 // First 15 images are highlighted
@@ -46,7 +47,7 @@ export async function getEventImages(eventSlug: string): Promise<EventImage[]> {
     return images;
 
   } catch (error) {
-    console.error(`Error loading images for event ${eventSlug}:`, error);
+    console.error(`Error loading images for event ${event.eventShorthand}:`, error);
     return [];
   }
 }

@@ -25,14 +25,6 @@ const HighlightedPhotos: React.FC<HighlightedPhotosProps> = ({ images }) => {
     setCurrentImage(null);
   };
 
-  // Convert images to the format expected by react-photo-gallery
-  const galleryPhotos = images.map(img => ({
-    src: img.src,
-    width: img.width,  // Using standard photo aspect ratios
-    height: img.height, // You might want to adjust these based on your actual images
-    alt: img.alt,
-  }));
-
   return (
     <div className="rounded-lg overflow-hidden">
 
