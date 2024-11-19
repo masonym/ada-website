@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Gallery from 'react-photo-gallery';
+import Masonry from 'react-masonry-css'; // Import Masonry
 import type { EventImage } from '@/utils/imageUtils';
 import Lightbox from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
@@ -25,13 +25,25 @@ const HighlightedPhotos: React.FC<HighlightedPhotosProps> = ({ images }) => {
     setCurrentImage(null);
   };
 
+  // Breakpoint columns for Masonry
+  const breakpointColumnsObj = {
+    default: 3, // 3 columns by default
+    1100: 2,    // 2 columns for screen width 1100px and below
+    700: 1      // 1 column for screen width 700px and below
+  };
+
   return (
     <div className="rounded-lg overflow-hidden">
 
-      <div className="columns-1 sm:columns-2 lg:columns-3 py-2 md:py-4 gap-4 gap-y-5">
+      {/* Masonry layout */}
+      <Masonry
+        breakpointCols={3}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
         {
           images.map((img, index) => (
-            <div key={img.src} className="relative mb-4 break-inside-avoid">
+            <div key={img.src} className="relative mb-4">
               <Image
                 src={img.src}
                 alt={img.alt}
@@ -45,7 +57,7 @@ const HighlightedPhotos: React.FC<HighlightedPhotosProps> = ({ images }) => {
             </div>
           ))
         }
-      </div>
+      </Masonry>
 
       {currentImage !== null && (
         <Lightbox

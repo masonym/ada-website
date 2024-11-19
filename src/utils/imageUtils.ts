@@ -40,7 +40,7 @@ export async function getEventImages(event: EventProps): Promise<EventImage[]> {
         alt: `Image ${index + 1} from ${event.title.replace(/-/g, ' ')}`,
         width: metadata.width || 1920, // fallback dimension if metadata fails
         height: metadata.height || 1080,
-        highlighted: index < 15 // First 15 images are highlighted
+        highlighted: index < 18 // First 15 images are highlighted
       };
     }));
 
