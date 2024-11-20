@@ -445,8 +445,8 @@ export const SPEAKERS = [
             {
                 image: "john_sanders.png",
                 name: "John Sanders (Invited)",
-                position: "Director, Cybersecurity Solutions",
-                company: "Anamo, Inc.",
+                position: "Senior Cybersecurity Research Analytic Consultant",
+                company: "Director of National Intelligence (DNI)",
                 bio: `
                 John Sanders, TS/SCI CI Poly Access, Lt. Col., U.S. Army, Intelligence (ret.), is an expert in Cyberspace and Cybersecurity for both government and commercial sectors. He is uniquely- qualified as an expert to advise business boards of directors, C-suite executives, and government officials on critical applications of state-of-the-art cybersecurity technology, practices, and countermeasures. A gifted communicator of the complex into plain, understandable terms, makes John a remarkable asset in boardrooms, and among C-suite executives, grappling with cybersecurity challenges.
                 <br/><br/>
