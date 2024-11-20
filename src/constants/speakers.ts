@@ -375,7 +375,7 @@ export const SPEAKERS = [
                 image: "chad_brown.png",
                 name: "Chad Brown",
                 position: "Division Chief, Future Systems Project Office, Exploration Ground Systems",
-                company: "NASA",
+                company: "National Aeronautics and Space Administration (NASA)",
                 bio: `
                 Chad E. Brown is the division chief for the Future Systems Projects Office in Exploration Ground Systems (EGS) Program at NASA’s John F. Kennedy Space Center in Florida. In this position, Brown is focused on supporting future Artemis campaign efforts and providing the strategic framework for how the unique skills developed in the EGS Program can be leveraged to make the enterprise more successful.
                 <br/><br/>
