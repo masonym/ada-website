@@ -38,7 +38,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
     const gridCols = getGridCols(currentEvent.registrations.length);
 
     return (
-        <div className="w-full py-8 px-4">
+        <div className="w-full px-4">
             <div className="flex flex-col items-center max-w-7xl mx-auto">
                 <h1 className="text-3xl md:text-4xl lg:text-[48px] text-center font-gotham font-bold mb-8 text-slate-700">
                     Registration Options
