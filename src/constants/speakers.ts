@@ -394,13 +394,13 @@ export const SPEAKERS = [
                 position: "Tech Fellow at Aerospace Corporation; Chair, Board of Directors, Space ISAC; Board Member, ORAU",
                 company: "National Cybersecurity Federally Funded Research and Development Center (NCF)",
                 bio: `
-                Samuel S. Visner is the director of the National Cybersecurity Federally Funded Research and Development Center (NCF), which MITRE manages in support of the NIST National Cybersecurity Center of Excellence (NCCoE).
+                Samuel S. Visner is the Director of the National Cybersecurity Federally Funded Research and Development Center (NCF), which MITRE manages in support of the NIST National Cybersecurity Center of Excellence (NCCoE).
                 <br/><br/>           
                 In this role, Visner oversees efforts to bring together experts from industry, government, and academia to demonstrate integrated cybersecurity solutions that are cost-effective, repeatable, and scalable. The FFRDC is the first of its kind dedicated to cybersecurity.
                 <br/><br/>          
                 Visner joined MITRE from an executive position at ICF International, which advises business and government entities on issues related to health, homeland security, defense, and energy. He also held leadership positions at CSC (Computer Sciences Corporation) and Science Applications International Corporation (SAIC).
                 <br/><br/>            
-                In addition, he served as chief of signals intelligence programs at the National Security Agency, where he was awarded the agency’s Exceptional Civilian Service Award in 2003. Visner has been a leader in public/private partnerships and collaborations, including the Intelligence and National Security Alliance, the Air Force Communications and Electronics Association, the Professional Services Council, and the National Academy of Science. Throughout his career, he has worked across multiple federal sponsors. He sits on the Army Science Board, and serves as an adjunct professor of cybersecurity at Georgetown University.
+                In addition, he served as Chief of Signals Intelligence Programs at the National Security Agency, where he was awarded the agency’s Exceptional Civilian Service Award in 2003. Visner has been a leader in public/private partnerships and collaborations, including the Intelligence and National Security Alliance, the Air Force Communications and Electronics Association, the Professional Services Council, and the National Academy of Science. Throughout his career, he has worked across multiple federal sponsors. He sits on the Army Science Board, and serves as an Adjunct Professor of cybersecurity at Georgetown University.
                 <br/><br/>            
                 Visner holds a bachelor’s degree in international politics from Georgetown University’s School of Foreign Service. He earned a master’s degree in telecommunications from George Washington University.
                 `
