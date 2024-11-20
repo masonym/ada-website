@@ -408,7 +408,7 @@ export const SPEAKERS = [
             {
                 image: "walt_yates.png",
                 name: "Walt Yates, U.S. Marine Col (Ret.)",
-                position: "Pricipal",
+                position: "Principal",
                 company: "Walt Yates & Associates, LLC",
                 bio: `
                 Walt Yates & Associates provides knowledge based services in modeling & simulation for training systems, acquisition trade-space analysis, and risk management. Seventeen years of practice in design and application of simulation-based training, program development, and procurement planning for cost effective technology transition to Department of Defense users. Specific areas of expertise include cost avoidance estimation for new technology and cybersecurity policy compliance for the Risk Management Framework (RMF) and Cybersecurity Maturity Model Certification (CMMC).
