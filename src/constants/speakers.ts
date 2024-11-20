@@ -391,7 +391,7 @@ export const SPEAKERS = [
             {
                 image: "samuel_visner.png",
                 name: "Samuel Visner",
-                position: "Tech Fellow at Aerospace Corporation; Chair, Board of Directors, Space ISAC; Board Member, ORAU",
+                position: "Director",
                 company: "National Cybersecurity Federally Funded Research and Development Center (NCF)",
                 bio: `
                 Samuel S. Visner is the Director of the National Cybersecurity Federally Funded Research and Development Center (NCF), which MITRE manages in support of the NIST National Cybersecurity Center of Excellence (NCCoE).
