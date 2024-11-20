@@ -57,7 +57,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
     return (
         <div className="w-full max-w-7xl mx-auto mt-4 px-4">
             {(titleOverride || eventSponsors.title) && (
-                <div className="relative mb-8 md:mb-12">
+                <div className="relative mb-2">
                     <div className="text-slate-700 relative flex justify-center">
                         <h2 className="px-4 md:px-8 py-2 md:py-3 text-2xl md:text-3xl lg:text-4xl font-bold text-center">
                             {titleOverride || eventSponsors.title}

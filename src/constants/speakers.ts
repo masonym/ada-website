@@ -3,7 +3,7 @@ export const SPEAKERS = [
         id: 1,
         speakers: [
             {
-                image: "/speakers/michael_waltz.png",
+                image: "michael_waltz.png",
                 name: "Congressman Michael Waltz (6th District, Florida)",
                 position: "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
                 company: "U.S. House of Representatives",
@@ -40,7 +40,7 @@ export const SPEAKERS = [
                 }
             },
             {
-                image: "/speakers/mark_cancian.jpg",
+                image: "mark_cancian.jpg",
                 name: "Mark Cancian",
                 position: "Senior Adviser, International Security Program",
                 company: "Center for Strategic & International Studies",
@@ -51,7 +51,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "/speakers/joachim_christian.png",
+                image: "joachim_christian.png",
                 name: "His Royal Highness, Brigadier General Prince Joachim, Prince of Denmark",
                 position: "Danish Military Industry Attaché",
                 company: "Royal Embassy of Denmark",
@@ -67,7 +67,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "/speakers/dave_leinberger.png",
+                image: "dave_leinberger.png",
                 name: "Dave Leinberger",
                 position: "Acting Director, Army Partnerships",
                 company: "Deputy Chief of Staff, G-9 (Installations)",
@@ -89,7 +89,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "/speakers/brian_liesveld.jpg",
+                image: "brian_liesveld.jpg",
                 name: "Brian Liesveld",
                 position: "Chief Executive Officer",
                 company: "DEFENSEWERX",
@@ -102,7 +102,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "/speakers/charles_sills.png",
+                image: "charles_sills.png",
                 name: "Charles Sills",
                 position: "President & CEO",
                 company: "American Defense Alliance",
@@ -115,7 +115,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "/speakers/arveice_washington.jpg",
+                image: "arveice_washington.jpg",
                 name: "Arveice Washington",
                 position: "Director, Office of Small Business Programs",
                 company: "Office of the Secretary of the Navy",
@@ -145,7 +145,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "/speakers/kimberly_buhler.png",
+                image: "kimberly_buhler.png",
                 name: "Kimberly Buehler",
                 position: "Director, Office of Small Business Programs",
                 company: "U.S. Army, Department of Defense",
@@ -156,7 +156,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "/speakers/david_canada.png",
+                image: "david_canada.png",
                 name: "David Canada",
                 position: "Director, Global Supplier Diversity",
                 company: "Boeing Defense Space & Security",
@@ -171,7 +171,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "/speakers/patricia_waddell.png",
+                image: "patricia_waddell.png",
                 name: "Patricia Waddell",
                 position: "Director, Office of IT Services, Information Technology Category (ITC), Federal Acquisition Service (FAS)",
                 company: "U.S. General Services Administration",
@@ -184,7 +184,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "/speakers/iryna_andrukh.png",
+                image: "iryna_andrukh.png",
                 name: "Dr. Iryna Andrukh",
                 position: "Ukraine Program Director",
                 company: "Progress Humanity",
@@ -195,7 +195,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "/speakers/amir_bagherpour.jpg",
+                image: "amir_bagherpour.jpg",
                 name: "Amir Bagherpour, PhD",
                 position: "Managing Director, AI Services and Advanced Analytics",
                 company: "Accenture Federal Services",
@@ -204,7 +204,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "/speakers/john_coffey.png",
+                image: "john_coffey.png",
                 name: "Honorable John P. (\"Sean\") Coffey",
                 position: "General Counsel",
                 company: "Department of the Navy",
@@ -270,7 +270,7 @@ export const SPEAKERS = [
             },
 
             {
-                image: "/speakers/bianca_henderson.png",
+                image: "bianca_henderson.png",
                 name: "Bianca Henderson",
                 position: "Small Business Director",
                 company: "NAVFAC HQ, Department of the Navy",
@@ -279,7 +279,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "/speakers/mark_correll.png",
+                image: "mark_correll.png",
                 name: "Mark Correll",
                 position: "Vice President, Federal Strategy Director",
                 company: "HDR, Inc.",
@@ -303,7 +303,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "/speakers/scott_kiser.png",
+                image: "scott_kiser.png",
                 name: "Scott Kiser",
                 position: "Director, Office of Small Business Programs",
                 company: "Office of the Secretary of the Air Force",
@@ -316,7 +316,7 @@ export const SPEAKERS = [
 
             // dave morrow
             {
-                image: "/speakers/david_morrow.png",
+                image: "david_morrow.png",
                 name: "Dave Morrow",
                 position: "Acting Director, Military Programs",
                 company: "U.S. Army Corps of Engineers",
@@ -342,7 +342,7 @@ export const SPEAKERS = [
             }
 
             // {
-            //     image: "/speakers/placeholder.png",
+            //     image: "placeholder.png",
             //     name: "Placeholder Name",
             //     position: "Placeholder Title",
             //     company: "Placeholder Company",
@@ -351,6 +351,93 @@ export const SPEAKERS = [
             //     `
             // },
 
+        ]
+    },
+    {
+        id: 3,
+        speakers: [
+            {
+                image: "stephen_purdy.png",
+                name: "Major General Stephen G. Purdy, Jr.",
+                position: "Military Deputy",
+                company: "Office of the Assistant Secretary of the Air Force for Space Acquisition and Integration",
+                bio: `
+                Maj. Gen. Stephen G. Purdy, Jr., is the Military Deputy, Office of the Assistant Secretary of the Air Force for Space Acquisition and Integration, Washington, D.C.
+                He also serves as the Space Force University Partnership Program Champion for the University of Texas Austin.
+                <br/><br/>
+                Maj. Gen. Purdy as Military Deputy is responsible for research and development, worth more than $24 billion annually. His responsibilities include crafting program
+                strategies and options for representing DAF positions to the office of the Secretary of Defense, Congress and the White House.
+                <br/><br/>            
+                Maj. Gen. Purdy entered the Air Force as a Distinguished Graduate of the Reserve Officer Training Corps at Baylor University in 1993. He has served in a variety of engineering, acquisition and policy capacities, including assignments at the Air Force Laboratory, the Pentagon, Congress, Space and Missile Systems Center and Headquarters United States Space Force. He has served as an Air Force Intern, Space/Nuclear/Cyber Congressional Appropriations Liaison, Materiel Leader in the Evolved Expendable Launch Vehicle Program, Senior Materiel Leader for the Advanced Extremely High Frequency Program, Director Special Programs, Space and Missile Systems Center, and as the dual hatted Space Operations Command’s Director, Requirements, Architectures and Analysis and the Director, Plans, Programs and Financial Management. Prior to his current assignment, General Purdy was quad hatted as Program Executive Officer for Assured Access to Space; Commander, Space Launch Delta 45; Director of Launch and Range Operations, Space Systems Command; and Director of the Eastern Range, Patrick Space Force Base, Florida.
+                `
+            },
+            {
+                image: "chad_brown.png",
+                name: "Chad Brown",
+                position: "Division Chief, Future Systems Project Office, Exploration Ground Systems",
+                company: "NASA",
+                bio: `
+                Chad E. Brown is the division chief for the Future Systems Projects Office in Exploration Ground Systems (EGS) Program at NASA’s John F. Kennedy Space Center in Florida. In this position, Brown is focused on supporting future Artemis campaign efforts and providing the strategic framework for how the unique skills developed in the EGS Program can be leveraged to make the enterprise more successful.
+                <br/><br/>
+                Most recently, Brown served as the branch chief for the Technical Process Management Branch in the EGS Systems Engineering and Integration Division. From 2015 to 2017, he served as the advanced planning and payload integration manager, where he served as the senior program technical integration manager for payloads manifested on the Space Launch System (SLS), such as the Artemis I secondary payloads, Europa Clipper, and Gateway’s International Habitation Module.
+                <br/><br/>            
+                Prior to that, Brown served as the SLS lead flight integration engineer and SLS liaison for the Launch Vehicle Branch of the Flights systems and Operations Integration Division within the former Ground Systems Development and Operation Program (GSDO, now EGS) at the center.
+                <br/><br/>            
+                Brown began his career at Kennedy in 2004 and contributed to major NASA programs, including Launch Services, Constellation, and GSDO. From 2007 to 2010, he served as the Ares V project manager and Ares I upper stage mechanical project manager for the Constellation Ground Operations Project in support of the agency’s Constellation Program.
+                <br/><br/>            
+                From 2004 to 2007 he was a structural engineer for the Launch Services Program (LSP). In this position, he was responsible for insight and oversight of LSP flight hardware with primary responsibility for large composite flight structures.
+                `
+            },
+            {
+                image: "samuel_visner.png",
+                name: "Samuel Visner",
+                position: "Tech Fellow at Aerospace Corporation; Chair, Board of Directors, Space ISAC; Board Member, ORAU",
+                company: "Placeholder Company",
+                bio: `
+                Samuel S. Visner is the director of the National Cybersecurity Federally Funded Research and Development Center (NCF), which MITRE manages in support of the NIST National Cybersecurity Center of Excellence (NCCoE).
+                <br/><br/>           
+                In this role, Visner oversees efforts to bring together experts from industry, government, and academia to demonstrate integrated cybersecurity solutions that are cost-effective, repeatable, and scalable. The FFRDC is the first of its kind dedicated to cybersecurity.
+                <br/><br/>          
+                Visner joined MITRE from an executive position at ICF International, which advises business and government entities on issues related to health, homeland security, defense, and energy. He also held leadership positions at CSC (Computer Sciences Corporation) and Science Applications International Corporation (SAIC).
+                <br/><br/>            
+                In addition, he served as chief of signals intelligence programs at the National Security Agency, where he was awarded the agency’s Exceptional Civilian Service Award in 2003. Visner has been a leader in public/private partnerships and collaborations, including the Intelligence and National Security Alliance, the Air Force Communications and Electronics Association, the Professional Services Council, and the National Academy of Science. Throughout his career, he has worked across multiple federal sponsors. He sits on the Army Science Board, and serves as an adjunct professor of cybersecurity at Georgetown University.
+                <br/><br/>            
+                Visner holds a bachelor’s degree in international politics from Georgetown University’s School of Foreign Service. He earned a master’s degree in telecommunications from George Washington University.
+                `
+            },
+            {
+                image: "walt_yates.png",
+                name: "Walt Yates, U.S. Marine Col (Ret.)",
+                position: "Pricipal",
+                company: "Walt Yates & Associates, LLC",
+                bio: `
+                Walt Yates & Associates provides knowledge based services in modeling & simulation for training systems, acquisition trade-space analysis, and risk management. Seventeen years of practice in design and application of simulation-based training, program development, and procurement planning for cost effective technology transition to Department of Defense users. Specific areas of expertise include cost avoidance estimation for new technology and cybersecurity policy compliance for the Risk Management Framework (RMF) and Cybersecurity Maturity Model Certification (CMMC).
+                `
+            },
+            {
+                image: "doug_morato.png",
+                name: "Doug Morato",
+                position: "Microsoft Cyber Security SME",
+                company: "Anamo, Inc.",
+                bio: `
+                As cyber security professional, my career focus has been to secure applications and reduce organizational risk and threat landscape, by providing consultation and subject matter expert feedback on securing applications design and implementation.
+                </br></br>
+                My area of knowledge spans through all phases of the SDLC, with active hands-on knowledge of threat modeling, secure design, static code analysis, penetration testing and continuous monitoring and security (defensive) operations.
+                </br></br>
+                I have been able to collaborate with internal and external customers, ranging from Fortune 10 companies, government/Defense contractors, Big 4 accounting firms, multi-nationals as well as small and medium sized business. I was afforded the opportunity to work in the Healthcare, Financial Services, Tech Services and Consulting industries.
+                </br></br>
+                I have broad experience providing secure architecture recommendations aligned with the Information Security Policies and industry best practices, performing threat modeling, conducting vulnerability assessments, web application, mobile application and network penetration tests, secure/static coding analysis, application security assessments, automating and embedding security in SDLC, fostering Security in DevOps work streams.
+                `
+            },
+            {
+                image: "jonathan_geotsch.png",
+                name: "Jonathan Geotsch",
+                position: "CEO",
+                company: "Anamo, Inc.",
+                bio: `
+                Placeholder Bio
+                `
+            },
         ]
     }
 ];

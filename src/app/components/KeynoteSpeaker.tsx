@@ -11,7 +11,7 @@ type KeynoteSpeaker = {
   position: string;
   company: string;
   bio: string;
-  keynote: {
+  keynote?: {
     isKeynote: boolean;
     headerText?: string;
   };
@@ -19,10 +19,11 @@ type KeynoteSpeaker = {
 
 type KeynoteSpeakerProps = {
   eventId: number;
+  eventShorthand: string;
   showExpandedBio?: boolean;
 };
 
-const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, showExpandedBio = true }) => {
+const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand, showExpandedBio = true }) => {
   const [expandedStates, setExpandedStates] = useState<{ [key: string]: boolean }>({});
   const [heightStates, setHeightStates] = useState<{
     [key: string]: {
@@ -84,7 +85,7 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, showExpandedBi
                 <div className="relative w-48 h-48 mb-6">
                   <div className="absolute inset-0 bg-gradient-to-br from-lightBlue-400 to-blue-600 rounded-full opacity-75 blur-md"></div>
                   <Image
-                    src={speaker.image}
+                    src={`/events/${eventShorthand}/speakers/${speaker.image}`}
                     alt={speaker.name}
                     fill
                     className="rounded-full relative z-10 border-4 border-white shadow-lg object-cover"

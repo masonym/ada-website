@@ -41,7 +41,10 @@ type Speaker = {
     company: string;
     bio?: string;
     presentation?: string;
-    keynote?: boolean;
+    keynote?: {
+        isKeynote: boolean;
+        headerText: string;
+    }
 };
 
 const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) => {
@@ -78,7 +81,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
 
     return (
         <div className="max-container flex flex-col items-center">
-            <KeynoteSpeaker eventId={event.id} />
+            <KeynoteSpeaker eventId={event.id} eventShorthand={event.eventShorthand}/>
             <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Speaker Spotlight</h1>
             {isEventFuture && (
                 <p className="text-l font-bold text-center mb-8 text-slate-600">More speaker information will be added as we get closer to the event date, please check back later for updates.</p>
@@ -89,7 +92,8 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                     .map((speaker: Speaker, index: number) => (
                         <div key={index} className="flex flex-col items-center text-center">
                             <Image
-                                src={speaker.image}
+                            // this should be `/events/${event.eventShorthand}/speakers/${speaker.image}`
+                                src={`/events/${event.eventShorthand}/speakers/${speaker.image}`}
                                 width={256}
                                 height={256}
                                 alt={`${speaker.name}`}
@@ -97,7 +101,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                             />
                             <p className="mt-4 font-semibold whitespace-nowrap text-wrap">{speaker.name}</p>
                             <p className="text-sm text-gray-600">{speaker.position}</p>
-                            <p className="text-sm text-gray-600 whitespace-nowrap">{speaker.company}</p>
+                            <p className="text-sm text-gray-600">{speaker.company}</p>
                             {speaker.presentation && (
                                 <button
                                     onClick={() => handlePresentationClick(speaker.presentation)}
