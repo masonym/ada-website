@@ -435,7 +435,15 @@ export const SPEAKERS = [
                 position: "CEO",
                 company: "Anamo, Inc.",
                 bio: `
-                Placeholder Bio
+                CEO, Anamo Cybersecurity / Continuous Diagnostics & Mitigation (CDM), SME
+                <br/<br/>
+                Jonathan Goetsch, “The CDM Cyber Guy” is the CEO of ANAMO. ANAMO is a Continuous Diagnostics & Mitigation (CDM)
+                <br/<br/>
+                What makes Anamo Unique?
+                <br/<br/>
+                Anamo CDM, a patent-pending commercial-grade CDM Cybersecurity platform, has answered the call of CISA, the DHS, and other requests from the DoD Supply-Chain.
+                <br/<br/>
+                Harnessing the power of advanced ML and Generative AI, Anamo CDM is pushing toward the delivery of “Predictive Cybersecurity Threat Extrapolation.” How so? Anamo collects essential User, Group, Risk, Permission, Vulnerability, Software, History, and Forensic data and dynamically delivers that requested information in near Real-Time. Due to the platform service delivery, Anamo has captured broad interest from US- based enterprise businesses and many members/agencies across the US Aerospace and Defense supply chain. Subsequently, Anamo has enjoyed receiving invitations to visits at both the White House and the Pentagon.
                 `
             },
         ]
