@@ -444,7 +444,7 @@ export const SPEAKERS = [
             // john sanders
             {
                 image: "john_sanders.png",
-                name: "John Sanders",
+                name: "John Sanders (Invited)",
                 position: "Director, Cybersecurity Solutions",
                 company: "Anamo, Inc.",
                 bio: `
