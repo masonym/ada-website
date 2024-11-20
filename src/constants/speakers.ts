@@ -440,6 +440,25 @@ export const SPEAKERS = [
                 Harnessing the power of advanced ML and Generative AI, Anamo CDM is pushing toward the delivery of “Predictive Cybersecurity Threat Extrapolation.” How so? Anamo collects essential User, Group, Risk, Permission, Vulnerability, Software, History, and Forensic data and dynamically delivers that requested information in near Real-Time. Due to the platform service delivery, Anamo has captured broad interest from US- based enterprise businesses and many members/agencies across the US Aerospace and Defense supply chain. Subsequently, Anamo has enjoyed receiving invitations to visits at both the White House and the Pentagon.
                 `
             },
+
+            // john sanders
+            {
+                image: "john_sanders.png",
+                name: "John Sanders",
+                position: "Director, Cybersecurity Solutions",
+                company: "Anamo, Inc.",
+                bio: `
+                John Sanders, TS/SCI CI Poly Access, Lt. Col., U.S. Army, Intelligence (ret.), is an expert in Cyberspace and Cybersecurity for both government and commercial sectors. He is uniquely- qualified as an expert to advise business boards of directors, C-suite executives, and government officials on critical applications of state-of-the-art cybersecurity technology, practices, and countermeasures. A gifted communicator of the complex into plain, understandable terms, makes John a remarkable asset in boardrooms, and among C-suite executives, grappling with cybersecurity challenges.
+                <br/><br/>
+                John has over 28 years of experience as an intelligence professional in the U.S. Army, Industry, and the Intelligence Community. He served as an Executive Officer to the Deputy Director National Intelligence, Policy, Plans, and Requirements, Office of the Director of National Intelligence. He is skilled in working with high level intelligence policies, programs, and strategies for Cyberspace and Cybersecurity for both the commercial and government sectors. He has also worked on cyber analytic efforts to include characterization of signature and non- signature based cyber threats across the 7 layers of the Open Systems Interconnection (OSI) model critical to the interoperability of diverse communications systems with standardized protocols.
+                <br/><br/>
+                While on active duty, he orchestrated Computer Network Operations (CNO) and Cyberspace campaign planning and implementation for Intelligence and Security Command, which led to the formation of the Army’s 1st Cyber Brigade. He is an Army trained strategic planner, and he graduated from the prestigious School of Advanced Military Studies (SAMS), a component of the Army’s Command and General Staff College, at Ft Leavenworth, Kansas. The mission of SAMS is to educate members of the Armed Forces, our Allies, and the Interagency at the graduate level to become agile and adaptive leaders who are critical and creative thinkers who produce viable options to solve operational and strategic problems. He was awarded a Master’s Degree in Military Art and Science from this program. He is a Knowlton Award recipient – a very prestigious award given to selected Army Intelligence professionals.
+                <br/><br/>
+                Founder of his own consulting company, John provides Cybersecurity, Cloud Computing, Forensic Analysis, Insider Threat, and Data Analytics support services to the Intelligence Community, Department of Defense, and to private sector clients. His private sector clients have included a Fortune 500 company, and a large defense IT contractor, on Cyber Strategy and Cybersecurity capability development for commercial offerings and large government contract efforts. He also works as a contracted Senior Cybersecurity Research Analytic Consultant for the Director of National Intelligence (DNI), National Counterintelligence and Security Center (NCSC) Special Security Directorate staff, providing Subject Matter Expertise on Cyber Technical Policy and Strategy.
+                <br/><br/>
+                John holds a bachelor’s degree from Dallas Baptist University, in Business Administration. He also earned a master’s degree in Telecommunications Management from Webster University, where he graduated with honors. John is a Bronze Star recipient, Airborne Ranger, and Combat Veteran, having served two combat tours (Iraq) in the 82nd Airborne Division. He is an honorary Admiral in the Texas Navy.
+                `
+            }
         ]
     }
 ];
