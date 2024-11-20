@@ -71,8 +71,9 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
     const getLastName = (name: string) => {
         // remove parentheses and words after commas from name
 
-        const cleanedName = name.replace(/\([^)]*\)/g, '').replace(/,.*/, '');
+        const cleanedName = name.replace(/\([^)]*\)/g, '').replace(/,.*/, '').trim();
         const nameParts = cleanedName.split(' ');
+        console.log(nameParts[nameParts.length - 1])
         return nameParts[nameParts.length - 1];
     };
 
@@ -92,7 +93,6 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                     .map((speaker: Speaker, index: number) => (
                         <div key={index} className="flex flex-col items-center text-center">
                             <Image
-                            // this should be `/events/${event.eventShorthand}/speakers/${speaker.image}`
                                 src={`/events/${event.eventShorthand}/speakers/${speaker.image}`}
                                 width={256}
                                 height={256}
