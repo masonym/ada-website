@@ -359,8 +359,8 @@ export const SPEAKERS = [
             {
                 image: "stephen_purdy.png",
                 name: "Major General Stephen G. Purdy, Jr. (Pending)",
-                position: "Military Deputy",
-                company: "Office of the Assistant Secretary of the Air Force for Space Acquisition and Integration",
+                position: "Military Deputy, Office of the Assistant Secretary of the Air Force for Space Acquisition and Integration",
+                company: "United States Space Force",
                 bio: `
                 Maj. Gen. Stephen G. Purdy, Jr., is the Military Deputy, Office of the Assistant Secretary of the Air Force for Space Acquisition and Integration, Washington, D.C.
                 He also serves as the Space Force University Partnership Program Champion for the University of Texas Austin.
@@ -377,22 +377,22 @@ export const SPEAKERS = [
                 position: "Division Chief, Future Systems Project Office, Exploration Ground Systems",
                 company: "National Aeronautics and Space Administration (NASA)",
                 bio: `
-                Chad E. Brown is the division chief for the Future Systems Projects Office in Exploration Ground Systems (EGS) Program at NASA’s John F. Kennedy Space Center in Florida. In this position, Brown is focused on supporting future Artemis campaign efforts and providing the strategic framework for how the unique skills developed in the EGS Program can be leveraged to make the enterprise more successful.
+                Chad E. Brown is the Division Chief for the Future Systems Projects Office in Exploration Ground Systems (EGS) Program at NASA’s John F. Kennedy Space Center in Florida. In this position, Brown is focused on supporting future Artemis campaign efforts and providing the strategic framework for how the unique skills developed in the EGS Program can be leveraged to make the enterprise more successful.
                 <br/><br/>
-                Most recently, Brown served as the branch chief for the Technical Process Management Branch in the EGS Systems Engineering and Integration Division. From 2015 to 2017, he served as the advanced planning and payload integration manager, where he served as the senior program technical integration manager for payloads manifested on the Space Launch System (SLS), such as the Artemis I secondary payloads, Europa Clipper, and Gateway’s International Habitation Module.
-                <br/><br/>            
-                Prior to that, Brown served as the SLS lead flight integration engineer and SLS liaison for the Launch Vehicle Branch of the Flights systems and Operations Integration Division within the former Ground Systems Development and Operation Program (GSDO, now EGS) at the center.
-                <br/><br/>            
-                Brown began his career at Kennedy in 2004 and contributed to major NASA programs, including Launch Services, Constellation, and GSDO. From 2007 to 2010, he served as the Ares V project manager and Ares I upper stage mechanical project manager for the Constellation Ground Operations Project in support of the agency’s Constellation Program.
-                <br/><br/>            
-                From 2004 to 2007 he was a structural engineer for the Launch Services Program (LSP). In this position, he was responsible for insight and oversight of LSP flight hardware with primary responsibility for large composite flight structures.
+                Most recently, Brown served as the Branch Chief for the Technical Process Management Branch in the EGS Systems Engineering and Integration Division. From 2015 to 2017, he served as the Advanced Planning and Payload Integration Manager, where he served as the Senior Program Technical Integration Manager for payloads manifested on the Space Launch System (SLS), such as the Artemis I secondary payloads, Europa Clipper, and Gateway’s International Habitation Module.
+                <br/><br/>
+                Prior to that, Brown served as the SLS Lead Flight Integration Engineer and SLS Liaison for the Launch Vehicle Branch of the Flights Systems and Operations Integration Division within the former Ground Systems Development and Operation Program (GSDO, now EGS) at the center.
+                <br/><br/>
+                Brown began his career at Kennedy in 2004 and contributed to major NASA programs, including Launch Services, Constellation, and GSDO. From 2007 to 2010, he served as the Ares V Project Manager and Ares I Upper Stage Mechanical Project Manager for the Constellation Ground Operations Project in support of the agency’s Constellation Program.
+                <br/><br/>
+                From 2004 to 2007 he was a Structural Engineer for the Launch Services Program (LSP). In this position, he was responsible for insight and oversight of LSP flight hardware with primary responsibility for large composite flight structures.
                 `
             },
             {
                 image: "samuel_visner.png",
                 name: "Samuel Visner",
                 position: "Tech Fellow at Aerospace Corporation; Chair, Board of Directors, Space ISAC; Board Member, ORAU",
-                company: "Placeholder Company",
+                company: "National Cybersecurity Federally Funded Research and Development Center (NCF)",
                 bio: `
                 Samuel S. Visner is the director of the National Cybersecurity Federally Funded Research and Development Center (NCF), which MITRE manages in support of the NIST National Cybersecurity Center of Excellence (NCCoE).
                 <br/><br/>           
@@ -435,12 +435,6 @@ export const SPEAKERS = [
                 position: "CEO",
                 company: "Anamo, Inc.",
                 bio: `
-                CEO, Anamo Cybersecurity / Continuous Diagnostics & Mitigation (CDM), SME
-                <br/<br/>
-                Jonathan Goetsch, “The CDM Cyber Guy” is the CEO of ANAMO. ANAMO is a Continuous Diagnostics & Mitigation (CDM)
-                <br/<br/>
-                What makes Anamo Unique?
-                <br/<br/>
                 Anamo CDM, a patent-pending commercial-grade CDM Cybersecurity platform, has answered the call of CISA, the DHS, and other requests from the DoD Supply-Chain.
                 <br/<br/>
                 Harnessing the power of advanced ML and Generative AI, Anamo CDM is pushing toward the delivery of “Predictive Cybersecurity Threat Extrapolation.” How so? Anamo collects essential User, Group, Risk, Permission, Vulnerability, Software, History, and Forensic data and dynamically delivers that requested information in near Real-Time. Due to the platform service delivery, Anamo has captured broad interest from US- based enterprise businesses and many members/agencies across the US Aerospace and Defense supply chain. Subsequently, Anamo has enjoyed receiving invitations to visits at both the White House and the Pentagon.
