@@ -358,7 +358,7 @@ export const SPEAKERS = [
         speakers: [
             {
                 image: "stephen_purdy.png",
-                name: "Major General Stephen G. Purdy, Jr.",
+                name: "Major General Stephen G. Purdy, Jr. (Pending)",
                 position: "Military Deputy",
                 company: "Office of the Assistant Secretary of the Air Force for Space Acquisition and Integration",
                 bio: `
