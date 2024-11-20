@@ -188,6 +188,33 @@ export const EVENTS = [
     registerLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
     password: "ADA2025SDPC",
     sponsorProspectusPath: "/events/2025SDPC/2025SDPC-SponsorProspectus.pdf",
+    expectations: [
+      {
+        audienceType: "Small Business",
+        expectations: [
+          {
+            title: "Networking with Experienced Small Businesses",
+            description: "Learn from and Collaborate with other Small Businesses that have successfully navigated the Federal Market, Sharing Insights and Strategies for Growth"
+          },
+          {
+            title: "Subcontracting Opportunities",
+            description: "Engage with Large Businesses to Explore Strategic Subcontracting Opportunities, Boosting your Past Performance and Helping you scale your Success"
+          },
+          {
+            title: "Business Opportunities and Tailored Growth Sessions",
+            description: "Participate in Sessions designed to Accelerate your Business Growth, whether you are New to the Federal Market or a Seasoned Contractor looking to Expand your Reach"
+          },
+          {
+            title: "One-on-One Matchmaking Sessions",
+            description: "Gain Exclusive, Personalized Sessions with Key Government Agencies and Major Corporations to Expand your Network and Grow your Business"
+          },
+          {
+            title: "Direct Access to Decision-Makers",
+            description: "Forge Connections with Federal Procurement Decision-Makers, Contracting Officers, and Small Business Liaison Officers, who can Drive your Business Forward"
+          }
+        ]
+      }
+    ]
   },
 
   {
@@ -410,5 +437,4 @@ export const EVENTS = [
       </div>
     ),
   }
-
 ];
