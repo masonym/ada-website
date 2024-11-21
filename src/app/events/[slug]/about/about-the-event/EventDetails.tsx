@@ -41,7 +41,8 @@ const EventDetails: React.FC<EventDetailsProps> = ({
         </div>
         {/* Expectations Section */}
         {expectations && expectations.length > 0 && (
-          <ExpectationsSection expectations={expectations} />
+          // <ExpectationsSection expectations={expectations} />
+          true
         )}
 
         {/* Key Insights Section */}
