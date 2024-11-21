@@ -7,6 +7,8 @@
 @import "yet-another-react-lightbox/styles.css";
 @import "yet-another-react-lightbox/plugins/thumbnails.css";
 
+/* @import 'node_modules/react-modal-video/scss/modal-video.scss'; */
+
 * {
   margin: 0;
   padding: 0;

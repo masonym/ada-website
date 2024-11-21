@@ -42,7 +42,7 @@ export const SCHEDULES = [
                             affiliation: "Accenture Federal Services",
                             photo: "amir_bagherpour.jpg",
                             presentation: "2025 Defense Industry Forecast - Amir Bagherpour, PhD.pdf",
-                            video: "https://www.youtube.com/watch?v=U_7h6bcAbGw"
+                            videoId: "U_7h6bcAbGw"
                         }]
                     },
                     {
@@ -55,6 +55,7 @@ export const SCHEDULES = [
                             affiliation: "HDR, Inc. (Former Deputy Assistant Secretary of the Air Force for Environment, Safety and Infrastructure)",
                             photo: "mark_correll.png",
                             presentation: "2025 Defense Industry Forecast - Mark Correll, P.E..pdf",
+                            videoId: ""
                         }]
                     },
                     {
