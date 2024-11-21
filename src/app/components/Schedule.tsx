@@ -13,6 +13,7 @@ type Speaker = {
   photo?: string;
   presentation?: string;
   videoId?: string;      // YouTube video ID only
+  videoStartTime?: number; // Optional start time in seconds
 };
 
 type ScheduleItem = {
@@ -44,8 +45,14 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
   const [selectedDay, setSelectedDay] = useState(0);
   const [isVideoOpen, setVideoOpen] = useState(false);
   const [currentVideoId, setCurrentVideoId] = useState<string>('');
+  const [currentStartTime, setCurrentStartTime] = useState<number | null>(null);
 
-  const handleMediaClick = (type: 'presentation' | 'video', link?: string, videoId?: string) => {
+  const handleMediaClick = (
+    type: 'presentation' | 'video',
+    link?: string,
+    videoId?: string,
+    startTime?: number
+  ) => {
     if (!isAuthenticated) {
       onRequestPassword();
       return;
@@ -55,6 +62,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
       window.open(link, '_blank');
     } else if (type === 'video' && videoId) {
       setCurrentVideoId(videoId);
+      setCurrentStartTime(startTime || null);
       setVideoOpen(true);
     }
   };
@@ -67,7 +75,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
     <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 pb-8">
       <ModalVideo
         channel="youtube"
-        youtube={{ mute: 0, autoplay: 1, }}
+        youtube={{ mute: 0, autoplay: 1, start: currentVideoId && currentStartTime ? currentStartTime : 0 }}
         isOpen={isVideoOpen}
         videoId={currentVideoId}
         onClose={() => setVideoOpen(false)}
@@ -160,7 +168,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                           )}
                           {speaker.videoId && (
                             <button
-                              onClick={() => handleMediaClick('video', undefined, speaker.videoId)}
+                              onClick={() => handleMediaClick('video', undefined, speaker.videoId, speaker.videoStartTime)}
                               className={`text-white px-4 py-2 rounded-md transition-all text-nowrap ${
                                 isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
                               }`}

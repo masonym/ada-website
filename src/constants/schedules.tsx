@@ -89,13 +89,17 @@ export const SCHEDULES = [
                                 affiliation: "Office of the Secretary of the Navy",
                                 photo: "arveice_washington.jpg",
                                 presentation: "2025 Defense Industry Forecast - Arveice Washington.pdf",
+                                videoId: "Ib6OrnbElyM",
+                                videoStartTime: 853,
                             },
                             {
                                 name: "Scott Kiser",
                                 title: "Director, Office of Small Business Programs (OSBP)",
                                 affiliation: "Office of the Secretary of the Air Force",
                                 photo: "scott_kiser.png",
-                                presentation: "2025 Defense Industry Forecast - Scott Kiser.pdf"
+                                presentation: "2025 Defense Industry Forecast - Scott Kiser.pdf",
+                                videoId: "Ib6OrnbElyM",
+                                videoStartTime: 2215,
                             }
                         ]
                     },
