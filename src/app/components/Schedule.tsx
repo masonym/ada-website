@@ -75,7 +75,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
     <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 pb-8">
       <ModalVideo
         channel="youtube"
-        youtube={{ mute: 0, autoplay: 1, start: currentVideoId && currentStartTime ? currentStartTime : 0 }}
+        youtube={{ mute: 0, autoplay: 1, start: currentVideoId && currentStartTime ? currentStartTime : 0 } as any}
         isOpen={isVideoOpen}
         videoId={currentVideoId}
         onClose={() => setVideoOpen(false)}
