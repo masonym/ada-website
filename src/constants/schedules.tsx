@@ -29,7 +29,7 @@ export const SCHEDULES = [
                             name: "Congressman Michael Waltz (6th District, Florida)",
                             title: "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
                             affiliation: "U.S. House of Representatives",
-                            photo: "michael_waltz.png"
+                            photo: "michael_waltz.png",
                         }],
                     },
                     {
@@ -42,6 +42,7 @@ export const SCHEDULES = [
                             affiliation: "Accenture Federal Services",
                             photo: "amir_bagherpour.jpg",
                             presentation: "2025 Defense Industry Forecast - Amir Bagherpour, PhD.pdf",
+                            video: "https://www.youtube.com/watch?v=U_7h6bcAbGw"
                         }]
                     },
                     {
