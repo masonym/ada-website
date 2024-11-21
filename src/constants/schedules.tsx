@@ -55,7 +55,7 @@ export const SCHEDULES = [
                             affiliation: "HDR, Inc. (Former Deputy Assistant Secretary of the Air Force for Environment, Safety and Infrastructure)",
                             photo: "mark_correll.png",
                             presentation: "2025 Defense Industry Forecast - Mark Correll, P.E..pdf",
-                            videoId: ""
+                            videoId: "wHdyJMbx1T4"
                         }]
                     },
                     {
@@ -67,6 +67,7 @@ export const SCHEDULES = [
                             title: "General Counsel",
                             affiliation: "Department of the Navy",
                             photo: "john_coffey.png",
+                            videoId: "0u9WV7ew3fo"
                         }]
                     },
                     {
@@ -80,6 +81,7 @@ export const SCHEDULES = [
                                 affiliation: "U.S. Army, Department of Defense",
                                 photo: "kimberly_buhler.png",
                                 presentation: "2025 Defense Industry Forecast - Kimberly Diane Buehler.pdf",
+                                videoId: "Ib6OrnbElyM"
                             },
                             {
                                 name: "Arveice Washington",
@@ -105,7 +107,8 @@ export const SCHEDULES = [
                             name: "Dr. Iryna Andrukh",
                             title: "Ukraine Program Director",
                             affiliation: "Progress Humanity (Formerly  Colonel in the Ukraine Army and Recipient of 4 Ukraine Presidential Medals of Honor)",
-                            photo: "iryna_andrukh.png"
+                            photo: "iryna_andrukh.png",
+                            videoId: "jAXyvPQE6y0"
                         }]
                     },
                     {
