@@ -1,29 +1,50 @@
 import React from 'react';
 import Button from '@/app/components/Button';
+import ExpectationsSection from './ExpectationsSection';
 
 type TopicalCoverage = {
   tagline: string;
   description: string;
 };
 
-type EventProps = {
+type ExpectationItem = {
+  title: string;
+  description: string;
+};
+
+type AudienceExpectations = {
+  audienceType: string;
+  expectations: ExpectationItem[];
+};
+
+type EventDetailsProps = {
   title: string;
   eventText: React.ReactNode;
   topicalCoverage: TopicalCoverage[];
   registerLink: string;
+  expectations?: AudienceExpectations[];
 };
 
-const EventDetails: React.FC<EventProps> = ({ title, eventText, topicalCoverage, registerLink }) => {
+const EventDetails: React.FC<EventDetailsProps> = ({ 
+  title, 
+  eventText, 
+  topicalCoverage, 
+  registerLink,
+  expectations 
+}) => {
   return (
     <div className="min-h-screen text-navy-800 text-center">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-        <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 mb-12 shadow-xl">
-          {/* <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
-            About the Event
-          </h2> */}
+        {/* Event Overview Section */}
+        <div className="rounded-xl p-4 mb-4">
           <div className="text-lg leading-relaxed">{eventText}</div>
         </div>
+        {/* Expectations Section */}
+        {expectations && expectations.length > 0 && (
+          <ExpectationsSection expectations={expectations} />
+        )}
 
+        {/* Key Insights Section */}
         <div className="w-full">
           <h2 className="text-3xl font-semibold mb-6 text-navy-500">Key Insights</h2>
           <div className="flex flex-wrap justify-center gap-6">
@@ -41,8 +62,11 @@ const EventDetails: React.FC<EventProps> = ({ title, eventText, topicalCoverage,
           </div>
         </div>
 
+        {/* Registration CTA */}
         <div className="mt-12 text-center flex flex-col items-center">
-          <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Seat at this Groundbreaking Event!</p>
+          <p className="text-2xl text-navy-500 mb-6 text-center mx-8">
+            Act Now and Secure your Seat at this Groundbreaking Event!
+          </p>
           <Button
             title="REGISTER"
             variant="btn_blue"

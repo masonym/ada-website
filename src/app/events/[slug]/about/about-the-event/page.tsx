@@ -16,6 +16,7 @@ export default function AboutPage({ params }: { params: { slug: string } }) {
       eventText={event.eventText}
       topicalCoverage={event.topicalCoverage}
       registerLink={event.registerLink}
+      expectations={event.expectations}
     />
   );
 }

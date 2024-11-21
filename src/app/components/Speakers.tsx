@@ -9,6 +9,16 @@ type SpeakerProps = {
     onRequestPassword: () => void;
 };
 
+type ExpectationItem = {
+    title: string;
+    description: string;
+};
+
+type AudienceExpectations = {
+    audienceType: string;
+    expectations: ExpectationItem[];
+};
+
 export type EventProps = {
     id: number;
     title: string;
@@ -32,6 +42,7 @@ export type EventProps = {
     sponsorProspectusPath?: string;
     customFooterText?: React.ReactNode;
     eventShorthand: string;
+    expectations?: AudienceExpectations[];
 };
 
 type Speaker = {
