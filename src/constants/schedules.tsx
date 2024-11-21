@@ -18,7 +18,7 @@ export const SCHEDULES = [
                             name: "Charles F. Sills",
                             title: "President & CEO",
                             affiliation: "American Defense Alliance",
-                            photo: "/speakers/charles_sills.png"
+                            photo: "charles_sills.png"
                         }],
                     },
                     {
@@ -29,7 +29,7 @@ export const SCHEDULES = [
                             name: "Congressman Michael Waltz (6th District, Florida)",
                             title: "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
                             affiliation: "U.S. House of Representatives",
-                            photo: "/speakers/michael_waltz.png"
+                            photo: "michael_waltz.png"
                         }],
                     },
                     {
@@ -40,7 +40,7 @@ export const SCHEDULES = [
                             name: "Amir Bagherpour, PhD",
                             title: "Managing Director and Analytics & Visualization Lead for Data & AI",
                             affiliation: "Accenture Federal Services",
-                            photo: "/speakers/amir_bagherpour.jpg",
+                            photo: "amir_bagherpour.jpg",
                             presentation: "2025 Defense Industry Forecast - Amir Bagherpour, PhD.pdf",
                         }]
                     },
@@ -52,7 +52,7 @@ export const SCHEDULES = [
                             name: "Mark Correll, P.E.",
                             title: "Vice President, Federal Strategy Director",
                             affiliation: "HDR, Inc. (Former Deputy Assistant Secretary of the Air Force for Environment, Safety and Infrastructure)",
-                            photo: "/speakers/mark_correll.png",
+                            photo: "mark_correll.png",
                             presentation: "2025 Defense Industry Forecast - Mark Correll, P.E..pdf",
                         }]
                     },
@@ -64,7 +64,7 @@ export const SCHEDULES = [
                             name: "Honorable John P. (\"Sean\") Coffey",
                             title: "General Counsel",
                             affiliation: "Department of the Navy",
-                            photo: "/speakers/john_coffey.png",
+                            photo: "john_coffey.png",
                         }]
                     },
                     {
@@ -76,21 +76,21 @@ export const SCHEDULES = [
                                 name: "Kimberly Diane Buehler",
                                 title: "Director, Office of Small Business Programs (OSBP)",
                                 affiliation: "U.S. Army, Department of Defense",
-                                photo: "/speakers/kimberly_buhler.png",
+                                photo: "kimberly_buhler.png",
                                 presentation: "2025 Defense Industry Forecast - Kimberly Diane Buehler.pdf",
                             },
                             {
                                 name: "Arveice Washington",
                                 title: "Director, Office of Small Business Programs (OSBP)",
                                 affiliation: "Office of the Secretary of the Navy",
-                                photo: "/speakers/arveice_washington.jpg",
+                                photo: "arveice_washington.jpg",
                                 presentation: "2025 Defense Industry Forecast - Arveice Washington.pdf",
                             },
                             {
                                 name: "Scott Kiser",
                                 title: "Director, Office of Small Business Programs (OSBP)",
                                 affiliation: "Office of the Secretary of the Air Force",
-                                photo: "/speakers/scott_kiser.png",
+                                photo: "scott_kiser.png",
                                 presentation: "2025 Defense Industry Forecast - Scott Kiser.pdf"
                             }
                         ]
@@ -103,7 +103,7 @@ export const SCHEDULES = [
                             name: "Dr. Iryna Andrukh",
                             title: "Ukraine Program Director",
                             affiliation: "Progress Humanity (Formerly  Colonel in the Ukraine Army and Recipient of 4 Ukraine Presidential Medals of Honor)",
-                            photo: "/speakers/iryna_andrukh.png"
+                            photo: "iryna_andrukh.png"
                         }]
                     },
                     {
@@ -119,7 +119,7 @@ export const SCHEDULES = [
                             name: "Mark Cancian",
                             title: "Senior Advisor, International Security Program",
                             affiliation: "Center for Strategic and International Studies (CSIS)",
-                            photo: "/speakers/mark_cancian.jpg",
+                            photo: "mark_cancian.jpg",
                             presentation: "2025 Defense Industry Forecast - Mark Cancian.pdf"
                         }]
                     },
@@ -131,7 +131,7 @@ export const SCHEDULES = [
                             name: "His Royal Highness, Brigadier General Prince Joachim, Prince of Denmark",
                             title: "Danish Military Industry Attaché",
                             affiliation: "Royal Embassy of Denmark",
-                            photo: "/speakers/joachim_christian.png"
+                            photo: "joachim_christian.png"
                         }]
                     },
                     {
@@ -142,7 +142,7 @@ export const SCHEDULES = [
                             name: "Brian Liesveld",
                             title: "Chief Executive Officer",
                             affiliation: "DEFENSEWERX",
-                            photo: "/speakers/brian_liesveld.jpg",
+                            photo: "brian_liesveld.jpg",
                             presentation: "2025 Defense Industry Forecast - Brian Liesveld.pdf"
                         }]
                     },
@@ -154,7 +154,7 @@ export const SCHEDULES = [
                             name: "David Morrow",
                             title: "Acting Director, Military Programs",
                             affiliation: "U.S. Army Corps of Engineers",
-                            photo: "/speakers/david_morrow.png",
+                            photo: "david_morrow.png",
                             presentation: "2025 Defense Industry Forecast - David Morrow.pdf"
                         }]
                     },
@@ -166,7 +166,7 @@ export const SCHEDULES = [
                             name: "Patricia Waddell",
                             title: "Director, Office of IT Services",
                             affiliation: "Information Technology Category (ITC), Federal Acquisition Service (FAS), U.S. General Services Administration (GSA)",
-                            photo: "/speakers/patricia_waddell.png",
+                            photo: "patricia_waddell.png",
                             presentation: "2025 Defense Industry Forecast - Patricia Waddell.pdf"
                         }]
                     },
@@ -178,7 +178,7 @@ export const SCHEDULES = [
                             name: "Dave Leinberger",
                             title: "Acting Director, Army Partnerships",
                             affiliation: "Deputy Chief of Staff, G-9 (Installations)",
-                            photo: "/speakers/dave_leinberger.png",
+                            photo: "dave_leinberger.png",
                             presentation: "2025 Defense Industry Forecast - Dave Leinberger.pdf"
                         }]
                     },
@@ -190,7 +190,7 @@ export const SCHEDULES = [
                             name: "Bianca Henderson",
                             title: "Director, Office of Small Business Programs (OSBP)",
                             affiliation: "Naval Facilities Engineering Systems Command (NAVFAC)",
-                            photo: "/speakers/bianca_henderson.png",
+                            photo: "bianca_henderson.png",
                             presentation: "2025 Defense Industry Forecast - Bianca Henderson.pdf"
                         }]
                     },
@@ -202,7 +202,7 @@ export const SCHEDULES = [
                             name: "David Canada",
                             title: "Director, Global Supplier Diversity",
                             affiliation: "Boeing Defense Space & Security",
-                            photo: "/speakers/david_canada.png",
+                            photo: "david_canada.png",
                             presentation: "2025 Defense Industry Forecast - David Canada.pdf"
                         }]
                     },
@@ -214,7 +214,7 @@ export const SCHEDULES = [
                             name: "Charles F. Sills",
                             title: "President & CEO",
                             affiliation: "American Defense Alliance",
-                            photo: "/speakers/charles_sills.png"
+                            photo: "charles_sills.png"
                         }],
                     },
                     {

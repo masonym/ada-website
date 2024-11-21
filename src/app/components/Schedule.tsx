@@ -109,7 +109,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                         <div className="flex items-center flex-grow">
                           {speaker.photo && (
                             <Image
-                              src={speaker.photo}
+                              src={`/events/${event.eventShorthand}/speakers/${speaker.photo}`}
                               alt={speaker.name}
                               width={48}
                               height={48}
