@@ -167,7 +167,8 @@ export const SCHEDULES = [
                             title: "Acting Director, Military Programs",
                             affiliation: "U.S. Army Corps of Engineers",
                             photo: "david_morrow.png",
-                            presentation: "2025 Defense Industry Forecast - David Morrow.pdf"
+                            presentation: "2025 Defense Industry Forecast - David Morrow.pdf",
+                            videoId: "n6X4aOu7U",
                         }]
                     },
                     {
@@ -179,7 +180,8 @@ export const SCHEDULES = [
                             title: "Director, Office of IT Services",
                             affiliation: "Information Technology Category (ITC), Federal Acquisition Service (FAS), U.S. General Services Administration (GSA)",
                             photo: "patricia_waddell.png",
-                            presentation: "2025 Defense Industry Forecast - Patricia Waddell.pdf"
+                            presentation: "2025 Defense Industry Forecast - Patricia Waddell.pdf",
+                            videoId: "-nz_EaZhvGU",
                         }]
                     },
                     {
@@ -191,7 +193,8 @@ export const SCHEDULES = [
                             title: "Acting Director, Army Partnerships",
                             affiliation: "Deputy Chief of Staff, G-9 (Installations)",
                             photo: "dave_leinberger.png",
-                            presentation: "2025 Defense Industry Forecast - Dave Leinberger.pdf"
+                            presentation: "2025 Defense Industry Forecast - Dave Leinberger.pdf",
+                            videoId: "zMKsOL08I"
                         }]
                     },
                     {
@@ -203,7 +206,8 @@ export const SCHEDULES = [
                             title: "Director, Office of Small Business Programs (OSBP)",
                             affiliation: "Naval Facilities Engineering Systems Command (NAVFAC)",
                             photo: "bianca_henderson.png",
-                            presentation: "2025 Defense Industry Forecast - Bianca Henderson.pdf"
+                            presentation: "2025 Defense Industry Forecast - Bianca Henderson.pdf",
+                            videoId: "KBM8CQ1qbvA"
                         }]
                     },
                     {
@@ -215,7 +219,8 @@ export const SCHEDULES = [
                             title: "Director, Global Supplier Diversity",
                             affiliation: "Boeing Defense Space & Security",
                             photo: "david_canada.png",
-                            presentation: "2025 Defense Industry Forecast - David Canada.pdf"
+                            presentation: "2025 Defense Industry Forecast - David Canada.pdf",
+                            videoId: "sp_IldeZ_XY"
                         }]
                     },
                     {
