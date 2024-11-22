@@ -129,7 +129,8 @@ export const SCHEDULES = [
                             title: "Senior Advisor, International Security Program",
                             affiliation: "Center for Strategic and International Studies (CSIS)",
                             photo: "mark_cancian.jpg",
-                            presentation: "2025 Defense Industry Forecast - Mark Cancian.pdf"
+                            presentation: "2025 Defense Industry Forecast - Mark Cancian.pdf",
+                            videoId: "XGsVV7JSiSs",
                         }]
                     },
                     {
@@ -140,7 +141,8 @@ export const SCHEDULES = [
                             name: "His Royal Highness, Brigadier General Prince Joachim, Prince of Denmark",
                             title: "Danish Military Industry Attaché",
                             affiliation: "Royal Embassy of Denmark",
-                            photo: "joachim_christian.png"
+                            photo: "joachim_christian.png",
+                            videoId: "i4MiAeVu1uQ",
                         }]
                     },
                     {
@@ -152,7 +154,8 @@ export const SCHEDULES = [
                             title: "Chief Executive Officer",
                             affiliation: "DEFENSEWERX",
                             photo: "brian_liesveld.jpg",
-                            presentation: "2025 Defense Industry Forecast - Brian Liesveld.pdf"
+                            presentation: "2025 Defense Industry Forecast - Brian Liesveld.pdf",
+                            videoId: "eV076ok4lpM",
                         }]
                     },
                     {
