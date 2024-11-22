@@ -5,6 +5,7 @@ import { getEventImages, validateImagePaths } from '@/utils/imageUtils';
 import dynamic from 'next/dynamic';
 import HighlightedPhotos from './HighlightedPhotos';
 import EmblaCarousel from './EmblaCarousel';
+import Link from 'next/link';
 
 // Lazy load the lightbox component
 const PhotoLightbox = dynamic(() => import('./PhotoLightbox'), {
@@ -62,8 +63,23 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
   return (
     <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
       <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">
-        Highlights & Photographs of the <br/>{event.title}
+        Highlights & Photographs of the <br />{event.title}
       </h1>
+
+      <div className="mb-12 bg-navy-800 rounded-lg p-6 sm:p-8 text-white">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3">Looking for Presentation Slides?</h2>
+          <p className="text-lg sm:text-xl mb-4">
+            Access presentation materials and speaker resources through our detailed agenda page.
+          </p>
+          <Link
+            href={`/events/${params.slug}/agenda`}
+            className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full transition duration-300"
+          >
+            View Agenda & Presentations
+          </Link>
+        </div>
+      </div>
 
       {highlightedImages.length > 0 && (
         <div className="mb-12">
@@ -75,7 +91,7 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
       {regularImages.length > 0 && (
         <div className="mb-12">
           <h2 className="text-center text-5xl text-slate-700 font-bold mb-6">Photo Gallery</h2>
-          <EmblaCarousel slides={regularImages} options={{loop: true}} />
+          <EmblaCarousel slides={regularImages} options={{ loop: true }} />
         </div>
       )}
     </div>
