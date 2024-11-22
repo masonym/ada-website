@@ -68,9 +68,9 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
 
       <div className="mb-12 bg-navy-800 rounded-lg p-6 sm:p-8 text-white">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3">Looking for Presentation Slides?</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3">Looking for Speaker Recordings & Presentation Slides?</h2>
           <p className="text-lg sm:text-xl mb-4">
-            Access presentation materials and speaker resources through our detailed agenda page.
+            Access Presentation Materials through our detailed Agenda page.
           </p>
           <Link
             href={`/events/${params.slug}/agenda`}
