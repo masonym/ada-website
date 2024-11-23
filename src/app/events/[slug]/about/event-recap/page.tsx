@@ -66,9 +66,11 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
         Highlights & Photographs of the <br />{event.title}
       </h1>
 
-      <div className="mb-12 bg-navy-800 rounded-lg p-6 sm:p-8 text-white">
+      <div className="mb-12 max-w-3xl mx-auto bg-navy-800 rounded-lg p-6 sm:p-8 text-white">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3">Access Presentation Materials through our detailed Agenda page.</h2>
+          <p className="text-lg sm:text-xl mb-4">
+            Access Presentation Materials through our detailed Agenda page.
+          </p>
           <Link
             href={`/events/${params.slug}/agenda`}
             className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full transition duration-300"
