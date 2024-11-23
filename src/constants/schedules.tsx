@@ -168,7 +168,7 @@ export const SCHEDULES = [
                             affiliation: "U.S. Army Corps of Engineers",
                             photo: "david_morrow.png",
                             presentation: "2025 Defense Industry Forecast - David Morrow.pdf",
-                            videoId: "n6X4aOu7U",
+                            videoId: "z-n6X4aOu7U",
                         }]
                     },
                     {
@@ -194,7 +194,7 @@ export const SCHEDULES = [
                             affiliation: "Deputy Chief of Staff, G-9 (Installations)",
                             photo: "dave_leinberger.png",
                             presentation: "2025 Defense Industry Forecast - Dave Leinberger.pdf",
-                            videoId: "zMKsOL08I"
+                            videoId: "y-zMKsOL08I"
                         }]
                     },
                     {
