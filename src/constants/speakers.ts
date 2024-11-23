@@ -458,7 +458,97 @@ export const SPEAKERS = [
                 <br/><br/>
                 John holds a bachelor’s degree from Dallas Baptist University, in Business Administration. He also earned a master’s degree in Telecommunications Management from Webster University, where he graduated with honors. John is a Bronze Star recipient, Airborne Ranger, and Combat Veteran, having served two combat tours (Iraq) in the 82nd Airborne Division. He is an honorary Admiral in the Texas Navy.
                 `
-            }
+            },
+
+            // Thad Altman
+            {
+                image: "thad_altman.png",
+                name: "Thad Altman",
+                position: "Executive Director & CEO",
+                company: "The Astronauts Memorial Foundation",
+                bio: `
+                Thad Altman serves as the Executive Director/CEO of The Astronauts Memorial Foundation. He entered this role in 2011, and since has overseen all operations of The Astronauts Memorial Foundation and the Center for Space Education, as well as AMF’s Use Agreement and Space Act Agreement with the National Aeronautics and Space Administration (NASA). 
+                <br/><br/>
+                Under Thad’s direction, The Astronauts Memorial Foundation has received Kennedy Space Center’s Gold Dollar Award, in honor of his Commitment to Safety, Teamwork and Innovation in Helping Build America’s Gateway to the Universe. Thad and the Foundation have also received NASA’s Group Achievement Award, for the design and build of the Apollo I Exhibit at the Apollo/Saturn V Center. 
+                <br/><br/>
+                Alongside his role at AMF, Thad also serves as a Florida State Representative. He was elected to the Florida House of Representatives in 2016 and represents House District 32, which consists of parts of Brevard County including Indian Harbour Beach, Melbourne, Melbourne Village, Palm Shores, and Rockledge. He previously served in the Florida Senate from 2008-2016 and the Florida House of Representatives from 2003-2008. 
+                <br/><br/>
+                Thad has lived in the Space Coast for more than fifty years. He resides in Rockledge with his wife Mary Pat, and is the proud father of three children; McKenzie, Hunter, and Sullivan. He recently has become a grandfather to a baby girl, Amelia.
+                `
+            },
+
+            // Janet Petro
+            {
+                image: "janet_petro.png",
+                name: "Janet Petro",
+                position: "Director",
+                company: "NASA's John F. Kennedy Space Center",
+                bio: `
+                Janet Petro was named the 11th director of NASA’s John F. Kennedy Space Center in Florida on June 30, 2021. She had been serving as acting director since May 2021 following NASA Administrator Sen. Bill Nelson’s announcement that Robert D. Cabana, previous Kennedy director, would assume the role of NASA’s associate administrator.
+                Prior to being named director, Petro served as Kennedy’s deputy director since April 2007, where she shared responsibility with the center director in managing the Kennedy team of civil service and contractor employees, determining and implementing center policy and managing and executing Kennedy missions and agency program responsibilities.
+                <br/><br/>
+                During her tenure as deputy director, Petro helped Kennedy transition into a multi-user spaceport, leading cross-agency initiatives with the Federal Aviation Administration and U.S. Air Force to streamline government processes and support commercial space operations to increase government efficiency and limit redundancy. She served a 12-month appointment at NASA Headquarters in Washington, D.C. as the deputy associate administrator and acting director for the Office of Evaluation.
+                <br/><br/>
+                From 2017 through January 2020, she served as the Program Executive leading the agency-wide initiative for a phased implementation to restructure all mission enabling functions to ensure efficient and effective support of NASA’s missions. Her assignment to the Mission Support Future Architecture Program (MAP) concluded in January 2020.
+                <br/><br/>
+                Prior to joining NASA, Petro served in various management positions for Science Applications International Corp. (SAIC) and McDonnell Douglas Aerospace Corp. At SAIC, Petro held a number of management positions within the corporation’s operations. She interfaced with NASA, the U.S. Air Force, the U.S. Navy, and commercial entities on numerous aerospace and military programs.
+                <br/><br/>
+                At McDonnell Douglas Aerospace, Petro advanced from mechanical engineer and payload manager to multiple management positions including program manager for executing a classified, multimillion-dollar U.S. Department of Defense program, to senior manager for Communications and Data Systems Division.                
+                `
+            },
+
+            // Sasha Sims
+            {
+                image: "sasha_sims.png",
+                name: "Sasha Sims",
+                position: "Deputy Director, Spaceport Integration and Services",
+                company: "NASA's John F. Kennedy Space Center",
+                bio: `
+                Sasha Sims is the deputy director of the Spaceport Integration and Services (SI) organization at NASA’s John F. Kennedy Space Center in Florida, appointed to this position in February 2023. She is responsible for ensuring safe, efficient, and effective support services for Kennedy, its workforce, and its customers.
+                <br/><br/>
+                Sims works with the director of SI to successfully execute the organization’s mission to lead the overall planning and assimilation of Kennedy processing activities and the execution of center services across NASA. This includes NASA programs and projects, other government agencies, and commercial partner residents on Kennedy Space Center and in NASA facilities on Cape Canaveral Space Force Station. 
+                Prior to her current assignment, Sims was the chief of staff for NASA’s Exploration Ground Systems (EGS) Program at Kennedy. In this role, she was responsible for providing technical expertise and leadership in the execution of all requirements and milestones in support of the Artemis mission. She had a leading role in programmatic efforts, such as program strategic planning, sustainability, and affordability initiatives, as well as ensuring resources and critical skills were available to support NASA’s deep space human exploration efforts with the Artemis missions.
+                <br/><br/>
+                Sims began her career with NASA in 2003 as a logistics engineer in the Cape Canaveral Spaceport Management Office, where she managed a center operations contract. Shortly after, she moved to the Constellation Program as a lead engineer for Mission Operations Integration, where she led a number of architecture studies to transform the Kennedy Space Center to support NASA’s new exploration vehicles.
+                <br/><br/>
+                Sims joined EGS in 2012 as the business management and analysis branch chief, where she led a team of program analysts responsible for identifying and prioritizing program resource requirements and managing the program’s budget. After that, she became the division chief for the Program Planning and Control Department. In this role, she was responsible for all EGS programmatic functions, including business, schedule and risk management, contracts, configuration management, program integration, as well as multiple strategic activities.
+                <br/><br/>
+                Sims also supported the Commercial Crew Program, where she led acquisition planning for suborbital crew commercial services.
+                `
+            },
+
+            // Gavin Brown
+            {
+                image: "gavin_brown.png",
+                name: "Gavin Brown",
+                position: "Executive Director",
+                company: "Michigan Aerospace Manufacturers Association",
+                bio: `
+                As Executive Director of the Michigan Aerospace Manufacturers Association (MAMA), Gavin Brown is committed to establishing Michigan as a leader in the commercialization of near-Earth space and as a source for highly qualified suppliers to the Defense, Commercial, General Aviation, and UAV aerospace manufacturing sectors.
+                <br/><br/>
+                Gavin is recognized as the driving force for promoting aerospace and defense companies active in Michigan. With more than 25 years of aerospace experience, Gavin founded MAMA in 2007.
+                <br/><br/>
+                MAMA is a membership association providing the global aerospace industry with state-of-the-art technology, multiple manufacturing disciplines and extensive manufacturing capabilities. MAMA is focused on growing Michigan’s Aerospace industry through synergy with the engineering and manufacturing competencies of the automotive industry.
+                <br/><br/>
+                Gavin has been instrumental in organizing and promoting the Michigan Launch Initiative (MLI), a public-private partnership that provides a collaborative platform for academia, industry, and governmental agencies to access near-earth space.
+                <br/><br/>
+                The MLI will provide vertical and horizontal rocket launch capability as well as a control center for post-launch operations. The MLI leverages Michigan’s unique advantages for polar orbit satellite launches: location, infrastructure, skilled workforce, economy and advanced manufacturing capability.
+                `
+            },
+
+            {
+                image: "charles_sills.png",
+                name: "Charles Sills",
+                position: "President & CEO",
+                company: "American Defense Alliance",
+                bio: `
+                Charles F. Sills is a recognized authority on U.S. Government contracting, and an advocate for Small Business/Diversity Supplier access to Federal and Military acquisition opportunities, serving as the President & CEO of the American Defense Alliance – which hosts major Defense Requirements conferences across the country, connecting private sector innovators with the Pentagon, Military commands, and Congress to accelerate National Security solutions.
+                <br></br>
+                Concurrently, he serves as Chief Operating Officer of the Minority Business Development Agency’s Federal Procurement Center, under the U.S. Commerce Dept.; and manages the partnership under which MBDA affiliated companies attend and benefit from ADA conferences. He is a member of the U.S. Chamber of Commerce's Small Business Council, and the Executive Committee of the Veterans Entrepreneurship Task Force (VET-Force). He is also a Member of the Board of the American-Eurasian Business Coalition, focusing on international infrastructure, energy and investment initiatives, and serving on multinational task forces such as the Danube Basin Environmental Restoration Program and the Japan-U.S. Joint Fund for Social & Economic Development.
+                <br></br>
+                As a former Naval Intelligence Officer, he held positions at the Defense Intelligence Agency, the U.S. Middle East Force, and NATO Supreme Allied Command/Atlantic; and subsequently worked in Lockheed Martin’s International Division managing strategic marketing and export licensing for defense systems as well as renewable energy technologies. His education includes an M.A. from the Fletcher School of Law and Diplomacy and an A.B. from Princeton University’s Woodrow Wilson School of Public & International Affairs.
+                `
+            },
         ]
     }
 ];
