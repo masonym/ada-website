@@ -73,7 +73,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                 )}
 
                 {/* Sponsorship Section */}
-                <div className="pt-12 items-center flex flex-col w-full">
+                <div className="pt-6 items-center flex flex-col w-full">
 
                 {/* this is a stupid temporary hacky solution */}
                     {event.id != 3 && (
@@ -102,7 +102,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
 
                     <SponsorProspectus event={event} />
 
-                    <div className="text-center w-full max-w-4xl">
+                    <div className="text-center w-full max-w-4xl mb-4">
                         <div className="flex items-center justify-center text-gray-600 mb-2">
                             <Mail className="w-5 h-5 mr-2" />
                             <p className="font-medium text-md md:text-base">{event.contactInfo?.contactText || 'Contact our Sponsorship Team'} </p>
