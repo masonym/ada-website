@@ -13,19 +13,26 @@ const MatchmakingPage = () => {
 
   const participants = [
     {
-      title: "Small and Disadvantaged Businesses",
+      title: "Defense Officials",
       description: (
         <>
           <p className="mb-2">
-            <b>Small Businesses:</b> Companies that are looking to expand their role in the Defense Supply Chain, Secure Government Contracts, or Form Partnerships with Larger Contractors. These include businesses of all sizes that meet the qualifications for Small Business Status under the U.S. Small Business Administration (SBA) guidelines.
-            <br /><br />
-            <b>Minority-Owned, Women-Owned, and Veteran-Owned Businesses:</b> These businesses are encouraged to participate in order to gain access to Procurement Opportunities and to promote Diversity within the Defense Industry. Many Large Contractors and Government Agencies have Diversity and Inclusion Initiatives aimed at expanding the involvement of these types of businesses in Defense Contracting.
-            <br /><br />
-            <b>Disadvantaged or Econominically Underserved Businesses:</b> Companies that are eligible for certain Federal Programs, such as those classified under the SBA's 8(a) Program, HUBZone, or other Disadvantaged Business status, can benefit from the Matchmaking Sessions to connect with entities actively seeking to fulfill Diversity Requirements.
+            <b>DoD Representatives and Agencies:</b> Military Agencies and Defense-Related Government bodies often participate in these Matchmaking Sessions to find qualified suppliers for various defense needs. This can include everything from Technology and Equipment to services like Logistics, Maintenance, Etc...
           </p>
         </>
       ),
-      icon: Building2
+      icon: Users
+    },
+    {
+      title: "Government Agencies",
+      description: (
+        <>
+          <p className="mb-2">
+            <b>Federal, State, and Local Government Procurement Officers:</b> Government Agencies looking to meet Procurement goals or diversify their supplier base for Defense-Related Contracts may also benefit from participating in these Matchmaking Sessions.
+          </p>
+        </>
+      ),
+      icon: RiGovernmentLine
     },
     {
       title: "Large Defense Contractors and Prime Contractors",
@@ -41,27 +48,20 @@ const MatchmakingPage = () => {
       icon: Briefcase
     },
     {
-      title: "Government Agencies",
+      title: "Small and Disadvantaged Businesses",
       description: (
         <>
           <p className="mb-2">
-            <b>Federal, State, and Local Government Procurement Officers:</b> Government Agencies looking to meet Procurement goals or diversify their supplier base for Defense-Related Contracts may also benefit from participating in these Matchmaking Sessions.
+            <b>Small Businesses:</b> Companies that are looking to expand their role in the Defense Supply Chain, Secure Government Contracts, or Form Partnerships with Larger Contractors. These include businesses of all sizes that meet the qualifications for Small Business Status under the U.S. Small Business Administration (SBA) guidelines.
+            <br /><br />
+            <b>Minority-Owned, Women-Owned, and Veteran-Owned Businesses:</b> These businesses are encouraged to participate in order to gain access to Procurement Opportunities and to promote Diversity within the Defense Industry. Many Large Contractors and Government Agencies have Diversity and Inclusion Initiatives aimed at expanding the involvement of these types of businesses in Defense Contracting.
+            <br /><br />
+            <b>Disadvantaged or Econominically Underserved Businesses:</b> Companies that are eligible for certain Federal Programs, such as those classified under the SBA's 8(a) Program, HUBZone, or other Disadvantaged Business status, can benefit from the Matchmaking Sessions to connect with entities actively seeking to fulfill Diversity Requirements.
           </p>
         </>
       ),
-      icon: RiGovernmentLine
+      icon: Building2
     },
-    {
-      title: "Defense Officials",
-      description: (
-        <>
-          <p className="mb-2">
-            <b>DoD Representatives and Agencies:</b> Military Agencies and Defense-Related Government bodies often participate in these Matchmaking Sessions to find qualified suppliers for various defense needs. This can include everything from Technology and Equipment to services like Logistics, Maintenance, Etc...
-          </p>
-        </>
-      ),
-      icon: Users
-    }
   ];
 
   return (
