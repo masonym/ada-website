@@ -1,3 +1,5 @@
+import path from "path";
+
 export const EVENT_NAVS = [
   {
     eventId: 1, // This should match the event ID from EVENTS
@@ -34,6 +36,7 @@ export const EVENT_NAVS = [
           // { label: 'Location & Parking', path: 'venue' },
           { label: 'FAQs', path: 'faqs' },
           { label: 'Event Recap', path: 'event-recap' },
+          { label: 'Matchmaking Sessions', path: 'matchmaking-sessions' },
         ],
       },
       { label: 'Agenda', path: 'agenda' },
