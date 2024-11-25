@@ -1,5 +1,6 @@
 import React from 'react';
 import { Users, Clock, CheckCircle, UserPlus, Building2, Briefcase, GraduationCap } from 'lucide-react';
+import Link from 'next/link';
 
 const MatchmakingPage = () => {
   const benefits = [
@@ -40,8 +41,16 @@ const MatchmakingPage = () => {
           Matchmaking Sessions
         </h1>
         <p className="text-lg text-slate-600 max-w-7xl mx-auto">
-        The <b>2025 Southeast Defense Procurement Conference</b> will offer an exciting opportunity for businesses to engage in One-on-One Matchmaking Sessions with key decision-makers from the Department of Defense (DoD), Government Agencies, and Prime Contractors. These sessions are designed to facilitate direct, meaningful conversations between attendees and representatives from various Government Agencies, Prime Contractors, and Department of Defense Officials.
+          The <b>2025 Southeast Defense Procurement Conference</b> will offer an exciting opportunity for businesses to engage in One-on-One Matchmaking Sessions with key decision-makers from the Department of Defense (DoD), Government Agencies, and Prime Contractors. These sessions are designed to facilitate direct, meaningful conversations between attendees and representatives from various Government Agencies, Prime Contractors, and Department of Defense Officials.
         </p>
+        <div className="text-lg mt-4 mx-auto max-w-7xl text-slate-600">
+          <p className="text-xl">
+            Government & Military Officials
+          </p>
+          <p>
+            Inquire about Hosting a Matchmaking Table at <Link href={"mailto:info@americandefensealliance.org"} className="text-blue-500 underline">info@americandefensealliance.org</Link>.
+          </p>
+        </div>
       </div>
 
       {/* Purpose Section */}
