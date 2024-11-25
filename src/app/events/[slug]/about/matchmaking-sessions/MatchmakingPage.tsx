@@ -1,5 +1,6 @@
 import React from 'react';
 import { Users, Clock, CheckCircle, UserPlus, Building2, Briefcase, GraduationCap } from 'lucide-react';
+import { RiGovernmentLine } from "react-icons/ri";
 import Link from 'next/link';
 
 const MatchmakingPage = () => {
@@ -12,23 +13,53 @@ const MatchmakingPage = () => {
 
   const participants = [
     {
-      title: "Small Businesses",
-      description: "Companies looking to expand their presence in the defense industry and build connections with prime contractors, government agencies, and defense officials.",
+      title: "Small and Disadvantaged Businesses",
+      description: (
+        <>
+          <p className="mb-2">
+            <b>Small Businesses:</b> Companies that are looking to expand their role in the Defense Supply Chain, Secure Government Contracts, or Form Partnerships with Larger Contractors. These include businesses of all sizes that meet the qualifications for Small Business Status under the U.S. Small Business Administration (SBA) guidelines.
+            <br /><br />
+            <b>Minority-Owned, Women-Owned, and Veteran-Owned Businesses:</b> These businesses are encouraged to participate in order to gain access to Procurement Opportunities and to promote Diversity within the Defense Industry. Many Large Contractors and Government Agencies have Diversity and Inclusion Initiatives aimed at expanding the involvement of these types of businesses in Defense Contracting.
+            <br /><br />
+            <b>Disadvantaged or Econominically Underserved Businesses:</b> Companies that are eligible for certain Federal Programs, such as those classified under the SBA's 8(a) Program, HUBZone, or other Disadvantaged Business status, can benefit from the Matchmaking Sessions to connect with entities actively seeking to fulfill Diversity Requirements.
+          </p>
+        </>
+      ),
       icon: Building2
     },
     {
-      title: "Prime Contractors",
-      description: "Large firms seeking to engage with innovative small businesses for potential partnerships or subcontracting opportunities.",
+      title: "Large Defense Contractors and Prime Contractors",
+      description: (
+        <>
+          <p className="mb-2">
+            <b>Prime Contractors:</b> Large companies that work directly with the U.S. Department of Defense (DoD) and other Government entities to supply products or services. These companies can use Matchmaking Sessions to identify new Subcontractors, Suppliers, or Specialized Partners for their Defense Contracts.
+            <br /><br />
+            <b>Tier 1 and Tier 2 Suppliers:</b> Companies that play a significant role in the Defense Supply Chain and are looking to identify new partners or expand their network within the industry. They often seek niche technologies or capabilities that smaller companies may offer.
+          </p>
+        </>
+      ),
       icon: Briefcase
     },
     {
       title: "Government Agencies",
-      description: "Federal, State, and Local Agencies looking to connect with businesses that provide solutions tailored to their defense-related needs.",
-      icon: GraduationCap
+      description: (
+        <>
+          <p className="mb-2">
+            <b>Federal, State, and Local Government Procurement Officers:</b> Government Agencies looking to meet Procurement goals or diversify their supplier base for Defense-Related Contracts may also benefit from participating in these Matchmaking Sessions.
+          </p>
+        </>
+      ),
+      icon: RiGovernmentLine
     },
     {
       title: "Defense Officials",
-      description: "Key decision-makers and procurement representatives in the defense sector aiming to discover new products, services, and solutions that align with mission objectives and operational requirements.",
+      description: (
+        <>
+          <p className="mb-2">
+            <b>DoD Representatives and Agencies:</b> Military Agencies and Defense-Related Government bodies often participate in these Matchmaking Sessions to find qualified suppliers for various defense needs. This can include everything from Technology and Equipment to services like Logistics, Maintenance, Etc...
+          </p>
+        </>
+      ),
       icon: Users
     }
   ];
@@ -101,9 +132,11 @@ const MatchmakingPage = () => {
         <div className="grid md:grid-cols-2 gap-3">
           {participants.map((participant, index) => (
             <div key={index} className="bg-white rounded-xl p-6 shadow-sm">
-              <participant.icon className="w-8 h-8 text-navy-800 mb-4" />
-              <h3 className="text-lg font-semibold mb-2">{participant.title}</h3>
-              <p className="text-slate-600">{participant.description}</p>
+              <div className="flex flex-row items-center gap-3 mb-4">
+                <participant.icon className="w-8 h-8 text-navy-800" />
+                <h3 className="text-xl font-semibold">{participant.title}</h3>
+              </div>
+              <div className="text-slate-600">{participant.description}</div>
             </div>
           ))}
         </div>
