@@ -40,7 +40,7 @@ const MatchmakingPage = () => {
           Matchmaking Sessions
         </h1>
         <p className="text-lg text-slate-600 max-w-7xl mx-auto">
-          The 2025 Southeast Defense Procurement Conference will offer an exciting opportunity for businesses to engage in One-on-One Matchmaking Sessions with key decision-makers from the Defense Industry, Government Agencies, and Prime Contractors. These sessions are designed to facilitate direct, meaningful conversations between attendees and representatives from various Government Agencies, Prime Contractors, and Department of Defense Officials.
+        The <b>2025 Southeast Defense Procurement Conference</b> will offer an exciting opportunity for businesses to engage in One-on-One Matchmaking Sessions with key decision-makers from the Department of Defense (DoD), Government Agencies, and Prime Contractors. These sessions are designed to facilitate direct, meaningful conversations between attendees and representatives from various Government Agencies, Prime Contractors, and Department of Defense Officials.
         </p>
       </div>
 
