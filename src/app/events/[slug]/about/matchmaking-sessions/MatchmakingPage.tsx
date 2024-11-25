@@ -42,6 +42,8 @@ const MatchmakingPage = () => {
             <b>Prime Contractors:</b> Large companies that work directly with the U.S. Department of Defense (DoD) and other Government entities to supply products or services. These companies can use Matchmaking Sessions to identify new Subcontractors, Suppliers, or Specialized Partners for their Defense Contracts.
             <br /><br />
             <b>Tier 1 and Tier 2 Suppliers:</b> Companies that play a significant role in the Defense Supply Chain and are looking to identify new partners or expand their network within the industry. They often seek niche technologies or capabilities that smaller companies may offer.
+            <br /><br />
+            <b>Large Defense Contractors:</b> Major companies in the Defense Sector have extensive contracts with the Department of Defense (DoD) and other Government Agencies, providing a wide range of products and services. These Large Defense Contractors often seek specialized Subcontractors, Innovative Technologies, and Solutions to enhance their Capabilities and meet specific Defense Requirements.
           </p>
         </>
       ),
@@ -85,12 +87,12 @@ const MatchmakingPage = () => {
       </div>
 
       {/* Purpose Section */}
-      <div className="bg-white rounded-xl shadow-sm p-8 mb-12">
+      {/* <div className="bg-white rounded-xl shadow-sm p-8 mb-12">
         <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">Purpose and Benefits</h2>
         <p className="text-slate-600 mb-2 text-center">
           The Matchmaking Sessions are designed to connect small businesses with larger defense contractors, helping smaller companies navigate procurement processes, enhance their visibility in the defense market, and foster valuable partnerships. For Government Agencies and Defense Officials, the sessions offer access to a diverse array of innovative solutions, services, and products, enabling them to discover new opportunities, meet mission requirements more effectively, and engage with a broader range of potential suppliers.
         </p>
-      </div>
+      </div> */}
 
       {/* How it Works Section */}
       <div className="bg-gradient-to-br from-navy-500 to-navy-800 text-white rounded-xl p-8 mb-12">
