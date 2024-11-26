@@ -3,7 +3,7 @@ export const SPEAKERS = [
         id: 1,
         speakers: [
             {
-                image: "michael_waltz.png",
+                image: "michael_waltz.webp",
                 name: "Congressman Michael Waltz (6th District, Florida)",
                 position: "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
                 company: "U.S. House of Representatives",
@@ -40,7 +40,7 @@ export const SPEAKERS = [
                 }
             },
             {
-                image: "mark_cancian.jpg",
+                image: "mark_cancian.webp",
                 name: "Mark Cancian",
                 position: "Senior Adviser, International Security Program",
                 company: "Center for Strategic & International Studies",
@@ -51,7 +51,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "joachim_christian.png",
+                image: "joachim_christian.webp",
                 name: "His Royal Highness, Brigadier General Prince Joachim, Prince of Denmark",
                 position: "Danish Military Industry Attaché",
                 company: "Royal Embassy of Denmark",
@@ -67,7 +67,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "dave_leinberger.png",
+                image: "dave_leinberger.webp",
                 name: "Dave Leinberger",
                 position: "Acting Director, Army Partnerships",
                 company: "Deputy Chief of Staff, G-9 (Installations)",
@@ -89,7 +89,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "brian_liesveld.jpg",
+                image: "brian_liesveld.webp",
                 name: "Brian Liesveld",
                 position: "Chief Executive Officer",
                 company: "DEFENSEWERX",
@@ -102,7 +102,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "charles_sills.png",
+                image: "charles_sills.webp",
                 name: "Charles Sills",
                 position: "President & CEO",
                 company: "American Defense Alliance",
@@ -115,7 +115,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "arveice_washington.jpg",
+                image: "arveice_washington.webp",
                 name: "Arveice Washington",
                 position: "Director, Office of Small Business Programs",
                 company: "Office of the Secretary of the Navy",
@@ -145,7 +145,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "kimberly_buhler.png",
+                image: "kimberly_buhler.webp",
                 name: "Kimberly Buehler",
                 position: "Director, Office of Small Business Programs",
                 company: "U.S. Army, Department of Defense",
@@ -156,7 +156,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "david_canada.png",
+                image: "david_canada.webp",
                 name: "David Canada",
                 position: "Director, Global Supplier Diversity",
                 company: "Boeing Defense Space & Security",
@@ -171,7 +171,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "patricia_waddell.png",
+                image: "patricia_waddell.webp",
                 name: "Patricia Waddell",
                 position: "Director, Office of IT Services, Information Technology Category (ITC), Federal Acquisition Service (FAS)",
                 company: "U.S. General Services Administration",
@@ -184,7 +184,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "iryna_andrukh.png",
+                image: "iryna_andrukh.webp",
                 name: "Dr. Iryna Andrukh",
                 position: "Ukraine Program Director",
                 company: "Progress Humanity",
@@ -195,7 +195,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "amir_bagherpour.jpg",
+                image: "amir_bagherpour.webp",
                 name: "Amir Bagherpour, PhD",
                 position: "Managing Director, AI Services and Advanced Analytics",
                 company: "Accenture Federal Services",
@@ -204,7 +204,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "john_coffey.png",
+                image: "john_coffey.webp",
                 name: "Honorable John P. (\"Sean\") Coffey",
                 position: "General Counsel",
                 company: "Department of the Navy",
@@ -270,7 +270,7 @@ export const SPEAKERS = [
             },
 
             {
-                image: "bianca_henderson.png",
+                image: "bianca_henderson.webp",
                 name: "Bianca Henderson",
                 position: "Small Business Director",
                 company: "NAVFAC HQ, Department of the Navy",
@@ -279,7 +279,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "mark_correll.png",
+                image: "mark_correll.webp",
                 name: "Mark Correll",
                 position: "Vice President, Federal Strategy Director",
                 company: "HDR, Inc.",
@@ -303,7 +303,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "scott_kiser.png",
+                image: "scott_kiser.webp",
                 name: "Scott Kiser",
                 position: "Director, Office of Small Business Programs",
                 company: "Office of the Secretary of the Air Force",
@@ -316,7 +316,7 @@ export const SPEAKERS = [
 
             // dave morrow
             {
-                image: "david_morrow.png",
+                image: "david_morrow.webp",
                 name: "Dave Morrow",
                 position: "Acting Director, Military Programs",
                 company: "U.S. Army Corps of Engineers",
@@ -342,7 +342,7 @@ export const SPEAKERS = [
             }
 
             // {
-            //     image: "placeholder.png",
+            //     image: "placeholder.webp",
             //     name: "Placeholder Name",
             //     position: "Placeholder Title",
             //     company: "Placeholder Company",
@@ -357,7 +357,7 @@ export const SPEAKERS = [
         id: 3,
         speakers: [
             {
-                image: "stephen_purdy.png",
+                image: "stephen_purdy.webp",
                 name: "Major General Stephen G. Purdy, Jr.",
                 position: "Military Deputy, Office of the Assistant Secretary of the Air Force for Space Acquisition and Integration",
                 company: "United States Space Force",
@@ -372,7 +372,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "chad_brown.png",
+                image: "chad_brown.webp",
                 name: "Chad Brown",
                 position: "Division Chief, Future Systems Project Office, Exploration Ground Systems",
                 company: "National Aeronautics and Space Administration (NASA)",
@@ -389,7 +389,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "samuel_visner.png",
+                image: "samuel_visner.webp",
                 name: "Samuel Visner",
                 position: "Director",
                 company: "National Cybersecurity Federally Funded Research and Development Center (NCF)",
@@ -406,7 +406,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "walt_yates.png",
+                image: "walt_yates.webp",
                 name: "Walt Yates, U.S. Marine Col (Ret.)",
                 position: "Principal",
                 company: "Walt Yates & Associates, LLC",
@@ -415,7 +415,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "doug_morato.png",
+                image: "doug_morato.webp",
                 name: "Doug Morato",
                 position: "Microsoft Cyber Security SME",
                 company: "Anamo, Inc.",
@@ -430,7 +430,7 @@ export const SPEAKERS = [
                 `
             },
             {
-                image: "jonathan_geotsch.png",
+                image: "jonathan_geotsch.webp",
                 name: "Jonathan Geotsch",
                 position: "CEO",
                 company: "Anamo, Inc.",
@@ -443,7 +443,7 @@ export const SPEAKERS = [
 
             // john sanders
             {
-                image: "john_sanders.png",
+                image: "john_sanders.webp",
                 name: "John Sanders (Invited)",
                 position: "Senior Cybersecurity Research Analytic Consultant",
                 company: "Director of National Intelligence (DNI)",
@@ -462,7 +462,7 @@ export const SPEAKERS = [
 
             // Thad Altman
             {
-                image: "thad_altman.png",
+                image: "thad_altman.webp",
                 name: "Thad Altman",
                 position: "Executive Director & CEO",
                 company: "The Astronauts Memorial Foundation",
@@ -479,7 +479,7 @@ export const SPEAKERS = [
 
             // Janet Petro
             {
-                image: "janet_petro.png",
+                image: "janet_petro.webp",
                 name: "Janet Petro",
                 position: "Director",
                 company: "NASA's John F. Kennedy Space Center",
@@ -499,7 +499,7 @@ export const SPEAKERS = [
 
             // Sasha Sims
             {
-                image: "sasha_sims.png",
+                image: "sasha_sims.webp",
                 name: "Sasha Sims",
                 position: "Deputy Director, Spaceport Integration and Services",
                 company: "NASA's John F. Kennedy Space Center",
@@ -519,7 +519,7 @@ export const SPEAKERS = [
 
             // Gavin Brown
             {
-                image: "gavin_brown.png",
+                image: "gavin_brown.webp",
                 name: "Gavin Brown",
                 position: "Executive Director",
                 company: "Michigan Aerospace Manufacturers Association",
@@ -537,7 +537,7 @@ export const SPEAKERS = [
             },
 
             {
-                image: "charles_sills.png",
+                image: "charles_sills.webp",
                 name: "Charles Sills",
                 position: "President & CEO",
                 company: "American Defense Alliance",
@@ -552,7 +552,7 @@ export const SPEAKERS = [
 
             // Frank A. Dibello
             {
-                image: "frank_dibello.png",
+                image: "frank_dibello.webp",
                 name: "Frank A. DiBello",
                 position: "CEO",
                 company: "SOLV, LLC",
@@ -575,7 +575,7 @@ export const SPEAKERS = [
 
             // Matt Bocchino
             {
-                image: "matt_bocchino.png",
+                image: "matt_bocchino.webp",
                 name: "Matt Bocchino",
                 position: "Director",
                 company: "Cecil Airport & Spaceport",
