@@ -69,7 +69,7 @@ const MatchmakingPage = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header Section */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-6">
         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
           Matchmaking Sessions
         </h1>
@@ -127,7 +127,7 @@ const MatchmakingPage = () => {
 
       {/* Who Should Participate Section */}
       <div className="mb-12">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">Who Should Participate?</h2>
+        <h2 className="text-4xl font-bold text-slate-900 mb-6 text-center">Who Should Participate?</h2>
         <div className="grid md:grid-cols-2 gap-3">
           {participants.map((participant, index) => (
             <div key={index} className="bg-white rounded-xl p-6 shadow-sm">
@@ -143,7 +143,7 @@ const MatchmakingPage = () => {
 
       {/* Key Outcomes Section */}
       <div className="bg-navy-800 rounded-xl p-8">
-        <h2 className="text-2xl font-bold text-white mb-6 text-center">Key Outcomes</h2>
+        <h2 className="text-4xl font-bold text-white mb-6 text-center">Key Outcomes</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {benefits.map((benefit, index) => (
             <div key={index} className="flex items-start gap-3">
