@@ -6,13 +6,15 @@ const MissionStatement = () => {
       <div className="container mx-auto text-center">
         <h2 className="text-5xl font-bold mb-4">Our Mission</h2>
         <p className="text-xl max-w-3xl mx-auto">
-          The American Defense Alliance is dedicated to supporting U.S. National Security and our Warfighters by
-          informing the private-sector Defense Industrial Base of Federal acquisition requirements and priorities,
-          and facilitating connections between Small Businesses, Diversity Suppliers, and Prime Contractors.
+          The American Defense Alliance is dedicated to the critical mission of supporting U.S.
+          National Security and our Warfighters by informing the private-sector Defense Industrial
+          Base of Federal acquisition requirements and priorities, and facilitating connections
+          between Small Businesses, Diversity Suppliers, and Prime Contractors, enabling them
+          to collaborate effectively in identifying, pursuing, and performing Government contracts.
         </p>
         <br></br>
         <p className="text-xl max-w-3xl mx-auto">
-        Our goal is to facilitate meaningful connections between Small Businesses, Diversity Suppliers, and Prime Contractors, enabling them to collaborate effectively in identifying, pursuing, and performing Government contracts.
+          Our goal is to facilitate meaningful connections between Small Businesses, Diversity Suppliers, and Prime Contractors, enabling them to collaborate effectively in identifying, pursuing, and performing Government contracts.
         </p>
       </div>
     </section>

@@ -20,11 +20,15 @@ const AboutUsPage = () => {
         <div className="md:w-1/2">
           <h2 className="text-2xl font-semibold text-navy-800 mb-4">Our Mission</h2>
           <p className="text-gray-700 mb-4">
-            The American Defense Alliance is dedicated to the critical mission of supporting U.S. National Security and our Warfighters. We serve as a vital bridge between the private-sector Defense Industrial Base and Federal acquisition requirements and priorities.
+          The American Defense Alliance is dedicated to the critical mission of supporting U.S.
+National Security and our Warfighters by informing the private-sector Defense Industrial
+Base of Federal acquisition requirements and priorities, and facilitating connections
+between Small Businesses, Diversity Suppliers, and Prime Contractors, enabling them
+to collaborate effectively in identifying, pursuing, and performing Government contracts.
           </p>
-          <p className="text-gray-700">
+          {/* <p className="text-gray-700">
             Our goal is to facilitate meaningful connections between Small Businesses, Diversity Suppliers, and Prime Contractors, enabling them to collaborate effectively in identifying, pursuing, and performing Government contracts.
-          </p>
+          </p> */}
         </div>
       </div>
       

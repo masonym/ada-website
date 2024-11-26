@@ -39,7 +39,7 @@ const MatchmakingPage = () => {
       description: (
         <>
           <p className="mb-2">
-            <b>Prime Contractors:</b> Large companies that work directly with the U.S. Department of Defense (DoD) and other Government entities to supply products or services. These companies can use Matchmaking Sessions to identify new Subcontractors, Suppliers, or Specialized Partners for their Defense Contracts.
+            <b>Prime Contractors:</b> Large companies that work directly with the U.S. Department of Defense (DoD) and other Government Agencies to supply products or services. These companies can use Matchmaking Sessions to identify new Subcontractors, Suppliers, or Specialized Partners for their Defense Contracts.
             <br /><br />
             <b>Large Defense Contractors:</b> Major companies in the Defense Sector have extensive contracts with the Department of Defense (DoD) and other Government Agencies, providing a wide range of products and services. These Large Defense Contractors often seek specialized Subcontractors, Innovative Technologies, and Solutions to enhance their Capabilities and meet specific Defense Requirements.
             <br /><br />
@@ -74,14 +74,11 @@ const MatchmakingPage = () => {
           Matchmaking Sessions
         </h1>
         <p className="text-lg text-slate-600 max-w-7xl mx-auto">
-          The <b>2025 Southeast Defense Procurement Conference</b> will offer an exciting opportunity for businesses to engage in One-on-One Matchmaking Sessions with key decision-makers from the Department of Defense (DoD), Government Agencies, and Prime Contractors. These sessions are designed to facilitate direct, meaningful conversations between attendees and representatives from various Government Agencies, Prime Contractors, and Department of Defense Officials.
+          The <b>2025 Southeast Defense Procurement Conference</b> will offer a special opportunity for businesses to engage in One-on-One Matchmaking Sessions with key decision-makers from the Department of Defense (DoD), Government Agencies, and Prime Contractors.
         </p>
         <div className="text-lg mt-4 mx-auto max-w-7xl text-slate-600">
           <p className="text-xl">
-            Government & Military Officials
-          </p>
-          <p>
-            Inquire about Hosting a Matchmaking Table at <Link href={"mailto:info@americandefensealliance.org"} className="text-blue-500 underline">info@americandefensealliance.org</Link>.
+            Government & Military Officials Please inquire about Hosting a Matchmaking Table at <Link href={"mailto:info@americandefensealliance.org"} className="text-blue-500 underline">info@americandefensealliance.org</Link>.
           </p>
         </div>
       </div>
@@ -112,7 +109,7 @@ const MatchmakingPage = () => {
             <div>
               <h3 className="font-semibold mb-2">Host Scheduling</h3>
               <p className="text-gray-200">
-                Matchmaking Sessions will take place from 4:00 PM - 5:30 PM on March 18. Each host will have 12 available slots, with each session lasting 7.5 minutes. The system is designed to ensure that both parties can maximize their time, focusing on relevant opportunities.
+              Matchmaking Sessions will take place from 4:00 PM - 5:30 PM on March 18. Each host will have 12 available slots, with each session lasting 7.5 minutes. The system is designed to ensure that both parties can maximize their time, focusing on relevant opportunities.
               </p>
             </div>
           </div>
