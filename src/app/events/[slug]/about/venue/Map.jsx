@@ -48,11 +48,6 @@ const Map = ({ placeId }) => {
     origin: new window.google.maps.Point(0, 0),
     anchor: new window.google.maps.Point(25, 50),
   };
-  const infoWindowStyle = {
-    background: `white`,
-    border: `1px solid #ccc`,
-    padding: 15
-  };
 
   return (
     <div style={mapContainerStyle}>
@@ -60,24 +55,27 @@ const Map = ({ placeId }) => {
         mapContainerStyle={{ height: '100%', width: '100%' }}
         center={{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }}
         zoom={18}
+        mapId={process.env.NEXT_PUBLIC_MAPS_API_KEY}
       >
         <Marker
           position={{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }}
           icon={largeIcon}
           onClick={toggleInfoWindow}
-        />
+        >
+
         {isInfoWindowOpen && (
           <InfoWindow
             position={{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }}
             onCloseClick={toggleInfoWindow}
             options={{ pixelOffset: new window.google.maps.Size(0, -40) }}
           >
-            <div style={infoWindowStyle}>
+            <div>
               <h2 style={{ margin: '0 0 10px', fontSize: '18px', fontWeight: 'bold' }}>{place.name}</h2>
               <p style={{ margin: '0 0 5px', fontSize: '14px' }}>{place.formatted_address}</p>
             </div>
           </InfoWindow>
         )}
+        </Marker>
       </GoogleMap>
     </div>
   );
