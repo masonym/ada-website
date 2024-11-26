@@ -55,7 +55,6 @@ const Map = ({ placeId }) => {
         mapContainerStyle={{ height: '100%', width: '100%' }}
         center={{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }}
         zoom={18}
-        mapId={process.env.NEXT_PUBLIC_MAPS_API_KEY}
       >
         <Marker
           position={{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }}
