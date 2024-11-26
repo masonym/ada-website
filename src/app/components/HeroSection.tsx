@@ -9,14 +9,19 @@ const HeroSection = () => {
   const now = new Date();
   now.setHours(0, 0, 0, 0);
 
+  // Add date objects to events and sort by date
+  const eventsWithDates = EVENTS.map(event => ({
+    ...event,
+    dateObj: new Date(event.timeStart)
+  })).sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime());
+
   // Find the next upcoming event
-  const nextEvent = EVENTS
-    .map(event => ({
-      ...event,
-      dateObj: new Date(event.timeStart)
-    }))
-    .filter(event => event.dateObj >= now)
-    .sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime())[0];
+  const nextEvent = eventsWithDates.find(event => event.dateObj >= now);
+
+  // Find the most recent past event
+  const mostRecentPastEvent = [...eventsWithDates]
+    .reverse()
+    .find(event => event.dateObj < now);
 
   return (
     <section className="relative h-[35vh] md:h-[45vh] lg:h-[55vh] flex items-center justify-center overflow-hidden">
@@ -46,21 +51,32 @@ const HeroSection = () => {
         <p className="text-base sm:text-lg md:text-xl text-balance md:text-nowrap lg:text-2xl mb-8 max-w-3xl mx-auto italic font-semibold">
           Connecting Industry to Government Procurement Opportunities
         </p>
-        {nextEvent ? (
-          <Link 
-            href={`/events/${nextEvent.slug}`} 
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 text-sm sm:text-base md:text-lg"
-          >
-            Learn About Our Next Event
-          </Link>
-        ) : (
-          <Link 
-            href="/events" 
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 text-sm sm:text-base md:text-lg"
-          >
-            View All Events
-          </Link>
-        )}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          {nextEvent ? (
+            <Link 
+              href={`/events/${nextEvent.slug}`} 
+              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 text-sm sm:text-base md:text-lg"
+            >
+              Learn About Our Next Event
+            </Link>
+          ) : (
+            <Link 
+              href="/events" 
+              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 text-sm sm:text-base md:text-lg"
+            >
+              View All Events
+            </Link>
+          )}
+          
+          {mostRecentPastEvent && (
+            <Link 
+              href={`/events/${mostRecentPastEvent.slug}/about/event-recap`}
+              className="inline-block bg-navy-800 text-white px-6 py-3 rounded-full hover:bg-navy-900 transition duration-300 text-sm sm:text-base md:text-lg border border-white/20"
+            >
+              View Latest Event Recap
+            </Link>
+          )}
+        </div>
       </div>
     </section>
   );
