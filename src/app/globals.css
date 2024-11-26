@@ -55,19 +55,19 @@ body {
   @font-face {
     font-family: 'Gotham';
     font-weight: 400;
-    src: url('/Gotham-Book.otf') format('opentype');
+    src: url('/fonts/Gotham-Book.otf') format('opentype');
   }
 
   @font-face {
     font-family: 'Gotham';
     font-weight: 500;
-    src: url('/Gotham-Medium.otf') format('opentype');
+    src: url('/fonts/Gotham-Medium.otf') format('opentype');
   }
 
   @font-face {
     font-family: 'Gotham';
     font-weight: 700;
-    src: url('/Gotham-Bold.otf') format('opentype');
+    src: url('/fonts/Gotham-Bold.otf') format('opentype');
   }
 }
 
