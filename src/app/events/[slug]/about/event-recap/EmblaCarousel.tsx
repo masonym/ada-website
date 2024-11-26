@@ -6,6 +6,8 @@ import AutoHeight from 'embla-carousel-auto-height';
 import Autoplay from 'embla-carousel-autoplay';
 import { EventImage } from '@/utils/imageUtils';
 import { EmblaCarouselType, EmblaEventType } from 'embla-carousel';
+import { getCdnPath } from '@/utils/image';
+import Image from 'next/image';
 
 
 const TWEEN_FACTOR = 0.75; // Reduced for smoother transitions
@@ -75,7 +77,7 @@ const EmblaCarouselNew: React.FC<PropType> = (props) => {
     // Pre-load images
     useEffect(() => {
         slides.forEach(slide => {
-            const img = new Image();
+            const img = new window.Image();
             img.src = slide.src;
             img.onload = onImageLoad;
         });
@@ -164,9 +166,11 @@ const EmblaCarouselNew: React.FC<PropType> = (props) => {
                             className={`relative flex-0 min-w-[100px] h-[60px] cursor-pointer overflow-hidden rounded-lg transition-opacity will-change-[opacity]
                 ${index === selectedIndex ? 'opacity-100 ring-2 ring-blue-500' : 'opacity-50 hover:opacity-80'}`}
                         >
-                            <img
-                                src={slide.src}
+                            <Image
+                                src={getCdnPath(slide.src)}
                                 alt={`Thumbnail ${index + 1}`}
+                                width={slide.width}
+                                height={slide.height}
                                 className="object-cover w-full h-full"
                                 loading="eager"
                             />
@@ -211,9 +215,11 @@ const EmblaCarouselNew: React.FC<PropType> = (props) => {
                                 }
                             }}
                         >
-                            <img
-                                src={slide.src}
+                            <Image
+                                src={getCdnPath(slide.src)}
                                 alt={slide.alt}
+                                width={slide.width}
+                                height={slide.height}
                                 className="w-full h-auto object-contain rounded-lg"
                                 loading="eager"
                             />

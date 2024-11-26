@@ -9,6 +9,7 @@ import type { EventImage } from '@/utils/imageUtils';
 import Lightbox from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import { getCdnPath } from '@/utils/image';
 
 interface PhotoCarouselProps {
   images: EventImage[];
@@ -63,7 +64,7 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({ images }) => {
             >
               <div className="relative w-full h-full">
                 <Image
-                  src={image.src}
+                  src={getCdnPath(image.src)}
                   alt={image.alt}
                   fill
                   className="object-contain"
@@ -88,7 +89,7 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({ images }) => {
               }`}
             >
               <Image
-                src={image.src}
+                src={getCdnPath(image.src)}
                 alt={`Thumbnail ${index + 1}`}
                 fill
                 className="object-cover"

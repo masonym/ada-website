@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { EVENTS } from '@/constants/events';
 import { EventProps } from './Speakers';
+import { getCdnPath } from '@/utils/image';
 
 type RegistrationTypes = {
     title: string;
@@ -54,7 +55,7 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
             {/* Image container with responsive dimensions */}
             <div className="relative w-full h-32">
                 <Image
-                    src={item.headerImage}
+                    src={getCdnPath(item.headerImage)}
                     alt={item.title}
                     fill
                     className="object-cover"

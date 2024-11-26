@@ -2,6 +2,7 @@ import { SPEAKERS } from '@/constants/speakers';
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import KeynoteSpeaker from './KeynoteSpeaker';
+import { getCdnPath } from '@/utils/image';
 
 type SpeakerProps = {
     event: EventProps;
@@ -104,7 +105,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                     .map((speaker: Speaker, index: number) => (
                         <div key={index} className="flex flex-col items-center text-center">
                             <Image
-                                src={`/events/${event.eventShorthand}/speakers/${speaker.image}`}
+                                src={getCdnPath(`events/${event.eventShorthand}/speakers/${speaker.image}`)}
                                 width={256}
                                 height={256}
                                 alt={`${speaker.name}`}

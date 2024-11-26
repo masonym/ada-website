@@ -7,6 +7,7 @@ import { notFound, useParams } from 'next/navigation';
 import Map from './Map';
 import Link from 'next/link';
 import { ChevronDown, ChevronRight } from 'lucide-react';
+import { getCdnPath } from '@/utils/image';
 
 type Event = {
     id: number;
@@ -57,7 +58,7 @@ const Page = () => {
             </div>
             <div className="mt-6 flex justify-center">
                 <Image
-                    src={event.locationImage}
+                    src={getCdnPath(event.locationImage)}
                     className="rounded-lg mb-4"
                     alt="Location Map"
                     width={1000}

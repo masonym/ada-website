@@ -1,3 +1,4 @@
+import { getCdnPath } from '@/utils/image';
 import React from 'react';
 import Image from 'next/image';
 
@@ -9,7 +10,7 @@ const AboutUsPage = () => {
       <div className="flex flex-col md:flex-row items-center mb-12">
         <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
           <Image
-            src="/placeholder.png"
+            src={getCdnPath("/placeholder.png")}
             alt="American Defense Alliance Team"
             width={600}
             height={400}
@@ -54,7 +55,7 @@ const AboutUsPage = () => {
         <div className="flex flex-col md:flex-row items-start">
           <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
             <Image
-              src="/charles_president_photo.png"
+              src={getCdnPath("/charles_president_photo.png")}
               alt="Charles Sills - President & CEO"
               width={600}
               height={300}

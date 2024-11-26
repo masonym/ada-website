@@ -1,3 +1,4 @@
+import { getCdnPath } from "@/utils/image";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,7 +17,7 @@ const Button = ({ title, icon, variant, link, className }: ButtonProps) => {
             className={`flexCenter gap-3 rounded-full border ${variant} ${className}`}
             target="_blank"
         >
-            {icon && <Image src={icon} width={24} height={24} alt={title} />}
+            {icon && <Image src={getCdnPath(icon)} width={24} height={24} alt={title} />}
             <span className="bold-16 whitespace-nowrap">
                 {title}
             </span>

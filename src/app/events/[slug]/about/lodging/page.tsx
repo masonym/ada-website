@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { MapPin, Phone } from 'lucide-react';
 import { LODGING_INFO } from '@/constants/lodging';
+import { getCdnPath } from '@/utils/image';
 
 export default function LodgingPage({ params }: { params: { slug: string } }) {
   const event = EVENTS.find((e) => e.slug === params.slug);
@@ -26,7 +27,7 @@ export default function LodgingPage({ params }: { params: { slug: string } }) {
             <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="relative h-64">
                 <Image
-                  src={hotel.image}
+                  src={getCdnPath(hotel.image)}
                   alt={hotel.name}
                   fill
                   className="object-cover"

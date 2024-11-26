@@ -1,4 +1,5 @@
 import { EVENTS } from '@/constants/events';
+import { getCdnPath } from '@/utils/image';
 import Image from 'next/image';
 import { notFound, useParams } from 'next/navigation';
 import React from 'react';
@@ -22,7 +23,7 @@ const RecapImage = () => {
             <div className="flex flex-col items-center">
                 <div className="w-full mb-6">
                     <Image
-                        src={mainImage.src}
+                        src={getCdnPath(mainImage.src)}
                         width={2000}
                         height={800}
                         layout="responsive"

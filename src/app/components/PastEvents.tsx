@@ -3,6 +3,7 @@ import { EVENTS } from '@/constants/events';
 import Image from 'next/image';
 import Link from 'next/link';
 import { History, ArrowRight } from 'lucide-react';
+import { getCdnPath } from '@/utils/image';
 
 const SimpleEventCard = ({ title, date, image, slug }: {
     title: string;
@@ -14,7 +15,7 @@ const SimpleEventCard = ({ title, date, image, slug }: {
         <div className="relative overflow-hidden rounded-lg transition-all duration-300 hover:scale-105 shadow-md">
             <div className="relative h-[250px] sm:h-[200px] w-full">
                 <Image
-                    src={image}
+                    src={getCdnPath(image)}
                     fill
                     style={{ objectFit: 'cover' }}
                     alt={`Event image for ${title}`}

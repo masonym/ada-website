@@ -9,6 +9,7 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import Image from 'next/image';
+import { getCdnPath } from '@/utils/image';
 
 interface HighlightedPhotosProps {
   images: EventImage[];
@@ -45,14 +46,14 @@ const HighlightedPhotos: React.FC<HighlightedPhotosProps> = ({ images }) => {
           images.map((img, index) => (
             <div key={img.src} className="relative mb-4">
               <Image
-                src={img.src}
+                src={getCdnPath(img.src)}
                 alt={img.alt}
                 width={img.width}
                 height={img.height}
-                placeholder='blur'
-                blurDataURL="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                loading={index < 6 ? "eager" : "lazy"} // Load first 6 images eagerly
                 className="rounded-lg cursor-pointer"
                 onClick={(e) => handleClick(e, { index })}
+                quality={75}
               />
             </div>
           ))
@@ -65,7 +66,7 @@ const HighlightedPhotos: React.FC<HighlightedPhotosProps> = ({ images }) => {
           close={closeLightbox}
           index={currentImage}
           slides={images.map(img => ({
-            src: img.src,
+            src: getCdnPath(img.src),
             alt: img.alt,
           }))}
           plugins={[Thumbnails, Zoom]}

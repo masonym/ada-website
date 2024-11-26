@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { ArrowRight } from 'lucide-react';
+import { getCdnPath } from '@/utils/image';
 
 type EventCardProps = {
   title: string,
@@ -16,7 +17,7 @@ const EventCard = ({ title, date, description, image, link }: EventCardProps) =>
     <div className="border-2 border-gray-20 rounded-md w-full h-full">
       <Link href={link} className="block relative aspect-[5/2] w-full">
         <Image
-          src={image}
+          src={getCdnPath(image)}
           fill
           alt={`Event image for ${title}`}
           className="rounded-t-md object-fill"

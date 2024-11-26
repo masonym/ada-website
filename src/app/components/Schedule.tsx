@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { EventProps } from './Speakers';
 import ModalVideo from 'react-modal-video';
 import 'react-modal-video/css/modal-video.css';
+import { getCdnPath } from '@/utils/image';
 
 type Speaker = {
   name: string;
@@ -140,7 +141,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                         <div className="flex items-center flex-grow">
                           {speaker.photo && (
                             <Image
-                              src={`/events/${event.eventShorthand}/speakers/${speaker.photo}`}
+                              src={getCdnPath(`events/${event.eventShorthand}/speakers/${speaker.photo}`)}
                               alt={speaker.name}
                               width={48}
                               height={48}
@@ -189,7 +190,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                 <div className="flex-shrink-0 w-48 h-full flex items-center justify-center">
                   <div className="relative w-full h-24">
                     <Image
-                      src={item.sponsorLogo}
+                      src={getCdnPath(item.sponsorLogo)}
                       alt="Sponsor Logo"
                       fill
                       className="object-contain"

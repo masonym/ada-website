@@ -1,6 +1,7 @@
 "use client";
 
 import { EVENTS } from '@/constants/events';
+import { getCdnPath } from '@/utils/image';
 import Image from 'next/image';
 import { notFound, useParams } from 'next/navigation';
 import React from 'react';
@@ -18,7 +19,7 @@ const EventImage = () => {
             <div className="flex flex-col items-center">
                 <div className="w-full mb-6 relative aspect-[5/2]">
                     <Image
-                        src={event.image}
+                        src={getCdnPath(event.image)}
                         alt={`Event image for ${event.title}`}
                         fill
                         sizes="(max-width: 1280px) 100vw, 1280px"

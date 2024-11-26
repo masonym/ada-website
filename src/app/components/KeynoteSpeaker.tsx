@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { SPEAKERS } from '@/constants/speakers';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { getCdnPath } from '@/utils/image';
 
 type KeynoteSpeaker = {
   image: string;
@@ -85,7 +86,7 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
                 <div className="relative w-48 h-48 mb-6">
                   <div className="absolute inset-0 bg-gradient-to-br from-lightBlue-400 to-blue-600 rounded-full opacity-75 blur-md"></div>
                   <Image
-                    src={`/events/${eventShorthand}/speakers/${speaker.image}`}
+                    src={getCdnPath(`events/${eventShorthand}/speakers/${speaker.image}`)}
                     alt={speaker.name}
                     fill
                     className="rounded-full relative z-10 border-4 border-white shadow-lg object-cover"

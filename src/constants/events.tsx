@@ -1,5 +1,6 @@
 // app/events/[slug]/page.tsx
 
+import { getCdnPath } from "@/utils/image";
 import { Mail, Phone } from "lucide-react";
 import Image from "next/image";
 
@@ -371,7 +372,7 @@ export const EVENTS = [
             <div className="flex justify-center items-center gap-8 max-w-full">
               <div className="w-[200px] sm:w-[300px] md:w-[400px] relative">
                 <Image
-                  src="/logos/nass-logo.png"
+                  src={getCdnPath("/logos/nass-logo.png")}
                   alt="NASS Logo"
                   layout="responsive"
                   width={100}
@@ -381,7 +382,7 @@ export const EVENTS = [
               </div>
               <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
                 <Image
-                  src="/logo.png"
+                  src={getCdnPath("/logo.png")}
                   alt="American Defense Alliance Logo"
                   layout="responsive"
                   width={100}
@@ -391,7 +392,7 @@ export const EVENTS = [
               </div>
               <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
                 <Image
-                  src="/logos/amf-logo.png"
+                  src={getCdnPath("/logos/amf-logo.png")}
                   alt="The Astronauts Memorial Foundation Logo"
                   layout="responsive"
                   width={100}

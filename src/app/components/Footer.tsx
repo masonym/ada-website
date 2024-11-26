@@ -1,4 +1,5 @@
 import { FOOTER_CONTACT_INFO, FOOTER_LINKS, SOCIALS } from '@/constants'
+import { getCdnPath } from '@/utils/image'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -12,7 +13,7 @@ const Footer = () => {
             href="/" className="mb-10"
           >
             <Image
-              src="/logo.png"
+              src={getCdnPath("/logo.png")}
               alt="American Defense Alliance Logo"
               width={192}
               height={192}
@@ -61,7 +62,7 @@ const Footer = () => {
                       target='_blank'
                     >
                       <Image
-                        src={link.logo}
+                        src={getCdnPath(link.logo)}
                         alt={`Logo for ${link.title}`}
                         width="0"
                         height="0"

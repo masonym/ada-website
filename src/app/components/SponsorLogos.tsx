@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { EVENT_SPONSORS } from '@/constants/eventSponsors';
 import { EventProps } from './Speakers';
+import { getCdnPath } from '@/utils/image';
 
 type SponsorProps = {
     event: EventProps;
@@ -111,7 +112,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                             >
                                                 <div className="relative w-full flex items-center justify-center">
                                                     <Image
-                                                        src={sponsor.logo}
+                                                        src={getCdnPath(sponsor.logo)}
                                                         alt={`${sponsor.name} Logo`}
                                                         width={desktopSize.width}
                                                         height={desktopSize.height}
@@ -124,7 +125,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                         ) : (
                                             <div className="relative w-full flex items-center justify-center">
                                                 <Image
-                                                    src={sponsor.logo}
+                                                    src={getCdnPath(sponsor.logo)}
                                                     alt={`${sponsor.name} Logo`}
                                                     width={desktopSize.width}
                                                     height={desktopSize.height}

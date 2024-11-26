@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { EVENTS } from '@/constants/events';
+import { getCdnPath } from '@/utils/image';
 
 const HeroSection = () => {
   // Get current date at the start of the day for consistent comparison
@@ -22,7 +23,7 @@ const HeroSection = () => {
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0">
         <Image
-          src="/2025_Defense_Industry_Forecast_Collage.png"
+          src={getCdnPath('2025_Defense_Industry_Forecast_Collage.png')}
           alt="2025 Defense Industry Forecast Collage"
           fill
           priority

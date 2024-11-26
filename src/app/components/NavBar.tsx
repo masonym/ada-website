@@ -7,6 +7,7 @@ import Link from "next/link"
 import { Menu, ChevronDown } from 'lucide-react'
 import { useState, useRef, useEffect } from "react"
 import Hamburger from "./Hamburger"
+import { getCdnPath } from "@/utils/image"
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -62,7 +63,7 @@ const NavBar = () => {
       <Link href="/">
         <div className="flexBetween maxContainer relative">
           <Image
-            src="/logo.png"
+            src={getCdnPath("/logo.png")}
             width={100}
             height={100}
             alt="American Defense Alliance Logo"
