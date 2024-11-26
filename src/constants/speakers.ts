@@ -358,7 +358,7 @@ export const SPEAKERS = [
         speakers: [
             {
                 image: "stephen_purdy.png",
-                name: "Major General Stephen G. Purdy, Jr. (Invited)",
+                name: "Major General Stephen G. Purdy, Jr.",
                 position: "Military Deputy, Office of the Assistant Secretary of the Air Force for Space Acquisition and Integration",
                 company: "United States Space Force",
                 bio: `
@@ -484,10 +484,10 @@ export const SPEAKERS = [
                 position: "Director",
                 company: "NASA's John F. Kennedy Space Center",
                 bio: `
-                Janet Petro was named the 11th director of NASA’s John F. Kennedy Space Center in Florida on June 30, 2021. She had been serving as acting director since May 2021 following NASA Administrator Sen. Bill Nelson’s announcement that Robert D. Cabana, previous Kennedy director, would assume the role of NASA’s associate administrator.
-                Prior to being named director, Petro served as Kennedy’s deputy director since April 2007, where she shared responsibility with the center director in managing the Kennedy team of civil service and contractor employees, determining and implementing center policy and managing and executing Kennedy missions and agency program responsibilities.
+                Janet Petro was named the 11th Director of NASA’s John F. Kennedy Space Center in Florida on June 30, 2021. She had been serving as acting Director since May 2021 following NASA Administrator Sen. Bill Nelson’s announcement that Robert D. Cabana, previous Kennedy Director, would assume the role of NASA’s associate administrator.
+                Prior to being named Director, Petro served as Kennedy’s Deputy Director since April 2007, where she shared responsibility with the Center Director in managing the Kennedy team of civil service and contractor employees, determining and implementing center policy and managing and executing Kennedy missions and agency program responsibilities.
                 <br/><br/>
-                During her tenure as deputy director, Petro helped Kennedy transition into a multi-user spaceport, leading cross-agency initiatives with the Federal Aviation Administration and U.S. Air Force to streamline government processes and support commercial space operations to increase government efficiency and limit redundancy. She served a 12-month appointment at NASA Headquarters in Washington, D.C. as the deputy associate administrator and acting director for the Office of Evaluation.
+                During her tenure as Deputy Director, Petro helped Kennedy transition into a multi-user spaceport, leading cross-agency initiatives with the Federal Aviation Administration and U.S. Air Force to streamline government processes and support commercial space operations to increase government efficiency and limit redundancy. She served a 12-month appointment at NASA Headquarters in Washington, D.C. as the deputy associate administrator and Acting Director for the Office of Evaluation.
                 <br/><br/>
                 From 2017 through January 2020, she served as the Program Executive leading the agency-wide initiative for a phased implementation to restructure all mission enabling functions to ensure efficient and effective support of NASA’s missions. Her assignment to the Mission Support Future Architecture Program (MAP) concluded in January 2020.
                 <br/><br/>
@@ -504,14 +504,14 @@ export const SPEAKERS = [
                 position: "Deputy Director, Spaceport Integration and Services",
                 company: "NASA's John F. Kennedy Space Center",
                 bio: `
-                Sasha Sims is the deputy director of the Spaceport Integration and Services (SI) organization at NASA’s John F. Kennedy Space Center in Florida, appointed to this position in February 2023. She is responsible for ensuring safe, efficient, and effective support services for Kennedy, its workforce, and its customers.
+                Sasha Sims is the Deputy Director of the Spaceport Integration and Services (SI) organization at NASA’s John F. Kennedy Space Center in Florida, appointed to this position in February 2023. She is responsible for ensuring safe, efficient, and effective support services for Kennedy, its workforce, and its customers.
                 <br/><br/>
-                Sims works with the director of SI to successfully execute the organization’s mission to lead the overall planning and assimilation of Kennedy processing activities and the execution of center services across NASA. This includes NASA programs and projects, other government agencies, and commercial partner residents on Kennedy Space Center and in NASA facilities on Cape Canaveral Space Force Station. 
-                Prior to her current assignment, Sims was the chief of staff for NASA’s Exploration Ground Systems (EGS) Program at Kennedy. In this role, she was responsible for providing technical expertise and leadership in the execution of all requirements and milestones in support of the Artemis mission. She had a leading role in programmatic efforts, such as program strategic planning, sustainability, and affordability initiatives, as well as ensuring resources and critical skills were available to support NASA’s deep space human exploration efforts with the Artemis missions.
+                Sims works with the Director of SI to successfully execute the organization’s mission to lead the overall planning and assimilation of Kennedy processing activities and the execution of center services across NASA. This includes NASA programs and projects, other government agencies, and commercial partner residents on Kennedy Space Center and in NASA facilities on Cape Canaveral Space Force Station. 
+                Prior to her current assignment, Sims was the Chief of Staff for NASA’s Exploration Ground Systems (EGS) Program at Kennedy. In this role, she was responsible for providing technical expertise and leadership in the execution of all requirements and milestones in support of the Artemis mission. She had a leading role in programmatic efforts, such as program strategic planning, sustainability, and affordability initiatives, as well as ensuring resources and critical skills were available to support NASA’s deep space human exploration efforts with the Artemis missions.
                 <br/><br/>
-                Sims began her career with NASA in 2003 as a logistics engineer in the Cape Canaveral Spaceport Management Office, where she managed a center operations contract. Shortly after, she moved to the Constellation Program as a lead engineer for Mission Operations Integration, where she led a number of architecture studies to transform the Kennedy Space Center to support NASA’s new exploration vehicles.
+                Sims began her career with NASA in 2003 as a Logistics Engineer in the Cape Canaveral Spaceport Management Office, where she managed a center operations contract. Shortly after, she moved to the Constellation Program as a Lead Engineer for Mission Operations Integration, where she led a number of architecture studies to transform the Kennedy Space Center to support NASA’s new exploration vehicles.
                 <br/><br/>
-                Sims joined EGS in 2012 as the business management and analysis branch chief, where she led a team of program analysts responsible for identifying and prioritizing program resource requirements and managing the program’s budget. After that, she became the division chief for the Program Planning and Control Department. In this role, she was responsible for all EGS programmatic functions, including business, schedule and risk management, contracts, configuration management, program integration, as well as multiple strategic activities.
+                Sims joined EGS in 2012 as the Business Management and Analysis Branch Chief, where she led a team of program analysts responsible for identifying and prioritizing program resource requirements and managing the program’s budget. After that, she became the Division Chief for the Program Planning and Control Department. In this role, she was responsible for all EGS programmatic functions, including business, schedule and risk management, contracts, configuration management, program integration, as well as multiple strategic activities.
                 <br/><br/>
                 Sims also supported the Commercial Crew Program, where she led acquisition planning for suborbital crew commercial services.
                 `
@@ -547,6 +547,42 @@ export const SPEAKERS = [
                 Concurrently, he serves as Chief Operating Officer of the Minority Business Development Agency’s Federal Procurement Center, under the U.S. Commerce Dept.; and manages the partnership under which MBDA affiliated companies attend and benefit from ADA conferences. He is a member of the U.S. Chamber of Commerce's Small Business Council, and the Executive Committee of the Veterans Entrepreneurship Task Force (VET-Force). He is also a Member of the Board of the American-Eurasian Business Coalition, focusing on international infrastructure, energy and investment initiatives, and serving on multinational task forces such as the Danube Basin Environmental Restoration Program and the Japan-U.S. Joint Fund for Social & Economic Development.
                 <br></br>
                 As a former Naval Intelligence Officer, he held positions at the Defense Intelligence Agency, the U.S. Middle East Force, and NATO Supreme Allied Command/Atlantic; and subsequently worked in Lockheed Martin’s International Division managing strategic marketing and export licensing for defense systems as well as renewable energy technologies. His education includes an M.A. from the Fletcher School of Law and Diplomacy and an A.B. from Princeton University’s Woodrow Wilson School of Public & International Affairs.
+                `
+            },
+
+            // Frank A. Dibello
+            {
+                image: "frank_dibello.png",
+                name: "Frank A. DiBello",
+                position: "CEO",
+                company: "SOLV, LLC",
+                bio: `
+                In 2023, Frank DiBello established SOLV, LLC, a space industry advisory firm focused on finance and strategy development for commercial space and technology companies.
+                <br/><br/>
+                Formerly, for 15 years, he served as President and CEO of Space Florida, an innovative for-profit public corporation, established by the Florida Legislature to drive the development of a world-leading aerospace industry for the state, and to serve as the state’s spaceport authority.
+                <br/><br/>
+                DiBello was responsible for strategic direction and management of the organization and established Florida as the leading space state in the nation and the global leader in enabling space commerce. Space Florida financed over $ 3.5 billion of aerospace infrastructure in the state during this period.
+                <br/><br/>
+                Mr. DiBello holds more than 50 years of direct aerospace and defense industry-related experience. He was a Partner at KPMG responsible for the Firm’s aerospace industry practice and was founder of their space industry practice.   Following this, he was a co-founder of the SpaceVest Family of Venture Capital Funds and Aerospace Capital Partners, an infrastructure investment fund focusing on aerospace, technology and telecommunications initiatives.  In 2003 he was selected as President/CEO of Florida’s Aerospace Finance Corporation, established by the Florida Legislature to assist financing the needs of new and established companies applying aerospace technologies to space, aviation and defense markets.
+                <br/><br/>
+                DiBello’s honors include receiving the Department of Defense Distinguished Service Award for Public Service, the highest award presented by the Secretary of Defense to a civilian and in 2020. He was inducted into the Space and Satellite Hall of Fame by the Society of Satellite Professionals and most recently in 2024, was named Venture Capital Leader of the Year by the Florida Venture Forum.
+                <br/><br/>
+                He has served on a number of high-profile roles on advisory groups for NASA, the Department of Defense, and the Department of Transportation, and is a frequent industry advocate and speaker.
+                <br/><br/>
+                Mr. DiBello has taught at the Defense Systems Management College and International Space University. He received his Bachelor of Science degree in Mathematics from Villanova University and completed graduate study work at American University and George Washington University.
+                `
+            },
+
+            // Matt Bocchino
+            {
+                image: "matt_bocchino.png",
+                name: "Matt Bocchino",
+                position: "Director",
+                company: "Cecil Airport & Spaceport",
+                bio: `
+                Matt Bocchino is the director of the Spaceport Integration and Services (SI) organization at NASA’s John F. Kennedy Space Center in Florida. In this role, he is responsible for ensuring safe, efficient, and effective support services for Kennedy, its workforce, and its customers.
+                <br/><br/>
+                Bocchino works with the deputy director of SI to successfully
                 `
             },
         ]
