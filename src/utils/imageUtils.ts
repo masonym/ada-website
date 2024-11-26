@@ -52,13 +52,31 @@ export async function getEventImages(event: EventProps): Promise<EventImage[]> {
   }
 }
 
-export async function validateImagePaths(eventSlug: string): Promise<boolean> {
-    try {
-      const eventDir = path.join(process.cwd(), 'public', 'events', eventSlug, 'photos');
-      await fs.access(eventDir);
-      return true;
-    } catch {
-      console.error(`Directory not found: ${eventSlug}/photos`);
-      return false;
-    }
+import { S3Client, ListObjectsV2Command } from "@aws-sdk/client-s3";
+
+const s3Client = new S3Client({
+  region: process.env.AWS_REGION || 'us-east-1',
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!
   }
+});
+
+export async function validateImagePaths(eventSlug: string): Promise<boolean> {
+  try {
+    // Check if there are any objects in the events/[eventSlug]/photos directory
+    const command = new ListObjectsV2Command({
+      Bucket: process.env.AWS_S3_BUCKET_NAME!,
+      Prefix: `events/${eventSlug}/photos/`,
+      MaxKeys: 1 // We only need to know if at least one image exists
+    });
+
+    const response = await s3Client.send(command);
+    
+    // If we have any contents, the directory exists and has photos
+    return (response.Contents?.length ?? 0) > 0;
+  } catch (error) {
+    console.error(`Failed to validate images for event: ${eventSlug}`, error);
+    return false;
+  }
+}
