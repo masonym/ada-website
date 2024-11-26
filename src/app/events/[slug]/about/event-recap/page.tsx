@@ -69,7 +69,7 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
       <div className="mb-12 max-w-3xl mx-auto bg-navy-800 rounded-lg p-6 sm:p-8 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-lg sm:text-xl mb-4">
-            Access Presentation Materials through our detailed Agenda page.
+            Access Presentation Materials.
           </p>
           <Link
             href={`/events/${params.slug}/agenda`}
