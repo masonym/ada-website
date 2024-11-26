@@ -41,7 +41,7 @@ const EmblaCarouselNew: React.FC<PropType> = (props) => {
             duration: 20,
             dragFree: false
         },
-        [AutoHeight(), Autoplay(autoplayOptions)]
+        [Autoplay(autoplayOptions)]
     );
 
     // Thumbs carousel
