@@ -34,7 +34,7 @@ const EmblaCarouselNew: React.FC<PropType> = (props) => {
     // Main carousel
     const [emblaRef, emblaApi] = useEmblaCarousel(
         {
-            align: 'center',
+            // align: 'center',
             containScroll: false,
             loop: true,
             skipSnaps: false,
