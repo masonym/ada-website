@@ -109,7 +109,7 @@ const MatchmakingPage = () => {
             <div>
               <h3 className="font-semibold mb-2">Host Scheduling</h3>
               <p className="text-gray-200">
-              Matchmaking Sessions will take place from 4:00 PM - 5:30 PM on March 18. Each host will have 12 available slots, with each session lasting 7.5 minutes. The system is designed to ensure that both parties can maximize their time, focusing on relevant opportunities.
+              Matchmaking Sessions will take place from 4:00 PM - 5:30 PM on March 18. Each host will have 9 available slots, with each session lasting 10 minutes. The system is designed to ensure that both parties can maximize their time, focusing on relevant opportunities.
               </p>
             </div>
           </div>
