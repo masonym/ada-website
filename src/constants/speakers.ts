@@ -580,9 +580,7 @@ export const SPEAKERS = [
                 position: "Director",
                 company: "Cecil Airport & Spaceport",
                 bio: `
-                Matt Bocchino is the director of the Spaceport Integration and Services (SI) organization at NASA’s John F. Kennedy Space Center in Florida. In this role, he is responsible for ensuring safe, efficient, and effective support services for Kennedy, its workforce, and its customers.
-                <br/><br/>
-                Bocchino works with the deputy director of SI to successfully
+                TBD
                 `
             },
         ]
