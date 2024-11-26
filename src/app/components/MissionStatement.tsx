@@ -12,10 +12,6 @@ const MissionStatement = () => {
           between Small Businesses, Diversity Suppliers, and Prime Contractors, enabling them
           to collaborate effectively in identifying, pursuing, and performing Government contracts.
         </p>
-        <br></br>
-        <p className="text-xl max-w-3xl mx-auto">
-          Our goal is to facilitate meaningful connections between Small Businesses, Diversity Suppliers, and Prime Contractors, enabling them to collaborate effectively in identifying, pursuing, and performing Government contracts.
-        </p>
       </div>
     </section>
   );
