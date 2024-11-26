@@ -71,7 +71,7 @@ const HeroSection = () => {
           {mostRecentPastEvent && (
             <Link 
               href={`/events/${mostRecentPastEvent.slug}/about/event-recap`}
-              className="inline-block bg-navy-800 text-white px-6 py-3 rounded-full hover:bg-navy-900 transition duration-300 text-sm sm:text-base md:text-lg border border-white/20"
+              className="inline-block bg-white text-black px-6 py-3 rounded-full hover:bg-navy-900 transition duration-300 text-sm sm:text-base md:text-lg border border-white/20"
             >
               View Latest Event Recap
             </Link>
