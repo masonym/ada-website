@@ -117,7 +117,7 @@ const NavBar = () => {
       </ul>
 
       <button onClick={toggleMenu} className="lg:hidden flex items-center justify-center">
-        <Menu className="cursor-pointer" size={48} color="white"/>
+        <Menu className="cursor-pointer" size={48} color="white" />
       </button>
 
       <Hamburger

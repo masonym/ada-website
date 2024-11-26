@@ -33,6 +33,15 @@ const Hamburger = ({ isOpen, onClose }: HamburgerMenuProps) => {
     setIsDropdownOpen(!isDropdownOpen);
   }
 
+  const now = new Date();
+  const sortedEvents = [...EVENTS]
+    .filter(event => new Date(event.timeStart) >= now)
+    .sort((a, b) => {
+      const dateA = new Date(a.timeStart);
+      const dateB = new Date(b.timeStart);
+      return dateA.getTime() - dateB.getTime();
+    });
+
   return (
     <div
       ref={menuRef}
@@ -54,7 +63,7 @@ const Hamburger = ({ isOpen, onClose }: HamburgerMenuProps) => {
                 </button>
                 {isDropdownOpen && (
                   <ul className="mt-2 space-y-2 pl-4 text-center list-none">
-                    {EVENTS.map((event) => (
+                    {sortedEvents.map((event) => (
                       <li key={event.id}>
                         <Link
                           href={`/events/${event.slug}`}
