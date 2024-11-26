@@ -1,9 +1,6 @@
 // utils/imageUtils.ts
-
+import { S3Client, ListObjectsV2Command } from "@aws-sdk/client-s3";
 import { EventProps } from '@/app/components/Speakers';
-import { promises as fs } from 'fs';
-import path from 'path';
-import sharp from 'sharp';
 
 export type EventImage = {
   src: string;
@@ -13,36 +10,82 @@ export type EventImage = {
   highlighted?: boolean;
 };
 
+const s3Client = new S3Client({
+  region: process.env.AWS_REGION || 'us-east-1',
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!
+  }
+});
+
 export async function getEventImages(event: EventProps): Promise<EventImage[]> {
   try {
-    // Define the directory path where event images are stored
-    const eventDir = path.join(process.cwd(), 'public', 'events', event.eventShorthand, 'photos');
+    // List all objects in the event's photos directory
+    const command = new ListObjectsV2Command({
+      Bucket: process.env.AWS_S3_BUCKET_NAME!,
+      Prefix: `events/${event.eventShorthand}/photos/`,
+    });
+
+    const response = await s3Client.send(command);
     
-    // Read all files in the directory
-    const files = await fs.readdir(eventDir);
-    
-    // Filter for image files and sort them
-    const imageFiles = files
-      .filter(file => /\.(jpg|jpeg|png|webp)$/i.test(file))
+    if (!response.Contents) {
+      console.warn(`No images found for event ${event.eventShorthand}`);
+      return [];
+    }
+
+    // Filter for WebP files and sort them
+    const imageFiles = response.Contents
+      .map(file => file.Key!)
+      .filter(key => key.endsWith('.webp'))
       .sort((a, b) => {
         const numA = parseInt(a.match(/\d+/)?.[0] || '0');
         const numB = parseInt(b.match(/\d+/)?.[0] || '0');
         return numA - numB;
       });
 
-    // Create image objects with dimensions
-    const images = await Promise.all(imageFiles.map(async (file, index) => {
-      const imagePath = path.join(eventDir, file);
-      // Get image dimensions using sharp
-      const metadata = await sharp(imagePath).metadata();
+    // Create image objects
+    // Since we're using pre-processed WebP images, we know they're 1280px wide
+    // and can calculate height based on original aspect ratio
+    const images = imageFiles.map((key, index) => {
+      const filename = key.split('/').pop()!;
+      
       return {
-        src: `/events/${event.eventShorthand}/photos/${file}`,
+        src: key, // Full S3 key path
         alt: `Image ${index + 1} from ${event.title.replace(/-/g, ' ')}`,
-        width: metadata.width || 1920, // fallback dimension if metadata fails
-        height: metadata.height || 1080,
-        highlighted: index < 18 // First 15 images are highlighted
+        width: 1280, // Our processed width
+        height: 1280 * 0.75, // Approximate height, will be adjusted by Next.js
+        highlighted: index < 18 // First 18 images are highlighted
       };
-    }));
+    });
+
+    // If you need exact dimensions, you could fetch them like this:
+    // (but it's probably unnecessary since we know our processing parameters)
+    /*
+    const images = await Promise.all(imageFiles.map(async (key, index) => {
+      try {
+        const headCommand = new HeadObjectCommand({
+          Bucket: process.env.AWS_S3_BUCKET_NAME!,
+          Key: key
+        });
+        const headResponse = await s3Client.send(headCommand);
+        
+        // You could store dimensions in metadata during processing
+        const width = parseInt(headResponse.Metadata?.width || '1280');
+        const height = parseInt(headResponse.Metadata?.height || '960');
+
+        return {
+          src: key,
+          alt: `Image ${index + 1} from ${event.title.replace(/-/g, ' ')}`,
+          width,
+          height,
+          highlighted: index < 18
+        };
+      } catch (error) {
+        console.error(`Error getting metadata for ${key}:`, error);
+        return null;
+      }
+    })).then(results => results.filter((img): img is EventImage => img !== null));
+    */
 
     return images;
 
@@ -52,15 +95,6 @@ export async function getEventImages(event: EventProps): Promise<EventImage[]> {
   }
 }
 
-import { S3Client, ListObjectsV2Command } from "@aws-sdk/client-s3";
-
-const s3Client = new S3Client({
-  region: process.env.AWS_REGION || 'us-east-1',
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!
-  }
-});
 
 export async function validateImagePaths(eventSlug: string): Promise<boolean> {
   try {
