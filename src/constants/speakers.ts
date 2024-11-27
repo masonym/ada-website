@@ -583,6 +583,49 @@ export const SPEAKERS = [
                 TBD
                 `
             },
+            // Edgar Campa-Palafox
+            {
+                image: "edgar_campa-palafox.webp",
+                name: "Edgar Campa-Palafox",
+                position: "Vice President, Business Development",
+                company: "Economic Development Commission of Florida's Space Coast",
+                bio: `
+                Edgar Campa-Palafox serves as Vice President, Business Development for the Economic
+                Development Commission of Florida’s Space Coast. He joined the organization in August
+                2020 as Director, Business Development. In his current role, he is responsible for developing
+                and implementing a county-wide business development program, seeking to both recruit
+                and help existing business to grow. Edgar serves as a key liaison with partners and clients to
+                market and expand economic development opportunities for the Space Coast.
+                <br/><br/>
+                With nearly two decades of experience in the field, Edgar has worked with various economic
+                development organizations across jurisdictional levels, including public-private partnerships, county, and
+                municipal entities in the states of Arizona, Texas, and Florida. Throughout his career, Edgar has immersed himself
+                in virtually every facet of the economic development profession, including economic research, business
+                attraction, retention/expansion, community relations, incentive policy and supplier, industrial, and
+                entrepreneurial development initiatives.
+                <br/><br/>
+                Prior to joining the EDC team, Edgar gained extensive experience in the industry through various roles. He served
+                as the Economic Development Coordinator with Alachua County in Gainesville, Florida; worked as a Senior
+                Economic Development Specialist with City of El Paso in El Paso, Texas; and was a Business Development
+                Specialist with Tucson Regional Economic Opportunities in Tucson, Arizona.
+                <br/><br/>
+                Edgar is actively involved in several professional, civic, and community organizations. He serves as board member
+                of the National Space Club Florida Committee, and as member of the International Economic Development
+                Council (IEDC) Sustainability Committee. Additionally, he serves as committee member of the City of Melbourne
+                Economic Enhancement District Advisory Board (MEED), and as an advisory board member of the French
+                American Business Council of Orlando & Space Coast (FABCO).
+                <br/><br/>
+                Edgar earned a Bachelor of Science degree in Business Administration with a double major in Business Economics
+                and Entrepreneurship from the University of Arizona. He also completed courses in business and economics at
+                the Universitat Pompeu Fabra in Barcelona, Spain.
+                <br/><br/>
+                Dedicated to lifelong learning, Edgar has earned several professional industry designations, including the
+                Certified Economic Developer (CEcD) from IEDC, the Master Economic Development Practitioner (MEDP) from
+                the Advanced Economic Development Leadership (AEDL) program —a collaboration among Clemson University,
+                Texas Christian University, the University of Southern Mississippi, and the University of New Mexico— and a
+                Business Incubation Management (BIM) certificate from the International Business Innovation Association (InBIA).
+                `
+            }
         ]
     }
 ];
