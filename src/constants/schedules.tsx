@@ -367,7 +367,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "10:30 AM - 11:15 AM",
-                        title: "NASA & Space Force – Engaging the Innovative Private Sector",
+                        title: "U.S. Government & Defense Agencies – Engaging the Innovative Private Sector",
                         location: "The Center for Space Education at the Astronauts Memorial Foundation"
                     },
                     {
