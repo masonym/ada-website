@@ -60,7 +60,7 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                     </p>
                     <SponsorProspectus event={event} />
                     <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
-                        Registered Sponsors: Please submit a high-quality logo for inclusion in the conference materials, along with the desired link for the logo on the event website, to <Link className="text-blue-600 hover:underline break-words" href="mailto:marketing@americandefensealliance.org">marketing@<wbr/>americandefensealliance.org</Link>.
+                        Registered Sponsors: Please submit a high-quality logo for inclusion in the conference materials, along with the desired link for the logo on the event website, to <Link className="text-blue-600 hover:underline break-words" href="mailto:marketing@americandefensealliance.org">marketing@<wbr />americandefensealliance.org</Link>.
                     </p>
                     <div className="grid md:grid-cols-3 grid-cols-1 gap-8 justify-items-stretch items-stretch">
                         {currentEvent.sponsorships.map((item, index) => {
@@ -86,9 +86,14 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                         {event.sponsorshipInfo?.exhibitorSpacesText || defaultExhibitorText}
                     </p>
 
+                    <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mb-6">
+                        {event.sponsorshipInfo?.sponsorSection || defaultSponsorText}
+                    </p>
+                    
                     <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto">
                         {event.sponsorshipInfo?.customContactText}
                     </p>
+
 
                     <SponsorLogos event={event} showTiers={["Event Partners", "Gold Sponsor", "Silver Sponsors"]} titleOverride='This Event is Organized and Presented by' />
 
