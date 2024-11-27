@@ -580,7 +580,9 @@ export const SPEAKERS = [
                 position: "Director",
                 company: "Cecil Airport & Spaceport",
                 bio: `
-                TBD
+                Mr. Bocchino has worked for JAA for nearly 12 years, most recently serving as Senior Properties Administrator, Business Development. He has a strong background in managing operational and facility contracts and experience in working with the community to promote local economy and business growth. While with JAA, Mr. Bocchino also served as Development & Marketing Specialist for Cecil Spaceport. He also worked for the City of Fort Lauderdale.
+                <br/><br/>
+                Mr. Bocchino earned his bachelor’s degree in History and a master’s degree in Business Administration from Jacksonville University. He is an Accredited Member (A.A.E.) of the American Association of Airport Executives (AAAE). He also holds a private pilot’s license.
                 `
             },
             // Edgar Campa-Palafox
