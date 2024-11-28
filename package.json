@@ -9,7 +9,7 @@
     "lint": "next lint",
     "postbuild": "next-sitemap",
     "process-images": "node src/scripts/process-images.js",
-    "sync-images": "aws s3 sync ./processed-photos s3://americandefensealliance --delete"
+    "sync-images": "aws s3 sync ./public s3://americandefensealliance --delete"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.697.0",
@@ -28,7 +28,6 @@
     "lucide-react": "^0.435.0",
     "mime-types": "^2.1.35",
     "next": "14.2.6",
-    "next-sitemap": "^4.2.3",
     "nodemailer": "^6.9.14",
     "react": "^18",
     "react-dom": "^18",
@@ -47,6 +46,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-modal-video": "^1.2.3",
+    "next-sitemap": "^4.2.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
