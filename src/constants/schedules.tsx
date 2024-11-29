@@ -351,7 +351,7 @@ export const SCHEDULES = [
                         time: "6:00 PM - 8:00 PM",
                         title: "Meet & Greet Bourbon Tasting with Astronauts",
                         location: "Zarrellas, 8801 Astronaut Blvd. Cape Canaveral, FL 32920",
-                        sponsorLogo: '/events/2025DTIOS/sponsors/zarrellas.webp',
+                        sponsorLogo: '/events/2025DTIOS/sponsors/zarrellas.png',
                         description: "(Add-On Registration and Payment is Required for this Event)"
                     },
 
