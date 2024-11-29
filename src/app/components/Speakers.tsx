@@ -85,7 +85,6 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
 
         const cleanedName = name.replace(/\([^)]*\)/g, '').replace(/,.*/, '').trim();
         const nameParts = cleanedName.split(' ');
-        console.log(nameParts[nameParts.length - 1])
         return nameParts[nameParts.length - 1];
     };
 
