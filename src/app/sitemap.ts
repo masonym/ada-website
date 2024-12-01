@@ -16,14 +16,15 @@ function getEventPaths(eventId: number) {
     }
     if (item.subItems) {
       item.subItems.forEach(subItem => {
-        paths.push(subItem.path);
+        // Convert parent label to URL-friendly format and use as prefix
+        const parentPath = item.label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        paths.push(`${parentPath}/${subItem.path}`);
       });
     }
   });
 
   return paths;
 }
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.americandefensealliance.org';
 
