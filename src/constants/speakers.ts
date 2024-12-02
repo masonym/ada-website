@@ -578,7 +578,7 @@ export const SPEAKERS = [
                 image: "matt_bocchino.webp",
                 name: "Matt Bocchino",
                 position: "Director",
-                company: "Cecil Airport & Spaceport",
+                company: "Cecil Airport and Spaceport, Jacksonville Aviation Authority",
                 bio: `
                 Mr. Bocchino has worked for JAA for nearly 12 years, most recently serving as Senior Properties Administrator, Business Development. He has a strong background in managing operational and facility contracts and experience in working with the community to promote local economy and business growth. While with JAA, Mr. Bocchino also served as Development & Marketing Specialist for Cecil Spaceport. He also worked for the City of Fort Lauderdale.
                 <br/><br/>
