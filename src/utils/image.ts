@@ -6,8 +6,10 @@ export const getCdnPath = (path: string): string => {
     
     // Handle cases where the path might already include the CDN domain
     if (cleanPath.startsWith(process.env.NEXT_PUBLIC_CDN_DOMAIN || '')) {
-      return cleanPath;
+        return cleanPath;
     }
   
-    return `${process.env.NEXT_PUBLIC_CDN_DOMAIN}/${cleanPath}`;
-  };
+    // Ensure the path starts with the CDN domain and is absolute
+    const cdnDomain = process.env.NEXT_PUBLIC_CDN_DOMAIN || '';
+    return cdnDomain.startsWith('http') ? `${cdnDomain}/${cleanPath}` : `/${cdnDomain}/${cleanPath}`;
+};

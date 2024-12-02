@@ -159,7 +159,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                           {speaker.presentation && isEventPassed && (
                             <button
                               onClick={() => handleMediaClick('presentation', 
-                                `/events/${event.eventShorthand}/presentations/${speaker.presentation}`)}
+                                getCdnPath(`/events/${event.eventShorthand}/presentations/${speaker.presentation}`))}
                               className={`text-white px-4 py-2 rounded-md transition-all text-nowrap ${
                                 isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
                               }`}

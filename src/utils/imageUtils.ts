@@ -46,6 +46,7 @@ export async function getEventImages(event: EventProps): Promise<EventImage[]> {
     // Create image objects
     // Since we're using pre-processed WebP images, we know they're 1280px wide
     // and can calculate height based on original aspect ratio
+
     const images = imageFiles.map((key, index) => {
       const filename = key.split('/').pop()!;
       

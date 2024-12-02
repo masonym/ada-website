@@ -78,11 +78,11 @@ const EmblaCarouselNew: React.FC<PropType> = (props) => {
     useEffect(() => {
         slides.forEach(slide => {
             const img = new window.Image();
-            img.src = slide.src;
+            img.src = getCdnPath(slide.src);
             img.onload = onImageLoad;
         });
 
-    }, [slides, onImageLoad]);
+    }, [slides, onImageLoad, getCdnPath]);
 
     const tweenOpacity = useCallback(
         (emblaApi: EmblaCarouselType, eventName?: EmblaEventType) => {
