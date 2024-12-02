@@ -46,7 +46,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 sponsors: [
                     {
                         name: "Anamo",
-                        logo: "/events/2025DTIOS/sponsors/anamo.png",
+                        logo: "/events/2025DTIOS/sponsors/anamo.webp",
                         website: "https://anamo.io/",
                         width: 200,
                         height: 100,
