@@ -480,7 +480,7 @@ export const SPEAKERS = [
             // Janet Petro
             {
                 image: "janet_petro.webp",
-                name: "Janet Petro",
+                name: "Janet Petro (Invited)",
                 position: "Director",
                 company: "NASA's John F. Kennedy Space Center",
                 bio: `
@@ -500,7 +500,7 @@ export const SPEAKERS = [
             // Sasha Sims
             {
                 image: "sasha_sims.webp",
-                name: "Sasha Sims",
+                name: "Sasha Sims (Invited)",
                 position: "Deputy Director, Spaceport Integration and Services",
                 company: "NASA's John F. Kennedy Space Center",
                 bio: `
