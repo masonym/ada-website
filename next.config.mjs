@@ -9,7 +9,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'dmeayq7l2oy8v.cloudfront.net',
+                hostname: 'd3hatd5vc8h86k.cloudfront.net',
                 port: '',
             }
         ],
