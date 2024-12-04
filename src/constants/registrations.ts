@@ -4,7 +4,7 @@ export const REGISTRATION_TYPES = [
         registrations: [
             {
                 title: "Attendee Pass",
-                headerImage: "/registration-cards/2024DIF/attendee-pass.png",
+                headerImage: "/registration-cards/2024DIF/attendee-pass.webp",
                 perks: [
                     "Registration for 1 Person",
                     "Access to All Event Sessions",
@@ -27,7 +27,7 @@ export const REGISTRATION_TYPES = [
             // display table
             {
                 title: "Display Table",
-                headerImage: "/registration-cards/2024DIF/display-table-pass.png",
+                headerImage: "/registration-cards/2024DIF/display-table-pass.webp",
                 perks: [
                     "Registration for 2 People",
                     "2 Networking Reception Tickets",
@@ -50,7 +50,7 @@ export const REGISTRATION_TYPES = [
 
             {
                 title: "Government Official & Military Pass",
-                headerImage: "/registration-cards/2024DIF/gov-pass.png",
+                headerImage: "/registration-cards/2024DIF/gov-pass.webp",
                 perks: [
                     "Registration for 1 Person",
                     "Access to All Event Sessions",
@@ -67,7 +67,7 @@ export const REGISTRATION_TYPES = [
             },
             {
                 title: "Sponsorship Opportunities",
-                headerImage: "/registration-cards/2024DIF/sponsor-pass.png",
+                headerImage: "/registration-cards/2024DIF/sponsor-pass.webp",
                 perks: [
                     "Brand Visibility",
                     "Speaking Opportunity",
@@ -99,7 +99,7 @@ export const REGISTRATION_TYPES = [
         registrations: [
             {
                 title: "Attendee Pass",
-                headerImage: "/registration-cards/2025SPDC/attendee-pass.png",
+                headerImage: "/registration-cards/2025SPDC/attendee-pass.webp",
                 perks: [
                     "(1) Attendee Pass",
                     "Access to General Sessions",
@@ -120,7 +120,7 @@ export const REGISTRATION_TYPES = [
 
             {
                 title: "VIP Attendee Pass",
-                headerImage: "/registration-cards/2025SPDC/vip-attendee-pass.png",
+                headerImage: "/registration-cards/2025SPDC/vip-attendee-pass.webp",
                 perks: [
                     "(1) VIP Attendee Pass",
                     "Access to General Sessions",
@@ -141,7 +141,7 @@ export const REGISTRATION_TYPES = [
 
             {
                 title: "Table-Top Exhibit Space",
-                headerImage: "/registration-cards/2025SPDC/exhibit-table-pass.png",
+                headerImage: "/registration-cards/2025SPDC/exhibit-table-pass.webp",
                 perks: [
                     "(1) Exhibitor Pass",
                     "Additional Passes can be purchased for $395 each",
@@ -160,7 +160,7 @@ export const REGISTRATION_TYPES = [
 
             {
                 title: "Government Official & Military Pass",
-                headerImage: "/registration-cards/2025SPDC/gov-pass.png",
+                headerImage: "/registration-cards/2025SPDC/gov-pass.webp",
                 perks: [
                     "(1) Attendee Pass",
                     "Access to General Sessions",
@@ -178,7 +178,7 @@ export const REGISTRATION_TYPES = [
 
             // {
             //     title: "Sponsor",
-            //     headerImage: "/registration-cards/2025SPDC/sponsor-pass.png",
+            //     headerImage: "/registration-cards/2025SPDC/sponsor-pass.webp",
             //     perks: [
             //         "Brand Visibility",
             //         "Speaking Opportunity",
@@ -212,7 +212,7 @@ export const REGISTRATION_TYPES = [
         registrations: [
             {
                 title: "Attendee Pass",
-                headerImage: "/registration-cards/DTIOS/attendee-pass.png",
+                headerImage: "/registration-cards/DTIOS/attendee-pass.webp",
                 perks: [
                     "(1) Attendee Pass",
                     "Access to General Sessions",
@@ -229,7 +229,7 @@ export const REGISTRATION_TYPES = [
             },
             {
                 title: "Meet & Greet Bourbon Tasting with Astronauts Pass",
-                headerImage: "/registration-cards/DTIOS/bourbon-tasting-pass.png",
+                headerImage: "/registration-cards/DTIOS/bourbon-tasting-pass.webp",
                 perks: [
                     "Mix and Mingle with our Guest Star Astronauts and other VIP Guests at Zarrella’s Italian & Wood Fired Pizza in Cape Canaveral, FL while Sampling Select Smooth Bourbons."
                 ],
@@ -241,7 +241,7 @@ export const REGISTRATION_TYPES = [
             },
             {
                 title: "Sponsorship Opportunities",
-                headerImage: "/registration-cards/DTIOS/sponsors.png",
+                headerImage: "/registration-cards/DTIOS/sponsors.webp",
                 perks: [
                     "Event Access",
                     "Meet & Greet Bourbon Tasting with Astronauts",

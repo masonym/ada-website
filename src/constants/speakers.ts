@@ -521,8 +521,8 @@ export const SPEAKERS = [
             {
                 image: "gavin_brown.webp",
                 name: "Gavin Brown",
-                position: "Executive Director",
-                company: "Michigan Aerospace Manufacturers Association",
+                position: "CEO",
+                company: "Dynamic Predictive Engineering",
                 bio: `
                 As Executive Director of the Michigan Aerospace Manufacturers Association (MAMA), Gavin Brown is committed to establishing Michigan as a leader in the commercialization of near-Earth space and as a source for highly qualified suppliers to the Defense, Commercial, General Aviation, and UAV aerospace manufacturing sectors.
                 <br/><br/>
@@ -626,6 +626,20 @@ export const SPEAKERS = [
                 the Advanced Economic Development Leadership (AEDL) program —a collaboration among Clemson University,
                 Texas Christian University, the University of Southern Mississippi, and the University of New Mexico— and a
                 Business Incubation Management (BIM) certificate from the International Business Innovation Association (InBIA).
+                `
+            },
+            {
+                image: "jimmy_moffitt.webp",
+                name: "Jimmy Moffitt",
+                position: "Vice President, Spaceport Operations",
+                company: "Space Florida",
+                bio: `
+                Jimmy Moffitt is the Vice President of Spaceport Operations at Space Florida, the state’s aerospace finance, development, and operational authority for the state. Space Florida along with its experience, financial tools, and unbeatable location attract commercial business to develop and operate facilities within Florida’s spaceport system.
+                <br/><br/>
+                Jimmy is charged with management of Space Florida’s licensed spaceports, assets, and property at Kennedy Space Center and Cape Canaveral Space Force Station. Jimmy works closely with NASA and Space Launch Delta 45 leadership on the strategic planning & business development with commercial and government space entities ensuring growth and resiliency in the industry.  Additionally, Jimmy manages the operations and maintenance of Space Florida facilities, with focus on compliance with NASA and DoD requirements for safe and successful Launch, Landing, and testing activities at the Launch and Landing Facility, Launch Complex 46, Launch Complex 20(N), & Camp Blanding Storage Facility.
+                <br/><br/>
+                Prior to Space Florida, Jimmy supported management of leases and development at the general aviation and International airports at Jacksonville Aviation Authority and was integral to the success of Cecil Spaceport’s Horizontal launch license and Spaceport development area at Cecil. Jimmy has always had a passion for aviation and management, which led him to pursue a Bachelor of Science in Aviation Management & Safety, and a master’s degree in Technical Management from Embry-Riddle Aeronautical University (ERAU).
+
                 `
             }
         ]

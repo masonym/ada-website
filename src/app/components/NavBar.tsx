@@ -63,7 +63,7 @@ const NavBar = () => {
       <Link href="/">
         <div className="flexBetween maxContainer relative">
           <Image
-            src={getCdnPath("/logo.png")}
+            src={getCdnPath("/logo.webp")}
             width={100}
             height={100}
             alt="American Defense Alliance Logo"

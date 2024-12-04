@@ -10,7 +10,7 @@ const AboutUsPage = () => {
       <div className="flex flex-col md:flex-row items-center mb-12">
         <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
           <Image
-            src={getCdnPath("/placeholder.png")}
+            src={getCdnPath("/placeholder.webp")}
             alt="American Defense Alliance Team"
             width={600}
             height={400}
@@ -59,7 +59,7 @@ to collaborate effectively in identifying, pursuing, and performing Government c
         <div className="flex flex-col md:flex-row items-start">
           <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
             <Image
-              src={getCdnPath("/charles_president_photo.png")}
+              src={getCdnPath("/charles_president_photo.webp")}
               alt="Charles Sills - President & CEO"
               width={600}
               height={300}

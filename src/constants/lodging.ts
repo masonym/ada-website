@@ -28,7 +28,7 @@ export const LODGING_INFO: LodgingInfo[] = [
           state: "Florida",
           zip: "32920",
           phone: "321-784-0021",
-          image: "/hotels/hampton-inn.png"
+          image: "/hotels/hampton-inn.webp"
         },
         {
           name: "Courtyard by Marriott Titusville – Kennedy Space Center",
@@ -37,7 +37,7 @@ export const LODGING_INFO: LodgingInfo[] = [
           state: "FL",
           zip: "",
           phone: "321-966-9200",
-          image: "/hotels/courtyard-marriott.png"
+          image: "/hotels/courtyard-marriott.webp"
         }
       ],
       note: "PLEASE NOTE THERE IS NO ROOM BLOCK FOR THIS EVENT."

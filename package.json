@@ -9,6 +9,7 @@
     "lint": "next lint",
     "postbuild": "next-sitemap",
     "process-images": "node src/scripts/process-images.js",
+    "convert-images": "node src/scripts/convert-to-webp.js",
     "sync-images": "aws s3 sync ./public s3://americandefensealliance --delete"
   },
   "dependencies": {

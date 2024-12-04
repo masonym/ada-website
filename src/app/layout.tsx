@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     description: 'Connecting industry leaders with U.S. defense opportunities. Access forecasts, events, and resources for government contractors and military suppliers.',
     images: [
       {
-        url: '/logo.png',
+        url: '/logo.webp',
         width: 625,
         height: 625,
         alt: 'American Defense Alliance Logo',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     description: 'Connecting industry leaders with U.S. defense opportunities. Access forecasts, events, and resources for government contractors and military suppliers.',
     images: [
       {
-        url: '/logo.png',
+        url: '/logo.webp',
         width: 625,
         height: 625,
         alt: 'American Defense Alliance Logo',

@@ -63,9 +63,9 @@ export const EVENTS: Event[] = [
         videoId: "kqyAAe4RHNA"
       }
     ],
-    image: "/2025_DefenseIndustryForecast.png",
+    image: "/2025_DefenseIndustryForecast.webp",
     slug: "2025-defense-industry-forecast",
-    locationImage: "/locations/location_NPC.png",
+    locationImage: "/locations/location_NPC.webp",
     locationAddress: `National Press Club</br>529 14th St NW, Washington, DC 20045, United States`,
     directions: [
       {
@@ -123,7 +123,7 @@ export const EVENTS: Event[] = [
     images: [
       { id: "main", src: "/events/2025-defense-industry-forecast/main.jpeg", alt: "Main event image" },
       { id: "location", src: "/events/2025-defense-industry-forecast/location.jpeg", alt: "Event location" },
-      // { id: "recap", src: "/events/2025-defense-industry-forecast/recap-placeholder.jpg", alt: "Event recap placeholder" },
+      // { id: "recap", src: "/events/2025-defense-industry-forecast/recap-placeholder.webp", alt: "Event recap placeholder" },
       // Add more images as needed
     ],
     parkingInfo: [
@@ -203,9 +203,9 @@ export const EVENTS: Event[] = [
       // { tagline: "Support for Small & Medium Contractors", description: "Gain Access to Resources from the Defense Contract Audit Agency" },
       { tagline: "Special Contracting Opportunities", description: " Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms" },
     ],
-    image: "/2025_SoutheastDefenseProcurementConference.png",
+    image: "/2025_SoutheastDefenseProcurementConference.webp",
     slug: "2025-southeast-defense-procurement-conference",
-    locationImage: "/locations/location_NPC.png",
+    locationImage: "/locations/location_NPC.webp",
     locationAddress: "TBD",
     directions: [],
     images: [],
@@ -277,9 +277,9 @@ export const EVENTS: Event[] = [
       </div>
     ),
     topicalCoverage: [],
-    image: "/header_final.png",
+    image: "/header_final.webp",
     slug: "2025-driving-the-industrialization-of-space",
-    locationImage: "/locations/kennedy-space-center.jpg",
+    locationImage: "/locations/kennedy-space-center.webp",
     locationAddress: `
     The Center for Space Education at The Astronauts Memorial Foundation
     <br/>SR 405, Building M6-306, Kennedy Space Center, FL 32899`,
@@ -395,7 +395,7 @@ export const EVENTS: Event[] = [
             <div className="flex justify-center items-center gap-8 max-w-full">
               <div className="w-[200px] sm:w-[300px] md:w-[400px] relative">
                 <Image
-                  src={getCdnPath("/logos/nass-logo.png")}
+                  src={getCdnPath("/logos/nass-logo.webp")}
                   alt="NASS Logo"
                   layout="responsive"
                   width={100}
@@ -405,7 +405,7 @@ export const EVENTS: Event[] = [
               </div>
               <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
                 <Image
-                  src={getCdnPath("/logo.png")}
+                  src={getCdnPath("/logo.webp")}
                   alt="American Defense Alliance Logo"
                   layout="responsive"
                   width={100}
@@ -415,7 +415,7 @@ export const EVENTS: Event[] = [
               </div>
               <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
                 <Image
-                  src={getCdnPath("/logos/amf-logo.png")}
+                  src={getCdnPath("/logos/amf-logo.webp")}
                   alt="The Astronauts Memorial Foundation Logo"
                   layout="responsive"
                   width={100}

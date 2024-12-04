@@ -13,7 +13,7 @@ const Footer = () => {
             href="/" className="mb-10"
           >
             <Image
-              src={getCdnPath("/logo.png")}
+              src={getCdnPath("/logo.webp")}
               alt="American Defense Alliance Logo"
               width={192}
               height={192}

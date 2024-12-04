@@ -33,7 +33,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 sponsors: [
                     {
                         name: "Lockheed Martin",
-                        logo: "/events/2025DTIOS/sponsors/lockheed-martin.png",
+                        logo: "/events/2025DTIOS/sponsors/lockheed-martin.webp",
                         website: "https://www.lockheedmartin.com/",
                         width: 720,
                         height: 128,
@@ -53,7 +53,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     },
                     {
                         name: "US ProTech",
-                        logo: "/events/2025DTIOS/sponsors/usprotech.png",
+                        logo: "/events/2025DTIOS/sponsors/usprotech.webp",
                         website: "https://www.usprotech.com/",
                         width: 170,
                         height: 50,
@@ -66,28 +66,28 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 sponsors: [
                     {
                         name: "National Association of Spaceports",
-                        logo: "/events/2025DTIOS/sponsors/nass-logo.png",
+                        logo: "/events/2025DTIOS/sponsors/nass-logo.webp",
                         website: "https://www.thenass.org/",
                         width: 225,
                         height: 84,
                     },
                     {
                         name: "American Defense Alliance",
-                        logo: "/logo.png",
+                        logo: "/logo.webp",
                         website: "https://www.americandefensealliance.org",
                         width: 150,
                         height: 150,
                     },
                     {
                         name: "The Astronauts Memorial Foundation",
-                        logo: "/events/2025DTIOS/sponsors/amf-logo.png",
+                        logo: "/events/2025DTIOS/sponsors/amf-logo.webp",
                         website: "https://www.amfcse.org",
                         width: 150,
                         height: 150,
                     },
                     {
                         name: "Zarrellas Italian & Wood Fired Pizza",
-                        logo: "/events/2025DTIOS/sponsors/zarrellas.png",
+                        logo: "/events/2025DTIOS/sponsors/zarrellas.webp",
                         website: "https://www.zarrellasitalian.com/",
                         width: 150,
                         height: 150,

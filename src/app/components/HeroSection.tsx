@@ -28,7 +28,7 @@ const HeroSection = () => {
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0">
         <Image
-          src={getCdnPath('2025_Defense_Industry_Forecast_Collage.png')}
+          src={getCdnPath('2025_Defense_Industry_Forecast_Collage.webp')}
           alt="2025 Defense Industry Forecast Collage"
           fill
           priority
