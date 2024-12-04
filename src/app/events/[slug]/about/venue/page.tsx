@@ -8,27 +8,7 @@ import Map from './Map';
 import Link from 'next/link';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { getCdnPath } from '@/utils/image';
-
-type Event = {
-    id: number;
-    title: string;
-    slug: string;
-    locationAddress: string;
-    locationImage: string;
-    placeID: string;
-    directions: {
-        title: string;
-        description: string;
-    }[];
-    parkingInfo: {
-        title: string;
-        description: string;
-        link?: {
-            linkText: string;
-            href: string;
-        };
-    }[]
-};
+import { Event } from '@/types/events';
 
 const Page = () => {
     const params = useParams();
@@ -73,7 +53,7 @@ const Page = () => {
                 <div className="mb-12 flex flex-col items-center">
                     <h3 className="text-3xl font-bold mt-6 mb-6 text-slate-800">Directions</h3>
                     <div className="grid gap-6 grid-cols-1 auto-rows-auto">
-                        {event.directions.map((option, index) => (
+                        {event.directions?.map((option, index) => (
                             <div key={index} className="bg-white h-fit rounded-lg shadow-md overflow-hidden border border-gray-200 transition-all duration-300 hover:shadow-lg hover:border-blue-300">
                                 <div className="bg-navy-300 p-4 cursor-pointer flex justify-between items-center" onClick={() => toggleElem(index)}>
                                     <h4 className="text-xl font-semibold text-white flex items-center">
@@ -101,7 +81,7 @@ const Page = () => {
                 <div className="mb-12">
                     <h3 className="text-3xl font-bold mt-6 mb-6 text-slate-800 text-center">Parking</h3>
                     <div className="bg-white px-6 py-4 rounded-lg shadow-md flex flex-col gap-6">
-                        {event.parkingInfo.map((option, index) => (
+                        {event.parkingInfo?.map((option, index) => (
                             <div key={index}>
                                 <h4 className="text-[18px] leading-10 font-semibold mb-2">{option.title}</h4>
                                 <p className="mt-4" dangerouslySetInnerHTML={{__html: option.description}}></p>
