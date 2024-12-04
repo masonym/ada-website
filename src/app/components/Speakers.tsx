@@ -3,47 +3,12 @@ import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import KeynoteSpeaker from './KeynoteSpeaker';
 import { getCdnPath } from '@/utils/image';
+import { Event } from '@/types/events';
 
 type SpeakerProps = {
-    event: EventProps;
+    event: Event;
     isAuthenticated: boolean;
     onRequestPassword: () => void;
-};
-
-type ExpectationItem = {
-    title: string;
-    description: string;
-};
-
-type AudienceExpectations = {
-    audienceType: string;
-    expectations: ExpectationItem[];
-};
-
-export type EventProps = {
-    id: number;
-    title: string;
-    date: string;
-    timeStart: string;
-    description: string;
-    eventText: React.ReactNode;
-    image: string;
-    slug: string;
-    registerLink: string;
-    password: string;
-    contactInfo?: {
-        contactEmail?: string;
-        contactText?: string;
-    };
-    sponsorshipInfo?: {
-        exhibitorSpacesText?: React.ReactNode;
-        customContactText?: React.ReactNode;
-        sponsorSection?: React.ReactNode;
-    };
-    sponsorProspectusPath?: string;
-    customFooterText?: React.ReactNode;
-    eventShorthand: string;
-    expectations?: AudienceExpectations[];
 };
 
 type Speaker = {
@@ -89,7 +54,9 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
     };
 
     const nonKeynoteSpeakers = currentEvent ? currentEvent.speakers.filter(speaker => !speaker.keynote) : [];
-    const isEventFuture = new Date(new Date(event.timeStart).getTime() - 3 * 24 * 60 * 60 * 1000) > new Date();
+    const isEventFuture = event.timeStart 
+        ? new Date(new Date(event.timeStart).getTime() - 3 * 24 * 60 * 60 * 1000) > new Date() 
+        : false;
 
     return (
         <div className="max-container flex flex-col items-center">

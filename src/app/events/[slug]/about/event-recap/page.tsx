@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import HighlightedPhotos from './HighlightedPhotos';
 import EmblaCarousel from './EmblaCarousel';
 import Link from 'next/link';
+import EventTestimonials from '@/app/components/EventTestimonials';
 
 // Lazy load the lightbox component
 const PhotoLightbox = dynamic(() => import('./PhotoLightbox'), {
@@ -66,23 +67,26 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
         Highlights & Photographs of the <br />{event.title}
       </h1>
 
-      <div className="mb-12 max-w-3xl mx-auto bg-navy-800 rounded-lg p-6 sm:p-8 text-white">
+      <div className="mb-0 max-w-3xl mx-auto bg-navy-800 rounded-lg p-6 sm:p-8 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-lg sm:text-xl mb-4">
             Access Presentation Materials
           </p>
           <Link
             href={`/events/${params.slug}/agenda`}
-            className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full transition duration-300"
+            className="inline-block bg-white text-navy-800 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
           >
-            View Agenda & Presentations
+            View Agenda
           </Link>
         </div>
       </div>
 
+      {event.testimonials && event.testimonials.length > 0 && (
+        <EventTestimonials testimonials={event.testimonials} />
+      )}
+
       {highlightedImages.length > 0 && (
         <div className="mb-12">
-          {/* <h2 className="text-center text-3xl text-slate-700 font-bold mb-6">Event Highlights</h2> */}
           <HighlightedPhotos images={highlightedImages} />
         </div>
       )}

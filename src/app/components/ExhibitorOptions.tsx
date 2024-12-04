@@ -1,6 +1,6 @@
 import { EXHIBITOR_TYPES } from '@/constants/exhibitors';
 import React from 'react';
-import { EventProps } from './Speakers';
+import { Event } from '@/types/events';
 import { notFound } from 'next/navigation';
 import ExhibitorCard from './ExhibitorCard';
 import Link from 'next/link';
@@ -8,7 +8,7 @@ import Button from './Button';
 import SponsorProspectus from './SponsorProspectus';
 
 export type ExhibitorProps = {
-    event: EventProps;
+    event: Event;
 };
 
 const ExhibitorOptions = ({ event }: ExhibitorProps) => {

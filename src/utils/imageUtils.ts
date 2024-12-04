@@ -1,6 +1,6 @@
 // utils/imageUtils.ts
 import { S3Client, ListObjectsV2Command } from "@aws-sdk/client-s3";
-import { EventProps } from '@/app/components/Speakers';
+import { Event } from "@/types/events";
 
 export type EventImage = {
   src: string;
@@ -18,7 +18,7 @@ const s3Client = new S3Client({
   }
 });
 
-export async function getEventImages(event: EventProps): Promise<EventImage[]> {
+export async function getEventImages(event: Event): Promise<EventImage[]> {
   try {
     // List all objects in the event's photos directory
     const command = new ListObjectsV2Command({

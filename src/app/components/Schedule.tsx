@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { EventProps } from './Speakers';
+import { Event } from '@/types/events';
 import ModalVideo from 'react-modal-video';
 import 'react-modal-video/css/modal-video.css';
 import { getCdnPath } from '@/utils/image';
@@ -34,7 +34,7 @@ type ScheduleAtAGlanceProps = {
   }[];
   isAuthenticated: boolean;
   onRequestPassword: () => void;
-  event: EventProps;
+  event: Event;
 };
 
 const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({

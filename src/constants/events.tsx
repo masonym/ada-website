@@ -1,10 +1,9 @@
-// app/events/[slug]/page.tsx
-
 import { getCdnPath } from "@/utils/image";
 import { Mail, Phone } from "lucide-react";
 import Image from "next/image";
+import { Event } from "@/types/events";
 
-export const EVENTS = [
+export const EVENTS: Event[] = [
   {
     id: 1,
     title: "2025 Defense Industry Forecast",
@@ -37,6 +36,32 @@ export const EVENTS = [
       { tagline: "", description: "The Race to Develop AI, Advanced Computing and Machine Learning for Defense", },
       { tagline: "", description: "Cybersecurity Compliance Mandates and CMMC Training Options", },
       { tagline: "", description: "Special Preferential Contracting/Set-Aside Opportunities for Small Disadvantaged Businesses, 8(a) Certified Companies, Woman-Owned Small Businesses, Veteran and Service-Disabled Veteran Owned Small Businesses, HUBZone Firms, and Native American, Alaska Native, and Native Hawaiian Companies", },
+    ],
+    testimonials: [
+      {
+        type: 'video',
+        quote: "\"I'm here because it allows me to be able to share proven stories as a small business where we have been able to win contracts through our SBIR and our OT, but more importantly to learn more about what upcoming opportunities there are and meet with senior leaders\"",
+        name: "Aimee Zick",
+        title: "Business Development Executive",
+        affiliation: "Improve Group",
+        videoId: "H3Be6-OY_ug"
+      },
+      {
+        type: 'video',
+        quote: "\"The American Defense Alliance is a body for us that is extremely valuable because it covers that whole forest, from two dudes in a garage to some pretty large and impressive companies.\" ",
+        name: "His Royal Highness, Brigadier General Prince Joachim, Prince of Denmark",
+        title: "Danish Military Industry Attaché",
+        affiliation: "Royal Embassy of Denmark",
+        videoId: "LNC5iQfEEEc"
+      },
+      {
+        type: 'video',
+        quote: "\"The American Defense Alliance puts on fantastic events, and they really connect Small Businesses to a lot of really great opportunities out there.\"",
+        name: "Brian Liesveld",
+        title: "Chief Executive Officer",
+        affiliation: "DEFENSEWERX",
+        videoId: "kqyAAe4RHNA"
+      }
     ],
     image: "/2025_DefenseIndustryForecast.png",
     slug: "2025-defense-industry-forecast",
@@ -217,7 +242,6 @@ export const EVENTS = [
       }
     ]
   },
-
   {
     id: 3,
     eventShorthand: "2025DTIOS",
@@ -235,7 +259,7 @@ export const EVENTS = [
           <br /><br />
         </p>
         <p className="mb-4 leading-9">
-        We invite you to connect with the pioneers and visionaries who are leading this new era of Department of Defense and Commercial Space Industrialization. Meet the experts and program Managers eager to collaborate with those who recognize the vast potential in this rapidly expanding sector. Seize this opportunity to be at the forefront of this exciting frontier!
+          We invite you to connect with the pioneers and visionaries who are leading this new era of Department of Defense and Commercial Space Industrialization. Meet the experts and program Managers eager to collaborate with those who recognize the vast potential in this rapidly expanding sector. Seize this opportunity to be at the forefront of this exciting frontier!
         </p>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           Conference Topics Spotlight
@@ -252,8 +276,7 @@ export const EVENTS = [
         </ul>
       </div>
     ),
-    topicalCoverage: [
-    ],
+    topicalCoverage: [],
     image: "/header_final.png",
     slug: "2025-driving-the-industrialization-of-space",
     locationImage: "/locations/kennedy-space-center.jpg",
