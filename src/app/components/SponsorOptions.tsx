@@ -1,6 +1,6 @@
 import { SPONSORSHIP_TYPES } from '@/constants/sponsorships'
 import React from 'react'
-import { Event } from './Speakers'
+import { Event } from '@/types/events'
 import { notFound } from 'next/navigation'
 import SponsorshipCard from './SponsorshipCard'
 import Image from 'next/image'
