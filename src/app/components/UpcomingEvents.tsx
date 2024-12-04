@@ -46,7 +46,7 @@ const UpcomingEvents = ({
   // If no upcoming events, show a message
   if (upcomingEvents.length === 0) {
     return (
-      <section className="max-container flex flex-col items-center mt-8 mb-16">
+      <section className="max-container flex flex-col items-center mt-8 mb-8">
         <h2 className="text-center font-gotham font-bold text-[36px] md:text-[64px] text-slate-900 sm:px-16 px-6">
           Upcoming Events
         </h2>
@@ -58,7 +58,7 @@ const UpcomingEvents = ({
   }
 
   return (
-    <section id="upcoming-events" className="max-container flex flex-col items-center mt-8 mb-16">
+    <section id="upcoming-events" className="max-container flex flex-col items-center mt-8 mb-8">
       {customTitle || (showMainTitle && (
         <h2 className="text-center font-gotham font-bold text-[36px] md:text-[64px] text-slate-900 sm:px-16 px-6">
           Don't miss our upcoming events!

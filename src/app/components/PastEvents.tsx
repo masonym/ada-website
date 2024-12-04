@@ -71,7 +71,7 @@ const PastEvents = () => {
     }
 
     return (
-        <section id="past-events" className="max-container flex flex-col items-center mt-8 mb-16 px-4 sm:px-6">
+        <section id="past-events" className="max-container flex flex-col items-center mt-8 mb-8 px-4 sm:px-6">
             <div className="flex flex-col sm:flex-row items-center gap-4 mb-6 sm:mb-8 text-center">
                 <History className="w-12 h-12 sm:w-14 sm:h-14 text-gray-500" />
                 <h2 className="font-gotham font-bold text-3xl sm:text-[36px] md:text-[64px] text-gray-700">
