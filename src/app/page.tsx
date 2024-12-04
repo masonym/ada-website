@@ -17,8 +17,8 @@ const HomePage = () => {
       <UpcomingEvents />
       <MissionStatement />
       <FocusAreas />
+      <Testimonials />
       <MailingListSubscription/>
-      {/* <Testimonials /> */}
       {/* <LatestNews /> */}
       <FAQSection />
       <ContactUs />
