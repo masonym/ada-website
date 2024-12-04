@@ -4,7 +4,7 @@ export const EVENT_NAVS = [
   {
     eventId: 1, // This should match the event ID from EVENTS
     items: [
-      { label: 'Home', path: '/' },
+      { label: 'Event Overview', path: '/' },
       {
         label: 'About',
         subItems: [
@@ -28,7 +28,7 @@ export const EVENT_NAVS = [
   {
     eventId: 2, // This should match the event ID from EVENTS
     items: [
-      { label: 'Home', path: '/' },
+      { label: 'Event Overview', path: '/' },
       {
         label: 'About',
         subItems: [
@@ -53,7 +53,7 @@ export const EVENT_NAVS = [
   {
     eventId: 3, // This should match the event ID from EVENTS
     items: [
-      { label: 'Home', path: '/' },
+      { label: 'Event Overview', path: '/' },
       {
         label: 'About',
         subItems: [
