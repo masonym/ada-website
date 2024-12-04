@@ -1,6 +1,6 @@
 import React from 'react';
 import { REGISTRATION_TYPES } from '@/constants/registrations';
-import { EventProps } from './Speakers';
+import { Event } from '@/types/events';
 import { notFound } from 'next/navigation';
 import RegistrationCard from './RegistrationCard';
 import Link from 'next/link';
@@ -8,7 +8,7 @@ import { Award, ChevronRight, Mail } from 'lucide-react';
 import SponsorProspectus from './SponsorProspectus';
 
 export type RegistrationProps = {
-    event: EventProps;
+    event: Event;
 };
 
 type AddOn = {

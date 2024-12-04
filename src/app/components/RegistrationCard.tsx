@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { EVENTS } from '@/constants/events';
-import { EventProps } from './Speakers';
+import { Event } from '@/types/events';
 import { getCdnPath } from '@/utils/image';
 
 type RegistrationTypes = {
@@ -30,7 +30,7 @@ type RegistrationProp = {
 
 const RegistrationCard = ({ item }: RegistrationProp) => {
     const params = useParams()
-    const event = EVENTS.find((event: EventProps) => event.slug === params?.slug);
+    const event = EVENTS.find((event: Event) => event.slug === params?.slug);
     const isPaid = item.type === 'paid';
     const isSponsor = item.type === 'sponsor';
     const isFree = item.type === 'complimentary';

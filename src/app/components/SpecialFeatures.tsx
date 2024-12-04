@@ -1,13 +1,13 @@
 import React from 'react';
 import { Calendar, MapPin, Clock } from 'lucide-react';
 import { SPECIAL_FEATURES } from '@/constants/specialFeatures';
-import { EventProps } from './Speakers';
+import { Event } from '@/types/events';
 
 
 
 
 type SpecialFeaturesProps = {
-    event: EventProps;
+    event: Event;
 };
 
 const SpecialFeatures: React.FC<SpecialFeaturesProps> = ({ event }) => {

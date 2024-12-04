@@ -2,11 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { EVENT_SPONSORS } from '@/constants/eventSponsors';
-import { EventProps } from './Speakers';
+import { Event } from '@/types/events';
 import { getCdnPath } from '@/utils/image';
 
 type SponsorProps = {
-    event: EventProps;
+    event: Event;
     showTiers?: string[];
     titleOverride?: string;
 };

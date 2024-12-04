@@ -1,8 +1,8 @@
 import React from 'react';
-import { EventProps } from './Speakers';
+import { Event } from '@/types/events';
 
 type FooterEventTextProps = {
-  event: EventProps;
+  event: Event;
 };
 
 const FooterEventText = ({ event }: FooterEventTextProps) => {
