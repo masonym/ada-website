@@ -57,6 +57,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://www.usprotech.com/",
                         width: 170,
                         height: 50,
+                    },
+                    {
+                        name: "Neat and Nifty",
+                        logo: "/events/2025DTIOS/sponsors/neat-and-nifty.webp",
+                        website: "https://www.neatandnifty.com/",
+                        width: 150,
+                        height: 150,
                     }
                 ],
             },
