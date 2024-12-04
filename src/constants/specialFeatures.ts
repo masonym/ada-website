@@ -1,17 +1,5 @@
-type SpecialFeature = {
-    title: string;
-    date?: string;
-    time?: string;
-    location?: string;
-    description: string;
-  };
-  
+import { EventSpecialFeatures } from '@/types/specialFeatures';
 
-type EventSpecialFeatures = {
-    id: number;
-    features: SpecialFeature[];
-    additionalPerks?: string[];
-  };
 
 // Example data structure - this should be moved to a separate data file
 export const SPECIAL_FEATURES: EventSpecialFeatures[] = [
@@ -27,7 +15,13 @@ export const SPECIAL_FEATURES: EventSpecialFeatures[] = [
           <br/>
           8801 Astronaut Blvd, Cape Canaveral, FL 32920
           `,
-          description: "Mix and Mingle with our Guest Star Astronauts and other VIP Guests at Zarrella’s Italian & Wood Fired Pizza in Cape Canaveral, FL while Sampling Select Smooth Bourbons."
+          description: "Mix and Mingle with our Guest Star Astronauts and other VIP Guests at Zarrella's Italian & Wood Fired Pizza in Cape Canaveral, FL while Sampling Select Smooth Bourbons.",
+          specialGuest: {
+            name: "Robert Clyde Springer", // Replace with actual guest name
+            title: "Astronaut", // Optional title
+            photo: "robert_springer.webp", // Replace with actual photo URL
+            bio: "Robert Clyde Springer is a retired American astronaut and test pilot who flew as a mission specialist on two NASA Space Shuttle missions in 1989 and 1990. He is a decorated aviator in the United States Marine Corps who also flew more than 500 combat sorties during the Vietnam War. He has logged over 237 hours in space and 4,500 hours flying time, including 3,500 hours in jet aircraft." // Replace with actual bio
+          }
         }
       ],
       additionalPerks: [
