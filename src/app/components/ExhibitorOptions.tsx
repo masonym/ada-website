@@ -46,7 +46,7 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                     Explore our discounted Exhibitor Opportunities available when you Register for Multiple Events. For more information and to secure your sponsorship, contact:  <a href="mailto:marketing@americandefensealliance.org" className='underline'>marketing@americandefensealliance.org</a>
                 </p>
 
-                <SponsorLogos event={event} showTiers={["Exhibitors"]} titleOverride='Exhibitor Sponsors' />
+                <SponsorLogos event={event} showTiers={["Exhibitors"]} titleOverride=' ' />
 
                 <div className="mt-4 text-center flex flex-col items-center">
                     <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Seat at this Groundbreaking Event!</p>
