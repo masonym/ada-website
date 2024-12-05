@@ -352,17 +352,10 @@ export const EVENTS: Event[] = [
     parkingInfo: [
       {
         title: "General Parking Information",
-        description: `The Kennedy Space Center Visitor Complex Parking Lot accommodates Motorcycles, Automobiles, and Oversized Vehicles such as RVs. Parking fees are collected at the entrance to the lot. Parking is accessible 30 minutes before complex opening.`
-      },
-      {
-        title: "Parking Rates",
-        description: `
-        <ul class="list-none">
-        <li>Motorcycles - $5.00</li>
-        <li>Automobiles - $15.00</li>
-        <li>Oversized Vehicles, Motor Homes or RVs - $20.00</li>
-        </ul>
-    `
+        description: `The Kennedy Space Center Visitor Complex Parking Lot accommodates Motorcycles, Automobiles, and Oversized Vehicles such as RVs. Parking fees are collected at the entrance to the lot. Parking is accessible 30 minutes before complex opening.
+        <br/><br/>
+        You must enter the KSCVC through the "Crawler" entrance on Space Commerce Way. The entrance is a newer entrance, if you attempt to enter through the security gate off of SR405, you will be asked to turn around.
+        `
       },
       {
         title: "Accessible Parking",
@@ -460,5 +453,9 @@ export const EVENTS: Event[] = [
         </p>
       </div>
     ),
+    parkingBox: {
+      text: "To access the KSC Visitor Complex, present the Parking Placard provided below. This will serve as your entry into the KSCVC parking for the event. Park in Lot 4 and please present this parking pass at the parking plaza. It may be presented digitally or it may be printed.\n\nImportant: Each attendee must present a yellow admission ticket at the turnstiles. You will have (1) ticket for each day of the event.\n• Travel Through Turnstiles and Around the Curved Path\n• The Rocket Garden will be on your Left\n• To the CSE: Walk through the Rocket Garden through the Gateway Building Beyond the White Fence (to the left of the Gateway) will be The Center for Space Education\n• Turn Right to Follow the Path to the Front Entrance of The Center for Space Education",
+      imagePlaceholder: "/events/2025DTIOS/parking_placard.webp"
+    },
   }
 ];

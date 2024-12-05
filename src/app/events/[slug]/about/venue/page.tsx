@@ -98,6 +98,25 @@ const Page = () => {
                 </div>
             </div>
 
+            {event.parkingBox && (
+                <div className="mt-6 mb-8">
+                    <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+                        <div className="whitespace-pre-line prose prose-slate max-w-none">
+                            {event.parkingBox.text}
+                        </div>
+                        <div className="mt-4">
+                            <Image
+                                src={getCdnPath(event.parkingBox.imagePlaceholder)}
+                                alt="Parking Placard"
+                                width={800}
+                                height={400}
+                                className="rounded-lg mx-auto"
+                            />
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* map */}
 
             <div className="mt-12 self-center" style={{ width: "100%", height: "400px" }}>

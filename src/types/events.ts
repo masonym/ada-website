@@ -51,4 +51,8 @@ export interface Event {
             href: string;
         }
     }>;
+    parkingBox?: {
+        text: string;
+        imagePlaceholder: string;
+    };
 }
