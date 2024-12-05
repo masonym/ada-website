@@ -636,10 +636,18 @@ export const SPEAKERS = [
                 bio: `
                 Jimmy Moffitt is the Vice President of Spaceport Operations at Space Florida, the state’s aerospace finance, development, and operational authority for the state. Space Florida along with its experience, financial tools, and unbeatable location attract commercial business to develop and operate facilities within Florida’s spaceport system.
                 <br/><br/>
-                Jimmy is charged with management of Space Florida’s licensed spaceports, assets, and property at Kennedy Space Center and Cape Canaveral Space Force Station. Jimmy works closely with NASA and Space Launch Delta 45 leadership on the strategic planning & business development with commercial and government space entities ensuring growth and resiliency in the industry.  Additionally, Jimmy manages the operations and maintenance of Space Florida facilities, with focus on compliance with NASA and DoD requirements for safe and successful Launch, Landing, and testing activities at the Launch and Landing Facility, Launch Complex 46, Launch Complex 20(N), & Camp Blanding Storage Facility.
+                Jimmy is charged with management of Space Florida’s licensed spaceports, assets, and property at Kennedy Space Center and Cape Canaveral Space Force Station. Jimmy works closely with NASA and Space Launch Delta 45 leadership on the strategic planning & business development with commercial and government space entities ensuring growth and resiliency in the industry. Additionally, Jimmy manages the operations and maintenance of Space Florida facilities, with focus on compliance with NASA and DoD requirements for safe and successful Launch, Landing, and testing activities at the Launch and Landing Facility, Launch Complex 46, Launch Complex 20(N), & Camp Blanding Storage Facility.
                 <br/><br/>
                 Prior to Space Florida, Jimmy supported management of leases and development at the general aviation and International airports at Jacksonville Aviation Authority and was integral to the success of Cecil Spaceport’s Horizontal launch license and Spaceport development area at Cecil. Jimmy has always had a passion for aviation and management, which led him to pursue a Bachelor of Science in Aviation Management & Safety, and a master’s degree in Technical Management from Embry-Riddle Aeronautical University (ERAU).
-
+                `
+            },
+            {
+                image: "ashley_pilipiszyn.webp",
+                name: "Ashley Pilipiszyn",
+                position: "Founder/CEO",
+                company: "Besxar",
+                bio: `
+                Ashley is an applied scientist-turned-space industrialist, deep tech angel investor, and certified pilot. Her mission is to help unlock the market potential of in-space manufacturing while also advancing U.S. aerospace and defense capabilities with AI. She’s an expert authority on AI applications — as an early employee and the first Technical Director to the CTO, she led OpenAI’s early research and commercial product releases including MuseNet, Jukebox, Rubik’s Cube, GPT-3, and DALL-E. She also created OpenAI’s developer ecosystem program where she helped launch a variety of partner applications and mentor startups powered by GPT-3. Previously, she oversaw the design, development, and launch of DOE-funded “Grid Resilience & Intelligence Platform” (GRIP) at SLAC National Accelerator Lab. GRIP leveraged AI to anticipate, absorb, and recover from grid events such as wildfires, ice storms, or cyberattacks. Now as an entrepreneur, she aims to revolutionize semiconductor manufacturing to help enable the rapid growth of AI infrastructure for the U.S. government and commercial partners alike.
                 `
             }
         ]
