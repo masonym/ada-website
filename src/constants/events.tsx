@@ -379,47 +379,6 @@ export const EVENTS: Event[] = [
       contactEmail2: "lana@americandefensealliance.org"
     },
     sponsorshipInfo: {
-      sponsorSection: (
-        <>
-          <div className="mt-4">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
-              Sponsors and Event Partners
-            </h2>
-            <div className="flex justify-center items-center gap-8 max-w-full">
-              <div className="w-[200px] sm:w-[300px] md:w-[400px] relative">
-                <Image
-                  src={getCdnPath("/logos/nass-logo.webp")}
-                  alt="NASS Logo"
-                  layout="responsive"
-                  width={100}
-                  height={33}
-                  style={{ maxWidth: '100%', height: 'auto' }}
-                />
-              </div>
-              <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
-                <Image
-                  src={getCdnPath("/logo.webp")}
-                  alt="American Defense Alliance Logo"
-                  layout="responsive"
-                  width={100}
-                  height={100}
-                  style={{ maxWidth: '100%', height: 'auto' }}
-                />
-              </div>
-              <div className="w-[80px] sm:w-[100px] md:w-[150px] relative">
-                <Image
-                  src={getCdnPath("/logos/amf-logo.webp")}
-                  alt="The Astronauts Memorial Foundation Logo"
-                  layout="responsive"
-                  width={100}
-                  height={100}
-                  style={{ maxWidth: '100%', height: 'auto' }}
-                />
-              </div>
-            </div>
-          </div>
-        </>
-      ),
       customContactText: (
         <div className="flex flex-col items-center space-y-4 bg-white rounded-lg shadow-lg p-8">
           <h3 className="text-3xl font-bold">Contact Information</h3>
