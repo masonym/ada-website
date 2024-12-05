@@ -27,6 +27,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
     }
 
     const getDefaultTierStyle = (tierName: string) => {
+        if (tierName.toLowerCase().includes('small')) return 'bg-sb-100 text-slate-900';
         if (tierName.toLowerCase().includes('gold')) return 'bg-amber-400 text-slate-900';
         if (tierName.toLowerCase().includes('silver')) return 'bg-gray-300 text-slate-900';
         if (tierName.toLowerCase().includes('bronze')) return 'bg-amber-700 text-white';
@@ -74,7 +75,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
             )}
 
             {filteredTiers.map((tier, tierIndex) => (
-                <div key={tierIndex} className="mb-6 md:mb-8 last:mb-0">
+                <div key={tierIndex} className="mb-6 md:mb-8 last:mb-8">
                     <div className="relative mb-6 md:mb-8">
                         <div className="absolute inset-0 flex items-center">
                             <div className="w-full border-t border-gray-300"></div>

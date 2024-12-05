@@ -6,6 +6,7 @@ import ExhibitorCard from './ExhibitorCard';
 import Link from 'next/link';
 import Button from './Button';
 import SponsorProspectus from './SponsorProspectus';
+import SponsorLogos from './SponsorLogos';
 
 export type ExhibitorProps = {
     event: Event;
@@ -25,8 +26,8 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                     Exhibitor Opportunities
                 </h1>
                 <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
-                Increase your Brand Visibility and gain a Competitive Advantage!
-                 {/* <br /> Engaging in Exhibitor Opportunities is a Strategic way to effectively Promote your Products or Services. */}
+                    Increase your Brand Visibility and gain a Competitive Advantage!
+                    {/* <br /> Engaging in Exhibitor Opportunities is a Strategic way to effectively Promote your Products or Services. */}
                 </p>
                 <SponsorProspectus event={event} />
                 <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
@@ -39,11 +40,14 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                     />
                 ))}
                 <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-6xl mx-auto mb-6">
-                <b>Exhibitor Spaces:</b> The configuration of Exhibitor Areas varies by event and may encompass locations such as the General Session room, Pre-Function Areas, or a dedicated Exhibit Hall. For detailed information about each event, please reach out to us directly. Exhibitor Spaces are designed for table-top displays only, with no carpeting or pipe and drape required. Each Exhibitor will receive a 6' Table and Chairs. An Exhibit Space display area accommodates up to 8'x10'. We recommend using a maximum of (2) Pop-up Banners or (1) Backdrop. Please note that Electrical Services and other add-on items, including Internet Connections are not part of the Exhibit Space and will need to be purchased separately. A comprehensive Exhibitor Document will be available for download on the Event Page of our website.
+                    <b>Exhibitor Spaces:</b> The configuration of Exhibitor Areas varies by event and may encompass locations such as the General Session room, Pre-Function Areas, or a dedicated Exhibit Hall. For detailed information about each event, please reach out to us directly. Exhibitor Spaces are designed for table-top displays only, with no carpeting or pipe and drape required. Each Exhibitor will receive a 6' Table and Chairs. An Exhibit Space display area accommodates up to 8'x10'. We recommend using a maximum of (2) Pop-up Banners or (1) Backdrop. Please note that Electrical Services and other add-on items, including Internet Connections are not part of the Exhibit Space and will need to be purchased separately. A comprehensive Exhibitor Document will be available for download on the Event Page of our website.
                 </p>
                 <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mb-6">
                     Explore our discounted Exhibitor Opportunities available when you Register for Multiple Events. For more information and to secure your sponsorship, contact:  <a href="mailto:marketing@americandefensealliance.org" className='underline'>marketing@americandefensealliance.org</a>
                 </p>
+
+                <SponsorLogos event={event} showTiers={["Exhibitors"]} titleOverride='Exhibitor Sponsors' />
+
                 <div className="mt-4 text-center flex flex-col items-center">
                     <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Seat at this Groundbreaking Event!</p>
                     <Button

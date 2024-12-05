@@ -86,16 +86,16 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                         {event.sponsorshipInfo?.exhibitorSpacesText || defaultExhibitorText}
                     </p>
 
-                    <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mb-6">
+                    {/* <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mb-6">
                         {event.sponsorshipInfo?.sponsorSection || defaultSponsorText}
-                    </p>
-                    
-                    <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto">
+                    </p> */}
+
+                    <p className="mt-4 text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto">
                         {event.sponsorshipInfo?.customContactText}
                     </p>
 
 
-                    <SponsorLogos event={event} showTiers={["Event Partners", "Gold Sponsor", "Silver Sponsors"]} titleOverride='This Event is Organized and Presented by' />
+                    <SponsorLogos event={event} />
 
                     <div className="mt-8 text-center flex flex-col items-center">
                         <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Seat at this Groundbreaking Event!</p>

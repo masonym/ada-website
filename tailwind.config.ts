@@ -41,6 +41,9 @@ module.exports = {
           400: "#192841",
           500: "#152238",
           800: '#1B212B',
+        },
+        sb: {
+          100: '#3FB4E6',
         }
       },
       backgroundImage: {

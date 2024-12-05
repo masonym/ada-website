@@ -24,8 +24,75 @@ export type EventSponsors = {
 
 export const EVENT_SPONSORS: EventSponsors[] = [
     {
-        id: 3, // Matches the event ID from events.ts
+        id: 2,
         title: "Our Sponsors and Partners",
+        tiers: [
+            {
+                name: "Small Business Sponsors",
+                style: "bg-sb-100 text-slate-900",
+                sponsors: [
+                    {
+                        name: "PGI Steel",
+                        logo: "/events/2025SDPC/sponsors/pgi-steel.webp",
+                        website: "https://pgisteel.com/",
+                        width: 200,
+                        height: 200,
+                    },
+                    {
+                        name: "Mobi-mat",
+                        logo: "/events/2025SDPC/sponsors/mobi-mat.webp",
+                        website: "https://defense.mobi-mat.com/",
+                        width: 250,
+                        height: 75,
+                    }
+                ],
+            },
+            {
+                name: "Exhibitors",
+                style: "bg-navy-800 text-white", // Custom styling for organizers
+                sponsors: [
+                    {
+                        name: "PGI Steel",
+                        logo: "/events/2025SDPC/sponsors/pgi-steel.webp",
+                        website: "https://pgisteel.com/",
+                        width: 200,
+                        height: 200,
+                    },
+                    {
+                        name: "IMSM",
+                        logo: "/events/2025SDPC/sponsors/imsm.webp",
+                        website: "https://www.imsm.com/",
+                        width: 175,
+                        height: 45,
+                    },
+                    {
+                        name: "Mobi-mat",
+                        logo: "/events/2025SDPC/sponsors/mobi-mat.webp",
+                        website: "https://defense.mobi-mat.com/",
+                        width: 200,
+                        height: 50,
+                    },
+                    {
+                        name: "CMPRO",
+                        logo: "/events/2025SDPC/sponsors/CMPRO.webp",
+                        website: "https://psasys.com/",
+                        width: 280,
+                        height: 51,
+                    },
+                    {
+                        name: "Safe Structure Designs",
+                        logo: "/events/2025SDPC/sponsors/safe-structure.webp",
+                        website: "https://www.safestructuredesigns.com/",
+                        width: 200,
+                        height: 50,
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        id: 3, // Matches the event ID from events.ts
+        title: "This event is Organized and Presented by",
         tiers: [
             {
                 name: "Gold Sponsor",
