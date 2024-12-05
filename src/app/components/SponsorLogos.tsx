@@ -19,12 +19,21 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
     }
 
     const filteredTiers = showTiers 
-        ? eventSponsors.tiers.filter(tier => showTiers.includes(tier.name))
+        ? eventSponsors.tiers.filter(tier => 
+            showTiers.some(showTier => 
+                tier.name.toLowerCase().includes(showTier.toLowerCase())
+            )
+        )
         : eventSponsors.tiers;
 
     if (filteredTiers.length === 0) {
         return null;
     }
+
+    const sortedTiers = filteredTiers.map(tier => ({
+        ...tier,
+        sponsors: [...tier.sponsors].sort((a, b) => a.name.localeCompare(b.name))
+    }));
 
     const getDefaultTierStyle = (tierName: string) => {
         if (tierName.toLowerCase().includes('small')) return 'bg-sb-100 text-slate-900';
@@ -74,7 +83,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                 </p>
             )}
 
-            {filteredTiers.map((tier, tierIndex) => (
+            {sortedTiers.map((tier, tierIndex) => (
                 <div key={tierIndex} className="mb-6 md:mb-8 last:mb-8">
                     <div className="relative mb-6 md:mb-8">
                         <div className="absolute inset-0 flex items-center">
@@ -98,7 +107,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                             {tier.sponsors.map((sponsor, sponsorIndex) => {
                                 const mobileSize = getSponsorImageSize(sponsor, true);
                                 const desktopSize = getSponsorImageSize(sponsor, false);
-                                
+                                 
                                 return (
                                     <div 
                                         key={sponsorIndex} 

@@ -39,7 +39,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         height: 200,
                     },
                     {
-                        name: "Mobi-mat",
+                        name: "Deschamps",
                         logo: "/events/2025SDPC/sponsors/mobi-mat.webp",
                         website: "https://defense.mobi-mat.com/",
                         width: 250,
@@ -66,7 +66,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         height: 45,
                     },
                     {
-                        name: "Mobi-mat",
+                        name: "Deschamps",
                         logo: "/events/2025SDPC/sponsors/mobi-mat.webp",
                         website: "https://defense.mobi-mat.com/",
                         width: 200,
