@@ -649,6 +649,23 @@ export const SPEAKERS = [
                 bio: `
                 Ashley is an applied scientist-turned-space industrialist, deep tech angel investor, and certified pilot. Her mission is to help unlock the market potential of in-space manufacturing while also advancing U.S. aerospace and defense capabilities with AI. She’s an expert authority on AI applications — as an early employee and the first Technical Director to the CTO, she led OpenAI’s early research and commercial product releases including MuseNet, Jukebox, Rubik’s Cube, GPT-3, and DALL-E. She also created OpenAI’s developer ecosystem program where she helped launch a variety of partner applications and mentor startups powered by GPT-3. Previously, she oversaw the design, development, and launch of DOE-funded “Grid Resilience & Intelligence Platform” (GRIP) at SLAC National Accelerator Lab. GRIP leveraged AI to anticipate, absorb, and recover from grid events such as wildfires, ice storms, or cyberattacks. Now as an entrepreneur, she aims to revolutionize semiconductor manufacturing to help enable the rapid growth of AI infrastructure for the U.S. government and commercial partners alike.
                 `
+            },
+            {
+                image: "gerald_norris.webp",
+                name: "Gerald Norris",
+                position: "Director, Procurement",
+                company: "NASA's John F. Kennedy Space Center",
+                bio: `
+                Gerald Norris is the director of Procurement at NASA’s John F. Kennedy Space Center in Florida. He is responsible for leading and managing the overall operation of Kennedy procurement activities, including planning and implementing acquisition strategies, issuing solicitations, conducting negotiations, processing awards, and administering contracts for Kennedy programs and projects, as well as enterprisewide institutional portfolio contracting activity totaling over $40B.
+                <br/><br/>
+                He previously served as procurement officer and senior procurement official for Stennis Space Center in Mississippi, where he was responsible for providing a $4.7B acquisition management program for NASA.
+                <br/><br/>
+                Norris joined the NASA team in 2006 with the Stennis Office of Procurement, where he served in various progressive leadership capacities, including contracting officer in the Center Management Support Division, Program Management division chief, and deputy procurement officer.
+                <br/><br/>
+                Norris began his government career in the United States Air Force, where he served his country for over 21 years. 
+                <br/><br/>
+                He holds a Bachelor of Science in business administration from Park University in Parkville, Missouri.
+                `
             }
         ]
     }
