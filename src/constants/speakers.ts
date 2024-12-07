@@ -356,21 +356,21 @@ export const SPEAKERS = [
     {
         id: 3,
         speakers: [
-            {
-                image: "stephen_purdy.webp",
-                name: "Major General Stephen G. Purdy, Jr.",
-                position: "Military Deputy, Office of the Assistant Secretary of the Air Force for Space Acquisition and Integration",
-                company: "United States Space Force",
-                bio: `
-                Maj. Gen. Stephen G. Purdy, Jr., is the Military Deputy, Office of the Assistant Secretary of the Air Force for Space Acquisition and Integration, Washington, D.C.
-                He also serves as the Space Force University Partnership Program Champion for the University of Texas Austin.
-                <br/><br/>
-                Maj. Gen. Purdy as Military Deputy is responsible for research and development, worth more than $24 billion annually. His responsibilities include crafting program
-                strategies and options for representing DAF positions to the office of the Secretary of Defense, Congress and the White House.
-                <br/><br/>            
-                Maj. Gen. Purdy entered the Air Force as a Distinguished Graduate of the Reserve Officer Training Corps at Baylor University in 1993. He has served in a variety of engineering, acquisition and policy capacities, including assignments at the Air Force Laboratory, the Pentagon, Congress, Space and Missile Systems Center and Headquarters United States Space Force. He has served as an Air Force Intern, Space/Nuclear/Cyber Congressional Appropriations Liaison, Materiel Leader in the Evolved Expendable Launch Vehicle Program, Senior Materiel Leader for the Advanced Extremely High Frequency Program, Director Special Programs, Space and Missile Systems Center, and as the dual hatted Space Operations Command’s Director, Requirements, Architectures and Analysis and the Director, Plans, Programs and Financial Management. Prior to his current assignment, General Purdy was quad hatted as Program Executive Officer for Assured Access to Space; Commander, Space Launch Delta 45; Director of Launch and Range Operations, Space Systems Command; and Director of the Eastern Range, Patrick Space Force Base, Florida.
-                `
-            },
+            // {
+            //     image: "stephen_purdy.webp",
+            //     name: "Major General Stephen G. Purdy, Jr.",
+            //     position: "Military Deputy, Office of the Assistant Secretary of the Air Force for Space Acquisition and Integration",
+            //     company: "United States Space Force",
+            //     bio: `
+            //     Maj. Gen. Stephen G. Purdy, Jr., is the Military Deputy, Office of the Assistant Secretary of the Air Force for Space Acquisition and Integration, Washington, D.C.
+            //     He also serves as the Space Force University Partnership Program Champion for the University of Texas Austin.
+            //     <br/><br/>
+            //     Maj. Gen. Purdy as Military Deputy is responsible for research and development, worth more than $24 billion annually. His responsibilities include crafting program
+            //     strategies and options for representing DAF positions to the office of the Secretary of Defense, Congress and the White House.
+            //     <br/><br/>            
+            //     Maj. Gen. Purdy entered the Air Force as a Distinguished Graduate of the Reserve Officer Training Corps at Baylor University in 1993. He has served in a variety of engineering, acquisition and policy capacities, including assignments at the Air Force Laboratory, the Pentagon, Congress, Space and Missile Systems Center and Headquarters United States Space Force. He has served as an Air Force Intern, Space/Nuclear/Cyber Congressional Appropriations Liaison, Materiel Leader in the Evolved Expendable Launch Vehicle Program, Senior Materiel Leader for the Advanced Extremely High Frequency Program, Director Special Programs, Space and Missile Systems Center, and as the dual hatted Space Operations Command’s Director, Requirements, Architectures and Analysis and the Director, Plans, Programs and Financial Management. Prior to his current assignment, General Purdy was quad hatted as Program Executive Officer for Assured Access to Space; Commander, Space Launch Delta 45; Director of Launch and Range Operations, Space Systems Command; and Director of the Eastern Range, Patrick Space Force Base, Florida.
+            //     `
+            // },
             {
                 image: "chad_brown.webp",
                 name: "Chad Brown",
