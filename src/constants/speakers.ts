@@ -442,23 +442,23 @@ export const SPEAKERS = [
             },
 
             // john sanders
-            {
-                image: "john_sanders.webp",
-                name: "John Sanders (Invited)",
-                position: "Senior Cybersecurity Research Analytic Consultant",
-                company: "Director of National Intelligence (DNI)",
-                bio: `
-                John Sanders, TS/SCI CI Poly Access, Lt. Col., U.S. Army, Intelligence (ret.), is an expert in Cyberspace and Cybersecurity for both government and commercial sectors. He is uniquely- qualified as an expert to advise business boards of directors, C-suite executives, and government officials on critical applications of state-of-the-art cybersecurity technology, practices, and countermeasures. A gifted communicator of the complex into plain, understandable terms, makes John a remarkable asset in boardrooms, and among C-suite executives, grappling with cybersecurity challenges.
-                <br/><br/>
-                John has over 28 years of experience as an intelligence professional in the U.S. Army, Industry, and the Intelligence Community. He served as an Executive Officer to the Deputy Director National Intelligence, Policy, Plans, and Requirements, Office of the Director of National Intelligence. He is skilled in working with high level intelligence policies, programs, and strategies for Cyberspace and Cybersecurity for both the commercial and government sectors. He has also worked on cyber analytic efforts to include characterization of signature and non- signature based cyber threats across the 7 layers of the Open Systems Interconnection (OSI) model critical to the interoperability of diverse communications systems with standardized protocols.
-                <br/><br/>
-                While on active duty, he orchestrated Computer Network Operations (CNO) and Cyberspace campaign planning and implementation for Intelligence and Security Command, which led to the formation of the Army’s 1st Cyber Brigade. He is an Army trained strategic planner, and he graduated from the prestigious School of Advanced Military Studies (SAMS), a component of the Army’s Command and General Staff College, at Ft Leavenworth, Kansas. The mission of SAMS is to educate members of the Armed Forces, our Allies, and the Interagency at the graduate level to become agile and adaptive leaders who are critical and creative thinkers who produce viable options to solve operational and strategic problems. He was awarded a Master’s Degree in Military Art and Science from this program. He is a Knowlton Award recipient – a very prestigious award given to selected Army Intelligence professionals.
-                <br/><br/>
-                Founder of his own consulting company, John provides Cybersecurity, Cloud Computing, Forensic Analysis, Insider Threat, and Data Analytics support services to the Intelligence Community, Department of Defense, and to private sector clients. His private sector clients have included a Fortune 500 company, and a large defense IT contractor, on Cyber Strategy and Cybersecurity capability development for commercial offerings and large government contract efforts. He also works as a contracted Senior Cybersecurity Research Analytic Consultant for the Director of National Intelligence (DNI), National Counterintelligence and Security Center (NCSC) Special Security Directorate staff, providing Subject Matter Expertise on Cyber Technical Policy and Strategy.
-                <br/><br/>
-                John holds a bachelor’s degree from Dallas Baptist University, in Business Administration. He also earned a master’s degree in Telecommunications Management from Webster University, where he graduated with honors. John is a Bronze Star recipient, Airborne Ranger, and Combat Veteran, having served two combat tours (Iraq) in the 82nd Airborne Division. He is an honorary Admiral in the Texas Navy.
-                `
-            },
+            // {
+            //     image: "john_sanders.webp",
+            //     name: "John Sanders (Invited)",
+            //     position: "Senior Cybersecurity Research Analytic Consultant",
+            //     company: "Director of National Intelligence (DNI)",
+            //     bio: `
+            //     John Sanders, TS/SCI CI Poly Access, Lt. Col., U.S. Army, Intelligence (ret.), is an expert in Cyberspace and Cybersecurity for both government and commercial sectors. He is uniquely- qualified as an expert to advise business boards of directors, C-suite executives, and government officials on critical applications of state-of-the-art cybersecurity technology, practices, and countermeasures. A gifted communicator of the complex into plain, understandable terms, makes John a remarkable asset in boardrooms, and among C-suite executives, grappling with cybersecurity challenges.
+            //     <br/><br/>
+            //     John has over 28 years of experience as an intelligence professional in the U.S. Army, Industry, and the Intelligence Community. He served as an Executive Officer to the Deputy Director National Intelligence, Policy, Plans, and Requirements, Office of the Director of National Intelligence. He is skilled in working with high level intelligence policies, programs, and strategies for Cyberspace and Cybersecurity for both the commercial and government sectors. He has also worked on cyber analytic efforts to include characterization of signature and non- signature based cyber threats across the 7 layers of the Open Systems Interconnection (OSI) model critical to the interoperability of diverse communications systems with standardized protocols.
+            //     <br/><br/>
+            //     While on active duty, he orchestrated Computer Network Operations (CNO) and Cyberspace campaign planning and implementation for Intelligence and Security Command, which led to the formation of the Army’s 1st Cyber Brigade. He is an Army trained strategic planner, and he graduated from the prestigious School of Advanced Military Studies (SAMS), a component of the Army’s Command and General Staff College, at Ft Leavenworth, Kansas. The mission of SAMS is to educate members of the Armed Forces, our Allies, and the Interagency at the graduate level to become agile and adaptive leaders who are critical and creative thinkers who produce viable options to solve operational and strategic problems. He was awarded a Master’s Degree in Military Art and Science from this program. He is a Knowlton Award recipient – a very prestigious award given to selected Army Intelligence professionals.
+            //     <br/><br/>
+            //     Founder of his own consulting company, John provides Cybersecurity, Cloud Computing, Forensic Analysis, Insider Threat, and Data Analytics support services to the Intelligence Community, Department of Defense, and to private sector clients. His private sector clients have included a Fortune 500 company, and a large defense IT contractor, on Cyber Strategy and Cybersecurity capability development for commercial offerings and large government contract efforts. He also works as a contracted Senior Cybersecurity Research Analytic Consultant for the Director of National Intelligence (DNI), National Counterintelligence and Security Center (NCSC) Special Security Directorate staff, providing Subject Matter Expertise on Cyber Technical Policy and Strategy.
+            //     <br/><br/>
+            //     John holds a bachelor’s degree from Dallas Baptist University, in Business Administration. He also earned a master’s degree in Telecommunications Management from Webster University, where he graduated with honors. John is a Bronze Star recipient, Airborne Ranger, and Combat Veteran, having served two combat tours (Iraq) in the 82nd Airborne Division. He is an honorary Admiral in the Texas Navy.
+            //     `
+            // },
 
             // Thad Altman
             {
@@ -478,44 +478,44 @@ export const SPEAKERS = [
             },
 
             // Janet Petro
-            {
-                image: "janet_petro.webp",
-                name: "Janet Petro (Invited)",
-                position: "Director",
-                company: "NASA's John F. Kennedy Space Center",
-                bio: `
-                Janet Petro was named the 11th Director of NASA’s John F. Kennedy Space Center in Florida on June 30, 2021. She had been serving as acting Director since May 2021 following NASA Administrator Sen. Bill Nelson’s announcement that Robert D. Cabana, previous Kennedy Director, would assume the role of NASA’s associate administrator.
-                Prior to being named Director, Petro served as Kennedy’s Deputy Director since April 2007, where she shared responsibility with the Center Director in managing the Kennedy team of civil service and contractor employees, determining and implementing center policy and managing and executing Kennedy missions and agency program responsibilities.
-                <br/><br/>
-                During her tenure as Deputy Director, Petro helped Kennedy transition into a multi-user spaceport, leading cross-agency initiatives with the Federal Aviation Administration and U.S. Air Force to streamline government processes and support commercial space operations to increase government efficiency and limit redundancy. She served a 12-month appointment at NASA Headquarters in Washington, D.C. as the deputy associate administrator and Acting Director for the Office of Evaluation.
-                <br/><br/>
-                From 2017 through January 2020, she served as the Program Executive leading the agency-wide initiative for a phased implementation to restructure all mission enabling functions to ensure efficient and effective support of NASA’s missions. Her assignment to the Mission Support Future Architecture Program (MAP) concluded in January 2020.
-                <br/><br/>
-                Prior to joining NASA, Petro served in various management positions for Science Applications International Corp. (SAIC) and McDonnell Douglas Aerospace Corp. At SAIC, Petro held a number of management positions within the corporation’s operations. She interfaced with NASA, the U.S. Air Force, the U.S. Navy, and commercial entities on numerous aerospace and military programs.
-                <br/><br/>
-                At McDonnell Douglas Aerospace, Petro advanced from mechanical engineer and payload manager to multiple management positions including program manager for executing a classified, multimillion-dollar U.S. Department of Defense program, to senior manager for Communications and Data Systems Division.                
-                `
-            },
+            // {
+            //     image: "janet_petro.webp",
+            //     name: "Janet Petro (Invited)",
+            //     position: "Director",
+            //     company: "NASA's John F. Kennedy Space Center",
+            //     bio: `
+            //     Janet Petro was named the 11th Director of NASA’s John F. Kennedy Space Center in Florida on June 30, 2021. She had been serving as acting Director since May 2021 following NASA Administrator Sen. Bill Nelson’s announcement that Robert D. Cabana, previous Kennedy Director, would assume the role of NASA’s associate administrator.
+            //     Prior to being named Director, Petro served as Kennedy’s Deputy Director since April 2007, where she shared responsibility with the Center Director in managing the Kennedy team of civil service and contractor employees, determining and implementing center policy and managing and executing Kennedy missions and agency program responsibilities.
+            //     <br/><br/>
+            //     During her tenure as Deputy Director, Petro helped Kennedy transition into a multi-user spaceport, leading cross-agency initiatives with the Federal Aviation Administration and U.S. Air Force to streamline government processes and support commercial space operations to increase government efficiency and limit redundancy. She served a 12-month appointment at NASA Headquarters in Washington, D.C. as the deputy associate administrator and Acting Director for the Office of Evaluation.
+            //     <br/><br/>
+            //     From 2017 through January 2020, she served as the Program Executive leading the agency-wide initiative for a phased implementation to restructure all mission enabling functions to ensure efficient and effective support of NASA’s missions. Her assignment to the Mission Support Future Architecture Program (MAP) concluded in January 2020.
+            //     <br/><br/>
+            //     Prior to joining NASA, Petro served in various management positions for Science Applications International Corp. (SAIC) and McDonnell Douglas Aerospace Corp. At SAIC, Petro held a number of management positions within the corporation’s operations. She interfaced with NASA, the U.S. Air Force, the U.S. Navy, and commercial entities on numerous aerospace and military programs.
+            //     <br/><br/>
+            //     At McDonnell Douglas Aerospace, Petro advanced from mechanical engineer and payload manager to multiple management positions including program manager for executing a classified, multimillion-dollar U.S. Department of Defense program, to senior manager for Communications and Data Systems Division.                
+            //     `
+            // },
 
             // Sasha Sims
-            {
-                image: "sasha_sims.webp",
-                name: "Sasha Sims (Invited)",
-                position: "Deputy Director, Spaceport Integration and Services",
-                company: "NASA's John F. Kennedy Space Center",
-                bio: `
-                Sasha Sims is the Deputy Director of the Spaceport Integration and Services (SI) organization at NASA’s John F. Kennedy Space Center in Florida, appointed to this position in February 2023. She is responsible for ensuring safe, efficient, and effective support services for Kennedy, its workforce, and its customers.
-                <br/><br/>
-                Sims works with the Director of SI to successfully execute the organization’s mission to lead the overall planning and assimilation of Kennedy processing activities and the execution of center services across NASA. This includes NASA programs and projects, other government agencies, and commercial partner residents on Kennedy Space Center and in NASA facilities on Cape Canaveral Space Force Station. 
-                Prior to her current assignment, Sims was the Chief of Staff for NASA’s Exploration Ground Systems (EGS) Program at Kennedy. In this role, she was responsible for providing technical expertise and leadership in the execution of all requirements and milestones in support of the Artemis mission. She had a leading role in programmatic efforts, such as program strategic planning, sustainability, and affordability initiatives, as well as ensuring resources and critical skills were available to support NASA’s deep space human exploration efforts with the Artemis missions.
-                <br/><br/>
-                Sims began her career with NASA in 2003 as a Logistics Engineer in the Cape Canaveral Spaceport Management Office, where she managed a center operations contract. Shortly after, she moved to the Constellation Program as a Lead Engineer for Mission Operations Integration, where she led a number of architecture studies to transform the Kennedy Space Center to support NASA’s new exploration vehicles.
-                <br/><br/>
-                Sims joined EGS in 2012 as the Business Management and Analysis Branch Chief, where she led a team of program analysts responsible for identifying and prioritizing program resource requirements and managing the program’s budget. After that, she became the Division Chief for the Program Planning and Control Department. In this role, she was responsible for all EGS programmatic functions, including business, schedule and risk management, contracts, configuration management, program integration, as well as multiple strategic activities.
-                <br/><br/>
-                Sims also supported the Commercial Crew Program, where she led acquisition planning for suborbital crew commercial services.
-                `
-            },
+            // {
+            //     image: "sasha_sims.webp",
+            //     name: "Sasha Sims (Invited)",
+            //     position: "Deputy Director, Spaceport Integration and Services",
+            //     company: "NASA's John F. Kennedy Space Center",
+            //     bio: `
+            //     Sasha Sims is the Deputy Director of the Spaceport Integration and Services (SI) organization at NASA’s John F. Kennedy Space Center in Florida, appointed to this position in February 2023. She is responsible for ensuring safe, efficient, and effective support services for Kennedy, its workforce, and its customers.
+            //     <br/><br/>
+            //     Sims works with the Director of SI to successfully execute the organization’s mission to lead the overall planning and assimilation of Kennedy processing activities and the execution of center services across NASA. This includes NASA programs and projects, other government agencies, and commercial partner residents on Kennedy Space Center and in NASA facilities on Cape Canaveral Space Force Station. 
+            //     Prior to her current assignment, Sims was the Chief of Staff for NASA’s Exploration Ground Systems (EGS) Program at Kennedy. In this role, she was responsible for providing technical expertise and leadership in the execution of all requirements and milestones in support of the Artemis mission. She had a leading role in programmatic efforts, such as program strategic planning, sustainability, and affordability initiatives, as well as ensuring resources and critical skills were available to support NASA’s deep space human exploration efforts with the Artemis missions.
+            //     <br/><br/>
+            //     Sims began her career with NASA in 2003 as a Logistics Engineer in the Cape Canaveral Spaceport Management Office, where she managed a center operations contract. Shortly after, she moved to the Constellation Program as a Lead Engineer for Mission Operations Integration, where she led a number of architecture studies to transform the Kennedy Space Center to support NASA’s new exploration vehicles.
+            //     <br/><br/>
+            //     Sims joined EGS in 2012 as the Business Management and Analysis Branch Chief, where she led a team of program analysts responsible for identifying and prioritizing program resource requirements and managing the program’s budget. After that, she became the Division Chief for the Program Planning and Control Department. In this role, she was responsible for all EGS programmatic functions, including business, schedule and risk management, contracts, configuration management, program integration, as well as multiple strategic activities.
+            //     <br/><br/>
+            //     Sims also supported the Commercial Crew Program, where she led acquisition planning for suborbital crew commercial services.
+            //     `
+            // },
 
             // Gavin Brown
             {
