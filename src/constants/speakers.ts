@@ -645,7 +645,7 @@ export const SPEAKERS = [
                 image: "ashley_pilipiszyn.webp",
                 name: "Ashley Pilipiszyn",
                 position: "Founder/CEO",
-                company: "Besxar",
+                company: "Besxar Industries, Inc.",
                 bio: `
                 Ashley is an applied scientist-turned-space industrialist, deep tech angel investor, and certified pilot. Her mission is to help unlock the market potential of in-space manufacturing while also advancing U.S. aerospace and defense capabilities with AI. She’s an expert authority on AI applications — as an early employee and the first Technical Director to the CTO, she led OpenAI’s early research and commercial product releases including MuseNet, Jukebox, Rubik’s Cube, GPT-3, and DALL-E. She also created OpenAI’s developer ecosystem program where she helped launch a variety of partner applications and mentor startups powered by GPT-3. Previously, she oversaw the design, development, and launch of DOE-funded “Grid Resilience & Intelligence Platform” (GRIP) at SLAC National Accelerator Lab. GRIP leveraged AI to anticipate, absorb, and recover from grid events such as wildfires, ice storms, or cyberattacks. Now as an entrepreneur, she aims to revolutionize semiconductor manufacturing to help enable the rapid growth of AI infrastructure for the U.S. government and commercial partners alike.
                 `

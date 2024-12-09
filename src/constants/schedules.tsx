@@ -282,7 +282,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "12:30 PM - 1:30 PM",
-                        title: "Networking Lunch for speakerss, Sponsors, Exhibitors, and Attendees",
+                        title: "Networking Lunch for Speakers, Sponsors, Exhibitors, and Attendees",
                         // location: "Ballroom",
                     },
                     {
@@ -307,7 +307,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "5:30 PM - 7:30 PM",
-                        title: "VIP Networking Reception with speakerss, Sponsors, Exhibitors, and VIP Attendees",
+                        title: "VIP Networking Reception with Speakers, Sponsors, Exhibitors, and VIP Attendees",
                         // location: "Fourth Estate Meeting Room"
                     },
 
