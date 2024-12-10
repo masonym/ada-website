@@ -198,6 +198,20 @@ export const EVENTS: Event[] = [
         <p className="mb-0 leading-9">
           Join us for the <b>2025 Southeast Defense Procurement Conference</b> on March 18-19, 2025 in Atlanta, Georgia, home to the U.S. Army Corps of Engineers South Atlantic Division — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.
         </p>
+        <p className="mt-4 mb-2 font-bold text-xl text-center font-gotham">
+          Featured Contracting Commands:
+        </p>
+        <p className="">
+          <ul className="list-inside">
+            <li>Multiple Air Force Bases in Florida, Georgia & throughout the Southeast</li>
+            <li>Marine Corps Bases in North & South Carolina and the Blount Island Logistic Support Facility</li>
+            <li>Ft. Liberty, Army Anniston Depot and Red Stone Arsenal</li>
+            <li>Army Corps of Engineers District Headquarters in Mobile, Savannah, Charleston, Jacksonville & Wilmington</li>
+            <li>NAVFAC Field Offices & Public Works Dept.'s</li>
+            <li>King's Bay Naval Sub Base, and Naval Air Stations in Pensacola, Jacksonville & Key West</li>
+            <li>Major Contracting Commands including CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, & SPACECENT</li>
+          </ul>
+        </p>
       </div>
     ),
     topicalCoverage: [
