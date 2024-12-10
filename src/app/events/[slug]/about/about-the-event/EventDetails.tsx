@@ -58,9 +58,11 @@ const EventDetails: React.FC<EventDetailsProps> = ({
                 }`}>
                   <h3 className="text-2xl text-balance font-bold mb-4 leading-tight text-white">{topic.title}</h3>
                   {topic.subItems.map((item, subIndex) => (
-                    <div key={subIndex} className="mb-4">
-                      <h4 className="font-semibold mb-2 text-left">{item.title}</h4>
-                      <p className="text-gray-300 text-left">{item.description}</p>
+                    <div key={subIndex} className="mb-4 text-left">
+                      <span className="font-semibold whitespace-nowrap mr-1">
+                        {item.title}:
+                      </span>
+                      <span className="text-gray-300">{item.description}</span>
                     </div>
                   ))}
                 </div>

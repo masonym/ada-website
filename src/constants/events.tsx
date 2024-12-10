@@ -273,15 +273,15 @@ export const EVENTS: Event[] = [
         subItems: [
           {
             title: "Diverse Capabilities",
-            description: "Air Force Bases like Tyndall AFB, Eglin AFB, and Dobbins ARB are critical to a variety of missions ranging from Air Combat and Training to Missile Testing and Space Operations."
+            description: "Air Force Bases in the Southeast, such as Tyndall AFB, Eglin AFB, and Dobbins ARB, are vital hubs for Air Combat, Training, Missile Testing, and Space Operations."
           },
           {
             title: "Modernization and Resilience",
-            description: "Post-Hurricane Michael recovery at Tyndall AFB showcases the region's emphasis on Resilience and Infrastructure Modernization, creating opportunities for companies in Construction, Engineering, and Technology Solutions."
+            description: "Tyndall AFB's recovery from Hurricane Michael highlights the Region's commitment to Resilience and Infrastructure upgrades, creating major opportunities for Construction, Engineering and Technology Solutions."
           },
           {
             title: "Future of Combat and Space Operations",
-            description: "The focus on expanding capabilities in Space Operations, Cyber, and Electronic Warfare at bases like Hickam AFB and Patrick AFB is pushing forward procurement needs for Cutting-edge Tech, Cyber Defense, and Satellite Communications."
+            description: "With a focus on expanding Space, Cyber, and Electronic Warfare capabilities at bases like Hickam and Patrick AFB, the Region is driving demand for Cutting-edge Technology, Cyber Defense, and Satellite Communications."
           }
         ]
       },
@@ -290,15 +290,15 @@ export const EVENTS: Event[] = [
         subItems: [
           {
             title: "Strategic Mobilization",
-            description: "The Marine Corps Bases in North and South Carolina (Camp Lejeune, Parris Island) are vital to Training, Readiness, and Rapid Deployment Capabilities for the Marine Corps."
+            description: "Camp Lejeune and Parris Island in North and South Carolina are critical to the Marine Corps' Readiness, Training, and Rapid Deployment Capabilities."
           },
           {
             title: "Logistics Infrastructure",
-            description: "The Blount Island Logistics Support Facility in Jacksonville, Florida, is integral to supporting the Navy and Marine Corps' logistics needs, providing opportunities in Warehousing, Transportation, and Supply Chain Management."
+            description: "The Blount Island Logistics Support Facility in Jacksonville, Florida, plays a key role in supporting Navy and Marine Corps Logistics through Warehousing, Transportation, and Supply Chain Management."
           },
           {
             title: "Enhanced Joint Operations",
-            description: "With proximity to key Navy and Air Force assets in the Southeast, the Marine Corps bases are crucial for inter-service operations and procurement partnerships."
+            description: "Located near key Navy and Air Force assets in the Southeast, these Marine Corps bases strengthen inter-service Operations and Procurement partnerships."
           }
         ]
       },
@@ -307,15 +307,15 @@ export const EVENTS: Event[] = [
         subItems: [
           {
             title: "Fort Liberty",
-            description: "As a hub for Army Space Operations Forces, Fort Liberty's mission expansion offers procurement opportunities in Specialized Training, Advanced Systems, and Equipment Support."
+            description: "A key hub for Army Space Operations Forces, Fort Liberty's expanding mission offers opportunities in Specialized Training, Advanced Systems, and Equipment Support."
           },
           {
             title: "Anniston Army Depot",
-            description: "A critical facility for military vehicle repair and maintenance, the depot is increasingly reliant on innovative solutions for modernization, providing opportunities in Defense Manufacturing, Automation, and Maintenance Services."
+            description: "Vital for Military Vehicle Repair and Maintenance, the depot is embracing innovation for Modernization, creating opportunities in Defense Manufacturing, Automation, and Maintenance Services."
           },
           {
             title: "Redstone Arsenal",
-            description: "Located in Huntsville, Alabama, Redstone Arsenal is a major center for Missile Defense, Aviation and Cybersecurity Research, The presence of key organizations such as NASA and the Army Aviation and Missile Command (AMCOM) enhances the region's demand for Advanced Defense Technologies and R&D Contracting."
+            description: "In Huntsville, Alabama, Redstone Arsenal is a leading center for Missile Defense, Aviation, and Cybersecurity Research. The presence of NASA and AMCOM drives demand for Advanced Defense Technologies and R&D Contracting."
           }
         ]
       },
@@ -324,18 +324,52 @@ export const EVENTS: Event[] = [
         subItems: [
           {
             title: "Infrastructure & Modernization",
-            description: "These Army Corps of Engineers Districts are central to large-scale infrastructure projects related to Water Resources, Flood Control, and Military Facility Upgrades."
+            description: "These Districts drive large-scale projects in Water Resources, Flood Control, and Military Facility upgrades."
           },
           {
             title: "Resiliency Focus",
-            description: "With an emphasis on Climate Adaptation and Resilient Infrastructure, these districts are seeking firms with expertise in Construction, Energy Efficiency, and Disaster Recovery."
+            description: "Focusing on Climate Adaptation and Resilient Infrastructure, the Districts seek firms with expertise in Construction, Energy Efficiency, and Disaster Recovery."
           },
           {
             title: "Regional Development",
-            description: "The increasing demand for Port and Base Facility upgrades around Wilmington, Charleston, and Savannah presents unique opportunities for Infrastructure Development and Defense Logistics."
+            description: "The growing need for Port and Base Facility upgrades in Wilmington, Charleston, and Savannah creates unique opportunities in Infrastructure Development and Defense Logistics."
           }
         ]
       },
+      {
+        title: "NAVFAC Field Offices & Public Works Departments",
+        subItems: [
+          {
+            title: "Base Infrastructure and Sustainment",
+            description: "NAVFAC Field Officers are essential in maintaining and enhancing Base Infrastructure across the Southeast, covering Construction, Maintenance, Repairs, and Utility upgrades at Navy Installations.",
+          },
+          {
+            title: "Energy and Sustainability Initatives",
+            description: "With a growing emphasis on Sustainable Construction and Renewable Energy, NAVFAC offers opportunities for contractors in Green Technology, Energy-Efficient Systems, and Power Solutions."
+          },
+          {
+            title: "Real Property and Facility Management",
+            description: "As public works departments focus on Facility Lifecycle Management, there are abundant opportunities for firms specializing in Construction, Asset Management, and Infrastructure Upgrades.",
+          },
+        ]
+      },
+      {
+        title: "King’s Bay Naval Submarine Base & Naval Air Stations (Pensacola, Jacksonville, Key West)",
+        subItems: [
+          {
+            title: "Submarine Operations & Technology",
+            description: "King's Bay Naval Submarine Base supports Nuclear-powered Submarine Operations, creating procurement opportunities in Nuclear Technology, Logistics, Security Systems, and Specialized Defense Tech.",
+          },
+          {
+            title: "Naval Aviation",
+            description: "Naval Air Stations like Pensacola, Jacksonville, and Key West are crucial for Training and Fleet Readiness, offering opportunities in Aviation Systems, Training Equipment, Simulation Technologies, and Maintenance Services.",
+          },
+          {
+            title: "Integration and Joint Training",
+            description: "These bases play a key role in Joint Training Exercises, driving demand for solutions that enhance Interoperability, Cybersecurity, and Logistics.",
+          },
+        ]
+      }
     ],
   },
   {
