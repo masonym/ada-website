@@ -48,7 +48,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({
         </div>
 
         {/* Featured Topics Section */}
-        {featuredTopics && featuredTopics.length > 0 && (
+        {/* {featuredTopics && featuredTopics.length > 0 && (
           <div className="w-full mb-12">
             <h2 className="text-3xl font-semibold mb-8 text-slate-700">{featuredTopicsTitle}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
@@ -67,7 +67,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({
               ))}
             </div>
           </div>
-        )}
+        )} */}
 
         {/* Expectations Section */}
         {expectations && expectations.length > 0 && (
