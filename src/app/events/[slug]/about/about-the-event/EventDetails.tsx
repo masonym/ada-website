@@ -56,7 +56,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({
                 <div key={index} className={`bg-gradient-to-br from-navy-500 to-navy-800 text-white rounded-xl shadow-lg p-6 text-center ${
                   index === featuredTopics.length - 1 && featuredTopics.length % 2 === 1 ? 'lg:col-span-2 lg:w-1/2 lg:justify-self-center' : ''
                 }`}>
-                  <h3 className="text-2xl font-bold mb-4 text-navy-600">{topic.title}</h3>
+                  <h3 className="text-2xl text-balance font-bold mb-4 leading-tight text-white">{topic.title}</h3>
                   {topic.subItems.map((item, subIndex) => (
                     <div key={subIndex} className="mb-4">
                       <h4 className="font-semibold mb-2 text-left">{item.title}</h4>
