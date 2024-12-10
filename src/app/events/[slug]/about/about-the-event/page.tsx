@@ -22,6 +22,7 @@ export default function AboutPage({ params }: { params: { slug: string } }) {
       expectationsText={event.expectationsText}
       featuredTopics={event.featuredTopics}
       featuredTopicsTitle={event.featuredTopicsTitle}
+      featuredTopicsSubtitle={event.featuredTopicsSubtitle}
     />
   );
 }

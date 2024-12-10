@@ -31,6 +31,7 @@ export interface Event {
     topicalCoverage: Array<{ tagline: string; description: string }>;
     featuredTopics?: FeaturedTopicDetail[];
     featuredTopicsTitle?: string;
+    featuredTopicsSubtitle?: string;
     image: string;
     slug: string;
     locationImage: string;

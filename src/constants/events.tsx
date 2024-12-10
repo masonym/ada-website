@@ -253,6 +253,7 @@ export const EVENTS: Event[] = [
     password: "ADA2025SDPC",
     sponsorProspectusPath: "/events/2025SDPC/2025SDPC-SponsorProspectus.pdf",
     featuredTopicsTitle: "Featured Contracting Commands",
+    featuredTopicsSubtitle: "These insights highlight key regional defense assets and contracting opportunities in the Southeast, emphasizing the need for contractors to tailor their solutions to support the military's evolving Infrastructure, Operational Readiness, and Technological Advancements.",
     featuredTopics: [
       {
         title: "Strategic Importance of Air Force Bases in Florida, Georgia, and the Southeast",
