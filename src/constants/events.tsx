@@ -355,6 +355,23 @@ export const EVENTS: Event[] = [
             description: "These bases play a key role in Joint Training Exercises, driving demand for solutions that enhance Interoperability, Cybersecurity, and Logistics.",
           },
         ]
+      },
+      {
+        title: "Key Contracting Commands (CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, SPACECENT)",
+        subItems: [
+          {
+            title: "Global & Regional Operation",
+            description: "CENTCOM and SOUTHCOM influence operations in the Southeast U.S., with growing procurement needs in Logistics, Cybersecurity, and Intelligence, driven by U.S. interests in the Caribbean and Latin America. This creates demand for Security, Infrastructure, and Technology Solutions.",
+          },
+          {
+            title: "Special Operations & Space Missions",
+            description: "AFSOC, SOCSOUTH, and SPACECENT focus on Specialized Readiness and Technology. Companies with expertise in Advanced Communications, Space Technologies, and Special Operations Equipment will be prime candidates for contracts."
+          },
+          {
+            title: "Innovation & Tech Solutions",
+            description: "With SPACECENT and SOCSOUTH advancing Space and Cyber Technologies, there's a rising need for cutting-edge solutions in Satellite communications, Cybersecurity, Data Analytics, and Space-based Defense Systems."
+          }
+        ]
       }
     ],
   },
