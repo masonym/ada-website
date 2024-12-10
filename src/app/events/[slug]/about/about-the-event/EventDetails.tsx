@@ -53,14 +53,14 @@ const EventDetails: React.FC<EventDetailsProps> = ({
             <h2 className="text-3xl font-semibold mb-8 text-slate-700">{featuredTopicsTitle}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               {featuredTopics.map((topic, index) => (
-                <div key={index} className={`bg-white rounded-xl shadow-lg p-6 text-left ${
+                <div key={index} className={`bg-gradient-to-br from-navy-500 to-navy-800 text-white rounded-xl shadow-lg p-6 text-left ${
                   index === featuredTopics.length - 1 && featuredTopics.length % 2 === 1 ? 'lg:col-span-2 lg:w-1/2 lg:justify-self-center' : ''
                 }`}>
                   <h3 className="text-xl font-bold mb-4 text-navy-600">{topic.title}</h3>
                   {topic.subItems.map((item, subIndex) => (
                     <div key={subIndex} className="mb-4">
-                      <h4 className="font-semibold text-navy-500 mb-2">{item.title}</h4>
-                      <p className="text-gray-600">{item.description}</p>
+                      <h4 className="font-semibold mb-2">{item.title}</h4>
+                      <p className="text-gray-300">{item.description}</p>
                     </div>
                   ))}
                 </div>
@@ -84,7 +84,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({
             {topicalCoverage.map((topic, index) => (
               <div
                 key={index}
-                className="bg-white/10 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 flex-grow-0 flex-shrink-0 basis-full sm:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)]"
+                className="bg-white backdrop-blur-sm p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 flex-grow-0 flex-shrink-0 basis-full sm:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)]"
               >
                 <h3 className="text-lg font-bold mb-2 text-center text-navy-800">
                   {topic.tagline}
