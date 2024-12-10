@@ -10,13 +10,18 @@ export default function AboutPage({ params }: { params: { slug: string } }) {
     notFound();
   }
 
+  // For event id 2, use "Featured Contracting Commands" as the title
+
   return (
     <EventDetails
       title={event.title}
-      eventText={event.eventText}
+      eventText={event.aboutEventText || event.eventText}
       topicalCoverage={event.topicalCoverage}
       registerLink={event.registerLink}
       expectations={event.expectations}
+      expectationsText={event.expectationsText}
+      featuredTopics={event.featuredTopics}
+      featuredTopicsTitle={event.featuredTopicsTitle}
     />
   );
 }

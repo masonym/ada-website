@@ -171,8 +171,8 @@ export const EVENTS: Event[] = [
             <li>Marine Corps Bases in North & South Carolina and the Blount Island Logistic Support Facility</li>
             <li>Ft. Liberty, Army Anniston Depot and Red Stone Arsenal</li>
             <li>Army Corps of Engineers District Headquarters in Mobile, Savannah, Charleston, Jacksonville & Wilmington</li>
-            <li>NAVFAC Field Offices & Public Works Dept.’s</li>
-            <li>King’s Bay Naval Sub Base, and Naval Air Stations in Pensacola, Jacksonville & Key West</li>
+            <li>NAVFAC Field Offices & Public Works Dept.'s</li>
+            <li>King's Bay Naval Sub Base, and Naval Air Stations in Pensacola, Jacksonville & Key West</li>
             <li>Major Contracting Commands including CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, & SPACECENT</li>
           </ul>
         </p>
@@ -190,6 +190,16 @@ export const EVENTS: Event[] = [
         </p> */}
       </div>
     ),
+    aboutEventText: (
+      <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Event Overview
+        </h2>
+        <p className="mb-0 leading-9">
+          Join us for the <b>2025 Southeast Defense Procurement Conference</b> on March 18-19, 2025 in Atlanta, Georgia, home to the U.S. Army Corps of Engineers South Atlantic Division — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.
+        </p>
+      </div>
+    ),
     topicalCoverage: [
       { tagline: "Defense Acquisition Priorities", description: "Understand the Latest Acquisition Strategies from the Department of Defense, Service Components, and Combat Commands" },
       // { tagline: "Small Business Contracting Programs", description: "Learn about Initiatives that Support Small Businesses in Defense Contracting" },
@@ -203,17 +213,6 @@ export const EVENTS: Event[] = [
       // { tagline: "Support for Small & Medium Contractors", description: "Gain Access to Resources from the Defense Contract Audit Agency" },
       { tagline: "Special Contracting Opportunities", description: " Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms" },
     ],
-    image: "/2025_SoutheastDefenseProcurementConference.webp",
-    slug: "2025-southeast-defense-procurement-conference",
-    locationImage: "/locations/location_NPC.webp",
-    locationAddress: "TBD",
-    directions: [],
-    images: [],
-    parkingInfo: [],
-    placeID: "TBD",
-    registerLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
-    password: "ADA2025SDPC",
-    sponsorProspectusPath: "/events/2025SDPC/2025SDPC-SponsorProspectus.pdf",
     expectations: [
       {
         audienceType: "Small Business",
@@ -240,7 +239,90 @@ export const EVENTS: Event[] = [
           },
         ]
       }
-    ]
+    ],
+    expectationsText: "Attendees will gain unparalleled access to key decision-makers, including Program Managers, Contracting Officers, and Small Business Program Directors from the Army, Navy, Air Force, Marine Corps, and Space Force Commands, and top Prime Defense Contractors. This is your chance to forge invaluable connections that can shape the future of your business.",
+    image: "/2025_SoutheastDefenseProcurementConference.webp",
+    slug: "2025-southeast-defense-procurement-conference",
+    locationImage: "/locations/location_NPC.webp",
+    locationAddress: "TBD",
+    directions: [],
+    images: [],
+    parkingInfo: [],
+    placeID: "TBD",
+    registerLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
+    password: "ADA2025SDPC",
+    sponsorProspectusPath: "/events/2025SDPC/2025SDPC-SponsorProspectus.pdf",
+    featuredTopicsTitle: "Featured Contracting Commands",
+    featuredTopics: [
+      {
+        title: "Strategic Importance of Air Force Bases in Florida, Georgia, and the Southeast",
+        subItems: [
+          {
+            title: "Diverse Capabilities",
+            description: "Air Force Bases like Tyndall AFB, Eglin AFB, and Dobbins ARB are critical to a variety of missions ranging from Air Combat and Training to Missile Testing and Space Operations."
+          },
+          {
+            title: "Modernization and Resilience",
+            description: "Post-Hurricane Michael recovery at Tyndall AFB showcases the region's emphasis on Resilience and Infrastructure Modernization, creating opportunities for companies in Construction, Engineering, and Technology Solutions."
+          },
+          {
+            title: "Future of Combat and Space Operations",
+            description: "The focus on expanding capabilities in Space Operations, Cyber, and Electronic Warfare at bases like Hickam AFB and Patrick AFB is pushing forward procurement needs for Cutting-edge Tech, Cyber Defense, and Satellite Communications."
+          }
+        ]
+      },
+      {
+        title: "Marine Corps Bases and Blount Island Logistic Support Facility",
+        subItems: [
+          {
+            title: "Strategic Mobilization",
+            description: "The Marine Corps Bases in North and South Carolina (Camp Lejeune, Parris Island) are vital to Training, Readiness, and Rapid Deployment Capabilities for the Marine Corps."
+          },
+          {
+            title: "Logistics Infrastructure",
+            description: "The Blount Island Logistics Support Facility in Jacksonville, Florida, is integral to supporting the Navy and Marine Corps' logistics needs, providing opportunities in Warehousing, Transportation, and Supply Chain Management."
+          },
+          {
+            title: "Enhanced Joint Operations",
+            description: "With proximity to key Navy and Air Force assets in the Southeast, the Marine Corps bases are crucial for inter-service operations and procurement partnerships."
+          }
+        ]
+      },
+      {
+        title: "Ft. Liberty, Army Anniston Depot, and Redstone Arsenal",
+        subItems: [
+          {
+            title: "Fort Liberty",
+            description: "As a hub for Army Space Operations Forces, Fort Liberty's mission expansion offers procurement opportunities in Specialized Training, Advanced Systems, and Equipment Support."
+          },
+          {
+            title: "Anniston Army Depot",
+            description: "A critical facility for military vehicle repair and maintenance, the depot is increasingly reliant on innovative solutions for modernization, providing opportunities in Defense Manufacturing, Automation, and Maintenance Services."
+          },
+          {
+            title: "Redstone Arsenal",
+            description: "Located in Huntsville, Alabama, Redstone Arsenal is a major center for Missile Defense, Aviation and Cybersecurity Research, The presence of key organizations such as NASA and the Army Aviation and Missile Command (AMCOM) enhances the region's demand for Advanced Defense Technologies and R&D Contracting."
+          }
+        ]
+      },
+      {
+        title: "Army Corps of Engineers Districts (Mobile, Savannah, Charleston, Jacksonville, Wilmington)",
+        subItems: [
+          {
+            title: "Infrastructure & Modernization",
+            description: "These Army Corps of Engineers Districts are central to large-scale infrastructure projects related to Water Resources, Flood Control, and Military Facility Upgrades."
+          },
+          {
+            title: "Resiliency Focus",
+            description: "With an emphasis on Climate Adaptation and Resilient Infrastructure, these districts are seeking firms with expertise in Construction, Energy Efficiency, and Disaster Recovery."
+          },
+          {
+            title: "Regional Development",
+            description: "The increasing demand for Port and Base Facility upgrades around Wilmington, Charleston, and Savannah presents unique opportunities for Infrastructure Development and Defense Logistics."
+          }
+        ]
+      },
+    ],
   },
   {
     id: 3,

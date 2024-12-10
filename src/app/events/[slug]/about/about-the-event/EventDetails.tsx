@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@/app/components/Button';
 import ExpectationsSection from './ExpectationsSection';
+import { FeaturedTopicDetail } from '@/types/events';
 
 type TopicalCoverage = {
   tagline: string;
@@ -23,6 +24,9 @@ type EventDetailsProps = {
   topicalCoverage: TopicalCoverage[];
   registerLink: string;
   expectations?: AudienceExpectations[];
+  expectationsText?: string;
+  featuredTopics?: FeaturedTopicDetail[];
+  featuredTopicsTitle?: string;
 };
 
 const EventDetails: React.FC<EventDetailsProps> = ({ 
@@ -30,24 +34,52 @@ const EventDetails: React.FC<EventDetailsProps> = ({
   eventText, 
   topicalCoverage, 
   registerLink,
-  expectations 
+  expectations,
+  expectationsText,
+  featuredTopics,
+  featuredTopicsTitle,
 }) => {
   return (
     <div className="min-h-screen text-navy-800 text-center">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         {/* Event Overview Section */}
-        <div className="rounded-xl p-4 mb-4">
+        <div className="rounded-xl mb-4">
           <div className="text-lg leading-relaxed">{eventText}</div>
         </div>
+
+        {/* Featured Topics Section */}
+        {featuredTopics && featuredTopics.length > 0 && (
+          <div className="w-full mb-12">
+            <h2 className="text-3xl font-semibold mb-8 text-slate-700">{featuredTopicsTitle}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+              {featuredTopics.map((topic, index) => (
+                <div key={index} className={`bg-white rounded-xl shadow-lg p-6 text-left ${
+                  index === featuredTopics.length - 1 && featuredTopics.length % 2 === 1 ? 'lg:col-span-2 lg:w-1/2 lg:justify-self-center' : ''
+                }`}>
+                  <h3 className="text-xl font-bold mb-4 text-navy-600">{topic.title}</h3>
+                  {topic.subItems.map((item, subIndex) => (
+                    <div key={subIndex} className="mb-4">
+                      <h4 className="font-semibold text-navy-500 mb-2">{item.title}</h4>
+                      <p className="text-gray-600">{item.description}</p>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Expectations Section */}
         {expectations && expectations.length > 0 && (
-          // <ExpectationsSection expectations={expectations} />
-          true
+          <ExpectationsSection 
+            expectations={expectations} 
+            expectationsText={expectationsText}
+          />
         )}
 
         {/* Key Insights Section */}
         <div className="w-full">
-          <h2 className="text-3xl font-semibold mb-6 text-navy-500">Key Insights</h2>
+          <h2 className="text-3xl font-semibold mb-6 text-slate-700">Key Insights</h2>
           <div className="flex flex-wrap justify-center gap-6">
             {topicalCoverage.map((topic, index) => (
               <div

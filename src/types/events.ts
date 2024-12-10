@@ -9,6 +9,15 @@ export interface ExpectationItem {
 export interface AudienceExpectations {
     audienceType: string;
     expectations: ExpectationItem[];
+    expectationsText?: string;
+}
+
+export interface FeaturedTopicDetail {
+    title: string;
+    subItems: Array<{
+        title: string;
+        description: string;
+    }>;
 }
 
 export interface Event {
@@ -18,7 +27,10 @@ export interface Event {
     timeStart: string;
     description: string;
     eventText: ReactNode;
+    aboutEventText?: ReactNode;
     topicalCoverage: Array<{ tagline: string; description: string }>;
+    featuredTopics?: FeaturedTopicDetail[];
+    featuredTopicsTitle?: string;
     image: string;
     slug: string;
     locationImage: string;
@@ -29,6 +41,7 @@ export interface Event {
     password?: string;
     sponsorProspectusPath?: string;
     expectations?: AudienceExpectations[];
+    expectationsText?: string;
     contactInfo?: { 
         contactText?: string;
         contactEmail?: string;
