@@ -27,6 +27,7 @@ type EventDetailsProps = {
   expectationsText?: string;
   featuredTopics?: FeaturedTopicDetail[];
   featuredTopicsTitle?: string;
+  featuredTopicsSubtitle?: string;
 };
 
 const EventDetails: React.FC<EventDetailsProps> = ({ 
@@ -38,6 +39,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({
   expectationsText,
   featuredTopics,
   featuredTopicsTitle,
+  featuredTopicsSubtitle
 }) => {
   return (
     <div className="min-h-screen text-navy-800 text-center">
@@ -51,6 +53,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({
         {featuredTopics && featuredTopics.length > 0 && (
           <div className="w-full mb-12">
             <h2 className="text-3xl font-semibold mb-8 text-slate-700">{featuredTopicsTitle}</h2>
+            <h3 className="text-2xl font-semibold mb-4 text-slate-700">{featuredTopicsSubtitle}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               {featuredTopics.map((topic, index) => (
                 <div key={index} className={`bg-gradient-to-br from-navy-500 to-navy-800 text-white rounded-xl shadow-lg p-6 text-center ${
