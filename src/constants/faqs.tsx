@@ -63,7 +63,7 @@ export const FAQs = [
         faqs: [
             {
                 question: "What is the 2025 Southeast Defense Procurement Conference?",
-                answer: "The 2025 Southeast Defense Procurement Conference is a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
+                answer: "The 2025 Southeast Defense Procurement Conference is a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
             },
             {
                 question: "When and where will the event take place?",

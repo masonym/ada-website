@@ -152,14 +152,14 @@ export const EVENTS: Event[] = [
     title: "2025 Southeast Defense Procurement Conference",
     date: "March 18-19, 2025",
     timeStart: "2025-03-18T12:30:00Z", // TODO: change to actual time
-    description: "Join us for the 2025 Southeast Defense Procurement Conference on March 18-19, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
+    description: "Join us for the 2025 Southeast Defense Procurement Conference on March 18-19, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
     eventText: (
       <div className="max-container font-light">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
         <p className="mb-0 leading-9">
-          Join us for the <b>2025 Southeast Defense Procurement Conference</b> on March 18-19, 2025 in Atlanta, Georgia, home to the U.S. Army Corps of Engineers South Atlantic Division — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.
+          Join us for the <b>2025 Southeast Defense Procurement Conference</b> on March 18-19, 2025 in Atlanta, Georgia, home to the U.S. Army Corps of Engineers South Atlantic Division — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.
           <br /><br />
         </p>
         <p className="font-bold text-xl text-center font-gotham">
@@ -196,7 +196,7 @@ export const EVENTS: Event[] = [
           Event Overview
         </h2>
         <p className="mb-0 leading-9">
-          Join us for the <b>2025 Southeast Defense Procurement Conference</b> on March 18-19, 2025 in Atlanta, Georgia, home to the U.S. Army Corps of Engineers South Atlantic Division — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.
+          Join us for the <b>2025 Southeast Defense Procurement Conference</b> on March 18-19, 2025 in Atlanta, Georgia, home to the U.S. Army Corps of Engineers South Atlantic Division — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.
         </p>
         <p className="mt-4 mb-2 font-bold text-xl text-center font-gotham">
           Featured Contracting Commands:
