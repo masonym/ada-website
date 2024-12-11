@@ -84,7 +84,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({
             {topicalCoverage.map((topic, index) => (
               <div
                 key={index}
-                className="bg-white/10 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 flex-grow-0 flex-shrink-0 basis-full sm:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)]"
+                className="bg-white backdrop-blur-sm p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 flex-grow-0 flex-shrink-0 basis-full sm:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)]"
               >
                 <h3 className="text-lg font-bold mb-2 text-center text-navy-800">
                   {topic.tagline}
