@@ -1,10 +1,10 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { EVENTS } from '@/constants/events';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { MapPin, Phone } from 'lucide-react';
+import { ChevronDown, ChevronRight, MapPin, Phone } from 'lucide-react';
 import { LODGING_INFO } from '@/constants/lodging';
 import { getCdnPath } from '@/utils/image';
 import Map from '../venue/Map';
@@ -17,65 +17,25 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
         notFound();
     }
 
+    const [openElems, setOpenElems] = useState<number[]>([]);
+
+    const toggleElem = (index: number) => {
+        setOpenElems(prev =>
+            prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
+        )
+    }
+
     const lodging = LODGING_INFO.find((l) => l.eventId === event.id);
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Venue Section */}
-            <section className="mb-16">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-8">
-                    Venue Information
-                </h1>
-
-                <div className="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-                    <div className="relative h-[30rem]">
-                        <Image
-                            src={getCdnPath(event.locationImage)}
-                            alt={event.title}
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                    <div className="p-6">
-                        <div className="flex items-start">
-                            <MapPin className="w-5 h-5 mr-2 mt-1 flex-shrink-0 text-gray-400" />
-                            <div className="text-gray-600" dangerouslySetInnerHTML={{ __html: event.locationAddress }} />
-                        </div>
-                    </div>
-                </div>
-
-                {/* Parking Section */}
-                <div className="mb-12">
-                    <h3 className="text-4xl font-bold mt-6 mb-6 text-slate-800 text-center">Parking</h3>
-                    <div className="bg-white px-6 py-4 rounded-lg shadow-md flex flex-col gap-6">
-                        {event.parkingInfo?.map((option, index) => (
-                            <div key={index}>
-                                <h4 className="text-[18px] leading-10 font-semibold mb-2">{option.title}</h4>
-                                <p className="" dangerouslySetInnerHTML={{__html: option.description}}></p>
-                                {'link' in option && option.link && (
-                                    <Link href={option.link.href} className="text-blue-600 hover:underline text-wrap lg:text-nowrap">
-                                        <p className="mt-4">{option.link.linkText}</p>
-                                    </Link>
-                                )
-
-                                }
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Google Map */}
-                <div className="h-[400px] rounded-lg overflow-hidden">
-                    <Map placeId={event.placeID || ''} />
-                </div>
-                
-            </section>
 
             {/* Lodging Section */}
             {lodging && (
                 <section>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-8">
-                        Recommended Lodging
+                        Venue and Recommended Lodging
                     </h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-1 gap-8">
@@ -116,6 +76,64 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                     )}
                 </section>
             )}
+
+            <section className="flex flex-col sm:flex-row justify-center gap-4 lg:gap-20">
+
+                {/* directions */}
+                <div className="mb-12 flex flex-col items-center">
+                    <h3 className="text-3xl font-bold mt-6 mb-6 text-slate-800">Directions</h3>
+                    <div className="grid gap-6 grid-cols-1 auto-rows-auto">
+                        {event.directions?.map((option, index) => (
+                            <div key={index} className="bg-white h-fit rounded-lg shadow-md overflow-hidden border border-gray-200 transition-all duration-300 hover:shadow-lg hover:border-blue-300">
+                                <div className="bg-navy-300 p-4 cursor-pointer flex justify-between items-center" onClick={() => toggleElem(index)}>
+                                    <h4 className="text-xl font-semibold text-white flex items-center">
+                                        {openElems.includes(index) ? <ChevronDown className="mr-2" /> : <ChevronRight className="mr-2" />}
+                                        {option.title}
+                                    </h4>
+                                </div>
+                                {/* html is set dangerously here to allow for styling & flexibility */}
+                                <div
+                                    className={`overflow-hidden transition-all duration-300 ease-in-out ${openElems.includes(index) ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}
+                                >
+                                    <div className="py-4 px-8">
+                                        <div
+                                            className="text-sm space-y-2 text-gray-600"
+                                            dangerouslySetInnerHTML={{ __html: option.description }}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Parking Section */}
+                <div className="mb-12">
+                    <h3 className="text-4xl font-bold mt-6 mb-6 text-slate-800 text-center">Parking</h3>
+                    <div className="bg-white px-6 py-4 rounded-lg shadow-md flex flex-col gap-6">
+                        {event.parkingInfo?.map((option, index) => (
+                            <div key={index}>
+                                <h4 className="text-[18px] leading-10 font-semibold mb-2">{option.title}</h4>
+                                <p className="" dangerouslySetInnerHTML={{ __html: option.description }}></p>
+                                {'link' in option && option.link && (
+                                    <Link href={option.link.href} className="text-blue-600 hover:underline text-wrap lg:text-nowrap">
+                                        <p className="mt-4">{option.link.linkText}</p>
+                                    </Link>
+                                )
+
+                                }
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+
+            </section>
+
+            {/* Google Map */}
+            <div className="h-[400px] rounded-lg overflow-hidden">
+                <Map placeId={event.placeID || ''} />
+            </div>
         </div>
     );
 }
