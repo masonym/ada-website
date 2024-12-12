@@ -205,13 +205,14 @@ export const EVENTS: Event[] = [
       // { tagline: "Small Business Contracting Programs", description: "Learn about Initiatives that Support Small Businesses in Defense Contracting" },
       { tagline: "Subcontracting and Teaming Opportunities", description: " Connect with Prime Defense Contractors to Explore Collaborative Ventures" },
       { tagline: "Innovative Technology Solutions", description: " Discover Accelerated Contracting Opportunities through DARPA, DIU, and DEFENSEWERX" },
-      { tagline: "Government-Wide Acquisition Contracts (GWACs)", description: " Navigate the Intricacies of GWACs and their Small Business Tracks" },
-      { tagline: "Mentor-Protégé Programs", description: " Explore Programs Designed to Accelerate the Growth of Small Businesses through Strategic Partnerships" },
+      // { tagline: "Government-Wide Acquisition Contracts (GWACs)", description: " Navigate the Intricacies of GWACs and their Small Business Tracks" },
+      // { tagline: "Mentor-Protégé Programs", description: " Explore Programs Designed to Accelerate the Growth of Small Businesses through Strategic Partnerships" },
       { tagline: "Upcoming Projects", description: "Get Insights into Future Projects from the Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC)" },
       { tagline: "Military Base-Community Partnerships", description: " Learn how these Partnerships are Driving Construction and Facility Support Contracts" },
       { tagline: "Cybersecurity Compliance", description: "Understand the Mandates and Training Options Available for Compliance with CMMC" },
       // { tagline: "Support for Small & Medium Contractors", description: "Gain Access to Resources from the Defense Contract Audit Agency" },
-      { tagline: "Special Contracting Opportunities", description: " Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms" },
+      // { tagline: "Special Contracting Opportunities", description: " Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms" },
+      { tagline: "Small Business Contracting Opportunities", description: "Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms. Explore Programs Designed to Accelerate the Growth of Small Businesses through Strategic Partnerships. Navigate the Intricacies of GWACs and their Small Business Tracks."}
     ],
     expectations: [
       {
