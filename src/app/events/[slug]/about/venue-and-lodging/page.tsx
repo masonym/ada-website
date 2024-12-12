@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { EVENTS } from '@/constants/events';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { ChevronDown, ChevronRight, MapPin, Phone } from 'lucide-react';
+import { ChevronDown, ChevronRight, Globe, MapPin, Phone } from 'lucide-react';
 import { LODGING_INFO } from '@/constants/lodging';
 import { getCdnPath } from '@/utils/image';
 import Map from '../venue/Map';
@@ -64,9 +64,12 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                                             <p>{hotel.phone}</p>
                                         </div>
                                         {hotel.link &&
-                                            <Link href={hotel.link?.href} className=" text-blue-600 hover:underline text-wrap lg:text-nowrap" target='_blank'>
-                                                <p className='my-2'>{hotel.link?.label}</p>
+                                        <div className="flex items-center">
+                                            <Globe className="w-5 h-5 mr-2 flex-shrink-0 text-gray-400" />
+                                            <Link href={hotel.link.href} className=" text-blue-600 hover:underline" target='_blank'>
+                                                <p className='my-2'>{hotel.link.label}</p>
                                             </Link>
+                                        </div>
                                         }
                                         <p className="mt-8 text-left text-gray-600">
                                             {lodging.note}
