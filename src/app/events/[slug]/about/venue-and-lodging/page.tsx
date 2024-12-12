@@ -28,7 +28,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
     const lodging = LODGING_INFO.find((l) => l.eventId === event.id);
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Venue Section */}
 
             {/* Lodging Section */}
@@ -77,7 +77,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                 </section>
             )}
 
-            <section className="flex flex-col sm:flex-row justify-center gap-4 lg:gap-20">
+            <section className="flex flex-col sm:flex-row justify-center gap-4 lg:gap-8">
 
                 {/* directions */}
                 <div className="mb-12 flex flex-col items-center">
@@ -114,7 +114,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                         {event.parkingInfo?.map((option, index) => (
                             <div key={index}>
                                 <h4 className="text-[18px] leading-10 font-semibold mb-2">{option.title}</h4>
-                                <p className="" dangerouslySetInnerHTML={{ __html: option.description }}></p>
+                                <p className="text-balance" dangerouslySetInnerHTML={{ __html: option.description }}></p>
                                 {'link' in option && option.link && (
                                     <Link href={option.link.href} className="text-blue-600 hover:underline text-wrap lg:text-nowrap">
                                         <p className="mt-4">{option.link.linkText}</p>
