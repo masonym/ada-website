@@ -70,7 +70,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                     </div>
 
                     {lodging?.note && (
-                        <p className="mt-8 text-center text-gray-600">
+                        <p className="mt-8 text-left text-gray-600">
                             {lodging.note}
                         </p>
                     )}
