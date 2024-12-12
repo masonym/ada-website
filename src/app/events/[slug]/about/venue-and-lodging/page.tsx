@@ -38,7 +38,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                         Venue and Recommended Lodging
                     </h2>
 
-                    <div className="grid grid-cols-1 md:grid-cols-1 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-[50%] mx-auto">
                         {lodging.hotels.map((hotel, index) => (
                             <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
                                 <div className="relative h-[30rem]">
@@ -55,8 +55,8 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                                         <div className="flex items-start">
                                             <MapPin className="w-5 h-5 mr-2 mt-1 flex-shrink-0 text-gray-400" />
                                             <div>
-                                                <p>{hotel.address}</p>
-                                                <p>{`${hotel.city}, ${hotel.state} ${hotel.zip}`}</p>
+                                                <p>{`${hotel.address}, ${hotel.city}, ${hotel.state} ${hotel.zip}`}</p>
+                                                <p>Crystal Ballroom</p>
                                             </div>
                                         </div>
                                         <div className="flex items-center">
