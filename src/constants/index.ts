@@ -8,9 +8,6 @@ export const NAV_LINKS = [
   { href: '/contact-us', key: 'contact_us', label: 'Contact Us' },
 ];
 
-
-
-
 // FOOTER SECTION
 export const FOOTER_LINKS = [
   {
@@ -38,14 +35,16 @@ export const FOOTER_CONTACT_INFO = {
   ],
 };
 
+import { SiFacebook, SiX, SiInstagram, SiYoutube, SiLinkedin } from '@icons-pack/react-simple-icons';
+
 export const SOCIALS = {
   title: 'Social',
   links: [
-    { logo: '/facebook.svg', title: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61565887852430' },
-    { logo: '/x.svg', title: 'X/Twitter', href: 'https://x.com/AmDefAlliance' },
-    { logo: '/instagram.svg', title: 'Instagram', href: 'https://www.instagram.com/americandefensealliance/' },
-    { logo: '/youtube.svg', title: 'YouTube', href: 'https://www.youtube.com/@AmericanDefenseAlliance' },
-    { logo: '/linkedin.svg', title: 'LinkedIn', href: 'https://www.linkedin.com/company/american-defense-alliance/' },
+    { Icon: SiFacebook, title: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61565887852430' },
+    { Icon: SiX, title: 'X/Twitter', href: 'https://x.com/AmDefAlliance' },
+    { Icon: SiInstagram, title: 'Instagram', href: 'https://www.instagram.com/americandefensealliance/' },
+    { Icon: SiYoutube, title: 'YouTube', href: 'https://www.youtube.com/@AmericanDefenseAlliance' },
+    { Icon: SiLinkedin, title: 'LinkedIn', href: 'https://www.linkedin.com/company/american-defense-alliance/' },
   ],
 };
 

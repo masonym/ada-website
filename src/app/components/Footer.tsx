@@ -60,14 +60,9 @@ const Footer = () => {
                       href={link.href}
                       key={link.title}
                       target='_blank'
+                      className="hover:text-gray-50 transition-colors"
                     >
-                      <Image
-                        src={getCdnPath(link.logo)}
-                        alt={`Logo for ${link.title}`}
-                        width="0"
-                        height="0"
-                        style={{ width: '24px', height: 'auto' }}
-                      />
+                      <link.Icon size={24} />
                     </Link>
                   ))}
                 </ul>
