@@ -46,7 +46,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                                         src={getCdnPath(hotel.image)}
                                         alt={hotel.name}
                                         fill
-                                        className="object-cover"
+                                        className="object-cover object-[75%_15%]"
                                     />
                                 </div>
                                 <div className="p-6">
