@@ -38,7 +38,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                         Event Venue and Recommended Lodging
                     </h2>
 
-                    <div className="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-[50%] mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto">
                         {lodging.hotels.map((hotel, index) => (
                             <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
                                 <div className="relative h-[30rem]">
@@ -55,8 +55,13 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                                         <div className="flex items-start">
                                             <MapPin className="w-5 h-5 mr-2 mt-1 flex-shrink-0 text-gray-400" />
                                             <div>
-                                                <p>{`${hotel.address}, ${hotel.city}, ${hotel.state} ${hotel.zip}`}</p>
-                                                <p>Galleria Level</p>
+                                                {/* only print address, city, state, if they are there */}
+                                                {/* if all exist, print address, city, state, zip on one line separated by commas */}
+                                                {/* use spans so that they appear on one line */}
+                                                {hotel.address && <span>{hotel.address}</span>}
+                                                {hotel.city && <span>, {hotel.city}</span>}
+                                                {hotel.state && <span>, {hotel.state}</span>}
+                                                {hotel.zip && <span> {hotel.zip}</span>}
                                             </div>
                                         </div>
                                         <div className="flex items-center">
@@ -72,7 +77,12 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                                         </div>
                                         }
                                         <p className="mt-8 text-left text-gray-600">
-                                            {lodging.note}
+                                            {/* If any of the address/state/city/zip are blank, don't display lodging note*/}
+                                            { hotel.city || hotel.state || hotel.zip ? (
+                                                <div className="flex flex-col">
+                                                    <span>{lodging.note}</span>
+                                                </div>
+                                            ) : null}
                                         </p>
 
                                     </div>

@@ -3,9 +3,9 @@
 type Hotel = {
   name: string;
   address: string;
-  city: string;
-  state: string;
-  zip: string;
+  city?: string;
+  state?: string;
+  zip?: string;
   phone: string;
   image: string;
   link?: {
@@ -36,8 +36,17 @@ export const LODGING_INFO: LodgingInfo[] = [
           link: {
             href: "https://www.hilton.com/en/hotels/atlahhh-hilton-atlanta/",
             label: "Hilton Atlanta"
-          }
-
+          },
+        },
+        {
+          name: "Hilton Atlanta Downtown Hotel",
+          address: "Galleria Ballroom",
+          phone: "(404) 255-1100",
+          image: "/hotels/hilton-galleria.webp",
+          link: {
+            href: "https://www.hilton.com/en/hotels/atlahhh-hilton-atlanta/",
+            label: "Hilton Atlanta"
+          },
         }
       ],
       note: "Group Rate Information Coming Soon"
