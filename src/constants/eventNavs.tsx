@@ -26,14 +26,14 @@ export const EVENT_NAVS = [
     ],
   },
   {
-    eventId: 2, // This should match the event ID from EVENTS
+    eventId: 2, // 2025SDPC
     items: [
       { label: 'Event Overview', path: '/' },
       {
         label: 'About',
         subItems: [
           { label: 'About the Event', path: 'about-the-event' },
-          // { label: 'Location & Parking', path: 'venue' },
+          { label: 'Event Venue & Loding', path: 'venue' },
           { label: 'FAQs', path: 'faqs' },
           { label: 'Matchmaking Sessions', path: 'matchmaking-sessions' },
           { label: 'Event Recap', path: 'event-recap' },
@@ -51,7 +51,7 @@ export const EVENT_NAVS = [
     ],
   },
   {
-    eventId: 3, // This should match the event ID from EVENTS
+    eventId: 3, // 2025DTIOS
     items: [
       { label: 'Event Overview', path: '/' },
       {

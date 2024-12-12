@@ -248,7 +248,7 @@ export const EVENTS: Event[] = [
     directions: [],
     images: [],
     parkingInfo: [],
-    placeID: "TBD",
+    placeID: "ChIJ__IuDHcE9YgRl74p-48jkpU",
     registerLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
     password: "ADA2025SDPC",
     sponsorProspectusPath: "/events/2025SDPC/2025SDPC-SponsorProspectus.pdf",
