@@ -268,6 +268,7 @@ export const EVENTS: Event[] = [
                       <li>Walk through the Glass Skybridge into the Hilton. You are now on the second floor of the hotel.</li>
                       <li>Proceed downstairs to the lobby to check-in.</li>
                     </ol>
+                    <a href="/hotels/marta-map.webp" target="_blank" rel="noopener noreferrer" class=" text-blue-600 hover:underline">Click here to view a map of the MARTA train station.</a>
                     `,
       },
     ],

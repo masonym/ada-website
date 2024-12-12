@@ -103,7 +103,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                                 >
                                     <div className="py-4 px-8">
                                         <div
-                                            className="text-sm space-y-2 text-gray-600"
+                                            className="text-sm space-y-2 text-gray-600 overflow-visible"
                                             dangerouslySetInnerHTML={{ __html: option.description }}
                                         />
                                     </div>
