@@ -33,7 +33,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
 
             {/* Lodging Section */}
             {lodging && (
-                <section className="max-w-7xl mx-auto">
+                <section className="max-w-[86rem] mx-auto">
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-8">
                         Venue and Recommended Lodging
                     </h2>
@@ -63,17 +63,14 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                                             <Phone className="w-5 h-5 mr-2 flex-shrink-0 text-gray-400" />
                                             <p>{hotel.phone}</p>
                                         </div>
+                                        <p className="mt-8 text-left text-gray-600">
+                                            {lodging.note}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
-
-                    {lodging?.note && (
-                        <p className="mt-8 text-left text-gray-600">
-                            {lodging.note}
-                        </p>
-                    )}
                 </section>
             )}
 
