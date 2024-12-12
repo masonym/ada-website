@@ -243,11 +243,30 @@ export const EVENTS: Event[] = [
     expectationsText: "Attendees will gain unparalleled access to key decision-makers, including Program Managers, Contracting Officers, and Small Business Program Directors from the Army, Navy, Air Force, Marine Corps, and Space Force Commands, and top Prime Defense Contractors. This is your chance to forge invaluable connections that can shape the future of your business.",
     image: "/2025_SoutheastDefenseProcurementConference.webp",
     slug: "2025-southeast-defense-procurement-conference",
-    locationImage: "/locations/location_NPC.webp",
-    locationAddress: "TBD",
+    locationImage: "/hotels/hilton-atlanta-hotel.webp",
+    locationAddress: "255 Courtland St NE, Atlanta, GA 30303, USA",
     directions: [],
     images: [],
-    parkingInfo: [],
+    parkingInfo: [
+      {
+        title: "",
+        description: `<b>Self-Parking:</b> $40.00 Per Day
+        <br />
+        <b>Oversize Vehicle:</b> $60.00 Per Day
+        <br />
+        <b>Valet:</b> $55.00 Per Day
+        <br />
+        <b>Garage Height:</b> 6 ft
+        <br />
+        <b>Secured:</b> Yes
+        <br />
+        <b>Covered:</b> Yes
+        <br />
+        <b>EV Charging:</b> Not Available
+        <br/><br/>
+        <i>Note: Valet Required for Oversized Vehicles</i>`,
+      },
+    ],
     placeID: "ChIJ__IuDHcE9YgRl74p-48jkpU",
     registerLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
     password: "ADA2025SDPC",

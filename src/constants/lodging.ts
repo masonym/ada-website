@@ -30,7 +30,8 @@ export const LODGING_INFO: LodgingInfo[] = [
           phone: "(404) 659-2000",
           image: "/hotels/hilton-atlanta.webp"
         }
-      ]
+      ],
+      note: "Group Rate Information Coming Soon"
     },
     {
       eventId: 3, // 2025DTIOS
