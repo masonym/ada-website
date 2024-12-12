@@ -28,12 +28,12 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
     const lodging = LODGING_INFO.find((l) => l.eventId === event.id);
 
     return (
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
             {/* Venue Section */}
 
             {/* Lodging Section */}
             {lodging && (
-                <section>
+                <section className="max-w-7xl mx-auto">
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-8">
                         Venue and Recommended Lodging
                     </h2>
@@ -77,7 +77,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                 </section>
             )}
 
-            <section className="flex flex-col sm:flex-row justify-center gap-4 lg:gap-8">
+            <section className="max-w-8xl mx-auto flex flex-col sm:flex-row justify-center gap-4 lg:gap-8">
 
                 {/* directions */}
                 <div className="mb-12 flex flex-col items-center">
@@ -131,7 +131,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
             </section>
 
             {/* Google Map */}
-            <div className="h-[400px] rounded-lg overflow-hidden">
+            <div className="h-[400px] rounded-lg overflow-hidden max-w-7xl mx-auto">
                 <Map placeId={event.placeID || ''} />
             </div>
         </div>
