@@ -251,15 +251,13 @@ export const EVENTS: Event[] = [
         description: `
                     <ol class="list-decimal pl-4">
                       <li>From the Airport by the Subway (MARTA), Take the train north and exit at Peachtree Center Station.</li>
-                      <li>Follow the directions for Peachtree Center Mall.</li>
-                      <li>You will go up a very steep escalator into the Mall.</li>
+                      <li>Follow the directions for Peachtree Center Mall. You will go up a very steep escalator into the Mall.</li>
                       <li>Take a right at the top of the escalator and enter Peachtree Center Mall through the sliding glass doors.</li>
                       <li>Continue Straight through the Food Court and past the Seating Areas.</li>
                       <li>Take a left where the seating area ends and there is a shoe/shine booth in front of you.</li>
                       <li>Take a right at Yami Yami Sushi. (Dairy Queen will be on your left.)</li>
                       <li>Go through the Glass Skybridge with directional signage that reads to "Marquis 1 & 2 Towers/ Marriott Marquis Hotel"</li>
-                      <li>Turn left at the Security Desk.</li>
-                      <li>Continue through the glass doors and take a right upon passing through.</li>
+                      <li>Turn left at the Security Desk. Continue through the glass doors and take a right upon passing through.</li>
                       <li>Take another right into the Marriott Marquis Atrium/Lobby after passing through a second set of sliding glass doors.</li>
                       <li>You will now need to go down two levels via escalator, stairs, or elevator.</li>
                       <li>By Elevator- Walk straight out of Elevator Bank towards the "Skybridge to Hilton Hotel."</li>
