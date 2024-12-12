@@ -8,6 +8,10 @@ type Hotel = {
   zip: string;
   phone: string;
   image: string;
+  link?: {
+    href: string;
+    label: string;
+  };
 };
 
 type LodgingInfo = {
@@ -28,7 +32,12 @@ export const LODGING_INFO: LodgingInfo[] = [
           state: "Georgia",
           zip: "30303",
           phone: "(404) 659-2000",
-          image: "/hotels/hilton-atlanta.webp"
+          image: "/hotels/hilton-atlanta.webp",
+          link: {
+            href: "https://www.hilton.com/en/hotels/atlahhh-hilton-atlanta/",
+            label: "Hilton Atlanta"
+          }
+
         }
       ],
       note: "Group Rate Information Coming Soon"

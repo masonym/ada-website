@@ -63,9 +63,15 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                                             <Phone className="w-5 h-5 mr-2 flex-shrink-0 text-gray-400" />
                                             <p>{hotel.phone}</p>
                                         </div>
+                                        {hotel.link &&
+                                            <Link href={hotel.link?.href} className=" text-blue-600 hover:underline text-wrap lg:text-nowrap" target='_blank'>
+                                                <p className='my-2'>{hotel.link?.label}</p>
+                                            </Link>
+                                        }
                                         <p className="mt-8 text-left text-gray-600">
                                             {lodging.note}
                                         </p>
+
                                     </div>
                                 </div>
                             </div>

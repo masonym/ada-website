@@ -279,7 +279,7 @@ export const EVENTS: Event[] = [
         <br />
         <b>Oversize Vehicle:</b> $60.00 Per Day
         <br />
-        <b>Valet:</b> $55.00 Per Day
+        <b>Valet:</b> $60.00 Per Day
         <br />
         <b>Garage Height:</b> 6 ft
         <br />
