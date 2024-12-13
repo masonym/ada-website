@@ -180,7 +180,7 @@ export const EVENTS: Event[] = [
           What to Expect
         </h2>
         <p className="mb-4">
-          Attendees will gain unparalleled access to key decision-makers, including Program Managers, Contracting Officers, and Small Business Program Directors from the Army, Navy, Air Force, Marine Corps, and Space Force Commands, and top Prime Defense Contractors. This is your chance to forge invaluable connections that can shape the future of your business.
+          The <b>2025 Southeast Defense Procurement Conference</b> is the premier event to explore the latest contracting opportunities across a wide range of industries. From <b>Aerospace and Aviation</b> to <b>Defense Technology</b>, <b>Shipbuilding</b>, <b>Ground Vehicles</b>, and <b>Construction</b>, you'll connect with top companies driving military innovation. Discover cutting-edge solutions in <b>Artificial Intelligence (AI)</b>, <b>Logistics</b>, <b>Healthcare</b>, and <b>Energy</b>, while learning about game-changing advancements from <b>Engineering</b> and <b>R&D</b> firms. Attendees will gain unparalleled access to key decision-makers, including Program Managers, Contracting Officers, and Small Business Program Directors from the Army, Navy, Air Force, Marine Corps, and Space Force Commands, and top Prime Defense Contractors. This is your chance to forge invaluable connections that can shape the future of your business.
         </p>
         {/* <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           Why Attend?
@@ -212,7 +212,7 @@ export const EVENTS: Event[] = [
       { tagline: "Cybersecurity Compliance", description: "Understand the Mandates and Training Options Available for Compliance with CMMC" },
       // { tagline: "Support for Small & Medium Contractors", description: "Gain Access to Resources from the Defense Contract Audit Agency" },
       // { tagline: "Special Contracting Opportunities", description: " Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms" },
-      { tagline: "Small Business Contracting Opportunities", description: "Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms. Explore Programs Designed to Accelerate the Growth of Small Businesses through Strategic Partnerships. Navigate the Intricacies of GWACs and their Small Business Tracks."}
+      { tagline: "Small Business Contracting Opportunities", description: "Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms. Explore Programs Designed to Accelerate the Growth of Small Businesses through Strategic Partnerships. Navigate the Intricacies of GWACs and their Small Business Tracks." }
     ],
     expectations: [
       {
@@ -241,7 +241,9 @@ export const EVENTS: Event[] = [
         ]
       }
     ],
-    expectationsText: "Attendees will gain unparalleled access to key decision-makers, including Program Managers, Contracting Officers, and Small Business Program Directors from the Army, Navy, Air Force, Marine Corps, and Space Force Commands, and top Prime Defense Contractors. This is your chance to forge invaluable connections that can shape the future of your business.",
+    expectationsText: `
+    The <b>2025 Southeast Defense Procurement Conference</b> is the premier event to explore the latest contracting opportunities across a wide range of industries. From <b>Aerospace and Aviation</b> to <b>Defense Technology</b>, <b>Shipbuilding</b>, <b>Ground Vehicles</b>, and <b>Construction</b>, you'll connect with top companies driving military innovation. Discover cutting-edge solutions in <b>Artificial Intelligence (AI)</b>, <b>Logistics</b>, <b>Healthcare</b>, and <b>Energy</b>, while learning about game-changing advancements from <b>Engineering</b> and <b>R&D</b> firms. Attendees will gain unparalleled access to key decision-makers, including Program Managers, Contracting Officers, and Small Business Program Directors from the Army, Navy, Air Force, Marine Corps, and Space Force Commands, and top Prime Defense Contractors. This is your chance to forge invaluable connections that can shape the future of your business.
+    `,
     image: "/2025_SoutheastDefenseProcurementConference.webp",
     slug: "2025-southeast-defense-procurement-conference",
     locationImage: "/hotels/hilton-atlanta-hotel.webp",

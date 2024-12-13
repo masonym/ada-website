@@ -21,8 +21,7 @@ const ExpectationsSection: React.FC<ExpectationsSectionProps> = ({
         What to Expect
       </h2>
       {expectationsText && (
-        <p className="text-lg leading-relaxed text-center max-w-6xl mx-auto">
-          {expectationsText}
+        <p className="text-lg leading-relaxed text-center max-w-6xl mx-auto" dangerouslySetInnerHTML={{ __html: expectationsText }}>
         </p>
       )}
       {/* {expectations.map((audience, idx) => (
