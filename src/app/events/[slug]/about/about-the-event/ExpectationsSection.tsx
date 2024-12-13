@@ -16,7 +16,7 @@ const ExpectationsSection: React.FC<ExpectationsSectionProps> = ({
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mb-2">
         What to Expect
       </h2>
