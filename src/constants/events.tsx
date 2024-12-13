@@ -154,7 +154,7 @@ export const EVENTS: Event[] = [
     timeStart: "2025-03-18T12:30:00Z", // TODO: change to actual time
     description: "Join us for the 2025 Southeast Defense Procurement Conference on March 18-19, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
     eventText: (
-      <div className="max-container font-light">
+      <div className="max-w-[92rem] font-light text-balance">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
@@ -179,7 +179,7 @@ export const EVENTS: Event[] = [
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
-        <p className="mb-4">
+        <p className="mb-4 max-w-6xl mx-auto text-center">
           The <b>2025 Southeast Defense Procurement Conference</b> is the premier event to explore the latest contracting opportunities across a wide range of industries. From <b>Aerospace and Aviation</b> to <b>Defense Technology</b>, <b>Shipbuilding</b>, <b>Ground Vehicles</b>, and <b>Construction</b>, you'll connect with top companies driving military innovation. Discover cutting-edge solutions in <b>Artificial Intelligence (AI)</b>, <b>Logistics</b>, <b>Healthcare</b>, and <b>Energy</b>, while learning about game-changing advancements from <b>Engineering</b> and <b>R&D</b> firms. Attendees will gain unparalleled access to key decision-makers, including Program Managers, Contracting Officers, and Small Business Program Directors from the Army, Navy, Air Force, Marine Corps, and Space Force Commands, and top Prime Defense Contractors. This is your chance to forge invaluable connections that can shape the future of your business.
         </p>
         {/* <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
