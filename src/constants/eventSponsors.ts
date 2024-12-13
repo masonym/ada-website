@@ -85,13 +85,20 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://www.safestructuredesigns.com/",
                         width: 200,
                         height: 50,
+                    },
+                    {
+                        name: "Hungerford & Terry",
+                        logo: "/events/2025SDPC/sponsors/ht.webp",
+                        website: "https://www.hungerfordterry.com/",
+                        width: 200,
+                        height: 50,
                     }
                 ]
             }
         ]
     },
     {
-        id: 3, // Matches the event ID from events.ts
+        id: 3, // 2025DTIOS
         title: "This event is Organized and Presented by",
         tiers: [
             {

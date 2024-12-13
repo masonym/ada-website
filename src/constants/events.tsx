@@ -198,20 +198,6 @@ export const EVENTS: Event[] = [
         <p className="mb-0 leading-9">
           Join us for the <b>2025 Southeast Defense Procurement Conference</b> on March 18-19, 2025 in Atlanta, Georgia, home to the U.S. Army Corps of Engineers South Atlantic Division — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.
         </p>
-        <p className="mt-4 mb-2 font-bold text-xl text-center font-gotham">
-          Featured Contracting Commands:
-        </p>
-        <p className="">
-          <ul className="list-inside">
-            <li>Multiple Air Force Bases in Florida, Georgia & throughout the Southeast</li>
-            <li>Marine Corps Bases in North & South Carolina and the Blount Island Logistic Support Facility</li>
-            <li>Ft. Liberty, Army Anniston Depot and Red Stone Arsenal</li>
-            <li>Army Corps of Engineers District Headquarters in Mobile, Savannah, Charleston, Jacksonville & Wilmington</li>
-            <li>NAVFAC Field Offices & Public Works Dept.'s</li>
-            <li>King's Bay Naval Sub Base, and Naval Air Stations in Pensacola, Jacksonville & Key West</li>
-            <li>Major Contracting Commands including CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, & SPACECENT</li>
-          </ul>
-        </p>
       </div>
     ),
     topicalCoverage: [
@@ -219,13 +205,14 @@ export const EVENTS: Event[] = [
       // { tagline: "Small Business Contracting Programs", description: "Learn about Initiatives that Support Small Businesses in Defense Contracting" },
       { tagline: "Subcontracting and Teaming Opportunities", description: " Connect with Prime Defense Contractors to Explore Collaborative Ventures" },
       { tagline: "Innovative Technology Solutions", description: " Discover Accelerated Contracting Opportunities through DARPA, DIU, and DEFENSEWERX" },
-      { tagline: "Government-Wide Acquisition Contracts (GWACs)", description: " Navigate the Intricacies of GWACs and their Small Business Tracks" },
-      { tagline: "Mentor-Protégé Programs", description: " Explore Programs Designed to Accelerate the Growth of Small Businesses through Strategic Partnerships" },
+      // { tagline: "Government-Wide Acquisition Contracts (GWACs)", description: " Navigate the Intricacies of GWACs and their Small Business Tracks" },
+      // { tagline: "Mentor-Protégé Programs", description: " Explore Programs Designed to Accelerate the Growth of Small Businesses through Strategic Partnerships" },
       { tagline: "Upcoming Projects", description: "Get Insights into Future Projects from the Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC)" },
       { tagline: "Military Base-Community Partnerships", description: " Learn how these Partnerships are Driving Construction and Facility Support Contracts" },
       { tagline: "Cybersecurity Compliance", description: "Understand the Mandates and Training Options Available for Compliance with CMMC" },
       // { tagline: "Support for Small & Medium Contractors", description: "Gain Access to Resources from the Defense Contract Audit Agency" },
-      { tagline: "Special Contracting Opportunities", description: " Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms" },
+      // { tagline: "Special Contracting Opportunities", description: " Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms" },
+      { tagline: "Small Business Contracting Opportunities", description: "Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms. Explore Programs Designed to Accelerate the Growth of Small Businesses through Strategic Partnerships. Navigate the Intricacies of GWACs and their Small Business Tracks."}
     ],
     expectations: [
       {
@@ -257,31 +244,75 @@ export const EVENTS: Event[] = [
     expectationsText: "Attendees will gain unparalleled access to key decision-makers, including Program Managers, Contracting Officers, and Small Business Program Directors from the Army, Navy, Air Force, Marine Corps, and Space Force Commands, and top Prime Defense Contractors. This is your chance to forge invaluable connections that can shape the future of your business.",
     image: "/2025_SoutheastDefenseProcurementConference.webp",
     slug: "2025-southeast-defense-procurement-conference",
-    locationImage: "/locations/location_NPC.webp",
-    locationAddress: "TBD",
-    directions: [],
+    locationImage: "/hotels/hilton-atlanta-hotel.webp",
+    locationAddress: "255 Courtland St NE, Atlanta, GA 30303, USA",
+    directions: [
+      {
+        title: "Walking Directions From The Peachtree Center Marta Station",
+        description: `
+                    <ol class="list-decimal pl-4">
+                      <li>From the Airport by the Subway (MARTA), Take the train north and exit at Peachtree Center Station.</li>
+                      <li>Follow the directions for Peachtree Center Mall. You will go up a very steep escalator into the Mall.</li>
+                      <li>Take a right at the top of the escalator and enter Peachtree Center Mall through the sliding glass doors.</li>
+                      <li>Continue Straight through the Food Court and past the Seating Areas.</li>
+                      <li>Take a left where the seating area ends and there is a shoe/shine booth in front of you.</li>
+                      <li>Take a right at Yami Yami Sushi. (Dairy Queen will be on your left.)</li>
+                      <li>Go through the Glass Skybridge with directional signage that reads to "Marquis 1 & 2 Towers/ Marriott Marquis Hotel"</li>
+                      <li>Turn left at the Security Desk. Continue through the glass doors and take a right upon passing through.</li>
+                      <li>Take another right into the Marriott Marquis Atrium/Lobby after passing through a second set of sliding glass doors.</li>
+                      <li>You will now need to go down two levels via escalator, stairs, or elevator.</li>
+                      <li>By Elevator- Walk straight out of Elevator Bank towards the "Skybridge to Hilton Hotel."</li>
+                      <li>By Escalator- Take a right off of the escalator towards "Skybridge to Hilton Hotel."</li>
+                      <li>By Stairs- Continue straight past the Elevator Bank towards "Skybridge to Hilton Hotel."</li>
+                      <li>Walk through the Glass Skybridge into the Hilton. You are now on the second floor of the hotel.</li>
+                      <li>Proceed downstairs to the lobby to check-in.</li>
+                    </ol>
+                    <a href="https://www.itsmarta.com/uploadedimages/train-stations-map-2020.jpg" target="_blank" rel="noopener noreferrer" class=" text-blue-600 hover:underline">Click here to view a map of the MARTA train station.</a>
+                    `,
+      },
+    ],
     images: [],
-    parkingInfo: [],
-    placeID: "TBD",
+    parkingInfo: [
+      {
+        title: "",
+        description: `<b>Self-Parking:</b> $40.00 Per Day
+        <br />
+        <b>Oversize Vehicle:</b> $60.00 Per Day
+        <br />
+        <b>Valet:</b> $60.00 Per Day
+        <br />
+        <b>Garage Height:</b> 6 ft
+        <br />
+        <b>Secured:</b> Yes
+        <br />
+        <b>Covered:</b> Yes
+        <br />
+        <b>EV Charging:</b> Not Available
+        <br/><br/>
+        <i>Note: Valet Required for Oversized Vehicles</i>`,
+      },
+    ],
+    placeID: "ChIJ__IuDHcE9YgRl74p-48jkpU",
     registerLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
     password: "ADA2025SDPC",
     sponsorProspectusPath: "/events/2025SDPC/2025SDPC-SponsorProspectus.pdf",
     featuredTopicsTitle: "Featured Contracting Commands",
+    featuredTopicsSubtitle: "These insights highlight key regional defense assets and contracting opportunities in the Southeast, emphasizing the need for contractors to tailor their solutions to support the military's evolving Infrastructure, Operational Readiness, and Technological Advancements.",
     featuredTopics: [
       {
         title: "Strategic Importance of Air Force Bases in Florida, Georgia, and the Southeast",
         subItems: [
           {
             title: "Diverse Capabilities",
-            description: "Air Force Bases like Tyndall AFB, Eglin AFB, and Dobbins ARB are critical to a variety of missions ranging from Air Combat and Training to Missile Testing and Space Operations."
+            description: "Air Force Bases in the Southeast, such as Tyndall AFB, Eglin AFB, and Dobbins ARB, are vital hubs for Air Combat, Training, Missile Testing, and Space Operations."
           },
           {
             title: "Modernization and Resilience",
-            description: "Post-Hurricane Michael recovery at Tyndall AFB showcases the region's emphasis on Resilience and Infrastructure Modernization, creating opportunities for companies in Construction, Engineering, and Technology Solutions."
+            description: "Tyndall AFB's recovery from Hurricane Michael highlights the Region's commitment to Resilience and Infrastructure upgrades, creating major opportunities for Construction, Engineering and Technology Solutions."
           },
           {
             title: "Future of Combat and Space Operations",
-            description: "The focus on expanding capabilities in Space Operations, Cyber, and Electronic Warfare at bases like Hickam AFB and Patrick AFB is pushing forward procurement needs for Cutting-edge Tech, Cyber Defense, and Satellite Communications."
+            description: "With a focus on expanding Space, Cyber, and Electronic Warfare capabilities at bases like Hickam and Patrick AFB, the Region is driving demand for Cutting-edge Technology, Cyber Defense, and Satellite Communications."
           }
         ]
       },
@@ -290,15 +321,15 @@ export const EVENTS: Event[] = [
         subItems: [
           {
             title: "Strategic Mobilization",
-            description: "The Marine Corps Bases in North and South Carolina (Camp Lejeune, Parris Island) are vital to Training, Readiness, and Rapid Deployment Capabilities for the Marine Corps."
+            description: "Camp Lejeune and Parris Island in North and South Carolina are critical to the Marine Corps' Readiness, Training, and Rapid Deployment Capabilities."
           },
           {
             title: "Logistics Infrastructure",
-            description: "The Blount Island Logistics Support Facility in Jacksonville, Florida, is integral to supporting the Navy and Marine Corps' logistics needs, providing opportunities in Warehousing, Transportation, and Supply Chain Management."
+            description: "The Blount Island Logistics Support Facility in Jacksonville, Florida, plays a key role in supporting Navy and Marine Corps Logistics through Warehousing, Transportation, and Supply Chain Management."
           },
           {
             title: "Enhanced Joint Operations",
-            description: "With proximity to key Navy and Air Force assets in the Southeast, the Marine Corps bases are crucial for inter-service operations and procurement partnerships."
+            description: "Located near key Navy and Air Force assets in the Southeast, these Marine Corps bases strengthen inter-service Operations and Procurement partnerships."
           }
         ]
       },
@@ -307,15 +338,15 @@ export const EVENTS: Event[] = [
         subItems: [
           {
             title: "Fort Liberty",
-            description: "As a hub for Army Space Operations Forces, Fort Liberty's mission expansion offers procurement opportunities in Specialized Training, Advanced Systems, and Equipment Support."
+            description: "A key hub for Army Space Operations Forces, Fort Liberty's expanding mission offers opportunities in Specialized Training, Advanced Systems, and Equipment Support."
           },
           {
             title: "Anniston Army Depot",
-            description: "A critical facility for military vehicle repair and maintenance, the depot is increasingly reliant on innovative solutions for modernization, providing opportunities in Defense Manufacturing, Automation, and Maintenance Services."
+            description: "Vital for Military Vehicle Repair and Maintenance, the depot is embracing innovation for Modernization, creating opportunities in Defense Manufacturing, Automation, and Maintenance Services."
           },
           {
             title: "Redstone Arsenal",
-            description: "Located in Huntsville, Alabama, Redstone Arsenal is a major center for Missile Defense, Aviation and Cybersecurity Research, The presence of key organizations such as NASA and the Army Aviation and Missile Command (AMCOM) enhances the region's demand for Advanced Defense Technologies and R&D Contracting."
+            description: "In Huntsville, Alabama, Redstone Arsenal is a leading center for Missile Defense, Aviation, and Cybersecurity Research. The presence of NASA and AMCOM drives demand for Advanced Defense Technologies and R&D Contracting."
           }
         ]
       },
@@ -324,18 +355,69 @@ export const EVENTS: Event[] = [
         subItems: [
           {
             title: "Infrastructure & Modernization",
-            description: "These Army Corps of Engineers Districts are central to large-scale infrastructure projects related to Water Resources, Flood Control, and Military Facility Upgrades."
+            description: "These Districts drive large-scale projects in Water Resources, Flood Control, and Military Facility upgrades."
           },
           {
             title: "Resiliency Focus",
-            description: "With an emphasis on Climate Adaptation and Resilient Infrastructure, these districts are seeking firms with expertise in Construction, Energy Efficiency, and Disaster Recovery."
+            description: "Focusing on Climate Adaptation and Resilient Infrastructure, the Districts seek firms with expertise in Construction, Energy Efficiency, and Disaster Recovery."
           },
           {
             title: "Regional Development",
-            description: "The increasing demand for Port and Base Facility upgrades around Wilmington, Charleston, and Savannah presents unique opportunities for Infrastructure Development and Defense Logistics."
+            description: "The growing need for Port and Base Facility upgrades in Wilmington, Charleston, and Savannah creates unique opportunities in Infrastructure Development and Defense Logistics."
           }
         ]
       },
+      {
+        title: "NAVFAC Field Offices & Public Works Departments",
+        subItems: [
+          {
+            title: "Base Infrastructure and Sustainment",
+            description: "NAVFAC Field Officers are essential in maintaining and enhancing Base Infrastructure across the Southeast, covering Construction, Maintenance, Repairs, and Utility upgrades at Navy Installations.",
+          },
+          {
+            title: "Energy and Sustainability Initatives",
+            description: "With a growing emphasis on Sustainable Construction and Renewable Energy, NAVFAC offers opportunities for contractors in Green Technology, Energy-Efficient Systems, and Power Solutions."
+          },
+          {
+            title: "Real Property and Facility Management",
+            description: "As public works departments focus on Facility Lifecycle Management, there are abundant opportunities for firms specializing in Construction, Asset Management, and Infrastructure Upgrades.",
+          },
+        ]
+      },
+      {
+        title: "King’s Bay Naval Submarine Base & Naval Air Stations (Pensacola, Jacksonville, Key West)",
+        subItems: [
+          {
+            title: "Submarine Operations & Technology",
+            description: "King's Bay Naval Submarine Base supports Nuclear-powered Submarine Operations, creating procurement opportunities in Nuclear Technology, Logistics, Security Systems, and Specialized Defense Tech.",
+          },
+          {
+            title: "Naval Aviation",
+            description: "Naval Air Stations like Pensacola, Jacksonville, and Key West are crucial for Training and Fleet Readiness, offering opportunities in Aviation Systems, Training Equipment, Simulation Technologies, and Maintenance Services.",
+          },
+          {
+            title: "Integration and Joint Training",
+            description: "These bases play a key role in Joint Training Exercises, driving demand for solutions that enhance Interoperability, Cybersecurity, and Logistics.",
+          },
+        ]
+      },
+      {
+        title: "Key Contracting Commands (CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, SPACECENT)",
+        subItems: [
+          {
+            title: "Global & Regional Operation",
+            description: "CENTCOM and SOUTHCOM influence operations in the Southeast U.S., with growing procurement needs in Logistics, Cybersecurity, and Intelligence, driven by U.S. interests in the Caribbean and Latin America. This creates demand for Security, Infrastructure, and Technology Solutions.",
+          },
+          {
+            title: "Special Operations & Space Missions",
+            description: "AFSOC, SOCSOUTH, and SPACECENT focus on Specialized Readiness and Technology. Companies with expertise in Advanced Communications, Space Technologies, and Special Operations Equipment will be prime candidates for contracts."
+          },
+          {
+            title: "Innovation & Tech Solutions",
+            description: "With SPACECENT and SOCSOUTH advancing Space and Cyber Technologies, there's a rising need for cutting-edge solutions in Satellite communications, Cybersecurity, Data Analytics, and Space-based Defense Systems."
+          }
+        ]
+      }
     ],
   },
   {

@@ -27,6 +27,7 @@ type EventDetailsProps = {
   expectationsText?: string;
   featuredTopics?: FeaturedTopicDetail[];
   featuredTopicsTitle?: string;
+  featuredTopicsSubtitle?: string;
 };
 
 const EventDetails: React.FC<EventDetailsProps> = ({ 
@@ -38,6 +39,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({
   expectationsText,
   featuredTopics,
   featuredTopicsTitle,
+  featuredTopicsSubtitle
 }) => {
   return (
     <div className="min-h-screen text-navy-800 text-center">
@@ -48,26 +50,30 @@ const EventDetails: React.FC<EventDetailsProps> = ({
         </div>
 
         {/* Featured Topics Section */}
-        {/* {featuredTopics && featuredTopics.length > 0 && (
+        {featuredTopics && featuredTopics.length > 0 && (
           <div className="w-full mb-12">
-            <h2 className="text-3xl font-semibold mb-8 text-slate-700">{featuredTopicsTitle}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            <h2 className="text-3xl font-semibold mb-2 text-slate-700">{featuredTopicsTitle}</h2>
+            <h3 className="text-xl mb-4 text-slate-700">{featuredTopicsSubtitle}</h3>
+            <div className="space-y-12">
               {featuredTopics.map((topic, index) => (
-                <div key={index} className={`bg-white rounded-xl shadow-lg p-6 text-left ${
-                  index === featuredTopics.length - 1 && featuredTopics.length % 2 === 1 ? 'lg:col-span-2 lg:w-1/2 lg:justify-self-center' : ''
-                }`}>
-                  <h3 className="text-xl font-bold mb-4 text-navy-600">{topic.title}</h3>
-                  {topic.subItems.map((item, subIndex) => (
-                    <div key={subIndex} className="mb-4">
-                      <h4 className="font-semibold text-navy-500 mb-2">{item.title}</h4>
-                      <p className="text-gray-600">{item.description}</p>
-                    </div>
-                  ))}
+                <div key={index} className="space-y-6">
+                  <h3 className="text-2xl font-bold text-slate-700">{topic.title}</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6">
+                    {topic.subItems.map((item, subIndex) => (
+                      <div 
+                        key={subIndex} 
+                        className="bg-gradient-to-br from-navy-500 to-navy-800 text-white rounded-xl shadow-lg p-6"
+                      >
+                        <h4 className="text-xl font-semibold mb-3">{item.title}</h4>
+                        <p className="text-gray-300">{item.description}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
-        )} */}
+        )}
 
         {/* Expectations Section */}
         {expectations && expectations.length > 0 && (
