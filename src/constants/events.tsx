@@ -596,5 +596,30 @@ export const EVENTS: Event[] = [
       text: "To access the KSC Visitor Complex, present the Parking Placard provided below. This will serve as your entry into the KSCVC parking for the event. Park in Lot 4 and please present this parking pass at the parking plaza. It may be presented digitally or it may be printed.\n\nImportant: Each attendee must present a yellow admission ticket at the turnstiles. You will have (1) ticket for each day of the event.\n• Travel Through Turnstiles and Around the Curved Path\n• The Rocket Garden will be on your Left\n• To the CSE: Walk through the Rocket Garden through the Gateway Building Beyond the White Fence (to the left of the Gateway) will be The Center for Space Education\n• Turn Right to Follow the Path to the Front Entrance of The Center for Space Education",
       imagePlaceholder: "/events/2025DTIOS/parking_placard.webp"
     },
-  }
-];
+  },
+  {
+    id: 4,
+    eventShorthand: "2025NMCPC",
+    title: "2025 Navy & Marine Corps Procurement Conference",
+    date: "June 9-10, 2025",
+    timeStart: "2025-06-09T13:00:00Z",
+    description: `Temporary Description`,
+    eventText: (
+      <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Event Overview
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Temporary Description
+        </p>
+      </div>
+    ),
+    topicalCoverage: [
+
+    ],
+    image: "2025_NMCPC.webp",
+    slug: "2025-navy-marine-corps-procurement-conference",
+    locationImage: "locations/temp_venue.webp",
+    locationAddress: `111 Google Ave`,
+    registerLink: "google.com",
+  }];

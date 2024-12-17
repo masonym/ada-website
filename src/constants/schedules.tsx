@@ -429,5 +429,18 @@ export const SCHEDULES = [
             }
         ]
     }
-    // Add more event schedules here...
+    // {
+    //     id: 4, // 2025NMCPC
+    //     schedule: [
+    //         {
+    //             date: "June 9, 2025",
+    //             items: [
+    //                 {
+    //                     time: "9:00 AM - 12:00 PM",
+    //                     title: "Opening Remarks",
+    //                     location: "The Center for Space Education at the Astronauts Memorial Foundation"
+    //                 },
+    //                 {
+    //                     time: "12:00 PM - 1:00 PM",
+    // }
 ];
