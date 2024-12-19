@@ -4,7 +4,7 @@ export const REGISTRATION_TYPES = [
         registrations: [
             {
                 title: "Attendee Pass",
-                headerImage: "/registration-cards/2024DIF/attendee-pass.webp",
+                headerImage: "attendee-pass.webp",
                 perks: [
                     "Registration for 1 Person",
                     "Access to All Event Sessions",
@@ -27,7 +27,7 @@ export const REGISTRATION_TYPES = [
             // display table
             {
                 title: "Display Table",
-                headerImage: "/registration-cards/2024DIF/display-table-pass.webp",
+                headerImage: "display-table-pass.webp",
                 perks: [
                     "Registration for 2 People",
                     "2 Networking Reception Tickets",
@@ -50,7 +50,7 @@ export const REGISTRATION_TYPES = [
 
             {
                 title: "Government Official & Military Pass",
-                headerImage: "/registration-cards/2024DIF/gov-pass.webp",
+                headerImage: "gov-pass.webp",
                 perks: [
                     "Registration for 1 Person",
                     "Access to All Event Sessions",
@@ -67,7 +67,7 @@ export const REGISTRATION_TYPES = [
             },
             {
                 title: "Sponsorship Opportunities",
-                headerImage: "/registration-cards/2024DIF/sponsor-pass.webp",
+                headerImage: "sponsor-pass.webp",
                 perks: [
                     "Brand Visibility",
                     "Speaking Opportunity",
@@ -99,7 +99,7 @@ export const REGISTRATION_TYPES = [
         registrations: [
             {
                 title: "Attendee Pass",
-                headerImage: "/registration-cards/2025SPDC/attendee-pass.webp",
+                headerImage: "attendee-pass.webp",
                 perks: [
                     "(1) Attendee Pass",
                     "Access to General Sessions",
@@ -120,7 +120,7 @@ export const REGISTRATION_TYPES = [
 
             {
                 title: "VIP Attendee Pass",
-                headerImage: "/registration-cards/2025SPDC/vip-attendee-pass.webp",
+                headerImage: "vip-attendee-pass.webp",
                 perks: [
                     "(1) VIP Attendee Pass",
                     "Access to General Sessions",
@@ -141,7 +141,7 @@ export const REGISTRATION_TYPES = [
 
             {
                 title: "Table-Top Exhibit Space",
-                headerImage: "/registration-cards/2025SPDC/exhibit-table-pass.webp",
+                headerImage: "exhibit-table-pass.webp",
                 perks: [
                     "(1) Exhibitor Pass",
                     "Additional Passes can be purchased for $395 each",
@@ -160,7 +160,7 @@ export const REGISTRATION_TYPES = [
 
             {
                 title: "Government Official & Military Pass",
-                headerImage: "/registration-cards/2025SPDC/gov-pass.webp",
+                headerImage: "gov-pass.webp",
                 perks: [
                     "(1) Attendee Pass",
                     "Access to General Sessions",
@@ -178,7 +178,7 @@ export const REGISTRATION_TYPES = [
 
             // {
             //     title: "Sponsor",
-            //     headerImage: "/registration-cards/2025SPDC/sponsor-pass.webp",
+            //     headerImage: "sponsor-pass.webp",
             //     perks: [
             //         "Brand Visibility",
             //         "Speaking Opportunity",
@@ -212,7 +212,7 @@ export const REGISTRATION_TYPES = [
         registrations: [
             {
                 title: "Attendee Pass",
-                headerImage: "/registration-cards/DTIOS/attendee-pass.webp",
+                headerImage: "attendee-pass.webp",
                 perks: [
                     "(1) Attendee Pass",
                     "Access to General Sessions",
@@ -229,7 +229,7 @@ export const REGISTRATION_TYPES = [
             },
             {
                 title: "Meet & Greet Bourbon Tasting with Astronauts Pass",
-                headerImage: "/registration-cards/DTIOS/bourbon-tasting-pass.webp",
+                headerImage: "bourbon-tasting-pass.webp",
                 perks: [
                     "Mix and Mingle with our Guest Star Astronauts and other VIP Guests at Zarrella’s Italian & Wood Fired Pizza in Cape Canaveral, FL while Sampling Select Smooth Bourbons."
                 ],
@@ -241,7 +241,7 @@ export const REGISTRATION_TYPES = [
             },
             {
                 title: "Sponsorship Opportunities",
-                headerImage: "/registration-cards/DTIOS/sponsors.webp",
+                headerImage: "sponsors.webp",
                 perks: [
                     "Event Access",
                     "Meet & Greet Bourbon Tasting with Astronauts",
@@ -261,94 +261,112 @@ export const REGISTRATION_TYPES = [
         registrations: [
             {
                 title: "Attendee Pass",
-                headerImage: "/registration-cards/2024DIF/attendee-pass.webp",
+                headerImage: "attendee-pass.webp",
                 perks: [
-                    "Registration for 1 Person",
-                    "Access to All Event Sessions",
-                    "Speaker Presentations and Materials",
-                    "Digital/Physical Copies of Agenda",
-                    "Buffet Lunch",
-                    "Access to Photos & Videos from Conference",
+                    "(1) Attendee Pass",
+                    "Access to General Sessions",
+                    "Access to Exhibit Area",
+                    "Onsite Sign-up for Matchmaking Sessions",
+                    "Breakfast & Buffet Lunch",
+                    "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
+                buttonLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
                 earlyBirdPrice: "$550",
-                regularPrice: "$395",
-                earlyBirdDeadline: "2024-10-18T08:00:00Z",
+                regularPrice: "$495",
+                // earlyBirdDeadline: "2025-02-18T08:00:00Z",
                 type: "paid",
-                receptionPrice: "$450"
+                // receptionPrice: "$550"
             },
 
-
-            // display table
             {
-                title: "Display Table",
-                headerImage: "/registration-cards/2024DIF/display-table-pass.webp",
+                title: "VIP Attendee Pass",
+                headerImage: "vip-attendee-pass.webp",
                 perks: [
-                    "Registration for 2 People",
-                    "2 Networking Reception Tickets",
-                    "6' Display Table in General Session",
-                    "Access to All Event Sessions",
-                    "Speaker Presentations and Materials",
-                    "Digital/Physical Copies of Agenda",
-                    "Buffet Lunch",
-                    "Access to Photos & Videos from Conference",
-                    "Use code ADDITIONAL to Register 2nd Attendee"
+                    "(1) VIP Attendee Pass",
+                    "Access to General Sessions",
+                    "Access to Exhibit Area",
+                    "Onsite Sign-up for Matchmaking Sessions",
+                    "Breakfast & Buffet Lunch",
+                    "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
+                    "<b>Access to VIP Networking Reception on March 18, 2025 from 5:30 PM - 7:30 PM</b>",
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
-                // earlyBirdPrice: "$550",
-                regularPrice: "$1000",
-                // earlyBirdDeadline: "2024-10-18T08:00:00Z",
+                buttonLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
+                earlyBirdPrice: "$550",
+                regularPrice: "$550",
+                // earlyBirdDeadline: "2025-02-18T08:00:00Z",
+                type: "paid",
+            },
+
+            {
+                title: "Table-Top Exhibit Space",
+                headerImage: "exhibit-table-pass.webp",
+                perks: [
+                    "(1) Exhibitor Pass",
+                    "Additional Passes can be purchased for $395 each",
+                    "<b>8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and Chairs</b>",
+                    "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
+                    "Access to VIP Networking Reception on March 18, 2025 from 5:30 PM - 7:30 PM",
+                ],
+                subtitle: "Includes:",
+                buttonText: "Register Now",
+                buttonLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
+                earlyBirdPrice: "$1,250",
+                regularPrice: "$1,500",
+                earlyBirdDeadline: "2025-01-18T08:00:00Z",
                 type: "paid"
             },
 
             {
                 title: "Government Official & Military Pass",
-                headerImage: "/registration-cards/2024DIF/gov-pass.webp",
+                headerImage: "gov-pass.webp",
                 perks: [
-                    "Registration for 1 Person",
-                    "Access to All Event Sessions",
-                    "Speaker Presentations and Materials",
-                    "Digital/Physical Copies of Agenda",
-                    "Buffet Lunch",
-                    "Access to Photos & Videos from Conference",
+                    "(1) Attendee Pass",
+                    "Access to General Sessions",
+                    "Access to Exhibit Area",
+                    "Onsite Sign-up for Matchmaking Sessions",
+                    "Breakfast & Buffet Lunch",
+                    "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
+                buttonLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
                 type: "complimentary",
-                availabilityInfo: "Limited availability."
+                // availabilityInfo: "Limited availability."
             },
-            {
-                title: "Sponsorship Opportunities",
-                headerImage: "/registration-cards/2024DIF/sponsor-pass.webp",
-                perks: [
-                    "Brand Visibility",
-                    "Speaking Opportunity",
-                    "Recognition",
-                    "<i>Reception Hosting</i> (Premier)",
-                    "<i>Luncheon Hosting </i>(Prestige)",
-                    "Display Table",
-                    "Event Access",
-                    "Media Coverage",
-                ],
-                subtitle: "Includes:",
-                buttonText: "Explore Sponsorship Opportunities",
-                buttonLink: `2025-defense-industry-forecast/sponsors-exhibitors/sponsorship-opportunities`,
-                type: "sponsor",
-                availabilityInfo: "Limited availability."
-            },
+
+            // {
+            //     title: "Sponsor",
+            //     headerImage: "sponsor-pass.webp",
+            //     perks: [
+            //         "Brand Visibility",
+            //         "Speaking Opportunity",
+            //         "Recognition",
+            //         "<i>Reception Hosting</i> (Premier)",
+            //         "<i>Luncheon Hosting </i>(Prestige)",
+            //         "Display Table",
+            //         "Event Access",
+            //         "Media Coverage",
+            //     ],
+            //     subtitle: "Includes:",
+            //     buttonText: "Explore Sponsorship Opportunities",
+            //     buttonLink: `2025-southeast-defense-procurement-conference/about/sponsor`,
+            //     type: "sponsor",
+            //     availabilityInfo: "Limited availability."
+            // },
         ],
         addOns: [
+            {
+                title: "VIP Networking Reception",
+                description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from 5:30 PM - 7:30 PM on June 10, 2025.",
+                price: "+$100"
+            },
             // {
             //     title: "Networking Reception",
-            //     description: "Join us for an exclusive evening networking event from 5:30 PM - 7:30 PM",
-            //     price: "+$100"
-            // }
-        ]
-
+            //     description: "Join us for an exclusive evening networking
+        ],
     },
 ];
