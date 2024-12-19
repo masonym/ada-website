@@ -4,7 +4,7 @@ import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { notFound, useParams } from 'next/navigation';
 import { EVENTS } from '@/constants/events';
 import { Event } from '@/types/events';
 import { getCdnPath } from '@/utils/image';
@@ -50,12 +50,16 @@ const RegistrationCard = ({ item }: RegistrationProp) => {
         return email.replace('@', '\u200B@');
     };
 
+    if (!event) {
+        notFound();
+    }
+
     return (
         <div className="flex flex-col bg-white rounded-lg shadow-md overflow-hidden max-w-sm mx-auto h-full">
             {/* Image container with responsive dimensions */}
             <div className="relative w-full h-32">
                 <Image
-                    src={getCdnPath(item.headerImage)}
+                    src={getCdnPath(`events/${event.eventShorthand}/registration-cards/${item.headerImage}`)}
                     alt={item.title}
                     fill
                     className="object-cover"

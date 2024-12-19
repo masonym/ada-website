@@ -421,6 +421,13 @@ export const EVENTS: Event[] = [
         ]
       }
     ],
+    matchmakingSessions: {
+      signUpTime: "7:30 AM",
+      sessionTime: "4:00 PM - 5:30 PM",
+      date: "March 18",
+      slotsPerHost: 9,
+      sessionDurationMinutes: 10
+    }
   },
   {
     id: 3,
@@ -601,8 +608,8 @@ export const EVENTS: Event[] = [
     id: 4,
     eventShorthand: "2025NMCPC",
     title: "2025 Navy & Marine Corps Procurement Conference",
-    date: "June 9-10, 2025",
-    timeStart: "2025-06-09T13:00:00Z",
+    date: "June 10-11, 2025",
+    timeStart: "2025-06-10T13:00:00Z",
     description: `Temporary Description`,
     eventText: (
       <div className="max-container font-light">
@@ -617,9 +624,16 @@ export const EVENTS: Event[] = [
     topicalCoverage: [
 
     ],
-    image: "2025_NMCPC.webp",
+    image: "2025NMCPC.webp",
     slug: "2025-navy-marine-corps-procurement-conference",
     locationImage: "locations/temp_venue.webp",
     locationAddress: `111 Google Ave`,
     registerLink: "google.com",
+    matchmakingSessions: {
+      signUpTime: "7:30 AM",
+      sessionTime: "4:00 PM - 5:30 PM",
+      date: "June 10",
+      slotsPerHost: 9,
+      sessionDurationMinutes: 10
+    }
   }];
