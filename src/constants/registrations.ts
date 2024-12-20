@@ -316,7 +316,7 @@ export const REGISTRATION_TYPES = [
                 buttonLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
                 earlyBirdPrice: "$1,250",
                 regularPrice: "$1,500",
-                earlyBirdDeadline: "2025-01-18T08:00:00Z",
+                earlyBirdDeadline: "2025-04-10T08:00:00Z",
                 type: "paid"
             },
 
