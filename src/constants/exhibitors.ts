@@ -34,5 +34,22 @@ export const EXHIBITOR_TYPES = [
                 colour: "#3FB4E6"
             },
         ]
+    },
+    {
+        id: 4,
+        exhibitors: [
+            {
+                title: "Table-Top Exhibit Space",
+                cost: "$1,250",
+                perks: [
+                    { tagline: "Event Access", description: " (1) Exhibitor Pass. Additional Passes can be Purchased for $395 each" },
+                    { tagline: "Exhibit Space", description: "8'x10' Exhibit Space Placed in Exhibit Area/Foyer. 6' Exhibit Table and Chairs" },
+                    { tagline: "Brand Visibility", description: "Logo Placement on select Conference Materials, including Marketing Emails and Website" },
+                    { tagline: "Recognition", description: "Acknowledgement before Networking Breaks at the Conference" },
+                    { tagline: "Media Coverage", description: "Photographs of your Participation" },
+                ],
+                colour: "#3FB4E6"
+            },
+        ]
     }
 ];

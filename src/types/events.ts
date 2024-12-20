@@ -53,6 +53,13 @@ export interface Event {
         customContactText?: ReactNode;
         exhibitorSpacesText?: ReactNode;
     };
+    matchmakingSessions?: {
+        signUpTime: string;
+        sessionTime: string;
+        date: string;
+        slotsPerHost: number;
+        sessionDurationMinutes: number;
+    };
     customFooterText?: ReactNode;
     placeID?: string;
     directions?: Array<{ title: string; description: string }>;
@@ -69,4 +76,5 @@ export interface Event {
         text: string;
         imagePlaceholder: string;
     };
+    countdownColour?: string;
 }

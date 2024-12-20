@@ -38,16 +38,6 @@ export const LODGING_INFO: LodgingInfo[] = [
             label: "Hilton Atlanta"
           },
         },
-        {
-          name: "Hilton Atlanta Downtown Hotel",
-          address: "Galleria Ballroom",
-          phone: "(404) 255-1100",
-          image: "/hotels/hilton-galleria.webp",
-          link: {
-            href: "https://www.hilton.com/en/hotels/atlahhh-hilton-atlanta/",
-            label: "Hilton Atlanta"
-          },
-        }
       ],
       note: "Group Rate Information Coming Soon"
     },
@@ -74,6 +64,25 @@ export const LODGING_INFO: LodgingInfo[] = [
         }
       ],
       note: "PLEASE NOTE THERE IS NO ROOM BLOCK FOR THIS EVENT."
+    },
+    {
+      eventId: 4, // 2025NMCPC
+      hotels: [
+        {
+          name: "Norfolk Waterside Marriott",
+          address: "235 E Main St",
+          city: "Norfolk",
+          state: "Virginia",
+          zip: "23510",
+          phone: "(757) 627-4200",
+          image: "/hotels/norfolk-waterside-marriott.webp",
+          link: {
+            href: "https://www.marriott.com/en-us/hotels/orfws-norfolk-waterside-marriott/overview/",
+            label: "Norfolk Waterside Marriott"
+          },
+        },
+      ],
+      note: "Group Rate Information Coming Soon"
     }
     // Add more events' lodging info here
   ];

@@ -421,6 +421,13 @@ export const EVENTS: Event[] = [
         ]
       }
     ],
+    matchmakingSessions: {
+      signUpTime: "7:30 AM",
+      sessionTime: "4:00 PM - 5:30 PM",
+      date: "March 18",
+      slotsPerHost: 9,
+      sessionDurationMinutes: 10
+    }
   },
   {
     id: 3,
@@ -596,5 +603,160 @@ export const EVENTS: Event[] = [
       text: "To access the KSC Visitor Complex, present the Parking Placard provided below. This will serve as your entry into the KSCVC parking for the event. Park in Lot 4 and please present this parking pass at the parking plaza. It may be presented digitally or it may be printed.\n\nImportant: Each attendee must present a yellow admission ticket at the turnstiles. You will have (1) ticket for each day of the event.\n• Travel Through Turnstiles and Around the Curved Path\n• The Rocket Garden will be on your Left\n• To the CSE: Walk through the Rocket Garden through the Gateway Building Beyond the White Fence (to the left of the Gateway) will be The Center for Space Education\n• Turn Right to Follow the Path to the Front Entrance of The Center for Space Education",
       imagePlaceholder: "/events/2025DTIOS/parking_placard.webp"
     },
-  }
-];
+  },
+  {
+    id: 4,
+    eventShorthand: "2025NMCPC",
+    title: "2025 Navy & Marine Corps Procurement Conference",
+    date: "June 10-11, 2025",
+    timeStart: "2025-06-10T13:00:00Z",
+    description: `Join us for the 2025 Navy & Marine Corps Procurement Conference on June 10-11, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.`,
+    eventText: (
+      <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Event Overview
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Join us for the <b>2025 Navy & Marine Corps Procurement Conference</b> on June 10-11, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
+        </p>
+        <p className="font-bold text-xl text-center font-gotham">
+          Topical Coverage:
+        </p>
+        <p className="">
+          <ul className="list-inside">
+            <li>Navy's Critical Maintenance & Repair and Shipbuilding Needs</li>
+            <li>SIOP - Shipyard Infrastructure Optimization Plan - Driving $ Billions in Construction & Facility Support Contracts</li>
+            <li>New Navy & Marine Corps Littoral Warfighting Requirements & Contracts</li>
+            <li>New Navy & Marine Corps Technology Initiatives</li>
+            <li>Upcoming Projects - NAVFAC, MARCORSYSCOM, and USACE</li>
+            <li>Military Base-Community Partnerships Driving Local Build Contracts</li>
+            <li>Indo-Pacific ‘Pivot’ – Deployment & Logistics Challenges Driving Major New Acquisitions</li>
+            <li>Contracts Supporting U.S. Leadership in AI</li>
+            <li>The Surge in Autonomous/Unmanned Systems Development & Deployment</li>
+            <li>Base & Installation Physical Security Upgrades</li>
+            <li>Major Command IT Cyber Protection Contracts</li>
+            <li>Prime Defense Contractors — Subcontracting & Teaming Opportunities</li>
+            <li>Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)</li>
+            <li>How to Access GWACs (Government-Wide Acquisition Contracts)</li>
+            <li>Mentor-Protégé Programs as Business Accelerators for Smalls & Primes</li>
+            <li>Cybersecurity Compliance Mandates and CMMC Training Options</li>
+            <li>Defense Contract Audit Agency Support for Small & Medium-Size Contractors</li>
+          </ul>
+        </p>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+          What to Expect
+        </h2>
+        <p className="mb-4 max-w-6xl mx-auto text-center">
+          The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands, as well as Army, Air Force, and Space Force Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
+        </p>
+      </div>
+    ),
+    aboutEventText: (
+      <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Event Overview
+        </h2>
+        <p className="mb-0 leading-9">
+          Join us for the <b>2025 Navy & Marine Corps Procurement Conference</b> on June 10-11, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
+        </p>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+          What to Expect
+        </h2>
+        <p className="mb-4 max-w-6xl mx-auto text-center">
+          The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands, as well as Army, Air Force, and Space Force Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
+        </p>
+      </div>
+    ),
+    topicalCoverage: [
+      { "tagline": "Navy's Critical Maintenance & Repair and Shipbuilding Needs", "description": "Navy's urgent need for maintenance, repair, and new shipbuilding to ensure operational readiness and technological superiority" },
+      { "tagline": "SIOP - Shipyard Infrastructure Optimization Plan - Driving $ Billions in Construction & Facility Support Contracts", "description": "Massive investments under the SIOP to upgrade facilities and boost Navy shipbuilding and repair capabilities" },
+      { "tagline": "New Navy & Marine Corps Littoral Warfighting Requirements & Contracts", "description": "New operational needs and contracts focused on enhancing littoral (coastal) warfare capabilities for the Navy and Marine Corps" },
+      { "tagline": "New Navy & Marine Corps Technology Initiatives", "description": "Cutting-edge technology advancements being pursued by the Navy and Marine Corps to modernize operations and capabilities" },
+      { "tagline": "Upcoming Projects - NAVFAC, MARCORSYSCOM, and USACE", "description": "Upcoming infrastructure and development projects led by NAVFAC, MARCORSYSCOM, and USACE, with a focus on military needs" },
+      { "tagline": "Military Base-Community Partnerships Driving Local Build Contracts", "description": "How partnerships between military bases and local communities are generating construction contracts for regional infrastructure development" },
+      { "tagline": "Indo-Pacific ‘Pivot’ – Deployment & Logistics Challenges Driving Major New Acquisitions", "description": "Strategic 'Indo-Pacific Pivot,' emphasizing the logistical and deployment challenges that are shaping new defense acquisitions" },
+      { "tagline": "Contracts Supporting U.S. Leadership in AI", "description": "Defense contracts aimed at advancing U.S. leadership in artificial intelligence technologies for military applications" },
+      { "tagline": "The Surge in Autonomous/Unmanned Systems Development & Deployment", "description": "Rapid development and deployment of autonomous and unmanned systems in the military, with a focus on new contracts" },
+      { "tagline": "Base & Installation Physical Security Upgrades", "description": "Initiatives and contracts aimed at upgrading physical security systems at military bases and installations to ensure safety and resilience" },
+      { "tagline": "Major Command IT Cyber Protection Contracts", "description": "Contracts focused on enhancing IT and cybersecurity protections for major military commands against growing cyber threats" },
+      { "tagline": "Prime Defense Contractors — Subcontracting & Teaming Opportunities", "description": "Subcontracting and teaming opportunities for small and medium-sized businesses to work with prime defense contractors on large-scale projects" },
+      { "tagline": "Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)", "description": "Fast-tracked contracting vehicles like DARPA, DIU, and DEFENSEWERX are enabling the acquisition of cutting-edge defense technologies" },
+      { "tagline": "How to Access GWACs (Government-Wide Acquisition Contracts)", "description": "How contractors can navigate and access Government-Wide Acquisition Contracts (GWACs) for defense and federal opportunities" },
+      { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "How Mentor-Protégé programs help accelerate business growth for small businesses by pairing them with larger prime contractors" },
+      { "tagline": "Cybersecurity Compliance Mandates and CMMC Training Options", "description": "New cybersecurity compliance requirements under CMMC and training resources available for contractors to meet these standards" },
+      { "tagline": "Defense Contract Audit Agency Support for Small & Medium-Size Contractors", "description": "Role of the Defense Contract Audit Agency (DCAA) in providing audit support to help small and medium-sized contractors" }
+    ],
+    image: "2025NMCPC.webp",
+    slug: "2025-navy-marine-corps-procurement-conference",
+    locationImage: "locations/temp_venue.webp",
+    locationAddress: `111 Google Ave`,
+    placeID: "ChIJBdD-jwuYuokRyjyu_hU0jUg",
+    registerLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
+    matchmakingSessions: {
+      signUpTime: "7:30 AM",
+      sessionTime: "4:00 PM - 5:30 PM",
+      date: "June 10",
+      slotsPerHost: 9,
+      sessionDurationMinutes: 10
+    },
+    countdownColour: "#397BA0",
+    expectationsText: `The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands, as well as Army, Air Force, and Space Force Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!`,
+    parkingInfo: [
+      {
+        title: "",
+        description: `
+        <b>On-Site Parking</b> - Daily: $22.00
+        </br>
+        <b>Off-Site Parking</b> - Main Street Garage 0.1 Miles
+        </br>
+        <b>Valet</b> - Daily: $33.00`,
+      },
+    ],
+    directions: [
+      {
+        title: "NORTH",
+        description: `
+          <ul class="list-decimal pl-4">
+            <li>Take Highway 13 South to 64 East, to 264 West. Follow the Waterside Drive Exit.</li>
+            <li>Take a right at second light onto Atlantic Street. Go down one block, take a left onto Main Street.</li>
+            <li>The Marriott Hotel is immediately on the left.</li>
+          </ul>
+          `
+      },
+      {
+        title: "SOUTH",
+        description: `
+        <ul class="list-decimal pl-4">
+          <li>Take 95 North to the Emporia Exit.</li>
+          <li>Go East on Highway 58 to 64 East (approximately 2 1/2 hours), to 264 West.</li>
+          <li>Follow the Waterside Drive Exit.</li>
+          <li>Take a right at second light onto Atlantic Street.</li>
+          <li>Go down one block, take a left onto Main Street.</li>
+          <li>The Marriott Hotel is immediately on the left.</li>
+        </ul>
+        `
+      },
+      {
+        title: "EAST",
+        description: `
+        <ul class="list-decimal pl-4">
+          <li>44 West to 264 West. Follow the Waterside Drive Exit.</li>
+          <li>Take a right at second light onto Atlantic Street.</li>
+          <li>Go down one Block, take a left onto Main Street.</li>
+          <li>The Marriott Hotel is immediately on the left.</li>
+        </ul>
+        `
+      },
+      {
+        title: "WEST",
+        description: `
+        <ul class="list-decimal pl-4">
+          <li>64 East to 264 West. Follow the Waterside Drive Exit.</li>
+          <li>Take a right at second light onto Atlantic Street.</li>
+          <li>Go down one block, take a left onto Main Street.</li>
+          <li>The Marriott Hotel is immediately on the left.</li>
+        </ul>
+        `
+      },
+    ]
+  }];

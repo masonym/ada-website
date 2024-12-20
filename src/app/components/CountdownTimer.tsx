@@ -12,9 +12,10 @@ type TimeLeft = {
 type TimerProps = {
   targetDate: string;
   initialTimeLeft?: TimeLeft;
+  backgroundColor?: string;
 };
 
-const CountdownTimer = ({ targetDate, initialTimeLeft }: TimerProps) => {
+const CountdownTimer = ({ targetDate, initialTimeLeft, backgroundColor = 'bg-navy-800' }: TimerProps) => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(
     initialTimeLeft || { days: 0, hours: 0, minutes: 0, seconds: 0 }
   );
@@ -56,7 +57,10 @@ const CountdownTimer = ({ targetDate, initialTimeLeft }: TimerProps) => {
   };
 
   return (
-    <div className="grid grid-cols-4 sm:grid-cols-4 gap-4 bg-navy-800 p-4 sm:p-8 rounded-xl mb-8">
+    <div 
+      className={`grid grid-cols-4 sm:grid-cols-4 gap-4 p-4 sm:p-8 rounded-xl mb-8 ${backgroundColor.startsWith('bg-') ? backgroundColor : ''}`}
+      style={backgroundColor.startsWith('bg-') ? {} : { backgroundColor }}
+    >
       {(Object.keys(timeLeft) as Array<keyof TimeLeft>).map((key) => (
         <div key={key} className="flex flex-col items-center">
           <div className={`${getBoxWidth(timeLeft[key])} h-12 sm:h-24 bg-white rounded-lg p-4 shadow-lg mb-2 flex items-center justify-center transition-all duration-300`}>

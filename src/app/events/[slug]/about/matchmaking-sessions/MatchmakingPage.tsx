@@ -1,9 +1,20 @@
+"use client";
+
 import React from 'react';
 import { Users, Clock, CheckCircle, UserPlus, Building2, Briefcase, GraduationCap } from 'lucide-react';
 import { RiGovernmentLine } from "react-icons/ri";
 import Link from 'next/link';
+import { EVENTS } from '@/constants/events';
+import { notFound, useParams } from 'next/navigation';
 
 const MatchmakingPage = () => {
+  const { slug } = useParams();
+  const event = EVENTS.find(e => e.slug === slug);
+
+  if (!event) {
+    notFound();
+}
+
   const benefits = [
     { title: "Direct Connections", description: "Establish direct connections that could lead to contracts and partnerships" },
     { title: "Enhanced Visibility", description: "Gain visibility for small businesses in a competitive market" },
@@ -74,7 +85,7 @@ const MatchmakingPage = () => {
           Matchmaking Sessions
         </h1>
         <p className="text-lg text-slate-600 max-w-7xl mx-auto">
-          The <b>2025 Southeast Defense Procurement Conference</b> will offer a special opportunity for businesses to engage in One-on-One Matchmaking Sessions with key decision-makers from the Department of Defense (DoD), Government Agencies, and Prime Contractors.
+          The <b>{event.title}</b> will offer a special opportunity for businesses to engage in One-on-One Matchmaking Sessions with key decision-makers from the Department of Defense (DoD), Government Agencies, and Prime Contractors.
         </p>
         <div className="text-lg mt-4 mx-auto max-w-7xl text-slate-600">
           <p className="text-xl">
@@ -100,7 +111,7 @@ const MatchmakingPage = () => {
             <div>
               <h3 className="font-semibold mb-2">Matchmaking Sign-ups</h3>
               <p className="text-gray-200">
-                Sign-ups for the Matchmaking Sessions will begin at 7:30 AM on March 18 and will be on a first-come, first-served basis. Businesses will need to provide their contact information and details about their capabilities, products, and services during the sign-up process.
+                Sign-ups for the Matchmaking Sessions will begin at {event.matchmakingSessions?.signUpTime} on {event.matchmakingSessions?.date} and will be on a first-come, first-served basis. Businesses will need to provide their contact information and details about their capabilities, products, and services during the sign-up process.
               </p>
             </div>
           </div>
@@ -109,7 +120,7 @@ const MatchmakingPage = () => {
             <div>
               <h3 className="font-semibold mb-2">Host Scheduling</h3>
               <p className="text-gray-200">
-              Matchmaking Sessions will take place from 4:00 PM - 5:30 PM on March 18. Each host will have 9 available slots, with each session lasting 10 minutes. The system is designed to ensure that both parties can maximize their time, focusing on relevant opportunities.
+              Matchmaking Sessions will take place from {event.matchmakingSessions?.sessionTime} on {event.matchmakingSessions?.date}. Each host will have {event.matchmakingSessions?.slotsPerHost} available slots, with each session lasting {event.matchmakingSessions?.sessionDurationMinutes} minutes. The system is designed to ensure that both parties can maximize their time, focusing on relevant opportunities.
               </p>
             </div>
           </div>
