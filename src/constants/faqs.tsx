@@ -145,7 +145,7 @@ export const FAQs = [
             },
             {
                 question: "Will there be networking opportunities?",
-                answer: "Yes, the conference will include designated Networking Breaks as well as a Networking Luncheon, allowing attendees to connect with Industry Peers, Policymakers, and other Professionals. A special VIP Networking Reception will take place from 5:30 PM - 7:30 PM on March 18, 2025 for Speakers, Sponsors, Exhibitors and VIP Attendees.",
+                answer: "Yes, the conference will include designated Networking Breaks as well as a Networking Luncheon, allowing attendees to connect with Industry Peers, Policymakers, and other Professionals. A special VIP Networking Reception will take place from 5:30 PM - 7:30 PM on June 10, 2025 for Speakers, Sponsors, Exhibitors and VIP Attendees.",
             },
             {
                 question: "What is the agenda for the event?",
