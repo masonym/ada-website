@@ -127,7 +127,7 @@ export const FAQs = [
                 question: "When and where will the event take place?",
                 answer: `Date: June 10 - 11, 2025<br>
                 Time: June 10, 2025: 7:30 AM - 7:30 PM and June 11, 2025: 7:30 AM - 12:00 PM<br>
-                Venue: TBD in Atlanta, Georgia
+                Venue: TBD in Norfolk, Virginia
                 `,
             },
 
