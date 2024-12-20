@@ -3,8 +3,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { EVENTS } from '@/constants/events';
 import { getCdnPath } from '@/utils/image';
+import { validateImagePaths } from '@/utils/imageUtils';
 
-const HeroSection = () => {
+const HeroSection = async () => {
   // Get current date at the start of the day for consistent comparison
   const now = new Date();
   now.setHours(0, 0, 0, 0);
@@ -18,10 +19,17 @@ const HeroSection = () => {
   // Find the next upcoming event
   const nextEvent = eventsWithDates.find(event => event.dateObj >= now);
 
-  // Find the most recent past event
-  const mostRecentPastEvent = [...eventsWithDates]
-    .reverse()
-    .find(event => event.dateObj < now);
+  // Find the most recent past event with available recap
+  const pastEvents = eventsWithDates.filter(event => event.dateObj < now).reverse();
+  let eventWithRecap = null;
+  
+  for (const event of pastEvents) {
+    const hasImages = await validateImagePaths(event.eventShorthand);
+    if (hasImages) {
+      eventWithRecap = event;
+      break;
+    }
+  }
 
   return (
     <section className="relative h-[35vh] md:h-[45vh] lg:h-[55vh] flex items-center justify-center overflow-hidden">
@@ -68,9 +76,9 @@ const HeroSection = () => {
             </Link>
           )}
           
-          {mostRecentPastEvent && (
+          {eventWithRecap && (
             <Link 
-              href={`/events/${mostRecentPastEvent.slug}/about/event-recap`}
+              href={`/events/${eventWithRecap.slug}/about/event-recap`}
               className="inline-block bg-white text-black px-6 py-3 rounded-full hover:bg-navy-900 transition duration-300 text-sm sm:text-base md:text-lg border border-white/20"
             >
               View Latest Event Recap
