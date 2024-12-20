@@ -82,7 +82,7 @@ export const EVENT_NAVS = [
           { label: 'About the Event', path: 'about-the-event' },
           { label: 'Matchmaking Sessions', path: 'matchmaking-sessions' },
           // { label: 'Location & Parking', path: 'venue' },
-          // { label: 'FAQs', path: 'faqs' },
+          { label: 'FAQs', path: 'faqs' },
           { label: 'Event Recap', path: 'event-recap' },
         ],
       },
