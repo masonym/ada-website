@@ -92,6 +92,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://www.hungerfordterry.com/",
                         width: 200,
                         height: 50,
+                    },
+                    {
+                        name: "DreamSeat",
+                        logo: "/events/2025SDPC/sponsors/dreamseat.webp",
+                        website: "https://www.dreamseat.com/",
+                        width: 200,
+                        height: 50,
                     }
                 ]
             }
