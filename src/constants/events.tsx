@@ -651,5 +651,6 @@ export const EVENTS: Event[] = [
       date: "June 10",
       slotsPerHost: 9,
       sessionDurationMinutes: 10
-    }
+    },
+    countdownColour: "#40B5AD"
   }];

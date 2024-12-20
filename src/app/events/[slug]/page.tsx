@@ -117,7 +117,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             // className="w-full sm:w-auto"
             /> */}
 
-            <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} />
+            <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} backgroundColor={event.countdownColour}/>
 
 
 
