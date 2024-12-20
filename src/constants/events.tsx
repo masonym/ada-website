@@ -610,14 +610,44 @@ export const EVENTS: Event[] = [
     title: "2025 Navy & Marine Corps Procurement Conference",
     date: "June 10-11, 2025",
     timeStart: "2025-06-10T13:00:00Z",
-    description: `Join us for the 2025 Navy & Marine Corps Procurement Conference on June 10-11, 2025 in Norfolk, Virginia, home to Naval Station Norfolk. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities.`,
+    description: `Join us for the 2025 Navy & Marine Corps Procurement Conference on June 10-11, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.`,
     eventText: (
       <div className="max-container font-light">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-        Join us for the <b>2025 Navy & Marine Corps Procurement Conference</b> on June 10-11, 2025 in Norfolk, Virginia, home to Naval Station Norfolk. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities.
+          Join us for the <b>2025 Navy & Marine Corps Procurement Conference</b> on June 10-11, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
+        </p>
+        <p className="font-bold text-xl text-center font-gotham">
+          Topical Coverage:
+        </p>
+        <p className="">
+          <ul className="list-inside">
+            <li>Navy's Critical Maintenance & Repair and Shipbuilding Needs</li>
+            <li>SIOP - Shipyard Infrastructure Optimization Plan - Driving $ Billions in Construction & Facility Support Contracts</li>
+            <li>New Navy & Marine Corps Littoral Warfighting Requirements & Contracts</li>
+            <li>New Navy & Marine Corps Technology Initiatives</li>
+            <li>Upcoming Projects - NAVFAC, MARCORSYSCOM, and USACE</li>
+            <li>Military Base-Community Partnerships Driving Local Build Contracts</li>
+            <li>Indo-Pacific ‘Pivot’ – Deployment & Logistics Challenges Driving Major New Acquisitions</li>
+            <li>Contracts Supporting U.S. Leadership in AI</li>
+            <li>The Surge in Autonomous/Unmanned Systems Development & Deployment</li>
+            <li>Base & Installation Physical Security Upgrades</li>
+            <li>Major Command IT Cyber Protection Contracts</li>
+            <li>Prime Defense Contractors — Subcontracting & Teaming Opportunities</li>
+            <li>Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)</li>
+            <li>How to Access GWACs (Government-Wide Acquisition Contracts)</li>
+            <li>Mentor-Protégé Programs as Business Accelerators for Smalls & Primes</li>
+            <li>Cybersecurity Compliance Mandates and CMMC Training Options</li>
+            <li>Defense Contract Audit Agency Support for Small & Medium-Size Contractors</li>
+          </ul>
+        </p>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+          What to Expect
+        </h2>
+        <p className="mb-4 max-w-6xl mx-auto text-center">
+        The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands, as well as Army, Air Force, and Space Force Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
         </p>
       </div>
     ),
