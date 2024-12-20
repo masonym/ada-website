@@ -76,4 +76,5 @@ export interface Event {
         text: string;
         imagePlaceholder: string;
     };
+    countdownColour?: string;
 }
