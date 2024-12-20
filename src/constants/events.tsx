@@ -617,7 +617,7 @@ export const EVENTS: Event[] = [
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-        Join us for the 2025 Navy & Marine Corps Procurement Conference on June 10-11, 2025 in Norfolk, Virginia, home to Naval Station Norfolk. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities.
+        Join us for the <b>2025 Navy & Marine Corps Procurement Conference</b> on June 10-11, 2025 in Norfolk, Virginia, home to Naval Station Norfolk. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities.
         </p>
       </div>
     ),
