@@ -647,7 +647,7 @@ export const EVENTS: Event[] = [
           What to Expect
         </h2>
         <p className="mb-4 max-w-6xl mx-auto text-center">
-        The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands, as well as Army, Air Force, and Space Force Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
+          The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands, as well as Army, Air Force, and Space Force Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
         </p>
       </div>
     ),
@@ -657,16 +657,16 @@ export const EVENTS: Event[] = [
           Event Overview
         </h2>
         <p className="mb-0 leading-9">
-        Join us for the <b>2025 Navy & Marine Corps Procurement Conference</b> on June 10-11, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
+          Join us for the <b>2025 Navy & Marine Corps Procurement Conference</b> on June 10-11, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
         </p>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
         <p className="mb-4 max-w-6xl mx-auto text-center">
-        The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands, as well as Army, Air Force, and Space Force Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
+          The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands, as well as Army, Air Force, and Space Force Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
         </p>
       </div>
-    ), 
+    ),
     topicalCoverage: [
       { "tagline": "Navy's Critical Maintenance & Repair and Shipbuilding Needs", "description": "Navy's urgent need for maintenance, repair, and new shipbuilding to ensure operational readiness and technological superiority" },
       { "tagline": "SIOP - Shipyard Infrastructure Optimization Plan - Driving $ Billions in Construction & Facility Support Contracts", "description": "Massive investments under the Shipyard Infrastructure Optimization Plan to upgrade facilities and boost Navy shipbuilding and repair capabilities" },
@@ -700,5 +700,63 @@ export const EVENTS: Event[] = [
       sessionDurationMinutes: 10
     },
     countdownColour: "#397BA0",
-    expectationsText: `The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands, as well as Army, Air Force, and Space Force Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!`
+    expectationsText: `The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands, as well as Army, Air Force, and Space Force Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!`,
+    parkingInfo: [
+      {
+        title: "",
+        description: `
+        <b>On-Site Parking</b> - Daily: $22.00
+        </br>
+        <b>Off-Site Parking</b> - Main Street Garage 0.1 Miles
+        </br>
+        <b>Valet</b> - Daily: $33.00`,
+      },
+    ],
+    directions: [
+      {
+        title: "NORTH",
+        description: `
+          <ul class="list-decimal pl-4">
+            <li>Take Highway 13 South to 64 East, to 264 West. Follow the Waterside Drive Exit.</li>
+            <li>Take a right at second light onto Atlantic Street. Go down one block, take a left onto Main Street.</li>
+            <li>The Marriott Hotel is immediately on the left.</li>
+          </ul>
+          `
+      },
+      {
+        title: "SOUTH",
+        description: `
+        <ul class="list-decimal pl-4">
+          <li>Take 95 North to the Emporia Exit.</li>
+          <li>Go East on Highway 58 to 64 East (approximately 2 1/2 hours), to 264 West.</li>
+          <li>Follow the Waterside Drive Exit.</li>
+          <li>Take a right at second light onto Atlantic Street.</li>
+          <li>Go down one block, take a left onto Main Street.</li>
+          <li>The Marriott Hotel is immediately on the left.</li>
+        </ul>
+        `
+      },
+      {
+        title: "EAST",
+        description: `
+        <ul class="list-decimal pl-4">
+          <li>44 West to 264 West. Follow the Waterside Drive Exit.</li>
+          <li>Take a right at second light onto Atlantic Street.</li>
+          <li>Go down one Block, take a left onto Main Street.</li>
+          <li>The Marriott Hotel is immediately on the left.</li>
+        </ul>
+        `
+      },
+      {
+        title: "WEST",
+        description: `
+        <ul class="list-decimal pl-4">
+          <li>64 East to 264 West. Follow the Waterside Drive Exit.</li>
+          <li>Take a right at second light onto Atlantic Street.</li>
+          <li>Go down one block, take a left onto Main Street.</li>
+          <li>The Marriott Hotel is immediately on the left.</li>
+        </ul>
+        `
+      },
+    ]
   }];
