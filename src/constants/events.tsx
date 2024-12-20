@@ -699,7 +699,7 @@ export const EVENTS: Event[] = [
       slotsPerHost: 9,
       sessionDurationMinutes: 10
     },
-    countdownColour: "#397BA0",
+    countdownColour: "#1C2D3D",
     expectationsText: `The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands, as well as Army, Air Force, and Space Force Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!`,
     parkingInfo: [
       {
