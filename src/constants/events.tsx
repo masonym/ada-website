@@ -634,7 +634,7 @@ export const EVENTS: Event[] = [
             <li>Contracts Supporting U.S. Leadership in AI</li>
             <li>The Surge in Autonomous/Unmanned Systems Development & Deployment</li>
             <li>Base & Installation Physical Security Upgrades</li>
-            <li>Major Command IT Cyber Protection Contracts</li>
+            <li>Major Command IT & Cyber Protection Contracts</li>
             <li>Prime Defense Contractors — Subcontracting & Teaming Opportunities</li>
             <li>Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)</li>
             <li>How to Access GWACs (Government-Wide Acquisition Contracts)</li>
@@ -678,7 +678,7 @@ export const EVENTS: Event[] = [
       { "tagline": "Contracts Supporting U.S. Leadership in AI", "description": "Defense contracts aimed at advancing U.S. leadership in artificial intelligence technologies for military applications" },
       { "tagline": "The Surge in Autonomous/Unmanned Systems Development & Deployment", "description": "Rapid development and deployment of autonomous and unmanned systems in the military, with a focus on new contracts" },
       { "tagline": "Base & Installation Physical Security Upgrades", "description": "Initiatives and contracts aimed at upgrading physical security systems at military bases and installations to ensure safety and resilience" },
-      { "tagline": "Major Command IT Cyber Protection Contracts", "description": "Contracts focused on enhancing IT and cybersecurity protections for major military commands against growing cyber threats" },
+      { "tagline": "Major Command IT & Cyber Protection Contracts", "description": "Contracts focused on enhancing IT and cybersecurity protections for major military commands against growing cyber threats" },
       { "tagline": "Prime Defense Contractors — Subcontracting & Teaming Opportunities", "description": "Subcontracting and teaming opportunities for small and medium-sized businesses to work with prime defense contractors on large-scale projects" },
       { "tagline": "Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)", "description": "Fast-tracked contracting vehicles like DARPA, DIU, and DEFENSEWERX are enabling the acquisition of cutting-edge defense technologies" },
       { "tagline": "How to Access GWACs (Government-Wide Acquisition Contracts)", "description": "How contractors can navigate and access Government-Wide Acquisition Contracts (GWACs) for defense and federal opportunities" },
