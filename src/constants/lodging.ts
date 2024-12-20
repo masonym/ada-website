@@ -75,7 +75,7 @@ export const LODGING_INFO: LodgingInfo[] = [
           state: "Virginia",
           zip: "23510",
           phone: "(757) 627-4200",
-          image: "/hotels/norfolk-marriott.webp",
+          image: "/hotels/norfolk-waterside-marriott.webp",
           link: {
             href: "https://www.marriott.com/en-us/hotels/orfws-norfolk-waterside-marriott/overview/",
             label: "Norfolk Waterside Marriott"
