@@ -95,7 +95,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({
                 <h3 className="text-balance text-lg font-bold mb-2 text-center text-navy-800">
                   {topic.tagline}
                 </h3>
-                <p className="text-base place-self-center text-gray-700">{topic.description}</p>
+                <p className="text-balance text-base place-self-center text-gray-700">{topic.description}</p>
               </div>
             ))}
           </div>
