@@ -690,7 +690,7 @@ export const EVENTS: Event[] = [
     slug: "2025-navy-marine-corps-procurement-conference",
     locationImage: "locations/temp_venue.webp",
     locationAddress: `111 Google Ave`,
-    registerLink: "google.com",
+    registerLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
     matchmakingSessions: {
       signUpTime: "7:30 AM",
       sessionTime: "4:00 PM - 5:30 PM",
