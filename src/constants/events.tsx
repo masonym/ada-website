@@ -652,5 +652,5 @@ export const EVENTS: Event[] = [
       slotsPerHost: 9,
       sessionDurationMinutes: 10
     },
-    countdownColour: "#40B5AD"
+    countdownColour: "#397BA0"
   }];
