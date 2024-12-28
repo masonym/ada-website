@@ -255,7 +255,8 @@ export const SCHEDULES = [
                         time: "3:00 PM - 6:00 PM",
                         title: "Exhibitor Set-up"
                     },
-            }
+                ]
+            },
             {
                 "date": "March 11, 2025",
                 "items": [
