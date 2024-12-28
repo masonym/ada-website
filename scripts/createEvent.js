@@ -37,7 +37,7 @@ async function createEvent() {
 
   // Gather basic information
   event.title = await question('Event Title: ');
-  event.date = await question('Event Date (e.g., "March 18-19, 2025"): ');
+  event.date = await question('Event Date (e.g., "March 11-12, 2025"): ');
   event.timeStart = await question('Event Start Time (ISO format, e.g., "2025-03-18T13:00:00Z"): ');
   event.description = await question('Event Description: ');
   event.eventShorthand = await question('Event Shorthand (e.g., "2025SDPC"): ');

@@ -247,98 +247,153 @@ export const SCHEDULES = [
     },
     {
         id: 2,
-        schedule: [
+        "schedule": [
             {
-                date: "March 17, 2025",
-                items: [
+                "date": "March 11, 2025",
+                "items": [
                     {
-                        time: "3:00 PM - 6:00 PM",
-                        title: "Exhibitor Set-up",
+                        "time": "7:30 AM",
+                        "title": "On-Site Attendee Registration & Check-in"
                     },
-                ],
+                    {
+                        "time": "7:30 AM - 8:30 AM",
+                        "title": "Networking Breakfast with Exhibitors"
+                    },
+                    {
+                        "time": "7:30 AM - 8:30 AM",
+                        "title": "In-Person Matchmaking Sign-up"
+                    },
+                    {
+                        "time": "8:30 AM",
+                        "title": "Welcoming Remarks"
+                    },
+                    {
+                        "time": "8:35 AM",
+                        "title": "Indo-Pacific Theater Briefing"
+                    },
+                    {
+                        "time": "8:55 AM",
+                        "title": "Euro-Atlantic Theater Briefing"
+                    },
+                    {
+                        "time": "9:15 AM",
+                        "title": "National Security Keynote Address"
+                    },
+                    {
+                        "time": "9:30 AM",
+                        "title": "Army Corps of Engineers – Projects & Contracts"
+                    },
+                    {
+                        "time": "10:30 AM",
+                        "title": "Networking Break"
+                    },
+                    {
+                        "time": "10:45 AM",
+                        "title": "Sponsor Remarks"
+                    },
+                    {
+                        "time": "10:55 AM",
+                        "title": "Air Force Acquisition Update"
+                    },
+                    {
+                        "time": "11:50 AM",
+                        "title": "Space Defense Briefing"
+                    },
+                    {
+                        "time": "12:25 PM",
+                        "title": "Sponsor Remarks"
+                    },
+                    {
+                        "time": "12:30 PM",
+                        "title": "Networking Lunch with Exhibitors"
+                    },
+                    {
+                        "time": "1:30 PM",
+                        "title": "How to Navigate Government-Wide Acquisition Contracts (GWACS)"
+                    },
+                    {
+                        "time": "2:20 PM",
+                        "title": "Military Base-Community Partnership Programs"
+                    },
+                    {
+                        "time": "2:55 PM",
+                        "title": "Cybersecurity/CMMC Update Panel"
+                    },
+                    {
+                        "time": "3:50 PM",
+                        "title": "Army & Marine Corps Depot Support Opportunities"
+                    },
+                    {
+                        "time": "4:25 PM",
+                        "title": "VIP Reception Sponsor Remarks"
+                    },
+                    {
+                        "time": "4:30 PM",
+                        "title": "Day One Closing Remarks"
+                    },
+                    {
+                        "time": "4:00 PM - 5:30 PM",
+                        "title": "Matchmaking Session I"
+                    },
+                    {
+                        "time": "5:30 PM - 7:30 PM",
+                        "title": "VIP Networking Reception"
+                    }
+                ]
             },
             {
-                date: "March 18, 2025",
-                items: [
+                "date": "March 12, 2025",
+                "items": [
                     {
-                        time: "7:30 AM - 8:30 AM",
-                        title: "Registration & Networking Breakfast, On-Site Sign-up for Matchmaking Sessions",
-                        // location: "Ballroom and Foyer",
+                        "time": "7:30 AM - 8:30 AM",
+                        "title": "Networking Breakfast with Exhibitors"
                     },
                     {
-                        time: "8:30 AM - 10:00 AM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        "time": "8:30 AM",
+                        "title": "Welcome Back Remarks"
                     },
                     {
-                        time: "10:00 AM - 10:15 AM",
-                        title: "Networking Break",
-                        // location: "Fourth Estate Meeting Room"
+                        "time": "8:35 AM",
+                        "title": "Doing Business with the Primes"
                     },
                     {
-                        time: "10:15 AM - 12:30 PM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        "time": "9:25 AM",
+                        "title": "Sponsor Remarks"
                     },
                     {
-                        time: "12:30 PM - 1:30 PM",
-                        title: "Networking Lunch for Speakers, Sponsors, Exhibitors, and Attendees",
-                        // location: "Ballroom",
+                        "time": "9:30 AM",
+                        "title": "Congressional Keynote Address"
                     },
                     {
-                        time: "1:30 PM - 3:00 PM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        "time": "9:45 AM",
+                        "title": "Navy Shipbuilding & SIB (Submarine Industrial Base) Requirements"
                     },
                     {
-                        time: "3:00 PM - 3:15 PM",
-                        title: "Networking Break",
-                        // location: "Fourth Estate Meeting Room"
+                        "time": "10:20 AM",
+                        "title": "NAVFAC, NAVAIR & NAVSUP – Projects & Contracts"
                     },
                     {
-                        time: "3:15 PM - 4:00 PM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        "time": "11:15 AM",
+                        "title": "Sponsor Remarks"
                     },
                     {
-                        time: "4:00 PM - 5:30 PM",
-                        title: "Matchmaking Sessions",
-                        // location: "Fourth Estate Meeting Room"
+                        "time": "11:20 AM",
+                        "title": "Artificial Intelligence – Impact on Defense Acquisition"
                     },
                     {
-                        time: "5:30 PM - 7:30 PM",
-                        title: "VIP Networking Reception with Speakers, Sponsors, Exhibitors, and VIP Attendees",
-                        // location: "Fourth Estate Meeting Room"
-                    },
-
-                ],
-            },
-            {
-                date: "March 19, 2025",
-                items: [
-                    {
-                        time: "7:30 AM - 8:30 AM",
-                        title: "Registration & Networking Breakfast, On-Site Signup for Matchmaking Sessions",
-                        // location: "Ballroom and Foyer",
+                        "time": "11:50 AM",
+                        "title": "Marine Corps Acquisition"
                     },
                     {
-                        time: "8:30 AM - 10:30 AM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        "time": "12:30 PM",
+                        "title": "Military Base Energy Initiatives"
                     },
                     {
-                        time: "10:30 AM - 10:45 AM",
-                        title: "Networking Break",
-                        // location: "Fourth Estate Meeting Room"
-                    },
-                    {
-                        time: "10:45 AM - 12:00 PM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
-                    },
-                ],
+                        "time": "1:00 PM",
+                        "title": "Closing Remarks"
+                    }
+                ]
             }
-
         ]
     },
     {
