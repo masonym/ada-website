@@ -692,6 +692,7 @@ export const EVENTS: Event[] = [
     locationAddress: `111 Google Ave`,
     placeID: "ChIJBdD-jwuYuokRyjyu_hU0jUg",
     registerLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
+    sponsorProspectusPath: "/events/2025SDPC/2025SDPC-SponsorProspectus.pdf",
     matchmakingSessions: {
       signUpTime: "7:30 AM",
       sessionTime: "4:00 PM - 5:30 PM",
