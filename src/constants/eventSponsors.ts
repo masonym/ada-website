@@ -44,7 +44,14 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://defense.mobi-mat.com/",
                         width: 250,
                         height: 75,
-                    }
+                    },
+                    {
+                        name: "Zero Waste Solutions",
+                        logo: "/events/2025SDPC/sponsors/zero-waste.webp",
+                        website: "https://www.zerowastesolutions.com/",
+                        width: 280,
+                        height: 51,
+                    }, 
                 ],
             },
             {
@@ -99,6 +106,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://www.dreamseat.com/",
                         width: 200,
                         height: 50,
+                    },
+                    {
+                        name: "Zero Waste Solutions",
+                        logo: "/events/2025SDPC/sponsors/zero-waste.webp",
+                        website: "https://www.zerowastesolutions.com/",
+                        width: 280,
+                        height: 51,
                     }
                 ]
             }

@@ -1,5 +1,3 @@
-
-
 type Hotel = {
   name: string;
   address: string;
@@ -39,7 +37,7 @@ export const LODGING_INFO: LodgingInfo[] = [
           },
         },
       ],
-      note: "Group Rate Information Coming Soon"
+      note: "Group Name: Southeast Defense Procurement Conference<br />Group Rate: USD $219.00 + Tax<br />Rate Available: March 9-12, 2025 (and 2 Days Before and 2 Days After the Event Dates Based on Hotel's Availability)<br />Group Rate Cut-off Date: March 3, 2025 or Until Group Block is Sold Out<br />Reservation Link: Coming Jan 8, 2025"
     },
     {
       eventId: 3, // 2025DTIOS

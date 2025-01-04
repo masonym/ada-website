@@ -80,7 +80,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                                             {/* If any of the address/state/city/zip are blank, don't display lodging note*/}
                                             { hotel.city || hotel.state || hotel.zip ? (
                                                 <div className="flex flex-col">
-                                                    <span>{lodging.note}</span>
+                                                    {lodging.note && <span dangerouslySetInnerHTML={{ __html: lodging.note }}></span>}
                                                 </div>
                                             ) : null}
                                         </p>
