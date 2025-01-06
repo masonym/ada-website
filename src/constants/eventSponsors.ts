@@ -113,6 +113,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://www.zerowastesolutions.com/",
                         width: 280,
                         height: 51,
+                    },
+                    {
+                        name: "Medava",
+                        logo: "/events/2025SDPC/sponsors/medava-dark.webp",
+                        website: "https://medavausa.com/",
+                        width: 200,
+                        height: 50,
                     }
                 ]
             }
