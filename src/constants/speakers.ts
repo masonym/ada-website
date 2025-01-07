@@ -276,12 +276,12 @@ export const EVENT_SPEAKERS: { [key: number]: string[] } = {
     "ashley-pilipiszyn",
     "gerald-norris"
   ],
-//   "2": [
-//     "brian-liesveld",
-//     "dave-leinberger",
-//     "charles-sills",
-//     "dave-robau",
-//   ]
+  "2": [
+    "brian-liesveld",
+    "dave-leinberger",
+    "charles-sills",
+    "dave-robau",
+  ]
 };
 
 export function getSpeakersForEvent(eventId: number): (Speaker & { id: string })[] {
