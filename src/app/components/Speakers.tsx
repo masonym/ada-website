@@ -1,4 +1,4 @@
-import { SPEAKERS } from '@/constants/speakers';
+import { getSpeakersForEvent } from '@/constants/speakers';
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import KeynoteSpeaker from './KeynoteSpeaker';
@@ -12,6 +12,7 @@ type SpeakerProps = {
 };
 
 type Speaker = {
+    id: string;
     image: string;
     name: string;
     position: string;
@@ -25,7 +26,7 @@ type Speaker = {
 };
 
 const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) => {
-    const currentEvent = SPEAKERS.find((e) => e.id === event.id);
+    const speakers = getSpeakersForEvent(event.id);
     const [expandedBios, setExpandedBios] = useState<boolean[]>([]);
     const bioRefs = useRef<Array<HTMLDivElement | null>>([]);
 
@@ -46,14 +47,12 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
     };
 
     const getLastName = (name: string) => {
-        // remove parentheses and words after commas from name
-
         const cleanedName = name.replace(/\([^)]*\)/g, '').replace(/,.*/, '').trim();
         const nameParts = cleanedName.split(' ');
         return nameParts[nameParts.length - 1];
     };
 
-    const nonKeynoteSpeakers = currentEvent ? currentEvent.speakers.filter(speaker => !speaker.keynote) : [];
+    const nonKeynoteSpeakers = speakers.filter((speaker: { keynote: any; }) => !speaker.keynote);
     const isEventFuture = event.timeStart 
         ? new Date(new Date(event.timeStart).getTime() - 3 * 24 * 60 * 60 * 1000) > new Date() 
         : false;
@@ -69,9 +68,9 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                 {nonKeynoteSpeakers
                     .sort((a: Speaker, b: Speaker) => getLastName(a.name).localeCompare(getLastName(b.name)))
                     .map((speaker: Speaker, index: number) => (
-                        <div key={index} className="flex flex-col items-center text-center">
+                        <div key={speaker.id} className="flex flex-col items-center text-center">
                             <Image
-                                src={getCdnPath(`events/${event.eventShorthand}/speakers/${speaker.image}`)}
+                                src={getCdnPath(`speakers/${speaker.image}`)}
                                 width={256}
                                 height={256}
                                 alt={`${speaker.name}`}

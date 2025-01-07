@@ -2,11 +2,12 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { SPEAKERS } from '@/constants/speakers';
+import { getSpeakersForEvent } from '@/constants/speakers';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { getCdnPath } from '@/utils/image';
 
 type KeynoteSpeaker = {
+  id: string;
   image: string;
   name: string;
   position: string;
@@ -36,8 +37,8 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
   const bioRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const collapsedRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   
-  const eventSpeakers = SPEAKERS.find(event => event.id === eventId)?.speakers;
-  const keynoteSpeakers = eventSpeakers?.filter(speaker => speaker.keynote);
+  const speakers = getSpeakersForEvent(eventId);
+  const keynoteSpeakers = speakers.filter(speaker => speaker.keynote);
 
   useEffect(() => {
     if (!keynoteSpeakers) return;
@@ -45,11 +46,11 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
     const newHeightStates: { [key: string]: { collapsed: number; full: number } } = {};
 
     keynoteSpeakers.forEach(speaker => {
-      const bioRef = bioRefs.current[speaker.name];
-      const collapsedRef = collapsedRefs.current[speaker.name];
+      const bioRef = bioRefs.current[speaker.id];
+      const collapsedRef = collapsedRefs.current[speaker.id];
 
       if (bioRef && collapsedRef) {
-        newHeightStates[speaker.name] = {
+        newHeightStates[speaker.id] = {
           full: bioRef.scrollHeight,
           collapsed: collapsedRef.scrollHeight
         };
@@ -59,10 +60,10 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
     setHeightStates(newHeightStates);
   }, [keynoteSpeakers?.length]);
 
-  const toggleBio = (speakerName: string) => {
+  const toggleBio = (speakerId: string) => {
     setExpandedStates(prev => ({
       ...prev,
-      [speakerName]: !prev[speakerName]
+      [speakerId]: !prev[speakerId]
     }));
   };
 
@@ -100,18 +101,18 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
               </div>
               <div className="relative">
                 <div 
-                  ref={el => { bioRefs.current[speaker.name] = el; }}
+                  ref={el => { bioRefs.current[speaker.id] = el; }}
                   className="text-base text-center leading-relaxed overflow-hidden transition-all duration-500 ease-in-out"
                   style={{ 
-                    height: expandedStates[speaker.name] 
-                      ? heightStates[speaker.name]?.full || 'auto'
-                      : heightStates[speaker.name]?.collapsed || 'auto'
+                    height: expandedStates[speaker.id] 
+                      ? heightStates[speaker.id]?.full || 'auto'
+                      : heightStates[speaker.id]?.collapsed || 'auto'
                   }}
                 >
                   <div dangerouslySetInnerHTML={{ __html: speaker.bio }} />
                 </div>
                 <div 
-                  ref={el => { collapsedRefs.current[speaker.name] = el; }}
+                  ref={el => { collapsedRefs.current[speaker.id] = el; }}
                   className="absolute top-0 left-0 right-0 text-base text-center leading-relaxed opacity-0 pointer-events-none"
                 >
                   <div dangerouslySetInnerHTML={{ __html: speaker.bio.split('<br>')[0] }} />
@@ -120,10 +121,10 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
               {showExpandedBio && (
                 <div className="text-center mt-4">
                   <button 
-                    onClick={() => toggleBio(speaker.name)}
+                    onClick={() => toggleBio(speaker.id)}
                     className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   >
-                    {expandedStates[speaker.name] ? (
+                    {expandedStates[speaker.id] ? (
                       <>
                         Hide bio <ChevronUp className="ml-2 h-5 w-5" />
                       </>
