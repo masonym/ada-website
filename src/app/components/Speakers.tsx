@@ -52,7 +52,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
         return nameParts[nameParts.length - 1];
     };
 
-    const nonKeynoteSpeakers = speakers.filter((speaker: { keynote: any; }) => !speaker.keynote);
+    const nonKeynoteSpeakers = speakers.filter(speaker => !speaker.keynote);
     const isEventFuture = event.timeStart 
         ? new Date(new Date(event.timeStart).getTime() - 3 * 24 * 60 * 60 * 1000) > new Date() 
         : false;
@@ -66,8 +66,8 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
             )}
             <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-4">
                 {nonKeynoteSpeakers
-                    .sort((a: Speaker, b: Speaker) => getLastName(a.name).localeCompare(getLastName(b.name)))
-                    .map((speaker: Speaker, index: number) => (
+                    .sort((a, b) => getLastName(a.name).localeCompare(getLastName(b.name)))
+                    .map((speaker, index) => (
                         <div key={speaker.id} className="flex flex-col items-center text-center">
                             <Image
                                 src={getCdnPath(`speakers/${speaker.image}`)}
@@ -79,15 +79,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                             <p className="mt-4 font-semibold whitespace-nowrap text-wrap">{speaker.name}</p>
                             <p className="text-sm text-gray-600">{speaker.position}</p>
                             <p className="text-sm text-gray-600">{speaker.company}</p>
-                            {speaker.presentation && (
-                                <button
-                                    onClick={() => handlePresentationClick(speaker.presentation)}
-                                    className={`mt-2 text-white p-2 rounded-md transition-all ${isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
-                                        }`}
-                                >
-                                    Presentation
-                                </button>
-                            )}
+                            
                             {speaker.bio && (
                                 <>
                                     <button
