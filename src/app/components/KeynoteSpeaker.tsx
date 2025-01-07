@@ -109,13 +109,13 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
                       : heightStates[speaker.id]?.collapsed || 'auto'
                   }}
                 >
-                  <div dangerouslySetInnerHTML={{ __html: speaker.bio }} />
+                  <div dangerouslySetInnerHTML={{ __html: speaker.bio || '' }} />
                 </div>
                 <div 
                   ref={el => { collapsedRefs.current[speaker.id] = el; }}
                   className="absolute top-0 left-0 right-0 text-base text-center leading-relaxed opacity-0 pointer-events-none"
                 >
-                  <div dangerouslySetInnerHTML={{ __html: speaker.bio.split('<br>')[0] }} />
+                  <div dangerouslySetInnerHTML={{ __html: speaker.bio?.split('<br>')[0] || '' }} />
                 </div>
               </div>
               {showExpandedBio && (
