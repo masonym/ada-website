@@ -52,6 +52,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         width: 280,
                         height: 51,
                     }, 
+                    {
+                        name: "iuvo systems",
+                        logo: "/events/2025SDPC/sponsors/iuvo-systems.webp",
+                        website: "https://www.iuvosystems.com/",
+                        width: 400,
+                        height: 100,
+                    }
                 ],
             },
             {
@@ -120,6 +127,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://medavausa.com/",
                         width: 600,
                         height: 150,
+                    },
+                    {
+                        name: "iuvo systems",
+                        logo: "/events/2025SDPC/sponsors/iuvo-systems.webp",
+                        website: "https://www.iuvosystems.com/",
+                        width: 400,
+                        height: 100,
                     }
                 ]
             }
