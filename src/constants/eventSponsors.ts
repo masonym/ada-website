@@ -61,7 +61,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     },
                     {
                         name: "Atlas Signature",
-                        logo: "/events/2025SDPC/sponsors/atlas.webp",
+                        logo: "/events/2025SDPC/sponsors/atlas-signature.webp",
                         website: "https://atlassignature.com/",
                         width: 300,
                         height: 200,
@@ -144,7 +144,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     },
                     {
                         name: "Atlas Signature",
-                        logo: "/events/2025SDPC/sponsors/atlas.webp",
+                        logo: "/events/2025SDPC/sponsors/atlas-signature.webp",
                         website: "https://atlassignature.com/",
                         width: 300,
                         height: 150,
