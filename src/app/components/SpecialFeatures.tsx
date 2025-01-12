@@ -43,7 +43,7 @@ const SpecialFeatures: React.FC<SpecialFeaturesProps> = ({ event }) => {
                                 <div className="flex flex-col md:flex-row gap-4 items-center">
                                     <div className="w-32 h-32 relative flex-shrink-0">
                                         <img
-                                            src={getCdnPath(`events/${event.eventShorthand}/speakers/${feature.specialGuest.photo}`)}
+                                            src={getCdnPath(`/speakers/${feature.specialGuest.photo}`)}
                                             alt={feature.specialGuest.name}
                                             className="rounded-full object-cover w-full h-full"
                                         />
