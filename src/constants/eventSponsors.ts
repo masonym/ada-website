@@ -58,6 +58,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://www.iuvosystems.com/",
                         width: 400,
                         height: 100,
+                    },
+                    {
+                        name: "Atlas Signature",
+                        logo: "/events/2025SDPC/sponsors/atlas.webp",
+                        website: "https://atlassignature.com/",
+                        width: 200,
+                        height: 200,
                     }
                 ],
             },
