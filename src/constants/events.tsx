@@ -686,7 +686,7 @@ export const EVENTS: Event[] = [
       { "tagline": "Cybersecurity Compliance Mandates and CMMC Training Options", "description": "New cybersecurity compliance requirements under CMMC and training resources available for contractors to meet these standards" },
       { "tagline": "Defense Contract Audit Agency Support for Small & Medium-Size Contractors", "description": "Role of the Defense Contract Audit Agency (DCAA) in providing audit support to help small and medium-sized contractors" }
     ],
-    image: "2025NMCPC.webp",
+    image: "2025NMCPC_wide.webp",
     slug: "2025-navy-marine-corps-procurement-conference",
     locationImage: "locations/temp_venue.webp",
     locationAddress: `111 Google Ave`,
