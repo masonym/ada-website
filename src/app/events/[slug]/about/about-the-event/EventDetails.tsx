@@ -104,7 +104,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({
         {/* Registration CTA */}
         <div className="mt-12 text-center flex flex-col items-center">
           <p className="text-2xl text-navy-500 mb-6 text-center mx-8">
-            Act Now and Secure your Seat at this Groundbreaking Event!
+            Act Now and Secure your Place at this Groundbreaking Event!
           </p>
           <Button
             title="REGISTER"
