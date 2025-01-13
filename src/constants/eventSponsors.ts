@@ -40,7 +40,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     },
                     {
                         name: "Deschamps",
-                        logo: "/events/2025SDPC/sponsors/mobi-mat.webp",
+                        logo: "/events/2025SDPC/sponsors/mobimat.webp",
                         website: "https://defense.mobi-mat.com/",
                         width: 250,
                         height: 75,
@@ -53,7 +53,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         height: 51,
                     }, 
                     {
-                        name: "iuvo systems",
+                        name: "Iuvo Systems",
                         logo: "/events/2025SDPC/sponsors/iuvo-systems.webp",
                         website: "https://www.iuvosystems.com/",
                         width: 400,
@@ -88,13 +88,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     },
                     {
                         name: "Deschamps",
-                        logo: "/events/2025SDPC/sponsors/mobi-mat.webp",
+                        logo: "/events/2025SDPC/sponsors/mobimat.webp",
                         website: "https://defense.mobi-mat.com/",
                         width: 200,
                         height: 50,
                     },
                     {
-                        name: "CMPRO",
+                        name: "PSA, Inc./CMPRO",
                         logo: "/events/2025SDPC/sponsors/CMPRO.webp",
                         website: "https://psasys.com/",
                         width: 280,
@@ -136,7 +136,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         height: 150,
                     },
                     {
-                        name: "iuvo systems",
+                        name: "Iuvo Systems",
                         logo: "/events/2025SDPC/sponsors/iuvo-systems.webp",
                         website: "https://www.iuvosystems.com/",
                         width: 400,
