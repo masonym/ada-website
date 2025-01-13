@@ -506,7 +506,7 @@ export const SCHEDULES = [
                 ],
             },
             {
-                date: "June 10, 2025",
+                date: "July 29, 2025",
                 items: [
                     {
                         time: "7:30 AM - 8:30 AM",
@@ -562,7 +562,7 @@ export const SCHEDULES = [
                 ],
             },
             {
-                date: "June 11, 2025",
+                date: "July 30, 2025",
                 items: [
                     {
                         time: "7:30 AM - 8:30 AM",

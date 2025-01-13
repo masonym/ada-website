@@ -608,16 +608,16 @@ export const EVENTS: Event[] = [
     id: 4,
     eventShorthand: "2025NMCPC",
     title: "2025 Navy & Marine Corps Procurement Conference",
-    date: "June 10-11, 2025",
+    date: "July 29-30, 2025",
     timeStart: "2025-06-10T13:00:00Z",
-    description: `Join us for the 2025 Navy & Marine Corps Procurement Conference on June 10-11, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.`,
+    description: `Join us for the 2025 Navy & Marine Corps Procurement Conference on July 29-30, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.`,
     eventText: (
       <div className="max-container font-light">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          Join us for the <b>2025 Navy & Marine Corps Procurement Conference</b> on June 10-11, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
+          Join us for the <b>2025 Navy & Marine Corps Procurement Conference</b> on July 29-30, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
         </p>
         <p className="font-bold text-xl text-center font-gotham">
           Topical Coverage:
@@ -657,7 +657,7 @@ export const EVENTS: Event[] = [
           Event Overview
         </h2>
         <p className="mb-0 leading-9">
-          Join us for the <b>2025 Navy & Marine Corps Procurement Conference</b> on June 10-11, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
+          Join us for the <b>2025 Navy & Marine Corps Procurement Conference</b> on July 29-30, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
         </p>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
@@ -696,7 +696,7 @@ export const EVENTS: Event[] = [
     matchmakingSessions: {
       signUpTime: "7:30 AM",
       sessionTime: "4:00 PM - 5:30 PM",
-      date: "June 10",
+      date: "July 29",
       slotsPerHost: 9,
       sessionDurationMinutes: 10
     },

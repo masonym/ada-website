@@ -290,7 +290,7 @@ export const REGISTRATION_TYPES = [
                     "Onsite Sign-up for Matchmaking Sessions",
                     "Breakfast & Buffet Lunch",
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
-                    "<b>Access to VIP Networking Reception on June 10, 2025 from 5:30 PM - 7:30 PM</b>",
+                    "<b>Access to VIP Networking Reception on July 29, 2025 from 5:30 PM - 7:30 PM</b>",
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
@@ -309,7 +309,7 @@ export const REGISTRATION_TYPES = [
                     "Additional Passes can be purchased for $395 each",
                     "<b>8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and Chairs</b>",
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
-                    "Access to VIP Networking Reception on June 10, 2025 from 5:30 PM - 7:30 PM",
+                    "Access to VIP Networking Reception on July 29, 2025 from 5:30 PM - 7:30 PM",
                 ],
                 subtitle: "Includes:",
                 buttonText: "Register Now",
@@ -361,7 +361,7 @@ export const REGISTRATION_TYPES = [
         addOns: [
             {
                 title: "VIP Networking Reception",
-                description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from 5:30 PM - 7:30 PM on June 10, 2025.",
+                description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from 5:30 PM - 7:30 PM on July 29, 2025.",
                 price: "+$100"
             },
             // {
