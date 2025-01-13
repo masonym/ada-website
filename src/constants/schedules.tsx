@@ -497,7 +497,7 @@ export const SCHEDULES = [
         id: 4,
         schedule: [
             {
-                date: "June 9, 2025",
+                date: "July 28, 2025",
                 items: [
                     {
                         time: "3:00 PM - 6:00 PM",
