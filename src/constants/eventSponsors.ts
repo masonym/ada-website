@@ -65,7 +65,15 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://atlassignature.com/",
                         width: 300,
                         height: 200,
-                    }
+                    },
+                    {
+                        name: "Integration Technologies Group",
+                        logo: "/events/2025SDPC/sponsors/itg.webp",
+                        website: "https://www.itgonline.com/",
+                        width: 400,
+                        height: 100,
+                    },
+
                 ],
             },
             {
@@ -155,7 +163,14 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://www.solidplatforms.com/",
                         width: 400,
                         height: 100,
-                    }
+                    },
+                    {
+                        name: "Integration Technologies Group",
+                        logo: "/events/2025SDPC/sponsors/itg.webp",
+                        website: "https://www.itgonline.com/",
+                        width: 400,
+                        height: 100,
+                    },
                 ]
             }
         ]
