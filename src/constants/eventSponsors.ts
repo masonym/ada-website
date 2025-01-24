@@ -161,8 +161,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         name: "Solid Platforms",
                         logo: "/events/2025SDPC/sponsors/solid-platforms.webp",
                         website: "https://www.solidplatforms.com/",
-                        width: 400,
-                        height: 100,
+                        width: 200,
+                        height: 200,
                     },
                     {
                         name: "Integration Technologies Group",
