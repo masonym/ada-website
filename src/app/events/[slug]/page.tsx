@@ -14,6 +14,7 @@ import KeynoteSpeaker from '@/app/components/KeynoteSpeaker';
 import SponsorLogos from '@/app/components/SponsorLogos';
 import SpecialFeatures from '@/app/components/SpecialFeatures';
 import FooterEventText from '@/app/components/FooterEventText';
+import ExhibitInstructionsButton from '@/app/components/ExhibitInstructionsButton';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -134,6 +135,8 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
 
             <SponsorLogos event={event} />
+
+            <ExhibitInstructionsButton eventShorthand={event.eventShorthand} />
 
             <div className="mt-0 text-center flex flex-col items-center">
               <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Place at this Groundbreaking Event!</p>
