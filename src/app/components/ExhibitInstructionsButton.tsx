@@ -1,8 +1,12 @@
 "use client";
 
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { getCdnPath } from '@/utils/image';
 import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
+
+interface ExhibitInstructionsButtonProps {
+  eventShorthand: string;
+}
 
 const s3Client = new S3Client({
   region: process.env.AWS_REGION,
@@ -12,41 +16,9 @@ const s3Client = new S3Client({
   },
 });
 
-interface ExhibitInstructionsButtonProps {
-  eventShorthand: string;
-}
-
-const ExhibitInstructionsButton: React.FC<ExhibitInstructionsButtonProps> = ({ eventShorthand }) => {
-  const [pdfLink, setPdfLink] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchPdfLink = async () => {
-      // Simulate fetching file names from the cloud directory
-      const fileNames = await fetchFileNamesFromCloud(eventShorthand);
-      const exhibitFile = fileNames.find(name => name.includes("Exhibit Instructions"));
-
-      if (exhibitFile) {
-        setPdfLink(getCdnPath(`/events/${eventShorthand}/${exhibitFile}`));
-      }
-    };
-
-    fetchPdfLink();
-  }, [eventShorthand]);
-
-  if (!pdfLink) return null;
-
-  return (
-    <a href={pdfLink} target="_blank" rel="noopener noreferrer">
-      <button>View Exhibit Instructions</button>
-    </a>
-  );
-};
-
-// Mock function to simulate fetching file names from the cloud
-async function fetchFileNamesFromCloud(eventShorthand: string): Promise<string[]> {
-  const bucketName = process.env.AWS_S3_BUCKET_NAME!;
+const fetchFileNamesFromCloud = async (eventShorthand: string): Promise<string[]> => {
+  const bucketName = process.env.AWS_S3_BUCKET_NAME;
   const prefix = `events/${eventShorthand}/`;
-  console.log("bucketName:", bucketName);
 
   const command = new ListObjectsV2Command({
     Bucket: bucketName,
@@ -61,6 +33,37 @@ async function fetchFileNamesFromCloud(eventShorthand: string): Promise<string[]
     console.error("Error fetching file names from S3:", error);
     return [];
   }
-}
+};
+
+const ExhibitInstructionsButton: React.FC<ExhibitInstructionsButtonProps> = ({ eventShorthand }) => {
+  const [pdfLink, setPdfLink] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchPdfLink = async () => {
+      const fileNames = await fetchFileNamesFromCloud(eventShorthand);
+      const exhibitFile = fileNames.find(name => name.includes("Exhibit Instructions"));
+
+      if (exhibitFile) {
+        setPdfLink(`${process.env.NEXT_PUBLIC_CDN_DOMAIN}/${exhibitFile}`);
+      }
+    };
+
+    fetchPdfLink();
+  }, [eventShorthand]);
+
+  if (!pdfLink) return null;
+
+  return (
+    <Link
+      href={pdfLink}
+      target='_blank'
+      className="inline-flex justify-center items-center px-6 py-3 mb-4 max-w-sm sm:max-w-lg bg-blue-900 text-white rounded-full hover:bg-blue-950 transition-all duration-300"
+    >
+      <span className="font-semibold text-center">
+        View Exhibit Instructions
+      </span>
+    </Link>
+  );
+};
 
 export default ExhibitInstructionsButton;
