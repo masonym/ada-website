@@ -36,7 +36,7 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
 
   const bioRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const collapsedRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-  
+
   const speakers = getSpeakersForEvent(eventId);
   const keynoteSpeakers = speakers.filter(speaker => speaker.keynote);
 
@@ -75,8 +75,8 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
     <div className="flex flex-col items-center gap-6 px-4 sm:px-4 lg:px-6 mb-8">
       <div className="grid grid-flow-row sm:grid-flow-col gap-6 w-full max-w-6xl lg:max-w-full">
         {keynoteSpeakers.map((speaker, index) => (
-          <section 
-            key={index} 
+          <section
+            key={index}
             className="bg-navy-500 text-white rounded-xl shadow-2xl h-fit"
           >
             <div className="p-8">
@@ -87,7 +87,7 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
                 <div className="relative w-48 h-48 mb-6">
                   <div className="absolute inset-0 bg-gradient-to-br from-lightBlue-400 to-blue-600 rounded-full opacity-75 blur-md"></div>
                   <Image
-                    src={getCdnPath(`events/${eventShorthand}/speakers/${speaker.image}`)}
+                    src={getCdnPath(`speakers/${speaker.image}`)}
                     alt={speaker.name}
                     fill
                     className="rounded-full relative z-10 border-4 border-white shadow-lg object-cover"
@@ -100,18 +100,18 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
                 </div>
               </div>
               <div className="relative">
-                <div 
+                <div
                   ref={el => { bioRefs.current[speaker.id] = el; }}
                   className="text-base text-center leading-relaxed overflow-hidden transition-all duration-500 ease-in-out"
-                  style={{ 
-                    height: expandedStates[speaker.id] 
+                  style={{
+                    height: expandedStates[speaker.id]
                       ? heightStates[speaker.id]?.full || 'auto'
                       : heightStates[speaker.id]?.collapsed || 'auto'
                   }}
                 >
                   <div dangerouslySetInnerHTML={{ __html: speaker.bio || '' }} />
                 </div>
-                <div 
+                <div
                   ref={el => { collapsedRefs.current[speaker.id] = el; }}
                   className="absolute top-0 left-0 right-0 text-base text-center leading-relaxed opacity-0 pointer-events-none"
                 >
@@ -120,7 +120,7 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
               </div>
               {showExpandedBio && (
                 <div className="text-center mt-4">
-                  <button 
+                  <button
                     onClick={() => toggleBio(speaker.id)}
                     className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   >
