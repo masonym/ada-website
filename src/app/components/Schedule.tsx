@@ -94,11 +94,10 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
           {schedule.map((day, index) => (
             <button
               key={index}
-              className={`flex-1 text-center py-4 px-4 font-semibold ${
-                selectedDay === index
-                  ? 'bg-navy-800 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-300'
-              }`}
+              className={`flex-1 text-center py-4 px-4 font-semibold ${selectedDay === index
+                ? 'bg-navy-800 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-300'
+                }`}
               onClick={() => setSelectedDay(index)}
             >
               {day.date}
@@ -110,9 +109,8 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
           {schedule[selectedDay].items.map((item, itemIndex, array) => (
             <div
               key={itemIndex}
-              className={`flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center min-h-[120px] ${
-                itemIndex !== array.length - 1 ? 'mb-8 pb-8 border-b border-gray-200' : ''
-              }`}
+              className={`flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center min-h-[120px] ${itemIndex !== array.length - 1 ? 'mb-8 pb-8 border-b border-gray-200' : ''
+                }`}
             >
               <div className="flex-grow pr-2">
                 <div className="flex justify-between items-start mb-2">
@@ -121,13 +119,13 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                     <div className="text-xl font-semibold">{item.title}</div>
                   </div>
                 </div>
-                
+
                 {item.location && (
                   <div className="text-sm text-gray-600 mb-1">
                     <span className="font-semibold">Location:</span> {item.location}
                   </div>
                 )}
-                
+
                 {item.duration && (
                   <div className="text-sm text-gray-600 mb-2">
                     <span className="font-semibold">Duration:</span> {item.duration}
@@ -141,7 +139,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                         <div className="flex items-center flex-grow">
                           {speaker.photo && (
                             <Image
-                              src={getCdnPath(`events/${event.eventShorthand}/speakers/${speaker.photo}`)}
+                              src={getCdnPath(`events/${speaker.photo}`)}
                               alt={speaker.name}
                               width={48}
                               height={48}
@@ -154,15 +152,14 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                             {speaker.affiliation && <div className="text-sm text-gray-600">{speaker.affiliation}</div>}
                           </div>
                         </div>
-                        
+
                         <div className="flex gap-2">
                           {speaker.presentation && isEventPassed && (
                             <button
-                              onClick={() => handleMediaClick('presentation', 
+                              onClick={() => handleMediaClick('presentation',
                                 getCdnPath(`/events/${event.eventShorthand}/presentations/${speaker.presentation}`))}
-                              className={`text-white px-4 py-2 rounded-md transition-all text-nowrap ${
-                                isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
-                              }`}
+                              className={`text-white px-4 py-2 rounded-md transition-all text-nowrap ${isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
+                                }`}
                             >
                               Presentation Slides
                             </button>
@@ -170,9 +167,8 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                           {speaker.videoId && (
                             <button
                               onClick={() => handleMediaClick('video', undefined, speaker.videoId, speaker.videoStartTime)}
-                              className={`text-white px-4 py-2 rounded-md transition-all text-nowrap ${
-                                isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
-                              }`}
+                              className={`text-white px-4 py-2 rounded-md transition-all text-nowrap ${isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
+                                }`}
                             >
                               Watch Video
                             </button>
