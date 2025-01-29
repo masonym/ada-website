@@ -144,7 +144,7 @@ export const EVENTS: Event[] = [
     registerLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
     password: "ADA2025DIF",
     eventShorthand: "2025DIF",
-    sponsorProspectusPath: "/events/2025DIF/2025DIF-SponsorProspectus.pdf",
+
   },
   {
     id: 2,
@@ -181,14 +181,14 @@ export const EVENTS: Event[] = [
         </h2>
         <p className="mb-4 max-w-6xl mx-auto text-center">
           The <b>2025 Southeast Defense Procurement Conference</b> is the premier event to
-explore the latest contracting opportunities across a wide range of industries.
-From <b>Aerospace and Aviation</b> to <b>Military Base Construction, Facility Support,
-Shipbuilding, Expeditionary Logistics, AI and Energy Resilience</b>, you'll connect
-with top companies driving military innovation. Attendees will gain access to key
-decision-makers, including Program Managers, Contracting Officers, and Small
-Business Program Directors from the Army, Navy, Air Force, Marine Corps, and Space
-Force Commands, and top Prime Defense Contractors. This is your chance to forge
-invaluable connections that can shape the future of your business.
+          explore the latest contracting opportunities across a wide range of industries.
+          From <b>Aerospace and Aviation</b> to <b>Military Base Construction, Facility Support,
+            Shipbuilding, Expeditionary Logistics, AI and Energy Resilience</b>, you'll connect
+          with top companies driving military innovation. Attendees will gain access to key
+          decision-makers, including Program Managers, Contracting Officers, and Small
+          Business Program Directors from the Army, Navy, Air Force, Marine Corps, and Space
+          Force Commands, and top Prime Defense Contractors. This is your chance to forge
+          invaluable connections that can shape the future of your business.
         </p>
         {/* <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           Why Attend?
@@ -313,7 +313,7 @@ invaluable connections that can shape the future of your business.
     placeID: "ChIJ__IuDHcE9YgRl74p-48jkpU",
     registerLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
     password: "ADA2025SDPC",
-    sponsorProspectusPath: "/events/2025SDPC/2025SDPC-SponsorProspectus.pdf",
+
     featuredTopicsTitle: "Featured Contracting Commands",
     featuredTopicsSubtitle: "These insights highlight key regional defense assets and contracting opportunities in the Southeast, emphasizing the need for contractors to tailor their solutions to support the military's evolving Infrastructure, Operational Readiness, and Technological Advancements.",
     featuredTopics: [
@@ -708,7 +708,7 @@ invaluable connections that can shape the future of your business.
     locationAddress: `111 Google Ave`,
     placeID: "ChIJBdD-jwuYuokRyjyu_hU0jUg",
     registerLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
-    sponsorProspectusPath: "/events/2025SDPC/2025SDPC-SponsorProspectus.pdf",
+
     matchmakingSessions: {
       signUpTime: "7:30 AM",
       sessionTime: "4:00 PM - 5:30 PM",
