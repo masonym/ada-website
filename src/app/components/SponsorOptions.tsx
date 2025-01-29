@@ -60,7 +60,7 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                         {/* <br></br> Engaging in Sponsorship Opportunities is a Strategic way to effectively Promote your Products or Services. */}
                     </p>
                     <ExhibitInstructionsButton eventShorthand={event.eventShorthand} />
-                    <SponsorProspectus event={event} />
+                    <SponsorProspectus eventShorthand={event.eventShorthand} />
                     <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
                         Registered Sponsors: Please submit a high-quality logo for inclusion in the conference materials, along with the desired link for the logo on the event website, to <Link className="text-blue-600 hover:underline break-words" href="mailto:marketing@americandefensealliance.org">marketing@<wbr />americandefensealliance.org</Link>.
                     </p>

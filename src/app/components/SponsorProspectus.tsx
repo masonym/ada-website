@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
 
-interface ExhibitInstructionsButtonProps {
+interface ProspectusInstructionsButtonProps {
     eventShorthand: string;
 }
 
@@ -28,23 +28,23 @@ const fetchFileNamesFromCloud = async (eventShorthand: string): Promise<string[]
     try {
         const data = await s3Client.send(command);
         const fileNames = data.Contents?.map(item => item.Key || '') || [];
-        return fileNames.filter(name => name.includes("Exhibit Instructions"));
+        return fileNames.filter(name => name.includes("Prospectus"));
     } catch (error) {
         console.error("Error fetching file names from S3:", error);
         return [];
     }
 };
 
-const SponsorProspectus: React.FC<ExhibitInstructionsButtonProps> = ({ eventShorthand }) => {
+const SponsorProspectus: React.FC<ProspectusInstructionsButtonProps> = ({ eventShorthand }) => {
     const [pdfLink, setPdfLink] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchPdfLink = async () => {
             const fileNames = await fetchFileNamesFromCloud(eventShorthand);
-            const exhibitFile = fileNames.find(name => name.includes("Exhibit Instructions"));
+            const ProspectusFile = fileNames.find(name => name.includes("Prospectus"));
 
-            if (exhibitFile) {
-                setPdfLink(`${process.env.NEXT_PUBLIC_CDN_DOMAIN}/${exhibitFile}`);
+            if (ProspectusFile) {
+                setPdfLink(`${process.env.NEXT_PUBLIC_CDN_DOMAIN}/${ProspectusFile}`);
             }
         };
 

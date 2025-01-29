@@ -75,7 +75,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                 {/* Sponsorship Section */}
                 <div className="pt-6 items-center flex flex-col w-full">
 
-                {/* this is a stupid temporary hacky solution */}
+                    {/* this is a stupid temporary hacky solution */}
                     {event.id != 3 && (
                         <>
                             <div className="flex flex-wrap items-center justify-center mb-4 gap-3">
@@ -100,7 +100,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                     )}
 
 
-                    <SponsorProspectus event={event} />
+                    <SponsorProspectus eventShorthand={event.eventShorthand} />
 
                     <div className="text-center w-full max-w-4xl mb-4">
                         <div className="flex items-center justify-center text-gray-600 mb-2">
