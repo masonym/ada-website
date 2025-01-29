@@ -139,7 +139,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                         <div className="flex items-center flex-grow">
                           {speaker.photo && (
                             <Image
-                              src={getCdnPath(`events/${speaker.photo}`)}
+                              src={getCdnPath(`speakers/${speaker.photo}`)}
                               alt={speaker.name}
                               width={48}
                               height={48}
