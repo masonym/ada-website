@@ -51,7 +51,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://www.zerowastesolutions.com/",
                         width: 280,
                         height: 51,
-                    }, 
+                    },
                     {
                         name: "Iuvo Systems",
                         logo: "/events/2025SDPC/sponsors/iuvo-systems.webp",
@@ -171,6 +171,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         width: 400,
                         height: 100,
                     },
+                    {
+                        name: "GT Apex",
+                        logo: "/events/2025SDPC/sponsors/gt-apex.webp",
+                        website: "https://gtapexaccelerator.org/",
+                        width: 200,
+                        height: 300,
+                    }
                 ]
             }
         ]
