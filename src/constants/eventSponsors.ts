@@ -177,7 +177,15 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://gtapexaccelerator.org/",
                         width: 200,
                         height: 300,
-                    }
+                    },
+                    {
+                        name: "National Energy",
+                        logo: "/events/2025SDPC/sponsors/national-energy.webp",
+                        website: "https://nationalenergyusa.com/",
+                        width: 200,
+                        height: 300,
+                    },
+
                 ]
             }
         ]
