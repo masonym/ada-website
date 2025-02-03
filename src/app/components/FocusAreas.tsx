@@ -4,7 +4,7 @@ const FocusAreas = () => {
   const areas = [
     { title: "Defense Acquisition", icon: "🎯", description: "We provide actionable insights on upcoming Defense Acquisition Opportunities, helping businesses navigate complex Federal Procurement Processes and align with DoD Priorities." },
     { title: "Industry Networking", icon: "👥", description: "We facilitate valuable connections between Small and Medium-size Businesses, Prime Contractors, and Government Agencies, fostering collaboration, innovation and growth within the Defense Industrial Base." },
-    { title: "Small Business Support", icon: "🏢", description: "We offer resources, guidance and mentoring to empower Small Businesses and Diversity Suppliers to compete effectively in the Defense Industry." },
+    { title: "Small Business Support", icon: "🏢", description: "We offer resources, guidance and mentoring to empower Small Businesses to compete effectively in the Defense Industry." },
   ];
 
   return (

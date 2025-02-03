@@ -20,7 +20,7 @@ const AboutUsPage = () => {
         <div className="md:w-1/2">
           <h2 className="text-2xl font-semibold text-navy-800 mb-4">Our Mission</h2>
           <p className="text-gray-700 mb-4">
-            The American Defense Alliance is dedicated to the critical mission of supporting U.S. National Security and our Warfighters.  We serve as a vital bridge between the private-sector Defense Industrial Base and Federal acquisition requirements and priorities.  Our goal is to facilitate meaningful connections between innovative Small and Medium-size Businesses and Prime Contractors, enabling them to collaborate effectively in identifying, pursuing, and performing Government contracts.
+            The American Defense Alliance is dedicated to the critical mission of usupporting U.S. National Security and our Warfighters.  We serve as a vital bridge between the private-sector Defense Industrial Base and Federal acquisition requirements and priorities.  Our goal is to facilitate meaningful connections between innovative Small and Medium-size Businesses and Prime Contractors, enabling them to collaborate effectively in identifying, pursuing, and performing Government contracts.
           </p>
           {/* <p className="text-gray-700">
             Our goal is to facilitate meaningful connections between Small Businesses, Diversity Suppliers, and Prime Contractors, enabling them to collaborate effectively in identifying, pursuing, and performing Government contracts.
@@ -65,7 +65,7 @@ const AboutUsPage = () => {
           <div className="md:w-2/3">
             <h3 className="text-xl font-semibold text-navy-800 mb-2">Charles Sills - President & CEO</h3>
             <p className="text-gray-700 mb-4">
-              Charles F. Sills is a recognized authority on U.S. Government contracting, and an advocate for Small Business/Diversity Supplier access to Federal and Military acquisition opportunities, serving as the President & CEO of the American Defense Alliance – which hosts major Defense Requirements conferences across the country, connecting private sector innovators with the Pentagon, Military commands, and Congress to accelerate National Security solutions.
+              Charles F. Sills is a recognized authority on U.S. Government contracting, and an advocate for Small/Medium-sized Business access to Federal and Military acquisition opportunities, serving as the President & CEO of the American Defense Alliance – which hosts major Defense Requirements conferences across the country, connecting private sector innovators with the Pentagon, Military commands, and Congress to accelerate National Security solutions.
             </p>
             <p className="text-gray-700 mb-4">
               Concurrently, he serves as Chief Operating Officer of the Minority Business Development Agency’s Federal Procurement Center, under the U.S. Commerce Dept.; and manages the partnership under which MBDA affiliated companies attend and benefit from ADA conferences.  He is a member of the U.S. Chamber of Commerce's Small Business Council, and the Executive Committee of the Veterans Entrepreneurship Task Force (VET-Force).  He is also a Member of the Board of the American-Eurasian Business Coalition, focusing on international infrastructure, energy and investment initiatives, and serving on multinational task forces such as the Danube Basin Environmental Restoration Program and the Japan-U.S. Joint Fund for Social & Economic Development.
