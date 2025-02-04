@@ -18,9 +18,9 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
         return null;
     }
 
-    const filteredTiers = showTiers 
-        ? eventSponsors.tiers.filter(tier => 
-            showTiers.some(showTier => 
+    const filteredTiers = showTiers
+        ? eventSponsors.tiers.filter(tier =>
+            showTiers.some(showTier =>
                 tier.name.toLowerCase().includes(showTier.toLowerCase())
             )
         )
@@ -31,6 +31,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
     }
 
     const sortedTiers = filteredTiers.map(tier => ({
+
         ...tier,
         sponsors: [...tier.sponsors].sort((a, b) => a.name.localeCompare(b.name))
     }));
@@ -41,7 +42,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
         if (tierName.toLowerCase().includes('silver')) return 'bg-gray-300 text-slate-900';
         if (tierName.toLowerCase().includes('bronze')) return 'bg-amber-700 text-white';
         if (tierName.toLowerCase().includes('premier')) return 'bg-purple-600 text-white';
-        if (tierName.toLowerCase().includes('platinum')) return 'bg-gray-100 text-slate-900';
+        if (tierName.toLowerCase().includes('platinum')) return 'bg-sky-300 text-slate-900';
         if (tierName.toLowerCase().includes('diamond')) return 'bg-blue-500 text-white';
         return 'bg-blue-600 text-white';
     };
@@ -58,7 +59,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
         const aspectRatio = sponsor.width / sponsor.height;
         const maxWidth = isMobile ? 280 : sponsor.width || 300;
         const height = Math.round(maxWidth / aspectRatio);
-        
+
         return {
             width: maxWidth,
             height: height
@@ -76,7 +77,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                     </div>
                 </div>
             )}
-            
+
             {eventSponsors.description && (
                 <p className="text-center text-slate-600 mb-6 md:mb-8 max-w-3xl mx-auto px-4 text-sm md:text-base">
                     {eventSponsors.description}
@@ -95,7 +96,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                             </span>
                         </div>
                     </div>
-                    
+
                     {tier.description && (
                         <p className="text-center text-slate-600 mb-4 md:mb-6 max-w-2xl mx-auto px-4 text-sm md:text-base">
                             {tier.description}
@@ -107,16 +108,23 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                             {tier.sponsors.map((sponsor, sponsorIndex) => {
                                 const mobileSize = getSponsorImageSize(sponsor, true);
                                 const desktopSize = getSponsorImageSize(sponsor, false);
-                                 
+                                const isTopTier = tier.topTier;
+
                                 return (
-                                    <div 
-                                        key={sponsorIndex} 
-                                        className="flex items-center justify-center w-full transition-transform hover:scale-105 duration-300"
+                                    <div
+                                        key={sponsorIndex}
+                                        className={`flex items-center justify-center w-full transition-transform hover:scale-105 duration-300 
+                                            ${isTopTier ? 'relative p-6 rounded-xl bg-gradient-to-r from-slate-50 to-white ' : ''}`}
                                     >
+                                        {isTopTier && (
+                                            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-slate-900 px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
+                                                ★ Featured Sponsor
+                                            </div>
+                                        )}
                                         {sponsor.website ? (
-                                            <Link 
-                                                href={sponsor.website} 
-                                                target="_blank" 
+                                            <Link
+                                                href={sponsor.website}
+                                                target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="transition-opacity hover:opacity-80 w-full flex justify-center items-center"
                                             >
@@ -124,11 +132,13 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                                     <Image
                                                         src={getCdnPath(sponsor.logo)}
                                                         alt={`${sponsor.name} Logo`}
-                                                        width={desktopSize.width}
-                                                        height={desktopSize.height}
-                                                        // className="w-auto object-contain min-h-[45px]"
-                                                        priority={sponsor.priority}
-                                                        sizes="(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px"
+                                                        width={isTopTier ? desktopSize.width * 1.2 : desktopSize.width}
+                                                        height={isTopTier ? desktopSize.height * 1.2 : desktopSize.height}
+                                                        priority={sponsor.priority || isTopTier}
+                                                        sizes={`${isTopTier ?
+                                                            '(max-width: 640px) 320px, (max-width: 1024px) 480px, 860px' :
+                                                            '(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px'}`}
+                                                        className={`${isTopTier ? 'drop-shadow-md' : ''}`}
                                                     />
                                                 </div>
                                             </Link>
@@ -137,11 +147,13 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                                 <Image
                                                     src={getCdnPath(sponsor.logo)}
                                                     alt={`${sponsor.name} Logo`}
-                                                    width={desktopSize.width}
-                                                    height={desktopSize.height}
-                                                    // className="w-auto h-auto max-h-full object-contain"
-                                                    priority={sponsor.priority}
-                                                    sizes="(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px"
+                                                    width={isTopTier ? desktopSize.width * 1.2 : desktopSize.width}
+                                                    height={isTopTier ? desktopSize.height * 1.2 : desktopSize.height}
+                                                    priority={sponsor.priority || isTopTier}
+                                                    sizes={`${isTopTier ?
+                                                        '(max-width: 640px) 320px, (max-width: 1024px) 480px, 860px' :
+                                                        '(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px'}`}
+                                                    className={`${isTopTier ? 'drop-shadow-md' : ''}`}
                                                 />
                                             </div>
                                         )}

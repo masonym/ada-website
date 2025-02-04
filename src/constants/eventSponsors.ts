@@ -3,6 +3,7 @@ export type SponsorTier = {
     description?: string;
     style?: string;  // Tailwind classes for styling the tier label
     sponsors: Sponsor[];
+    topTier?: boolean;  // Indicates if this is the highest tier for the event
 };
 
 export type Sponsor = {
@@ -27,6 +28,20 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         id: 2,
         title: "Our Sponsors and Partners",
         tiers: [
+            {
+                name: "Platinum Sponsor",
+                sponsors: [
+                    {
+                        name: "Modtech Solutions",
+                        logo: "/events/2025SDPC/sponsors/modtech.webp",
+                        website: "https://modtechhawaii.com",
+                        width: 800,
+                        height: 200,
+                    },
+                ],
+                description: "Modtech Solutions specializes in the comprehensive design-build, engineering, integration and maintenance of technology systems. Our professional team of experts include: systems and design engineers, logistics & procurement, project managers, certified technicians, drawing technicians (CAD), among other construction and industry professionals.",
+                topTier: true
+            },
             {
                 name: "Small Business Sponsors",
                 style: "bg-sb-100 text-slate-900",
