@@ -22,7 +22,8 @@ type Speaker = {
     keynote?: {
         isKeynote: boolean;
         headerText: string;
-    }
+    };
+    invited?: boolean;
 };
 
 const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) => {
@@ -53,13 +54,13 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
     };
 
     const nonKeynoteSpeakers = speakers.filter(speaker => !speaker.keynote);
-    const isEventFuture = event.timeStart 
-        ? new Date(new Date(event.timeStart).getTime() - 3 * 24 * 60 * 60 * 1000) > new Date() 
+    const isEventFuture = event.timeStart
+        ? new Date(new Date(event.timeStart).getTime() - 3 * 24 * 60 * 60 * 1000) > new Date()
         : false;
 
     return (
         <div className="max-container flex flex-col items-center">
-            <KeynoteSpeaker eventId={event.id} eventShorthand={event.eventShorthand}/>
+            <KeynoteSpeaker eventId={event.id} eventShorthand={event.eventShorthand} />
             <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Speaker Spotlight</h1>
             {isEventFuture && (
                 <p className="text-l font-bold text-center mb-8 text-slate-600">More speaker information will be added as we get closer to the event date, please check back later for updates.</p>
@@ -76,10 +77,10 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                                 alt={`${speaker.name}`}
                                 className="rounded-lg"
                             />
-                            <p className="mt-4 font-semibold whitespace-nowrap text-wrap">{speaker.name}</p>
+                            <p className="mt-4 font-semibold whitespace-nowrap text-wrap">{speaker.name}{speaker.invited && <span className="text-md font-semibold border bg-gray-700 rounded-full px-3 py-1 text-white ml-2">Invited</span>}</p>
                             <p className="text-sm text-gray-600">{speaker.position}</p>
                             <p className="text-sm text-gray-600">{speaker.company}</p>
-                            
+
                             {speaker.bio && (
                                 <>
                                     <button
