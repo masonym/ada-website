@@ -37,9 +37,9 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://modtechhawaii.com",
                         width: 800,
                         height: 200,
+                        description: "Modtech Solutions specializes in the comprehensive design-build, engineering, integration and maintenance of technology systems. Our professional team of experts include: systems and design engineers, logistics & procurement, project managers, certified technicians, drawing technicians (CAD), among other construction and industry professionals."
                     },
                 ],
-                description: "Modtech Solutions specializes in the comprehensive design-build, engineering, integration and maintenance of technology systems. Our professional team of experts include: systems and design engineers, logistics & procurement, project managers, certified technicians, drawing technicians (CAD), among other construction and industry professionals.",
                 topTier: true
             },
             {

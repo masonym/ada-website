@@ -113,7 +113,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                 return (
                                     <div
                                         key={sponsorIndex}
-                                        className={`flex items-center justify-center w-full transition-transform hover:scale-105 duration-300 
+                                        className={`flex flex-col items-center justify-center w-full transition-transform hover:scale-105 duration-300 
                                             ${isTopTier ? 'relative p-6 rounded-xl bg-gradient-to-r from-slate-50 to-white ' : ''}`}
                                     >
                                         {isTopTier && (
@@ -155,6 +155,11 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                                         '(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px'}`}
                                                     className={`${isTopTier ? 'drop-shadow-md' : ''}`}
                                                 />
+                                            </div>
+                                        )}
+                                        {isTopTier && sponsor.description && (
+                                            <div className="text-lg mt-4 text-center text-slate-600 text-sm">
+                                                {sponsor.description}
                                             </div>
                                         )}
                                     </div>
