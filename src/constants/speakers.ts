@@ -509,15 +509,15 @@ export const EVENT_SPEAKERS: { [key: number]: string[] } = {
 		"gerald-norris"
 	],
 	"2": [ // 2025SDPC
-		"brian-liesveld",
-		"dave-leinberger",
-		"charles-sills",
-		"dave-robau",
-		"darlene-coen",
-		"sonya-d-rodgers",
-		"joanne-woytek",
-		"carl-m-wade",
-		"david-willis",
+		// "brian-liesveld",
+		// "dave-leinberger",
+		// "charles-sills",
+		// "dave-robau",
+		// "darlene-coen",
+		// "sonya-d-rodgers",
+		// "joanne-woytek",
+		// "carl-m-wade",
+		// "david-willis",
 
 	]
 };
