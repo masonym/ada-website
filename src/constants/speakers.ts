@@ -472,7 +472,7 @@ Mr. Robau also serves as the founder and Executive Director of the Gulf Coast En
 	}
 };
 
-export const EVENT_SPEAKERS: { [key: number]: string[] } = {
+export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 	"1": [
 		"michael-waltz",
 		"mark-cancian",
@@ -509,23 +509,38 @@ export const EVENT_SPEAKERS: { [key: number]: string[] } = {
 		"gerald-norris"
 	],
 	"2": [ // 2025SDPC
-		// "brian-liesveld",
-		// "dave-leinberger",
-		// "charles-sills",
-		// "dave-robau",
-		// "darlene-coen",
-		// "sonya-d-rodgers",
-		// "joanne-woytek",
-		// "carl-m-wade",
-		// "david-willis",
+		"brian-liesveld",
+		"dave-leinberger",
+		"charles-sills",
+		"dave-robau",
+		"darlene-coen",
+		"sonya-d-rodgers",
+		"joanne-woytek",
+		"carl-m-wade",
+		"david-willis",
+		{ id: "patricia-waddell", invited: true },
 
 	]
 };
 
-export function getSpeakersForEvent(eventId: number): (Speaker & { id: string })[] {
-	const speakerIds = EVENT_SPEAKERS[eventId] || [];
-	return speakerIds.map(id => ({
-		id,
-		...SPEAKERS[id]
-	}));
+type EventSpeakerEntry = string | { id: string; invited?: boolean };
+
+export function getSpeakersForEvent(eventId: number): (Speaker & { id: string; invited?: boolean })[] {
+	const speakerEntries = EVENT_SPEAKERS[eventId] || [];
+	return speakerEntries.map(entry => {
+		if (typeof entry === 'string') {
+			// Handle legacy string entries
+			return {
+				...SPEAKERS[entry],
+				id: entry
+			};
+		} else {
+			// Handle new object entries with invited status
+			return {
+				...SPEAKERS[entry.id],
+				id: entry.id,
+				invited: entry.invited
+			};
+		}
+	});
 }
