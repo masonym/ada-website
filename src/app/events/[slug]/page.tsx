@@ -133,7 +133,6 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             <RegistrationOptions event={event} />
 
-            <ExhibitInstructionsButton eventShorthand={event.eventShorthand} />
 
             <SponsorLogos event={event} />
 
