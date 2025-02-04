@@ -488,7 +488,11 @@ Prior to joining CGI Federal, Ms. Coen served as the Deputy Director and Directo
 	}
 };
 
+<<<<<<< HEAD
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
+=======
+export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[]  } = {
+>>>>>>> e0800c9 (Modified speaker data to add invite tags; improved formatting)
 	"1": [
 		"michael-waltz",
 		"mark-cancian",
@@ -525,16 +529,16 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"gerald-norris"
 	],
 	"2": [ // 2025SDPC
-		//"brian-liesveld",
-		//"dave-leinberger",
-		//"charles-sills",
-		//"dave-robau",
-		//"darlene-coen",
-		//"sonya-d-rodgers",
-		//"george-nicol",
-		////"carl-m-wade",
-		//"david-willis",
-		//{ id: "patricia-waddell", invited: true },
+		"brian-liesveld",
+		"dave-leinberger",
+		"charles-sills",
+		"dave-robau",
+		"darlene-coen",
+		"sonya-d-rodgers",
+		"joanne-woytek",
+		"carl-m-wade",
+		"david-willis",
+		{ id: "patricia-waddell", invited: true },
 
 	]
 };
