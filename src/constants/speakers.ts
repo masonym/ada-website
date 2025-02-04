@@ -371,8 +371,8 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	},
 	"dave-robau": {
 		"image": "dave_robau.webp",
-		"name": "Dave Robau",
-		"position": "Founder and CEO",
+		"name": "Dave Robau, CEM, LEED AP BD+C",
+		"position": "Ceo & Chief Scientist",
 		"company": "National Energy USA",
 		"bio": `
 
