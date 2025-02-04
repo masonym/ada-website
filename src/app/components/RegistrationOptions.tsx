@@ -6,6 +6,7 @@ import RegistrationCard from './RegistrationCard';
 import Link from 'next/link';
 import { Award, ChevronRight, Mail } from 'lucide-react';
 import SponsorProspectus from './SponsorProspectus';
+import ExhibitInstructionsButton from './ExhibitInstructionsButton';
 
 export type RegistrationProps = {
     event: Event;
@@ -100,6 +101,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                     )}
 
 
+                    <ExhibitInstructionsButton eventShorthand={event.eventShorthand} />
                     <SponsorProspectus eventShorthand={event.eventShorthand} />
 
                     <div className="text-center w-full max-w-4xl mb-4">

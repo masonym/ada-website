@@ -118,7 +118,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             // className="w-full sm:w-auto"
             /> */}
 
-            <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} backgroundColor={event.countdownColour}/>
+            <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} backgroundColor={event.countdownColour} />
 
 
 
@@ -133,10 +133,10 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             <RegistrationOptions event={event} />
 
+            <ExhibitInstructionsButton eventShorthand={event.eventShorthand} />
 
             <SponsorLogos event={event} />
 
-            <ExhibitInstructionsButton eventShorthand={event.eventShorthand} />
 
             <div className="mt-0 text-center flex flex-col items-center">
               <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Place at this Groundbreaking Event!</p>
