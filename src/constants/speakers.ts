@@ -531,7 +531,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"dave-robau",
 		"darlene-coen",
 		"sonya-d-rodgers",
-		"joanne-woytek",
+		"george-nicol",
 		"carl-m-wade",
 		"david-willis",
 		{ id: "patricia-waddell", invited: true },
