@@ -488,11 +488,7 @@ Prior to joining CGI Federal, Ms. Coen served as the Deputy Director and Directo
 	}
 };
 
-<<<<<<< HEAD
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
-=======
-export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[]  } = {
->>>>>>> e0800c9 (Modified speaker data to add invite tags; improved formatting)
 	"1": [
 		"michael-waltz",
 		"mark-cancian",
