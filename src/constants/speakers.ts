@@ -470,6 +470,22 @@ Mr. Robau also serves as the founder and Executive Director of the Gulf Coast En
 		"company": "U.S. Army Corps of Engineers - New Orleans District",
 		"bio": `TBD`,
 	}
+	,
+	"george-nicol": {
+		"image": "george-nicol.webp",
+		"name": "George Nicol",
+		"position": "Deputy Program Director of Contract Holder & Industry Relations",
+		"company": "NASA SEWP",
+		"bio": `Mr. George Nicol is the Deputy Program Director of Contract Holders and Industry Relations for the NASA Solutions for Enterprise-Wide Procurement (SEWP) Program Office. In this capacity, he oversees the CHRM Team, which responds to daily requests from SEWP Contract Holders, ensuring they meet their contractual obligations and monitor their day-to-day performance.
+	<br/>
+	
+	<br/>
+	Mr. Nicol joined the SEWP Program in May 2007, serving initially as the SEWP Outreach coordinator, scheduling SEWP customer meetings, and assisting with the program’s marketing and outreach efforts. In 2009, he joined the CHRM team and took on the role of Deputy CHRM Manager where he began assisting with managing SEWP Contract Holders. In January 2013, he became the Manager, leading a team of four responsible for tracking Contract Holder Performance and coordinating Contract Holder and customer order issue resolution. During his time at SEWP, he also served as the COR for the 190+ SEWP contracts. He was also recognized as an FCW Rising Star in 2020.
+	<br/>
+	
+	<br/>
+	Mr. Nicol became the Deputy Program Director in January 2023 and continues to lead Contract Holder and Industry engagement. Mr. Nicol holds a bachelor's degree from Temple University and is an ACT-IAC fellow and a member of NCMA.`,
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
