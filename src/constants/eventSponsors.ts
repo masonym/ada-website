@@ -200,7 +200,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         width: 200,
                         height: 300,
                     },
-
+                    {
+                        name: "Modtech Solutions",
+                        logo: "/events/2025SDPC/sponsors/modtech.webp",
+                        website: "https://modtechhawaii.com",
+                        width: 300,
+                        height: 200,
+                    }
                 ]
             }
         ]
