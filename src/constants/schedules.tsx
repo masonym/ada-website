@@ -274,23 +274,23 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "8:30 AM",
-                        "title": "Welcoming Remarks"
+                        "title": "Conference Opening Remarks"
                     },
                     {
                         "time": "8:35 AM",
-                        "title": "Indo-Pacific Theater Briefing"
+                        "title": "State of Georgia and Chambers of Commerce - Welcoming Remarks"
                     },
                     {
-                        "time": "8:55 AM",
-                        "title": "Euro-Atlantic Theater Briefing"
+                        "time": "8:50 AM",
+                        "title": "Defense Department ‘Innovation Hubs’ – Champions for Innovative Small Business"
                     },
                     {
-                        "time": "9:15 AM",
-                        "title": "National Security Keynote Address"
+                        "time": "9:20 AM",
+                        "title": "Military Base-Community Partnership Programs"
                     },
                     {
-                        "time": "9:30 AM",
-                        "title": "Army Corps of Engineers – Projects & Contracts"
+                        "time": "9:50 AM",
+                        "title": "How to Navigate Government-Wide Acquisition Contracts (GWACS)"
                     },
                     {
                         "time": "10:30 AM",
@@ -318,19 +318,19 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "1:30 PM",
-                        "title": "How to Navigate Government-Wide Acquisition Contracts (GWACS)"
+                        "title": "National Security Keynote Address"
                     },
                     {
-                        "time": "2:20 PM",
-                        "title": "Military Base-Community Partnership Programs"
+                        "time": "2:00 PM",
+                        "title": "Army Corps of Engineers - Projects & Contracts"
                     },
                     {
-                        "time": "2:55 PM",
+                        "time": "3:00 PM",
+                        "title": "Military Base Energy Initiatives"
+                    },
+                    {
+                        "time": "3:45 PM",
                         "title": "Cybersecurity/CMMC Update Panel"
-                    },
-                    {
-                        "time": "3:50 PM",
-                        "title": "Army & Marine Corps Depot Support Opportunities"
                     },
                     {
                         "time": "4:25 PM",
@@ -341,11 +341,11 @@ export const SCHEDULES = [
                         "title": "Day One Closing Remarks"
                     },
                     {
-                        "time": "4:00 PM - 5:30 PM",
+                        "time": "4:30 PM - 6:00 PM",
                         "title": "Matchmaking Session I"
                     },
                     {
-                        "time": "5:30 PM - 7:30 PM",
+                        "time": "6:00 PM - 8:00 PM",
                         "title": "VIP Networking Reception"
                     }
                 ]
@@ -375,18 +375,18 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "9:45 AM",
+                        "title": "Indo-Pacific Theater Briefing"
+                    },
+                    {
+                        "time": "10:10 AM",
                         "title": "Navy Shipbuilding & SIB (Submarine Industrial Base) Requirements"
                     },
                     {
-                        "time": "10:20 AM",
-                        "title": "NAVFAC, NAVAIR & NAVSUP – Projects & Contracts"
+                        "time": "10:35 AM",
+                        "title": "NAVFAC – Projects & Contracts"
                     },
                     {
                         "time": "11:15 AM",
-                        "title": "Sponsor Remarks"
-                    },
-                    {
-                        "time": "11:20 AM",
                         "title": "Artificial Intelligence – Impact on Defense Acquisition"
                     },
                     {
@@ -395,7 +395,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "12:30 PM",
-                        "title": "Military Base Energy Initiatives"
+                        "title": "Army & Marine Corps Depot Support Opportunities"
                     },
                     {
                         "time": "1:00 PM",
