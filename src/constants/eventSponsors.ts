@@ -200,13 +200,12 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         width: 200,
                         height: 300,
                     },
-
                     {
-                        name: "Modtech",
-                        logo: "/events/2025SDPC/sponsors/precision-resource.webp",
-                        website: "https://www.precisionresource.com/",
-                        width: 200,
-                        height: 300,
+                        name: "Modtech Solutions",
+                        logo: "/events/2025SDPC/sponsors/modtech.webp",
+                        website: "https://modtechhawaii.com",
+                        width: 300,
+                        height: 200,
                     },
 
                     {
