@@ -212,7 +212,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         name: "Precision Resource",
                         logo: "/events/2025SDPC/sponsors/precision-resource.webp",
                         website: "https://www.precisionresource.com/",
-                        width: 200,
+                        width: 300,
                         height: 300,
                     },
 
