@@ -234,6 +234,22 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     },
 
 
+                    {
+                        name: "Modtech",
+                        logo: "/events/2025SDPC/sponsors/precision-resource.webp",
+                        website: "https://www.precisionresource.com/",
+                        width: 200,
+                        height: 300,
+                    },
+
+                    {
+                        name: "Precision Resource",
+                        logo: "/events/2025SDPC/sponsors/precision-resource.webp",
+                        website: "https://www.precisionresource.com/",
+                        width: 200,
+                        height: 300,
+                    },
+
                 ]
             }
         ]
