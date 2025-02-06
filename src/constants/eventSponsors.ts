@@ -206,7 +206,16 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://modtechhawaii.com",
                         width: 300,
                         height: 200,
-                    }
+                    },
+
+                    {
+                        name: "Precision Resource",
+                        logo: "/events/2025SDPC/sponsors/precision-resource.webp",
+                        website: "https://www.precisionresource.com/",
+                        width: 200,
+                        height: 300,
+                    },
+
                 ]
             }
         ]
