@@ -341,11 +341,11 @@ export const SCHEDULES = [
                         "title": "Day One Closing Remarks"
                     },
                     {
-                        "time": "4:30 PM - 6:00 PM",
+                        "time": "4:30 PM - 5:30 PM",
                         "title": "Matchmaking Session I"
                     },
                     {
-                        "time": "6:00 PM - 8:00 PM",
+                        "time": "5:30 PM - 7:30 PM",
                         "title": "VIP Networking Reception"
                     }
                 ]
