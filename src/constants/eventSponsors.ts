@@ -89,6 +89,15 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         height: 100,
                     },
 
+                    {
+                        name: "The Avery Group",
+                        logo: "/events/2025SDPC/sponsors/avery-group.webp",
+                        website: "https://theaverygroupllc.com/",
+                        width: 300,
+                        height: 300,
+                    },
+
+
                 ],
             },
             {
@@ -215,6 +224,15 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         width: 300,
                         height: 300,
                     },
+
+                    {
+                        name: "The Avery Group",
+                        logo: "/events/2025SDPC/sponsors/avery-group.webp",
+                        website: "https://theaverygroupllc.com/",
+                        width: 300,
+                        height: 300,
+                    },
+
 
                 ]
             }
