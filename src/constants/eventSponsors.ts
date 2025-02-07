@@ -33,7 +33,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 sponsors: [
                     {
                         name: "Modtech Solutions",
-                        logo: "/events/2025SDPC/sponsors/modtech.webp",
+                        logo: "/events/2025SDPC/sponsors/modtech-scaled.webp",
                         website: "https://modtechhawaii.com",
                         width: 800,
                         height: 200,
