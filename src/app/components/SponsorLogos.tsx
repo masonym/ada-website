@@ -158,7 +158,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                             </div>
                                         )}
                                         {isTopTier && sponsor.description && (
-                                            <div className="text-lg mt-4 text-center text-slate-600 text-sm">
+                                            <div className="text-lg mt-4 text-center text-slate-600 ">
                                                 {sponsor.description}
                                             </div>
                                         )}
