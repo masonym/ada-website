@@ -37,7 +37,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://modtechhawaii.com",
                         width: 800,
                         height: 200,
-                        description: "Modtech Solutions specializes in the comprehensive design-build, engineering, integration and maintenance of technology systems. Our professional team of experts include: systems and design engineers, logistics & procurement, project managers, certified technicians, drawing technicians (CAD), among other construction and industry professionals."
+                        description: "<b>Modtech Solutions is a Trusted Defense Technology Integrator specializing in Command and Control through Unified Communications (UC), High-Security Facilities, and Telecommunications Infrastructure</b>. Our mission—<b>\"To empower the warfighter for a safer world\"</b>— drives us to develop cutting-edge solutions that enhance security, operational readiness, and decision-making for the men and women serving our nation. In an environment where the fog of war can obscure clarity, Modtech Solutions delivers dependability to dominate the modern battle-space by ensuring the right information reaches <b>the right people at the right time—without doubt, delay, or disruption.</b>"
                     },
                 ],
                 topTier: true
