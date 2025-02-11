@@ -393,13 +393,13 @@ Mr. Robau also serves as the founder and Executive Director of the Gulf Coast En
 	"darlene-coen": {
 		"image": "darlene-coen.webp",
 		"name": "Darlene Coen",
-		"position": "Director, Acquisition Strategy",
+		"position": "Strategic Operations Consultant",
 		"company": "CGI Federal",
 		"bio": `
-      With more than four decades of experience across the public and private sectors, Darlene Coen is an agile business strategist who brings strategic leadership to CGI Federal’s client-focused mission. As an Acquisition Strategy, Policy and Market Engagement Expert in the Strategic Operations business unit, Ms. Coen leads internal strategic development and creates growth opportunities by bridging a common understanding across the sectors.
-      </br></br>
-      Prior to joining CGI Federal, Ms. Coen served as the Deputy Director and Director of Strategy and Acquisition for the NASA Solutions for Enterprise-Wide Acquisition Contract (SEWP), an Office of Management and Budget (OMB) designated, Government-Wide Acquisition Contract (GWAC), providing access to the latest in information and communications technology products to the entire federal government. A recognized industry leader, Ms. Coen is a FED100 Award and Coalition for Government Procurement Excellence in Partnership (EIP) Lifetime Acquisition Excellence Award recipient.
-    `,
+With more than four decades of experience across the public and private sectors, Darlene Coen is an agile business strategist who brings strategic leadership to CGI Federal’s client-focused mission. As Consulting Expert in CGI Federal’s Business Engagement unit, Ms. Coen leads internal strategic development and creates growth opportunities by bridging a common understanding across the sectors.
+<br></br>
+Prior to joining CGI Federal, Ms. Coen served as the Deputy Director and Director of Strategy and Acquisition for the NASA Solutions for Enterprise-Wide Acquisition Contract (SEWP), an Office of Management and Budget (OMB) designated, Government-Wide Acquisition Contract (GWAC), providing access to the latest in information and communications technology products to the entire federal government. A recognized industry leader, Ms. Coen is a FED100 Award and Coalition for Government Procurement Excellence in Partnership (EIP) Lifetime Acquisition Excellence Award recipient.
+`,
 	},
 	//"name": {
 	//  "image": "image.webp",
