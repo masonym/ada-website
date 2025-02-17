@@ -525,16 +525,16 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"gerald-norris"
 	],
 	"2": [ // 2025SDPC
-		"brian-liesveld",
-		"dave-leinberger",
-		"charles-sills",
-		"dave-robau",
-		"darlene-coen",
-		"sonya-d-rodgers",
-		"george-nicol",
-		//"carl-m-wade",
-		"david-willis",
-		{ id: "patricia-waddell", invited: true },
+		//"brian-liesveld",
+		//"dave-leinberger",
+		//"charles-sills",
+		//"dave-robau",
+		//"darlene-coen",
+		//"sonya-d-rodgers",
+		//"george-nicol",
+		////"carl-m-wade",
+		//"david-willis",
+		//{ id: "patricia-waddell", invited: true },
 
 	]
 };
