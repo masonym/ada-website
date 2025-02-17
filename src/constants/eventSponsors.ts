@@ -88,7 +88,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         width: 400,
                         height: 100,
                     },
-
+                    {
+                        name: "PMB Machine Works",
+                        logo: "/events/2025SDPC/sponsors/pmb-machine-works.webp",
+                        website: "https://pmbmachineworks.com/",
+                        width: 300,
+                        height: 200,
+                    }
                 ],
             },
             {
@@ -215,6 +221,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         width: 200,
                         height: 300,
                     },
+                    {
+                        name: "PMB Machine Works",
+                        logo: "/events/2025SDPC/sponsors/pmb-machine-works.webp",
+                        website: "https://pmbmachineworks.com/",
+                        width: 300,
+                        height: 200,
+                    }
 
                 ]
             }
