@@ -49,8 +49,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         name: "Secure IT Service Management",
                         logo: "/events/2025SDPC/sponsors/secure-itsm.webp",
                         website: "https://secureitsm.com/",
-                        width: 300,
-                        height: 300,
+                        width: 400,
+                        height: 500,
                     }
                 ],
             },
