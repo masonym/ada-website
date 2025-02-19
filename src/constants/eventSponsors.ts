@@ -43,6 +43,18 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 topTier: true
             },
             {
+                name: "Silver Sponsor",
+                sponsors: [
+                    {
+                        name: "Secure IT Service Management",
+                        logo: "/events/2025SDPC/sponsors/secure-itsm.webp",
+                        website: "https://secureitsm.com/",
+                        width: 300,
+                        height: 300,
+                    }
+                ],
+            },
+            {
                 name: "Small Business Sponsors",
                 style: "bg-sb-100 text-slate-900",
                 sponsors: [
@@ -243,6 +255,20 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         name: "The Avery Group",
                         logo: "/events/2025SDPC/sponsors/avery-group.webp",
                         website: "https://theaverygroupllc.com/",
+                        width: 300,
+                        height: 300,
+                    },
+                    {
+                        name: "ardmore Consulting Group",
+                        logo: "/events/2025SDPC/sponsors/ardmore.webp",
+                        website: "https://ardmore28.com/",
+                        width: 300,
+                        height: 300,
+                    },
+                    {
+                        name: "Secure IT Service Management",
+                        logo: "/events/2025SDPC/sponsors/secure-itsm.webp",
+                        website: "https://secureitsm.com/",
                         width: 300,
                         height: 300,
                     },
