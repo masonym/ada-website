@@ -116,6 +116,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://pmbmachineworks.com/",
                         width: 300,
                         height: 200,
+                    },
+                    {
+                        name: "Redstone Government Consulting",
+                        logo: "/events/2025SDPC/sponsors/redstone.webp",
+                        website: "https://redstonegci.com/",
+                        width: 250,
+                        height: 45,
                     }
                 ],
             },
@@ -273,7 +280,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         height: 300,
                     },
 
-
+                    {
+                        name: "Redstone Government Consulting",
+                        logo: "/events/2025SDPC/sponsors/redstone.webp",
+                        website: "https://redstonegci.com/",
+                        width: 250,
+                        height: 45,
+                    },
                 ]
             }
         ]
