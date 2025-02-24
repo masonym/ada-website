@@ -486,6 +486,29 @@ Prior to joining CGI Federal, Ms. Coen served as the Deputy Director and Directo
 	<br/>
 	Mr. Nicol became the Deputy Program Director in January 2023 and continues to lead Contract Holder and Industry engagement. Mr. Nicol holds a bachelor's degree from Temple University and is an ACT-IAC fellow and a member of NCMA.`,
 	}
+	,
+	"sherrie-cordi": {
+		"image": "sherrie-cordi.webp",
+		"name": "Sherrie Cordi",
+		"position": "Deputy, Office of Small Business Programs",
+		"company": "USACE Memphis District (MVM)",
+		"bio": `Sherrie Cordi is the Small Business Program Manager for the U.S. Army Corps of Engineers, Memphis District. She oversees a $70M Small Business Program, ensuring compliance with federal procurement regulations while maximizing opportunities for small businesses in government contracting. A Navy veteran, Sherrie brings 9 years of combined honorable military service and government experience to the position.`,
+	},
+	"oscar-frazier": {
+		"image": "oscar-frazier.webp",
+		"name": "Oscar Frazier",
+		"position": "Operations Director, Federal Procurement Center",
+		"company": "Minority Business Development Agency (MBDA), U.S. Department of Commerce",
+		"bio": `Oscar Lamont Frazier is an internationally recognized authority in leadership methodologies, federal contracting, strategic business development, and human-centered service transformation. With over two decades of experience spanning Fortune 500 enterprises, Big 4/5 consulting firms, federal agencies, and entrepreneurial ventures, Oscar has established himself as a go-to expert in crisis leadership, business innovation, and operational transformation. As the founder of nDemand Consulting Services Inc. (2004-Present), Oscar pioneered the HIT Impact Suite methodology—a framework focused on human-centered service design, government contracting efficiency, leadership development, and business transformation strategies.
+	<br/>
+	
+	<br/>
+	Oscar's services include federal contracting advisory, leadership development, and program management consulting. His work with agencies like DHS, FEMA, and EPA has delivered significant results, including a $4.8M efficiency improvement at the EPA and securing $2.1M in additional project funding for FEMA's improper payment debt management process. Since 2018, Oscar has expanded globally, delivering high-impact crisis leadership training across Africa, Europe, and the U.S. As a Forbes Business Council contributor with over 17 published articles, his thought leadership has shaped industry best practices in leadership agility, government contracting, and human-centered design.
+	<br/>
+	
+	<br/>
+	Oscar began his career at Bank of America, where he led enterprise-level process improvements that increased operational efficiency by 75%. His transition to federal consulting included roles at Booz Allen Hamilton, PwC, and Kadix Systems, specializing in federal procurement strategies, business process reengineering, and crisis management. His Humanising IT™ (HIT) methodology enables organizations to redefine service delivery through a human-centered approach, focusing on service optimization, government contracting, IT leadership, and consumer engagement. His flagship keynote, "Putting the Human Back into a Dehumanized World™," emphasizes the role of people-centric leadership in government, business, and crisis response.`,
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
