@@ -125,7 +125,7 @@ export const FAQs = [
             },
             {
                 question: "When and where will the event take place?",
-                answer: `Date: July 29 - 11, 2025<br>
+                answer: `Date: July 29 - 30, 2025<br>
                 Time: July 29, 2025: 7:30 AM - 7:30 PM and July 30, 2025: 7:30 AM - 12:00 PM<br>
                 Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
                 `,
