@@ -11,7 +11,8 @@
     "process-images": "node src/scripts/process-images.js",
     "convert-images": "node src/scripts/convert-to-webp.js",
     "sync-images": "powershell -Command \"$changes = aws s3 sync ./public s3://americandefensealliance --delete --cache-control 'public, max-age=0, must-revalidate' --output text; if ($changes) { $paths = ($changes | Select-String 'upload:' | ForEach-Object { if($_ -match 'public\\\\(.+?) to') { '/' + $matches[1].Replace('\\', '/') } }); if ($paths) { Write-Host 'Creating CloudFront invalidation for:'; Write-Host $paths; aws cloudfront create-invalidation --distribution-id E15R7SXII9T1VC --paths $paths } }\"",
-    "create-event": "node scripts/createEvent.js"
+    "create-event": "node scripts/createEvent.js",
+    "import-speakers": "node scripts/speaker-update.js" 
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.697.0",
