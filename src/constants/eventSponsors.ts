@@ -228,7 +228,11 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         name: "Precision Resource",
                         logo: "/events/2025SDPC/sponsors/precision-resource.webp",
                         website: "https://www.precisionresource.com/",
+<<<<<<< HEAD
                         width: 300,
+=======
+                        width: 200,
+>>>>>>> 063c2df3d0e0064e64431e12045b54cec905afbb
                         height: 300,
                     },
                     {
@@ -237,6 +241,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://pmbmachineworks.com/",
                         width: 300,
                         height: 200,
+<<<<<<< HEAD
                     },
 
                     {
@@ -247,6 +252,9 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         height: 300,
                     },
 
+=======
+                    }
+>>>>>>> 063c2df3d0e0064e64431e12045b54cec905afbb
 
                 ]
             }
