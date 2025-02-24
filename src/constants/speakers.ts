@@ -509,6 +509,22 @@ Prior to joining CGI Federal, Ms. Coen served as the Deputy Director and Directo
 	<br/>
 	Oscar began his career at Bank of America, where he led enterprise-level process improvements that increased operational efficiency by 75%. His transition to federal consulting included roles at Booz Allen Hamilton, PwC, and Kadix Systems, specializing in federal procurement strategies, business process reengineering, and crisis management. His Humanising IT™ (HIT) methodology enables organizations to redefine service delivery through a human-centered approach, focusing on service optimization, government contracting, IT leadership, and consumer engagement. His flagship keynote, "Putting the Human Back into a Dehumanized World™," emphasizes the role of people-centric leadership in government, business, and crisis response.`,
 	}
+	,
+	"teresa-harrington": {
+		"image": "teresa-harrington.webp",
+		"name": "Teresa Harrington",
+		"position": "Chief Operations Officer",
+		"company": "DEFENSEWERX",
+		"bio": `Teresa Harrington serves as Chief Operations Officer for DEFENSEWERX, Inc. In this role, she ensures seamless implementation and exceptional team member and government partner service across key operations, projects, and initiatives for DEFENSEWERX, its innovation hubs, and its ecosystem.
+	<br/>
+	
+	<br/>
+	Dr. Harrington brings deep expertise in strategic and business planning, operations, research, marketing, corporate strategy, STEM policy, and economic and workforce development. Prior to joining DEFENSEWERX in 2021, she led industry relations and key revenue and operations initiatives for an award-winning Inc. 1000 Hall of Fame litigation services firm and served as Chief Executive Officer for a leading Southeastern U.S. communications and economic development consultancy. Dr. Harrington has served as a trusted advisor and in leadership roles in several notable workforce and economic development, STEM, and public policy initiatives at state, regional, and federal levels. She has presented and moderated at national industry conferences and been published in national and industry media including the National Law Review, Corporate Counsel, National Law Journal, Context Florida, and Florida Trend and has served as an award-winning podcast host and producer for national audiences in areas including commercial litigation, corporate risk, science, and tech. Dr. Harrington was awarded the Go-To Thought Leadership Award for multiple consecutive years by National Law Review for her thought leadership contributions on topics ranging from commercial risk and litigation to intellectual property and innovation.
+	<br/>
+	
+	<br/>
+	Dr. Harrington earned a Doctor of Business Administration degree through Trevecca Nazarene University and completed her dissertation on the topic of Exploring the Factors that Inhibit and Promote Small Business Owner Engagement with Federal Innovation. She earned an MBA through the prestigious Gies College of Business at University of Illinois at Urbana-Champaign and a bachelor’s degree in social sciences through Thomas Edison State University. She holds several specializations, certifications, and industry memberships and is a frequent speaker and contributor at industry conferences, panels, and thought leadership forums.`,
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -548,16 +564,19 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"gerald-norris"
 	],
 	"2": [ // 2025SDPC
-		"brian-liesveld",
+		//"brian-liesveld",
 		"dave-leinberger",
 		"charles-sills",
 		"dave-robau",
 		"darlene-coen",
 		"sonya-d-rodgers",
 		"george-nicol",
+		"sherrie-cordi",
+		"oscar-frazier",
+		"teresa-harrington",
 		//"carl-m-wade",
-		"david-willis",
-		{ id: "patricia-waddell", invited: true },
+		//"david-willis",
+		//{ id: "patricia-waddell", invited: true },
 
 	]
 };
