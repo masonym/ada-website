@@ -123,7 +123,14 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://redstonegci.com/",
                         width: 250,
                         height: 45,
-                    }
+                    },
+                    {
+                        name: "Perimeter Office Products",
+                        logo: "/events/2025SDPC/sponsors/perimeter.webp",
+                        website: "https://www.perimeteroffice.com/perimeter",
+                        width: 250,
+                        height: 45,
+                    },
                 ],
             },
             {
@@ -284,6 +291,27 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         name: "Redstone Government Consulting",
                         logo: "/events/2025SDPC/sponsors/redstone.webp",
                         website: "https://redstonegci.com/",
+                        width: 250,
+                        height: 45,
+                    },
+                    {
+                        name: "Six Axis",
+                        logo: "/events/2025SDPC/sponsors/sixaxis.webp",
+                        website: "https://www.sixaxisllc.com/",
+                        width: 250,
+                        height: 45,
+                    },
+                    {
+                        name: "USACE",
+                        logo: "/events/2025SDPC/sponsors/usace.webp",
+                        website: "https://www.mvm.usace.army.mil/",
+                        width: 250,
+                        height: 45,
+                    },
+                    {
+                        name: "Perimeter Office Products",
+                        logo: "/events/2025SDPC/sponsors/perimeter.webp",
+                        website: "https://www.perimeteroffice.com/perimeter",
                         width: 250,
                         height: 45,
                     },
