@@ -375,19 +375,9 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 		"position": "CEO & Chief Scientist",
 		"company": "National Energy USA",
 		"bio": `
-
-Dave Robau is one of the sustainability movement’s most sought-after thought leaders. As an advocate for resource conservation and sustainable design solutions. Mr. Robau has extensive experience at all levels of business and government. In 2011, he was honored at a White House ceremony as one of President Obama’s “Champions of Change” for his work and dedication to sustainability.
-<br/>
-<br/>
-Mr. Robau’s expertise has been sought out by various organizations as diverse as Fortune 500 companies, leading universities, national energy service companies, utilities, non-profit organizations, and the U.S. military. His research has led to ground-breaking innovations in manufacturing, renewable energy, and fortified construction. These innovations have also led to disruptive technologies in the application of advanced waste-to-energy technology.
-
-<br/>
-<br/>
-Mr. Robau is the founder and CEO of National Energy, an energy engineering firm that provides integrated solutions to help clients manage resources and increase their triple bottom line. His team works with clients from all sectors to develop and implement management systems tailored to meet their strategic goals and initiatives. National Energy provides leading-edge environmental expertise to government and private sector clients, addressing a full range of challenges, including regulatory compliance, natural resource management, greenhouse gas reduction, sustainability and energy/water efficiency.
-
-<br/>
-<br/>
-Mr. Robau also serves as the founder and Executive Director of the Gulf Coast Energy Network. He leads a network of scientist, engineers, architects, and planners from the various Gulf Coast states to expand the renewable energy market and promote energy conservation. The Network extends from southeast Texas to Tampa, Florida and represents over 9,000 energy and sustainability professionals.
+Dave Robau is one of the energy industry’s foremost thinkers and strategists. As an advocate for resource conservation and sustainable forms of energy, he has extensive experience at all levels of business and government. Mr. Robau is the Founder and Chief Scientist of National Energy USA, an environmental engineering firm dedicated to bringing emerging and innovative energy technologies into the commercial market. 
+<br/><br/>
+As a Subject Matter Expert in the field of energy and sustainability, he is invited to speak at technical conferences around the world. His research often appears in publications such as The New York Times, The Washington Post, The Wall Street Journal, as well as peer-reviewed scientific journals. Mr. Robau received a White House Award as President Obama’s “Champions of Change” for his dedication to sustainability and environmental stewardship.
 	`
 	},
 	"darlene-coen": {
