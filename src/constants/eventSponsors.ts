@@ -398,5 +398,57 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 ]
             },
         ]
+    },
+    {
+        id: 4, // 2025NMCPC
+        tiers: [
+            {
+                name: "Small Business Sponsors",
+                style: "bg-sb-100 text-slate-900",
+                sponsors: [
+                    {
+                        name: "Zero Waste Solutions",
+                        logo: "/events/2025NMCPC/sponsors/zero-waste.webp",
+                        website: "https://www.zerowastesolutions.com/",
+                        width: 280,
+                        height: 51,
+                    },
+                    {
+                        name: "JBC Corp",
+                        logo: "/events/2025NMCPC/sponsors/jbc.webp",
+                        website: "https://www.jbccorp.com/",
+                        width: 280,
+                        height: 51,
+                    },
+                ],
+            },
+            {
+                name: "Exhibitors",
+                style: "bg-navy-800 text-white", // Custom styling for organizers
+                sponsors: [
+                    {
+                        name: "Zero Waste Solutions",
+                        logo: "/events/2025NMCPC/sponsors/zero-waste.webp",
+                        website: "https://www.zerowastesolutions.com/",
+                        width: 280,
+                        height: 51,
+                    },
+                    {
+                        name: "JBC Corp",
+                        logo: "/events/2025NMCPC/sponsors/jbc.webp",
+                        website: "https://www.jbccorp.com/",
+                        width: 280,
+                        height: 51,
+                    },
+                    {
+                        name: "Centurion Consulting Group",
+                        logo: "/events/2025NMCPC/sponsors/centurion.webp",
+                        website: "https://centurioncg.com/",
+                        width: 280,
+                        height: 51,
+                    },
+                ],
+            }
+        ]
     }
 ];
