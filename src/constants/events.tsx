@@ -165,7 +165,7 @@ export const EVENTS: Event[] = [
         <p className="font-bold text-xl text-center font-gotham">
           Featured Contracting Commands:
         </p>
-        <p className="">
+        <div className="">
           <ul className="list-inside">
             <li>Multiple Air Force Bases in Florida, Georgia & throughout the Southeast</li>
             <li>Marine Corps Bases in North & South Carolina and the Blount Island Logistic Support Facility</li>
@@ -175,7 +175,7 @@ export const EVENTS: Event[] = [
             <li>King's Bay Naval Sub Base, and Naval Air Stations in Pensacola, Jacksonville & Key West</li>
             <li>Major Contracting Commands including CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, & SPACECENT</li>
           </ul>
-        </p>
+        </div>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
@@ -638,7 +638,7 @@ invaluable connections that can shape the future of your business.
         <p className="font-bold text-xl text-center font-gotham">
           Topical Coverage:
         </p>
-        <p className="">
+        <div className="">
           <ul className="list-inside">
             <li>Navy's Critical Maintenance & Repair and Shipbuilding Needs</li>
             <li>SIOP - Shipyard Infrastructure Optimization Plan - Driving $ Billions in Construction & Facility Support Contracts</li>
@@ -658,7 +658,7 @@ invaluable connections that can shape the future of your business.
             <li>Cybersecurity Compliance Mandates and CMMC Training Options</li>
             <li>Defense Contract Audit Agency Support for Small & Medium-Size Contractors</li>
           </ul>
-        </p>
+        </div>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
