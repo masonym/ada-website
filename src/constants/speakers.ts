@@ -14,7 +14,7 @@ export interface Speaker {
 
 export const SPEAKERS: { [key: string]: Speaker } = {
 	"michael-waltz": {
-		"image": "michael_waltz.webp",
+		"image": "michael-waltz.webp",
 		"name": "Congressman Michael Waltz (6th District, Florida)",
 		"position": "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
 		"company": "U.S. House of Representatives",
@@ -47,7 +47,7 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 		}
 	},
 	"mark-cancian": {
-		"image": "mark_cancian.webp",
+		"image": "mark-cancian.webp",
 		"name": "Mark Cancian",
 		"position": "Senior Adviser, International Security Program",
 		"company": "Center for Strategic & International Studies",
@@ -56,28 +56,28 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	In the military, Colonel Cancian spent over three decades in the U.S. Marine Corps, active and reserve, serving as an infantry, artillery, and civil affairs officer and on overseas tours in Vietnam, Desert Storm, and Iraq (twice). Since 2000, he has been an adjunct faculty member at the Johns Hopkins School of Advanced International Studies, where he teaches a course on the connection between policy and analysis. A prolific author, he has published over 40 articles on military operations, acquisition, budgets, and strategy and received numerous writing awards. He graduated with high honors (magna cum laude) from Harvard College and with highest honors (Baker scholar) from Harvard Business School.`
 	},
 	"joachim-christian": {
-		"image": "joachim_christian.webp",
+		"image": "joachim-christian.webp",
 		"name": "His Royal Highness, Brigadier General Prince Joachim, Prince of Denmark",
 		"position": "Danish Military Industry Attaché",
 		"company": "Royal Embassy of Denmark",
 		"bio": `Joachim Holger Waldemar Christian, Prince of Denmark, Count of Monpezat, was born on 7 June 1969. His Royal Highness Prince Joachim is the son of HM Queen Margrethe II and Prince Henrik of Denmark (d. 2018). He is included in the order of succession to the Throne and may act as Regent when HM The Queen and HRH Crown Prince Frederik are abroad.<br><br>Prince Joachim’s military career started in 1987 as recruit in the Queen's Own Regiment. In 1988, Prince Joachim was appointed as a sergeant, and in 1989, he was appointed as a lieutenant of the reserve. After becoming a lieutenant, Prince Joachim served as a Platoon Commander of a tank squadron in the Prince's Own Regiment from 1989 to 1990.In 1990, Prince Joachim was appointed a first lieutenant of the reserve and in 1992, after completion of advanced training level I for officers of the reserve (VUT I), came his appointment as a captain of the reserve. From 1996 to 2004, Prince Joachim was the commander of a tank squadron in the mobilization force of the Prince's Own Regiment and, from 2005, was attached to the Danish Division’s staff as a major of the reserve.Following appointment as a lieutenant colonel of the reserve in 2011, Prince Joachim was designated as the chief of the Liaison Officers Group in Total Defence Region Fyn, Syd and Sønderjylland.From November 2015 to June 2019 Prince Joachim served as special advisor to the Danish Chief of Defence in relation to the implementation of the new total force concept, focusing on the Home Guard and personnel of the Reserve.From August 2019 to June 2020 Prince Joachim attended the 69th session of the Center for Advanced Military Studies (CHEM) and the 72nd session of the Institute of Advanced National Defense Studies (IHEDN) at École Militaire in Paris.Since September 2020 Prince Joachim is Defense Attache at the Royal Danish Embassy in Paris.`
 	},
 	"dave-leinberger": {
-		"image": "dave_leinberger.webp",
+		"image": "dave-leinberger.webp",
 		"name": "Dave Leinberger",
 		"position": "Acting Director, Army Partnerships",
 		"company": "Deputy Chief of Staff, G-9 (Installations)",
 		"bio": `Dave Leinberger assumed the role as the Chief of Army Community Partnerships in July 2024.In this position, Mr. Leinberger encourages innovation and collaboration between ourinstallations and local communities to develop partnerships that are mutually beneficial,identify cost efficiencies, reduce installation service response times, and strengthens therelationship with the local communities outside our installations. Mr. Leinberger focuses theutilization of collaborative partnership authorities to achieve these goals. These authoritiesinclude Intergovernmental Support Agreements (IGSAs), Cooperative Agreements, Mutual AidAgreements, Memorandum of Understanding, Enhanced Use Lease, and Other TransactionAuthority.<br><br>Previously, Mr. Leinberger served as the Army Community Partnership Program Manager,Assistant Chief of Staff for Installation Management, in September 2019 and maintained thatrole following the ACSIM’s transition to Deputy Chief of Staff, G-9 (Installations).`
 	},
 	"brian-liesveld": {
-		"image": "brian_liesveld.webp",
+		"image": "brian-liesveld.webp",
 		"name": "Brian Liesveld",
 		"position": "Chief Executive Officer",
 		"company": "DEFENSEWERX",
 		"bio": `Brian Liesveld currently serves as the Chief Executive Officer (CEO) for DEFENSEWERX, Inc.  In his capacity as CEO, Brian oversees operations and management of the DWX innovation hubs as well as executing Board of Director’s strategic vision.<br><br>Prior to his role as Chief Executive Officer, Brian served as the Vice President for the Cyber Innovation Center in Bossier City, LA.  In this role, Brian oversaw the operations supporting the Air Force Global Strike Command as well as Cyber Curriculum delivered to over 3 million students across the United States.<br><br>Brian’s previous roles include the Associate Director of the Defense and Security Research Institute at the University of Arizona as well as multiple roles within the Department of Defense.  Most notably, Brian spearheaded the creation of the DoDs first University Affiliated Research Center (UARC) to be established in more than 20 years. `
 	},
 	"charles-sills": {
-		"image": "charles_sills.webp",
+		"image": "charles-sills.webp",
 		"name": "Charles Sills",
 		"position": "President & CEO",
 		"company": "American Defense Alliance",
@@ -88,7 +88,7 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	As a former Naval Intelligence Officer, he held positions at the Defense Intelligence Agency, the U.S. Middle East Force, and NATO Supreme Allied Command/Atlantic; and subsequently worked in Lockheed Martin’s International Division managing strategic marketing and export licensing for defense systems as well as renewable energy technologies. His education includes an M.A. from the Fletcher School of Law and Diplomacy and an A.B. from Princeton University’s Woodrow Wilson School of Public & International Affairs.`
 	},
 	"arveice-washington": {
-		"image": "arveice_washington.webp",
+		"image": "arveice-washington.webp",
 		"name": "Arveice Washington",
 		"position": "Director, Office of Small Business Programs",
 		"company": "Office of the Secretary of the Navy",
@@ -99,7 +99,7 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	From June 2009 until January 2016, Ms. Washington assumed the duties as the TeamSubmarine Enterprise Wide Contractor Support Services Manager. She was the subjectmatter expert for management responsibilities for five support services contracts totalingexecution of over $125 million annually and oversight of 600 contractors. As theContracting Officer Representative (COR) for these contracts, Ms. Washington wasresponsible for cradle to grave requirements generation, contract award and post-awardexecution.`
 	},
 	"kimberly-buehler": {
-		"image": "kimberly_buhler.webp",
+		"image": "kimberly-buhler.webp",
 		"name": "Kimberly Buehler",
 		"position": "Director, Office of Small Business Programs",
 		"company": "U.S. Army, Department of Defense",
@@ -108,7 +108,7 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	Ms. Buehler represents the Secretary of the Army at congressional committee and subcommittee hearings on small business matters, and leads strategic inter-agency communication with the Small Business Administration, the Office of Federal Procurement Policy, the Minority Business Development Agency (Department of Commerce), and other agencies and presidential commissions.`
 	},
 	"david-canada": {
-		"image": "david_canada.webp",
+		"image": "david-canada.webp",
 		"name": "David Canada",
 		"position": "Director, Global Supplier Diversity",
 		"company": "Boeing Defense Space & Security",
@@ -123,7 +123,7 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	Giving back is a part of who David is. He serves on the board of the following non-profit organizations:  Black Alliance of Colleges & Employers (BACE), Step Afrika, Wearable Tech Ventures and Positive Deposits. David is also very passionate about STEM education and increasing the number of minorities in technology fields.  He serves as an active corporate representative for the Black Engineer of the Year Awards, Advancing Minorities Interest in Engineering as well as the National Society of Black Engineers. In addition, he was selected to be a member of the Racial Equity Task Force and is co-leader of the BGS Diversity & Inclusion Council.\n`
 	},
 	"patricia-waddell": {
-		"image": "patricia_waddell.webp",
+		"image": "patricia-waddell.webp",
 		"name": "Patricia Waddell",
 		"position": "Director, Office of IT Services, Information Technology Category (ITC), Federal Acquisition Service (FAS)",
 		"company": "U.S. General Services Administration",
@@ -136,7 +136,7 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	Patricia received her Master of Arts in Public Administration (MPA) from Bowie State University, Bowie MD, and Bachelor of Science (BS) in Adult Education and Nutrition from Cornell University, Ithaca NY. Patricia is a Certified Federal Internal Coach and trained at the Treasury Executive Institute. \n`
 	},
 	"dr-iryna-andrukh": {
-		"image": "iryna_andrukh.webp",
+		"image": "iryna-andrukh.webp",
 		"name": "Dr. Iryna Andrukh",
 		"position": "Ukraine Program Director",
 		"company": "Progress Humanity",
@@ -147,14 +147,14 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	Dr. Andrukh’s contributions extend beyond the battlefield. Following her retirement from the military due to medical reasons, she continued her work in international negotiation and conflict resolution as a civilian. She has collaborated with the United Nations and Red Cross in refugee crises and served as a volunteer at the Polish border during the early days of the 2022 war in Ukraine. Her work in these areas, coupled with her academic achievements and media recognition—including a documentary that won a gold award at the New York Film Festival—solidifies her reputation as a leading figure in conflict resolution and humanitarian efforts on the global stage.`
 	},
 	"amir-bagherpour-phd": {
-		"image": "amir_bagherpour.webp",
+		"image": "amir-bagherpour.webp",
 		"name": "Amir Bagherpour, PhD",
 		"position": "Managing Director, AI Services and Advanced Analytics",
 		"company": "Accenture Federal Services",
 		"bio": `Amir Bagherpour, Ph.D., is a Managing Director and the Analytics & Visualization Lead for Data & AI at Accenture Federal Services. He spearheads the development of advanced analytics platforms and methodologies to help organizations make more informed decisions. At Accenture, he has held various leadership roles, including head of Data & AI for Strategy & Consulting, Public Safety Lead for Data & AI, and Technical Project Lead for Applied Intelligence programs. Before joining Accenture, Dr. Bagherpour co-founded a startup focused on developing predictive analytics software. His industry experience encompasses both commercial and federal sectors. Dr. Bagherpour previously served as the Chief of the Advanced Analytics Team at the Bureau of Conflict & Stabilization Operations and subsequently as the Director of Data Analytics in the Office of the Secretary of State. Earlier in his career, he worked as an application engineer at NSK Corporation, designing bearings and motion control components for automation processes. Dr. Bagherpour holds a Ph.D. in Political Science with a specialization in Quantitative Methods from Claremont Graduate University, an MBA from the University of California Irvine, and a Bachelor of Science in Management Studies and Systems Engineering from West Point. He has published in prestigious academic journals and publications such as Foreign Affairs and Scientific American. Dr. Bagherpour is an Adjunct Senior Fellow at the Federation of American Scientists (FAS), where he focuses on the study of disinformation, conflict, and emerging technologies. He is also a senior fellow at TransResearch Consortium (TRC), an academic consortium focused on the data driven study of global power transitions. A veteran, he served honorably as an armor officer in the U.S. Army. `
 	},
 	"honorable-john-p-sean-coffey": {
-		"image": "john_coffey.webp",
+		"image": "john-coffey.webp",
 		"name": "Honorable John P. (\"Sean\") Coffey",
 		"position": "General Counsel",
 		"company": "Department of the Navy",
@@ -173,21 +173,21 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 		}
 	},
 	"bianca-henderson": {
-		"image": "bianca_henderson.webp",
+		"image": "bianca-henderson.webp",
 		"name": "Bianca Henderson",
 		"position": "Small Business Director",
 		"company": "NAVFAC HQ, Department of the Navy",
 		"bio": `Bianca Henderson serves as the Director for the Naval Facilities Engineering System Command (NAVFAC), Office of Small Business Programs (OSBP). Bianca leads 13 Small Business Professional’s across the NAVFAC enterprise with a small business spend that exceeded $5.6 billion dollars in FY-24. Bianca, has 28 years of Gov’t Contracting experience, and obtained DAWIA/FAC-C Level III Acquisition certifications. Bianca has worked for NAVFAC for 7 years and is passionate about advocating for small business utilization. She finds her job as a small business leader very meaningful and impactful. Bianca is also 11-year Marine Corps veteran.`
 	},
 	"mark-correll": {
-		"image": "mark_correll.webp",
+		"image": "mark-correll.webp",
 		"name": "Mark Correll",
 		"position": "Vice President, Federal Strategy Director",
 		"company": "HDR, Inc.",
 		"bio": `Mark Correll is the Federal Strategy Director and Director ofAir Force programs for the full-service Architect-Engineer firmHDR, Inc. In his role at HDR he spearheads development ofstrategic action plans and ensures goals are translated intoactionable capture opportunities for future program directionsas well as engaging the Department of the Air Force in allaspects of client development. Prior to joining HDR in 2022,Mr. Correll was a member of the Senior Executive Service asDeputy Assistant Secretary of the Air Force for Environment,Safety, and Infrastructure, the Air Force Deputy Civil Engineeras well as serving on active duty in the Air Force for over 29years where he commanded squadron, group and wing levelsbefore retiring as a Colonel in 2010. He is a graduate of theU.S. Air Force Academy, earned his Master of Science inEngineering Management from the Air Force Institute ofTechnology, and is a licensed professional engineer in the State of Texas.`
 	},
 	"scott-kiser": {
-		"image": "scott_kiser.webp",
+		"image": "scott-kiser.webp",
 		"name": "Scott Kiser",
 		"position": "Director, Office of Small Business Programs",
 		"company": "Office of the Secretary of the Air Force",
@@ -196,7 +196,7 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	Mr. Kiser, a Manhattan, Kansas, native, was commissioned in the U.S. Air Force in 1985 and served 27 years on active duty. He garnered extensive experience in international, major weapons system, operational and logistical contracting. Throughout his career, he held other key positions, to include Senior Contracting Official as Chief of Contracting, Headquarters Air Combat Command; Director of Contracting, Oklahoma City Air Logistics Center; the Alternate Principal Assistant Responsible for Contracting and Chief, Contracts Policy, Headquarters, U.S. Army Intelligence and Security Command; the Director of Contracting, Air Force Life Cycle Management Center, Hanscom Air Force Base, Mass; and most recently as Associate Deputy Assistant Secretary for Contracting at Headquarters U.S. Air Force, the Pentagon, Arlington, Virginia. He aided the Deputy Assistant Secretary for Contracting in leading an 8,000 military and civilian contracting organization responsible for annually executing $70 billion for acquisition of major weapon systems, logistics, special access program, operational supplies and services and resourcing worldwide contingency operations. He served as the Air Force Head of the Contracting Authority and provided policy, guidance and oversight of Air Force Acquisition and Contracting Operations. Mr. Kiser retired from active duty as a colonel in August 2012 and entered Senior Executive Service in June 2014. `
 	},
 	"dave-morrow": {
-		"image": "david_morrow.webp",
+		"image": "david-morrow.webp",
 		"name": "Dave Morrow",
 		"position": "Acting Director, Military Programs",
 		"company": "U.S. Army Corps of Engineers",
@@ -207,7 +207,7 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	Mr. Morrow holds a Bachelors of Science degree in Systems Engineering, University of Virginia,Charlottesville, Virginia, 1982.`
 	},
 	"chad-brown": {
-		"image": "chad_brown.webp",
+		"image": "chad-brown.webp",
 		"name": "Chad Brown",
 		"position": "Division Chief, Future Systems Project Office, Exploration Ground Systems",
 		"company": "National Aeronautics and Space Administration (NASA)",
@@ -222,7 +222,7 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	From 2004 to 2007 he was a Structural Engineer for the Launch Services Program (LSP). In this position, he was responsible for insight and oversight of LSP flight hardware with primary responsibility for large composite flight structures.`
 	},
 	"samuel-visner": {
-		"image": "samuel_visner.webp",
+		"image": "samuel-visner.webp",
 		"name": "Samuel Visner",
 		"position": "Director",
 		"company": "National Cybersecurity Federally Funded Research and Development Center (NCF)",
@@ -237,14 +237,14 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	            Visner holds a bachelor’s degree in international politics from Georgetown University’s School of Foreign Service. He earned a master’s degree in telecommunications from George Washington University.`
 	},
 	"walt-yates": {
-		"image": "walt_yates.webp",
+		"image": "walt-yates.webp",
 		"name": "Walt Yates, U.S. Marine Col (Ret.)",
 		"position": "Principal",
 		"company": "Walt Yates & Associates, LLC",
 		"bio": `Walt Yates & Associates provides knowledge based services in modeling & simulation for training systems, acquisition trade-space analysis, and risk management. Seventeen years of practice in design and application of simulation-based training, program development, and procurement planning for cost effective technology transition to Department of Defense users. Specific areas of expertise include cost avoidance estimation for new technology and cybersecurity policy compliance for the Risk Management Framework (RMF) and Cybersecurity Maturity Model Certification (CMMC).`
 	},
 	"doug-morato": {
-		"image": "doug_morato.webp",
+		"image": "doug-morato.webp",
 		"name": "Doug Morato",
 		"position": "Microsoft Cyber Security SME",
 		"company": "Anamo, Inc.",
@@ -257,14 +257,14 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	I have broad experience providing secure architecture recommendations aligned with the Information Security Policies and industry best practices, performing threat modeling, conducting vulnerability assessments, web application, mobile application and network penetration tests, secure/static coding analysis, application security assessments, automating and embedding security in SDLC, fostering Security in DevOps work streams.`
 	},
 	"jonathan-geotsch": {
-		"image": "jonathan_geotsch.webp",
+		"image": "jonathan-geotsch.webp",
 		"name": "Jonathan Geotsch",
 		"position": "CEO",
 		"company": "Anamo, Inc.",
 		"bio": `Anamo CDM, a patent-pending commercial-grade CDM Cybersecurity platform, has answered the call of CISA, the DHS, and other requests from the DoD Supply-Chain.<br/<br/>Harnessing the power of advanced ML and Generative AI, Anamo CDM is pushing toward the delivery of “Predictive Cybersecurity Threat Extrapolation.” How so? Anamo collects essential User, Group, Risk, Permission, Vulnerability, Software, History, and Forensic data and dynamically delivers that requested information in near Real-Time. Due to the platform service delivery, Anamo has captured broad interest from US- based enterprise businesses and many members/agencies across the US Aerospace and Defense supply chain. Subsequently, Anamo has enjoyed receiving invitations to visits at both the White House and the Pentagon.`
 	},
 	"thad-altman": {
-		"image": "thad_altman.webp",
+		"image": "thad-altman.webp",
 		"name": "Thad Altman",
 		"position": "Executive Director & CEO",
 		"company": "The Astronauts Memorial Foundation",
@@ -277,7 +277,7 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	Thad has lived in the Space Coast for more than fifty years. He resides in Rockledge with his wife Mary Pat, and is the proud father of three children; McKenzie, Hunter, and Sullivan. He recently has become a grandfather to a baby girl, Amelia.`
 	},
 	"gavin-brown": {
-		"image": "gavin_brown.webp",
+		"image": "gavin-brown.webp",
 		"name": "Gavin Brown",
 		"position": "CEO",
 		"company": "Dynamic Predictive Engineering",
@@ -292,7 +292,7 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	The MLI will provide vertical and horizontal rocket launch capability as well as a control center for post-launch operations. The MLI leverages Michigan’s unique advantages for polar orbit satellite launches: location, infrastructure, skilled workforce, economy and advanced manufacturing capability.`
 	},
 	"frank-a-dibello": {
-		"image": "frank_dibello.webp",
+		"image": "frank-dibello.webp",
 		"name": "Frank A. DiBello",
 		"position": "CEO",
 		"company": "SOLV, LLC",
@@ -311,7 +311,7 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	Mr. DiBello has taught at the Defense Systems Management College and International Space University. He received his Bachelor of Science degree in Mathematics from Villanova University and completed graduate study work at American University and George Washington University.`
 	},
 	"matt-bocchino": {
-		"image": "matt_bocchino.webp",
+		"image": "matt-bocchino.webp",
 		"name": "Matt Bocchino",
 		"position": "Director",
 		"company": "Cecil Airport and Spaceport, Jacksonville Aviation Authority",
@@ -320,7 +320,7 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	Mr. Bocchino earned his bachelor’s degree in History and a master’s degree in Business Administration from Jacksonville University. He is an Accredited Member (A.A.E.) of the American Association of Airport Executives (AAAE). He also holds a private pilot’s license.`
 	},
 	"edgar-campa-palafox": {
-		"image": "edgar_campa-palafox.webp",
+		"image": "edgar-campa-palafox.webp",
 		"name": "Edgar Campa-Palafox",
 		"position": "Vice President, Business Development",
 		"company": "Economic Development Commission of Florida's Space Coast",
@@ -337,7 +337,7 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	Dedicated to lifelong learning, Edgar has earned several professional industry designations, including theCertified Economic Developer (CEcD) from IEDC, the Master Economic Development Practitioner (MEDP) fromthe Advanced Economic Development Leadership (AEDL) program —a collaboration among Clemson University,Texas Christian University, the University of Southern Mississippi, and the University of New Mexico— and aBusiness Incubation Management (BIM) certificate from the International Business Innovation Association (InBIA).`
 	},
 	"jimmy-moffitt": {
-		"image": "jimmy_moffitt.webp",
+		"image": "jimmy-moffitt.webp",
 		"name": "Jimmy Moffitt",
 		"position": "Vice President, Spaceport Operations",
 		"company": "Space Florida",
@@ -348,14 +348,14 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	Prior to Space Florida, Jimmy supported management of leases and development at the general aviation and International airports at Jacksonville Aviation Authority and was integral to the success of Cecil Spaceport’s Horizontal launch license and Spaceport development area at Cecil. Jimmy has always had a passion for aviation and management, which led him to pursue a Bachelor of Science in Aviation Management & Safety, and a master’s degree in Technical Management from Embry-Riddle Aeronautical University (ERAU).`
 	},
 	"ashley-pilipiszyn": {
-		"image": "ashley_pilipiszyn.webp",
+		"image": "ashley-pilipiszyn.webp",
 		"name": "Ashley Pilipiszyn",
 		"position": "Founder/CEO",
 		"company": "Besxar Industries, Inc.",
 		"bio": `Ashley is an applied scientist-turned-space industrialist, deep tech angel investor, and certified pilot. Her mission is to help unlock the market potential of in-space manufacturing while also advancing U.S. aerospace and defense capabilities with AI. She’s an expert authority on AI applications — as an early employee and the first Technical Director to the CTO, she led OpenAI’s early research and commercial product releases including MuseNet, Jukebox, Rubik’s Cube, GPT-3, and DALL-E. She also created OpenAI’s developer ecosystem program where she helped launch a variety of partner applications and mentor startups powered by GPT-3. Previously, she oversaw the design, development, and launch of DOE-funded “Grid Resilience & Intelligence Platform” (GRIP) at SLAC National Accelerator Lab. GRIP leveraged AI to anticipate, absorb, and recover from grid events such as wildfires, ice storms, or cyberattacks. Now as an entrepreneur, she aims to revolutionize semiconductor manufacturing to help enable the rapid growth of AI infrastructure for the U.S. government and commercial partners alike.`
 	},
 	"gerald-norris": {
-		"image": "gerald_norris.webp",
+		"image": "gerald-norris.webp",
 		"name": "Gerald Norris",
 		"position": "Director, Procurement",
 		"company": "NASA's John F. Kennedy Space Center",
@@ -370,7 +370,7 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 	He holds a Bachelor of Science in business administration from Park University in Parkville, Missouri.`
 	},
 	"dave-robau": {
-		"image": "dave_robau.webp",
+		"image": "dave-robau.webp",
 		"name": "Dave Robau, CEM, LEED AP BD+C",
 		"position": "CEO & Chief Scientist",
 		"company": "National Energy USA",
