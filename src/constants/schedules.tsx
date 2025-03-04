@@ -690,7 +690,7 @@ export const SCHEDULES = [
                                 "name": "James Simpson",
                                 "title": "Major General, U.S. Army (Ret.), Executive Director of Federal Strategic Initiatives",
                                 "affiliation": "Modtech Solutions LLC",
-                                "photo": "james-simpson.webp"
+                                //"photo": "james-simpson.webp"
                             }
                         ]
                     },
@@ -738,7 +738,7 @@ export const SCHEDULES = [
                                 "name": "Linda Eshiwani-Nate",
                                 "title": "Trade Commissioner",
                                 "affiliation": "Consulate General of Canada in Atlanta",
-                                "photo": "linda-eshiwani-nate.webp"
+                                //"photo": "linda-eshiwani-nate.webp"
                             }
                         ]
                     },
