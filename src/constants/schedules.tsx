@@ -344,7 +344,9 @@ export const SCHEDULES = [
                                 "name": "David Fraley",
                                 "title": "Chief Technology Officer",
                                 "affiliation": "Secure IT Service Management, Inc.",
-                                "photo": "david-fraley.webp"
+                                "photo": "david-fraley.webp",
+                                "sponsor": "Silver Sponsor",
+                                "sponsorStyle": "bg-gray-300 text-white",
                             },
                             {
                                 "name": "Kareem A. Sykes",
@@ -417,6 +419,8 @@ export const SCHEDULES = [
                                 "title": "Chief Operating Officer",
                                 "affiliation": "Modtech Solutions, LLC",
                                 //"photo": "tim-didjurgis.webp"
+                                "sponsor": "Platinum Sponsor",
+                                "sponsorStyle": "bg-sky-300 text-slate-900",
                             }
                         ]
                     },
@@ -692,6 +696,8 @@ export const SCHEDULES = [
                             },
                             {
                                 "name": "James Simpson, Major General, U.S. Army (Ret.)",
+                                "sponsor": "Platinum Sponsor",
+                                "sponsorStyle": "bg-sky-300 text-slate-900",
                                 "title": "Executive Director of Federal Strategic Initiatives",
                                 "affiliation": "Modtech Solutions, LLC",
                                 //"photo": "james-simpson.webp"
