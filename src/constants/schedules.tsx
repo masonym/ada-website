@@ -371,7 +371,7 @@ export const SCHEDULES = [
                         "title": "CONGRESSIONAL KEYNOTE ADDRESS",
                         "speakers": [
                             {
-                                "name": "Representative Rob Wittman",
+                                "name": "Representative Rob Wittman (R-VA)",
                                 "title": "Vice Chairman, House Armed Services Committee",
                                 "affiliation": "Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding Caucus",
                                 "photo": "rob-wittman.webp"
@@ -465,7 +465,7 @@ export const SCHEDULES = [
                         "title": "How to Win SBIR/STTR Defense Contracts",
                         "speakers": [
                             {
-                                "name": "Aimee Zick",
+                                "name": "Aimee Ackerman",
                                 "title": "Senior Business Development Executive",
                                 "affiliation": "Improve Group and Project Director, NORAD/Cheyenne Mountain Renovation",
                                 //"photo": "aimee-zick.webp"
