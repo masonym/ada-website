@@ -253,7 +253,8 @@ export const SCHEDULES = [
                 "items": [
                     {
                         "time": "3:00 PM - 6:00 PM",
-                        "title": "Exhibitor Set-up"
+                        "title": "Exhibitor Set-up",
+                        "location": "Galleria 5-7",
                     }
                 ]
             },
@@ -343,7 +344,7 @@ export const SCHEDULES = [
                                 "name": "David Fraley",
                                 "title": "Chief Technology Officer",
                                 "affiliation": "Secure IT Service Management, Inc.",
-                                //"photo": "david-fraley.webp"
+                                "photo": "david-fraley.webp"
                             },
                             {
                                 "name": "Kareem A. Sykes",
