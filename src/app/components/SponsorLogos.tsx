@@ -135,6 +135,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                                         width={isTopTier ? desktopSize.width * 1.2 : desktopSize.width}
                                                         height={isTopTier ? desktopSize.height * 1.2 : desktopSize.height}
                                                         priority={sponsor.priority || isTopTier}
+                                                        unoptimized={true}
                                                         sizes={`${isTopTier ?
                                                             '(max-width: 640px) 320px, (max-width: 1024px) 480px, 860px' :
                                                             '(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px'}`}
@@ -150,6 +151,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                                     width={isTopTier ? desktopSize.width * 1.2 : desktopSize.width}
                                                     height={isTopTier ? desktopSize.height * 1.2 : desktopSize.height}
                                                     priority={sponsor.priority || isTopTier}
+                                                    unoptimized={true}
                                                     sizes={`${isTopTier ?
                                                         '(max-width: 640px) 320px, (max-width: 1024px) 480px, 860px' :
                                                         '(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px'}`}
