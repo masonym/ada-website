@@ -263,15 +263,18 @@ export const SCHEDULES = [
                 "items": [
                     {
                         "time": "7:30 AM",
-                        "title": "On-Site Attendee Registration & Check-in"
+                        "title": "On-Site Attendee Registration & Check-in",
+                        "location": "Galleria Level, Pre-Function",
                     },
                     {
                         "time": "7:30 AM - 8:30 AM",
-                        "title": "Networking Breakfast with Exhibitors"
+                        "title": "Networking Breakfast with Exhibitors",
+                        "location": "Galleria 5-7",
                     },
                     {
                         "time": "7:30 AM - 8:30 AM",
-                        "title": "Matchmaking Sign-up"
+                        "title": "Matchmaking Sign-up",
+                        "location": "Galleria Level, Pre-Function",
                     },
                     {
                         "time": "8:30 AM",
@@ -283,7 +286,8 @@ export const SCHEDULES = [
                                 "affiliation": "American Defense Alliance",
                                 "photo": "charles-sills.webp"
                             }
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "8:35 AM",
@@ -294,7 +298,8 @@ export const SCHEDULES = [
                                 "title": "GA/Atlanta Chamber of Commerce",
                                 "photo": ""
                             }
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "8:45 AM",
@@ -306,7 +311,8 @@ export const SCHEDULES = [
                                 "affiliation": "DEFENSEWERX",
                                 "photo": "teresa-harrington.webp"
                             }
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "9:15 AM",
@@ -318,7 +324,8 @@ export const SCHEDULES = [
                                 "affiliation": "Deputy Chief of Staff, G-9 (Installations)",
                                 "photo": "dave-leinberger.webp"
                             }
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "9:45 AM",
@@ -330,7 +337,8 @@ export const SCHEDULES = [
                                 "affiliation": "Office of the Assistant Secretary of the Army for Installations, Energy and Environment",
                                 "photo": "brandon-cockrell.webp"
                             }
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "10:20 AM",
@@ -366,7 +374,8 @@ export const SCHEDULES = [
                             //    "affiliation": "Defense Industrial Base (DIB), Cybersecurity Collaboration Center (CCC), National Security Agency (NSA)",
                             //    //"photo": "bailey-bickley.webp"
                             //}
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "11:20 AM",
@@ -378,7 +387,8 @@ export const SCHEDULES = [
                                 "affiliation": "Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding Caucus",
                                 "photo": "rob-wittman.webp"
                             }
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "11:35 AM",
@@ -408,7 +418,8 @@ export const SCHEDULES = [
                             //    "affiliation": "U.S. Defense Logistics Agency",
                             //    "photo": "daniele-kurze.webp"
                             //}
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "12:10 PM",
@@ -422,11 +433,13 @@ export const SCHEDULES = [
                                 "sponsor": "Platinum Sponsor",
                                 "sponsorStyle": "bg-sky-300 text-slate-900",
                             }
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "12:30 PM",
-                        "title": "Networking Lunch with Exhibitors"
+                        "title": "Networking Lunch with Exhibitors",
+                        "location": "Galleria 5-7",
                     },
                     {
                         "time": "1:30 PM",
@@ -462,7 +475,8 @@ export const SCHEDULES = [
                             //    "affiliation": "U.S. Army Futures Command",
                             //    "photo": "austin-johnson.webp"
                             //}
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "2:15 PM",
@@ -474,7 +488,8 @@ export const SCHEDULES = [
                                 "affiliation": "Improve Group and Project Director, NORAD/Cheyenne Mountain Renovation",
                                 //"photo": "aimee-zick.webp"
                             }
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "2:30 PM",
@@ -504,7 +519,8 @@ export const SCHEDULES = [
                             //    "affiliation": "U.S. National Aeronautics and Space Administration (NASA)",
                             //    "photo": "andre-sheppard.webp"
                             //}
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "3:15 PM",
@@ -513,7 +529,7 @@ export const SCHEDULES = [
                             {
                                 "name": "Dave Robau, LEED AP",
                                 "title": "Moderator, Executive Director, Gulf Coast Energy Network",
-                                "affiliation": "CEO and Chief Scientist, National Energy U.S.A.",
+                                "affiliation": "CEO and Chief Scientist, National Energy USA.",
                                 "photo": "dave-robau.webp"
                             },
                             //{
@@ -556,7 +572,8 @@ export const SCHEDULES = [
                             //    "affiliation": "Leidos Commercial Energy Solutions",
                             //    "photo": "josh-wepman.webp"
                             //}
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "4:00 PM",
@@ -568,15 +585,18 @@ export const SCHEDULES = [
                                 "affiliation": "American Defense Alliance",
                                 "photo": "charles-sills.webp"
                             }
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "4:00 PM - 5:30 PM",
-                        "title": "Matchmaking Session I"
+                        "title": "Matchmaking Session I",
+                        "location": "Galleria 1",
                     },
                     {
                         "time": "5:30 PM - 7:30 PM",
                         "title": "VIP Networking Reception",
+                        "location": "Galleria 5-7",
                         "description": "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests"
                     }
                 ]
@@ -586,7 +606,8 @@ export const SCHEDULES = [
                 "items": [
                     {
                         "time": "7:30 AM - 8:30 AM",
-                        "title": "Networking Breakfast with Exhibitors"
+                        "title": "Networking Breakfast with Exhibitors",
+                        "location": "Galleria 5-7",
                     },
                     {
                         "time": "8:30 AM",
@@ -598,7 +619,8 @@ export const SCHEDULES = [
                                 "affiliation": "American Defense Alliance",
                                 "photo": "charles-sills.webp"
                             }
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "8:35 AM",
@@ -634,7 +656,8 @@ export const SCHEDULES = [
                             //    "affiliation": "GENERAL DYNAMICS Mission Systems",
                             //    "photo": "laura-hooks.webp"
                             //}
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "9:35 AM",
@@ -646,7 +669,8 @@ export const SCHEDULES = [
                             //    "affiliation": "House Select Committee on the Strategic Competition between the U.S. and the Chinese Communist Party",
                             //    "photo": "neal-dunn.webp"
                             //}
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "9:45 AM",
@@ -658,7 +682,8 @@ export const SCHEDULES = [
                                 "affiliation": "The Heritage Foundation",
                                 "photo": "brent-sadler.webp"
                             }
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "10:05 AM",
@@ -670,7 +695,8 @@ export const SCHEDULES = [
                                 "affiliation": "U.S. Department of Commerce and Owner, nDemand Consulting Services Inc.",
                                 "photo": "oscar-frazier.webp"
                             }
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "10:30 AM",
@@ -682,7 +708,8 @@ export const SCHEDULES = [
                             //    "affiliation": "Acquisition, Logistics & Technology",
                             //    "photo": "robert-collins.webp"
                             //}
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "11:00 AM",
@@ -702,7 +729,8 @@ export const SCHEDULES = [
                                 "affiliation": "Modtech Solutions, LLC",
                                 //"photo": "james-simpson.webp"
                             }
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "11:20 AM",
@@ -738,7 +766,8 @@ export const SCHEDULES = [
                             //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC)",
                             //    "photo": "cindy-readal.webp"
                             //}
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "12:00 PM",
@@ -750,7 +779,8 @@ export const SCHEDULES = [
                                 "affiliation": "Consulate General of Canada in Atlanta",
                                 //"photo": "linda-eshiwani-nate.webp"
                             }
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "12:10 PM",
@@ -774,7 +804,8 @@ export const SCHEDULES = [
                             //    "affiliation": "Anniston Army Depot",
                             //    "photo": "shynta-hudson.webp"
                             //}
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "12:45 PM",
@@ -786,7 +817,8 @@ export const SCHEDULES = [
                                 "title": "President & CEO",
                                 "photo": "charles-sills.webp"
                             }
-                        ]
+                        ],
+                        "location": "Galleria 4",
                     }
                 ]
             }
