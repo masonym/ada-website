@@ -85,7 +85,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
       <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Event Agenda</h1>
       {isEventFuture && (
         <p className="text-l font-bold text-center mb-8 text-slate-600">
-          The Event Agenda is still pending, please check back later as more information is added!
+          The Event Agenda is still pending, please check back late for more information! We appreciate your patience as updates are made!
         </p>
       )}
 
