@@ -131,6 +131,14 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         width: 250,
                         height: 45,
                     },
+                    {
+                        name: "CSS Energy Solutions",
+                        logo: "/events/2025SDPC/sponsors/css-energy.webp",
+                        website: "https://cssenergysolutions.com/",
+                        width: 200,
+                        height: 200,
+                    },
+
                 ],
             },
             {
