@@ -415,7 +415,7 @@ export const SCHEDULES = [
                             {
                                 "name": "Tim Didjurgis",
                                 "title": "Chief Operating Officer",
-                                "affiliation": "Modtech Solutions LLC",
+                                "affiliation": "Modtech Solutions, LLC",
                                 //"photo": "tim-didjurgis.webp"
                             }
                         ]
@@ -692,8 +692,8 @@ export const SCHEDULES = [
                             },
                             {
                                 "name": "James Simpson, Major General, U.S. Army (Ret.)",
-                                "title": "U.S. Army (Ret.), Executive Director of Federal Strategic Initiatives",
-                                "affiliation": "Modtech Solutions LLC",
+                                "title": "Executive Director of Federal Strategic Initiatives",
+                                "affiliation": "Modtech Solutions, LLC",
                                 //"photo": "james-simpson.webp"
                             }
                         ]
