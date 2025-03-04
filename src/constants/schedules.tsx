@@ -561,6 +561,7 @@ export const SCHEDULES = [
                             {
                                 "name": "Charles F. Sills",
                                 "title": "President & CEO",
+                                "affiliation": "American Defense Alliance",
                                 "photo": "charles-sills.webp"
                             }
                         ]
@@ -590,6 +591,7 @@ export const SCHEDULES = [
                             {
                                 "name": "Charles F. Sills",
                                 "title": "President & CEO",
+                                "affiliation": "American Defense Alliance",
                                 "photo": "charles-sills.webp"
                             }
                         ]
@@ -684,6 +686,7 @@ export const SCHEDULES = [
                         "speakers": [
                             {
                                 "name": "Charles F. Sills",
+                                "affiliation": "American Defense Alliance",
                                 "title": "President & CEO",
                                 "photo": "charles-sills.webp"
                             },
@@ -773,6 +776,7 @@ export const SCHEDULES = [
                         "speakers": [
                             {
                                 "name": "Charles F. Sills",
+                                "affiliation": "American Defense Alliance",
                                 "title": "President & CEO",
                                 "photo": "charles-sills.webp"
                             }
