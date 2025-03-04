@@ -688,8 +688,8 @@ export const SCHEDULES = [
                                 "photo": "charles-sills.webp"
                             },
                             {
-                                "name": "James Simpson",
-                                "title": "Major General, U.S. Army (Ret.), Executive Director of Federal Strategic Initiatives",
+                                "name": "James Simpson, Major General, U.S. Army (Ret.)",
+                                "title": "U.S. Army (Ret.), Executive Director of Federal Strategic Initiatives",
                                 "affiliation": "Modtech Solutions LLC",
                                 //"photo": "james-simpson.webp"
                             }
