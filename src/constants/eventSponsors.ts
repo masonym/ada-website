@@ -428,6 +428,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         width: 280,
                         height: 51,
                     },
+                    {
+                        name: "CPISYS",
+                        logo: "/events/2025NMCPC/sponsors/cpisys.webp",
+                        website: "https://cpisys.com/",
+                        width: 270,
+                        height: 200,
+                    },
                 ],
             },
             {
@@ -454,6 +461,20 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                         website: "https://centurioncg.com/",
                         width: 280,
                         height: 51,
+                    },
+                    {
+                        name: "CPISYS",
+                        logo: "/events/2025NMCPC/sponsors/cpisys.webp",
+                        website: "https://cpisys.com/",
+                        width: 270,
+                        height: 200,
+                    },
+                    {
+                        name: "UNICOR",
+                        logo: "/events/2025NMCPC/sponsors/unicor.webp",
+                        website: "https://www.unicor.gov/",
+                        width: 270,
+                        height: 200,
                     },
                 ],
             }
