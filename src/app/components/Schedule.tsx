@@ -149,7 +149,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                             />
                           )}
                           <div>
-                            <div className="font-semibold text-lg">{speaker.name} <span className={`rounded-lg mx-1 text-sm px-2 py-1 ${speaker.sponsorStyle}`}>{speaker.sponsor}</span></div>
+                            <div className="font-semibold text-lg md:block flex flex-col">{speaker.name} <span className={`w-fit rounded-lg md:mx-1 text-sm px-2 py-1 ${speaker.sponsorStyle}`}>{speaker.sponsor}</span></div>
                             {speaker.title && <div className="text-sm text-gray-600">{speaker.title}</div>}
                             {speaker.affiliation && <div className="text-sm text-gray-600">{speaker.affiliation}</div>}
                           </div>
