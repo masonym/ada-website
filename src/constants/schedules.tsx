@@ -278,7 +278,7 @@ export const SCHEDULES = [
                         "speakers": [
                             {
                                 "name": "Charles F. Sills",
-                                "title": "Summit Moderator",
+                                "title": "Preisdent & CEO",
                                 "affiliation": "American Defense Alliance",
                                 "photo": "charles-sills.webp"
                             }
@@ -315,7 +315,7 @@ export const SCHEDULES = [
                                 "name": "David Leinberger",
                                 "title": "Acting Director, Army Partnerships",
                                 "affiliation": "Deputy Chief of Staff, G-9 (Installations)",
-                                "photo": "david-leinberger.webp"
+                                "photo": "dave-leinberger.webp"
                             }
                         ]
                     },
@@ -326,7 +326,7 @@ export const SCHEDULES = [
                             {
                                 "name": "Brandon Cockrell",
                                 "title": "Deputy Assistant Secretary of the Army for Energy and Sustainability",
-                                "affiliation": "Installations, Energy & Environment",
+                                "affiliation": "Office of the Assistant Secretary of the Army for Installations, Energy and Environment",
                                 "photo": "brandon-cockrell.webp"
                             }
                         ]
@@ -343,7 +343,7 @@ export const SCHEDULES = [
                                 "name": "David Fraley",
                                 "title": "Chief Technology Officer",
                                 "affiliation": "Secure IT Service Management, Inc.",
-                                "photo": "david-fraley.webp"
+                                //"photo": "david-fraley.webp"
                             },
                             {
                                 "name": "Kareem A. Sykes",
@@ -351,12 +351,18 @@ export const SCHEDULES = [
                                 "affiliation": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of Defense",
                                 "photo": "kareem-sykes.webp"
                             },
-                            {
-                                "name": "Peter A. DeLuca",
-                                "title": "Business Development Director",
-                                "affiliation": "Cybersecurity Collaboration Center (CCC), National Security Agency (NSA)",
-                                "photo": "peter-deluca.webp"
-                            }
+                            //{
+                            //    "name": "Peter A. DeLuca",
+                            //    "title": "Business Development Director",
+                            //    "affiliation": "Cybersecurity Collaboration Center (CCC), National Security Agency (NSA)",
+                            //    //"photo": "peter-deluca.webp"
+                            //}
+                            //{
+                            //    "name": "Bailey Bickley",
+                            //    "title": "Chief",
+                            //    "affiliation": "Defense Industrial Base (DIB), Cybersecurity Collaboration Center (CCC), National Security Agency (NSA)",
+                            //    //"photo": "bailey-bickley.webp"
+                            //}
                         ]
                     },
                     {
@@ -381,24 +387,24 @@ export const SCHEDULES = [
                                 "affiliation": "CGI Federal",
                                 "photo": "darlene-coen.webp"
                             },
+                            //{
+                            //    "name": "Wesley J. Jefferies",
+                            //    "title": "Industry Liaison, OUSD (A&S) Office of Industrial Base Policy",
+                            //    "affiliation": "Industrial Base Analysis and Sustainment (IBAS) Program, U.S. Department of Defense",
+                            //    "photo": "wesley-jefferies.webp"
+                            //},
                             {
-                                "name": "Wesley J. Jefferies",
-                                "title": "Industry Liaison, OUSD (A&S) Office of Industrial Base Policy",
-                                "affiliation": "Industrial Base Analysis and Sustainment (IBAS) Program, U.S. Department of Defense",
-                                "photo": "wesley-jefferies.webp"
-                            },
-                            {
-                                "name": "George Nichol",
+                                "name": "George Nicol",
                                 "title": "Deputy Program Director, Contract Holders and Industry Relations",
                                 "affiliation": "NASA SEWP Program Office",
-                                "photo": "george-nichol.webp"
+                                "photo": "george-nicol.webp"
                             },
-                            {
-                                "name": "Daniele Kurze",
-                                "title": "Executive Director, Small Business Programs",
-                                "affiliation": "U.S. Defense Logistics Agency",
-                                "photo": "daniele-kurze.webp"
-                            }
+                            //{
+                            //    "name": "Daniele Kurze",
+                            //    "title": "Executive Director, Small Business Programs",
+                            //    "affiliation": "U.S. Defense Logistics Agency",
+                            //    "photo": "daniele-kurze.webp"
+                            //}
                         ]
                     },
                     {
@@ -409,7 +415,7 @@ export const SCHEDULES = [
                                 "name": "Tim Didjurgis",
                                 "title": "Chief Operating Officer",
                                 "affiliation": "Modtech Solutions LLC",
-                                "photo": "tim-didjurgis.webp"
+                                //"photo": "tim-didjurgis.webp"
                             }
                         ]
                     },
@@ -421,17 +427,17 @@ export const SCHEDULES = [
                         "time": "1:30 PM",
                         "title": "Army Corps of Engineers – Projects & Contracts",
                         "speakers": [
-                            {
-                                "name": "David Morrow",
-                                "title": "Acting Director, Military Programs",
-                                "affiliation": "U.S. Army Corps of Engineers",
-                                "photo": "david-morrow.webp"
-                            },
+                            //{
+                            //    "name": "David Morrow",
+                            //    "title": "Acting Director, Military Programs",
+                            //    "affiliation": "U.S. Army Corps of Engineers",
+                            //    "photo": "david-morrow.webp"
+                            //},
                             {
                                 "name": "Sonya D. Rodgers",
                                 "title": "Deputy Director, Office of Small Business Programs",
                                 "affiliation": "U.S. Army Corps of Engineers – Mobile District",
-                                "photo": "sonya-rodgers.webp"
+                                "photo": "sonya-d-rodgers.webp"
                             },
                             {
                                 "name": "Sherrie Cordi",
@@ -439,18 +445,18 @@ export const SCHEDULES = [
                                 "affiliation": "U.S. Army Corps of Engineers – Memphis District",
                                 "photo": "sherrie-cordi.webp"
                             },
-                            {
-                                "name": "Tonya D. Willis",
-                                "title": "Deputy Director, Office of Small Business Programs",
-                                "affiliation": "U.S. Army Corps of Engineers – Charleston District",
-                                "photo": "tonya-willis.webp"
-                            },
-                            {
-                                "name": "Austin J. Johnson",
-                                "title": "Deputy Director, Office of Small Business Programs",
-                                "affiliation": "U.S. Army Futures Command",
-                                "photo": "austin-johnson.webp"
-                            }
+                            //{
+                            //    "name": "Tonya D. Willis",
+                            //    "title": "Deputy Director, Office of Small Business Programs",
+                            //    "affiliation": "U.S. Army Corps of Engineers – Charleston District",
+                            //    "photo": "tonya-willis.webp"
+                            //},
+                            //{
+                            //    "name": "Austin J. Johnson",
+                            //    "title": "Deputy Director, Office of Small Business Programs",
+                            //    "affiliation": "U.S. Army Futures Command",
+                            //    "photo": "austin-johnson.webp"
+                            //}
                         ]
                     },
                     {
@@ -461,7 +467,7 @@ export const SCHEDULES = [
                                 "name": "Aimee Zick",
                                 "title": "Senior Business Development Executive",
                                 "affiliation": "Improve Group and Project Director, NORAD/Cheyenne Mountain Renovation",
-                                "photo": "aimee-zick.webp"
+                                //"photo": "aimee-zick.webp"
                             }
                         ]
                     },
@@ -469,30 +475,30 @@ export const SCHEDULES = [
                         "time": "2:30 PM",
                         "title": "Air Force & Space Force Acquisition Update",
                         "speakers": [
-                            {
-                                "name": "Laura A. Fuller",
-                                "title": "Operational Imperatives Field Support Team (SAF/AQCP)",
-                                "affiliation": "Office of the Deputy Assistant Secretary (Contracting), United States Air Force",
-                                "photo": "laura-fuller.webp"
-                            },
-                            {
-                                "name": "Tim Inman",
-                                "title": "Small Business Director, Air Force Sustainment Center (AFSC)",
-                                "affiliation": "Air Force Materiel Command (AFMC), Warner Robins Air Force Base (AFB)",
-                                "photo": "tim-inman.webp"
-                            },
-                            {
-                                "name": "Sherri Richardson",
-                                "title": "Director Small Business Programs, U.S. Space Force",
-                                "affiliation": "Patrick Air Force Base",
-                                "photo": "sherri-richardson.webp"
-                            },
-                            {
-                                "name": "Andre Sheppard",
-                                "title": "Office of Industry Procurement, John F Kennedy Space Center",
-                                "affiliation": "U.S. National Aeronautics and Space Administration (NASA)",
-                                "photo": "andre-sheppard.webp"
-                            }
+                            //{
+                            //    "name": "Laura A. Fuller",
+                            //    "title": "Operational Imperatives Field Support Team (SAF/AQCP)",
+                            //    "affiliation": "Office of the Deputy Assistant Secretary (Contracting), United States Air Force",
+                            //    "photo": "laura-fuller.webp"
+                            //},
+                            //{
+                            //    "name": "Tim Inman",
+                            //    "title": "Small Business Director, Air Force Sustainment Center (AFSC)",
+                            //    "affiliation": "Air Force Materiel Command (AFMC), Warner Robins Air Force Base (AFB)",
+                            //    "photo": "tim-inman.webp"
+                            //},
+                            //{
+                            //    "name": "Sherri Richardson",
+                            //    "title": "Director Small Business Programs, U.S. Space Force",
+                            //    "affiliation": "Patrick Air Force Base",
+                            //    "photo": "sherri-richardson.webp"
+                            //},
+                            //{
+                            //    "name": "Andre Sheppard",
+                            //    "title": "Office of Industry Procurement, John F Kennedy Space Center",
+                            //    "affiliation": "U.S. National Aeronautics and Space Administration (NASA)",
+                            //    "photo": "andre-sheppard.webp"
+                            //}
                         ]
                     },
                     {
@@ -505,46 +511,46 @@ export const SCHEDULES = [
                                 "affiliation": "CEO and Chief Scientist, National Energy U.S.A.",
                                 "photo": "dave-robau.webp"
                             },
-                            {
-                                "name": "Deborah Loomis",
-                                "title": "Senior Advisor for Climate Change to the Secretary of the Navy",
-                                "photo": "deborah-loomis.webp"
-                            },
-                            {
-                                "name": "Captain Newt McKissick",
-                                "title": "Military Deputy Director, Energy Portfolio",
-                                "affiliation": "Defense Innovation Unit (DIU), U.S. Department of Defense",
-                                "photo": "newt-mckissick.webp"
-                            },
-                            {
-                                "name": "Kirk A. Philips",
-                                "title": "Director, Office of Energy Assurance (OEA)",
-                                "affiliation": "U.S. Air Force Civil Engineer Center (AFCEC)",
-                                "photo": "kirk-philips.webp"
-                            },
-                            {
-                                "name": "Matthew Haupt, PE, CPP, CEM",
-                                "title": "NAVFAC Energy Director",
-                                "photo": "matthew-haupt.webp"
-                            },
-                            {
-                                "name": "John A. Kliem, PE, CEM",
-                                "title": "Director, Federal Government Strategic Affairs",
-                                "affiliation": "Johnson Controls Federal Systems",
-                                "photo": "john-kliem.webp"
-                            },
-                            {
-                                "name": "David Trail",
-                                "title": "Director, Government and External Relations (S-7)",
-                                "affiliation": "Marine Corps Air Station Beaufort",
-                                "photo": "david-trail.webp"
-                            },
-                            {
-                                "name": "Josh Wepman",
-                                "title": "Vice President and Chief Technology Officer",
-                                "affiliation": "Leidos Commercial Energy Solutions",
-                                "photo": "josh-wepman.webp"
-                            }
+                            //{
+                            //    "name": "Deborah Loomis",
+                            //    "title": "Senior Advisor for Climate Change to the Secretary of the Navy",
+                            //    "photo": "deborah-loomis.webp"
+                            //},
+                            //{
+                            //    "name": "Captain Newt McKissick",
+                            //    "title": "Military Deputy Director, Energy Portfolio",
+                            //    "affiliation": "Defense Innovation Unit (DIU), U.S. Department of Defense",
+                            //    "photo": "newt-mckissick.webp"
+                            //},
+                            //{
+                            //    "name": "Kirk A. Philips",
+                            //    "title": "Director, Office of Energy Assurance (OEA)",
+                            //    "affiliation": "U.S. Air Force Civil Engineer Center (AFCEC)",
+                            //    "photo": "kirk-philips.webp"
+                            //},
+                            //{
+                            //    "name": "Matthew Haupt, PE, CPP, CEM",
+                            //    "title": "NAVFAC Energy Director",
+                            //    "photo": "matthew-haupt.webp"
+                            //},
+                            //{
+                            //    "name": "John A. Kliem, PE, CEM",
+                            //    "title": "Director, Federal Government Strategic Affairs",
+                            //    "affiliation": "Johnson Controls Federal Systems",
+                            //    "photo": "john-kliem.webp"
+                            //},
+                            //{
+                            //    "name": "David Trail",
+                            //    "title": "Director, Government and External Relations (S-7)",
+                            //    "affiliation": "Marine Corps Air Station Beaufort",
+                            //    "photo": "david-trail.webp"
+                            //},
+                            //{
+                            //    "name": "Josh Wepman",
+                            //    "title": "Vice President and Chief Technology Officer",
+                            //    "affiliation": "Leidos Commercial Energy Solutions",
+                            //    "photo": "josh-wepman.webp"
+                            //}
                         ]
                     },
                     {
@@ -553,7 +559,7 @@ export const SCHEDULES = [
                         "speakers": [
                             {
                                 "name": "Charles F. Sills",
-                                "title": "Summit Moderator",
+                                "title": "President & CEO",
                                 "photo": "charles-sills.webp"
                             }
                         ]
@@ -582,7 +588,7 @@ export const SCHEDULES = [
                         "speakers": [
                             {
                                 "name": "Charles F. Sills",
-                                "title": "Summit Moderator",
+                                "title": "President & CEO",
                                 "photo": "charles-sills.webp"
                             }
                         ]
@@ -591,48 +597,48 @@ export const SCHEDULES = [
                         "time": "8:35 AM",
                         "title": "Doing Business With the Primes",
                         "speakers": [
-                            {
-                                "name": "Nancy Ziuzin Schlegel",
-                                "title": "Vice President, International Government Affairs",
-                                "affiliation": "Lockheed Martin Corporation",
-                                "photo": "nancy-schlegel.webp"
-                            },
-                            {
-                                "name": "Todd Semonite",
-                                "title": "Lieutenant General (Ret.), PE, President, Federal Programs",
-                                "affiliation": "WSP USA",
-                                "photo": "todd-semonite.webp"
-                            },
-                            {
-                                "name": "Robert Winkler",
-                                "title": "Vice President, Corporate Development & National Security Programs",
-                                "affiliation": "Kratos Defense and Security Solutions, Inc.",
-                                "photo": "robert-winkler.webp"
-                            },
-                            {
-                                "name": "Daniel A. Ateya",
-                                "title": "President & Managing Director, RTX Ventures",
-                                "affiliation": "Raytheon Technologies",
-                                "photo": "daniel-ateya.webp"
-                            },
-                            {
-                                "name": "Laura Bukkosy Hooks, Ph.D.",
-                                "title": "Vice President/General Manager, Maritime & Strategic Systems",
-                                "affiliation": "GENERAL DYNAMICS Mission Systems",
-                                "photo": "laura-hooks.webp"
-                            }
+                            //{
+                            //    "name": "Nancy Ziuzin Schlegel",
+                            //    "title": "Vice President, International Government Affairs",
+                            //    "affiliation": "Lockheed Martin Corporation",
+                            //    "photo": "nancy-schlegel.webp"
+                            //},
+                            //{
+                            //    "name": "Todd Semonite",
+                            //    "title": "Lieutenant General (Ret.), PE, President, Federal Programs",
+                            //    "affiliation": "WSP USA",
+                            //    "photo": "todd-semonite.webp"
+                            //},
+                            //{
+                            //    "name": "Robert Winkler",
+                            //    "title": "Vice President, Corporate Development & National Security Programs",
+                            //    "affiliation": "Kratos Defense and Security Solutions, Inc.",
+                            //    "photo": "robert-winkler.webp"
+                            //},
+                            //{
+                            //    "name": "Daniel A. Ateya",
+                            //    "title": "President & Managing Director, RTX Ventures",
+                            //    "affiliation": "Raytheon Technologies",
+                            //    "photo": "daniel-ateya.webp"
+                            //},
+                            //{
+                            //    "name": "Laura Bukkosy Hooks, Ph.D.",
+                            //    "title": "Vice President/General Manager, Maritime & Strategic Systems",
+                            //    "affiliation": "GENERAL DYNAMICS Mission Systems",
+                            //    "photo": "laura-hooks.webp"
+                            //}
                         ]
                     },
                     {
                         "time": "9:35 AM",
                         "title": "CONGRESSIONAL KEYNOTE ADDRESS",
                         "speakers": [
-                            {
-                                "name": "Representative Neal Dunn",
-                                "title": "House Committee on Energy and Commerce",
-                                "affiliation": "House Select Committee on the Strategic Competition between the U.S. and the Chinese Communist Party",
-                                "photo": "neal-dunn.webp"
-                            }
+                            //{
+                            //    "name": "Representative Neal Dunn",
+                            //    "title": "House Committee on Energy and Commerce",
+                            //    "affiliation": "House Select Committee on the Strategic Competition between the U.S. and the Chinese Communist Party",
+                            //    "photo": "neal-dunn.webp"
+                            //}
                         ]
                     },
                     {
@@ -663,12 +669,12 @@ export const SCHEDULES = [
                         "time": "10:30 AM",
                         "title": "DEFENSE DEPARTMENT ACQUISITION KEYNOTE",
                         "speakers": [
-                            {
-                                "name": "Lieutenant General Robert M. Collins",
-                                "title": "Military Deputy Assistant Secretary of the Army",
-                                "affiliation": "Acquisition, Logistics & Technology",
-                                "photo": "robert-collins.webp"
-                            }
+                            //{
+                            //    "name": "Lieutenant General Robert M. Collins",
+                            //    "title": "Military Deputy Assistant Secretary of the Army",
+                            //    "affiliation": "Acquisition, Logistics & Technology",
+                            //    "photo": "robert-collins.webp"
+                            //}
                         ]
                     },
                     {
@@ -677,7 +683,7 @@ export const SCHEDULES = [
                         "speakers": [
                             {
                                 "name": "Charles F. Sills",
-                                "title": "Summit Moderator",
+                                "title": "President & CEO",
                                 "photo": "charles-sills.webp"
                             },
                             {
@@ -692,36 +698,36 @@ export const SCHEDULES = [
                         "time": "11:20 AM",
                         "title": "NAVFAC – Projects & Contracts",
                         "speakers": [
-                            {
-                                "name": "Captain Miguel Dieguez",
-                                "title": "Commanding Officer, NAVFAC Southeast and Regional Engineer",
-                                "affiliation": "Navy Region Southeast, Naval Facilities Engineering Systems Command (NAVFAC)",
-                                "photo": "miguel-dieguez.webp"
-                            },
-                            {
-                                "name": "Captain Edward B. Miller IV",
-                                "title": "Vice Commander",
-                                "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC) Atlantic",
-                                "photo": "edward-miller.webp"
-                            },
-                            {
-                                "name": "Richard S. Tyler",
-                                "title": "Chief Engineer / Planning Design and Construction Director",
-                                "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC) Atlantic",
-                                "photo": "richard-tyler.webp"
-                            },
-                            {
-                                "name": "Bob Silver, PE",
-                                "title": "Acting Assistant Commander for Design & Construction",
-                                "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC)",
-                                "photo": "bob-silver.webp"
-                            },
-                            {
-                                "name": "Cindy Readal",
-                                "title": "Assistant Commander for Contracting",
-                                "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC)",
-                                "photo": "cindy-readal.webp"
-                            }
+                            //{
+                            //    "name": "Captain Miguel Dieguez",
+                            //    "title": "Commanding Officer, NAVFAC Southeast and Regional Engineer",
+                            //    "affiliation": "Navy Region Southeast, Naval Facilities Engineering Systems Command (NAVFAC)",
+                            //    "photo": "miguel-dieguez.webp"
+                            //},
+                            //{
+                            //    "name": "Captain Edward B. Miller IV",
+                            //    "title": "Vice Commander",
+                            //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC) Atlantic",
+                            //    "photo": "edward-miller.webp"
+                            //},
+                            //{
+                            //    "name": "Richard S. Tyler",
+                            //    "title": "Chief Engineer / Planning Design and Construction Director",
+                            //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC) Atlantic",
+                            //    "photo": "richard-tyler.webp"
+                            //},
+                            //{
+                            //    "name": "Bob Silver, PE",
+                            //    "title": "Acting Assistant Commander for Design & Construction",
+                            //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC)",
+                            //    "photo": "bob-silver.webp"
+                            //},
+                            //{
+                            //    "name": "Cindy Readal",
+                            //    "title": "Assistant Commander for Contracting",
+                            //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC)",
+                            //    "photo": "cindy-readal.webp"
+                            //}
                         ]
                     },
                     {
@@ -740,24 +746,24 @@ export const SCHEDULES = [
                         "time": "12:10 PM",
                         "title": "Army & Marine Corps Depot Procurement",
                         "speakers": [
-                            {
-                                "name": "Colonel Juliet H. Calvin",
-                                "title": "Joint Staff, Acquisition, Data & Analytics",
-                                "affiliation": "U.S. Marine Corps",
-                                "photo": "juliet-calvin.webp"
-                            },
-                            {
-                                "name": "Terry L. Whitaker",
-                                "title": "Small Business Specialist, HQMC Installations and Logistics (HQMC/I&L)",
-                                "affiliation": "Marine Corps Logistics Command",
-                                "photo": "terry-whitaker.webp"
-                            },
-                            {
-                                "name": "Shynta Hudson",
-                                "title": "Executive assistant",
-                                "affiliation": "Anniston Army Depot",
-                                "photo": "shynta-hudson.webp"
-                            }
+                            //{
+                            //    "name": "Colonel Juliet H. Calvin",
+                            //    "title": "Joint Staff, Acquisition, Data & Analytics",
+                            //    "affiliation": "U.S. Marine Corps",
+                            //    "photo": "juliet-calvin.webp"
+                            //},
+                            //{
+                            //    "name": "Terry L. Whitaker",
+                            //    "title": "Small Business Specialist, HQMC Installations and Logistics (HQMC/I&L)",
+                            //    "affiliation": "Marine Corps Logistics Command",
+                            //    "photo": "terry-whitaker.webp"
+                            //},
+                            //{
+                            //    "name": "Shynta Hudson",
+                            //    "title": "Executive assistant",
+                            //    "affiliation": "Anniston Army Depot",
+                            //    "photo": "shynta-hudson.webp"
+                            //}
                         ]
                     },
                     {
@@ -766,7 +772,7 @@ export const SCHEDULES = [
                         "speakers": [
                             {
                                 "name": "Charles F. Sills",
-                                "title": "Summit Moderator",
+                                "title": "President & CEO",
                                 "photo": "charles-sills.webp"
                             }
                         ]
