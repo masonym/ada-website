@@ -346,7 +346,7 @@ export const SCHEDULES = [
                                 "affiliation": "Secure IT Service Management, Inc.",
                                 "photo": "david-fraley.webp",
                                 "sponsor": "Silver Sponsor",
-                                "sponsorStyle": "bg-gray-300 text-white",
+                                "sponsorStyle": "bg-gray-300",
                             },
                             {
                                 "name": "Kareem A. Sykes",
