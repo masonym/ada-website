@@ -325,7 +325,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     },
                     {
                         name: "Foundation Technologies, Inc.",
-                        logo: "/events/2025NMCPC/sponsors/foundation-technologies.webp",
+                        logo: "/events/2025SDPC/sponsors/foundation-technologies.webp",
                         website: "https://www.foundationtechnologies.com/",
                         width: 280,
                         height: 51,
