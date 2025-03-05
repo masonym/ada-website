@@ -1,7 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { EVENT_SPONSORS } from '@/constants/eventSponsors';
+import { getEventSponsors } from '@/constants/eventSponsors';
+import { getSponsor, SPONSOR_SIZES, Sponsor, SponsorSize } from '@/constants/sponsors';
 import { Event } from '@/types/events';
 import { getCdnPath } from '@/utils/image';
 
@@ -12,7 +13,7 @@ type SponsorProps = {
 };
 
 const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
-    const eventSponsors = EVENT_SPONSORS.find((e) => e.id === event.id);
+    const eventSponsors = getEventSponsors(event.id);
 
     if (!eventSponsors || eventSponsors.tiers.length === 0) {
         return null;
@@ -30,11 +31,18 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
         return null;
     }
 
-    const sortedTiers = filteredTiers.map(tier => ({
+    // Process tiers and load sponsor data
+    const processedTiers = filteredTiers.map(tier => {
+        const sponsors = tier.sponsorIds
+            .map(id => getSponsor(id))
+            .filter(sponsor => sponsor !== undefined)
+            .sort((a, b) => a!.name.localeCompare(b!.name));
 
-        ...tier,
-        sponsors: [...tier.sponsors].sort((a, b) => a.name.localeCompare(b.name))
-    }));
+        return {
+            ...tier,
+            sponsors
+        };
+    });
 
     const getDefaultTierStyle = (tierName: string) => {
         if (tierName.toLowerCase().includes('small')) return 'bg-sb-100 text-slate-900';
@@ -47,22 +55,38 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
         return 'bg-blue-600 text-white';
     };
 
-    const getGridCols = (sponsorCount: number) => {
-        if (sponsorCount === 1) return 'grid-cols-1';
-        if (sponsorCount === 2) return 'grid-cols-1 sm:grid-cols-2';
-        if (sponsorCount === 3) return 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
-        return 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+    const getTierGridClass = (tierName: string, sponsorCount: number) => {
+        // Base grid class
+        let gridClass = 'grid ';
+
+        // Responsive columns based on tier type and sponsor count
+        if (tierName.toLowerCase().includes('platinum') || sponsorCount === 1) {
+            gridClass += 'grid-cols-1';
+        } else if (sponsorCount === 2) {
+            gridClass += 'grid-cols-1 sm:grid-cols-2';
+        } else if (sponsorCount === 3) {
+            gridClass += 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
+        } else {
+            gridClass += 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+        }
+
+        return gridClass;
     };
 
-    const getSponsorImageSize = (sponsor: any, isMobile: boolean) => {
-        // Calculate responsive dimensions while maintaining aspect ratio
-        const aspectRatio = sponsor.width / sponsor.height;
-        const maxWidth = isMobile ? 280 : sponsor.width || 300;
-        const height = Math.round(maxWidth / aspectRatio);
+    const getSponsorImageSize = (sponsor: Sponsor) => {
+        // If sponsor has a standard size, use those dimensions
+        if (sponsor.size && Object.keys(SPONSOR_SIZES).includes(sponsor.size)) {
+            const sizeConfig = SPONSOR_SIZES[sponsor.size as SponsorSize];
+            return {
+                width: sizeConfig.maxWidth,
+                height: sizeConfig.maxHeight
+            };
+        }
 
+        // Otherwise, use custom dimensions
         return {
-            width: maxWidth,
-            height: height
+            width: sponsor.width || 300,
+            height: 200 // Default height
         };
     };
 
@@ -84,7 +108,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                 </p>
             )}
 
-            {sortedTiers.map((tier, tierIndex) => (
+            {processedTiers.map((tier, tierIndex) => (
                 <div key={tierIndex} className="mb-6 md:mb-8 last:mb-8">
                     <div className="relative mb-6 md:mb-8">
                         <div className="absolute inset-0 flex items-center">
@@ -104,17 +128,18 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                     )}
 
                     <div className="bg-white p-4 md:p-8 rounded-lg shadow-md">
-                        <div className={`grid ${getGridCols(tier.sponsors.length)} gap-4 justify-items-center`}>
+                        <div className={getTierGridClass(tier.name, tier.sponsors.length)}>
                             {tier.sponsors.map((sponsor, sponsorIndex) => {
-                                const mobileSize = getSponsorImageSize(sponsor, true);
-                                const desktopSize = getSponsorImageSize(sponsor, false);
+                                const imageSize = getSponsorImageSize(sponsor);
                                 const isTopTier = tier.topTier;
 
                                 return (
                                     <div
                                         key={sponsorIndex}
-                                        className={`flex flex-col items-center justify-center w-full transition-transform hover:scale-105 duration-300 
-                                            ${isTopTier ? 'relative p-6 rounded-xl bg-gradient-to-r from-slate-50 to-white ' : ''}`}
+                                        className={`flex flex-col items-center justify-center p-4 transition-transform hover:scale-105 duration-300 ${isTopTier
+                                            ? 'relative p-6 rounded-xl bg-gradient-to-r from-slate-50 to-white shadow-md'
+                                            : ''
+                                            }`}
                                     >
                                         {isTopTier && (
                                             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-slate-900 px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
@@ -126,41 +151,33 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                                 href={sponsor.website}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="transition-opacity hover:opacity-80 w-full flex justify-center items-center"
+                                                className="w-full flex justify-center items-center hover:opacity-80 transition-opacity"
                                             >
-                                                <div className="relative w-full flex items-center justify-center">
-                                                    <Image
-                                                        src={getCdnPath(sponsor.logo)}
-                                                        alt={`${sponsor.name} Logo`}
-                                                        width={isTopTier ? desktopSize.width * 1.2 : desktopSize.width}
-                                                        height={isTopTier ? desktopSize.height * 1.2 : desktopSize.height}
-                                                        priority={sponsor.priority || isTopTier}
-                                                        unoptimized={true}
-                                                        sizes={`${isTopTier ?
-                                                            '(max-width: 640px) 320px, (max-width: 1024px) 480px, 860px' :
-                                                            '(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px'}`}
-                                                        className={`${isTopTier ? 'drop-shadow-md' : ''}`}
-                                                    />
-                                                </div>
-                                            </Link>
-                                        ) : (
-                                            <div className="relative w-full flex items-center justify-center">
                                                 <Image
                                                     src={getCdnPath(sponsor.logo)}
                                                     alt={`${sponsor.name} Logo`}
-                                                    width={isTopTier ? desktopSize.width * 1.2 : desktopSize.width}
-                                                    height={isTopTier ? desktopSize.height * 1.2 : desktopSize.height}
+                                                    width={imageSize.width}
+                                                    height={imageSize.height}
                                                     priority={sponsor.priority || isTopTier}
                                                     unoptimized={true}
-                                                    sizes={`${isTopTier ?
-                                                        '(max-width: 640px) 320px, (max-width: 1024px) 480px, 860px' :
-                                                        '(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px'}`}
-                                                    className={`${isTopTier ? 'drop-shadow-md' : ''}`}
+                                                    sizes={`(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px`}
+                                                    className={`object-contain max-w-full max-h-full ${isTopTier ? 'drop-shadow-md' : ''}`}
                                                 />
-                                            </div>
+                                            </Link>
+                                        ) : (
+                                            <Image
+                                                src={getCdnPath(sponsor.logo)}
+                                                alt={`${sponsor.name} Logo`}
+                                                width={imageSize.width}
+                                                height={imageSize.height}
+                                                priority={sponsor.priority || isTopTier}
+                                                unoptimized={true}
+                                                sizes={`(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px`}
+                                                className={`object-contain max-w-full max-h-full ${isTopTier ? 'drop-shadow-md' : ''}`}
+                                            />
                                         )}
                                         {isTopTier && sponsor.description && (
-                                            <div className="text-lg mt-4 text-center text-slate-600 ">
+                                            <div className="text-lg mt-4 text-center text-slate-600">
                                                 <span dangerouslySetInnerHTML={{ __html: sponsor.description }}></span>
                                             </div>
                                         )}
