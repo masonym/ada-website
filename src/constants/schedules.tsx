@@ -727,7 +727,7 @@ export const SCHEDULES = [
                                 "sponsorStyle": "bg-sky-300 text-slate-900",
                                 "title": "Executive Director of Federal Strategic Initiatives",
                                 "affiliation": "Modtech Solutions, LLC",
-                                //"photo": "james-simpson.webp"
+                                "photo": "james-simpson.webp"
                             }
                         ],
                         "location": "Galleria 4",
