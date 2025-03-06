@@ -483,7 +483,7 @@ export const SCHEDULES = [
                         "title": "How to Win SBIR/STTR Defense Contracts",
                         "speakers": [
                             {
-                                "name": "Aimee Ackerman",
+                                "name": "Aimee Zick",
                                 "title": "Senior Business Development Executive",
                                 "affiliation": "Improve Group and Project Director, NORAD/Cheyenne Mountain Renovation",
                                 //"photo": "aimee-zick.webp"
