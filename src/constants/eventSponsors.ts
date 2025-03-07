@@ -47,7 +47,16 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "pmb-machine-works",
                     "redstone",
                     "perimeter",
-                    "css-energy"
+                    "css-energy",
+                    "kdm",
+                ],
+            },
+            {
+                id: "collaborating-agency",
+                name: "Collaborating Agency",
+                style: "bg-sb-100 text-slate-900",
+                sponsorIds: [
+                    "mbda",
                 ],
             },
             {
@@ -86,7 +95,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         ]
     },
     {
-        id: 3, 
+        id: 3,
         title: "This event is Organized and Presented by",
         tiers: [
             {
@@ -119,7 +128,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         ]
     },
     {
-        id: 4, 
+        id: 4,
         tiers: [
             {
                 id: "small-business",
@@ -156,7 +165,7 @@ export const getEventSponsors = (eventId: number): EventSponsors | undefined => 
 export const getEventTierSponsors = (eventId: number, tierId: string): string[] => {
     const event = getEventSponsors(eventId);
     if (!event) return [];
-    
+
     const tier = event.tiers.find(t => t.id === tierId);
     return tier ? tier.sponsorIds : [];
 };

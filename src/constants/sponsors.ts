@@ -303,7 +303,21 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/foundation-technologies.webp",
     website: "https://www.foundationtechnologies.com/",
     size: 'small'
-  }
+  },
+  "kdm": {
+    id: "kdm",
+    name: "KDM & Associates",
+    logo: "/sponsors/kdm.webp",
+    website: "https://kdm-assoc.com/",
+    size: 'small'
+  },
+  "mbda": {
+    id: "mbda",
+    name: "MBDA Federal Procurement Center",
+    logo: "/sponsors/mbda.webp",
+    website: "https://www.mbda.gov/business-center/mbda-federal-procurement-center",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
