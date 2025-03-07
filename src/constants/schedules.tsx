@@ -294,9 +294,10 @@ export const SCHEDULES = [
                         "title": "State of Georgia/Atlanta Chamber of Commerce - Welcoming Remarks",
                         "speakers": [
                             {
-                                "name": "GA Economic Development Office",
-                                "title": "GA/Atlanta Chamber of Commerce",
-                                "photo": ""
+                                "name": "Tasha Allen",
+                                "title": "Vice President of Talent Management and Diversity",
+                                "affiliation": "Georgia Chamber",
+                                "photo": "tasha-allen.webp"
                             }
                         ],
                         "location": "Galleria 4",
