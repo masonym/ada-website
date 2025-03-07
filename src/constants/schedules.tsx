@@ -359,7 +359,7 @@ export const SCHEDULES = [
                                 "name": "Tim Didjurgis",
                                 "title": "Chief Operating Officer",
                                 "affiliation": "Modtech Solutions, LLC",
-                                //"photo": "tim-didjurgis.webp"
+                                "photo": "tim-didjurgis.webp",
                                 "sponsor": "Platinum Sponsor",
                                 "sponsorStyle": "bg-sky-300 text-slate-900",
                             }
@@ -469,7 +469,7 @@ export const SCHEDULES = [
                                 "name": "Aimee Zick",
                                 "title": "Senior Business Development Executive",
                                 "affiliation": "Improve Group",
-                                //"photo": "aimee-zick.webp"
+                                "photo": "aimee-zick.webp"
                             }
                         ],
                         "location": "Galleria 4",
