@@ -295,7 +295,7 @@ export const SCHEDULES = [
                         "speakers": [
                             {
                                 "name": "Tasha Allen",
-                                "title": "Vice President of Talent Management and Diversity",
+                                "title": "Vice President of Talent Management",
                                 "affiliation": "Georgia Chamber",
                                 "photo": "tasha-allen.webp"
                             }
@@ -329,7 +329,7 @@ export const SCHEDULES = [
                                 "name": "Erin Bearhalter",
                                 "title": "Associate Project Manager",
                                 "affiliation": "Salas O'Brien",
-                                //"photo": "dave-leinberger.webp"
+                                "photo": "erin-bearhalter.webp"
                             }
                         ],
                         "location": "Galleria 4",
@@ -349,7 +349,8 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "10:35 AM",
-                        "title": "Networking Break"
+                        "title": "Networking Break with Exhibitors",
+                        "location": "Galleria 5-7",
                     },
                     {
                         "time": "11:00 AM",
@@ -736,7 +737,7 @@ export const SCHEDULES = [
                                 "name": "Linda Eshiwani-Nate",
                                 "title": "Trade Commissioner",
                                 "affiliation": "Consulate General of Canada in Atlanta",
-                                //"photo": "linda-eshiwani-nate.webp"
+                                "photo": "linda-eshiwani-nate.webp"
                             }
                         ],
                         "location": "Galleria 4",
