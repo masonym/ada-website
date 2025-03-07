@@ -433,12 +433,12 @@ export const SCHEDULES = [
                         "time": "1:30 PM",
                         "title": "Government Acquisition Update",
                         "speakers": [
-                            {
-                                "name": "Darlene Coen",
-                                "title": "Moderator, Strategic Operations Consultant",
-                                "affiliation": "CGI Federal",
-                                "photo": "darlene-coen.webp"
-                            },
+                            //{
+                            //    "name": "Darlene Coen",
+                            //    "title": "Moderator, Strategic Operations Consultant",
+                            //    "affiliation": "CGI Federal",
+                            //    "photo": "darlene-coen.webp"
+                            //},
                             //{
                             //    "name": "Wesley J. Jefferies",
                             //    "title": "Industry Liaison, OUSD (A&S) Office of Industrial Base Policy",
