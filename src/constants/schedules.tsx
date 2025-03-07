@@ -315,7 +315,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "9:15 AM",
+                        "time": "9:20 AM",
                         "title": "Military Base-Community Partnership Programs",
                         "speakers": [
                             {
@@ -323,12 +323,18 @@ export const SCHEDULES = [
                                 "title": "Acting Director, Army Partnerships",
                                 "affiliation": "Deputy Chief of Staff, G-9 (Installations)",
                                 "photo": "dave-leinberger.webp"
+                            },
+                            {
+                                "name": "Erin Bearhalter",
+                                "title": "Associate Project Manager",
+                                "affiliation": "Salas O'Brien",
+                                //"photo": "dave-leinberger.webp"
                             }
                         ],
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "9:45 AM",
+                        "time": "10:00 AM",
                         "title": "UNITED STATES ARMY KEYNOTE PRESENTATION",
                         "speakers": [
                             {
@@ -341,12 +347,53 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "10:20 AM",
+                        "time": "10:35 AM",
                         "title": "Networking Break"
                     },
                     {
-                        "time": "10:35 AM",
-                        "title": "Cybersecurity/CMMC Update Panel",
+                        "time": "11:00 AM",
+                        "title": "Sponsor Remarks",
+                        "speakers": [
+                            {
+                                "name": "Tim Didjurgis",
+                                "title": "Chief Operating Officer",
+                                "affiliation": "Modtech Solutions, LLC",
+                                //"photo": "tim-didjurgis.webp"
+                                "sponsor": "Platinum Sponsor",
+                                "sponsorStyle": "bg-sky-300 text-slate-900",
+                            }
+                        ],
+                        "location": "Galleria 4",
+                    },
+                    {
+                        "time": "11:20 AM",
+                        "title": "CONGRESSIONAL KEYNOTE ADDRESS",
+                        "speakers": [
+                            {
+                                "name": "Representative Rob Wittman (R-VA)",
+                                "title": "Vice Chairman, House Armed Services Committee",
+                                "affiliation": "Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding Caucus",
+                                "photo": "rob-wittman.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
+                    },
+                    {
+                        "time": "11:35 AM",
+                        "title": "Project SPECTRUM - Cybersecurity/CMMC Brief",
+                        "speakers": [
+                            {
+                                "name": "Kareem A. Sykes",
+                                "title": "Program Manager, Project Spectrum",
+                                "affiliation": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of Defense",
+                                "photo": "kareem-sykes.webp"
+                            },
+                        ],
+                        "location": "Galleria 4",
+                    },
+                    {
+                        "time": "12:15 PM",
+                        "title": "Cyber Fireside Chat",
                         "speakers": [
                             {
                                 "name": "David Fraley",
@@ -378,20 +425,12 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "11:20 AM",
-                        "title": "CONGRESSIONAL KEYNOTE ADDRESS",
-                        "speakers": [
-                            {
-                                "name": "Representative Rob Wittman (R-VA)",
-                                "title": "Vice Chairman, House Armed Services Committee",
-                                "affiliation": "Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding Caucus",
-                                "photo": "rob-wittman.webp"
-                            }
-                        ],
-                        "location": "Galleria 4",
+                        "time": "12:30 PM",
+                        "title": "Networking Lunch with Exhibitors",
+                        "location": "Galleria 5-7",
                     },
                     {
-                        "time": "11:35 AM",
+                        "time": "1:30 PM",
                         "title": "Government Acquisition Update",
                         "speakers": [
                             {
@@ -422,27 +461,20 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "12:10 PM",
-                        "title": "Sponsor Remarks",
+                        "time": "2:10 PM",
+                        "title": "Streamlined Acquisition Examples",
                         "speakers": [
                             {
-                                "name": "Tim Didjurgis",
-                                "title": "Chief Operating Officer",
-                                "affiliation": "Modtech Solutions, LLC",
-                                //"photo": "tim-didjurgis.webp"
-                                "sponsor": "Platinum Sponsor",
-                                "sponsorStyle": "bg-sky-300 text-slate-900",
+                                "name": "Aimee Zick",
+                                "title": "Senior Business Development Executive",
+                                "affiliation": "Improve Group",
+                                //"photo": "aimee-zick.webp"
                             }
                         ],
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "12:30 PM",
-                        "title": "Networking Lunch with Exhibitors",
-                        "location": "Galleria 5-7",
-                    },
-                    {
-                        "time": "1:30 PM",
+                        "time": "2:50 PM",
                         "title": "Army Corps of Engineers – Projects & Contracts",
                         "speakers": [
                             //{
@@ -479,57 +511,13 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "2:15 PM",
-                        "title": "How to Win SBIR/STTR Defense Contracts",
-                        "speakers": [
-                            {
-                                "name": "Aimee Zick",
-                                "title": "Senior Business Development Executive",
-                                "affiliation": "Improve Group and Project Director, NORAD/Cheyenne Mountain Renovation",
-                                //"photo": "aimee-zick.webp"
-                            }
-                        ],
-                        "location": "Galleria 4",
-                    },
-                    {
-                        "time": "2:30 PM",
-                        "title": "Air Force & Space Force Acquisition Update",
-                        "speakers": [
-                            //{
-                            //    "name": "Laura A. Fuller",
-                            //    "title": "Operational Imperatives Field Support Team (SAF/AQCP)",
-                            //    "affiliation": "Office of the Deputy Assistant Secretary (Contracting), United States Air Force",
-                            //    "photo": "laura-fuller.webp"
-                            //},
-                            //{
-                            //    "name": "Tim Inman",
-                            //    "title": "Small Business Director, Air Force Sustainment Center (AFSC)",
-                            //    "affiliation": "Air Force Materiel Command (AFMC), Warner Robins Air Force Base (AFB)",
-                            //    "photo": "tim-inman.webp"
-                            //},
-                            //{
-                            //    "name": "Sherri Richardson",
-                            //    "title": "Director Small Business Programs, U.S. Space Force",
-                            //    "affiliation": "Patrick Air Force Base",
-                            //    "photo": "sherri-richardson.webp"
-                            //},
-                            //{
-                            //    "name": "Andre Sheppard",
-                            //    "title": "Office of Industry Procurement, John F Kennedy Space Center",
-                            //    "affiliation": "U.S. National Aeronautics and Space Administration (NASA)",
-                            //    "photo": "andre-sheppard.webp"
-                            //}
-                        ],
-                        "location": "Galleria 4",
-                    },
-                    {
-                        "time": "3:15 PM",
+                        "time": "3:25 PM",
                         "title": "Military Base Energy Initiatives",
                         "speakers": [
                             {
                                 "name": "Dave Robau, LEED AP",
                                 "title": "Moderator, Executive Director, Gulf Coast Energy Network",
-                                "affiliation": "CEO and Chief Scientist, National Energy USA.",
+                                "affiliation": "CEO and Chief Scientist, National Energy USA",
                                 "photo": "dave-robau.webp"
                             },
                             //{
@@ -660,7 +648,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "9:35 AM",
+                        "time": "9:05 AM",
                         "title": "CONGRESSIONAL KEYNOTE ADDRESS",
                         "speakers": [
                             //{
@@ -673,7 +661,14 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "9:45 AM",
+                        "time": "9:15 AM",
+                        "title": "Air Force & Space Force Acquisition Update",
+                        "speakers": [
+                        ],
+                        "location": "Galleria 4",
+                    },
+                    {
+                        "time": "9:50 AM",
                         "title": "Indo-Pacific Theater/U.S. Navy Force Posture",
                         "speakers": [
                             {
@@ -686,7 +681,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "10:05 AM",
+                        "time": "10:15 AM",
                         "title": "MBDA Federal Procurement Center – Tiger Team Briefing",
                         "speakers": [
                             {
@@ -699,7 +694,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "10:30 AM",
+                        "time": "10:40 AM",
                         "title": "DEFENSE DEPARTMENT ACQUISITION KEYNOTE",
                         "speakers": [
                             //{
@@ -712,7 +707,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "11:00 AM",
+                        "time": "11:10 AM",
                         "title": "Fireside Chat – Army Contracting",
                         "speakers": [
                             {
@@ -733,7 +728,20 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "11:20 AM",
+                        "time": "11:25 AM",
+                        "title": "Canadian Defense Ministry – Contract Opportunities",
+                        "speakers": [
+                            {
+                                "name": "Linda Eshiwani-Nate",
+                                "title": "Trade Commissioner",
+                                "affiliation": "Consulate General of Canada in Atlanta",
+                                //"photo": "linda-eshiwani-nate.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
+                    },
+                    {
+                        "time": "11:40 AM",
                         "title": "NAVFAC – Projects & Contracts",
                         "speakers": [
                             //{
@@ -770,20 +778,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "12:00 PM",
-                        "title": "Canadian Defense Ministry – Contract Opportunities",
-                        "speakers": [
-                            {
-                                "name": "Linda Eshiwani-Nate",
-                                "title": "Trade Commissioner",
-                                "affiliation": "Consulate General of Canada in Atlanta",
-                                //"photo": "linda-eshiwani-nate.webp"
-                            }
-                        ],
-                        "location": "Galleria 4",
-                    },
-                    {
-                        "time": "12:10 PM",
+                        "time": "12:15 PM",
                         "title": "Army & Marine Corps Depot Procurement",
                         "speakers": [
                             //{
