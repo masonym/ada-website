@@ -692,7 +692,8 @@ export const SCHEDULES = [
                                 "name": "Oscar Frazier",
                                 "title": "Tiger Team Lead, Federal Procurement Center, Minority Business Development Agency (MBDA)",
                                 "affiliation": "U.S. Department of Commerce and Owner, nDemand Consulting Services Inc.",
-                                "photo": "oscar-frazier.webp"
+                                "photo": "oscar-frazier.webp",
+                                "presentation": "2025 Southeast Defense Procurement Conference - Oscar Frazier.pdf",
                             }
                         ],
                         "location": "Galleria 4",
