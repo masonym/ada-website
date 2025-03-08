@@ -615,14 +615,14 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        time: "8:45 AM",
-                        title: "Artificial Intelligence — Impact on Defense Acquisition",
-                        location: "National Press Club Ballroom",
-                        speakers: [{
-                            name: "Amir Bagherpour, PhD",
-                            title: "Managing Director and Analytics & Visualization Lead for Data & AI",
-                            affiliation: "Accenture Federal Services",
-                            photo: "amir-bagherpour.webp",
+                        "time": "8:45 AM",
+                        "title": "Artificial Intelligence — Impact on Defense Acquisition",
+                        "location": "Galleria 4",
+                        "speakers": [{
+                            "name": "Amir Bagherpour, PhD",
+                            "title": "Managing Director and Analytics & Visualization Lead for Data & AI",
+                            "affiliation": "Accenture Federal Services",
+                            "photo": "amir-bagherpour.webp",
                         }]
                     },
                     {
