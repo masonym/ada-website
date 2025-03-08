@@ -176,7 +176,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                                 className={`object-contain max-w-full max-h-full ${isTopTier ? 'drop-shadow-md' : ''}`}
                                             />
                                         )}
-                                        {sponsor.description && (
+                                        {tier.sponsors.length == 1 && sponsor.description && (
                                             <div className="text-lg mt-4 text-center text-slate-600">
                                                 <span dangerouslySetInnerHTML={{ __html: sponsor.description }}></span>
                                             </div>

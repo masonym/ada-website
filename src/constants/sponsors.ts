@@ -34,7 +34,7 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/secure-itsm.webp",
     website: "https://secureitsm.com/",
     description: "Secure IT Service Management, Inc. (SecureITSM) is a managed service provider (MSP) specializing in IT security and CMMC compliance. We deliver integrated IT management and cybersecurity solutions, including cloud and infrastructure management, security operations, ISSO support, and helpdesk services. By forming strategic partnerships with our clients, we manage their IT operations and compliance requirements while providing CIO and security guidance. Our goal is to reduce audit costs through automation and standardization of IT operations.",
-    size: 'medium'
+    size: 'medium',
   },
   "pgi-steel": {
     id: "pgi-steel",
