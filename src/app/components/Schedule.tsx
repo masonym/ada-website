@@ -10,6 +10,8 @@ import { getCdnPath } from '@/utils/image';
 type Speaker = {
   name: string;
   title?: string;
+  sponsor?: string;
+  sponsorStyle?: string;
   affiliation?: string;
   photo?: string;
   presentation?: string;
@@ -85,7 +87,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
       <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Event Agenda</h1>
       {isEventFuture && (
         <p className="text-l font-bold text-center mb-8 text-slate-600">
-          The Event Agenda is still pending, please check back later as more information is added!
+          The Event Agenda is still pending, please check back later for more information! We appreciate your patience as updates are made!
         </p>
       )}
 
@@ -147,7 +149,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                             />
                           )}
                           <div>
-                            <div className="font-semibold text-lg">{speaker.name}</div>
+                            <div className="font-semibold text-lg md:block flex flex-col">{speaker.name} <span className={`w-fit rounded-lg md:mx-1 text-sm px-2 py-1 ${speaker.sponsorStyle}`}>{speaker.sponsor}</span></div>
                             {speaker.title && <div className="text-sm text-gray-600">{speaker.title}</div>}
                             {speaker.affiliation && <div className="text-sm text-gray-600">{speaker.affiliation}</div>}
                           </div>

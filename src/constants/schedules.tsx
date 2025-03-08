@@ -18,7 +18,7 @@ export const SCHEDULES = [
                             name: "Charles F. Sills",
                             title: "President & CEO",
                             affiliation: "American Defense Alliance",
-                            photo: "charles_sills.webp"
+                            photo: "charles-sills.webp"
                         }],
                     },
                     {
@@ -29,7 +29,7 @@ export const SCHEDULES = [
                             name: "Congressman Michael Waltz (6th District, Florida)",
                             title: "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
                             affiliation: "U.S. House of Representatives",
-                            photo: "michael_waltz.webp",
+                            photo: "michael-waltz.webp",
                         }],
                     },
                     {
@@ -40,7 +40,7 @@ export const SCHEDULES = [
                             name: "Amir Bagherpour, PhD",
                             title: "Managing Director and Analytics & Visualization Lead for Data & AI",
                             affiliation: "Accenture Federal Services",
-                            photo: "amir_bagherpour.webp",
+                            photo: "amir-bagherpour.webp",
                             presentation: "2025 Defense Industry Forecast - Amir Bagherpour, PhD.pdf",
                             videoId: "U_7h6bcAbGw"
                         }]
@@ -53,7 +53,7 @@ export const SCHEDULES = [
                             name: "Mark Correll, P.E.",
                             title: "Vice President, Federal Strategy Director",
                             affiliation: "HDR, Inc. (Former Deputy Assistant Secretary of the Air Force for Environment, Safety and Infrastructure)",
-                            photo: "mark_correll.webp",
+                            photo: "mark-correll.webp",
                             presentation: "2025 Defense Industry Forecast - Mark Correll, P.E..pdf",
                             videoId: "wHdyJMbx1T4"
                         }]
@@ -66,7 +66,7 @@ export const SCHEDULES = [
                             name: "Honorable John P. (\"Sean\") Coffey",
                             title: "General Counsel",
                             affiliation: "Department of the Navy",
-                            photo: "john_coffey.webp",
+                            photo: "john-coffey.webp",
                             videoId: "0u9WV7ew3fo"
                         }]
                     },
@@ -79,7 +79,7 @@ export const SCHEDULES = [
                                 name: "Kimberly Diane Buehler",
                                 title: "Director, Office of Small Business Programs (OSBP)",
                                 affiliation: "U.S. Army, Department of Defense",
-                                photo: "kimberly_buhler.webp",
+                                photo: "kimberly-buhler.webp",
                                 presentation: "2025 Defense Industry Forecast - Kimberly Diane Buehler.pdf",
                                 videoId: "Ib6OrnbElyM"
                             },
@@ -87,7 +87,7 @@ export const SCHEDULES = [
                                 name: "Arveice Washington",
                                 title: "Director, Office of Small Business Programs (OSBP)",
                                 affiliation: "Office of the Secretary of the Navy",
-                                photo: "arveice_washington.webp",
+                                photo: "arveice-washington.webp",
                                 presentation: "2025 Defense Industry Forecast - Arveice Washington.pdf",
                                 videoId: "Ib6OrnbElyM",
                                 videoStartTime: 853,
@@ -96,7 +96,7 @@ export const SCHEDULES = [
                                 name: "Scott Kiser",
                                 title: "Director, Office of Small Business Programs (OSBP)",
                                 affiliation: "Office of the Secretary of the Air Force",
-                                photo: "scott_kiser.webp",
+                                photo: "scott-kiser.webp",
                                 presentation: "2025 Defense Industry Forecast - Scott Kiser.pdf",
                                 videoId: "Ib6OrnbElyM",
                                 videoStartTime: 2215,
@@ -111,7 +111,7 @@ export const SCHEDULES = [
                             name: "Dr. Iryna Andrukh",
                             title: "Ukraine Program Director",
                             affiliation: "Progress Humanity (Formerly  Colonel in the Ukraine Army and Recipient of 4 Ukraine Presidential Medals of Honor)",
-                            photo: "iryna_andrukh.webp",
+                            photo: "iryna-andrukh.webp",
                             videoId: "jAXyvPQE6y0"
                         }]
                     },
@@ -128,7 +128,7 @@ export const SCHEDULES = [
                             name: "Mark Cancian",
                             title: "Senior Advisor, International Security Program",
                             affiliation: "Center for Strategic and International Studies (CSIS)",
-                            photo: "mark_cancian.webp",
+                            photo: "mark-cancian.webp",
                             presentation: "2025 Defense Industry Forecast - Mark Cancian.pdf",
                             videoId: "XGsVV7JSiSs",
                         }]
@@ -141,7 +141,7 @@ export const SCHEDULES = [
                             name: "His Royal Highness, Brigadier General Prince Joachim, Prince of Denmark",
                             title: "Danish Military Industry Attaché",
                             affiliation: "Royal Embassy of Denmark",
-                            photo: "joachim_christian.webp",
+                            photo: "joachim-christian.webp",
                             videoId: "i4MiAeVu1uQ",
                         }]
                     },
@@ -153,7 +153,7 @@ export const SCHEDULES = [
                             name: "Brian Liesveld",
                             title: "Chief Executive Officer",
                             affiliation: "DEFENSEWERX",
-                            photo: "brian_liesveld.webp",
+                            photo: "brian-liesveld.webp",
                             presentation: "2025 Defense Industry Forecast - Brian Liesveld.pdf",
                             videoId: "eV076ok4lpM",
                         }]
@@ -166,7 +166,7 @@ export const SCHEDULES = [
                             name: "David Morrow",
                             title: "Acting Director, Military Programs",
                             affiliation: "U.S. Army Corps of Engineers",
-                            photo: "david_morrow.webp",
+                            photo: "david-morrow.webp",
                             presentation: "2025 Defense Industry Forecast - David Morrow.pdf",
                             videoId: "z-n6X4aOu7U",
                         }]
@@ -179,7 +179,7 @@ export const SCHEDULES = [
                             name: "Patricia Waddell",
                             title: "Director, Office of IT Services",
                             affiliation: "Information Technology Category (ITC), Federal Acquisition Service (FAS), U.S. General Services Administration (GSA)",
-                            photo: "patricia_waddell.webp",
+                            photo: "patricia-waddell.webp",
                             presentation: "2025 Defense Industry Forecast - Patricia Waddell.pdf",
                             videoId: "-nz_EaZhvGU",
                         }]
@@ -192,7 +192,7 @@ export const SCHEDULES = [
                             name: "Dave Leinberger",
                             title: "Acting Director, Army Partnerships",
                             affiliation: "Deputy Chief of Staff, G-9 (Installations)",
-                            photo: "dave_leinberger.webp",
+                            photo: "dave-leinberger.webp",
                             presentation: "2025 Defense Industry Forecast - Dave Leinberger.pdf",
                             videoId: "y-zMKsOL08I"
                         }]
@@ -205,7 +205,7 @@ export const SCHEDULES = [
                             name: "Bianca Henderson",
                             title: "Director, Office of Small Business Programs (OSBP)",
                             affiliation: "Naval Facilities Engineering Systems Command (NAVFAC)",
-                            photo: "bianca_henderson.webp",
+                            photo: "bianca-henderson.webp",
                             presentation: "2025 Defense Industry Forecast - Bianca Henderson.pdf",
                             videoId: "KBM8CQ1qbvA"
                         }]
@@ -218,7 +218,7 @@ export const SCHEDULES = [
                             name: "David Canada",
                             title: "Director, Global Supplier Diversity",
                             affiliation: "Boeing Defense Space & Security",
-                            photo: "david_canada.webp",
+                            photo: "david-canada.webp",
                             presentation: "2025 Defense Industry Forecast - David Canada.pdf",
                             videoId: "sp_IldeZ_XY"
                         }]
@@ -231,7 +231,7 @@ export const SCHEDULES = [
                             name: "Charles F. Sills",
                             title: "President & CEO",
                             affiliation: "American Defense Alliance",
-                            photo: "charles_sills.webp"
+                            photo: "charles-sills.webp"
                         }],
                     },
                     {
@@ -246,15 +246,16 @@ export const SCHEDULES = [
         ]
     },
     {
-        id: 2,
+        "id": 2,
         "schedule": [
             {
-                date: "March 10, 2025",
-                items: [
+                "date": "March 10, 2025",
+                "items": [
                     {
-                        time: "3:00 PM - 6:00 PM",
-                        title: "Exhibitor Set-up"
-                    },
+                        "time": "3:00 PM - 6:00 PM",
+                        "title": "Exhibitor Set-up",
+                        "location": "Galleria 5-7",
+                    }
                 ]
             },
             {
@@ -262,91 +263,331 @@ export const SCHEDULES = [
                 "items": [
                     {
                         "time": "7:30 AM",
-                        "title": "On-Site Attendee Registration & Check-in"
+                        "title": "On-Site Attendee Registration & Check-in",
+                        "location": "Galleria Level, Pre-Function",
                     },
                     {
                         "time": "7:30 AM - 8:30 AM",
-                        "title": "Networking Breakfast with Exhibitors"
+                        "title": "Networking Breakfast with Exhibitors",
+                        "location": "Galleria 5-7",
                     },
                     {
                         "time": "7:30 AM - 8:30 AM",
-                        "title": "In-Person Matchmaking Sign-up"
+                        "title": "Matchmaking Sign-up",
+                        "location": "Galleria Level, Pre-Function",
                     },
                     {
                         "time": "8:30 AM",
-                        "title": "Conference Opening Remarks"
+                        "title": "Conference Opening Remarks",
+                        "speakers": [
+                            {
+                                "name": "Charles F. Sills",
+                                "title": "Preisdent & CEO",
+                                "affiliation": "American Defense Alliance",
+                                "photo": "charles-sills.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "8:35 AM",
-                        "title": "State of Georgia and Chambers of Commerce - Welcoming Remarks"
+                        "title": "State of Georgia/Atlanta Chamber of Commerce - Welcoming Remarks",
+                        "speakers": [
+                            {
+                                "name": "Tasha Allen",
+                                "title": "Vice President of Talent Management",
+                                "affiliation": "Georgia Chamber",
+                                "photo": "tasha-allen.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "8:50 AM",
-                        "title": "Defense Department ‘Innovation Hubs’ – Champions for Innovative Small Business"
+                        "time": "8:45 AM",
+                        "title": "Defense Department 'Innovation Hubs' – Champions for Innovative Small Business",
+                        "speakers": [
+                            {
+                                "name": "Teresa Harrington, DBA, MBA, PCM",
+                                "title": "Chief Operations Officer",
+                                "affiliation": "DEFENSEWERX",
+                                "photo": "teresa-harrington.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "9:20 AM",
-                        "title": "Military Base-Community Partnership Programs"
+                        "title": "Military Base-Community Partnership Programs",
+                        "speakers": [
+                            {
+                                "name": "David Leinberger",
+                                "title": "Acting Director, Army Partnerships",
+                                "affiliation": "Deputy Chief of Staff, G-9 (Installations)",
+                                "photo": "dave-leinberger.webp"
+                            },
+                            {
+                                "name": "Erin Bearhalter",
+                                "title": "Associate Project Manager",
+                                "affiliation": "Salas O'Brien",
+                                "photo": "erin-bearhalter.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "9:50 AM",
-                        "title": "How to Navigate Government-Wide Acquisition Contracts (GWACS)"
+                        "time": "10:00 AM",
+                        "title": "UNITED STATES ARMY KEYNOTE PRESENTATION",
+                        "speakers": [
+                            {
+                                "name": "Brandon Cockrell",
+                                "title": "Deputy Assistant Secretary of the Army for Energy and Sustainability",
+                                "affiliation": "Office of the Assistant Secretary of the Army for Installations, Energy and Environment",
+                                "photo": "brandon-cockrell.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "10:30 AM",
-                        "title": "Networking Break"
+                        "time": "10:35 AM",
+                        "title": "Networking Break with Exhibitors",
+                        "location": "Galleria 5-7",
                     },
                     {
-                        "time": "10:45 AM",
-                        "title": "Sponsor Remarks"
+                        "time": "11:00 AM",
+                        "title": "Sponsor Remarks",
+                        "speakers": [
+                            {
+                                "name": "Tim Didjurgis",
+                                "title": "Chief Operating Officer",
+                                "affiliation": "Modtech Solutions, LLC",
+                                "photo": "tim-didjurgis.webp",
+                                "sponsor": "Platinum Sponsor",
+                                "sponsorStyle": "bg-sky-300 text-slate-900",
+                            }
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "10:55 AM",
-                        "title": "Air Force Acquisition Update"
+                        "time": "11:20 AM",
+                        "title": "CONGRESSIONAL KEYNOTE ADDRESS",
+                        "speakers": [
+                            {
+                                "name": "Representative Rob Wittman (R-VA)",
+                                "title": "Vice Chairman, House Armed Services Committee",
+                                "affiliation": "Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding Caucus",
+                                "photo": "rob-wittman.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "11:50 AM",
-                        "title": "Space Defense Briefing"
+                        "time": "11:35 AM",
+                        "title": "Project SPECTRUM - Cybersecurity/CMMC Brief",
+                        "speakers": [
+                            {
+                                "name": "Kareem A. Sykes",
+                                "title": "Program Manager, Project Spectrum",
+                                "affiliation": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of Defense",
+                                "photo": "kareem-sykes.webp"
+                            },
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "12:25 PM",
-                        "title": "Sponsor Remarks"
+                        "time": "12:15 PM",
+                        "title": "Cyber Fireside Chat",
+                        "speakers": [
+                            {
+                                "name": "David Fraley",
+                                "title": "Chief Technology Officer",
+                                "affiliation": "Secure IT Service Management, Inc.",
+                                "photo": "david-fraley.webp",
+                                "sponsor": "Silver Sponsor",
+                                "sponsorStyle": "bg-gray-300",
+                            },
+                            {
+                                "name": "Kareem A. Sykes",
+                                "title": "Program Manager, Project Spectrum",
+                                "affiliation": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of Defense",
+                                "photo": "kareem-sykes.webp"
+                            },
+                            //{
+                            //    "name": "Peter A. DeLuca",
+                            //    "title": "Business Development Director",
+                            //    "affiliation": "Cybersecurity Collaboration Center (CCC), National Security Agency (NSA)",
+                            //    //"photo": "peter-deluca.webp"
+                            //}
+                            //{
+                            //    "name": "Bailey Bickley",
+                            //    "title": "Chief",
+                            //    "affiliation": "Defense Industrial Base (DIB), Cybersecurity Collaboration Center (CCC), National Security Agency (NSA)",
+                            //    //"photo": "bailey-bickley.webp"
+                            //}
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "12:30 PM",
-                        "title": "Networking Lunch with Exhibitors"
+                        "title": "Networking Lunch with Exhibitors",
+                        "location": "Galleria 5-7",
                     },
                     {
                         "time": "1:30 PM",
-                        "title": "National Security Keynote Address"
+                        "title": "Government Acquisition Update",
+                        "speakers": [
+                            //{
+                            //    "name": "Darlene Coen",
+                            //    "title": "Moderator, Strategic Operations Consultant",
+                            //    "affiliation": "CGI Federal",
+                            //    "photo": "darlene-coen.webp"
+                            //},
+                            //{
+                            //    "name": "Wesley J. Jefferies",
+                            //    "title": "Industry Liaison, OUSD (A&S) Office of Industrial Base Policy",
+                            //    "affiliation": "Industrial Base Analysis and Sustainment (IBAS) Program, U.S. Department of Defense",
+                            //    "photo": "wesley-jefferies.webp"
+                            //},
+                            {
+                                "name": "George Nicol",
+                                "title": "Deputy Program Director, Contract Holders and Industry Relations",
+                                "affiliation": "NASA SEWP Program Office",
+                                "photo": "george-nicol.webp"
+                            },
+                            //{
+                            //    "name": "Daniele Kurze",
+                            //    "title": "Executive Director, Small Business Programs",
+                            //    "affiliation": "U.S. Defense Logistics Agency",
+                            //    "photo": "daniele-kurze.webp"
+                            //}
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "2:00 PM",
-                        "title": "Army Corps of Engineers - Projects & Contracts"
+                        "time": "2:10 PM",
+                        "title": "Streamlined Acquisition Examples",
+                        "speakers": [
+                            {
+                                "name": "Aimee Zick",
+                                "title": "Senior Business Development Executive",
+                                "affiliation": "Improve Group",
+                                "photo": "aimee-zick.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "3:00 PM",
-                        "title": "Military Base Energy Initiatives"
+                        "time": "2:50 PM",
+                        "title": "Army Corps of Engineers – Projects & Contracts",
+                        "speakers": [
+                            //{
+                            //    "name": "David Morrow",
+                            //    "title": "Acting Director, Military Programs",
+                            //    "affiliation": "U.S. Army Corps of Engineers",
+                            //    "photo": "david-morrow.webp"
+                            //},
+                            {
+                                "name": "Sonya D. Rodgers",
+                                "title": "Deputy Director, Office of Small Business Programs",
+                                "affiliation": "U.S. Army Corps of Engineers – Mobile District",
+                                "photo": "sonya-d-rodgers.webp"
+                            },
+                            {
+                                "name": "Sherrie Cordi",
+                                "title": "Procurement Analyst, Office of Small Business Programs",
+                                "affiliation": "U.S. Army Corps of Engineers – Memphis District",
+                                "photo": "sherrie-cordi.webp"
+                            },
+                            //{
+                            //    "name": "Tonya D. Willis",
+                            //    "title": "Deputy Director, Office of Small Business Programs",
+                            //    "affiliation": "U.S. Army Corps of Engineers – Charleston District",
+                            //    "photo": "tonya-willis.webp"
+                            //},
+                            //{
+                            //    "name": "Austin J. Johnson",
+                            //    "title": "Deputy Director, Office of Small Business Programs",
+                            //    "affiliation": "U.S. Army Futures Command",
+                            //    "photo": "austin-johnson.webp"
+                            //}
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "3:45 PM",
-                        "title": "Cybersecurity/CMMC Update Panel"
+                        "time": "3:25 PM",
+                        "title": "Military Base Energy Initiatives",
+                        "speakers": [
+                            {
+                                "name": "Dave Robau, LEED AP",
+                                "title": "Moderator, Executive Director, Gulf Coast Energy Network",
+                                "affiliation": "CEO and Chief Scientist, National Energy USA",
+                                "photo": "dave-robau.webp"
+                            },
+                            //{
+                            //    "name": "Deborah Loomis",
+                            //    "title": "Senior Advisor for Climate Change to the Secretary of the Navy",
+                            //    "photo": "deborah-loomis.webp"
+                            //},
+                            //{
+                            //    "name": "Captain Newt McKissick",
+                            //    "title": "Military Deputy Director, Energy Portfolio",
+                            //    "affiliation": "Defense Innovation Unit (DIU), U.S. Department of Defense",
+                            //    "photo": "newt-mckissick.webp"
+                            //},
+                            //{
+                            //    "name": "Kirk A. Philips",
+                            //    "title": "Director, Office of Energy Assurance (OEA)",
+                            //    "affiliation": "U.S. Air Force Civil Engineer Center (AFCEC)",
+                            //    "photo": "kirk-philips.webp"
+                            //},
+                            //{
+                            //    "name": "Matthew Haupt, PE, CPP, CEM",
+                            //    "title": "NAVFAC Energy Director",
+                            //    "photo": "matthew-haupt.webp"
+                            //},
+                            //{
+                            //    "name": "John A. Kliem, PE, CEM",
+                            //    "title": "Director, Federal Government Strategic Affairs",
+                            //    "affiliation": "Johnson Controls Federal Systems",
+                            //    "photo": "john-kliem.webp"
+                            //},
+                            //{
+                            //    "name": "David Trail",
+                            //    "title": "Director, Government and External Relations (S-7)",
+                            //    "affiliation": "Marine Corps Air Station Beaufort",
+                            //    "photo": "david-trail.webp"
+                            //},
+                            //{
+                            //    "name": "Josh Wepman",
+                            //    "title": "Vice President and Chief Technology Officer",
+                            //    "affiliation": "Leidos Commercial Energy Solutions",
+                            //    "photo": "josh-wepman.webp"
+                            //}
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "4:25 PM",
-                        "title": "VIP Reception Sponsor Remarks"
+                        "time": "4:00 PM",
+                        "title": "Day One Closing Remarks",
+                        "speakers": [
+                            {
+                                "name": "Charles F. Sills",
+                                "title": "President & CEO",
+                                "affiliation": "American Defense Alliance",
+                                "photo": "charles-sills.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "4:30 PM",
-                        "title": "Day One Closing Remarks"
-                    },
-                    {
-                        "time": "4:30 PM - 5:30 PM",
-                        "title": "Matchmaking Session I"
+                        "time": "4:00 PM - 5:30 PM",
+                        "title": "Matchmaking Session I",
+                        "location": "Galleria 1",
                     },
                     {
                         "time": "5:30 PM - 7:30 PM",
-                        "title": "VIP Networking Reception"
+                        "title": "VIP Networking Reception",
+                        "location": "Galleria 5-7",
+                        "description": "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests"
                     }
                 ]
             },
@@ -355,51 +596,226 @@ export const SCHEDULES = [
                 "items": [
                     {
                         "time": "7:30 AM - 8:30 AM",
-                        "title": "Networking Breakfast with Exhibitors"
+                        "title": "Networking Breakfast with Exhibitors",
+                        "location": "Galleria 5-7",
                     },
                     {
                         "time": "8:30 AM",
-                        "title": "Welcome Back Remarks"
+                        "title": "Welcome Back Remarks",
+                        "speakers": [
+                            {
+                                "name": "Charles F. Sills",
+                                "title": "President & CEO",
+                                "affiliation": "American Defense Alliance",
+                                "photo": "charles-sills.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "8:35 AM",
-                        "title": "Doing Business with the Primes"
+                        "title": "Doing Business With the Primes",
+                        "speakers": [
+                            //{
+                            //    "name": "Nancy Ziuzin Schlegel",
+                            //    "title": "Vice President, International Government Affairs",
+                            //    "affiliation": "Lockheed Martin Corporation",
+                            //    "photo": "nancy-schlegel.webp"
+                            //},
+                            //{
+                            //    "name": "Todd Semonite",
+                            //    "title": "Lieutenant General (Ret.), PE, President, Federal Programs",
+                            //    "affiliation": "WSP USA",
+                            //    "photo": "todd-semonite.webp"
+                            //},
+                            //{
+                            //    "name": "Robert Winkler",
+                            //    "title": "Vice President, Corporate Development & National Security Programs",
+                            //    "affiliation": "Kratos Defense and Security Solutions, Inc.",
+                            //    "photo": "robert-winkler.webp"
+                            //},
+                            //{
+                            //    "name": "Daniel A. Ateya",
+                            //    "title": "President & Managing Director, RTX Ventures",
+                            //    "affiliation": "Raytheon Technologies",
+                            //    "photo": "daniel-ateya.webp"
+                            //},
+                            //{
+                            //    "name": "Laura Bukkosy Hooks, Ph.D.",
+                            //    "title": "Vice President/General Manager, Maritime & Strategic Systems",
+                            //    "affiliation": "GENERAL DYNAMICS Mission Systems",
+                            //    "photo": "laura-hooks.webp"
+                            //}
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "9:25 AM",
-                        "title": "Sponsor Remarks"
+                        "time": "9:05 AM",
+                        "title": "CONGRESSIONAL KEYNOTE ADDRESS",
+                        "speakers": [
+                            //{
+                            //    "name": "Representative Neal Dunn",
+                            //    "title": "House Committee on Energy and Commerce",
+                            //    "affiliation": "House Select Committee on the Strategic Competition between the U.S. and the Chinese Communist Party",
+                            //    "photo": "neal-dunn.webp"
+                            //}
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "9:30 AM",
-                        "title": "Congressional Keynote Address"
+                        "time": "9:15 AM",
+                        "title": "Air Force & Space Force Acquisition Update",
+                        "speakers": [
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "9:45 AM",
-                        "title": "Indo-Pacific Theater Briefing"
+                        "time": "9:50 AM",
+                        "title": "Indo-Pacific Theater/U.S. Navy Force Posture",
+                        "speakers": [
+                            {
+                                "name": "Brent D. Sadler",
+                                "title": "Senior Research Fellow, Naval Warfare and Advanced Technology Center for National Defense",
+                                "affiliation": "The Heritage Foundation",
+                                "photo": "brent-sadler.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "10:10 AM",
-                        "title": "Navy Shipbuilding & SIB (Submarine Industrial Base) Requirements"
+                        "time": "10:15 AM",
+                        "title": "MBDA Federal Procurement Center – Tiger Team Briefing",
+                        "speakers": [
+                            {
+                                "name": "Oscar Frazier",
+                                "title": "Tiger Team Lead, Federal Procurement Center, Minority Business Development Agency (MBDA)",
+                                "affiliation": "U.S. Department of Commerce and Owner, nDemand Consulting Services Inc.",
+                                "photo": "oscar-frazier.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "10:35 AM",
-                        "title": "NAVFAC – Projects & Contracts"
+                        "time": "10:40 AM",
+                        "title": "DEFENSE DEPARTMENT ACQUISITION KEYNOTE",
+                        "speakers": [
+                            //{
+                            //    "name": "Lieutenant General Robert M. Collins",
+                            //    "title": "Military Deputy Assistant Secretary of the Army",
+                            //    "affiliation": "Acquisition, Logistics & Technology",
+                            //    "photo": "robert-collins.webp"
+                            //}
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "11:15 AM",
-                        "title": "Artificial Intelligence – Impact on Defense Acquisition"
+                        "time": "11:10 AM",
+                        "title": "Fireside Chat – Army Contracting",
+                        "speakers": [
+                            {
+                                "name": "Charles F. Sills",
+                                "affiliation": "American Defense Alliance",
+                                "title": "President & CEO",
+                                "photo": "charles-sills.webp"
+                            },
+                            {
+                                "name": "James Simpson, Major General, U.S. Army (Ret.)",
+                                "sponsor": "Platinum Sponsor",
+                                "sponsorStyle": "bg-sky-300 text-slate-900",
+                                "title": "Executive Director of Federal Strategic Initiatives",
+                                "affiliation": "Modtech Solutions, LLC",
+                                "photo": "james-simpson.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "11:50 AM",
-                        "title": "Marine Corps Acquisition"
+                        "time": "11:25 AM",
+                        "title": "Canadian Defense Ministry – Contract Opportunities",
+                        "speakers": [
+                            {
+                                "name": "Linda Eshiwani-Nate",
+                                "title": "Trade Commissioner",
+                                "affiliation": "Consulate General of Canada in Atlanta",
+                                "photo": "linda-eshiwani-nate.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "12:30 PM",
-                        "title": "Army & Marine Corps Depot Support Opportunities"
+                        "time": "11:40 AM",
+                        "title": "NAVFAC – Projects & Contracts",
+                        "speakers": [
+                            //{
+                            //    "name": "Captain Miguel Dieguez",
+                            //    "title": "Commanding Officer, NAVFAC Southeast and Regional Engineer",
+                            //    "affiliation": "Navy Region Southeast, Naval Facilities Engineering Systems Command (NAVFAC)",
+                            //    "photo": "miguel-dieguez.webp"
+                            //},
+                            //{
+                            //    "name": "Captain Edward B. Miller IV",
+                            //    "title": "Vice Commander",
+                            //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC) Atlantic",
+                            //    "photo": "edward-miller.webp"
+                            //},
+                            //{
+                            //    "name": "Richard S. Tyler",
+                            //    "title": "Chief Engineer / Planning Design and Construction Director",
+                            //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC) Atlantic",
+                            //    "photo": "richard-tyler.webp"
+                            //},
+                            //{
+                            //    "name": "Bob Silver, PE",
+                            //    "title": "Acting Assistant Commander for Design & Construction",
+                            //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC)",
+                            //    "photo": "bob-silver.webp"
+                            //},
+                            //{
+                            //    "name": "Cindy Readal",
+                            //    "title": "Assistant Commander for Contracting",
+                            //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC)",
+                            //    "photo": "cindy-readal.webp"
+                            //}
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
-                        "time": "1:00 PM",
-                        "title": "Closing Remarks"
+                        "time": "12:15 PM",
+                        "title": "Army & Marine Corps Depot Procurement",
+                        "speakers": [
+                            //{
+                            //    "name": "Colonel Juliet H. Calvin",
+                            //    "title": "Joint Staff, Acquisition, Data & Analytics",
+                            //    "affiliation": "U.S. Marine Corps",
+                            //    "photo": "juliet-calvin.webp"
+                            //},
+                            //{
+                            //    "name": "Terry L. Whitaker",
+                            //    "title": "Small Business Specialist, HQMC Installations and Logistics (HQMC/I&L)",
+                            //    "affiliation": "Marine Corps Logistics Command",
+                            //    "photo": "terry-whitaker.webp"
+                            //},
+                            //{
+                            //    "name": "Shynta Hudson",
+                            //    "title": "Executive assistant",
+                            //    "affiliation": "Anniston Army Depot",
+                            //    "photo": "shynta-hudson.webp"
+                            //}
+                        ],
+                        "location": "Galleria 4",
+                    },
+                    {
+                        "time": "12:45 PM",
+                        "title": "Closing Remarks",
+                        "speakers": [
+                            {
+                                "name": "Charles F. Sills",
+                                "affiliation": "American Defense Alliance",
+                                "title": "President & CEO",
+                                "photo": "charles-sills.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
                     }
                 ]
             }

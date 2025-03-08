@@ -151,35 +151,10 @@ export const EVENTS: Event[] = [
     eventShorthand: "2025SDPC",
     title: "2025 Southeast Defense Procurement Conference",
     date: "March 11-12, 2025",
-    timeStart: "2025-03-18T12:30:00Z", // TODO: change to actual time
+    timeStart: "2025-03-11T12:30:00Z", // TODO: change to actual time
     description: "Join us for the 2025 Southeast Defense Procurement Conference on March 11-12, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
     eventText: (
       <div className="max-w-[92rem] font-light text-balance">
-        <div className="mb-4 p-6 bg-white shadow-lg rounded-lg border-l-4 border-blue-700">
-          <h3 className="text-xl font-bold text-blue-800 mb-2">IMPORTANT UPDATE: 2025 Southeast Defense Procurement Conference</h3>
-          <div className="flex items-start">
-            <div className="mr-4 mt-1 text-blue-700">
-            </div>
-            <div>
-              <p className="mb-3">
-                The conference is <span className="font-semibold">still on!</span> Scheduled for <span className="font-semibold text-blue-800">March 11-12 in Atlanta, Georgia</span>, the event will proceed as planned despite President Trump's Feb. 26 Executive Order limiting GSA Travel Cards.
-              </p>
-              <p className="mb-3">
-                Guidance from defense leadership ensures the program remains unaffected, and we're working closely with our partners to deliver a valuable experience.
-              </p>
-              <p className="font-medium">
-                Join us to explore contracting opportunities with key commands across the Southeast and connect with industry leaders driving innovation.
-              </p>
-              <div className="mt-4">
-                <a href="https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389">
-                  <button className="px-4 py-2 bg-blue-800 hover:bg-blue-800 text-white font-medium rounded-md seadow transition-colors" >
-                    Register Now
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
@@ -190,7 +165,7 @@ export const EVENTS: Event[] = [
         <p className="font-bold text-xl text-center font-gotham">
           Featured Contracting Commands:
         </p>
-        <p className="">
+        <div className="">
           <ul className="list-inside">
             <li>Multiple Air Force Bases in Florida, Georgia & throughout the Southeast</li>
             <li>Marine Corps Bases in North & South Carolina and the Blount Island Logistic Support Facility</li>
@@ -200,7 +175,7 @@ export const EVENTS: Event[] = [
             <li>King's Bay Naval Sub Base, and Naval Air Stations in Pensacola, Jacksonville & Key West</li>
             <li>Major Contracting Commands including CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, & SPACECENT</li>
           </ul>
-        </p>
+        </div>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
@@ -650,7 +625,7 @@ invaluable connections that can shape the future of your business.
     eventShorthand: "2025NMCPC",
     title: "2025 Navy & Marine Corps Procurement Conference",
     date: "July 29-30, 2025",
-    timeStart: "2025-06-10T13:00:00Z",
+    timeStart: "2025-07-29T13:00:00Z",
     description: `Join us for the 2025 Navy & Marine Corps Procurement Conference on July 29-30, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.`,
     eventText: (
       <div className="max-container font-light">
@@ -663,7 +638,7 @@ invaluable connections that can shape the future of your business.
         <p className="font-bold text-xl text-center font-gotham">
           Topical Coverage:
         </p>
-        <p className="">
+        <div className="">
           <ul className="list-inside">
             <li>Navy's Critical Maintenance & Repair and Shipbuilding Needs</li>
             <li>SIOP - Shipyard Infrastructure Optimization Plan - Driving $ Billions in Construction & Facility Support Contracts</li>
@@ -683,7 +658,7 @@ invaluable connections that can shape the future of your business.
             <li>Cybersecurity Compliance Mandates and CMMC Training Options</li>
             <li>Defense Contract Audit Agency Support for Small & Medium-Size Contractors</li>
           </ul>
-        </p>
+        </div>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
