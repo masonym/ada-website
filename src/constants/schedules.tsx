@@ -296,7 +296,7 @@ export const SCHEDULES = [
                             {
                                 "name": "Tasha Allen",
                                 "title": "Vice President of Talent Management",
-                                "affiliation": "Georgia Chamber",
+                                "affiliation": "Georgia Chamber of Commerce",
                                 "photo": "tasha-allen.webp"
                             }
                         ],
@@ -449,12 +449,12 @@ export const SCHEDULES = [
                             //    "affiliation": "Industrial Base Analysis and Sustainment (IBAS) Program, U.S. Department of Defense",
                             //    "photo": "wesley-jefferies.webp"
                             //},
-                            {
-                                "name": "George Nicol",
-                                "title": "Deputy Program Director, Contract Holders and Industry Relations",
-                                "affiliation": "NASA SEWP Program Office",
-                                "photo": "george-nicol.webp"
-                            },
+                            //{
+                            //    "name": "George Nicol",
+                            //    "title": "Deputy Program Director, Contract Holders and Industry Relations",
+                            //    "affiliation": "NASA SEWP Program Office",
+                            //    "photo": "george-nicol.webp"
+                            //},
                             //{
                             //    "name": "Daniele Kurze",
                             //    "title": "Executive Director, Small Business Programs",
@@ -487,12 +487,12 @@ export const SCHEDULES = [
                             //    "affiliation": "U.S. Army Corps of Engineers",
                             //    "photo": "david-morrow.webp"
                             //},
-                            {
-                                "name": "Sonya D. Rodgers",
-                                "title": "Deputy Director, Office of Small Business Programs",
-                                "affiliation": "U.S. Army Corps of Engineers – Mobile District",
-                                "photo": "sonya-d-rodgers.webp"
-                            },
+                            //{
+                            //    "name": "Sonya D. Rodgers",
+                            //    "title": "Deputy Director, Office of Small Business Programs",
+                            //    "affiliation": "U.S. Army Corps of Engineers – Mobile District",
+                            //    "photo": "sonya-d-rodgers.webp"
+                            //},
                             {
                                 "name": "Sherrie Cordi",
                                 "title": "Procurement Analyst, Office of Small Business Programs",
