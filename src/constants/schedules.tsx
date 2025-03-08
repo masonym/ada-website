@@ -375,7 +375,9 @@ export const SCHEDULES = [
                                 "name": "Representative Rob Wittman (R-VA)",
                                 "title": "Vice Chairman, House Armed Services Committee",
                                 "affiliation": "Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding Caucus",
-                                "photo": "rob-wittman.webp"
+                                "photo": "rob-wittman.webp",
+                                "sponsor": "Pre-Recorded Address",
+                                "sponsorStyle": "bg-gray-300",
                             }
                         ],
                         "location": "Galleria 4",
