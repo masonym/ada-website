@@ -651,41 +651,28 @@ export const SCHEDULES = [
                         ],
                         "location": "Galleria 4",
                     },
+                    //{
+                    //    "time": "9:05 AM",
+                    //    "title": "CONGRESSIONAL KEYNOTE ADDRESS",
+                    //    "speakers": [
+                    //        //{
+                    //        //    "name": "Representative Neal Dunn",
+                    //        //    "title": "House Committee on Energy and Commerce",
+                    //        //    "affiliation": "House Select Committee on the Strategic Competition between the U.S. and the Chinese Communist Party",
+                    //        //    "photo": "neal-dunn.webp"
+                    //        //}
+                    //    ],
+                    //    "location": "Galleria 4",
+                    //},
+                    //{
+                    //    "time": "9:15 AM",
+                    //    "title": "Air Force & Space Force Acquisition Update",
+                    //    "speakers": [
+                    //    ],
+                    //    "location": "Galleria 4",
+                    //},
                     {
-                        "time": "9:05 AM",
-                        "title": "CONGRESSIONAL KEYNOTE ADDRESS",
-                        "speakers": [
-                            //{
-                            //    "name": "Representative Neal Dunn",
-                            //    "title": "House Committee on Energy and Commerce",
-                            //    "affiliation": "House Select Committee on the Strategic Competition between the U.S. and the Chinese Communist Party",
-                            //    "photo": "neal-dunn.webp"
-                            //}
-                        ],
-                        "location": "Galleria 4",
-                    },
-                    {
-                        "time": "9:15 AM",
-                        "title": "Air Force & Space Force Acquisition Update",
-                        "speakers": [
-                        ],
-                        "location": "Galleria 4",
-                    },
-                    {
-                        "time": "9:50 AM",
-                        "title": "Indo-Pacific Theater/U.S. Navy Force Posture",
-                        "speakers": [
-                            {
-                                "name": "Brent D. Sadler",
-                                "title": "Senior Research Fellow, Naval Warfare and Advanced Technology Center for National Defense",
-                                "affiliation": "The Heritage Foundation",
-                                "photo": "brent-sadler.webp"
-                            }
-                        ],
-                        "location": "Galleria 4",
-                    },
-                    {
-                        "time": "10:15 AM",
+                        "time": "9:10 AM",
                         "title": "MBDA Federal Procurement Center – Tiger Team Briefing",
                         "speakers": [
                             {
@@ -699,8 +686,34 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
+                        "time": "9:40 AM",
+                        "title": "Indo-Pacific Theater/U.S. Navy Force Posture",
+                        "speakers": [
+                            {
+                                "name": "Brent D. Sadler",
+                                "title": "Senior Research Fellow, Naval Warfare and Advanced Technology Center for National Defense",
+                                "affiliation": "The Heritage Foundation",
+                                "photo": "brent-sadler.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
+                    },
+                    {
+                        "time": "10:10 AM",
+                        "title": "Defense Industrial Base Briefing",
+                        "speakers": [
+                            {
+                                "name": "Wesley J. Jefferies",
+                                "title": "Industry Liaison, OUSD (A&S) Office of Industrial Base Policy, Industrial Base Analysis and Sustainment (IBAS) Program, Innovation Capability and Modernization (ICAM) Office",
+                                "affiliation": "U.S. Department of Defense",
+                                "photo": "wesley-jefferies.webp",
+                            }
+                        ],
+                        "location": "Galleria 4",
+                    },
+                    {
                         "time": "10:40 AM",
-                        "title": "DEFENSE DEPARTMENT ACQUISITION KEYNOTE",
+                        "title": "Networking Break",
                         "speakers": [
                             //{
                             //    "name": "Lieutenant General Robert M. Collins",
@@ -709,10 +722,10 @@ export const SCHEDULES = [
                             //    "photo": "robert-collins.webp"
                             //}
                         ],
-                        "location": "Galleria 4",
+                        "location": "Galleria 5-7",
                     },
                     {
-                        "time": "11:10 AM",
+                        "time": "11:35 AM",
                         "title": "Fireside Chat – Army Contracting",
                         "speakers": [
                             {
@@ -733,7 +746,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "11:25 AM",
+                        "time": "11:50 AM",
                         "title": "Canadian Defense Ministry – Contract Opportunities",
                         "speakers": [
                             {
@@ -745,70 +758,70 @@ export const SCHEDULES = [
                         ],
                         "location": "Galleria 4",
                     },
+                    //{
+                    //    "time": "11:40 AM",
+                    //    "title": "NAVFAC – Projects & Contracts",
+                    //    "speakers": [
+                    //        //{
+                    //        //    "name": "Captain Miguel Dieguez",
+                    //        //    "title": "Commanding Officer, NAVFAC Southeast and Regional Engineer",
+                    //        //    "affiliation": "Navy Region Southeast, Naval Facilities Engineering Systems Command (NAVFAC)",
+                    //        //    "photo": "miguel-dieguez.webp"
+                    //        //},
+                    //        //{
+                    //        //    "name": "Captain Edward B. Miller IV",
+                    //        //    "title": "Vice Commander",
+                    //        //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC) Atlantic",
+                    //        //    "photo": "edward-miller.webp"
+                    //        //},
+                    //        //{
+                    //        //    "name": "Richard S. Tyler",
+                    //        //    "title": "Chief Engineer / Planning Design and Construction Director",
+                    //        //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC) Atlantic",
+                    //        //    "photo": "richard-tyler.webp"
+                    //        //},
+                    //        //{
+                    //        //    "name": "Bob Silver, PE",
+                    //        //    "title": "Acting Assistant Commander for Design & Construction",
+                    //        //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC)",
+                    //        //    "photo": "bob-silver.webp"
+                    //        //},
+                    //        //{
+                    //        //    "name": "Cindy Readal",
+                    //        //    "title": "Assistant Commander for Contracting",
+                    //        //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC)",
+                    //        //    "photo": "cindy-readal.webp"
+                    //        //}
+                    //    ],
+                    //    "location": "Galleria 4",
+                    //},
+                    //{
+                    //    "time": "12:15 PM",
+                    //    "title": "Army & Marine Corps Depot Procurement",
+                    //    "speakers": [
+                    //        //{
+                    //        //    "name": "Colonel Juliet H. Calvin",
+                    //        //    "title": "Joint Staff, Acquisition, Data & Analytics",
+                    //        //    "affiliation": "U.S. Marine Corps",
+                    //        //    "photo": "juliet-calvin.webp"
+                    //        //},
+                    //        //{
+                    //        //    "name": "Terry L. Whitaker",
+                    //        //    "title": "Small Business Specialist, HQMC Installations and Logistics (HQMC/I&L)",
+                    //        //    "affiliation": "Marine Corps Logistics Command",
+                    //        //    "photo": "terry-whitaker.webp"
+                    //        //},
+                    //        //{
+                    //        //    "name": "Shynta Hudson",
+                    //        //    "title": "Executive assistant",
+                    //        //    "affiliation": "Anniston Army Depot",
+                    //        //    "photo": "shynta-hudson.webp"
+                    //        //}
+                    //    ],
+                    //    "location": "Galleria 4",
+                    //},
                     {
-                        "time": "11:40 AM",
-                        "title": "NAVFAC – Projects & Contracts",
-                        "speakers": [
-                            //{
-                            //    "name": "Captain Miguel Dieguez",
-                            //    "title": "Commanding Officer, NAVFAC Southeast and Regional Engineer",
-                            //    "affiliation": "Navy Region Southeast, Naval Facilities Engineering Systems Command (NAVFAC)",
-                            //    "photo": "miguel-dieguez.webp"
-                            //},
-                            //{
-                            //    "name": "Captain Edward B. Miller IV",
-                            //    "title": "Vice Commander",
-                            //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC) Atlantic",
-                            //    "photo": "edward-miller.webp"
-                            //},
-                            //{
-                            //    "name": "Richard S. Tyler",
-                            //    "title": "Chief Engineer / Planning Design and Construction Director",
-                            //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC) Atlantic",
-                            //    "photo": "richard-tyler.webp"
-                            //},
-                            //{
-                            //    "name": "Bob Silver, PE",
-                            //    "title": "Acting Assistant Commander for Design & Construction",
-                            //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC)",
-                            //    "photo": "bob-silver.webp"
-                            //},
-                            //{
-                            //    "name": "Cindy Readal",
-                            //    "title": "Assistant Commander for Contracting",
-                            //    "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC)",
-                            //    "photo": "cindy-readal.webp"
-                            //}
-                        ],
-                        "location": "Galleria 4",
-                    },
-                    {
-                        "time": "12:15 PM",
-                        "title": "Army & Marine Corps Depot Procurement",
-                        "speakers": [
-                            //{
-                            //    "name": "Colonel Juliet H. Calvin",
-                            //    "title": "Joint Staff, Acquisition, Data & Analytics",
-                            //    "affiliation": "U.S. Marine Corps",
-                            //    "photo": "juliet-calvin.webp"
-                            //},
-                            //{
-                            //    "name": "Terry L. Whitaker",
-                            //    "title": "Small Business Specialist, HQMC Installations and Logistics (HQMC/I&L)",
-                            //    "affiliation": "Marine Corps Logistics Command",
-                            //    "photo": "terry-whitaker.webp"
-                            //},
-                            //{
-                            //    "name": "Shynta Hudson",
-                            //    "title": "Executive assistant",
-                            //    "affiliation": "Anniston Army Depot",
-                            //    "photo": "shynta-hudson.webp"
-                            //}
-                        ],
-                        "location": "Galleria 4",
-                    },
-                    {
-                        "time": "12:45 PM",
+                        "time": "12:00 PM",
                         "title": "Closing Remarks",
                         "speakers": [
                             {
