@@ -312,7 +312,7 @@ invaluable connections that can shape the future of your business.
     ],
     placeID: "ChIJ__IuDHcE9YgRl74p-48jkpU",
     registerLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
-    password: "ADA2025SDPC",
+    password: "SDPC2025ADA",
 
     featuredTopicsTitle: "Featured Contracting Commands",
     featuredTopicsSubtitle: "These insights highlight key regional defense assets and contracting opportunities in the Southeast, emphasizing the need for contractors to tailor their solutions to support the military's evolving Infrastructure, Operational Readiness, and Technological Advancements.",
@@ -623,6 +623,7 @@ invaluable connections that can shape the future of your business.
   {
     id: 4,
     eventShorthand: "2025NMCPC",
+    password: "2025NMCPCADA",
     title: "2025 Navy & Marine Corps Procurement Conference",
     date: "July 29-30, 2025",
     timeStart: "2025-07-29T13:00:00Z",
