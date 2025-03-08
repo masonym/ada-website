@@ -659,9 +659,9 @@ A native of Anniston, AL, Mr. Cockrell graduated from Auburn University with an 
 	"erin-bearhalter": {
 		"image": "erin-bearhalter.webp",
 		"name": "Erin Bearhalter",
-		"position": "Associate Project Manager",
-		"company": "Salas O'Brien",
-		"bio": `Erin supports the Office of the Deputy Chief of Staff, G-9, in theArmy Community Partnership Office. She focuses on theutilization of collaborative partnership authorities to achievemutually beneficial partnerships between our Army Installationsand local communities. Erin has overseen the development ofseveral Intergovernmental Support Agreements (IGSAs) andprovides project management support to improve Armyreadiness and resiliency. Erin leads in the development anddelivery of leadership briefings, congressional reporting andrequest for information, and facilitates external engagements between local community officials and theOffice of the Deputy Chief of Staff, G-9 as well as the Assistant Secretary of the United States ArmyInstallations, Energy and Environment (ASA(IE&E)).
+		"position": "Project Manager",
+		"company": "Office of the Deputy Chief of Staff, G-9 Army Community Partnership Office",
+		"bio": `Erin supports the Office of the Deputy Chief of Staff, G-9, in the Army Community Partnership Office. She focuses on theutilization of collaborative partnership authorities to achievemutually beneficial partnerships between our Army Installationsand local communities. Erin has overseen the development ofseveral Intergovernmental Support Agreements (IGSAs) andprovides project management support to improve Armyreadiness and resiliency. Erin leads in the development anddelivery of leadership briefings, congressional reporting andrequest for information, and facilitates external engagements between local community officials and theOffice of the Deputy Chief of Staff, G-9 as well as the Assistant Secretary of the United States ArmyInstallations, Energy and Environment (ASA(IE&E)).
 <br/>
 
 <br/>
