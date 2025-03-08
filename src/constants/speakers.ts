@@ -491,7 +491,7 @@ Mr. Nicol became the Deputy Program Director in January 2023 and continues to le
 		"image": "sherrie-cordi.webp",
 		"name": "Sherrie Cordi",
 		"position": "Deputy, Office of Small Business Programs",
-		"company": "USACE Memphis District (MVM)",
+		"company": "USACE Memphis District",
 		"bio": `Sherrie Cordi is the Small Business Program Manager for the U.S. Army Corps of Engineers, Memphis District. She oversees a $70M Small Business Program, ensuring compliance with federal procurement regulations while maximizing opportunities for small businesses in government contracting. A Navy veteran, Sherrie brings 9 years of combined honorable military service and government experience to the position.`,
 	},
 	"oscar-frazier": {
@@ -590,8 +590,8 @@ Before joining Modtech Solutions, Tim built a diverse career that shaped his app
 	"aimee-zick": {
 		"image": "aimee-zick.webp",
 		"name": "Aimee Zick",
-		"position": "Senior Business Development Executive, Improve Group and Project Director",
-		"company": "NORAD/Cheyenne Mountain Renovation",
+		"position": "Senior Business Development Executive",
+		"company": "Improve Group",
 		"bio": `Aimee is a strategic and empowering innovator who partners with executive leadership to build and execute strategies which fuel growth and operational effectiveness. Strong financial acumen with ability to align all functional units on common goals and objectives. Addresses challenging business issues by leveraging resources, technology, human capital, and processes for multibillion-dollar organizations. Drives implementation of new processes and systems, critical to supporting quality improvement. Offers holistic approach to business and strong command of delivering large scale operational initiatives. 
 <br/>
 
