@@ -55,7 +55,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
 
     const nonKeynoteSpeakers = speakers.filter(speaker => !speaker.keynote);
     const isEventFuture = event.timeStart
-        ? new Date(new Date(event.timeStart).getTime() - 3 * 24 * 60 * 60 * 1000) > new Date()
+        ? new Date(new Date(event.timeStart).getTime() - 0.5 * 24 * 60 * 60 * 1000) > new Date()
         : false;
 
     return (
