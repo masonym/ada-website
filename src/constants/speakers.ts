@@ -700,6 +700,18 @@ Following his final tour on CNO’s staff, Brent returned to Asia as Senior Defe
 <br/>
 His final Navy assignment was China Branch of Navy Staff at the Pentagon. `,
 	}
+	,
+	"wesley-jefferies": {
+		"image": "wesley-jefferies.webp",
+		"name": "Wesley J. Jefferies",
+		"position": "Industry Liaison, OUSD (A&S) Office of Industrial Base Policy, Industrial Base Analysis and Sustainment (IBAS) Program, Innovation Capability and Modernization (ICAM) Office",
+		"company": "U.S. Department of Defense",
+		"bio": `Wesley Jefferies is the Industry Liaison for the Industrial Base Analysis and Sustainment Program (IBAS) in the U.S. Department of Defense’s Office of Industrial Base Policy. In this role, he is responsible for coordinating engagement with present and potential industry partners with the IBAS program.
+	<br/>
+	
+	<br/>
+	He is also an Innovation Analyst with ANSER, a non-profit research institute that provides services to the U.S. Department of Defense and other federal clients. Before that, Mr. Jefferies researched the development and proliferation of drone technology with the International Security Program at New America, a think tank based in Washington, D.C. He received his M.A. in International Security from Georgetown University’s Walsh School of Foreign Service and B.A. in Political Science from Arizona State University.`,
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -743,8 +755,8 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"dave-leinberger",
 		"charles-sills",
 		"dave-robau",
-		"sonya-d-rodgers",
-		"george-nicol",
+		//"sonya-d-rodgers",
+		//"george-nicol",
 		"sherrie-cordi",
 		"oscar-frazier",
 		"teresa-harrington",
