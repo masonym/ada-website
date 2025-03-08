@@ -593,7 +593,7 @@ Before joining Modtech Solutions, Tim built a diverse career that shaped his app
 	},
 	"aimee-zick": {
 		"image": "aimee-zick.webp",
-		"name": "Aimee (\"Z\") Zick",
+		"name": "Aimee \"Z\" Zick",
 		"position": "Senior Business Development Executive",
 		"company": "Improve Group",
 		"bio": `Aimee is a strategic and empowering innovator who partners with executive leadership to build and execute strategies which fuel growth and operational effectiveness. Strong financial acumen with ability to align all functional units on common goals and objectives. Addresses challenging business issues by leveraging resources, technology, human capital, and processes for multibillion-dollar organizations. Drives implementation of new processes and systems, critical to supporting quality improvement. Offers holistic approach to business and strong command of delivering large scale operational initiatives. 
