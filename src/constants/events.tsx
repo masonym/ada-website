@@ -155,31 +155,6 @@ export const EVENTS: Event[] = [
     description: "Join us for the 2025 Southeast Defense Procurement Conference on March 11-12, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
     eventText: (
       <div className="max-w-[92rem] font-light text-balance">
-        <div className="mb-4 p-6 bg-white shadow-lg rounded-lg border-l-4 border-blue-700">
-          <h3 className="text-xl font-bold text-blue-800 mb-2">IMPORTANT UPDATE: 2025 Southeast Defense Procurement Conference</h3>
-          <div className="flex items-start">
-            <div className="mr-4 mt-1 text-blue-700">
-            </div>
-            <div>
-              <p className="mb-3">
-                The conference is <span className="font-semibold">still on!</span> Scheduled for <span className="font-semibold text-blue-800">March 11-12 in Atlanta, Georgia</span>, the event will proceed as planned despite President Trump's Feb. 26 Executive Order limiting GSA Travel Cards.
-              </p>
-              <p className="mb-3">
-                Guidance from defense leadership ensures the program remains unaffected, and we're working closely with our partners to deliver a valuable experience.
-              </p>
-              <p className="font-medium">
-                Join us to explore contracting opportunities with key commands across the Southeast and connect with industry leaders driving innovation.
-              </p>
-              <div className="mt-4">
-                <a href="https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389">
-                  <button className="px-4 py-2 bg-blue-800 hover:bg-blue-800 text-white font-medium rounded-md seadow transition-colors" >
-                    Register Now
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
