@@ -770,6 +770,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"tim-didjurgis",
 		"david-fraley",
 		"wesley-jefferies",
+		"amir-bagherpour-phd",
 		//"carl-m-wade",
 		//"david-willis",
 		//{ id: "patricia-waddell", invited: true },
