@@ -615,62 +615,16 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "8:35 AM",
-                        "title": "Doing Business With the Primes",
-                        "speakers": [
-                            //{
-                            //    "name": "Nancy Ziuzin Schlegel",
-                            //    "title": "Vice President, International Government Affairs",
-                            //    "affiliation": "Lockheed Martin Corporation",
-                            //    "photo": "nancy-schlegel.webp"
-                            //},
-                            //{
-                            //    "name": "Todd Semonite",
-                            //    "title": "Lieutenant General (Ret.), PE, President, Federal Programs",
-                            //    "affiliation": "WSP USA",
-                            //    "photo": "todd-semonite.webp"
-                            //},
-                            //{
-                            //    "name": "Robert Winkler",
-                            //    "title": "Vice President, Corporate Development & National Security Programs",
-                            //    "affiliation": "Kratos Defense and Security Solutions, Inc.",
-                            //    "photo": "robert-winkler.webp"
-                            //},
-                            //{
-                            //    "name": "Daniel A. Ateya",
-                            //    "title": "President & Managing Director, RTX Ventures",
-                            //    "affiliation": "Raytheon Technologies",
-                            //    "photo": "daniel-ateya.webp"
-                            //},
-                            //{
-                            //    "name": "Laura Bukkosy Hooks, Ph.D.",
-                            //    "title": "Vice President/General Manager, Maritime & Strategic Systems",
-                            //    "affiliation": "GENERAL DYNAMICS Mission Systems",
-                            //    "photo": "laura-hooks.webp"
-                            //}
-                        ],
-                        "location": "Galleria 4",
+                        time: "8:45 AM",
+                        title: "Artificial Intelligence — Impact on Defense Acquisition",
+                        location: "National Press Club Ballroom",
+                        speakers: [{
+                            name: "Amir Bagherpour, PhD",
+                            title: "Managing Director and Analytics & Visualization Lead for Data & AI",
+                            affiliation: "Accenture Federal Services",
+                            photo: "amir-bagherpour.webp",
+                        }]
                     },
-                    //{
-                    //    "time": "9:05 AM",
-                    //    "title": "CONGRESSIONAL KEYNOTE ADDRESS",
-                    //    "speakers": [
-                    //        //{
-                    //        //    "name": "Representative Neal Dunn",
-                    //        //    "title": "House Committee on Energy and Commerce",
-                    //        //    "affiliation": "House Select Committee on the Strategic Competition between the U.S. and the Chinese Communist Party",
-                    //        //    "photo": "neal-dunn.webp"
-                    //        //}
-                    //    ],
-                    //    "location": "Galleria 4",
-                    //},
-                    //{
-                    //    "time": "9:15 AM",
-                    //    "title": "Air Force & Space Force Acquisition Update",
-                    //    "speakers": [
-                    //    ],
-                    //    "location": "Galleria 4",
-                    //},
                     {
                         "time": "9:10 AM",
                         "title": "MBDA Federal Procurement Center – Tiger Team Briefing",
