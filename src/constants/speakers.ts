@@ -528,7 +528,7 @@ Dr. Harrington earned a Doctor of Business Administration degree through Trevecc
 	,
 	"representative-rob-wittman": {
 		"image": "rob-wittman.webp",
-		"name": "Representative Rob Wittman",
+		"name": "Representative Rob Wittman (R-VA)",
 		"position": "U.S. Representative, Virginia’s First District",
 		"company": "U.S. House of Representatives",
 		"bio": `Congressman Rob Wittman was first elected to the United States Congress to serve Virginia’s First Congressional District in 2007. While in office, he has focused on strengthening our military and supporting our nation’s veterans, promoting a flourishing economy through fiscal responsibility and pro-growth policies, fixing our crumbling infrastructure, increasing access to high-speed internet, and promoting workforce development through Career and Technical Education (CTE) and Science, Technology, Engineering, and Math (STEM) programs.
