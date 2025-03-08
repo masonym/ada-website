@@ -327,8 +327,8 @@ export const SCHEDULES = [
                             },
                             {
                                 "name": "Erin Bearhalter",
-                                "title": "Associate Project Manager",
-                                "affiliation": "Salas O'Brien",
+                                "title": "Project Manager",
+                                "affiliation": "Office of the Deputy Chief of Staff, G-9 Army Community Partnership Office",
                                 "photo": "erin-bearhalter.webp"
                             }
                         ],
@@ -469,7 +469,7 @@ export const SCHEDULES = [
                         "title": "Streamlined Acquisition Examples",
                         "speakers": [
                             {
-                                "name": "Aimee Zick",
+                                "name": "Aimee \"Z\" Zick",
                                 "title": "Senior Business Development Executive",
                                 "affiliation": "Improve Group",
                                 "photo": "aimee-zick.webp"
