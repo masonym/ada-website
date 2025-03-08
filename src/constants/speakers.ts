@@ -19,27 +19,27 @@ export const SPEAKERS: { [key: string]: Speaker } = {
 		"position": "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
 		"company": "U.S. House of Representatives",
 		"bio": `Congressman Mike Waltz is a Colonel (Ret.) in the National Guard, a combat-decorated Green Beret, former White House and Pentagon policy advisor, a small business owner, an author, and a proud father. He is the first Green Beret to be elected to Congress.Mike was born in Boynton Beach, Florida and grew up in Jacksonville, Florida. He was raised by a hard-working single mother and is the son and grandson of Navy Chiefs.Mike has served his country his entire life. He graduated from the Virginia Military Institute with Honors and served 27 years in the U.S. Army and National Guard, retiring during his second term in Congress. After being commissioned as an Army lieutenant, Mike graduated Ranger School and was selected for the elite Green Berets, serving worldwide as a Special Forces officer with multiple combat tours in Afghanistan, the Middle East and Africa. For his actions in combat, Mike was awarded four Bronze Stars, including two for Valor.
-<br></br>
+<br/><br/>
 During his time in Afghanistan, Mike led the teams searching for deserter Pvt. Bowe Berghdal. Mike was one of the first to publicly call into question then-President Obama’s labeling of Berghdal as a hero and has continued to lead the call for justice on behalf of all the service-members Berghdal’s desertion put in harm's way.
-<br></br>
+<br/><br/>
 Mike’s servant leadership continued in the White House, as well as the Pentagon, as a defense policy director for Secretaries of Defense Donald Rumsfeld and Robert Gates. He also advised the Bush Administration on policy he then carried out in the military.
-<br></br>
+<br/><br/>
 His experiences as a soldier and a policy advisor inspired him to write the book, “Warrior Diplomat: A Green Beret’s Battles from Washington to Afghanistan,” the proceeds of which continue to benefit the Green Beret and Matthew Pucino Foundations. He also wrote a children’s book, “Dawn of the Brave,” a Christian children's book that teaches children the importance of service.
-<br></br>
+<br/><br/>
 Following his time in the White House, Mike built a small business to over 400 employees, which was repeatedly listed in the Inc. 500 index as one of the fastest-growing private companies in America.
-<br></br>
+<br/><br/>
 A former Fox News Channel contributor, Mike, provides expert commentary on foreign policy, defense, and business issues to viewers around the world.
-<br></br>
+<br/><br/>
 Mike is determined to be part of the new generation of leadership in Congress: Servant leaders who lead by example with their values and deliver results. 
-<br></br>
+<br/><br/>
 As the Chairman of the House Armed Services Subcommittee on Readiness and member of the House Oversight and Accountability Committee and House Permanent Select Committee on Intelligence, Mike has championed legislation to restore our military back to be merit-based and mission-focused.
-<br></br>
+<br/><br/>
 Mike serves on the House China Task Force with 15 Republican lawmakers representing 14 committees of jurisdiction to coordinate policy on China. Mike sponsored legislation to reduce American reliance on Chinese critical minerals and pioneered legislation to secure American universities and academies from Chinese espionage.
-<br></br>
+<br/><br/>
 As a Floridian, Mike has fought to help maintain Florida’s way of life, introducing legislation to help prevent harmful algae blooms and keep Florida’s water clean, and protect Florida’s farmers and growers. He is a strong advocate for school choice and a return to civics in education. He has also championed the growing space industry on Florida’s Space Coast and the science, technology, engineering, and math (STEM) programs at Florida’s universities.
-<br></br>
+<br/><br/>
 His commitment in Washington, D.C. is the same now as it was in combat: To serve with everything he has, without regard for his own self and with a sense of duty.
-<br></br>
+<br/><br/>
 Mike has a daughter in college and a baby boy. He is married to Dr. Julia Nesheiwat, a combat veteran who served in multiple presidential administrations, as well as most recently as Homeland Security Advisor to President Trump. They live in St. Johns County, Florida.`,
 		"keynote": {
 			"isKeynote": true,
@@ -52,7 +52,7 @@ Mike has a daughter in college and a baby boy. He is married to Dr. Julia Neshei
 		"position": "Senior Adviser, International Security Program",
 		"company": "Center for Strategic & International Studies",
 		"bio": `Mark Cancian (Colonel, USMCR, ret.) is a Senior Adviser with the CSIS International Security Program. He joined CSIS in April 2015 from the Office of Management and Budget, where he spent more than seven years as Chief of the Force Structure and Investment Division, working on issues such as Department of Defense budget strategy, war funding, and procurement programs, as well as nuclear weapons development and nonproliferation activities in the Department of Energy. Previously, he worked on force structure and acquisition issues in the Office of the Secretary of Defense and ran research and executive programs at Harvard University’s Kennedy School of Government.
-<br></br>
+<br/><br/>
 In the military, Colonel Cancian spent over three decades in the U.S. Marine Corps, active and reserve, serving as an infantry, artillery, and civil affairs officer and on overseas tours in Vietnam, Desert Storm, and Iraq (twice). Since 2000, he has been an adjunct faculty member at the Johns Hopkins School of Advanced International Studies, where he teaches a course on the connection between policy and analysis. A prolific author, he has published over 40 articles on military operations, acquisition, budgets, and strategy and received numerous writing awards. He graduated with high honors (magna cum laude) from Harvard College and with highest honors (Baker scholar) from Harvard Business School.`
 	},
 	"joachim-christian": {
@@ -82,9 +82,9 @@ In the military, Colonel Cancian spent over three decades in the U.S. Marine Cor
 		"position": "President & CEO",
 		"company": "American Defense Alliance",
 		"bio": `Charles F. Sills is a recognized authority on U.S. Government contracting, and an advocate for Small Business/Diversity Supplier access to Federal and Military acquisition opportunities, serving as the President & CEO of the American Defense Alliance – which hosts major Defense Requirements conferences across the country, connecting private sector innovators with the Pentagon, Military commands, and Congress to accelerate National Security solutions.
-<br></br>
+<br/><br/>
 Concurrently, he serves as Chief Operating Officer of the Minority Business Development Agency’s Federal Procurement Center, under the U.S. Commerce Dept.; and manages the partnership under which MBDA affiliated companies attend and benefit from ADA conferences. He is a member of the U.S. Chamber of Commerce's Small Business Council, and the Executive Committee of the Veterans Entrepreneurship Task Force (VET-Force). He is also a Member of the Board of the American-Eurasian Business Coalition, focusing on international infrastructure, energy and investment initiatives, and serving on multinational task forces such as the Danube Basin Environmental Restoration Program and the Japan-U.S. Joint Fund for Social & Economic Development.
-<br></br>
+<br/><br/>
 As a former Naval Intelligence Officer, he held positions at the Defense Intelligence Agency, the U.S. Middle East Force, and NATO Supreme Allied Command/Atlantic; and subsequently worked in Lockheed Martin’s International Division managing strategic marketing and export licensing for defense systems as well as renewable energy technologies. His education includes an M.A. from the Fletcher School of Law and Diplomacy and an A.B. from Princeton University’s Woodrow Wilson School of Public & International Affairs.`
 	},
 	"arveice-washington": {
@@ -93,9 +93,9 @@ As a former Naval Intelligence Officer, he held positions at the Defense Intelli
 		"position": "Director, Office of Small Business Programs",
 		"company": "Office of the Secretary of the Navy",
 		"bio": `Ms. Washington was appointed to the Senior Executive Service in November 2023 as theDirector, Office of Small Business Programs after 15 years of civilian service. In this roleshe serves as the principal advisor to the Secretary of the Navy on all small businessmatters. Ms. Washington has been charged with overseeing small business acquisitionpolicy; strengthening government and private sector partnerships; and fosteringopportunities to leverage small business as a strategic advantage for the benefit of ourwarfighters. From April 2018 until October 2023, Ms. Washington served as the DeputyDirector in this office.
-<br></br>
+<br/><br/>
 Ms. Washington’s previous experience includes serving as the Director of Acquisitionand Contracts for the Naval Sea Systems (NAVSEA) Command Program ExecutiveOffice for Submarines from October 2016 until March 2018. In this capacity, she wasresponsible for directing, prioritizing and coordinating all acquisition initiatives acrossTeam Submarine.
-<br></br>
+<br/><br/>
 From June 2009 until January 2016, Ms. Washington assumed the duties as the TeamSubmarine Enterprise Wide Contractor Support Services Manager. She was the subjectmatter expert for management responsibilities for five support services contracts totalingexecution of over $125 million annually and oversight of 600 contractors. As theContracting Officer Representative (COR) for these contracts, Ms. Washington wasresponsible for cradle to grave requirements generation, contract award and post-awardexecution.`
 	},
 	"kimberly-buehler": {
@@ -104,7 +104,7 @@ From June 2009 until January 2016, Ms. Washington assumed the duties as the Team
 		"position": "Director, Office of Small Business Programs",
 		"company": "U.S. Army, Department of Defense",
 		"bio": `Ms. Kimberly D. Buehler was appointed to the Senior Executive Service in August 2019. She currently serves as the Director for the Army Office of Small Business Programs, where she provides executive leadership for all aspects of the Army's small business mission, including advocacy and outreach for all small business programs, development and dissemination of policies and procedures for execution of small business functions, and oversight for the execution of the small business program at the Army’s contracting activities--equating to more than $20 billion dollars of annual spending.
-<br></br>
+<br/><br/>
 Ms. Buehler represents the Secretary of the Army at congressional committee and subcommittee hearings on small business matters, and leads strategic inter-agency communication with the Small Business Administration, the Office of Federal Procurement Policy, the Minority Business Development Agency (Department of Commerce), and other agencies and presidential commissions.`
 	},
 	"david-canada": {
@@ -113,13 +113,13 @@ Ms. Buehler represents the Secretary of the Army at congressional committee and 
 		"position": "Director, Global Supplier Diversity",
 		"company": "Boeing Defense Space & Security",
 		"bio": `David Canada is Director of Global Supplier Diversity for Boeing Defense Space & Security (BDS). Named to this role in 2023, he has primary responsibility for building stronger relationships with the diversity office at the DoD and with the respective representatives of the branches of services. 
-<br></br>
+<br/><br/>
 David joined The Boeing Company in 2007 as an Industrial Engineer on the V-22 Osprey line. He implemented new project management tools that resulted in automated workforce planning and improved the schedule planning efficiency. David grew, taking on new challenges and roles across Boeing. 
-<br></br>
+<br/><br/>
 As IT Procurement Manager, he managed 18 procurement agents, 30 suppliers, and more than $250 million in contracts. He moved on to serve as Chief of Staff to the Vice President of BDS IT Business Partners. He continued his career as the Senior Manager, Mergers & Acquisitions Integration Strategy, where he led mergers and acquisitions estimated at $2.5 billion, and also manages critical cybersecurity issues and systems.             
-<br></br>
+<br/><br/>
 David earned a bachelor’s degree in Mechanical Engineering from Howard University, and a master’s degree in Business Administration and a Certification in Project Management. 
-<br></br>
+<br/><br/>
 Giving back is a part of who David is. He serves on the board of the following non-profit organizations:  Black Alliance of Colleges & Employers (BACE), Step Afrika, Wearable Tech Ventures and Positive Deposits. David is also very passionate about STEM education and increasing the number of minorities in technology fields.  He serves as an active corporate representative for the Black Engineer of the Year Awards, Advancing Minorities Interest in Engineering as well as the National Society of Black Engineers. In addition, he was selected to be a member of the Racial Equity Task Force and is co-leader of the BGS Diversity & Inclusion Council.\n`
 	},
 	"patricia-waddell": {
@@ -128,11 +128,11 @@ Giving back is a part of who David is. He serves on the board of the following n
 		"position": "Director, Office of IT Services, Information Technology Category (ITC), Federal Acquisition Service (FAS)",
 		"company": "U.S. General Services Administration",
 		"bio": `Ms. Patricia Waddell is the Director, Office of IT Services, Information Technology Category (ITC), Federal Acquisition Service (FAS). The Federal Acquisition Service provides buying platforms and acquisition services to Federal, DoD, State and Local governments for a broad range of items from office supplies to motor vehicles to information technology and telecommunications products and services. 
-<br></br>
+<br/><br/>
 Ms. Waddell is responsible for a portfolio of contracts that offer government agencies a diverse set of IT services valued at nearly $25 billion annually. Some of these offerings include Alliant 2, 8(a) STARS III, VETS 2, Multiple Award Schedule Special Item Numbers (SINs) for IT Professional Services, Training Courses, Electronic Commerce, Health IT Services, and Automated Contact Center Solutions. Her team is also working on the launch of Polaris, GSA’s next-generation small business GWAC and Alliant 3.
-<br></br>
+<br/><br/>
 Before leading IT Services Patricia served as the Director for the IT Business and Operations Division, managing business operations, budget, and financial management. She previously led the Office of IT Business Programs for GSA’s largest Multiple Award Schedule, MAS 70. As Deputy Director of that program, she managed a major acquisition and business program with more than 5,000 contracts and $16.5 billion dollars in annual sales. During her tenure, she established the business development and marketing strategies that set a strategic direction for the program that led to an increase in business outcomes. 
-<br></br>
+<br/><br/>
 Patricia received her Master of Arts in Public Administration (MPA) from Bowie State University, Bowie MD, and Bachelor of Science (BS) in Adult Education and Nutrition from Cornell University, Ithaca NY. Patricia is a Certified Federal Internal Coach and trained at the Treasury Executive Institute. \n`
 	},
 	"dr-iryna-andrukh": {
@@ -141,9 +141,9 @@ Patricia received her Master of Arts in Public Administration (MPA) from Bowie S
 		"position": "Ukraine Program Director",
 		"company": "Progress Humanity",
 		"bio": `Dr. Andrukh is the Ukraine Program Director for Progress Humanity. She is a highly decorated psychologist, military veteran, and international negotiator with a rich background in psychology and law. She served 17 years in the Ukrainian military, where she earned numerous awards, including the prestigious Order of Princess Olga 2d degree, for her heroic efforts in negotiating the release of hostages during the 2014 invasion and evacuating orphanages during 2022. Her career is marked by significant contributions to international negotiation and conflict resolution, having worked in various crisis situations, including the Syrian refugee crisis and the conflict in Eastern Ukraine. Dr. Andrukh’s expertise extends to academia as well, where she has taught at top Ukrainian institutions and authored 11 peer-reviewed publications focused on emotional burnout among operatives.
-<br></br>
+<br/><br/>
 Throughout her career, Dr. Andrukh has been involved in high-stakes negotiations that have saved countless lives. Notably, she played a key role in the Minsk and Normandy Format talks, offering strategic psychological insights to Ukrainian leaders and negotiating the exchange of prisoners of war during the Donbas conflict. Her work has been recognized internationally, particularly for her efforts in Afghanistan, where she orchestrated the evacuation of Fatema Hosseini, a journalist targeted by the Taliban. This mission, along with her subsequent efforts to evacuate nearly 800 children during the 2022 Russian invasion of Ukraine, has earned her international acclaim and several awards, including the silver medal “For courage while performing special assignments.”            
-<br></br>
+<br/><br/>
 Dr. Andrukh’s contributions extend beyond the battlefield. Following her retirement from the military due to medical reasons, she continued her work in international negotiation and conflict resolution as a civilian. She has collaborated with the United Nations and Red Cross in refugee crises and served as a volunteer at the Polish border during the early days of the 2022 war in Ukraine. Her work in these areas, coupled with her academic achievements and media recognition—including a documentary that won a gold award at the New York Film Festival—solidifies her reputation as a leading figure in conflict resolution and humanitarian efforts on the global stage.`
 	},
 	"amir-bagherpour-phd": {
@@ -159,13 +159,13 @@ Dr. Andrukh’s contributions extend beyond the battlefield. Following her retir
 		"position": "General Counsel",
 		"company": "Department of the Navy",
 		"bio": `John P. (“Sean”) Coffey was sworn into office on February 16, 2022, as the 24th GeneralCounsel of the Department of the Navy after his confirmation by the U.S. Senate onFebruary 9, 2022. As General Counsel, Mr. Coffey is the Department of the Navy’s(DON) Chief Legal Officer and head of the Office of the General Counsel (OGC). Heleads more than 1,100 attorneys and professional support staff in 140 officesworldwide. DON OGC provides legal advice to the Secretary of the Navy, the UnderSecretary of the Navy, the Assistant Secretaries of the Navy, their staffs, and the multiplecomponents of the Department, including the Navy and the Marine Corps.
-<br></br>
+<br/><br/>
 In addition to managing OGC’s traditional legal services to its many DON clients, Mr.Coffey has launched several initiatives intended to advance DON financial, readiness,and personnel interests. For example, the Taxpayer Advocacy Project (TAP) seeks toleverage legal authorities and strategies to ensure that the DON is obtaining themaximum return on taxpayer investments from contractual counterparties. ThePromoting Individual Accountability (PINACL) project directs the DON’s Suspensionand Debarment Officers to identify and if appropriate sanction individuals who causeDON vendors to engage in fraud or grossly poor performance. Mr. Coffey has workedclosely with the Judge Advocate General of the Navy and Staff Judge Advocate to theCommandant of the Marine Corps in implementing historic changes to the militaryjustice system intended to combat sexual misconduct in the DON, including theestablishment of each Services’ Office of Special Trial Counsel. Mr. Coffey initiated thein-depth review of the World War Two-era “Port Chicago” courts-martial, whichculminated with Navy Secretary Carlos Del Toro setting aside the convictions andsentences of 256 African-American Sailors wrongfully convicted in those 1944 trials.
-<br></br>
+<br/><br/>
 A native of New York City, Mr. Coffey is the oldest of seven children born to Irishimmigrants. He is an honors graduate of the United States Naval Academy andGeorgetown University Law Center. After graduating from Annapolis, Mr. Coffeycompleted Naval Flight Officer training and served eight years on active duty, includingassignments as a P-3C Orion mission commander hunting Soviet submarines during theCold War, a junior officer intern to the Strategy Division in the Organization of the JointChiefs of Staff, and the special military assistant (personal aide) to Vice President GeorgeH.W. Bush. Mr. Coffey attended Georgetown Law’s evening program while assigned tothe Pentagon and White House. After graduating from Georgetown, Mr. Coffeytransitioned to the Navy Reserve and returned to New York, where he practiced law forover thirty-five years, including several years as an Assistant United States Attorney inthe Southern District of New York and most recently as Chair of Complex Litigation atKramer Levin Naftalis & Frankel LLP.
-<br></br>
+<br/><br/>
 After leaving active duty, Mr. Coffey continued to serve in the Navy Reserve for eighteenyears. Among other things, he flew anti-submarine missions in the North Atlantic andMediterranean, counter-narcotics missions in the Caribbean, and armed missions insupport of the blockade of the former Yugoslavia. Mr. Coffey was selected to serve ascommanding officer both of a reserve P-3C squadron (VP-92) and the reserve componentof the Enterprise carrier battle group staff (CCDG-12), and served as a staff officer in the Office of the Secretary of Defense (Reserve Affairs). Mr. Coffey retired at the rank ofCaptain in 2004.
-<br></br>
+<br/><br/>
 Prior to returning to public service, Mr. Coffey served as the President of the Federal BarFoundation and on the boards of various non-profit organizations, including ThanksUSA,Common Cause New York, Georgetown Law’s Board of Visitors, and the Holocaust andHuman Rights Education Center. Mr. Coffey has been married for over thirty years toAnne Churchill, an actress whose credits include This is Spinal Tap. They have threegrown children. `,
 		"keynote": {
 			"isKeynote": true,
@@ -192,7 +192,7 @@ Prior to returning to public service, Mr. Coffey served as the President of the 
 		"position": "Director, Office of Small Business Programs",
 		"company": "Office of the Secretary of the Air Force",
 		"bio": `Scott A. Kiser, a member of the Senior Executive Service, is the Director of Air Force Small Business Programs, located at the Pentagon, Arlington, Virginia. He is responsible for policy, advocacy, execution and advice pertaining to Small Business Programs and personnel throughout the Department for both Air Forces and Space Forces.
-<br></br>
+<br/><br/>
 Mr. Kiser, a Manhattan, Kansas, native, was commissioned in the U.S. Air Force in 1985 and served 27 years on active duty. He garnered extensive experience in international, major weapons system, operational and logistical contracting. Throughout his career, he held other key positions, to include Senior Contracting Official as Chief of Contracting, Headquarters Air Combat Command; Director of Contracting, Oklahoma City Air Logistics Center; the Alternate Principal Assistant Responsible for Contracting and Chief, Contracts Policy, Headquarters, U.S. Army Intelligence and Security Command; the Director of Contracting, Air Force Life Cycle Management Center, Hanscom Air Force Base, Mass; and most recently as Associate Deputy Assistant Secretary for Contracting at Headquarters U.S. Air Force, the Pentagon, Arlington, Virginia. He aided the Deputy Assistant Secretary for Contracting in leading an 8,000 military and civilian contracting organization responsible for annually executing $70 billion for acquisition of major weapon systems, logistics, special access program, operational supplies and services and resourcing worldwide contingency operations. He served as the Air Force Head of the Contracting Authority and provided policy, guidance and oversight of Air Force Acquisition and Contracting Operations. Mr. Kiser retired from active duty as a colonel in August 2012 and entered Senior Executive Service in June 2014. `
 	},
 	"dave-morrow": {
@@ -397,7 +397,7 @@ Mr. Robau also serves as the founder and Executive Director of the Gulf Coast En
 		"company": "CGI Federal",
 		"bio": `
 With more than four decades of experience across the public and private sectors, Darlene Coen is an agile business strategist who brings strategic leadership to CGI Federal’s client-focused mission. As Consulting Expert in CGI Federal’s Business Engagement unit, Ms. Coen leads internal strategic development and creates growth opportunities by bridging a common understanding across the sectors.
-<br></br>
+<br/><br/>
 Prior to joining CGI Federal, Ms. Coen served as the Deputy Director and Director of Strategy and Acquisition for the NASA Solutions for Enterprise-Wide Acquisition Contract (SEWP), an Office of Management and Budget (OMB) designated, Government-Wide Acquisition Contract (GWAC), providing access to the latest in information and communications technology products to the entire federal government. A recognized industry leader, Ms. Coen is a FED100 Award and Coalition for Government Procurement Excellence in Partnership (EIP) Lifetime Acquisition Excellence Award recipient.
 `,
 	},
@@ -531,6 +531,10 @@ Dr. Harrington earned a Doctor of Business Administration degree through Trevecc
 		"name": "Representative Rob Wittman (R-VA)",
 		"position": "Vice Chairman, House Armed Services Committee",
 		"company": "Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding ",
+		"keynote": {
+			"isKeynote": true,
+			"headerText": "Congressional Keynote Speaker"
+		},
 		"bio": `Congressman Rob Wittman was first elected to the United States Congress to serve Virginia’s First Congressional District in 2007. While in office, he has focused on strengthening our military and supporting our nation’s veterans, promoting a flourishing economy through fiscal responsibility and pro-growth policies, fixing our crumbling infrastructure, increasing access to high-speed internet, and promoting workforce development through Career and Technical Education (CTE) and Science, Technology, Engineering, and Math (STEM) programs.
 <br/>
 
@@ -589,7 +593,7 @@ Before joining Modtech Solutions, Tim built a diverse career that shaped his app
 	},
 	"aimee-zick": {
 		"image": "aimee-zick.webp",
-		"name": "Aimee Zick",
+		"name": "Aimee (\"Z\") Zick",
 		"position": "Senior Business Development Executive",
 		"company": "Improve Group",
 		"bio": `Aimee is a strategic and empowering innovator who partners with executive leadership to build and execute strategies which fuel growth and operational effectiveness. Strong financial acumen with ability to align all functional units on common goals and objectives. Addresses challenging business issues by leveraging resources, technology, human capital, and processes for multibillion-dollar organizations. Drives implementation of new processes and systems, critical to supporting quality improvement. Offers holistic approach to business and strong command of delivering large scale operational initiatives. 
@@ -624,9 +628,11 @@ He also partners with defense contractors to develop predictive decision-making 
 		"name": "Brandon Cockrell",
 		"position": "Deputy Assistant Secretary of the Army for Energy and Sustainability",
 		"company": "Office of the Assistant Secretary of the Army for Installations, Energy and Environment",
-		"bio": `Mr. Brandon Cockrell is the Assistant Secretary of the Army for Energy and Sustainability (DASA(E&S)), leading the program development and oversight of installation energy and water
-<br/>
-security, resilience and conservation; sustainability; and operational energy. Mr. Cockrell began this position on August 12, 2024.
+		"keynote": {
+			"isKeynote": true,
+			"headerText": "Army Keynote Speaker"
+		},
+		"bio": `Mr. Brandon Cockrell is the Assistant Secretary of the Army for Energy and Sustainability (DASA(E&S)), leading the program development and oversight of installation energy and water security, resilience and conservation; sustainability; and operational energy. Mr. Cockrell began this position on August 12, 2024.
 <br/>
 
 <br/>
@@ -745,12 +751,12 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"erin-bearhalter",
 		"brent-d-sadler",
 		"tasha-allen",
+		"representative-rob-wittman", // THE ORDER OF KEYNOTE SPEAKERS IS DETERMINED HERE
 		"brandon-cockrell",
 		"linda-eshiwani-nate",
 		"aimee-zick",
 		"tim-didjurgis",
 		"david-fraley",
-		"representative-rob-wittman",
 		//"carl-m-wade",
 		//"david-willis",
 		//{ id: "patricia-waddell", invited: true },
