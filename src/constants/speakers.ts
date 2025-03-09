@@ -661,15 +661,15 @@ A native of Anniston, AL, Mr. Cockrell graduated from Auburn University with an 
 		"name": "Erin Bearhalter",
 		"position": "Project Manager",
 		"company": "Office of the Deputy Chief of Staff, G-9 Army Community Partnership Office",
-		"bio": `Erin supports the Office of the Deputy Chief of Staff, G-9, in the Army Community Partnership Office. She focuses on theutilization of collaborative partnership authorities to achievemutually beneficial partnerships between our Army Installationsand local communities. Erin has overseen the development ofseveral Intergovernmental Support Agreements (IGSAs) andprovides project management support to improve Armyreadiness and resiliency. Erin leads in the development anddelivery of leadership briefings, congressional reporting andrequest for information, and facilitates external engagements between local community officials and theOffice of the Deputy Chief of Staff, G-9 as well as the Assistant Secretary of the United States ArmyInstallations, Energy and Environment (ASA(IE&E)).
+		"bio": `Erin supports the Office of the Deputy Chief of Staff, G-9, in the Army Community Partnership Office. She focuses on the utilization of collaborative partnership authorities to achieve mutually beneficial partnerships between our Army Installations and local communities. Erin has overseen the development of several Intergovernmental Support Agreements (IGSAs) and provides project management support to improve Army readiness and resiliency. Erin leads in the development and delivery of leadership briefings, congressional reporting and request for information, and facilitates external engagements between local community officials and the Office of the Deputy Chief of Staff, G-9 as well as the Assistant Secretary of the United States Army Installations, Energy and Environment (ASA(IE&E)).
 <br/>
 
 <br/>
-Throughout Erin’s career, she has worked in the public sector to include public universities, localgovernment, and the Environmental Defense Fund. Erin was selected to be on the Army review panelfor the Defense Community Infrastructure Program (DCIP) from the Office of Local Defense CommunityCooperation (OLDCC) for the past two years. Each year $100M was awarded to local communities toaddress deficiencies in community infrastructure to enhance military value.
+Throughout Erin’s career, she has worked in the public sector to include public universities, local government, and the Environmental Defense Fund. Erin was selected to be on the Army review panel for the Defense Community Infrastructure Program (DCIP) from the Office of Local Defense Community Cooperation (OLDCC) for the past two years. Each year $100M was awarded to local communities to address deficiencies in community infrastructure to enhance military value.
 <br/>
 
 <br/>
-Erin enjoys spending time with her husband and three sons traveling, hiking, and exploringWashington, D.C. `,
+Erin enjoys spending time with her husband and three sons traveling, hiking, and exploring Washington, D.C. `,
 	},
 
 
