@@ -512,7 +512,7 @@ Oscar began his career at Bank of America, where he led enterprise-level process
 	,
 	"teresa-harrington": {
 		"image": "teresa-harrington.webp",
-		"name": "Teresa Harrington",
+		"name": "Teresa Harrington, DBA, MBA, PCM",
 		"position": "Chief Operations Officer",
 		"company": "DEFENSEWERX",
 		"bio": `Teresa Harrington serves as Chief Operations Officer for DEFENSEWERX, Inc. In this role, she ensures seamless implementation and exceptional team member and government partner service across key operations, projects, and initiatives for DEFENSEWERX, its innovation hubs, and its ecosystem.
