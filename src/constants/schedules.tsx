@@ -291,7 +291,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "8:35 AM",
-                        "title": "State of Georgia/Atlanta Chamber of Commerce - Welcoming Remarks",
+                        "title": "Georgia Chamber of Commerce - Welcoming Remarks",
                         "speakers": [
                             {
                                 "name": "Tasha Allen",
@@ -466,7 +466,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "2:10 PM",
-                        "title": "Streamlined Acquisition Examples",
+                        "title": "Streamlined Acquisition for Our Warfighters",
                         "speakers": [
                             {
                                 "name": "Aimee \"Z\" Zick",
