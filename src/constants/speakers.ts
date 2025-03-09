@@ -64,7 +64,7 @@ In the military, Colonel Cancian spent over three decades in the U.S. Marine Cor
 	},
 	"dave-leinberger": {
 		"image": "dave-leinberger.webp",
-		"name": "Dave Leinberger",
+		"name": "David Leinberger",
 		"position": "Acting Director, Army Partnerships",
 		"company": "Deputy Chief of Staff, G-9 (Installations)",
 		"bio": `Dave Leinberger assumed the role as the Chief of Army Community Partnerships in July 2024.In this position, Mr. Leinberger encourages innovation and collaboration between ourinstallations and local communities to develop partnerships that are mutually beneficial,identify cost efficiencies, reduce installation service response times, and strengthens therelationship with the local communities outside our installations. Mr. Leinberger focuses theutilization of collaborative partnership authorities to achieve these goals. These authoritiesinclude Intergovernmental Support Agreements (IGSAs), Cooperative Agreements, Mutual AidAgreements, Memorandum of Understanding, Enhanced Use Lease, and Other TransactionAuthority.<br><br>Previously, Mr. Leinberger served as the Army Community Partnership Program Manager,Assistant Chief of Staff for Installation Management, in September 2019 and maintained thatrole following the ACSIM’s transition to Deputy Chief of Staff, G-9 (Installations).`
@@ -712,6 +712,26 @@ His final Navy assignment was China Branch of Navy Staff at the Pentagon. `,
 	<br/>
 	He is also an Innovation Analyst with ANSER, a non-profit research institute that provides services to the U.S. Department of Defense and other federal clients. Before that, Mr. Jefferies researched the development and proliferation of drone technology with the International Security Program at New America, a think tank based in Washington, D.C. He received his M.A. in International Security from Georgetown University’s Walsh School of Foreign Service and B.A. in Political Science from Arizona State University.`,
 	}
+	,
+	"kareem-sykes": {
+		"image": "kareem-sykes.webp",
+		"name": "Kareem Sykes",
+		"position": "Program Manager, Project Spectrum",
+		"company": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of Defense",
+		"bio": `Kareem A. Sykes currently serves as Program Manager for Project Spectrum, a U.S. Department of Defense (DoD) recognized cybersecurity awareness initiative that offer resources, training and tools toward increasing cybersecurity awareness and hygiene for small businesses in particular. Mr. Sykes provides strategic leadership for a dynamic team of cybersecurity and outreach professionals whose collective aim centers around providing the educational resources and tools small businesses and institutions need to develop, implement, and maintain cybersecurity compliance. He oversees and directs the daily execution of multiple projects within the large-scale program and assures that the initiative adheres to government regulatory guidance. Mr. Sykes also manages contractual requirements to assure that Project Spectrum meets the cost, schedule, and performance goals required by the DoD Office of Small Business Programs (OSBP).
+	<br/>
+	
+	<br/>
+	Prior to joining Project Spectrum, Mr. Sykes served as a dynamic and ITIL v4-certified Program Manager. He amassed more than 15 years of organizational thought leadership experience and leveraged proven Program and Project Management principles, rooted in the Project Management Body of Knowledge (PMBOK®) methodology. Mr. Sykes is particularly adept at implementing enhanced business processes that result in an economy of scale. He is a proven rapport and relationship cultivator who focuses on the three Cs: Customer Service, Collaboration, and Communication. Mr. Sykes has a hallmark for motivating, mentoring, and coaching high-performance teams that deliver scalable results that drive productivity.
+	<br/>
+	
+	<br/>
+	Mr. Sykes has a strong track record of successful matrix management of large teams (100+ FTEs), primes, subcontractors, and third-party vendors. He has managed various personnel levels, including Project Managers, Business Process Engineers, IAT II & III Cyber Systems Analysts, Network Engineers, Dev Ops, Application Support Specialists, Help Desk Technicians (Tier 1-3), Information Assurance Managers, Quality Managers, Sr. Business Analysts, Project Administrators, and Training Analysts, and Supervisors.
+	<br/>
+	
+	<br/>
+	Mr. Sykes obtained his Bachelors degree from the University of Baltimore, having studied Jurisprudence-Pre law and holds a A.A. degree in Interdisciplinary Studies as well.`,
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -772,6 +792,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"wesley-jefferies",
 		"amir-bagherpour-phd",
 		"james-simpson",
+		"kareem-sykes",
 		//"carl-m-wade",
 		//"david-willis",
 		//{ id: "patricia-waddell", invited: true },
