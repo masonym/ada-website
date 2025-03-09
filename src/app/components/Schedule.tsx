@@ -6,6 +6,8 @@ import { Event } from '@/types/events';
 import ModalVideo from 'react-modal-video';
 import 'react-modal-video/css/modal-video.css';
 import { getCdnPath } from '@/utils/image';
+import Link from 'next/link';
+import { Printer } from 'lucide-react';
 
 type Speaker = {
   name: string;
@@ -84,7 +86,19 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
         onClose={() => setVideoOpen(false)}
       />
 
-      <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Event Agenda</h1>
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-[48px] font-gotham font-bold text-slate-700">Event Agenda</h1>
+        <Link 
+          href={`/print-schedule/${event.id}`} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 bg-navy-800 text-white px-4 py-2 rounded-md hover:bg-navy-700 transition-colors"
+        >
+          <Printer size={16} />
+          <span>Printable Schedule</span>
+        </Link>
+      </div>
+      
       {isEventFuture && (
         <p className="text-l font-bold text-center mb-8 text-slate-600">
           The Event Agenda is still pending, please check back later for more information! We appreciate your patience as updates are made!

@@ -1,0 +1,257 @@
+/* Print styles for schedule */
+.print-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.print-controls {
+  margin-bottom: 30px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.control-section {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 15px;
+}
+
+.control-section:last-child {
+  border-bottom: none;
+}
+
+.control-section h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 600;
+}
+
+.event-header {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 15px;
+}
+
+.event-header h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.event-subtitle {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.event-date, .event-location {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.schedule-day {
+  margin-bottom: 30px;
+  page-break-inside: avoid;
+}
+
+.day-header {
+  font-size: 20px;
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+.schedule-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.schedule-item {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+  page-break-inside: avoid;
+}
+
+.time-column {
+  width: 120px;
+  min-width: 120px;
+  padding-right: 15px;
+}
+
+.time {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.content-column {
+  flex: 1;
+}
+
+.item-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.location {
+  font-style: italic;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.speakers {
+  margin-top: 10px;
+}
+
+.speaker {
+  margin-bottom: 8px;
+}
+
+.speaker-name {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.speaker-title, .speaker-affiliation {
+  font-size: 13px;
+  margin: 2px 0;
+}
+
+.description {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+/* Ensure day headers and items don't break across columns */
+.day-header-container, 
+.schedule-day-item {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Add page break utility classes */
+.page-break-before {
+  page-break-before: always;
+  break-before: page;
+}
+
+.page-break-after {
+  page-break-after: always;
+  break-after: page;
+}
+
+.no-page-break {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Print-specific styles */
+@media print {
+  /* Remove browser-added headers and footers */
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+  
+  /* Hide all non-printable elements */
+  .no-print, 
+  .no-print * {
+    display: none !important;
+  }
+  
+  /* Basic styles for print */
+  html, body {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    font-size: 12pt;
+    background-color: white !important;
+    color: black !important;
+  }
+  
+  .print-container {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Ensure each schedule item doesn't break across pages */
+  .schedule-item, 
+  .schedule-day-item,
+  .no-page-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  
+  /* Force two columns for print */
+  .columns-1.md\:columns-2 {
+    columns: 2 !important;
+    column-fill: auto !important;
+    column-gap: 2rem !important;
+    height: auto !important; /* Let browser handle pagination */
+  }
+  
+  /* Enforce page breaks */
+  .page-break-before {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+  
+  .page-break-after {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+  
+  /* Ensure day headers don't break */
+  .day-header {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    font-size: 16pt;
+    background-color: #f0f0f0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  /* Ensure proper page breaks between days */
+  .schedule-day {
+    page-break-after: always;
+  }
+  
+  .schedule-day:last-child {
+    page-break-after: avoid;
+  }
+  
+  /* Header styling for print */
+  .event-header h1 {
+    font-size: 18pt;
+  }
+  
+  /* Ensure speaker images print properly */
+  img {
+    max-width: 100% !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  /* Ensure background colors print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
