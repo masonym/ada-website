@@ -654,7 +654,7 @@ A native of Anniston, AL, Mr. Cockrell graduated from Auburn University with an 
 		"image": "tasha-allen.webp",
 		"name": "Tasha Allen",
 		"position": "Vice President of Talent Management",
-		"company": "Georgia Chamber",
+		"company": "Georgia Chamber of Commerce",
 	},
 	"erin-bearhalter": {
 		"image": "erin-bearhalter.webp",
@@ -675,7 +675,7 @@ Erin enjoys spending time with her husband and three sons traveling, hiking, and
 
 	"brent-d-sadler": {
 		"image": "brent-sadler.webp",
-		"name": "Brent D Sadler",
+		"name": "Brent D. Sadler",
 		"position": "Senior Research Fellow, Naval Warfare and Advanced Technology Center for National Defense",
 		"company": "The Heritage Foundation",
 		"bio": `Brent Sadler joined Heritage Foundation after a 26 year Navy career with numerous operational tours on nuclear powered submarines, personal staffs of senior Defense Department leaders, and as a military diplomat in Asia. As a Senior Research Fellow, Brent’s focus is on maritime security and the technologies shaping our future maritime forces, especially the Navy.
@@ -771,6 +771,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"david-fraley",
 		"wesley-jefferies",
 		"amir-bagherpour-phd",
+		"james-simpson",
 		//"carl-m-wade",
 		//"david-willis",
 		//{ id: "patricia-waddell", invited: true },
