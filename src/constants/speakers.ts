@@ -632,7 +632,7 @@ He also partners with defense contractors to develop predictive decision-making 
 			"isKeynote": true,
 			"headerText": "United States Army Keynote Speaker"
 		},
-		"bio": `Mr. Brandon Cockrell is the Assistant Secretary of the Army for Energy and Sustainability (DASA(E&S)), leading the program development and oversight of installation energy and water security, resilience and conservation; sustainability; and operational energy. Mr. Cockrell began this position on August 12, 2024.
+		"bio": `Mr. Brandon Cockrell is the Assistant Secretary of the Army for Energy and Sustainability (DASA(E&S)), leading the program development and oversight of installation energy and water security, resilience and conservation; sustainability; and operational energy. Mr. Cockrell began this position on August 12, 2024.speakers
 <br/>
 
 <br/>
@@ -655,7 +655,26 @@ A native of Anniston, AL, Mr. Cockrell graduated from Auburn University with an 
 		"name": "Tasha Allen",
 		"position": "Vice President of Talent Management",
 		"company": "Georgia Chamber of Commerce",
-		"bio": `Ms. Tasha Allen is the Vice President of Talent Management at the Georgia Chamber of Commerce. She oversees all Human Resource functions within the Georgia Chamber and its Affiliates. Her responsibilities include recruiting new talent and developing existing Georgia Chamber talent. She also develops and manages Georgia Chamber’s business initiatives and strategies.`,
+		"bio": `Tasha Allen, the Vice President of Talent Management for the Georgia Chamber of
+Commerce, oversees all HR functions within the Chamber and its Affiliates. She is responsible for
+recruiting new talent and developing the existing talent and developing and managing Georgia Chamber’s
+business initiatives and strategies across the state. She is also an eCornell Course Facilitator for courses
+in Leadership, Management, Organizational Structure, and DE&I. She is an experienced banker, certified
+human resource professional and entrepreneur known for her inclusive approach and transparency in
+communication.
+<br/>
+<br/>
+Her professional career began in Columbus, Georgia working for Columbus Bank and Trust Company,
+(now Synovus). In her 7-year career with CB&T, Tasha worked in Retail Banking, Commercial Lending,
+the Community Resource Center as the Community Development Manager and served as the bank’s
+CRA Officer. She later moved to Gwinnett County with her family and worked in Gwinnett County public
+schools for 4 years before transitioning to Chamber work. She is an innovative thinker with a proven
+track record of fostering traditional and non-traditional business, community, employee, and customer
+relationships.
+<br/>
+<br/>
+Tasha holds an MBA from Troy University and a BBA from the University of Georgia. She currently
+resides in Gwinnett County with her husband Marlon and their two kids.`,
 	},
 	"erin-bearhalter": {
 		"image": "erin-bearhalter.webp",
