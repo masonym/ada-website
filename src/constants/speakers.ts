@@ -491,7 +491,7 @@ Mr. Nicol became the Deputy Program Director in January 2023 and continues to le
 		"image": "sherrie-cordi.webp",
 		"name": "Sherrie Cordi",
 		"position": "Deputy, Office of Small Business Programs",
-		"company": "USACE Memphis District",
+		"company": "U.S. Army Corps of Engineers, Memphis District",
 		"bio": `Sherrie Cordi is the Small Business Program Manager for the U.S. Army Corps of Engineers, Memphis District. She oversees a $70M Small Business Program, ensuring compliance with federal procurement regulations while maximizing opportunities for small businesses in government contracting. A Navy veteran, Sherrie brings 9 years of combined honorable military service and government experience to the position.`,
 	},
 	"oscar-frazier": {

@@ -384,7 +384,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "11:35 AM",
-                        "title": "Project SPECTRUM - Cybersecurity/CMMC Brief",
+                        "title": "Project Spectrum - Cybersecurity/CMMC Brief",
                         "speakers": [
                             {
                                 "name": "Kareem A. Sykes",
@@ -397,7 +397,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "12:15 PM",
-                        "title": "Cyber Fireside Chat",
+                        "title": "Cybersecurity/CMMC Fireside Chat",
                         "speakers": [
                             {
                                 "name": "David Fraley",
@@ -496,7 +496,7 @@ export const SCHEDULES = [
                             {
                                 "name": "Sherrie Cordi",
                                 "title": "Procurement Analyst, Office of Small Business Programs",
-                                "affiliation": "U.S. Army Corps of Engineers – Memphis District",
+                                "affiliation": "U.S. Army Corps of Engineers, Memphis District",
                                 "photo": "sherrie-cordi.webp"
                             },
                             //{
