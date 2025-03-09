@@ -669,6 +669,8 @@ export const SCHEDULES = [
                                 "name": "Cliff Holbeck",
                                 "title": "Senior Account Executive",
                                 "affiliation": "Honeywell",
+                                "sponsor": "Pending",
+                                "sponsorStyle": "bg-gray-300",
                             }
                         ],
                         "location": "Galleria 4",
