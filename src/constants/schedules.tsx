@@ -441,6 +441,8 @@ export const SCHEDULES = [
                                 "name": "Andrew Gardner",
                                 "title": "Chief Executive Officer",
                                 "affiliation": "Crux Defense and Partner, NADWC Combat Capabilities Factory",
+                                "sponsor": "Pending",
+                                "sponsorStyle": "bg-gray-300",
                             }
                         ],
                         "location": "Galleria 4",
