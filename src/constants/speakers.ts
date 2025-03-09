@@ -102,7 +102,7 @@ From June 2009 until January 2016, Ms. Washington assumed the duties as the Team
 		"image": "kimberly-buhler.webp",
 		"name": "Kimberly Buehler",
 		"position": "Director, Office of Small Business Programs",
-		"company": "U.S. Army, Department of Defense",
+		"company": "United States Army, Department of Defense",
 		"bio": `Ms. Kimberly D. Buehler was appointed to the Senior Executive Service in August 2019. She currently serves as the Director for the Army Office of Small Business Programs, where she provides executive leadership for all aspects of the Army's small business mission, including advocacy and outreach for all small business programs, development and dissemination of policies and procedures for execution of small business functions, and oversight for the execution of the small business program at the Army’s contracting activities--equating to more than $20 billion dollars of annual spending.
 <br/><br/>
 Ms. Buehler represents the Secretary of the Army at congressional committee and subcommittee hearings on small business matters, and leads strategic inter-agency communication with the Small Business Administration, the Office of Federal Procurement Policy, the Minority Business Development Agency (Department of Commerce), and other agencies and presidential commissions.`
@@ -655,6 +655,7 @@ A native of Anniston, AL, Mr. Cockrell graduated from Auburn University with an 
 		"name": "Tasha Allen",
 		"position": "Vice President of Talent Management",
 		"company": "Georgia Chamber of Commerce",
+		"bio": `Ms. Tasha Allen is the Vice President of Talent Management at the Georgia Chamber of Commerce. She oversees all Human Resource functions within the Georgia Chamber and its Affiliates. Her responsibilities include recruiting new talent and developing existing Georgia Chamber talent. She also develops and manages Georgia Chamber’s business initiatives and strategies.`,
 	},
 	"erin-bearhalter": {
 		"image": "erin-bearhalter.webp",
