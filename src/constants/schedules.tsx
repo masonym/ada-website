@@ -383,7 +383,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "11:35 AM",
+                        "time": "11:30 AM",
                         "title": "Project Spectrum - Cybersecurity/CMMC Brief",
                         "speakers": [
                             {
@@ -396,7 +396,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "12:15 PM",
+                        "time": "12:10 PM",
                         "title": "Cybersecurity/CMMC Fireside Chat",
                         "speakers": [
                             {
@@ -435,32 +435,13 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "1:30 PM",
-                        "title": "Government Acquisition Update",
+                        "title": "Air Force Mentor-Protégé Partnerships",
                         "speakers": [
-                            //{
-                            //    "name": "Darlene Coen",
-                            //    "title": "Moderator, Strategic Operations Consultant",
-                            //    "affiliation": "CGI Federal",
-                            //    "photo": "darlene-coen.webp"
-                            //},
-                            //{
-                            //    "name": "Wesley J. Jefferies",
-                            //    "title": "Industry Liaison, OUSD (A&S) Office of Industrial Base Policy",
-                            //    "affiliation": "Industrial Base Analysis and Sustainment (IBAS) Program, U.S. Department of Defense",
-                            //    "photo": "wesley-jefferies.webp"
-                            //},
-                            //{
-                            //    "name": "George Nicol",
-                            //    "title": "Deputy Program Director, Contract Holders and Industry Relations",
-                            //    "affiliation": "NASA SEWP Program Office",
-                            //    "photo": "george-nicol.webp"
-                            //},
-                            //{
-                            //    "name": "Daniele Kurze",
-                            //    "title": "Executive Director, Small Business Programs",
-                            //    "affiliation": "U.S. Defense Logistics Agency",
-                            //    "photo": "daniele-kurze.webp"
-                            //}
+                            {
+                                "name": "Andrew Gardner",
+                                "title": "Chief Executive Officer",
+                                "affiliation": "Crux Defense and Partner, NADWC Combat Capabilities Factory",
+                            }
                         ],
                         "location": "Galleria 4",
                     },
@@ -615,7 +596,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "8:45 AM",
+                        "time": "8:40 AM",
                         "title": "Artificial Intelligence — Impact on Defense Acquisition",
                         "location": "Galleria 4",
                         "speakers": [{
@@ -626,7 +607,7 @@ export const SCHEDULES = [
                         }]
                     },
                     {
-                        "time": "9:10 AM",
+                        "time": "9:15 AM",
                         "title": "MBDA Federal Procurement Center – Tiger Team Briefing",
                         "speakers": [
                             {
@@ -677,6 +658,18 @@ export const SCHEDULES = [
                             //}
                         ],
                         "location": "Galleria 5-7",
+                    },
+                    {
+                        "time": "11:00 AM",
+                        "title": "Federal Infrastructure & Energy Projects",
+                        "speakers": [
+                            {
+                                "name": "Cliff Holbeck",
+                                "title": "Senior Account Executive",
+                                "affiliation": "Honeywell",
+                            }
+                        ],
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "11:35 AM",
