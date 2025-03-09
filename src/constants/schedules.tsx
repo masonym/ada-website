@@ -610,7 +610,7 @@ export const SCHEDULES = [
                         "speakers": [
                             {
                                 "name": "Congressman Neal Dunn (R-FL)",
-                                "title": "",
+                                "title": "Committee on Energy and Commerce, House Select Committee on the Strategic Competition Between the U.S. and the Chinese Communist Party",
                                 "affiliation": "U.S. House of Representatives",
                                 "photo": "neal-dunn.webp",
                             }
