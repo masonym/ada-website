@@ -604,7 +604,7 @@ Prior to joining the Improve Group in 2018 - the most incredible small business 
 	},
 	"james-simpson": {
 		"image": "james-simpson.webp",
-		"name": "James Simpson",
+		"name": "James Simpson, Major General, U.S. Army (Ret.),",
 		"position": "Major General, U.S. Army (Ret.), Executive Director of Federal Strategic Initiatives",
 		"company": "Modtech Solutions LLC",
 		"bio": `James E. Simpson is the President and CEO of JES Acquisitions and Business Solutions, LLC — a consulting firm that helps organizations enhance their capacity and performance in the federal government and commercial sectors.
