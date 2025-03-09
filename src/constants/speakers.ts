@@ -530,7 +530,7 @@ Dr. Harrington earned a Doctor of Business Administration degree through Trevecc
 		"image": "rob-wittman.webp",
 		"name": "Representative Rob Wittman (R-VA)",
 		"position": "Vice Chairman, House Armed Services Committee",
-		"company": "Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding ",
+		"company": "Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding Caucus",
 		"keynote": {
 			"isKeynote": true,
 			"headerText": "Congressional Keynote Speaker"
@@ -630,7 +630,7 @@ He also partners with defense contractors to develop predictive decision-making 
 		"company": "Office of the Assistant Secretary of the Army for Installations, Energy and Environment",
 		"keynote": {
 			"isKeynote": true,
-			"headerText": "Army Keynote Speaker"
+			"headerText": "U.S. Army Keynote Speaker"
 		},
 		"bio": `Mr. Brandon Cockrell is the Assistant Secretary of the Army for Energy and Sustainability (DASA(E&S)), leading the program development and oversight of installation energy and water security, resilience and conservation; sustainability; and operational energy. Mr. Cockrell began this position on August 12, 2024.
 <br/>
