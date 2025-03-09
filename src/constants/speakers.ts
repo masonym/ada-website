@@ -630,7 +630,7 @@ He also partners with defense contractors to develop predictive decision-making 
 		"company": "Office of the Assistant Secretary of the Army for Installations, Energy and Environment",
 		"keynote": {
 			"isKeynote": true,
-			"headerText": "U.S. Army Keynote Speaker"
+			"headerText": "United States Army Keynote Speaker"
 		},
 		"bio": `Mr. Brandon Cockrell is the Assistant Secretary of the Army for Energy and Sustainability (DASA(E&S)), leading the program development and oversight of installation energy and water security, resilience and conservation; sustainability; and operational energy. Mr. Cockrell began this position on August 12, 2024.
 <br/>
