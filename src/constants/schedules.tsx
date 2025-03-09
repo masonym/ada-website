@@ -369,7 +369,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "11:20 AM",
-                        "title": "CONGRESSIONAL KEYNOTE ADDRESS",
+                        "title": "CONGRESSIONAL KEYNOTE ADDRESS I",
                         "speakers": [
                             {
                                 "name": "Representative Rob Wittman (R-VA)",
@@ -507,6 +507,13 @@ export const SCHEDULES = [
                                 "affiliation": "CEO and Chief Scientist, National Energy USA",
                                 "photo": "dave-robau.webp"
                             },
+                            {
+                                "name": "Cliff Holbeck",
+                                "title": "Senior Account Executive",
+                                "affiliation": "Honeywell",
+                                "sponsor": "Pending",
+                                "sponsorStyle": "bg-gray-300",
+                            }
                             //{
                             //    "name": "Deborah Loomis",
                             //    "title": "Senior Advisor for Climate Change to the Secretary of the Navy",
@@ -598,7 +605,20 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "8:40 AM",
+                        "time": "8:35 AM",
+                        "title": "CONGRESSIONAL KEYNOTE ADDRESS II",
+                        "speakers": [
+                            {
+                                "name": "Congressman Neal Dunn (R-FL)",
+                                "title": "",
+                                "affiliation": "U.S. House of Representatives",
+                                "photo": "neal-dunn.webp",
+                            }
+                        ],
+                        "location": "Galleria 4",
+                    },
+                    {
+                        "time": "8:45 AM",
                         "title": "Artificial Intelligence — Impact on Defense Acquisition",
                         "location": "Galleria 4",
                         "speakers": [{
@@ -665,13 +685,13 @@ export const SCHEDULES = [
                         "time": "11:00 AM",
                         "title": "Federal Infrastructure & Energy Projects",
                         "speakers": [
-                            {
-                                "name": "Cliff Holbeck",
-                                "title": "Senior Account Executive",
-                                "affiliation": "Honeywell",
-                                "sponsor": "Pending",
-                                "sponsorStyle": "bg-gray-300",
-                            }
+                            //{
+                            //    "name": "Cliff Holbeck",
+                            //    "title": "Senior Account Executive",
+                            //    "affiliation": "Honeywell",
+                            //    "sponsor": "Pending",
+                            //    "sponsorStyle": "bg-gray-300",
+                            //}
                         ],
                         "location": "Galleria 4",
                     },

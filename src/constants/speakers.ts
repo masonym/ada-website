@@ -372,8 +372,8 @@ He holds a Bachelor of Science in business administration from Park University i
 	"dave-robau": {
 		"image": "dave-robau.webp",
 		"name": "Dave Robau, CEM, LEED AP BD+C",
-		"position": "CEO & Chief Scientist",
-		"company": "National Energy USA",
+		"position": "Executive Director, Gulf Coast Energy Network",
+		"company": "CEO and Chief Scientist, National Energy USA",
 		"bio": `
 
 Dave Robau is one of the sustainability movement’s most sought-after thought leaders. As an advocate for resource conservation and sustainable design solutions. Mr. Robau has extensive experience at all levels of business and government. In 2011, he was honored at a White House ceremony as one of President Obama’s “Champions of Change” for his work and dedication to sustainability.
@@ -529,8 +529,8 @@ Dr. Harrington earned a Doctor of Business Administration degree through Trevecc
 	"representative-rob-wittman": {
 		"image": "rob-wittman.webp",
 		"name": "Representative Rob Wittman (R-VA)",
-		"position": "Vice Chairman, House Armed Services Committee",
-		"company": "Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding Caucus",
+		"position": "Vice Chairman, House Armed Services Committee, Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding Caucus",
+		"company": "U.S. House of Representatives",
 		"keynote": {
 			"isKeynote": true,
 			"headerText": "Congressional Keynote Speaker"
@@ -632,7 +632,7 @@ He also partners with defense contractors to develop predictive decision-making 
 			"isKeynote": true,
 			"headerText": "United States Army Keynote Speaker"
 		},
-		"bio": `Mr. Brandon Cockrell is the Assistant Secretary of the Army for Energy and Sustainability (DASA(E&S)), leading the program development and oversight of installation energy and water security, resilience and conservation; sustainability; and operational energy. Mr. Cockrell began this position on August 12, 2024.speakers
+		"bio": `Mr. Brandon Cockrell is the Assistant Secretary of the Army for Energy and Sustainability (DASA(E&S)), leading the program development and oversight of installation energy and water security, resilience and conservation; sustainability; and operational energy. Mr. Cockrell began this position on August 12, 2024.
 <br/>
 
 <br/>
@@ -752,6 +752,26 @@ His final Navy assignment was China Branch of Navy Staff at the Pentagon. `,
 	<br/>
 	Mr. Sykes obtained his Bachelors degree from the University of Baltimore, having studied Jurisprudence-Pre law and holds a A.A. degree in Interdisciplinary Studies as well.`,
 	}
+	,
+	"neal-dunn": {
+		"image": "neal-dunn.webp",
+		"name": "Congressman Neal Dunn (R-FL)",
+		"position": "Committee on Energy and Commerce, House Select Committee on the Strategic Competition Between the U.S. and the Chinese Communist Party",
+		"company": "U.S. House of Representatives",
+		"keynote": {
+			"isKeynote": true,
+			"headerText": "Congressional Keynote Speaker"
+		},
+		"bio": `Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includes all or part of 16 counties in North Florida.
+	<br/>
+	
+	<br/>
+	He was a surgeon in Panama City for over 25 years and in the US Army for over 10 years before that. Dr. Dunn was the founding president of a large surgical practice and has a subspecialty interest in advanced prostate cancer. Additionally, he was the founding chairman of a bank and served on multiple boards including Enterprise Florida, Space Florida, Bay Cares, and the Florida Medical Association.
+	<br/>
+	
+	<br/>
+	Dr. Dunn currently serves on the House Energy and Commerce Committee, the oldest standing legislative committee in the U.S. House of Representatives. The committee is responsible for energy policy, interstate and foreign commerce, telecommunications, consumer protection, food and drug safety, public health and research, and environmental quality among others. Additionally, Dr. Dunn serves as Vice Chair of the Subcommittee on Health, the Subcommittee on Innovation, Data, & Commerce, the Subcommittee on Communications and Technology, as well as the Parliament of NATO, and the House Select Committee on the CCP.`,
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -804,6 +824,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"brent-d-sadler",
 		"tasha-allen",
 		"representative-rob-wittman", // THE ORDER OF KEYNOTE SPEAKERS IS DETERMINED HERE
+		"neal-dunn",
 		"brandon-cockrell",
 		"linda-eshiwani-nate",
 		"aimee-zick",
