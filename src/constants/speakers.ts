@@ -78,7 +78,7 @@ In the military, Colonel Cancian spent over three decades in the U.S. Marine Cor
 	},
 	"charles-sills": {
 		"image": "charles-sills.webp",
-		"name": "Charles Sills",
+		"name": "Charles F. Sills",
 		"position": "President & CEO",
 		"company": "American Defense Alliance",
 		"bio": `Charles F. Sills is a recognized authority on U.S. Government contracting, and an advocate for Small Business/Diversity Supplier access to Federal and Military acquisition opportunities, serving as the President & CEO of the American Defense Alliance – which hosts major Defense Requirements conferences across the country, connecting private sector innovators with the Pentagon, Military commands, and Congress to accelerate National Security solutions.
@@ -605,7 +605,7 @@ Prior to joining the Improve Group in 2018 - the most incredible small business 
 	"james-simpson": {
 		"image": "james-simpson.webp",
 		"name": "James Simpson, Major General, U.S. Army (Ret.),",
-		"position": "Major General, U.S. Army (Ret.), Executive Director of Federal Strategic Initiatives",
+		"position": "Executive Director of Federal Strategic Initiatives",
 		"company": "Modtech Solutions LLC",
 		"bio": `James E. Simpson is the President and CEO of JES Acquisitions and Business Solutions, LLC — a consulting firm that helps organizations enhance their capacity and performance in the federal government and commercial sectors.
 <br/>
@@ -735,7 +735,7 @@ His final Navy assignment was China Branch of Navy Staff at the Pentagon. `,
 	,
 	"kareem-sykes": {
 		"image": "kareem-sykes.webp",
-		"name": "Kareem Sykes",
+		"name": "Kareem A. Sykes",
 		"position": "Program Manager, Project Spectrum",
 		"company": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of Defense",
 		"bio": `Kareem A. Sykes currently serves as Program Manager for Project Spectrum, a U.S. Department of Defense (DoD) recognized cybersecurity awareness initiative that offer resources, training and tools toward increasing cybersecurity awareness and hygiene for small businesses in particular. Mr. Sykes provides strategic leadership for a dynamic team of cybersecurity and outreach professionals whose collective aim centers around providing the educational resources and tools small businesses and institutions need to develop, implement, and maintain cybersecurity compliance. He oversees and directs the daily execution of multiple projects within the large-scale program and assures that the initiative adheres to government regulatory guidance. Mr. Sykes also manages contractual requirements to assure that Project Spectrum meets the cost, schedule, and performance goals required by the DoD Office of Small Business Programs (OSBP).
