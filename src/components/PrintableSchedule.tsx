@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SCHEDULES } from '@/constants/schedules';
 import { EVENTS } from '@/constants/events';
 import { Event } from '@/types/events';
@@ -63,7 +63,17 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
     return <div className="p-4 text-red-500 font-semibold">Schedule not found</div>;
   }
 
+  // Function to handle printing
   const handlePrint = () => {
+    // Add a listener for the beforeprint event
+    window.addEventListener('beforeprint', () => {
+      // Show the first day's header initially
+      const firstDayHeader = document.querySelector('.schedule-day:first-child .day-print-header');
+      if (firstDayHeader) {
+        firstDayHeader.classList.add('active');
+      }
+    });
+
     window.print();
   };
 
@@ -78,17 +88,19 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
   // Filter schedule based on selected days
   const filteredSchedule = schedule.filter(day => selectedDays.includes(day.date));
 
-  // Render a single schedule item
-  const renderScheduleItem = (item: ScheduleItem, key: string) => {
+  // Render a single schedule item with location context
+  const renderScheduleItem = (item: ScheduleItem, showSpeakers: boolean, showLocations: boolean, showSpeakerImages: boolean) => {
     return (
-      <div key={key} className="schedule-day-item mb-4 break-inside-avoid page-break-inside-avoid no-page-break">
-        <div className="schedule-item flex border-b border-gray-200 pb-4">
-          <div className="time-column w-24 min-w-24 pr-4">
+      <div className="schedule-day-item break-inside-avoid page-break-inside-avoid no-page-break font-gotham">
+        <div className="schedule-item flex border-0 border-gray-200 pb-1 ">
+          <div className="time-column w-10 pr-4">
             <div className="time font-bold text-sm">{item.time}</div>
           </div>
           <div className="content-column flex-1">
             <div className="item-title text-base font-bold mb-1">{item.title}</div>
-            {showLocations && item.location && <div className="location text-sm italic mb-2">{item.location}</div>}
+            {showLocations && item.location &&
+              <div className="location text-sm italic mb-2">{item.location}</div>
+            }
             {showSpeakers && item.speakers && item.speakers.length > 0 && (
               <div className="speakers mt-2">
                 {item.speakers.map((speaker, index) => (
@@ -107,7 +119,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
                     <div>
                       <div className="speaker-name font-bold text-sm mb-0.5">{speaker.name}</div>
                       {speaker.title && <div className="speaker-title text-xs my-0.5">{speaker.title}</div>}
-                      {speaker.affiliation && <div className="speaker-affiliation text-xs my-0.5">{speaker.affiliation}</div>}
+                      {speaker.affiliation && <div className="speaker-affiliation font-bold text-xs my-0.5">{speaker.affiliation}</div>}
                     </div>
                   </div>
                 ))}
@@ -124,13 +136,26 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
   const getAllScheduleItems = () => {
     const allItems: JSX.Element[] = [];
 
+    // Track the last location for each day
+    let lastLocation: string | null = null;
+
     filteredSchedule.forEach((day, dayIndex) => {
+      // Reset location tracking for each day
+      lastLocation = null;
+
+      // Add a page break before each day (except the first one)
+      if (dayIndex > 0) {
+        allItems.push(
+          <div key={`day-break-${dayIndex}`} className="page-break-before w-full"></div>
+        );
+      }
+
       // Add day header
-      allItems.push(
-        <div key={`day-${dayIndex}`} className="day-header-container mb-4 break-inside-avoid no-page-break">
-          <h2 className="text-xl font-bold bg-gray-100 p-3 rounded day-header">{day.date}</h2>
-        </div>
-      );
+      //allItems.push(
+      //  <div key={`day-${dayIndex}`} className="day-header-container mb-4 break-inside-avoid no-page-break">
+      //    <h2 className="text-xl font-bold bg-gray-100 p-3 rounded day-header">{day.date}</h2>
+      //  </div>
+      //);
 
       // Add all items for this day
       day.items.forEach((item, itemIndex) => {
@@ -142,13 +167,21 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
           );
         }
 
-        allItems.push(renderScheduleItem(item, `${dayIndex}-${itemIndex}`));
+        // Check if location has changed
+        const locationChanged = item.location !== lastLocation;
+
+        // Render the item with the location flag
+        allItems.push(renderScheduleItem(item, showSpeakers, showLocations, showSpeakerImages));
+
+        // Update the last location
+        lastLocation = item.location || null;
       });
 
-      // Add a spacer after each day except the last one
+      // We don't need spacers anymore since each day will start on a new page
+      // But we'll keep a small margin for visual separation
       if (dayIndex < filteredSchedule.length - 1) {
         allItems.push(
-          <div key={`spacer-${dayIndex}`} className="mb-8 page-break-after"></div>
+          <div key={`spacer-${dayIndex}`} className="mb-4"></div>
         );
       }
     });
@@ -157,166 +190,211 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
   };
 
   return (
-    <div className="print-container max-w-4xl mx-auto p-5" style={{ fontSize: `${fontSize}%` }}>
-      <div className="print-controls no-print bg-gray-100 rounded-lg p-6 mb-8 shadow-md">
-        <div className="space-y-6">
-          <div className="border-b border-gray-200 pb-2">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Print Options</h3>
-            <div className="flex gap-4">
-              <button
-                onClick={() => router.back()}
-                className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded transition-colors"
-              >
-                Back
-              </button>
-              <button
-                onClick={handlePrint}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition-colors"
-              >
-                Print Schedule
-              </button>
+    <div className="print-container">
+      {/* Controls section (only visible on screen) */}
+      <div className="print-controls no-print">
+        <div className="controls-container">
+          {/* Title and subtitle controls */}
+          <div className="control-section">
+            <h3>Title and Subtitle</h3>
+            <div className="form-control">
+              <label htmlFor="custom-title">Custom Title:</label>
+              <input
+                type="text"
+                id="custom-title"
+                value={customTitle}
+                onChange={(e) => setCustomTitle(e.target.value)}
+                placeholder={event.title}
+                className="w-full p-2 border rounded"
+              />
+            </div>
+            <div className="form-control">
+              <label htmlFor="custom-subtitle">Custom Subtitle:</label>
+              <input
+                type="text"
+                id="custom-subtitle"
+                value={customSubtitle}
+                onChange={(e) => setCustomSubtitle(e.target.value)}
+                className="w-full p-2 border rounded"
+              />
             </div>
           </div>
 
-          <div className="border-b border-gray-200 pb-2">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Content Options</h3>
-            <div className="space-y-3">
-              <div className="flex items-center gap-2">
+          {/* Display options */}
+          <div className="control-section">
+            <h3>Display Options</h3>
+            <div className="form-control">
+              <label className="flex items-center">
                 <input
                   type="checkbox"
-                  id="show-speakers"
                   checked={showSpeakers}
                   onChange={(e) => setShowSpeakers(e.target.checked)}
-                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  className="mr-2"
                 />
-                <label htmlFor="show-speakers" className="text-sm text-gray-700">Show Speakers</label>
-              </div>
-
-              <div className="flex items-center gap-2">
+                Show Speakers
+              </label>
+            </div>
+            <div className="form-control">
+              <label className="flex items-center">
                 <input
                   type="checkbox"
-                  id="show-locations"
                   checked={showLocations}
                   onChange={(e) => setShowLocations(e.target.checked)}
-                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  className="mr-2"
                 />
-                <label htmlFor="show-locations" className="text-sm text-gray-700">Show Locations</label>
-              </div>
-
-              <div className="flex items-center gap-2">
+                Show Locations
+              </label>
+            </div>
+            <div className="form-control">
+              <label className="flex items-center">
                 <input
                   type="checkbox"
-                  id="show-speaker-images"
-                  checked={showSpeakerImages}
-                  onChange={(e) => setShowSpeakerImages(e.target.checked)}
-                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                />
-                <label htmlFor="show-speaker-images" className="text-sm text-gray-700">Show Speaker Images</label>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  id="two-column-layout"
                   checked={twoColumnLayout}
                   onChange={(e) => setTwoColumnLayout(e.target.checked)}
-                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  className="mr-2"
                 />
-                <label htmlFor="two-column-layout" className="text-sm text-gray-700">Two-Column Layout</label>
-              </div>
+                Two-Column Layout
+              </label>
             </div>
-          </div>
-
-          <div className="border-b border-gray-200 pb-2">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Font Size</h3>
-            <div className="flex items-center gap-4">
+            <div className="form-control">
+              <label htmlFor="font-size">Font Size Adjustment:</label>
               <input
-                type="range"
+                type="number"
+                id="font-size"
                 value={fontSize}
-                min={70}
-                max={150}
-                step={5}
-                onChange={(e) => setFontSize(parseInt(e.target.value))}
-                className="w-[200px]"
+                onChange={(e) => setFontSize(parseInt(e.target.value) || 100)}
+                min="70"
+                max="130"
+                step="5"
+                className="w-full p-2 border rounded"
               />
-              <span className="text-sm text-gray-700">{fontSize}%</span>
+              <span className="text-sm text-gray-500">100% is default size</span>
             </div>
           </div>
 
-          <div className="border-b border-gray-200 pb-2">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Days to Include</h3>
-            <div className="space-y-2">
-              {schedule.map((day, index) => (
-                <div key={index} className="flex items-center gap-2">
+          {/* Day selection */}
+          <div className="control-section">
+            <h3>Days to Include</h3>
+            {schedule.map((day, index) => (
+              <div key={index} className="form-control">
+                <label className="flex items-center">
                   <input
                     type="checkbox"
-                    id={`day-${index}`}
                     checked={selectedDays.includes(day.date)}
                     onChange={() => toggleDay(day.date)}
-                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="mr-2"
                   />
-                  <label htmlFor={`day-${index}`} className="text-sm text-gray-700">{day.date}</label>
-                </div>
-              ))}
-            </div>
+                  {day.date}
+                </label>
+              </div>
+            ))}
           </div>
 
-          <div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Custom Text</h3>
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="custom-title" className="block text-sm text-gray-700 mb-1">Custom Title (leave blank for default)</label>
-                <input
-                  type="text"
-                  id="custom-title"
-                  value={customTitle}
-                  onChange={(e) => setCustomTitle(e.target.value)}
-                  placeholder={event.title}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="custom-subtitle" className="block text-sm text-gray-700 mb-1">Custom Subtitle</label>
-                <input
-                  type="text"
-                  id="custom-subtitle"
-                  value={customSubtitle}
-                  onChange={(e) => setCustomSubtitle(e.target.value)}
-                  placeholder="Optional subtitle"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-            </div>
+          {/* Print button */}
+          <div className="control-section">
+            <button
+              onClick={handlePrint}
+              className="print-button"
+            >
+              Print Schedule
+            </button>
           </div>
         </div>
       </div>
 
-      <div className="printable-content">
-        <div className="text-center mb-8 pb-2 border-b-2 border-gray-800">
-          <h1 className="text-3xl font-bold mb-1">{customTitle || event.title}</h1>
-          {customSubtitle && <p className="text-xl italic mb-2">{customSubtitle}</p>}
-          <p className="text-lg mb-1">{event.date}</p>
-          <p className="text-lg">{event.locationAddress}</p>
+      {/* Fixed header for every page - ONLY VISIBLE ON SCREEN */}
+      <div className="print-header no-print">
+        <div className="print-header-top">
+          {customTitle || event.title}
         </div>
+        <div className="print-header-bottom">
+          <div>{event.date}</div>
+          <div>{event.locationAddress}</div>
+        </div>
+      </div>
+
+      {/* Fixed footer for every page */}
+      <div className="print-footer">
+        <div>Presented by American Defense Alliance</div>
+        <div>americandefensealliance.org</div>
+      </div>
+
+      {/* Main content with margin to accommodate header and footer */}
+      <div className="printable-content" style={{ fontSize: `${fontSize}%` }}>
+        {/* Custom subtitle if provided */}
+        {customSubtitle && (
+          <div className="text-center mb-6">
+            <p className="text-xl italic">{customSubtitle}</p>
+          </div>
+        )}
 
         {twoColumnLayout ? (
           // Two-column layout with newspaper-style flow
-          <div className="columns-1 md:columns-2 gap-8 space-y-4 h-auto">
-            {getAllScheduleItems()}
-          </div>
-        ) : (
-          // Single column layout - render days sequentially
-          <div>
+          <div className="columns-1 md:columns-2 gap-8 space-y-0 h-auto">
             {filteredSchedule.map((day, dayIndex) => (
-              <div key={dayIndex} className="schedule-day mb-8 page-break-inside-avoid">
-                <h2 className="text-xl font-bold bg-gray-100 p-3 mb-4 rounded day-header">{day.date}</h2>
-
-                <div className="space-y-4">
-                  {day.items.map((item, itemIndex) => renderScheduleItem(item, `${dayIndex}-${itemIndex}`))}
+              <div key={dayIndex} className={`schedule-day ${dayIndex > 0 ? 'page-break-before' : ''}`}>
+                {/* Day-specific header for print */}
+                <div className="day-print-header">
+                  <div className="day-print-header-top">
+                    {customTitle || event.title}
+                  </div>
+                  <div className="day-print-header-bottom">
+                    <div>{day.date}</div>
+                    <div>{event.locationAddress}</div>
+                  </div>
                 </div>
+                {/*               
+                <div className="day-header-container no-page-break">
+                  <h2 className="day-header">{day.date}</h2>
+                </div>
+                */}
+                {day.items.map((item, itemIndex) => (
+                  <div key={itemIndex} className="schedule-day-item no-page-break">
+                    {renderScheduleItem(item, showSpeakers, showLocations, showSpeakerImages)}
+                  </div>
+                ))}
               </div>
             ))}
+          </div>
+        ) : (
+          // Single column layout with days as sections
+          <div className="space-y-0">
+            {filteredSchedule.map((day, dayIndex) => {
+              // Track location changes for each day
+              let lastLocation: string | null = null;
+
+              return (
+                <div key={dayIndex} className={`schedule-day ${dayIndex > 0 ? 'page-break-before' : ''}`}>
+                  {/* Day-specific header for print */}
+                  <div className="day-print-header">
+                    <div className="day-print-header-top">
+                      {customTitle || event.title} - {day.date}
+                    </div>
+                    <div className="day-print-header-bottom">
+                      <div>{day.date}</div>
+                      <div>{event.locationAddress}</div>
+                    </div>
+                  </div>
+
+                  <div className="day-header-container no-page-break">
+                    <h2 className="day-header">{day.date}</h2>
+                  </div>
+
+                  <div className="space-y-0">
+                    {day.items.map((item, itemIndex) => {
+                      // Check if location has changed
+                      const locationChanged = item.location !== lastLocation;
+
+                      // Update the last location for next item
+                      const result = renderScheduleItem(item, showSpeakers, showLocations, showSpeakerImages);
+                      lastLocation = item.location || null;
+
+                      return result;
+                    })}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
       </div>
