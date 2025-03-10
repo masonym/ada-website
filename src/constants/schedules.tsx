@@ -645,7 +645,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "11:00 AM",
-                        "title": "??",
+                        "title": "NAVFAC - Projects & Contrats",
                         "speakers": [
                             {
                                 "name": "Bianca Henderson",
@@ -680,12 +680,12 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "11:45 AM",
-                        "title": "???",
+                        "title": "Air Force Sustainment Center/Robins AFB - Small Business Opportunities",
                         "speakers": [
                             {
                                 "name": "Tim Inman",
-                                "title": "Technical Director for Contracting, Contracting Directorate",
-                                "affiliation": "Air Force Sustainment Center, Robins AFB, Georgia",
+                                "title": "Director of Small Business Program",
+                                "affiliation": "Air Force Sustainment Center, Robins Air Force Base",
                                 "photo": "timothy-r-inman.webp"
                             }
                         ],
