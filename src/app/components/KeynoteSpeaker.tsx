@@ -94,7 +94,7 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
                   />
                 </div>
                 <div className="text-center">
-                  <h3 className="text-xl sm:text-2xl font-bold mb-2 text-white">{speaker.name}</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-2 text-white" dangerouslySetInnerHTML={{ __html: speaker.name }}></h3>
                   <p className="text-lg mb-2 text-red-400">{speaker.position}</p>
                   <p className="text-base mb-6 text-blue-300">{speaker.company}</p>
                 </div>

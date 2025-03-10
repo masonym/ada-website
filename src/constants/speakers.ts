@@ -528,7 +528,7 @@ Dr. Harrington earned a Doctor of Business Administration degree through Trevecc
 	,
 	"representative-rob-wittman": {
 		"image": "rob-wittman.webp",
-		"name": "Representative Rob Wittman (R-VA)",
+		"name": "Representative Rob Wittman <br/>(R-VA)",
 		"position": "Vice Chairman, House Armed Services Committee, Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding Caucus",
 		"company": "U.S. House of Representatives",
 		"keynote": {
@@ -755,7 +755,7 @@ His final Navy assignment was China Branch of Navy Staff at the Pentagon. `,
 	,
 	"neal-dunn": {
 		"image": "neal-dunn.webp",
-		"name": "Representative Neal Dunn (R-FL)",
+		"name": `Representative Neal Dunn <br/>(R-FL)`,
 		"position": "Member, House Committee on Energy and Commerce, and House Select Committee on the Strategic Competition between the U.S. and the Chinese Communist Party",
 		"company": "U.S. House of Representatives",
 		"keynote": {
