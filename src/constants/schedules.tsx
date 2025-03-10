@@ -397,7 +397,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "12:10 PM",
-                        "title": "Cybersecurity/CMMC Fireside Chat",
+                        "title": "Cyber Fireside Chat",
                         "speakers": [
                             {
                                 "name": "David Fraley",
@@ -434,21 +434,26 @@ export const SCHEDULES = [
                         "location": "Galleria 5-7",
                     },
                     {
-                        "time": "1:30 PM",
-                        "title": "Air Force Mentor-Protégé Partnerships",
+                        "time": "1:45 PM",
+                        "title": "Military Base Initiatives - How to Play a Part",
                         "speakers": [
                             {
-                                "name": "Andrew Gardner",
-                                "title": "Chief Executive Officer",
-                                "affiliation": "Crux Defense and Partner, NADWC Combat Capabilities Factory",
-                                "sponsor": "Pending",
-                                "sponsorStyle": "bg-gray-300",
+                                "name": "Dave Robau, LEED AP",
+                                "title": "Moderator, Executive Director, Gulf Coast Energy Network",
+                                "affiliation": "CEO and Chief Scientist, National Energy USA",
+                                "photo": "dave-robau.webp"
+                            },
+                            {
+                                "name": "Cliff Holbeck",
+                                "title": "Sr. Business Development Manager",
+                                "affiliation": "Honeywell International",
+                                "photo": "cliff-holbeck.webp",
                             }
                         ],
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "2:10 PM",
+                        "time": "2:30 PM",
                         "title": "Streamlined Acquisition for Our Warfighters",
                         "speakers": [
                             {
@@ -461,7 +466,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "2:50 PM",
+                        "time": "3:10 PM",
                         "title": "Army Corps of Engineers – Projects & Contracts",
                         "speakers": [
                             //{
@@ -498,65 +503,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "3:25 PM",
-                        "title": "Military Base Energy Initiatives",
-                        "speakers": [
-                            {
-                                "name": "Dave Robau, LEED AP",
-                                "title": "Moderator, Executive Director, Gulf Coast Energy Network",
-                                "affiliation": "CEO and Chief Scientist, National Energy USA",
-                                "photo": "dave-robau.webp"
-                            },
-                            {
-                                "name": "Cliff Holbeck",
-                                "title": "Senior Account Executive",
-                                "affiliation": "Honeywell",
-                            }
-                            //{
-                            //    "name": "Deborah Loomis",
-                            //    "title": "Senior Advisor for Climate Change to the Secretary of the Navy",
-                            //    "photo": "deborah-loomis.webp"
-                            //},
-                            //{
-                            //    "name": "Captain Newt McKissick",
-                            //    "title": "Military Deputy Director, Energy Portfolio",
-                            //    "affiliation": "Defense Innovation Unit (DIU), U.S. Department of Defense",
-                            //    "photo": "newt-mckissick.webp"
-                            //},
-                            //{
-                            //    "name": "Kirk A. Philips",
-                            //    "title": "Director, Office of Energy Assurance (OEA)",
-                            //    "affiliation": "U.S. Air Force Civil Engineer Center (AFCEC)",
-                            //    "photo": "kirk-philips.webp"
-                            //},
-                            //{
-                            //    "name": "Matthew Haupt, PE, CPP, CEM",
-                            //    "title": "NAVFAC Energy Director",
-                            //    "photo": "matthew-haupt.webp"
-                            //},
-                            //{
-                            //    "name": "John A. Kliem, PE, CEM",
-                            //    "title": "Director, Federal Government Strategic Affairs",
-                            //    "affiliation": "Johnson Controls Federal Systems",
-                            //    "photo": "john-kliem.webp"
-                            //},
-                            //{
-                            //    "name": "David Trail",
-                            //    "title": "Director, Government and External Relations (S-7)",
-                            //    "affiliation": "Marine Corps Air Station Beaufort",
-                            //    "photo": "david-trail.webp"
-                            //},
-                            //{
-                            //    "name": "Josh Wepman",
-                            //    "title": "Vice President and Chief Technology Officer",
-                            //    "affiliation": "Leidos Commercial Energy Solutions",
-                            //    "photo": "josh-wepman.webp"
-                            //}
-                        ],
-                        "location": "Galleria 4",
-                    },
-                    {
-                        "time": "4:00 PM",
+                        "time": "3:45 PM",
                         "title": "Day One Closing Remarks",
                         "speakers": [
                             {
@@ -627,21 +574,18 @@ export const SCHEDULES = [
                         }]
                     },
                     {
-                        "time": "9:15 AM",
-                        "title": "MBDA Federal Procurement Center – Tiger Team Briefing",
-                        "speakers": [
-                            {
-                                "name": "Oscar Frazier",
-                                "title": "Tiger Team Lead, Federal Procurement Center, Minority Business Development Agency (MBDA)",
-                                "affiliation": "U.S. Department of Commerce and Owner, nDemand Consulting Services Inc.",
-                                "photo": "oscar-frazier.webp",
-                                "presentation": "2025 Southeast Defense Procurement Conference - Oscar Frazier.pdf",
-                            }
-                        ],
+                        "time": "9:20 AM",
+                        "title": "Using Mentor-Protégé Partnerships to Drive the Combat Capability Factory",
                         "location": "Galleria 4",
+                        "speakers": [{
+                            "name": "Andrew Gardner",
+                            "title": "Chief Executive Officer",
+                            "affiliation": "Crux Defense and Partner, National All-Domain Warfighting Center’s Combat Capabilities Factory",
+                            "photo": "andrew-gardner.webp",
+                        }]
                     },
                     {
-                        "time": "9:40 AM",
+                        "time": "9:55 AM",
                         "title": "Indo-Pacific Theater/U.S. Navy Force Posture",
                         "speakers": [
                             {
@@ -654,7 +598,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "10:10 AM",
+                        "time": "10:25 AM",
                         "title": "Defense Industrial Base Briefing",
                         "speakers": [
                             {
@@ -666,18 +610,32 @@ export const SCHEDULES = [
                         ],
                         "location": "Galleria 4",
                     },
+                    //{
+                    //    "time": "10:40 AM",
+                    //    "title": "Networking Break",
+                    //    "speakers": [
+                    //        //{
+                    //        //    "name": "Lieutenant General Robert M. Collins",
+                    //        //    "title": "Military Deputy Assistant Secretary of the Army",
+                    //        //    "affiliation": "Acquisition, Logistics & Technology",
+                    //        //    "photo": "robert-collins.webp"
+                    //        //}
+                    //    ],
+                    //    "location": "Galleria 5-7",
+                    //},
                     {
-                        "time": "10:40 AM",
-                        "title": "Networking Break",
+                        "time": "10:55 AM",
+                        "title": "MBDA Federal Procurement Center – Tiger Team Briefing",
                         "speakers": [
-                            //{
-                            //    "name": "Lieutenant General Robert M. Collins",
-                            //    "title": "Military Deputy Assistant Secretary of the Army",
-                            //    "affiliation": "Acquisition, Logistics & Technology",
-                            //    "photo": "robert-collins.webp"
-                            //}
+                            {
+                                "name": "Oscar Frazier",
+                                "title": "Tiger Team Lead, Federal Procurement Center, Minority Business Development Agency (MBDA)",
+                                "affiliation": "U.S. Department of Commerce and Owner, nDemand Consulting Services Inc.",
+                                "photo": "oscar-frazier.webp",
+                                "presentation": "2025 Southeast Defense Procurement Conference - Oscar Frazier.pdf",
+                            }
                         ],
-                        "location": "Galleria 5-7",
+                        "location": "Galleria 4",
                     },
                     {
                         "time": "11:00 AM",
@@ -694,8 +652,8 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "11:35 AM",
-                        "title": "Fireside Chat – Army Contracting",
+                        "time": "11:25 AM",
+                        "title": "Insights From the Former Chief of Army Acquisition",
                         "speakers": [
                             {
                                 "name": "Charles F. Sills",
@@ -715,7 +673,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "11:50 AM",
+                        "time": "11:45 AM",
                         "title": "Canadian Defense Ministry – Contract Opportunities",
                         "speakers": [
                             {
