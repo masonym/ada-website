@@ -38,9 +38,8 @@ const ContactUs: React.FC = () => {
         <div className="max-w-2xl mx-auto">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {submitStatus && (
-              <div className={`p-4 rounded-md flex items-start ${
-                submitStatus === 'success' ? 'bg-green-800' : 'bg-red-800'
-              }`}>
+              <div className={`p-4 rounded-md flex items-start ${submitStatus === 'success' ? 'bg-green-800' : 'bg-red-999'
+                }`}>
                 {submitStatus === 'success' ? (
                   <Check className="h-5 w-5 text-green-400 mr-3 mt-0.5" />
                 ) : (
@@ -49,8 +48,8 @@ const ContactUs: React.FC = () => {
                 <div>
                   <h3 className="font-semibold">{submitStatus === 'success' ? 'Success!' : 'Error'}</h3>
                   <p className="text-sm">
-                    {submitStatus === 'success' 
-                      ? 'Your message has been sent successfully.' 
+                    {submitStatus === 'success'
+                      ? 'Your message has been sent successfully.'
                       : 'There was an error sending your message. Please try again.'}
                   </p>
                 </div>
@@ -97,12 +96,11 @@ const ContactUs: React.FC = () => {
             </div>
 
             <div>
-              <button 
+              <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
-                  isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
+                className={`w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
               >
                 {isSubmitting ? (
                   'Sending...'

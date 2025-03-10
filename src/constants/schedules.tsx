@@ -284,7 +284,9 @@ export const SCHEDULES = [
                                 "name": "Charles F. Sills",
                                 "title": "President & CEO",
                                 "affiliation": "American Defense Alliance",
-                                "photo": "charles-sills.webp"
+                                "photo": "charles-sills.webp",
+                                "sponsor": "Conference Moderator",
+                                "sponsorStyle": "bg-red-999",
                             }
                         ],
                         "location": "Galleria 4",
@@ -544,7 +546,9 @@ export const SCHEDULES = [
                                 "name": "Charles F. Sills",
                                 "title": "President & CEO",
                                 "affiliation": "American Defense Alliance",
-                                "photo": "charles-sills.webp"
+                                "photo": "charles-sills.webp",
+                                "sponsor": "Conference Moderator",
+                                "sponsorStyle": "bg-red-999",
                             }
                         ],
                         "location": "Galleria 4",
