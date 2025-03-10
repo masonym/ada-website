@@ -798,6 +798,14 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 		"company": "Honeywell",
 		"bio": `Cliff Holbeck is a seasoned professional serving as an energy services business development consultant for Honeywell International.  Cliff has 40 years’ experience in technology innovation related to Information and Operational Technology.  He has worked for several of the industries leading providers of energy engineering and serves as a coordinator of large energy conservation and resiliency projects.  Cliff is well versed in government contracting having worked with the DOD, VA, and GSA.  He is an advocate for Small Businesses with the ability to develop trust, gain consensus, and drive collaboration.   He is an excellent communicator and contributes to industry conferences and forums as a moderator and speaker.`,
 	}
+	,
+	"andrew-gardner": {
+		"image": "andrew-gardner.webp",
+		"name": "Andrew Gardner",
+		"position": "Chief Executive Officer",
+		"company": "Crux Defense and Partner, NADWC Combat Capabilities Factory",
+		"bio": `Andrew Gardner is CEO of Crux Defense, a partner with the National All-Domain Warfighting Center's Combat Capabilities Factory.  The purpose of the Combat Capabilities Factory is to Integrate, Fund and Field Warfighting Capabilities through Experiment-Driven Exercises.  Leveraging these innovations, Crux is able to help companies cross the DoD's innovation valley of death and ensure that the best capabilities get into the hands of the warfighter.`,
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -861,6 +869,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"james-simpson",
 		"kareem-sykes",
 		"cliff-holbeck",
+		"andrew-gardner",
 		//"carl-m-wade",
 		//"david-willis",
 		//{ id: "patricia-waddell", invited: true },
