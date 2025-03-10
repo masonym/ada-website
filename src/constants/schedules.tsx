@@ -591,7 +591,7 @@ export const SCHEDULES = [
                         }]
                     },
                     {
-                        "time": "9:55 AM",
+                        "time": "9:50 AM",
                         "title": "Indo-Pacific Theater/U.S. Navy Force Posture",
                         "speakers": [
                             {
@@ -604,7 +604,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "10:25 AM",
+                        "time": "10:15 AM",
                         "title": "Defense Industrial Base Briefing",
                         "speakers": [
                             {
@@ -630,7 +630,7 @@ export const SCHEDULES = [
                     //    "location": "Galleria 5-7",
                     //},
                     {
-                        "time": "10:55 AM",
+                        "time": "10:40 AM",
                         "title": "MBDA Federal Procurement Center — Tiger Team Briefing",
                         "speakers": [
                             {
@@ -644,7 +644,21 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "11:25 AM",
+                        "time": "11:00 AM",
+                        "title": "??",
+                        "speakers": [
+                            {
+                                "name": "Bianca Henderson",
+                                "title": "Director, Office of Small Business Programs (OSBP)",
+                                "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC)",
+                                "photo": "bianca-henderson.webp",
+                                "presentation": "2025 Southeast Defense Procurement Conference - Oscar Frazier.pdf",
+                            }
+                        ],
+                        "location": "Galleria 4",
+                    },
+                    {
+                        "time": "11:30 AM",
                         "title": "Insights From the Former Chief of Army Acquisition",
                         "speakers": [
                             {
@@ -666,13 +680,13 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "11:45 AM",
-                        "title": "Canadian Defense Ministry — Contract Opportunities",
+                        "title": "???",
                         "speakers": [
                             {
-                                "name": "Linda Eshiwani-Nate",
-                                "title": "Trade Commissioner",
-                                "affiliation": "Consulate General of Canada in Atlanta",
-                                "photo": "linda-eshiwani-nate.webp"
+                                "name": "Tim Inman",
+                                "title": "Technical Director for Contracting, Contracting Directorate",
+                                "affiliation": "Air Force Sustainment Center, Robins AFB, Georgia",
+                                "photo": "timothy-r-inman.webp"
                             }
                         ],
                         "location": "Galleria 4",
@@ -740,7 +754,7 @@ export const SCHEDULES = [
                     //    "location": "Galleria 4",
                     //},
                     {
-                        "time": "12:00 PM",
+                        "time": "12:15 PM",
                         "title": "Closing Remarks",
                         "speakers": [
                             {
