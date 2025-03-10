@@ -762,15 +762,18 @@ His final Navy assignment was China Branch of Navy Staff at the Pentagon. `,
 			"isKeynote": true,
 			"headerText": "Congressional Keynote Speaker"
 		},
-		"bio": `Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includes all or part of 16 counties in North Florida.
+		"bio": `
+	Dr. Dunn currently serves on the House Energy and Commerce Committee, the oldest standing legislative committee in the U.S. House of Representatives. The committee is responsible for energy policy, interstate and foreign commerce, telecommunications, consumer protection, food and drug safety, public health and research, and environmental quality among others. Additionally, Dr. Dunn serves as Vice Chair of the Subcommittee on Health, the Subcommittee on Innovation, Data, & Commerce, the Subcommittee on Communications and Technology, as well as the Parliament of NATO, and the House Select Committee on the CCP.,
+
+	<br/>
+	
+	<br/>
+Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includes all or part of 16 counties in North Florida.
 	<br/>
 	
 	<br/>
 	He was a surgeon in Panama City for over 25 years and in the US Army for over 10 years before that. Dr. Dunn was the founding president of a large surgical practice and has a subspecialty interest in advanced prostate cancer. Additionally, he was the founding chairman of a bank and served on multiple boards including Enterprise Florida, Space Florida, Bay Cares, and the Florida Medical Association.
-	<br/>
-	
-	<br/>
-	Dr. Dunn currently serves on the House Energy and Commerce Committee, the oldest standing legislative committee in the U.S. House of Representatives. The committee is responsible for energy policy, interstate and foreign commerce, telecommunications, consumer protection, food and drug safety, public health and research, and environmental quality among others. Additionally, Dr. Dunn serves as Vice Chair of the Subcommittee on Health, the Subcommittee on Innovation, Data, & Commerce, the Subcommittee on Communications and Technology, as well as the Parliament of NATO, and the House Select Committee on the CCP.`,
+`
 	}
 	,
 	"congressman-neal-dunn-(r-fl)": {
