@@ -199,7 +199,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "4:30 PM",
-                        title: "NAVFAC Opportunities Briefing",
+                        title: "NAVFAC Opportunities Support",
                         location: "National Press Club Ballroom",
                         speakers: [{
                             name: "Bianca Henderson",
@@ -517,7 +517,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "4:00 PM - 5:30 PM",
-                        "title": "Matchmaking Session I",
+                        "title": "Matchmaking Session",
                         "location": "Galleria 1",
                     },
                     {
@@ -554,8 +554,8 @@ export const SCHEDULES = [
                         "title": "CONGRESSIONAL KEYNOTE ADDRESS II",
                         "speakers": [
                             {
-                                "name": "Congressman Neal Dunn (R-FL)",
-                                "title": "Committee on Energy and Commerce, House Select Committee on the Strategic Competition Between the U.S. and the Chinese Communist Party",
+                                "name": "Representative Neal Dunn (R-FL)",
+                                "title": "Member, House Committee on Energy and Commerce, and House Select Committee on the Strategic Competition between the U.S. and the Chinese Communist Party",
                                 "affiliation": "U.S. House of Representatives",
                                 "photo": "neal-dunn.webp",
                                 "sponsor": "Pre-Recorded Address",
