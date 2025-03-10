@@ -497,8 +497,8 @@ Mr. Nicol became the Deputy Program Director in January 2023 and continues to le
 	"oscar-frazier": {
 		"image": "oscar-frazier.webp",
 		"name": "Oscar Frazier",
-		"position": "Operations Director, Federal Procurement Center",
-		"company": "Minority Business Development Agency (MBDA), U.S. Department of Commerce",
+		"position": "Tiger Team Lead, Federal Procurement Center, Minority Business Development Agency (MBDA)",
+		"company": "U.S. Department of Commerce",
 		"bio": `Oscar Lamont Frazier is an internationally recognized authority in leadership methodologies, federal contracting, strategic business development, and human-centered service transformation. With over two decades of experience spanning Fortune 500 enterprises, Big 4/5 consulting firms, federal agencies, and entrepreneurial ventures, Oscar has established himself as a go-to expert in crisis leadership, business innovation, and operational transformation. As the founder of nDemand Consulting Services Inc. (2004-Present), Oscar pioneered the HIT Impact Suite methodology—a framework focused on human-centered service design, government contracting efficiency, leadership development, and business transformation strategies.
 <br/>
 
