@@ -806,6 +806,18 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 		"company": "Crux Defense and Partner, NADWC Combat Capabilities Factory",
 		"bio": `Andrew Gardner is CEO of Crux Defense, a partner with the National All-Domain Warfighting Center's Combat Capabilities Factory.  The purpose of the Combat Capabilities Factory is to Integrate, Fund and Field Warfighting Capabilities through Experiment-Driven Exercises.  Leveraging these innovations, Crux is able to help companies cross the DoD's innovation valley of death and ensure that the best capabilities get into the hands of the warfighter.`,
 	}
+	,
+	"timothy-r-inman": {
+		"image": "timothy-r-inman.webp",
+		"name": "Timothy R. Inman",
+		"position": "Technical Director for Contracting, Contracting Directorate",
+		"company": "Air Force Sustainment Center, Robins AFB, Georgia",
+		"bio": `Timothy Inman is the Director of Small Business Programs for the Air Force Sustainment Center at Robins Air Force Base, Georgia. He is responsible for advocacy, execution, and advice to commanders and leaders at Robins AFB pertaining to Small Business Programs, and he leads a team of small business professionals who work with small businesses and with contracting officers and program managers to increase opportunities for small businesses to compete for contracts.
+	<br/>
+	
+	<br/>
+	Mr Inman began his Air Force career as a contracting intern, and held and used a contracting officer’s warrant. He moved into program management, managing new and legacy information technology programs for cost, schedule, and performance. He deployed to Qatar and Afghanistan for a fifteen-month assignment as Director of Policy for Central Command’s Joint Theater Support Contracting Command. At the Air Force Sustainment Center, he directed the contract for the Air Force’s weapon system supply chains, and immediately prior to his current position, he was Technical Director for Contracting at Robins AFB.`,
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -870,6 +882,8 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"kareem-sykes",
 		"cliff-holbeck",
 		"andrew-gardner",
+		"timothy-r-inman",
+		"bianca-henderson",
 		//"carl-m-wade",
 		//"david-willis",
 		//{ id: "patricia-waddell", invited: true },
