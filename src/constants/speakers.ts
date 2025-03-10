@@ -794,8 +794,8 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	"cliff-holbeck": {
 		"image": "cliff-holbeck.webp",
 		"name": "Cliff Holbeck",
-		"position": "Senior Account Executive",
-		"company": "Honeywell",
+		"position": "Sr. Business Development Manager",
+		"company": "Honeywell International",
 		"bio": `Cliff Holbeck is a seasoned professional serving as an energy services business development consultant for Honeywell International.  Cliff has 40 years’ experience in technology innovation related to Information and Operational Technology.  He has worked for several of the industries leading providers of energy engineering and serves as a coordinator of large energy conservation and resiliency projects.  Cliff is well versed in government contracting having worked with the DOD, VA, and GSA.  He is an advocate for Small Businesses with the ability to develop trust, gain consensus, and drive collaboration.   He is an excellent communicator and contributes to industry conferences and forums as a moderator and speaker.`,
 	}
 	,

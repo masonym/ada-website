@@ -282,7 +282,7 @@ export const SCHEDULES = [
                         "speakers": [
                             {
                                 "name": "Charles F. Sills",
-                                "title": "Preisdent & CEO",
+                                "title": "President & CEO",
                                 "affiliation": "American Defense Alliance",
                                 "photo": "charles-sills.webp"
                             }
@@ -291,7 +291,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "8:35 AM",
-                        "title": "Georgia Chamber of Commerce - Welcoming Remarks",
+                        "title": "Georgia Chamber of Commerce — Welcoming Remarks",
                         "speakers": [
                             {
                                 "name": "Tasha Allen",
@@ -373,8 +373,8 @@ export const SCHEDULES = [
                         "speakers": [
                             {
                                 "name": "Representative Rob Wittman (R-VA)",
-                                "title": "Vice Chairman, House Armed Services Committee",
-                                "affiliation": "Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding Caucus",
+                                "title": "Vice Chairman, House Armed Services Committee, Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding Caucus",
+                                "affiliation": "U.S. House of Representatives",
                                 "photo": "rob-wittman.webp",
                                 "sponsor": "Pre-Recorded Address",
                                 "sponsorStyle": "bg-gray-300",
@@ -384,7 +384,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "11:30 AM",
-                        "title": "Project Spectrum - Cybersecurity/CMMC Brief",
+                        "title": "Project Spectrum — Cybersecurity/CMMC Brief",
                         "speakers": [
                             {
                                 "name": "Kareem A. Sykes",
@@ -435,11 +435,11 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "1:45 PM",
-                        "title": "Military Base Initiatives - How to Play a Part",
+                        "title": "Military Base Energy Initiatives — How to Play a Part",
                         "speakers": [
                             {
                                 "name": "Dave Robau, LEED AP",
-                                "title": "Moderator, Executive Director, Gulf Coast Energy Network",
+                                "title": "Executive Director, Gulf Coast Energy Network",
                                 "affiliation": "CEO and Chief Scientist, National Energy USA",
                                 "photo": "dave-robau.webp"
                             },
@@ -558,6 +558,8 @@ export const SCHEDULES = [
                                 "title": "Committee on Energy and Commerce, House Select Committee on the Strategic Competition Between the U.S. and the Chinese Communist Party",
                                 "affiliation": "U.S. House of Representatives",
                                 "photo": "neal-dunn.webp",
+                                "sponsor": "Pre-Recorded Address",
+                                "sponsorStyle": "bg-gray-300",
                             }
                         ],
                         "location": "Galleria 4",
@@ -625,11 +627,11 @@ export const SCHEDULES = [
                     //},
                     {
                         "time": "10:55 AM",
-                        "title": "MBDA Federal Procurement Center – Tiger Team Briefing",
+                        "title": "MBDA Federal Procurement Center — Tiger Team Briefing",
                         "speakers": [
                             {
                                 "name": "Oscar Frazier",
-                                "title": "Tiger Team Lead, Federal Procurement Center, Minority Business Development Agency (MBDA)",
+                                "title": "Tiger Team Lead, Federal Procurement Center, Minority Business Development Agency (MBDA),",
                                 "affiliation": "U.S. Department of Commerce and Owner, nDemand Consulting Services Inc.",
                                 "photo": "oscar-frazier.webp",
                                 "presentation": "2025 Southeast Defense Procurement Conference - Oscar Frazier.pdf",
@@ -660,7 +662,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "11:45 AM",
-                        "title": "Canadian Defense Ministry – Contract Opportunities",
+                        "title": "Canadian Defense Ministry — Contract Opportunities",
                         "speakers": [
                             {
                                 "name": "Linda Eshiwani-Nate",
