@@ -638,20 +638,6 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "11:00 AM",
-                        "title": "Federal Infrastructure & Energy Projects",
-                        "speakers": [
-                            //{
-                            //    "name": "Cliff Holbeck",
-                            //    "title": "Senior Account Executive",
-                            //    "affiliation": "Honeywell",
-                            //    "sponsor": "Pending",
-                            //    "sponsorStyle": "bg-gray-300",
-                            //}
-                        ],
-                        "location": "Galleria 4",
-                    },
-                    {
                         "time": "11:25 AM",
                         "title": "Insights From the Former Chief of Army Acquisition",
                         "speakers": [
