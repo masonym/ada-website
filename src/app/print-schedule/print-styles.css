@@ -62,14 +62,20 @@
 .schedule-day {
   margin-bottom: 30px;
   page-break-inside: avoid;
+  position: relative;
 }
 
 .day-header {
   font-size: 20px;
-  background-color: #f0f0f0;
-  padding: 10px;
+  background-color: #003366;
+  color: white;
+  padding: 15px;
   margin-bottom: 15px;
   border-radius: 4px;
+  page-break-after: avoid;
+  break-after: avoid;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 .schedule-items {
@@ -78,16 +84,9 @@
   gap: 15px;
 }
 
-.schedule-item {
-  display: flex;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 15px;
-  page-break-inside: avoid;
-}
-
 .time-column {
-  width: 120px;
-  min-width: 120px;
+  width: 100px;
+  min-width: 100px;
   padding-right: 15px;
 }
 
@@ -159,12 +158,66 @@
   break-inside: avoid;
 }
 
+/* Day-specific header that appears at the top of each page */
+.day-print-header {
+  display: none; /* Hidden by default on screen */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: #003366;
+  color: white;
+  padding: 10px 20px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  z-index: 9999;
+}
+
+.day-print-header-top {
+  font-size: 18pt;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.day-print-header-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12pt;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  padding-top: 5px;
+}
+
+/* Footer for each printed page */
+.print-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
+  font-size: 9pt;
+  border-top: 1px solid #ccc;
+  background-color: white !important;
+  z-index: 9999;
+}
+
+/* Add space for header and footer */
+.printable-content {
+  margin-top: 90px !important;
+  margin-bottom: 40px !important;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
 /* Print-specific styles */
 @media print {
   /* Remove browser-added headers and footers */
   @page {
     size: letter;
-    margin: 0.5in;
+    margin: 0in 0;
   }
   
   /* Hide all non-printable elements */
@@ -189,6 +242,16 @@
     max-width: none;
     padding: 0;
     margin: 0;
+  }
+
+  /* Only show the day-specific header for the current page */
+  .day-print-header {
+    display: none !important; /* Hidden by default */
+  }
+  
+  /* The active day header will be shown via JavaScript */
+  .day-print-header.active {
+    display: block !important;
   }
   
   /* Ensure each schedule item doesn't break across pages */
@@ -218,23 +281,74 @@
     break-after: page !important;
   }
   
+  /* Force each day to start on a new page */
+  .schedule-day {
+    page-break-before: always !important;
+    break-before: page !important;
+    position: relative;
+  }
+  
+  /* First day shouldn't have a page break */
+  .schedule-day:first-child {
+    page-break-before: auto !important;
+    break-before: auto !important;
+  }
+  
   /* Ensure day headers don't break */
   .day-header {
     page-break-after: avoid !important;
     break-after: avoid !important;
     font-size: 16pt;
-    background-color: #f0f0f0 !important;
+    background-color: #003366 !important;
+    color: white !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
   
-  /* Ensure proper page breaks between days */
-  .schedule-day {
-    page-break-after: always;
+  /* Controls section styling */
+  .controls-section {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
   }
   
-  .schedule-day:last-child {
-    page-break-after: avoid;
+  /* Form controls styling */
+  .form-control {
+    margin-bottom: 10px;
+  }
+  
+  .form-control label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-control input[type="text"],
+  .form-control input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-control input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  /* Button styling */
+  .print-button {
+    background-color: #003366;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .print-button:hover {
+    background-color: #002244;
   }
   
   /* Header styling for print */
