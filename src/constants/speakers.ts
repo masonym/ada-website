@@ -755,8 +755,8 @@ His final Navy assignment was China Branch of Navy Staff at the Pentagon. `,
 	,
 	"neal-dunn": {
 		"image": "neal-dunn.webp",
-		"name": "Congressman Neal Dunn (R-FL)",
-		"position": "Committee on Energy and Commerce, House Select Committee on the Strategic Competition Between the U.S. and the Chinese Communist Party",
+		"name": "Representative Neal Dunn (R-FL)",
+		"position": "Member, House Committee on Energy and Commerce, and House Select Committee on the Strategic Competition between the U.S. and the Chinese Communist Party",
 		"company": "U.S. House of Representatives",
 		"keynote": {
 			"isKeynote": true,
