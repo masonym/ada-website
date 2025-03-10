@@ -89,7 +89,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
   const filteredSchedule = schedule.filter(day => selectedDays.includes(day.date));
 
   // Render a single schedule item with location context
-  const renderScheduleItem = (item: ScheduleItem, showSpeakers: boolean, showLocations: boolean, showSpeakerImages: boolean) => {
+  const renderScheduleItem = (item: ScheduleItem, showSpeakers: boolean, showLocations: boolean, showSpeakerImages: boolean, locationChanged: boolean = true) => {
     return (
       <div className="schedule-day-item break-inside-avoid page-break-inside-avoid no-page-break font-gotham">
         <div className="schedule-item flex border-0 border-gray-200 pb-1 ">
@@ -98,7 +98,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
           </div>
           <div className="content-column flex-1">
             <div className="item-title text-base font-bold mb-1">{item.title}</div>
-            {showLocations && item.location &&
+            {showLocations && item.location && locationChanged &&
               <div className="location text-sm italic mb-2">{item.location}</div>
             }
             {showSpeakers && item.speakers && item.speakers.length > 0 && (
@@ -171,7 +171,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
         const locationChanged = item.location !== lastLocation;
 
         // Render the item with the location flag
-        allItems.push(renderScheduleItem(item, showSpeakers, showLocations, showSpeakerImages));
+        allItems.push(renderScheduleItem(item, showSpeakers, showLocations, showSpeakerImages, locationChanged));
 
         // Update the last location
         lastLocation = item.location || null;
@@ -331,30 +331,43 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
         {twoColumnLayout ? (
           // Two-column layout with newspaper-style flow
           <div className="columns-1 md:columns-2 gap-8 space-y-0 h-auto">
-            {filteredSchedule.map((day, dayIndex) => (
-              <div key={dayIndex} className={`schedule-day ${dayIndex > 0 ? 'page-break-before' : ''}`}>
-                {/* Day-specific header for print */}
-                <div className="day-print-header">
-                  <div className="day-print-header-top">
-                    {customTitle || event.title}
+            {filteredSchedule.map((day, dayIndex) => {
+              // Track location changes for each day
+              let lastLocation: string | null = null;
+
+              return (
+                <div key={dayIndex} className={`schedule-day ${dayIndex > 0 ? 'page-break-before' : ''}`}>
+                  {/* Day-specific header for print */}
+                  <div className="day-print-header">
+                    <div className="day-print-header-top">
+                      {customTitle || event.title}
+                    </div>
+                    <div className="day-print-header-bottom">
+                      <div>{day.date}</div>
+                      <div>{event.locationAddress}</div>
+                    </div>
                   </div>
-                  <div className="day-print-header-bottom">
-                    <div>{day.date}</div>
-                    <div>{event.locationAddress}</div>
+                  {/*               
+                  <div className="day-header-container no-page-break">
+                    <h2 className="day-header">{day.date}</h2>
                   </div>
+                  */}
+                  {day.items.map((item, itemIndex) => {
+                    // Check if location has changed
+                    const locationChanged = item.location !== lastLocation;
+
+                    // Update the last location for next item
+                    lastLocation = item.location || null;
+
+                    return (
+                      <div key={itemIndex} className="schedule-day-item no-page-break">
+                        {renderScheduleItem(item, showSpeakers, showLocations, showSpeakerImages, locationChanged)}
+                      </div>
+                    );
+                  })}
                 </div>
-                {/*               
-                <div className="day-header-container no-page-break">
-                  <h2 className="day-header">{day.date}</h2>
-                </div>
-                */}
-                {day.items.map((item, itemIndex) => (
-                  <div key={itemIndex} className="schedule-day-item no-page-break">
-                    {renderScheduleItem(item, showSpeakers, showLocations, showSpeakerImages)}
-                  </div>
-                ))}
-              </div>
-            ))}
+              );
+            })}
           </div>
         ) : (
           // Single column layout with days as sections
@@ -386,7 +399,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
                       const locationChanged = item.location !== lastLocation;
 
                       // Update the last location for next item
-                      const result = renderScheduleItem(item, showSpeakers, showLocations, showSpeakerImages);
+                      const result = renderScheduleItem(item, showSpeakers, showLocations, showSpeakerImages, locationChanged);
                       lastLocation = item.location || null;
 
                       return result;
