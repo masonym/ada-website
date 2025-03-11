@@ -683,7 +683,7 @@ export const SCHEDULES = [
                         "speakers": [
                             {
                                 "name": "Tim Inman",
-                                "title": "Director of Small Business Program",
+                                "title": "Director of Small Business Programs",
                                 "affiliation": "Air Force Sustainment Center, Robins Air Force Base",
                                 "photo": "timothy-r-inman.webp"
                             }
