@@ -645,7 +645,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "11:00 AM",
-                        "title": "NAVFAC - Projects & Contrats",
+                        "title": "NAVFAC - Projects & Contracts",
                         "speakers": [
                             {
                                 "name": "Bianca Henderson",
