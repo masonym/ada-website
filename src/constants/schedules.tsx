@@ -754,7 +754,7 @@ export const SCHEDULES = [
                     //    "location": "Galleria 4",
                     //}, 
                     {
-                        "time": "12:00 PM",
+                        "time": "12:15 PM",
                         "title": "Canadian Defense Ministry — Contract Opportunities",
                         "speakers": [
                             {
@@ -767,7 +767,7 @@ export const SCHEDULES = [
                         "location": "Galleria 4",
                     },
                     {
-                        "time": "12:15 PM",
+                        "time": "12:30 PM",
                         "title": "Closing Remarks",
                         "speakers": [
                             {
