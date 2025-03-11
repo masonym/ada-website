@@ -645,7 +645,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "11:00 AM",
-                        "title": "NAVFAC - Projects & Contracts",
+                        "title": "NAVFAC — Projects & Contracts",
                         "speakers": [
                             {
                                 "name": "Bianca Henderson",
@@ -679,7 +679,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "11:45 AM",
-                        "title": "Air Force Sustainment Center/Robins AFB - Small Business Opportunities",
+                        "title": "Air Force Sustainment Center/Robins AFB — Small Business Opportunities",
                         "speakers": [
                             {
                                 "name": "Tim Inman",
