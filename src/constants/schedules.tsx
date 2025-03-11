@@ -652,7 +652,6 @@ export const SCHEDULES = [
                                 "title": "Director, Office of Small Business Programs (OSBP)",
                                 "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC)",
                                 "photo": "bianca-henderson.webp",
-                                "presentation": "2025 Southeast Defense Procurement Conference - Oscar Frazier.pdf",
                             }
                         ],
                         "location": "Galleria 4",
