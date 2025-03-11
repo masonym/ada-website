@@ -752,7 +752,20 @@ export const SCHEDULES = [
                     //        //}
                     //    ],
                     //    "location": "Galleria 4",
-                    //},
+                    //}, 
+                    {
+                        "time": "11:45 AM",
+                        "title": "Canadian Defense Ministry — Contract Opportunities",
+                        "speakers": [
+                            {
+                                "name": "Linda Eshiwani-Nate",
+                                "title": "Trade Commissioner",
+                                "affiliation": "Consulate General of Canada in Atlanta",
+                                "photo": "linda-eshiwani-nate.webp"
+                            }
+                        ],
+                        "location": "Galleria 4",
+                    },
                     {
                         "time": "12:15 PM",
                         "title": "Closing Remarks",
