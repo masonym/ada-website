@@ -151,7 +151,7 @@ export const EVENTS: Event[] = [
     eventShorthand: "2025SDPC",
     title: "2025 Southeast Defense Procurement Conference",
     date: "March 11-12, 2025",
-    timeStart: "2025-03-11T12:30:00Z", // TODO: change to actual time
+    timeStart: "2025-03-11T11:30:00Z", // TODO: change to actual time
     description: "Join us for the 2025 Southeast Defense Procurement Conference on March 11-12, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
     eventText: (
       <div className="max-w-[92rem] font-light text-balance">
@@ -627,7 +627,7 @@ invaluable connections that can shape the future of your business.
     password: "2025NMCPCADA",
     title: "2025 Navy & Marine Corps Procurement Conference",
     date: "July 29-30, 2025",
-    timeStart: "2025-07-29T13:00:00Z",
+    timeStart: "2025-07-29T11:30:00Z",
     description: `Join us for the 2025 Navy & Marine Corps Procurement Conference on July 29-30, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.`,
     eventText: (
       <div className="max-container font-light">
