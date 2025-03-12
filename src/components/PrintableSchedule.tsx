@@ -256,6 +256,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
                 Two-Column Layout
               </label>
             </div>
+            {/* ~~This doesn't work for now~~
             <div className="form-control">
               <label htmlFor="font-size">Font Size Adjustment:</label>
               <input
@@ -270,6 +271,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
               />
               <span className="text-sm text-gray-500">100% is default size</span>
             </div>
+            */}
           </div>
 
           {/* Day selection */}
@@ -302,7 +304,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
         </div>
       </div>
 
-      {/* Fixed header for every page - ONLY VISIBLE ON SCREEN */}
+      {/* Fixed header for every page - ONLY VISIBLE ON PRINT SCREEN */}
       <div className="print-header no-print">
         <div className="print-header-top">
           {customTitle || event.title}

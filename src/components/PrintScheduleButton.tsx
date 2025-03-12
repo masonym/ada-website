@@ -9,7 +9,7 @@ interface PrintScheduleButtonProps {
 const PrintScheduleButton: React.FC<PrintScheduleButtonProps> = ({ eventId }) => {
   return (
     <Link
-      href={`/print-schedule/${eventId}`}
+      href={`/print-layout/print-schedule/${eventId}`}
       target="_blank"
       rel="noopener noreferrer"
       className="flex items-center gap-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded"
