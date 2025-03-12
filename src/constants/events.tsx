@@ -155,7 +155,7 @@ export const EVENTS: Event[] = [
     description: "Join us for the 2025 Southeast Defense Procurement Conference on March 11-12, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
     eventText: (
       <div className="max-w-[92rem] font-light text-balance">
-        <div className="p-4 border-black border-4 bg-white w-fit text-5xl text-red-500 font-bold mx-auto rounded-lg mb-4 flex items-center"><span className="mr-2"><CircleAlert size={48} color="#c53434" /></span>Event Registration is Now Closed<span className="ml-2"><CircleAlert size={48} color="#c53434" /></span></div>
+        <div className="p-4 border-black border-4 bg-white w-fit text-xl md:text-5xl text-red-500 font-bold mx-auto rounded-lg mb-4 flex items-center"><span className="mr-2"><CircleAlert size={48} color="#c53434" /></span>Event Registration is Now Closed<span className="ml-2"><CircleAlert size={48} color="#c53434" /></span></div>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
