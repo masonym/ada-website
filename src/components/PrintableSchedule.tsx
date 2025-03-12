@@ -92,19 +92,19 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
   const renderScheduleItem = (item: ScheduleItem, showSpeakers: boolean, showLocations: boolean, showSpeakerImages: boolean, locationChanged: boolean = true) => {
     return (
       <div className="schedule-day-item break-inside-avoid page-break-inside-avoid no-page-break font-gotham">
-        <div className="schedule-item flex border-0 border-gray-200 pb-1 ">
-          <div className="time-column w-10 pr-4">
+        <div className="schedule-item flex flex-col border-0 border-gray-200 pb-1 ">
+          <div className="time-column pr-4">
             <div className="time font-bold text-sm">{item.time}</div>
           </div>
           <div className="content-column flex-1">
-            <div className="item-title text-base font-bold mb-1">{item.title}</div>
+            <div className="item-title text-base text-balance font-bold ">{item.title}</div>
             {showLocations && item.location && locationChanged &&
               <div className="location text-sm italic mb-2">{item.location}</div>
             }
             {showSpeakers && item.speakers && item.speakers.length > 0 && (
               <div className="speakers mt-2">
                 {item.speakers.map((speaker, index) => (
-                  <div key={index} className="speaker mb-2 flex items-start gap-3">
+                  <div key={index} className="speaker mb-1 flex items-start gap-3">
                     {showSpeakerImages && speaker.photo && (
                       <div className="flex-shrink-0">
                         <Image
@@ -117,7 +117,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
                       </div>
                     )}
                     <div>
-                      <div className="speaker-name font-bold text-sm mb-0.5">{speaker.name}</div>
+                      {speaker.sponsor != "Pre-Recorded Address" && <div className="font-semibold text-lg">{speaker.name} <span className={`w-fit text-nowrap rounded-lg md:mx-1 text-xs px-2 py-1 ${speaker.sponsorStyle}`}>{speaker.sponsor}</span></div>}
                       {speaker.title && <div className="speaker-title text-xs my-0.5">{speaker.title}</div>}
                       {speaker.affiliation && <div className="speaker-affiliation font-bold text-xs my-0.5">{speaker.affiliation}</div>}
                     </div>
@@ -315,7 +315,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
 
       {/* Fixed footer for every page */}
       <div className="print-footer">
-        <div>Presented by American Defense Alliance</div>
+        <div className="italic">Presented by <span className="font-bold not-italic">American Defense Alliance</span></div>
         <div>americandefensealliance.org</div>
       </div>
 
