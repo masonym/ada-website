@@ -38,7 +38,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                         Event Venue and Recommended Lodging
                     </h2>
 
-                    <div className="grid grid-cols-1 md:grid-cols-1 max-w-[50%] gap-8 mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-1 max-w-[90%] md:max-w-[50%] gap-8 mx-auto">
                         {lodging.hotels.map((hotel, index) => (
                             <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
                                 <div className="relative h-[30rem]">
@@ -69,16 +69,16 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                                             <p>{hotel.phone}</p>
                                         </div>
                                         {hotel.link &&
-                                        <div className="flex items-center">
-                                            <Globe className="w-5 h-5 mr-2 flex-shrink-0 text-gray-400" />
-                                            <Link href={hotel.link.href} className=" text-blue-600 hover:underline" target='_blank'>
-                                                <p className='my-2'>{hotel.link.label}</p>
-                                            </Link>
-                                        </div>
+                                            <div className="flex items-center">
+                                                <Globe className="w-5 h-5 mr-2 flex-shrink-0 text-gray-400" />
+                                                <Link href={hotel.link.href} className=" text-blue-600 hover:underline" target='_blank'>
+                                                    <p className='my-2'>{hotel.link.label}</p>
+                                                </Link>
+                                            </div>
                                         }
                                         <p className="mt-8 text-left text-gray-600">
                                             {/* If any of the address/state/city/zip are blank, don't display lodging note*/}
-                                            { hotel.city || hotel.state || hotel.zip ? (
+                                            {hotel.city || hotel.state || hotel.zip ? (
                                                 <div className="flex flex-col">
                                                     {lodging.note && <span dangerouslySetInnerHTML={{ __html: lodging.note }}></span>}
                                                 </div>
