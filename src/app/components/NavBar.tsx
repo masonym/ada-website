@@ -8,6 +8,7 @@ import { Menu, ChevronDown } from 'lucide-react'
 import { useState, useRef, useEffect } from "react"
 import Hamburger from "./Hamburger"
 import { getCdnPath } from "@/utils/image"
+import { isEventUpcoming } from "@/app/components/UpcomingEvents"
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,8 +51,14 @@ const NavBar = () => {
   }, []);
 
   const now = new Date();
-  const sortedEvents = [...EVENTS]
-    .filter(event => new Date(event.timeStart) >= now)
+  const upcomingEvents = [...EVENTS]
+    .filter(event => {
+      // First, check if the event has a timeStart
+      if (!event.timeStart) return false;
+
+      // Use the safer isEventUpcoming function
+      return isEventUpcoming(event.date, event.timeStart, now);
+    })
     .sort((a, b) => {
       const dateA = new Date(a.timeStart);
       const dateB = new Date(b.timeStart);
@@ -90,7 +97,7 @@ const NavBar = () => {
                 </Link>
                 {isDropdownOpen && (
                   <ul className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-auto rounded-md shadow-lg bg-white list-none">
-                    {sortedEvents.map((event) => (
+                    {upcomingEvents.map((event) => (
                       <li key={event.id} className="py-1 whitespace-nowrap">
                         <Link
                           href={`/events/${event.slug}`}
