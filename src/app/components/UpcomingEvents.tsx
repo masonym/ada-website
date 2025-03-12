@@ -11,6 +11,82 @@ type UpcomingEventsProps = {
   hideBottomText?: boolean;
 };
 
+/**
+ * Determines if an event is still upcoming based on its date string and timeStart
+ * @param dateString The formatted date string (e.g., "March 11-12, 2025")
+ * @param timeStart The ISO date string (e.g., "2025-03-11T11:30:00Z")
+ * @param currentDate The current date to compare against
+ * @returns boolean indicating if the event is still upcoming
+ */
+const isEventUpcoming = (dateString: string, timeStart: string, currentDate: Date): boolean => {
+  try {
+    // First, check if the event has a timeStart and it's in the future
+    const eventStartDate = new Date(timeStart);
+    
+    // For multi-day events (containing a hyphen)
+    if (dateString.includes('-')) {
+      // Extract the year from the date string
+      const yearMatch = dateString.match(/\d{4}/);
+      const year = yearMatch ? yearMatch[0] : new Date().getFullYear().toString();
+      
+      // Split the date string to get the end date part
+      const parts = dateString.split('-');
+      const endDatePart = parts[1].trim();
+      
+      // If the end date part is just a day (e.g., "12" in "March 11-12, 2025")
+      if (/^\d{1,2}(st|nd|rd|th)?$/.test(endDatePart.replace(/,.*$/, ''))) {
+        // Extract month from the first part
+        const monthStr = dateString.split(' ')[0];
+        
+        // Construct a date string that JavaScript can parse
+        const endDateStr = `${monthStr} ${endDatePart}`;
+        const endDate = new Date(endDateStr);
+        
+        // Set the end date to the end of the day (23:59:59)
+        endDate.setHours(23, 59, 59, 999);
+        
+        return currentDate <= endDate;
+      } 
+      // If the end date includes month (e.g., "March 12" in "March 11 - March 12, 2025")
+      else {
+        const endDate = new Date(endDatePart);
+        
+        // Set the end date to the end of the day (23:59:59)
+        endDate.setHours(23, 59, 59, 999);
+        
+        return currentDate <= endDate;
+      }
+    } 
+    // For single-day events
+    else {
+      const eventDate = new Date(dateString);
+      
+      // If the date string can't be parsed directly, use the timeStart
+      if (isNaN(eventDate.getTime())) {
+        // Set the event date to the end of the day (23:59:59)
+        const endOfEventDay = new Date(timeStart);
+        endOfEventDay.setHours(23, 59, 59, 999);
+        
+        return currentDate <= endOfEventDay;
+      } else {
+        // Set the event date to the end of the day (23:59:59)
+        eventDate.setHours(23, 59, 59, 999);
+        
+        return currentDate <= eventDate;
+      }
+    }
+  } catch (error) {
+    // If there's any error in parsing, fall back to using timeStart
+    console.error("Error parsing date:", error);
+    const eventStartDate = new Date(timeStart);
+    
+    // Set the event date to the end of the day (23:59:59)
+    eventStartDate.setHours(23, 59, 59, 999);
+    
+    return currentDate <= eventStartDate;
+  }
+};
+
 const UpcomingEvents = ({
   showMainTitle = true,
   customTitle,
@@ -22,7 +98,13 @@ const UpcomingEvents = ({
 
   // Filter and sort upcoming events
   const upcomingEvents = [...EVENTS]
-    .filter(event => new Date(event.timeStart) >= now)
+    .filter(event => {
+      // First, check if the event has a timeStart
+      if (!event.timeStart) return false;
+      
+      // Use the safer isEventUpcoming function
+      return isEventUpcoming(event.date, event.timeStart, now);
+    })
     .sort((a, b) => {
       const dateA = new Date(a.timeStart);
       const dateB = new Date(b.timeStart);
