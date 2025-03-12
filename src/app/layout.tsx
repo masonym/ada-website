@@ -8,7 +8,6 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import Head from "next/head";
 import Script from "next/script";
 
-
 export const metadata: Metadata = {
   title: {
     default: 'American Defense Alliance',
@@ -80,7 +79,7 @@ export default function RootLayout({
         <div className="bg-navy-800">
           <NavBar />
         </div>
-        <main className="relative overflow-hidden ">
+        <main className="relative overflow-hidden">
           {children}
         </main>
         <GoogleAnalytics gaId="G-166BFD7CN0" />
