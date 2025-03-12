@@ -6,6 +6,15 @@
   font-family: 'Arial', sans-serif;
 }
 
+/* Container for the print schedule layout */
+.print-schedule-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
 .print-controls {
   margin-bottom: 30px;
   background-color: #f8f9fa;
