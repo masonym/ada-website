@@ -142,7 +142,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                             }`}
                                     >
                                         {isTopTier && (
-                                            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-slate-900 px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
+                                            <div className="w-fit text-nowrap absolute -top-1 md:-top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-slate-900 px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
                                                 ★ Featured Sponsor
                                             </div>
                                         )}
