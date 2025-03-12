@@ -84,11 +84,6 @@
   gap: 15px;
 }
 
-.time-column {
-  width: 100px;
-  min-width: 100px;
-  padding-right: 15px;
-}
 
 .time {
   font-weight: bold;
@@ -102,7 +97,6 @@
 .item-title {
   font-size: 16px;
   font-weight: bold;
-  margin-bottom: 5px;
 }
 
 .location {
@@ -113,10 +107,6 @@
 
 .speakers {
   margin-top: 10px;
-}
-
-.speaker {
-  margin-bottom: 8px;
 }
 
 .speaker-name {
