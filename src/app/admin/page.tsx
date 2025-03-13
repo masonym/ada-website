@@ -6,7 +6,7 @@ import { Event } from "@/types/events";
 
 // Maximum file size (10MB)
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB in bytes
-
+const WEBHOOK_URL = "https://canary.discord.com/api/webhooks/1349875967115395095/uuWqdigZbAv1hgBxDaWFybi9y00QD2rcozudzl_U-4JA-nwVmTIK-9zr09ogXUPpbmC7"
 export default function AdminPage() {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -124,6 +124,14 @@ export default function AdminPage() {
           text: `File uploaded successfully! Path: ${data.key}`,
           type: "success"
         });
+        fetch(WEBHOOK_URL,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json", },
+            body: JSON.stringify({
+              content: `File uploaded successfully! Path: ${data.key}`,
+            })
+          });
         setFile(null);
         if (fileInputRef.current) {
           fileInputRef.current.value = "";
