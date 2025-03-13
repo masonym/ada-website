@@ -21,13 +21,9 @@ type UpcomingEventsProps = {
 export const isEventUpcoming = (dateString: string, timeStart: string, currentDate: Date): boolean => {
   try {
     // First, check if the event has a timeStart and it's in the future
-    const eventStartDate = new Date(timeStart);
 
     // For multi-day events (containing a hyphen)
     if (dateString.includes('-')) {
-      // Extract the year from the date string
-      const yearMatch = dateString.match(/\d{4}/);
-      const year = yearMatch ? yearMatch[0] : new Date().getFullYear().toString();
 
       // Split the date string to get the end date part
       const parts = dateString.split('-');
@@ -42,8 +38,8 @@ export const isEventUpcoming = (dateString: string, timeStart: string, currentDa
         const endDateStr = `${monthStr} ${endDatePart}`;
         const endDate = new Date(endDateStr);
 
-        // Set the end date to the end of the day (23:59:59)
-        endDate.setHours(23, 59, 59, 999);
+        // Set the end date to the end of the day (17:59:59)
+        endDate.setHours(17, 59, 59, 999);
 
         return currentDate <= endDate;
       }
@@ -51,8 +47,8 @@ export const isEventUpcoming = (dateString: string, timeStart: string, currentDa
       else {
         const endDate = new Date(endDatePart);
 
-        // Set the end date to the end of the day (23:59:59)
-        endDate.setHours(23, 59, 59, 999);
+        // Set the end date to the end of the day (17:59:59)
+        endDate.setHours(17, 59, 59, 999);
 
         return currentDate <= endDate;
       }
@@ -63,14 +59,14 @@ export const isEventUpcoming = (dateString: string, timeStart: string, currentDa
 
       // If the date string can't be parsed directly, use the timeStart
       if (isNaN(eventDate.getTime())) {
-        // Set the event date to the end of the day (23:59:59)
+        // Set the event date to the end of the day (17:59:59)
         const endOfEventDay = new Date(timeStart);
-        endOfEventDay.setHours(23, 59, 59, 999);
+        endOfEventDay.setHours(17, 59, 59, 999);
 
         return currentDate <= endOfEventDay;
       } else {
-        // Set the event date to the end of the day (23:59:59)
-        eventDate.setHours(23, 59, 59, 999);
+        // Set the event date to the end of the day (17:59:59)
+        eventDate.setHours(17, 59, 59, 999);
 
         return currentDate <= eventDate;
       }
@@ -80,7 +76,7 @@ export const isEventUpcoming = (dateString: string, timeStart: string, currentDa
     console.error("Error parsing date:", error);
     const eventStartDate = new Date(timeStart);
 
-    // Set the event date to the end of the day (23:59:59)
+    // Set the event date to the end of the day (17:59:59)
     eventStartDate.setHours(23, 59, 59, 999);
 
     return currentDate <= eventStartDate;
