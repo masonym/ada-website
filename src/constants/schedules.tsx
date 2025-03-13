@@ -312,7 +312,8 @@ export const SCHEDULES = [
                                 "name": "Teresa Harrington, DBA, MBA, PCM",
                                 "title": "Chief Operations Officer",
                                 "affiliation": "DEFENSEWERX",
-                                "photo": "teresa-harrington.webp"
+                                "photo": "teresa-harrington.webp",
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Teresa_Harrington.pdf",
                             }
                         ],
                         "location": "Galleria 4",
@@ -325,13 +326,15 @@ export const SCHEDULES = [
                                 "name": "David Leinberger",
                                 "title": "Acting Director, Army Partnerships",
                                 "affiliation": "Deputy Chief of Staff, G-9 (Installations)",
-                                "photo": "dave-leinberger.webp"
+                                "photo": "dave-leinberger.webp",
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Dave_Leinberger_Erin_Bearhalter.pdf"
                             },
                             {
                                 "name": "Erin Bearhalter",
                                 "title": "Project Manager",
                                 "affiliation": "Office of the Deputy Chief of Staff, G-9 Army Community Partnership Office",
-                                "photo": "erin-bearhalter.webp"
+                                "photo": "erin-bearhalter.webp",
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Dave_Leinberger_Erin_Bearhalter.pdf"
                             }
                         ],
                         "location": "Galleria 4",
@@ -365,6 +368,7 @@ export const SCHEDULES = [
                                 "photo": "tim-didjurgis.webp",
                                 "sponsor": "Platinum Sponsor",
                                 "sponsorStyle": "bg-sky-300 text-slate-900",
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Tim_Didjurgis.pdf"
                             }
                         ],
                         "location": "Galleria 4",
@@ -392,7 +396,8 @@ export const SCHEDULES = [
                                 "name": "Kareem A. Sykes",
                                 "title": "Program Manager, Project Spectrum",
                                 "affiliation": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of Defense",
-                                "photo": "kareem-sykes.webp"
+                                "photo": "kareem-sykes.webp",
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Kareem_A._Sykes.pdf",
                             },
                         ],
                         "location": "Galleria 4",
@@ -408,6 +413,7 @@ export const SCHEDULES = [
                                 "photo": "david-fraley.webp",
                                 "sponsor": "Silver Sponsor",
                                 "sponsorStyle": "bg-gray-300",
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_David_Fraley.pdf",
                             },
                             {
                                 "name": "Kareem A. Sykes",
@@ -443,7 +449,8 @@ export const SCHEDULES = [
                                 "name": "Dave Robau, LEED AP",
                                 "title": "Executive Director, Gulf Coast Energy Network",
                                 "affiliation": "CEO and Chief Scientist, National Energy USA",
-                                "photo": "dave-robau.webp"
+                                "photo": "dave-robau.webp",
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Dave_Robau.pdf",
                             },
                             {
                                 "name": "Cliff Holbeck",
@@ -462,7 +469,8 @@ export const SCHEDULES = [
                                 "name": "Aimee \"Z\" Zick",
                                 "title": "Senior Business Development Executive",
                                 "affiliation": "Improve Group",
-                                "photo": "aimee-zick.webp"
+                                "photo": "aimee-zick.webp",
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Aimee__Z__Zick.pdf",
                             }
                         ],
                         "location": "Galleria 4",
