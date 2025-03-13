@@ -52,7 +52,6 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
   // State for customization options
   const [showSpeakers, setShowSpeakers] = useState<boolean>(true);
   const [showLocations, setShowLocations] = useState<boolean>(true);
-  const [showSpeakerImages, setShowSpeakerImages] = useState<boolean>(true);
   const [fontSize, setFontSize] = useState<number>(100); // percentage
   const [selectedDays, setSelectedDays] = useState<string[]>(schedule?.map(day => day.date) || []);
   const [customTitle, setCustomTitle] = useState<string>('');
@@ -89,7 +88,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
   const filteredSchedule = schedule.filter(day => selectedDays.includes(day.date));
 
   // Render a single schedule item with location context
-  const renderScheduleItem = (item: ScheduleItem, showSpeakers: boolean, showLocations: boolean, showSpeakerImages: boolean, locationChanged: boolean = true) => {
+  const renderScheduleItem = (item: ScheduleItem, showSpeakers: boolean, showLocations: boolean, locationChanged: boolean = true) => {
     return (
       <div className="schedule-day-item break-inside-avoid page-break-inside-avoid no-page-break font-gotham">
         <div className="schedule-item flex flex-col border-0 border-gray-200 pb-1 ">
@@ -105,7 +104,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
               <div className="speakers mt-2">
                 {item.speakers.map((speaker, index) => (
                   <div key={index} className="speaker mb-1 flex items-start gap-3">
-                    {showSpeakerImages && speaker.photo && (
+                    {showSpeakers && speaker.photo && (
                       <div className="flex-shrink-0">
                         <Image
                           src={getCdnPath(`speakers/${speaker.photo}`)}
@@ -171,7 +170,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
         const locationChanged = item.location !== lastLocation;
 
         // Render the item with the location flag
-        allItems.push(renderScheduleItem(item, showSpeakers, showLocations, showSpeakerImages, locationChanged));
+        allItems.push(renderScheduleItem(item, showSpeakers, showLocations, locationChanged));
 
         // Update the last location
         lastLocation = item.location || null;
@@ -363,7 +362,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
 
                     return (
                       <div key={itemIndex} className="schedule-day-item no-page-break">
-                        {renderScheduleItem(item, showSpeakers, showLocations, showSpeakerImages, locationChanged)}
+                        {renderScheduleItem(item, showSpeakers, showLocations, locationChanged)}
                       </div>
                     );
                   })}
@@ -401,7 +400,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
                       const locationChanged = item.location !== lastLocation;
 
                       // Update the last location for next item
-                      const result = renderScheduleItem(item, showSpeakers, showLocations, showSpeakerImages, locationChanged);
+                      const result = renderScheduleItem(item, showSpeakers, showLocations, locationChanged);
                       lastLocation = item.location || null;
 
                       return result;
