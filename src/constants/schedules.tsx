@@ -384,6 +384,7 @@ export const SCHEDULES = [
                                 "photo": "rob-wittman.webp",
                                 "sponsor": "Pre-Recorded Address",
                                 "sponsorStyle": "bg-gray-300",
+                                "videoId": "WQ5oQzWY2JE"
                             }
                         ],
                         "location": "Galleria 4",
