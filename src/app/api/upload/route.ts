@@ -81,8 +81,8 @@ export async function POST(request: NextRequest) {
       Bucket: process.env.AWS_BUCKET_NAME || "americandefensealliance",
       Key: s3Key,
       Body: buffer,
-      ContentType: file.type,
-      ContentDisposition: `attachment; filename="${sanitizedFileName}"`,
+      ContentType: "application/pdf",
+      ContentDisposition: `inline; filename="${sanitizedFileName}"`,
     });
 
     await s3Client.send(command);
