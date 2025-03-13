@@ -98,7 +98,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
           <div className="content-column flex-1">
             <div className="item-title text-base text-balance font-bold ">{item.title}</div>
             {showLocations && item.location && locationChanged &&
-              <div className="location text-sm italic mb-2">{item.location}</div>
+              <div className="location text-xs italic mb-2">{item.location}</div>
             }
             {showSpeakers && item.speakers && item.speakers.length > 0 && (
               <div className="speakers mt-2">
@@ -115,8 +115,8 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
                         />
                       </div>
                     )}
-                    <div>
-                      {speaker.sponsor != "Pre-Recorded Address" && <div className="font-semibold text-lg">{speaker.name} <span className={`w-fit text-nowrap rounded-lg md:mx-1 text-xs px-2 py-1 ${speaker.sponsorStyle}`}>{speaker.sponsor}</span></div>}
+                    <div className="text-balance">
+                      <div className="font-semibold text-md">{speaker.name} {speaker.sponsor != "Pre-Recorded Address" && <span className={`w-fit text-nowrap rounded-lg md:mx-1 text-xs px-2 py-1 ${speaker.sponsorStyle}`}>{speaker.sponsor}</span>}</div>
                       {speaker.title && <div className="speaker-title text-xs my-0.5">{speaker.title}</div>}
                       {speaker.affiliation && <div className="speaker-affiliation font-bold text-xs my-0.5">{speaker.affiliation}</div>}
                     </div>
@@ -331,7 +331,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
 
         {twoColumnLayout ? (
           // Two-column layout with newspaper-style flow
-          <div className="columns-1 md:columns-2 gap-8 space-y-0 h-auto">
+          <div className="columns-1 md:columns-2 gap-0 space-y-0 h-auto">
             {filteredSchedule.map((day, dayIndex) => {
               // Track location changes for each day
               let lastLocation: string | null = null;

@@ -277,6 +277,11 @@ export const SCHEDULES = [
                         "location": "Galleria Level, Pre-Function",
                     },
                     {
+                        "time": "8:30 AM - 4:00 PM",
+                        "title": "Matchmaking Sign-up",
+                        "location": "Galleria 4",
+                    },
+                    {
                         "time": "8:30 AM",
                         "title": "Conference Opening Remarks",
                         "speakers": [
@@ -289,7 +294,7 @@ export const SCHEDULES = [
                                 "sponsorStyle": "bg-red-999",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "8:35 AM",
@@ -302,7 +307,7 @@ export const SCHEDULES = [
                                 "photo": "tasha-allen.webp"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "8:45 AM",
@@ -315,7 +320,7 @@ export const SCHEDULES = [
                                 "photo": "teresa-harrington.webp"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "9:20 AM",
@@ -334,7 +339,7 @@ export const SCHEDULES = [
                                 "photo": "erin-bearhalter.webp"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "10:00 AM",
@@ -347,7 +352,7 @@ export const SCHEDULES = [
                                 "photo": "brandon-cockrell.webp"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "10:35 AM",
@@ -367,7 +372,7 @@ export const SCHEDULES = [
                                 "sponsorStyle": "bg-sky-300 text-slate-900",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "11:20 AM",
@@ -382,7 +387,7 @@ export const SCHEDULES = [
                                 "sponsorStyle": "bg-gray-300",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "11:30 AM",
@@ -395,7 +400,7 @@ export const SCHEDULES = [
                                 "photo": "kareem-sykes.webp"
                             },
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "12:10 PM",
@@ -428,7 +433,7 @@ export const SCHEDULES = [
                             //    //"photo": "bailey-bickley.webp"
                             //}
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "12:30 PM",
@@ -452,7 +457,7 @@ export const SCHEDULES = [
                                 "photo": "cliff-holbeck.webp",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "2:30 PM",
@@ -465,7 +470,7 @@ export const SCHEDULES = [
                                 "photo": "aimee-zick.webp"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "3:10 PM",
@@ -502,7 +507,7 @@ export const SCHEDULES = [
                             //    "photo": "austin-johnson.webp"
                             //}
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "3:45 PM",
@@ -515,7 +520,7 @@ export const SCHEDULES = [
                                 "photo": "charles-sills.webp"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "4:00 PM - 5:30 PM",
@@ -541,6 +546,7 @@ export const SCHEDULES = [
                     {
                         "time": "8:30 AM",
                         "title": "Welcome Back Remarks",
+                        "location": "Galleria 4",
                         "speakers": [
                             {
                                 "name": "Charles F. Sills",
@@ -551,7 +557,7 @@ export const SCHEDULES = [
                                 "sponsorStyle": "bg-red-999",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "8:35 AM",
@@ -566,12 +572,12 @@ export const SCHEDULES = [
                                 "sponsorStyle": "bg-gray-300",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "8:45 AM",
                         "title": "Artificial Intelligence — Impact on Defense Acquisition",
-                        "location": "Galleria 4",
+
                         "speakers": [{
                             "name": "Amir Bagherpour, PhD",
                             "title": "Managing Director and Analytics & Visualization Lead for Data & AI",
@@ -582,7 +588,7 @@ export const SCHEDULES = [
                     {
                         "time": "9:20 AM",
                         "title": "Using Mentor-Protégé Partnerships to Drive the Combat Capability Factory",
-                        "location": "Galleria 4",
+
                         "speakers": [{
                             "name": "Andrew Gardner",
                             "title": "Chief Executive Officer",
@@ -601,7 +607,7 @@ export const SCHEDULES = [
                                 "photo": "brent-sadler.webp"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "10:15 AM",
@@ -614,7 +620,7 @@ export const SCHEDULES = [
                                 "photo": "wesley-jefferies.webp",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     //{
                     //    "time": "10:40 AM",
@@ -641,7 +647,7 @@ export const SCHEDULES = [
                                 "presentation": "2025 Southeast Defense Procurement Conference - Oscar Frazier.pdf",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "11:00 AM",
@@ -654,7 +660,7 @@ export const SCHEDULES = [
                                 "photo": "bianca-henderson.webp",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "11:30 AM",
@@ -675,7 +681,7 @@ export const SCHEDULES = [
                                 "photo": "james-simpson.webp"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "11:45 AM",
@@ -688,7 +694,7 @@ export const SCHEDULES = [
                                 "photo": "timothy-r-inman.webp"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     //{
                     //    "time": "11:40 AM",
@@ -725,7 +731,7 @@ export const SCHEDULES = [
                     //        //    "photo": "cindy-readal.webp"
                     //        //}
                     //    ],
-                    //    "location": "Galleria 4",
+                    //    
                     //},
                     //{
                     //    "time": "12:15 PM",
@@ -750,7 +756,7 @@ export const SCHEDULES = [
                     //        //    "photo": "shynta-hudson.webp"
                     //        //}
                     //    ],
-                    //    "location": "Galleria 4",
+                    //    
                     //}, 
                     {
                         "time": "12:15 PM",
@@ -763,7 +769,7 @@ export const SCHEDULES = [
                                 "photo": "linda-eshiwani-nate.webp"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "12:30 PM",
@@ -776,7 +782,7 @@ export const SCHEDULES = [
                                 "photo": "charles-sills.webp"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     }
                 ]
             }
