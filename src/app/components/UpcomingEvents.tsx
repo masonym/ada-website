@@ -77,7 +77,7 @@ export const isEventUpcoming = (dateString: string, timeStart: string, currentDa
     const eventStartDate = new Date(timeStart);
 
     // Set the event date to the end of the day (17:59:59)
-    eventStartDate.setHours(23, 59, 59, 999);
+    eventStartDate.setHours(17, 59, 59, 999);
 
     return currentDate <= eventStartDate;
   }
