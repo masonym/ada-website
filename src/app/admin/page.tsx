@@ -121,61 +121,48 @@ export default function AdminPage() {
       setUploadProgress(20); // Update progress after getting URL
 
       // Step 2: Upload directly to S3 using the pre-signed URL
-      const xhr = new XMLHttpRequest();
-      
-      // Set up progress tracking
-      xhr.upload.onprogress = (event) => {
-        if (event.lengthComputable) {
-          // Calculate progress from 20% to 90%
-          const percentComplete = event.loaded / event.total;
-          const scaledProgress = 20 + (percentComplete * 70);
-          setUploadProgress(scaledProgress);
-        }
-      };
-      
-      // Set up completion handler
-      xhr.onload = async () => {
-        if (xhr.status >= 200 && xhr.status < 300) {
-          setUploadProgress(100); // Complete progress
-          setMessage({
-            text: `File uploaded successfully! Path: ${presignedUrlData.key}`,
-            type: "success"
-          });
-          
-          // Send webhook notification
-          fetch(WEBHOOK_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              content: `File uploaded successfully! Path: ${presignedUrlData.key}`,
-            })
-          });
-          
-          setFile(null);
-          if (fileInputRef.current) {
-            fileInputRef.current.value = "";
-          }
-        } else {
-          throw new Error(`Upload failed with status: ${xhr.status}`);
-        }
-        setIsUploading(false);
-      };
-      
-      // Set up error handler
-      xhr.onerror = () => {
-        setMessage({
-          text: "Network error occurred during upload",
-          type: "error"
+      try {
+        // Create a blob with the file data
+        const fileBlob = new Blob([file], { type: 'application/pdf' });
+        
+        // Upload to S3 using fetch
+        const uploadResponse = await fetch(presignedUrlData.presignedUrl, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/pdf',
+          },
+          body: fileBlob,
         });
+        
+        if (!uploadResponse.ok) {
+          throw new Error(`Upload failed with status: ${uploadResponse.status}`);
+        }
+        
+        setUploadProgress(100); // Complete progress
+        setMessage({
+          text: `File uploaded successfully! Path: ${presignedUrlData.key}`,
+          type: "success"
+        });
+        
+        // Send webhook notification
+        fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            content: `File uploaded successfully! Path: ${presignedUrlData.key}`,
+          })
+        });
+        
+        setFile(null);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
+      } catch (uploadError: any) {
+        throw new Error(uploadError.message || "Error uploading to S3");
+      } finally {
         setIsUploading(false);
-        setUploadProgress(0);
-      };
-      
-      // Open and send the request
-      xhr.open("PUT", presignedUrlData.presignedUrl);
-      xhr.setRequestHeader("Content-Type", "application/pdf");
-      xhr.send(file);
-      
+      }
+
     } catch (error: any) {
       setMessage({
         text: error.message || "An error occurred while uploading the file",

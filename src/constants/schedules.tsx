@@ -496,7 +496,8 @@ export const SCHEDULES = [
                                 "name": "Sherrie Cordi",
                                 "title": "Procurement Analyst, Office of Small Business Programs",
                                 "affiliation": "U.S. Army Corps of Engineers, Memphis District",
-                                "photo": "sherrie-cordi.webp"
+                                "photo": "sherrie-cordi.webp",
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Sherrie_Cordi.pdf",
                             },
                             //{
                             //    "name": "Tonya D. Willis",

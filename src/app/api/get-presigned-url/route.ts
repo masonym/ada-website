@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
     // Generate S3 key (path) with sanitized filename
     const sanitizedFileName = fileName.replace(/[^a-zA-Z0-9.-]/g, '_');
     const s3Key = `events/${eventShorthand}/presentations/${sanitizedFileName}`;
-
+    
     // Create the command for generating a presigned URL
     const command = new PutObjectCommand({
       Bucket: process.env.AWS_BUCKET_NAME || "americandefensealliance",
