@@ -3,6 +3,7 @@
 import { useState, useRef, FormEvent, ChangeEvent, useEffect } from "react";
 import { EVENTS } from "@/constants/events";
 import { Event } from "@/types/events";
+import Link from 'next/link';
 
 // Maximum file size (10MB)
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB in bytes
@@ -279,6 +280,20 @@ export default function AdminPage() {
             </div>
           )}
         </form>
+      </div>
+      
+      <div className="mt-8 bg-white shadow-md rounded-lg p-6">
+        <h2 className="text-xl font-bold mb-4">Admin Tools</h2>
+        <div className="space-y-4">
+          <div>
+            <Link href="/admin/s3-cors" className="text-blue-600 hover:underline flex items-center">
+              <span className="mr-2">📊</span> S3 CORS Configuration
+            </Link>
+            <p className="text-sm text-gray-600 ml-6 mt-1">
+              View and update the S3 bucket CORS configuration for direct uploads
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
