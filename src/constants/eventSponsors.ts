@@ -137,7 +137,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 sponsorIds: [
                     "zero-waste",
                     "jbc-corp",
-                    "cpisys"
+                    "cpisys",
+                    "normandeau",
                 ],
             },
             {
@@ -149,7 +150,11 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "jbc-corp",
                     "centurion-consulting-group",
                     "cpisys",
-                    "unicor"
+                    "unicor",
+                    "melrose",
+                    "normandeau",
+                    "new-wave",
+                    "absolute-supply",
                 ],
             }
         ]

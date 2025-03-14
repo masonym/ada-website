@@ -319,6 +319,34 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.mbda.gov/business-center/mbda-federal-procurement-center",
     size: 'small'
   },
+  "absolute-supply": {
+    id: "absolute-supply",
+    name: "Absolute Supply & Services LLC",
+    logo: "/sponsors/absolute-supply.webp",
+    website: "https://absolutesupplyandservices.com/",
+    size: 'small'
+  },
+  "new-wave": {
+    id: "new-wave",
+    name: "New Wave People",
+    logo: "/sponsors/new-wave-people.webp",
+    website: "https://nwpusa.com/",
+    size: 'small'
+  },
+  "normandeau": {
+    id: "normandeau",
+    name: "Normandeau Associates",
+    logo: "/sponsors/normandeau.webp",
+    website: "https://www.normandeau.com/",
+    size: 'small'
+  },
+  "melrose": {
+    id: "melrose",
+    name: "Melrose INC",
+    logo: "/sponsors/melrose.webp",
+    website: "https://melroseinc.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
