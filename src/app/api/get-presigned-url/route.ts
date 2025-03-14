@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
 
     const { fileName, fileType, fileSize, eventShorthand } = await request.json();
 
-    if (!fileName || !fileType || !fileSize || !eventShorthand) {
+    if (!fileName || !fileSize || !eventShorthand) {
       return NextResponse.json(
         { error: "Missing required parameters" },
         { status: 400 }
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate file is PDF
-    if (!fileType.includes("pdf")) {
+    if (!fileType || !fileType.includes("pdf")) {
       return NextResponse.json(
         { error: "Only PDF files are allowed" },
         { status: 400 }
@@ -63,13 +63,13 @@ export async function POST(request: NextRequest) {
     // Generate S3 key (path) with sanitized filename
     const sanitizedFileName = fileName.replace(/[^a-zA-Z0-9.-]/g, '_');
     const s3Key = `events/${eventShorthand}/presentations/${sanitizedFileName}`;
-    
+
     // Create the command for generating a presigned URL
+    // Note: We explicitly set the ContentType to match what the client will send
     const command = new PutObjectCommand({
       Bucket: process.env.AWS_BUCKET_NAME || "americandefensealliance",
       Key: s3Key,
-      ContentType: "application/pdf",
-      ContentDisposition: `inline; filename="${sanitizedFileName}"`,
+      ContentType: fileType,
     });
 
     // Generate presigned URL (valid for 15 minutes)
@@ -85,6 +85,7 @@ export async function POST(request: NextRequest) {
       presignedUrl,
       fileUrl,
       key: s3Key,
+      contentType: fileType, // Return the content type to the client
     });
   } catch (error: any) {
     console.error("Error generating presigned URL:", error);
