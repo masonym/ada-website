@@ -93,69 +93,97 @@ export default function AdminPage() {
     }
 
     setIsUploading(true);
-    setMessage({ text: "Uploading file...", type: "info" });
-    setUploadProgress(10); // Start progress
+    setMessage({ text: "Preparing upload...", type: "info" });
+    setUploadProgress(5); // Start progress
 
     try {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("eventShorthand", selectedEvent.eventShorthand);
-
-      // Set up progress tracking
-      const progressInterval = setInterval(() => {
-        setUploadProgress(prev => {
-          const newProgress = prev + Math.random() * 5;
-          return newProgress > 90 ? 90 : newProgress; // Cap at 90% until complete
-        });
-      }, 500);
-
-      // Use fetch with streaming for large files
-      const response = await fetch("/api/upload", {
+      // Step 1: Get a pre-signed URL
+      const presignedUrlResponse = await fetch("/api/get-presigned-url", {
         method: "POST",
-        body: formData,
-        // Don't set Content-Type header, let the browser set it with the boundary
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fileName: file.name,
+          fileType: file.type,
+          fileSize: file.size,
+          eventShorthand: selectedEvent.eventShorthand,
+        }),
       });
 
-      clearInterval(progressInterval);
-      setUploadProgress(100); // Complete progress
+      const presignedUrlData = await presignedUrlResponse.json();
 
-      const data = await response.json();
+      if (!presignedUrlResponse.ok) {
+        throw new Error(presignedUrlData.error || "Failed to get pre-signed URL");
+      }
 
-      if (response.ok) {
-        setMessage({
-          text: `File uploaded successfully! Path: ${data.key}`,
-          type: "success"
-        });
-        fetch(WEBHOOK_URL,
-          {
+      setMessage({ text: "Uploading file directly to S3...", type: "info" });
+      setUploadProgress(20); // Update progress after getting URL
+
+      // Step 2: Upload directly to S3 using the pre-signed URL
+      const xhr = new XMLHttpRequest();
+      
+      // Set up progress tracking
+      xhr.upload.onprogress = (event) => {
+        if (event.lengthComputable) {
+          // Calculate progress from 20% to 90%
+          const percentComplete = event.loaded / event.total;
+          const scaledProgress = 20 + (percentComplete * 70);
+          setUploadProgress(scaledProgress);
+        }
+      };
+      
+      // Set up completion handler
+      xhr.onload = async () => {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          setUploadProgress(100); // Complete progress
+          setMessage({
+            text: `File uploaded successfully! Path: ${presignedUrlData.key}`,
+            type: "success"
+          });
+          
+          // Send webhook notification
+          fetch(WEBHOOK_URL, {
             method: "POST",
-            headers: { "Content-Type": "application/json", },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              content: `File uploaded successfully! Path: ${data.key}`,
+              content: `File uploaded successfully! Path: ${presignedUrlData.key}`,
             })
           });
-        setFile(null);
-        if (fileInputRef.current) {
-          fileInputRef.current.value = "";
+          
+          setFile(null);
+          if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+          }
+        } else {
+          throw new Error(`Upload failed with status: ${xhr.status}`);
         }
-      } else {
+        setIsUploading(false);
+      };
+      
+      // Set up error handler
+      xhr.onerror = () => {
         setMessage({
-          text: data.error || "Failed to upload file",
+          text: "Network error occurred during upload",
           type: "error"
         });
-      }
-    } catch (error) {
+        setIsUploading(false);
+        setUploadProgress(0);
+      };
+      
+      // Open and send the request
+      xhr.open("PUT", presignedUrlData.presignedUrl);
+      xhr.setRequestHeader("Content-Type", "application/pdf");
+      xhr.send(file);
+      
+    } catch (error: any) {
       setMessage({
-        text: "An error occurred while uploading the file",
+        text: error.message || "An error occurred while uploading the file",
         type: "error"
       });
       console.error("Upload error:", error);
-    } finally {
       setIsUploading(false);
-      // Reset progress after a delay
-      setTimeout(() => {
-        setUploadProgress(0);
-      }, 2000);
+      setUploadProgress(0);
     }
   };
 

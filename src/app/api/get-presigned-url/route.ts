@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { EVENTS } from "@/constants/events";
 
 // Initialize S3 client
@@ -11,7 +12,7 @@ const s3Client = new S3Client({
   },
 });
 
-// Maximum file size (10MB)
+// Maximum file size (25MB)
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB in bytes
 
 export async function POST(request: NextRequest) {
@@ -25,20 +26,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const formData = await request.formData();
-    const file = formData.get("file") as File;
-    const eventShorthand = formData.get("eventShorthand") as string;
+    const { fileName, fileType, fileSize, eventShorthand } = await request.json();
 
-    if (!file) {
+    if (!fileName || !fileType || !fileSize || !eventShorthand) {
       return NextResponse.json(
-        { error: "No file provided" },
-        { status: 400 }
-      );
-    }
-
-    if (!eventShorthand) {
-      return NextResponse.json(
-        { error: "No event shorthand provided" },
+        { error: "Missing required parameters" },
         { status: 400 }
       );
     }
@@ -53,7 +45,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate file is PDF
-    if (!file.type.includes("pdf")) {
+    if (!fileType.includes("pdf")) {
       return NextResponse.json(
         { error: "Only PDF files are allowed" },
         { status: 400 }
@@ -61,45 +53,41 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate file size
-    if (file.size > MAX_FILE_SIZE) {
+    if (fileSize > MAX_FILE_SIZE) {
       return NextResponse.json(
         { error: `File size exceeds the maximum limit of ${MAX_FILE_SIZE / (1024 * 1024)}MB` },
         { status: 400 }
       );
     }
 
-    // Convert File to Buffer
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-
     // Generate S3 key (path) with sanitized filename
-    const sanitizedFileName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+    const sanitizedFileName = fileName.replace(/[^a-zA-Z0-9.-]/g, '_');
     const s3Key = `events/${eventShorthand}/presentations/${sanitizedFileName}`;
 
-    // Upload to S3
+    // Create the command for generating a presigned URL
     const command = new PutObjectCommand({
       Bucket: process.env.AWS_BUCKET_NAME || "americandefensealliance",
       Key: s3Key,
-      Body: buffer,
       ContentType: "application/pdf",
       ContentDisposition: `inline; filename="${sanitizedFileName}"`,
     });
 
-    await s3Client.send(command);
+    // Generate presigned URL (valid for 15 minutes)
+    const presignedUrl = await getSignedUrl(s3Client, command, { expiresIn: 900 });
 
-    // Generate the S3 URL
+    // Generate the final S3 URL (for reference after upload)
     const bucketName = process.env.AWS_BUCKET_NAME || "americandefensealliance";
     const region = process.env.AWS_REGION || "us-west-2";
     const fileUrl = `https://${bucketName}.s3.${region}.amazonaws.com/${s3Key}`;
 
     return NextResponse.json({
       success: true,
-      message: "File uploaded successfully",
-      url: fileUrl,
+      presignedUrl,
+      fileUrl,
       key: s3Key,
     });
   } catch (error: any) {
-    console.error("Error uploading file:", error);
+    console.error("Error generating presigned URL:", error);
 
     // Provide more detailed error messages based on the error type
     if (error.name === "CredentialsProviderError") {
@@ -120,7 +108,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: "Failed to upload file", details: error.message },
+      { error: "Failed to generate presigned URL", details: error.message },
       { status: 500 }
     );
   }

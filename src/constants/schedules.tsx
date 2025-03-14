@@ -598,6 +598,7 @@ export const SCHEDULES = [
                             "title": "Chief Executive Officer",
                             "affiliation": "Crux Defense and Partner, National All-Domain Warfighting Center’s Combat Capabilities Factory",
                             "photo": "andrew-gardner.webp",
+                            "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Andrew_Gardner.pdf",
                         }]
                     },
                     {
@@ -608,7 +609,8 @@ export const SCHEDULES = [
                                 "name": "Brent D. Sadler",
                                 "title": "Senior Research Fellow, Naval Warfare and Advanced Technology Center for National Defense",
                                 "affiliation": "The Heritage Foundation",
-                                "photo": "brent-sadler.webp"
+                                "photo": "brent-sadler.webp",
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Brent_D._Sadler.pdf",
                             }
                         ],
                         "location": "Galleria 4",
@@ -662,6 +664,7 @@ export const SCHEDULES = [
                                 "title": "Director, Office of Small Business Programs (OSBP)",
                                 "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC)",
                                 "photo": "bianca-henderson.webp",
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Bianca_Henderson.pdf",
                             }
                         ],
                         "location": "Galleria 4",
@@ -770,7 +773,8 @@ export const SCHEDULES = [
                                 "name": "Linda Eshiwani-Nate",
                                 "title": "Trade Commissioner",
                                 "affiliation": "Consulate General of Canada in Atlanta",
-                                "photo": "linda-eshiwani-nate.webp"
+                                "photo": "linda-eshiwani-nate.webp",
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Linda_Eshiwani-Nate.pdf"
                             }
                         ],
                         "location": "Galleria 4",
