@@ -52,17 +52,18 @@ export async function POST(request: NextRequest) {
     // Generate S3 key (path) with sanitized filename
     const sanitizedFileName = fileName.replace(/[^a-zA-Z0-9.-]/g, '_');
     const s3Key = `events/${eventShorthand}/presentations/${sanitizedFileName}`;
-
+    
     // Create the command for generating a presigned URL
-    const command = new PutObjectCommand({
+    const putObjectCommand = new PutObjectCommand({
       Bucket: process.env.AWS_BUCKET_NAME || "americandefensealliance",
       Key: s3Key,
       ContentType: "application/pdf",
-      ContentDisposition: `inline; filename="${sanitizedFileName}"`,
     });
 
     // Generate the presigned URL (valid for 15 minutes)
-    const presignedUrl = await getSignedUrl(s3Client, command, { expiresIn: 900 });
+    const presignedUrl = await getSignedUrl(s3Client, putObjectCommand, { 
+      expiresIn: 900,
+    });
 
     // Generate the final S3 URL for the file
     const bucketName = process.env.AWS_BUCKET_NAME || "americandefensealliance";
@@ -77,24 +78,6 @@ export async function POST(request: NextRequest) {
     });
   } catch (error: any) {
     console.error("Error generating presigned URL:", error);
-
-    // Provide more detailed error messages based on the error type
-    if (error.name === "CredentialsProviderError") {
-      return NextResponse.json(
-        { error: "AWS credentials error" },
-        { status: 500 }
-      );
-    } else if (error.name === "AccessDenied") {
-      return NextResponse.json(
-        { error: "Access denied to S3 bucket" },
-        { status: 403 }
-      );
-    } else if (error.name === "NoSuchBucket") {
-      return NextResponse.json(
-        { error: "S3 bucket does not exist" },
-        { status: 404 }
-      );
-    }
 
     return NextResponse.json(
       { error: "Failed to generate presigned URL", details: error.message },

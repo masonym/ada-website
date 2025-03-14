@@ -129,40 +129,85 @@ export default function AdminPage() {
         });
       }, 300);
 
-      // Upload directly to S3 using the presigned URL
-      const uploadResponse = await fetch(presignedUrl, {
-        method: "PUT",
-        body: file,
-        headers: {
-          "Content-Type": file.type,
-        },
-      });
+      try {
+        // Try direct upload first
+        const uploadResponse = await fetch(presignedUrl, {
+          method: "PUT",
+          body: file,
+          headers: {
+            "Content-Type": "application/pdf",
+          },
+        });
 
-      clearInterval(progressInterval);
+        if (!uploadResponse.ok) {
+          console.error("S3 Upload Error:", {
+            status: uploadResponse.status,
+            statusText: uploadResponse.statusText,
+            url: presignedUrl.split('?')[0] // Log the URL without the query parameters for security
+          });
+          throw new Error(`Direct upload failed: ${uploadResponse.status} ${uploadResponse.statusText}`);
+        }
 
-      if (!uploadResponse.ok) {
-        throw new Error(`Failed to upload to S3: ${uploadResponse.statusText}`);
-      }
+        clearInterval(progressInterval);
+        setUploadProgress(100); // Complete progress
 
-      setUploadProgress(100); // Complete progress
+        setMessage({
+          text: `File uploaded successfully! Path: ${key}`,
+          type: "success"
+        });
 
-      setMessage({
-        text: `File uploaded successfully! Path: ${key}`,
-        type: "success"
-      });
+        // Send Discord notification if successful
+        fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            content: `File uploaded successfully! Path: ${key}`,
+          })
+        });
 
-      // Send Discord notification if successful
-      fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          content: `File uploaded successfully! Path: ${key}`,
-        })
-      });
+        setFile(null);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
+      } catch (directUploadError) {
+        // If direct upload fails, fall back to the original upload method
+        console.warn("Direct upload failed, falling back to API upload:", directUploadError);
+        setMessage({ text: "Direct upload failed, trying alternative method...", type: "info" });
+        
+        // Use the original upload API as fallback
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("eventShorthand", selectedEvent.eventShorthand);
 
-      setFile(null);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
+        const response = await fetch("/api/upload", {
+          method: "POST",
+          body: formData,
+        });
+
+        clearInterval(progressInterval);
+        setUploadProgress(100); // Complete progress
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setMessage({
+            text: `File uploaded successfully! Path: ${data.key}`,
+            type: "success"
+          });
+          fetch(WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              content: `File uploaded successfully! Path: ${data.key}`,
+            })
+          });
+          setFile(null);
+          if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+          }
+        } else {
+          throw new Error(data.error || "Failed to upload file");
+        }
       }
     } catch (error: any) {
       setMessage({

@@ -573,6 +573,7 @@ export const SCHEDULES = [
                                 "photo": "neal-dunn.webp",
                                 "sponsor": "Pre-Recorded Address",
                                 "sponsorStyle": "bg-gray-300",
+                                "videoId": "UK3HO8I25-o",
                             }
                         ],
                         "location": "Galleria 4",
