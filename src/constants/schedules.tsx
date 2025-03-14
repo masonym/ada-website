@@ -588,6 +588,7 @@ export const SCHEDULES = [
                             "title": "Managing Director and Analytics & Visualization Lead for Data & AI",
                             "affiliation": "Accenture Federal Services",
                             "photo": "amir-bagherpour.webp",
+                            "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Amir_Bagherpour.pdf"
                         }]
                     },
                     {
@@ -699,7 +700,8 @@ export const SCHEDULES = [
                                 "name": "Tim Inman",
                                 "title": "Director of Small Business Programs",
                                 "affiliation": "Air Force Sustainment Center, Robins Air Force Base",
-                                "photo": "timothy-r-inman.webp"
+                                "photo": "timothy-r-inman.webp",
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Tim_Inman.pdf"
                             }
                         ],
                         "location": "Galleria 4",
