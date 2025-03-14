@@ -30,16 +30,10 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
   // Validate if images directory exists
   const hasImages = await validateImagePaths(event.eventShorthand);
 
-  if (!hasImages) {
-    return (
-      <div className="text-center py-12">
-        <h2 className="text-2xl font-bold mb-4">Photos Coming Soon</h2>
-        <p className="text-lg">
-          Photo gallery for {event.title} is being prepared. Please check back later.
-        </p>
-      </div>
-    );
-  }
+  //if (!hasImages) {
+  //  return (
+  //  );
+  //}
 
   // Get all event images
   const allImages = await getEventImages(event);
@@ -67,10 +61,17 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
         Highlights & Photographs of the <br />{event.title}
       </h1>
 
+      {!hasImages && <div className="text-center py-12">
+        <h2 className="text-2xl font-bold mb-4">Photos Coming Soon</h2>
+        <p className="text-lg">
+          Photo gallery for {event.title} is being prepared. Please check back later.
+        </p>
+      </div>}
+
       <div className="mb-0 max-w-3xl mx-auto bg-navy-800 rounded-lg p-6 sm:p-8 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-lg sm:text-xl mb-4">
-            Access Presentation Materials
+            Access Presentation Materials and Recordings
           </p>
           <Link
             href={`/events/${params.slug}/agenda`}
