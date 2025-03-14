@@ -52,16 +52,17 @@ export async function POST(request: NextRequest) {
     // Generate S3 key (path) with sanitized filename
     const sanitizedFileName = fileName.replace(/[^a-zA-Z0-9.-]/g, '_');
     const s3Key = `events/${eventShorthand}/presentations/${sanitizedFileName}`;
-    
+
     // Create the command for generating a presigned URL
     const putObjectCommand = new PutObjectCommand({
       Bucket: process.env.AWS_BUCKET_NAME || "americandefensealliance",
       Key: s3Key,
       ContentType: "application/pdf",
+      ContentDisposition: `inline; filename="${sanitizedFileName}"`,
     });
 
     // Generate the presigned URL (valid for 15 minutes)
-    const presignedUrl = await getSignedUrl(s3Client, putObjectCommand, { 
+    const presignedUrl = await getSignedUrl(s3Client, putObjectCommand, {
       expiresIn: 900,
     });
 
