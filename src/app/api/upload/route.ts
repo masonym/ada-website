@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { Upload } from "@aws-sdk/lib-storage";
+import { Readable } from "stream";
 import { EVENTS } from "@/constants/events";
 
 // Initialize S3 client
@@ -11,8 +13,15 @@ const s3Client = new S3Client({
   },
 });
 
-// Maximum file size (10MB)
+// Maximum file size (25MB)
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB in bytes
+
+// Configure the API route to use streaming
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 
 export async function POST(request: NextRequest) {
   try {
@@ -25,6 +34,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Get content type to verify it's a multipart form
+    const contentType = request.headers.get("content-type") || "";
+    if (!contentType.includes("multipart/form-data")) {
+      return NextResponse.json(
+        { error: "Content type must be multipart/form-data" },
+        { status: 400 }
+      );
+    }
+
+    // Parse the form data manually to extract the event shorthand
     const formData = await request.formData();
     const file = formData.get("file") as File;
     const eventShorthand = formData.get("eventShorthand") as string;
@@ -68,24 +87,29 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Convert File to Buffer
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-
     // Generate S3 key (path) with sanitized filename
     const sanitizedFileName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
     const s3Key = `events/${eventShorthand}/presentations/${sanitizedFileName}`;
 
-    // Upload to S3
-    const command = new PutObjectCommand({
-      Bucket: process.env.AWS_BUCKET_NAME || "americandefensealliance",
-      Key: s3Key,
-      Body: buffer,
-      ContentType: "application/pdf",
-      ContentDisposition: `inline; filename="${sanitizedFileName}"`,
+    // Convert File to stream
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    const stream = Readable.from(buffer);
+
+    // Use multipart upload with streaming
+    const upload = new Upload({
+      client: s3Client,
+      params: {
+        Bucket: process.env.AWS_BUCKET_NAME || "americandefensealliance",
+        Key: s3Key,
+        Body: stream,
+        ContentType: "application/pdf",
+        ContentDisposition: `inline; filename="${sanitizedFileName}"`,
+      },
     });
 
-    await s3Client.send(command);
+    // Execute the upload
+    await upload.done();
 
     // Generate the S3 URL
     const bucketName = process.env.AWS_BUCKET_NAME || "americandefensealliance";

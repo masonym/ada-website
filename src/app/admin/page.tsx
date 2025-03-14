@@ -93,125 +93,60 @@ export default function AdminPage() {
     }
 
     setIsUploading(true);
-    setMessage({ text: "Preparing upload...", type: "info" });
-    setUploadProgress(5); // Start progress
+    setMessage({ text: "Uploading file...", type: "info" });
+    setUploadProgress(10); // Start progress
 
     try {
-      // Step 1: Get a presigned URL from our API
-      const presignedUrlResponse = await fetch("/api/get-presigned-url", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fileName: file.name,
-          fileType: file.type,
-          eventShorthand: selectedEvent.eventShorthand,
-        }),
-      });
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("eventShorthand", selectedEvent.eventShorthand);
 
-      if (!presignedUrlResponse.ok) {
-        const errorData = await presignedUrlResponse.json();
-        throw new Error(errorData.error || "Failed to get upload URL");
-      }
-
-      const { presignedUrl, fileUrl, key } = await presignedUrlResponse.json();
-      
-      setUploadProgress(20); // Update progress after getting URL
-      setMessage({ text: "Uploading file directly to S3...", type: "info" });
-
-      // Step 2: Use the presigned URL to upload the file directly to S3
-      // Simulate progress during upload
+      // Set up progress tracking
       const progressInterval = setInterval(() => {
         setUploadProgress(prev => {
-          const newProgress = prev + Math.random() * 10;
+          const newProgress = prev + Math.random() * 5;
           return newProgress > 90 ? 90 : newProgress; // Cap at 90% until complete
         });
-      }, 300);
+      }, 500);
 
-      try {
-        // Try direct upload first
-        const uploadResponse = await fetch(presignedUrl, {
-          method: "PUT",
-          body: file,
-          headers: {
-            "Content-Type": "application/pdf",
-          },
-        });
+      // Use fetch with streaming for large files
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+        // Don't set Content-Type header, let the browser set it with the boundary
+      });
 
-        if (!uploadResponse.ok) {
-          console.error("S3 Upload Error:", {
-            status: uploadResponse.status,
-            statusText: uploadResponse.statusText,
-            url: presignedUrl.split('?')[0] // Log the URL without the query parameters for security
-          });
-          throw new Error(`Direct upload failed: ${uploadResponse.status} ${uploadResponse.statusText}`);
-        }
+      clearInterval(progressInterval);
+      setUploadProgress(100); // Complete progress
 
-        clearInterval(progressInterval);
-        setUploadProgress(100); // Complete progress
+      const data = await response.json();
 
+      if (response.ok) {
         setMessage({
-          text: `File uploaded successfully! Path: ${key}`,
+          text: `File uploaded successfully! Path: ${data.key}`,
           type: "success"
         });
-
-        // Send Discord notification if successful
-        fetch(WEBHOOK_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            content: `File uploaded successfully! Path: ${key}`,
-          })
-        });
-
-        setFile(null);
-        if (fileInputRef.current) {
-          fileInputRef.current.value = "";
-        }
-      } catch (directUploadError) {
-        // If direct upload fails, fall back to the original upload method
-        console.warn("Direct upload failed, falling back to API upload:", directUploadError);
-        setMessage({ text: "Direct upload failed, trying alternative method...", type: "info" });
-        
-        // Use the original upload API as fallback
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("eventShorthand", selectedEvent.eventShorthand);
-
-        const response = await fetch("/api/upload", {
-          method: "POST",
-          body: formData,
-        });
-
-        clearInterval(progressInterval);
-        setUploadProgress(100); // Complete progress
-
-        const data = await response.json();
-
-        if (response.ok) {
-          setMessage({
-            text: `File uploaded successfully! Path: ${data.key}`,
-            type: "success"
-          });
-          fetch(WEBHOOK_URL, {
+        fetch(WEBHOOK_URL,
+          {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", },
             body: JSON.stringify({
               content: `File uploaded successfully! Path: ${data.key}`,
             })
           });
-          setFile(null);
-          if (fileInputRef.current) {
-            fileInputRef.current.value = "";
-          }
-        } else {
-          throw new Error(data.error || "Failed to upload file");
+        setFile(null);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
         }
+      } else {
+        setMessage({
+          text: data.error || "Failed to upload file",
+          type: "error"
+        });
       }
-    } catch (error: any) {
+    } catch (error) {
       setMessage({
-        text: error.message || "An error occurred while uploading the file",
+        text: "An error occurred while uploading the file",
         type: "error"
       });
       console.error("Upload error:", error);
