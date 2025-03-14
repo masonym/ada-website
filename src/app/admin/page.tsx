@@ -97,6 +97,9 @@ export default function AdminPage() {
     setUploadProgress(5); // Start progress
 
     try {
+      // Ensure we have the correct content type
+      const contentType = file.type || "application/pdf";
+      
       // Step 1: Get a pre-signed URL
       const presignedUrlResponse = await fetch("/api/get-presigned-url", {
         method: "POST",
@@ -105,7 +108,7 @@ export default function AdminPage() {
         },
         body: JSON.stringify({
           fileName: file.name,
-          fileType: file.type,
+          fileType: contentType,
           fileSize: file.size,
           eventShorthand: selectedEvent.eventShorthand,
         }),
@@ -167,16 +170,38 @@ export default function AdminPage() {
           text: "Network error occurred during upload",
           type: "error"
         });
+        console.error("S3 Upload Error:", {
+          status: xhr.status,
+          statusText: xhr.statusText,
+          responseText: xhr.responseText
+        });
         setIsUploading(false);
         setUploadProgress(0);
       };
       
+      // Add a specific handler for 403 Forbidden errors
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4 && xhr.status === 403) {
+          console.error("S3 Upload 403 Forbidden Error:", {
+            responseText: xhr.responseText,
+            contentType: presignedUrlData.contentType,
+            fileType: file.type
+          });
+          setMessage({
+            text: "Access denied when uploading to S3. This may be due to a content type mismatch or expired pre-signed URL.",
+            type: "error"
+          });
+          setIsUploading(false);
+          setUploadProgress(0);
+        }
+      };
+
       // Open and send the request
       xhr.open("PUT", presignedUrlData.presignedUrl);
       
       // Important: Set the exact same Content-Type that was used to generate the pre-signed URL
       // This is crucial to avoid 403 Forbidden errors
-      xhr.setRequestHeader("Content-Type", presignedUrlData.contentType);
+      xhr.setRequestHeader("Content-Type", presignedUrlData.contentType || contentType);
       
       xhr.send(file);
 
