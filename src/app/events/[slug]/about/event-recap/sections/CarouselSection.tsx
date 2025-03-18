@@ -75,7 +75,8 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ section }) => {
                       <Image
                         src={getCdnPath(image.src)}
                         alt={image.alt}
-                        fill
+                        width={(image.width) / 10}
+                        height={(image.height) / 10}
                         className="object-contain"
                         sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                         loading={index < 4 ? "eager" : "lazy"}
