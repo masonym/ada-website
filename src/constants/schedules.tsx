@@ -334,7 +334,7 @@ export const SCHEDULES = [
                                 "title": "Project Manager",
                                 "affiliation": "Office of the Deputy Chief of Staff, G-9 Army Community Partnership Office",
                                 "photo": "erin-bearhalter.webp",
-                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Dave_Leinberger_Erin_Bearhalter.pdf"
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Dave_Leinberger___Erin_Bearhalter.pdf"
                             }
                         ],
                         "location": "Galleria 4",
