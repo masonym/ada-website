@@ -1,17 +1,11 @@
 import React from 'react';
 import { EVENTS } from '@/constants/events';
 import { notFound } from 'next/navigation';
-import { getEventImages, validateImagePaths } from '@/utils/imageUtils';
-import dynamic from 'next/dynamic';
-import HighlightedPhotos from './HighlightedPhotos';
-import EmblaCarousel from './EmblaCarousel';
+import { validateImagePaths } from '@/utils/imageUtils';
 import Link from 'next/link';
 import EventTestimonials from '@/app/components/EventTestimonials';
-
-// Lazy load the lightbox component
-const PhotoLightbox = dynamic(() => import('./PhotoLightbox'), {
-  loading: () => <div className="animate-pulse bg-gray-200 rounded-lg h-96"></div>,
-});
+import { getEventRecap } from '@/constants/eventRecaps';
+import { SectionRenderer } from './sections';
 
 // Generate static params for all event slugs
 export async function generateStaticParams() {
@@ -30,15 +24,8 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
   // Validate if images directory exists
   const hasImages = await validateImagePaths(event.eventShorthand);
 
-  //if (!hasImages) {
-  //  return (
-  //  );
-  //}
-
-  // Get all event images
-  const allImages = await getEventImages(event);
-  const highlightedImages = allImages.filter(img => img.highlighted);
-  const regularImages = allImages.filter(img => !img.highlighted);
+  // Get event recap data
+  const recapData = getEventRecap(event.eventShorthand);
 
   const eventDate = new Date(event.timeStart);
   const currentDate = new Date();
@@ -68,7 +55,7 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
         </p>
       </div>}
 
-      <div className="mb-0 max-w-3xl mx-auto bg-navy-800 rounded-lg p-6 sm:p-8 text-white">
+      <div className="mb-8 max-w-3xl mx-auto bg-navy-800 rounded-lg p-6 sm:p-8 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-lg sm:text-xl mb-4">
             Access Presentation Materials and Recordings
@@ -86,16 +73,32 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
         <EventTestimonials testimonials={event.testimonials} />
       )}
 
-      {highlightedImages.length > 0 && (
-        <div className="mb-12">
-          <HighlightedPhotos images={highlightedImages} />
+      {/* Display custom introduction if available */}
+      {recapData?.introduction && (
+        <div className="max-w-4xl mx-auto mb-12 text-center">
+          {recapData.introduction}
         </div>
       )}
 
-      {regularImages.length > 0 && (
-        <div className="mb-12">
-          <h2 className="text-center text-5xl text-slate-700 font-bold mb-6">Photo Gallery</h2>
-          <EmblaCarousel slides={regularImages} options={{ loop: true }} />
+      {/* Render each section based on its layout type */}
+      {recapData?.sections.map(section => (
+        <SectionRenderer key={section.id} section={section} />
+      ))}
+
+      {/* Fallback if no recap data is available but images exist */}
+      {hasImages && !recapData && (
+        <div className="text-center py-12">
+          <h2 className="text-2xl font-bold mb-4">Enhanced Photo Gallery Coming Soon</h2>
+          <p className="text-lg mb-4">
+            We're currently working on an enhanced photo gallery for this event. 
+            In the meantime, you can view the agenda and presentation materials.
+          </p>
+          <Link
+            href={`/events/${params.slug}/agenda`}
+            className="inline-block bg-navy-800 text-white px-6 py-2 rounded-lg font-semibold hover:bg-navy-700 transition-colors"
+          >
+            View Agenda
+          </Link>
         </div>
       )}
     </div>

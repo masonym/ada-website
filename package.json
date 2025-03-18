@@ -20,6 +20,7 @@
     "@aws-sdk/s3-presigned-post": "^3.758.0",
     "@aws-sdk/s3-request-presigner": "^3.758.0",
     "@googlemaps/js-api-loader": "^1.16.8",
+    "@heroicons/react": "^2.2.0",
     "@icons-pack/react-simple-icons": "^10.2.0",
     "@next/third-parties": "^14.2.11",
     "@react-google-maps/api": "^2.19.3",
@@ -47,6 +48,7 @@
     "react-slideshow-image": "^4.3.2",
     "sharp": "^0.33.5",
     "tailwind": "^4.0.0",
+    "upload-js": "^2.24.3",
     "yet-another-react-lightbox": "^3.21.7"
   },
   "devDependencies": {

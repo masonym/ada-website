@@ -3,6 +3,7 @@
 import { useState, useRef, FormEvent, ChangeEvent, useEffect } from "react";
 import { EVENTS } from "@/constants/events";
 import { Event } from "@/types/events";
+import Link from "next/link";
 
 // Maximum file size (10MB)
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB in bytes
@@ -218,9 +219,26 @@ export default function AdminPage() {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-3xl">
-      <h1 className="text-2xl font-bold mb-6">Upload Presentations</h1>
+      <h1 className="text-2xl font-bold mb-6">Admin Dashboard</h1>
+      
+      <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Link 
+          href="/admin/event-recaps"
+          className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
+        >
+          <h2 className="text-xl font-semibold mb-2">Event Recaps Management</h2>
+          <p className="text-gray-600">Manage photo galleries and event recaps with captions and sections</p>
+        </Link>
+        
+        <div className="p-4 bg-white shadow-md rounded-lg">
+          <h2 className="text-xl font-semibold mb-2">Upload Presentations</h2>
+          <p className="text-gray-600">Upload PDF presentations for events</p>
+        </div>
+      </div>
 
       <div className="bg-white shadow-md rounded-lg p-6">
+        <h2 className="text-xl font-semibold mb-4">Upload Presentations</h2>
+        
         {s3ConfigStatus === "error" && (
           <div className="mb-6 p-4 bg-red-50 text-red-700 rounded-md">
             <h3 className="font-bold mb-2">S3 Configuration Error</h3>
