@@ -652,7 +652,7 @@ export const SCHEDULES = [
                                 "title": "Tiger Team Lead, Federal Procurement Center, Minority Business Development Agency (MBDA)",
                                 "affiliation": "U.S. Department of Commerce",
                                 "photo": "oscar-frazier.webp",
-                                "presentation": "2025 Southeast Defense Procurement Conference - Oscar Frazier.pdf",
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Oscar_Frazier.pdf",
                             }
                         ],
                         "location": "Galleria 4",
