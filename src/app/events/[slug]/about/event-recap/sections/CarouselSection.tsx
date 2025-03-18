@@ -61,6 +61,12 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ section }) => {
               const imageHeight = 300; // Base height for all images
               const imageWidth = imageHeight * aspectRatio;
 
+              const minSize = 500; // minimum width/height
+              const scaleFactor = Math.max(1 / 10, minSize / image.width, minSize / image.height);
+
+              const scaledWidth = Math.round(image.width * scaleFactor);
+              const scaledHeight = Math.round(image.height * scaleFactor);
+
               return (
                 <div
                   key={image.src}
@@ -72,15 +78,16 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ section }) => {
                     onClick={() => handleClick(index)}
                   >
                     <div className="relative" style={{ height: `${imageHeight}px` }}>
+
                       <Image
                         src={getCdnPath(image.src)}
                         alt={image.alt}
-                        width={(image.width) / 10}
-                        height={(image.height) / 10}
+                        width={scaledWidth}
+                        height={scaledHeight}
                         className="object-contain"
                         sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                         loading={index < 4 ? "eager" : "lazy"}
-                      />
+                      />;
                     </div>
 
                     {image.caption || image.people && (

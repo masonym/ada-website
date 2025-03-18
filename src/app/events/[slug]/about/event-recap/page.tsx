@@ -90,7 +90,7 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
         <div className="text-center py-12">
           <h2 className="text-2xl font-bold mb-4">Enhanced Photo Gallery Coming Soon</h2>
           <p className="text-lg mb-4">
-            We're currently working on an enhanced photo gallery for this event. 
+            We're currently working on an enhanced photo gallery for this event.
             In the meantime, you can view the agenda and presentation materials.
           </p>
           <Link

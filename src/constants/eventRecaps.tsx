@@ -6,14 +6,14 @@ import React from 'react';
 export const EVENT_RECAPS: EventRecap[] = [
   {
     eventShorthand: '2025SDPC', // This should match the event.eventShorthand
-    introduction: (
-      <>
-        <p className="text-lg mb-4">
-          American Defense Alliance's 2025 Southeast Defense Procurement Conference brought together industry leaders, government officials,
-          and defense experts for a day of insightful discussions and networking.
-        </p>
-      </>
-    ),
+    //introduction: (
+    //  <>
+    //    <p className="text-lg mb-4">
+    //      American Defense Alliance's 2025 Southeast Defense Procurement Conference brought together industry leaders, government officials,
+    //      and defense experts for a day of insightful discussions and networking.
+    //    </p>
+    //  </>
+    //),
     sections: [
       {
         id: 'featured',
@@ -657,7 +657,372 @@ export const EVENT_RECAPS: EventRecap[] = [
       },
     ]
   },
-  // Additional event recaps would be added here
+  {
+    eventShorthand: '2025DIF',
+    sections: [
+      {
+        id: 'featured',
+        title: 'Event Highlights',
+        //description: (
+        //  <p className="text-base text-gray-600 mb-6">
+        //    Key moments from throughout the day showcasing speakers, attendees, and special presentations.
+        //  </p>
+        //),
+        layout: 'masonry',
+        images: [
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (1).webp",
+            "alt": "2025 Defense Industry Forecast (1) Image",
+            "width": 1280,
+            "height": 1090
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (10).webp",
+            "alt": "2025 Defense Industry Forecast (10) Image",
+            "width": 1280,
+            "height": 1005
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (11).webp",
+            "alt": "2025 Defense Industry Forecast (11) Image",
+            "width": 1280,
+            "height": 853
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (12).webp",
+            "alt": "2025 Defense Industry Forecast (12) Image",
+            "width": 1280,
+            "height": 468
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (13).webp",
+            "alt": "2025 Defense Industry Forecast (13) Image",
+            "width": 1280,
+            "height": 853
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (14).webp",
+            "alt": "2025 Defense Industry Forecast (14) Image",
+            "width": 1280,
+            "height": 1330
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (15).webp",
+            "alt": "2025 Defense Industry Forecast (15) Image",
+            "width": 1280,
+            "height": 1167
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (16).webp",
+            "alt": "2025 Defense Industry Forecast (16) Image",
+            "width": 1280,
+            "height": 1319
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (17).webp",
+            "alt": "2025 Defense Industry Forecast (17) Image",
+            "width": 1280,
+            "height": 1128
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (18).webp",
+            "alt": "2025 Defense Industry Forecast (18) Image",
+            "width": 1280,
+            "height": 1067
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (2).webp",
+            "alt": "2025 Defense Industry Forecast (2) Image",
+            "width": 1280,
+            "height": 648
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (3).webp",
+            "alt": "2025 Defense Industry Forecast (3) Image",
+            "width": 1280,
+            "height": 853
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (4).webp",
+            "alt": "2025 Defense Industry Forecast (4) Image",
+            "width": 1280,
+            "height": 853
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (5).webp",
+            "alt": "2025 Defense Industry Forecast (5) Image",
+            "width": 1280,
+            "height": 1071
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (6).webp",
+            "alt": "2025 Defense Industry Forecast (6) Image",
+            "width": 1280,
+            "height": 853
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (7).webp",
+            "alt": "2025 Defense Industry Forecast (7) Image",
+            "width": 1280,
+            "height": 1040
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (8).webp",
+            "alt": "2025 Defense Industry Forecast (8) Image",
+            "width": 1280,
+            "height": 1432
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast (9).webp",
+            "alt": "2025 Defense Industry Forecast (9) Image",
+            "width": 1280,
+            "height": 831
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Amir Bagherpour (1).webp",
+            "alt": "2025 Defense Industry Forecast - Amir Bagherpour (1) Image",
+            "width": 1280,
+            "height": 1280
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Amir Bagherpour (2).webp",
+            "alt": "2025 Defense Industry Forecast - Amir Bagherpour (2) Image",
+            "width": 1280,
+            "height": 1280
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Amir Bagherpour (3).webp",
+            "alt": "2025 Defense Industry Forecast - Amir Bagherpour (3) Image",
+            "width": 1280,
+            "height": 1417
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Amir Bagherpour (4).webp",
+            "alt": "2025 Defense Industry Forecast - Amir Bagherpour (4) Image",
+            "width": 1280,
+            "height": 933
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Arveice Washington (1).webp",
+            "alt": "2025 Defense Industry Forecast - Arveice Washington (1) Image",
+            "width": 1280,
+            "height": 1820
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Arveice Washington (2).webp",
+            "alt": "2025 Defense Industry Forecast - Arveice Washington (2) Image",
+            "width": 1280,
+            "height": 1199
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Bianca Henderson (1).webp",
+            "alt": "2025 Defense Industry Forecast - Bianca Henderson (1) Image",
+            "width": 1280,
+            "height": 871
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Bianca Henderson (2).webp",
+            "alt": "2025 Defense Industry Forecast - Bianca Henderson (2) Image",
+            "width": 1280,
+            "height": 1200
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Brian Liesveld (1).webp",
+            "alt": "2025 Defense Industry Forecast - Brian Liesveld (1) Image",
+            "width": 1280,
+            "height": 1113
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Brian Liesveld (2).webp",
+            "alt": "2025 Defense Industry Forecast - Brian Liesveld (2) Image",
+            "width": 1280,
+            "height": 1280
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Brian Liesveld (3).webp",
+            "alt": "2025 Defense Industry Forecast - Brian Liesveld (3) Image",
+            "width": 1280,
+            "height": 1381
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Brigadier General Prince Joachim (1).webp",
+            "alt": "2025 Defense Industry Forecast - Brigadier General Prince Joachim (1) Image",
+            "width": 1280,
+            "height": 1153
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Brigadier General Prince Joachim (2).webp",
+            "alt": "2025 Defense Industry Forecast - Brigadier General Prince Joachim (2) Image",
+            "width": 1280,
+            "height": 1427
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Brigadier General Prince Joachim (3).webp",
+            "alt": "2025 Defense Industry Forecast - Brigadier General Prince Joachim (3) Image",
+            "width": 1280,
+            "height": 624
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Brigadier General Prince Joachim (4).webp",
+            "alt": "2025 Defense Industry Forecast - Brigadier General Prince Joachim (4) Image",
+            "width": 1280,
+            "height": 621
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Dave Leinberger (1).webp",
+            "alt": "2025 Defense Industry Forecast - Dave Leinberger (1) Image",
+            "width": 1280,
+            "height": 1297
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Dave Leinberger (2).webp",
+            "alt": "2025 Defense Industry Forecast - Dave Leinberger (2) Image",
+            "width": 1280,
+            "height": 1577
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Dave Leinberger (3).webp",
+            "alt": "2025 Defense Industry Forecast - Dave Leinberger (3) Image",
+            "width": 1280,
+            "height": 940
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Dave Morrow (1).webp",
+            "alt": "2025 Defense Industry Forecast - Dave Morrow (1) Image",
+            "width": 1280,
+            "height": 888
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Dave Morrow (2).webp",
+            "alt": "2025 Defense Industry Forecast - Dave Morrow (2) Image",
+            "width": 1280,
+            "height": 1017
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - David Canada (1).webp",
+            "alt": "2025 Defense Industry Forecast - David Canada (1) Image",
+            "width": 1280,
+            "height": 994
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - David Canada (2).webp",
+            "alt": "2025 Defense Industry Forecast - David Canada (2) Image",
+            "width": 1280,
+            "height": 1394
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - David Canada (3).webp",
+            "alt": "2025 Defense Industry Forecast - David Canada (3) Image",
+            "width": 1280,
+            "height": 1565
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Dr. Iryna Andrukh (1).webp",
+            "alt": "2025 Defense Industry Forecast - Dr. Iryna Andrukh (1) Image",
+            "width": 1280,
+            "height": 850
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Dr. Iryna Andrukh (2).webp",
+            "alt": "2025 Defense Industry Forecast - Dr. Iryna Andrukh (2) Image",
+            "width": 1280,
+            "height": 1280
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Dr. Iryna Andrukh (3).webp",
+            "alt": "2025 Defense Industry Forecast - Dr. Iryna Andrukh (3) Image",
+            "width": 1280,
+            "height": 853
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Honorable Sean P. Coffey (1).webp",
+            "alt": "2025 Defense Industry Forecast - Honorable Sean P. Coffey (1) Image",
+            "width": 1280,
+            "height": 1280
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Honorable Sean P. Coffey (2).webp",
+            "alt": "2025 Defense Industry Forecast - Honorable Sean P. Coffey (2) Image",
+            "width": 1280,
+            "height": 1280
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Kimberly Buehler (1).webp",
+            "alt": "2025 Defense Industry Forecast - Kimberly Buehler (1) Image",
+            "width": 1280,
+            "height": 1280
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Kimberly Buehler (2).webp",
+            "alt": "2025 Defense Industry Forecast - Kimberly Buehler (2) Image",
+            "width": 1280,
+            "height": 1310
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Mark Cancian (1).webp",
+            "alt": "2025 Defense Industry Forecast - Mark Cancian (1) Image",
+            "width": 1280,
+            "height": 1208
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Mark Cancian (2).webp",
+            "alt": "2025 Defense Industry Forecast - Mark Cancian (2) Image",
+            "width": 1280,
+            "height": 1358
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Patricia Waddell (1).webp",
+            "alt": "2025 Defense Industry Forecast - Patricia Waddell (1) Image",
+            "width": 1280,
+            "height": 848
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Patricia Waddell (2).webp",
+            "alt": "2025 Defense Industry Forecast - Patricia Waddell (2) Image",
+            "width": 1280,
+            "height": 549
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Scott Kiser (1).webp",
+            "alt": "2025 Defense Industry Forecast - Scott Kiser (1) Image",
+            "width": 1280,
+            "height": 1080
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Scott Kiser (2).webp",
+            "alt": "2025 Defense Industry Forecast - Scott Kiser (2) Image",
+            "width": 1280,
+            "height": 1046
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Small Business Programs Panel (1).webp",
+            "alt": "2025 Defense Industry Forecast - Small Business Programs Panel (1) Image",
+            "width": 1280,
+            "height": 643
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Small Business Programs Panel (2).webp",
+            "alt": "2025 Defense Industry Forecast - Small Business Programs Panel (2) Image",
+            "width": 1280,
+            "height": 694
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Small Business Programs Panel (3).webp",
+            "alt": "2025 Defense Industry Forecast - Small Business Programs Panel (3) Image",
+            "width": 1280,
+            "height": 577
+          },
+          {
+            "src": "events/2025DIF/photos/2025 Defense Industry Forecast - Small Business Programs Panel (4).webp",
+            "alt": "2025 Defense Industry Forecast - Small Business Programs Panel (4) Image",
+            "width": 1280,
+            "height": 1067
+          }
+        ]
+      }
+    ]
+  },
+
 ];
 
 /**
