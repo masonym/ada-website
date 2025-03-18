@@ -327,7 +327,7 @@ export const SCHEDULES = [
                                 "title": "Acting Director, Army Partnerships",
                                 "affiliation": "Deputy Chief of Staff, G-9 (Installations)",
                                 "photo": "dave-leinberger.webp",
-                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Dave_Leinberger_Erin_Bearhalter.pdf"
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Dave_Leinberger___Erin_Bearhalter.pdf"
                             },
                             {
                                 "name": "Erin Bearhalter",
