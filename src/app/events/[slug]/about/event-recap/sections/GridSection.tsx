@@ -49,12 +49,18 @@ const GridSection: React.FC<GridSectionProps> = ({ section }) => {
             className="relative overflow-hidden rounded-lg group cursor-pointer"
             onClick={() => handleClick(index)}
           >
-            <div className="aspect-w-4 aspect-h-3">
+            <div 
+              className="relative w-full" 
+              style={{ 
+                paddingBottom: `${(image.height / image.width) * 100}%`,
+                minHeight: '200px'
+              }}
+            >
               <Image
                 src={getCdnPath(image.src)}
                 alt={image.alt}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-contain"
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 loading={index < 8 ? "eager" : "lazy"}
               />
