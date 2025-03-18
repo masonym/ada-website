@@ -301,6 +301,20 @@ export const EVENT_RECAPS: EventRecap[] = [
             height: 4842,
             people: ['Linda Eshiwani-Nate',],
           },
+          {
+            src: 'events/2025SDPC/photos/2025_SDPC_-_Speakers_39.webp',
+            alt: 'Tasha Allen',
+            width: 960,
+            height: 989,
+            people: ['Tasha Allen',],
+          },
+          {
+            src: 'events/2025SDPC/photos/2025_SDPC_-_Speakers_40.webp',
+            alt: 'Teresa Harrington',
+            width: 823,
+            height: 989,
+            people: ['Teresa Harrington',],
+          },
         ]
       },
       {
