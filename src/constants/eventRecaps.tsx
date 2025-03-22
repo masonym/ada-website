@@ -35,13 +35,6 @@ export const EVENT_RECAPS: EventRecap[] = [
             people: ['Charles Sills',],
           },
           {
-            src: 'events/2025SDPC/photos/2025_SDPC_-_Speakers_3.webp',
-            alt: 'Charles Sills',
-            width: 3733,
-            height: 3131,
-            people: ['Charles Sills',],
-          },
-          {
             src: 'events/2025SDPC/photos/2025_SDPC_-_Speakers_4.webp',
             alt: 'Erin Bearhalter',
             width: 5472,

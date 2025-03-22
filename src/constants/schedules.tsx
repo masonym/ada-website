@@ -249,16 +249,6 @@ export const SCHEDULES = [
         "id": 2,
         "schedule": [
             {
-                "date": "March 10, 2025",
-                "items": [
-                    {
-                        "time": "3:00 PM - 6:00 PM",
-                        "title": "Exhibitor Set-up",
-                        "location": "Galleria 5-7",
-                    }
-                ]
-            },
-            {
                 "date": "March 11, 2025",
                 "items": [
                     {
