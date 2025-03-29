@@ -35,7 +35,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
             {lodging && (
                 <section className="max-w-[86rem] mx-auto">
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-8">
-                        Event Venue and Recommended Lodging
+                        Event Venue & Lodging
                     </h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-1 max-w-[90%] md:max-w-[50%] gap-8 mx-auto">
