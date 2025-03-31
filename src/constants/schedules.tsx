@@ -304,6 +304,7 @@ export const SCHEDULES = [
                                 "affiliation": "DEFENSEWERX",
                                 "photo": "teresa-harrington.webp",
                                 "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Teresa_Harrington.pdf",
+                                "videoId": "IqJep-z-nPY",
                             }
                         ],
                         "location": "Galleria 4",
@@ -317,14 +318,16 @@ export const SCHEDULES = [
                                 "title": "Acting Director, Army Partnerships",
                                 "affiliation": "Deputy Chief of Staff, G-9 (Installations)",
                                 "photo": "dave-leinberger.webp",
-                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Dave_Leinberger___Erin_Bearhalter.pdf"
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Dave_Leinberger___Erin_Bearhalter.pdf",
+                                "videoId": "O-IXLwNwtW4",
                             },
                             {
                                 "name": "Erin Bearhalter",
                                 "title": "Project Manager",
                                 "affiliation": "Office of the Deputy Chief of Staff, G-9 Army Community Partnership Office",
                                 "photo": "erin-bearhalter.webp",
-                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Dave_Leinberger___Erin_Bearhalter.pdf"
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Dave_Leinberger___Erin_Bearhalter.pdf",
+                                "videoId": "O-IXLwNwtW4",
                             }
                         ],
                         "location": "Galleria 4",
@@ -337,7 +340,8 @@ export const SCHEDULES = [
                                 "name": "Brandon Cockrell",
                                 "title": "Deputy Assistant Secretary of the Army for Energy and Sustainability",
                                 "affiliation": "Office of the Assistant Secretary of the Army for Installations, Energy and Environment",
-                                "photo": "brandon-cockrell.webp"
+                                "photo": "brandon-cockrell.webp",
+                                "videoId": "1nBA5FCs0Wg",
                             }
                         ],
                         "location": "Galleria 4",
@@ -358,7 +362,8 @@ export const SCHEDULES = [
                                 "photo": "tim-didjurgis.webp",
                                 "sponsor": "Platinum Sponsor",
                                 "sponsorStyle": "bg-sky-300 text-slate-900",
-                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Tim_Didjurgis.pdf"
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Tim_Didjurgis.pdf",
+                                "videoId": "zDu7nwf2NkA",
                             }
                         ],
                         "location": "Galleria 4",
@@ -389,6 +394,7 @@ export const SCHEDULES = [
                                 "affiliation": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of Defense",
                                 "photo": "kareem-sykes.webp",
                                 "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Kareem_A._Sykes.pdf",
+                                "videoId": "mWIgkwu0-GI",
                             },
                         ],
                         "location": "Galleria 4",
@@ -405,6 +411,7 @@ export const SCHEDULES = [
                                 "sponsor": "Silver Sponsor",
                                 "sponsorStyle": "bg-gray-300",
                                 "presentation": "2025_Southeast_Defense_Procurement_Conference_-_David_Fraley.pdf",
+                                "videoId": "nqV4BfL6ev8",
                             },
                             {
                                 "name": "Kareem A. Sykes",
