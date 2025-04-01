@@ -585,7 +585,8 @@ export const SCHEDULES = [
                             "title": "Managing Director and Analytics & Visualization Lead for Data & AI",
                             "affiliation": "Accenture Federal Services",
                             "photo": "amir-bagherpour.webp",
-                            "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Amir_Bagherpour.pdf"
+                            "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Amir_Bagherpour.pdf",
+                            "videoId": "_CjCfcyiHxY",
                         }]
                     },
                     {
@@ -598,6 +599,7 @@ export const SCHEDULES = [
                             "affiliation": "Crux Defense and Partner, National All-Domain Warfighting Center’s Combat Capabilities Factory",
                             "photo": "andrew-gardner.webp",
                             "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Andrew_Gardner.pdf",
+                            "videoId": "tRDlepOOsc8",
                         }]
                     },
                     {
@@ -623,6 +625,7 @@ export const SCHEDULES = [
                                 "title": "Industry Liaison, OUSD (A&S) Office of Industrial Base Policy, Industrial Base Analysis and Sustainment (IBAS) Program, Innovation Capability and Modernization (ICAM) Office",
                                 "affiliation": "U.S. Department of Defense",
                                 "photo": "wesley-jefferies.webp",
+                                "videoId": "mqxg3IjE7CM",
                             }
                         ],
                         "location": "Galleria 4",
@@ -650,6 +653,7 @@ export const SCHEDULES = [
                                 "affiliation": "U.S. Department of Commerce",
                                 "photo": "oscar-frazier.webp",
                                 "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Oscar_Frazier.pdf",
+                                "videoId": "cM0UYZQCsJs",
                             }
                         ],
                         "location": "Galleria 4",
@@ -664,6 +668,7 @@ export const SCHEDULES = [
                                 "affiliation": "Naval Facilities Engineering Systems Command (NAVFAC)",
                                 "photo": "bianca-henderson.webp",
                                 "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Bianca_Henderson.pdf",
+                                "videoId": "OhPg2CIopu0",
                             }
                         ],
                         "location": "Galleria 4",
@@ -676,7 +681,8 @@ export const SCHEDULES = [
                                 "name": "Charles F. Sills",
                                 "affiliation": "American Defense Alliance",
                                 "title": "President & CEO",
-                                "photo": "charles-sills.webp"
+                                "photo": "charles-sills.webp",
+                                "videoId": "IWx9CDnE7pg",
                             },
                             {
                                 "name": "James Simpson, Major General, U.S. Army (Ret.)",
@@ -698,7 +704,8 @@ export const SCHEDULES = [
                                 "title": "Director of Small Business Programs",
                                 "affiliation": "Air Force Sustainment Center, Robins Air Force Base",
                                 "photo": "timothy-r-inman.webp",
-                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Tim_Inman.pdf"
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Tim_Inman.pdf",
+                                "videoId": "_4WTRx-h8Dc",
                             }
                         ],
                         "location": "Galleria 4",
@@ -774,7 +781,8 @@ export const SCHEDULES = [
                                 "title": "Trade Commissioner",
                                 "affiliation": "Consulate General of Canada in Atlanta",
                                 "photo": "linda-eshiwani-nate.webp",
-                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Linda_Eshiwani-Nate.pdf"
+                                "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Linda_Eshiwani-Nate.pdf",
+                                "videoId": "OYMq4CEnh9c",
                             }
                         ],
                         "location": "Galleria 4",
