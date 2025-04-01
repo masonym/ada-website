@@ -347,6 +347,27 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://melroseinc.com/",
     size: 'small'
   },
+  "advance-safety-equipment": {
+    id: "advance-safety-equipment",
+    name: "Advance Safety Equipment",
+    logo: "/sponsors/advance-safety-equipment.webp",
+    website: "https://advancesafetyequip.com/",
+    size: 'small'
+  },
+  "hartwood-consulting-group": {
+    id: "hartwood-consulting-group",
+    name: "Hartwood Consulting Group",
+    logo: "/sponsors/hartwood-consulting-group.webp",
+    website: "https://hartwoodcg.com/",
+    size: 'small'
+  },
+  "us-hazmat-rentals": {
+    id: "us-hazmat-rentals",
+    name: "US Hazmat Rentals",
+    logo: "/sponsors/us-hazmat-rentals.webp",
+    website: "https://ushazmatrentals.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID

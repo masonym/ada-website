@@ -128,7 +128,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         ]
     },
     {
-        id: 4,
+        id: 4, // NMPCPC
         tiers: [
             {
                 id: "small-business",
@@ -139,6 +139,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "jbc-corp",
                     "cpisys",
                     "normandeau",
+                    "us-hazmat-rentals",
+                    "hartwood-consulting-group",
                 ],
             },
             {
@@ -155,6 +157,9 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "normandeau",
                     "new-wave",
                     "absolute-supply",
+                    "advance-safety-equipment",
+                    "us-hazmat-rentals",
+                    "hartwood-consulting-group",
                 ],
             }
         ]
