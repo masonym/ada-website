@@ -159,7 +159,6 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "absolute-supply",
                     "advance-safety-equipment",
                     "us-hazmat-rentals",
-                    "hartwood-consulting-group",
                 ],
             }
         ]
