@@ -92,6 +92,10 @@ body {
     @apply bg-blue-900 px-8 py-4 text-white transition-all hover:bg-blue-950 w-full
   }
 
+  .btn_red {
+    @apply bg-red-999 px-8 py-4 text-white transition-all hover:bg-blue-950 w-full
+  }
+
   .btn_sqr_red {
     @apply bg-red-999 px-8 py-4 text-white transition-all hover:bg-red-950 w-full rounded-md
   }

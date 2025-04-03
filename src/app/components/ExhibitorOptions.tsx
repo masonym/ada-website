@@ -23,6 +23,14 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
     return (
         <div className="max-container mx-auto pb-8 pt-0 px-4 flex flex-col items-center">
             <div className="flex flex-col items-center">
+                <div className="mb-4 text-center flex flex-col items-center">
+                    <Button
+                        title="Sign-up Here to Exhibit"
+                        variant="btn_red"
+                        link={event.registerLink}
+                        className="max-w-xs sm:max-w-sm"
+                    />
+                </div>
                 <h1 className="text-[48px] text-center font-gotham font-bold mb-2 text-slate-700">
                     Exhibitor Opportunities
                 </h1>

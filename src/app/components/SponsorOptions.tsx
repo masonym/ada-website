@@ -52,6 +52,14 @@ const SponsorOptions = ({ event }: SponsorProps) => {
         <div className="w-full overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col items-center">
+                    <div className="mb-4 text-center flex flex-col items-center">
+                        <Button
+                            title="Sign-up Here to Sponsor"
+                            variant="btn_red"
+                            link={event.registerLink}
+                            className="max-w-xs sm:max-w-sm"
+                        />
+                    </div>
                     <h1 className="text-[48px] text-center font-gotham font-bold mb-2  text-slate-700">
                         Sponsorship Opportunities
                     </h1>
