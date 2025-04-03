@@ -52,6 +52,13 @@ const SponsorOptions = ({ event }: SponsorProps) => {
         <div className="w-full overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col items-center">
+                    <h1 className="text-[48px] text-center font-gotham font-bold mb-2  text-slate-700">
+                        Sponsorship Opportunities
+                    </h1>
+                    <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center px-4">
+                        Increase your Brand Visibility and gain a Competitive Advantage!
+                        {/* <br></br> Engaging in Sponsorship Opportunities is a Strategic way to effectively Promote your Products or Services. */}
+                    </p>
                     <div className="mb-4 text-center flex flex-col items-center">
                         <Button
                             title="Sign-up Here to Sponsor"
@@ -60,13 +67,6 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                             className="max-w-xs sm:max-w-sm"
                         />
                     </div>
-                    <h1 className="text-[48px] text-center font-gotham font-bold mb-2  text-slate-700">
-                        Sponsorship Opportunities
-                    </h1>
-                    <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center px-4">
-                        Increase your Brand Visibility and gain a Competitive Advantage!
-                        {/* <br></br> Engaging in Sponsorship Opportunities is a Strategic way to effectively Promote your Products or Services. */}
-                    </p>
                     <ExhibitInstructionsButton eventShorthand={event.eventShorthand} />
                     <SponsorProspectus eventShorthand={event.eventShorthand} />
                     <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">

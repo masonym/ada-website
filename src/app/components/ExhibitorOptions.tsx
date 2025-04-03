@@ -23,6 +23,13 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
     return (
         <div className="max-container mx-auto pb-8 pt-0 px-4 flex flex-col items-center">
             <div className="flex flex-col items-center">
+                <h1 className="text-[48px] text-center font-gotham font-bold mb-2 text-slate-700">
+                    Exhibitor Opportunities
+                </h1>
+                <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
+                    Increase your Brand Visibility and gain a Competitive Advantage!
+                    {/* <br /> Engaging in Exhibitor Opportunities is a Strategic way to effectively Promote your Products or Services. */}
+                </p>
                 <div className="mb-4 text-center flex flex-col items-center">
                     <Button
                         title="Sign-up Here to Exhibit"
@@ -31,13 +38,6 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                         className="max-w-xs sm:max-w-sm"
                     />
                 </div>
-                <h1 className="text-[48px] text-center font-gotham font-bold mb-2 text-slate-700">
-                    Exhibitor Opportunities
-                </h1>
-                <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
-                    Increase your Brand Visibility and gain a Competitive Advantage!
-                    {/* <br /> Engaging in Exhibitor Opportunities is a Strategic way to effectively Promote your Products or Services. */}
-                </p>
                 <ExhibitInstructionsButton eventShorthand={event.eventShorthand} />
                 <SponsorProspectus eventShorthand={event.eventShorthand} />
                 <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
