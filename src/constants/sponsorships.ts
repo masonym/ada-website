@@ -183,6 +183,26 @@ export const SPONSORSHIP_TYPES = [
     },
     {
         id: 4,
+        primeSponsor:
+        {
+            title: "Platinum Sponsor",
+            cost: "$10,000",
+            perks: [
+                { tagline: "Event Access", description: "(5) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
+                { tagline: "Lanyard Sponsor", description: "Exclusive Company Logo on Lanyards" },
+                { tagline: "Name Badge Sponsor", description: "Company Logo on Name Badges" },
+                { tagline: "Speaking Opportunity", description: "20-Minute Speaking Session for a Representative of your Company" },
+                { tagline: "VIP Introductions", description: "Strategic Introductions to Key Speakers and VIP Guests" },
+                { tagline: "Exhibit Space", description: "8'x10' Exhibit Space Strategically Placed in Exhibit Area/Foyer. 6' Exhibit Table and Chairs" },
+                { tagline: "Matchmaking Host", description: "Invitation to Host a One-on-One Matchmaking Session" },
+                { tagline: "Sponsor Spotlight Email", description: "(1) Promotional Email sent to all Registered Attendees Pre-Conference Highlighting your Capabilities" },
+                { tagline: "Brand Visibility", description: "Prime Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
+                { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
+                { tagline: "Media Coverage", description: "Inclusion in Press Releases, Promotional Materials and Social Media Mentions. Photographs and Videos of your Participation" },
+            ],
+            colour: "bg-sky-300",
+        },
+
         sponsorships: [
             {
                 title: "Gold Sponsor",

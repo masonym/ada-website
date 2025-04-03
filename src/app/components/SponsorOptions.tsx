@@ -72,24 +72,23 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                     <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
                         Registered Sponsors: Please submit a high-quality logo for inclusion in the conference materials, along with the desired link for the logo on the event website, to <Link className="text-blue-600 hover:underline break-words" href="mailto:marketing@americandefensealliance.org">marketing@<wbr />americandefensealliance.org</Link>.
                     </p>
-                    <div className="grid md:grid-cols-3 grid-cols-1 gap-8 justify-items-stretch items-stretch">
-                        {currentEvent.sponsorships.map((item, index) => {
-                            const isLastRow = index >= Math.floor(currentEvent.sponsorships.length / 3) * 3;
-                            const isLastRowCenter = currentEvent.sponsorships.length % 3 === 1;
-                            const isLastRowTwoItems = currentEvent.sponsorships.length % 3 === 2;
+                    {currentEvent.primeSponsor && (
+                        <div className="mb-8 w-full">
+                            <h2 className="text-3xl font-bold text-center text-slate-800 mb-4">
+                                EXCLUSIVE
+                            </h2>
+                            <div className="flex justify-center">
+                                <SponsorshipCard item={currentEvent.primeSponsor} />
+                            </div>
+                        </div>
+                    )}
 
-                            return (
-                                <div
-                                    key={index}
-                                    className={`
-                    ${isLastRow && isLastRowCenter ? 'md:col-start-2' : ''}
-                    ${isLastRow && isLastRowTwoItems ? 'md:col-span-1 first:md:col-start-2' : ''}
-                `}
-                                >
-                                    <SponsorshipCard item={item} />
-                                </div>
-                            );
-                        })}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+                        {currentEvent.sponsorships.map((item, index) => (
+                            <div key={index} className="flex justify-center">
+                                <SponsorshipCard item={item} />
+                            </div>
+                        ))}
                     </div>
                     <p className="text-[16px] mt-4 font-gotham text-slate-600 text-center w-full max-w-6xl mx-auto mb-6">
                         <b>Exhibitor Spaces:</b>{' '}
