@@ -42,7 +42,7 @@ const AboutUsPage = () => {
       <div className="mb-12">
         <h2 className="text-2xl font-semibold text-navy-800 mb-4">Our Commitment</h2>
         <p className="text-gray-700 mb-4">
-          At American Defense Alliance, we are committed to fostering a robust and diverse defense industrial base. We believe that by empowering businesses of all sizes and backgrounds, we can enhance the capabilities and resilience of our national defense infrastructure.
+          At American Defense Alliance, we are committed to fostering a robust and innovative defense industrial base. We believe that by empowering businesses of all sizes and capabilities, we can enhance the depth and resilience of our national defense infrastructure.
         </p>
         <p className="text-gray-700">
           Through our events, resources, and networks, we strive to create an environment where innovation thrives, partnerships flourish, and the American defense industry continues to lead on the global stage.
