@@ -6,6 +6,8 @@
 
 This platform serves as the central hub for all ADA-hosted events, including conference overviews, sponsorships, registration links, speaker rosters, and multimedia recaps. It replaces a legacy no-code prototype with a performant, scalable, and fully custom event infrastructure.
 
+This project was built in a hurry - I had about 2 weeks to build it from scratch, and I was learning TypeScript and Next.js as I went. The code is a bit messy, but it works! I plan to clean it up in the future, but for now, it's functional and serves its purpose. This was built as a push-to-market initiative for American Defense Alliance.
+
 ## Features
 
 - 🔧 **Dynamic Event Architecture**  
