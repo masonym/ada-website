@@ -40,9 +40,16 @@ This platform serves as the central hub for all ADA-hosted events, including con
 
 ## Future Plans
 
-- 💾 Migration to database-backed CMS (e.g. Sanity or Supabase) for dynamic content editing  
-- 🔒 Authenticated admin portal with UI for speaker/event management  
-- 📊 Internal analytics dashboard for tracking event engagement and registrations
+- **Event Registration System**  
+  Integrate a registration system for attendees to sign up for events, including payment processing and ticketing.
+- **Schedule Printing**  
+  Add a feature to automatically generate a printable schedule for each event, including all sessions and speakers. This will use data from `src/constants/schedules.ts`.
+- **Speaker Management System**  
+  Build a more robust speaker management system that allows for easy editing and updating of speaker information, including bios, photos, and presentation materials.
+- **A real DB/CMS**  
+  Integrate a real database or CMS for event data management, allowing for easier updates and content management. I still need to think more about what this might look like, and if it would be worth it.
+- **Improved Admin Tools**  
+  Build out the admin portal to include more features for managing events, speakers, and media. This will include a more robust upload system for speaker presentation PDFs, as well as a way to manage event details and schedules.
 
 ## Screenshots
 
