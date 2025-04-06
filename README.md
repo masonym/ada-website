@@ -1,68 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project. 
+# American Defense Alliance Website
 
-Company website for [American Defense Alliance](https://americandefensealliance.org/).
+> A full-stack web application powering the digital presence of the American Defense Alliance—a U.S. startup supporting defense contractors, government agencies, and national security stakeholders through high-impact industry events.
 
-Written in TypeScript/Next.js 
+## Overview
 
-## Run Locally
+This platform serves as the central hub for all ADA-hosted events, including conference overviews, sponsorships, registration links, speaker rosters, and multimedia recaps. It replaces a legacy no-code prototype with a performant, scalable, and fully custom event infrastructure.
 
-To run locally, `git clone` the project first.
+## Features
 
-Then, run the development server:
+- 🔧 **Dynamic Event Architecture**  
+  Each event is dynamically generated from structured TypeScript data files—pages include overview, registration options, speaker lineups, agendas, and sponsorship packages.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 🧾 **Speaker Management System**  
+  Speaker data is ingested from Google Sheets via a custom ETL pipeline and curated manually into per-event rosters using a reusable schema.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 📥 **Internal Admin Tools**  
+  Admin portal allows non-technical staff to upload speaker presentation PDFs directly to S3 for event distribution.
 
+- 💡 **Post-Event Media Galleries**  
+  Photo/video galleries with lightbox functionality and testimonial content, built for engagement and social proof.
 
-## Creating new events
+- 🚀 **Performance-Oriented Delivery**  
+  Assets delivered via CloudFront CDN and S3, optimized for low latency across the U.S. audience.
 
-To create a new event, we must manage the data files in @/constants
+## Stack
 
-1. Events.tsx
-   - ID: Int. Must be unique
-   - Title: Str. Event title
-   - Date: Str. Event date.
-   - TimeStart: Str. Time in the format YYYY-MM-DDT00:00:00Z
-   - Description: Str. Event description
-   - EventText: JSX Element.
-   - Topical Coverage: Array of strings. Topical coverage
-   - Image: Str. Path to event image
-   - Slug: Str. Event slug for url
-   - LocationImage: Str. Path to venue location image
-   - LocationAddress: Str. Address to the event venue.
-   - Directions: Array of objects. With title/descriptions.
-   - Images: Array of objects - I think this is for the event recap page?
-   - ParkingInfo: Array of objects with parking info
-   - PlaceID: Str for google maps place ID.
-   - RegisterLink: Str. Eventbrite URL.
-   - Password: Str. Password for accessing presentation files.
+- **Frontend**: Next.js (App Router) + React  
+- **Styling**: Tailwind CSS  
+- **Language**: TypeScript  
+- **Infra**: AWS (CloudFront, S3), Vercel  
+- **Tooling**: Git, Neovim, custom CLI scripts
 
-2. Faqs.tsx
-   - ID: Int. Corresponds to the event ID
-   - FAQS: Array of objects with questions and answers.
+## Architecture Overview
 
-3. Registrations.ts
-   - ID: Int. Corresponds to the event ID.
-   - Registrations: Array of objects with registration info.
+- All event data is stored in structured TypeScript files, which are used for dynamic rendering. These files are stored under `src/constants`.
+- These files are _not_ fully typed, and honestly a little messy! Watch for inconsistencies in the data structure. I hope to clean them up in the future. This was my first TypeScript project, and I learned a lot about the language and its ecosystem while building this site.
+- Each event page is located at `/events/[slug]/page.tsx`.
+- Static assets are stored in S3 and served via CloudFront CDN. Generally speaking locally I use `aws s3 sync` to upload files to S3, and then use the CloudFront invalidation API to clear the cache. This is a bit of a pain, but it works.
 
-4. Schedules.tsx
-   - ID: Int. Corresponds to the event ID.
-   - Schedule: Array of objects with schedule info.
+## Future Plans
 
-5. Speakers.ts
-   - ID: Int. Corresponds to the event ID.
-   - Speakers: Array of objects with speaker info.
-       - Note: one speaker can be labeled as a keynote speaker.
-    
-6. Sponsorships.ts
-   - ID: Int. Corresponds to the event ID.
-   - Sponsorships: Array of objects with sponsorship info.
+- 💾 Migration to database-backed CMS (e.g. Sanity or Supabase) for dynamic content editing  
+- 🔒 Authenticated admin portal with UI for speaker/event management  
+- 📊 Internal analytics dashboard for tracking event engagement and registrations
+
+## Screenshots
+
+_(To be added soon)_ – demo video + GIFs planned
+
+## License
+
+All rights reserved. This repository is provided for educational purposes only. You may not copy, distribute, or use this project for commercial purposes without explicit permission.
