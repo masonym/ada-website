@@ -1,4 +1,4 @@
-# American Defense Alliance Website
+# [American Defense Alliance Website](https://www.americandefensealliance.org/)
 
 > A full-stack web application powering the digital presence of the American Defense Alliance—a U.S. startup supporting defense contractors, government agencies, and national security stakeholders through high-impact industry events.
 
