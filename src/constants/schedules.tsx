@@ -277,6 +277,7 @@ export const SCHEDULES = [
                                 "photo": "charles-sills.webp",
                                 "sponsor": "Conference Moderator",
                                 "sponsorStyle": "bg-red-999",
+                                "videoId": "M1FmtrcHE5s",
                             }
                         ],
                         "location": "Galleria 4",
@@ -289,7 +290,8 @@ export const SCHEDULES = [
                                 "name": "Tasha Allen",
                                 "title": "Vice President of Talent Management",
                                 "affiliation": "Georgia Chamber of Commerce",
-                                "photo": "tasha-allen.webp"
+                                "photo": "tasha-allen.webp",
+                                "videoId": "8mJzEcUiAIs",
                             }
                         ],
                         "location": "Galleria 4",
@@ -449,6 +451,7 @@ export const SCHEDULES = [
                                 "affiliation": "CEO and Chief Scientist, National Energy USA",
                                 "photo": "dave-robau.webp",
                                 "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Dave_Robau.pdf",
+                                "videoId": "wA8ANoPy40s",
                             },
                             {
                                 "name": "Cliff Holbeck",
@@ -469,6 +472,7 @@ export const SCHEDULES = [
                                 "affiliation": "Improve Group",
                                 "photo": "aimee-zick.webp",
                                 "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Aimee__Z__Zick.pdf",
+                                "videoId": "uflobAWpy6g"
                             }
                         ],
                         "location": "Galleria 4",
@@ -495,6 +499,7 @@ export const SCHEDULES = [
                                 "affiliation": "U.S. Army Corps of Engineers, Memphis District",
                                 "photo": "sherrie-cordi.webp",
                                 "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Sherrie_Cordi.pdf",
+                                "videoId": "ZMUMzEsI9ls",
                             },
                             //{
                             //    "name": "Tonya D. Willis",
