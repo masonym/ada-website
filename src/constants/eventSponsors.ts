@@ -131,6 +131,14 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         id: 4, // NMPCPC
         tiers: [
             {
+                id: "bronze",
+                name: "Bronze Sponsor",
+                style: "bg-amber-400 text-slate-900",
+                sponsorIds: [
+                    "pmb-machine-works",
+                ],
+            },
+            {
                 id: "small-business",
                 name: "Small Business Sponsors",
                 style: "bg-sb-100 text-slate-900",
@@ -159,6 +167,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "absolute-supply",
                     "advance-safety-equipment",
                     "us-hazmat-rentals",
+                    "pmb-machine-works",
                 ],
             }
         ]
