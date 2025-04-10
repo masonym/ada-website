@@ -133,7 +133,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
             {
                 id: "bronze",
                 name: "Bronze Sponsor",
-                style: "bg-amber-400 text-slate-900",
+                style: "bg-amber-700 text-slate-900",
                 sponsorIds: [
                     "pmb-machine-works",
                 ],
