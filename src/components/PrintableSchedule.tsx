@@ -34,7 +34,7 @@ type ScheduleDay = {
   items: ScheduleItem[];
 };
 
-const PRINTABLE_PAGE_HEIGHT_PX = 1500;
+const PRINTABLE_PAGE_HEIGHT_PX = 1500; // Reduced for better pagination
 
 const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
   const router = useRouter();
@@ -49,7 +49,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
   const [customSubtitle, setCustomSubtitle] = useState("");
   const [twoColumnLayout, setTwoColumnLayout] = useState(true);
   const [newPagePerDay, setNewPagePerDay] = useState(true);
-  const [pages, setPages] = useState<JSX.Element[][]>([]);
+  const [pages, setPages] = useState<Array<{ items: JSX.Element[], date: string }>>([]);
 
   if (!schedule || !event) return <div>Schedule not found</div>;
 
@@ -72,10 +72,10 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
           {showLocations && item.location && locationChanged && (
             <div className="location text-xs italic mb-2">{item.location}</div>
           )}
-          {showSpeakers && item.speakers?.length && (
-            <div className="speakers mt-2">
-              {item.speakers.map((speaker, i) => (
-                <div key={i} className="speaker mb-1 flex items-start gap-3">
+          {showSpeakers && !!item.speakers?.length && (
+            <div className="speakers">
+              {item.speakers!.map((speaker, i) => (
+                <div key={i} className="speaker flex items-start gap-3">
                   {speaker.photo && (
                     <div className="flex-shrink-0">
                       <Image
@@ -107,71 +107,127 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
     </div>
   );
 
+  const getDayHeader = (day: ScheduleDay, index: number) => {
+    return (
+      <div
+        key={`day-header-${index}`}
+        className="day-print-header"
+        data-date={day.date}
+      >
+        <div className="day-print-header-top">{customTitle || event?.title}</div>
+        <div className="day-print-header-bottom">
+          <div>{day.date}</div>
+          <div>{event?.locationAddress}</div>
+        </div>
+      </div>
+    );
+  };
+
   const getAllScheduleItems = useCallback(() => {
-    const allItems: JSX.Element[] = [];
+    const allItems: { element: JSX.Element, date: string }[] = [];
     let lastLocation: string | null = null;
 
     filteredSchedule.forEach((day, dayIndex) => {
-      if (newPagePerDay && dayIndex > 0) {
-        allItems.push(<div key={`day-break-${dayIndex}`} className="page-break-before w-full"></div>);
-      }
+      // Add day header with date info
+      allItems.push({
+        element: getDayHeader(day, dayIndex),
+        date: day.date
+      });
 
-      allItems.push(
-        <div key={`day-header-${dayIndex}`} className="day-print-header">
-          <div className="day-print-header-top">{customTitle || event.title}</div>
-          <div className="day-print-header-bottom">
-            <div>{day.date}</div>
-            <div>{event.locationAddress}</div>
-          </div>
-        </div>
-      );
+      if (newPagePerDay && dayIndex > 0) {
+        allItems.push({
+          element: <div key={`day-break-${dayIndex}`} className="page-break-before w-full"></div>,
+          date: day.date
+        });
+      }
 
       day.items.forEach((item, i) => {
         const locationChanged = item.location !== lastLocation;
-        allItems.push(renderScheduleItem(item, showSpeakers, showLocations, locationChanged));
+        allItems.push({
+          element: renderScheduleItem(item, showSpeakers, showLocations, locationChanged),
+          date: day.date
+        });
         lastLocation = item.location || null;
       });
     });
 
     return allItems;
-  }, [filteredSchedule, showSpeakers, showLocations, customTitle, newPagePerDay]);
+  }, [filteredSchedule, showSpeakers, showLocations, customTitle, newPagePerDay, event]);
 
-  const paginateSchedule = async (items: JSX.Element[]): Promise<JSX.Element[][]> => {
+  const paginateSchedule = async (items: { element: JSX.Element, date: string }[]): Promise<Array<{ items: JSX.Element[], date: string }>> => {
     const container = document.getElementById("measurer");
-    if (!container) return [items];
+    if (!container) return [{ items: items.map(i => i.element), date: items[0]?.date || "" }];
 
-    console.log("Paginating schedule..."); // Debugging line
-    const pages: JSX.Element[][] = [];
+    console.log("Paginating schedule...");
+    const pages: Array<{ items: JSX.Element[], date: string }> = [];
     let currentPage: JSX.Element[] = [];
     let currentHeight = 0;
+    let currentDate = items[0]?.date || "";
+    let forceNewPage = false;
 
     for (let i = 0; i < items.length; i++) {
-      const item = items[i];
+      const { element, date } = items[i];
 
-      container.innerHTML = ""; // clear old
+      // Force new page when day changes if newPagePerDay is enabled
+      if (newPagePerDay && date !== currentDate && i > 0) {
+        if (currentPage.length > 0) {
+          pages.push({ items: [...currentPage], date: currentDate });
+          currentPage = [];
+          currentHeight = 0;
+        }
+        currentDate = date;
+        forceNewPage = false;
+      }
+
+      // Check if this is a manual page break
+      if (React.isValidElement(element) &&
+        (element.props).className &&
+        element.props.className.includes("page-break-before")) {
+        if (currentPage.length > 0) {
+          pages.push({ items: [...currentPage], date: currentDate });
+          currentPage = [element];
+          currentHeight = 0;
+          forceNewPage = false;
+        }
+        continue;
+      }
+
+      // Measure height of the element
+      container.innerHTML = "";
       const wrapper = document.createElement("div");
       wrapper.className = "mb-4";
       container.appendChild(wrapper);
 
       const root = ReactDOM.createRoot(wrapper);
-      root.render(item);
+      root.render(element);
 
       await new Promise((r) => setTimeout(r, 0)); // wait for layout
 
       const height = wrapper.offsetHeight;
-      root.unmount(); // unmount this wrapper render
+      root.unmount();
 
-      if (currentHeight + height > PRINTABLE_PAGE_HEIGHT_PX) {
-        pages.push(currentPage);
-        currentPage = [item];
-        currentHeight = height;
+      // Start new page if this item won't fit
+      if (currentHeight + height > PRINTABLE_PAGE_HEIGHT_PX || forceNewPage) {
+        if (currentPage.length > 0) {
+          pages.push({ items: [...currentPage], date: currentDate });
+          currentPage = [element];
+          currentHeight = height;
+          forceNewPage = false;
+        } else {
+          currentPage.push(element);
+          currentHeight = height;
+        }
       } else {
-        currentPage.push(item);
+        currentPage.push(element);
         currentHeight += height;
       }
     }
 
-    if (currentPage.length > 0) pages.push(currentPage);
+    // Add the last page if there are items left
+    if (currentPage.length > 0) {
+      pages.push({ items: currentPage, date: currentDate });
+    }
+
     return pages;
   };
 
@@ -238,32 +294,33 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
         </div>
       </div>
 
-      <div className="print-footer">
+      <div className="print-footer no-print-fixed">
         <div className="italic">Presented by <span className="font-bold not-italic">American Defense Alliance</span></div>
         <div>americandefensealliance.org</div>
       </div>
 
       <div className="printable-content" style={{ fontSize: `${fontSize}%` }}>
         {customSubtitle && <div className="text-center mb-6"><p className="text-xl italic">{customSubtitle}</p></div>}
-        {pages.map((items, i) => {
-          const firstDayElement = items.find(el =>
-            React.isValidElement(el) &&
-            el.props?.["data-date"]
-          );
-
-          const pageDate = firstDayElement?.props?.["data-date"] ?? "—";
-
+        {pages.map((page, i) => {
           return (
-            <div key={i} className="page">
-              <div className="fixed day-print-header print-only z-[9999]">
-                <div className="day-print-header-top">{customTitle || event.title}</div>
+            <div
+              key={i}
+              className={`page ${i > 0 ? 'page-break-before' : ''}`}
+              data-date={page.date}
+            >
+              <div className="print-only day-print-header">
+                <div className="day-print-header-top">{customTitle || event?.title}</div>
                 <div className="day-print-header-bottom">
-                  <div>{pageDate}</div>
-                  <div>{event.locationAddress}</div>
+                  <div>{page.date}</div>
+                  <div>{event?.locationAddress}</div>
                 </div>
               </div>
-              <div key={i} className={`page ${twoColumnLayout ? 'columns-1 md:columns-2 gap-0 space-y-0' : ''}`}>
-                {items}
+              <div className={`page-content ${twoColumnLayout ? 'columns-1 md:columns-2 gap-0 space-y-0' : ''}`}>
+                {page.items}
+              </div>
+              <div className="print-only print-footer">
+                <div className="italic">Presented by <span className="font-bold not-italic">American Defense Alliance</span></div>
+                <div>americandefensealliance.org</div>
               </div>
             </div>
           );

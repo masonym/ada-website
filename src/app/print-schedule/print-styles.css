@@ -109,7 +109,7 @@
 }
 
 .speakers {
-  margin-top: 10px;
+  margin-top: 4px;
 }
 
 .speaker-name {
@@ -125,7 +125,7 @@
 
 .description {
   font-size: 14px;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 /* Ensure day headers and items don't break across columns */
@@ -304,7 +304,6 @@
   /* Force two columns for print */
   .columns-1.md\:columns-2 {
     columns: 2 !important;
-    column-fill: auto !important;
     column-gap: 0.25rem !important;
     height: auto !important; /* Let browser handle pagination */
   }
