@@ -914,55 +914,84 @@ export const SCHEDULES = [
                 items: [
                     {
                         time: "7:30 AM - 8:30 AM",
-                        title: "Registration & Networking Breakfast, On-Site Sign-up for Matchmaking Sessions",
-                        // location: "Ballroom and Foyer",
+                        title: "On-Site Attendee Registration & Check-in",
                     },
                     {
-                        time: "8:30 AM - 10:00 AM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Networking Breakfast with Exhibitors",
                     },
                     {
-                        time: "10:00 AM - 10:15 AM",
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Matchmaking Sign-up",
+                    },
+                    {
+                        time: "8:30 AM",
+                        title: "Conference Opening",
+                    },
+                    {
+                        time: "8:35 AM",
+                        title: "State of Virginia and Norfolk Chamber of Commerce – Welcoming Remarks",
+                    },
+                    {
+                        time: "8:45 AM",
+                        title: "Navy Small Business Program Panel",
+                    },
+                    {
+                        time: "9:45 AM",
+                        title: "How DEFENSEWERX and Nautilus are Accelerating Innovative Tech Contracting",
+                    },
+                    {
+                        time: "10:15 AM",
+                        title: "Sponsor Remarks",
+                    },
+                    {
+                        time: "10:30 AM",
                         title: "Networking Break",
-                        // location: "Fourth Estate Meeting Room"
                     },
                     {
-                        time: "10:15 AM - 12:30 PM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        time: "10:45 AM",
+                        title: "Military Base-Community Partnerships Promoting Local Build Contracts",
                     },
                     {
-                        time: "12:30 PM - 1:30 PM",
-                        title: "Networking Lunch for Speakers, Sponsors, Exhibitors, and Attendees",
-                        // location: "Ballroom",
+                        time: "11:15 AM",
+                        title: "National Security Keynote Address",
                     },
                     {
-                        time: "1:30 PM - 3:00 PM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        time: "11:30 AM",
+                        title: "Fleet Readiness Panel – Addressing Critical Challenges & Requirements",
                     },
                     {
-                        time: "3:00 PM - 3:15 PM",
-                        title: "Networking Break",
-                        // location: "Fourth Estate Meeting Room"
+                        time: "12:30 PM",
+                        title: "Networking Lunch with Exhibitors",
                     },
                     {
-                        time: "3:15 PM - 4:00 PM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        time: "1:30 PM",
+                        title: "The ‘SHIPS ACT’ & the National Shipbuilding Revival: Driving Major New Contracts",
                     },
                     {
-                        time: "4:00 PM - 5:30 PM",
-                        title: "Matchmaking Sessions",
-                        // location: "Fourth Estate Meeting Room"
+                        time: "2:30 PM",
+                        title: "Force Projection & Contested Logistics in the Indo-Pacific",
+                    },
+                    {
+                        time: "3:30 PM",
+                        title: "Sponsor Remarks",
+                    },
+                    {
+                        time: "3:40 PM",
+                        title: "Accessing Government-Wide Acquisition Contracts (GWAC’s)",
+                    },
+                    {
+                        time: "4:30 PM",
+                        title: "Day One Closing Remarks",
+                    },
+                    {
+                        time: "4:30 PM - 5:30 PM",
+                        title: "Matchmaking Session I",
                     },
                     {
                         time: "5:30 PM - 7:30 PM",
-                        title: "VIP Networking Reception with Speakers, Sponsors, Exhibitors, and VIP Attendees",
-                        // location: "Fourth Estate Meeting Room"
+                        title: "VIP Networking Reception",
                     },
-
                 ],
             },
             {
@@ -970,27 +999,54 @@ export const SCHEDULES = [
                 items: [
                     {
                         time: "7:30 AM - 8:30 AM",
-                        title: "Registration & Networking Breakfast, On-Site Signup for Matchmaking Sessions",
-                        // location: "Ballroom and Foyer",
+                        title: "Networking Breakfast with Exhibitors",
                     },
                     {
-                        time: "8:30 AM - 10:30 AM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        time: "8:30 AM",
+                        title: "Welcome Back Remarks",
                     },
                     {
-                        time: "10:30 AM - 10:45 AM",
-                        title: "Networking Break",
-                        // location: "Fourth Estate Meeting Room"
+                        time: "8:35 AM",
+                        title: "Congressional Keynote Address",
                     },
                     {
-                        time: "10:45 AM - 12:00 PM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        time: "9:00 AM",
+                        title: "How to do Business with the Primes",
+                    },
+                    {
+                        time: "10:00 AM",
+                        title: "Cybersecurity Update: Safeguarding the Supply Chain",
+                    },
+                    {
+                        time: "10:25 AM",
+                        title: "Artificial Intelligence in Defense – Leveraging Navy Use Cases",
+                    },
+                    {
+                        time: "11:00 AM",
+                        title: "The ‘Golden Dome’ Integrated Missile Defense Initiative: Navy Role",
+                    },
+                    {
+                        time: "11:35 AM",
+                        title: "Streamlining Acquisition to Empower Our Warfighters",
+                    },
+                    {
+                        time: "12:00 PM",
+                        title: "MBDA Federal Procurement Center – Tiger Team Briefing",
+                    },
+                    {
+                        time: "12:25 PM",
+                        title: "Using Mentor-Protégé Partnerships to Drive the Combat Capability Factory",
+                    },
+                    {
+                        time: "12:45 PM",
+                        title: "Closing Remarks",
+                    },
+                    {
+                        time: "12:45 PM - 1:45 PM",
+                        title: "Matchmaking Session II",
                     },
                 ],
-            }
-
-        ]
-    },
+            },
+        ],
+    }
 ];
