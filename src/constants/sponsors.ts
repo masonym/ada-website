@@ -368,6 +368,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://ushazmatrentals.com/",
     size: 'small'
   },
+  "wise-technical-innovations": {
+    id: "wise-technical-innovations",
+    name: "Wise Technical Innovations",
+    logo: "/sponsors/wise-technical-innovations.webp",
+    website: "https://www.wtinetworks.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID

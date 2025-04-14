@@ -149,6 +149,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "normandeau",
                     "us-hazmat-rentals",
                     "hartwood-consulting-group",
+                    "wise-technical-innovations",
                 ],
             },
             {
@@ -168,6 +169,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "advance-safety-equipment",
                     "us-hazmat-rentals",
                     "pmb-machine-works",
+                    "wise-technical-innovations",
                 ],
             }
         ]
