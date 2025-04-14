@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Event } from '@/types/events';
 import ModalVideo from 'react-modal-video';
@@ -69,6 +69,14 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
       setVideoOpen(true);
     }
   };
+
+  // if day 0 has only 1 item, select day 1
+  // also manage local storage to remember the selected day
+  useEffect(() => {
+    if (selectedDay == 0 && schedule[0].items.length === 1) {
+      setSelectedDay(1);
+    }
+  }, []);
 
   const eventStartDate = event.timeStart;
   const isEventFuture = new Date(new Date(eventStartDate).getTime() - 3 * 24 * 60 * 60 * 1000) > new Date();
