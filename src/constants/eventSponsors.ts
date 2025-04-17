@@ -170,6 +170,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "us-hazmat-rentals",
                     "pmb-machine-works",
                     "wise-technical-innovations",
+                    "deschamps",
                 ],
             }
         ]
