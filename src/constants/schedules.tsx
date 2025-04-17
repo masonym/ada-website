@@ -906,7 +906,13 @@ export const SCHEDULES = [
                     {
                         time: "3:00 PM - 6:00 PM",
                         title: "Exhibitor Set-up",
+                        location: "Hampton Ballroom Pre-Function, 3rd FL",
                     },
+                    {
+                        time: "6:00 PM - 7:00 PM",
+                        title: "Social Hour: Jumpstart your networking over drinks with fellow attendees, exhibitors, and sponsors.",
+                        location: "The Great Room, 2nd FL (by \"START\" Restaurant)",
+                    }
                 ],
             },
             {
@@ -915,74 +921,92 @@ export const SCHEDULES = [
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "On-Site Attendee Registration & Check-in",
+                        location: "Hampton Ballroom Pre-Function, 3rd FL",
                     },
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Networking Breakfast with Exhibitors",
+                        location: "Hampton Ballroom Pre-Function, 3rd FL",
                     },
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Matchmaking Sign-up",
+                        location: "Hampton Ballroom Pre-Function, 3rd FL",
                     },
                     {
                         time: "8:30 AM",
                         title: "Conference Opening",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "8:35 AM",
                         title: "State of Virginia and Norfolk Chamber of Commerce – Welcoming Remarks",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "8:45 AM",
                         title: "Navy Small Business Program Panel",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "9:45 AM",
                         title: "How DEFENSEWERX and Nautilus are Accelerating Innovative Tech Contracting",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "10:15 AM",
                         title: "Sponsor Remarks",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "10:30 AM",
                         title: "Networking Break",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "10:45 AM",
                         title: "Military Base-Community Partnerships Promoting Local Build Contracts",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "11:15 AM",
                         title: "National Security Keynote Address",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "11:30 AM",
                         title: "Fleet Readiness Panel – Addressing Critical Challenges & Requirements",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "12:30 PM",
                         title: "Networking Lunch with Exhibitors",
+                        location: "Hampton Ballroom Pre-Function, 3rd FL",
                     },
                     {
                         time: "1:30 PM",
                         title: "The ‘SHIPS ACT’ & the National Shipbuilding Revival: Driving Major New Contracts",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "2:30 PM",
                         title: "Force Projection & Contested Logistics in the Indo-Pacific",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "3:30 PM",
                         title: "Sponsor Remarks",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "3:40 PM",
                         title: "Accessing Government-Wide Acquisition Contracts (GWAC’s)",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "4:30 PM",
                         title: "Day One Closing Remarks",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "4:30 PM - 5:30 PM",
@@ -1000,46 +1024,57 @@ export const SCHEDULES = [
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Networking Breakfast with Exhibitors",
+                        location: "Hampton Ballroom Pre-Function, 3rd FL",
                     },
                     {
                         time: "8:30 AM",
                         title: "Welcome Back Remarks",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "8:35 AM",
                         title: "Congressional Keynote Address",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "9:00 AM",
                         title: "How to do Business with the Primes",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "10:00 AM",
                         title: "Cybersecurity Update: Safeguarding the Supply Chain",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "10:25 AM",
                         title: "Artificial Intelligence in Defense – Leveraging Navy Use Cases",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "11:00 AM",
                         title: "The ‘Golden Dome’ Integrated Missile Defense Initiative: Navy Role",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "11:35 AM",
                         title: "Streamlining Acquisition to Empower Our Warfighters",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "12:00 PM",
                         title: "MBDA Federal Procurement Center – Tiger Team Briefing",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "12:25 PM",
                         title: "Using Mentor-Protégé Partnerships to Drive the Combat Capability Factory",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "12:45 PM",
                         title: "Closing Remarks",
+                        location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "12:45 PM - 1:45 PM",
