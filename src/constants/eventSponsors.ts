@@ -150,6 +150,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "us-hazmat-rentals",
                     "hartwood-consulting-group",
                     "wise-technical-innovations",
+                    "smart-choice-technologies",
                 ],
             },
             {

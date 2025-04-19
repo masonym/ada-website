@@ -375,6 +375,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.wtinetworks.com/",
     size: 'small'
   },
+  "smart-choice-technologies": {
+    id: "smart-choice-technologies",
+    name: "Smart Choice Technologies",
+    logo: "/sponsors/smart-choice-technologies.webp",
+    website: "https://www.hiresmartchoice.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
