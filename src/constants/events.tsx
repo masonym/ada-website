@@ -26,7 +26,7 @@ export const EVENTS: Event[] = [
     topicalCoverage: [
       { tagline: "", description: "Defense Department, Service, and Combat Command Acquisition Priorities", },
       { tagline: "", description: "DoD Small Business Contracting Programs", },
-      { tagline: "", description: "Prime Defense Contractors — Subcontracting & Teaming", },
+      { tagline: "", description: "Prime Defense Contractors - Subcontracting & Teaming", },
       { tagline: "", description: "Accelerated Contracting Opportunities for Innovative Technology Solutions (DARPA, DIU, DEFENSEWERX)", },
       { tagline: "", description: "GWAC's (Government-Wide Acquisition Contracts) and Their Small Business Tracks", },
       { tagline: "", description: "Mentor-Protégé Programs as Business Accelerators for Smalls and Primes", },
@@ -647,7 +647,7 @@ invaluable connections that can shape the future of your business.
             <li>New Navy & Marine Corps Littoral Warfighting Requirements & Contracts</li>
             <li>New Navy & Marine Corps Technology Initiatives</li>
             <li>Upcoming Projects - NAVFAC, MARCORSYSCOM, and USACE</li>
-            <li>Military Base-Community Partnerships Driving Local Build Contracts</li>
+            <li>Military Base-Community Partnerships Promoting Local Build Contracts</li>
             <li>Indo-Pacific ‘Pivot’ – Deployment & Logistics Challenges Driving Major New Acquisitions</li>
             <li>Contracts Supporting U.S. Leadership in AI</li>
             <li>The Surge in Autonomous/Unmanned Systems Development & Deployment</li>
@@ -655,10 +655,9 @@ invaluable connections that can shape the future of your business.
             <li>Major Command IT & Cyber Protection Contracts</li>
             <li>Prime Defense Contractors — Subcontracting & Teaming Opportunities</li>
             <li>Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)</li>
-            <li>How to Access GWACs (Government-Wide Acquisition Contracts)</li>
+            <li>How to Access GWAC's (Government-Wide Acquisition Contracts)</li>
             <li>Mentor-Protégé Programs as Business Accelerators for Smalls & Primes</li>
             <li>Cybersecurity Compliance Mandates and CMMC Training Options</li>
-            <li>Defense Contract Audit Agency Support for Small & Medium-Size Contractors</li>
           </ul>
         </div>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
@@ -691,18 +690,17 @@ invaluable connections that can shape the future of your business.
       { "tagline": "New Navy & Marine Corps Littoral Warfighting Requirements & Contracts", "description": "New operational needs and contracts focused on enhancing littoral (coastal) warfare capabilities for the Navy and Marine Corps" },
       { "tagline": "New Navy & Marine Corps Technology Initiatives", "description": "Cutting-edge technology advancements being pursued by the Navy and Marine Corps to modernize operations and capabilities" },
       { "tagline": "Upcoming Projects - NAVFAC, MARCORSYSCOM, and USACE", "description": "Upcoming infrastructure and development projects led by NAVFAC, MARCORSYSCOM, and USACE, with a focus on military needs" },
-      { "tagline": "Military Base-Community Partnerships Driving Local Build Contracts", "description": "How partnerships between military bases and local communities are generating construction contracts for regional infrastructure development" },
+      { "tagline": "Military Base-Community Partnerships Promoting Local Build Contracts", "description": "How partnerships between military bases and local communities are generating construction contracts for regional infrastructure development" },
       { "tagline": "Indo-Pacific ‘Pivot’ – Deployment & Logistics Challenges Driving Major New Acquisitions", "description": "Strategic 'Indo-Pacific Pivot,' emphasizing the logistical and deployment challenges that are shaping new defense acquisitions" },
       { "tagline": "Contracts Supporting U.S. Leadership in AI", "description": "Defense contracts aimed at advancing U.S. leadership in artificial intelligence technologies for military applications" },
       { "tagline": "The Surge in Autonomous/Unmanned Systems Development & Deployment", "description": "Rapid development and deployment of autonomous and unmanned systems in the military, with a focus on new contracts" },
       { "tagline": "Base & Installation Physical Security Upgrades", "description": "Initiatives and contracts aimed at upgrading physical security systems at military bases and installations to ensure safety and resilience" },
       { "tagline": "Major Command IT & Cyber Protection Contracts", "description": "Contracts focused on enhancing IT and cybersecurity protections for major military commands against growing cyber threats" },
-      { "tagline": "Prime Defense Contractors — Subcontracting & Teaming Opportunities", "description": "Subcontracting and teaming opportunities for small and medium-sized businesses to work with prime defense contractors on large-scale projects" },
+      { "tagline": "Prime Defense Contractors - Subcontracting & Teaming Opportunities", "description": "Subcontracting and teaming opportunities for small and medium-sized businesses to work with prime defense contractors on large-scale projects" },
       { "tagline": "Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)", "description": "Fast-tracked contracting vehicles like DARPA, DIU, and DEFENSEWERX are enabling the acquisition of cutting-edge defense technologies" },
-      { "tagline": "How to Access GWACs (Government-Wide Acquisition Contracts)", "description": "How contractors can navigate and access Government-Wide Acquisition Contracts (GWACs) for defense and federal opportunities" },
+      { "tagline": "How to Access GWAC's (Government-Wide Acquisition Contracts)", "description": "How contractors can navigate and access Government-Wide Acquisition Contracts (GWAC's) for defense and federal opportunities" },
       { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "How Mentor-Protégé programs help accelerate business growth for small businesses by pairing them with larger prime contractors" },
       { "tagline": "Cybersecurity Compliance Mandates and CMMC Training Options", "description": "New cybersecurity compliance requirements under CMMC and training resources available for contractors to meet these standards" },
-      { "tagline": "Defense Contract Audit Agency Support for Small & Medium-Size Contractors", "description": "Role of the Defense Contract Audit Agency (DCAA) in providing audit support to help small and medium-sized contractors" }
     ],
     image: "2025NMCPC_wide.webp",
     slug: "2025-navy-marine-corps-procurement-conference",
