@@ -7,7 +7,7 @@ import Link from "next/link";
 
 // Maximum file size (10MB)
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB in bytes
-const WEBHOOK_URL = "https://canary.discord.com/api/webhooks/1349875967115395095/uuWqdigZbAv1hgBxDaWFybi9y00QD2rcozudzl_U-4JA-nwVmTIK-9zr09ogXUPpbmC7"
+const WEBHOOK_URL = process.env.DISCORD_ADMIN_WEBHOOK_URL;
 export default function AdminPage() {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -100,7 +100,7 @@ export default function AdminPage() {
     try {
       // Ensure we have the correct content type
       const contentType = file.type || "application/pdf";
-      
+
       // Step 1: Get a pre-signed URL
       const presignedUrlResponse = await fetch("/api/get-presigned-url", {
         method: "POST",
@@ -126,7 +126,7 @@ export default function AdminPage() {
 
       // Step 2: Upload directly to S3 using the pre-signed URL
       const xhr = new XMLHttpRequest();
-      
+
       // Set up progress tracking
       xhr.upload.onprogress = (event) => {
         if (event.lengthComputable) {
@@ -136,7 +136,7 @@ export default function AdminPage() {
           setUploadProgress(scaledProgress);
         }
       };
-      
+
       // Set up completion handler
       xhr.onload = async () => {
         if (xhr.status >= 200 && xhr.status < 300) {
@@ -145,7 +145,7 @@ export default function AdminPage() {
             text: `File uploaded successfully! Path: ${presignedUrlData.key}`,
             type: "success"
           });
-          
+
           // Send webhook notification
           fetch(WEBHOOK_URL, {
             method: "POST",
@@ -154,7 +154,7 @@ export default function AdminPage() {
               content: `File uploaded successfully! Path: ${presignedUrlData.key}`,
             })
           });
-          
+
           setFile(null);
           if (fileInputRef.current) {
             fileInputRef.current.value = "";
@@ -164,7 +164,7 @@ export default function AdminPage() {
         }
         setIsUploading(false);
       };
-      
+
       // Set up error handler
       xhr.onerror = () => {
         setMessage({
@@ -179,7 +179,7 @@ export default function AdminPage() {
         setIsUploading(false);
         setUploadProgress(0);
       };
-      
+
       // Add a specific handler for 403 Forbidden errors
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 403) {
@@ -199,11 +199,11 @@ export default function AdminPage() {
 
       // Open and send the request
       xhr.open("PUT", presignedUrlData.presignedUrl);
-      
+
       // Important: Set the exact same Content-Type that was used to generate the pre-signed URL
       // This is crucial to avoid 403 Forbidden errors
       xhr.setRequestHeader("Content-Type", presignedUrlData.contentType || contentType);
-      
+
       xhr.send(file);
 
     } catch (error: any) {
@@ -220,16 +220,16 @@ export default function AdminPage() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-3xl">
       <h1 className="text-2xl font-bold mb-6">Admin Dashboard</h1>
-      
+
       <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Link 
+        <Link
           href="/admin/event-recaps"
           className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
         >
           <h2 className="text-xl font-semibold mb-2">Event Recaps Management</h2>
           <p className="text-gray-600">Manage photo galleries and event recaps with captions and sections</p>
         </Link>
-        
+
         <div className="p-4 bg-white shadow-md rounded-lg">
           <h2 className="text-xl font-semibold mb-2">Upload Presentations</h2>
           <p className="text-gray-600">Upload PDF presentations for events</p>
@@ -238,7 +238,7 @@ export default function AdminPage() {
 
       <div className="bg-white shadow-md rounded-lg p-6">
         <h2 className="text-xl font-semibold mb-4">Upload Presentations</h2>
-        
+
         {s3ConfigStatus === "error" && (
           <div className="mb-6 p-4 bg-red-50 text-red-700 rounded-md">
             <h3 className="font-bold mb-2">S3 Configuration Error</h3>
