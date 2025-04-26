@@ -146,6 +146,10 @@ export default function AdminPage() {
             type: "success"
           });
 
+          if (!WEBHOOK_URL) {
+            throw new Error('missing DISCORD_ADMIN_WEBHOOK_URL');
+          }
+
           // Send webhook notification
           fetch(WEBHOOK_URL, {
             method: "POST",
