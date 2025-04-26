@@ -187,6 +187,7 @@ export const SPONSORSHIP_TYPES = [
         {
             title: "Platinum Sponsor",
             cost: "$10,000",
+            slotsPerEvent: 1,
             perks: [
                 { tagline: "Event Access", description: "(5) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                 { tagline: "Lanyard Sponsor", description: "Exclusive Company Logo on Lanyards" },
@@ -207,6 +208,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 title: "Gold Sponsor",
                 cost: "$7,000",
+                slotsPerEvent: 2,
                 perks: [
                     { tagline: "Event Access", description: " (4) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Speaking Opportunity", description: "15-Minute Speaking Session for a Representative of your Company" },
@@ -224,6 +226,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 title: "Silver Sponsor",
                 cost: "$5,000",
+                slotsPerEvent: 3,
                 perks: [
                     { tagline: "Event Access", description: "(3) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Speaking Opportunity", description: "10-Minute Speaking Session for a Representative of your Company" },
@@ -239,6 +242,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 title: "Bronze Sponsor",
                 cost: "$3,000",
+                slotsPerEvent: 5,
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Speaking Opportunity", description: "5-Minute Speaking Session for a Representative of your Company" },
@@ -253,6 +257,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 title: "VIP Networking Reception Sponsor",
                 cost: "$3,500",
+                slotsPerEvent: 1,
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "VIP Networking Reception Hosting", description: "Exclusive Host of the VIP Networking Reception on July 29 from 5:30 PM - 7:30 PM" },
@@ -268,6 +273,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 title: "Networking Luncheon Sponsor",
                 cost: "$2,500",
+                slotsPerEvent: 2,
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Networking Luncheon Hosting", description: "Host of the Networking Luncheon" },
@@ -282,6 +288,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 title: "Small Business Sponsor",
                 cost: "$1,500",
+                slotsPerEvent: 15,
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Exhibit Space", description: ": 8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and Chairs" },

@@ -11,6 +11,7 @@ type ExhibitorTypes = {
     cost: string;
     perks: Perk[];
     colour?: string;
+    slotsPerEvent?: number;
 };
 
 type ExhibitorProp = {
@@ -24,7 +25,14 @@ const ExhibitorCard = ({ item }: ExhibitorProp) => {
                 className={`flex items-center gap-4 justify-between p-4 ${item.colour || 'bg-navy-800'}`}
                 style={item.colour ? { backgroundColor: item.colour } : undefined}
             >
-                <h4 className="text-xl font-bold text-white">{item.title}</h4>
+                <div>
+                    <h4 className="text-[1rem] font-bold text-white">{item.title}</h4>
+                    {item.slotsPerEvent !== undefined && (
+                        <p className="text-sm font-medium text-white">
+                            {item.slotsPerEvent} available per event
+                        </p>
+                    )}
+                </div>
                 <span className="text-xl font-bold text-white">{item.cost}</span>
             </div>
             <div className="p-6">
