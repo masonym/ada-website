@@ -382,6 +382,20 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.hiresmartchoice.com/",
     size: 'small'
   },
+  "bn-inspection": {
+    id: "bn-inspection",
+    name: "B&N Inspection",
+    logo: "/sponsors/bni.webp",
+    website: "https://www.bninspects.com/",
+    size: 'small'
+  },
+  "yadejs": {
+    id: "yadejs",
+    name: "Yadejs, Inc.",
+    logo: "/sponsors/yadejs.webp",
+    website: "https://www.yadejs.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
