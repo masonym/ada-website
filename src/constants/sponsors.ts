@@ -1,6 +1,6 @@
 import { StaticImageData } from 'next/image';
 
-export type SponsorSize = 'small' | 'medium' | 'large';
+export type SponsorSize = 'xs' | 'small' | 'medium' | 'large';
 
 export type Sponsor = {
   id: string;
@@ -394,7 +394,7 @@ export const SPONSORS: Record<string, Sponsor> = {
     name: "Yadejs, Inc.",
     logo: "/sponsors/yadejs.webp",
     website: "https://www.yadejs.com/",
-    size: 'small'
+    size: 'xs'
   },
 };
 
@@ -410,6 +410,10 @@ export const getSponsors = (ids: string[]): Sponsor[] => {
 
 // Standard size dimensions - can be used for styling
 export const SPONSOR_SIZES = {
+  xs: {
+    maxWidth: 200,
+    maxHeight: 100
+  },
   small: {
     maxWidth: 300,
     maxHeight: 200
