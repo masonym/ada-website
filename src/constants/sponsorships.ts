@@ -266,7 +266,8 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Matchmaking Host", description: "Invitation to Host a One-on-One Matchmaking Session" },
                     { tagline: "Brand Visibility", description: "Prime Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
                     { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
-                    { tagline: "Media Coverage", description: "Inclusion in Promotional Materials and Social Media Mentions. Photographs and Videos of your Participation" },
+                    { tagline: "Media Coverage", description: "Inclusion in Promotional Materials and Social Media Mentions" },
+                    { tagline: "Photos and Videos", description: "Photographs and Videos of your Participation" },
                 ],
                 colour: "#3FB4E6"
             },
@@ -281,7 +282,8 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Matchmaking Host", description: "Invitation to Host a One-on-One Matchmaking Session" },
                     { tagline: "Brand Visibility", description: "Prominent Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
                     { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
-                    { tagline: "Media Coverage", description: "Inclusion in Promotional Materials and Social Media Mentions. Photographs and Videos of your Participation" },
+                    { tagline: "Media Coverage", description: "Inclusion in Promotional Materials and Social Media Mentions" },
+                    { tagline: "Photos and Videos", description: "Photographs and Videos of your Participation" },
                 ],
                 colour: "#3FB4E6"
             },
@@ -292,9 +294,8 @@ export const SPONSORSHIP_TYPES = [
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Exhibit Space", description: ": 8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and Chairs" },
-                    { tagline: "Brand Visibility", description: "Logo Placement on all Conference Materials, including Banners, Marketing Emails, Website, and Programs" },
-                    { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
-                    { tagline: "Media Coverage", description: "Photographs and Videos of your Participation" },
+                    { tagline: "Brand Visibility", description: "Logo Placement on select Conference Material" },
+                    { tagline: "Media Coverage", description: "Photographs of your Participation" },
                 ],
             },
         ],
