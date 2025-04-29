@@ -175,6 +175,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "deschamps",
                     "bn-inspection",
                     "yadejs",
+                    "lysol",
                 ],
             }
         ]

@@ -396,6 +396,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.yadejs.com/",
     size: 'xs'
   },
+  "lysol": {
+    id: "lysol",
+    name: "Lysol",
+    logo: "/sponsors/lysol.webp",
+    website: "https://www.reckitt.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
