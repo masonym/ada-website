@@ -152,6 +152,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "wise-technical-innovations",
                     "smart-choice-technologies",
                     "yadejs",
+                    "avanti",
                 ],
             },
             {
@@ -176,6 +177,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "bn-inspection",
                     "yadejs",
                     "lysol",
+                    "north-american-rescue",
                 ],
             }
         ]

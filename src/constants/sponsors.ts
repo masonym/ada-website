@@ -403,6 +403,20 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.reckitt.com/",
     size: 'small'
   },
+  "avanti": {
+    id: "avanti",
+    name: "Avanti Corporation",
+    logo: "/sponsors/avanti.webp",
+    website: "https://www.avanticorporation.com/",
+    size: 'small'
+  },
+  "north-american-rescue": {
+    id: "north-american-rescue",
+    name: "North American Rescue",
+    logo: "/sponsors/north-american-rescue.webp",
+    website: "https://www.narescue.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
