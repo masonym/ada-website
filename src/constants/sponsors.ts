@@ -417,6 +417,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.narescue.com/",
     size: 'small'
   },
+  "curtis-power-solutions": {
+    id: "curtis-power-solutions",
+    name: "Curtis Power Solutions",
+    logo: "/sponsors/curtis-power-solutions.webp",
+    website: "https://www.curtispowersolutions.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
