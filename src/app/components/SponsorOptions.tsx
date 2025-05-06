@@ -78,7 +78,7 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                                 EXCLUSIVE
                             </h2>
                             <div className="flex justify-center">
-                                <SponsorshipCard item={currentEvent.primeSponsor} />
+                                <SponsorshipCard item={currentEvent.primeSponsor} event={event} />
                             </div>
                         </div>
                     )}
@@ -86,7 +86,7 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
                         {currentEvent.sponsorships.map((item, index) => (
                             <div key={index} className="flex justify-center">
-                                <SponsorshipCard item={item} />
+                                <SponsorshipCard item={item} event={event} />
                             </div>
                         ))}
                     </div>

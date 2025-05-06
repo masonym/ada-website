@@ -221,7 +221,8 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
                     { tagline: "Media Coverage", description: "Inclusion in Press Releases, Promotional Materials and Social Media Mentions. Photographs and Videos of your Participation" },
                 ],
-                colour: "#ffaf00"
+                colour: "#ffaf00",
+                showRemaining: true
             },
             {
                 title: "Silver Sponsor",
@@ -237,7 +238,8 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
                     { tagline: "Media Coverage", description: "Inclusion in Promotional Materials and Social Media Mentions. Photographs and Videos of your Participation" },
                 ],
-                colour: "#C0C0C0"
+                colour: "#C0C0C0",
+                showRemaining: true
             },
             {
                 title: "Bronze Sponsor",
@@ -252,7 +254,8 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Recognition", description: "Acknowledgement during Key Moments of the Conference" },
                     { tagline: "Media Coverage", description: " Inclusion in Social Media Mentions. Photographs and Videos of your Participation" },
                 ],
-                colour: "#CD7F32"
+                colour: "#CD7F32",
+                showRemaining: true
             },
             {
                 title: "VIP Networking Reception Sponsor",
