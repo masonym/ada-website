@@ -179,6 +179,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "lysol",
                     "north-american-rescue",
                     "curtis-power-solutions",
+                    "nib",
                 ],
             }
         ]

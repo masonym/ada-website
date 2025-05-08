@@ -315,7 +315,7 @@ export const REGISTRATION_TYPES = [
                 buttonText: "Register Now",
                 buttonLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
                 earlyBirdPrice: "$1,250",
-                regularPrice: "$1,500",
+                regularPrice: "$1,250",
                 earlyBirdDeadline: "2025-04-10T08:00:00Z",
                 type: "paid"
             },

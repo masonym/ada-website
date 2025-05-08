@@ -1072,12 +1072,12 @@ export const SCHEDULES = [
                         location: "Hampton Ballroom, 3rd FL",
                     },
                     {
-                        time: "12:45 PM",
+                        time: "12:30 PM",
                         title: "Closing Remarks",
                         location: "Hampton Ballroom, 3rd FL",
                     },
                     {
-                        time: "12:45 PM - 1:45 PM",
+                        time: "12:30 PM - 1:30 PM",
                         title: "Matchmaking Session II",
                     },
                 ],

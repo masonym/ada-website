@@ -424,6 +424,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.curtispowersolutions.com/",
     size: 'small'
   },
+  "nib": {
+    id: "nib",
+    name: "National Industries for the Blind",
+    logo: "/sponsors/nib.webp",
+    website: "https://www.nib.org/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
