@@ -653,7 +653,7 @@ invaluable connections that can shape the future of your business.
             <li>The Surge in Autonomous/Unmanned Systems Development & Deployment</li>
             <li>Base & Installation Physical Security Upgrades</li>
             <li>Major Command IT & Cyber Protection Contracts</li>
-            <li>Prime Defense Contractors — Subcontracting & Teaming Opportunities</li>
+            <li>Prime Defense Contractors - Subcontracting & Teaming Opportunities</li>
             <li>Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)</li>
             <li>How to Access GWAC's (Government-Wide Acquisition Contracts)</li>
             <li>Mentor-Protégé Programs as Business Accelerators for Smalls & Primes</li>
