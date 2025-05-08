@@ -9,6 +9,7 @@ type Perk = {
 };
 
 type SponsorTypes = {
+    id: string;
     title: string;
     cost: string;
     perks: Perk[];
@@ -29,7 +30,7 @@ const SponsorshipCard = ({ item, event }: SponsorProp) => {
     const showRemainingFlag = !!item.showRemaining;
     let remainingCount: number | undefined;
     if (item.slotsPerEvent !== undefined && eventSponsorsData) {
-        const tierObj = eventSponsorsData.tiers.find(t => t.name === item.title);
+        const tierObj = eventSponsorsData.tiers.find(t => t.id === item.id);
         const used = tierObj?.sponsorIds.length ?? 0;
         remainingCount = item.slotsPerEvent - used;
     }

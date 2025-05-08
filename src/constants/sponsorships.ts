@@ -3,6 +3,7 @@ export const SPONSORSHIP_TYPES = [
         id: 1,
         sponsorships: [
             {
+                id: "premier-sponsor",
                 title: "Premier",
                 cost: "$5,000",
                 perks: [
@@ -16,6 +17,7 @@ export const SPONSORSHIP_TYPES = [
                 ]
             },
             {
+                id: "prestige-sponsor",
                 title: "Prestige",
                 cost: "$3,000",
                 perks: [
@@ -29,6 +31,7 @@ export const SPONSORSHIP_TYPES = [
                 ]
             },
             {
+                id: "executive-sponsor",
                 title: "Executive",
                 cost: "$1,500",
                 perks: [
@@ -45,6 +48,7 @@ export const SPONSORSHIP_TYPES = [
         id: 2,
         sponsorships: [
             {
+                id: "gold-sponsor",
                 title: "Gold Sponsor",
                 cost: "$7,000",
                 perks: [
@@ -62,6 +66,7 @@ export const SPONSORSHIP_TYPES = [
                 colour: "#ffaf00"
             },
             {
+                id: "silver-sponsor",
                 title: "Silver Sponsor",
                 cost: "$5,000",
                 perks: [
@@ -77,6 +82,7 @@ export const SPONSORSHIP_TYPES = [
                 colour: "#C0C0C0"
             },
             {
+                id: "bronze-sponsor",
                 title: "Bronze Sponsor",
                 cost: "$3,000",
                 perks: [
@@ -91,6 +97,7 @@ export const SPONSORSHIP_TYPES = [
                 colour: "#CD7F32"
             },
             {
+                id: "vip-networking-reception-sponsor",
                 title: "VIP Networking Reception Sponsor",
                 cost: "$3,500",
                 perks: [
@@ -106,6 +113,7 @@ export const SPONSORSHIP_TYPES = [
                 colour: "#3FB4E6"
             },
             {
+                id: "networking-luncheon-sponsor",
                 title: "Networking Luncheon Sponsor",
                 cost: "$2,500",
                 perks: [
@@ -120,6 +128,7 @@ export const SPONSORSHIP_TYPES = [
                 colour: "#3FB4E6"
             },
             {
+                id: "small-business-sponsor",
                 title: "Small Business Sponsor",
                 cost: "$1,500",
                 perks: [
@@ -136,6 +145,7 @@ export const SPONSORSHIP_TYPES = [
         id: 3,
         sponsorships: [
             {
+                id: "gold-sponsor",
                 title: "Gold Sponsor",
                 cost: "$10,000",
                 perks: [
@@ -148,6 +158,7 @@ export const SPONSORSHIP_TYPES = [
                 colour: "#ffaf00"
             },
             {
+                id: "silver-sponsor",
                 title: "Silver Sponsor",
                 cost: "$5,000",
                 perks: [
@@ -160,6 +171,7 @@ export const SPONSORSHIP_TYPES = [
                 colour: "#C0C0C0"
             },
             {
+                id: "bronze-sponsor",
                 title: "Bronze Sponsor",
                 cost: "$3,000",
                 perks: [
@@ -185,6 +197,7 @@ export const SPONSORSHIP_TYPES = [
         id: 4,
         primeSponsor:
         {
+            id: "platinum-sponsor",
             title: "Platinum Sponsor",
             cost: "$10,000",
             slotsPerEvent: 1,
@@ -202,10 +215,12 @@ export const SPONSORSHIP_TYPES = [
                 { tagline: "Media Coverage", description: "Inclusion in Press Releases, Promotional Materials and Social Media Mentions. Photographs and Videos of your Participation" },
             ],
             colour: "bg-sky-300",
+            showRemaining: true,
         },
 
         sponsorships: [
             {
+                id: "gold-sponsor",
                 title: "Gold Sponsor",
                 cost: "$7,000",
                 slotsPerEvent: 2,
@@ -225,6 +240,7 @@ export const SPONSORSHIP_TYPES = [
                 showRemaining: true
             },
             {
+                id: "silver-sponsor",
                 title: "Silver Sponsor",
                 cost: "$5,000",
                 slotsPerEvent: 3,
@@ -242,6 +258,7 @@ export const SPONSORSHIP_TYPES = [
                 showRemaining: true
             },
             {
+                id: "bronze-sponsor",
                 title: "Bronze Sponsor",
                 cost: "$3,000",
                 slotsPerEvent: 5,
@@ -258,6 +275,7 @@ export const SPONSORSHIP_TYPES = [
                 showRemaining: true
             },
             {
+                id: "vip-networking-reception-sponsor",
                 title: "VIP Networking Reception Sponsor",
                 cost: "$3,500",
                 slotsPerEvent: 1,
@@ -272,9 +290,11 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Media Coverage", description: "Inclusion in Promotional Materials and Social Media Mentions" },
                     { tagline: "Photos and Videos", description: "Photographs and Videos of your Participation" },
                 ],
-                colour: "#3FB4E6"
+                colour: "#3FB4E6",
+                showRemaining: true,
             },
             {
+                id: "networking-luncheon-sponsor",
                 title: "Networking Luncheon Sponsor",
                 cost: "$2,500",
                 slotsPerEvent: 2,
@@ -288,9 +308,11 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Media Coverage", description: "Inclusion in Promotional Materials and Social Media Mentions" },
                     { tagline: "Photos and Videos", description: "Photographs and Videos of your Participation" },
                 ],
-                colour: "#3FB4E6"
+                colour: "#3FB4E6",
+                showRemaining: true,
             },
             {
+                id: "small-business-sponsor",
                 title: "Small Business Sponsor",
                 cost: "$1,500",
                 slotsPerEvent: 15,
@@ -300,7 +322,9 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Brand Visibility", description: "Logo Placement on select Conference Material" },
                     { tagline: "Media Coverage", description: "Photographs of your Participation" },
                 ],
+                showRemaining: true,
             },
         ],
     },
 ];
+
