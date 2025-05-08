@@ -183,6 +183,7 @@ export const SPONSORSHIP_TYPES = [
                 colour: "#CD7F32"
             },
             {
+                id: "meet-and-greet-sponsor",
                 title: "Meet & Greet Bourbon Tasting with Astronauts",
                 cost: "$2,000",
                 perks: [
