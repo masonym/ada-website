@@ -131,6 +131,14 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         id: 4, // NMPCPC
         tiers: [
             {
+                id: "gold-sponsor",
+                name: "Gold Sponsor",
+                style: "bg-amber-400 text-slate-900",
+                sponsorIds: [
+                    "one-blue-yonder",
+                ],
+            },
+            {
                 id: "bronze-sponsor",
                 name: "Bronze Sponsor",
                 style: "bg-amber-700 text-slate-900",
