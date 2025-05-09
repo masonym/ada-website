@@ -188,6 +188,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "north-american-rescue",
                     "curtis-power-solutions",
                     "nib",
+                    "one-blue-yonder",
                 ],
             }
         ]
