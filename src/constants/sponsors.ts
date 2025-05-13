@@ -439,6 +439,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     size: 'large',
     description: "One Network Enterprises (ONE), a Blue Yonder company, is the leader in supply chain control towers, and provider of the Digital Supply Chain NetworkTM. It is the only solution that gives supply chain managers and executives end-to-end visibility and control with one data model and one truth, from raw material to last mile delivery. Powered by NEO, One Network’s machine learning and intelligent agent technology, it enables seamless planning and execution, across inbound supply, outbound order fulfillment, and logistics, matching demand with available supply in real-time. Lead your industry by providing the highest service levels and product quality at the lowest possible cost.",
   },
+  "westwind": {
+    id: "westwind",
+    name: "Westwind",
+    logo: "/sponsors/westwind.webp",
+    website: "https://www.wwcpinc.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
