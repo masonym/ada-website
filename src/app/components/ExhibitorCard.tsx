@@ -1,5 +1,7 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
+import { Event } from '@/types/events';
+import { getEventSponsors } from '@/constants/eventSponsors';
 
 type Perk = {
     tagline: string;
@@ -7,22 +9,40 @@ type Perk = {
 };
 
 type ExhibitorTypes = {
+    id: string;
     title: string;
     cost: string;
     perks: Perk[];
     colour?: string;
     slotsPerEvent?: number;
+    showRemaining?: boolean;
 };
 
 type ExhibitorProp = {
     item: ExhibitorTypes;
+    event: Event;
 };
 
-const ExhibitorCard = ({ item }: ExhibitorProp) => {
+const ExhibitorCard = ({ item, event }: ExhibitorProp) => {
+    const eventDateTime = new Date(`${event.date}T${event.timeStart}`);
+    const hasEventEnded = eventDateTime < new Date();
+    const eventSponsorsData = getEventSponsors(event.id);
+    const showRemainingFlag = !!item.showRemaining;
+    let remainingCount: number | undefined;
+    if (item.slotsPerEvent !== undefined && eventSponsorsData) {
+        const tierObj = eventSponsorsData.tiers.find(t => t.id === item.id);
+        const used = tierObj?.sponsorIds.length ?? 0;
+        remainingCount = item.slotsPerEvent - used;
+    }
     return (
-        <div className="w-full max-w-5xl mx-auto mb-6 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md">
+        <div className="w-full max-w-5xl mx-auto mb-6 rounded-lg border border-gray-200 bg-white shadow-md relative">
+            {showRemainingFlag && remainingCount !== undefined && remainingCount > 0 && !hasEventEnded && (
+                <div className="absolute -top-2 -right-4 overflow-visible z-1 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">
+                    {remainingCount} remaining
+                </div>
+            )}
             <div
-                className={`flex items-center gap-4 justify-between p-4 ${item.colour || 'bg-navy-800'}`}
+                className={`flex items-center rounded-t-lg gap-4 justify-between p-4 ${item.colour || 'bg-navy-800'}`}
                 style={item.colour ? { backgroundColor: item.colour } : undefined}
             >
                 <div>

@@ -47,6 +47,7 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                     <ExhibitorCard
                         key={index}
                         item={item}
+                        event={event}
                     />
                 ))}
                 <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-6xl mx-auto mb-6">
