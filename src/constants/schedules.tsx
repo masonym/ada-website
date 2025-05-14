@@ -910,7 +910,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "6:00 PM - 7:00 PM",
-                        title: "Social Hour: Jumpstart your networking over drinks with fellow attendees, exhibitors, and sponsors.",
+                        title: "Social Hour: Jumpstart Your Networking Over Drinks with Fellow Attendees, Exhibitors, and Sponsors.",
                         location: "The Great Room, 2nd FL (by \"START\" Restaurant)",
                     }
                 ],
