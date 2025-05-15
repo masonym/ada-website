@@ -446,6 +446,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.wwcpinc.com/",
     size: 'small'
   },
+  "training-concepts": {
+    id: "training-concepts",
+    name: "Training Concepts",
+    logo: "/sponsors/training-concepts.webp",
+    website: "https://www.trainingconcepts.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID

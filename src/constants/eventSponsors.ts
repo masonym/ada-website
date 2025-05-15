@@ -191,6 +191,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "nib",
                     "one-blue-yonder",
                     "westwind",
+                    "training-concepts",
                 ],
             }
         ]
