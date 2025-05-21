@@ -36,20 +36,20 @@ export function EventSaleBanner({ sales }: { sales: Sale[] }) {
         >
           <div className="flex justify-center">
             <div className="flex-shrink-0">
-              <AlertCircle className="h-5 w-5 text-blue-500" aria-hidden="true" />
+              <AlertCircle className="h-10 w-10 text-blue-500" aria-hidden="true" />
             </div>
             <div className="ml-3">
-              <h3 className="text-lg font-medium text-blue-800">
+              <h3 className="text-2xl font-medium text-blue-800">
                 {sale.title}
               </h3>
-              <div className="mt-2 text-sm text-blue-700">
+              <div className="mt-2 text-lg text-blue-700">
                 <p>{sale.description}</p>
                 {sale.promoCode && (
                   <p className="mt-1 font-semibold">
                     Use Promo Code: <span className="text-blue-800">{sale.promoCode}</span>
                   </p>
                 )}
-                <p className="mt-1 text-xs text-blue-600">
+                <p className="mt-1 text-lg text-blue-600">
                   Valid thru: {format(new Date(sale.validUntil), 'MMMM d, yyyy')}
                 </p>
               </div>
