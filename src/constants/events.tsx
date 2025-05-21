@@ -626,6 +626,16 @@ invaluable connections that can shape the future of your business.
     eventShorthand: "2025NMCPC",
     password: "2025NMCPCADA",
     title: "2025 Navy & Marine Corps Procurement Conference",
+    sales: [
+      {
+        id: 'memorial-day-2025',
+        title: 'Special Memorial Day Sale',
+        description: 'Get 15% off your registration with promo code',
+        promoCode: 'MEMORIAL15',
+        validUntil: '2025-05-27T23:59:59-07:00',
+        isActive: true
+      }
+    ],
     date: "July 29-30, 2025",
     timeStart: "2025-07-29T11:30:00Z",
     description: `Join us for the 2025 Navy & Marine Corps Procurement Conference on July 29-30, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.`,

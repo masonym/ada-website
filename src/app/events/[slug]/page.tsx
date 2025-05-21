@@ -15,6 +15,7 @@ import SponsorLogos from '@/app/components/SponsorLogos';
 import SpecialFeatures from '@/app/components/SpecialFeatures';
 import FooterEventText from '@/app/components/FooterEventText';
 import ExhibitInstructionsButton from '@/app/components/ExhibitInstructionsButton';
+import { EventSaleBanner } from '@/app/components/EventSaleBanner';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -119,6 +120,10 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             /> */}
 
             <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} backgroundColor={event.countdownColour} />
+
+            {event.sales && event.sales.length > 0 && (
+              <EventSaleBanner sales={event.sales} />
+            )}
 
 
 

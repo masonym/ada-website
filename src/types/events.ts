@@ -1,6 +1,15 @@
 import { EventTestimonial } from "@/app/components/EventTestimonials";
 import { ReactNode } from "react";
 
+export interface Sale {
+  id: string;
+  title: string;
+  description: string;
+  promoCode?: string;
+  validUntil: string; // ISO date string
+  isActive: boolean;
+}
+
 export interface ExpectationItem {
     title: string;
     description: string;
@@ -77,4 +86,5 @@ export interface Event {
         imagePlaceholder: string;
     };
     countdownColour?: string;
+    sales?: Sale[];
 }
