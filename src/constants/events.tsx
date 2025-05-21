@@ -632,7 +632,7 @@ invaluable connections that can shape the future of your business.
         title: 'Special Memorial Day Sale',
         description: 'Get 15% off your registration with promo code',
         promoCode: 'MEMORIAL15',
-        validUntil: '2025-05-27T23:59:59-07:00',
+        validUntil: '2025-05-27T17:59:59-04:00',
         isActive: true
       }
     ],
