@@ -459,6 +459,20 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/dronexus.webp",
     size: 'small'
   },
+  "ana-sourcing": {
+    id: "ana-sourcing",
+    name: "ANA Sourcing",
+    logo: "/sponsors/ana-sourcing.webp",
+    website: "https://www.anasourcing.com/",
+    size: 'small'
+  },
+  "allied-materials": {
+    id: "allied-materials",
+    name: "Allied Materials",
+    logo: "/sponsors/allied-materials.webp",
+    website: "https://www.alliedmaterials.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID

@@ -162,6 +162,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "yadejs",
                     "avanti",
                     "westwind",
+                    "ana-sourcing",
                 ],
             },
             {
@@ -193,6 +194,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "westwind",
                     "training-concepts",
                     "dronexus",
+                    "ana-sourcing",
+                    "allied-materials",
                 ],
             }
         ]
