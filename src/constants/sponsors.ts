@@ -453,6 +453,12 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.trainingconcepts.com/",
     size: 'small'
   },
+  "dronexus": {
+    id: "dronexus",
+    name: "Dronexus",
+    logo: "/sponsors/dronexus.webp",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
