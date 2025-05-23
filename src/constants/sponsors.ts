@@ -469,7 +469,7 @@ export const SPONSORS: Record<string, Sponsor> = {
   "allied-materials": {
     id: "allied-materials",
     name: "Allied Materials",
-    logo: "/sponsors/allied-materials.webp",
+    logo: "/sponsors/allied-materials-long.webp",
     website: "https://www.alliedmaterials.com/",
     size: 'small'
   },
