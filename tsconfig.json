@@ -21,6 +21,13 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/events/[slug]/about/venue/Map.jsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/events/[slug]/about/venue/Map.jsx",
+    "src/types/event-registration/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }
