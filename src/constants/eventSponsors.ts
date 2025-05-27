@@ -196,6 +196,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "dronexus",
                     "ana-sourcing",
                     "allied-materials",
+                    "reel-coh",
                 ],
             }
         ]

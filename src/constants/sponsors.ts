@@ -473,6 +473,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.alliedmaterials.com/",
     size: 'small'
   },
+  "reel-coh": {
+    id: "reel-coh",
+    name: "Reel COH",
+    logo: "/sponsors/reel-coh.webp",
+    website: "https://reel-coh.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
