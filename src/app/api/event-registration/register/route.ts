@@ -67,8 +67,8 @@ export async function POST(request: Request) {
       // This would come from your database
       { id: 'standard', price: 100, earlyBirdPrice: 80, earlyBirdDeadline: '2024-12-31T23:59:59Z' },
       { id: 'vip', price: 200, earlyBirdPrice: 150, earlyBirdDeadline: '2024-12-31T23:59:59Z' },
-      // Example: if your $99.99 ticket has id 'general-admission', add it here for testing:
-      // { id: 'general-admission', price: 99.99, earlyBirdPrice: 79.99, earlyBirdDeadline: '...' }
+      // Add the ticket being sent from the client
+      { id: 'test-standard', price: 99.99, earlyBirdPrice: 89.99, earlyBirdDeadline: '2024-12-31T23:59:59Z' } 
     ];
 
     console.log('--- Registration Attempt ---');
@@ -153,6 +153,7 @@ export async function POST(request: Request) {
     console.log('Stripe PaymentIntent created with amount:', Math.round(total * 100));
 
     return NextResponse.json({
+      success: true,
       clientSecret: paymentIntent.client_secret,
       paymentIntentId: paymentIntent.id,
       amount: total,
