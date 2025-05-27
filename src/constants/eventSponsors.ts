@@ -200,6 +200,14 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "reel-coh",
                     "cp2s-alytic",
                 ],
+            },
+            {
+                id: "supporting-organizations",
+                name: "Supporting Organizations",
+                style: "bg-navy-800 text-white",
+                sponsorIds: [
+                    "hampton-roads-alliance",
+                ]
             }
         ]
     }

@@ -487,6 +487,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.cp2susa.com/",
     size: 'small'
   },
+  "hampton-roads-alliance": {
+    id: "hampton-roads-alliance",
+    name: "Hampton Roads Alliance",
+    logo: "/sponsors/hampton-roads-alliance.webp",
+    website: "https://www.hamptonroadsalliance.com/",
+    size: 'medium'
+  },
 };
 
 // Helper function to get a sponsor by ID
