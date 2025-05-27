@@ -12,7 +12,7 @@ export const registrationSchema = yup.object().shape({
   phone: yup.string().required('Phone number is required'),
   jobTitle: yup.string().required('Job title is required'),
   company: yup.string().required('Company name is required'),
-  companyWebsite: yup.string().url('Must be a valid URL'),
+  companyWebsite: yup.string().matches(/^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm, 'Must be a valid URL'),
   businessSize: yup.string().oneOf([
     'Small Business',
     'Medium-Sized Business',
@@ -21,12 +21,6 @@ export const registrationSchema = yup.object().shape({
     'Military Component'
   ] as const).required('Business size is required'),
   industry: yup.string().required('Industry is required'),
-  address1: yup.string(),
-  address2: yup.string(),
-  city: yup.string(),
-  state: yup.string(),
-  zipCode: yup.string(),
-  country: yup.string(),
   
   // Survey Questions
   howDidYouHearAboutUs: yup.string(),
