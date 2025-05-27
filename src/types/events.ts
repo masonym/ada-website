@@ -2,12 +2,12 @@ import { EventTestimonial } from "@/app/components/EventTestimonials";
 import { ReactNode } from "react";
 
 export interface Sale {
-  id: string;
-  title: string;
-  description: string;
-  promoCode?: string;
-  validUntil: string; // ISO date string
-  isActive: boolean;
+    id: string;
+    title: string;
+    description: string;
+    promoCode?: string;
+    validUntil: string; // ISO date string
+    isActive: boolean;
 }
 
 export interface ExpectationItem {
@@ -52,31 +52,34 @@ export interface Event {
     sponsorProspectusPath?: string;
     expectations?: AudienceExpectations[];
     expectationsText?: string;
-    contactInfo?: { 
+    contactInfo?: {
         contactText?: string;
         contactEmail?: string;
         contactEmail2?: string;
     };
-    sponsorshipInfo?: { 
+    sponsorshipInfo?: {
         sponsorSection?: ReactNode;
         customContactText?: ReactNode;
         exhibitorSpacesText?: ReactNode;
     };
     matchmakingSessions?: {
         signUpTime: string;
-        sessionTime: string;
-        date: string;
         slotsPerHost: number;
         sessionDurationMinutes: number;
+        signUpDate: string;
+        sessions: Array<{
+            sessionTime: string;
+            date: string;
+        }>;
     };
     customFooterText?: ReactNode;
     placeID?: string;
     directions?: Array<{ title: string; description: string }>;
     images?: Array<{ id: string; src: string; alt: string }>;
-    parkingInfo?: Array<{ 
+    parkingInfo?: Array<{
         title: string;
         description: string;
-        link?: { 
+        link?: {
             linkText: string;
             href: string;
         }

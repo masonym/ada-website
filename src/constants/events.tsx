@@ -439,12 +439,17 @@ invaluable connections that can shape the future of your business.
       }
     ],
     matchmakingSessions: {
+      signUpDate: "March 11, 2025",
       signUpTime: "7:30 AM",
-      sessionTime: "4:00 PM - 5:30 PM",
-      date: "March 11",
+      sessionDurationMinutes: 10,
       slotsPerHost: 9,
-      sessionDurationMinutes: 10
-    }
+      sessions: [
+        {
+          date: "March 11",
+          sessionTime: "4:00 PM - 5:30 PM",
+        }
+      ]
+    },
   },
   {
     id: 3,
@@ -721,10 +726,19 @@ invaluable connections that can shape the future of your business.
 
     matchmakingSessions: {
       signUpTime: "7:30 AM",
-      sessionTime: "4:00 PM - 5:30 PM",
-      date: "July 29",
+      signUpDate: "July 29, 2025",
+      sessionDurationMinutes: 10,
       slotsPerHost: 9,
-      sessionDurationMinutes: 10
+      sessions: [
+        {
+          date: "July 29",
+          sessionTime: "4:00 PM - 5:30 PM",
+        },
+        {
+          date: "July 30",
+          sessionTime: "12:30 PM - 1:30 PM",
+        },
+      ]
     },
     countdownColour: "#1C2D3D",
     expectationsText: `The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!`,
