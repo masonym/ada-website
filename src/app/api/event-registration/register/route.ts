@@ -68,7 +68,8 @@ export async function POST(request: Request) {
       { id: 'standard', price: 100, earlyBirdPrice: 80, earlyBirdDeadline: '2024-12-31T23:59:59Z' },
       { id: 'vip', price: 200, earlyBirdPrice: 150, earlyBirdDeadline: '2024-12-31T23:59:59Z' },
       // Add the ticket being sent from the client
-      { id: 'test-standard', price: 99.99, earlyBirdPrice: 89.99, earlyBirdDeadline: '2024-12-31T23:59:59Z' } 
+      { id: 'test-standard', price: 99.99, earlyBirdPrice: 89.99, earlyBirdDeadline: '2024-12-31T23:59:59Z' },
+      { id: 'test-vip', price: 199.99, earlyBirdPrice: 189.99, earlyBirdDeadline: '2024-12-31T23:59:59Z' },
     ];
 
     console.log('--- Registration Attempt ---');
