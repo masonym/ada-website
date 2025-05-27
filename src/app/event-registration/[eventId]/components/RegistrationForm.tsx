@@ -6,33 +6,13 @@ import * as yup from 'yup';
 import { useRouter } from 'next/navigation';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { AlertCircle } from 'lucide-react';
-
-// Types
-type BusinessSize = 
-  | '1-10 employees' 
-  | '11-50 employees' 
-  | '51-200 employees' 
-  | '201-500 employees' 
-  | '501-1000 employees' 
-  | '1001-5000 employees' 
-  | '5001+ employees'
-  | 'Government';
-
-interface RegistrationType {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  isActive: boolean;
-  requiresAttendeeInfo: boolean;
-  earlyBirdPrice?: number;
-  earlyBirdDeadline?: string;
-}
+import { AlertCircle, Check } from 'lucide-react';
+import { RegistrationType, BusinessSize, RegistrationFormData } from '@/types/event-registration/registration';
 
 interface Event {
-  id: string;
+  id: number | string;
   title: string;
+  slug: string;
   // Add other event properties as needed
 }
 
@@ -42,15 +22,9 @@ interface RegistrationFormProps {
 }
 
 // Define the shape of the form values
-interface FormValues {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  jobTitle: string;
-  company: string;
+interface FormValues extends Omit<RegistrationFormData, 'businessSize'> {
+  businessSize: BusinessSize | '';
   companyWebsite: string;
-  businessSize: BusinessSize;
   industry: string;
   address1: string;
   address2: string;

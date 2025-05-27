@@ -1,131 +1,210 @@
 "use client";
 
-import React from 'react';
+import { useState } from 'react';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { notFound, useParams } from 'next/navigation';
-import { EVENTS } from '@/constants/events';
+import { notFound } from 'next/navigation';
+import { REGISTRATION_TYPES } from '@/constants/registrations';
 import { Event } from '@/types/events';
 import { getCdnPath } from '@/utils/image';
+import RegistrationModal from '@/components/RegistrationModal';
 
-type RegistrationTypes = {
-    title: string;
-    headerImage: string;
-    subtitle: string;
-    perks: string[];
-    buttonText: string;
-    buttonLink: string;
-    type: string;
-    earlyBirdPrice?: string;
-    regularPrice?: string;
-    earlyBirdDeadline?: string;
-    availabilityInfo?: string;
-    receptionPrice?: string;
-};
+interface ContactInfo {
+  contactEmail2?: string;
+  [key: string]: any;
+}
+
+// Extend the base Event type to include additional properties
+interface EventWithContact extends Omit<Event, 'id'> {
+  contactInfo?: ContactInfo;
+  eventShorthand: string;
+  id: string | number; // Allow both string and number for flexibility
+  slug: string;
+}
+
+// Extend the base RegistrationType with any additional fields needed for the card display
+interface RegistrationCardProps {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  earlyBirdPrice?: number;
+  earlyBirdDeadline?: string;
+  isActive: boolean;
+  requiresAttendeeInfo: boolean;
+  isGovtFreeEligible: boolean;
+  perks?: string[];
+  availabilityInfo?: string;
+  type: 'paid' | 'free' | 'sponsor';
+  title: string;
+  headerImage: string;
+  subtitle: string;
+  buttonText: string;
+  buttonLink: string;
+  regularPrice: number;
+  receptionPrice?: string;
+}
 
 type RegistrationProp = {
-    item: RegistrationTypes;
+  item: RegistrationCardProps;
+  event: EventWithContact;
 };
 
-const RegistrationCard = ({ item }: RegistrationProp) => {
-    const params = useParams()
-    const event = EVENTS.find((event: Event) => event.slug === params?.slug);
-    const isPaid = item.type === 'paid';
-    const isSponsor = item.type === 'sponsor';
-    const isFree = item.type === 'complimentary';
-    const isEarlyBird = isPaid && new Date() < new Date(item.earlyBirdDeadline!);
-    const currentPrice = isPaid
-        ? (isEarlyBird ? item.earlyBirdPrice : item.regularPrice)
-        : isFree
-            ? 'Complimentary'
-            : '';
-    const deadlineDate = isPaid ? new Date(item.earlyBirdDeadline!).toLocaleDateString('en-US', {
+const RegistrationCard = ({ item, event }: RegistrationProp) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const isPaid = item.type === 'paid';
+  const isFree = item.type === 'free';
+  const isSponsor = item.type === 'sponsor';
+  const isSoldOut = item.availabilityInfo === 'SOLD OUT';
+  const isEarlyBird = isPaid && item.earlyBirdDeadline && new Date() < new Date(item.earlyBirdDeadline);
+  
+  const currentPrice = isPaid
+    ? (isEarlyBird && item.earlyBirdPrice ? item.earlyBirdPrice : item.price)
+    : isFree
+    ? 'Complimentary'
+    : '';
+
+  const deadlineDate = isPaid && item.earlyBirdDeadline 
+    ? new Date(item.earlyBirdDeadline).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
-    }) : null;
+      })
+    : null;
 
-    const formatEmail = (email: string) => {
-        return email.replace('@', '\u200B@');
-    };
+  const formatEmail = (email: string) => {
+    return email.replace('@', '\u200B@');
+  };
 
-    if (!event) {
-        notFound();
-    }
+  if (!event) {
+    notFound();
+  }
 
-    return (
-        <div className="flex flex-col bg-white rounded-lg shadow-md overflow-hidden max-w-sm mx-auto h-full">
-            {/* Image container with responsive dimensions */}
-            <div className="relative w-full h-32">
-                <Image
-                    src={getCdnPath(`events/${event.eventShorthand}/registration-cards/${item.headerImage}`)}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                    priority
-                />
-            </div>
+  // Get all registration types for this event
+  const eventRegistration = REGISTRATION_TYPES.find(rt => rt.id.toString() === event.id.toString());
+  const allRegistrations = (eventRegistration?.registrations || []) as RegistrationCardProps[];
 
-            {/* Content container */}
-            <div className="flex flex-col flex-grow p-6">
-                {/* Scrollable content area */}
-                <div className="flex-grow overflow-y-auto">
-                    <p className="text-lg font-bold text-center text-slate-700 mb-4">{item.title}</p>
-                    <p className="text-sm text-gray-600 mb-4">{item.subtitle}</p>
-                    <ul className="space-y-2 mb-6">
-                        {item.perks.map((perk, index) => (
-                            <li key={index} className="flex items-start">
-                                <ChevronRight className="h-5 w-5 mr-2 text-blue-600 flex-shrink-0" />
-                                <span className="text-sm" dangerouslySetInnerHTML={{ __html: perk }}></span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+  const handleCardClick = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    setIsModalOpen(true);
+  };
 
-                {/* Footer section */}
-                <div className="mt-auto pt-4">
-                    {isPaid && isEarlyBird && (
-                        <p className="text-sm font-semibold text-center text-green-600 mb-2">
-                            Early-bird price available!
-                        </p>
-                    )}
-                    {item.receptionPrice && (
-                        <p className="text-sm font-semibold text-center break-words text-blue-600 mb-2">
-                            {item.receptionPrice} with<wbr /> VIP Networking Reception
-                        </p>
-                    )}
-                    {isFree && (
-                        <div className="text-center">
-                            <p className="text-sm font-semibold text-gray-600">Register with .gov or .mil email</p>
-                        </div>
-                    )}
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
-                    {isSponsor && (
-                        <div className="text-center">
-                            <p className="text-sm font-semibold text-gray-600">For more information and to secure your sponsorship, contact:</p>
-                            <p className="text-sm font-semibold text-blue-600 hover:underline break-words mb-2">
-                                <a href={`mailto:${event?.contactInfo?.contactEmail2 || 'marketing@americandefensealliance.org'}`}>
-                                    {formatEmail(event?.contactInfo?.contactEmail2 || 'marketing@americandefensealliance.org')}
-                                </a>
-                            </p>
-                        </div>
-                    )}
-                    {item.availabilityInfo && (
-                        <p className="text-sm font-semibold text-center text-blue-600 mb-2">
-                            {item.availabilityInfo}
-                        </p>
-                    )}
-                    <p className="text-xl font-bold text-center mb-2">{currentPrice}</p>
-                    <Link href={item.buttonLink} target="_blank" className="block w-full">
-                        <button className="w-full py-2 px-4 bg-blue-800 text-white font-semibold rounded-md hover:bg-navy-200 transition duration-300">
-                            {item.buttonText}
-                        </button>
-                    </Link>
-                </div>
-            </div>
+  return (
+    <>
+      <div 
+        className="flex flex-col bg-white rounded-lg shadow-md overflow-hidden max-w-sm mx-auto h-full cursor-pointer hover:shadow-lg transition-shadow"
+        onClick={handleCardClick}
+      >
+        {/* Image container */}
+        <div className="relative w-full h-48">
+          <Image
+            src={getCdnPath(`events/${event.eventShorthand}/registration-cards/${item.headerImage}`)}
+            alt={item.title}
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
-    );
+
+        {/* Content */}
+        <div className="flex flex-col flex-grow p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+          <p className="text-gray-600 mb-4">{item.subtitle}</p>
+          
+          {/* Price */}
+          {isPaid && (
+            <div className="mb-4">
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl font-bold text-gray-900">
+                  ${currentPrice}
+                </span>
+                {isEarlyBird && (
+                  <span className="text-sm bg-green-100 text-green-800 px-2 py-0.5 rounded-full">
+                    Early Bird
+                  </span>
+                )}
+              </div>
+              {isEarlyBird && deadlineDate && (
+                <p className="text-xs text-gray-500 mt-1">Early bird ends {deadlineDate}</p>
+              )}
+            </div>
+          )}
+
+          {/* Perks */}
+          <ul className="space-y-2 mb-6">
+            {item.perks?.map((perk, index) => (
+              <li key={index} className="flex items-start">
+                <ChevronRight className="h-4 w-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-700">{perk}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* Button */}
+          <div className="mt-auto">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleCardClick(e);
+              }}
+              disabled={isSoldOut}
+              className={`w-full py-2 px-4 text-white font-semibold rounded-md ${
+                isSoldOut 
+                  ? 'bg-gray-400 cursor-not-allowed' 
+                  : isSponsor 
+                    ? 'bg-blue-600 hover:bg-blue-700' 
+                    : isFree 
+                      ? 'bg-green-600 hover:bg-green-700' 
+                      : 'bg-indigo-600 hover:bg-indigo-700'
+              } transition-colors`}
+            >
+              {isSoldOut ? 'Sold Out' : item.buttonText}
+            </button>
+          </div>
+
+          {/* Additional Info */}
+          <div className="mt-4 text-center">
+            {isPaid && item.receptionPrice && (
+              <p className="text-sm font-medium text-blue-600">
+                {item.receptionPrice} with VIP Networking Reception
+              </p>
+            )}
+            
+            {isFree && (
+              <p className="text-sm font-medium text-gray-600">
+                Register with .gov or .mil email
+              </p>
+            )}
+
+            {isSponsor && (
+              <div className="mt-2">
+                <p className="text-sm font-medium text-gray-600">Contact us for sponsorship details</p>
+              </div>
+            )}
+
+            {item.availabilityInfo && !isSoldOut && (
+              <p className="text-xs text-yellow-600 mt-2">
+                {item.availabilityInfo}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Registration Modal */}
+      <RegistrationModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        selectedRegistration={item}
+        event={event}
+        allRegistrations={allRegistrations}
+      />
+    </>
+  );
 };
 
 export default RegistrationCard;

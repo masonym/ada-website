@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Award, ChevronRight, Mail } from 'lucide-react';
 import SponsorProspectus from './SponsorProspectus';
 import ExhibitInstructionsButton from './ExhibitInstructionsButton';
+import { RegistrationType } from '@/types/event-registration/registration';
 
 export type RegistrationProps = {
     event: Event;
@@ -19,11 +20,52 @@ type AddOn = {
 };
 
 const RegistrationOptions = ({ event }: RegistrationProps) => {
-    const currentEvent = REGISTRATION_TYPES.find((e) => e.id === event.id);
+    const currentEvent = REGISTRATION_TYPES.find((e) => e.id.toString() === event.id.toString());
 
     if (!currentEvent) {
         notFound();
     }
+
+    // Map the registration types to the format expected by the RegistrationCard
+    const registrationCards = currentEvent.registrations.map((reg: any) => {
+        // Create a registration object that matches RegistrationCardProps
+        const registration = {
+            // Core RegistrationType fields
+            id: reg.id?.toString() || '',
+            name: reg.name || reg.title || 'Registration',
+            description: reg.description || '',
+            price: typeof reg.price === 'number' ? reg.price : 0,
+            type: (reg.type as 'paid' | 'free' | 'sponsor') || 'paid',
+            isActive: reg.isActive !== false,
+            requiresAttendeeInfo: reg.requiresAttendeeInfo !== false,
+            isGovtFreeEligible: reg.isGovtFreeEligible || false,
+            perks: Array.isArray(reg.perks) ? reg.perks : [],
+            availabilityInfo: reg.availabilityInfo,
+            maxQuantityPerOrder: typeof reg.maxQuantityPerOrder === 'number' ? reg.maxQuantityPerOrder : 10,
+            earlyBirdPrice: typeof reg.earlyBirdPrice === 'number' ? reg.earlyBirdPrice : undefined,
+            earlyBirdDeadline: reg.earlyBirdDeadline,
+            quantityAvailable: typeof reg.quantityAvailable === 'number' ? reg.quantityAvailable : undefined,
+            
+            // UI fields for RegistrationCard
+            title: reg.title || reg.name || 'Registration',
+            headerImage: reg.headerImage || '',
+            subtitle: reg.subtitle || reg.description || '',
+            buttonText: reg.buttonText || 'Register Now',
+            buttonLink: reg.buttonLink || '#',
+            regularPrice: typeof reg.regularPrice === 'number' ? reg.regularPrice : (typeof reg.price === 'number' ? reg.price : 0),
+            receptionPrice: reg.receptionPrice,
+        };
+        
+        return registration as RegistrationType & {
+            title: string;
+            headerImage: string;
+            subtitle: string;
+            buttonText: string;
+            buttonLink: string;
+            regularPrice: number;
+            receptionPrice?: string;
+        };
+    });
 
     const earlyBirdDeadline = currentEvent.registrations.find(reg => reg.earlyBirdDeadline)?.earlyBirdDeadline || null;
     const isEarlyBird = earlyBirdDeadline && new Date() < new Date(earlyBirdDeadline);
@@ -36,7 +78,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
         return 'md:grid-cols-4';
     };
 
-    const gridCols = getGridCols(currentEvent.registrations.length);
+    const gridCols = getGridCols(registrationCards.length);
 
     return (
         <div className="w-full px-4">
@@ -48,12 +90,15 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                 {/* Registration Cards Grid - Responsive and Centered */}
                 <div className="w-full flex justify-center">
                     <div className={`grid grid-cols-1 ${gridCols} gap-6 justify-center`}
-                        style={{ maxWidth: `${currentEvent.registrations.length * 320 + (currentEvent.registrations.length - 1) * 24}px` }}>
-                        {currentEvent.registrations.map((item, index) => (
-                            <div key={index} className="w-full max-w-[320px]">
-                                <RegistrationCard item={item} />
-                            </div>
-                        ))}
+                        style={{ maxWidth: `${registrationCards.length * 320 + (registrationCards.length - 1) * 24}px` }}>
+                        {registrationCards.map((item, index) => {
+                            // Ensure type is always defined with a default value
+                            const registrationItem = {
+                                ...item,
+                                type: item.type || 'paid' // Default to 'paid' if type is undefined
+                            };
+                            return <RegistrationCard key={index} item={registrationItem} event={event} />;
+                        })}
                     </div>
                 </div>
 

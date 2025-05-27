@@ -1,5 +1,6 @@
 import { EventTestimonial } from "@/app/components/EventTestimonials";
 import { ReactNode } from "react";
+import { RegistrationType } from "./event-registration/registration";
 
 export interface Sale {
     id: string;
@@ -49,6 +50,7 @@ export interface Event {
     eventShorthand: string;
     registerLink: string;
     password?: string;
+    registrationTypes?: RegistrationType[];
     sponsorProspectusPath?: string;
     expectations?: AudienceExpectations[];
     expectationsText?: string;

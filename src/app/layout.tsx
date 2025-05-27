@@ -7,6 +7,13 @@ import ScrollToTop from "./components/ScrollToTop";
 import { GoogleAnalytics } from '@next/third-parties/google'
 import Head from "next/head";
 import Script from "next/script";
+import dynamic from 'next/dynamic';
+
+// Dynamically import the StripeProvider to avoid SSR issues
+const StripeProvider = dynamic(
+  () => import('@/components/StripeProvider'),
+  { ssr: false }
+);
 
 
 export const metadata: Metadata = {
@@ -76,16 +83,18 @@ export default function RootLayout({
         </Script>
       </Head>
       <body className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-300">
-        <ScrollToTop />
-        <div className="bg-navy-800">
-          <NavBar />
-        </div>
-        <main className="relative overflow-hidden ">
-          {children}
-        </main>
-        <GoogleAnalytics gaId="G-166BFD7CN0" />
-        <SpeedInsights />
-        <Footer />
+        <StripeProvider>
+          <ScrollToTop />
+          <div className="bg-navy-800">
+            <NavBar />
+          </div>
+          <main className="relative overflow-hidden">
+            {children}
+          </main>
+          <Footer />
+          <GoogleAnalytics gaId="G-166BFD7CN0" />
+          <SpeedInsights />
+        </StripeProvider>
       </body>
     </html>
   );
