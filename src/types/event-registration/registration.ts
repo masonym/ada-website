@@ -52,14 +52,11 @@ export interface AttendeeInfo {
 }
 
 export type BusinessSize = 
-  | '1-10 employees' 
-  | '11-50 employees' 
-  | '51-200 employees' 
-  | '201-500 employees' 
-  | '501-1000 employees' 
-  | '1001-5000 employees' 
-  | '5001+ employees'
-  | 'Government';
+  | 'Small Business' 
+  | 'Medium-Sized Business' 
+  | 'Large-Sized Business'
+  | 'Government Agency'
+  | 'Military Component';
 
 export interface EventRegistrationProps {
   event: Event;
