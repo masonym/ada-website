@@ -67,6 +67,7 @@ export interface EventRegistrationProps {
 }
 
 export interface RegistrationType {
+  // Core fields
   id: string;
   name: string;
   description: string;
@@ -78,4 +79,16 @@ export interface RegistrationType {
   requiresAttendeeInfo: boolean;
   maxQuantityPerOrder?: number;
   isGovtFreeEligible: boolean;
+  
+  // UI-related fields
+  title?: string;
+  headerImage?: string;
+  perks?: string[];
+  subtitle?: string;
+  buttonText?: string;
+  buttonLink?: string;
+  regularPrice?: string | number;
+  type?: 'paid' | 'free' | 'sponsor';
+  receptionPrice?: string;
+  availabilityInfo?: string;
 }

@@ -1,4 +1,65 @@
 export const REGISTRATION_TYPES = [
+    // Test Event with Stripe - 2025TEST
+    {
+        id: 0, // Matches the event ID
+        registrations: [
+            {
+                title: "Standard Registration",
+                headerImage: "standard-pass.webp",
+                perks: [
+                    "Access to all event sessions",
+                    "Digital event materials",
+                    "Networking opportunities",
+                    "Lunch and refreshments",
+                    "Event certificate"
+                ],
+                subtitle: "Includes:",
+                buttonText: "Register Now",
+                buttonLink: "#",
+                earlyBirdPrice: 79.99,
+                regularPrice: 99.99,
+                earlyBirdDeadline: "2025-11-15T23:59:59Z",
+                type: 'paid' as const,
+                id: 'test-standard',
+                name: 'Standard Registration',
+                description: 'Standard registration for the test event',
+                price: 99.99,
+                isActive: true,
+                quantityAvailable: 100,
+                requiresAttendeeInfo: true,
+                maxQuantityPerOrder: 5,
+                isGovtFreeEligible: true
+            },
+            {
+                title: "VIP Registration",
+                headerImage: "vip-pass.webp",
+                perks: [
+                    "All Standard benefits, plus:",
+                    "Exclusive VIP lounge access",
+                    "Priority seating at sessions",
+                    "Meet & greet with speakers",
+                    "VIP gift bag"
+                ],
+                subtitle: "Includes:",
+                buttonText: "Register Now",
+                buttonLink: "#",
+                earlyBirdPrice: 149.99,
+                regularPrice: 199.99,
+                earlyBirdDeadline: "2025-11-15T23:59:59Z",
+                type: 'paid' as const,
+                id: 'test-vip',
+                name: 'VIP Registration',
+                description: 'VIP registration with exclusive benefits',
+                price: 199.99,
+                isActive: true,
+                quantityAvailable: 50,
+                requiresAttendeeInfo: true,
+                maxQuantityPerOrder: 2,
+                isGovtFreeEligible: false
+            }
+        ]
+    },
+    // 2025 Defense Industry Forecast - DIF2025
     {
         id: 1,
         registrations: [
