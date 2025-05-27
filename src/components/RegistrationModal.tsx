@@ -6,6 +6,9 @@ import { Event } from '@/types/events';
 import { BillingInformation } from './BillingInformation';
 import { AttendeeForm } from './AttendeeForm';
 import { TermsAndConditions } from './TermsAndConditions';
+import { registrationSchema } from '@/lib/event-registration/validation';
+import { RegistrationFormData } from '@/types/event-registration/registration';
+import { ValidationError } from 'yup';
 
 // Define a type that combines both RegistrationType and additional card props
 type ModalRegistrationType = {
@@ -86,11 +89,12 @@ export default function RegistrationModal({
     email: '',
     confirmEmail: ''
   });
-
-  // Track attendees per ticket type
   const [attendeesByTicket, setAttendeesByTicket] = useState<Record<string, AttendeeInfo[]>>({});
 
-  // Initialize ticket quantities and attendees when allRegistrations changes
+  const [isLoading, setIsLoading] = useState(false);
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [apiError, setApiError] = useState<string | null>(null);
+
   useEffect(() => {
     const initialQuantities: Record<string, number> = {};
     const initialAttendees: Record<string, AttendeeInfo[]> = {};
@@ -127,7 +131,6 @@ export default function RegistrationModal({
       [id]: newQuantity
     }));
     
-    // Add empty attendee for this ticket type
     setAttendeesByTicket(prev => ({
       ...prev,
       [id]: [...(prev[id] || []), createEmptyAttendee()]
@@ -141,7 +144,6 @@ export default function RegistrationModal({
         [id]: prev[id] - 1
       }));
       
-      // Remove last attendee for this ticket type
       setAttendeesByTicket(prev => ({
         ...prev,
         [id]: prev[id]?.slice(0, -1) || []
@@ -198,9 +200,102 @@ export default function RegistrationModal({
     }, 0);
   };
 
-  // Get total number of tickets across all types
   const getTotalTickets = () => {
     return Object.values(ticketQuantities).reduce((sum, qty) => sum + qty, 0);
+  };
+
+  const handleCompleteRegistration = async () => {
+    setIsLoading(true);
+    setFormErrors({});
+    setApiError(null);
+
+    const firstTicketId = Object.keys(attendeesByTicket).find(id => (ticketQuantities[id] || 0) > 0);
+    const firstAttendee = firstTicketId ? attendeesByTicket[firstTicketId]?.[0] : createEmptyAttendee();
+
+    const formData: RegistrationFormData = {
+      firstName: billingInfo.firstName || firstAttendee.firstName,
+      lastName: billingInfo.lastName || firstAttendee.lastName,
+      email: billingInfo.email || firstAttendee.email,
+      phone: firstAttendee.phone || '',
+      jobTitle: firstAttendee.jobTitle || '',
+      company: firstAttendee.company || '',
+      companyWebsite: firstAttendee.website || '',
+      businessSize: (firstAttendee.businessSize as RegistrationFormData['businessSize']) || '1-10 employees',
+      industry: firstAttendee.industry || '',
+      address1: '',
+      address2: '',
+      city: '',
+      state: '',
+      zipCode: '',
+      country: '',
+      howDidYouHearAboutUs: '',
+      interestedInSponsorship: firstAttendee.sponsorInterest === 'yes',
+      interestedInSpeaking: firstAttendee.speakingInterest === 'yes',
+      agreeToTerms: agreedToTerms,
+      agreeToPhotoRelease: false,
+      tickets: allRegistrations
+        .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
+        .map(reg => ({
+          ticketId: reg.id,
+          quantity: ticketQuantities[reg.id] || 0,
+          attendeeInfo: (attendeesByTicket[reg.id] || []).map(att => ({
+            firstName: att.firstName,
+            lastName: att.lastName,
+            email: att.email,
+            jobTitle: att.jobTitle,
+            company: att.company,
+            dietaryRestrictions: '',
+            accessibilityNeeds: '',
+          })),
+        })),
+      paymentMethod: calculateTotal() === 0 ? 'free' : 'creditCard',
+      promoCode: promoCode || undefined,
+    };
+
+    try {
+      await registrationSchema.validate(formData, { abortEarly: false });
+      
+      const response = await fetch('/api/event-registration/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...formData, eventId: event.id }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        console.log('Registration successful:', result);
+        if (result.clientSecret) {
+          setApiError('Registration successful! Proceed to payment (Stripe integration pending).');
+        } else {
+          setApiError('Registration successful!');
+        }
+      } else {
+        const errorMsg = result.error || (result.errors && Object.values(result.errors).join(', ')) || 'Registration failed. Please try again.';
+        setApiError(errorMsg);
+        if (result.errors) {
+          setFormErrors(result.errors);
+        }
+      }
+    } catch (error) {
+      if (error instanceof ValidationError) {
+        const yupErrors: Record<string, string> = {};
+        error.inner.forEach(err => {
+          if (err.path) {
+            yupErrors[err.path] = err.message;
+          }
+        });
+        setFormErrors(yupErrors);
+        setApiError('Please correct the errors in the form.');
+      } else {
+        console.error('Registration submission error:', error);
+        setApiError('An unexpected error occurred. Please try again.');
+      }
+    }
+
+    setIsLoading(false);
   };
 
   const renderStep = () => {
@@ -409,7 +504,6 @@ export default function RegistrationModal({
                   ← {currentStep === 1 ? 'Back to ticket selection' : 'Back'}
                 </button>
                 
-                {/* Progress steps */}
                 <div className="flex justify-between mb-8">
                   {[1, 2].map((step) => (
                     <div key={step} className="flex-1 flex flex-col items-center">
@@ -429,10 +523,25 @@ export default function RegistrationModal({
                   ))}
                 </div>
 
-                {/* Form content */}
                 {renderStep()}
 
-                {/* Navigation buttons */}
+                {apiError && (
+                  <div className="mt-4 p-3 bg-red-100 text-red-700 border border-red-300 rounded-md">
+                    <p>{apiError}</p>
+                  </div>
+                )}
+
+                {Object.keys(formErrors).length > 0 && (
+                  <div className="mt-4 p-3 bg-red-100 text-red-700 border border-red-300 rounded-md">
+                    <p className="font-semibold mb-2">Please correct the following errors:</p>
+                    <ul className="list-disc list-inside">
+                      {Object.entries(formErrors).map(([key, message]) => (
+                        <li key={key}>{`${key.replace(/tickets\[\d+\]\./, 'Ticket - ').replace(/attendeeInfo\[\d+\]\./, 'Attendee - ')}: ${message}`}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
                 <div className="mt-8 pt-6 border-t flex justify-between">
                   {currentStep > 1 ? (
                     <button
@@ -454,14 +563,15 @@ export default function RegistrationModal({
                     </button>
                   ) : (
                     <button
-                      disabled={!agreedToTerms}
+                      onClick={handleCompleteRegistration}
+                      disabled={!agreedToTerms || isLoading}
                       className={`ml-auto px-6 py-2 rounded-lg font-semibold ${
-                        agreedToTerms
+                        agreedToTerms && !isLoading
                           ? 'bg-green-600 text-white hover:bg-green-700'
                           : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                       }`}
                     >
-                      Complete Registration (${calculateTotal().toFixed(2)})
+                      {isLoading ? 'Processing...' : `Complete Registration ($${calculateTotal().toFixed(2)})`}
                     </button>
                   )}
                 </div>
