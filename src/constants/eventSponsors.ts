@@ -163,6 +163,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "avanti",
                     "westwind",
                     "ana-sourcing",
+                    "cp2s-alytic",
                 ],
             },
             {
@@ -197,6 +198,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "ana-sourcing",
                     "allied-materials",
                     "reel-coh",
+                    "cp2s-alytic",
                 ],
             }
         ]

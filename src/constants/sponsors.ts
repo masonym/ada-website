@@ -480,6 +480,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://reel-coh.com/",
     size: 'small'
   },
+  "cp2s-alytic": {
+    id: "cp2s-alytic",
+    name: "CP2S & Alytic, Inc.",
+    logo: "/sponsors/cp2s-alytic.webp",
+    website: "https://www.cp2susa.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
