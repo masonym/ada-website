@@ -199,6 +199,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "allied-materials",
                     "reel-coh",
                     "cp2s-alytic",
+                    "imsm",
                 ],
             },
             {
