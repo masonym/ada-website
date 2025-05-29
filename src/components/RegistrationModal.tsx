@@ -57,6 +57,7 @@ interface ModalAttendeeInfo { // Renamed to avoid conflict with imported Attende
   phone: string;
   website: string;
   businessSize: BusinessSize | ''; // Allow empty string for initial form state, will be defaulted if empty
+  sbaIdentification?: string; // Added for SBA identification
   industry: string;
   sponsorInterest: 'yes' | 'no' | '';
   speakingInterest: 'yes' | 'no' | '';
@@ -90,6 +91,7 @@ const initialModalAttendeeInfo: ModalAttendeeInfo = {
   phone: '',
   website: '',
   businessSize: '',
+  sbaIdentification: '', // Added for SBA identification
   industry: '',
   sponsorInterest: '',
   speakingInterest: '',

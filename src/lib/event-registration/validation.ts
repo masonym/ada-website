@@ -54,6 +54,20 @@ export const registrationSchema = yup.object().shape({
               .required('Email is required'),
             jobTitle: yup.string().required('Job title is required'),
             company: yup.string().required('Company name is required'),
+            // Added businessSize, industry, and sbaIdentification to attendeeInfo
+            businessSize: yup.string().oneOf([
+              'Small Business',
+              'Medium-Sized Business',
+              'Large-Sized Business',
+              'Government Agency',
+              'Military Component'
+            ] as const).required('Business size is required for attendee'),
+            industry: yup.string().required('Industry is required for attendee'),
+            sbaIdentification: yup.string().when('businessSize', {
+              is: 'Small Business',
+              then: (schema) => schema.required('SBA identification is required for Small Business'),
+              otherwise: (schema) => schema.optional(),
+            }),
             dietaryRestrictions: yup.string(),
             accessibilityNeeds: yup.string(),
           })
