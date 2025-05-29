@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import { JWT } from 'google-auth-library';
+import { OAuth2Client } from 'google-auth-library';
 import { getEnv } from '../env';
 
 const env = getEnv();
@@ -7,17 +7,24 @@ const env = getEnv();
 // Initialize the Google Sheets API client
 async function getAuthClient() {
   try {
-    const auth = new JWT({
-      email: env.GOOGLE_SHEETS_CLIENT_EMAIL,
-      key: env.GOOGLE_SHEETS_PRIVATE_KEY,
-      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    });
+    const oAuth2Client = new OAuth2Client(
+      env.GOOGLE_CLIENT_ID,
+      env.GOOGLE_CLIENT_SECRET,
+      // Optional: You might have a redirect URI if you were doing a full OAuth flow,
+      // but for server-to-server with a refresh token, it's often not directly used here.
+      // e.g., 'http://localhost:3000/oauth2callback'
+    );
 
-    await auth.authorize();
-    return auth;
+    oAuth2Client.setCredentials({ refresh_token: env.GOOGLE_REFRESH_TOKEN });
+
+    // The access token will be automatically refreshed if it's expired.
+    // You can manually refresh if needed, but typically not necessary for each call.
+    // await oAuth2Client.refreshAccessToken(); 
+
+    return oAuth2Client;
   } catch (error) {
-    console.error('Error initializing Google Sheets client:', error);
-    throw new Error('Failed to initialize Google Sheets client');
+    console.error('Error initializing Google Sheets OAuth2 client:', error);
+    throw new Error('Failed to initialize Google Sheets OAuth2 client');
   }
 }
 
@@ -67,6 +74,12 @@ export async function getSheetData(
   }
 }
 
+interface TicketLogInfo {
+  ticketId: string | number;
+  quantity: number;
+  attendeeInfo?: any[]; // Consider a more specific type if available
+}
+
 export async function logRegistration(
   eventId: string,
   registrationData: any,
@@ -107,7 +120,7 @@ export async function logRegistration(
       promoCode || '',
       discountApplied ? discountApplied.toFixed(2) : '0.00',
       // Include ticket information
-      ...registrationData.tickets.flatMap(t => [
+      ...registrationData.tickets.flatMap((t: TicketLogInfo) => [
         t.ticketId,
         t.quantity,
         JSON.stringify(t.attendeeInfo || [])
@@ -118,7 +131,7 @@ export async function logRegistration(
 
     await appendToSheet(
       env.GOOGLE_SHEETS_SPREADSHEET_ID,
-      'Registrations!A:Z', // Adjust the range as needed
+      '🛡️ Attendee Registration Information 🛡️!A:N', // Adjust the range as needed
       [row],
       'USER_ENTERED'
     );

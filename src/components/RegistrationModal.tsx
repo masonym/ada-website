@@ -135,6 +135,12 @@ const RegistrationModal = ({
   const [pendingConfirmationData, setPendingConfirmationData] = useState<any>(null);
   const [attemptingStripePayment, setAttemptingStripePayment] = useState(false);
   const stripeFormRef = useRef<StripePaymentFormRef>(null);
+  const [isStripeReady, setIsStripeReady] = useState(false); // New state for Stripe readiness
+
+  const handleStripeReady = (ready: boolean) => {
+    console.log(`StripePaymentForm ready status: ${ready}`);
+    setIsStripeReady(ready);
+  };
 
   // Effect to reset state when modal is closed externally or re-opened
   useEffect(() => {
@@ -188,15 +194,20 @@ const RegistrationModal = ({
   };
 
   useEffect(() => {
-    console.log('useEffect for Stripe payment submission triggered. attemptingStripePayment:', attemptingStripePayment, 'clientSecret:', clientSecret);
-    if (attemptingStripePayment && clientSecret && stripeFormRef.current) {
-      console.log('Attempting to call stripeFormRef.current.triggerSubmit() as clientSecret is already in StripePaymentForm props');
+    console.log('useEffect for Stripe payment submission triggered. attemptingStripePayment:', attemptingStripePayment, 'clientSecret:', clientSecret, 'isStripeReady:', isStripeReady);
+    if (attemptingStripePayment && clientSecret && stripeFormRef.current && isStripeReady) { // Added isStripeReady check
+      console.log('Attempting to call stripeFormRef.current.triggerSubmit() as clientSecret is available and Stripe is ready.');
       stripeFormRef.current.triggerSubmit();
       console.log('Called stripeFormRef.current.triggerSubmit().');
       setAttemptingStripePayment(false); // Reset after attempting
       console.log('Reset attemptingStripePayment to false.');
+    } else if (attemptingStripePayment && clientSecret && !isStripeReady) {
+      console.log('Stripe not ready yet, will retry when it is or inform user.');
+      // Optionally, set an error or a flag to indicate waiting for Stripe
+      // For now, we'll rely on the existing error handling in StripePaymentForm if triggerSubmit is called too early
+      // but this condition prevents calling it if we know Stripe isn't ready.
     }
-  }, [attemptingStripePayment, clientSecret]);
+  }, [attemptingStripePayment, clientSecret, isStripeReady]); // Added isStripeReady to dependency array
 
   useEffect(() => {
     const initialQuantities: Record<string, number> = {};
@@ -772,14 +783,15 @@ const RegistrationModal = ({
           {calculateTotal() > 0 && (
             <div className="mt-6">
               <h3 className="text-xl font-semibold mb-2 text-gray-800">Payment</h3>
-              <Elements stripe={stripePromise} options={clientSecret ? { clientSecret } : undefined}>
+              <Elements key={clientSecret} stripe={stripePromise} options={clientSecret ? { clientSecret } : undefined}>
                 <StripePaymentForm 
                   ref={stripeFormRef}
                   clientSecret={clientSecret} // Pass the clientSecret obtained from your server
                   eventId={event.id.toString()} 
                   onPaymentSuccess={handlePaymentSuccess}
                   onPaymentError={handlePaymentError}
-                  onPaymentProcessing={setIsLoading}
+                  onPaymentProcessing={setIsLoading} // Or a more specific handler for payment in progress
+                  onStripeReady={handleStripeReady}
                 />
               </Elements>
             </div>

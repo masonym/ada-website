@@ -5,13 +5,22 @@ export function getEnv() {
     STRIPE_SECRET_KEY: getRequiredEnv('STRIPE_SECRET_KEY', 'Stripe Secret Key'),
     STRIPE_WEBHOOK_SECRET: getRequiredEnv('STRIPE_WEBHOOK_SECRET', 'Stripe Webhook Secret'),
     
-    // Google Sheets
+    // Google Sheets (OAuth 2.0 Client)
     GOOGLE_SHEETS_SPREADSHEET_ID: getRequiredEnv('GOOGLE_SHEETS_SPREADSHEET_ID', 'Google Sheets Spreadsheet ID'),
-    GOOGLE_SHEETS_CLIENT_EMAIL: getRequiredEnv('GOOGLE_SHEETS_CLIENT_EMAIL', 'Google Sheets Client Email'),
-    GOOGLE_SHEETS_PRIVATE_KEY: process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n') || '',
+    GOOGLE_CLIENT_ID: getRequiredEnv('GOOGLE_CLIENT_ID', 'Google Client ID'),
+    GOOGLE_CLIENT_SECRET: getRequiredEnv('GOOGLE_CLIENT_SECRET', 'Google Client Secret'),
+    GOOGLE_REFRESH_TOKEN: getRequiredEnv('GOOGLE_REFRESH_TOKEN', 'Google Refresh Token'),
+    // GOOGLE_SHEETS_CLIENT_EMAIL is used by JWT auth, not directly by OAuth2 client for auth, but might be used for other purposes or if switching auth methods.
+    GOOGLE_SHEETS_CLIENT_EMAIL: process.env.GOOGLE_SHEETS_CLIENT_EMAIL || '', // Make optional or remove if not needed for OAuth flow
+    // GOOGLE_SHEETS_PRIVATE_KEY is for JWT/Service Account auth, not OAuth2 client.
+    GOOGLE_SHEETS_PRIVATE_KEY: (process.env.GOOGLE_SHEETS_PRIVATE_KEY || '').replace(/\n/g, '\n'), // Ensure it's optional and handles undefined
+    
+    // Email
+    RESEND_API_KEY: getRequiredEnv('RESEND_API_KEY', 'Resend API Key'),
+    MY_EMAIL: getRequiredEnv('MY_EMAIL', 'My Email Address for Sending'),
     
     // Application
-    SITE_URL: getRequiredEnv('NEXT_PUBLIC_SITE_URL', 'Site URL'),
+    NEXT_PUBLIC_SITE_URL: getRequiredEnv('NEXT_PUBLIC_SITE_URL', 'Site URL'), // Renamed for clarity
     NODE_ENV: process.env.NODE_ENV || 'development',
     
     // Admin

@@ -1,4 +1,4 @@
-import React, { useState, useImperativeHandle, forwardRef } from 'react';
+import React, { useState, useImperativeHandle, forwardRef, useEffect } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 export interface StripePaymentFormRef {
@@ -11,16 +11,25 @@ interface StripePaymentFormProps {
   onPaymentSuccess: (paymentIntentId: string) => void;
   onPaymentError: (errorMessage: string) => void;
   onPaymentProcessing: (isProcessing: boolean) => void;
+  onStripeReady: (isReady: boolean) => void; // New prop
 }
 
 const StripePaymentForm = forwardRef<StripePaymentFormRef, StripePaymentFormProps>((
-  { clientSecret, eventId, onPaymentSuccess, onPaymentError, onPaymentProcessing }, 
+  { clientSecret, eventId, onPaymentSuccess, onPaymentError, onPaymentProcessing, onStripeReady }, 
   ref
 ) => {
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false); // Internal processing state
+
+  useEffect(() => {
+    if (stripe && elements) {
+      onStripeReady(true);
+    } else {
+      onStripeReady(false);
+    }
+  }, [stripe, elements, onStripeReady]);
 
   useImperativeHandle(ref, () => ({
     async triggerSubmit() {

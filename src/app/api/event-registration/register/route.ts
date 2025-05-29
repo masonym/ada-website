@@ -3,6 +3,7 @@ import { getEnv } from '@/lib/env';
 import { stripe } from '@/lib/stripe/server';
 import { logRegistration } from '@/lib/google-sheets';
 import { validateRegistrationData } from '@/lib/event-registration/validation';
+import { sendFreeRegistrationConfirmationEmail, sendPaymentPendingConfirmationEmail } from '@/lib/email';
 import { isGovOrMilEmail } from '@/lib/event-registration/validation';
 
 // Helper function to calculate order total
@@ -46,10 +47,12 @@ export async function POST(request: Request) {
     const env = getEnv();
     const body = await request.json();
     const eventIdFromBody = body.eventId; // Extract eventId from the raw body
+    // const eventTitleFromBody = body.eventTitle; // Optional: for more descriptive emails
+    // const eventSlugFromBody = body.eventSlug; // Optional: for direct event links
     
     // Validate the request body (excluding eventId for schema validation if it's not part of it)
     const { isValid, errors, validatedData } = await validateRegistrationData(body);
-    if (!isValid || !validatedData) {
+    if (!isValid || !validatedData) { // Check !validatedData explicitly for TS
       return NextResponse.json(
         { success: false, errors },
         { status: 400 }
@@ -85,7 +88,7 @@ export async function POST(request: Request) {
     if (promoCode) {
       // In a real app, you would validate the promo code against your database or Stripe
       // This is a simplified example
-      const promoResponse = await fetch(`${env.SITE_URL}/api/event-registration/validate-promo`, {
+      const promoResponse = await fetch(`${env.NEXT_PUBLIC_SITE_URL}/api/event-registration/validate-promo`, { // Use NEXT_PUBLIC_SITE_URL
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ promoCode, eventId: currentEventId, tickets }),
@@ -116,20 +119,38 @@ export async function POST(request: Request) {
 
     // For free registration, skip payment processing
     if (isFreeRegistration) {
-      // Generate a unique order ID
+      if (!validatedData) {
+        // This path should ideally not be reached due to the primary check after validateRegistrationData
+        console.error('validatedData is unexpectedly null at the start of isFreeRegistration block');
+        return NextResponse.json({ success: false, error: 'Internal server error: validatedData became null unexpectedly' }, { status: 500 });
+      }
+      // validatedData is now confirmed to be RegistrationFormData for the rest of this block
       const orderId = `ORDER-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
       
       // Log the registration to Google Sheets
       await logRegistration(
         currentEventId, // Use consistent eventId
-        validatedData,
+        validatedData, // Null check for validatedData is done at the start of this 'isFreeRegistration' block
         orderId,
         'free',
         0,
-        promoCode,
+        promoCode, // promoCode is destructured from validatedData, so it's fine if validatedData is non-null
         discount
       );
+
+      // Send free registration confirmation email
+      // validatedData is confirmed non-null from the check at the start of the isFreeRegistration block
+      if (validatedData.firstName && validatedData.email) {
+        await sendFreeRegistrationConfirmationEmail({
+          userEmail: validatedData.email,
+          firstName: validatedData.firstName,
+          eventName: body.eventTitle || 'the Event', // Prefer eventTitle from body, fallback
+          orderId,
+          eventUrl: body.eventSlug ? `${env.NEXT_PUBLIC_SITE_URL}/events/${body.eventSlug}` : env.NEXT_PUBLIC_SITE_URL
+        });
+      }
       
+      // Now, return the successful response
       return NextResponse.json({
         success: true,
         orderId,
@@ -152,6 +173,35 @@ export async function POST(request: Request) {
     });
 
     console.log('Stripe PaymentIntent created with amount:', Math.round(total * 100));
+
+    // Log paid registration attempt to Google Sheets
+    if (!validatedData) {
+      // This case should ideally not be reached if the initial check is correct
+      console.error('validatedData is null before logging paid registration');
+      return NextResponse.json({ success: false, error: 'Internal server error: validatedData became null before logging' }, { status: 500 });
+    }
+    await logRegistration(
+      currentEventId,
+      validatedData, // Now confirmed non-null
+      paymentIntent.id, // Use PaymentIntent ID as orderId
+      'pending_stripe_payment', // Indicate payment is pending
+      total, // Amount to be paid
+      validatedData.promoCode, // Now confirmed non-null
+      discount
+    );
+
+    // Send payment pending confirmation email
+    // validatedData is already confirmed non-null from the check above
+    if (validatedData.firstName && validatedData.email) {
+      await sendPaymentPendingConfirmationEmail({
+        userEmail: validatedData.email,
+        firstName: validatedData.firstName,
+        eventName: body.eventTitle || 'the Event', // Prefer eventTitle from body, fallback
+        orderId: paymentIntent.id,
+        amount: total,
+        eventUrl: body.eventSlug ? `${env.NEXT_PUBLIC_SITE_URL}/events/${body.eventSlug}` : env.NEXT_PUBLIC_SITE_URL
+      });
+    }
 
     return NextResponse.json({
       success: true,
