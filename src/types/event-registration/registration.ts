@@ -47,6 +47,12 @@ export interface AttendeeInfo {
   email: string;
   jobTitle: string;
   company: string;
+  phone: string; // Changed to required
+  website: string; // Changed to required
+  businessSize: string; // Changed to required, using string to match ModalAttendeeInfo
+  industry: string; // Changed to required
+  sponsorInterest: 'yes' | 'no' | ''; // Changed to required
+  speakingInterest: 'yes' | 'no' | ''; // Changed to required
   dietaryRestrictions?: string;
   accessibilityNeeds?: string;
 }
