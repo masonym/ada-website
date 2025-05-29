@@ -1,10 +1,10 @@
-import { AttendeeInfo } from '@/types/registration';
+import type { AttendeeInfo as EventRegAttendeeInfo } from '@/types/event-registration/registration';
 
 interface AttendeeFormProps {
   registrationId: string;
-  attendee: AttendeeInfo;
+  attendee: EventRegAttendeeInfo;
   index: number;
-  onChange: (registrationId: string, index: number, field: keyof AttendeeInfo, value: string) => void;
+  onChange: (registrationId: string, index: number, field: keyof EventRegAttendeeInfo, value: string) => void;
   errors?: Record<string, string>;
 }
 
