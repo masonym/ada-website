@@ -10,6 +10,7 @@ interface AttendeeInfo {
   phone: string;
   website: string;
   businessSize: string;
+  sbaIdentification?: string; // Added for SBA identification
   industry: string;
   sponsorInterest: 'yes' | 'no' | '';
   speakingInterest: 'yes' | 'no' | '';
@@ -31,7 +32,13 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
   totalAttendees
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    onChange(index, e.target.name, e.target.value);
+    const { name, value } = e.target;
+    onChange(index, name, value);
+
+    // If businessSize is changed and it's not 'Small Business', clear sbaIdentification
+    if (name === 'businessSize' && value !== 'Small Business') {
+      onChange(index, 'sbaIdentification', '');
+    }
   };
 
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,6 +58,15 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
     'Large-Sized Business',
     'Government Agency',
     'Military Component'
+  ];
+
+  const sbaOptions = [
+    '8(a) Small Business',
+    'HUBZone Small Business',
+    'Service-Disabled Veteran-owned Small Business (SDVOSB)',
+    'Veteran-owned Small Business (VOSB)',
+    'Women-owned Small Business (WOSB)',
+    'Other',
   ];
 
   const industries = [
@@ -178,6 +194,23 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
             ))}
           </select>
         </div>
+        {attendee.businessSize === 'Small Business' && (
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">SBA Identification *</label>
+            <select
+              className="w-full border rounded px-3 py-2"
+              name="sbaIdentification"
+              value={attendee.sbaIdentification || ''}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select SBA identification</option>
+              {sbaOptions.map((option) => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
+          </div>
+        )}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Industry *</label>
           <select

@@ -1,6 +1,7 @@
 import { google } from 'googleapis';
 import { OAuth2Client } from 'google-auth-library';
 import { getEnv } from '../env';
+import { RegistrationFormData, TicketSelection, AttendeeInfo } from '@/types/event-registration/registration';
 
 const env = getEnv();
 
@@ -74,67 +75,105 @@ export async function getSheetData(
   }
 }
 
-interface TicketLogInfo {
-  ticketId: string | number;
-  quantity: number;
-  attendeeInfo?: any[]; // Consider a more specific type if available
-}
-
 export async function logRegistration(
   eventId: string,
-  registrationData: any,
-  orderId: string,
-  paymentStatus: string,
+  registrationData: RegistrationFormData,
+  orderId: string, // Available if needed for future columns
+  paymentStatus: string, // Available if needed for future columns
   amountPaid: number,
-  promoCode?: string,
+  promoCode?: string, // Available if needed for future columns
   discountApplied?: number
 ) {
   try {
     const env = getEnv();
-    const timestamp = new Date().toISOString();
-    
-    // Format the registration data for the sheet
-    const row = [
-      timestamp,
-      orderId,
-      registrationData.firstName,
-      registrationData.lastName,
-      registrationData.email,
-      registrationData.phone,
-      registrationData.jobTitle,
-      registrationData.company,
-      registrationData.companyWebsite,
-      registrationData.businessSize,
-      registrationData.industry,
-      registrationData.address1,
-      registrationData.address2 || '',
-      registrationData.city,
-      registrationData.state,
-      registrationData.zipCode,
-      registrationData.country,
-      registrationData.howDidYouHearAboutUs,
-      registrationData.interestedInSponsorship ? 'Yes' : 'No',
-      registrationData.interestedInSpeaking ? 'Yes' : 'No',
-      paymentStatus,
-      amountPaid.toFixed(2),
-      promoCode || '',
-      discountApplied ? discountApplied.toFixed(2) : '0.00',
-      // Include ticket information
-      ...registrationData.tickets.flatMap((t: TicketLogInfo) => [
-        t.ticketId,
-        t.quantity,
-        JSON.stringify(t.attendeeInfo || [])
-      ]),
-      // Add any additional fields you want to track
-      JSON.stringify(registrationData, null, 2)
-    ];
+    const rowsToAppend: any[][] = [];
 
-    await appendToSheet(
-      env.GOOGLE_SHEETS_SPREADSHEET_ID,
-      '🛡️ Attendee Registration Information 🛡️!A:N', // Adjust the range as needed
-      [row],
-      'USER_ENTERED'
-    );
+    // Common information for all rows in this registration batch
+    const registrationTimestamp = new Date().toISOString();
+    const buyerCompany = registrationData.company || '';
+    const buyerJobTitle = registrationData.jobTitle || '';
+    const buyerFirstName = registrationData.firstName || '';
+    const buyerLastName = registrationData.lastName || '';
+    const buyerEmail = registrationData.email || '';
+    const buyerPhone = registrationData.phone || '';
+    const buyerCompanyWebsite = registrationData.companyWebsite || '';
+
+    // These amounts are for the entire order and will be repeated for each attendee row.
+    const orderAmountReceived = (amountPaid + (discountApplied || 0)).toFixed(2);
+    const orderAmountPaid = amountPaid.toFixed(2);
+
+    if (registrationData.tickets && Array.isArray(registrationData.tickets)) {
+      for (const ticket of registrationData.tickets) {
+        const ticketType = ticket.ticketId;
+        let attendeesProcessedForTicket = 0;
+
+        if (ticket.attendeeInfo && Array.isArray(ticket.attendeeInfo)) {
+          for (const attendee of ticket.attendeeInfo) {
+            const attendeeBusinessSize = attendee.businessSize || '';
+            const attendeeSbaIdentification = 
+              (attendee.businessSize === 'Small Business' && attendee.sbaIdentification) 
+              ? attendee.sbaIdentification 
+              : '';
+            const attendeeIndustry = attendee.industry || '';
+
+            const row = [
+              attendee.company || '',         // Attendee's Company
+              attendee.jobTitle || '',        // Attendee's Job Title
+              attendee.firstName || '',       // Attendee's First Name
+              attendee.lastName || '',        // Attendee's Last Name
+              attendee.email || '',           // Attendee's Email
+              attendee.phone || '',           // Attendee's Phone
+              registrationTimestamp,          // Common: Registration Date
+              ticketType,                     // Specific ticket type for this attendee
+              (parseInt(orderAmountReceived) / ticket.quantity).toFixed(2),            // Common: Order Amount Received
+              (parseInt(orderAmountPaid) / ticket.quantity).toFixed(2),                // Common: Order Amount Paid
+              attendee.website || '',         // Attendee's Website
+              attendeeBusinessSize,           // Attendee's Business Size
+              attendeeSbaIdentification,      // Attendee's SBA Identification
+              attendeeIndustry,               // Attendee's Industry
+            ];
+            rowsToAppend.push(row);
+            attendeesProcessedForTicket++;
+          }
+        }
+
+        // If quantity > number of attendees with info, add generic rows for remaining quantity
+        const remainingQuantity = ticket.quantity - attendeesProcessedForTicket;
+        if (remainingQuantity > 0) {
+          for (let i = 0; i < remainingQuantity; i++) {
+            const row = [
+              '',                             // Blank: Company for generic entry
+              '',                             // Blank: Job Title for generic entry
+              '',                             // Blank: First Name for generic entry
+              '',                             // Blank: Last Name for generic entry
+              '',                             // Blank: Email for generic entry
+              '',                             // Blank: Phone for generic entry
+              registrationTimestamp,          // Common: Registration Date
+              ticketType,                     // Specific ticket type
+              (parseInt(orderAmountReceived) / ticket.quantity).toFixed(2),            // Common: Order Amount Received
+              (parseInt(orderAmountPaid) / ticket.quantity).toFixed(2),                // Common: Order Amount Paid
+              '',                             // Blank: Website for generic entry
+              '',                             // No Business Size for generic entry
+              '',                             // No SBA Identification for generic entry
+              '',                             // No Industry for generic entry
+            ];
+            rowsToAppend.push(row);
+          }
+        }
+      }
+    }
+
+    if (rowsToAppend.length > 0) {
+      await appendToSheet(
+        env.GOOGLE_SHEETS_SPREADSHEET_ID,
+        '🛡️ Attendee Registration Information 🛡️!A:N', // Existing 14-column range
+        rowsToAppend,
+        'USER_ENTERED'
+      );
+    } else {
+      // Optional: Log a warning if no rows were generated for a registration attempt
+      console.warn('No rows generated for logging registration. Event ID:', eventId, 'Order ID:', orderId);
+    }
 
     return { success: true };
   } catch (error) {

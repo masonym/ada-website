@@ -50,6 +50,7 @@ export interface AttendeeInfo {
   phone: string; // Changed to required
   website: string; // Changed to required
   businessSize: string; // Changed to required, using string to match ModalAttendeeInfo
+  sbaIdentification?: string; // Added for SBA identification
   industry: string; // Changed to required
   sponsorInterest: 'yes' | 'no' | ''; // Changed to required
   speakingInterest: 'yes' | 'no' | ''; // Changed to required
