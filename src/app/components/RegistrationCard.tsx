@@ -38,7 +38,7 @@ interface RegistrationCardProps {
   type: 'paid' | 'free' | 'sponsor';
   title: string;
   headerImage: string;
-  subtitle: string;
+  subtitle?: string;
   buttonText: string;
   buttonLink: string;
   regularPrice: number;
@@ -57,19 +57,19 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
   const isSponsor = item.type === 'sponsor';
   const isSoldOut = item.availabilityInfo === 'SOLD OUT';
   const isEarlyBird = isPaid && item.earlyBirdDeadline && new Date() < new Date(item.earlyBirdDeadline);
-  
+
   const currentPrice = isPaid
     ? (isEarlyBird && item.earlyBirdPrice ? item.earlyBirdPrice : item.price)
     : isFree
-    ? 'Complimentary'
-    : '';
-
-  const deadlineDate = isPaid && item.earlyBirdDeadline 
+      ? 'Complimentary'
+      : '';
+  console.log(item);
+  const deadlineDate = isPaid && item.earlyBirdDeadline
     ? new Date(item.earlyBirdDeadline).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      })
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
     : null;
 
   const formatEmail = (email: string) => {
@@ -95,7 +95,7 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
 
   return (
     <>
-      <div 
+      <div
         className="flex flex-col bg-white rounded-lg shadow-md overflow-hidden max-w-sm mx-auto h-full cursor-pointer hover:shadow-lg transition-shadow"
         onClick={handleCardClick}
       >
@@ -113,8 +113,8 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
         {/* Content */}
         <div className="flex flex-col flex-grow p-6">
           <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-          <p className="text-gray-600 mb-4">{item.subtitle}</p>
-          
+          {item.subtitle && <p className="text-gray-600 mb-4">{item.subtitle}</p>}
+
           {/* Price */}
           {isPaid && (
             <div className="mb-4">
@@ -152,15 +152,14 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
                 handleCardClick(e);
               }}
               disabled={isSoldOut}
-              className={`w-full py-2 px-4 text-white font-semibold rounded-md ${
-                isSoldOut 
-                  ? 'bg-gray-400 cursor-not-allowed' 
-                  : isSponsor 
-                    ? 'bg-blue-600 hover:bg-blue-700' 
-                    : isFree 
-                      ? 'bg-green-600 hover:bg-green-700' 
-                      : 'bg-indigo-600 hover:bg-indigo-700'
-              } transition-colors`}
+              className={`w-full py-2 px-4 text-white font-semibold rounded-md ${isSoldOut
+                ? 'bg-gray-400 cursor-not-allowed'
+                : isSponsor
+                  ? 'bg-blue-600 hover:bg-blue-700'
+                  : isFree
+                    ? 'bg-green-600 hover:bg-green-700'
+                    : 'bg-indigo-600 hover:bg-indigo-700'
+                } transition-colors`}
             >
               {isSoldOut ? 'Sold Out' : item.buttonText}
             </button>
@@ -173,7 +172,7 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
                 {item.receptionPrice} with VIP Networking Reception
               </p>
             )}
-            
+
             {isFree && (
               <p className="text-sm font-medium text-gray-600">
                 Register with .gov or .mil email

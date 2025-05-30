@@ -45,17 +45,17 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
             earlyBirdPrice: typeof reg.earlyBirdPrice === 'number' ? reg.earlyBirdPrice : undefined,
             earlyBirdDeadline: reg.earlyBirdDeadline,
             quantityAvailable: typeof reg.quantityAvailable === 'number' ? reg.quantityAvailable : undefined,
-            
+
             // UI fields for RegistrationCard
             title: reg.title || reg.name || 'Registration',
             headerImage: reg.headerImage || '',
-            subtitle: reg.subtitle || reg.description || '',
+            subtitle: reg.subtitle || '',
             buttonText: reg.buttonText || 'Register Now',
             buttonLink: reg.buttonLink || '#',
             regularPrice: typeof reg.regularPrice === 'number' ? reg.regularPrice : (typeof reg.price === 'number' ? reg.price : 0),
             receptionPrice: reg.receptionPrice,
         };
-        
+
         return registration as RegistrationType & {
             title: string;
             headerImage: string;
