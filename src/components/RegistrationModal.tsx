@@ -274,15 +274,21 @@ const RegistrationModal = ({
     const initialAttendees: Record<string, ModalAttendeeInfo[]> = {};
 
     allRegistrations.forEach((reg) => {
-      initialQuantities[reg.id] = 0;
+      // If this is the selected registration and we're opening the modal, initialize with quantity 1
+      const isSelected = selectedRegistration && reg.id === selectedRegistration.id;
+      initialQuantities[reg.id] = isSelected && isOpen ? 1 : 0;
+      
+      // Initialize attendee info array based on quantity
       if (reg.requiresAttendeeInfo) {
-        initialAttendees[reg.id] = []; // Ensure key exists for tickets requiring attendee info
+        initialAttendees[reg.id] = isSelected && isOpen ? 
+          [{ ...initialModalAttendeeInfo }] : // Add one initial attendee
+          []; // Empty array by default
       }
     });
 
     setTicketQuantities(initialQuantities);
     setAttendeesByTicket(initialAttendees);
-  }, [allRegistrations]);
+  }, [allRegistrations, selectedRegistration, isOpen]);
 
   const handleIncrement = (id: string) => {
     const newQuantity = (ticketQuantities[id] || 0) + 1;
@@ -405,18 +411,29 @@ const RegistrationModal = ({
     });
   };
 
-  const handleCopyAttendee = (registrationId: string, sourceIndex: number, targetIndex: number) => {
+  const handleCopyAttendee = (sourceTicketId: string, sourceIndex: number, targetTicketId: string, targetIndex: number) => {
     setAttendeesByTicket(prev => {
-      const currentAttendeesForTicket = prev[registrationId] ? [...prev[registrationId]] : [];
-      if (sourceIndex < currentAttendeesForTicket.length && targetIndex < currentAttendeesForTicket.length) {
-        // Ensure we are creating a new object for the target attendee
-        currentAttendeesForTicket[targetIndex] = { ...currentAttendeesForTicket[sourceIndex] };
+      // Get source attendees and ensure it exists
+      const sourceAttendees = prev[sourceTicketId] || [];
+      // Get target attendees and ensure it exists
+      const targetAttendees = prev[targetTicketId] ? [...prev[targetTicketId]] : [];
+      
+      // Check if indices are valid
+      if (sourceIndex < sourceAttendees.length && targetIndex < targetAttendees.length) {
+        // Copy the source attendee info to the target attendee
+        targetAttendees[targetIndex] = { ...sourceAttendees[sourceIndex] };
+        return {
+          ...prev,
+          [targetTicketId]: targetAttendees
+        };
       } else {
-        console.error('Failed to copy attendee: Invalid indices or ticket ID not found.', { registrationId, sourceIndex, targetIndex, currentLength: currentAttendeesForTicket.length });
-        return { ...prev, [registrationId]: prev[registrationId] || [] };
+        console.error('Failed to copy attendee: Invalid indices or ticket ID not found.', {
+          sourceTicketId, sourceIndex, targetTicketId, targetIndex,
+          sourceLength: sourceAttendees.length,
+          targetLength: targetAttendees.length
+        });
+        return prev;
       }
-      return { ...prev, [registrationId]: currentAttendeesForTicket };
-
     });
   };
 
@@ -429,7 +446,12 @@ const RegistrationModal = ({
         return total;
       }
 
-      return total + (quantity * reg.price);
+      // Check if early bird pricing applies
+      const isEarlyBird = reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline);
+      // Use early bird price if available and date is valid, otherwise use regular price
+      const ticketPrice = isEarlyBird && reg.earlyBirdPrice !== undefined ? reg.earlyBirdPrice : reg.price;
+
+      return total + (quantity * ticketPrice);
     }, 0);
   };
 
@@ -494,13 +516,23 @@ const RegistrationModal = ({
     try {
       await registrationSchema.validate(formData, { abortEarly: false });
 
+      // Log the total calculated on the frontend for debugging
+      console.log('Frontend calculated total:', calculateTotal(), 'with email:', formData.email, 'event:', event.title);
+      
+      console.log('Sending registration request...');
       const response = await fetch('/api/event-registration/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ...formData, eventId: event.id }),
+        body: JSON.stringify({ 
+          ...formData, 
+          eventId: event.id,
+          eventTitle: event.title,
+          eventSlug: event.slug 
+        }),
       });
+      console.log('Registration request sent, waiting for response...');
 
       const result = await response.json();
 
@@ -858,10 +890,17 @@ const RegistrationModal = ({
                       <AttendeeForm
                         attendee={attendeeData}
                         index={index}
-
                         onChange={(attendeeIdx, fieldName, fieldValue) => handleAttendeeChange(reg.id, attendeeIdx, fieldName as keyof EventAttendeeInfo, fieldValue)}
-                        onCopyFrom={(sourceAttendeeIdx) => handleCopyAttendee(reg.id, sourceAttendeeIdx, index)}
+                        onCopyFrom={(sourceTicketId, sourceAttendeeIdx) => handleCopyAttendee(sourceTicketId, sourceAttendeeIdx, reg.id, index)}
                         totalAttendees={(attendeesByTicket[reg.id] || []).length}
+                        allAttendees={allRegistrations
+                          .filter(r => r.requiresAttendeeInfo && (ticketQuantities[r.id] || 0) > 0)
+                          .map(r => ({
+                            ticketId: r.id,
+                            ticketName: r.name,
+                            attendees: attendeesByTicket[r.id] || []
+                          }))}
+                        currentTicketId={reg.id}
                       />
                     </div>
                   );
@@ -1004,11 +1043,21 @@ const RegistrationModal = ({
                   <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
                     <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
                     <p className="text-sm text-gray-600 mb-2">{reg.description}</p>
-                    <p className="text-lg font-semibold text-indigo-600 mb-2">
-                      {typeof reg.price === 'string'
-                        ? reg.price
-                        : `$${reg.price.toFixed(2)}`}
-                    </p>
+                    {typeof reg.price === 'number' && reg.earlyBirdPrice && reg.earlyBirdDeadline && (
+                      <p className="text-lg font-semibold text-indigo-600 mb-2">
+                      <span className="text-green-600 mr-2">
+                      ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(reg.earlyBirdPrice || reg.price)}
+                      </span>
+                      <span className="line-through text-gray-500">
+                        ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(reg.price)}
+                      </span>
+                      </p>
+                    )}
+                    {typeof reg.price === 'string' && (
+                      <p className="text-lg font-semibold text-indigo-600 mb-2">
+                        {reg.price}
+                      </p>
+                    )}
                     {reg.perks && reg.perks.length > 0 && (
                       <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
                         {reg.perks.map((perk, index) => <li key={index}>{perk}</li>)}

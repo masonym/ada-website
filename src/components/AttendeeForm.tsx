@@ -20,8 +20,14 @@ interface AttendeeFormProps {
   index: number;
   attendee: AttendeeInfo;
   onChange: (index: number, field: string, value: string) => void;
-  onCopyFrom: (sourceIndex: number) => void;
+  onCopyFrom: (sourceTicketId: string, sourceIndex: number) => void;
   totalAttendees: number;
+  allAttendees: {
+    ticketId: string;
+    ticketName: string;
+    attendees: AttendeeInfo[];
+  }[];
+  currentTicketId: string;
 }
 
 export const AttendeeForm: React.FC<AttendeeFormProps> = ({
@@ -29,7 +35,9 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
   attendee,
   onChange,
   onCopyFrom,
-  totalAttendees
+  totalAttendees,
+  allAttendees,
+  currentTicketId
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -48,9 +56,13 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
   };
   
   const handleCopyFromChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const sourceIndex = parseInt(e.target.value);
-    if (!isNaN(sourceIndex)) {
-      onCopyFrom(sourceIndex);
+    const value = e.target.value;
+    if (value) {
+      const [ticketId, sourceIndex] = value.split('|');
+      const parsedIndex = parseInt(sourceIndex);
+      if (!isNaN(parsedIndex)) {
+        onCopyFrom(ticketId, parsedIndex);
+      }
     }
     e.target.value = ''; // Reset the select
   };
@@ -86,22 +98,50 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
     <div className="border rounded-lg p-4 mb-4 relative">
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-semibold">Attendee {index + 1}</h3>
-        {index > 0 && totalAttendees > 1 && (
-          <div className="flex items-center space-x-2">
-            <span className="text-sm text-gray-600">Copy from:</span>
-            <select 
-              className="border rounded px-2 py-1 text-sm"
-              onChange={handleCopyFromChange}
-              value=""
-            >
-              <option value="">Select attendee</option>
-              {Array.from({ length: index }).map((_, i) => (
-                <option key={i} value={i}>Attendee {i + 1}</option>
-              ))}
-            </select>
-            <Copy className="w-4 h-4 text-gray-500" />
-          </div>
-        )}
+        {/* Calculate if there are any attendees to copy from across all ticket types */}
+        {(() => {
+          // Count all attendees across all ticket types
+          const availableAttendees = allAttendees.reduce((count, ticketGroup) => {
+            // For each ticket group, count attendees that aren't this one
+            const validAttendees = ticketGroup.attendees.filter((_, i) => {
+              // Skip self (current ticket + current index)
+              return !(ticketGroup.ticketId === currentTicketId && i === index);
+            }).length;
+            return count + validAttendees;
+          }, 0);
+          
+          // Only show copy option if there are attendees to copy from
+          return availableAttendees > 0 ? (
+            <div className="flex items-center space-x-2">
+              <span className="text-sm text-gray-600">Copy from:</span>
+              <select 
+                className="border rounded px-2 py-1 text-sm"
+                onChange={handleCopyFromChange}
+                value=""
+              >
+                <option value="">Select attendee</option>
+                {allAttendees.map(ticketGroup => {
+                  // Skip the current attendee
+                  const isCurrentTicket = ticketGroup.ticketId === currentTicketId;
+                  const attendees = ticketGroup.attendees;
+                  
+                  // Create a group of options for each ticket type
+                  return attendees.map((_, i) => {
+                    // Skip self (current ticket + current index)
+                    if (isCurrentTicket && i === index) return null;
+                    
+                    return (
+                      <option key={`${ticketGroup.ticketId}-${i}`} value={`${ticketGroup.ticketId}|${i}`}>
+                        {ticketGroup.ticketName} - Attendee {i + 1}
+                      </option>
+                    );
+                  }).filter(Boolean);
+                })}
+              </select>
+              <Copy className="w-4 h-4 text-gray-500" />
+            </div>
+          ) : null;
+        })()}
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
