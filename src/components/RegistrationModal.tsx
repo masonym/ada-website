@@ -29,7 +29,7 @@ type ModalRegistrationType = {
   isGovtFreeEligible: boolean;
   perks?: string[];
   availabilityInfo?: string;
-  type: 'paid' | 'free' | 'sponsor';
+  type: 'paid' | 'free' | 'complimentary' | 'sponsor';
   title: string;
   headerImage: string;
   subtitle: string;
@@ -149,7 +149,7 @@ const RegistrationModal = ({
   const handleStripeReady = useCallback((ready: boolean) => {
     console.log(`StripePaymentForm ready status: ${ready}`);
     setIsStripeReady(ready);
-    
+
     // If Stripe is ready and we're waiting to attempt payment, check if we can proceed
     if (ready && attemptingStripePayment && clientSecret && stripeFormRef.current) {
       console.log('Stripe is now ready and attemptingStripePayment is true. Will trigger payment in next render cycle.');
@@ -159,7 +159,7 @@ const RegistrationModal = ({
   // Track previous modal open state to help with state management
   const prevIsOpenRef = useRef(isOpen);
   const prevShowConfirmationRef = useRef(showConfirmationView);
-  
+
   // Effect to manage state when modal is opened or closed
   useEffect(() => {
     // When the modal is opened
@@ -186,10 +186,10 @@ const RegistrationModal = ({
       // Just reset the active payment processing states
       setAttemptingStripePayment(false);
       setIsStripeReady(false);
-      
+
       // Don't reset the entire state here - we'll check on next open if we need to
     }
-    
+
     // Update refs last to track state for next render
     prevIsOpenRef.current = isOpen;
     prevShowConfirmationRef.current = showConfirmationView;
@@ -264,7 +264,7 @@ const RegistrationModal = ({
           console.log('Stripe still not ready after timeout. Setting a timeout to check again...');
         }
       }, 2000); // Check again after 2 seconds
-      
+
       return () => clearTimeout(checkAgainTimeout);
     }
   }, [attemptingStripePayment, clientSecret, isStripeReady]);
@@ -272,14 +272,14 @@ const RegistrationModal = ({
   useEffect(() => {
     const initialQuantities: Record<string, number> = {};
     const initialAttendees: Record<string, ModalAttendeeInfo[]> = {};
-    
+
     allRegistrations.forEach((reg) => {
       initialQuantities[reg.id] = 0;
       if (reg.requiresAttendeeInfo) {
         initialAttendees[reg.id] = []; // Ensure key exists for tickets requiring attendee info
       }
     });
-    
+
     setTicketQuantities(initialQuantities);
     setAttendeesByTicket(initialAttendees);
   }, [allRegistrations]);
@@ -290,7 +290,7 @@ const RegistrationModal = ({
       ...prev,
       [id]: newQuantity
     }));
-    
+
     const newAttendees: Record<string, ModalAttendeeInfo[]> = { ...attendeesByTicket };
     newAttendees[id] = Array(newQuantity).fill(null).map((_, i): ModalAttendeeInfo => {
       const existingAttendee = attendeesByTicket[id]?.[i];
@@ -306,7 +306,7 @@ const RegistrationModal = ({
         ...prev,
         [id]: newQuantity
       }));
-      
+
       const newAttendees: Record<string, ModalAttendeeInfo[]> = { ...attendeesByTicket };
       if (newAttendees[id]) {
         newAttendees[id] = newAttendees[id].slice(0, -1);
@@ -348,7 +348,7 @@ const RegistrationModal = ({
           const errors: Record<string, string> = {};
           error.inner.forEach(err => {
             // Yup paths for direct object validation are direct field names
-            if (err.path) errors[`billingInfo.${err.path}`] = err.message; 
+            if (err.path) errors[`billingInfo.${err.path}`] = err.message;
           });
           setFormErrors(errors);
         } else {
@@ -393,7 +393,7 @@ const RegistrationModal = ({
         // This case should ideally not happen if AttendeeForms are rendered based on currentQuantity
         console.error(`Attendee index ${index} is out of bounds for ticket ${registrationId} with quantity ${currentQuantity}. Change not applied.`);
         console.log('setAttendeesByTicket - out of bounds, returning prev for this ticketId:', { ...prev, [registrationId]: attendeesList });
-        return { ...prev, [registrationId]: attendeesList }; 
+        return { ...prev, [registrationId]: attendeesList };
       }
 
       const finalState = {
@@ -413,9 +413,9 @@ const RegistrationModal = ({
         currentAttendeesForTicket[targetIndex] = { ...currentAttendeesForTicket[sourceIndex] };
       } else {
         console.error('Failed to copy attendee: Invalid indices or ticket ID not found.', { registrationId, sourceIndex, targetIndex, currentLength: currentAttendeesForTicket.length });
-        return { ...prev, [registrationId]: prev[registrationId] || [] }; 
+        return { ...prev, [registrationId]: prev[registrationId] || [] };
       }
-      return { ...prev, [registrationId]: currentAttendeesForTicket }; 
+      return { ...prev, [registrationId]: currentAttendeesForTicket };
 
     });
   };
@@ -423,6 +423,12 @@ const RegistrationModal = ({
   const calculateTotal = () => {
     return allRegistrations.reduce((total, reg) => {
       const quantity = ticketQuantities[reg.id] || 0;
+
+      // Skip price calculation for complimentary passes
+      if (reg.type === 'complimentary' || typeof reg.price === 'string') {
+        return total;
+      }
+
       return total + (quantity * reg.price);
     }, 0);
   };
@@ -487,7 +493,7 @@ const RegistrationModal = ({
 
     try {
       await registrationSchema.validate(formData, { abortEarly: false });
-      
+
       const response = await fetch('/api/event-registration/register', {
         method: 'POST',
         headers: {
@@ -508,7 +514,7 @@ const RegistrationModal = ({
           // Free registration success path
           setApiError('Registration successful!'); // This could be a success message instead
           setPaymentSuccessful(true);
-    setAttemptingStripePayment(false); // Reset payment attempt flag // Indicate success for UI change
+          setAttemptingStripePayment(false); // Reset payment attempt flag // Indicate success for UI change
           // Potentially close modal or show a final success message
         }
       } else {
@@ -543,28 +549,28 @@ const RegistrationModal = ({
     setPaymentSuccessful(true);
     setAttemptingStripePayment(false); // Reset payment attempt flag
     setIsLoading(false); // Ensure loading stops
-    
+
     // Update confirmation data
     if (pendingConfirmationData) {
       console.log('Setting confirmation data from pending data:', pendingConfirmationData);
       setConfirmationData(pendingConfirmationData);
     } else {
       console.log('Setting fallback confirmation data with paymentIntentId:', paymentIntentId);
-      setConfirmationData({ paymentIntentId, message: 'Payment confirmed. Thank you!' }); 
+      setConfirmationData({ paymentIntentId, message: 'Payment confirmed. Thank you!' });
     }
-    
+
     // Important: These state updates should trigger a re-render to show confirmation view
     console.log('Setting showConfirmationView to true');
     setShowConfirmationView(true);
     setPendingConfirmationData(null); // Clear pending data
-    
+
     // Force any pending state updates to be applied
     setTimeout(() => {
-      console.log('Current state after payment success:', { 
-        showConfirmationView, 
+      console.log('Current state after payment success:', {
+        showConfirmationView,
         confirmationData: confirmationData || 'pendingUpdate',
         paymentSuccessful,
-        isLoading 
+        isLoading
       });
     }, 0);
   };
@@ -607,9 +613,9 @@ const RegistrationModal = ({
       }));
 
     // Find the first registration type that has attendees and requires attendee info
-    const firstRegWithAttendeesId = allRegistrations.find(reg => 
-      reg.requiresAttendeeInfo && 
-      (ticketQuantities[reg.id] || 0) > 0 && 
+    const firstRegWithAttendeesId = allRegistrations.find(reg =>
+      reg.requiresAttendeeInfo &&
+      (ticketQuantities[reg.id] || 0) > 0 &&
       (attendeesByTicket[reg.id] || []).length > 0
     )?.id;
 
@@ -640,7 +646,7 @@ const RegistrationModal = ({
       agreeToPhotoRelease: false, // Defaulting, consider adding to form
 
       tickets: ticketsForValidation,
-      agreeToTerms: agreedToTerms, 
+      agreeToTerms: agreedToTerms,
       paymentMethod: determinedPaymentMethod,
       // ticketQuantities might not be needed directly if 'tickets' array is comprehensive for validation
       // but can be kept if the schema expects it separately for some reason.
@@ -660,7 +666,7 @@ const RegistrationModal = ({
         setIsLoading(false);
         return;
       }
-      
+
       // If all validations pass, create payment intent or complete free registration
       try { // Nested try for payment/API calls
         const totalAmount = calculateTotal();
@@ -680,53 +686,53 @@ const RegistrationModal = ({
         // The 'else if (totalAmount > 0)' effectively becomes the primary path for calling the register API.
         // We assume totalAmount >= 0. If totalAmount is 0, the API will treat it as free.
         // The following block now directly executes as the unified path:
-          // Create payment intent for paid registrations (or handle free ones via API response)
-          console.log('Creating payment intent for amount:', totalAmount, 'with email:', billingInfo.email, 'event:', event.title);
-          console.log('Before calling register endpoint for payment intent...');
-          const response = await fetch('/api/event-registration/register', {
-            // Note: eventId is now part of formDataToValidate from previous steps, ensure it's there or add it explicitly if not.
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              ...formDataToValidate, // Send the whole validated form data
-              eventId: event.id, // Make sure eventId is included
-              // The register endpoint will calculate amount and use necessary fields from formDataToValidate
-            }),
-          });
-          console.log('After /api/event-registration/register call');
-          const result = await response.json();
+        // Create payment intent for paid registrations (or handle free ones via API response)
+        console.log('Creating payment intent for amount:', totalAmount, 'with email:', billingInfo.email, 'event:', event.title);
+        console.log('Before calling register endpoint for payment intent...');
+        const response = await fetch('/api/event-registration/register', {
+          // Note: eventId is now part of formDataToValidate from previous steps, ensure it's there or add it explicitly if not.
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...formDataToValidate, // Send the whole validated form data
+            eventId: event.id, // Make sure eventId is included
+            // The register endpoint will calculate amount and use necessary fields from formDataToValidate
+          }),
+        });
+        console.log('After /api/event-registration/register call');
+        const result = await response.json();
 
-          if (!response.ok || !result.success) {
-            console.error('Failed to process registration. Status:', response.status, 'Error data:', result);
-            // Use result.error or result.message if provided by the backend, otherwise a generic message.
-            setApiError(result.error || result.message || `API Error: ${response.status} - ${response.statusText}`);
-            setIsLoading(false); // Stop loading on API error
-            return; // Stop further execution
-          }
+        if (!response.ok || !result.success) {
+          console.error('Failed to process registration. Status:', response.status, 'Error data:', result);
+          // Use result.error or result.message if provided by the backend, otherwise a generic message.
+          setApiError(result.error || result.message || `API Error: ${response.status} - ${response.statusText}`);
+          setIsLoading(false); // Stop loading on API error
+          return; // Stop further execution
+        }
 
-          console.log('/api/event-registration/register response status:', response.status, 'data:', result);
-          // If successful and a clientSecret is returned, it's a paid flow needing Stripe UI
-          if (result.clientSecret) {
-            console.log('Received clientSecret from API:', result.clientSecret.substring(0, 10) + '...');
-            setPendingConfirmationData(result); // Store data for after Stripe success
-            setIsStripeReady(false); // Explicitly set Stripe to not ready, awaiting re-initialization
-            
-            // Set clientSecret last as it triggers the Elements re-render
-            setClientSecret(result.clientSecret);
-            
-            // Give Elements time to initialize before attempting payment
-            setTimeout(() => {
-              console.log('Setting attemptingStripePayment to true after delay');
-              setAttemptingStripePayment(true); // This will trigger the useEffect to call Stripe submit
-            }, 500);
-          } else { // Free flow or $0 paid (e.g. 100% discount) - already handled by /api/event-registration/register
-            console.log('Registration processed by API, clientSecret not present or not needed.');
-            setConfirmationData(result);
-            setShowConfirmationView(true);
-            setIsLoading(false);
-            // The /api/event-registration/register call has already handled this.
-            // No further call to handleCompleteRegistrationApiCall needed here.
-          }
+        console.log('/api/event-registration/register response status:', response.status, 'data:', result);
+        // If successful and a clientSecret is returned, it's a paid flow needing Stripe UI
+        if (result.clientSecret) {
+          console.log('Received clientSecret from API:', result.clientSecret.substring(0, 10) + '...');
+          setPendingConfirmationData(result); // Store data for after Stripe success
+          setIsStripeReady(false); // Explicitly set Stripe to not ready, awaiting re-initialization
+
+          // Set clientSecret last as it triggers the Elements re-render
+          setClientSecret(result.clientSecret);
+
+          // Give Elements time to initialize before attempting payment
+          setTimeout(() => {
+            console.log('Setting attemptingStripePayment to true after delay');
+            setAttemptingStripePayment(true); // This will trigger the useEffect to call Stripe submit
+          }, 500);
+        } else { // Free flow or $0 paid (e.g. 100% discount) - already handled by /api/event-registration/register
+          console.log('Registration processed by API, clientSecret not present or not needed.');
+          setConfirmationData(result);
+          setShowConfirmationView(true);
+          setIsLoading(false);
+          // The /api/event-registration/register call has already handled this.
+          // No further call to handleCompleteRegistrationApiCall needed here.
+        }
       } catch (apiCallError) { // Catch for payment intent / API call
         if (apiCallError instanceof Error) {
           setApiError(apiCallError.message);
@@ -818,7 +824,7 @@ const RegistrationModal = ({
       }
 
       setPaymentSuccessful(true);
-    setAttemptingStripePayment(false); // Reset payment attempt flag
+      setAttemptingStripePayment(false); // Reset payment attempt flag
       setCurrentStep(3); // Move to confirmation step
     } catch (error) {
       if (error instanceof Error) {
@@ -831,73 +837,73 @@ const RegistrationModal = ({
   };
 
   const renderStepContent = () => {
-  switch (currentStep) {
-    case 1: // Billing Information
-      return (
-        <BillingInformation
-          billingInfo={billingInfo}
-          onChange={handleBillingInfoChange} // Prop name changed
-        />
-      );
-    case 2: // Attendee Info, Terms, and Payment
-      return (
-        <>
-          {allRegistrations.filter(reg => reg.requiresAttendeeInfo && (ticketQuantities[reg.id] || 0) > 0).map(reg => (
-            <div key={reg.id}>
-              <h4 className="text-lg font-medium mt-4 mb-2">{reg.name} - Attendees</h4>
-              {Array.from({ length: ticketQuantities[reg.id] || 0 }).map((_, index) => {
-                const attendeeData = attendeesByTicket[reg.id]?.[index] || initialModalAttendeeInfo;
-                return (
-                  <div key={`${reg.id}-${index}`} className="mb-4 border-b pb-4">
-                    <AttendeeForm
-                      attendee={attendeeData}
-                      index={index}
-                      
-                      onChange={(attendeeIdx, fieldName, fieldValue) => handleAttendeeChange(reg.id, attendeeIdx, fieldName as keyof EventAttendeeInfo, fieldValue)}
-                      onCopyFrom={(sourceAttendeeIdx) => handleCopyAttendee(reg.id, sourceAttendeeIdx, index)}
-                      totalAttendees={(attendeesByTicket[reg.id] || []).length}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          ))}
-          <TermsAndConditions
-            agreed={agreedToTerms}
-            onAgree={setAgreedToTerms} // Corrected prop name
-          />            
-          {calculateTotal() > 0 && (
-            <div className="mt-6">
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">Payment</h3>
-              {/* Don't use key prop on Elements - it causes the component to remount and lose card state */}
-              <Elements stripe={stripePromise} options={clientSecret ? { clientSecret, appearance } : undefined}>
-                <StripePaymentForm 
-                  ref={stripeFormRef}
-                  clientSecret={clientSecret} // Pass the clientSecret obtained from your server
-                  eventId={event.id.toString()} 
-                  onPaymentSuccess={handlePaymentSuccess}
-                  onPaymentError={handlePaymentError}
-                  onPaymentProcessing={setIsLoading} // Or a more specific handler for payment in progress
-                  onStripeReady={handleStripeReady}
-                />
-              </Elements>
-            </div>
-          )}
-        </>
-      );
-    case 3: // Confirmation
-      return (
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold text-green-600 mb-4">Registration Complete!</h2>
-          <p className="text-gray-700 mb-2">Thank you for registering for {event.title}.</p>
-          <p className="text-gray-700">A confirmation email has been sent to {billingInfo.email}.</p>
-          {paymentIntentId && <p className="text-sm text-gray-500 mt-2">Payment ID: {paymentIntentId}</p>}
-        </div>
-      );
-    default:
-      return null;
-  }
-};
+    switch (currentStep) {
+      case 1: // Billing Information
+        return (
+          <BillingInformation
+            billingInfo={billingInfo}
+            onChange={handleBillingInfoChange} // Prop name changed
+          />
+        );
+      case 2: // Attendee Info, Terms, and Payment
+        return (
+          <>
+            {allRegistrations.filter(reg => reg.requiresAttendeeInfo && (ticketQuantities[reg.id] || 0) > 0).map(reg => (
+              <div key={reg.id}>
+                <h4 className="text-lg font-medium mt-4 mb-2">{reg.name} - Attendees</h4>
+                {Array.from({ length: ticketQuantities[reg.id] || 0 }).map((_, index) => {
+                  const attendeeData = attendeesByTicket[reg.id]?.[index] || initialModalAttendeeInfo;
+                  return (
+                    <div key={`${reg.id}-${index}`} className="mb-4 border-b pb-4">
+                      <AttendeeForm
+                        attendee={attendeeData}
+                        index={index}
+
+                        onChange={(attendeeIdx, fieldName, fieldValue) => handleAttendeeChange(reg.id, attendeeIdx, fieldName as keyof EventAttendeeInfo, fieldValue)}
+                        onCopyFrom={(sourceAttendeeIdx) => handleCopyAttendee(reg.id, sourceAttendeeIdx, index)}
+                        totalAttendees={(attendeesByTicket[reg.id] || []).length}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+            <TermsAndConditions
+              agreed={agreedToTerms}
+              onAgree={setAgreedToTerms} // Corrected prop name
+            />
+            {calculateTotal() > 0 && (
+              <div className="mt-6">
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Payment</h3>
+                {/* Don't use key prop on Elements - it causes the component to remount and lose card state */}
+                <Elements stripe={stripePromise} options={clientSecret ? { clientSecret, appearance } : undefined}>
+                  <StripePaymentForm
+                    ref={stripeFormRef}
+                    clientSecret={clientSecret} // Pass the clientSecret obtained from your server
+                    eventId={event.id.toString()}
+                    onPaymentSuccess={handlePaymentSuccess}
+                    onPaymentError={handlePaymentError}
+                    onPaymentProcessing={setIsLoading} // Or a more specific handler for payment in progress
+                    onStripeReady={handleStripeReady}
+                  />
+                </Elements>
+              </div>
+            )}
+          </>
+        );
+      case 3: // Confirmation
+        return (
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold text-green-600 mb-4">Registration Complete!</h2>
+            <p className="text-gray-700 mb-2">Thank you for registering for {event.title}.</p>
+            <p className="text-gray-700">A confirmation email has been sent to {billingInfo.email}.</p>
+            {paymentIntentId && <p className="text-sm text-gray-500 mt-2">Payment ID: {paymentIntentId}</p>}
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
 
   const renderStepButtons = () => {
     if (currentStep === 1) {
@@ -959,110 +965,112 @@ const RegistrationModal = ({
   if (!isOpen) return null;
 
   return (
-  <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex justify-center items-center">
-    <div className="relative mx-auto p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white overflow-y-auto max-h-[90vh]">
-      {showConfirmationView && confirmationData ? (
-        // Confirmation View
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold text-green-600 mb-4">Registration Confirmed!</h2>
-          <p className="text-gray-700 mb-2">{confirmationData.message || `Thank you for registering for ${event.title}.`}</p>
-          {confirmationData.paymentIntentId && <p className="text-sm text-gray-500 mt-2">Payment ID: {confirmationData.paymentIntentId}</p>}
-          <p className="text-gray-700">A confirmation email has been sent to {billingInfo.email}.</p>
-          <button
-            onClick={onClose}
-            className="mt-6 px-6 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            Close
-          </button>
-        </div>
-      ) : (
-        // Main Registration Flow
-        <>
-          <div className="flex justify-between items-center pb-3 mb-4 border-b">
-            <h3 className="text-xl font-semibold text-gray-900">
-              {isCheckout ? `Register for ${event.title}` : `Select Tickets for ${event.title}`}
-            </h3>
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex justify-center items-center">
+      <div className="relative mx-auto p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white overflow-y-auto max-h-[90vh]">
+        {showConfirmationView && confirmationData ? (
+          // Confirmation View
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold text-green-600 mb-4">Registration Confirmed!</h2>
+            <p className="text-gray-700 mb-2">{confirmationData.message || `Thank you for registering for ${event.title}.`}</p>
+            {confirmationData.paymentIntentId && <p className="text-sm text-gray-500 mt-2">Payment ID: {confirmationData.paymentIntentId}</p>}
+            <p className="text-gray-700">A confirmation email has been sent to {billingInfo.email}.</p>
             <button
               onClick={onClose}
-              className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
-              aria-label="Close modal"
+              className="mt-6 px-6 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              <X size={20} />
+              Close
             </button>
           </div>
+        ) : (
+          // Main Registration Flow
+          <>
+            <div className="flex justify-between items-center pb-3 mb-4 border-b">
+              <h3 className="text-xl font-semibold text-gray-900">
+                {isCheckout ? `Register for ${event.title}` : `Select Tickets for ${event.title}`}
+              </h3>
+              <button
+                onClick={onClose}
+                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+                aria-label="Close modal"
+              >
+                <X size={20} />
+              </button>
+            </div>
 
-          {!isCheckout ? (
-            // Ticket Selection View
-            <div>
-              {allRegistrations.map((reg) => (
-                <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
-                  <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
-                  <p className="text-sm text-gray-600 mb-2">{reg.description}</p>
-                  <p className="text-lg font-semibold text-indigo-600 mb-2">
-                    ${reg.price.toFixed(2)}
-                  </p>
-                  {reg.perks && reg.perks.length > 0 && (
-                    <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
-                      {reg.perks.map((perk, index) => <li key={index}>{perk}</li>)}
-                    </ul>
-                  )}
-                  {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
-                  <div className="flex items-center">
-                    <button
-                      onClick={() => handleDecrement(reg.id)}
-                      disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
-                      className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                    >
-                      -
-                    </button>
-                    <span className="px-4 py-1 border-t border-b text-center w-12">
-                      {ticketQuantities[reg.id] || 0}
-                    </span>
-                    <button
-                      onClick={() => handleIncrement(reg.id)}
-                      disabled={isLoading}
-                      className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                    >
-                      +
-                    </button>
+            {!isCheckout ? (
+              // Ticket Selection View
+              <div>
+                {allRegistrations.map((reg) => (
+                  <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
+                    <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
+                    <p className="text-sm text-gray-600 mb-2">{reg.description}</p>
+                    <p className="text-lg font-semibold text-indigo-600 mb-2">
+                      {typeof reg.price === 'string'
+                        ? reg.price
+                        : `$${reg.price.toFixed(2)}`}
+                    </p>
+                    {reg.perks && reg.perks.length > 0 && (
+                      <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
+                        {reg.perks.map((perk, index) => <li key={index}>{perk}</li>)}
+                      </ul>
+                    )}
+                    {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
+                    <div className="flex items-center">
+                      <button
+                        onClick={() => handleDecrement(reg.id)}
+                        disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
+                        className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                      >
+                        -
+                      </button>
+                      <span className="px-4 py-1 border-t border-b text-center w-12">
+                        {ticketQuantities[reg.id] || 0}
+                      </span>
+                      <button
+                        onClick={() => handleIncrement(reg.id)}
+                        disabled={isLoading}
+                        className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                      >
+                        +
+                      </button>
+                    </div>
                   </div>
+                ))}
+                <div className="mt-6 text-right">
+                  <p className="text-xl font-semibold mb-2">Total: ${calculateTotal().toFixed(2)}</p>
+                  <button
+                    onClick={handleCheckout}
+                    disabled={getTotalTickets() === 0 || isLoading}
+                    className="px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+                  >
+                    {isLoading ? 'Processing...' : 'Checkout'}
+                  </button>
                 </div>
-              ))}
-              <div className="mt-6 text-right">
-                <p className="text-xl font-semibold mb-2">Total: ${calculateTotal().toFixed(2)}</p>
-                <button
-                  onClick={handleCheckout}
-                  disabled={getTotalTickets() === 0 || isLoading}
-                  className="px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-                >
-                  {isLoading ? 'Processing...' : 'Checkout'}
-                </button>
               </div>
-            </div>
-          ) : (
-            // Checkout Steps View (Billing, Attendee Info, Payment, Confirmation)
-            <div>
-              {renderStepContent()}
-              {apiError && <p className="text-red-500 text-sm mt-2">{apiError}</p>}
-              {Object.keys(formErrors).length > 0 && (
-                <div className="mt-2 text-red-500 text-sm">
-                  <p>Please correct the following errors:</p>
-                  <ul>
-                    {Object.entries(formErrors).map(([key, message]) => (
-                      <li key={key}>- {message}</li>
-                    ))}
-                  </ul>
+            ) : (
+              // Checkout Steps View (Billing, Attendee Info, Payment, Confirmation)
+              <div>
+                {renderStepContent()}
+                {apiError && <p className="text-red-500 text-sm mt-2">{apiError}</p>}
+                {Object.keys(formErrors).length > 0 && (
+                  <div className="mt-2 text-red-500 text-sm">
+                    <p>Please correct the following errors:</p>
+                    <ul>
+                      {Object.entries(formErrors).map(([key, message]) => (
+                        <li key={key}>- {message}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                <div className="mt-6 pt-4 border-t">
+                  {renderStepButtons()}
                 </div>
-              )}
-              <div className="mt-6 pt-4 border-t">
-                {renderStepButtons()}
               </div>
-            </div>
-          )}
-        </>
-      )}
+            )}
+          </>
+        )}
+      </div>
     </div>
-  </div>
   );
 };
 
