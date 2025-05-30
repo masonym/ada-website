@@ -5,6 +5,7 @@ import { logRegistration } from '@/lib/google-sheets';
 import { validateRegistrationData } from '@/lib/event-registration/validation';
 import { sendFreeRegistrationConfirmationEmail, sendPaymentPendingConfirmationEmail } from '@/lib/email';
 import { isGovOrMilEmail } from '@/lib/event-registration/validation';
+import { REGISTRATION_TYPES } from '@/constants/registrations';
 
 // Helper function to calculate order total
 function calculateOrderTotal(
@@ -64,20 +65,116 @@ export async function POST(request: Request) {
     // Use eventIdFromBody for the eventId
     const currentEventId = eventIdFromBody;
     
-    // Get event and ticket data (in a real app, this would come from your database)
-    // For now, we'll use a simplified example
-    const availableTickets = [
-      // This would come from your database
-      { id: 'standard', price: 100, earlyBirdPrice: 80, earlyBirdDeadline: '2024-12-31T23:59:59Z' },
-      { id: 'vip', price: 200, earlyBirdPrice: 150, earlyBirdDeadline: '2024-12-31T23:59:59Z' },
-      // Add the ticket being sent from the client
-      { id: 'test-standard', price: 99.99, earlyBirdPrice: 89.99, earlyBirdDeadline: '2024-12-31T23:59:59Z' },
-      { id: 'test-vip', price: 199.99, earlyBirdPrice: 189.99, earlyBirdDeadline: '2024-12-31T23:59:59Z' },
-    ];
+    // Find all available tickets for the current event from our centralized source of truth
+    const eventId = Number(currentEventId);
+    const eventRegistrations = REGISTRATION_TYPES.find(event => event.id === eventId);
+    
+    if (!eventRegistrations) {
+      console.error(`Event ID ${eventId} not found in REGISTRATION_TYPES`);
+      return NextResponse.json({ success: false, error: 'Event not found' }, { status: 404 });
+    }
+    
+    // Map the requested tickets to their full definitions from our source of truth
+    const availableTickets = tickets.map(ticket => {
+      // Find the registration type in our centralized source
+      // First, check if the ticket ID exists in the registrations
+      // Using a type assertion to avoid TypeScript errors with property access
+      const registrationType = eventRegistrations.registrations.find(reg => {
+        return 'id' in reg && reg.id === ticket.ticketId;
+      });
+      
+      if (registrationType) {
+        // Create a safe ticket definition with proper type checking
+        const ticketDef: {
+          id: string;
+          price: number;
+          earlyBirdPrice?: number;
+          earlyBirdDeadline?: string;
+          type: string;
+        } = {
+          id: ticket.ticketId,
+          // Handle different price formats and convert to number when possible
+          price: 0, // Default value
+          type: 'paid' // Default value
+        };
+        
+        // Handle different ways price might be stored
+        if ('price' in registrationType) {
+          const price = registrationType.price;
+          if (typeof price === 'number') {
+            ticketDef.price = price;
+          } else if (typeof price === 'string' && price.startsWith('$')) {
+            // Try to parse a string price like "$99.99"
+            const parsedPrice = parseFloat(price.replace('$', '').replace(',', ''));
+            if (!isNaN(parsedPrice)) {
+              ticketDef.price = parsedPrice;
+            }
+          }
+        } else if ('regularPrice' in registrationType) {
+          // Some entries use regularPrice instead of price
+          const price = registrationType.regularPrice;
+          if (typeof price === 'number') {
+            ticketDef.price = price;
+          } else if (typeof price === 'string' && price.startsWith('$')) {
+            // Try to parse a string price like "$99.99"
+            const parsedPrice = parseFloat(price.replace('$', '').replace(',', ''));
+            if (!isNaN(parsedPrice)) {
+              ticketDef.price = parsedPrice;
+            }
+          }
+        }
+        
+        // Handle type field
+        if ('type' in registrationType && typeof registrationType.type === 'string') {
+          ticketDef.type = registrationType.type;
+        }
+        
+        // Handle early bird price
+        if ('earlyBirdPrice' in registrationType) {
+          const earlyBirdPrice = registrationType.earlyBirdPrice;
+          if (typeof earlyBirdPrice === 'number') {
+            ticketDef.earlyBirdPrice = earlyBirdPrice;
+          } else if (typeof earlyBirdPrice === 'string' && earlyBirdPrice.startsWith('$')) {
+            // Try to parse a string price like "$89.99"
+            const parsedPrice = parseFloat(earlyBirdPrice.replace('$', '').replace(',', ''));
+            if (!isNaN(parsedPrice)) {
+              ticketDef.earlyBirdPrice = parsedPrice;
+            }
+          }
+        }
+        
+        // Handle early bird deadline
+        if ('earlyBirdDeadline' in registrationType && 
+            typeof registrationType.earlyBirdDeadline === 'string') {
+          ticketDef.earlyBirdDeadline = registrationType.earlyBirdDeadline;
+        }
+        
+        return ticketDef;
+      }
+      
+      // If we can't find the ticket in our central source, log an error and default to 0
+      console.error(`Ticket ID ${ticket.ticketId} not found in REGISTRATION_TYPES for event ${eventId}`);
+      return {
+        id: ticket.ticketId,
+        price: 0,
+        type: 'paid'
+      };
+    });
+    
+    // Filter out any tickets with type 'complimentary' or non-numeric prices
+    const paidTickets = availableTickets.filter(ticket => {
+      return ticket.type === 'paid' && typeof ticket.price === 'number';
+    });
+    
+    console.log('Paid tickets:', JSON.stringify(paidTickets, null, 2));
 
     console.log('--- Registration Attempt ---');
     console.log('Event ID:', currentEventId);
     console.log('Selected tickets (from client):', JSON.stringify(tickets, null, 2));
+    // Also log ticket prices if they were sent
+    if (body.ticketPrices) {
+      console.log('Ticket prices (from client):', JSON.stringify(body.ticketPrices, null, 2));
+    }
     console.log('Available tickets (server-side):', JSON.stringify(availableTickets, null, 2));
 
     // Check if the email is a .gov or .mil email for free registration
@@ -108,7 +205,7 @@ export async function POST(request: Request) {
     // Calculate order total
     const { subtotal, discount, total } = calculateOrderTotal(
       tickets,
-      availableTickets,
+      paidTickets, // Use the filtered list of paid tickets with numeric prices
       promoCodeDetails
     );
 
