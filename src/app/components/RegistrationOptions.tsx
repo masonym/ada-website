@@ -35,7 +35,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
             name: reg.name || reg.title || 'Registration',
             description: reg.description || '',
             price: typeof reg.price === 'number' ? reg.price : 0,
-            type: (reg.type as 'paid' | 'free' | 'sponsor') || 'paid',
+            type: (reg.type as 'paid' | 'free' | 'complimentary' | 'sponsor') || 'paid',
             isActive: reg.isActive !== false,
             requiresAttendeeInfo: reg.requiresAttendeeInfo !== false,
             isGovtFreeEligible: reg.isGovtFreeEligible || false,

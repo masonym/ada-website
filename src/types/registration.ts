@@ -17,7 +17,7 @@ export interface ModalRegistrationType {
   price: number;
   isActive: boolean;
   requiresAttendeeInfo: boolean;
-  type?: 'paid' | 'free' | 'sponsor';
+  type?: 'paid' | 'free' | 'complimentary' | 'sponsor';
 }
 
 export interface AttendeeInfo {

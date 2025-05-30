@@ -21,8 +21,8 @@ type ModalRegistrationType = {
   id: string;
   name: string;
   description: string;
-  price: number;
-  earlyBirdPrice?: number;
+  price: number | string;
+  earlyBirdPrice?: number | string;
   earlyBirdDeadline?: string;
   isActive: boolean;
   requiresAttendeeInfo: boolean;
@@ -32,11 +32,13 @@ type ModalRegistrationType = {
   type: 'paid' | 'free' | 'complimentary' | 'sponsor';
   title: string;
   headerImage: string;
-  subtitle: string;
+  subtitle?: string;
   buttonText: string;
   buttonLink: string;
-  regularPrice: number;
+  regularPrice: number | string;
   receptionPrice?: string;
+  quantityAvailable?: number;
+  maxQuantityPerOrder?: number;
 };
 
 interface EventWithContact extends Omit<Event, 'id'> {
@@ -277,10 +279,10 @@ const RegistrationModal = ({
       // If this is the selected registration and we're opening the modal, initialize with quantity 1
       const isSelected = selectedRegistration && reg.id === selectedRegistration.id;
       initialQuantities[reg.id] = isSelected && isOpen ? 1 : 0;
-      
+
       // Initialize attendee info array based on quantity
       if (reg.requiresAttendeeInfo) {
-        initialAttendees[reg.id] = isSelected && isOpen ? 
+        initialAttendees[reg.id] = isSelected && isOpen ?
           [{ ...initialModalAttendeeInfo }] : // Add one initial attendee
           []; // Empty array by default
       }
@@ -417,7 +419,7 @@ const RegistrationModal = ({
       const sourceAttendees = prev[sourceTicketId] || [];
       // Get target attendees and ensure it exists
       const targetAttendees = prev[targetTicketId] ? [...prev[targetTicketId]] : [];
-      
+
       // Check if indices are valid
       if (sourceIndex < sourceAttendees.length && targetIndex < targetAttendees.length) {
         // Copy the source attendee info to the target attendee
@@ -450,8 +452,13 @@ const RegistrationModal = ({
       const isEarlyBird = reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline);
       // Use early bird price if available and date is valid, otherwise use regular price
       const ticketPrice = isEarlyBird && reg.earlyBirdPrice !== undefined ? reg.earlyBirdPrice : reg.price;
-
-      return total + (quantity * ticketPrice);
+      
+      // Handle string or number price values
+      const numericPrice = typeof ticketPrice === 'string' ? 
+        parseFloat(ticketPrice.replace(/[^0-9.]/g, '')) || 0 : 
+        ticketPrice;
+        
+      return total + (quantity * numericPrice);
     }, 0);
   };
 
@@ -518,18 +525,18 @@ const RegistrationModal = ({
 
       // Log the total calculated on the frontend for debugging
       console.log('Frontend calculated total:', calculateTotal(), 'with email:', formData.email, 'event:', event.title);
-      
+
       console.log('Sending registration request...');
       const response = await fetch('/api/event-registration/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 
-          ...formData, 
+        body: JSON.stringify({
+          ...formData,
           eventId: event.id,
           eventTitle: event.title,
-          eventSlug: event.slug 
+          eventSlug: event.slug
         }),
       });
       console.log('Registration request sent, waiting for response...');
@@ -1043,14 +1050,22 @@ const RegistrationModal = ({
                   <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
                     <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
                     <p className="text-sm text-gray-600 mb-2">{reg.description}</p>
-                    {typeof reg.price === 'number' && reg.earlyBirdPrice && reg.earlyBirdDeadline && (
+                    {reg.earlyBirdPrice && reg.earlyBirdDeadline && (
                       <p className="text-lg font-semibold text-indigo-600 mb-2">
-                      <span className="text-green-600 mr-2">
-                      ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(reg.earlyBirdPrice || reg.price)}
-                      </span>
-                      <span className="line-through text-gray-500">
-                        ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(reg.price)}
-                      </span>
+                        <span className="text-green-600 mr-2">
+                          ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
+                            typeof reg.earlyBirdPrice === 'string' 
+                              ? parseFloat(reg.earlyBirdPrice.replace(/[^0-9.]/g, '')) || 0
+                              : (typeof reg.earlyBirdPrice === 'number' ? reg.earlyBirdPrice : 0)
+                          )}
+                        </span>
+                        <span className="line-through text-gray-500">
+                          ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
+                            typeof reg.price === 'string'
+                              ? parseFloat(reg.price.replace(/[^0-9.]/g, '')) || 0
+                              : (typeof reg.price === 'number' ? reg.price : 0)
+                          )}
+                        </span>
                       </p>
                     )}
                     {typeof reg.price === 'string' && (
