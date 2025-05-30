@@ -125,8 +125,8 @@ export async function logRegistration(
               attendee.phone || '',           // Attendee's Phone
               registrationTimestamp,          // Common: Registration Date
               ticketType,                     // Specific ticket type for this attendee
-              (parseInt(orderAmountReceived) / ticket.quantity).toFixed(2),            // Common: Order Amount Received
-              (parseInt(orderAmountPaid) / ticket.quantity).toFixed(2),                // Common: Order Amount Paid
+              orderAmountReceived,            // Common: Order Amount Received
+              orderAmountPaid,                // Common: Order Amount Paid
               attendee.website || '',         // Attendee's Website
               attendeeBusinessSize,           // Attendee's Business Size
               attendeeSbaIdentification,      // Attendee's SBA Identification
@@ -150,8 +150,8 @@ export async function logRegistration(
               '',                             // Blank: Phone for generic entry
               registrationTimestamp,          // Common: Registration Date
               ticketType,                     // Specific ticket type
-              (parseInt(orderAmountReceived) / ticket.quantity).toFixed(2),            // Common: Order Amount Received
-              (parseInt(orderAmountPaid) / ticket.quantity).toFixed(2),                // Common: Order Amount Paid
+              orderAmountReceived,            // Common: Order Amount Received
+              orderAmountPaid,                // Common: Order Amount Paid
               '',                             // Blank: Website for generic entry
               '',                             // No Business Size for generic entry
               '',                             // No SBA Identification for generic entry
