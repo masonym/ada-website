@@ -156,26 +156,45 @@ const RegistrationModal = ({
     }
   }, [attemptingStripePayment, clientSecret]); // Include dependencies to react to payment attempt state
 
-  // Effect to reset state when modal is closed externally or re-opened
+  // Track previous modal open state to help with state management
+  const prevIsOpenRef = useRef(isOpen);
+  const prevShowConfirmationRef = useRef(showConfirmationView);
+  
+  // Effect to manage state when modal is opened or closed
   useEffect(() => {
+    // When the modal is opened
     if (isOpen) {
-      // Optional: If you want to reset every time it opens, call resetState() here.
-      // For now, just ensure confirmation isn't shown on reopen and clear old errors.
-      setShowConfirmationView(false);
-      setApiError(null);
-      // Reset payment-related states when reopening
-      setAttemptingStripePayment(false);
-      setPaymentSuccessful(false);
-      setClientSecret(null);
-      setPendingConfirmationData(null);
-      console.log('Modal opened - reset payment states');
+      // If this is a fresh opening (was previously closed)
+      if (!prevIsOpenRef.current) {
+        console.log('Modal freshly opened');
+        // If the previous session ended with a confirmation, we need to reset for a new session
+        if (prevShowConfirmationRef.current || paymentSuccessful) {
+          console.log('Previous session ended with confirmation - resetting state for new session');
+          resetState();
+        } else {
+          // Just opening normally - clear errors but keep existing form data
+          console.log('Normal opening - clearing errors only');
+          setApiError(null);
+          setAttemptingStripePayment(false);
+          setClientSecret(null);
+          setPendingConfirmationData(null);
+        }
+      }
     } else {
-      // Reset payment states when modal is closed
+      // When modal is closed, just reset payment-related states
+      console.log('Modal closed - saving confirmation state for next time');
+      // Just reset the active payment processing states
       setAttemptingStripePayment(false);
       setIsStripeReady(false);
-      console.log('Modal closed - reset payment states');
+      
+      // Don't reset the entire state here - we'll check on next open if we need to
     }
-  }, [isOpen]);
+    
+    // Update refs last to track state for next render
+    prevIsOpenRef.current = isOpen;
+    prevShowConfirmationRef.current = showConfirmationView;
+  }, [isOpen, showConfirmationView, paymentSuccessful]);
+
 
   // Helper to reset attendee info for a given ticket ID
   const resetAttendeesForTicket = (ticketId: string, count: number): ModalAttendeeInfo[] => {
@@ -213,7 +232,7 @@ const RegistrationModal = ({
   };
 
   const handleCloseAndReset = () => {
-    resetState();
+    // We'll reset the state in the useEffect when modal closes
     onClose();
   };
 

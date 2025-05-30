@@ -42,7 +42,9 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
   };
 
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(index, e.target.name, e.target.value);
+    // Extract the base field name without the index
+    const fieldName = e.target.name.split('-')[0];
+    onChange(index, fieldName, e.target.value);
   };
   
   const handleCopyFromChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -235,7 +237,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
               <input
                 type="radio"
                 className="form-radio"
-                name="sponsorInterest"
+                name={`sponsorInterest-${index}`}
                 value="yes"
                 checked={attendee.sponsorInterest === 'yes'}
                 onChange={handleRadioChange}
@@ -247,7 +249,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
               <input
                 type="radio"
                 className="form-radio"
-                name="sponsorInterest"
+                name={`sponsorInterest-${index}`}
                 value="no"
                 checked={attendee.sponsorInterest === 'no'}
                 onChange={handleRadioChange}
@@ -265,7 +267,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
               <input
                 type="radio"
                 className="form-radio"
-                name="speakingInterest"
+                name={`speakingInterest-${index}`}
                 value="yes"
                 checked={attendee.speakingInterest === 'yes'}
                 onChange={handleRadioChange}
@@ -277,7 +279,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
               <input
                 type="radio"
                 className="form-radio"
-                name="speakingInterest"
+                name={`speakingInterest-${index}`}
                 value="no"
                 checked={attendee.speakingInterest === 'no'}
                 onChange={handleRadioChange}
