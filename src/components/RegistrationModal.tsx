@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import * as yup from 'yup';
 import { X, CreditCard } from 'lucide-react';
 import { Event } from '@/types/events';
@@ -137,12 +137,24 @@ const RegistrationModal = ({
   const [pendingConfirmationData, setPendingConfirmationData] = useState<any>(null);
   const [attemptingStripePayment, setAttemptingStripePayment] = useState(false);
   const stripeFormRef = useRef<StripePaymentFormRef>(null);
+
+  // Memoize Stripe Elements appearance to prevent unnecessary re-initialization
+  const appearance = useMemo(() => ({
+    theme: 'stripe' as const, // Or 'night', 'flat', etc. Explicitly type for safety.
+    // Add other appearance configurations if needed, e.g.:
+    // variables: { colorPrimaryText: '#262626' }
+  }), []);
   const [isStripeReady, setIsStripeReady] = useState(false); // New state for Stripe readiness
 
-  const handleStripeReady = (ready: boolean) => {
+  const handleStripeReady = useCallback((ready: boolean) => {
     console.log(`StripePaymentForm ready status: ${ready}`);
     setIsStripeReady(ready);
-  };
+    
+    // If Stripe is ready and we're waiting to attempt payment, check if we can proceed
+    if (ready && attemptingStripePayment && clientSecret && stripeFormRef.current) {
+      console.log('Stripe is now ready and attemptingStripePayment is true. Will trigger payment in next render cycle.');
+    }
+  }, [attemptingStripePayment, clientSecret]); // Include dependencies to react to payment attempt state
 
   // Effect to reset state when modal is closed externally or re-opened
   useEffect(() => {
@@ -151,9 +163,17 @@ const RegistrationModal = ({
       // For now, just ensure confirmation isn't shown on reopen and clear old errors.
       setShowConfirmationView(false);
       setApiError(null);
+      // Reset payment-related states when reopening
+      setAttemptingStripePayment(false);
+      setPaymentSuccessful(false);
+      setClientSecret(null);
+      setPendingConfirmationData(null);
+      console.log('Modal opened - reset payment states');
     } else {
-      // Optional: Consider if a full resetState() is needed when closing, 
-      // if not already handled by handleCloseAndReset.
+      // Reset payment states when modal is closed
+      setAttemptingStripePayment(false);
+      setIsStripeReady(false);
+      console.log('Modal closed - reset payment states');
     }
   }, [isOpen]);
 
@@ -163,6 +183,7 @@ const RegistrationModal = ({
   };
 
   const resetState = () => {
+    console.log('Resetting all registration state');
     setCurrentStep(0); // Or 1, depending on your initial step for attendee info
     setIsCheckout(false); // Show ticket selection first
     setTicketQuantities({});
@@ -181,12 +202,13 @@ const RegistrationModal = ({
     setFormErrors({});
     setApiError(null);
     setClientSecret(null);
-    setPaymentIntentId(null); // Assuming you have this state
+    setPaymentIntentId(null);
     setPaymentSuccessful(false);
+    setAttemptingStripePayment(false); // Reset payment attempt flag
     setShowConfirmationView(false);
     setConfirmationData(null);
     setPendingConfirmationData(null);
-    setAttemptingStripePayment(false);
+    setIsStripeReady(false); // Reset Stripe ready state
     setIsLoading(false);
   };
 
@@ -195,21 +217,38 @@ const RegistrationModal = ({
     onClose();
   };
 
+  // Helper function to handle payment errors in the useEffect hook
+  const handlePaymentErrorInEffect = (errorMessage: string) => {
+    console.error('Payment error in effect:', errorMessage);
+    setApiError(`Payment error: ${errorMessage}`);
+    setAttemptingStripePayment(false);
+    setIsLoading(false);
+  };
+
   useEffect(() => {
     console.log('useEffect for Stripe payment submission triggered. attemptingStripePayment:', attemptingStripePayment, 'clientSecret:', clientSecret, 'isStripeReady:', isStripeReady);
     if (attemptingStripePayment && clientSecret && stripeFormRef.current && isStripeReady) { // Added isStripeReady check
       console.log('Attempting to call stripeFormRef.current.triggerSubmit() as clientSecret is available and Stripe is ready.');
-      stripeFormRef.current.triggerSubmit();
-      console.log('Called stripeFormRef.current.triggerSubmit().');
-      setAttemptingStripePayment(false); // Reset after attempting
-      console.log('Reset attemptingStripePayment to false.');
+      try {
+        stripeFormRef.current.triggerSubmit();
+        // DO NOT reset attemptingStripePayment here. It should be reset in handlePaymentSuccess/handlePaymentError.
+        console.log('Called stripeFormRef.current.triggerSubmit(). Control returned to useEffect, awaiting async completion via callbacks.');
+      } catch (error) {
+        console.error('Error triggering Stripe payment submission:', error);
+        handlePaymentErrorInEffect('Failed to initiate payment process. Please try again.');
+      }
     } else if (attemptingStripePayment && clientSecret && !isStripeReady) {
       console.log('Stripe not ready yet, will retry when it is or inform user.');
-      // Optionally, set an error or a flag to indicate waiting for Stripe
-      // For now, we'll rely on the existing error handling in StripePaymentForm if triggerSubmit is called too early
-      // but this condition prevents calling it if we know Stripe isn't ready.
+      // Create a timeout to check again in case the state update for isStripeReady is delayed
+      const checkAgainTimeout = setTimeout(() => {
+        if (stripeFormRef.current && !isStripeReady) {
+          console.log('Stripe still not ready after timeout. Setting a timeout to check again...');
+        }
+      }, 2000); // Check again after 2 seconds
+      
+      return () => clearTimeout(checkAgainTimeout);
     }
-  }, [attemptingStripePayment, clientSecret, isStripeReady]); // Added isStripeReady to dependency array
+  }, [attemptingStripePayment, clientSecret, isStripeReady]);
 
   useEffect(() => {
     const initialQuantities: Record<string, number> = {};
@@ -449,7 +488,8 @@ const RegistrationModal = ({
         } else {
           // Free registration success path
           setApiError('Registration successful!'); // This could be a success message instead
-          setPaymentSuccessful(true); // Indicate success for UI change
+          setPaymentSuccessful(true);
+    setAttemptingStripePayment(false); // Reset payment attempt flag // Indicate success for UI change
           // Potentially close modal or show a final success message
         }
       } else {
@@ -482,18 +522,32 @@ const RegistrationModal = ({
     console.log('Payment successful (Client):', paymentIntentId);
     setApiError(null); // Clear any previous payment errors
     setPaymentSuccessful(true);
-    // Here you might want to update UI, e.g. show a thank you message, close modal
-    // Potentially call logRegistration for paid event if not handled by webhook
+    setAttemptingStripePayment(false); // Reset payment attempt flag
+    setIsLoading(false); // Ensure loading stops
+    
+    // Update confirmation data
     if (pendingConfirmationData) {
+      console.log('Setting confirmation data from pending data:', pendingConfirmationData);
       setConfirmationData(pendingConfirmationData);
     } else {
-      // Fallback or fetch confirmation details if needed, though pendingConfirmationData should exist for paid Stripe flow
-      // For now, we assume pendingConfirmationData holds what we need or could be enhanced.
+      console.log('Setting fallback confirmation data with paymentIntentId:', paymentIntentId);
       setConfirmationData({ paymentIntentId, message: 'Payment confirmed. Thank you!' }); 
     }
+    
+    // Important: These state updates should trigger a re-render to show confirmation view
+    console.log('Setting showConfirmationView to true');
     setShowConfirmationView(true);
     setPendingConfirmationData(null); // Clear pending data
-    setIsLoading(false); // Ensure loading stops
+    
+    // Force any pending state updates to be applied
+    setTimeout(() => {
+      console.log('Current state after payment success:', { 
+        showConfirmationView, 
+        confirmationData: confirmationData || 'pendingUpdate',
+        paymentSuccessful,
+        isLoading 
+      });
+    }, 0);
   };
 
   const handlePaymentError = (errorMessage: string) => {
@@ -501,6 +555,7 @@ const RegistrationModal = ({
     setApiError(`Payment failed: ${errorMessage}`);
     setPendingConfirmationData(null); // Clear pending data on error
     setPaymentSuccessful(false);
+    setAttemptingStripePayment(false); // Reset payment attempt flag
   };
 
   const handlePaymentProcessing = (isProcessing: boolean) => {
@@ -633,17 +688,26 @@ const RegistrationModal = ({
           console.log('/api/event-registration/register response status:', response.status, 'data:', result);
           // If successful and a clientSecret is returned, it's a paid flow needing Stripe UI
           if (result.clientSecret) {
+            console.log('Received clientSecret from API:', result.clientSecret.substring(0, 10) + '...');
+            setPendingConfirmationData(result); // Store data for after Stripe success
+            setIsStripeReady(false); // Explicitly set Stripe to not ready, awaiting re-initialization
+            
+            // Set clientSecret last as it triggers the Elements re-render
             setClientSecret(result.clientSecret);
-          setPendingConfirmationData(result); // Store data for after Stripe success
-          setAttemptingStripePayment(true); // This will trigger the useEffect to call Stripe submit
-        } else { // Free flow or $0 paid (e.g. 100% discount) - already handled by /api/event-registration/register
-          console.log('Registration processed by API, clientSecret not present or not needed.');
-          setConfirmationData(result);
-          setShowConfirmationView(true);
-          setIsLoading(false);
+            
+            // Give Elements time to initialize before attempting payment
+            setTimeout(() => {
+              console.log('Setting attemptingStripePayment to true after delay');
+              setAttemptingStripePayment(true); // This will trigger the useEffect to call Stripe submit
+            }, 500);
+          } else { // Free flow or $0 paid (e.g. 100% discount) - already handled by /api/event-registration/register
+            console.log('Registration processed by API, clientSecret not present or not needed.');
+            setConfirmationData(result);
+            setShowConfirmationView(true);
+            setIsLoading(false);
             // The /api/event-registration/register call has already handled this.
             // No further call to handleCompleteRegistrationApiCall needed here.
-        }
+          }
       } catch (apiCallError) { // Catch for payment intent / API call
         if (apiCallError instanceof Error) {
           setApiError(apiCallError.message);
@@ -735,6 +799,7 @@ const RegistrationModal = ({
       }
 
       setPaymentSuccessful(true);
+    setAttemptingStripePayment(false); // Reset payment attempt flag
       setCurrentStep(3); // Move to confirmation step
     } catch (error) {
       if (error instanceof Error) {
@@ -785,7 +850,8 @@ const RegistrationModal = ({
           {calculateTotal() > 0 && (
             <div className="mt-6">
               <h3 className="text-xl font-semibold mb-2 text-gray-800">Payment</h3>
-              <Elements key={clientSecret} stripe={stripePromise} options={clientSecret ? { clientSecret } : undefined}>
+              {/* Don't use key prop on Elements - it causes the component to remount and lose card state */}
+              <Elements stripe={stripePromise} options={clientSecret ? { clientSecret, appearance } : undefined}>
                 <StripePaymentForm 
                   ref={stripeFormRef}
                   clientSecret={clientSecret} // Pass the clientSecret obtained from your server
