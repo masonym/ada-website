@@ -17,19 +17,19 @@ export interface RegistrationFormData {
   state: string;
   zipCode: string;
   country: string;
-  
+
   // Survey Questions
   howDidYouHearAboutUs: string;
   interestedInSponsorship: boolean;
   interestedInSpeaking: boolean;
-  
+
   // Terms and Conditions
   agreeToTerms: boolean;
   agreeToPhotoRelease: boolean;
-  
+
   // Tickets
   tickets: TicketSelection[];
-  
+
   // Payment
   paymentMethod: 'creditCard' | 'free';
   promoCode?: string;
@@ -58,9 +58,9 @@ export interface AttendeeInfo {
   accessibilityNeeds?: string;
 }
 
-export type BusinessSize = 
-  | 'Small Business' 
-  | 'Medium-Sized Business' 
+export type BusinessSize =
+  | 'Small Business'
+  | 'Medium-Sized Business'
   | 'Large-Sized Business'
   | 'Government Agency'
   | 'Military Component';
@@ -83,7 +83,7 @@ export interface RegistrationType {
   requiresAttendeeInfo: boolean;
   maxQuantityPerOrder?: number;
   isGovtFreeEligible: boolean;
-  
+
   // UI-related fields
   title?: string;
   headerImage?: string;
@@ -92,7 +92,7 @@ export interface RegistrationType {
   buttonText?: string;
   buttonLink?: string;
   regularPrice?: string | number;
-  type?: 'paid' | 'free' | 'sponsor';
+  type?: 'paid' | 'free' | 'complimentary' | 'sponsor';
   receptionPrice?: string;
   availabilityInfo?: string;
 }

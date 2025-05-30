@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
 import { REGISTRATION_TYPES } from '@/constants/registrations';
 import { Event } from '@/types/events';
 import { getCdnPath } from '@/utils/image';
@@ -27,22 +26,25 @@ interface RegistrationCardProps {
   id: string;
   name: string;
   description: string;
-  price: number;
-  earlyBirdPrice?: number;
+  price: number | string; // Can be a string (e.g., "Complimentary")
+  earlyBirdPrice?: number | string;
   earlyBirdDeadline?: string;
   isActive: boolean;
   requiresAttendeeInfo: boolean;
   isGovtFreeEligible: boolean;
   perks?: string[];
   availabilityInfo?: string;
-  type: 'paid' | 'free' | 'sponsor';
+  type: 'paid' | 'free' | 'complimentary' | 'sponsor'; // Added 'complimentary'
   title: string;
   headerImage: string;
-  subtitle?: string;
+  subtitle?: string; // Keeping as optional to match actual data
   buttonText: string;
   buttonLink: string;
-  regularPrice: number;
+  regularPrice: number | string;
   receptionPrice?: string;
+  // Add missing optional properties that may be in REGISTRATION_TYPES
+  quantityAvailable?: number;
+  maxQuantityPerOrder?: number;
 }
 
 type RegistrationProp = {
@@ -71,14 +73,6 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
       day: 'numeric'
     })
     : null;
-
-  const formatEmail = (email: string) => {
-    return email.replace('@', '\u200B@');
-  };
-
-  if (!event) {
-    notFound();
-  }
 
   // Get all registration types for this event
   const eventRegistration = REGISTRATION_TYPES.find(rt => rt.id.toString() === event.id.toString());
