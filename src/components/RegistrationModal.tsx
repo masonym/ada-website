@@ -34,7 +34,7 @@ type ModalRegistrationType = {
   headerImage: string;
   subtitle?: string;
   buttonText: string;
-  buttonLink: string;
+  buttonLink?: string;
   regularPrice: number | string;
   receptionPrice?: string;
   quantityAvailable?: number;
@@ -1027,7 +1027,7 @@ const RegistrationModal = ({
                     )}
                     {reg.perks && reg.perks.length > 0 && (
                       <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
-                        {reg.perks.map((perk, index) => <li key={index}>{perk}</li>)}
+                        {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
                       </ul>
                     )}
                     {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
@@ -1086,7 +1086,7 @@ const RegistrationModal = ({
           </>
         )}
       </div>
-    </div>
+    </div >
   );
 };
 
