@@ -24,7 +24,6 @@ export const REGISTRATION_TYPES = [
                 description: 'Standard registration for the test event',
                 price: 99.99,
                 isActive: true,
-                quantityAvailable: 100,
                 requiresAttendeeInfo: true,
                 maxQuantityPerOrder: 5,
                 isGovtFreeEligible: true
@@ -51,7 +50,6 @@ export const REGISTRATION_TYPES = [
                 description: 'VIP registration with exclusive benefits',
                 price: 199.99,
                 isActive: true,
-                quantityAvailable: 50,
                 requiresAttendeeInfo: true,
                 maxQuantityPerOrder: 2,
                 isGovtFreeEligible: false
@@ -76,7 +74,6 @@ export const REGISTRATION_TYPES = [
                 description: 'Exhibitor registration with table-top space',
                 price: 1500,
                 isActive: true,
-                quantityAvailable: 20,
                 requiresAttendeeInfo: true,
                 maxQuantityPerOrder: 1,
                 isGovtFreeEligible: false

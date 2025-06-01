@@ -115,12 +115,23 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
           <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
           {item.subtitle && <p className="text-gray-600 mb-4">{item.subtitle}</p>}
 
+
+          {/* Perks */}
+          <ul className="space-y-2 mb-6">
+            {item.perks?.map((perk, index) => (
+              <li key={index} className="flex items-start">
+                <ChevronRight className="h-4 w-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-700" dangerouslySetInnerHTML={{ __html: perk }}></span>
+              </li>
+            ))}
+          </ul>
+
           {/* Price */}
-          {isPaid && (
-            <div className="mb-4">
+          {(
+            <div className="mt-auto mx-auto mb-4">
               <div className="flex items-baseline gap-2">
                 <span className="text-2xl font-bold text-gray-900">
-                  ${currentPrice}
+                  {isPaid ? `$${currentPrice}` : 'Complimentary'}
                 </span>
                 {isEarlyBird && (
                   <span className="text-sm bg-green-100 text-green-800 px-2 py-0.5 rounded-full">
@@ -134,39 +145,8 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
             </div>
           )}
 
-          {/* Perks */}
-          <ul className="space-y-2 mb-6">
-            {item.perks?.map((perk, index) => (
-              <li key={index} className="flex items-start">
-                <ChevronRight className="h-4 w-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
-                <span className="text-sm text-gray-700" dangerouslySetInnerHTML={{ __html: perk }}></span>
-              </li>
-            ))}
-          </ul>
-
-          {/* Button */}
-          <div className="mt-auto">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                handleCardClick(e);
-              }}
-              disabled={isSoldOut}
-              className={`w-full py-2 px-4 text-white font-semibold rounded-md ${isSoldOut
-                ? 'bg-gray-400 cursor-not-allowed'
-                : isSponsor
-                  ? 'bg-blue-600 hover:bg-blue-700'
-                  : isFree
-                    ? 'bg-green-600 hover:bg-green-700'
-                    : 'bg-indigo-600 hover:bg-indigo-700'
-                } transition-colors`}
-            >
-              {isSoldOut ? 'Sold Out' : item.buttonText}
-            </button>
-          </div>
-
           {/* Additional Info */}
-          <div className="mt-4 text-center">
+          <div className=" text-center">
             {isPaid && item.receptionPrice && (
               <p className="text-sm font-medium text-blue-600">
                 {item.receptionPrice} with VIP Networking Reception
@@ -191,6 +171,29 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
               </p>
             )}
           </div>
+
+          {/* Button */}
+          <div className="">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleCardClick(e);
+              }}
+              disabled={isSoldOut}
+              className={`w-full py-2 px-4 text-white font-semibold rounded-md ${isSoldOut
+                ? 'bg-gray-400 cursor-not-allowed'
+                : isSponsor
+                  ? 'bg-blue-600 hover:bg-blue-700'
+                  : isFree
+                    ? 'bg-green-600 hover:bg-green-700'
+                    : 'bg-indigo-600 hover:bg-indigo-700'
+                } transition-colors`}
+            >
+              {isSoldOut ? 'Sold Out' : item.buttonText}
+            </button>
+          </div>
+
+
         </div>
       </div>
 
