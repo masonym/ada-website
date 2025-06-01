@@ -996,8 +996,9 @@ const RegistrationModal = ({
 
             {!isCheckout ? (
               // Ticket Selection View
-              <div>
-                {allRegistrations.map((reg) => (
+              <div className="flex flex-col h-[70vh]">
+                <div className="flex-grow overflow-y-auto">
+                {allRegistrations.filter(reg => reg.isActive).map(reg => (
                   <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
                     <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
                     <p className="text-sm text-gray-600 mb-2">{reg.description}</p>
@@ -1051,15 +1052,19 @@ const RegistrationModal = ({
                     </div>
                   </div>
                 ))}
-                <div className="mt-6 text-right">
-                  <p className="text-xl font-semibold mb-2">Total: ${calculateTotal().toFixed(2)}</p>
-                  <button
-                    onClick={handleCheckout}
-                    disabled={getTotalTickets() === 0 || isLoading}
-                    className="px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-                  >
-                    {isLoading ? 'Processing...' : 'Checkout'}
-                  </button>
+                </div>
+                {/* Total and checkout button at bottom of modal */}
+                <div className="mt-auto border-t pt-4 bg-white">
+                  <div className="flex justify-between items-center">
+                    <p className="text-xl font-semibold">Total: ${calculateTotal().toFixed(2)}</p>
+                    <button
+                      onClick={handleCheckout}
+                      disabled={getTotalTickets() === 0 || isLoading}
+                      className="px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+                    >
+                      {isLoading ? 'Processing...' : 'Checkout'}
+                    </button>
+                  </div>
                 </div>
               </div>
             ) : (
