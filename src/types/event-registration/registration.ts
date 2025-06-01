@@ -91,7 +91,6 @@ export interface RegistrationType {
   subtitle?: string;
   buttonText?: string;
   buttonLink?: string;
-  regularPrice?: string | number;
   type?: 'paid' | 'free' | 'complimentary' | 'sponsor';
   receptionPrice?: string;
   availabilityInfo?: string;

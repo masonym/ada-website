@@ -35,7 +35,6 @@ type ModalRegistrationType = {
   subtitle?: string;
   buttonText: string;
   buttonLink?: string;
-  regularPrice: number | string;
   receptionPrice?: string;
   quantityAvailable?: number;
   maxQuantityPerOrder?: number;

@@ -40,7 +40,6 @@ interface RegistrationCardProps {
   subtitle?: string; // Keeping as optional to match actual data
   buttonText: string;
   buttonLink?: string;
-  regularPrice: number | string;
   receptionPrice?: string;
   // Add missing optional properties that may be in REGISTRATION_TYPES
   quantityAvailable?: number;
