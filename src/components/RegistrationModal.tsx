@@ -998,60 +998,70 @@ const RegistrationModal = ({
               // Ticket Selection View
               <div className="flex flex-col h-[70vh]">
                 <div className="flex-grow overflow-y-auto">
-                {allRegistrations.filter(reg => reg.isActive).map(reg => (
-                  <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
-                    <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
-                    <p className="text-sm text-gray-600 mb-2">{reg.description}</p>
-                    {reg.earlyBirdPrice && reg.earlyBirdDeadline && (
-                      <p className="text-lg font-semibold text-indigo-600 mb-2">
-                        <span className="text-green-600 mr-2">
-                          ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
-                            typeof reg.earlyBirdPrice === 'string'
-                              ? parseFloat(reg.earlyBirdPrice.replace(/[^0-9.]/g, '')) || 0
-                              : (typeof reg.earlyBirdPrice === 'number' ? reg.earlyBirdPrice : 0)
-                          )}
+                  {allRegistrations.filter(reg => reg.isActive).map(reg => (
+                    <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
+                      <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
+                      <p className="text-sm text-gray-600 mb-2">{reg.description}</p>
+                      {reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline) && (
+                        <div className="mb-2">
+                          <p className="text-lg font-semibold">
+                            <span className="text-green-600 mr-2">
+                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
+                                typeof reg.earlyBirdPrice === 'string'
+                                  ? parseFloat(reg.earlyBirdPrice.replace(/[^0-9.]/g, '')) || 0
+                                  : (typeof reg.earlyBirdPrice === 'number' ? reg.earlyBirdPrice : 0)
+                              )}
+                            </span>
+                            <span className="line-through text-gray-500 text-base">
+                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
+                                typeof reg.price === 'string'
+                                  ? parseFloat(reg.price.replace(/[^0-9.]/g, '')) || 0
+                                  : (typeof reg.price === 'number' ? reg.price : 0)
+                              )}
+                            </span>
+                          </p>
+                        </div>
+                      )}
+                      {typeof reg.price === 'string' && (
+                        <p className="text-lg font-semibold text-indigo-600 mb-2">
+                          {reg.price}
+                        </p>
+                      )}
+                      
+                      {typeof reg.price === 'number' && reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() >= new Date(reg.earlyBirdDeadline) && (
+                        <div className="mb-2">
+                          <p className="text-lg font-semibold text-gray-800">
+                            ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(reg.price)}
+                          </p>
+                        </div>
+                      )}
+                      {reg.perks && reg.perks.length > 0 && (
+                        <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
+                          {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
+                        </ul>
+                      )}
+                      {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
+                      <div className="flex items-center">
+                        <button
+                          onClick={() => handleDecrement(reg.id)}
+                          disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
+                          className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                        >
+                          -
+                        </button>
+                        <span className="px-4 py-1 border-t border-b text-center w-12">
+                          {ticketQuantities[reg.id] || 0}
                         </span>
-                        <span className="line-through text-gray-500">
-                          ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
-                            typeof reg.price === 'string'
-                              ? parseFloat(reg.price.replace(/[^0-9.]/g, '')) || 0
-                              : (typeof reg.price === 'number' ? reg.price : 0)
-                          )}
-                        </span>
-                      </p>
-                    )}
-                    {typeof reg.price === 'string' && (
-                      <p className="text-lg font-semibold text-indigo-600 mb-2">
-                        {reg.price}
-                      </p>
-                    )}
-                    {reg.perks && reg.perks.length > 0 && (
-                      <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
-                        {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
-                      </ul>
-                    )}
-                    {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
-                    <div className="flex items-center">
-                      <button
-                        onClick={() => handleDecrement(reg.id)}
-                        disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
-                        className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                      >
-                        -
-                      </button>
-                      <span className="px-4 py-1 border-t border-b text-center w-12">
-                        {ticketQuantities[reg.id] || 0}
-                      </span>
-                      <button
-                        onClick={() => handleIncrement(reg.id)}
-                        disabled={isLoading}
-                        className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                      >
-                        +
-                      </button>
+                        <button
+                          onClick={() => handleIncrement(reg.id)}
+                          disabled={isLoading}
+                          className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
                 </div>
                 {/* Total and checkout button at bottom of modal */}
                 <div className="mt-auto border-t pt-4 bg-white">
