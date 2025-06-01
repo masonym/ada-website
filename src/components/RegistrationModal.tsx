@@ -149,13 +149,8 @@ const RegistrationModal = ({
   const [isStripeReady, setIsStripeReady] = useState(false); // New state for Stripe readiness
 
   const handleStripeReady = useCallback((ready: boolean) => {
-    console.log(`StripePaymentForm ready status: ${ready}`);
     setIsStripeReady(ready);
 
-    // If Stripe is ready and we're waiting to attempt payment, check if we can proceed
-    if (ready && attemptingStripePayment && clientSecret && stripeFormRef.current) {
-      console.log('Stripe is now ready and attemptingStripePayment is true. Will trigger payment in next render cycle.');
-    }
   }, [attemptingStripePayment, clientSecret]); // Include dependencies to react to payment attempt state
 
   // Track previous modal open state to help with state management
@@ -168,14 +163,11 @@ const RegistrationModal = ({
     if (isOpen) {
       // If this is a fresh opening (was previously closed)
       if (!prevIsOpenRef.current) {
-        console.log('Modal freshly opened');
         // If the previous session ended with a confirmation, we need to reset for a new session
         if (prevShowConfirmationRef.current || paymentSuccessful) {
-          console.log('Previous session ended with confirmation - resetting state for new session');
           resetState();
         } else {
           // Just opening normally - clear errors but keep existing form data
-          console.log('Normal opening - clearing errors only');
           setApiError(null);
           setAttemptingStripePayment(false);
           setClientSecret(null);
@@ -184,7 +176,6 @@ const RegistrationModal = ({
       }
     } else {
       // When modal is closed, just reset payment-related states
-      console.log('Modal closed - saving confirmation state for next time');
       // Just reset the active payment processing states
       setAttemptingStripePayment(false);
       setIsStripeReady(false);
@@ -204,7 +195,6 @@ const RegistrationModal = ({
   };
 
   const resetState = () => {
-    console.log('Resetting all registration state');
     setCurrentStep(0); // Or 1, depending on your initial step for attendee info
     setIsCheckout(false); // Show ticket selection first
     setTicketQuantities({});
@@ -247,23 +237,18 @@ const RegistrationModal = ({
   };
 
   useEffect(() => {
-    console.log('useEffect for Stripe payment submission triggered. attemptingStripePayment:', attemptingStripePayment, 'clientSecret:', clientSecret, 'isStripeReady:', isStripeReady);
     if (attemptingStripePayment && clientSecret && stripeFormRef.current && isStripeReady) { // Added isStripeReady check
-      console.log('Attempting to call stripeFormRef.current.triggerSubmit() as clientSecret is available and Stripe is ready.');
       try {
         stripeFormRef.current.triggerSubmit();
         // DO NOT reset attemptingStripePayment here. It should be reset in handlePaymentSuccess/handlePaymentError.
-        console.log('Called stripeFormRef.current.triggerSubmit(). Control returned to useEffect, awaiting async completion via callbacks.');
       } catch (error) {
         console.error('Error triggering Stripe payment submission:', error);
         handlePaymentErrorInEffect('Failed to initiate payment process. Please try again.');
       }
     } else if (attemptingStripePayment && clientSecret && !isStripeReady) {
-      console.log('Stripe not ready yet, will retry when it is or inform user.');
       // Create a timeout to check again in case the state update for isStripeReady is delayed
       const checkAgainTimeout = setTimeout(() => {
         if (stripeFormRef.current && !isStripeReady) {
-          console.log('Stripe still not ready after timeout. Setting a timeout to check again...');
         }
       }, 2000); // Check again after 2 seconds
 
@@ -380,9 +365,7 @@ const RegistrationModal = ({
   };
 
   const handleAttendeeChange = (registrationId: string, index: number, field: keyof EventAttendeeInfo, value: string) => {
-    console.log('handleAttendeeChange called with:', { registrationId, index, field, value });
     setAttendeesByTicket(prev => {
-      console.log('setAttendeesByTicket - prev:', JSON.parse(JSON.stringify(prev)));
       const attendeesList = prev[registrationId] || []; // Default to empty array if undefined
       const currentQuantity = ticketQuantities[registrationId] || 0;
 
@@ -400,7 +383,6 @@ const RegistrationModal = ({
       } else {
         // This case should ideally not happen if AttendeeForms are rendered based on currentQuantity
         console.error(`Attendee index ${index} is out of bounds for ticket ${registrationId} with quantity ${currentQuantity}. Change not applied.`);
-        console.log('setAttendeesByTicket - out of bounds, returning prev for this ticketId:', { ...prev, [registrationId]: attendeesList });
         return { ...prev, [registrationId]: attendeesList };
       }
 
@@ -408,7 +390,6 @@ const RegistrationModal = ({
         ...prev,
         [registrationId]: newAttendeesList,
       };
-      console.log('setAttendeesByTicket - final state for this ticketId:', JSON.parse(JSON.stringify(finalState)));
       return finalState;
     });
   };
@@ -452,12 +433,12 @@ const RegistrationModal = ({
       const isEarlyBird = reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline);
       // Use early bird price if available and date is valid, otherwise use regular price
       const ticketPrice = isEarlyBird && reg.earlyBirdPrice !== undefined ? reg.earlyBirdPrice : reg.price;
-      
+
       // Handle string or number price values
-      const numericPrice = typeof ticketPrice === 'string' ? 
-        parseFloat(ticketPrice.replace(/[^0-9.]/g, '')) || 0 : 
+      const numericPrice = typeof ticketPrice === 'string' ?
+        parseFloat(ticketPrice.replace(/[^0-9.]/g, '')) || 0 :
         ticketPrice;
-        
+
       return total + (quantity * numericPrice);
     }, 0);
   };
@@ -524,9 +505,7 @@ const RegistrationModal = ({
       await registrationSchema.validate(formData, { abortEarly: false });
 
       // Log the total calculated on the frontend for debugging
-      console.log('Frontend calculated total:', calculateTotal(), 'with email:', formData.email, 'event:', event.title);
 
-      console.log('Sending registration request...');
       const response = await fetch('/api/event-registration/register', {
         method: 'POST',
         headers: {
@@ -539,12 +518,10 @@ const RegistrationModal = ({
           eventSlug: event.slug
         }),
       });
-      console.log('Registration request sent, waiting for response...');
 
       const result = await response.json();
 
       if (response.ok && result.success) {
-        console.log('Registration successful:', result);
         if (result.clientSecret) {
           setClientSecret(result.clientSecret);
           setApiError(null); // Clear previous errors, rely on Payment form UI
@@ -583,7 +560,6 @@ const RegistrationModal = ({
   };
 
   const handlePaymentSuccess = (paymentIntentId: string) => {
-    console.log('Payment successful (Client):', paymentIntentId);
     setApiError(null); // Clear any previous payment errors
     setPaymentSuccessful(true);
     setAttemptingStripePayment(false); // Reset payment attempt flag
@@ -591,27 +567,16 @@ const RegistrationModal = ({
 
     // Update confirmation data
     if (pendingConfirmationData) {
-      console.log('Setting confirmation data from pending data:', pendingConfirmationData);
       setConfirmationData(pendingConfirmationData);
     } else {
-      console.log('Setting fallback confirmation data with paymentIntentId:', paymentIntentId);
       setConfirmationData({ paymentIntentId, message: 'Payment confirmed. Thank you!' });
     }
 
     // Important: These state updates should trigger a re-render to show confirmation view
-    console.log('Setting showConfirmationView to true');
     setShowConfirmationView(true);
     setPendingConfirmationData(null); // Clear pending data
 
     // Force any pending state updates to be applied
-    setTimeout(() => {
-      console.log('Current state after payment success:', {
-        showConfirmationView,
-        confirmationData: confirmationData || 'pendingUpdate',
-        paymentSuccessful,
-        isLoading
-      });
-    }, 0);
   };
 
   const handlePaymentError = (errorMessage: string) => {
@@ -635,7 +600,6 @@ const RegistrationModal = ({
   };
 
   const handleFinalSubmit = async () => {
-    console.log('handleFinalSubmit called');
     setFormErrors({});
     setApiError(null);
     setIsLoading(true);
@@ -694,12 +658,9 @@ const RegistrationModal = ({
 
     try {
       // Validate all relevant parts before proceeding to payment intent creation
-      console.log('Attempting validation with formData:', JSON.stringify(formDataToValidate, null, 2));
       await registrationSchema.validate(formDataToValidate, { abortEarly: false });
-      console.log('Validation successful');
 
       // Check terms AFTER general validation
-      console.log('Checking terms. Agreed:', agreedToTerms);
       if (!agreedToTerms) {
         setFormErrors(prev => ({ ...prev, agreedToTerms: 'You must agree to the terms and conditions.' }));
         setIsLoading(false);
@@ -726,8 +687,6 @@ const RegistrationModal = ({
         // We assume totalAmount >= 0. If totalAmount is 0, the API will treat it as free.
         // The following block now directly executes as the unified path:
         // Create payment intent for paid registrations (or handle free ones via API response)
-        console.log('Creating payment intent for amount:', totalAmount, 'with email:', billingInfo.email, 'event:', event.title);
-        console.log('Before calling register endpoint for payment intent...');
         const response = await fetch('/api/event-registration/register', {
           // Note: eventId is now part of formDataToValidate from previous steps, ensure it's there or add it explicitly if not.
           method: 'POST',
@@ -738,7 +697,6 @@ const RegistrationModal = ({
             // The register endpoint will calculate amount and use necessary fields from formDataToValidate
           }),
         });
-        console.log('After /api/event-registration/register call');
         const result = await response.json();
 
         if (!response.ok || !result.success) {
@@ -749,10 +707,8 @@ const RegistrationModal = ({
           return; // Stop further execution
         }
 
-        console.log('/api/event-registration/register response status:', response.status, 'data:', result);
         // If successful and a clientSecret is returned, it's a paid flow needing Stripe UI
         if (result.clientSecret) {
-          console.log('Received clientSecret from API:', result.clientSecret.substring(0, 10) + '...');
           setPendingConfirmationData(result); // Store data for after Stripe success
           setIsStripeReady(false); // Explicitly set Stripe to not ready, awaiting re-initialization
 
@@ -761,11 +717,9 @@ const RegistrationModal = ({
 
           // Give Elements time to initialize before attempting payment
           setTimeout(() => {
-            console.log('Setting attemptingStripePayment to true after delay');
             setAttemptingStripePayment(true); // This will trigger the useEffect to call Stripe submit
           }, 500);
         } else { // Free flow or $0 paid (e.g. 100% discount) - already handled by /api/event-registration/register
-          console.log('Registration processed by API, clientSecret not present or not needed.');
           setConfirmationData(result);
           setShowConfirmationView(true);
           setIsLoading(false);
@@ -782,7 +736,6 @@ const RegistrationModal = ({
       }
     } catch (validationError) { // Catch for Yup validation
       if (validationError instanceof ValidationError) {
-        console.log('Validation failed:', JSON.stringify(validationError, null, 2));
         const errors: Record<string, string> = {};
         validationError.inner.forEach(err => {
           if (err.path) errors[err.path] = err.message;
@@ -846,7 +799,6 @@ const RegistrationModal = ({
       promoCode: promoCode || undefined,
     };
 
-    console.log('Submitting registration data:', registrationData);
     setIsLoading(true);
     setApiError(null);
 
@@ -920,7 +872,7 @@ const RegistrationModal = ({
             />
             {calculateTotal() > 0 && (
               <div className="mt-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Payment</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Payment Details</h3>
                 {/* Don't use key prop on Elements - it causes the component to remount and lose card state */}
                 <Elements stripe={stripePromise} options={clientSecret ? { clientSecret, appearance } : undefined}>
                   <StripePaymentForm
@@ -1054,7 +1006,7 @@ const RegistrationModal = ({
                       <p className="text-lg font-semibold text-indigo-600 mb-2">
                         <span className="text-green-600 mr-2">
                           ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
-                            typeof reg.earlyBirdPrice === 'string' 
+                            typeof reg.earlyBirdPrice === 'string'
                               ? parseFloat(reg.earlyBirdPrice.replace(/[^0-9.]/g, '')) || 0
                               : (typeof reg.earlyBirdPrice === 'number' ? reg.earlyBirdPrice : 0)
                           )}

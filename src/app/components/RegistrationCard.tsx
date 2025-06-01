@@ -39,7 +39,7 @@ interface RegistrationCardProps {
   headerImage: string;
   subtitle?: string; // Keeping as optional to match actual data
   buttonText: string;
-  buttonLink: string;
+  buttonLink?: string;
   regularPrice: number | string;
   receptionPrice?: string;
   // Add missing optional properties that may be in REGISTRATION_TYPES
@@ -80,6 +80,12 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
 
   const handleCardClick = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
+    if (item.buttonLink) {
+      console.log(item.buttonLink);
+      window.open(item.buttonLink, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    // Open the modal if no button link is provided
     setIsModalOpen(true);
   };
 
@@ -133,7 +139,7 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
             {item.perks?.map((perk, index) => (
               <li key={index} className="flex items-start">
                 <ChevronRight className="h-4 w-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
-                <span className="text-sm text-gray-700">{perk}</span>
+                <span className="text-sm text-gray-700" dangerouslySetInnerHTML={{ __html: perk }}></span>
               </li>
             ))}
           </ul>
