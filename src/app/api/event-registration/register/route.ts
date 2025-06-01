@@ -23,7 +23,7 @@ function calculateOrderTotal(
 
     const isEarlyBird = ticket.earlyBirdDeadline && new Date(ticket.earlyBirdDeadline) > now;
     const price = isEarlyBird && ticket.earlyBirdPrice ? ticket.earlyBirdPrice : ticket.price;
-    
+
     subtotal += price * selection.quantity;
   }
 
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
     const eventIdFromBody = body.eventId; // Extract eventId from the raw body
     // const eventTitleFromBody = body.eventTitle; // Optional: for more descriptive emails
     // const eventSlugFromBody = body.eventSlug; // Optional: for direct event links
-    
+
     // Validate the request body (excluding eventId for schema validation if it's not part of it)
     const { isValid, errors, validatedData } = await validateRegistrationData(body);
     if (!isValid || !validatedData) { // Check !validatedData explicitly for TS
@@ -64,16 +64,16 @@ export async function POST(request: Request) {
     const { email, tickets, promoCode, paymentMethod } = validatedData;
     // Use eventIdFromBody for the eventId
     const currentEventId = eventIdFromBody;
-    
+
     // Find all available tickets for the current event from our centralized source of truth
     const eventId = Number(currentEventId);
     const eventRegistrations = REGISTRATION_TYPES.find(event => event.id === eventId);
-    
+
     if (!eventRegistrations) {
       console.error(`Event ID ${eventId} not found in REGISTRATION_TYPES`);
       return NextResponse.json({ success: false, error: 'Event not found' }, { status: 404 });
     }
-    
+
     // Map the requested tickets to their full definitions from our source of truth
     const availableTickets = tickets.map(ticket => {
       // Find the registration type in our centralized source
@@ -82,7 +82,7 @@ export async function POST(request: Request) {
       const registrationType = eventRegistrations.registrations.find(reg => {
         return 'id' in reg && reg.id === ticket.ticketId;
       });
-      
+
       if (registrationType) {
         // Create a safe ticket definition with proper type checking
         const ticketDef: {
@@ -97,7 +97,7 @@ export async function POST(request: Request) {
           price: 0, // Default value
           type: 'paid' // Default value
         };
-        
+
         // Handle different ways price might be stored
         if ('price' in registrationType) {
           const price = registrationType.price;
@@ -110,48 +110,30 @@ export async function POST(request: Request) {
               ticketDef.price = parsedPrice;
             }
           }
-        } else if ('regularPrice' in registrationType) {
-          // Some entries use regularPrice instead of price
-          const price = registrationType.regularPrice;
-          if (typeof price === 'number') {
-            ticketDef.price = price;
-          } else if (typeof price === 'string' && price.startsWith('$')) {
-            // Try to parse a string price like "$99.99"
-            const parsedPrice = parseFloat(price.replace('$', '').replace(',', ''));
-            if (!isNaN(parsedPrice)) {
-              ticketDef.price = parsedPrice;
-            }
-          }
         }
-        
+
         // Handle type field
         if ('type' in registrationType && typeof registrationType.type === 'string') {
           ticketDef.type = registrationType.type;
         }
-        
+
         // Handle early bird price
         if ('earlyBirdPrice' in registrationType) {
           const earlyBirdPrice = registrationType.earlyBirdPrice;
           if (typeof earlyBirdPrice === 'number') {
             ticketDef.earlyBirdPrice = earlyBirdPrice;
-          } else if (typeof earlyBirdPrice === 'string' && earlyBirdPrice.startsWith('$')) {
-            // Try to parse a string price like "$89.99"
-            const parsedPrice = parseFloat(earlyBirdPrice.replace('$', '').replace(',', ''));
-            if (!isNaN(parsedPrice)) {
-              ticketDef.earlyBirdPrice = parsedPrice;
-            }
           }
         }
-        
+
         // Handle early bird deadline
-        if ('earlyBirdDeadline' in registrationType && 
-            typeof registrationType.earlyBirdDeadline === 'string') {
+        if ('earlyBirdDeadline' in registrationType &&
+          typeof registrationType.earlyBirdDeadline === 'string') {
           ticketDef.earlyBirdDeadline = registrationType.earlyBirdDeadline;
         }
-        
+
         return ticketDef;
       }
-      
+
       // If we can't find the ticket in our central source, log an error and default to 0
       console.error(`Ticket ID ${ticket.ticketId} not found in REGISTRATION_TYPES for event ${eventId}`);
       return {
@@ -160,12 +142,12 @@ export async function POST(request: Request) {
         type: 'paid'
       };
     });
-    
+
     // Filter out any tickets with type 'complimentary' or non-numeric prices
     const paidTickets = availableTickets.filter(ticket => {
       return ticket.type === 'paid' && typeof ticket.price === 'number';
     });
-    
+
     console.log('Paid tickets:', JSON.stringify(paidTickets, null, 2));
 
     console.log('--- Registration Attempt ---');
@@ -179,7 +161,7 @@ export async function POST(request: Request) {
 
     // Check if the email is a .gov or .mil email for free registration
     const isFreeRegistration = isGovOrMilEmail(email) && paymentMethod === 'free';
-    
+
     // Validate promo code if provided
     let promoCodeDetails = null;
     if (promoCode) {
@@ -190,7 +172,7 @@ export async function POST(request: Request) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ promoCode, eventId: currentEventId, tickets }),
       });
-      
+
       const promoData = await promoResponse.json();
       if (!promoData.valid) {
         return NextResponse.json(
@@ -198,7 +180,7 @@ export async function POST(request: Request) {
           { status: 400 }
         );
       }
-      
+
       promoCodeDetails = promoData;
     }
 
@@ -223,7 +205,7 @@ export async function POST(request: Request) {
       }
       // validatedData is now confirmed to be RegistrationFormData for the rest of this block
       const orderId = `ORDER-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-      
+
       // Log the registration to Google Sheets
       await logRegistration(
         currentEventId, // Use consistent eventId
@@ -246,7 +228,7 @@ export async function POST(request: Request) {
           eventUrl: body.eventSlug ? `${env.NEXT_PUBLIC_SITE_URL}/events/${body.eventSlug}` : env.NEXT_PUBLIC_SITE_URL
         });
       }
-      
+
       // Now, return the successful response
       return NextResponse.json({
         success: true,
@@ -311,8 +293,8 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Error processing registration:', error);
     return NextResponse.json(
-      { 
-        success: false, 
+      {
+        success: false,
         error: 'An error occurred while processing your registration',
         details: error instanceof Error ? error.message : 'Unknown error'
       },
