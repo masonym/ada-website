@@ -51,7 +51,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
             headerImage: reg.headerImage || '',
             subtitle: reg.subtitle || '',
             buttonText: reg.buttonText || 'Register Now',
-            buttonLink: reg.buttonLink || '#',
+            buttonLink: reg.buttonLink,
             regularPrice: typeof reg.regularPrice === 'number' ? reg.regularPrice : (typeof reg.price === 'number' ? reg.price : 0),
             receptionPrice: reg.receptionPrice,
         };
