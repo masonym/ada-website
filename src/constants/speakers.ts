@@ -819,6 +819,26 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	<br/>
 	Mr Inman began his Air Force career as a contracting intern, and held and used a contracting officer’s warrant. He moved into program management, managing new and legacy information technology programs for cost, schedule, and performance. He deployed to Qatar and Afghanistan for a fifteen-month assignment as Director of Policy for Central Command’s Joint Theater Support Contracting Command. At the Air Force Sustainment Center, he directed the contract for the Air Force’s weapon system supply chains, and immediately prior to his current position, he was Technical Director for Contracting at Robins AFB.`,
 	}
+	,
+	"stephen-mongold": {
+		"image": "stephen-mongold.webp",
+		"name": "CAPT Stephen Mongold",
+		"position": "Director",
+		"company": "COMSUBFOR Submarine Maintenance Operations Center",
+		"bio": `CAPT Steve Mongold enlisted in the Navy in 1995 as a Nuclear Propulsion Officer Candidate (NUPOC) and received his commission from Officer Candidate School (OCS) in 1996.  He resides in Chesapeake, Virginia and earned a Bachelor’s degree in Chemical Engineering from Villanova University, and Master’s degree in Engineering Management from Old Dominion University.
+	<br/>
+	
+	<br/>
+	CAPT Mongold’s operational assignments include USS HAMPTON (SSN 767) as a Division Officer, USS BOISE (SSN 764) as Engineer Officer, and USS RHODE ISLAND (SSBN 740) Gold as Executive Officer.  CAPT Mongold commanded USS MONTPELIER (SSN 765) from 2013-2016.
+	<br/>
+	
+	<br/>
+	Ashore, CAPT Mongold served as a Submarine Tactics instructor, Prospective Nuclear Engineering instructor, Submarine Squadron Eight Material Officer, Executive Assistant to COMSUBFOR, and Senior Member of the Fleet Forces Nuclear Propulsion Examining Board.  He served as the Commanding Officer of the Nuclear Power Training Unit in Goose Creek, SC from 2019-2021 before reporting to COMSUBLANT as the Director for Maintenance and Material Readiness.  In May 2023, CAPT Mongold established the COMSUBFOR Submarine Maintenance Operations Center (S-MOC) and reported as its first Director.
+	<br/>
+	
+	<br/>
+	CAPT Mongold has been privileged to serve on teams that were awarded the 2015 Arleigh Burke Fleet Trophy, the Navy Unit Commendation, Meritorious Unit Commendation, and Battle Efficiency ‘E’. His personal awards include the Legion of Merit, Meritorious Service Medal, Navy and Marine Corps Commendation Medal, and Navy and Marine Corps Achievement Medal.`,
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -888,7 +908,9 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		//"carl-m-wade",
 		//"david-willis",
 		//{ id: "patricia-waddell", invited: true },
-
+	],
+	"4": [ // 2025NMCPC
+		"stephen-mongold",
 	]
 };
 
