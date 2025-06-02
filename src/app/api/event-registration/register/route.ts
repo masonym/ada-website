@@ -159,6 +159,38 @@ export async function POST(request: Request) {
     }
     console.log('Available tickets (server-side):', JSON.stringify(availableTickets, null, 2));
 
+    // Check if any complimentary tickets are being registered
+    const hasComplimentaryTickets = tickets.some(ticket => {
+      const ticketDef = availableTickets.find(t => t.id === ticket.ticketId);
+      return ticketDef && ticketDef.type === 'complimentary';
+    });
+
+    // Validate that all attendees for complimentary tickets have gov/mil emails
+    if (hasComplimentaryTickets) {
+      // Check each ticket
+      for (const ticket of tickets) {
+        const ticketDef = availableTickets.find(t => t.id === ticket.ticketId);
+        if (ticketDef && ticketDef.type === 'complimentary') {
+          // Check each attendee's email
+          const attendeeInfo = ticket.attendeeInfo || [];
+          for (const attendee of attendeeInfo) {
+            if (!isGovOrMilEmail(attendee.email)) {
+              return NextResponse.json(
+                { 
+                  success: false, 
+                  errors: { 
+                    [`tickets[${tickets.indexOf(ticket)}].attendeeInfo[${attendeeInfo.indexOf(attendee)}].email`]: 
+                      'Government or military email (.gov or .mil) is required for complimentary tickets' 
+                  } 
+                },
+                { status: 400 }
+              );
+            }
+          }
+        }
+      }
+    }
+
     // Check if the email is a .gov or .mil email for free registration
     const isFreeRegistration = isGovOrMilEmail(email) && paymentMethod === 'free';
 
