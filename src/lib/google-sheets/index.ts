@@ -89,7 +89,8 @@ export async function logRegistration(
     const rowsToAppend: any[][] = [];
 
     // Common information for all rows in this registration batch
-    const registrationTimestamp = new Date().toISOString();
+    // timestamp format mm/dd/yyyy hh:mm:ss
+    const registrationTimestamp = new Date().toLocaleString('en-US');
     const buyerCompany = registrationData.company || '';
     const buyerJobTitle = registrationData.jobTitle || '';
     const buyerFirstName = registrationData.firstName || '';
@@ -101,19 +102,23 @@ export async function logRegistration(
     // These amounts are for the entire order and will be repeated for each attendee row.
     const orderAmountReceived = (amountPaid + (discountApplied || 0)).toFixed(2);
     const orderAmountPaid = amountPaid.toFixed(2);
+    console.log("Registration data:", registrationData);
+    console.log("Ticket data: ", registrationData.tickets);
+    console.log("Attendee data: ", registrationData.tickets.map(ticket => ticket.attendeeInfo).flat());
 
     if (registrationData.tickets && Array.isArray(registrationData.tickets)) {
       for (const ticket of registrationData.tickets) {
         const ticketType = ticket.ticketId;
+        const ticketName = ticket.ticketName;
         let attendeesProcessedForTicket = 0;
 
         if (ticket.attendeeInfo && Array.isArray(ticket.attendeeInfo)) {
           for (const attendee of ticket.attendeeInfo) {
             const attendeeBusinessSize = attendee.businessSize || '';
-            const attendeeSbaIdentification = 
-              (attendee.businessSize === 'Small Business' && attendee.sbaIdentification) 
-              ? attendee.sbaIdentification 
-              : '';
+            const attendeeSbaIdentification =
+              (attendee.businessSize === 'Small Business' && attendee.sbaIdentification)
+                ? attendee.sbaIdentification
+                : '';
             const attendeeIndustry = attendee.industry || '';
 
             const row = [
@@ -124,7 +129,7 @@ export async function logRegistration(
               attendee.email || '',           // Attendee's Email
               attendee.phone || '',           // Attendee's Phone
               registrationTimestamp,          // Common: Registration Date
-              ticketType,                     // Specific ticket type for this attendee
+              ticketName,                     // Specific ticket type for this attendee
               orderAmountReceived,            // Common: Order Amount Received
               orderAmountPaid,                // Common: Order Amount Paid
               attendee.website || '',         // Attendee's Website
@@ -178,9 +183,9 @@ export async function logRegistration(
     return { success: true };
   } catch (error) {
     console.error('Error logging registration to Google Sheets:', error);
-    return { 
-      success: false, 
-      error: error instanceof Error ? error.message : 'Unknown error' 
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error'
     };
   }
 }

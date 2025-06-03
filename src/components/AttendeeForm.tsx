@@ -289,7 +289,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
             onChange={handleChange}
             required
           >
-            <option value="">Select size</option>
+            <option value="">Select business size</option>
             {businessSizes.map((size) => (
               <option key={size} value={size}>{size}</option>
             ))}

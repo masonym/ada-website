@@ -37,6 +37,7 @@ export interface RegistrationFormData {
 
 export interface TicketSelection {
   ticketId: string;
+  ticketName: string;
   quantity: number;
   attendeeInfo?: AttendeeInfo[];
 }
