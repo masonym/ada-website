@@ -273,12 +273,13 @@ export async function POST(request: Request) {
       amount: Math.round(total * 100), // Convert to cents
       currency: 'usd',
       receipt_email: email,
-      description: `Registration for event ${currentEventId} by ${email}`,
+      description: `Registration for event ${currentEventId} by ${validatedData.firstName} ${validatedData.lastName}`,
       metadata: {
         eventId: currentEventId, // Use consistent eventId
         orderType: 'event-registration',
         email,
         promoCode: promoCode || '',
+        contactName: `${validatedData.firstName} ${validatedData.lastName}`,
       },
     });
 
