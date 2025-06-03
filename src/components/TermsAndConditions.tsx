@@ -9,35 +9,22 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
   agreed,
   onAgree
 }) => {
-  const termsText = `
-    TERMS AND CONDITIONS
+  const termsText = `Please note that all event registrations are final upon purchase. We do not offer refunds under any circumstances, including but not limited to personal reasons, scheduling conflicts, or changes in circumstances. However, if you are unable to attend, all registered attendees will receive access to the speaker presentations following the event to the registered email address.
 
-    1. Registration and Payment
-    All registrations are subject to availability and will be confirmed via email. Payment must be made in full at the time of registration.
+We recognize that unforeseen situations may occur. Therefore, we permit the transfer of your registration to another individual or request for an Event Credit up to one week (7 days) prior to the event date. To request a transfer, please contact our team at info@americandefensealliance.org, providing the full name and contact details of the individual to whom you wish to transfer your registration. All transfer requests must be submitted in writing and are subject to approval.
 
-    2. Cancellation Policy
-    Cancellations received in writing more than 30 days before the event will receive a full refund, less a $50 administrative fee. No refunds will be given for cancellations received within 30 days of the event.
+In the unlikely event that the American Defense Alliance cancels or significantly alters the date of an event, you will be promptly notified. In such cases, you will have the option to transfer your registration to a future event or another individual, but refunds will not be provided. Should you have any questions or need to request a registration transfer, please reach out to our team at info@americandefensealliance.org or (771) 474-1077. By registering for an event with the American Defense Alliance, you acknowledge and agree to this No Refund Policy.
 
-    3. Substitutions
-    Substitutions of attendees may be made at any time by contacting the event organizers.
+American Defense Alliance reserves the right to use any photograph/video taken at any organized or sponsored event, without the expressed written permission of those included within the photograph/video. American Defense Alliance may use the photograph/video in publications or other media material produced, used or contracted by the American Defense Alliance including but not limited to: brochures, invitations, newspapers, magazines, presentations, websites, etc.
 
-    4. Event Changes
-    The organizers reserve the right to make changes to the event program, speakers, or venue if necessary. In the unlikely event of cancellation, liability will be limited to the registration fee paid.
+A person attending an American Defense Alliance event who does not wish to have their image recorded for distribution should make their wishes known to the photographer, and/or the event organizers at info@americandefensealliance.org
 
-    5. Data Protection
-    By registering for this event, you agree that your contact details may be shared with event sponsors and partners. You can opt out of this by contacting the organizers.
-
-    6. Photography and Recording
-    Please be advised that photographs and video may be taken during the event for use in future marketing materials. If you do not wish to be photographed, please inform the event staff.
-
-    7. Code of Conduct
-    All attendees are expected to behave professionally and respectfully towards other attendees, speakers, and staff. The organizers reserve the right to remove any attendee who violates this code of conduct.
-  `;
+By participating in an American Defense Alliance event or by failing to notify the American Defense Alliance, in writing, your desire to not have your photograph used by the American Defense Alliance, you are agreeing to release, hold harmless and indemnify the American Defense Alliance from any and all claims involving the use of your picture or likeness.`;
 
   return (
     <div className="border rounded-lg p-6 mb-6">
       <h3 className="text-xl font-semibold mb-4">Terms & Conditions</h3>
-      <div className="border rounded p-4 h-40 overflow-y-auto mb-4 text-sm bg-gray-50">
+      <div className="border rounded p-4 h-40 overflow-y-auto mb-4 text-sm bg-gray-200">
         <pre className="whitespace-pre-wrap font-sans">{termsText.trim()}</pre>
       </div>
       <div className="flex items-start">

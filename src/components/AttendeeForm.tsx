@@ -58,7 +58,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
     const fieldName = e.target.name.split('-')[0];
     onChange(index, fieldName, e.target.value);
   };
-  
+
   const handleCopyFromChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
     if (value) {
@@ -88,16 +88,56 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
   ];
 
   const industries = [
-    'Technology',
-    'Healthcare',
-    'Finance',
-    'Education',
-    'Manufacturing',
-    'Retail',
-    'Hospitality',
-    'Other'
-  ];
-
+    "Accounting & Financial Services",
+    "Additive Manufacture",
+    "AI & Machine Learning",
+    "Architecture/Design",
+    "Biotech",
+    "Business Services",
+    "Civil Engineering",
+    "Communications Equipment",
+    "Command & Control",
+    "Construction",
+    "Cybersecurity",
+    "Disaster Response",
+    "Environmental",
+    "Expeditionary",
+    "Facility/Base Operations Support",
+    "Food Services",
+    "Foreign Military Sales (FMS)",
+    "Fuel Supply",
+    "General Administration",
+    "Healthcare/Medical",
+    "Human Resources",
+    "Installation Energy",
+    "Intelligence",
+    "IT Technology/Data Mgmt.",
+    "Legal Services",
+    "Logistics/Asset Mgmt.",
+    "Maintenance/Repair/Sustainability",
+    "Manufacturing/Production",
+    "Marine Services",
+    "Microelectronics",
+    "Mission Integration",
+    "Nuclear",
+    "Personnel Support",
+    "Prototyping",
+    "PR/Public Affairs",
+    "Property Mgmt./Real Estate",
+    "Remediation",
+    "Renewable Energy",
+    "Research Development Testing & Evaluation (RDT&E)",
+    "Security Services",
+    "Shipbuilding/Shipyards",
+    "Space Technology",
+    "Technical Training",
+    "Transport/Trucking",
+    "Unmanned Technology",
+    "Utilities",
+    "Veterans Affairs",
+    "Waste Management",
+    "Weapon Systems/Components",
+  ]
   return (
     <div className="border rounded-lg p-4 mb-4 relative">
       <div className="flex justify-between items-center mb-4">
@@ -113,12 +153,12 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
             }).length;
             return count + validAttendees;
           }, 0);
-          
+
           // Only show copy option if there are attendees to copy from
           return availableAttendees > 0 ? (
             <div className="flex items-center space-x-2">
               <span className="text-sm text-gray-600">Copy from:</span>
-              <select 
+              <select
                 className="border rounded px-2 py-1 text-sm"
                 onChange={handleCopyFromChange}
                 value=""
@@ -128,12 +168,12 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                   // Skip the current attendee
                   const isCurrentTicket = ticketGroup.ticketId === currentTicketId;
                   const attendees = ticketGroup.attendees;
-                  
+
                   // Create a group of options for each ticket type
                   return attendees.map((_, i) => {
                     // Skip self (current ticket + current index)
                     if (isCurrentTicket && i === index) return null;
-                    
+
                     return (
                       <option key={`${ticketGroup.ticketId}-${i}`} value={`${ticketGroup.ticketId}|${i}`}>
                         {ticketGroup.ticketName} - Attendee {i + 1}
@@ -147,7 +187,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
           ) : null;
         })()}
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">First Name *</label>
@@ -285,7 +325,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Are you interested in becoming a Sponsor or Exhibitor? *
           </label>
-          <div className="flex space-x-4">
+          <div className="flex flex-col">
             <label className="inline-flex items-center">
               <input
                 type="radio"
@@ -296,7 +336,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                 onChange={handleRadioChange}
                 required={attendee.sponsorInterest === ''}
               />
-              <span className="ml-2">Yes, please contact us</span>
+              <span className="ml-2">Yes, please contact us at <a className="text-blue-500 hover:underline" href="mailto:marketing@americandefensealliance.org">marketing@americandefensealliance.org</a></span>
             </label>
             <label className="inline-flex items-center">
               <input
@@ -315,7 +355,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Are you interested in becoming a Speaking Opportunity? *
           </label>
-          <div className="flex space-x-4">
+          <div className="flex flex-col">
             <label className="inline-flex items-center">
               <input
                 type="radio"
@@ -326,7 +366,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                 onChange={handleRadioChange}
                 required={attendee.speakingInterest === ''}
               />
-              <span className="ml-2">Yes, please contact us</span>
+              <span className="ml-2">Yes, please contact us at <a className="text-blue-500 hover:underline" href="mailto:marketing@americandefensealliance.org">info@americandefensealliance.org</a></span>
             </label>
             <label className="inline-flex items-center">
               <input
