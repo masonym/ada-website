@@ -488,6 +488,7 @@ const RegistrationModal = ({
       .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
       .map(reg => ({
         ticketId: reg.id,
+        ticketName: reg.title,
         quantity: ticketQuantities[reg.id] || 0,
         // Ensure attendeeInfo structure matches what the schema expects for validation
         // This might be a simplified version or need full AttendeeInfo details
