@@ -38,6 +38,7 @@ export interface RegistrationFormData {
 export interface TicketSelection {
   ticketId: string;
   ticketName: string;
+  ticketPrice: string | number; // Can be a string (e.g., "Complimentary")
   quantity: number;
   attendeeInfo?: AttendeeInfo[];
 }
