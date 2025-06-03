@@ -28,6 +28,8 @@ interface AttendeeFormProps {
     attendees: AttendeeInfo[];
   }[];
   currentTicketId: string;
+  formErrors?: Record<string, string>; // Add formErrors prop
+  isComplimentaryTicket?: boolean; // Add flag for complimentary tickets
 }
 
 export const AttendeeForm: React.FC<AttendeeFormProps> = ({
@@ -37,7 +39,9 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
   onCopyFrom,
   totalAttendees,
   allAttendees,
-  currentTicketId
+  currentTicketId,
+  formErrors = {},
+  isComplimentaryTicket = false
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -168,15 +172,24 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
           />
         </div>
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Email * {isComplimentaryTicket && <span className="text-xs text-indigo-600">(Government or military email required)</span>}
+          </label>
           <input
             type="email"
-            className="w-full border rounded px-3 py-2"
+            className={`w-full border rounded px-3 py-2 ${formErrors[`tickets.${currentTicketId}.attendeeInfo.${index}.email`] ? 'border-red-500' : ''}`}
             name="email"
             value={attendee.email}
             onChange={handleChange}
             required
+            placeholder={isComplimentaryTicket ? "Enter .gov or .mil email address" : "Enter email address"}
           />
+          {formErrors[`tickets.${currentTicketId}.attendeeInfo.${index}.email`] && (
+            <p className="text-red-500 text-xs mt-1">{formErrors[`tickets.${currentTicketId}.attendeeInfo.${index}.email`]}</p>
+          )}
+          {isComplimentaryTicket && !formErrors[`tickets.${currentTicketId}.attendeeInfo.${index}.email`] && (
+            <p className="text-gray-500 text-xs mt-1">Complimentary tickets require a .gov or .mil email address</p>
+          )}
         </div>
         <div className="md:col-span-2">
           <label className="block text-sm font-medium text-gray-700 mb-1">Company *</label>

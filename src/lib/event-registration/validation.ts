@@ -24,8 +24,8 @@ export const registrationSchema = yup.object().shape({
 
   // Survey Questions
   howDidYouHearAboutUs: yup.string(),
-  interestedInSponsorship: yup.boolean().default(false).required(),
-  interestedInSpeaking: yup.boolean().default(false).required(),
+  interestedInSponsorship: yup.boolean().required(),
+  interestedInSpeaking: yup.boolean().required(),
 
   // Terms and Conditions
   agreeToTerms: yup
@@ -35,85 +35,49 @@ export const registrationSchema = yup.object().shape({
   agreeToPhotoRelease: yup.boolean().default(false).required(),
 
   // Tickets
-  tickets: yup
-    .array(
-      yup.object({
-        ticketId: yup.string().required('Ticket ID is required'),
-        quantity: yup
-          .number()
-          .integer('Quantity must be a whole number')
-          .min(1, 'Quantity must be at least 1')
-          .required('Quantity is required'),
-        attendeeInfo: yup.array().of(
-          yup.object({
-            firstName: yup.string().required('First name is required'),
-            lastName: yup.string().required('Last name is required'),
-            email: yup
-              .string()
-              .email('Invalid email address')
-              .required('Email is required')
-              .test({
-                name: 'is-gov-or-mil-email-for-free-ticket',
-                // We'll use the test context to access the parent ticket type
-                test: function(email, context) {
-                  // Get the current ticket from the parent context
-                  // First, try to get the ticket from the context path
-                  const ticketPath = context.path.split('.');
-                  const ticketIdPath = ticketPath.slice(0, -2).concat('ticketId').join('.');
-                  
-                  // Get the ticketId from the parent
-                  const ticketId = context.parent && ticketIdPath ? context.parent[ticketIdPath] : null;
-                  
-                  // If we have a ticketId, try to find the ticket in the REGISTRATION_TYPES
-                  if (ticketId) {
-                    try {
-                      // This will be handled in the API validation
-                      // For client-side validation, we'll check if the email ends with .gov or .mil
-                      // for any ticket with 'complimentary' in the ID or 'govt' in the ID
-                      if (ticketId.includes('complimentary') || ticketId.includes('govt')) {
-                        if (!isGovOrMilEmail(email)) {
-                          return this.createError({
-                            message: 'Government or military email (.gov or .mil) is required for complimentary tickets',
-                            path: context.path
-                          });
-                        }
-                      }
-                    } catch (error) {
-                      console.error('Error checking ticket type:', error);
-                    }
-                  }
-                  
-                  return true;
-                }
-              }),
-            jobTitle: yup.string().required('Job title is required'),
-            company: yup.string().required('Company name is required'),
-            // Added businessSize, industry, and sbaIdentification to attendeeInfo
-            businessSize: yup.string().oneOf([
-              'Small Business',
-              'Medium-Sized Business',
-              'Large-Sized Business',
-              'Government Agency',
-              'Military Component'
-            ] as const).required('Business size is required for attendee'),
-            industry: yup.string().required('Industry is required for attendee'),
-            sbaIdentification: yup.string().when('businessSize', {
-              is: 'Small Business',
-              then: (schema) => schema.required('SBA identification is required for Small Business'),
-              otherwise: (schema) => schema.optional(),
-            }),
-            dietaryRestrictions: yup.string(),
-            accessibilityNeeds: yup.string(),
-          })
-        ),
-      })
-    )
-    .min(1, 'At least one ticket is required')
-    .required('At least one ticket is required'),
+  tickets: yup.array().of(
+    yup.object({
+      ticketId: yup.string().required('Ticket ID is required'),
+      quantity: yup.number().min(1).required(),
+      attendeeInfo: yup.array().of(
+        yup.object({
+          firstName: yup.string().required('First name is required'),
+          lastName: yup.string().required('Last name is required'),
+          email: yup.string().email().required('Email is required'),
+          jobTitle: yup.string().required('Job title is required'),
+          company: yup.string().required('Company name is required'),
+          businessSize: yup.string().required('Business size is required'),
+          industry: yup.string().required('Industry is required'),
+          sbaIdentification: yup.string().when('businessSize', {
+            is: 'Small Business',
+            then: schema => schema.required('Small Business Administration (SBA) identification is required for small businesses'),
+            otherwise: schema => schema.optional(),
+          }),
+        })
+      )
+    }).test(
+      'validate-gov-or-mil-emails',
+      'Government or military email (.gov or .mil) is required for complimentary tickets',
+      function(ticket) {
+        const { ticketId, attendeeInfo } = ticket;
+        if (!ticketId || !attendeeInfo) return true;
 
-  // Payment
-  paymentMethod: yup.string().oneOf(['creditCard', 'free'] as const).required('Payment method is required'),
-  promoCode: yup.string(),
+        if (ticketId.includes('complimentary') || ticketId.includes('govt')) {
+          for (const attendee of attendeeInfo) {
+            if (!isGovOrMilEmail(attendee.email)) {
+              return this.createError({
+                path: `${this.path}.attendeeInfo`, // maybe `${this.path}.attendeeInfo[i].email` for exact index
+                message: 'Government or military email (.gov or .mil) is required for complimentary tickets'
+              });
+            }
+          }
+        }
+
+        return true;
+      }
+    )
+  )
+
 });
 
 export async function validateRegistrationData(data: unknown): Promise<{

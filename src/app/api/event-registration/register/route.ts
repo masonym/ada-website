@@ -98,17 +98,11 @@ export async function POST(request: Request) {
           type: 'paid' // Default value
         };
 
-        // Handle different ways price might be stored
+        // Handle different ways price might be stored (e.g., as a number or string)
         if ('price' in registrationType) {
           const price = registrationType.price;
           if (typeof price === 'number') {
             ticketDef.price = price;
-          } else if (typeof price === 'string' && price.startsWith('$')) {
-            // Try to parse a string price like "$99.99"
-            const parsedPrice = parseFloat(price.replace('$', '').replace(',', ''));
-            if (!isNaN(parsedPrice)) {
-              ticketDef.price = parsedPrice;
-            }
           }
         }
 
@@ -165,6 +159,8 @@ export async function POST(request: Request) {
       return ticketDef && ticketDef.type === 'complimentary';
     });
 
+    console.log('Has complimentary tickets:', hasComplimentaryTickets);
+
     // Validate that all attendees for complimentary tickets have gov/mil emails
     if (hasComplimentaryTickets) {
       // Check each ticket
@@ -176,12 +172,12 @@ export async function POST(request: Request) {
           for (const attendee of attendeeInfo) {
             if (!isGovOrMilEmail(attendee.email)) {
               return NextResponse.json(
-                { 
-                  success: false, 
-                  errors: { 
-                    [`tickets[${tickets.indexOf(ticket)}].attendeeInfo[${attendeeInfo.indexOf(attendee)}].email`]: 
-                      'Government or military email (.gov or .mil) is required for complimentary tickets' 
-                  } 
+                {
+                  success: false,
+                  errors: {
+                    [`tickets[${tickets.indexOf(ticket)}].attendeeInfo[${attendeeInfo.indexOf(attendee)}].email`]:
+                      'B Government or military email (.gov or .mil) is required for complimentary tickets'
+                  }
                 },
                 { status: 400 }
               );
@@ -192,7 +188,8 @@ export async function POST(request: Request) {
     }
 
     // Check if the email is a .gov or .mil email for free registration
-    const isFreeRegistration = isGovOrMilEmail(email) && paymentMethod === 'free';
+    const isFreeRegistration = paidTickets.length === 0 && hasComplimentaryTickets;
+    console.log('Is free registration:', isFreeRegistration);
 
     // Validate promo code if provided
     let promoCodeDetails = null;

@@ -114,7 +114,6 @@ const RegistrationModal = ({
   event,
   allRegistrations,
 }: RegistrationModalProps): JSX.Element | null => {
-  const [promoCode, setPromoCode] = useState('');
   const [ticketQuantities, setTicketQuantities] = useState<Record<string, number>>({});
   const [isCheckout, setIsCheckout] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
@@ -220,11 +219,6 @@ const RegistrationModal = ({
     setPendingConfirmationData(null);
     setIsStripeReady(false); // Reset Stripe ready state
     setIsLoading(false);
-  };
-
-  const handleCloseAndReset = () => {
-    // We'll reset the state in the useEffect when modal closes
-    onClose();
   };
 
   // Helper function to handle payment errors in the useEffect hook
@@ -446,117 +440,7 @@ const RegistrationModal = ({
     return Object.values(ticketQuantities).reduce((sum, qty) => sum + qty, 0);
   };
 
-  const handleCompleteRegistration = async () => {
-    setIsLoading(true);
-    setFormErrors({});
-    setApiError(null);
-
-    const firstTicketId = Object.keys(attendeesByTicket).find(id => (ticketQuantities[id] || 0) > 0);
-    const firstAttendee = firstTicketId ? attendeesByTicket[firstTicketId]?.[0] : { ...initialModalAttendeeInfo };
-
-    const formData: RegistrationFormData = {
-      firstName: billingInfo.firstName || firstAttendee.firstName,
-      lastName: billingInfo.lastName || firstAttendee.lastName,
-      email: billingInfo.email || firstAttendee.email,
-      phone: firstAttendee.phone || '',
-      jobTitle: firstAttendee.jobTitle || '',
-      company: firstAttendee.company || '',
-      companyWebsite: firstAttendee.website || '',
-      businessSize: (firstAttendee.businessSize as RegistrationFormData['businessSize']) || '1-10 employees',
-      industry: firstAttendee.industry || '',
-      address1: '',
-      address2: '',
-      city: '',
-      state: '',
-      zipCode: '',
-      country: '',
-      howDidYouHearAboutUs: '',
-      interestedInSponsorship: firstAttendee.sponsorInterest === 'yes',
-      interestedInSpeaking: firstAttendee.speakingInterest === 'yes',
-      agreeToTerms: agreedToTerms,
-      agreeToPhotoRelease: false,
-      tickets: allRegistrations
-        .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
-        .map(reg => ({
-          ticketId: reg.id,
-          quantity: ticketQuantities[reg.id] || 0,
-          attendeeInfo: (attendeesByTicket[reg.id] || []).map(att => ({
-            firstName: att.firstName,
-            lastName: att.lastName,
-            email: att.email,
-            phone: att.phone || '',
-            website: att.website || '',
-            businessSize: att.businessSize || '',
-            industry: att.industry || '',
-            sponsorInterest: att.sponsorInterest || '',
-            speakingInterest: att.speakingInterest || '',
-            jobTitle: att.jobTitle,
-            company: att.company,
-            dietaryRestrictions: att.dietaryRestrictions || '',
-            accessibilityNeeds: att.accessibilityNeeds || '',
-          })),
-        })),
-      paymentMethod: calculateTotal() === 0 ? 'free' : 'creditCard',
-      promoCode: promoCode || undefined,
-    };
-
-    try {
-      await registrationSchema.validate(formData, { abortEarly: false });
-
-      // Log the total calculated on the frontend for debugging
-
-      const response = await fetch('/api/event-registration/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          eventId: event.id,
-          eventTitle: event.title,
-          eventSlug: event.slug
-        }),
-      });
-
-      const result = await response.json();
-
-      if (response.ok && result.success) {
-        if (result.clientSecret) {
-          setClientSecret(result.clientSecret);
-          setApiError(null); // Clear previous errors, rely on Payment form UI
-          setCurrentStep(4); // Move to a conceptual payment step
-        } else {
-          // Free registration success path
-          setApiError('Registration successful!'); // This could be a success message instead
-          setPaymentSuccessful(true);
-          setAttemptingStripePayment(false); // Reset payment attempt flag // Indicate success for UI change
-          // Potentially close modal or show a final success message
-        }
-      } else {
-        const errorMsg = result.error || (result.errors && Object.values(result.errors).join(', ')) || 'Registration failed. Please try again.';
-        setApiError(errorMsg);
-        if (result.errors) {
-          setFormErrors(result.errors);
-        }
-      }
-    } catch (error) {
-      if (error instanceof ValidationError) {
-        const yupErrors: Record<string, string> = {};
-        error.inner.forEach(err => {
-          if (err.path) {
-            yupErrors[err.path] = err.message;
-          }
-        });
-        setFormErrors(yupErrors);
-        setApiError('Please correct the errors in the form.');
-      } else {
-        console.error('Registration submission error:', error);
-        setApiError('An unexpected error occurred. Please try again.');
-      }
-    }
-
-    setIsLoading(false);
-  };
+  // Pre-validate complimentary tickets to ensure they have gov/mil emails
 
   const handlePaymentSuccess = (paymentIntentId: string) => {
     setApiError(null); // Clear any previous payment errors
@@ -584,10 +468,6 @@ const RegistrationModal = ({
     setPendingConfirmationData(null); // Clear pending data on error
     setPaymentSuccessful(false);
     setAttemptingStripePayment(false); // Reset payment attempt flag
-  };
-
-  const handlePaymentProcessing = (isProcessing: boolean) => {
-    setIsLoading(isProcessing);
   };
 
   const getValidatedBusinessSize = (size?: BusinessSize | ''): BusinessSize => {
@@ -668,7 +548,6 @@ const RegistrationModal = ({
 
       // If all validations pass, create payment intent or complete free registration
       try { // Nested try for payment/API calls
-        const totalAmount = calculateTotal();
         // For ALL registrations (free or paid initial submission), call the /api/event-registration/register endpoint.
         // The backend will handle whether a payment intent is needed.
         // if (totalAmount === 0 && selectedRegistration.type === 'free') { ... }
@@ -700,8 +579,19 @@ const RegistrationModal = ({
 
         if (!response.ok || !result.success) {
           console.error('Failed to process registration. Status:', response.status, 'Error data:', result);
-          // Use result.error or result.message if provided by the backend, otherwise a generic message.
-          setApiError(result.error || result.message || `API Error: ${response.status} - ${response.statusText}`);
+
+          // Handle validation errors from the server
+          if (result.errors && typeof result.errors === 'object') {
+            setFormErrors(result.errors);
+
+            // Create a user-friendly error message from the validation errors
+            const errorMessages = Object.values(result.errors).join('\n');
+            setApiError(errorMessages || 'Please correct the errors in the form.');
+          } else {
+            // Use result.error or result.message if provided by the backend, otherwise a generic message
+            setApiError(result.error || result.message || `API Error: ${response.status} - ${response.statusText}`);
+          }
+
           setIsLoading(false); // Stop loading on API error
           return; // Stop further execution
         }
@@ -750,81 +640,6 @@ const RegistrationModal = ({
     // and should also be handled by StripePaymentForm callbacks or handleCompleteRegistrationApiCall.
   };
 
-  const handleCompleteRegistrationApiCall = async (paymentIntentId: string | null) => {
-    const registrationData: RegistrationFormData = {
-      firstName: billingInfo.firstName,
-      lastName: billingInfo.lastName,
-      email: billingInfo.email,
-      phone: '',
-      jobTitle: '',
-      company: '',
-      companyWebsite: '',
-      businessSize: 'Small Business', // Changed to a valid BusinessSize type
-      industry: '',
-      address1: '',
-      address2: '',
-      city: '',
-      state: '',
-      zipCode: '',
-      country: '',
-      howDidYouHearAboutUs: '',
-      interestedInSponsorship: false,
-      interestedInSpeaking: false,
-      agreeToTerms: agreedToTerms,
-      agreeToPhotoRelease: false,
-      tickets: allRegistrations
-        .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
-        .map(reg => ({
-          ticketId: reg.id,
-          quantity: ticketQuantities[reg.id] || 0,
-          attendeeInfo: (attendeesByTicket[reg.id] || []).map(att => ({
-            firstName: att.firstName,
-            lastName: att.lastName,
-            email: att.email,
-            phone: att.phone || '',
-            website: att.website || '',
-            businessSize: att.businessSize || '',
-            industry: att.industry || '',
-            sponsorInterest: att.sponsorInterest || '',
-            speakingInterest: att.speakingInterest || '',
-            jobTitle: att.jobTitle,
-            company: att.company,
-            dietaryRestrictions: att.dietaryRestrictions || '',
-            accessibilityNeeds: att.accessibilityNeeds || '',
-          })),
-          registrationType: reg.type === 'paid' ? (reg.isGovtFreeEligible && billingInfo.email.endsWith('.gov') ? 'free' : 'paid') : reg.type,
-        })),
-      paymentMethod: calculateTotal() === 0 ? 'free' : 'creditCard',
-      promoCode: promoCode || undefined,
-    };
-
-    setIsLoading(true);
-    setApiError(null);
-
-    try {
-      const response = await fetch('/api/event-registration/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(registrationData),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to submit registration.');
-      }
-
-      setPaymentSuccessful(true);
-      setAttemptingStripePayment(false); // Reset payment attempt flag
-      setCurrentStep(3); // Move to confirmation step
-    } catch (error) {
-      if (error instanceof Error) {
-        setApiError(error.message);
-      } else {
-        setApiError('An unexpected error occurred during final registration.');
-      }
-    }
-    setIsLoading(false);
-  };
 
   const renderStepContent = () => {
     switch (currentStep) {
@@ -859,6 +674,8 @@ const RegistrationModal = ({
                             attendees: attendeesByTicket[r.id] || []
                           }))}
                         currentTicketId={reg.id}
+                        formErrors={formErrors}
+                        isComplimentaryTicket={reg.type === 'complimentary'}
                       />
                     </div>
                   );
@@ -1027,7 +844,7 @@ const RegistrationModal = ({
                           {reg.price}
                         </p>
                       )}
-                      
+
                       {typeof reg.price === 'number' && reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() >= new Date(reg.earlyBirdDeadline) && (
                         <div className="mb-2">
                           <p className="text-lg font-semibold text-gray-800">
