@@ -839,6 +839,22 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	<br/>
 	CAPT Mongold has been privileged to serve on teams that were awarded the 2015 Arleigh Burke Fleet Trophy, the Navy Unit Commendation, Meritorious Unit Commendation, and Battle Efficiency ‘E’. His personal awards include the Legion of Merit, Meritorious Service Medal, Navy and Marine Corps Commendation Medal, and Navy and Marine Corps Achievement Medal.`,
 	}
+	,
+	"stacey-l-cooper": {
+		"image": "stacey-cooper.webp",
+		"name": "Stacey L. Cooper",
+		"position": "Deputy of Small Business Programs",
+		"company": "Mid-Atlantic Regional Maintenance Center (MARMC)",
+		"bio": `Stacey Cooper was born and raised in Hampton, Virginia. She attended and graduated from Christopher Newport University in 1998 with a Bachelor’s of Science in Business Administration Degree with concentrations in Finance and Real Estate. She received a Master’s Degree in Healthcare Management from University of Phoenix in 2006. A second Master’s Degree in Acquisition Management from University of Management and Technology in 2012.
+	<br/>
+	
+	<br/>
+	Stacey entered Government service in the Navy Acquisition Intern Program as a Contract Specialist. From April 2007 to April 2010, she trained at Mid-Atlantic Regional Maintenance Center (MARMC) and received Level I and II certifications in Contracts. In April 2010, she graduated from the intern program as a GS-12, Contract Specialist. In 2011 she received her Contracting Officer warrant and Level III certification in Contracts. She continued to work her way up the ladder, being promoted to a GS-13 Lead Contract Specialist in July 2012. As an Administrative Contracting Officer, she administered many high level availabilities from 2009 – 2020 that has totaled over $1 billion dollars. During the administering of these contracts she has received many awards and accolades from Leadership, the Maintenance/Project Team, Captains, Ships Force and Contractors on the waterfront. In February 2020 she was promoted to Branch Head of the Amphibious Class Ships. In December 2020 she became the Branch Head of the Policy Division until February 2022.
+	<br/>
+	
+	<br/>
+	In April 2022, she became the Deputy of Small Business programs and it has been the best career move. In year one, she has transformed the Small Business office. Outreach and advocating is one of her best strengths. Many small businesses has reached out to NAVSEA Director of Office of Small Business Programs and her Executive Director at MARMC to express their gratitude and how much they appreciate all she does for small businesses. She attends many outreach events and strives to be one of the best Deputy of Small Business in the Department of Navy.`,
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -910,7 +926,9 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		//{ id: "patricia-waddell", invited: true },
 	],
 	"4": [ // 2025NMCPC
-		"stephen-mongold",
+		//"stephen-mongold",
+		//"stacey-l-cooper",
+		//"charles-sills",
 	]
 };
 
