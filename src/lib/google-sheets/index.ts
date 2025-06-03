@@ -110,6 +110,7 @@ export async function logRegistration(
       for (const ticket of registrationData.tickets) {
         const ticketType = ticket.ticketId;
         const ticketName = ticket.ticketName;
+        const ticketPrice = ticket.ticketPrice;
         let attendeesProcessedForTicket = 0;
 
         if (ticket.attendeeInfo && Array.isArray(ticket.attendeeInfo)) {
@@ -130,8 +131,8 @@ export async function logRegistration(
               attendee.phone || '',           // Attendee's Phone
               registrationTimestamp,          // Common: Registration Date
               ticketName,                     // Specific ticket type for this attendee
-              orderAmountReceived,            // Common: Order Amount Received
-              orderAmountPaid,                // Common: Order Amount Paid
+              ticketPrice,            // Common: Order Amount Received
+              orderAmountPaid,                // Common: Order Amount Paid TODO: This is inaccurate.
               attendee.website || '',         // Attendee's Website
               attendeeBusinessSize,           // Attendee's Business Size
               attendeeSbaIdentification,      // Attendee's SBA Identification
