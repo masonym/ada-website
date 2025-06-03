@@ -272,6 +272,8 @@ export async function POST(request: Request) {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(total * 100), // Convert to cents
       currency: 'usd',
+      receipt_email: email,
+      description: `Registration for event ${currentEventId} by ${email}`,
       metadata: {
         eventId: currentEventId, // Use consistent eventId
         orderType: 'event-registration',
