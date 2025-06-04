@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import * as yup from 'yup';
-import { X, CreditCard } from 'lucide-react';
+import { X, CreditCard, Ticket, Package, Award } from 'lucide-react';
 import { Event } from '@/types/events';
 import { BillingInformation } from './BillingInformation';
 import { AttendeeForm } from './AttendeeForm';
@@ -38,6 +38,7 @@ type ModalRegistrationType = {
   receptionPrice?: string;
   quantityAvailable?: number;
   maxQuantityPerOrder?: number;
+  category?: 'ticket' | 'exhibit' | 'sponsorship'; // Made category optional to avoid breaking existing code
 };
 
 interface EventWithContact extends Omit<Event, 'id'> {
@@ -76,9 +77,11 @@ interface BillingInfo {
 interface RegistrationModalProps {
   isOpen: boolean;
   onClose: () => void;
-  selectedRegistration: ModalRegistrationType;
+  selectedRegistration: ModalRegistrationType | null; // Allow null for register button
   event: EventWithContact;
   allRegistrations: ModalRegistrationType[];
+  sponsorships?: ModalRegistrationType[];
+  exhibitors?: ModalRegistrationType[];
 }
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
@@ -113,7 +116,11 @@ const RegistrationModal = ({
   selectedRegistration,
   event,
   allRegistrations,
+  sponsorships = [],
+  exhibitors = [],
 }: RegistrationModalProps): JSX.Element | null => {
+  // State for active category tab
+  const [activeCategory, setActiveCategory] = useState<'ticket' | 'exhibit' | 'sponsorship'>('ticket');
   const [ticketQuantities, setTicketQuantities] = useState<Record<string, number>>({});
   const [isCheckout, setIsCheckout] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
@@ -272,6 +279,7 @@ const RegistrationModal = ({
 
   const handleIncrement = (id: string) => {
     const newQuantity = (ticketQuantities[id] || 0) + 1;
+    console.log(`Incrementing ticket ${id} to quantity ${newQuantity}`);
     setTicketQuantities(prev => ({
       ...prev,
       [id]: newQuantity
@@ -574,6 +582,7 @@ const RegistrationModal = ({
           body: JSON.stringify({
             ...formDataToValidate, // Send the whole validated form data
             eventId: event.id, // Make sure eventId is included
+            eventTitle: event.title, // Include event name for clarity
             // The register endpoint will calculate amount and use necessary fields from formDataToValidate
           }),
         });
@@ -816,11 +825,170 @@ const RegistrationModal = ({
             {!isCheckout ? (
               // Ticket Selection View
               <div className="flex flex-col h-[70vh]">
+                {/* Category tabs */}
+                <div className="flex border-b mb-4 text-base">
+                  <button
+                    onClick={() => setActiveCategory('ticket')}
+                    className={`flex items-center px-4 py-2 ${activeCategory === 'ticket' ? 'border-b-2 border-indigo-600 text-indigo-600' : 'text-gray-500'}`}
+                  >
+                    <Ticket size={16} className="mr-2" />
+                    <span>General Admission</span>
+                  </button>
+                  {exhibitors.length > 0 && (
+                    <button
+                      onClick={() => setActiveCategory('exhibit')}
+                      className={`flex items-center px-4 py-2 ${activeCategory === 'exhibit' ? 'border-b-2 border-indigo-600 text-indigo-600' : 'text-gray-500'}`}
+                    >
+                      <Package size={16} className="mr-2" />
+                      <span>Exhibit Space</span>
+                    </button>
+                  )}
+                  {sponsorships.length > 0 && (
+                    <button
+                      onClick={() => setActiveCategory('sponsorship')}
+                      className={`flex items-center px-4 py-2 ${activeCategory === 'sponsorship' ? 'border-b-2 border-indigo-600 text-indigo-600' : 'text-gray-500'}`}
+                    >
+                      <Award size={16} className="mr-2" />
+                      <span>Sponsorships</span>
+                    </button>
+                  )}
+                </div>
+
                 <div className="flex-grow overflow-y-auto">
-                  {allRegistrations.filter(reg => reg.isActive).map(reg => (
+                  {/* Show tickets when activeCategory is 'ticket' */}
+                  {activeCategory === 'ticket' && allRegistrations.filter(reg => reg.isActive).map(reg => (
                     <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
                       <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
-                      <p className="text-sm text-gray-600 mb-2">{reg.description}</p>
+                      {reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline) && (
+                        <div className="mb-2">
+                          <p className="text-lg font-semibold">
+                            <span className="text-green-600 mr-2">
+                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
+                                typeof reg.earlyBirdPrice === 'string'
+                                  ? parseFloat(reg.earlyBirdPrice.replace(/[^0-9.]/g, '')) || 0
+                                  : (typeof reg.earlyBirdPrice === 'number' ? reg.earlyBirdPrice : 0)
+                              )}
+                            </span>
+                            <span className="line-through text-gray-500 text-base">
+                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
+                                typeof reg.price === 'string'
+                                  ? parseFloat(reg.price.replace(/[^0-9.]/g, '')) || 0
+                                  : (typeof reg.price === 'number' ? reg.price : 0)
+                              )}
+                            </span>
+                          </p>
+                        </div>
+                      )}
+                      {typeof reg.price === 'string' && (
+                        <p className="text-lg font-semibold text-indigo-600 mb-2">
+                          {reg.price}
+                        </p>
+                      )}
+
+                      {typeof reg.price === 'number' && reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() >= new Date(reg.earlyBirdDeadline) && (
+                        <div className="mb-2">
+                          <p className="text-lg font-semibold text-gray-800">
+                            ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(reg.price)}
+                          </p>
+                        </div>
+                      )}
+                      {reg.perks && reg.perks.length > 0 && (
+                        <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
+                          {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
+                        </ul>
+                      )}
+                      {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
+                      <div className="flex items-center">
+                        <button
+                          onClick={() => handleDecrement(reg.id)}
+                          disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
+                          className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                        >
+                          -
+                        </button>
+                        <span className="px-4 py-1 border-t border-b text-center w-12">
+                          {ticketQuantities[reg.id] || 0}
+                        </span>
+                        <button
+                          onClick={() => handleIncrement(reg.id)}
+                          disabled={isLoading}
+                          className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Show exhibits when activeCategory is 'exhibit' */}
+                  {activeCategory === 'exhibit' && exhibitors.filter(reg => reg.isActive).map(reg => (
+                    <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
+                      <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
+                      {reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline) && (
+                        <div className="mb-2">
+                          <p className="text-lg font-semibold">
+                            <span className="text-green-600 mr-2">
+                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
+                                typeof reg.earlyBirdPrice === 'string'
+                                  ? parseFloat(reg.earlyBirdPrice.replace(/[^0-9.]/g, '')) || 0
+                                  : (typeof reg.earlyBirdPrice === 'number' ? reg.earlyBirdPrice : 0)
+                              )}
+                            </span>
+                            <span className="line-through text-gray-500 text-base">
+                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
+                                typeof reg.price === 'string'
+                                  ? parseFloat(reg.price.replace(/[^0-9.]/g, '')) || 0
+                                  : (typeof reg.price === 'number' ? reg.price : 0)
+                              )}
+                            </span>
+                          </p>
+                        </div>
+                      )}
+                      {typeof reg.price === 'string' && (
+                        <p className="text-lg font-semibold text-indigo-600 mb-2">
+                          {reg.price}
+                        </p>
+                      )}
+
+                      {typeof reg.price === 'number' && reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() >= new Date(reg.earlyBirdDeadline) && (
+                        <div className="mb-2">
+                          <p className="text-lg font-semibold text-gray-800">
+                            ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(reg.price)}
+                          </p>
+                        </div>
+                      )}
+                      {reg.perks && reg.perks.length > 0 && (
+                        <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
+                          {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
+                        </ul>
+                      )}
+                      {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
+                      <div className="flex items-center">
+                        <button
+                          onClick={() => handleDecrement(reg.id)}
+                          disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
+                          className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                        >
+                          -
+                        </button>
+                        <span className="px-4 py-1 border-t border-b text-center w-12">
+                          {ticketQuantities[reg.id] || 0}
+                        </span>
+                        <button
+                          onClick={() => handleIncrement(reg.id)}
+                          disabled={isLoading}
+                          className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Show sponsorships when activeCategory is 'sponsorship' */}
+                  {activeCategory === 'sponsorship' && sponsorships.filter(reg => reg.isActive).map(reg => (
+                    <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
+                      <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
                       {reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline) && (
                         <div className="mb-2">
                           <p className="text-lg font-semibold">

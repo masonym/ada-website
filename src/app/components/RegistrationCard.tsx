@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
-import { REGISTRATION_TYPES } from '@/constants/registrations';
 import { Event } from '@/types/events';
 import { getCdnPath } from '@/utils/image';
 import RegistrationModal from '@/components/RegistrationModal';
+import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, ModalRegistrationType } from '@/lib/registration-adapters';
 
 interface ContactInfo {
   contactEmail2?: string;
@@ -17,34 +17,13 @@ interface ContactInfo {
 interface EventWithContact extends Omit<Event, 'id'> {
   contactInfo?: ContactInfo;
   eventShorthand: string;
+  title: string;
   id: string | number; // Allow both string and number for flexibility
   slug: string;
 }
 
-// Extend the base RegistrationType with any additional fields needed for the card display
-interface RegistrationCardProps {
-  id: string;
-  name: string;
-  description: string;
-  price: number | string; // Can be a string (e.g., "Complimentary")
-  earlyBirdPrice?: number | string;
-  earlyBirdDeadline?: string;
-  isActive: boolean;
-  requiresAttendeeInfo: boolean;
-  isGovtFreeEligible: boolean;
-  perks?: string[];
-  availabilityInfo?: string;
-  type: 'paid' | 'free' | 'complimentary' | 'sponsor'; // Added 'complimentary'
-  title: string;
-  headerImage: string;
-  subtitle?: string; // Keeping as optional to match actual data
-  buttonText: string;
-  buttonLink?: string;
-  receptionPrice?: string;
-  // Add missing optional properties that may be in REGISTRATION_TYPES
-  quantityAvailable?: number;
-  maxQuantityPerOrder?: number;
-}
+// Use the ModalRegistrationType from our adapter
+type RegistrationCardProps = ModalRegistrationType;
 
 type RegistrationProp = {
   item: RegistrationCardProps;
@@ -64,7 +43,7 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
     : isFree
       ? 'Complimentary'
       : '';
-  console.log(item);
+  console.log("Item: ", item);
   const deadlineDate = isPaid && item.earlyBirdDeadline
     ? new Date(item.earlyBirdDeadline).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -73,9 +52,10 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
     })
     : null;
 
-  // Get all registration types for this event
-  const eventRegistration = REGISTRATION_TYPES.find(rt => rt.id.toString() === event.id.toString());
-  const allRegistrations = (eventRegistration?.registrations || []) as RegistrationCardProps[];
+  // Get all registration types for this event using our adapter functions
+  const allRegistrations = getRegistrationsForEvent(event.id) as RegistrationCardProps[];
+  const sponsorships = getSponsorshipsForEvent(event.id) as RegistrationCardProps[];
+  const exhibitors = getExhibitorsForEvent(event.id) as RegistrationCardProps[];
 
   const handleCardClick = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -203,6 +183,8 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
         selectedRegistration={item}
         event={event}
         allRegistrations={allRegistrations}
+        sponsorships={sponsorships}
+        exhibitors={exhibitors}
       />
     </>
   );

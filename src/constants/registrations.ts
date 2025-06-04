@@ -349,6 +349,7 @@ export const REGISTRATION_TYPES = [
         id: 4,
         registrations: [
             {
+                id: "attendee-pass",
                 title: "Attendee Pass",
                 headerImage: "attendee-pass.webp",
                 perks: [
@@ -369,6 +370,7 @@ export const REGISTRATION_TYPES = [
             },
 
             {
+                id: "vip-attendee-pass",
                 title: "VIP Attendee Pass",
                 headerImage: "vip-attendee-pass.webp",
                 perks: [
@@ -389,6 +391,7 @@ export const REGISTRATION_TYPES = [
             },
 
             {
+                id: "table-top-exhibit-space",
                 title: "Table-Top Exhibit Space",
                 headerImage: "exhibit-table-pass.webp",
                 perks: [
@@ -407,6 +410,7 @@ export const REGISTRATION_TYPES = [
             },
 
             {
+                id: "govt-official-military-pass",
                 title: "Government Official & Military Pass",
                 headerImage: "gov-pass.webp",
                 perks: [
