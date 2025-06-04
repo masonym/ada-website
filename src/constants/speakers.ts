@@ -926,9 +926,10 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		//{ id: "patricia-waddell", invited: true },
 	],
 	"4": [ // 2025NMCPC
-		//"stephen-mongold",
-		//"stacey-l-cooper",
-		//"charles-sills",
+		"stephen-mongold",
+		"stacey-l-cooper",
+		"charles-sills",
+		"brian-liesveld",
 	]
 };
 
