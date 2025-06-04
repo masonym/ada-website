@@ -203,13 +203,22 @@ const RegistrationModal = ({
     setTicketQuantities({});
     // Reset attendeesByTicket by re-initializing based on initial (zero) quantities or just empty
     const initialAttendees: { [key: string]: ModalAttendeeInfo[] } = {};
-    allRegistrations.forEach(reg => {
-      if (ticketQuantities[reg.id] && ticketQuantities[reg.id] > 0) {
-        initialAttendees[reg.id] = resetAttendeesForTicket(reg.id, ticketQuantities[reg.id]);
-      } else {
-        initialAttendees[reg.id] = [];
-      }
-    });
+    
+    // Helper function to reset attendees for any registration type
+    const resetAttendeesForRegistrationType = (registrations: ModalRegistrationType[]) => {
+      registrations.forEach(reg => {
+        if (ticketQuantities[reg.id] && ticketQuantities[reg.id] > 0) {
+          initialAttendees[reg.id] = resetAttendeesForTicket(reg.id, ticketQuantities[reg.id]);
+        } else {
+          initialAttendees[reg.id] = [];
+        }
+      });
+    };
+    
+    // Reset attendees for all registration types
+    resetAttendeesForRegistrationType(allRegistrations);
+    resetAttendeesForRegistrationType(exhibitors);
+    resetAttendeesForRegistrationType(sponsorships);
     setAttendeesByTicket(initialAttendees); // Or simply {}
     setBillingInfo({ ...initialBillingInfo });
     setAgreedToTerms(false);
@@ -420,33 +429,62 @@ const RegistrationModal = ({
   };
 
   const calculateTotal = () => {
-    console.log("allRegistrations", allRegistrations);
-    return allRegistrations.reduce((total, reg) => {
-      const quantity = ticketQuantities[reg.id] || 0;
-
-      // Skip price calculation for complimentary passes
-      if (reg.type === 'complimentary' || typeof reg.price === 'string') {
-        return total;
-      }
-
-      // Check if early bird pricing applies
-      const isEarlyBird = reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline);
-      // Use early bird price if available and date is valid, otherwise use regular price
-      const ticketPrice = isEarlyBird && reg.earlyBirdPrice !== undefined ? reg.earlyBirdPrice : reg.price;
-
-      // Handle string or number price values
-      const numericPrice = typeof ticketPrice === 'string' ?
-        parseFloat(ticketPrice.replace(/[^0-9.]/g, '')) || 0 :
-        ticketPrice;
-
-      return total + (quantity * numericPrice);
-    }, 0);
+    // Calculate total from all registration types (tickets, exhibitors, sponsorships)
+    const calculateSubtotal = (registrations: ModalRegistrationType[]) => {
+      return registrations.reduce((total, reg) => {
+        const quantity = ticketQuantities[reg.id] || 0;
+        
+        // Skip calculation for items with no quantity or complimentary/string prices
+        if (quantity === 0 || reg.type === 'complimentary' || typeof reg.price === 'string') {
+          return total;
+        }
+        
+        // Check if early bird pricing applies
+        const isEarlyBird = reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline);
+        // Use early bird price if available and date is valid, otherwise use regular price
+        const ticketPrice = isEarlyBird && reg.earlyBirdPrice !== undefined ? reg.earlyBirdPrice : reg.price;
+        
+        // Handle string or number price values
+        const numericPrice = typeof ticketPrice === 'string' ?
+          parseFloat(ticketPrice.replace(/[^0-9.]/g, '')) || 0 :
+          ticketPrice;
+        
+        return total + (quantity * numericPrice);
+      }, 0);
+    };
+    
+    // Calculate subtotals for each registration type
+    const ticketsTotal = calculateSubtotal(allRegistrations);
+    const exhibitorsTotal = calculateSubtotal(exhibitors);
+    const sponsorshipsTotal = calculateSubtotal(sponsorships);
+    
+    // Return the combined total
+    return ticketsTotal + exhibitorsTotal + sponsorshipsTotal;
   };
 
   const getTotalTickets = () => {
+    // Count all tickets across all registration types (tickets, exhibitors, sponsorships)
     return Object.values(ticketQuantities).reduce((sum, qty) => sum + qty, 0);
   };
 
+  // Helper function to get the effective price for a registration item (considering early bird pricing)
+  const getEffectivePrice = (reg: ModalRegistrationType): number | string => {
+    // If price is a string (e.g., "Complimentary"), return it directly
+    if (typeof reg.price === 'string') {
+      return reg.price;
+    }
+    
+    // Check if early bird pricing applies
+    if (reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline)) {
+      return typeof reg.earlyBirdPrice === 'string' 
+        ? parseFloat(reg.earlyBirdPrice.replace(/[^0-9.]/g, '')) || 0
+        : reg.earlyBirdPrice;
+    }
+    
+    // Otherwise return regular price
+    return reg.price;
+  };
+  
   // Pre-validate complimentary tickets to ensure they have gov/mil emails
 
   const handlePaymentSuccess = (paymentIntentId: string) => {
@@ -490,25 +528,42 @@ const RegistrationModal = ({
     setApiError(null);
     setIsLoading(true);
 
-    // Consolidate all data for validation
-    const ticketsForValidation = allRegistrations
-      .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
-      .map(reg => ({
-        ticketId: reg.id,
-        ticketName: reg.title,
-        ticketPrice: reg.price,
-        quantity: ticketQuantities[reg.id] || 0,
-        // Ensure attendeeInfo structure matches what the schema expects for validation
-        // This might be a simplified version or need full AttendeeInfo details
-        attendeeInfo: (attendeesByTicket[reg.id] || []).map(att => ({ ...att })),
-      }));
+    // Helper function to process registrations of any type
+    const processRegistrations = (registrations: ModalRegistrationType[], category: 'ticket' | 'exhibit' | 'sponsorship') => {
+      return registrations
+        .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
+        .map(reg => ({
+          ticketId: reg.id,
+          ticketName: reg.title,
+          ticketPrice: reg.price,
+          quantity: ticketQuantities[reg.id] || 0,
+          category, // Add category to identify the type of registration
+          // Ensure attendeeInfo structure matches what the schema expects for validation
+          attendeeInfo: (attendeesByTicket[reg.id] || []).map(att => ({ ...att })),
+        }));
+    };
+
+    // Consolidate all data for validation from all registration types
+    const ticketsForValidation = [
+      ...processRegistrations(allRegistrations, 'ticket'),
+      ...processRegistrations(exhibitors, 'exhibit'),
+      ...processRegistrations(sponsorships, 'sponsorship')
+    ];
 
     // Find the first registration type that has attendees and requires attendee info
-    const firstRegWithAttendeesId = allRegistrations.find(reg =>
-      reg.requiresAttendeeInfo &&
-      (ticketQuantities[reg.id] || 0) > 0 &&
-      (attendeesByTicket[reg.id] || []).length > 0
-    )?.id;
+    // Check across all registration types
+    const findFirstRegWithAttendees = (registrations: ModalRegistrationType[]) => {
+      return registrations.find(reg =>
+        reg.requiresAttendeeInfo &&
+        (ticketQuantities[reg.id] || 0) > 0 &&
+        (attendeesByTicket[reg.id] || []).length > 0
+      )?.id;
+    };
+
+    const firstRegWithAttendeesId = 
+      findFirstRegWithAttendees(allRegistrations) || 
+      findFirstRegWithAttendees(exhibitors) || 
+      findFirstRegWithAttendees(sponsorships);
 
     let primaryAttendeeData: Partial<ModalAttendeeInfo> = {};
     if (firstRegWithAttendeesId && attendeesByTicket[firstRegWithAttendeesId] && attendeesByTicket[firstRegWithAttendeesId][0]) {
@@ -663,35 +718,47 @@ const RegistrationModal = ({
       case 2: // Attendee Info, Terms, and Payment
         return (
           <>
-            {allRegistrations.filter(reg => reg.requiresAttendeeInfo && (ticketQuantities[reg.id] || 0) > 0).map(reg => (
-              <div key={reg.id}>
-                <h4 className="text-lg font-medium mt-4 mb-2">{reg.name} - Attendees</h4>
-                {Array.from({ length: ticketQuantities[reg.id] || 0 }).map((_, index) => {
-                  const attendeeData = attendeesByTicket[reg.id]?.[index] || initialModalAttendeeInfo;
-                  return (
-                    <div key={`${reg.id}-${index}`} className="mb-4 border-b pb-4">
-                      <AttendeeForm
-                        attendee={attendeeData}
-                        index={index}
-                        onChange={(attendeeIdx, fieldName, fieldValue) => handleAttendeeChange(reg.id, attendeeIdx, fieldName as keyof EventAttendeeInfo, fieldValue)}
-                        onCopyFrom={(sourceTicketId, sourceAttendeeIdx) => handleCopyAttendee(sourceTicketId, sourceAttendeeIdx, reg.id, index)}
-                        totalAttendees={(attendeesByTicket[reg.id] || []).length}
-                        allAttendees={allRegistrations
-                          .filter(r => r.requiresAttendeeInfo && (ticketQuantities[r.id] || 0) > 0)
-                          .map(r => ({
-                            ticketId: r.id,
-                            ticketName: r.name,
-                            attendees: attendeesByTicket[r.id] || []
-                          }))}
-                        currentTicketId={reg.id}
-                        formErrors={formErrors}
-                        isComplimentaryTicket={reg.type === 'complimentary'}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            ))}
+            {/* Helper function to render attendee forms for any registration type */}
+            {(() => {
+              // Combine all registration types that require attendee info
+              const allRegistrationTypes = [
+                ...allRegistrations.map(reg => ({ ...reg, categoryName: 'Ticket' })),
+                ...exhibitors.map(reg => ({ ...reg, categoryName: 'Exhibitor' })),
+                ...sponsorships.map(reg => ({ ...reg, categoryName: 'Sponsorship' }))
+              ];
+              
+              return allRegistrationTypes
+                .filter(reg => reg.requiresAttendeeInfo && (ticketQuantities[reg.id] || 0) > 0)
+                .map(reg => (
+                  <div key={reg.id}>
+                    <h4 className="text-lg font-medium mt-4 mb-2">{reg.name} - {reg.categoryName} Attendees</h4>
+                    {Array.from({ length: ticketQuantities[reg.id] || 0 }).map((_, index) => {
+                      const attendeeData = attendeesByTicket[reg.id]?.[index] || initialModalAttendeeInfo;
+                      return (
+                        <div key={`${reg.id}-${index}`} className="mb-4 border-b pb-4">
+                          <AttendeeForm
+                            attendee={attendeeData}
+                            index={index}
+                            onChange={(attendeeIdx, fieldName, fieldValue) => handleAttendeeChange(reg.id, attendeeIdx, fieldName as keyof EventAttendeeInfo, fieldValue)}
+                            onCopyFrom={(sourceTicketId, sourceAttendeeIdx) => handleCopyAttendee(sourceTicketId, sourceAttendeeIdx, reg.id, index)}
+                            totalAttendees={(attendeesByTicket[reg.id] || []).length}
+                            allAttendees={allRegistrationTypes
+                              .filter(r => r.requiresAttendeeInfo && (ticketQuantities[r.id] || 0) > 0)
+                              .map(r => ({
+                                ticketId: r.id,
+                                ticketName: `${r.name} (${r.categoryName})`,
+                                attendees: attendeesByTicket[r.id] || []
+                              }))}
+                            currentTicketId={reg.id}
+                            formErrors={formErrors}
+                            isComplimentaryTicket={reg.type === 'complimentary'}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                ));
+            })()}
             <TermsAndConditions
               agreed={agreedToTerms}
               onAgree={setAgreedToTerms} // Corrected prop name
@@ -1050,7 +1117,76 @@ const RegistrationModal = ({
                 </div>
                 {/* Total and checkout button at bottom of modal */}
                 <div className="mt-auto border-t pt-4 bg-white">
-                  <div className="flex justify-between items-center">
+                  {/* Summary of selected items */}
+                  <div className="mb-3">
+                    <h4 className="text-lg font-medium mb-2">Registration Summary</h4>
+                    
+                    {/* Tickets summary */}
+                    {allRegistrations.some(reg => (ticketQuantities[reg.id] || 0) > 0) && (
+                      <div className="mb-2">
+                        <h5 className="text-sm font-medium flex items-center"><Ticket size={14} className="mr-1" /> General Admission</h5>
+                        <ul className="text-sm pl-5">
+                          {allRegistrations
+                            .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
+                            .map(reg => {
+                              const price = getEffectivePrice(reg);
+                              const formattedPrice = typeof price === 'string' ? price : `$${price.toFixed(2)}`;
+                              return (
+                                <li key={reg.id} className="flex justify-between">
+                                  <span>{reg.name} × {ticketQuantities[reg.id]}</span>
+                                  <span>{formattedPrice}</span>
+                                </li>
+                              );
+                            })}
+                        </ul>
+                      </div>
+                    )}
+                    
+                    {/* Exhibitors summary */}
+                    {exhibitors.some(reg => (ticketQuantities[reg.id] || 0) > 0) && (
+                      <div className="mb-2">
+                        <h5 className="text-sm font-medium flex items-center"><Package size={14} className="mr-1" /> Exhibit Space</h5>
+                        <ul className="text-sm pl-5">
+                          {exhibitors
+                            .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
+                            .map(reg => {
+                              const price = getEffectivePrice(reg);
+                              const formattedPrice = typeof price === 'string' ? price : `$${price.toFixed(2)}`;
+                              return (
+                                <li key={reg.id} className="flex justify-between">
+                                  <span>{reg.name} × {ticketQuantities[reg.id]}</span>
+                                  <span>{formattedPrice}</span>
+                                </li>
+                              );
+                            })}
+                        </ul>
+                      </div>
+                    )}
+                    
+                    {/* Sponsorships summary */}
+                    {sponsorships.some(reg => (ticketQuantities[reg.id] || 0) > 0) && (
+                      <div className="mb-2">
+                        <h5 className="text-sm font-medium flex items-center"><Award size={14} className="mr-1" /> Sponsorships</h5>
+                        <ul className="text-sm pl-5">
+                          {sponsorships
+                            .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
+                            .map(reg => {
+                              const price = getEffectivePrice(reg);
+                              const formattedPrice = typeof price === 'string' ? price : `$${price.toFixed(2)}`;
+                              return (
+                                <li key={reg.id} className="flex justify-between">
+                                  <span>{reg.name} × {ticketQuantities[reg.id]}</span>
+                                  <span>{formattedPrice}</span>
+                                </li>
+                              );
+                            })}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Total and checkout button */}
+                  <div className="flex justify-between items-center border-t pt-3">
                     <p className="text-xl font-semibold">Total: ${calculateTotal().toFixed(2)}</p>
                     <button
                       onClick={handleCheckout}
