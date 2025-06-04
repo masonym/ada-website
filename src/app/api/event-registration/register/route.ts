@@ -74,10 +74,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: 'Event not found' }, { status: 404 });
     }
 
-    // Map the requested tickets to their full definitions from our source of truth
+    // Map tickets to their definitions from the central source
     const availableTickets = tickets.map(ticket => {
-      // Find the registration type in our centralized source
-      // First, check if the ticket ID exists in the registrations
+      // First check if client sent ticket price information
+      const clientProvidedPrice = body.ticketPrices && body.ticketPrices[ticket.ticketId];
+
+      // Find the registration type in the event's registrations
       // Using a type assertion to avoid TypeScript errors with property access
       const registrationType = eventRegistrations.registrations.find(reg => {
         return 'id' in reg && reg.id === ticket.ticketId;
@@ -98,8 +100,12 @@ export async function POST(request: Request) {
           type: 'paid' // Default value
         };
 
-        // Handle different ways price might be stored (e.g., as a number or string)
-        if ('price' in registrationType) {
+        // If client provided a price and it's a number, use it (especially important for sponsorships)
+        if (clientProvidedPrice !== undefined && typeof clientProvidedPrice === 'number') {
+          ticketDef.price = clientProvidedPrice;
+        }
+        // Otherwise, handle different ways price might be stored (e.g., as a number or string)
+        else if ('price' in registrationType) {
           const price = registrationType.price;
           if (typeof price === 'number') {
             ticketDef.price = price;
@@ -109,6 +115,12 @@ export async function POST(request: Request) {
         // Handle type field
         if ('type' in registrationType && typeof registrationType.type === 'string') {
           ticketDef.type = registrationType.type;
+        }
+
+        // Check if this is a sponsorship ticket based on the ID pattern
+        // This is a safer approach than relying on properties that might not exist in the TicketSelection type
+        if (ticket.ticketId.includes('sponsor')) {
+          ticketDef.type = 'sponsor';
         }
 
         // Handle early bird price
@@ -128,7 +140,19 @@ export async function POST(request: Request) {
         return ticketDef;
       }
 
-      // If we can't find the ticket in our central source, log an error and default to 0
+      // If we can't find the ticket in our central source but client provided price info, use that
+      if (clientProvidedPrice !== undefined && typeof clientProvidedPrice === 'number') {
+        console.log(`Using client-provided price ${clientProvidedPrice} for ticket ID ${ticket.ticketId}`);
+        // Determine if this is likely a sponsorship based on the ticket ID
+        const isSponsorshipTicket = ticket.ticketId.includes('sponsor');
+        return {
+          id: ticket.ticketId,
+          price: clientProvidedPrice,
+          type: isSponsorshipTicket ? 'sponsor' : 'paid'
+        };
+      }
+
+      // Last resort fallback
       console.error(`Ticket ID ${ticket.ticketId} not found in REGISTRATION_TYPES for event ${eventId}`);
       return {
         id: ticket.ticketId,
@@ -138,9 +162,14 @@ export async function POST(request: Request) {
     });
 
     // Filter out any tickets with type 'complimentary' or non-numeric prices
+    // For sponsor tickets, we want to include them in paid tickets even if they have type 'sponsor'
     const paidTickets = availableTickets.filter(ticket => {
-      return ticket.type === 'paid' && typeof ticket.price === 'number';
+      // Include both paid tickets and sponsor tickets with numeric prices
+      return (ticket.type === 'paid' || ticket.type === 'sponsor') && typeof ticket.price === 'number';
     });
+    
+    // Log the paid tickets after filtering to verify they're being processed correctly
+    console.log('Paid tickets after filtering:', JSON.stringify(paidTickets, null, 2));
 
     console.log('Paid tickets:', JSON.stringify(paidTickets, null, 2));
 

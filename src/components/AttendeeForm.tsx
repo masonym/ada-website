@@ -215,7 +215,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
         </div>
         <div className="md:col-span-2">
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Email * {isComplimentaryTicket && <span className="text-xs text-indigo-600">(Government or military email required)</span>}
+            Email * {currentTicketId.includes('govt') && <span className="text-xs text-indigo-600">(Government or military email required)</span>}
           </label>
           <input
             type="email"
@@ -224,12 +224,12 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
             value={attendee.email}
             onChange={handleChange}
             required
-            placeholder={isComplimentaryTicket ? "Enter .gov or .mil email address" : "Enter email address"}
+            placeholder={currentTicketId.includes('govt') ? "Enter .gov or .mil email address" : "Enter email address"}
           />
           {formErrors[`tickets.${currentTicketId}.attendeeInfo.${index}.email`] && (
             <p className="text-red-500 text-xs mt-1">{formErrors[`tickets.${currentTicketId}.attendeeInfo.${index}.email`]}</p>
           )}
-          {isComplimentaryTicket && !formErrors[`tickets.${currentTicketId}.attendeeInfo.${index}.email`] && (
+          {currentTicketId.includes('govt') && !formErrors[`tickets.${currentTicketId}.attendeeInfo.${index}.email`] && (
             <p className="text-gray-500 text-xs mt-1">Complimentary tickets require a .gov or .mil email address</p>
           )}
         </div>
