@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     const env = getEnv();
     const body = await request.json();
     const eventIdFromBody = body.eventId; // Extract eventId from the raw body
-    // const eventTitleFromBody = body.eventTitle; // Optional: for more descriptive emails
+    const eventTitleFromBody = body.eventTitle; // Optional: for more descriptive emails
     // const eventSlugFromBody = body.eventSlug; // Optional: for direct event links
 
     // Validate the request body (excluding eventId for schema validation if it's not part of it)
@@ -273,7 +273,7 @@ export async function POST(request: Request) {
       amount: Math.round(total * 100), // Convert to cents
       currency: 'usd',
       receipt_email: email,
-      description: `Registration for event ${currentEventId} by ${validatedData.firstName} ${validatedData.lastName}`,
+      description: `Registration for event ${eventTitleFromBody} by ${validatedData.firstName} ${validatedData.lastName}`,
       metadata: {
         eventId: currentEventId, // Use consistent eventId
         orderType: 'event-registration',
