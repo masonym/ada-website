@@ -182,9 +182,6 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
         onClose={closeModal}
         selectedRegistration={item}
         event={event}
-        allRegistrations={allRegistrations}
-        sponsorships={sponsorships}
-        exhibitors={exhibitors}
       />
     </>
   );
