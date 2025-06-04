@@ -39,6 +39,9 @@ export const registrationSchema = yup.object().shape({
     yup.object({
       ticketId: yup.string().required('Ticket ID is required'),
       quantity: yup.number().min(1).required(),
+      // Properties specific to sponsor passes
+      isIncludedWithSponsorship: yup.boolean().optional(),
+      sponsorshipId: yup.string().optional(),
       attendeeInfo: yup.array().of(
         yup.object({
           firstName: yup.string().required('First name is required'),
@@ -59,14 +62,20 @@ export const registrationSchema = yup.object().shape({
       'validate-gov-or-mil-emails',
       'Government or military email (.gov or .mil) is required for complimentary tickets',
       function(ticket) {
-        const { ticketId, attendeeInfo } = ticket;
+        const { ticketId, attendeeInfo, isIncludedWithSponsorship } = ticket;
         if (!ticketId || !attendeeInfo) return true;
+        
+        // Skip validation for sponsor pass attendees (they're complimentary but don't need gov/mil emails)
+        if (isIncludedWithSponsorship || ticketId.includes('vip-attendee-pass')) {
+          return true;
+        }
 
+        // Only validate gov/mil emails for complimentary tickets that aren't sponsor passes
         if (ticketId.includes('complimentary') || ticketId.includes('govt')) {
           for (const attendee of attendeeInfo) {
             if (!isGovOrMilEmail(attendee.email)) {
               return this.createError({
-                path: `${this.path}.attendeeInfo`, // maybe `${this.path}.attendeeInfo[i].email` for exact index
+                path: `${this.path}.attendeeInfo`,
                 message: 'Government or military email (.gov or .mil) is required for complimentary tickets'
               });
             }

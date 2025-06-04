@@ -31,12 +31,13 @@ type PerkType = string | {
   description: string;
 };
 
-type SponsorshipType = {
+export interface SponsorshipType {
   id: string;
   title: string;
   cost: number | string;
   perks?: PerkType[];
   colour?: string;
+  sponsorPasses?: number; // Number of attendee passes included with this sponsorship
 };
 
 type PrimeSponsorType = SponsorshipType;
@@ -50,7 +51,7 @@ type ExhibitorType = {
 };
 
 // Define the common type for all registration items
-export type ModalRegistrationType = {
+export interface ModalRegistrationType {
   id: string;
   name: string;
   description: string;
@@ -74,6 +75,7 @@ export type ModalRegistrationType = {
   category: 'ticket' | 'exhibit' | 'sponsorship';
   // Add any other fields that might be needed
   colour?: string;
+  sponsorPasses?: number; // Number of attendee passes included with this sponsorship
 };
 
 /**
@@ -132,6 +134,23 @@ export function getSponsorshipsForEvent(eventId: number | string): ModalRegistra
         ? perk
         : `<b>${perk.tagline}</b>: ${perk.description}`
     ) : [];
+    
+    // Extract sponsorPasses from perks if not explicitly defined
+    let sponsorPasses = sponsor.sponsorPasses;
+    if (!sponsorPasses) {
+      // Try to extract from perks that mention "Event Access" or similar
+      const eventAccessPerk = sponsor.perks?.find(perk => 
+        typeof perk !== 'string' && 
+        perk.tagline.includes('Event Access'));
+      
+      if (eventAccessPerk && typeof eventAccessPerk !== 'string') {
+        // Extract the number from descriptions like "(3) conference passes"
+        const match = eventAccessPerk.description.match(/\((\d+)\)/);
+        if (match && match[1]) {
+          sponsorPasses = parseInt(match[1], 10);
+        }
+      }
+    }
 
     return {
       id: sponsor.id,
@@ -149,6 +168,7 @@ export function getSponsorshipsForEvent(eventId: number | string): ModalRegistra
       category: 'sponsorship',
       quantityAvailable: 1, // Default to 1 if slotsPerEvent is not provided
       maxQuantityPerOrder: 1,
+      sponsorPasses: sponsorPasses || 0, // Include sponsorPasses in the returned object
       colour: 'colour' in sponsor ? sponsor.colour : undefined,
     };
   });

@@ -39,6 +39,7 @@ type ModalRegistrationType = {
   quantityAvailable?: number;
   maxQuantityPerOrder?: number;
   category?: 'ticket' | 'exhibit' | 'sponsorship'; // Made category optional to avoid breaking existing code
+  sponsorPasses?: number; // Number of attendee passes included with this sponsorship
 };
 
 interface EventWithContact extends Omit<Event, 'id'> {
@@ -130,6 +131,8 @@ const RegistrationModal = ({
     confirmEmail: ''
   });
   const [attendeesByTicket, setAttendeesByTicket] = useState<Record<string, ModalAttendeeInfo[]>>({});
+  // Track attendees for sponsor passes separately
+  const [sponsorPassAttendees, setSponsorPassAttendees] = useState<Record<string, ModalAttendeeInfo[]>>({});
 
   const [isLoading, setIsLoading] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
@@ -220,6 +223,9 @@ const RegistrationModal = ({
     resetAttendeesForRegistrationType(exhibitors);
     resetAttendeesForRegistrationType(sponsorships);
     setAttendeesByTicket(initialAttendees); // Or simply {}
+    
+    // Reset sponsor pass attendees
+    setSponsorPassAttendees({});
     setBillingInfo({ ...initialBillingInfo });
     setAgreedToTerms(false);
     setFormErrors({});
@@ -279,10 +285,30 @@ const RegistrationModal = ({
           []; // Empty array by default
       }
     });
+    
+    // Initialize sponsorships with quantity 0 by default
+    sponsorships.forEach((sponsor) => {
+      // If this is the selected sponsorship and we're opening the modal, initialize with quantity 1
+      const isSelected = selectedRegistration && sponsor.id === selectedRegistration.id;
+      initialQuantities[sponsor.id] = isSelected && isOpen ? 1 : 0;
+      
+      // For sponsorships, we don't add any attendees by default - only sponsor passes
+      initialAttendees[sponsor.id] = [];
+      
+      // Initialize sponsor passes if this is the selected sponsorship
+      if (isSelected && isOpen && sponsor.sponsorPasses && sponsor.sponsorPasses > 0) {
+        // Create sponsor pass attendees for this sponsorship
+        const sponsorPassAttendeesList = Array(sponsor.sponsorPasses).fill(null).map(() => ({ ...initialModalAttendeeInfo }));
+        setSponsorPassAttendees(prev => ({
+          ...prev,
+          [sponsor.id]: sponsorPassAttendeesList
+        }));
+      }
+    });
 
     setTicketQuantities(initialQuantities);
     setAttendeesByTicket(initialAttendees);
-  }, [allRegistrations, selectedRegistration, isOpen]);
+  }, [allRegistrations, sponsorships, selectedRegistration, isOpen]);
 
   const handleIncrement = (id: string) => {
     const newQuantity = (ticketQuantities[id] || 0) + 1;
@@ -292,12 +318,41 @@ const RegistrationModal = ({
       [id]: newQuantity
     }));
 
-    const newAttendees: Record<string, ModalAttendeeInfo[]> = { ...attendeesByTicket };
-    newAttendees[id] = Array(newQuantity).fill(null).map((_, i): ModalAttendeeInfo => {
-      const existingAttendee = attendeesByTicket[id]?.[i];
-      return existingAttendee || { ...initialModalAttendeeInfo };
-    }) as ModalAttendeeInfo[];
-    setAttendeesByTicket(newAttendees);
+    // Check if this is a sponsorship
+    const selectedSponsorship = sponsorships.find(s => s.id === id);
+    
+    if (selectedSponsorship) {
+      // For sponsorships, we don't add regular attendees, only sponsor passes
+      // Keep the attendeesByTicket array empty for sponsorships
+      const newAttendees: Record<string, ModalAttendeeInfo[]> = { ...attendeesByTicket };
+      newAttendees[id] = [];
+      setAttendeesByTicket(newAttendees);
+      
+      // Handle sponsor passes for sponsorships
+      if (selectedSponsorship.sponsorPasses && selectedSponsorship.sponsorPasses > 0) {
+        // Create or update sponsor pass attendees for this sponsorship
+        const newSponsorPassAttendees = { ...sponsorPassAttendees };
+        
+        // Calculate total sponsor passes based on sponsorship quantity
+        const totalSponsorPasses = selectedSponsorship.sponsorPasses * newQuantity;
+        
+        newSponsorPassAttendees[id] = Array(totalSponsorPasses).fill(null).map((_, i): ModalAttendeeInfo => {
+          const existingAttendee = sponsorPassAttendees[id]?.[i];
+          return existingAttendee || { ...initialModalAttendeeInfo };
+        }) as ModalAttendeeInfo[];
+        
+        setSponsorPassAttendees(newSponsorPassAttendees);
+        console.log(`Added ${totalSponsorPasses} sponsor pass attendees for ${selectedSponsorship.name}`);
+      }
+    } else {
+      // For regular tickets, update attendees as before
+      const newAttendees: Record<string, ModalAttendeeInfo[]> = { ...attendeesByTicket };
+      newAttendees[id] = Array(newQuantity).fill(null).map((_, i): ModalAttendeeInfo => {
+        const existingAttendee = attendeesByTicket[id]?.[i];
+        return existingAttendee || { ...initialModalAttendeeInfo };
+      }) as ModalAttendeeInfo[];
+      setAttendeesByTicket(newAttendees);
+    }
   };
 
   const handleDecrement = (id: string) => {
@@ -308,13 +363,45 @@ const RegistrationModal = ({
         [id]: newQuantity
       }));
 
-      const newAttendees: Record<string, ModalAttendeeInfo[]> = { ...attendeesByTicket };
-      if (newAttendees[id]) {
-        newAttendees[id] = newAttendees[id].slice(0, -1);
-      } else {
+      // Check if this is a sponsorship
+      const selectedSponsorship = sponsorships.find(s => s.id === id);
+      
+      if (selectedSponsorship) {
+        // For sponsorships, we keep the attendeesByTicket array empty
+        const newAttendees: Record<string, ModalAttendeeInfo[]> = { ...attendeesByTicket };
         newAttendees[id] = [];
+        setAttendeesByTicket(newAttendees);
+        
+        // Handle sponsor passes for sponsorships
+        if (selectedSponsorship.sponsorPasses && selectedSponsorship.sponsorPasses > 0) {
+          // Update sponsor pass attendees for this sponsorship
+          const newSponsorPassAttendees = { ...sponsorPassAttendees };
+          
+          // Recalculate the number of sponsor passes based on the new quantity
+          const totalSponsorPasses = selectedSponsorship.sponsorPasses * newQuantity;
+          
+          if (newSponsorPassAttendees[id]) {
+            // Reduce the number of sponsor pass attendees to match the new quantity
+            newSponsorPassAttendees[id] = newSponsorPassAttendees[id].slice(0, totalSponsorPasses);
+          }
+          
+          // If quantity is 0, remove all sponsor pass attendees for this sponsorship
+          if (newQuantity === 0) {
+            delete newSponsorPassAttendees[id];
+          }
+          
+          setSponsorPassAttendees(newSponsorPassAttendees);
+        }
+      } else {
+        // For regular tickets, update attendees as before
+        const newAttendees: Record<string, ModalAttendeeInfo[]> = { ...attendeesByTicket };
+        if (newAttendees[id]) {
+          newAttendees[id] = newAttendees[id].slice(0, -1);
+        } else {
+          newAttendees[id] = [];
+        }
+        setAttendeesByTicket(newAttendees);
       }
-      setAttendeesByTicket(newAttendees);
     }
   };
 
@@ -532,23 +619,88 @@ const RegistrationModal = ({
     const processRegistrations = (registrations: ModalRegistrationType[], category: 'ticket' | 'exhibit' | 'sponsorship') => {
       return registrations
         .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
-        .map(reg => ({
-          ticketId: reg.id,
-          ticketName: reg.title,
-          ticketPrice: reg.price,
-          quantity: ticketQuantities[reg.id] || 0,
-          category, // Add category to identify the type of registration
-          // Ensure attendeeInfo structure matches what the schema expects for validation
-          attendeeInfo: (attendeesByTicket[reg.id] || []).map(att => ({ ...att })),
-        }));
+        .map(reg => {
+          // Get the effective price (considering early bird pricing)
+          const effectivePrice = getEffectivePrice(reg);
+          
+          // For sponsorships, ensure we pass a numeric price to the API
+          // This is crucial because the API needs numeric prices for payment processing
+          const processedPrice = 
+            category === 'sponsorship' && typeof effectivePrice === 'string' 
+              ? parseFloat(effectivePrice.replace(/[^0-9.]/g, '')) || reg.price 
+              : effectivePrice;
+          
+          return {
+            ticketId: reg.id,
+            ticketName: reg.title,
+            ticketPrice: processedPrice,
+            quantity: ticketQuantities[reg.id] || 0,
+            category, // Add category to identify the type of registration
+            // Ensure attendeeInfo structure matches what the schema expects for validation
+            attendeeInfo: (attendeesByTicket[reg.id] || []).map(att => ({ ...att })),
+            // Include type information for the backend to properly identify sponsorships
+            type: reg.type,
+          };
+        });
+    };
+    
+    // Helper function to process sponsor pass attendees
+    const processSponsorPasses = () => {
+      const sponsorPassTickets: any[] = [];
+      
+      // For each sponsorship with passes
+      Object.keys(sponsorPassAttendees).forEach(sponsorId => {
+        const sponsor = sponsorships.find(s => s.id === sponsorId);
+        if (!sponsor) return;
+        
+        const passAttendees = sponsorPassAttendees[sponsorId] || [];
+        if (passAttendees.length === 0) return;
+        
+        // Create a special ticket entry for these sponsor passes
+        sponsorPassTickets.push({
+          ticketId: `${sponsorId}-vip-pass`,
+          ticketName: `${sponsor.name} VIP Pass`,
+          ticketPrice: 'Complimentary', // These are free as part of sponsorship
+          quantity: passAttendees.length,
+          category: 'ticket', // Treat as tickets for processing
+          isIncludedWithSponsorship: true, // Flag to identify these are from sponsorship
+          sponsorshipId: sponsorId, // Reference back to the sponsorship
+          attendeeInfo: passAttendees.map(att => ({ ...att })),
+        });
+      });
+      
+      return sponsorPassTickets;
     };
 
     // Consolidate all data for validation from all registration types
     const ticketsForValidation = [
       ...processRegistrations(allRegistrations, 'ticket'),
       ...processRegistrations(exhibitors, 'exhibit'),
-      ...processRegistrations(sponsorships, 'sponsorship')
+      ...processRegistrations(sponsorships, 'sponsorship'),
+      ...processSponsorPasses() // Add sponsor pass attendees
     ];
+    
+    // Add ticket prices explicitly to ensure the backend has the correct price information
+    const ticketPrices: Record<string, number> = {};
+    
+    // Add prices for regular tickets
+    [...allRegistrations, ...exhibitors, ...sponsorships].forEach(reg => {
+      if (ticketQuantities[reg.id] && ticketQuantities[reg.id] > 0) {
+        const effectivePrice = getEffectivePrice(reg);
+        // Ensure we have a numeric price
+        if (typeof effectivePrice === 'number') {
+          ticketPrices[reg.id] = effectivePrice;
+        } else if (typeof effectivePrice === 'string' && reg.type === 'sponsor') {
+          // For sponsorships with string prices, convert to number
+          ticketPrices[reg.id] = parseFloat(effectivePrice.replace(/[^0-9.]/g, '')) || 0;
+        }
+      }
+    });
+    
+    // Add complimentary prices for sponsor passes
+    Object.keys(sponsorPassAttendees).forEach(sponsorId => {
+      ticketPrices[`${sponsorId}-vip-pass`] = 0; // Sponsor passes are complimentary
+    });
 
     // Find the first registration type that has attendees and requires attendee info
     // Check across all registration types
@@ -637,6 +789,7 @@ const RegistrationModal = ({
             ...formDataToValidate, // Send the whole validated form data
             eventId: event.id, // Make sure eventId is included
             eventTitle: event.title, // Include event name for clarity
+            ticketPrices, // Include the ticket prices object for accurate pricing
             // The register endpoint will calculate amount and use necessary fields from formDataToValidate
           }),
         });
@@ -727,38 +880,130 @@ const RegistrationModal = ({
                 ...sponsorships.map(reg => ({ ...reg, categoryName: 'Sponsorship' }))
               ];
               
-              return allRegistrationTypes
-                .filter(reg => reg.requiresAttendeeInfo && (ticketQuantities[reg.id] || 0) > 0)
-                .map(reg => (
-                  <div key={reg.id}>
-                    <h4 className="text-lg font-medium mt-4 mb-2">{reg.name} - {reg.categoryName} Attendees</h4>
-                    {Array.from({ length: ticketQuantities[reg.id] || 0 }).map((_, index) => {
-                      const attendeeData = attendeesByTicket[reg.id]?.[index] || initialModalAttendeeInfo;
-                      return (
-                        <div key={`${reg.id}-${index}`} className="mb-4 border-b pb-4">
-                          <AttendeeForm
-                            attendee={attendeeData}
-                            index={index}
-                            onChange={(attendeeIdx, fieldName, fieldValue) => handleAttendeeChange(reg.id, attendeeIdx, fieldName as keyof EventAttendeeInfo, fieldValue)}
-                            onCopyFrom={(sourceTicketId, sourceAttendeeIdx) => handleCopyAttendee(sourceTicketId, sourceAttendeeIdx, reg.id, index)}
-                            totalAttendees={(attendeesByTicket[reg.id] || []).length}
-                            allAttendees={allRegistrationTypes
-                              .filter(r => r.requiresAttendeeInfo && (ticketQuantities[r.id] || 0) > 0)
-                              .map(r => ({
-                                ticketId: r.id,
-                                ticketName: `${r.name} (${r.categoryName})`,
-                                attendees: attendeesByTicket[r.id] || []
-                              }))}
-                            currentTicketId={reg.id}
-                            formErrors={formErrors}
-                            isComplimentaryTicket={reg.type === 'complimentary'}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
-                ));
-            })()}
+              // Create a consolidated list of all attendees for copy functionality
+              const consolidatedAttendees = allRegistrationTypes
+                .filter(r => r.requiresAttendeeInfo && (ticketQuantities[r.id] || 0) > 0)
+                .map(r => ({
+                  ticketId: r.id,
+                  ticketName: `${r.name} (${r.categoryName})`,
+                  attendees: attendeesByTicket[r.id] || []
+                }));
+              
+              // Add sponsor pass attendees to the consolidated list
+              const sponsorPassesInfo = Object.keys(sponsorPassAttendees).map(sponsorId => {
+                const sponsor = sponsorships.find(s => s.id === sponsorId);
+                return {
+                  ticketId: `${sponsorId}-passes`,
+                  ticketName: `${sponsor?.name || 'Sponsor'} (VIP Passes)`,
+                  attendees: sponsorPassAttendees[sponsorId] || []
+                };
+              });
+              
+              const allAttendeesForCopy = [...consolidatedAttendees, ...sponsorPassesInfo];
+              
+              return (
+                <>
+                  {/* Regular registration attendee forms - exclude sponsorships */}
+                  {allRegistrationTypes
+                    .filter(reg => reg.requiresAttendeeInfo && (ticketQuantities[reg.id] || 0) > 0 && reg.category !== 'sponsorship')
+                    .map(reg => (
+                      <div key={reg.id}>
+                        <h4 className="text-lg font-medium mt-4 mb-2">{reg.name} - {reg.categoryName} Attendees</h4>
+                        {Array.from({ length: ticketQuantities[reg.id] || 0 }).map((_, index) => {
+                          const attendeeData = attendeesByTicket[reg.id]?.[index] || initialModalAttendeeInfo;
+                          return (
+                            <div key={`${reg.id}-${index}`} className="mb-4 border-b pb-4">
+                              <AttendeeForm
+                                attendee={attendeeData}
+                                index={index}
+                                onChange={(attendeeIdx, fieldName, fieldValue) => handleAttendeeChange(reg.id, attendeeIdx, fieldName as keyof EventAttendeeInfo, fieldValue)}
+                                onCopyFrom={(sourceTicketId, sourceAttendeeIdx) => handleCopyAttendee(sourceTicketId, sourceAttendeeIdx, reg.id, index)}
+                                totalAttendees={(attendeesByTicket[reg.id] || []).length}
+                                allAttendees={allAttendeesForCopy}
+                                currentTicketId={reg.id}
+                                formErrors={formErrors}
+                                isComplimentaryTicket={reg.type === 'complimentary'}
+                              />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ))}
+                  
+                  {/* Sponsor pass attendee forms */}
+                  {Object.keys(sponsorPassAttendees).map(sponsorId => {
+                    const sponsor = sponsorships.find(s => s.id === sponsorId);
+                    const passAttendees = sponsorPassAttendees[sponsorId] || [];
+                    
+                    if (passAttendees.length === 0) return null;
+                    
+                    return (
+                      <div key={`${sponsorId}-passes`}>
+                        <h4 className="text-lg font-medium mt-4 mb-2 text-indigo-700">
+                          {sponsor?.name} - VIP Attendee Passes ({passAttendees.length})
+                        </h4>
+                        <p className="text-sm text-gray-500 mb-3">
+                          These passes are included with your {sponsor?.name} sponsorship package.
+                        </p>
+                        {passAttendees.map((attendeeData, index) => (
+                          <div key={`${sponsorId}-pass-${index}`} className="mb-4 border-b border-indigo-100 pb-4">
+                            <AttendeeForm
+                              attendee={attendeeData}
+                              index={index}
+                              onChange={(attendeeIdx, fieldName, fieldValue) => {
+                                // Create a handler for sponsor pass attendee changes
+                                const newSponsorPassAttendees = { ...sponsorPassAttendees };
+                                if (!newSponsorPassAttendees[sponsorId]) {
+                                  newSponsorPassAttendees[sponsorId] = [];
+                                }
+                                if (!newSponsorPassAttendees[sponsorId][attendeeIdx]) {
+                                  newSponsorPassAttendees[sponsorId][attendeeIdx] = { ...initialModalAttendeeInfo };
+                                }
+                                newSponsorPassAttendees[sponsorId][attendeeIdx] = {
+                                  ...newSponsorPassAttendees[sponsorId][attendeeIdx],
+                                  [fieldName]: fieldValue
+                                };
+                                setSponsorPassAttendees(newSponsorPassAttendees);
+                              }}
+                              onCopyFrom={(sourceTicketId, sourceAttendeeIdx) => {
+                                // Create a handler for copying to sponsor pass attendees
+                                let sourceAttendee;
+                                
+                                // Check if source is a regular attendee
+                                const regularSource = consolidatedAttendees.find(item => item.ticketId === sourceTicketId);
+                                if (regularSource) {
+                                  sourceAttendee = regularSource.attendees[sourceAttendeeIdx];
+                                } else {
+                                  // Check if source is another sponsor pass attendee
+                                  const sponsorPassSource = sponsorPassesInfo.find(item => item.ticketId === sourceTicketId);
+                                  if (sponsorPassSource) {
+                                    sourceAttendee = sponsorPassSource.attendees[sourceAttendeeIdx];
+                                  }
+                                }
+                                
+                                if (sourceAttendee) {
+                                  const newSponsorPassAttendees = { ...sponsorPassAttendees };
+                                  if (!newSponsorPassAttendees[sponsorId]) {
+                                    newSponsorPassAttendees[sponsorId] = [];
+                                  }
+                                  newSponsorPassAttendees[sponsorId][index] = { ...sourceAttendee };
+                                  setSponsorPassAttendees(newSponsorPassAttendees);
+                                }
+                              }}
+                              totalAttendees={passAttendees.length}
+                              allAttendees={allAttendeesForCopy}
+                              currentTicketId={`${sponsorId}-passes`}
+                              formErrors={formErrors}
+                              isComplimentaryTicket={true} // Sponsor passes are complimentary
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    );
+                  })}
+                </>
+              );
+            })()} 
             <TermsAndConditions
               agreed={agreedToTerms}
               onAgree={setAgreedToTerms} // Corrected prop name
