@@ -5,7 +5,7 @@ export const EXHIBITOR_TYPES = [
             {
                 id: "table-top-exhibit-space",
                 title: "Display Table",
-                cost: "$1,000",
+                cost: 1000,
                 perks: [
                     { tagline: "Team Access", description: "Registration for 2 People" },
                     { tagline: "Networking", description: "2 VIP Networking Reception Passes" },
@@ -25,7 +25,7 @@ export const EXHIBITOR_TYPES = [
             {
                 id: "table-top-exhibit-space",
                 title: "Table-Top Exhibit Space",
-                cost: "$1,250",
+                cost: 1250,
                 perks: [
                     { tagline: "Event Access", description: " (1) Exhibitor Pass. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Exhibit Space", description: "8'x10' Exhibit Space Placed in Exhibit Area/Foyer. 6' Exhibit Table and Chairs" },
@@ -43,7 +43,7 @@ export const EXHIBITOR_TYPES = [
             {
                 id: "exhibitor",
                 title: "Table-Top Exhibit Space",
-                cost: "$1,250",
+                cost: 1250,
                 slotsPerEvent: 50,
                 showRemaining: true,
                 perks: [

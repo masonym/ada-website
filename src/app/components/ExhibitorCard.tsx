@@ -58,7 +58,7 @@ const ExhibitorCard = ({ item, event }: ExhibitorProp) => {
                         </p>
                     )}
                 </div>
-                <span className="text-xl font-bold text-white">{item.cost}</span>
+                <span className="text-xl font-bold text-white">${item.cost.toLocaleString()}</span>
             </div>
             <div className="p-6">
                 <ul className="space-y-4">

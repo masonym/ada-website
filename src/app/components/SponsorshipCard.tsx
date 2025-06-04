@@ -11,7 +11,7 @@ type Perk = {
 type SponsorTypes = {
     id: string;
     title: string;
-    cost: string;
+    cost: number;
     perks: Perk[];
     colour?: string;
     slotsPerEvent?: number;
@@ -59,7 +59,7 @@ const SponsorshipCard = ({ item, event }: SponsorProp) => {
                         </p>
                     )}
                 </div>
-                <span className="text-xl font-bold text-white">{item.cost}</span>
+                <span className="text-xl font-bold text-white">${item.cost.toLocaleString()}</span>
             </div>
             <div className="p-6">
                 <ul className="space-y-4">
