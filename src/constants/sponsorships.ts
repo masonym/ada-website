@@ -5,7 +5,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "premier-sponsor",
                 title: "Premier",
-                cost: "$5,000",
+                cost: 5000,
                 perks: [
                     { tagline: "Brand Visibility", description: "Prime logo placement on all conference materials, including banners, marketing emails, website, and programs" },
                     { tagline: "Speaking Opportunity", description: "An expanded speaking segment during the conference for a company principal" },
@@ -19,7 +19,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "prestige-sponsor",
                 title: "Prestige",
-                cost: "$3,000",
+                cost: 3000,
                 perks: [
                     { tagline: "Brand Visibility", description: "Prominent logo placement on conference materials and signage" },
                     { tagline: "Speaking Opportunity", description: "A brief segment during the conference for a company principal" },
@@ -33,7 +33,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "executive-sponsor",
                 title: "Executive",
-                cost: "$1,500",
+                cost: 1500,
                 perks: [
                     { tagline: "Brand Visibility", description: "Logo placement on select conference materials and signage" },
                     { tagline: "Recognition", description: "Acknowledgment during key moments of the conference, such as opening remarks" },
@@ -50,7 +50,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "gold-sponsor",
                 title: "Gold Sponsor",
-                cost: "$7,000",
+                cost: 7000,
                 perks: [
                     { tagline: "Event Access", description: " (4) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Speaking Opportunity", description: "15-Minute Speaking Session for a Representative of your Company" },
@@ -68,7 +68,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "silver-sponsor",
                 title: "Silver Sponsor",
-                cost: "$5,000",
+                cost: 5000,
                 perks: [
                     { tagline: "Event Access", description: "(3) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Speaking Opportunity", description: "10-Minute Speaking Session for a Representative of your Company" },
@@ -84,7 +84,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "bronze-sponsor",
                 title: "Bronze Sponsor",
-                cost: "$3,000",
+                cost: 3000,
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Speaking Opportunity", description: "5-Minute Speaking Session for a Representative of your Company" },
@@ -99,7 +99,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "vip-networking-reception-sponsor",
                 title: "VIP Networking Reception Sponsor",
-                cost: "$3,500",
+                cost: 3500,
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "VIP Networking Reception Hosting", description: "Exclusive Host of the VIP Networking Reception on March 11 from 5:30 PM - 7:30 PM" },
@@ -115,7 +115,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "networking-luncheon-sponsor",
                 title: "Networking Luncheon Sponsor",
-                cost: "$2,500",
+                cost: 2500,
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Networking Luncheon Hosting", description: "Host of the Networking Luncheon" },
@@ -130,7 +130,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "small-business-sponsor",
                 title: "Small Business Sponsor",
-                cost: "$1,500",
+                cost: 1500,
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Exhibit Space", description: ": 8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and Chairs" },
@@ -147,7 +147,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "gold-sponsor",
                 title: "Gold Sponsor",
-                cost: "$10,000",
+                cost: 10000,
                 perks: [
                     { tagline: "Speaking Opportunity", description: "8-Minute Audience Address" },
                     { tagline: "Event Access", description: "(3) Attendee Event Passes" },
@@ -160,7 +160,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "silver-sponsor",
                 title: "Silver Sponsor",
-                cost: "$5,000",
+                cost: 5000,
                 perks: [
                     { tagline: "Speaking Opportunity", description: "3-Minute Audience Address" },
                     { tagline: "Event Access", description: "(2) Attendee Event Passes" },
@@ -173,7 +173,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "bronze-sponsor",
                 title: "Bronze Sponsor",
-                cost: "$3,000",
+                cost: 3000,
                 perks: [
                     { tagline: "Event Access", description: "(1) Attendee Event Pass" },
                     { tagline: "Networking", description: "(1) Pass to Meet & Greet Bourbon Tasting with Astronauts" },
@@ -185,7 +185,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "meet-and-greet-sponsor",
                 title: "Meet & Greet Bourbon Tasting with Astronauts",
-                cost: "$2,000",
+                cost: 2000,
                 perks: [
                     { tagline: "Event Access", description: "(1) Attendee Event Pass" },
                     { tagline: "Networking", description: "(3) Passes to Meet & Greet Bourbon Tasting with Astronauts" },
@@ -200,7 +200,7 @@ export const SPONSORSHIP_TYPES = [
         {
             id: "platinum-sponsor",
             title: "Platinum Sponsor",
-            cost: "$10,000",
+            cost: 10000,
             slotsPerEvent: 1,
             perks: [
                 { tagline: "Event Access", description: "(5) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
@@ -223,7 +223,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "gold-sponsor",
                 title: "Gold Sponsor",
-                cost: "$7,000",
+                cost: 7000,
                 slotsPerEvent: 2,
                 perks: [
                     { tagline: "Event Access", description: " (4) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
@@ -243,7 +243,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "silver-sponsor",
                 title: "Silver Sponsor",
-                cost: "$5,000",
+                cost: 5000,
                 slotsPerEvent: 3,
                 perks: [
                     { tagline: "Event Access", description: "(3) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
@@ -261,7 +261,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "bronze-sponsor",
                 title: "Bronze Sponsor",
-                cost: "$3,000",
+                cost: 3000,
                 slotsPerEvent: 5,
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
@@ -278,7 +278,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "vip-networking-reception-sponsor",
                 title: "VIP Networking Reception Sponsor",
-                cost: "$3,500",
+                cost: 3500,
                 slotsPerEvent: 1,
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
@@ -297,7 +297,7 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "networking-luncheon-sponsor",
                 title: "Networking Luncheon Sponsor",
-                cost: "$2,500",
+                cost: 2500,
                 slotsPerEvent: 2,
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
@@ -315,11 +315,11 @@ export const SPONSORSHIP_TYPES = [
             {
                 id: "small-business-sponsor",
                 title: "Small Business Sponsor",
-                cost: "$1,500",
+                cost: 1500,
                 slotsPerEvent: 15,
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
-                    { tagline: "Exhibit Space", description: ": 8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and Chairs" },
+                    { tagline: "Exhibit Space", description: "8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and Chairs" },
                     { tagline: "Brand Visibility", description: "Logo Placement on select Conference Material" },
                     { tagline: "Media Coverage", description: "Photographs of your Participation" },
                 ],
