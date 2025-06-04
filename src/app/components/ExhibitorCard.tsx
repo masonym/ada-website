@@ -11,7 +11,7 @@ type Perk = {
 type ExhibitorTypes = {
     id: string;
     title: string;
-    cost: string;
+    cost: number;
     perks: Perk[];
     colour?: string;
     slotsPerEvent?: number;
