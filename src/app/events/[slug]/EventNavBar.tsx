@@ -132,9 +132,6 @@ export default function Navbar() {
                             ...event,
                             contactInfo: event.contactInfo || { contactEmail: "" }
                         }}
-                        allRegistrations={getRegistrationsForEvent(event.id)}
-                        sponsorships={getSponsorshipsForEvent(event.id)}
-                        exhibitors={getExhibitorsForEvent(event.id)}
                     />
                 )}
             </ul>

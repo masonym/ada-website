@@ -362,11 +362,8 @@ export const REGISTRATION_TYPES = [
                 ],
                 buttonText: "Register Now",
                 buttonLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
-                earlyBirdPrice: 550,
                 price: 495,
-                // earlyBirdDeadline: "2025-02-18T08:00:00Z",
                 type: "paid",
-                // receptionPrice: "$550"
             },
 
             {
@@ -384,9 +381,7 @@ export const REGISTRATION_TYPES = [
                 ],
                 buttonText: "Register Now",
                 buttonLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
-                earlyBirdPrice: 550,
                 price: 550,
-                // earlyBirdDeadline: "2025-02-18T08:00:00Z",
                 type: "paid",
             },
 
@@ -403,9 +398,7 @@ export const REGISTRATION_TYPES = [
                 ],
                 buttonText: "Register Now",
                 buttonLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
-                earlyBirdPrice: 1250,
                 price: 1250,
-                earlyBirdDeadline: "2025-04-10T08:00:00Z",
                 type: "paid"
             },
 
@@ -424,6 +417,7 @@ export const REGISTRATION_TYPES = [
                 buttonText: "Register Now",
                 buttonLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
                 type: "complimentary",
+                price: "Complimentary",
                 // availabilityInfo: "Limited availability."
             },
 

@@ -11,10 +11,10 @@ import { registrationSchema } from '@/lib/event-registration/validation';
 import { RegistrationFormData, TicketSelection, AttendeeInfo as RegAttendeeInfo, RegistrationType as EventRegType, BusinessSize } from '@/types/event-registration/registration';
 import { ValidationError } from 'yup';
 import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js';
-// import { initialAttendeeInfo } from '@/types/registration'; // Replaced by local initialModalAttendeeInfo
 import type { AttendeeInfo as EventAttendeeInfo, AttendeeInfo as EventRegAttendeeInfo } from '@/types/event-registration/registration';
 import { Elements } from '@stripe/react-stripe-js';
 import StripePaymentForm, { StripePaymentFormRef } from './StripePaymentForm';
+import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, ModalRegistrationType as AdapterModalRegistrationType } from '@/lib/registration-adapters';
 
 // Define a type that combines both RegistrationType and additional card props
 type ModalRegistrationType = {
@@ -50,7 +50,7 @@ interface EventWithContact extends Omit<Event, 'id'> {
   slug: string;
 }
 
-interface ModalAttendeeInfo { // Renamed to avoid conflict with imported AttendeeInfo
+interface ModalAttendeeInfo {
   firstName: string;
   lastName: string;
   email: string;
@@ -58,8 +58,8 @@ interface ModalAttendeeInfo { // Renamed to avoid conflict with imported Attende
   jobTitle: string;
   phone: string;
   website: string;
-  businessSize: BusinessSize | ''; // Allow empty string for initial form state, will be defaulted if empty
-  sbaIdentification?: string; // Added for SBA identification
+  businessSize: BusinessSize | '';
+  sbaIdentification?: string;
   industry: string;
   sponsorInterest: 'yes' | 'no' | '';
   speakingInterest: 'yes' | 'no' | '';
@@ -79,9 +79,6 @@ interface RegistrationModalProps {
   onClose: () => void;
   selectedRegistration: ModalRegistrationType | null; // Allow null for register button
   event: EventWithContact;
-  allRegistrations: ModalRegistrationType[];
-  sponsorships?: ModalRegistrationType[];
-  exhibitors?: ModalRegistrationType[];
 }
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
@@ -95,7 +92,7 @@ const initialModalAttendeeInfo: ModalAttendeeInfo = {
   phone: '',
   website: '',
   businessSize: '',
-  sbaIdentification: '', // Added for SBA identification
+  sbaIdentification: '',
   industry: '',
   sponsorInterest: '',
   speakingInterest: '',
@@ -115,10 +112,11 @@ const RegistrationModal = ({
   onClose,
   selectedRegistration,
   event,
-  allRegistrations,
-  sponsorships = [],
-  exhibitors = [],
 }: RegistrationModalProps): JSX.Element | null => {
+  // Get registrations, sponsorships, and exhibitors directly using the event ID
+  const allRegistrations = useMemo<ModalRegistrationType[]>(() => getRegistrationsForEvent(event.id), [event.id]);
+  const sponsorships = useMemo<ModalRegistrationType[]>(() => getSponsorshipsForEvent(event.id), [event.id]);
+  const exhibitors = useMemo<ModalRegistrationType[]>(() => getExhibitorsForEvent(event.id), [event.id]);
   // State for active category tab
   const [activeCategory, setActiveCategory] = useState<'ticket' | 'exhibit' | 'sponsorship'>('ticket');
   const [ticketQuantities, setTicketQuantities] = useState<Record<string, number>>({});
@@ -422,6 +420,7 @@ const RegistrationModal = ({
   };
 
   const calculateTotal = () => {
+    console.log("allRegistrations", allRegistrations);
     return allRegistrations.reduce((total, reg) => {
       const quantity = ticketQuantities[reg.id] || 0;
 
@@ -517,7 +516,7 @@ const RegistrationModal = ({
     }
 
     const totalAmount = calculateTotal();
-    const determinedPaymentMethod = totalAmount === 0 && selectedRegistration.type === 'free' ? 'free' : 'creditCard';
+    const determinedPaymentMethod = totalAmount === 0 && selectedRegistration?.type === 'free' ? 'free' : 'creditCard';
 
     const formDataToValidate: Partial<RegistrationFormData> = {
       firstName: billingInfo.firstName || primaryAttendeeData.firstName || '',
@@ -859,7 +858,8 @@ const RegistrationModal = ({
                   {activeCategory === 'ticket' && allRegistrations.filter(reg => reg.isActive).map(reg => (
                     <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
                       <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
-                      {reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline) && (
+                      {/* Tickets, early bird pricing */}
+                      {reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline) ? (
                         <div className="mb-2">
                           <p className="text-lg font-semibold">
                             <span className="text-green-600 mr-2">
@@ -878,20 +878,18 @@ const RegistrationModal = ({
                             </span>
                           </p>
                         </div>
-                      )}
-                      {typeof reg.price === 'string' && (
+                      ): reg.type === 'paid' ? (
+                        // Paid tickets, after early bird deadline
                         <p className="text-lg font-semibold text-indigo-600 mb-2">
-                          {reg.price}
+                        ${Number(reg.price).toLocaleString()}
+                        </p>
+                      ) : (
+                        // Compliemntary tickets
+                        <p className="text-lg font-semibold text-indigo-600 mb-2">
+                        {reg.price}
                         </p>
                       )}
 
-                      {typeof reg.price === 'number' && reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() >= new Date(reg.earlyBirdDeadline) && (
-                        <div className="mb-2">
-                          <p className="text-lg font-semibold text-gray-800">
-                            ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(reg.price)}
-                          </p>
-                        </div>
-                      )}
                       {reg.perks && reg.perks.length > 0 && (
                         <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
                           {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
