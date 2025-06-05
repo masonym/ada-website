@@ -42,6 +42,11 @@ const SponsorshipCard = ({ item, event }: SponsorProp) => {
                     {remainingCount} remaining
                 </div>
             )}
+            {showRemainingFlag && remainingCount !== undefined && remainingCount <= 0 && !hasEventEnded && (
+                <div className="absolute -top-2 -right-4 overflow-visible z-1 bg-gray-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">
+                    Sold Out
+                </div>
+            )}
             <div
                 className={`flex items-center gap-4 rounded-t-lg justify-between p-4 ${item.colour || 'bg-navy-800'}`}
                 style={item.colour ? { backgroundColor: item.colour } : undefined}
