@@ -332,7 +332,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
             Are you interested in becoming a Sponsor or Exhibitor? *
           </label>
           <div className="flex flex-col">
-            <label className="inline-flex items-center">
+            <label className="inline-flex items-center text-sm">
               <input
                 type="radio"
                 className="form-radio"
@@ -344,7 +344,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
               />
               <span className="ml-2">Yes, please contact us at <a className="text-blue-500 hover:underline" href="mailto:marketing@americandefensealliance.org">marketing@americandefensealliance.org</a></span>
             </label>
-            <label className="inline-flex items-center">
+            <label className="inline-flex items-center text-sm">
               <input
                 type="radio"
                 className="form-radio"
@@ -362,7 +362,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
             Are you interested in becoming a Speaking Opportunity? *
           </label>
           <div className="flex flex-col">
-            <label className="inline-flex items-center">
+            <label className="inline-flex items-center text-sm">
               <input
                 type="radio"
                 className="form-radio"
@@ -374,7 +374,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
               />
               <span className="ml-2">Yes, please contact us at <a className="text-blue-500 hover:underline" href="mailto:marketing@americandefensealliance.org">info@americandefensealliance.org</a></span>
             </label>
-            <label className="inline-flex items-center">
+            <label className="inline-flex items-center text-sm">
               <input
                 type="radio"
                 className="form-radio"

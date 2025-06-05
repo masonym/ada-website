@@ -22,7 +22,7 @@ export const BillingInformation: React.FC<BillingInformationProps> = ({
           <label className="block text-sm font-medium text-gray-700 mb-1">First Name *</label>
           <input
             type="text"
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2 text-sm"
             value={billingInfo.firstName}
             onChange={(e) => onChange('firstName', e.target.value)}
             required
@@ -32,7 +32,7 @@ export const BillingInformation: React.FC<BillingInformationProps> = ({
           <label className="block text-sm font-medium text-gray-700 mb-1">Last Name *</label>
           <input
             type="text"
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2 text-sm"
             value={billingInfo.lastName}
             onChange={(e) => onChange('lastName', e.target.value)}
             required
@@ -42,7 +42,7 @@ export const BillingInformation: React.FC<BillingInformationProps> = ({
           <label className="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
           <input
             type="email"
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2 text-sm"
             value={billingInfo.email}
             onChange={(e) => onChange('email', e.target.value)}
             required
@@ -52,11 +52,10 @@ export const BillingInformation: React.FC<BillingInformationProps> = ({
           <label className="block text-sm font-medium text-gray-700 mb-1">Confirm Email Address *</label>
           <input
             type="email"
-            className={`w-full border rounded px-3 py-2 ${
-              billingInfo.email && billingInfo.confirmEmail && billingInfo.email !== billingInfo.confirmEmail 
-                ? 'border-red-500' 
-                : ''
-            }`}
+            className={`w-full border rounded px-3 py-2 text-sm ${billingInfo.email && billingInfo.confirmEmail && billingInfo.email !== billingInfo.confirmEmail
+              ? 'border-red-500'
+              : ''
+              }`}
             value={billingInfo.confirmEmail}
             onChange={(e) => onChange('confirmEmail', e.target.value)}
             required
