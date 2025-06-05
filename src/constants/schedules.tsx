@@ -940,46 +940,51 @@ export const SCHEDULES = [
                     },
                     {
                         time: "8:35 AM",
-                        title: "State of Virginia and Norfolk Chamber of Commerce – Welcoming Remarks",
+                        title: "State of Virginia, Hampton Roads Alliance and/or Norfolk Chamber of Commerce – Welcoming Remarks",
                         location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "8:45 AM",
+                        title: "CONGRESSIONAL KEYNOTE ADDRESS",
+                        location: "Hampton Ballroom, 3rd FL",
+                    },
+                    {
+                        time: "9:15 AM",
                         title: "Navy Small Business Program Panel",
                         location: "Hampton Ballroom, 3rd FL",
                     },
                     {
-                        time: "9:45 AM",
-                        title: "How DEFENSEWERX and Nautilus are Accelerating Innovative Tech Contracting",
-                        location: "Hampton Ballroom, 3rd FL",
-                    },
-                    {
                         time: "10:15 AM",
-                        title: "Sponsor Remarks",
-                        location: "Hampton Ballroom, 3rd FL",
-                    },
-                    {
-                        time: "10:30 AM",
-                        title: "Networking Break",
+                        title: "How DEFENSEWERX Hubs are Accelerating Innovative Tech Contracting",
                         location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "10:45 AM",
-                        title: "Military Base-Community Partnerships Promoting Local Build Contracts",
+                        title: "Networking Break",
+                        location: "Hampton Ballroom, 3rd FL",
+                    },
+                    {
+                        time: "11:00 AM",
+                        title: "Sponsor Remarks",
                         location: "Hampton Ballroom, 3rd FL",
                     },
                     {
                         time: "11:15 AM",
-                        title: "National Security Keynote Address",
+                        title: "Military Base-Community Partnerships Promoting Local Build Contracts",
                         location: "Hampton Ballroom, 3rd FL",
                     },
                     {
-                        time: "11:30 AM",
+                        time: "11:45 AM",
+                        title: "NATIONAL SECURITY KEYNOTE ADDRESS",
+                        location: "Hampton Ballroom, 3rd FL",
+                    },
+                    {
+                        time: "12:00 PM",
                         title: "Fleet Readiness Panel – Addressing Critical Challenges & Requirements",
                         location: "Hampton Ballroom, 3rd FL",
                     },
                     {
-                        time: "12:30 PM",
+                        time: "12:45 PM",
                         title: "Networking Lunch with Exhibitors",
                         location: "Hampton Ballroom Pre-Function, 3rd FL",
                     },
@@ -989,17 +994,17 @@ export const SCHEDULES = [
                         location: "Hampton Ballroom, 3rd FL",
                     },
                     {
-                        time: "2:30 PM",
-                        title: "Force Projection & Contested Logistics in the Indo-Pacific",
-                        location: "Hampton Ballroom, 3rd FL",
-                    },
-                    {
-                        time: "3:30 PM",
+                        time: "2:40 PM",
                         title: "Sponsor Remarks",
                         location: "Hampton Ballroom, 3rd FL",
                     },
                     {
-                        time: "3:40 PM",
+                        time: "2:55 PM",
+                        title: "Force Projection & Contested Logistics in the Indo-Pacific",
+                        location: "Hampton Ballroom, 3rd FL",
+                    },
+                    {
+                        time: "3:55 PM",
                         title: "Accessing Government-Wide Acquisition Contracts (GWAC’s)",
                         location: "Hampton Ballroom, 3rd FL",
                     },
@@ -1033,11 +1038,11 @@ export const SCHEDULES = [
                     },
                     {
                         time: "8:35 AM",
-                        title: "Congressional Keynote Address",
+                        title: "CONGRESSIONAL KEYNOTE ADDRESS",
                         location: "Hampton Ballroom, 3rd FL",
                     },
                     {
-                        time: "9:00 AM",
+                        time: "9:05 AM",
                         title: "How to do Business with the Primes",
                         location: "Hampton Ballroom, 3rd FL",
                     },
@@ -1047,7 +1052,7 @@ export const SCHEDULES = [
                         location: "Hampton Ballroom, 3rd FL",
                     },
                     {
-                        time: "10:25 AM",
+                        time: "10:30 AM",
                         title: "Artificial Intelligence in Defense – Leveraging Navy Use Cases",
                         location: "Hampton Ballroom, 3rd FL",
                     },
@@ -1057,18 +1062,13 @@ export const SCHEDULES = [
                         location: "Hampton Ballroom, 3rd FL",
                     },
                     {
-                        time: "11:35 AM",
-                        title: "Streamlining Acquisition to Empower Our Warfighters",
+                        time: "11:30 AM",
+                        title: "Army Corps of Engineers – Project Opportunities",
                         location: "Hampton Ballroom, 3rd FL",
                     },
                     {
-                        time: "12:00 PM",
-                        title: "MBDA Federal Procurement Center – Tiger Team Briefing",
-                        location: "Hampton Ballroom, 3rd FL",
-                    },
-                    {
-                        time: "12:25 PM",
-                        title: "Using Mentor-Protégé Partnerships to Drive the Combat Capability Factory",
+                        time: "12:05 PM",
+                        title: "How to Use OTA’s (Other Transaction Authorities) to Win Sole-Source Contracts",
                         location: "Hampton Ballroom, 3rd FL",
                     },
                     {
