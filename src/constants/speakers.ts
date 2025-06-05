@@ -737,7 +737,7 @@ His final Navy assignment was China Branch of Navy Staff at the Pentagon. `,
 	"kareem-sykes": {
 		"image": "kareem-sykes.webp",
 		"name": "Kareem A. Sykes",
-		"position": "Program Manager, Project Spectrum",
+		"position": "Director, Industry and Engagement, Project Spectrum",
 		"company": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of Defense",
 		"bio": `Kareem A. Sykes currently serves as Program Manager for Project Spectrum, a U.S. Department of Defense (DoD) recognized cybersecurity awareness initiative that offer resources, training and tools toward increasing cybersecurity awareness and hygiene for small businesses in particular. Mr. Sykes provides strategic leadership for a dynamic team of cybersecurity and outreach professionals whose collective aim centers around providing the educational resources and tools small businesses and institutions need to develop, implement, and maintain cybersecurity compliance. He oversees and directs the daily execution of multiple projects within the large-scale program and assures that the initiative adheres to government regulatory guidance. Mr. Sykes also manages contractual requirements to assure that Project Spectrum meets the cost, schedule, and performance goals required by the DoD Office of Small Business Programs (OSBP).
 	<br/>
@@ -855,6 +855,26 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	<br/>
 	In April 2022, she became the Deputy of Small Business programs and it has been the best career move. In year one, she has transformed the Small Business office. Outreach and advocating is one of her best strengths. Many small businesses has reached out to NAVSEA Director of Office of Small Business Programs and her Executive Director at MARMC to express their gratitude and how much they appreciate all she does for small businesses. She attends many outreach events and strives to be one of the best Deputy of Small Business in the Department of Navy.`,
 	}
+	,
+	"terressa-bebout": {
+		"image": "terressa-bebout.webp",
+		"name": "Terressa Bebout",
+		"position": "Director",
+		"company": "Commander Fleet Readiness Centers (COMFRC) Office of Small Business Programs",
+		"bio": `Ms. Terressa Bebout has served the United States Navy both as contractor service support (CSS) and as a civil servant for a combined 36 years of service. Currently, she serves as the Technical Director of Small Business Strategy for the Office of Small Business Program (OSBP) Naval Air Systems Command (NAVAIR), as well as the COMFRC OSBP Director. 
+	<br/>
+	
+	<br/>
+	Ms. Bebout has also supported NAVAIR as a Workforce Advisor in Career Development and Planning Division and as the Director of Training and Strategic Initiatives, serving as Training Lead, Supervisory Contracting Officer and procurement subject matter expert for NAVAIR Procurement Group. 
+	<br/>
+	
+	<br/>
+	Previously, she served as a Senior Procurement Analyst Deputy for the Assistant Secretary of the Navy (Acquisition and Procurement) (DASN (AP)). In this capacity, she was the NAVSEA/NAVWAR Action Officer responsible for contractual oversight of portfolios that include the nation’s most complex shipbuilding, weapons systems and IT procurement programs, as well as the Navy’s web-based services acquisition marketplace, SeaPort. She has also supported Naval Supply Systems Command (NAVSUP) as a Contracting Officer and the Africa Command Grants Officer supporting Naval Health Research Center DOD HIV Prevention Program and President's Emergency Plan for AIDS Relief. Ms. Bebout started her career serving the Marines at Cherry Point, NC. She spent her first 15 years in logistics at the facility currently now known as FRC East.   
+	<br/>
+	
+	<br/>
+	Ms. Bebout has been bestowed a BS in Logistic and Business Management, two Master of Science degrees – American University Program Management and Eisenhower School of National Security and Resource Strategy, and a Liberty University Executive Certificate in Strategic Leadership. `,
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -926,10 +946,13 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		//{ id: "patricia-waddell", invited: true },
 	],
 	"4": [ // 2025NMCPC
-		//"stephen-mongold",
-		//"stacey-l-cooper",
-		//"charles-sills",
-		//"brian-liesveld",
+		"stephen-mongold",
+		"stacey-l-cooper",
+		"charles-sills",
+		"brian-liesveld",
+		"arveice-washington",
+		{ id: "kareem-sykes", invited: true },
+		"terressa-bebout",
 	]
 };
 
