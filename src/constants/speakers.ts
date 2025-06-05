@@ -859,8 +859,8 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	"terressa-bebout": {
 		"image": "terressa-bebout.webp",
 		"name": "Terressa Bebout",
-		"position": "Director",
-		"company": "Commander Fleet Readiness Centers (COMFRC) Office of Small Business Programs",
+		"position": "Director, Commander Fleet Readiness Centers (COMFRC) Office of Small Business Programs",
+		"company": "Naval Air Systems Command (NAVAIR)",
 		"bio": `Ms. Terressa Bebout has served the United States Navy both as contractor service support (CSS) and as a civil servant for a combined 36 years of service. Currently, she serves as the Technical Director of Small Business Strategy for the Office of Small Business Program (OSBP) Naval Air Systems Command (NAVAIR), as well as the COMFRC OSBP Director. 
 	<br/>
 	
