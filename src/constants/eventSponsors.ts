@@ -147,6 +147,14 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 ],
             },
             {
+                id: "vip-networking-reception-sponsor",
+                name: "VIP Networking Reception Sponsor",
+                style: "bg-sky-300 text-slate-900",
+                sponsorIds: [
+                    "mcs-government-services",
+                ],
+            },
+            {
                 id: "small-business-sponsor",
                 name: "Small Business Sponsors",
                 style: "bg-sb-100 text-slate-900",

@@ -494,6 +494,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.hamptonroadsalliance.com/",
     size: 'medium'
   },
+  "mcs-government-services": {
+    id: "mcs-government-services",
+    name: "MCS Government Services",
+    logo: "/sponsors/mcs-government-services.webp",
+    website: "https://www.mcs360.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
