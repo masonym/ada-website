@@ -96,4 +96,5 @@ export interface RegistrationType {
   type?: 'paid' | 'free' | 'complimentary' | 'sponsor';
   receptionPrice?: string;
   availabilityInfo?: string;
+  category: 'ticket' | 'exhibit' | 'sponsorship';
 }

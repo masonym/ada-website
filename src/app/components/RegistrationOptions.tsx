@@ -8,6 +8,7 @@ import { Award, ChevronRight, Mail } from 'lucide-react';
 import SponsorProspectus from './SponsorProspectus';
 import ExhibitInstructionsButton from './ExhibitInstructionsButton';
 import { RegistrationType } from '@/types/event-registration/registration';
+import { getRegistrationsForEvent, ModalRegistrationType } from '@/lib/registration-adapters';
 
 export type RegistrationProps = {
     event: Event;
@@ -26,46 +27,13 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
         notFound();
     }
 
-    // Map the registration types to the format expected by the RegistrationCard
-    const registrationCards = currentEvent.registrations.map((reg: any) => {
-        // Create a registration object that matches RegistrationCardProps
-        const registration = {
-            // Core RegistrationType fields
-            id: reg.id?.toString() || '',
-            name: reg.name || reg.title || 'Registration',
-            description: reg.description || '',
-            price: typeof reg.price === 'number' ? reg.price : 0,
-            type: (reg.type as 'paid' | 'free' | 'complimentary' | 'sponsor') || 'paid',
-            isActive: reg.isActive !== false,
-            requiresAttendeeInfo: reg.requiresAttendeeInfo !== false,
-            isGovtFreeEligible: reg.isGovtFreeEligible || false,
-            perks: Array.isArray(reg.perks) ? reg.perks : [],
-            availabilityInfo: reg.availabilityInfo,
-            maxQuantityPerOrder: typeof reg.maxQuantityPerOrder === 'number' ? reg.maxQuantityPerOrder : 10,
-            earlyBirdPrice: typeof reg.earlyBirdPrice === 'number' ? reg.earlyBirdPrice : undefined,
-            earlyBirdDeadline: reg.earlyBirdDeadline,
-            quantityAvailable: typeof reg.quantityAvailable === 'number' ? reg.quantityAvailable : undefined,
-
-            // UI fields for RegistrationCard
-            title: reg.title || reg.name || 'Registration',
-            headerImage: reg.headerImage || '',
-            subtitle: reg.subtitle || '',
-            buttonText: reg.buttonText || 'Register Now',
-            buttonLink: reg.buttonLink,
-            receptionPrice: reg.receptionPrice,
-        };
-
-        return registration as RegistrationType & {
-            title: string;
-            headerImage: string;
-            subtitle: string;
-            buttonText: string;
-            buttonLink: string;
-        };
-    });
-
-    const earlyBirdDeadline = currentEvent.registrations.find(reg => reg.earlyBirdDeadline)?.earlyBirdDeadline || null;
-    const isEarlyBird = earlyBirdDeadline && new Date() < new Date(earlyBirdDeadline);
+    // Use the adapter function to get properly typed registration data
+    const registrationCards: ModalRegistrationType[] = getRegistrationsForEvent(event.id);
+    
+    // Find any registration with an early bird deadline
+    const registrationWithDeadline = registrationCards.find(reg => reg.earlyBirdDeadline);
+    const earlyBirdDeadline = registrationWithDeadline?.earlyBirdDeadline || null;
+    const isEarlyBird = earlyBirdDeadline ? new Date() < new Date(earlyBirdDeadline) : false;
 
     // Determine grid columns based on number of cards
     const getGridCols = (count: number) => {
