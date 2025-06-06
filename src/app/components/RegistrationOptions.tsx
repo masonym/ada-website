@@ -8,7 +8,7 @@ import { Award, ChevronRight, Mail } from 'lucide-react';
 import SponsorProspectus from './SponsorProspectus';
 import ExhibitInstructionsButton from './ExhibitInstructionsButton';
 import { RegistrationType } from '@/types/event-registration/registration';
-import { getRegistrationsForEvent, ModalRegistrationType } from '@/lib/registration-adapters';
+import { getRegistrationsForEvent, getExhibitorsForEvent, ModalRegistrationType } from '@/lib/registration-adapters';
 
 export type RegistrationProps = {
     event: Event;
@@ -27,23 +27,27 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
         notFound();
     }
 
-    // Use the adapter function to get properly typed registration data
+    // Use the adapter functions to get properly typed registration and exhibitor data
     const registrationCards: ModalRegistrationType[] = getRegistrationsForEvent(event.id);
+    const exhibitorCards: ModalRegistrationType[] = getExhibitorsForEvent(event.id);
+    
+    // Combine registration and exhibitor cards
+    const allCards = [...registrationCards, ...exhibitorCards];
     
     // Find any registration with an early bird deadline
-    const registrationWithDeadline = registrationCards.find(reg => reg.earlyBirdDeadline);
+    const registrationWithDeadline = allCards.find(reg => reg.earlyBirdDeadline);
     const earlyBirdDeadline = registrationWithDeadline?.earlyBirdDeadline || null;
     const isEarlyBird = earlyBirdDeadline ? new Date() < new Date(earlyBirdDeadline) : false;
 
     // Determine grid columns based on number of cards
     const getGridCols = (count: number) => {
-        if (count === 1) return 'md:grid-cols-1';
-        if (count === 2) return 'md:grid-cols-2';
-        if (count === 3) return 'md:grid-cols-3';
-        return 'md:grid-cols-4';
+        if (count === 1) return 'sm:grid-cols-1 md:grid-cols-1';
+        if (count === 2) return 'sm:grid-cols-1 md:grid-cols-2';
+        if (count === 3) return 'sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
+        return 'sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4';
     };
 
-    const gridCols = getGridCols(registrationCards.length);
+    const gridCols = getGridCols(allCards.length);
 
     return (
         <div className="w-full px-4">
@@ -55,8 +59,8 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
                 {/* Registration Cards Grid - Responsive and Centered */}
                 <div className="w-full flex justify-center">
                     <div className={`grid grid-cols-1 ${gridCols} gap-6 justify-center`}
-                        style={{ maxWidth: `${registrationCards.length * 320 + (registrationCards.length - 1) * 24}px` }}>
-                        {registrationCards.map((item, index) => {
+                        style={{ maxWidth: `${allCards.length * 320 + (allCards.length - 1) * 24}px` }}>
+                        {allCards.map((item, index) => {
                             // Ensure type is always defined with a default value
                             const registrationItem = {
                                 ...item,

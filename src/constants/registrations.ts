@@ -52,29 +52,7 @@ export const REGISTRATION_TYPES = [
                 maxQuantityPerOrder: 2,
                 isGovtFreeEligible: false
             },
-            {
-                title: "Table-Top Exhibit Space",
-                headerImage: "exhibit-table-pass.webp",
-                perks: [
-                    "(1) Exhibitor Pass",
-                    "Additional Passes can be purchased for $395 each",
-                    "<b>8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and Chairs</b>",
-                    "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
-                    "Access to VIP Networking Reception on July 29, 2025 from 5:30 PM - 7:30 PM",
-                ],
-                buttonText: "Register Now",
-                earlyBirdPrice: 1250,
-                price: 1500,
-                earlyBirdDeadline: "2025-01-18T08:00:00Z",
-                type: 'paid' as const,
-                id: 'test-exhibit',
-                name: 'Table-Top Exhibit Space',
-                description: 'Exhibitor registration with table-top space',
-                isActive: true,
-                requiresAttendeeInfo: true,
-                maxQuantityPerOrder: 1,
-                isGovtFreeEligible: false
-            },
+            // Exhibitor information moved to exhibitors.ts
             {
                 title: "Government Official & Military Pass",
                 headerImage: "gov-pass.webp",
@@ -123,28 +101,7 @@ export const REGISTRATION_TYPES = [
             },
 
 
-            // display table
-            {
-                title: "Display Table",
-                headerImage: "display-table-pass.webp",
-                perks: [
-                    "Registration for 2 People",
-                    "2 Networking Reception Tickets",
-                    "6' Display Table in General Session",
-                    "Access to All Event Sessions",
-                    "Speaker Presentations and Materials",
-                    "Digital/Physical Copies of Agenda",
-                    "Buffet Lunch",
-                    "Access to Photos & Videos from Conference",
-                    "Use code ADDITIONAL to Register 2nd Attendee"
-                ],
-                buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
-                // earlyBirdPrice: 550,
-                price: 1000,
-                // earlyBirdDeadline: "2024-10-18T08:00:00Z",
-                type: "paid"
-            },
+            // Display table information moved to exhibitors.ts
 
             {
                 title: "Government Official & Military Pass",
@@ -233,23 +190,6 @@ export const REGISTRATION_TYPES = [
                 type: "paid",
             },
 
-            {
-                title: "Table-Top Exhibit Space",
-                headerImage: "exhibit-table-pass.webp",
-                perks: [
-                    "(1) Exhibitor Pass",
-                    "Additional Passes can be purchased for $395 each",
-                    "<b>8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and Chairs</b>",
-                    "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
-                    "Access to VIP Networking Reception on March 11, 2025 from 5:30 PM - 7:30 PM",
-                ],
-                buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
-                earlyBirdPrice: 1250,
-                price: 1500,
-                earlyBirdDeadline: "2025-01-18T08:00:00Z",
-                type: "paid"
-            },
 
             {
                 title: "Government Official & Military Pass",
@@ -385,22 +325,6 @@ export const REGISTRATION_TYPES = [
                 type: "paid",
             },
 
-            {
-                id: "table-top-exhibit-space",
-                title: "Table-Top Exhibit Space",
-                headerImage: "exhibit-table-pass.webp",
-                perks: [
-                    "(1) Exhibitor Pass",
-                    "Additional Passes can be purchased for $395 each",
-                    "<b>8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and Chairs</b>",
-                    "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
-                    "Access to VIP Networking Reception on July 29, 2025 from 5:30 PM - 7:30 PM",
-                ],
-                buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
-                price: 1250,
-                type: "paid"
-            },
 
             {
                 id: "govt-official-military-pass",

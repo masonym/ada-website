@@ -1,6 +1,6 @@
 import { REGISTRATION_TYPES } from '@/constants/registrations';
 import { SPONSORSHIP_TYPES } from '@/constants/sponsorships';
-import { EXHIBITOR_TYPES } from '@/constants/exhibitors';
+import { EXHIBITOR_TYPES, ExhibitorType } from '@/constants/exhibitors';
 
 // Define types based on the structure of the constants files
 type RegistrationType = {
@@ -41,14 +41,6 @@ export interface SponsorshipType {
 };
 
 type PrimeSponsorType = SponsorshipType;
-
-type ExhibitorType = {
-  id: string;
-  title: string;
-  cost: number | string;
-  perks?: PerkType[];
-  colour?: string;
-};
 
 // Define the common type for all registration items
 export interface ModalRegistrationType {
@@ -188,26 +180,29 @@ export function getExhibitorsForEvent(eventId: number | string): ModalRegistrati
     const processedPerks = exhibitor.perks ? exhibitor.perks.map((perk: PerkType) =>
       typeof perk === 'string'
         ? perk
-        : `<b>${perk.tagline}</b>: ${perk.description}`
+        : perk.description
     ) : [];
 
     return {
       id: exhibitor.id,
       name: exhibitor.title,
       title: exhibitor.title,
-      description: `${exhibitor.title} - ${exhibitor.cost}`,
+      description: exhibitor.description || `${exhibitor.title} - ${exhibitor.cost}`,
       price: exhibitor.cost,
-      isActive: true,
-      requiresAttendeeInfo: true,
-      isGovtFreeEligible: false,
+      earlyBirdPrice: exhibitor.earlyBirdPrice,
+      earlyBirdDeadline: exhibitor.earlyBirdDeadline,
+      isActive: exhibitor.isActive ?? true,
+      requiresAttendeeInfo: exhibitor.requiresAttendeeInfo ?? true,
+      isGovtFreeEligible: exhibitor.isGovtFreeEligible ?? false,
       type: 'paid',
-      headerImage: 'exhibit.webp', // Default image
-      buttonText: 'Select',
+      headerImage: exhibitor.headerImage || 'exhibit.webp',
+      buttonText: exhibitor.buttonText || 'Select',
+      buttonLink: exhibitor.buttonLink,
       perks: processedPerks,
       category: 'exhibit',
-      quantityAvailable: 1, // Default to 1 if slotsPerEvent is not provided
-      maxQuantityPerOrder: 1,
-      colour: 'colour' in exhibitor ? exhibitor.colour : undefined,
+      quantityAvailable: exhibitor.slotsPerEvent || 1,
+      maxQuantityPerOrder: exhibitor.maxQuantityPerOrder || 1,
+      colour: exhibitor.colour,
     };
   });
 }

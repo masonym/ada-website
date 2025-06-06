@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Event } from '@/types/events';
 import { getCdnPath } from '@/utils/image';
 import RegistrationModal from '@/components/RegistrationModal';
-import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, ModalRegistrationType } from '@/lib/registration-adapters';
+import { ModalRegistrationType } from '@/lib/registration-adapters';
 
 interface ContactInfo {
   contactEmail2?: string;
@@ -52,11 +52,6 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
     })
     : null;
 
-  // Get all registration types for this event using our adapter functions
-  const allRegistrations = getRegistrationsForEvent(event.id) as RegistrationCardProps[];
-  const sponsorships = getSponsorshipsForEvent(event.id) as RegistrationCardProps[];
-  const exhibitors = getExhibitorsForEvent(event.id) as RegistrationCardProps[];
-
   const handleCardClick = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (item.buttonLink) {
@@ -79,7 +74,7 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
         onClick={handleCardClick}
       >
         {/* Image container */}
-        <div className="relative w-full h-48">
+        <div className="relative w-full h-40">
           <Image
             src={getCdnPath(`events/${event.eventShorthand}/registration-cards/${item.headerImage}`)}
             alt={item.title}
@@ -91,7 +86,7 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
 
         {/* Content */}
         <div className="flex flex-col flex-grow p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+          <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">{item.title}</h3>
           {item.subtitle && <p className="text-gray-600 mb-4">{item.subtitle}</p>}
 
 

@@ -206,7 +206,7 @@ const RegistrationModal = ({
     setTicketQuantities({});
     // Reset attendeesByTicket by re-initializing based on initial (zero) quantities or just empty
     const initialAttendees: { [key: string]: ModalAttendeeInfo[] } = {};
-    
+
     // Helper function to reset attendees for any registration type
     const resetAttendeesForRegistrationType = (registrations: ModalRegistrationType[]) => {
       registrations.forEach(reg => {
@@ -217,13 +217,13 @@ const RegistrationModal = ({
         }
       });
     };
-    
+
     // Reset attendees for all registration types
     resetAttendeesForRegistrationType(allRegistrations);
     resetAttendeesForRegistrationType(exhibitors);
     resetAttendeesForRegistrationType(sponsorships);
     setAttendeesByTicket(initialAttendees); // Or simply {}
-    
+
     // Reset sponsor pass attendees
     setSponsorPassAttendees({});
     setBillingInfo({ ...initialBillingInfo });
@@ -285,16 +285,16 @@ const RegistrationModal = ({
           []; // Empty array by default
       }
     });
-    
+
     // Initialize sponsorships with quantity 0 by default
     sponsorships.forEach((sponsor) => {
       // If this is the selected sponsorship and we're opening the modal, initialize with quantity 1
       const isSelected = selectedRegistration && sponsor.id === selectedRegistration.id;
       initialQuantities[sponsor.id] = isSelected && isOpen ? 1 : 0;
-      
+
       // For sponsorships, we don't add any attendees by default - only sponsor passes
       initialAttendees[sponsor.id] = [];
-      
+
       // Initialize sponsor passes if this is the selected sponsorship
       if (isSelected && isOpen && sponsor.sponsorPasses && sponsor.sponsorPasses > 0) {
         // Create sponsor pass attendees for this sponsorship
@@ -320,27 +320,27 @@ const RegistrationModal = ({
 
     // Check if this is a sponsorship
     const selectedSponsorship = sponsorships.find(s => s.id === id);
-    
+
     if (selectedSponsorship) {
       // For sponsorships, we don't add regular attendees, only sponsor passes
       // Keep the attendeesByTicket array empty for sponsorships
       const newAttendees: Record<string, ModalAttendeeInfo[]> = { ...attendeesByTicket };
       newAttendees[id] = [];
       setAttendeesByTicket(newAttendees);
-      
+
       // Handle sponsor passes for sponsorships
       if (selectedSponsorship.sponsorPasses && selectedSponsorship.sponsorPasses > 0) {
         // Create or update sponsor pass attendees for this sponsorship
         const newSponsorPassAttendees = { ...sponsorPassAttendees };
-        
+
         // Calculate total sponsor passes based on sponsorship quantity
         const totalSponsorPasses = selectedSponsorship.sponsorPasses * newQuantity;
-        
+
         newSponsorPassAttendees[id] = Array(totalSponsorPasses).fill(null).map((_, i): ModalAttendeeInfo => {
           const existingAttendee = sponsorPassAttendees[id]?.[i];
           return existingAttendee || { ...initialModalAttendeeInfo };
         }) as ModalAttendeeInfo[];
-        
+
         setSponsorPassAttendees(newSponsorPassAttendees);
         console.log(`Added ${totalSponsorPasses} sponsor pass attendees for ${selectedSponsorship.name}`);
       }
@@ -365,31 +365,31 @@ const RegistrationModal = ({
 
       // Check if this is a sponsorship
       const selectedSponsorship = sponsorships.find(s => s.id === id);
-      
+
       if (selectedSponsorship) {
         // For sponsorships, we keep the attendeesByTicket array empty
         const newAttendees: Record<string, ModalAttendeeInfo[]> = { ...attendeesByTicket };
         newAttendees[id] = [];
         setAttendeesByTicket(newAttendees);
-        
+
         // Handle sponsor passes for sponsorships
         if (selectedSponsorship.sponsorPasses && selectedSponsorship.sponsorPasses > 0) {
           // Update sponsor pass attendees for this sponsorship
           const newSponsorPassAttendees = { ...sponsorPassAttendees };
-          
+
           // Recalculate the number of sponsor passes based on the new quantity
           const totalSponsorPasses = selectedSponsorship.sponsorPasses * newQuantity;
-          
+
           if (newSponsorPassAttendees[id]) {
             // Reduce the number of sponsor pass attendees to match the new quantity
             newSponsorPassAttendees[id] = newSponsorPassAttendees[id].slice(0, totalSponsorPasses);
           }
-          
+
           // If quantity is 0, remove all sponsor pass attendees for this sponsorship
           if (newQuantity === 0) {
             delete newSponsorPassAttendees[id];
           }
-          
+
           setSponsorPassAttendees(newSponsorPassAttendees);
         }
       } else {
@@ -520,31 +520,31 @@ const RegistrationModal = ({
     const calculateSubtotal = (registrations: ModalRegistrationType[]) => {
       return registrations.reduce((total, reg) => {
         const quantity = ticketQuantities[reg.id] || 0;
-        
+
         // Skip calculation for items with no quantity or complimentary/string prices
         if (quantity === 0 || reg.type === 'complimentary' || typeof reg.price === 'string') {
           return total;
         }
-        
+
         // Check if early bird pricing applies
         const isEarlyBird = reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline);
         // Use early bird price if available and date is valid, otherwise use regular price
         const ticketPrice = isEarlyBird && reg.earlyBirdPrice !== undefined ? reg.earlyBirdPrice : reg.price;
-        
+
         // Handle string or number price values
         const numericPrice = typeof ticketPrice === 'string' ?
           parseFloat(ticketPrice.replace(/[^0-9.]/g, '')) || 0 :
           ticketPrice;
-        
+
         return total + (quantity * numericPrice);
       }, 0);
     };
-    
+
     // Calculate subtotals for each registration type
     const ticketsTotal = calculateSubtotal(allRegistrations);
     const exhibitorsTotal = calculateSubtotal(exhibitors);
     const sponsorshipsTotal = calculateSubtotal(sponsorships);
-    
+
     // Return the combined total
     return ticketsTotal + exhibitorsTotal + sponsorshipsTotal;
   };
@@ -560,18 +560,18 @@ const RegistrationModal = ({
     if (typeof reg.price === 'string') {
       return reg.price;
     }
-    
+
     // Check if early bird pricing applies
     if (reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline)) {
-      return typeof reg.earlyBirdPrice === 'string' 
+      return typeof reg.earlyBirdPrice === 'string'
         ? parseFloat(reg.earlyBirdPrice.replace(/[^0-9.]/g, '')) || 0
         : reg.earlyBirdPrice;
     }
-    
+
     // Otherwise return regular price
     return reg.price;
   };
-  
+
   // Pre-validate complimentary tickets to ensure they have gov/mil emails
 
   const handlePaymentSuccess = (paymentIntentId: string) => {
@@ -622,14 +622,14 @@ const RegistrationModal = ({
         .map(reg => {
           // Get the effective price (considering early bird pricing)
           const effectivePrice = getEffectivePrice(reg);
-          
+
           // For sponsorships, ensure we pass a numeric price to the API
           // This is crucial because the API needs numeric prices for payment processing
-          const processedPrice = 
-            category === 'sponsorship' && typeof effectivePrice === 'string' 
-              ? parseFloat(effectivePrice.replace(/[^0-9.]/g, '')) || reg.price 
+          const processedPrice =
+            category === 'sponsorship' && typeof effectivePrice === 'string'
+              ? parseFloat(effectivePrice.replace(/[^0-9.]/g, '')) || reg.price
               : effectivePrice;
-          
+
           return {
             ticketId: reg.id,
             ticketName: reg.title,
@@ -643,19 +643,19 @@ const RegistrationModal = ({
           };
         });
     };
-    
+
     // Helper function to process sponsor pass attendees
     const processSponsorPasses = () => {
       const sponsorPassTickets: any[] = [];
-      
+
       // For each sponsorship with passes
       Object.keys(sponsorPassAttendees).forEach(sponsorId => {
         const sponsor = sponsorships.find(s => s.id === sponsorId);
         if (!sponsor) return;
-        
+
         const passAttendees = sponsorPassAttendees[sponsorId] || [];
         if (passAttendees.length === 0) return;
-        
+
         // Create a special ticket entry for these sponsor passes
         sponsorPassTickets.push({
           ticketId: `${sponsorId}-vip-pass`,
@@ -668,7 +668,7 @@ const RegistrationModal = ({
           attendeeInfo: passAttendees.map(att => ({ ...att })),
         });
       });
-      
+
       return sponsorPassTickets;
     };
 
@@ -679,10 +679,10 @@ const RegistrationModal = ({
       ...processRegistrations(sponsorships, 'sponsorship'),
       ...processSponsorPasses() // Add sponsor pass attendees
     ];
-    
+
     // Add ticket prices explicitly to ensure the backend has the correct price information
     const ticketPrices: Record<string, number> = {};
-    
+
     // Add prices for regular tickets
     [...allRegistrations, ...exhibitors, ...sponsorships].forEach(reg => {
       if (ticketQuantities[reg.id] && ticketQuantities[reg.id] > 0) {
@@ -696,7 +696,7 @@ const RegistrationModal = ({
         }
       }
     });
-    
+
     // Add complimentary prices for sponsor passes
     Object.keys(sponsorPassAttendees).forEach(sponsorId => {
       ticketPrices[`${sponsorId}-vip-pass`] = 0; // Sponsor passes are complimentary
@@ -712,9 +712,9 @@ const RegistrationModal = ({
       )?.id;
     };
 
-    const firstRegWithAttendeesId = 
-      findFirstRegWithAttendees(allRegistrations) || 
-      findFirstRegWithAttendees(exhibitors) || 
+    const firstRegWithAttendeesId =
+      findFirstRegWithAttendees(allRegistrations) ||
+      findFirstRegWithAttendees(exhibitors) ||
       findFirstRegWithAttendees(sponsorships);
 
     let primaryAttendeeData: Partial<ModalAttendeeInfo> = {};
@@ -879,7 +879,7 @@ const RegistrationModal = ({
                 ...exhibitors.map(reg => ({ ...reg, categoryName: 'Exhibitor' })),
                 ...sponsorships.map(reg => ({ ...reg, categoryName: 'Sponsorship' }))
               ];
-              
+
               // Create a consolidated list of all attendees for copy functionality
               const consolidatedAttendees = allRegistrationTypes
                 .filter(r => r.requiresAttendeeInfo && (ticketQuantities[r.id] || 0) > 0)
@@ -888,7 +888,7 @@ const RegistrationModal = ({
                   ticketName: `${r.name} (${r.categoryName})`,
                   attendees: attendeesByTicket[r.id] || []
                 }));
-              
+
               // Add sponsor pass attendees to the consolidated list
               const sponsorPassesInfo = Object.keys(sponsorPassAttendees).map(sponsorId => {
                 const sponsor = sponsorships.find(s => s.id === sponsorId);
@@ -898,9 +898,9 @@ const RegistrationModal = ({
                   attendees: sponsorPassAttendees[sponsorId] || []
                 };
               });
-              
+
               const allAttendeesForCopy = [...consolidatedAttendees, ...sponsorPassesInfo];
-              
+
               return (
                 <>
                   {/* Regular registration attendee forms - exclude sponsorships */}
@@ -929,14 +929,14 @@ const RegistrationModal = ({
                         })}
                       </div>
                     ))}
-                  
+
                   {/* Sponsor pass attendee forms */}
                   {Object.keys(sponsorPassAttendees).map(sponsorId => {
                     const sponsor = sponsorships.find(s => s.id === sponsorId);
                     const passAttendees = sponsorPassAttendees[sponsorId] || [];
-                    
+
                     if (passAttendees.length === 0) return null;
-                    
+
                     return (
                       <div key={`${sponsorId}-passes`}>
                         <h4 className="text-lg font-medium mt-4 mb-2 text-indigo-700">
@@ -968,7 +968,7 @@ const RegistrationModal = ({
                               onCopyFrom={(sourceTicketId, sourceAttendeeIdx) => {
                                 // Create a handler for copying to sponsor pass attendees
                                 let sourceAttendee;
-                                
+
                                 // Check if source is a regular attendee
                                 const regularSource = consolidatedAttendees.find(item => item.ticketId === sourceTicketId);
                                 if (regularSource) {
@@ -980,7 +980,7 @@ const RegistrationModal = ({
                                     sourceAttendee = sponsorPassSource.attendees[sourceAttendeeIdx];
                                   }
                                 }
-                                
+
                                 if (sourceAttendee) {
                                   const newSponsorPassAttendees = { ...sponsorPassAttendees };
                                   if (!newSponsorPassAttendees[sponsorId]) {
@@ -1003,7 +1003,7 @@ const RegistrationModal = ({
                   })}
                 </>
               );
-            })()} 
+            })()}
             <TermsAndConditions
               agreed={agreedToTerms}
               onAgree={setAgreedToTerms} // Corrected prop name
@@ -1190,15 +1190,15 @@ const RegistrationModal = ({
                             </span>
                           </p>
                         </div>
-                      ): reg.type === 'paid' ? (
+                      ) : reg.type === 'paid' ? (
                         // Paid tickets, after early bird deadline
                         <p className="text-lg font-semibold text-indigo-600 mb-2">
-                        ${Number(reg.price).toLocaleString()}
+                          ${Number(reg.price).toLocaleString()}
                         </p>
                       ) : (
                         // Compliemntary tickets
                         <p className="text-lg font-semibold text-indigo-600 mb-2">
-                        {reg.price}
+                          {reg.price}
                         </p>
                       )}
 
@@ -1365,7 +1365,7 @@ const RegistrationModal = ({
                   {/* Summary of selected items */}
                   <div className="mb-3">
                     <h4 className="text-lg font-medium mb-2">Registration Summary</h4>
-                    
+
                     {/* Tickets summary */}
                     {allRegistrations.some(reg => (ticketQuantities[reg.id] || 0) > 0) && (
                       <div className="mb-2">
@@ -1386,7 +1386,7 @@ const RegistrationModal = ({
                         </ul>
                       </div>
                     )}
-                    
+
                     {/* Exhibitors summary */}
                     {exhibitors.some(reg => (ticketQuantities[reg.id] || 0) > 0) && (
                       <div className="mb-2">
@@ -1407,7 +1407,7 @@ const RegistrationModal = ({
                         </ul>
                       </div>
                     )}
-                    
+
                     {/* Sponsorships summary */}
                     {sponsorships.some(reg => (ticketQuantities[reg.id] || 0) > 0) && (
                       <div className="mb-2">
@@ -1429,7 +1429,7 @@ const RegistrationModal = ({
                       </div>
                     )}
                   </div>
-                  
+
                   {/* Total and checkout button */}
                   <div className="flex justify-between items-center border-t pt-3">
                     <p className="text-xl font-semibold">Total: ${calculateTotal().toFixed(2)}</p>

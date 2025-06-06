@@ -1,4 +1,31 @@
-export const EXHIBITOR_TYPES = [
+// Define the exhibitor type with all necessary fields for registration display
+export interface ExhibitorType {
+    id: string;
+    title: string;
+    cost: number | string;
+    perks?: Array<{ tagline: string; description: string }> | string[];
+    colour?: string;
+    slotsPerEvent?: number;
+    showRemaining?: boolean;
+    headerImage?: string;
+    buttonText?: string;
+    buttonLink?: string;
+    earlyBirdPrice?: number;
+    earlyBirdDeadline?: string;
+    description?: string;
+    isActive?: boolean;
+    requiresAttendeeInfo?: boolean;
+    maxQuantityPerOrder?: number;
+    isGovtFreeEligible?: boolean;
+}
+
+// Define the structure for exhibitor types by event
+export interface ExhibitorEventType {
+    id: number;
+    exhibitors: ExhibitorType[];
+}
+
+export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
     {
         id: 1,
         exhibitors: [
@@ -6,6 +33,13 @@ export const EXHIBITOR_TYPES = [
                 id: "table-top-exhibit-space",
                 title: "Display Table",
                 cost: 1000,
+                headerImage: "display-table-pass.webp",
+                buttonText: "Register Now",
+                description: "Display Table for your organization",
+                isActive: true,
+                requiresAttendeeInfo: true,
+                maxQuantityPerOrder: 1,
+                isGovtFreeEligible: false,
                 perks: [
                     { tagline: "Team Access", description: "Registration for 2 People" },
                     { tagline: "Networking", description: "2 VIP Networking Reception Passes" },
@@ -26,6 +60,13 @@ export const EXHIBITOR_TYPES = [
                 id: "table-top-exhibit-space",
                 title: "Table-Top Exhibit Space",
                 cost: 1250,
+                headerImage: "exhibit-table-pass.webp",
+                buttonText: "Register Now",
+                description: "Table-Top Exhibit Space for your organization",
+                isActive: true,
+                requiresAttendeeInfo: true,
+                maxQuantityPerOrder: 1,
+                isGovtFreeEligible: false,
                 perks: [
                     { tagline: "Event Access", description: " (1) Exhibitor Pass. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Exhibit Space", description: "8'x10' Exhibit Space Placed in Exhibit Area/Foyer. 6' Exhibit Table and Chairs" },
@@ -44,6 +85,15 @@ export const EXHIBITOR_TYPES = [
                 id: "exhibitor",
                 title: "Table-Top Exhibit Space",
                 cost: 1250,
+                earlyBirdPrice: 1000,
+                earlyBirdDeadline: "2025-01-18T08:00:00Z",
+                headerImage: "exhibit-table-pass.webp",
+                buttonText: "Register Now",
+                description: "Table-Top Exhibit Space for your organization",
+                isActive: true,
+                requiresAttendeeInfo: true,
+                maxQuantityPerOrder: 1,
+                isGovtFreeEligible: false,
                 slotsPerEvent: 50,
                 showRemaining: true,
                 perks: [
