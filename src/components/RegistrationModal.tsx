@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { format, parse, isBefore, addDays } from 'date-fns';
 import * as yup from 'yup';
 import { X, CreditCard, Ticket, Package, Award } from 'lucide-react';
 import { Event } from '@/types/events';
@@ -80,6 +81,11 @@ interface RegistrationModalProps {
   onClose: () => void;
   selectedRegistration: ModalRegistrationType | null; // Allow null for register button
   event: EventWithContact;
+  /**
+   * Number of days before the event when registration closes
+   * If not provided, registration closes when the event starts
+   */
+  registrationCloseDaysBefore?: number;
 }
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
@@ -113,6 +119,7 @@ const RegistrationModal = ({
   onClose,
   selectedRegistration,
   event,
+  registrationCloseDaysBefore = 0,
 }: RegistrationModalProps): JSX.Element | null => {
   // Get registrations, sponsorships, and exhibitors directly using the event ID
   const allRegistrations = useMemo<ModalRegistrationType[]>(() => getRegistrationsForEvent(event.id), [event.id]);
@@ -163,6 +170,39 @@ const RegistrationModal = ({
   const prevIsOpenRef = useRef(isOpen);
   const prevShowConfirmationRef = useRef(showConfirmationView);
 
+  // Check if registration is closed based on event start time
+  const isRegistrationClosed = useCallback(() => {
+    try {
+      const now = new Date();
+      
+      // Parse the event date and time
+      const eventDateStr = event.date; // Format: "Month DD, YYYY"
+      const eventTimeStr = event.timeStart; // Format: "HH:MM AM/PM"
+      
+      // Parse the date and time strings
+      const eventDate = parse(eventDateStr, 'MMMM d, yyyy', new Date());
+      const [timeStr, period] = eventTimeStr.split(' ');
+      const [hours, minutes] = timeStr.split(':').map(Number);
+      
+      // Adjust hours for PM
+      let adjustedHours = hours;
+      if (period === 'PM' && hours < 12) adjustedHours += 12;
+      if (period === 'AM' && hours === 12) adjustedHours = 0;
+      
+      // Set the time on the event date
+      eventDate.setHours(adjustedHours, minutes);
+      
+      // Calculate the registration close date (default to event start time)
+      const registrationCloseDate = addDays(eventDate, -registrationCloseDaysBefore);
+      
+      // Check if current time is after the registration close date
+      return isBefore(registrationCloseDate, now);
+    } catch (error) {
+      console.error('Error checking registration status:', error);
+      return false; // If there's an error, allow registration
+    }
+  }, [event.date, event.timeStart, registrationCloseDaysBefore]);
+  
   // Effect to manage state when modal is opened or closed
   useEffect(() => {
     // When the modal is opened
@@ -1101,25 +1141,51 @@ const RegistrationModal = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex justify-center items-center">
-      <div className="relative mx-auto p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white overflow-y-auto max-h-[90vh]">
-        {showConfirmationView && confirmationData ? (
-          // Confirmation View
-          <div className="text-center">
-            <h2 className="text-2xl font-semibold text-green-600 mb-4">Registration Confirmed!</h2>
-            <p className="text-gray-700 mb-2">{confirmationData.message || `Thank you for registering for ${event.title}.`}</p>
-            {confirmationData.paymentIntentId && <p className="text-sm text-gray-500 mt-2">Payment ID: {confirmationData.paymentIntentId}</p>}
-            <p className="text-gray-700">A confirmation email has been sent to {billingInfo.email}.</p>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+      <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-lg shadow-xl">
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus:outline-none"
+          aria-label="Close"
+        >
+          <X size={24} />
+        </button>
+        
+        {/* Registration Closed Message */}
+        {isRegistrationClosed() && (
+          <div className="p-8 text-center">
+            <div className="mb-4 flex justify-center">
+              <div className="rounded-full bg-red-100 p-3">
+                <Ticket className="h-8 w-8 text-red-600" />
+              </div>
+            </div>
+            <h2 className="text-2xl font-bold mb-2">Registration Closed</h2>
+            <p className="text-gray-600 mb-6">
+              {registrationCloseDaysBefore > 0 
+                ? `Registration for this event closed ${registrationCloseDaysBefore} day${registrationCloseDaysBefore !== 1 ? 's' : ''} before the event start.`
+                : 'Registration for this event is now closed as the event has started.'}
+            </p>
+            <p className="text-gray-600 mb-6">
+              For questions or assistance, please contact us at{' '}
+              <a 
+                href={`mailto:${event.contactInfo?.contactEmail || event.contactInfo?.contactEmail2 || ''}`}
+                className="text-blue-600 hover:underline"
+              >
+                {event.contactInfo?.contactEmail || event.contactInfo?.contactEmail2 || ''}
+              </a>
+            </p>
             <button
               onClick={onClose}
-              className="mt-6 px-6 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
               Close
             </button>
           </div>
-        ) : (
-          // Main Registration Flow
+        )}
+        {!isRegistrationClosed() && (
           <>
+            {/* Main Registration Flow */}
             <div className="flex justify-between items-center pb-3 mb-4 border-b">
               <h3 className="text-xl font-semibold text-gray-900">
                 {isCheckout ? `Register for ${event.title}` : `Select Tickets for ${event.title}`}
@@ -1238,14 +1304,14 @@ const RegistrationModal = ({
                         <div className="mb-2">
                           <p className="text-lg font-semibold">
                             <span className="text-green-600 mr-2">
-                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
+                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(
                                 typeof reg.earlyBirdPrice === 'string'
                                   ? parseFloat(reg.earlyBirdPrice.replace(/[^0-9.]/g, '')) || 0
                                   : (typeof reg.earlyBirdPrice === 'number' ? reg.earlyBirdPrice : 0)
                               )}
                             </span>
                             <span className="line-through text-gray-500 text-base">
-                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
+                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(
                                 typeof reg.price === 'string'
                                   ? parseFloat(reg.price.replace(/[^0-9.]/g, '')) || 0
                                   : (typeof reg.price === 'number' ? reg.price : 0)
@@ -1263,7 +1329,7 @@ const RegistrationModal = ({
                       {typeof reg.price === 'number' && reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() >= new Date(reg.earlyBirdDeadline) && (
                         <div className="mb-2">
                           <p className="text-lg font-semibold text-gray-800">
-                            ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(reg.price)}
+                            ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(reg.price)}
                           </p>
                         </div>
                       )}
@@ -1296,41 +1362,14 @@ const RegistrationModal = ({
                   ))}
 
                   {/* Show sponsorships when activeCategory is 'sponsorship' */}
+                  {/* this component has no early bird pricing */}
                   {activeCategory === 'sponsorship' && sponsorships.filter(reg => reg.isActive).map(reg => (
                     <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
                       <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
-                      {reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline) && (
-                        <div className="mb-2">
-                          <p className="text-lg font-semibold">
-                            <span className="text-green-600 mr-2">
-                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
-                                typeof reg.earlyBirdPrice === 'string'
-                                  ? parseFloat(reg.earlyBirdPrice.replace(/[^0-9.]/g, '')) || 0
-                                  : (typeof reg.earlyBirdPrice === 'number' ? reg.earlyBirdPrice : 0)
-                              )}
-                            </span>
-                            <span className="line-through text-gray-500 text-base">
-                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
-                                typeof reg.price === 'string'
-                                  ? parseFloat(reg.price.replace(/[^0-9.]/g, '')) || 0
-                                  : (typeof reg.price === 'number' ? reg.price : 0)
-                              )}
-                            </span>
-                          </p>
-                        </div>
-                      )}
-                      {typeof reg.price === 'string' && (
+                      {reg.price && (
                         <p className="text-lg font-semibold text-indigo-600 mb-2">
-                          {reg.price}
+                          ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(typeof reg.price === 'string' ? parseFloat(reg.price.replace(/[^0-9.]/g, '')) || 0 : (typeof reg.price === 'number' ? reg.price : 0))}
                         </p>
-                      )}
-
-                      {typeof reg.price === 'number' && reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() >= new Date(reg.earlyBirdDeadline) && (
-                        <div className="mb-2">
-                          <p className="text-lg font-semibold text-gray-800">
-                            ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(reg.price)}
-                          </p>
-                        </div>
                       )}
                       {reg.perks && reg.perks.length > 0 && (
                         <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
@@ -1466,7 +1505,7 @@ const RegistrationModal = ({
           </>
         )}
       </div>
-    </div >
+    </div>
   );
 };
 
