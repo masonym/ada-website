@@ -208,6 +208,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "reel-coh",
                     "cp2s-alytic",
                     "imsm",
+                    "mcs-government-services",
+                    "virginia-apex",
                 ],
             },
             {

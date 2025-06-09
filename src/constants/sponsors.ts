@@ -501,6 +501,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.mcs360.com/",
     size: 'small'
   },
+  "virginia-apex": {
+    id: "virginia-apex",
+    name: "Virginia APEX Accelerator",
+    logo: "/sponsors/virginia-apex.webp",
+    website: "https://virginiaapex.org/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
