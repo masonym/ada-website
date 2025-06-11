@@ -5,33 +5,6 @@ import { Event } from "@/types/events";
 
 export const EVENTS: Event[] = [
   {
-    id: 0,
-    eventShorthand: "2025TEST",
-    title: "2025 Test Event with Stripe",
-    date: "December 1, 2025",
-    timeStart: "2025-12-01T09:00:00Z",
-    description: "This is a test event to demonstrate the new Stripe registration flow.",
-    eventText: (
-      <div className="max-container font-light">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
-          Test Event Overview
-        </h2>
-        <p className="mb-4 leading-relaxed">
-          This is a test event to demonstrate the new Stripe registration flow. You can use test card numbers from Stripe's testing documentation to complete a test registration.
-        </p>
-      </div>
-    ),
-    topicalCoverage: [
-      { tagline: "Test Topic 1", description: "This is a test topic for the demo event" },
-      { tagline: "Test Topic 2", description: "Another test topic for the demo event" }
-    ],
-    image: "/test-event-stripe.jpg",
-    slug: "2025-test-event-stripe",
-    locationImage: "/locations/location_online.webp",
-    locationAddress: `Virtual Event<br/>Online`,
-    registerLink: "/event-registration/2025-test-event-stripe"
-  },
-  {
     id: 1,
     title: "2025 Defense Industry Forecast",
     date: "November 14, 2024",
