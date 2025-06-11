@@ -124,7 +124,13 @@ export async function validateRegistrationData(data: unknown): Promise<{
 
 export function isGovOrMilEmail(email: string): boolean {
   const domain = email.split('@')[1] || '';
-  return domain.endsWith('.gov') || domain.endsWith('.mil');
+  return (
+    domain.endsWith('.gov') ||
+    domain.endsWith('.mil') ||
+    domain.endsWith('.gouv.qc.ca') ||
+    domain.endsWith('.gc.ca') ||
+    /\gov\.[a-z]{2}\.ca$/i.test(domain) // provinces
+  );
 }
 
 export function validateTicketQuantities(
