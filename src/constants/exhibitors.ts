@@ -1,9 +1,13 @@
 // Define the exhibitor type with all necessary fields for registration display
+interface Perk {
+    tagline: string;
+    description: string;
+}
 export interface ExhibitorType {
     id: string;
     title: string;
-    cost: number | string;
-    perks?: Array<{ tagline: string; description: string }> | string[];
+    cost: number;
+    perks: Array<Perk>;
     colour?: string;
     slotsPerEvent?: number;
     showRemaining?: boolean;

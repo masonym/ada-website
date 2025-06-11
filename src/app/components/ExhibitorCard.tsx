@@ -2,24 +2,10 @@ import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import { Event } from '@/types/events';
 import { getEventSponsors } from '@/constants/eventSponsors';
-
-type Perk = {
-    tagline: string;
-    description: string;
-};
-
-type ExhibitorTypes = {
-    id: string;
-    title: string;
-    cost: number;
-    perks: Perk[];
-    colour?: string;
-    slotsPerEvent?: number;
-    showRemaining?: boolean;
-};
+import { ExhibitorType } from '@/constants/exhibitors';
 
 type ExhibitorProp = {
-    item: ExhibitorTypes;
+    item: ExhibitorType;
     event: Event;
 };
 
