@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
-import { format, parse, isBefore, addDays } from 'date-fns';
 import * as yup from 'yup';
 import { X, CreditCard, Ticket, Package, Award } from 'lucide-react';
 import { Event } from '@/types/events';
@@ -81,11 +80,6 @@ interface RegistrationModalProps {
   onClose: () => void;
   selectedRegistration: ModalRegistrationType | null; // Allow null for register button
   event: EventWithContact;
-  /**
-   * Number of days before the event when registration closes
-   * If not provided, registration closes when the event starts
-   */
-  registrationCloseDaysBefore?: number;
 }
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
@@ -114,13 +108,28 @@ const initialBillingInfo: BillingInfo = {
   confirmEmail: '',
 };
 
+// Helper function to check if registration is closed
+const isRegistrationClosed = (event: EventWithContact, daysBeforeToClose: number = 3): boolean => {
+  // Parse event start date and time from ISO format: "YYYY-MM-DDT00:00:00Z"
+  const eventStartDateTime = new Date(event.timeStart);
+  
+  // Calculate the cutoff date (3 days before event by default)
+  const cutoffDate = new Date(eventStartDateTime);
+  cutoffDate.setDate(cutoffDate.getDate() - daysBeforeToClose);
+  
+  // Check if current date is past the cutoff
+  return new Date() >= cutoffDate;
+};
+
 const RegistrationModal = ({
   isOpen,
   onClose,
   selectedRegistration,
   event,
-  registrationCloseDaysBefore = 0,
 }: RegistrationModalProps): JSX.Element | null => {
+  // Check if registration is closed for this event
+  const registrationClosed = useMemo(() => isRegistrationClosed(event), [event]);
+  
   // Get registrations, sponsorships, and exhibitors directly using the event ID
   const allRegistrations = useMemo<ModalRegistrationType[]>(() => getRegistrationsForEvent(event.id), [event.id]);
   const sponsorships = useMemo<ModalRegistrationType[]>(() => getSponsorshipsForEvent(event.id), [event.id]);
@@ -170,39 +179,6 @@ const RegistrationModal = ({
   const prevIsOpenRef = useRef(isOpen);
   const prevShowConfirmationRef = useRef(showConfirmationView);
 
-  // Check if registration is closed based on event start time
-  const isRegistrationClosed = useCallback(() => {
-    try {
-      const now = new Date();
-      
-      // Parse the event date and time
-      const eventDateStr = event.date; // Format: "Month DD, YYYY"
-      const eventTimeStr = event.timeStart; // Format: "HH:MM AM/PM"
-      
-      // Parse the date and time strings
-      const eventDate = parse(eventDateStr, 'MMMM d, yyyy', new Date());
-      const [timeStr, period] = eventTimeStr.split(' ');
-      const [hours, minutes] = timeStr.split(':').map(Number);
-      
-      // Adjust hours for PM
-      let adjustedHours = hours;
-      if (period === 'PM' && hours < 12) adjustedHours += 12;
-      if (period === 'AM' && hours === 12) adjustedHours = 0;
-      
-      // Set the time on the event date
-      eventDate.setHours(adjustedHours, minutes);
-      
-      // Calculate the registration close date (default to event start time)
-      const registrationCloseDate = addDays(eventDate, -registrationCloseDaysBefore);
-      
-      // Check if current time is after the registration close date
-      return isBefore(registrationCloseDate, now);
-    } catch (error) {
-      console.error('Error checking registration status:', error);
-      return false; // If there's an error, allow registration
-    }
-  }, [event.date, event.timeStart, registrationCloseDaysBefore]);
-  
   // Effect to manage state when modal is opened or closed
   useEffect(() => {
     // When the modal is opened
@@ -446,6 +422,11 @@ const RegistrationModal = ({
   };
 
   const handleCheckout = () => {
+    // Check if registration is closed before proceeding
+    if (registrationClosed) {
+      setApiError('Registration for this event has closed.');
+      return;
+    }
     setIsCheckout(true);
     setCurrentStep(1);
   };
@@ -651,6 +632,13 @@ const RegistrationModal = ({
   };
 
   const handleFinalSubmit = async () => {
+    // Double-check that registration is still open before final submission
+    if (registrationClosed) {
+      setApiError('Registration for this event has closed.');
+      setIsLoading(false);
+      return;
+    }
+    
     setFormErrors({});
     setApiError(null);
     setIsLoading(true);
@@ -1139,53 +1127,76 @@ const RegistrationModal = ({
   };
 
   if (!isOpen) return null;
+  
+  // If registration is closed, show a message
+  if (registrationClosed && !showConfirmationView) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none bg-black bg-opacity-50">
+        <div className="relative w-full max-w-md mx-auto my-6">
+          <div className="relative flex flex-col w-full bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
+            {/* Header */}
+            <div className="flex items-center justify-between p-5 border-b border-solid rounded-t border-slate-200">
+              <h3 className="text-xl font-semibold text-red-600">Registration Closed</h3>
+              <button
+                className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                onClick={onClose}
+              >
+                <X className="w-6 h-6 text-gray-500" />
+              </button>
+            </div>
+            
+            {/* Body */}
+            <div className="relative p-6 flex-auto">
+              <p className="my-4 text-slate-700 text-lg leading-relaxed">
+                Registration for this event has closed.
+              </p>
+              <p className="my-4 text-slate-600 text-base leading-relaxed text-center">
+                The event is scheduled for: <br /> {event.date}.
+              </p>
+              <p className="my-4 text-slate-600 text-base leading-relaxed">
+                For any questions or special registration requests, please contact the event organizers at{' '}
+                <a href={`mailto:${event.contactInfo?.contactEmail2 || 'info@americandefensealliance.org'}`} className="text-blue-600 hover:text-blue-800">
+                  {event.contactInfo?.contactEmail2 || 'info@americandefensealliance.org'}
+                </a>
+              </p>
+            </div>
+            
+            {/* Footer */}
+            <div className="flex items-center justify-end p-6 border-t border-solid rounded-b border-slate-200">
+              <button
+                className="px-6 py-2 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear bg-blue-600 rounded shadow outline-none hover:shadow-lg focus:outline-none"
+                type="button"
+                onClick={onClose}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
-      <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-lg shadow-xl">
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus:outline-none"
-          aria-label="Close"
-        >
-          <X size={24} />
-        </button>
-        
-        {/* Registration Closed Message */}
-        {isRegistrationClosed() && (
-          <div className="p-8 text-center">
-            <div className="mb-4 flex justify-center">
-              <div className="rounded-full bg-red-100 p-3">
-                <Ticket className="h-8 w-8 text-red-600" />
-              </div>
-            </div>
-            <h2 className="text-2xl font-bold mb-2">Registration Closed</h2>
-            <p className="text-gray-600 mb-6">
-              {registrationCloseDaysBefore > 0 
-                ? `Registration for this event closed ${registrationCloseDaysBefore} day${registrationCloseDaysBefore !== 1 ? 's' : ''} before the event start.`
-                : 'Registration for this event is now closed as the event has started.'}
-            </p>
-            <p className="text-gray-600 mb-6">
-              For questions or assistance, please contact us at{' '}
-              <a 
-                href={`mailto:${event.contactInfo?.contactEmail || event.contactInfo?.contactEmail2 || ''}`}
-                className="text-blue-600 hover:underline"
-              >
-                {event.contactInfo?.contactEmail || event.contactInfo?.contactEmail2 || ''}
-              </a>
-            </p>
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex justify-center items-center">
+      <div className="relative mx-auto p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white overflow-y-auto max-h-[90vh]">
+        {showConfirmationView && confirmationData ? (
+          // Confirmation View
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold text-green-600 mb-4">Registration Confirmed!</h2>
+            <p className="text-gray-700 mb-2">{confirmationData.message || `Thank you for registering for ${event.title}.`}</p>
+            {confirmationData.paymentIntentId && <p className="text-sm text-gray-500 mt-2">Payment ID: {confirmationData.paymentIntentId}</p>}
+            <p className="text-gray-700">A confirmation email has been sent to {billingInfo.email}.</p>
             <button
               onClick={onClose}
-              className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="mt-6 px-6 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Close
             </button>
           </div>
-        )}
-        {!isRegistrationClosed() && (
+        ) : (
+          // Main Registration Flow
           <>
-            {/* Main Registration Flow */}
             <div className="flex justify-between items-center pb-3 mb-4 border-b">
               <h3 className="text-xl font-semibold text-gray-900">
                 {isCheckout ? `Register for ${event.title}` : `Select Tickets for ${event.title}`}
@@ -1505,7 +1516,7 @@ const RegistrationModal = ({
           </>
         )}
       </div>
-    </div>
+    </div >
   );
 };
 
