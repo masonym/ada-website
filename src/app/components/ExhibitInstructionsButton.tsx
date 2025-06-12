@@ -41,7 +41,7 @@ const ExhibitInstructionsButton: React.FC<ExhibitInstructionsButtonProps> = ({ e
   useEffect(() => {
     const fetchPdfLink = async () => {
       const fileNames = await fetchFileNamesFromCloud(eventShorthand);
-      const exhibitFile = fileNames.find(name => name.includes("Exhibit Instructions"));
+      const exhibitFile = fileNames.find(name => name.includes("Exhibit Instructions") || name.includes("Exhibitor Instructions"));
 
       if (exhibitFile) {
         setPdfLink(`${process.env.NEXT_PUBLIC_CDN_DOMAIN}/${exhibitFile}`);
