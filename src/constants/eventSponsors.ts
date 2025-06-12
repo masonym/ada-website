@@ -172,6 +172,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "westwind",
                     "ana-sourcing",
                     "cp2s-alytic",
+                    "oak-theory",
                 ],
             },
             {
@@ -208,8 +209,14 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "reel-coh",
                     "cp2s-alytic",
                     "imsm",
+<<<<<<< Updated upstream
                     "mcs-government-services",
                     "virginia-apex",
+=======
+                    "oak-theory",
+                    "admark",
+                    "mass-virtual",
+>>>>>>> Stashed changes
                 ],
             },
             {

@@ -385,7 +385,7 @@ export const SPONSORS: Record<string, Sponsor> = {
   "bn-inspection": {
     id: "bn-inspection",
     name: "B&N Inspection",
-    logo: "/sponsors/bni.webp",
+    logo: "/sponsors/bn-inspection.webp",
     website: "https://www.bninspects.com/",
     size: 'small'
   },
@@ -506,6 +506,27 @@ export const SPONSORS: Record<string, Sponsor> = {
     name: "Virginia APEX Accelerator",
     logo: "/sponsors/virginia-apex.webp",
     website: "https://virginiaapex.org/",
+    size: 'small'
+  },
+  "oak-theory": {
+    id: "oak-theory",
+    name: "Oak Theory",
+    logo: "/sponsors/oak-theory.webp",
+    website: "https://www.oaktheory.co/",
+    size: 'small'
+  },
+  "mass-virtual": {
+    id: "mass-virtual",
+    name: "Mass Virtual",
+    logo: "/sponsors/mass-virtual.webp",
+    website: "https://www.massvirtual.com/",
+    size: 'small'
+  },
+  "admark": {
+    id: "admark",
+    name: "AdMark",
+    logo: "/sponsors/admark.webp",
+    website: "https://www.admarkllc.com/",
     size: 'small'
   },
 };
