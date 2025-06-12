@@ -1018,7 +1018,7 @@ export const SCHEDULES = [
                         title: "Matchmaking Session I",
                     },
                     {
-                        time: "5:30 PM - 7:30 PM",
+                        time: "6:00 PM - 8:00 PM",
                         title: "VIP Networking Reception",
                     },
                 ],
