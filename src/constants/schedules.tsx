@@ -1020,6 +1020,7 @@ export const SCHEDULES = [
                     {
                         time: "6:00 PM - 8:00 PM",
                         title: "VIP Networking Reception",
+                        location: "The Harbor Club, Waterside District. 333 Waterside Dr Suite 200, Norfolk, VA 23510",
                     },
                 ],
             },
