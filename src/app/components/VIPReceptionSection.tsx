@@ -44,19 +44,8 @@ const VIPReceptionSection: React.FC<VIPReceptionProps> = ({ vipReception }) => {
                   <h4 className="font-semibold text-lg">Location</h4>
                   <p className="font-medium">{vipReception.locationName}</p>
                   <p dangerouslySetInnerHTML={{ __html: vipReception.locationAddress }} />
-                </div>
-              </div>
-              <div className="flex items-start">
-                <Phone className="w-6 h-6 mr-3 text-blue-600 flex-shrink-0 mt-1" />
-                <div>
-                  <h4 className="font-semibold text-lg">Phone</h4>
+
                   <p>{vipReception.locationPhone}</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <Globe className="w-6 h-6 mr-3 text-blue-600 flex-shrink-0 mt-1" />
-                <div>
-                  <h4 className="font-semibold text-lg">Website</h4>
                   <p>
                     <a href={vipReception.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                       {vipReception.locationName}
@@ -64,7 +53,7 @@ const VIPReceptionSection: React.FC<VIPReceptionProps> = ({ vipReception }) => {
                   </p>
                 </div>
               </div>
-              <div className="mt-2 hidden lg:flex mx-auto items-end justify-center">
+              <div className="mt-4 hidden lg:flex mx-auto items-end justify-center">
                 <img className="rounded-lg" src={getCdnPath(vipReception.locationPhoto || "")} alt="VIP Reception Location" />
               </div>
             </div>
