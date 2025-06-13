@@ -214,6 +214,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "oak-theory",
                     "admark",
                     "mass-virtual",
+                    "lgh",
                 ],
             },
             {

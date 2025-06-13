@@ -529,6 +529,20 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.admarkllc.com/",
     size: 'small'
   },
+  "lgh": {
+    id: "lgh",
+    name: "LGH",
+    logo: "/sponsors/lgh.webp",
+    website: "https://www.rentlgh.com/",
+    size: 'small'
+  },
+  "iti": {
+    id: "iti",
+    name: "ITI",
+    logo: "/sponsors/iti.webp",
+    website: "https://www.infintech.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
