@@ -359,11 +359,11 @@ export const REGISTRATION_TYPES = [
             // },
         ],
         addOns: [
-            {
-                title: "VIP Networking Reception",
-                description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from 6:00 PM - 8:00 PM on July 29, 2025.",
-                price: "+$100"
-            },
+            //{
+            //    title: "VIP Networking Reception",
+            //    description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from 6:00 PM - 8:00 PM on July 29, 2025.",
+            //    price: "+$100"
+            //},
             // {
             //     title: "Networking Reception",
             //     description: "Join us for an exclusive evening networking

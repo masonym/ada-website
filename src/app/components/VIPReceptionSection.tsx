@@ -30,7 +30,7 @@ const VIPReceptionSection: React.FC<VIPReceptionProps> = ({ vipReception }) => {
           <div>
             <div className="mb-6">
               <div dangerouslySetInnerHTML={{ __html: vipReception.description }}
-                className="prose max-w-none text-lg text-slate-600" />
+                className="prose max-w-none text-md text-slate-600" />
             </div>
 
             <div className="space-y-4 mb-6">
