@@ -810,7 +810,8 @@ invaluable connections that can shape the future of your business.
       locationAddress: "333 Waterside Dr Suite 200, Norfolk, VA 23510, USA",
       placeId: "ChIJI8LspwuYuokR79KzVtIGqlY", // Google Maps Place ID for the reception venue
       eventPlaceId: "ChIJBdD-jwuYuokRyjyu_hU0jUg", // Google Maps Place ID for the main event venue
-      eventLocationName: "Norfolk Waterside Marriott" // Optional name for the main event location
+      eventLocationName: "Norfolk Waterside Marriott", // Optional name for the main event location
+      locationPhoto: "/locations/harbor_club.webp",
     }
   }
 ];

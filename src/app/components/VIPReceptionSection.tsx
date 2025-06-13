@@ -2,6 +2,7 @@
 
 import React from 'react';
 import DirectionsMap from './DirectionsMap';
+import { getCdnPath } from '@/utils/image';
 import { MapPin, Clock, CalendarDays } from 'lucide-react';
 
 interface VIPReceptionProps {
@@ -15,6 +16,7 @@ interface VIPReceptionProps {
     placeId: string;
     eventPlaceId: string;
     eventLocationName?: string;
+    locationPhoto?: string;
   };
 }
 
@@ -57,6 +59,9 @@ const VIPReceptionSection: React.FC<VIPReceptionProps> = ({ vipReception }) => {
                   <p className="font-medium">{vipReception.locationName}</p>
                   <p dangerouslySetInnerHTML={{ __html: vipReception.locationAddress }} />
                 </div>
+              </div>
+              <div className="hidden lg:flex mx-auto items-center justify-center">
+                <img className="rounded-lg" src={getCdnPath(vipReception.locationPhoto || "")} alt="VIP Reception Location" />
               </div>
             </div>
           </div>

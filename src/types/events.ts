@@ -100,5 +100,6 @@ export interface Event {
         placeId: string;
         eventPlaceId: string;
         eventLocationName?: string;
+        locationPhoto?: string;
     };
 }
