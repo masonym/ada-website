@@ -90,4 +90,15 @@ export interface Event {
     };
     countdownColour?: string;
     sales?: Sale[];
+    vipReception?: {
+        title: string;
+        date: string;
+        time: string;
+        description: string;
+        locationName: string;
+        locationAddress: string;
+        placeId: string;
+        eventPlaceId: string;
+        eventLocationName?: string;
+    };
 }

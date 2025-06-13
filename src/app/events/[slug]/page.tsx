@@ -14,8 +14,9 @@ import KeynoteSpeaker from '@/app/components/KeynoteSpeaker';
 import SponsorLogos from '@/app/components/SponsorLogos';
 import SpecialFeatures from '@/app/components/SpecialFeatures';
 import FooterEventText from '@/app/components/FooterEventText';
-import ExhibitInstructionsButton from '@/app/components/ExhibitInstructionsButton';
 import { EventSaleBanner } from '@/app/components/EventSaleBanner';
+import VIPReceptionSection from '@/app/components/VIPReceptionSection';
+import SponsorAdvert from '@/app/components/SponsorAdvert';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -138,6 +139,11 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             <RegistrationOptions event={event} />
 
+            {event.vipReception && (
+              <VIPReceptionSection vipReception={event.vipReception} />
+            )}
+
+            <SponsorAdvert event={event} />
 
             <SponsorLogos event={event} />
 

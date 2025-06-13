@@ -799,5 +799,18 @@ invaluable connections that can shape the future of your business.
         </ul>
         `
       },
-    ]
-  }];
+    ],
+    // existing event properties...
+    vipReception: {
+      title: "VIP Networking Reception",
+      date: "July 29, 2025",
+      time: "6:00 PM - 8:00 PM",
+      description: "Join us for an exclusive networking reception for Speakers, Sponsors, Exhibitors and VIP Attendees.",
+      locationName: "The Harbor Club",
+      locationAddress: "333 Waterside Dr Suite 200, Norfolk, VA 23510, USA",
+      placeId: "ChIJI8LspwuYuokR79KzVtIGqlY", // Google Maps Place ID for the reception venue
+      eventPlaceId: "ChIJBdD-jwuYuokRyjyu_hU0jUg", // Google Maps Place ID for the main event venue
+      eventLocationName: "Norfolk Waterside Marriott" // Optional name for the main event location
+    }
+  }
+];
