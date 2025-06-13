@@ -35,7 +35,7 @@ const VIPReceptionSection: React.FC<VIPReceptionProps> = ({ vipReception }) => {
                 className="prose max-w-none text-md text-slate-600" />
             </div>
 
-            <div className="space-y-4 mb-6">
+            <div className=" mb-0">
               <div className="flex items-start">
                 <CalendarDays className="w-6 h-6 mr-3 text-blue-600 flex-shrink-0 mt-1" />
                 <div>
@@ -60,7 +60,7 @@ const VIPReceptionSection: React.FC<VIPReceptionProps> = ({ vipReception }) => {
                   <p dangerouslySetInnerHTML={{ __html: vipReception.locationAddress }} />
                 </div>
               </div>
-              <div className="hidden lg:flex mx-auto items-center justify-center">
+              <div className="mt-16 hidden lg:flex mx-auto items-end justify-center">
                 <img className="rounded-lg" src={getCdnPath(vipReception.locationPhoto || "")} alt="VIP Reception Location" />
               </div>
             </div>
