@@ -29,6 +29,23 @@ export interface FeaturedTopicDetail {
     }>;
 }
 
+export interface VIPReceptionProps {
+    vipReception: {
+        title: string;
+        date: string;
+        time: string;
+        description: string;
+        locationName: string;
+        locationAddress: string;
+        placeId: string;
+        eventPlaceId: string;
+        eventLocationName?: string;
+        locationPhoto?: string;
+        locationPhone: string;
+        website: string;
+    };
+}
+
 export interface Event {
     id: number;
     title: string;
@@ -90,16 +107,5 @@ export interface Event {
     };
     countdownColour?: string;
     sales?: Sale[];
-    vipReception?: {
-        title: string;
-        date: string;
-        time: string;
-        description: string;
-        locationName: string;
-        locationAddress: string;
-        placeId: string;
-        eventPlaceId: string;
-        eventLocationName?: string;
-        locationPhoto?: string;
-    };
+    vipReception?: VIPReceptionProps['vipReception'];
 }

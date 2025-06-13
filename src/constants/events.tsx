@@ -812,6 +812,8 @@ invaluable connections that can shape the future of your business.
       eventPlaceId: "ChIJBdD-jwuYuokRyjyu_hU0jUg", // Google Maps Place ID for the main event venue
       eventLocationName: "Norfolk Waterside Marriott", // Optional name for the main event location
       locationPhoto: "/locations/harbor_club.webp",
+      locationPhone: "(757) 426-7433",
+      website: "https://watersidedistrict.com/private-events/the-harbor-club",
     }
   }
 ];

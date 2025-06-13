@@ -3,22 +3,8 @@
 import React from 'react';
 import DirectionsMap from './DirectionsMap';
 import { getCdnPath } from '@/utils/image';
-import { MapPin, Clock, CalendarDays } from 'lucide-react';
-
-interface VIPReceptionProps {
-  vipReception: {
-    title: string;
-    date: string;
-    time: string;
-    description: string;
-    locationName: string;
-    locationAddress: string;
-    placeId: string;
-    eventPlaceId: string;
-    eventLocationName?: string;
-    locationPhoto?: string;
-  };
-}
+import { MapPin, Clock, CalendarDays, Phone, Globe } from 'lucide-react';
+import { VIPReceptionProps } from '@/types/events';
 
 const VIPReceptionSection: React.FC<VIPReceptionProps> = ({ vipReception }) => {
   return (
@@ -60,7 +46,25 @@ const VIPReceptionSection: React.FC<VIPReceptionProps> = ({ vipReception }) => {
                   <p dangerouslySetInnerHTML={{ __html: vipReception.locationAddress }} />
                 </div>
               </div>
-              <div className="mt-16 hidden lg:flex mx-auto items-end justify-center">
+              <div className="flex items-start">
+                <Phone className="w-6 h-6 mr-3 text-blue-600 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-lg">Phone</h4>
+                  <p>{vipReception.locationPhone}</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <Globe className="w-6 h-6 mr-3 text-blue-600 flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-semibold text-lg">Website</h4>
+                  <p>
+                    <a href={vipReception.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                      {vipReception.locationName}
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div className="mt-2 hidden lg:flex mx-auto items-end justify-center">
                 <img className="rounded-lg" src={getCdnPath(vipReception.locationPhoto || "")} alt="VIP Reception Location" />
               </div>
             </div>
