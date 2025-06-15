@@ -215,6 +215,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "admark",
                     "mass-virtual",
                     "lgh",
+                    "iti",
                 ],
             },
             {
