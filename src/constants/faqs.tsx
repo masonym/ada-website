@@ -168,10 +168,6 @@ export const FAQs = [
                 answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media. If you have any concerns, please contact us prior to the event.",
             },
             {
-                question: "Who can I contact for more information?",
-                answer: `For any additional questions or concerns, please contact our event support team at <a href="mailto:info@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">info@americandefensealliance.org</a> or call (771) 474-1077.`,
-            },
-            {
                 question: "Does the American Defense Alliance sell or rent attendee lists?",
                 answer: "No. The American Defense Alliance does not sell, rent, or publish attendee list information under any circumstances."
             },
@@ -185,11 +181,15 @@ export const FAQs = [
             },
             {
                 question: "Who should I contact if I have concerns about a suspicious email offering attendee data?",
-                answer: "Please forward the suspicious email to us at marketing@americandefensealliance.org so we can investigate and take appropriate action."
+                answer: `Please forward the suspicious email to us at <a href="mailto:marketing@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">marketing@americandefensealliance.org</a> so we can investigate and take appropriate action.`
             },
             {
                 question: "How can I verify if a communication is officially from the American Defense Alliance?",
                 answer: "All official communication will come from an @americandefensealliance.org email address. If you're unsure about a message, feel free to reach out to us directly for verification."
+            },
+            {
+                question: "Who can I contact for more information?",
+                answer: `For any additional questions or concerns, please contact our event support team at <a href="mailto:info@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">info@americandefensealliance.org</a> or call (771) 474-1077.`,
             }
         ]
     },
