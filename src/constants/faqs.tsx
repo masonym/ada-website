@@ -170,8 +170,27 @@ export const FAQs = [
             {
                 question: "Who can I contact for more information?",
                 answer: `For any additional questions or concerns, please contact our event support team at <a href="mailto:info@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">info@americandefensealliance.org</a> or call (771) 474-1077.`,
+            },
+            {
+                question: "Does the American Defense Alliance sell or rent attendee lists?",
+                answer: "No. The American Defense Alliance does not sell, rent, or publish attendee list information under any circumstances."
+            },
+            {
+                question: "How can I get access to the attendee list for an American Defense Alliance event?",
+                answer: "Attendee list access is exclusively available to Platinum Sponsors as part of their sponsorship benefits. No other sponsorship level or exhibitor package includes attendee list access."
+            },
+            {
+                question: "I received an email offering to sell me the attendee list for an American Defense Alliance event. Is it legitimate?",
+                answer: "No. These emails are fraudulent and not affiliated with the American Defense Alliance. We do not authorize any third parties to distribute or sell our attendee information."
+            },
+            {
+                question: "Who should I contact if I have concerns about a suspicious email offering attendee data?",
+                answer: "Please forward the suspicious email to us at marketing@americandefensealliance.org so we can investigate and take appropriate action."
+            },
+            {
+                question: "How can I verify if a communication is officially from the American Defense Alliance?",
+                answer: "All official communication will come from an @americandefensealliance.org email address. If you're unsure about a message, feel free to reach out to us directly for verification."
             }
-            // Add more FAQs here...
         ]
     },
     // Add more FAQ sets for additional events...
