@@ -501,6 +501,55 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.mcs360.com/",
     size: 'small'
   },
+  "virginia-apex": {
+    id: "virginia-apex",
+    name: "Virginia APEX Accelerator",
+    logo: "/sponsors/virginia-apex.webp",
+    website: "https://virginiaapex.org/",
+    size: 'small'
+  },
+  "oak-theory": {
+    id: "oak-theory",
+    name: "Oak Theory",
+    logo: "/sponsors/oak-theory.webp",
+    website: "https://www.oaktheory.co/",
+    size: 'small'
+  },
+  "mass-virtual": {
+    id: "mass-virtual",
+    name: "Mass Virtual",
+    logo: "/sponsors/mass-virtual.webp",
+    website: "https://www.massvirtual.com/",
+    size: 'small'
+  },
+  "admark": {
+    id: "admark",
+    name: "AdMark",
+    logo: "/sponsors/admark.webp",
+    website: "https://www.admarkllc.com/",
+    size: 'small'
+  },
+  "lgh": {
+    id: "lgh",
+    name: "LGH",
+    logo: "/sponsors/lgh.webp",
+    website: "https://www.rentlgh.com/",
+    size: 'small'
+  },
+  "iti": {
+    id: "iti",
+    name: "ITI",
+    logo: "/sponsors/iti.webp",
+    website: "https://www.infintech.com/",
+    size: 'small'
+  },
+  "conductive-containers": {
+    id: "conductive-containers",
+    name: "Conductive Containers, Inc.",
+    logo: "/sponsors/conductive-containers.webp",
+    website: "https://www.conductivecontainers.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID

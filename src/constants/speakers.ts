@@ -875,6 +875,33 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	<br/>
 	Ms. Bebout has been bestowed a BS in Logistic and Business Management, two Master of Science degrees – American University Program Management and Eisenhower School of National Security and Resource Strategy, and a Liberty University Executive Certificate in Strategic Leadership. `,
 	}
+	,
+	"diane-dempsey": {
+		"image": "diane-dempsey.webp",
+		"name": "Diane Dempsey",
+		"position": "Director, Small Business Programs",
+		"company": "BAE Systems",
+		"bio": `Ms. Dempsey has enjoyed an extensive career in the field of procurement, subcontracts and supplier diversity.  Currently she is the Director, Small Business Programs for BAE Systems Intelligence & Security Sector.   Ms. Dempsey has also been a small business advocate for several prime contractors in the DC Metropolitan area.   She serves on multiple boards and committees, most recently served as the Chair, Capital Region Minority Supplier Development Council Board of Directors.  She formerly chaired the Community Business Partnership Board of Directors.  Additionally, she has served as the TRIAD Industry Group Co-Chair since 2006.  Her leadership and advocacy have been recognized with many awards, most recently the National Veterans Small Business Coalition 2021 Prime Contractor – Advocate of the Year, U.S. Women’s Chamber of Commerce, 2021 CEO Award and 2024 VA Asian Chamber of Commerce Diversity Award.
+	<br/>
+	
+	<br/>
+	Under her leadership, BAE Systems Inc. received the 2022 Capital Region Minority Supplier Development Council, Corporation of the Year and the Intelligence & Security Sector received the prestigious SBA Dwight D. Eisenhower Award in 2023.
+	<br/>
+	
+	<br/>
+	She received her B.S. from Mary Washington College, Certificate in Contracts & Procurement, University of Virginia, and Master’s Certificate in Procurement & Supply Chain Management, MS and MBA from the University of Maryland.  She is also a certified supplier diversity professional and instructor for the Alliance of Supplier Diversity Professionals for 13 years.`,
+	},
+	"kurt-garrett": {
+		"image": "kurt-garrett.webp",
+		"name": "Kurt Garrett",
+		"position": "VP Global Defense Solutions",
+		"company": "One Network Enterprises (ONE)",
+		"bio": `Kurt C. Garrett is a distinguished professional with over 36 years of combined experience in logistics and defense solutions. As a former US Marine Logistician, Kurt dedicated 24+ years to serving his country, honing his expertise in strategic logistics and operational excellence. Transitioning from military service, he has spent the past 12+ years at One Network Enterprises™ (ONE), where he serves as the Vice President of Defense Solutions Consulting and a Defense Subject Matter Expert. 
+	<br/>
+	
+	<br/>
+	Kurt is recognized for his leadership in the Digital Supply Chain Network™, where he drives innovation and efficiency across numerous global projects for the Department of Defense and the defense industry. His commitment to advancing defense solutions has made him a pivotal figure in transforming supply chain operations to meet the dynamic needs of modern defense strategies.`,
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -953,6 +980,10 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"arveice-washington",
 		{ id: "kareem-sykes", invited: true },
 		"terressa-bebout",
+		"dave-leinberger",
+		"david-canada",
+		"kurt-garrett",
+		"diane-dempsey",
 	]
 };
 
