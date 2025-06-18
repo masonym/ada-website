@@ -543,6 +543,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.infintech.com/",
     size: 'small'
   },
+  "conductive-containers": {
+    id: "conductive-containers",
+    name: "Conductive Containers, Inc.",
+    logo: "/sponsors/conductive-containers.webp",
+    website: "https://www.conductivecontainers.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
