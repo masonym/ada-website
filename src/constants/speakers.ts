@@ -925,8 +925,8 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	"joel-lundy": {
 		"image": "joel-lundy.webp",
 		"name": "Joel Lundy",
-		"position": "Acting Deputy Assistant Commissioner, Category Management, Office of Information Technology Category",
-		"company": "Federal Acquisition Service",
+		"position": "Acting Deputy Assistant Commissioner, Category Management, Office of Information Technology Category, Federal Acquisition Service",
+		"company": "U.S. General Services Administration",
 		"bio": `Joel Lundy is the Acting Deputy Assistant Commissioner, Category Management within the Information Technology Category of the Federal Acquisition Service. In this role, Joel provides executive leadership over a broad portfolio that customer agencies use to buy over $42 billion in IT products and services. These solutions include the Government-wide Acquisition Contracts (GWACs): Alliant 2, VETS 2, and 8(a) STARS III. His portfolio also includes the IT Multiple Award Schedule, Enterprise Infrastructure Solutions (EIS), and the USAccess shared services program. Joel’s guidance and oversight of the category teams ensure that GSA continues to play a critical role in the Administration’s IT modernization efforts to drive a more efficient and effective government for the American people. 
 	<br/>
 	 
