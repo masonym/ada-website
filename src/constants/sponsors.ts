@@ -557,6 +557,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.cinchsystems.com/",
     size: 'small'
   },
+  "didlake": {
+    id: "didlake",
+    name: "Didlake, Inc.",
+    logo: "/sponsors/didlake.webp",
+    website: "https://www.didlake.org/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
