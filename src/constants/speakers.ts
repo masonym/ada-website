@@ -902,6 +902,51 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	<br/>
 	Kurt is recognized for his leadership in the Digital Supply Chain Network™, where he drives innovation and efficiency across numerous global projects for the Department of Defense and the defense industry. His commitment to advancing defense solutions has made him a pivotal figure in transforming supply chain operations to meet the dynamic needs of modern defense strategies.`,
 	}
+	,
+	"christopher-m-haar": {
+		"image": "christopher-m-haar.webp",
+		"name": "Christopher M. Haar",
+		"position": "Commanding Officer, CLR-3",
+		"company": "U.S. Marine Corps",
+		"bio": `Colonel Haar is a pastor’s son from the Midwest, growing up in Minnesota and Kansas. He enlisted in the Marine Corps in 1991 and was promoted to Staff Sergeant before being commissioned in 1998. He was designated as a Combat Engineer Officer. He has commanded at the platoon, company (to include commanding an engineer company during Operation Iraqi Freedom 1), and commanded 1st Combat Engineer Battalion. He took command of Combat Logistics Regiment-3 on Okinawa in June of 2021.
+	<br/>
+	
+	<br/>
+	As a graduate of the School of Advanced Warfighting, his planner assignments included MARCENT (FWD) in Bahrain where he was lead planner for JTF-NEO; Future Operations Planner for III Marine Expeditionary Force focused on Korea; lead planner for JTF-505 as it deployed to provide Humanitarian Assistance and Disaster Relief to the people of the Philippines during Operation Damayan; and the US INDOPACOM East and Southeast Asia Contingency Plans Chief. His staff tours include Academics Officer and Officer Instructor at Marine Corps Engineer School, Small Group Leader at US Army Engineer School, Operations Officer for MEU Service Support Group 26 for an OIF deployment, Executive Officer of 9th Engineer Support Battalion for an OIF deployment, Deputy Assistant Chief of Staff G-3 for 3d Marine Logistics Group, and the Combat Engineer Proponent in PP&O.
+	<br/>
+	
+	<br/>
+	Colonel Haar is a graduate of Expeditionary Warfare School, the US Army Engineer Captains Career Course, Marine Corps Command and Staff College, the School of Advanced Warfighting, and the National War College. He holds a BS in Civil Engineering from the University of Kansas, a MS in Engineering Management from the Missouri University of Science and Technology, a MS in Operational Studies from the Marine Corps University, and a MS in Strategic Studies with a Long-Term Strategy from the National Defense University.
+	<br/>
+	
+	<br/>
+	Colonel Haar’s personal awards include the Defense Superior Service Medal, the Meritorious Service Medal with four gold stars, the Joint Commendation Medal, the Navy Commendation Medal with gold stars, the Navy Achievement Medal, the Humanitarian Assistance Medal, the Volunteer Service Medal, and the Combat Action Ribbon.`,
+	},
+	"joel-lundy": {
+		"image": "joel-lundy.webp",
+		"name": "Joel Lundy",
+		"position": "Acting Deputy Assistant Commissioner, Category Management, Office of Information Technology Category",
+		"company": "Federal Acquisition Service",
+		"bio": `Joel Lundy is the Acting Deputy Assistant Commissioner, Category Management within the Information Technology Category of the Federal Acquisition Service. In this role, Joel provides executive leadership over a broad portfolio that customer agencies use to buy over $42 billion in IT products and services. These solutions include the Government-wide Acquisition Contracts (GWACs): Alliant 2, VETS 2, and 8(a) STARS III. His portfolio also includes the IT Multiple Award Schedule, Enterprise Infrastructure Solutions (EIS), and the USAccess shared services program. Joel’s guidance and oversight of the category teams ensure that GSA continues to play a critical role in the Administration’s IT modernization efforts to drive a more efficient and effective government for the American people. 
+	<br/>
+	 
+	<br/>
+	Previously, Joel directed a portfolio of contracts and programs that offer government agencies a diverse set of IT software, cloud, and hardware product and service solutions valued at $8 billion annually. Some of these offerings include Multiple Award Schedule Special Item Numbers for IT Software, IT Hardware, and Cloud Computing and Cloud-Related IT Professional Services; Defense Enterprise Office Solution; 2nd Generation IT Blanket Purchase Agreements; and Government-wide Strategic Solutions Desktop and Laptop Program.  
+	<br/>
+	
+	<br/>
+	Prior to joining ITC, Joel held a range of positions at GSA. Joel was the Director of Portfolio Outreach for GSA’s Office of General Supplies and Services. There, he assisted in the GSA Global Supply Program transition to a new business model in addition to leading business development, communications, and strategic planning support to GSA’s Personal Property Program, Retail Operations Program, GSA Global Supply, and non-IT MAS Programs. Joel also served as Program Manager of GSA’s Central Asia Local Procurement Initiative, managing the agency’s $150 million supply chain in Central Asia and the South Caucasus to support the U.S. military and civilian agencies in Afghanistan while promoting economic development and cooperation across the region.  
+	<br/>
+	
+	<br/>
+	Joel entered federal service with GSA as a Presidential Management Fellow.  
+	<br/>
+	
+	<br/>
+	Joel graduated with honors from the University of Chicago with a Bachelor of Arts in history and holds a Master of Public Administration from the University of Illinois at Chicago.  
+	<br/>
+	`,
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -984,6 +1029,8 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"david-canada",
 		"kurt-garrett",
 		"diane-dempsey",
+		"christopher-m-haar",
+		"joel-lundy",
 	]
 };
 
