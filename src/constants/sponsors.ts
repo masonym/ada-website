@@ -550,6 +550,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.conductivecontainers.com/",
     size: 'small'
   },
+  "cinch": {
+    id: "cinch",
+    name: "Cinch Systems",
+    logo: "/sponsors/cinch.webp",
+    website: "https://www.cinchsystems.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
