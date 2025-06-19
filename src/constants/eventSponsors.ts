@@ -219,6 +219,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "conductive-containers",
                     "cinch",
                     "didlake",
+                    "equipment-share",
                 ],
             },
             {

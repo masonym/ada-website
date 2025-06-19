@@ -564,6 +564,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.didlake.org/",
     size: 'small'
   },
+  "equipment-share": {
+    id: "equipment-share",
+    name: "EquipmentShare",
+    logo: "/sponsors/equipment-share.webp",
+    website: "https://www.equipmentshare.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
