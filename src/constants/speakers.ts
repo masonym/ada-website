@@ -1023,20 +1023,20 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"charles-sills",
 		"brian-liesveld",
 		"arveice-washington",
-		{ id: "kareem-sykes", invited: true },
+		{ id: "kareem-sykes", label: "Pending Agency Approval" },
 		"terressa-bebout",
 		"dave-leinberger",
 		"david-canada",
 		"kurt-garrett",
 		"diane-dempsey",
 		"christopher-m-haar",
-		"joel-lundy",
+		{ id: "joel-lundy", label: "Pending Agency Approval" },
 	]
 };
 
-type EventSpeakerEntry = string | { id: string; invited?: boolean };
+type EventSpeakerEntry = string | { id: string; label?: string };
 
-export function getSpeakersForEvent(eventId: number): (Speaker & { id: string; invited?: boolean })[] {
+export function getSpeakersForEvent(eventId: number): (Speaker & { id: string; label?: string })[] {
 	const speakerEntries = EVENT_SPEAKERS[eventId] || [];
 	return speakerEntries.map(entry => {
 		if (typeof entry === 'string') {
@@ -1050,7 +1050,7 @@ export function getSpeakersForEvent(eventId: number): (Speaker & { id: string; i
 			return {
 				...SPEAKERS[entry.id],
 				id: entry.id,
-				invited: entry.invited
+				label: entry.label
 			};
 		}
 	});
