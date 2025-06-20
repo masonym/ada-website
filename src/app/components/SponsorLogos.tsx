@@ -63,7 +63,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
         if (tierName.toLowerCase().includes('platinum') || sponsorCount === 1) {
             gridClass += 'grid-cols-1';
         } else if (sponsorCount === 2) {
-            gridClass += 'grid-cols-1 sm:grid-cols-2';
+            gridClass += 'grid-cols-1';
         } else if (sponsorCount === 3) {
             gridClass += 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
         } else {
@@ -89,6 +89,13 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
             height: 200 // Default height
         };
     };
+
+
+
+    // List of sponsor tiers that should display descriptions
+    const tiersWithDescriptions = [
+        'gold-sponsor', 'silver-sponsor', 'bronze-sponsor', 'platinum-sponsor', 'diamond-sponsor', 'premier',
+    ];
 
     return (
         <div className="w-full max-w-7xl mx-auto mt-4 px-4">
@@ -130,6 +137,8 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                     <div className="bg-white p-4 md:p-8 rounded-lg shadow-md">
                         <div className={getTierGridClass(tier.name, tier.sponsors.length)}>
                             {tier.sponsors.map((sponsor, sponsorIndex) => {
+
+                                const allSponsorsHaveDescriptions = tier.sponsors.every(s => !!s.description);
                                 const imageSize = getSponsorImageSize(sponsor);
                                 const isTopTier = tier.topTier;
 
@@ -176,7 +185,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                                 className={`object-contain max-w-full max-h-full ${isTopTier ? 'drop-shadow-md' : ''}`}
                                             />
                                         )}
-                                        {tier.sponsors.length == 1 && sponsor.description && (
+                                        {tiersWithDescriptions.includes(tier.id) && sponsor.description && (
                                             <div className="text-lg mt-4 text-center text-slate-600">
                                                 <span dangerouslySetInnerHTML={{ __html: sponsor.description }}></span>
                                             </div>

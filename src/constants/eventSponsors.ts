@@ -22,13 +22,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         title: "Our Sponsors and Partners",
         tiers: [
             {
-                id: "platinum",
+                id: "platinum-sponsor",
                 name: "Platinum Sponsor",
                 sponsorIds: ["modtech-solutions"],
                 topTier: true
             },
             {
-                id: "silver",
+                id: "silver-sponsor",
                 name: "Silver Sponsor",
                 sponsorIds: ["secure-itsm"],
             },
@@ -99,13 +99,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         title: "This event is Organized and Presented by",
         tiers: [
             {
-                id: "gold",
+                id: "gold-sponsor",
                 name: "Gold Sponsor",
                 style: "bg-amber-400 text-slate-900",
                 sponsorIds: ["lockheed-martin"],
             },
             {
-                id: "silver",
+                id: "silver-sponsor",
                 name: "Silver Sponsors",
                 style: "bg-gray-300 text-slate-900",
                 sponsorIds: [
@@ -136,6 +136,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 style: "bg-amber-400 text-slate-900",
                 sponsorIds: [
                     "one-blue-yonder",
+                    "dmg-mori",
                 ],
             },
             {
