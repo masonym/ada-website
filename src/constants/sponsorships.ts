@@ -316,7 +316,7 @@ export const SPONSORSHIP_TYPES = [
                 id: "small-business-sponsor",
                 title: "Small Business Sponsor",
                 cost: "$1,500",
-                slotsPerEvent: 15,
+                slotsPerEvent: 20,
                 perks: [
                     { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
                     { tagline: "Exhibit Space", description: ": 8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and Chairs" },
