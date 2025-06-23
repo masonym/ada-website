@@ -586,6 +586,27 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.visitnorfolktoday.com/",
     size: 'medium',
   },
+  "don-office-of-small-business-programs": {
+    id: "don-office-of-small-business-programs",
+    name: "DON Office of Small Business Programs",
+    logo: "/sponsors/don-office-of-small-business-programs.webp",
+    website: "https://www.secnav.navy.mil/smallbusiness",
+    size: 'small'
+  },
+  "navsup-fleet-logistics-center-norfolk": {
+    id: "navsup-fleet-logistics-center-norfolk",
+    name: "NAVSUP Fleet Logistics Center Norfolk",
+    logo: "/sponsors/navsup-fleet-logistics-center-norfolk.webp",
+    website: "https://www.navsup.navy.mil/navsup-enterprise/navsup-flc-norfolk",
+    size: 'small'
+  },
+  "norfolk-naval-shipyard": {
+    id: "norfolk-naval-shipyard",
+    name: "Norfolk Naval Shipyard",
+    logo: "/sponsors/norfolk-naval-shipyard.webp",
+    website: "https://www.navsea.navy.mil/home/shipyards/norfolk",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
