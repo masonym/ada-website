@@ -55,15 +55,15 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
         return 'bg-blue-600 text-white';
     };
 
-    const getTierGridClass = (tierName: string, sponsorCount: number) => {
+    const getTierGridClass = (tierId: string, sponsorCount: number) => {
         // Base grid class
         let gridClass = 'grid ';
 
         // Responsive columns based on tier type and sponsor count
-        if (tierName.toLowerCase().includes('platinum') || sponsorCount === 1) {
+        if (tiersWithDescriptions.includes(tierId) || sponsorCount === 1) {
             gridClass += 'grid-cols-1';
         } else if (sponsorCount === 2) {
-            gridClass += 'grid-cols-1';
+            gridClass += 'grid-cols-1 sm:grid-cols-2';
         } else if (sponsorCount === 3) {
             gridClass += 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
         } else {
@@ -135,7 +135,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                     )}
 
                     <div className="bg-white p-4 md:p-8 rounded-lg shadow-md">
-                        <div className={getTierGridClass(tier.name, tier.sponsors.length)}>
+                        <div className={getTierGridClass(tier.id, tier.sponsors.length)}>
                             {tier.sponsors.map((sponsor, sponsorIndex) => {
 
                                 const allSponsorsHaveDescriptions = tier.sponsors.every(s => !!s.description);
