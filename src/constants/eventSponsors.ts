@@ -222,6 +222,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "didlake",
                     "equipment-share",
                     "dmg-mori",
+                    "precision-resource",
                 ],
             },
             {
