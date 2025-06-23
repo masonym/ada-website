@@ -230,6 +230,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 style: "bg-navy-800 text-white",
                 sponsorIds: [
                     "hampton-roads-alliance",
+                    "visit-norfolk",
                 ]
             }
         ]

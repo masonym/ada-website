@@ -579,6 +579,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     size: 'large',
     description: "DMG MORI Group is the global leader providing solutions in machining, automation, digitization, and additive manufacturing. Our product line is unmatched in the industry and covers the whole range of CNC machine tools with advanced technologies in 5-axis milling machines, additive manufacturing, turning machines, and grinding machines, automation, and robotics. We support the Material Command and Sustainment prodicution by utilizing USA based manufacturing, collaborations with Universities, Academy training courses, and factory direct support. DMG MORI Federal Services, works closely with US federal government agencies to explore opportunities to support federal government initiatives, promote federal base production needs and readiness, and to focus on federal acquisition and cybersecurity compliance.",
   },
+  "visit-norfolk": {
+    id: "visit-norfolk",
+    name: "Visit Norfolk",
+    logo: "/sponsors/visit-norfolk.webp",
+    website: "https://www.visitnorfolktoday.com/",
+    size: 'medium',
+  },
 };
 
 // Helper function to get a sponsor by ID
