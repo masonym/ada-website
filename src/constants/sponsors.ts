@@ -499,7 +499,7 @@ export const SPONSORS: Record<string, Sponsor> = {
     name: "MCS Government Services",
     logo: "/sponsors/mcs-government-services.webp",
     website: "https://www.mcs360.com/",
-    size: 'small'
+    size: 'medium'
   },
   "virginia-apex": {
     id: "virginia-apex",
