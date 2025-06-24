@@ -607,6 +607,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.navsea.navy.mil/home/shipyards/norfolk",
     size: 'small'
   },
+  "cignys": {
+    id: "cignys",
+    name: "CIGNYS",
+    logo: "/sponsors/cignys.webp",
+    website: "https://www.cignys.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID

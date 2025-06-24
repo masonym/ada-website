@@ -226,6 +226,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "don-office-of-small-business-programs",
                     "navsup-fleet-logistics-center-norfolk",
                     "norfolk-naval-shipyard",
+                    "cignys",
                 ],
             },
             {
