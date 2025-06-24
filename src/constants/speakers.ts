@@ -859,7 +859,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	"terressa-bebout": {
 		"image": "terressa-bebout.webp",
 		"name": "Terressa Bebout",
-		"position": "Director, Commander Fleet Readiness Centers (COMFRC) Office of Small Business Programs",
+		"position": "Technical Director of Small Business Strategy, Office of Small Business Programs",
 		"company": "Naval Air Systems Command (NAVAIR)",
 		"bio": `Ms. Terressa Bebout has served the United States Navy both as contractor service support (CSS) and as a civil servant for a combined 36 years of service. Currently, she serves as the Technical Director of Small Business Strategy for the Office of Small Business Program (OSBP) Naval Air Systems Command (NAVAIR), as well as the COMFRC OSBP Director. 
 	<br/>
@@ -903,25 +903,6 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	Kurt is recognized for his leadership in the Digital Supply Chain Network™, where he drives innovation and efficiency across numerous global projects for the Department of Defense and the defense industry. His commitment to advancing defense solutions has made him a pivotal figure in transforming supply chain operations to meet the dynamic needs of modern defense strategies.`,
 	}
 	,
-	"christopher-m-haar": {
-		"image": "christopher-m-haar.webp",
-		"name": "Christopher M. Haar",
-		"position": "Commanding Officer, CLR-3",
-		"company": "U.S. Marine Corps",
-		"bio": `Colonel Haar is a pastor’s son from the Midwest, growing up in Minnesota and Kansas. He enlisted in the Marine Corps in 1991 and was promoted to Staff Sergeant before being commissioned in 1998. He was designated as a Combat Engineer Officer. He has commanded at the platoon, company (to include commanding an engineer company during Operation Iraqi Freedom 1), and commanded 1st Combat Engineer Battalion. He took command of Combat Logistics Regiment-3 on Okinawa in June of 2021.
-	<br/>
-	
-	<br/>
-	As a graduate of the School of Advanced Warfighting, his planner assignments included MARCENT (FWD) in Bahrain where he was lead planner for JTF-NEO; Future Operations Planner for III Marine Expeditionary Force focused on Korea; lead planner for JTF-505 as it deployed to provide Humanitarian Assistance and Disaster Relief to the people of the Philippines during Operation Damayan; and the US INDOPACOM East and Southeast Asia Contingency Plans Chief. His staff tours include Academics Officer and Officer Instructor at Marine Corps Engineer School, Small Group Leader at US Army Engineer School, Operations Officer for MEU Service Support Group 26 for an OIF deployment, Executive Officer of 9th Engineer Support Battalion for an OIF deployment, Deputy Assistant Chief of Staff G-3 for 3d Marine Logistics Group, and the Combat Engineer Proponent in PP&O.
-	<br/>
-	
-	<br/>
-	Colonel Haar is a graduate of Expeditionary Warfare School, the US Army Engineer Captains Career Course, Marine Corps Command and Staff College, the School of Advanced Warfighting, and the National War College. He holds a BS in Civil Engineering from the University of Kansas, a MS in Engineering Management from the Missouri University of Science and Technology, a MS in Operational Studies from the Marine Corps University, and a MS in Strategic Studies with a Long-Term Strategy from the National Defense University.
-	<br/>
-	
-	<br/>
-	Colonel Haar’s personal awards include the Defense Superior Service Medal, the Meritorious Service Medal with four gold stars, the Joint Commendation Medal, the Navy Commendation Medal with gold stars, the Navy Achievement Medal, the Humanitarian Assistance Medal, the Volunteer Service Medal, and the Combat Action Ribbon.`,
-	},
 	"joel-lundy": {
 		"image": "joel-lundy.webp",
 		"name": "Joel Lundy",
@@ -946,6 +927,45 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	Joel graduated with honors from the University of Chicago with a Bachelor of Arts in history and holds a Master of Public Administration from the University of Illinois at Chicago.  
 	<br/>
 	`,
+	}
+	,
+	"christopher-m-haar": {
+		"image": "christopher-m-haar.webp",
+		"name": "Brigadier General Christopher M. Haar",
+		"position": "Assistant Deputy Commandant, Combat Development and Integration/Deputy Commanding General",
+		"company": "Marine Corps Combat Development Command",
+		"bio": `Brigadier General Haar is a pastor’s son from the Midwest, growing up in Minnesota and Kansas. He enlisted in the Marine Corps in 1991 and was promoted to Staff Sergeant before being commissioned in 1998.  He was designated as a Combat Engineer Officer.  He assumed his current position as Deputy Commanding General, Marine Corps Combat Development Command and Director, Joint and Naval Integration Directorate, Combat Development and Integration in May 2025.
+	<br/>
+	
+	<br/>
+	He has commanded at the platoon, company, battalion, and regimental-level, to include an engineer company during Operation Iraqi Freedom 1, 1st Combat Engineer Battalion, and Combat Logistics Regiment 3.
+	<br/>
+	
+	<br/>
+	As a graduate of the School of Advanced Warfighting, his planner assignments included MARCENT (FWD) in Bahrain where he was lead planner for JTF-NEO; Future Operations Planner for III Marine Expeditionary Force focused on Korea; lead planner for JTF-505 as it deployed to provide Humanitarian Assistance and Disaster Relief to the people of the Philippines during Operation Damayan; and the US INDOPACOM East and Southeast Asia Contingency Plans Chief.
+	<br/>
+	
+	<br/>
+	His staff tours include Academics Officer and Officer Instructor at Marine Corps Engineer School; Small Group Leader at US Army Engineer School; Operations Officer for MEU Service Support Group 26 for an OIF deployment; Executive Officer of 9th Engineer Support Battalion for an OIF deployment; the Combat Engineer Proponent in PP&O; Deputy Assistant Chief of Staff G-3 for 3d Marine Logistics Group; and as the Executive Assistant to DC, I&L.
+	<br/>
+	
+	<br/>
+	Brigadier General Haar is a graduate of Expeditionary Warfare School, the US Army Engineer Captains Career Course, Marine Corps Command and Staff College, the School of Advanced Warfighting, the National War College, and the United Kingdom Higher Command and Staff Course. He holds a BS in Civil Engineering from the University of Kansas, a MS in Engineering Management from the Missouri University of Science and Technology, a MS in Operational Studies from the Marine Corps University, and a MS in Strategic Studies with an emphasis in Long-Term Strategy from the National Defense University.
+	<br/>
+	
+	<br/>
+	Brigadier General Haar’s personal awards include: the Defense Superior Service Medal; the Legion of Merit; the Meritorious Service Medal with four gold stars; the Joint Commendation Medal; the Navy Commendation Medal with gold star; the Navy Achievement Medal; the Humanitarian Assistance Medal; the Volunteer Service Medal; and the Combat Action Ribbon.
+	<br/>
+	
+	<br/>
+	He is married to his High School Sweetheart, Shelly, and they have two adult children, two granddaughters, and two grandsons.`,
+	},
+	"don-mcginnis": {
+		"image": "don-mcginnis.webp",
+		"name": "Don McGinnis",
+		"position": "Director, Business Development",
+		"company": "Pioneer Motor Bearing Company",
+		"bio": `Bio not available at this time.`,
 	}
 };
 
@@ -1031,6 +1051,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"diane-dempsey",
 		"christopher-m-haar",
 		{ id: "joel-lundy", label: "Pending Agency Approval" },
+		"don-mcginnis",
 	]
 };
 
