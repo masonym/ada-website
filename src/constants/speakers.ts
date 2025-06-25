@@ -67,7 +67,7 @@ In the military, Colonel Cancian spent over three decades in the U.S. Marine Cor
 		"name": "David Leinberger",
 		"position": "Acting Director, Army Partnerships",
 		"company": "Deputy Chief of Staff, G-9 (Installations)",
-		"bio": `Dave Leinberger assumed the role as the Chief of Army Community Partnerships in July 2024.In this position, Mr. Leinberger encourages innovation and collaboration between ourinstallations and local communities to develop partnerships that are mutually beneficial,identify cost efficiencies, reduce installation service response times, and strengthens therelationship with the local communities outside our installations. Mr. Leinberger focuses theutilization of collaborative partnership authorities to achieve these goals. These authoritiesinclude Intergovernmental Support Agreements (IGSAs), Cooperative Agreements, Mutual AidAgreements, Memorandum of Understanding, Enhanced Use Lease, and Other TransactionAuthority.<br><br>Previously, Mr. Leinberger served as the Army Community Partnership Program Manager,Assistant Chief of Staff for Installation Management, in September 2019 and maintained thatrole following the ACSIM’s transition to Deputy Chief of Staff, G-9 (Installations).`
+		"bio": `Dave Leinberger assumed the role as the Chief of Army Community Partnerships in July 2024.In this position, Mr. Leinberger encourages innovation and collaboration between our installations and local communities to develop partnerships that are mutually beneficial, identify cost efficiencies, reduce installation service response times, and strengthens the relationship with the local communities outside our installations. Mr. Leinberger focuses the utilization of collaborative partnership authorities to achieve these goals. These authorities include Intergovernmental Support Agreements (IGSAs), Cooperative Agreements, Mutual Aid Agreements, Memorandum of Understanding, Enhanced Use Lease, and Other Transaction Authority.<br><br>Previously, Mr. Leinberger served as the Army Community Partnership Program Manager, Assistant Chief of Staff for Installation Management, in September 2019 and maintained that role following the ACSIM’s transition to Deputy Chief of Staff, G-9 (Installations).`
 	},
 	"brian-liesveld": {
 		"image": "brian-liesveld.webp",
@@ -996,7 +996,7 @@ Accelerators, Hampton Economic Development, large and small business sponsors.
 		"name": "Don McGinnis",
 		"position": "Director, Business Development",
 		"company": "Pioneer Motor Bearing Company",
-		"bio": `Bio not available at this time.`,
+		"bio": ``,
 	}
 };
 
