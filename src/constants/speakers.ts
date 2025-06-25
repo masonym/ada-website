@@ -848,7 +848,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	"stacey-l-cooper": {
 		"image": "stacey-cooper.webp",
 		"name": "Stacey L. Cooper",
-		"position": "Deputy of Small Business Programs",
+		"position": "Deputy Director, Small Business Programs",
 		"company": "Mid-Atlantic Regional Maintenance Center (MARMC)",
 		"bio": `Stacey Cooper was born and raised in Hampton, Virginia. She attended and graduated from Christopher Newport University in 1998 with a Bachelor’s of Science in Business Administration Degree with concentrations in Finance and Real Estate. She received a Master’s Degree in Healthcare Management from University of Phoenix in 2006. A second Master’s Degree in Acquisition Management from University of Management and Technology in 2012.
 	<br/>
