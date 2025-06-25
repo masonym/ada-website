@@ -174,6 +174,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "ana-sourcing",
                     "cp2s-alytic",
                     "oak-theory",
+                    "metgreen-solutions",
                 ],
             },
             {
