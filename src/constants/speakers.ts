@@ -111,16 +111,21 @@ Ms. Buehler represents the Secretary of the Army at congressional committee and 
 		"image": "david-canada.webp",
 		"name": "David Canada",
 		"position": "Director, Global Supplier Diversity",
-		"company": "Boeing Defense Space & Security",
-		"bio": `David Canada is Director of Global Supplier Diversity for Boeing Defense Space & Security (BDS). Named to this role in 2023, he has primary responsibility for building stronger relationships with the diversity office at the DoD and with the respective representatives of the branches of services. 
+		"company": "Boeing Defense Space & Security, The Boeing Company",
+		"bio": `
+David Canada is director of Strategic Sourcing & Partnerships for Boeing Defense Space & Security (BDS). Named to this role in 2023, he has primary responsibility for building stronger relationships with the small business offices at the DoD and NASA as well as with the respective representatives of the branches of services. The goal is to provide opportunities for small business, service-disabled veteran-owned small business, HUBZone small business, small disadvantaged business, and women-owned small business as defined by the Small Business Administration and/or other entities designated or defined by applicable law. David is also responsible for supply chain strategy, which includes country segmentation for campaigns, offset obligations, supplier risk assessment reporting on geopolitical, labor, natural disaster & raw materials and market enablement. 
 <br/><br/>
-David joined The Boeing Company in 2007 as an Industrial Engineer on the V-22 Osprey line. He implemented new project management tools that resulted in automated workforce planning and improved the schedule planning efficiency. David grew, taking on new challenges and roles across Boeing. 
+David joined The Boeing Company in 2007 as an industrial engineer on the V-22 Osprey line. He implemented new project management tools that resulted in automated workforce planning and improved the schedule planning efficiency. David grew, taking on new challenges and roles across Boeing. 
 <br/><br/>
-As IT Procurement Manager, he managed 18 procurement agents, 30 suppliers, and more than $250 million in contracts. He moved on to serve as Chief of Staff to the Vice President of BDS IT Business Partners. He continued his career as the Senior Manager, Mergers & Acquisitions Integration Strategy, where he led mergers and acquisitions estimated at $2.5 billion, and also manages critical cybersecurity issues and systems.             
+As IT procurement manager, he managed 18 procurement agents, 30 suppliers, and more than $250 million in contracts. He moved on to serve as chief of staff to the Vice President of BDS IT Business Partners. 
 <br/><br/>
-David earned a bachelor’s degree in Mechanical Engineering from Howard University, and a master’s degree in Business Administration and a Certification in Project Management. 
+He continued his career as the Senior Manager, Mergers & Acquisitions Integration Strategy, where he led mergers and acquisitions estimated at $2.5 billion, and also managed critical cybersecurity issues and systems tied to subsidiary integration. Canada also has served as the Director of Business Operations for Boeing Global Services (BGS) where is he responsible for business transformation and improve operational efficiency.  
 <br/><br/>
-Giving back is a part of who David is. He serves on the board of the following non-profit organizations:  Black Alliance of Colleges & Employers (BACE), Step Afrika, Wearable Tech Ventures and Positive Deposits. David is also very passionate about STEM education and increasing the number of minorities in technology fields.  He serves as an active corporate representative for the Black Engineer of the Year Awards, Advancing Minorities Interest in Engineering as well as the National Society of Black Engineers. In addition, he was selected to be a member of the Racial Equity Task Force and is co-leader of the BGS Diversity & Inclusion Council.\n`
+David earned a bachelor’s degree in mechanical engineering from Howard University, and a master’s degree in Business Administration and a Certification in Project Management. 
+<br/><br/>
+Giving back is a part of who David is. He serves on the board of the following non-profit organizations: DC CAP, BeOrg, Black Alliance of Colleges & Employers (BACE), Step Afrika and Wearable Tech Ventures. David is also very passionate about STEM education and increasing the number of minorities in technology fields.  He serves as an active corporate representative for the Black Engineer of the Year Awards as well as the Execution Sponsor for the National Society of Black Engineers.
+<br/><br/>
+`
 	},
 	"patricia-waddell": {
 		"image": "patricia-waddell.webp",
@@ -967,6 +972,62 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 		"company": "Pioneer Motor Bearing Company",
 		"bio": ``,
 	}
+	,
+	"katina-adams": {
+		"image": "katina-adams.webp",
+		"name": "Katina Adams",
+		"position": "Manager, Small Business Programs",
+		"company": "Newport News Shipbuilding, A Dvision of HII",
+		"bio": `Katina Adams is the Small Business Liaison Officer (SBLO) and Socio-Economic Small Business Programs Officer for Newport News Shipbuilding (NNS), A Division of HII. Katina is responsible for ensuring that NNS and its almost 30,000 employees comply with federal requirements for soliciting and subcontracting with small businesses. Katina has oversight of government reporting on prime and sub- tier contracts valued over $40B and annual subcontract spend of approximately $3B. Katina leads HII’s SBLO Council which consists of SBLOs and small business professionals from HII’s Ingalls Shipbuilding and Mission Technologies Divisions. Katina and her team are dedicated to advocacy for all categories of small businesses.
+	<br/>
+	
+	<br/>
+	Under Katina’s leadership, HII was awarded Veteran Small Business Advocate of the Year and has earned the National Veteran Small Business Coalition’s Champion Award for the past two consecutive years; NNS earned the Minority Business Enterprise (MBE) Input Committee Development Award for advancing the growth and development of MBEs, and NNS annually exceeds DoD’s small business subcontracting goals.
+	<br/>
+	
+	<br/>
+	Katina is a graduate of George Mason University and Florida Institute of Technology. Katina has earned various certifications to include Certified Supplier Diversity Professional, Certified Purchasing Manager, Certified in Production & Inventory Management, Certificate of Lean Practice and Virginia Contracting Officer. Katina serves on the Board of Directors for Women in Defense Greater Hampton Roads, Carolinas-Virginia Minority Supplier Development Council, and National Veteran Small Business Coalition’s Hampton Roads Community of Interest.`,
+	},
+	"stacey-r-washington": {
+		"image": "stacey-r-washington.webp",
+		"name": "Stacey R. Washington",
+		"position": "Small Business Program Manager",
+		"company": "Lockheed Martin Missiles and Fire Control",
+		"bio": `Stacey Washington serves as the Small Business Program Manager for Lockheed Martin Missiles and Fire Control (MFC), where she leads the development and execution of daily operations and long-term strategic goals for the business area’s Small Business Program. With over 15 years of experience in global supply chain management, small business advocacy, and compliance, Ms. Washington brings a wealth of expertise and commitment to her role.
+	<br/>
+	
+	<br/>
+	A passionate advocate for small and diverse businesses, Stacey believes these enterprises are the backbone of local communities. She recognizes their role not only in economic development but also in driving community-focused initiatives and creating meaningful employment opportunities.
+	<br/>
+	
+	<br/>
+	Ms. Washington holds multiple professional certifications and training credentials. She is a Level II Trainer for the Advanced Small Business Liaison Officer Certification Program through the Alliance of Supplier Diversity Professionals, Inc. (ASDP); a certified Six Sigma Green Belt through Textron’s Continuous Improvement Program; and holds a Certificate in Federal Contract Management Essentials from The University of Alabama in Huntsville. Additionally, she earned a Program Management Certification from The George Washington University TwentyEighty Strategy Execution Program.
+	<br/>
+	
+	<br/>
+	A 2016 graduate of the National African American Women’s Leadership Institute (NAAWLI), Stacey previously served as Chair of the Board for the organization, demonstrating her dedication to leadership development and service.
+	<br/>
+	
+	<br/>
+	Academically, she earned a Bachelor of Arts and Science in Interdisciplinary Studies from Dallas Baptist University and a Master of Business Administration from Louisiana State University Shreveport.
+	<br/>
+	
+	<br/>
+	Outside of her professional responsibilities, Stacey is devoted to empowering the next generation. In 2018, she founded the Big Sis Lil Sis Program, a mentorship initiative for young women that focuses on self-empowerment through goal setting, positive self-image, and self-leadership. She remains actively involved in mentoring, helping young women recognize their potential and lead with confidence and authenticity.`,
+	},
+	"robyn-card": {
+		"image": "robyn-card.webp",
+		"name": "Robyn Card",
+		"position": "Director, Small Business Office (SBO)",
+		"company": "General Dynamics Information Technology, Inc. (GDIT)",
+		"bio": `Dr. Robyn Card has worked as a contracting officer for General Dynamics Information Technology, Inc. (GDIT) since 2012, and currently serves as the Director of the Small Business Office (SBO). She leads a dynamic team of professionals who champion the inclusion of small businesses as team members and partners with GDIT. With a focus on teambuilding and informal mentorship, Dr. Card leads initiatives within GDIT’s SBO to actively educate suppliers regarding best practices including increased engagement with government and industry partners, and training internal stakeholders on process improvements to support legislative changes. 
+	<br/>
+	
+	<br/>
+	Recently, the GDIT Small Business team received the National 8a Council and HUBZone Contractor’s National Council Large Business of the Year Award for their innovative approach to promoting small business utilization. Dr. Card serves on the Contracts Leadership Team at GDIT and as the chair of the Supplier Diversity Committee which is comprised of representatives from all General Dynamics individual business units. She has been a guest presenter at several events including those hosted by the Capital Business Development Association, the DoD Mid-Atlantic Regional Council, and the Virginia APEX Accelerator. Dr. Card is a longtime member of NCMA, holding both the CPCM and CFCM certifications and is also certified by the Alliance of Supplier Diversity Professionals. 
+	<br/>
+	`,
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -1052,6 +1113,9 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"christopher-m-haar",
 		{ id: "joel-lundy", label: "Pending Agency Approval" },
 		"don-mcginnis",
+		"robyn-card",
+		"katina-adams",
+		"stacey-r-washington",
 	]
 };
 
