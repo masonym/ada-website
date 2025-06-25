@@ -845,46 +845,15 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 		"name": "Stacey L. Cooper",
 		"position": "Deputy of Small Business Programs",
 		"company": "Mid-Atlantic Regional Maintenance Center (MARMC)",
-		"bio": `
-Stacey Cooper was born and raised in Hampton, Virginia. She
-attended and graduated from Christopher Newport University in
-1998 with a Bachelor of Science in Business Administration Degree
-with concentrations in Finance and Real Estate. She received a
-Master’s Degree in Healthcare Management from University of
-Phoenix in 2006. A second Master’s Degree in Acquisition
-Management from University of Management and Technology in
-2012.
-<br/>
-<br/>
-Stacey entered Government service in the Navy Acquisition Intern
-Program as a Contract Specialist. From April 2007 to April 2010, she
-trained at Mid-Atlantic Regional Maintenance Center (MARMC) and
-received Level I and II certifications in Contracts. In April 2010, she
-graduated from the intern program as a GS-12, Contract Specialist. In 2011 she received her Contracting
-Officer warrant and Level III certification in Contracts. She continued to work her way up the ladder, being
-promoted to a GS-13 Lead Contract Specialist in July 2012. As an Administrative Contracting Officer,she
-administered many high-level availabilities from 2009 – 2020 that has totaled over $1 billion dollars. During
-the administering of these contracts, she has received many awards and accolades from Leadership, the
-Maintenance/Project Team, Captains, Ships Force and Contractors on the waterfront. In February 2020 she
-was promoted to Branch Head of the Amphibious Class Ships. In December 2020 she became the Branch
-Head of the Policy Division until February 2022.
-<br/>
-<br/>
-In April 2022, she became the Deputy of Small Business programs, and it has been the best career move.
-In year one, she has transformed the Small Business office. Outreach and advocating is one of her best
-strengths. Many small businesses have reached out to NAVSEA Director of Office of Small Business
-Programs and her Executive Director at MARMC to express their gratitude and how much they
-appreciate all she does for small businesses. She attends many outreach events and strives to be one of
-the best Deputy of Small Business in the Department of Navy.
-<br/>
-<br/>
-On January 18th – 19th, 2024, The 1st Annual Hampton Roads Small Business Navy Expo was held at the
-Hampton Roads Convention Center. Stacey was the first Small Business Professional in the Hampton
-Roads area to have a multi-day Expo dedicated to small businesses. In attendance was 300 people out
-of the 450 registered. The Expo consisted of networking, matchmaking, speakers, panelist, Government
-agencies and Industry (both small and large). It was a collaborative effort between MARMC, Apex
-Accelerators, Hampton Economic Development, large and small business sponsors.
-`,
+		"bio": `Stacey Cooper was born and raised in Hampton, Virginia. She attended and graduated from Christopher Newport University in 1998 with a Bachelor’s of Science in Business Administration Degree with concentrations in Finance and Real Estate. She received a Master’s Degree in Healthcare Management from University of Phoenix in 2006. A second Master’s Degree in Acquisition Management from University of Management and Technology in 2012.
+	<br/>
+	
+	<br/>
+	Stacey entered Government service in the Navy Acquisition Intern Program as a Contract Specialist. From April 2007 to April 2010, she trained at Mid-Atlantic Regional Maintenance Center (MARMC) and received Level I and II certifications in Contracts. In April 2010, she graduated from the intern program as a GS-12, Contract Specialist. In 2011 she received her Contracting Officer warrant and Level III certification in Contracts. She continued to work her way up the ladder, being promoted to a GS-13 Lead Contract Specialist in July 2012. As an Administrative Contracting Officer, she administered many high level availabilities from 2009 – 2020 that has totaled over $1 billion dollars. During the administering of these contracts she has received many awards and accolades from Leadership, the Maintenance/Project Team, Captains, Ships Force and Contractors on the waterfront. In February 2020 she was promoted to Branch Head of the Amphibious Class Ships. In December 2020 she became the Branch Head of the Policy Division until February 2022.
+	<br/>
+	
+	<br/>
+	In April 2022, she became the Deputy of Small Business programs and it has been the best career move. In year one, she has transformed the Small Business office. Outreach and advocating is one of her best strengths. Many small businesses has reached out to NAVSEA Director of Office of Small Business Programs and her Executive Director at MARMC to express their gratitude and how much they appreciate all she does for small businesses. She attends many outreach events and strives to be one of the best Deputy of Small Business in the Department of Navy.`,
 	}
 	,
 	"terressa-bebout": {
@@ -937,8 +906,8 @@ Accelerators, Hampton Economic Development, large and small business sponsors.
 	"joel-lundy": {
 		"image": "joel-lundy.webp",
 		"name": "Joel Lundy",
-		"position": "Acting Deputy Assistant Commissioner, Category Management, Office of Information Technology Category",
-		"company": "Federal Acquisition Service",
+		"position": "Acting Deputy Assistant Commissioner, Category Management, Office of Information Technology Category, Federal Acquisition Service",
+		"company": "U.S. General Services Administration",
 		"bio": `Joel Lundy is the Acting Deputy Assistant Commissioner, Category Management within the Information Technology Category of the Federal Acquisition Service. In this role, Joel provides executive leadership over a broad portfolio that customer agencies use to buy over $42 billion in IT products and services. These solutions include the Government-wide Acquisition Contracts (GWACs): Alliant 2, VETS 2, and 8(a) STARS III. His portfolio also includes the IT Multiple Award Schedule, Enterprise Infrastructure Solutions (EIS), and the USAccess shared services program. Joel’s guidance and oversight of the category teams ensure that GSA continues to play a critical role in the Administration’s IT modernization efforts to drive a more efficient and effective government for the American people. 
 	<br/>
 	 
@@ -1069,26 +1038,26 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		//{ id: "patricia-waddell", invited: true },
 	],
 	"4": [ // 2025NMCPC
-		//"stephen-mongold",
-		//"stacey-l-cooper",
-		//"charles-sills",
-		//"brian-liesveld",
-		//"arveice-washington",
-		//{ id: "kareem-sykes", invited: true },
-		//"terressa-bebout",
-		//"dave-leinberger",
-		//"david-canada",
-		//"kurt-garrett",
-		//"diane-dempsey",
-		//"christopher-m-haar",
-		//"joel-lundy",
-		//"don-mcginnis",
+		"stephen-mongold",
+		"stacey-l-cooper",
+		"charles-sills",
+		"brian-liesveld",
+		"arveice-washington",
+		{ id: "kareem-sykes", label: "Pending Agency Approval" },
+		"terressa-bebout",
+		"dave-leinberger",
+		"david-canada",
+		"kurt-garrett",
+		"diane-dempsey",
+		"christopher-m-haar",
+		{ id: "joel-lundy", label: "Pending Agency Approval" },
+		"don-mcginnis",
 	]
 };
 
-type EventSpeakerEntry = string | { id: string; invited?: boolean };
+type EventSpeakerEntry = string | { id: string; label?: string };
 
-export function getSpeakersForEvent(eventId: number): (Speaker & { id: string; invited?: boolean })[] {
+export function getSpeakersForEvent(eventId: number): (Speaker & { id: string; label?: string })[] {
 	const speakerEntries = EVENT_SPEAKERS[eventId] || [];
 	return speakerEntries.map(entry => {
 		if (typeof entry === 'string') {
@@ -1102,7 +1071,7 @@ export function getSpeakersForEvent(eventId: number): (Speaker & { id: string; i
 			return {
 				...SPEAKERS[entry.id],
 				id: entry.id,
-				invited: entry.invited
+				label: entry.label
 			};
 		}
 	});
