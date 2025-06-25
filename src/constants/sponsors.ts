@@ -614,6 +614,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.cignys.com/",
     size: 'small'
   },
+  "metgreen-solutions": {
+    id: "metgreen-solutions",
+    name: "MetGreen Solutions",
+    logo: "/sponsors/metgreen-solutions.webp",
+    website: "https://metgreensolutions.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
