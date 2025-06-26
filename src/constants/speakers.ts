@@ -8,7 +8,7 @@ export interface Speaker {
 	bio?: string;
 	keynote?: {
 		isKeynote: boolean;
-		headerText: string;
+		headerText?: string;
 	};
 }
 
@@ -1028,6 +1028,28 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	<br/>
 	`,
 	}
+	,
+	"erica-h-plath": {
+		"image": "erica-h-plath.webp",
+		"name": "Erica H. Plath",
+		"position": "Deputy Assistant Secretary of the Navy (Sustainment) Office of the Assistant Secretary of the Navy Research, Development and Acquisition",
+		"company": "United States Department of the Navy",
+		"bio": `
+Ms. Erica H. Plath assumed the responsibilities of the Deputy Assistant Secretary of the Navy for Sustainment in May of 2022. She serves as the principal advisor to the Assistant Secretary of the Navy for Research, Development and Acquisition (ASN (RDA)) on all matters related to the planning, budgeting and execution of sustainment and supply chain activities of the Department of the Navy and Marine Corps.
+
+<br/><br/>
+Prior to this assignment, Ms. Plath served as the Director, Installations and Logistics Integration (OPNAV N4Z) in the office of the Chief of Naval Operations. In this capacity, she supported the development, integration and resourcing of a roughly $20 billion annual budget for the Navy’s Fleet Readiness and Logistics portfolio which includes combat logistics, military sealift, and shore infrastructure.
+<br/><br/>
+Ms. Plath was appointed to the Senior Executive Service in August 2018. In years’ prior, Ms. Plath served as the Director, Strategic Mobility and Combat Logistics Division (OPNAV N42) inthe office of the Chief of Naval Operations from August 2018 to November 2021. In this capacity, she supported the development, integration and resourcing of a roughly $3 billion annual portfolio for Navy’s combat logistics, maritime prepositioning, and strategic sealift ships. Ms. Plath served as Deputy for the Maintenance and Modernization Branch in the Surface Warfare Division (OPNAV N96) from November 2012 to August 2018. She began federal civilian service in 2011 at Naval Sea Systems Command within the Surface Warfare Directorate.
+<br/><br/>
+Ms. Plath graduated from the U.S. Naval Academy with a Bachelor of Science in Aerospace Engineering and was commissioned as an Ensign, United States Navy in May 2001. Following commissioning, she served as a Surface Warfare Officer in USS PORTER (DDG 78), USS COWPENS (CG 63) and the Navy Operations Center at the Pentagon. Ms. Plath left active duty as a Lieutenant in December 2007.
+<br/><br/>
+Ms. Plath's naval decorations include the Navy Commendation Medal (two awards), Navy Achievement Medal (two awards), Meritorious Unit Commendation, and Global War on Terrorism Expeditionary and Service medals.
+`,
+		"keynote": {
+			"isKeynote": true,
+		},
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -1116,6 +1138,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"robyn-card",
 		"katina-adams",
 		"stacey-r-washington",
+		"erica-h-plath",
 	]
 };
 

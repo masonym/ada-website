@@ -229,7 +229,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "norfolk-naval-shipyard",
                     "cignys",
                     "metgreen-solutions",
-
+                    "marzen-group-llc",
                 ],
             },
             {

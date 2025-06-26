@@ -621,6 +621,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://metgreensolutions.com/",
     size: 'small'
   },
+  "marzen-group-llc": {
+    id: "marzen-group-llc",
+    name: "Marzen Group, LLC",
+    logo: "/sponsors/marzen-group.webp",
+    website: "https://www.marzen-group.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
