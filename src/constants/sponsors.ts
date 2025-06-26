@@ -624,7 +624,7 @@ export const SPONSORS: Record<string, Sponsor> = {
   "marzen-group-llc": {
     id: "marzen-group-llc",
     name: "Marzen Group, LLC",
-    logo: "/sponsors/marzen-group.webp",
+    logo: "/sponsors/marzen-group-llc.webp",
     website: "https://www.marzen-group.com/",
     size: 'small'
   },
