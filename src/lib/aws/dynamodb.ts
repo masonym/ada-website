@@ -72,3 +72,32 @@ export async function getPendingRegistration(id: string): Promise<RegistrationFo
     throw new Error('Could not retrieve pending registration.');
   }
 }
+
+/**
+ * Saves the final registration details to the permanent registrations table.
+ * @param registrationData The user's registration form data.
+ * @param paymentIntentId The payment intent ID.
+ */
+export async function saveConfirmedRegistration(registrationData: RegistrationFormData, paymentIntentId: string): Promise<void> {
+  const env = getEnv();
+  const tableName = env.PERMANENT_REGISTRATIONS_TABLE_NAME;
+
+  const item = {
+    ...registrationData,
+    id: paymentIntentId, // Use payment intent ID as the primary key
+    createdAt: new Date().toISOString(),
+  };
+
+  const params = {
+    TableName: tableName,
+    Item: item,
+  };
+
+  try {
+    await docClient.send(new PutCommand(params));
+    console.log(`Successfully saved confirmed registration ${paymentIntentId} to ${tableName}`);
+  } catch (error) {
+    console.error(`Error saving confirmed registration to ${tableName}:`, error);
+    throw new Error('Could not save confirmed registration.');
+  }
+}

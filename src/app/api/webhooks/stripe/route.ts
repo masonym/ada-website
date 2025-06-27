@@ -8,7 +8,7 @@ import { headers } from 'next/headers';
 import { RegistrationFormData } from '@/types/event-registration/registration';
 import { EVENTS } from '@/constants/events';
 import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, ModalRegistrationType } from '@/lib/registration-adapters';
-import { getPendingRegistration } from '@/lib/aws/dynamodb';
+import { getPendingRegistration, saveConfirmedRegistration } from '@/lib/aws/dynamodb';
 
 async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent) {
   console.log(`PaymentIntent ${paymentIntent.id} succeeded.`);
@@ -29,6 +29,9 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
       console.error(`Could not find pending registration with ID: ${pendingRegistrationId}`);
       return;
     }
+
+    // Save to permanent storage
+    await saveConfirmedRegistration(registrationData, paymentIntent.id);
 
     // Log the registration to Google Sheets
     await logRegistration(

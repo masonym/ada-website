@@ -31,6 +31,7 @@ export function getEnv() {
     AWS_SECRET_ACCESS_KEY: getRequiredEnv('AWS_SECRET_ACCESS_KEY', 'AWS Secret Access Key'),
     AWS_REGION: getRequiredEnv('AWS_REGION', 'AWS Region'),
     DYNAMODB_TABLE_NAME: getRequiredEnv('DYNAMODB_TABLE_NAME', 'DynamoDB Table Name'),
+  PERMANENT_REGISTRATIONS_TABLE_NAME: getRequiredEnv('PERMANENT_REGISTRATIONS_TABLE_NAME', 'Permanent Registrations Table Name'),
   };
 }
 
