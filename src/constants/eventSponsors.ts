@@ -230,6 +230,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "cignys",
                     "metgreen-solutions",
                     "marzen-group-llc",
+                    "rite-in-the-rain",
                 ],
             },
             {

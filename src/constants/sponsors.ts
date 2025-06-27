@@ -628,6 +628,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.marzen-group.com/",
     size: 'small'
   },
+  "rite-in-the-rain": {
+    id: "rite-in-the-rain",
+    name: "Rite in the Rain",
+    logo: "/sponsors/rite-in-the-rain.webp",
+    website: "https://www.riteintherain.com/",
+    size: 'small'
+  }
 };
 
 // Helper function to get a sponsor by ID
