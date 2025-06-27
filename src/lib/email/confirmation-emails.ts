@@ -7,7 +7,7 @@ import {
   exhibitorTemplate, 
   sponsorTemplate, 
   OrderSummary, 
-  generateOrderSummaryHtml 
+  generateOrderSummaryHtml,
 } from './templates';
 
 // Define ticket tiers in order of priority (highest to lowest)
@@ -124,6 +124,7 @@ export async function sendRegistrationConfirmationEmail({
   const eventDate = event.date || 'TBA';
   const eventLocation = event.locationAddress || 'TBA';
   const hotelInfo = `https://americandefensealliance.org/events/${event.slug}/about/venue-and-lodging`;
+  const vipNetworkingReception = event.vipNetworkingReception;
 
   // Get any ticket-specific attachments
   let ticketAttachments: Array<{
@@ -174,6 +175,8 @@ export async function sendRegistrationConfirmationEmail({
           attendeePasses: registration.sponsorPasses || attendeePasses || 0,
           eventImage: event.image,
           orderSummaryHtml,
+          hotelInfo,
+          vipNetworkingReception,
         }),
         attachments: emailAttachments,
       });
@@ -198,6 +201,8 @@ export async function sendRegistrationConfirmationEmail({
           `,
           eventImage: event.image,
           orderSummaryHtml,
+          hotelInfo,
+          vipNetworkingReception,
         }),
         attachments: emailAttachments,
       });
@@ -221,6 +226,8 @@ export async function sendRegistrationConfirmationEmail({
           ],
           eventImage: event.image,
           orderSummaryHtml,
+          hotelInfo,
+          vipNetworkingReception,
         }),
         attachments: emailAttachments,
       });

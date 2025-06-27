@@ -1,6 +1,16 @@
 import { ReactNode } from "react";
 import { RegistrationType } from "./event-registration/registration";
 
+export interface VipNetworkingReception {
+    title: string;
+    description: string;
+    date: string;
+    timeStart: string;
+    timeEnd: string;
+    location: string;
+    additionalInfo?: string;
+}
+
 export interface Sale {
     id: string;
     title: string;
@@ -100,4 +110,5 @@ export interface Event {
     };
     countdownColour?: string;
     sales?: Sale[];
+    vipNetworkingReception?: VipNetworkingReception;
 }

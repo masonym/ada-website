@@ -76,6 +76,7 @@ export function generateOrderSummaryHtml(summary: OrderSummary): string {
   `;
 }
 
+import { VipNetworkingReception } from '@/types/events';
 // Email templates for different registration types
 import { getEnv } from '../../env';
 import { getCdnPath } from '@/utils/image';
@@ -240,6 +241,8 @@ export function vipAttendeePassTemplate({
   vipPerks,
   eventImage,
   orderSummaryHtml,
+  hotelInfo,
+  vipNetworkingReception,
 }: {
   firstName: string;
   eventName: string;
@@ -250,32 +253,54 @@ export function vipAttendeePassTemplate({
   vipPerks: string[];
   eventImage: string;
   orderSummaryHtml?: string;
+  hotelInfo?: string;
+  vipNetworkingReception?: VipNetworkingReception;
 }): string {
   const content = `
-    <h1>VIP Registration Confirmed!</h1>
     <p>Dear ${firstName},</p>
-    <p>Thank you for your VIP registration for <strong>${eventName}</strong>. We're delighted to have you as a VIP attendee!</p>
+    <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
     
     <div class="highlight">
-      <p><strong>Event Details:</strong></p>
-      <p><strong>Date:</strong> ${eventDate}</p>
+      <p><strong>Event Details</strong></p>
+      <p><strong>Event:</strong> ${eventName}</p>
+      <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
       <p><strong>Location:</strong> ${eventLocation}</p>
     </div>
 
+
     ${orderSummaryHtml || ''}
     
-    <h2>Your VIP Benefits Include:</h2>
-    <ul>
-      ${vipPerks.map(perk => `<li>${perk}</li>`).join('')}
-    </ul>
+
+    ${hotelInfo ? `
+    <div class="highlight">
+      <p><strong>Hotel Accommodations</strong></p>
+      <p>Room Block Information is available <a href="${hotelInfo}">here.</a></p>
+    </div>
+    ` : ''}
+
+    ${vipNetworkingReception ? `
+    <div class="highlight">
+      <p><strong>VIP Networking Reception</strong></p>
+      <p>
+     ${vipNetworkingReception.description}
+    </div>
+    ` : ''}
     
-    <p>Please save this email for your records. You'll receive additional information about the event, including VIP check-in instructions, as the date approaches.</p>
+    <div class="highlight">
+      <p><strong>Please Note</strong></p>
+      <ul>
+        <li><strong>All registrations are final</strong>. We are unable to offer refunds for this event.</li>
+        <li>Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org/</a></li>
+      </ul>
+    </div>
     
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
     
-    <p>If you have any questions, please don't hesitate to contact us.</p>
+    <p>If you have any questions or need further assistance, feel free to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
     
-    <p>Sincerely,<br>The American Defense Alliance Team</p>
+    <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
+    
+    <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
   `;
   
   return baseEmailTemplate(content, eventImage);
@@ -293,6 +318,8 @@ export function exhibitorTemplate({
   exhibitorInstructions,
   eventImage,
   orderSummaryHtml,
+  hotelInfo,
+  vipNetworkingReception,
 }: {
   firstName: string;
   eventName: string;
@@ -304,6 +331,8 @@ export function exhibitorTemplate({
   exhibitorInstructions: string;
   eventImage: string;
   orderSummaryHtml?: string;
+  hotelInfo?: string;
+  vipNetworkingReception?: VipNetworkingReception;
 }): string {
   const content = `
     <h1>Exhibitor Registration Confirmed!</h1>
@@ -349,6 +378,8 @@ export function sponsorTemplate({
   attendeePasses,
   eventImage,
   orderSummaryHtml,
+  hotelInfo,
+  vipNetworkingReception,
 }: {
   firstName: string;
   eventName: string;
@@ -361,6 +392,8 @@ export function sponsorTemplate({
   attendeePasses: number;
   eventImage: string;
   orderSummaryHtml?: string;
+  hotelInfo?: string;
+  vipNetworkingReception?: VipNetworkingReception;
 }): string {
   const content = `
     <h1>Sponsorship Confirmation</h1>

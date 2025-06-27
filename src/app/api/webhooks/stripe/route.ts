@@ -76,9 +76,9 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
           price: (Number(regType?.price) || 0), // Price is in dollars, converting from string
         };
       }),
-      subtotal: (paymentIntent.amount + (Number(metadata.discountAmount) || 0)),
-      discount: (Number(metadata.discountAmount) || 0),
-      total: paymentIntent.amount,
+      subtotal: (paymentIntent.amount + (Number(metadata.discountAmount) || 0)) / 100, // in dollars
+      discount: (Number(metadata.discountAmount) || 0) / 100, // in dollars
+      total: paymentIntent.amount / 100, // in dollars
     };
 
     // Send the confirmation email
