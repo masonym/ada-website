@@ -9,6 +9,12 @@ interface EmailParams {
   subject: string;
   html: string;
   from?: string; // Optional: defaults to a value from .env or a standard address
+  attachments?: Array<{
+    filename: string;
+    content: string | Buffer;
+    path?: string;
+    contentType?: string;
+  }>; // Optional: attachments for the email
 }
 
 export async function sendEmail({
@@ -16,6 +22,7 @@ export async function sendEmail({
   subject,
   html,
   from = env.MY_EMAIL || 'onboarding@resend.dev', // Default from address
+  attachments = [], // Default to an empty array if not provided
 }: EmailParams) {
   // Ensure RESEND_API_KEY is loaded
   if (!env.RESEND_API_KEY) {
@@ -30,6 +37,7 @@ export async function sendEmail({
       to,
       subject,
       html,
+      attachments,
     });
 
     if (error) {

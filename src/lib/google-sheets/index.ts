@@ -2,6 +2,7 @@ import { google } from 'googleapis';
 import { OAuth2Client } from 'google-auth-library';
 import { getEnv } from '../env';
 import { RegistrationFormData, TicketSelection, AttendeeInfo } from '@/types/event-registration/registration';
+import { EVENTS } from '@/constants/events';
 
 const env = getEnv();
 
@@ -78,93 +79,71 @@ export async function getSheetData(
 export async function logRegistration(
   eventId: string,
   registrationData: RegistrationFormData,
-  orderId: string, // Available if needed for future columns
-  paymentStatus: string, // Available if needed for future columns
+  orderId: string,
+  paymentStatus: string,
   amountPaid: number,
-  promoCode?: string, // Available if needed for future columns
+  promoCode?: string,
   discountApplied?: number
 ) {
   try {
     const env = getEnv();
+    const event = EVENTS.find(e => e.id.toString() === eventId);
+    if (!event) {
+      throw new Error(`Event with ID ${eventId} not found`);
+    }
+
+    const registrationTimestamp = new Date().toISOString();
     const rowsToAppend: any[][] = [];
 
-    // Common information for all rows in this registration batch
-    // timestamp format mm/dd/yyyy hh:mm:ss
-    const registrationTimestamp = new Date().toLocaleString('en-US');
-    const buyerCompany = registrationData.company || '';
-    const buyerJobTitle = registrationData.jobTitle || '';
-    const buyerFirstName = registrationData.firstName || '';
-    const buyerLastName = registrationData.lastName || '';
-    const buyerEmail = registrationData.email || '';
-    const buyerPhone = registrationData.phone || '';
-    const buyerCompanyWebsite = registrationData.companyWebsite || '';
+    const commonData = {
+      registrationTimestamp,
+      orderId,
+      paymentStatus,
+      amountPaid: amountPaid / 100, // Convert from cents
+      promoCode: promoCode || '',
+      discountApplied: discountApplied || 0,
+      buyerFirstName: registrationData.firstName,
+      buyerLastName: registrationData.lastName,
+      buyerEmail: registrationData.email,
+      buyerCompany: registrationData.company,
+    };
 
-    // These amounts are for the entire order and will be repeated for each attendee row.
-    const orderAmountReceived = (amountPaid + (discountApplied || 0)).toFixed(2);
-    const orderAmountPaid = amountPaid.toFixed(2);
-    console.log("Registration data:", registrationData);
-    console.log("Ticket data: ", registrationData.tickets);
-    console.log("Attendee data: ", registrationData.tickets.map(ticket => ticket.attendeeInfo).flat());
+    for (const ticket of registrationData.tickets) {
+      const ticketType = ticket.ticketName || 'N/A';
+      const attendees = ticket.attendeeInfo || [];
 
-    if (registrationData.tickets && Array.isArray(registrationData.tickets)) {
-      for (const ticket of registrationData.tickets) {
-        const ticketType = ticket.ticketId;
-        const ticketName = ticket.ticketName;
-        const ticketPrice = ticket.ticketPrice;
-        let attendeesProcessedForTicket = 0;
-
-        if (ticket.attendeeInfo && Array.isArray(ticket.attendeeInfo)) {
-          for (const attendee of ticket.attendeeInfo) {
-            const attendeeBusinessSize = attendee.businessSize || '';
-            const attendeeSbaIdentification =
-              (attendee.businessSize === 'Small Business' && attendee.sbaIdentification)
-                ? attendee.sbaIdentification
-                : '';
-            const attendeeIndustry = attendee.industry || '';
-
-            const row = [
-              attendee.company || '',         // Attendee's Company
-              attendee.jobTitle || '',        // Attendee's Job Title
-              attendee.firstName || '',       // Attendee's First Name
-              attendee.lastName || '',        // Attendee's Last Name
-              attendee.email || '',           // Attendee's Email
-              attendee.phone || '',           // Attendee's Phone
-              registrationTimestamp,          // Common: Registration Date
-              ticketName,                     // Specific ticket type for this attendee
-              ticketPrice,            // Common: Order Amount Received
-              orderAmountPaid,                // Common: Order Amount Paid TODO: This is inaccurate.
-              attendee.website || '',         // Attendee's Website
-              attendeeBusinessSize,           // Attendee's Business Size
-              attendeeSbaIdentification,      // Attendee's SBA Identification
-              attendeeIndustry,               // Attendee's Industry
-            ];
-            rowsToAppend.push(row);
-            attendeesProcessedForTicket++;
-          }
+      if (attendees.length > 0) {
+        for (const attendee of attendees) {
+          const row = [
+            attendee.company || '',
+            attendee.jobTitle || '',
+            attendee.firstName || '',
+            attendee.lastName || '',
+            attendee.email || '',
+            attendee.phone || '',
+            commonData.registrationTimestamp,
+            ticketType,
+            commonData.amountPaid,
+            commonData.amountPaid, // Placeholder for a different value if needed
+            attendee.website || '',
+            attendee.businessSize || '',
+            attendee.sbaIdentification || '',
+            attendee.industry || '',
+          ];
+          rowsToAppend.push(row);
         }
-
-        // If quantity > number of attendees with info, add generic rows for remaining quantity
-        const remainingQuantity = ticket.quantity - attendeesProcessedForTicket;
-        if (remainingQuantity > 0) {
-          for (let i = 0; i < remainingQuantity; i++) {
-            const row = [
-              '',                             // Blank: Company for generic entry
-              '',                             // Blank: Job Title for generic entry
-              '',                             // Blank: First Name for generic entry
-              '',                             // Blank: Last Name for generic entry
-              '',                             // Blank: Email for generic entry
-              '',                             // Blank: Phone for generic entry
-              registrationTimestamp,          // Common: Registration Date
-              ticketType,                     // Specific ticket type
-              orderAmountReceived,            // Common: Order Amount Received
-              orderAmountPaid,                // Common: Order Amount Paid
-              '',                             // Blank: Website for generic entry
-              '',                             // No Business Size for generic entry
-              '',                             // No SBA Identification for generic entry
-              '',                             // No Industry for generic entry
-            ];
-            rowsToAppend.push(row);
-          }
+      } else {
+        // Create generic rows if no attendee info is provided for the quantity
+        for (let i = 0; i < ticket.quantity; i++) {
+          const row = [
+            '', '', '', '', '', '',
+            commonData.registrationTimestamp,
+            ticketType,
+            commonData.amountPaid,
+            commonData.amountPaid,
+            '', '', '', '',
+          ];
+          rowsToAppend.push(row);
         }
       }
     }
@@ -172,13 +151,12 @@ export async function logRegistration(
     if (rowsToAppend.length > 0) {
       await appendToSheet(
         env.GOOGLE_SHEETS_SPREADSHEET_ID,
-        '🛡️ Attendee Registration Information 🛡️!A:N', // Existing 14-column range
+        '🛡️ Attendee Registration Information 🛡️!A:N',
         rowsToAppend,
         'USER_ENTERED'
       );
     } else {
-      // Optional: Log a warning if no rows were generated for a registration attempt
-      console.warn('No rows generated for logging registration. Event ID:', eventId, 'Order ID:', orderId);
+      console.warn('No rows generated for logging registration. Order ID:', orderId);
     }
 
     return { success: true };
@@ -186,7 +164,7 @@ export async function logRegistration(
     console.error('Error logging registration to Google Sheets:', error);
     return {
       success: false,
-      error: error instanceof Error ? error.message : 'Unknown error'
+      error: error instanceof Error ? error.message : 'Unknown error',
     };
   }
 }

@@ -720,7 +720,7 @@ invaluable connections that can shape the future of your business.
     image: "2025NMCPC_wide.webp",
     slug: "2025-navy-marine-corps-procurement-conference",
     locationImage: "locations/temp_venue.webp",
-    locationAddress: `111 Google Ave`,
+    locationAddress: `235 E Main St, Norfolk, Virginia 23510`,
     placeID: "ChIJBdD-jwuYuokRyjyu_hU0jUg",
     registerLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
 

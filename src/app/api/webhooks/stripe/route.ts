@@ -1,105 +1,129 @@
 import { NextResponse } from 'next/server';
+import Stripe from 'stripe';
 import { stripe } from '@/lib/stripe/server';
 import { getEnv } from '@/lib/env';
 import { logRegistration } from '@/lib/google-sheets';
+import { sendRegistrationConfirmationEmail } from '@/lib/email/confirmation-emails';
+import { headers } from 'next/headers';
+import { RegistrationFormData } from '@/types/event-registration/registration';
+import { EVENTS } from '@/constants/events';
+import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, ModalRegistrationType } from '@/lib/registration-adapters';
+import { getPendingRegistration } from '@/lib/aws/dynamodb';
 
-// Helper to read raw request body as text
-async function getRawBody(readable: any): Promise<Buffer> {
-  const chunks = [];
-  for await (const chunk of readable) {
-    chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
+async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent) {
+  console.log(`PaymentIntent ${paymentIntent.id} succeeded.`);
+
+  const metadata = paymentIntent.metadata;
+  const eventId = metadata.eventId;
+  const pendingRegistrationId = metadata.pendingRegistrationId;
+
+  if (!pendingRegistrationId || !eventId) {
+    console.error('Error: Missing pendingRegistrationId or eventId in payment intent metadata.', { metadata });
+    return;
   }
-  return Buffer.concat(chunks);
+
+  try {
+    const registrationData = await getPendingRegistration(pendingRegistrationId);
+
+    if (!registrationData) {
+      console.error(`Could not find pending registration with ID: ${pendingRegistrationId}`);
+      return;
+    }
+
+    // Log the registration to Google Sheets
+    await logRegistration(
+      eventId,
+      registrationData,
+      paymentIntent.id,
+      'succeeded',
+      paymentIntent.amount,
+      registrationData.promoCode,
+      Number(metadata.discountAmount) || 0
+    );
+
+    // --- Prepare data for confirmation email ---
+    const event = EVENTS.find(e => e.id.toString() === eventId);
+    if (!event) {
+      console.error(`Event with ID ${eventId} not found.`);
+      return;
+    }
+
+    const allRegistrationTypes: ModalRegistrationType[] = [
+      ...getRegistrationsForEvent(eventId),
+      ...getSponsorshipsForEvent(eventId),
+      ...getExhibitorsForEvent(eventId)
+    ];
+
+    const purchasedRegistrations: ModalRegistrationType[] = registrationData.tickets
+      .map(ticket => allRegistrationTypes.find(regType => regType.id === ticket.ticketId))
+      .filter((r): r is ModalRegistrationType => r !== undefined);
+
+    if (purchasedRegistrations.length !== registrationData.tickets.length) {
+      console.warn('Mismatch between tickets in order and found registration types.');
+    }
+
+    // Send the confirmation email
+    await sendRegistrationConfirmationEmail({
+      email: registrationData.email,
+      firstName: registrationData.firstName,
+      event,
+      registrations: purchasedRegistrations,
+      orderId: paymentIntent.id,
+    });
+
+  } catch (error) {
+    console.error('Error processing successful payment intent:', error);
+  }
+}
+
+async function handlePaymentIntentFailed(paymentIntent: Stripe.PaymentIntent) {
+  console.error(`PaymentIntent ${paymentIntent.id} failed.`, paymentIntent.last_payment_error);
+  // Optional: Add logic to notify the user or internal teams about the failure.
+}
+
+async function handleChargeRefunded(charge: Stripe.Charge) {
+  console.log(`Charge ${charge.id} for ${charge.amount} was refunded.`);
+  // Optional: Add logic to update registration status in your system.
 }
 
 export async function POST(request: Request) {
   const env = getEnv();
-  const signature = request.headers.get('stripe-signature');
-  
+  const signature = headers().get('stripe-signature');
+
   if (!signature) {
-    console.error('No Stripe signature found');
-    return NextResponse.json(
-      { error: 'No signature' },
-      { status: 400 }
-    );
+    console.error('No Stripe signature found in request headers.');
+    return NextResponse.json({ error: 'No signature' }, { status: 400 });
   }
 
+  let event: Stripe.Event;
   try {
-    // Get the raw body as text
-    const rawBody = await getRawBody(request.body);
-    
-    // Verify the webhook signature
-    const event = stripe.webhooks.constructEvent(
+    const rawBody = await request.text();
+    event = stripe.webhooks.constructEvent(
       rawBody,
       signature,
       env.STRIPE_WEBHOOK_SECRET
     );
-
-    // Handle the event
-    switch (event.type) {
-      case 'payment_intent.succeeded':
-        await handlePaymentIntentSucceeded(event.data.object);
-        break;
-      case 'payment_intent.payment_failed':
-        await handlePaymentIntentFailed(event.data.object);
-        break;
-      case 'charge.refunded':
-        await handleChargeRefunded(event.data.object);
-        break;
-      // Add more event types as needed
-      default:
-        console.log(`Unhandled event type: ${event.type}`);
-    }
-
-    return NextResponse.json({ received: true });
-  } catch (error) {
-    console.error('Error processing webhook:', error);
-    return NextResponse.json(
-      { error: 'Webhook error' },
-      { status: 400 }
-    );
+  } catch (error: any) {
+    console.error('Error constructing webhook event:', error.message);
+    return NextResponse.json({ error: `Webhook error: ${error.message}` }, { status: 400 });
   }
-}
 
-async function handlePaymentIntentSucceeded(paymentIntent: any) {
-  const { id, metadata, amount, currency } = paymentIntent;
-  
-  // In a real app, you would fetch the registration data from your database
-  // using the paymentIntent.id or metadata.orderId
-  
-  console.log(`PaymentIntent ${id} succeeded for ${amount} ${currency}`);
-  
-  // Example of logging to Google Sheets
-  try {
-    await logRegistration(
-      metadata.eventId,
-      metadata, // This would be your registration data
-      metadata.orderId || id,
-      'paid',
-      amount / 100, // Convert from cents
-      metadata.promoCode,
-      metadata.discountApplied ? parseFloat(metadata.discountApplied) : 0
-    );
-    
-    console.log(`Registration logged for payment intent ${id}`);
-  } catch (error) {
-    console.error('Error logging registration:', error);
-    // In a real app, you might want to retry or notify an admin
+  console.log(`Received verified Stripe event: ${event.type}`);
+
+  // Handle the event
+  switch (event.type) {
+    case 'payment_intent.succeeded':
+      await handlePaymentIntentSucceeded(event.data.object as Stripe.PaymentIntent);
+      break;
+    case 'payment_intent.payment_failed':
+      await handlePaymentIntentFailed(event.data.object as Stripe.PaymentIntent);
+      break;
+    case 'charge.refunded':
+      await handleChargeRefunded(event.data.object as Stripe.Charge);
+      break;
+    default:
+      console.log(`Unhandled event type: ${event.type}`);
   }
-  
-  // Send confirmation email, update database, etc.
-}
 
-async function handlePaymentIntentFailed(paymentIntent: any) {
-  const { id, last_payment_error } = paymentIntent;
-  console.error(`PaymentIntent ${id} failed:`, last_payment_error?.message);
-  
-  // Update your database, notify the user, etc.
-}
-
-async function handleChargeRefunded(charge: any) {
-  const { id, payment_intent, amount_refunded, refunds } = charge;
-  console.log(`Charge ${id} was refunded: ${amount_refunded} cents`);
-  
-  // Update your database, notify the user, etc.
+  return NextResponse.json({ received: true });
 }

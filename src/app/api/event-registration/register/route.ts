@@ -6,6 +6,7 @@ import { validateRegistrationData } from '@/lib/event-registration/validation';
 import { sendFreeRegistrationConfirmationEmail, sendPaymentPendingConfirmationEmail } from '@/lib/email';
 import { isGovOrMilEmail } from '@/lib/event-registration/validation';
 import { REGISTRATION_TYPES } from '@/constants/registrations';
+import { savePendingRegistration } from '@/lib/aws/dynamodb';
 
 // Helper function to calculate order total
 function calculateOrderTotal(
@@ -48,24 +49,15 @@ export async function POST(request: Request) {
     const env = getEnv();
     const body = await request.json();
     const eventIdFromBody = body.eventId; // Extract eventId from the raw body
-    const eventTitleFromBody = body.eventTitle; // Optional: for more descriptive emails
-    // const eventSlugFromBody = body.eventSlug; // Optional: for direct event links
 
-    // Validate the request body (excluding eventId for schema validation if it's not part of it)
     const { isValid, errors, validatedData } = await validateRegistrationData(body);
-    if (!isValid || !validatedData) { // Check !validatedData explicitly for TS
-      return NextResponse.json(
-        { success: false, errors },
-        { status: 400 }
-      );
+    if (!isValid || !validatedData) {
+      return NextResponse.json({ success: false, errors }, { status: 400 });
     }
 
-    // Use validatedData for schema-defined fields
-    const { email, tickets, promoCode, paymentMethod } = validatedData;
-    // Use eventIdFromBody for the eventId
+    const { email, tickets, promoCode } = validatedData;
     const currentEventId = eventIdFromBody;
 
-    // Find all available tickets for the current event from our centralized source of truth
     const eventId = Number(currentEventId);
     const eventRegistrations = REGISTRATION_TYPES.find(event => event.id === eventId);
 
@@ -74,291 +66,125 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: 'Event not found' }, { status: 404 });
     }
 
-    // Map tickets to their definitions from the central source
     const availableTickets = tickets.map(ticket => {
-      // First check if client sent ticket price information
       const clientProvidedPrice = body.ticketPrices && body.ticketPrices[ticket.ticketId];
-
-      // Find the registration type in the event's registrations
-      // Using a type assertion to avoid TypeScript errors with property access
-      const registrationType = eventRegistrations.registrations.find(reg => {
-        return 'id' in reg && reg.id === ticket.ticketId;
-      });
+      const registrationType = eventRegistrations.registrations.find(reg => 'id' in reg && reg.id === ticket.ticketId);
 
       if (registrationType) {
-        // Create a safe ticket definition with proper type checking
-        const ticketDef: {
-          id: string;
-          price: number;
-          earlyBirdPrice?: number;
-          earlyBirdDeadline?: string;
-          type: string;
-        } = {
+        const ticketDef: { id: string; price: number; earlyBirdPrice?: number; earlyBirdDeadline?: string; type: string; } = {
           id: ticket.ticketId,
-          // Handle different price formats and convert to number when possible
-          price: 0, // Default value
-          type: 'paid' // Default value
+          price: 0,
+          type: 'paid'
         };
 
-        // If client provided a price and it's a number, use it (especially important for sponsorships)
         if (clientProvidedPrice !== undefined && typeof clientProvidedPrice === 'number') {
           ticketDef.price = clientProvidedPrice;
-        }
-        // Otherwise, handle different ways price might be stored (e.g., as a number or string)
-        else if ('price' in registrationType) {
-          const price = registrationType.price;
-          if (typeof price === 'number') {
-            ticketDef.price = price;
-          }
+        } else if ('price' in registrationType && typeof registrationType.price === 'number') {
+          ticketDef.price = registrationType.price;
         }
 
-        // Handle type field
         if ('type' in registrationType && typeof registrationType.type === 'string') {
           ticketDef.type = registrationType.type;
         }
 
-        // Check if this is a sponsorship ticket based on the ID pattern
-        // This is a safer approach than relying on properties that might not exist in the TicketSelection type
         if (ticket.ticketId.includes('sponsor')) {
           ticketDef.type = 'sponsor';
         }
 
-        // Handle early bird price
-        if ('earlyBirdPrice' in registrationType) {
-          const earlyBirdPrice = registrationType.earlyBirdPrice;
-          if (typeof earlyBirdPrice === 'number') {
-            ticketDef.earlyBirdPrice = earlyBirdPrice;
-          }
+        if ('earlyBirdPrice' in registrationType && typeof registrationType.earlyBirdPrice === 'number') {
+          ticketDef.earlyBirdPrice = registrationType.earlyBirdPrice;
         }
 
-        // Handle early bird deadline
-        if ('earlyBirdDeadline' in registrationType &&
-          typeof registrationType.earlyBirdDeadline === 'string') {
+        if ('earlyBirdDeadline' in registrationType && typeof registrationType.earlyBirdDeadline === 'string') {
           ticketDef.earlyBirdDeadline = registrationType.earlyBirdDeadline;
         }
 
         return ticketDef;
       }
 
-      // If we can't find the ticket in our central source but client provided price info, use that
       if (clientProvidedPrice !== undefined && typeof clientProvidedPrice === 'number') {
-        console.log(`Using client-provided price ${clientProvidedPrice} for ticket ID ${ticket.ticketId}`);
-        // Determine if this is likely a sponsorship based on the ticket ID
         const isSponsorshipTicket = ticket.ticketId.includes('sponsor');
-        return {
-          id: ticket.ticketId,
-          price: clientProvidedPrice,
-          type: isSponsorshipTicket ? 'sponsor' : 'paid'
-        };
+        return { id: ticket.ticketId, price: clientProvidedPrice, type: isSponsorshipTicket ? 'sponsor' : 'paid' };
       }
 
-      // Last resort fallback
-      console.error(`Ticket ID ${ticket.ticketId} not found in REGISTRATION_TYPES for event ${eventId}`);
-      return {
-        id: ticket.ticketId,
-        price: 0,
-        type: 'paid'
-      };
+      console.error(`Ticket ID ${ticket.ticketId} not found for event ${eventId}`);
+      return { id: ticket.ticketId, price: 0, type: 'paid' };
     });
 
-    // Filter out any tickets with type 'complimentary' or non-numeric prices
-    // For sponsor tickets, we want to include them in paid tickets even if they have type 'sponsor'
-    const paidTickets = availableTickets.filter(ticket => {
-      // Include both paid tickets and sponsor tickets with numeric prices
-      return (ticket.type === 'paid' || ticket.type === 'sponsor') && typeof ticket.price === 'number';
-    });
-    
-    // Log the paid tickets after filtering to verify they're being processed correctly
-    console.log('Paid tickets after filtering:', JSON.stringify(paidTickets, null, 2));
+    const paidTickets = availableTickets.filter(t => (t.type === 'paid' || t.type === 'sponsor') && typeof t.price === 'number');
+    const hasComplimentaryTickets = tickets.some(t => availableTickets.find(at => at.id === t.ticketId)?.type === 'complimentary');
 
-    console.log('Paid tickets:', JSON.stringify(paidTickets, null, 2));
-
-    console.log('--- Registration Attempt ---');
-    console.log('Event ID:', currentEventId);
-    console.log('Selected tickets (from client):', JSON.stringify(tickets, null, 2));
-    // Also log ticket prices if they were sent
-    if (body.ticketPrices) {
-      console.log('Ticket prices (from client):', JSON.stringify(body.ticketPrices, null, 2));
-    }
-    console.log('Available tickets (server-side):', JSON.stringify(availableTickets, null, 2));
-
-    // Check if any complimentary tickets are being registered
-    const hasComplimentaryTickets = tickets.some(ticket => {
-      const ticketDef = availableTickets.find(t => t.id === ticket.ticketId);
-      return ticketDef && ticketDef.type === 'complimentary';
-    });
-
-    console.log('Has complimentary tickets:', hasComplimentaryTickets);
-
-    // Validate that all attendees for complimentary tickets have gov/mil emails
     if (hasComplimentaryTickets) {
-      // Check each ticket
       for (const ticket of tickets) {
         const ticketDef = availableTickets.find(t => t.id === ticket.ticketId);
-        if (ticketDef && ticketDef.type === 'complimentary') {
-          // Check each attendee's email
-          const attendeeInfo = ticket.attendeeInfo || [];
-          for (const attendee of attendeeInfo) {
+        if (ticketDef?.type === 'complimentary') {
+          for (const attendee of ticket.attendeeInfo || []) {
             if (!isGovOrMilEmail(attendee.email)) {
-              return NextResponse.json(
-                {
-                  success: false,
-                  errors: {
-                    [`tickets[${tickets.indexOf(ticket)}].attendeeInfo[${attendeeInfo.indexOf(attendee)}].email`]:
-                      'B Government or military email (.gov or .mil) is required for complimentary tickets'
-                  }
-                },
-                { status: 400 }
-              );
+              return NextResponse.json({ success: false, errors: { email: 'Gov/mil email required for complimentary tickets.' } }, { status: 400 });
             }
           }
         }
       }
     }
 
-    // Check if the email is a .gov or .mil email for free registration
     const isFreeRegistration = paidTickets.length === 0 && hasComplimentaryTickets;
-    console.log('Is free registration:', isFreeRegistration);
 
-    // Validate promo code if provided
     let promoCodeDetails = null;
     if (promoCode) {
-      // In a real app, you would validate the promo code against your database or Stripe
-      // This is a simplified example
-      const promoResponse = await fetch(`${env.NEXT_PUBLIC_SITE_URL}/api/event-registration/validate-promo`, { // Use NEXT_PUBLIC_SITE_URL
+      const promoResponse = await fetch(`${env.NEXT_PUBLIC_SITE_URL}/api/event-registration/validate-promo`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ promoCode, eventId: currentEventId, tickets }),
       });
-
       const promoData = await promoResponse.json();
       if (!promoData.valid) {
-        return NextResponse.json(
-          { success: false, errors: { promoCode: promoData.error || 'Invalid promo code' } },
-          { status: 400 }
-        );
+        return NextResponse.json({ success: false, errors: { promoCode: promoData.error || 'Invalid promo code' } }, { status: 400 });
       }
-
       promoCodeDetails = promoData;
     }
 
-    // Calculate order total
-    const { subtotal, discount, total } = calculateOrderTotal(
-      tickets,
-      paidTickets, // Use the filtered list of paid tickets with numeric prices
-      promoCodeDetails
-    );
+    const { discount, total } = calculateOrderTotal(tickets, paidTickets, promoCodeDetails);
 
-    console.log('Calculated Order:');
-    console.log('  Subtotal:', subtotal);
-    console.log('  Discount:', discount);
-    console.log('  Total:', total);
-
-    // For free registration, skip payment processing
-    if (isFreeRegistration) {
-      if (!validatedData) {
-        // This path should ideally not be reached due to the primary check after validateRegistrationData
-        console.error('validatedData is unexpectedly null at the start of isFreeRegistration block');
-        return NextResponse.json({ success: false, error: 'Internal server error: validatedData became null unexpectedly' }, { status: 500 });
-      }
-      // validatedData is now confirmed to be RegistrationFormData for the rest of this block
+    if (total === 0) {
       const orderId = `ORDER-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-
-      // Log the registration to Google Sheets
-      await logRegistration(
-        currentEventId, // Use consistent eventId
-        validatedData, // Null check for validatedData is done at the start of this 'isFreeRegistration' block
+      await logRegistration(currentEventId, validatedData, orderId, isFreeRegistration ? 'free' : 'paid_free', 0, promoCode, discount);
+      await sendFreeRegistrationConfirmationEmail({
+        userEmail: validatedData.email,
+        firstName: validatedData.firstName,
+        eventName: body.eventTitle || 'the Event',
         orderId,
-        'free',
-        0,
-        promoCode, // promoCode is destructured from validatedData, so it's fine if validatedData is non-null
-        discount
-      );
-
-      // Send free registration confirmation email
-      // validatedData is confirmed non-null from the check at the start of the isFreeRegistration block
-      if (validatedData.firstName && validatedData.email) {
-        await sendFreeRegistrationConfirmationEmail({
-          userEmail: validatedData.email,
-          firstName: validatedData.firstName,
-          eventName: body.eventTitle || 'the Event', // Prefer eventTitle from body, fallback
-          orderId,
-          eventUrl: body.eventSlug ? `${env.NEXT_PUBLIC_SITE_URL}/events/${body.eventSlug}` : env.NEXT_PUBLIC_SITE_URL
-        });
-      }
-
-      // Now, return the successful response
-      return NextResponse.json({
-        success: true,
-        orderId,
-        paymentStatus: 'free',
-        amountPaid: 0,
-        discountApplied: discount,
+        eventUrl: body.eventSlug ? `${env.NEXT_PUBLIC_SITE_URL}/events/${body.eventSlug}` : env.NEXT_PUBLIC_SITE_URL
       });
+      return NextResponse.json({ success: true, orderId, paymentStatus: isFreeRegistration ? 'free' : 'free_with_promo', amountPaid: 0 });
     }
 
-    // For paid registration, create a payment intent with Stripe
+    const pendingRegistrationId = await savePendingRegistration(validatedData);
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(total * 100), // Convert to cents
       currency: 'usd',
       receipt_email: email,
-      description: `Registration for event ${eventTitleFromBody} by ${validatedData.firstName} ${validatedData.lastName}`,
       metadata: {
-        eventId: currentEventId, // Use consistent eventId
+        eventId: currentEventId,
         orderType: 'event-registration',
         email,
         promoCode: promoCode || '',
         contactName: `${validatedData.firstName} ${validatedData.lastName}`,
+        discountAmount: discount.toString(),
+        pendingRegistrationId,
       },
     });
-
-    console.log('Stripe PaymentIntent created with amount:', Math.round(total * 100));
-
-    // Log paid registration attempt to Google Sheets
-    if (!validatedData) {
-      // This case should ideally not be reached if the initial check is correct
-      console.error('validatedData is null before logging paid registration');
-      return NextResponse.json({ success: false, error: 'Internal server error: validatedData became null before logging' }, { status: 500 });
-    }
-    await logRegistration(
-      currentEventId,
-      validatedData, // Now confirmed non-null
-      paymentIntent.id, // Use PaymentIntent ID as orderId
-      'pending_stripe_payment', // Indicate payment is pending
-      total, // Amount to be paid
-      validatedData.promoCode, // Now confirmed non-null
-      discount
-    );
-
-    // Send payment pending confirmation email
-    // validatedData is already confirmed non-null from the check above
-    if (validatedData.firstName && validatedData.email) {
-      await sendPaymentPendingConfirmationEmail({
-        userEmail: validatedData.email,
-        firstName: validatedData.firstName,
-        eventName: body.eventTitle || 'the Event', // Prefer eventTitle from body, fallback
-        orderId: paymentIntent.id,
-        amount: total,
-        eventUrl: body.eventSlug ? `${env.NEXT_PUBLIC_SITE_URL}/events/${body.eventSlug}` : env.NEXT_PUBLIC_SITE_URL
-      });
-    }
 
     return NextResponse.json({
       success: true,
       clientSecret: paymentIntent.client_secret,
       paymentIntentId: paymentIntent.id,
       amount: total,
-      currency: 'usd',
     });
 
   } catch (error) {
     console.error('Error processing registration:', error);
     return NextResponse.json(
-      {
-        success: false,
-        error: 'An error occurred while processing your registration',
-        details: error instanceof Error ? error.message : 'Unknown error'
-      },
+      { success: false, error: 'An error occurred while processing your registration', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }

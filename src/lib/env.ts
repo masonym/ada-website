@@ -25,6 +25,12 @@ export function getEnv() {
     
     // Admin
     ADMIN_PASSWORD: process.env.ADMIN_PASSWORD || 'ada-admin-2025',
+    
+    // AWS
+    AWS_ACCESS_KEY_ID: getRequiredEnv('AWS_ACCESS_KEY_ID', 'AWS Access Key ID'),
+    AWS_SECRET_ACCESS_KEY: getRequiredEnv('AWS_SECRET_ACCESS_KEY', 'AWS Secret Access Key'),
+    AWS_REGION: getRequiredEnv('AWS_REGION', 'AWS Region'),
+    DYNAMODB_TABLE_NAME: getRequiredEnv('DYNAMODB_TABLE_NAME', 'DynamoDB Table Name'),
   };
 }
 
