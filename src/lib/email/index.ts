@@ -62,15 +62,12 @@ interface RegistrationConfirmationEmailProps {
   eventName: string;
   orderId?: string; // Optional, for free or if generated before payment intent
   eventUrl?: string; // Optional link to the event page
+  eventImage: string;
 }
 
-export async function sendFreeRegistrationConfirmationEmail({
-  userEmail,
-  firstName,
-  eventName,
-  orderId,
-  eventUrl,
-}: RegistrationConfirmationEmailProps) {
+export async function sendFreeRegistrationConfirmationEmail(props: RegistrationConfirmationEmailProps) {
+  const { userEmail, firstName, eventName, orderId, eventUrl, eventImage } = props;
+
   const subject = `Confirmation: Your Registration for ${eventName}`;
   const html = `
     <p>Dear ${firstName},</p>
@@ -81,42 +78,9 @@ export async function sendFreeRegistrationConfirmationEmail({
     <p>If you have any questions, please don't hesitate to contact us at ${env.MY_EMAIL || 'our support address'}.</p>
     <p>Sincerely,</p>
     <p>The American Defense Alliance Team</p>
+    <img src="${eventImage}" alt="${eventName} Event Image">
   `;
 
   return sendEmail({ to: userEmail, subject, html });
 }
 
-interface PaymentPendingEmailProps {
-  userEmail: string;
-  firstName: string;
-  eventName: string;
-  orderId: string; // Stripe Payment Intent ID
-  amount: number;
-  eventUrl?: string;
-}
-
-export async function sendPaymentPendingConfirmationEmail({
-  userEmail,
-  firstName,
-  eventName,
-  orderId,
-  amount,
-  eventUrl,
-}: PaymentPendingEmailProps) {
-  const subject = `Action Required: Complete Your Payment for ${eventName}`;
-  const html = `
-    <p>Dear ${firstName},</p>
-    <p>Thank you for initiating your registration for <strong>${eventName}</strong>!</p>
-    <p>Your registration is almost complete. We've received your details, and your Order ID is: <strong>${orderId}</strong>.</p>
-    <p>The total amount for your registration is <strong>$${amount.toFixed(2)}</strong>.</p>
-    <p>Please complete the payment process on the registration page to secure your spot. If you've already done so, you'll receive another confirmation once the payment is verified.</p>
-    ${eventUrl ? `<p>If you closed the page, you can return to the event here: <a href="${eventUrl}">${eventUrl}</a> (Note: You might need to restart the checkout process if the session expired)</p>` : ''}
-    <p>If you have any questions or issues with payment, please contact us at ${env.MY_EMAIL || 'our support address'}.</p>
-    <p>Sincerely,</p>
-    <p>The American Defense Alliance Team</p>
-  `;
-
-  return sendEmail({ to: userEmail, subject, html });
-}
-
-// We can add a sendPaymentSuccessEmail function later, ideally triggered by a Stripe webhook.

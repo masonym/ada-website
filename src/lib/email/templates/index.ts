@@ -1,10 +1,11 @@
 // Email templates for different registration types
 import { getEnv } from '../../env';
+import { getCdnPath } from '@/utils/image';
 
 const env = getEnv();
 
 // Base template that all emails will use
-export function baseEmailTemplate(content: string): string {
+export function baseEmailTemplate(content: string, eventImage: string): string {
   return `
     <!DOCTYPE html>
     <html>
@@ -31,7 +32,7 @@ export function baseEmailTemplate(content: string): string {
           text-align: center;
         }
         .header img {
-          max-width: 200px;
+          max-width: 100%;
         }
         .content {
           padding: 20px;
@@ -69,7 +70,7 @@ export function baseEmailTemplate(content: string): string {
     <body>
       <div class="container">
         <div class="header">
-          <img src="https://americandefensealliance.org/logo.png" alt="American Defense Alliance Logo" />
+          <img src="${getCdnPath(eventImage)}" alt="American Defense Alliance Event Banner" />
         </div>
         <div class="content">
           ${content}
@@ -79,7 +80,7 @@ export function baseEmailTemplate(content: string): string {
           <p>© ${new Date().getFullYear()} American Defense Alliance. All rights reserved.</p>
           <p>
             For questions, please contact us at 
-            <a href="mailto:${env.MY_EMAIL || 'info@americandefensealliance.org'}">${env.MY_EMAIL || 'info@americandefensealliance.org'}</a>
+            <a href="mailto:${env.MY_EMAIL || 'chayil@americandefensealliance.org'}">${env.MY_EMAIL || 'chayil@americandefensealliance.org'}</a>
           </p>
         </div>
       </div>
@@ -96,6 +97,8 @@ export function attendeePassTemplate({
   eventLocation,
   eventUrl,
   orderId,
+  hotelInfo,
+  eventImage,
 }: {
   firstName: string;
   eventName: string;
@@ -103,29 +106,47 @@ export function attendeePassTemplate({
   eventLocation: string;
   eventUrl?: string;
   orderId: string;
+  hotelInfo: string;
+  eventImage: string;
 }): string {
   const content = `
-    <h1>Thank You for Registering!</h1>
-    <p>Dear ${firstName},</p>
-    <p>Thank you for registering for <strong>${eventName}</strong>. We're excited to have you join us!</p>
+    <p><strong>Dear ${firstName},</strong></p>
+    
+    <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
     
     <div class="highlight">
-      <p><strong>Event Details:</strong></p>
-      <p><strong>Date:</strong> ${eventDate}</p>
+      <p><strong>Event Details</strong></p>
+      <p><strong>Event:</strong> ${eventName}</p>
+      <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
       <p><strong>Location:</strong> ${eventLocation}</p>
-      <p><strong>Order ID:</strong> ${orderId}</p>
+      ${orderId ? `<p><strong>Order ID:</strong> ${orderId}</p>` : ''}
     </div>
     
-    <p>Please save this email for your records. You'll receive additional information about the event as the date approaches.</p>
+    ${hotelInfo ? `
+    <div class="highlight">
+      <p><strong>Hotel Accommodations</strong></p>
+      <p>Room Block Information is available <a href="${hotelInfo}">here.</a></p>
+    </div>
+    ` : ''}
+    
+    <div class="highlight">
+      <p><strong>Please Note</strong></p>
+      <ul>
+        <li><strong>All registrations are final</strong>. We are unable to offer refunds for this event.</li>
+        <li>Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">https://www.americandefensealliance.org/</a></li>
+      </ul>
+    </div>
     
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
     
-    <p>If you have any questions, please don't hesitate to contact us.</p>
+    <p>If you have any questions or need further assistance, feel free to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
     
-    <p>Sincerely,<br>The American Defense Alliance Team</p>
+    <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
+    
+    <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
   `;
   
-  return baseEmailTemplate(content);
+  return baseEmailTemplate(content, eventImage);
 }
 
 // Template for VIP attendee passes
@@ -137,6 +158,7 @@ export function vipAttendeePassTemplate({
   eventUrl,
   orderId,
   vipPerks,
+  eventImage,
 }: {
   firstName: string;
   eventName: string;
@@ -145,6 +167,7 @@ export function vipAttendeePassTemplate({
   eventUrl?: string;
   orderId: string;
   vipPerks: string[];
+  eventImage: string;
 }): string {
   const content = `
     <h1>VIP Registration Confirmed!</h1>
@@ -172,7 +195,7 @@ export function vipAttendeePassTemplate({
     <p>Sincerely,<br>The American Defense Alliance Team</p>
   `;
   
-  return baseEmailTemplate(content);
+  return baseEmailTemplate(content, eventImage);
 }
 
 // Template for exhibitor registrations
@@ -185,6 +208,7 @@ export function exhibitorTemplate({
   orderId,
   exhibitorType,
   exhibitorInstructions,
+  eventImage,
 }: {
   firstName: string;
   eventName: string;
@@ -194,6 +218,7 @@ export function exhibitorTemplate({
   orderId: string;
   exhibitorType: string;
   exhibitorInstructions: string;
+  eventImage: string;
 }): string {
   const content = `
     <h1>Exhibitor Registration Confirmed!</h1>
@@ -222,7 +247,7 @@ export function exhibitorTemplate({
     <p>Sincerely,<br>The American Defense Alliance Team</p>
   `;
   
-  return baseEmailTemplate(content);
+  return baseEmailTemplate(content, eventImage);
 }
 
 // Template for sponsor registrations
@@ -236,6 +261,7 @@ export function sponsorTemplate({
   sponsorshipLevel,
   sponsorshipPerks,
   attendeePasses,
+  eventImage,
 }: {
   firstName: string;
   eventName: string;
@@ -246,6 +272,7 @@ export function sponsorTemplate({
   sponsorshipLevel: string;
   sponsorshipPerks: string[];
   attendeePasses: number;
+  eventImage: string;
 }): string {
   const content = `
     <h1>Sponsorship Confirmation</h1>
@@ -277,5 +304,11 @@ export function sponsorTemplate({
     <p>Sincerely,<br>The American Defense Alliance Team</p>
   `;
   
-  return baseEmailTemplate(content);
+  return baseEmailTemplate(content, eventImage);
 }
+function getMonthFromDate(eventDate: string) {
+  const date = new Date(eventDate);
+  const month = date.toLocaleString('default', { month: 'long' });
+  return month;
+}
+

@@ -817,6 +817,7 @@ const RegistrationModal = ({
             ...formDataToValidate, // Send the whole validated form data
             eventId: event.id, // Make sure eventId is included
             eventTitle: event.title, // Include event name for clarity
+            eventImage: event.image,
             ticketPrices, // Include the ticket prices object for accurate pricing
             // The register endpoint will calculate amount and use necessary fields from formDataToValidate
           }),

@@ -119,6 +119,7 @@ export async function sendRegistrationConfirmationEmail({
   const eventUrl = `https://americandefensealliance.org/events/${event.slug}`;
   const eventDate = event.date || 'TBA';
   const eventLocation = event.locationAddress || 'TBA';
+  const hotelInfo = `https://americandefensealliance.org/events/${event.slug}/about/venue-and-lodging`;
 
   // Get any ticket-specific attachments
   let ticketAttachments: Array<{
@@ -164,7 +165,8 @@ export async function sendRegistrationConfirmationEmail({
           orderId,
           sponsorshipLevel: registration.title,
           sponsorshipPerks: registration.perks || [],
-          attendeePasses: registration.sponsorPasses || attendeePasses || 0
+          attendeePasses: registration.sponsorPasses || attendeePasses || 0,
+          eventImage: event.image,
         }),
         attachments: emailAttachments,
       });
@@ -186,7 +188,8 @@ export async function sendRegistrationConfirmationEmail({
             <p>Teardown: After event conclusion</p>
             <p>Each exhibit space includes one 6' table and two chairs.</p>
             <p>Please bring your own tablecloth, signage, and promotional materials.</p>
-          `
+          `,
+          eventImage: event.image
         }),
         attachments: emailAttachments,
       });
@@ -207,7 +210,8 @@ export async function sendRegistrationConfirmationEmail({
             'Access to VIP reception',
             'Exclusive networking opportunities',
             'Special gift bag'
-          ]
+          ],
+          eventImage: event.image
         }),
         attachments: emailAttachments,
       });
@@ -216,14 +220,16 @@ export async function sendRegistrationConfirmationEmail({
     default:
       return sendEmail({
         to: email,
-        subject: `Registration Confirmation: ${event.title}`,
+        subject: `Registration Confirmation - ${event.title}`,
         html: attendeePassTemplate({
           firstName,
           eventName: event.title,
           eventDate,
           eventLocation,
           eventUrl,
-          orderId
+          orderId,
+          hotelInfo: hotelInfo,
+          eventImage: event.image,
         })
       });
   }

@@ -3,7 +3,7 @@ import { getEnv } from '@/lib/env';
 import { stripe } from '@/lib/stripe/server';
 import { logRegistration } from '@/lib/google-sheets';
 import { validateRegistrationData } from '@/lib/event-registration/validation';
-import { sendFreeRegistrationConfirmationEmail, sendPaymentPendingConfirmationEmail } from '@/lib/email';
+import { sendFreeRegistrationConfirmationEmail } from '@/lib/email';
 import { isGovOrMilEmail } from '@/lib/event-registration/validation';
 import { REGISTRATION_TYPES } from '@/constants/registrations';
 import { savePendingRegistration } from '@/lib/aws/dynamodb';
@@ -48,6 +48,7 @@ export async function POST(request: Request) {
   try {
     const env = getEnv();
     const body = await request.json();
+    console.log("BODY FROM REGISTRATION ROUTE: ", body);
     const eventIdFromBody = body.eventId; // Extract eventId from the raw body
 
     const { isValid, errors, validatedData } = await validateRegistrationData(body);
@@ -153,7 +154,8 @@ export async function POST(request: Request) {
         firstName: validatedData.firstName,
         eventName: body.eventTitle || 'the Event',
         orderId,
-        eventUrl: body.eventSlug ? `${env.NEXT_PUBLIC_SITE_URL}/events/${body.eventSlug}` : env.NEXT_PUBLIC_SITE_URL
+        eventUrl: body.eventSlug ? `${env.NEXT_PUBLIC_SITE_URL}/events/${body.eventSlug}` : env.NEXT_PUBLIC_SITE_URL,
+        eventImage: body.eventImage
       });
       return NextResponse.json({ success: true, orderId, paymentStatus: isFreeRegistration ? 'free' : 'free_with_promo', amountPaid: 0 });
     }
