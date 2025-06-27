@@ -201,7 +201,6 @@ export function attendeePassTemplate({
       <p><strong>Location:</strong> ${eventLocation}</p>
     </div>
 
-    ${orderSummaryHtml || ''}
     
     ${hotelInfo ? `
     <div class="highlight">
@@ -219,6 +218,8 @@ export function attendeePassTemplate({
     </div>
     
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
+    
+    ${orderSummaryHtml || ''}
     
     <p>If you have any questions or need further assistance, feel free to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
     
@@ -268,7 +269,6 @@ export function vipAttendeePassTemplate({
     </div>
 
 
-    ${orderSummaryHtml || ''}
     
 
     ${hotelInfo ? `
@@ -295,6 +295,8 @@ export function vipAttendeePassTemplate({
     </div>
     
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
+    
+    ${orderSummaryHtml || ''}
     
     <p>If you have any questions or need further assistance, feel free to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
     
@@ -335,31 +337,61 @@ export function exhibitorTemplate({
   vipNetworkingReception?: VipNetworkingReception;
 }): string {
   const content = `
-    <h1>Exhibitor Registration Confirmed!</h1>
     <p>Dear ${firstName},</p>
-    <p>Thank you for registering as an exhibitor for <strong>${eventName}</strong>. We're excited to have you showcase your products/services!</p>
+    <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
+
+    <p>If you wish to purchase additional attendee passes, you can do so by clicking the button below.</p>
+    <p>Note for mason for now: We need to develop a system such that we validate users so that they can purchase additional attendee passes.</p>
+    <p> Need to figure out a good way to do this...</p>
+
+    <div class="highlight">
+      <p><strong>Exhibitor Instructions</strong></p>
+      <p>${exhibitorInstructions}</p>
+    </div>
     
     <div class="highlight">
-      <p><strong>Event Details:</strong></p>
-      <p><strong>Date:</strong> ${eventDate}</p>
+      <p><strong>Event Details</strong></p>
+      <p><strong>Event:</strong> ${eventName}</p>
+      <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
       <p><strong>Location:</strong> ${eventLocation}</p>
-      <p><strong>Exhibitor Type:</strong> ${exhibitorType}</p>
     </div>
+
+
+
+    
+
+    ${hotelInfo ? `
+    <div class="highlight">
+      <p><strong>Hotel Accommodations</strong></p>
+      <p>Room Block Information is available <a href="${hotelInfo}">here.</a></p>
+    </div>
+    ` : ''}
+
+    ${vipNetworkingReception ? `
+    <div class="highlight">
+      <p><strong>VIP Networking Reception</strong></p>
+      <p>
+     ${vipNetworkingReception.description}
+    </div>
+    ` : ''}
+    
+    <div class="highlight">
+      <p><strong>Please Note</strong></p>
+      <ul>
+        <li><strong>All registrations are final</strong>. We are unable to offer refunds for this event.</li>
+        <li>Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org/</a></li>
+      </ul>
+    </div>
+    
+    ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
 
     ${orderSummaryHtml || ''}
     
-    <h2>Important Information for Exhibitors:</h2>
-    <div>
-      ${exhibitorInstructions}
-    </div>
+    <p>If you have any questions or need further assistance, feel free to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
     
-    <p>Please save this email for your records. You'll receive additional information about setup times, booth location, and other logistics as the event approaches.</p>
+    <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
     
-    ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
-    
-    <p>If you have any questions, please don't hesitate to contact us.</p>
-    
-    <p>Sincerely,<br>The American Defense Alliance Team</p>
+    <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
   `;
   
   return baseEmailTemplate(content, eventImage);
@@ -408,7 +440,6 @@ export function sponsorTemplate({
       <p><strong>Included Attendee Passes:</strong> ${attendeePasses}</p>
     </div>
 
-    ${orderSummaryHtml || ''}
     
     <h2>Your Sponsorship Benefits Include:</h2>
     <ul>
@@ -420,6 +451,8 @@ export function sponsorTemplate({
     <p>Please save this email for your records. You'll receive additional information about the event as the date approaches.</p>
     
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
+    
+    ${orderSummaryHtml || ''}
     
     <p>If you have any questions, please don't hesitate to contact us.</p>
     
