@@ -1,4 +1,3 @@
-import { EventTestimonial } from "@/app/components/EventTestimonials";
 import { ReactNode } from "react";
 import { RegistrationType } from "./event-registration/registration";
 
@@ -28,6 +27,15 @@ export interface FeaturedTopicDetail {
         title: string;
         description: string;
     }>;
+}
+
+export interface EventTestimonial {
+    type: 'video' | 'text';
+    quote: string;
+    name: string;
+    title: string;
+    affiliation: string;
+    videoId?: string;
 }
 
 export interface Event {
