@@ -1,3 +1,81 @@
+export interface OrderSummaryItem {
+  name: string;
+  quantity: number;
+  price: number; // in dollars
+}
+
+export interface OrderSummary {
+  orderId: string;
+  orderDate: string;
+  items: OrderSummaryItem[];
+  subtotal: number; // in dollars
+  discount: number; // in dollars
+  total: number; // in dollars
+}
+
+export function generateOrderSummaryHtml(summary: OrderSummary): string {
+  const formatCurrency = (amount: number) => `$${amount.toFixed(2)}`;
+
+  return `
+    <div class="order-summary" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #ccc;">
+      <h2>Order Summary</h2>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+        <tr>
+          <td style="padding: 8px;"><strong>Order ID:</strong></td>
+          <td style="padding: 8px; text-align: right;">${summary.orderId}</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;"><strong>Order Date:</strong></td>
+          <td style="padding: 8px; text-align: right;">${summary.orderDate}</td>
+        </tr>
+      </table>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+        <thead>
+          <tr>
+            <th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;">Item</th>
+            <th style="text-align: right; padding: 8px; border-bottom: 1px solid #ddd;">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${summary.items
+            .map(
+              (item) => `
+            <tr>
+              <td style="padding: 8px;">${item.quantity}x ${item.name}</td>
+              <td style="padding: 8px; text-align: right;">${formatCurrency(item.price * item.quantity)}</td>
+            </tr>
+          `
+            )
+            .join('')}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td style="padding: 8px; text-align: right; border-top: 1px solid #ccc;" colspan="2"></td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; text-align: right;"><strong>Subtotal</strong></td>
+            <td style="padding: 8px; text-align: right;"><strong>${formatCurrency(summary.subtotal)}</strong></td>
+          </tr>
+          ${
+            summary.discount > 0
+              ? `
+            <tr>
+              <td style="padding: 8px; text-align: right;"><strong>Discount</strong></td>
+              <td style="padding: 8px; text-align: right;"><strong>-${formatCurrency(summary.discount)}</strong></td>
+            </tr>
+          `
+              : ''
+          }
+          <tr>
+            <td style="padding: 8px; text-align: right;"><strong>Total Paid</strong></td>
+            <td style="padding: 8px; text-align: right;"><strong>${formatCurrency(summary.total)}</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  `;
+}
+
 // Email templates for different registration types
 import { getEnv } from '../../env';
 import { getCdnPath } from '@/utils/image';
@@ -28,7 +106,6 @@ export function baseEmailTemplate(content: string, eventImage: string): string {
         }
         .header {
           background-color: #002868;
-          padding: 20px;
           text-align: center;
         }
         .header img {
@@ -99,6 +176,7 @@ export function attendeePassTemplate({
   orderId,
   hotelInfo,
   eventImage,
+  orderSummaryHtml,
 }: {
   firstName: string;
   eventName: string;
@@ -108,6 +186,7 @@ export function attendeePassTemplate({
   orderId: string;
   hotelInfo: string;
   eventImage: string;
+  orderSummaryHtml?: string;
 }): string {
   const content = `
     <p><strong>Dear ${firstName},</strong></p>
@@ -119,8 +198,9 @@ export function attendeePassTemplate({
       <p><strong>Event:</strong> ${eventName}</p>
       <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
       <p><strong>Location:</strong> ${eventLocation}</p>
-      ${orderId ? `<p><strong>Order ID:</strong> ${orderId}</p>` : ''}
     </div>
+
+    ${orderSummaryHtml || ''}
     
     ${hotelInfo ? `
     <div class="highlight">
@@ -133,7 +213,7 @@ export function attendeePassTemplate({
       <p><strong>Please Note</strong></p>
       <ul>
         <li><strong>All registrations are final</strong>. We are unable to offer refunds for this event.</li>
-        <li>Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">https://www.americandefensealliance.org/</a></li>
+        <li>Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org/</a></li>
       </ul>
     </div>
     
@@ -159,6 +239,7 @@ export function vipAttendeePassTemplate({
   orderId,
   vipPerks,
   eventImage,
+  orderSummaryHtml,
 }: {
   firstName: string;
   eventName: string;
@@ -168,6 +249,7 @@ export function vipAttendeePassTemplate({
   orderId: string;
   vipPerks: string[];
   eventImage: string;
+  orderSummaryHtml?: string;
 }): string {
   const content = `
     <h1>VIP Registration Confirmed!</h1>
@@ -178,8 +260,9 @@ export function vipAttendeePassTemplate({
       <p><strong>Event Details:</strong></p>
       <p><strong>Date:</strong> ${eventDate}</p>
       <p><strong>Location:</strong> ${eventLocation}</p>
-      <p><strong>Order ID:</strong> ${orderId}</p>
     </div>
+
+    ${orderSummaryHtml || ''}
     
     <h2>Your VIP Benefits Include:</h2>
     <ul>
@@ -209,6 +292,7 @@ export function exhibitorTemplate({
   exhibitorType,
   exhibitorInstructions,
   eventImage,
+  orderSummaryHtml,
 }: {
   firstName: string;
   eventName: string;
@@ -219,6 +303,7 @@ export function exhibitorTemplate({
   exhibitorType: string;
   exhibitorInstructions: string;
   eventImage: string;
+  orderSummaryHtml?: string;
 }): string {
   const content = `
     <h1>Exhibitor Registration Confirmed!</h1>
@@ -229,9 +314,10 @@ export function exhibitorTemplate({
       <p><strong>Event Details:</strong></p>
       <p><strong>Date:</strong> ${eventDate}</p>
       <p><strong>Location:</strong> ${eventLocation}</p>
-      <p><strong>Order ID:</strong> ${orderId}</p>
       <p><strong>Exhibitor Type:</strong> ${exhibitorType}</p>
     </div>
+
+    ${orderSummaryHtml || ''}
     
     <h2>Important Information for Exhibitors:</h2>
     <div>
@@ -262,6 +348,7 @@ export function sponsorTemplate({
   sponsorshipPerks,
   attendeePasses,
   eventImage,
+  orderSummaryHtml,
 }: {
   firstName: string;
   eventName: string;
@@ -273,6 +360,7 @@ export function sponsorTemplate({
   sponsorshipPerks: string[];
   attendeePasses: number;
   eventImage: string;
+  orderSummaryHtml?: string;
 }): string {
   const content = `
     <h1>Sponsorship Confirmation</h1>
@@ -283,10 +371,11 @@ export function sponsorTemplate({
       <p><strong>Event Details:</strong></p>
       <p><strong>Date:</strong> ${eventDate}</p>
       <p><strong>Location:</strong> ${eventLocation}</p>
-      <p><strong>Order ID:</strong> ${orderId}</p>
       <p><strong>Sponsorship Level:</strong> ${sponsorshipLevel}</p>
       <p><strong>Included Attendee Passes:</strong> ${attendeePasses}</p>
     </div>
+
+    ${orderSummaryHtml || ''}
     
     <h2>Your Sponsorship Benefits Include:</h2>
     <ul>

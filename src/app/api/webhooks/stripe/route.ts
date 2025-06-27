@@ -65,6 +65,22 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
       console.warn('Mismatch between tickets in order and found registration types.');
     }
 
+        const orderSummary = {
+      orderId: paymentIntent.id,
+      orderDate: new Date(paymentIntent.created * 1000).toLocaleDateString(),
+      items: registrationData.tickets.map(ticket => {
+        const regType = allRegistrationTypes.find(rt => rt.id === ticket.ticketId);
+        return {
+          name: regType?.title || 'Unknown Ticket',
+          quantity: ticket.quantity,
+          price: (Number(regType?.price) || 0), // Price is in dollars, converting from string
+        };
+      }),
+      subtotal: (paymentIntent.amount + (Number(metadata.discountAmount) || 0)),
+      discount: (Number(metadata.discountAmount) || 0),
+      total: paymentIntent.amount,
+    };
+
     // Send the confirmation email
     await sendRegistrationConfirmationEmail({
       email: registrationData.email,
@@ -72,6 +88,7 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
       event,
       registrations: purchasedRegistrations,
       orderId: paymentIntent.id,
+      orderSummary,
     });
 
   } catch (error) {

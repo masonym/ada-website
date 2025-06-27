@@ -5,7 +5,9 @@ import {
   attendeePassTemplate, 
   vipAttendeePassTemplate, 
   exhibitorTemplate, 
-  sponsorTemplate 
+  sponsorTemplate, 
+  OrderSummary, 
+  generateOrderSummaryHtml 
 } from './templates';
 
 // Define ticket tiers in order of priority (highest to lowest)
@@ -97,6 +99,7 @@ export async function sendRegistrationConfirmationEmail({
   event,
   registrations,
   orderId,
+  orderSummary,
   attendeePasses = 0,
   attachments = []
 }: {
@@ -105,6 +108,7 @@ export async function sendRegistrationConfirmationEmail({
   event: Event;
   registrations: ModalRegistrationType[];
   orderId: string;
+  orderSummary?: OrderSummary;
   attendeePasses?: number;
   attachments?: any[];
 }) {
@@ -146,6 +150,8 @@ export async function sendRegistrationConfirmationEmail({
   
   // Combine any provided attachments with ticket-specific ones
   const emailAttachments = [...attachments, ...ticketAttachments];
+
+  const orderSummaryHtml = orderSummary ? generateOrderSummaryHtml(orderSummary) : '';
   
   // Send appropriate email template based on ticket tier
   switch (tier) {
@@ -167,6 +173,7 @@ export async function sendRegistrationConfirmationEmail({
           sponsorshipPerks: registration.perks || [],
           attendeePasses: registration.sponsorPasses || attendeePasses || 0,
           eventImage: event.image,
+          orderSummaryHtml,
         }),
         attachments: emailAttachments,
       });
@@ -189,7 +196,8 @@ export async function sendRegistrationConfirmationEmail({
             <p>Each exhibit space includes one 6' table and two chairs.</p>
             <p>Please bring your own tablecloth, signage, and promotional materials.</p>
           `,
-          eventImage: event.image
+          eventImage: event.image,
+          orderSummaryHtml,
         }),
         attachments: emailAttachments,
       });
@@ -211,7 +219,8 @@ export async function sendRegistrationConfirmationEmail({
             'Exclusive networking opportunities',
             'Special gift bag'
           ],
-          eventImage: event.image
+          eventImage: event.image,
+          orderSummaryHtml,
         }),
         attachments: emailAttachments,
       });
@@ -230,6 +239,7 @@ export async function sendRegistrationConfirmationEmail({
           orderId,
           hotelInfo: hotelInfo,
           eventImage: event.image,
+          orderSummaryHtml,
         })
       });
   }
