@@ -150,6 +150,8 @@ const RegistrationModal = ({
   const [attendeesByTicket, setAttendeesByTicket] = useState<Record<string, ModalAttendeeInfo[]>>({});
   // Track attendees for sponsor passes separately
   const [sponsorPassAttendees, setSponsorPassAttendees] = useState<Record<string, ModalAttendeeInfo[]>>({});
+  const [attendeeCountStep, setAttendeeCountStep] = useState(false);
+  const [sponsorAttendeesToRegister, setSponsorAttendeesToRegister] = useState<Record<string, number>>({});
 
   // For order ID validation
   const [orderIdInput, setOrderIdInput] = useState<Record<string, string>>({});
@@ -458,12 +460,7 @@ const RegistrationModal = ({
 
       // Initialize sponsor passes if this is the selected sponsorship
       if (isSelected && isOpen && sponsor.sponsorPasses && sponsor.sponsorPasses > 0) {
-        // Create sponsor pass attendees for this sponsorship
-        const sponsorPassAttendeesList = Array(sponsor.sponsorPasses).fill(null).map(() => ({ ...initialModalAttendeeInfo }));
-        setSponsorPassAttendees(prev => ({
-          ...prev,
-          [sponsor.id]: sponsorPassAttendeesList
-        }));
+        // Attendee passes are now handled in the new intermediary step, so we don't pre-populate them here.
       }
     });
 
@@ -491,19 +488,8 @@ const RegistrationModal = ({
 
       // Handle sponsor passes for sponsorships
       if (selectedSponsorship.sponsorPasses && selectedSponsorship.sponsorPasses > 0) {
-        // Create or update sponsor pass attendees for this sponsorship
-        const newSponsorPassAttendees = { ...sponsorPassAttendees };
-
-        // Calculate total sponsor passes based on sponsorship quantity
-        const totalSponsorPasses = selectedSponsorship.sponsorPasses * newQuantity;
-
-        newSponsorPassAttendees[id] = Array(totalSponsorPasses).fill(null).map((_, i): ModalAttendeeInfo => {
-          const existingAttendee = sponsorPassAttendees[id]?.[i];
-          return existingAttendee || { ...initialModalAttendeeInfo };
-        }) as ModalAttendeeInfo[];
-
-        setSponsorPassAttendees(newSponsorPassAttendees);
-        console.log(`Added ${totalSponsorPasses} sponsor pass attendees for ${selectedSponsorship.name}`);
+        // Sponsor pass attendees are now handled in the new attendee count step,
+        // so we don't need to manipulate them here.
       }
     } else {
       // For regular tickets, update attendees as before
@@ -559,7 +545,23 @@ const RegistrationModal = ({
     }
 
     if (getTotalTickets() > 0) {
-      setIsCheckout(true);
+      const selectedSponsorshipsWithPasses = sponsorships.filter(
+        s => (ticketQuantities[s.id] || 0) > 0 && s.sponsorPasses && s.sponsorPasses > 0
+      );
+
+      if (selectedSponsorshipsWithPasses.length > 0) {
+        const initialToRegister: Record<string, number> = {};
+        selectedSponsorshipsWithPasses.forEach(s => {
+          if (s.sponsorPasses) {
+            const totalPasses = s.sponsorPasses * (ticketQuantities[s.id] || 0);
+            initialToRegister[s.id] = totalPasses;
+          }
+        });
+        setSponsorAttendeesToRegister(initialToRegister);
+        setAttendeeCountStep(true);
+      } else {
+        setIsCheckout(true);
+      }
     }
   };
 
@@ -1020,6 +1022,130 @@ const RegistrationModal = ({
     // and should also be handled by StripePaymentForm callbacks or handleCompleteRegistrationApiCall.
   };
 
+  const handleAddSponsorAttendee = (sponsorshipId: string) => {
+    const sponsorship = sponsorships.find(s => s.id === sponsorshipId);
+    if (!sponsorship || !sponsorship.sponsorPasses) return;
+
+    const maxAttendees = sponsorship.sponsorPasses * (ticketQuantities[sponsorshipId] || 0);
+    const currentCount = sponsorAttendeesToRegister[sponsorshipId] || 0;
+
+    if (currentCount < maxAttendees) {
+      setSponsorAttendeesToRegister(prev => ({ ...prev, [sponsorshipId]: currentCount + 1 }));
+      setSponsorPassAttendees(prev => ({
+        ...prev,
+        [sponsorshipId]: [...(prev[sponsorshipId] || []), { ...initialModalAttendeeInfo }]
+      }));
+    }
+  };
+
+  const handleRemoveSponsorAttendee = (sponsorshipId: string, index: number) => {
+    const currentCount = sponsorAttendeesToRegister[sponsorshipId] || 0;
+    if (currentCount > 1) { // Always keep at least one attendee
+      setSponsorAttendeesToRegister(prev => ({ ...prev, [sponsorshipId]: currentCount - 1 }));
+      setSponsorPassAttendees(prev => {
+        const updatedAttendees = [...(prev[sponsorshipId] || [])];
+        updatedAttendees.splice(index, 1);
+        return { ...prev, [sponsorshipId]: updatedAttendees };
+      });
+    }
+  };
+
+  const handleSponsorPassAttendeeChange = (sponsorshipId: string, index: number, field: keyof EventAttendeeInfo, value: string) => {
+    setSponsorPassAttendees(prev => {
+      const attendeesList = prev[sponsorshipId] || []; // Default to empty array if undefined
+      const currentQuantity = ticketQuantities[sponsorshipId] || 0;
+
+      // Create a new list ensuring it matches currentQuantity, populating with existing or initial info
+      const newAttendeesList = Array(currentQuantity).fill(null).map((_, i) => {
+        return attendeesList[i] || { ...initialModalAttendeeInfo };
+      });
+
+      // Apply the update to the correct attendee in the new list
+      if (index < newAttendeesList.length) {
+        newAttendeesList[index] = {
+          ...(newAttendeesList[index]), // Spread existing fields of the specific attendee
+          [field]: value,
+        };
+      } else {
+        // This case should ideally not happen if AttendeeForms are rendered based on currentQuantity
+        console.error(`Attendee index ${index} is out of bounds for ticket ${sponsorshipId} with quantity ${currentQuantity}. Change not applied.`);
+        return prev;
+      }
+
+      const finalState = {
+        ...prev,
+        [sponsorshipId]: newAttendeesList,
+      };
+      return finalState;
+    });
+  };
+
+  const renderAttendeeCountStep = () => {
+    const selectedSponsorships = sponsorships.filter(
+      s => (ticketQuantities[s.id] || 0) > 0 && s.sponsorPasses && s.sponsorPasses > 0
+    );
+
+    return (
+      <div className="p-6">
+        <h3 className="text-2xl font-bold text-gray-900">Confirm Attendee Count</h3>
+        <p className="mt-2 text-sm text-gray-600">
+          Your sponsorship includes complimentary attendee passes. Please specify how many you would like to register now. You can always provide the remaining attendee details later by contacting us.
+        </p>
+        <div className="mt-6 space-y-4">
+          {selectedSponsorships.map(s => {
+            if (!s.sponsorPasses) return null;
+            const totalPasses = s.sponsorPasses * (ticketQuantities[s.id] || 0);
+            return (
+              <div key={s.id} className="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                <label htmlFor={`attendee-count-${s.id}`} className="block text-md font-medium text-gray-800">
+                  {s.name}
+                </label>
+                <p className="text-sm text-gray-500">You have up to {totalPasses} attendee passes.</p>
+                <select
+                  id={`attendee-count-${s.id}`}
+                  value={sponsorAttendeesToRegister[s.id] || totalPasses}
+                  onChange={(e) => {
+                    const count = parseInt(e.target.value, 10);
+                    setSponsorAttendeesToRegister(prev => ({ ...prev, [s.id]: count }));
+                  }}
+                  className="mt-2 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                >
+                  {[...Array(totalPasses).keys()].map(i => (
+                    <option key={i + 1} value={i + 1}>{i + 1} Attendee(s)</option>
+                  ))}
+                </select>
+              </div>
+            );
+          })}
+        </div>
+        <div className="mt-8 flex justify-between items-center">
+          <button
+            type="button"
+            onClick={() => setAttendeeCountStep(false)}
+            className="text-sm font-medium text-gray-600 hover:text-gray-900"
+          >
+            &larr; Back to Selections
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              const newSponsorPassAttendees: Record<string, ModalAttendeeInfo[]> = {};
+              Object.keys(sponsorAttendeesToRegister).forEach(sponsorshipId => {
+                const count = sponsorAttendeesToRegister[sponsorshipId];
+                newSponsorPassAttendees[sponsorshipId] = Array(count).fill(null).map(() => ({ ...initialModalAttendeeInfo }));
+              });
+              setSponsorPassAttendees(prev => ({ ...prev, ...newSponsorPassAttendees }));
+              setAttendeeCountStep(false);
+              setIsCheckout(true);
+            }}
+            className="bg-blue-600 text-white py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
+            Continue
+          </button>
+        </div>
+      </div>
+    );
+  };
 
   const renderStepContent = () => {
     switch (currentStep) {
@@ -1194,8 +1320,7 @@ const RegistrationModal = ({
           <div className="text-center">
             <h2 className="text-2xl font-semibold text-green-600 mb-4">Registration Complete!</h2>
             <p className="text-gray-700 mb-2">Thank you for registering for {event.title}.</p>
-            <p className="text-gray-700">A confirmation email has been sent to {billingInfo.email}.</p>
-            {paymentIntentId && <p className="text-sm text-gray-500 mt-2">Payment ID: {paymentIntentId}</p>}
+            {confirmationData.paymentIntentId && <p className="text-sm text-gray-500 mt-2">Payment ID: {confirmationData.paymentIntentId}</p>}
           </div>
         );
       default:
@@ -1314,7 +1439,7 @@ const RegistrationModal = ({
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex justify-center items-center">
       <div className="relative mx-auto p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white overflow-y-auto max-h-[90vh]">
-        {showConfirmationView && confirmationData ? (
+        {attendeeCountStep ? renderAttendeeCountStep() : showConfirmationView && confirmationData ? (
           // Confirmation View
           <div className="text-center">
             <h2 className="text-2xl font-semibold text-green-600 mb-4">Registration Confirmed!</h2>
