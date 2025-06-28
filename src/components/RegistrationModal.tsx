@@ -113,11 +113,11 @@ const initialBillingInfo: BillingInfo = {
 const isRegistrationClosed = (event: EventWithContact, daysBeforeToClose: number = 3): boolean => {
   // Parse event start date and time from ISO format: "YYYY-MM-DDT00:00:00Z"
   const eventStartDateTime = new Date(event.timeStart);
-  
+
   // Calculate the cutoff date (3 days before event by default)
   const cutoffDate = new Date(eventStartDateTime);
   cutoffDate.setDate(cutoffDate.getDate() - daysBeforeToClose);
-  
+
   // Check if current date is past the cutoff
   return new Date() >= cutoffDate;
 };
@@ -130,7 +130,7 @@ const RegistrationModal = ({
 }: RegistrationModalProps): JSX.Element | null => {
   // Check if registration is closed for this event
   const registrationClosed = useMemo(() => isRegistrationClosed(event), [event]);
-  
+
   // Get registrations, sponsorships, and exhibitors directly using the event ID
   const allRegistrations = useMemo<ModalRegistrationType[]>(() => getRegistrationsForEvent(event.id), [event.id]);
   const sponsorships = useMemo<ModalRegistrationType[]>(() => getSponsorshipsForEvent(event.id), [event.id]);
@@ -219,7 +219,7 @@ const RegistrationModal = ({
 
   const hasEligibleTicketInCart = () => {
     const eligibleInCart = [...exhibitors, ...sponsorships].some(reg => {
-        return (reg.type === 'exhibit' || reg.type === 'sponsor') && !reg.requiresValidation && (ticketQuantities[reg.id] || 0) > 0;
+      return (reg.type === 'exhibit' || reg.type === 'sponsor') && !reg.requiresValidation && (ticketQuantities[reg.id] || 0) > 0;
     });
     return eligibleInCart;
   };
@@ -244,83 +244,84 @@ const RegistrationModal = ({
   const handleValidateOrderId = async (ticketId: string) => {
     const orderId = orderIdInput[ticketId];
     if (!orderId) {
-        setValidationError(prev => ({ ...prev, [ticketId]: 'Please enter an Order ID.' }));
-        return;
+      setValidationError(prev => ({ ...prev, [ticketId]: 'Please enter an Order ID.' }));
+      return;
     }
 
     setValidationStatus(prev => ({ ...prev, [ticketId]: 'validating' }));
     setValidationError(prev => ({ ...prev, [ticketId]: null }));
 
     try {
-        const response = await fetch('/api/validate-order', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ orderId, eventId: event.id }),
-        });
+      const response = await fetch('/api/validate-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ orderId, eventId: event.id }),
+      });
 
-        const result = await response.json();
+      const result = await response.json();
+      console.log(result);
 
-        if (response.ok && result.success && result.isValid) {
-            setValidationStatus(prev => ({ ...prev, [ticketId]: 'valid' }));
-        } else {
-            setValidationStatus(prev => ({ ...prev, [ticketId]: 'invalid' }));
-            setValidationError(prev => ({ ...prev, [ticketId]: result.message || 'Invalid or expired Order ID.' }));
-        }
-    } catch (error) {
-        console.error('Validation API call failed:', error);
+      if (response.ok && result.isValid) {
+        setValidationStatus(prev => ({ ...prev, [ticketId]: 'valid' }));
+      } else {
         setValidationStatus(prev => ({ ...prev, [ticketId]: 'invalid' }));
-        setValidationError(prev => ({ ...prev, [ticketId]: 'An error occurred during validation.' }));
+        setValidationError(prev => ({ ...prev, [ticketId]: result.message || 'Invalid or expired Order ID.' }));
+      }
+    } catch (error) {
+      console.error('Validation API call failed:', error);
+      setValidationStatus(prev => ({ ...prev, [ticketId]: 'invalid' }));
+      setValidationError(prev => ({ ...prev, [ticketId]: 'An error occurred during validation.' }));
     }
   };
 
   const renderValidationUI = (reg: ModalRegistrationType) => {
     if (!reg.requiresValidation || (ticketQuantities[reg.id] || 0) === 0) {
-        return null;
+      return null;
     }
 
     const isEligibleFromCart = hasEligibleTicketInCart();
 
     if (isEligibleFromCart) {
-        return (
-            <div className="mt-2 text-sm text-green-600 bg-green-50 p-2 rounded-md">
-                <p>✓ Discount unlocked! You have an eligible exhibitor or sponsor package in your cart.</p>
-            </div>
-        );
+      return (
+        <div className="mt-2 text-sm text-green-600 bg-green-50 p-2 rounded-md">
+          <p>✓ Discount unlocked! You have an eligible exhibitor or sponsor package in your cart.</p>
+        </div>
+      );
     }
 
     const status = validationStatus[reg.id] || 'idle';
     const error = validationError[reg.id];
 
     return (
-        <div className="mt-2 p-3 bg-gray-50 border border-gray-200 rounded-md">
-            <label htmlFor={`order-id-${reg.id}`} className="block text-sm font-medium text-gray-700">
-                Enter previous Order ID to unlock
-            </label>
-            <div className="mt-1 flex items-center space-x-2">
-                <input
-                    type="text"
-                    id={`order-id-${reg.id}`}
-                    value={orderIdInput[reg.id] || ''}
-                    onChange={(e) => setOrderIdInput(prev => ({ ...prev, [reg.id]: e.target.value }))}
-                    className="flex-grow block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    placeholder="e.g., pi_xxxxxxxx"
-                    disabled={status === 'validating' || status === 'valid'}
-                />
-                <button
-                    onClick={() => handleValidateOrderId(reg.id)}
-                    disabled={status === 'validating' || status === 'valid'}
-                    className="px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-gray-400"
-                >
-                    {status === 'validating' ? 'Verifying...' : status === 'valid' ? 'Verified' : 'Verify'}
-                </button>
-            </div>
-            {status === 'valid' && !isEligibleFromCart && (
-                <p className="mt-2 text-sm text-green-600">✓ Order ID verified. Discount applied.</p>
-            )}
-            {error && (
-                <p className="mt-2 text-sm text-red-600">{error}</p>
-            )}
+      <div className="mt-2 p-3 bg-gray-50 border border-gray-200 rounded-md">
+        <label htmlFor={`order-id-${reg.id}`} className="block text-sm font-medium text-gray-700">
+          Enter previous Order ID to unlock
+        </label>
+        <div className="mt-1 flex items-center space-x-2">
+          <input
+            type="text"
+            id={`order-id-${reg.id}`}
+            value={orderIdInput[reg.id] || ''}
+            onChange={(e) => setOrderIdInput(prev => ({ ...prev, [reg.id]: e.target.value }))}
+            className="flex-grow block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            placeholder="e.g., pi_xxxxxxxx"
+            disabled={status === 'validating' || status === 'valid'}
+          />
+          <button
+            onClick={() => handleValidateOrderId(reg.id)}
+            disabled={status === 'validating' || status === 'valid'}
+            className="px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-gray-400"
+          >
+            {status === 'validating' ? 'Verifying...' : status === 'valid' ? 'Verified' : 'Verify'}
+          </button>
         </div>
+        {status === 'valid' && !isEligibleFromCart && (
+          <p className="mt-2 text-sm text-green-600">✓ Order ID verified. Discount applied.</p>
+        )}
+        {error && (
+          <p className="mt-2 text-sm text-red-600">{error}</p>
+        )}
+      </div>
     );
   };
 
@@ -738,7 +739,7 @@ const RegistrationModal = ({
       setIsLoading(false);
       return;
     }
-    
+
     setFormErrors({});
     setApiError(null);
     setIsLoading(true);
@@ -1229,7 +1230,7 @@ const RegistrationModal = ({
   };
 
   if (!isOpen) return null;
-  
+
   // If registration is closed, show a message
   if (registrationClosed && !showConfirmationView) {
     return (
@@ -1246,7 +1247,7 @@ const RegistrationModal = ({
                 <X className="w-6 h-6 text-gray-500" />
               </button>
             </div>
-            
+
             {/* Body */}
             <div className="relative p-6 flex-auto">
               <p className="my-4 text-slate-700 text-lg leading-relaxed">
@@ -1262,7 +1263,7 @@ const RegistrationModal = ({
                 </a>
               </p>
             </div>
-            
+
             {/* Footer */}
             <div className="flex items-center justify-end p-6 border-t border-solid rounded-b border-slate-200">
               <button

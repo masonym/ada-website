@@ -4,16 +4,16 @@ import { EXHIBITOR_TYPES } from '@/constants/exhibitors';
 import { SPONSORSHIP_TYPES } from '@/constants/sponsorships';
 
 // Helper function to get all exhibitor and sponsor IDs for a given event
-const getEligibleTicketIdsForEvent = (eventId: string): string[] => {
-  const exhibitorEvent = EXHIBITOR_TYPES.find(e => e.id.toString() === eventId);
-  const sponsorEvent = SPONSORSHIP_TYPES.find(s => s.id.toString() === eventId);
+const getEligibleTicketIdsForEvent = (eventId: number): string[] => {
+  const exhibitorEvent = EXHIBITOR_TYPES.find(e => e.id === eventId);
+  const sponsorEvent = SPONSORSHIP_TYPES.find(s => s.id === eventId);
 
   const exhibitorIds = exhibitorEvent ? exhibitorEvent.exhibitors.map(ex => ex.id) : [];
   const sponsorIds = sponsorEvent
     ? [
-        ...(sponsorEvent.primeSponsor ? [sponsorEvent.primeSponsor.id] : []),
-        ...sponsorEvent.sponsorships.map(sp => sp.id),
-      ]
+      ...(sponsorEvent.primeSponsor ? [sponsorEvent.primeSponsor.id] : []),
+      ...sponsorEvent.sponsorships.map(sp => sp.id),
+    ]
     : [];
 
   return [...exhibitorIds, ...sponsorIds];
@@ -27,22 +27,27 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Order ID and Event ID are required' }, { status: 400 });
     }
 
+    console.log('Validating order:', { orderId, eventId });
     const registration = await getConfirmedRegistration(orderId);
 
     if (!registration) {
       return NextResponse.json({ isValid: false, message: 'Order not found.' }, { status: 404 });
     }
 
+    console.log('Registration found:', registration);
+
     // Check if the registration belongs to the correct event
     if (registration.eventId.toString() !== eventId.toString()) {
-        return NextResponse.json({ isValid: false, message: 'Order ID is not for the selected event.' }, { status: 400 });
+      return NextResponse.json({ isValid: false, message: 'Order ID is not for the selected event.' }, { status: 400 });
     }
 
     const eligibleTicketIds = getEligibleTicketIdsForEvent(eventId);
+    console.log('Eligible Ticket IDs:', eligibleTicketIds);
 
     const isEligible = registration.tickets.some(ticket =>
       eligibleTicketIds.includes(ticket.ticketId)
     );
+    console.log('Is Eligible:', isEligible);
 
     if (isEligible) {
       return NextResponse.json({ isValid: true });

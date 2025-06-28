@@ -86,7 +86,7 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
         id: 4,
         exhibitors: [
             {
-                id: "exhibitor",
+                id: "exhibit",
                 title: "Table-Top Exhibit Space",
                 cost: 1250,
                 earlyBirdPrice: 1000,
