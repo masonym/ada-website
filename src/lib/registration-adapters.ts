@@ -170,9 +170,9 @@ export function getSponsorshipsForEvent(eventId: number | string): ModalRegistra
   if (adaptedSponsors.length > 0) {
     adaptedSponsors.push({
       id: 'vip-discount-sponsor',
-      name: 'Additional VIP Attendee Pass',
-      title: 'Additional VIP Attendee Pass',
-      description: 'For registered Sponsors. Purchase additional VIP passes for your team at a discounted rate. A valid order ID from a previous Exhibitor or Sponsor registration is required.',
+      name: 'Additional Sponsor Attendee Pass',
+      title: 'Additional Sponsor Attendee Pass',
+      description: 'For registered Sponsors. Purchase additional Sponsor passes for your team at a discounted rate. A valid order ID from a previous Exhibitor or Sponsor registration is required.',
       price: 395,
       isActive: true,
       requiresAttendeeInfo: true,
@@ -233,9 +233,9 @@ export function getExhibitorsForEvent(eventId: number | string): ModalRegistrati
   if (adaptedExhibitors.length > 0) {
     adaptedExhibitors.push({
       id: 'vip-discount-exhibitor',
-      name: 'Additional VIP Attendee Pass',
-      title: 'Additional VIP Attendee Pass',
-      description: 'For registered Exhibitors. Purchase additional VIP passes for your team at a discounted rate. A valid order ID from a previous Exhibitor or Sponsor registration is required.',
+      name: 'Additional Exhibitor Attendee Pass',
+      title: 'Additional Exhibitor Attendee Pass',
+      description: 'For registered Exhibitors. Purchase additional Exhibitor passes for your team at a discounted rate. A valid order ID from a previous Exhibitor or Sponsor registration is required.',
       price: 395,
       isActive: true,
       requiresAttendeeInfo: true,
