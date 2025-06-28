@@ -17,23 +17,23 @@ export function generateOrderSummaryHtml(summary: OrderSummary): string {
   const formatCurrency = (amount: number) => `$${amount.toFixed(2)}`;
 
   return `
-    <div class="order-summary" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #ccc;">
+    <div class="order-summary">
       <h2>Order Summary</h2>
-      <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+      <table class="order-details">
         <tr>
-          <td style="padding: 8px;"><strong>Order ID:</strong></td>
-          <td style="padding: 8px; text-align: right;">${summary.orderId}</td>
+          <td><strong>Order ID:</strong></td>
+          <td class="text-right">${summary.orderId}</td>
         </tr>
         <tr>
-          <td style="padding: 8px;"><strong>Order Date:</strong></td>
-          <td style="padding: 8px; text-align: right;">${summary.orderDate}</td>
+          <td><strong>Order Date:</strong></td>
+          <td class="text-right">${summary.orderDate}</td>
         </tr>
       </table>
-      <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+      <table class="order-items">
         <thead>
           <tr>
-            <th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;">Item</th>
-            <th style="text-align: right; padding: 8px; border-bottom: 1px solid #ddd;">Price</th>
+            <th>Item</th>
+            <th class="text-right">Price</th>
           </tr>
         </thead>
         <tbody>
@@ -41,8 +41,8 @@ export function generateOrderSummaryHtml(summary: OrderSummary): string {
             .map(
               (item) => `
             <tr>
-              <td style="padding: 8px;">${item.quantity}x ${item.name}</td>
-              <td style="padding: 8px; text-align: right;">${formatCurrency(item.price * item.quantity)}</td>
+              <td>${item.quantity}x ${item.name}</td>
+              <td class="text-right">${formatCurrency(item.price * item.quantity)}</td>
             </tr>
           `
             )
@@ -50,25 +50,25 @@ export function generateOrderSummaryHtml(summary: OrderSummary): string {
         </tbody>
         <tfoot>
           <tr>
-            <td style="padding: 8px; text-align: right; border-top: 1px solid #ccc;" colspan="2"></td>
+            <td class="text-right" colspan="2"></td>
           </tr>
           <tr>
-            <td style="padding: 8px; text-align: right;"><strong>Subtotal</strong></td>
-            <td style="padding: 8px; text-align: right;"><strong>${formatCurrency(summary.subtotal)}</strong></td>
+            <td class="text-right"><strong>Subtotal</strong></td>
+            <td class="text-right"><strong>${formatCurrency(summary.subtotal)}</strong></td>
           </tr>
           ${
             summary.discount > 0
               ? `
             <tr>
-              <td style="padding: 8px; text-align: right;"><strong>Discount</strong></td>
-              <td style="padding: 8px; text-align: right;"><strong>-${formatCurrency(summary.discount)}</strong></td>
+              <td class="text-right"><strong>Discount</strong></td>
+              <td class="text-right"><strong>-${formatCurrency(summary.discount)}</strong></td>
             </tr>
           `
               : ''
           }
           <tr>
-            <td style="padding: 8px; text-align: right;"><strong>Total Paid</strong></td>
-            <td style="padding: 8px; text-align: right;"><strong>${formatCurrency(summary.total)}</strong></td>
+            <td class="text-right"><strong>Total Paid</strong></td>
+            <td class="text-right"><strong>${formatCurrency(summary.total)}</strong></td>
           </tr>
         </tfoot>
       </table>
@@ -94,54 +94,107 @@ export function baseEmailTemplate(content: string, eventImage: string): string {
       <title>American Defense Alliance</title>
       <style>
         body {
-          font-family: Arial, sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
           line-height: 1.6;
-          color: #333;
+          color: #1B212B; /* navy-800 */
           margin: 0;
           padding: 0;
+          background-color: #f8f9fa;
         }
         .container {
           max-width: 600px;
-          margin: 0 auto;
-          padding: 20px;
+          margin: 20px auto;
+          padding: 0;
+          background-color: #ffffff;
+          border: 1px solid #dee2e6;
+          border-radius: 8px;
         }
         .header {
-          background-color: #002868;
+          background-color: #152238; /* navy-500 */
           text-align: center;
+          padding: 20px;
+          border-radius: 8px 8px 0 0;
         }
         .header img {
           max-width: 100%;
+          height: auto;
         }
         .content {
-          padding: 20px;
-          background-color: #ffffff;
+          padding: 20px 30px 30px 30px;
         }
         .footer {
-          background-color: #f5f5f5;
+          background-color: #EEEEEE; /* gray-10 */
           padding: 20px;
           text-align: center;
           font-size: 12px;
+          color: #585858; /* gray-50 */
+          border-radius: 0 0 8px 8px;
+          border-top: 1px solid #dee2e6;
+        }
+        .footer a {
+          color: #152238; /* navy-500 */
+          text-decoration: none;
+        }
+        .footer a:hover {
+          text-decoration: underline;
         }
         .button {
           display: inline-block;
-          background-color: #bf0a30;
-          color: white;
-          padding: 10px 20px;
+          background-color: #3FB4E6; /* lightBlue-400 */
+          color: #ffffff !important;
+          padding: 12px 25px;
           text-decoration: none;
-          border-radius: 4px;
+          border-radius: 5px;
           margin: 20px 0;
+          font-weight: bold;
+          text-align: center;
         }
-        h1, h2, h3 {
-          color: #002868;
+        a.button {
+          color: #ffffff;
+        }
+        h1, h2, h3, h4, h5, h6 {
+          color: #152238; /* navy-500 */
+          font-weight: 600;
         }
         ul {
           padding-left: 20px;
         }
         .highlight {
-          background-color: #ffffcc;
-          padding: 10px;
-          border-left: 4px solid #bf0a30;
-          margin: 15px 0;
+          background-color: #f0faff;
+          padding: 15px;
+          border-left: 5px solid #3FB4E6; /* lightBlue-400 */
+          margin: 20px 0;
+          border-radius: 5px;
+        }
+        .text-right {
+          text-align: right;
+        }
+        .order-summary {
+          margin-top: 20px; 
+          padding-top: 20px; 
+          border-top: 1px solid #EEEEEE; /* gray-10 */
+        }
+        .order-summary h2 {
+          margin-top: 0;
+        }
+        .order-details, .order-items {
+          width: 100%; 
+          border-collapse: collapse; 
+          margin-top: 10px;
+        }
+        .order-details td, .order-items td, .order-items th {
+          padding: 8px;
+        }
+        .order-items thead th {
+          text-align: left; 
+          border-bottom: 1px solid #dee2e6;
+        }
+        .order-items .text-right {
+          text-align: right;
+        }
+        .order-items tfoot td {
+          padding-top: 10px;
+          border-top: 1px solid #EEEEEE; /* gray-10 */
         }
       </style>
     </head>
