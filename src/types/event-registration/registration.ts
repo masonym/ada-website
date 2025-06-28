@@ -1,6 +1,7 @@
 import { Event } from '../events';
 
 export interface RegistrationFormData {
+  eventId: string;
   // Attendee Information
   firstName: string;
   lastName: string;

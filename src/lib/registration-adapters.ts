@@ -65,6 +65,7 @@ export interface ModalRegistrationType {
   quantityAvailable?: number;
   maxQuantityPerOrder?: number;
   category: 'ticket' | 'exhibit' | 'sponsorship';
+  requiresValidation?: boolean; // New flag for special validation
   // Add any other fields that might be needed
   colour?: string;
   sponsorPasses?: number; // Number of attendee passes included with this sponsorship
@@ -119,7 +120,7 @@ export function getSponsorshipsForEvent(eventId: number | string): ModalRegistra
     ...(eventData.sponsorships || []),
   ];
 
-  return allSponsors.map((sponsor: SponsorshipType | PrimeSponsorType): ModalRegistrationType => {
+  const adaptedSponsors = allSponsors.map((sponsor: SponsorshipType | PrimeSponsorType): ModalRegistrationType => {
     // Process perks to handle both string and object types
     const processedPerks = sponsor.perks ? sponsor.perks.map((perk: PerkType) =>
       typeof perk === 'string'
@@ -164,6 +165,28 @@ export function getSponsorshipsForEvent(eventId: number | string): ModalRegistra
       colour: 'colour' in sponsor ? sponsor.colour : undefined,
     };
   });
+
+  // If there are any sponsorships, add the discounted VIP pass
+  if (adaptedSponsors.length > 0) {
+    adaptedSponsors.push({
+      id: 'vip-discount-sponsor',
+      name: 'Additional VIP Attendee Pass',
+      title: 'Additional VIP Attendee Pass',
+      description: 'For registered Sponsors. Purchase additional VIP passes for your team at a discounted rate. A valid order ID from a previous Exhibitor or Sponsor registration is required.',
+      price: 395,
+      isActive: true,
+      requiresAttendeeInfo: true,
+      isGovtFreeEligible: false,
+      type: 'paid',
+      headerImage: 'vip.webp',
+      buttonText: 'Add',
+      category: 'sponsorship',
+      requiresValidation: true,
+      maxQuantityPerOrder: 10, // Example limit
+    });
+  }
+
+  return adaptedSponsors;
 }
 
 /**
@@ -175,7 +198,7 @@ export function getExhibitorsForEvent(eventId: number | string): ModalRegistrati
   const eventData = EXHIBITOR_TYPES.find(event => event.id.toString() === eventId.toString());
   if (!eventData) return [];
 
-  return eventData.exhibitors.map((exhibitor: ExhibitorType): ModalRegistrationType => {
+  const adaptedExhibitors = eventData.exhibitors.map((exhibitor: ExhibitorType): ModalRegistrationType => {
     // Process perks to handle both string and object types
     const processedPerks = exhibitor.perks ? exhibitor.perks.map((perk: PerkType) =>
       typeof perk === 'string'
@@ -205,4 +228,26 @@ export function getExhibitorsForEvent(eventId: number | string): ModalRegistrati
       colour: exhibitor.colour,
     };
   });
+
+  // If there are any exhibitor options, add the discounted VIP pass
+  if (adaptedExhibitors.length > 0) {
+    adaptedExhibitors.push({
+      id: 'vip-discount-exhibitor',
+      name: 'Additional VIP Attendee Pass',
+      title: 'Additional VIP Attendee Pass',
+      description: 'For registered Exhibitors. Purchase additional VIP passes for your team at a discounted rate. A valid order ID from a previous Exhibitor or Sponsor registration is required.',
+      price: 395,
+      isActive: true,
+      requiresAttendeeInfo: true,
+      isGovtFreeEligible: false,
+      type: 'paid',
+      headerImage: 'vip.webp',
+      buttonText: 'Add',
+      category: 'exhibit',
+      requiresValidation: true,
+      maxQuantityPerOrder: 10, // Example limit
+    });
+  }
+
+  return adaptedExhibitors;
 }

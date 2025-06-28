@@ -101,3 +101,33 @@ export async function saveConfirmedRegistration(registrationData: RegistrationFo
     throw new Error('Could not save confirmed registration.');
   }
 }
+
+/**
+ * Retrieves a confirmed registration from DynamoDB.
+ * @param id The unique ID of the registration to retrieve (paymentIntentId).
+ * @returns The registration data, or null if not found.
+ */
+export async function getConfirmedRegistration(id: string): Promise<RegistrationFormData | null> {
+  const env = getEnv();
+  const tableName = env.PERMANENT_REGISTRATIONS_TABLE_NAME;
+
+  const command = new GetCommand({
+    TableName: tableName,
+    Key: {
+      id,
+    },
+  });
+
+  try {
+    const { Item } = await docClient.send(command);
+    if (Item) {
+      console.log(`Successfully retrieved confirmed registration ${id} from ${tableName}.`);
+      // The entire item is the registration data, unlike pending which was nested.
+      return Item as RegistrationFormData;
+    }
+    return null;
+  } catch (error) {
+    console.error(`Error retrieving from ${tableName}:`, error);
+    throw new Error('Could not retrieve confirmed registration.');
+  }
+}

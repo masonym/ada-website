@@ -29,7 +29,7 @@ type ModalRegistrationType = {
   isGovtFreeEligible: boolean;
   perks?: string[];
   availabilityInfo?: string;
-  type: 'paid' | 'free' | 'complimentary' | 'sponsor';
+  type: 'paid' | 'free' | 'complimentary' | 'sponsor' | 'exhibit';
   title: string;
   headerImage: string;
   subtitle?: string;
@@ -40,6 +40,7 @@ type ModalRegistrationType = {
   maxQuantityPerOrder?: number;
   category?: 'ticket' | 'exhibit' | 'sponsorship'; // Made category optional to avoid breaking existing code
   sponsorPasses?: number; // Number of attendee passes included with this sponsorship
+  requiresValidation?: boolean;
 };
 
 interface EventWithContact extends Omit<Event, 'id'> {
@@ -150,6 +151,12 @@ const RegistrationModal = ({
   // Track attendees for sponsor passes separately
   const [sponsorPassAttendees, setSponsorPassAttendees] = useState<Record<string, ModalAttendeeInfo[]>>({});
 
+  // For order ID validation
+  const [orderIdInput, setOrderIdInput] = useState<Record<string, string>>({});
+  type ValidationState = 'idle' | 'validating' | 'valid' | 'invalid';
+  const [validationStatus, setValidationStatus] = useState<Record<string, ValidationState>>({});
+  const [validationError, setValidationError] = useState<Record<string, string | null>>({});
+
   const [isLoading, setIsLoading] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [apiError, setApiError] = useState<string | null>(null);
@@ -210,6 +217,112 @@ const RegistrationModal = ({
     prevShowConfirmationRef.current = showConfirmationView;
   }, [isOpen, showConfirmationView, paymentSuccessful]);
 
+  const hasEligibleTicketInCart = () => {
+    const eligibleInCart = [...exhibitors, ...sponsorships].some(reg => {
+        return (reg.type === 'exhibit' || reg.type === 'sponsor') && !reg.requiresValidation && (ticketQuantities[reg.id] || 0) > 0;
+    });
+    return eligibleInCart;
+  };
+
+  // Automatically validate discounted passes if an eligible item is in the cart
+  useEffect(() => {
+    const isEligible = hasEligibleTicketInCart();
+    if (isEligible) {
+      const ticketsToValidate = [...exhibitors, ...sponsorships].filter(
+        reg => reg.requiresValidation && (ticketQuantities[reg.id] || 0) > 0
+      );
+
+      ticketsToValidate.forEach(reg => {
+        if (validationStatus[reg.id] !== 'valid') {
+          setValidationStatus(prev => ({ ...prev, [reg.id]: 'valid' }));
+          setValidationError(prev => ({ ...prev, [reg.id]: null }));
+        }
+      });
+    }
+  }, [ticketQuantities, exhibitors, sponsorships, validationStatus]);
+
+  const handleValidateOrderId = async (ticketId: string) => {
+    const orderId = orderIdInput[ticketId];
+    if (!orderId) {
+        setValidationError(prev => ({ ...prev, [ticketId]: 'Please enter an Order ID.' }));
+        return;
+    }
+
+    setValidationStatus(prev => ({ ...prev, [ticketId]: 'validating' }));
+    setValidationError(prev => ({ ...prev, [ticketId]: null }));
+
+    try {
+        const response = await fetch('/api/validate-order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ orderId, eventId: event.id }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success && result.isValid) {
+            setValidationStatus(prev => ({ ...prev, [ticketId]: 'valid' }));
+        } else {
+            setValidationStatus(prev => ({ ...prev, [ticketId]: 'invalid' }));
+            setValidationError(prev => ({ ...prev, [ticketId]: result.message || 'Invalid or expired Order ID.' }));
+        }
+    } catch (error) {
+        console.error('Validation API call failed:', error);
+        setValidationStatus(prev => ({ ...prev, [ticketId]: 'invalid' }));
+        setValidationError(prev => ({ ...prev, [ticketId]: 'An error occurred during validation.' }));
+    }
+  };
+
+  const renderValidationUI = (reg: ModalRegistrationType) => {
+    if (!reg.requiresValidation || (ticketQuantities[reg.id] || 0) === 0) {
+        return null;
+    }
+
+    const isEligibleFromCart = hasEligibleTicketInCart();
+
+    if (isEligibleFromCart) {
+        return (
+            <div className="mt-2 text-sm text-green-600 bg-green-50 p-2 rounded-md">
+                <p>✓ Discount unlocked! You have an eligible exhibitor or sponsor package in your cart.</p>
+            </div>
+        );
+    }
+
+    const status = validationStatus[reg.id] || 'idle';
+    const error = validationError[reg.id];
+
+    return (
+        <div className="mt-2 p-3 bg-gray-50 border border-gray-200 rounded-md">
+            <label htmlFor={`order-id-${reg.id}`} className="block text-sm font-medium text-gray-700">
+                Enter previous Order ID to unlock
+            </label>
+            <div className="mt-1 flex items-center space-x-2">
+                <input
+                    type="text"
+                    id={`order-id-${reg.id}`}
+                    value={orderIdInput[reg.id] || ''}
+                    onChange={(e) => setOrderIdInput(prev => ({ ...prev, [reg.id]: e.target.value }))}
+                    className="flex-grow block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    placeholder="e.g., pi_xxxxxxxx"
+                    disabled={status === 'validating' || status === 'valid'}
+                />
+                <button
+                    onClick={() => handleValidateOrderId(reg.id)}
+                    disabled={status === 'validating' || status === 'valid'}
+                    className="px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-gray-400"
+                >
+                    {status === 'validating' ? 'Verifying...' : status === 'valid' ? 'Verified' : 'Verify'}
+                </button>
+            </div>
+            {status === 'valid' && !isEligibleFromCart && (
+                <p className="mt-2 text-sm text-green-600">✓ Order ID verified. Discount applied.</p>
+            )}
+            {error && (
+                <p className="mt-2 text-sm text-red-600">{error}</p>
+            )}
+        </div>
+    );
+  };
 
   // Helper to reset attendee info for a given ticket ID
   const resetAttendeesForTicket = (ticketId: string, count: number): ModalAttendeeInfo[] => {
@@ -326,7 +439,7 @@ const RegistrationModal = ({
     setAttendeesByTicket(initialAttendees);
   }, [allRegistrations, sponsorships, selectedRegistration, isOpen]);
 
-  const handleIncrement = (id: string) => {
+  const handleIncrement = (id: string, type?: string) => {
     const newQuantity = (ticketQuantities[id] || 0) + 1;
     console.log(`Incrementing ticket ${id} to quantity ${newQuantity}`);
     setTicketQuantities(prev => ({
@@ -371,64 +484,51 @@ const RegistrationModal = ({
     }
   };
 
-  const handleDecrement = (id: string) => {
-    if (ticketQuantities[id] > 0) {
-      const newQuantity = ticketQuantities[id] - 1;
-      setTicketQuantities(prev => ({
-        ...prev,
-        [id]: newQuantity
-      }));
+  const handleDecrement = (ticketId: string, type?: string) => {
+    const currentQuantity = ticketQuantities[ticketId] || 0;
+    if (currentQuantity > 0) {
+      const newQuantity = currentQuantity - 1;
+      setTicketQuantities(prev => ({ ...prev, [ticketId]: newQuantity }));
 
-      // Check if this is a sponsorship
-      const selectedSponsorship = sponsorships.find(s => s.id === id);
-
-      if (selectedSponsorship) {
-        // For sponsorships, we keep the attendeesByTicket array empty
-        const newAttendees: Record<string, ModalAttendeeInfo[]> = { ...attendeesByTicket };
-        newAttendees[id] = [];
-        setAttendeesByTicket(newAttendees);
-
-        // Handle sponsor passes for sponsorships
-        if (selectedSponsorship.sponsorPasses && selectedSponsorship.sponsorPasses > 0) {
-          // Update sponsor pass attendees for this sponsorship
-          const newSponsorPassAttendees = { ...sponsorPassAttendees };
-
-          // Recalculate the number of sponsor passes based on the new quantity
-          const totalSponsorPasses = selectedSponsorship.sponsorPasses * newQuantity;
-
-          if (newSponsorPassAttendees[id]) {
-            // Reduce the number of sponsor pass attendees to match the new quantity
-            newSponsorPassAttendees[id] = newSponsorPassAttendees[id].slice(0, totalSponsorPasses);
-          }
-
-          // If quantity is 0, remove all sponsor pass attendees for this sponsorship
-          if (newQuantity === 0) {
-            delete newSponsorPassAttendees[id];
-          }
-
-          setSponsorPassAttendees(newSponsorPassAttendees);
-        }
-      } else {
-        // For regular tickets, update attendees as before
-        const newAttendees: Record<string, ModalAttendeeInfo[]> = { ...attendeesByTicket };
-        if (newAttendees[id]) {
-          newAttendees[id] = newAttendees[id].slice(0, -1);
-        } else {
-          newAttendees[id] = [];
-        }
-        setAttendeesByTicket(newAttendees);
+      const registration = [...allRegistrations, ...exhibitors, ...sponsorships].find(r => r.id === ticketId);
+      if (registration?.requiresValidation && newQuantity === 0) {
+        setValidationStatus(prev => ({ ...prev, [ticketId]: 'idle' }));
+        setValidationError(prev => ({ ...prev, [ticketId]: null }));
+        setOrderIdInput(prev => ({ ...prev, [ticketId]: '' }));
       }
     }
   };
 
   const handleCheckout = () => {
-    // Check if registration is closed before proceeding
-    if (registrationClosed) {
-      setApiError('Registration for this event has closed.');
+    const ticketsToValidate = [...exhibitors, ...sponsorships].filter(
+      (reg) => reg.requiresValidation && (ticketQuantities[reg.id] || 0) > 0
+    );
+
+    const isValidationPending = ticketsToValidate.some(
+      (reg) => validationStatus[reg.id] !== 'valid'
+    );
+
+    if (isValidationPending) {
+      alert(
+        'You have selected a discounted pass that requires validation. Please verify your previous order ID or add an eligible exhibitor/sponsor package to your cart.'
+      );
+      // Highlight the tickets that need validation
+      ticketsToValidate.forEach((reg) => {
+        if (validationStatus[reg.id] !== 'valid') {
+          setValidationError((prev) => ({
+            ...prev,
+            [reg.id]:
+              prev[reg.id] ||
+              'This ticket requires validation before checkout.',
+          }));
+        }
+      });
       return;
     }
-    setIsCheckout(true);
-    setCurrentStep(1);
+
+    if (getTotalTickets() > 0) {
+      setIsCheckout(true);
+    }
   };
 
   const handleBackToTickets = () => {
@@ -754,6 +854,7 @@ const RegistrationModal = ({
     const determinedPaymentMethod = totalAmount === 0 && selectedRegistration?.type === 'free' ? 'free' : 'creditCard';
 
     const formDataToValidate: Partial<RegistrationFormData> = {
+      eventId: event.id.toString(),
       firstName: billingInfo.firstName || primaryAttendeeData.firstName || '',
       lastName: billingInfo.lastName || primaryAttendeeData.lastName || '',
       email: billingInfo.email || primaryAttendeeData.email || '',
@@ -1248,19 +1349,18 @@ const RegistrationModal = ({
                   {activeCategory === 'ticket' && allRegistrations.filter(reg => reg.isActive).map(reg => (
                     <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
                       <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
-                      {/* Tickets, early bird pricing */}
-                      {reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline) ? (
+                      {reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline) && (
                         <div className="mb-2">
                           <p className="text-lg font-semibold">
                             <span className="text-green-600 mr-2">
-                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
+                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(
                                 typeof reg.earlyBirdPrice === 'string'
                                   ? parseFloat(reg.earlyBirdPrice.replace(/[^0-9.]/g, '')) || 0
                                   : (typeof reg.earlyBirdPrice === 'number' ? reg.earlyBirdPrice : 0)
                               )}
                             </span>
                             <span className="line-through text-gray-500 text-base">
-                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
+                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(
                                 typeof reg.price === 'string'
                                   ? parseFloat(reg.price.replace(/[^0-9.]/g, '')) || 0
                                   : (typeof reg.price === 'number' ? reg.price : 0)
@@ -1268,18 +1368,20 @@ const RegistrationModal = ({
                             </span>
                           </p>
                         </div>
-                      ) : reg.type === 'paid' ? (
-                        // Paid tickets, after early bird deadline
-                        <p className="text-lg font-semibold text-indigo-600 mb-2">
-                          ${Number(reg.price).toLocaleString()}
-                        </p>
-                      ) : (
-                        // Compliemntary tickets
+                      )}
+                      {typeof reg.price === 'string' && (
                         <p className="text-lg font-semibold text-indigo-600 mb-2">
                           {reg.price}
                         </p>
                       )}
 
+                      {typeof reg.price === 'number' && reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() >= new Date(reg.earlyBirdDeadline) && (
+                        <div className="mb-2">
+                          <p className="text-lg font-semibold text-gray-800">
+                            ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(reg.price)}
+                          </p>
+                        </div>
+                      )}
                       {reg.perks && reg.perks.length > 0 && (
                         <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
                           {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
@@ -1288,7 +1390,7 @@ const RegistrationModal = ({
                       {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
                       <div className="flex items-center">
                         <button
-                          onClick={() => handleDecrement(reg.id)}
+                          onClick={() => handleDecrement(reg.id, reg.type)}
                           disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
                           className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                         >
@@ -1298,17 +1400,18 @@ const RegistrationModal = ({
                           {ticketQuantities[reg.id] || 0}
                         </span>
                         <button
-                          onClick={() => handleIncrement(reg.id)}
+                          onClick={() => handleIncrement(reg.id, reg.type)}
                           disabled={isLoading}
                           className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                         >
                           +
                         </button>
                       </div>
+                      {renderValidationUI(reg)}
                     </div>
                   ))}
 
-                  {/* Show exhibits when activeCategory is 'exhibit' */}
+                  {/* Show exhibitors when activeCategory is 'exhibit' */}
                   {activeCategory === 'exhibit' && exhibitors.filter(reg => reg.isActive).map(reg => (
                     <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
                       <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
@@ -1353,7 +1456,7 @@ const RegistrationModal = ({
                       {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
                       <div className="flex items-center">
                         <button
-                          onClick={() => handleDecrement(reg.id)}
+                          onClick={() => handleDecrement(reg.id, reg.type)}
                           disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
                           className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                         >
@@ -1363,18 +1466,18 @@ const RegistrationModal = ({
                           {ticketQuantities[reg.id] || 0}
                         </span>
                         <button
-                          onClick={() => handleIncrement(reg.id)}
+                          onClick={() => handleIncrement(reg.id, reg.type)}
                           disabled={isLoading}
                           className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                         >
                           +
                         </button>
                       </div>
+                      {renderValidationUI(reg)}
                     </div>
                   ))}
 
                   {/* Show sponsorships when activeCategory is 'sponsorship' */}
-                  {/* this component has no early bird pricing */}
                   {activeCategory === 'sponsorship' && sponsorships.filter(reg => reg.isActive).map(reg => (
                     <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
                       <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
@@ -1391,7 +1494,7 @@ const RegistrationModal = ({
                       {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
                       <div className="flex items-center">
                         <button
-                          onClick={() => handleDecrement(reg.id)}
+                          onClick={() => handleDecrement(reg.id, reg.type)}
                           disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
                           className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                         >
@@ -1401,13 +1504,14 @@ const RegistrationModal = ({
                           {ticketQuantities[reg.id] || 0}
                         </span>
                         <button
-                          onClick={() => handleIncrement(reg.id)}
+                          onClick={() => handleIncrement(reg.id, reg.type)}
                           disabled={isLoading}
                           className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                         >
                           +
                         </button>
                       </div>
+                      {renderValidationUI(reg)}
                     </div>
                   ))}
                 </div>
