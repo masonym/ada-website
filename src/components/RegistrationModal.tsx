@@ -219,27 +219,62 @@ const RegistrationModal = ({
 
   const hasEligibleTicketInCart = () => {
     const eligibleInCart = [...exhibitors, ...sponsorships].some(reg => {
-      return (reg.type === 'exhibit' || reg.type === 'sponsor') && !reg.requiresValidation && (ticketQuantities[reg.id] || 0) > 0;
+      return (reg.category === 'exhibit' || reg.category === 'sponsorship') && !reg.requiresValidation && (ticketQuantities[reg.id] || 0) > 0;
     });
     return eligibleInCart;
   };
 
-  // Automatically validate discounted passes if an eligible item is in the cart
+  // Automatically validate or invalidate discounted passes based on cart contents
   useEffect(() => {
     const isEligible = hasEligibleTicketInCart();
-    if (isEligible) {
-      const ticketsToValidate = [...exhibitors, ...sponsorships].filter(
-        reg => reg.requiresValidation && (ticketQuantities[reg.id] || 0) > 0
-      );
 
-      ticketsToValidate.forEach(reg => {
-        if (validationStatus[reg.id] !== 'valid') {
-          setValidationStatus(prev => ({ ...prev, [reg.id]: 'valid' }));
-          setValidationError(prev => ({ ...prev, [reg.id]: null }));
+    // Get all tickets that could require validation
+    const ticketsToProcess = [...exhibitors, ...sponsorships].filter(
+      (reg) => reg.requiresValidation
+    );
+
+    let statusUpdates: Record<string, ValidationState> = {};
+    let errorUpdates: Record<string, string | null> = {};
+    let needsUpdate = false;
+
+    ticketsToProcess.forEach((reg) => {
+      const quantity = ticketQuantities[reg.id] || 0;
+      const currentStatus = validationStatus[reg.id] || 'idle';
+
+      if (quantity > 0) {
+        // Ticket is in the cart, its validation depends on eligibility
+        if (isEligible) {
+          // If eligible, the pass should be marked valid
+          if (currentStatus !== 'valid') {
+            statusUpdates[reg.id] = 'valid';
+            errorUpdates[reg.id] = null;
+            needsUpdate = true;
+          }
+        } else {
+          // If not eligible, any auto-validation is revoked.
+          // This forces manual validation if the user still wants the pass.
+          if (currentStatus === 'valid') {
+            statusUpdates[reg.id] = 'idle';
+            needsUpdate = true;
+          }
         }
-      });
+      } else {
+        // Ticket is not in the cart, ensure its validation state is reset
+        if (currentStatus !== 'idle') {
+          statusUpdates[reg.id] = 'idle';
+          errorUpdates[reg.id] = null;
+          needsUpdate = true;
+        }
+      }
+    });
+
+    if (needsUpdate) {
+      setValidationStatus((prev) => ({ ...prev, ...statusUpdates }));
+      if (Object.keys(errorUpdates).length > 0) {
+        setValidationError((prev) => ({ ...prev, ...errorUpdates }));
+      }
     }
-  }, [ticketQuantities, exhibitors, sponsorships, validationStatus]);
+  }, [ticketQuantities, validationStatus, exhibitors, sponsorships]);
 
   const handleValidateOrderId = async (ticketId: string) => {
     const orderId = orderIdInput[ticketId];
@@ -282,11 +317,7 @@ const RegistrationModal = ({
     const isEligibleFromCart = hasEligibleTicketInCart();
 
     if (isEligibleFromCart) {
-      return (
-        <div className="mt-2 text-sm text-green-600 bg-green-50 p-2 rounded-md">
-          <p>✓ Discount unlocked! You have an eligible exhibitor or sponsor package in your cart.</p>
-        </div>
-      );
+      return null;
     }
 
     const status = validationStatus[reg.id] || 'idle';
