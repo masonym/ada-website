@@ -343,6 +343,7 @@ export function exhibitorTemplate({
     <p>If you wish to purchase additional attendee passes, you can do so by clicking the button below.</p>
     <p>Note for mason for now: We need to develop a system such that we validate users so that they can purchase additional attendee passes.</p>
     <p> Need to figure out a good way to do this...</p>
+    <p>Please send a high quality image of your company's logo to Chayil Dickerson (<a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a>).</p>
 
     <div class="highlight">
       <p><strong>Exhibitor Instructions</strong></p>
@@ -412,6 +413,7 @@ export function sponsorTemplate({
   orderSummaryHtml,
   hotelInfo,
   vipNetworkingReception,
+  exhibitorInstructions,
 }: {
   firstName: string;
   eventName: string;
@@ -426,37 +428,66 @@ export function sponsorTemplate({
   orderSummaryHtml?: string;
   hotelInfo?: string;
   vipNetworkingReception?: VipNetworkingReception;
+  exhibitorInstructions: string;
 }): string {
   const content = `
-    <h1>Sponsorship Confirmation</h1>
     <p>Dear ${firstName},</p>
-    <p>Thank you for your ${sponsorshipLevel} sponsorship of <strong>${eventName}</strong>. We greatly appreciate your support!</p>
+    <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
+
+    <p>If you wish to purchase additional attendee passes, you can do so by clicking the button below.</p>
+    <p>Note for mason for now: We need to develop a system such that we validate users so that they can purchase additional attendee passes.</p>
+    <p> Need to figure out a good way to do this...</p>
+    <p>Please send a high quality image of your company's logo to Chayil Dickerson (<a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a>).</p>
+
+    <div class="highlight">
+      <p><strong>Exhibitor Instructions</strong></p>
+      <p>Exhibitor Instructions are available on our website. <a href="${getCdnPath(exhibitorInstructions)}">Exhibitor Instructions</a></p>
+    </div>
     
     <div class="highlight">
-      <p><strong>Event Details:</strong></p>
-      <p><strong>Date:</strong> ${eventDate}</p>
+      <p><strong>Event Details</strong></p>
+      <p><strong>Event:</strong> ${eventName}</p>
+      <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
       <p><strong>Location:</strong> ${eventLocation}</p>
-      <p><strong>Sponsorship Level:</strong> ${sponsorshipLevel}</p>
-      <p><strong>Included Attendee Passes:</strong> ${attendeePasses}</p>
     </div>
 
+
+
     
-    <h2>Your Sponsorship Benefits Include:</h2>
-    <ul>
-      ${sponsorshipPerks.map(perk => `<li>${perk}</li>`).join('')}
-    </ul>
+
+    ${hotelInfo ? `
+    <div class="highlight">
+      <p><strong>Hotel Accommodations</strong></p>
+      <p>Room Block Information is available <a href="${hotelInfo}">here.</a></p>
+    </div>
+    ` : ''}
+
+    ${vipNetworkingReception ? `
+    <div class="highlight">
+      <p><strong>VIP Networking Reception</strong></p>
+      <p>
+     ${vipNetworkingReception.description}
+    </div>
+    ` : ''}
     
-    <p>Our sponsorship coordinator will be in touch shortly to discuss logo placement, promotional opportunities, and other sponsorship details.</p>
-    
-    <p>Please save this email for your records. You'll receive additional information about the event as the date approaches.</p>
+    <div class="highlight">
+      <p><strong>Please Note</strong></p>
+      <ul>
+        <li><strong>All registrations are final</strong>. We are unable to offer refunds for this event.</li>
+        <li>Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org/</a></li>
+      </ul>
+    </div>
     
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
-    
+
     ${orderSummaryHtml || ''}
     
-    <p>If you have any questions, please don't hesitate to contact us.</p>
+    <p>If you have any questions or need further assistance, feel free to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
     
-    <p>Sincerely,<br>The American Defense Alliance Team</p>
+    <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
+    
+    <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
+
   `;
   
   return baseEmailTemplate(content, eventImage);

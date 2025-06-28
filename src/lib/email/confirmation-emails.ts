@@ -181,6 +181,7 @@ export async function sendRegistrationConfirmationEmail({
           orderSummaryHtml,
           hotelInfo,
           vipNetworkingReception,
+          exhibitorInstructions: exhibitorInstructions || '',
         }),
         attachments: emailAttachments,
       });

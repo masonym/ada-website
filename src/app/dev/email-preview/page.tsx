@@ -7,13 +7,13 @@ import { VipNetworkingReception } from '@/types/events';
 // Mock data for the email templates
 const mockData = {
   firstName: 'John',
-  eventName: 'Annual Defense Summit 2025',
+  eventName: '2025 Navy Marine Corps Procurement Conference',
   eventDate: 'October 26-28, 2025',
   eventLocation: 'The Ritz-Carlton, Pentagon City, Arlington, VA',
-  eventUrl: 'https://americandefensealliance.org/events/annual-defense-summit-2025',
+  eventUrl: 'https://americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference',
   orderId: 'pi_1234567890',
-  hotelInfo: 'https://americandefensealliance.org/events/annual-defense-summit-2025/about/venue-and-lodging',
-  eventImage: '/images/events/2025-summit-banner.png',
+  hotelInfo: 'https://americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference/about/venue-and-lodging',
+  eventImage: '/2025NMCPC_wide.webp',
   vipPerks: [
     'Priority seating',
     'Access to VIP reception',
@@ -29,15 +29,16 @@ const mockData = {
   ],
   attendeePasses: 4,
   exhibitorType: 'Standard Exhibitor Booth',
-  exhibitorInstructions: 'https://example.com/exhibitor-instructions.pdf',
+  exhibitorInstructions: 'https://americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference/about/exhibitor-instructions',
   vipNetworkingReception: {
-    title: 'VIP Networking Reception',
-    date: 'October 26, 2025',
-    timeStart: '6:00 PM',
-    timeEnd: '8:00 PM',
-    location: 'The Ritz-Carlton Ballroom',
-    description: 'An exclusive networking reception for our VIPs, sponsors, and speakers. Enjoy cocktails and hors d\'oeuvres while connecting with key industry leaders.'
-  } as VipNetworkingReception,
+      title: "VIP Networking Reception",
+      description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests. The Reception will take place on July 29, 2025 from 6:00 PM - 8:00 PM at The Harbor Club located at 333 Waterside Dr. Suite 200, Norfolk, VA 23510. It is a short walking distance from the Norfolk Waterside Marriott.",
+      date: "July 29, 2025",
+      timeStart: "6:00 PM",
+      timeEnd: "8:00 PM",
+      location: "The Harbor Club, Norfolk, VA",
+      additionalInfo: "It is a short walking distance from the Norfolk Waterside Marriott."
+    } as VipNetworkingReception,
   orderSummary: {
     orderId: 'pi_1234567890',
     orderDate: new Date().toLocaleDateString(),
