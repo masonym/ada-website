@@ -522,8 +522,7 @@ export function sponsorTemplate({
       <p>You are the exclusive host of the VIP Networking Reception and are invited to provide welcoming remarks at the VIP Networking Reception. Please identify who will be providing welcoming remarks and send a Photo/Bio to Lana Corrigan (<a href="mailto:lana@americandefensealliance.org">lana@americandefensealliance.org</a>) for inclusion on our website.</p>
     ` : ''}
     
-      
-
+    ${!sponsorshipTitle.includes('small business sponsor') ? `
     <div class="highlight">
     <!-- Speaking Opportunity -->
     ${speakingTime ? `
@@ -532,10 +531,9 @@ export function sponsorTemplate({
     ` : ''}
 
     <!-- Matchmaking Table Host -->
-    ${sponsorshipTitle !== 'small business sponsor' ? `
       <p><strong>Matchmaking Table Host</strong></p>
       <p>Matchmaking Sessions will take place on ${matchmakingSessions?.sessions[0].date} from ${matchmakingSessions?.sessions[0].sessionTime} and on ${matchmakingSessions?.sessions[1].date} from ${matchmakingSessions?.sessions[1].sessionTime}. You are invited to host a Matchmaking Table on either one or both days. If you wish to host a table, please send the Table Host Information and Description of your Company to <a href="mailto:lana@americandefensealliance.org">lana@americandefensealliance.org</a>.</p>
-    ` : ''}
+    
 
     ${sponsorshipTitle.includes('gold') || sponsorshipTitle.includes('platinum') ? `
       <p><strong>Sponsor Spotlight Email</strong></p>
@@ -546,12 +544,13 @@ export function sponsorTemplate({
       <p><strong>Lanyard & Name Badge Sponsorship</strong></p>
       <p>Please coordinate with our Meeting & Events Executive, Lana Corrigan (<a href="mailto:lana@americandefensealliance.org">lana@americandefensealliance.org</a>) to coordinate the placement of your company's logo on all conference lanyards and name badges.</p>
     ` : ''}
-    </div>
-    
+    </div>` : ''}
+
+    ${!sponsorshipTitle.includes('without exhibit space') ? `
     <div class="highlight">
       <p><strong>Exhibitor Instructions</strong></p>
       <p>Exhibitor setup and other important instructions are available on our website. <a href="${getCdnPath(exhibitorInstructions)}">View Exhibitor Instructions</a></p>
-    </div>
+    </div>` : ''}
     
     <div class="highlight">
       <p><strong>Event Details</strong></p>
