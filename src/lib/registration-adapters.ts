@@ -257,6 +257,15 @@ export function getExhibitorsForEvent(eventId: number | string): ModalRegistrati
       category: 'exhibit',
       requiresValidation: true,
       maxQuantityPerOrder: 10, // Example limit
+      perks: [
+        "(1) VIP Attendee Pass",
+        "Access to General Sessions",
+        "Access to Exhibit Area",
+        "Onsite Sign-up for Matchmaking Sessions",
+        "Breakfast & Buffet Lunch",
+        "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
+        "<b>Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM</b>",
+      ],
     });
   }
 
