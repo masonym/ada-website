@@ -71,14 +71,9 @@ export async function sendFreeRegistrationConfirmationEmail(props: RegistrationC
   const subject = `Confirmation: Your Registration for ${eventName}`;
   const html = `
     <p>Dear ${firstName},</p>
-    <p>Thank you for registering for <strong>${eventName}</strong>!</p>
-    ${orderId ? `<p>Your Order ID is: ${orderId}</p>` : ''}
-    <p>We're excited to have you join us.</p>
-    ${eventUrl ? `<p>For more details about the event, please visit: <a href="${eventUrl}">${eventUrl}</a></p>` : ''}
-    <p>If you have any questions, please don't hesitate to contact us at ${env.MY_EMAIL || 'our support address'}.</p>
-    <p>Sincerely,</p>
-    <p>The American Defense Alliance Team</p>
-    <img src="${eventImage}" alt="${eventName} Event Image">
+    <p>Thank you for registering for the <strong>${eventName}</strong>. We are please to confirm your participation in this important event. Please retain this email for your records.</p>
+    <p>If you have indicated interest in a Speaking Opportunity, please contact Charles Sills (<a href="mailto:csills@trillacorpeconstruction.com">csills@trillacorpeconstruction.com</a>) as soon as possible.</p>
+
   `;
 
   return sendEmail({ to: userEmail, subject, html });

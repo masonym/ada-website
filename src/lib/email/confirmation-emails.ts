@@ -9,7 +9,7 @@ import {
   OrderSummary, 
   generateOrderSummaryHtml,
 } from './templates';
-import { fetchFileNamesFromCloud } from '@/app/components/ExhibitInstructionsButton';
+import { fetchFileNamesFromCloud } from '@/lib/s3';
 
 // Define ticket tiers in order of priority (highest to lowest)
 export enum TicketTier {
@@ -127,7 +127,7 @@ export async function sendRegistrationConfirmationEmail({
   const hotelInfo = `https://americandefensealliance.org/events/${event.slug}/about/venue-and-lodging`;
   const vipNetworkingReception = event.vipNetworkingReception;
 
-  const bucketFiles = await fetchFileNamesFromCloud('exhibitor-instructions');
+  const bucketFiles = await fetchFileNamesFromCloud(event.eventShorthand);
   const exhibitorInstructions = bucketFiles.find(name => name.includes("Instructions"));
 
   // Get any ticket-specific attachments
