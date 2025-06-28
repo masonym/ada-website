@@ -3,7 +3,9 @@ import { getEnv } from '@/lib/env';
 import { stripe } from '@/lib/stripe/server';
 import { logRegistration } from '@/lib/google-sheets';
 import { validateRegistrationData } from '@/lib/event-registration/validation';
-import { sendFreeRegistrationConfirmationEmail } from '@/lib/email';
+import { sendRegistrationConfirmationEmail } from '@/lib/email/confirmation-emails';
+import { ModalRegistrationType } from '@/lib/registration-adapters';
+import { EVENTS } from '@/constants/events';
 import { isGovOrMilEmail } from '@/lib/event-registration/validation';
 import { REGISTRATION_TYPES } from '@/constants/registrations';
 import { savePendingRegistration } from '@/lib/aws/dynamodb';
@@ -149,14 +151,30 @@ export async function POST(request: Request) {
     if (total === 0) {
       const orderId = `ORDER-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
       await logRegistration(currentEventId, validatedData, orderId, isFreeRegistration ? 'free' : 'paid_free', 0, promoCode, discount);
-      await sendFreeRegistrationConfirmationEmail({
-        userEmail: validatedData.email,
-        firstName: validatedData.firstName,
-        eventName: body.eventTitle || 'the Event',
-        orderId,
-        eventUrl: body.eventSlug ? `${env.NEXT_PUBLIC_SITE_URL}/events/${body.eventSlug}` : env.NEXT_PUBLIC_SITE_URL,
-        eventImage: body.eventImage
-      });
+
+      const event = EVENTS.find(e => e.id === eventId);
+
+      if (event) {
+        const registrationsForEmail: ModalRegistrationType[] = validatedData.tickets
+          .map(ticket => {
+            const registrationType = eventRegistrations.registrations.find(reg => 'id' in reg && reg.id === ticket.ticketId);
+            if (!registrationType) return null;
+            return {
+              ...(registrationType as any),
+              quantity: ticket.quantity,
+            };
+          })
+          .filter((r): r is ModalRegistrationType => r !== null);
+
+        await sendRegistrationConfirmationEmail({
+          email: validatedData.email,
+          firstName: validatedData.firstName,
+          event,
+          registrations: registrationsForEmail,
+          orderId: orderId,
+        });
+      }
+
       return NextResponse.json({ success: true, orderId, paymentStatus: isFreeRegistration ? 'free' : 'free_with_promo', amountPaid: 0 });
     }
 

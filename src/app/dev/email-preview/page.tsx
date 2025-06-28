@@ -1,15 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { attendeePassTemplate, vipAttendeePassTemplate, exhibitorTemplate, sponsorTemplate, generateOrderSummaryHtml } from '@/lib/email/templates';
+import { attendeePassTemplate, vipAttendeePassTemplate, exhibitorTemplate, sponsorTemplate, generateOrderSummaryHtml, govMilPassTemplate } from '@/lib/email/templates';
 import { VipNetworkingReception } from '@/types/events';
 
 // Mock data for the email templates
 const mockData = {
   firstName: 'John',
   eventName: '2025 Navy Marine Corps Procurement Conference',
-  eventDate: 'October 26-28, 2025',
-  eventLocation: 'The Ritz-Carlton, Pentagon City, Arlington, VA',
+  eventDate: 'July 29-30, 2025',
+  eventLocation: '235 E Main St, Norfolk, Virginia 23510',
   eventUrl: 'https://americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference',
   orderId: 'pi_1234567890',
   hotelInfo: 'https://americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference/about/venue-and-lodging',
@@ -80,6 +80,10 @@ const templates = {
     orderSummaryHtml,
   }),
   'Sponsor': sponsorTemplate({
+    ...mockData,
+    orderSummaryHtml,
+  }),
+  'Gov/Mil Pass': govMilPassTemplate({
     ...mockData,
     orderSummaryHtml,
   }),

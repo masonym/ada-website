@@ -1,3 +1,27 @@
+import { MatchmakingSession, VipNetworkingReception } from '@/types/events';
+import { getEnv } from '../../env';
+import { getCdnPath } from '@/utils/image';
+
+const env = getEnv();
+
+function getMonthFromDate(dateString: string): string {
+    if (!dateString) return '';
+    // Handles ranges like "October 28-29, 2024" or single dates "October 28, 2024"
+    const month = dateString.split(' ')[0];
+    // Basic check if it's a month name
+    if (['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].includes(month)) {
+        return month;
+    }
+    // Fallback for date formats like YYYY-MM-DD
+    try {
+        const date = new Date(dateString);
+        if (isNaN(date.getTime())) return '';
+        return date.toLocaleString('default', { month: 'long' });
+    } catch (e) {
+        return '';
+    }
+}
+
 export interface OrderSummaryItem {
   name: string;
   quantity: number;
@@ -76,13 +100,6 @@ export function generateOrderSummaryHtml(summary: OrderSummary): string {
   `;
 }
 
-import { MatchmakingSession, VipNetworkingReception } from '@/types/events';
-// Email templates for different registration types
-import { getEnv } from '../../env';
-import { getCdnPath } from '@/utils/image';
-
-const env = getEnv();
-
 // Base template that all emails will use
 export function baseEmailTemplate(content: string, eventImage: string): string {
   return `
@@ -112,7 +129,6 @@ export function baseEmailTemplate(content: string, eventImage: string): string {
         .header {
           background-color: #152238; /* navy-500 */
           text-align: center;
-          padding: 20px;
           border-radius: 8px 8px 0 0;
         }
         .header img {
@@ -195,6 +211,9 @@ export function baseEmailTemplate(content: string, eventImage: string): string {
         .order-items tfoot td {
           padding-top: 10px;
           border-top: 1px solid #EEEEEE; /* gray-10 */
+        }
+        p {
+          margin: 5px 0 0 0;
         }
       </style>
     </head>
@@ -396,12 +415,6 @@ export function exhibitorTemplate({
     <p>If you wish to purchase additional attendee passes, you can do so by clicking the button below.</p>
     <p>Note for mason for now: We need to develop a system such that we validate users so that they can purchase additional attendee passes.</p>
     <p> Need to figure out a good way to do this...</p>
-    <p>Please send a high quality image of your company's logo to Chayil Dickerson (<a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a>).</p>
-
-    <div class="highlight">
-      <p><strong>Exhibitor Instructions</strong></p>
-      <p>Exhibitor Instructions are available on our website. <a href="${getCdnPath(exhibitorInstructions)}">Exhibitor Instructions</a></p>
-    </div>
     
     <div class="highlight">
       <p><strong>Event Details</strong></p>
@@ -511,35 +524,29 @@ export function sponsorTemplate({
     
       
 
+    <div class="highlight">
     <!-- Speaking Opportunity -->
     ${speakingTime ? `
-    <div class="highlight">
       <p><strong>Speaking Opportunity</strong></p>
       <p>You will be given a <strong>${speakingTime} Speaking Opportunity</strong> during the General Session. as a standalone presentation or part of a panel. Please send Charles Sills (<a href="mailto:csills@trillacorpeconstruction.com">csills@trillacorpeconstruction.com</a>) a Photo/Bio and Session Topic as soon as possible.</p>
-    </div>
     ` : ''}
 
     <!-- Matchmaking Table Host -->
     ${sponsorshipTitle !== 'small business sponsor' ? `
-    <div class="highlight">
       <p><strong>Matchmaking Table Host</strong></p>
       <p>Matchmaking Sessions will take place on ${matchmakingSessions?.sessions[0].date} from ${matchmakingSessions?.sessions[0].sessionTime} and on ${matchmakingSessions?.sessions[1].date} from ${matchmakingSessions?.sessions[1].sessionTime}. You are invited to host a Matchmaking Table on either one or both days. If you wish to host a table, please send the Table Host Information and Description of your Company to <a href="mailto:lana@americandefensealliance.org">lana@americandefensealliance.org</a>.</p>
-    </div>
     ` : ''}
 
     ${sponsorshipTitle.includes('gold') || sponsorshipTitle.includes('platinum') ? `
-    <div class="highlight">
       <p><strong>Sponsor Spotlight Email</strong></p>
       <p>Send Company Description and Capabilities Statement to Kody Izumi (<a href="mailto:kody@americandefensealliance.org">kody@americandefensealliance.org</a>) to be featured in a promotional email sent to all registered attendees pre-conference.</p>
-    </div>
     ` : ''}
 
     ${sponsorshipTitle.includes('platinum') ? `
-    <div class="highlight">
       <p><strong>Lanyard & Name Badge Sponsorship</strong></p>
       <p>Please coordinate with our Meeting & Events Executive, Lana Corrigan (<a href="mailto:lana@americandefensealliance.org">lana@americandefensealliance.org</a>) to coordinate the placement of your company's logo on all conference lanyards and name badges.</p>
-    </div>
     ` : ''}
+    </div>
     
     <div class="highlight">
       <p><strong>Exhibitor Instructions</strong></p>
@@ -589,9 +596,67 @@ export function sponsorTemplate({
   return baseEmailTemplate(content, eventImage);
 }
 
-function getMonthFromDate(eventDate: string) {
-  const date = new Date(eventDate);
-  const month = date.toLocaleString('default', { month: 'long' });
-  return month;
+// Template for government/military attendee passes
+export function govMilPassTemplate({
+  firstName,
+  eventName,
+  eventDate,
+  eventLocation,
+  eventUrl,
+  orderId,
+  hotelInfo,
+  eventImage,
+  orderSummaryHtml,
+}: {
+  firstName: string;
+  eventName: string;
+  eventDate: string;
+  eventLocation: string;
+  eventUrl?: string;
+  orderId: string;
+  hotelInfo: string;
+  eventImage: string;
+  orderSummaryHtml?: string;
+}): string {
+  const content = `
+    <p><strong>Dear ${firstName},</strong></p>
+    
+    <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your complimentary participation in this important event. Please retain this email for your records.</p>
+    
+    <p>If you have indicated interest in a Speaking Opportunity, please contact Charles Sills (<a href="mailto:csills@trillacorpeconstruction.com">csills@trillacorpeconstruction.com</a>).</p>
+    
+    <div class="highlight">
+      <p><strong>Event Details</strong></p>
+      <p><strong>Event:</strong> ${eventName}</p>
+      <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
+      <p><strong>Location:</strong> ${eventLocation}</p>
+    </div>
+
+    
+    ${hotelInfo ? `
+    <div class="highlight">
+      <p><strong>Hotel Accommodations</strong></p>
+      <p>Room Block Information is available <a href="${hotelInfo}">here.</a></p>
+    </div>
+    ` : ''}
+    
+    <div class="highlight">
+      <p><strong>Please Note</strong></p>
+      <ul>
+        <li><strong>All registrations are final</strong>. We are unable to offer refunds for this event.</li>
+        <li>Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org/</a></li>
+      </ul>
+    </div>
+    
+    ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
+    
+    <p>If you have any questions or need further assistance, feel free to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
+    
+    <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
+    
+    <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
+  `;
+  
+  return baseEmailTemplate(content, eventImage);
 }
 

@@ -54,28 +54,3 @@ export async function sendEmail({
   }
 }
 
-// --- Specific Email Templates ---
-
-interface RegistrationConfirmationEmailProps {
-  userEmail: string;
-  firstName: string;
-  eventName: string;
-  orderId?: string; // Optional, for free or if generated before payment intent
-  eventUrl?: string; // Optional link to the event page
-  eventImage: string;
-}
-
-export async function sendFreeRegistrationConfirmationEmail(props: RegistrationConfirmationEmailProps) {
-  const { userEmail, firstName, eventName, orderId, eventUrl, eventImage } = props;
-
-  const subject = `Confirmation: Your Registration for ${eventName}`;
-  const html = `
-    <p>Dear ${firstName},</p>
-    <p>Thank you for registering for the <strong>${eventName}</strong>. We are please to confirm your participation in this important event. Please retain this email for your records.</p>
-    <p>If you have indicated interest in a Speaking Opportunity, please contact Charles Sills (<a href="mailto:csills@trillacorpeconstruction.com">csills@trillacorpeconstruction.com</a>) as soon as possible.</p>
-
-  `;
-
-  return sendEmail({ to: userEmail, subject, html });
-}
-

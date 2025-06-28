@@ -6,6 +6,7 @@ import {
   vipAttendeePassTemplate, 
   exhibitorTemplate, 
   sponsorTemplate, 
+  govMilPassTemplate,
   OrderSummary, 
   generateOrderSummaryHtml,
 } from './templates';
@@ -13,12 +14,13 @@ import { fetchFileNamesFromCloud } from '@/lib/s3';
 
 // Define ticket tiers in order of priority (highest to lowest)
 export enum TicketTier {
-  PLATINUM_SPONSOR = 6,
-  GOLD_SPONSOR = 5,
-  SILVER_SPONSOR = 4,
-  BRONZE_SPONSOR = 3,
-  EXHIBITOR = 2,
-  VIP_ATTENDEE = 1,
+  PLATINUM_SPONSOR = 7,
+  GOLD_SPONSOR = 6,
+  SILVER_SPONSOR = 5,
+  BRONZE_SPONSOR = 4,
+  EXHIBITOR = 3,
+  VIP_ATTENDEE = 2,
+  GOV_MIL_PASS = 1,
   STANDARD_ATTENDEE = 0
 }
 
@@ -51,6 +53,9 @@ export function determineTicketTier(registration: ModalRegistrationType): Ticket
     return TicketTier.EXHIBITOR;
   } else {
     // It's a ticket category
+    if ('type' in registration && registration.type === 'complimentary') {
+      return TicketTier.GOV_MIL_PASS;
+    }
     const title = registration.title.toLowerCase();
     if (title.includes('vip')) {
       return TicketTier.VIP_ATTENDEE;
@@ -207,6 +212,24 @@ export async function sendRegistrationConfirmationEmail({
         attachments: emailAttachments,
       });
       
+    case TicketTier.GOV_MIL_PASS:
+      return sendEmail({
+        to: email,
+        subject: `Registration Confirmation - ${event.title}`,
+        html: govMilPassTemplate({
+          firstName,
+          eventName: event.title,
+          eventDate,
+          eventLocation,
+          eventUrl,
+          orderId,
+          hotelInfo,
+          eventImage: event.image,
+          orderSummaryHtml: '', // No order summary for free passes
+        }),
+        attachments: emailAttachments,
+      });
+
     case TicketTier.VIP_ATTENDEE:
       return sendEmail({
         to: email,
