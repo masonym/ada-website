@@ -180,6 +180,7 @@ export async function sendRegistrationConfirmationEmail({
           orderSummaryHtml,
           hotelInfo,
           vipNetworkingReception,
+          matchmakingSessions: event.matchmakingSessions || undefined,
           exhibitorInstructions: exhibitorInstructions || '',
         }),
         attachments: emailAttachments,

@@ -93,7 +93,7 @@ export interface Event {
         customContactText?: ReactNode;
         exhibitorSpacesText?: ReactNode;
     };
-    matchmakingSessions?: MatchmakingSession;
+    matchmakingSessions?: MatchmakingSession | undefined;
     customFooterText?: ReactNode;
     placeID?: string;
     directions?: Array<{ title: string; description: string }>;

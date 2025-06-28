@@ -481,7 +481,7 @@ export function sponsorTemplate({
   orderSummaryHtml?: string;
   hotelInfo?: string;
   vipNetworkingReception?: VipNetworkingReception;
-  matchmakingSessions: MatchmakingSession;
+  matchmakingSessions: MatchmakingSession | undefined;
 }): string {
   const sponsorshipTitle = sponsorshipLevel.toLowerCase();
 
@@ -523,7 +523,7 @@ export function sponsorTemplate({
     ${sponsorshipTitle !== 'small business sponsor' ? `
     <div class="highlight">
       <p><strong>Matchmaking Table Host</strong></p>
-      <p>Matchmaking Sessions will take place on ${matchmakingSessions.sessions[0].date} from ${matchmakingSessions.sessions[0].sessionTime} and on ${matchmakingSessions.sessions[1].date} from ${matchmakingSessions.sessions[1].sessionTime}. You are invited to host a Matchmaking Table on either one or both days. If you wish to host a table, please send the Table Host Information and Description of your Company to <a href="mailto:lana@americandefensealliance.org">lana@americandefensealliance.org</a>.</p>
+      <p>Matchmaking Sessions will take place on ${matchmakingSessions?.sessions[0].date} from ${matchmakingSessions?.sessions[0].sessionTime} and on ${matchmakingSessions?.sessions[1].date} from ${matchmakingSessions?.sessions[1].sessionTime}. You are invited to host a Matchmaking Table on either one or both days. If you wish to host a table, please send the Table Host Information and Description of your Company to <a href="mailto:lana@americandefensealliance.org">lana@americandefensealliance.org</a>.</p>
     </div>
     ` : ''}
 
