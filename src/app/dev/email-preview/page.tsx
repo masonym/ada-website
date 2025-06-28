@@ -21,12 +21,24 @@ const mockData = {
     'Special gift bag'
   ],
   sponsorshipLevel: 'Platinum Sponsor',
-  sponsorshipPerks: [
-    'Logo on all event materials',
-    'Speaking opportunity',
-    'Exhibit booth',
-    '10 complimentary VIP passes'
-  ],
+matchmakingSessions: {
+      signUpTime: "7:30 AM",
+      signUpDate: "July 29, 2025",
+      sessionDurationMinutes: 10,
+      slotsPerHost: 9,
+      sessions: [
+        {
+          date: "July 29",
+          sessionTime: "4:00 PM - 5:30 PM",
+        },
+        {
+          date: "July 30",
+          sessionTime: "12:30 PM - 1:30 PM",
+        },
+      ]
+    },
+
+  // TODO: is this passed in normally? idk
   attendeePasses: 4,
   exhibitorType: 'Standard Exhibitor Booth',
   exhibitorInstructions: 'https://americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference/about/exhibitor-instructions',
@@ -43,7 +55,7 @@ const mockData = {
     orderId: 'pi_1234567890',
     orderDate: new Date().toLocaleDateString(),
     items: [
-      { name: 'Platinum Sponsorship', quantity: 1, price: 25000 },
+      { name: 'Bronze Sponsorship', quantity: 1, price: 25000 },
       { name: 'Additional VIP Pass', quantity: 2, price: 999 },
     ],
     subtotal: 26998,
@@ -76,7 +88,7 @@ const templates = {
 type TemplateName = keyof typeof templates;
 
 export default function EmailPreviewPage() {
-  const [selectedTemplate, setSelectedTemplate] = useState<TemplateName>('Standard Attendee');
+  const [selectedTemplate, setSelectedTemplate] = useState<TemplateName>('Sponsor');
 
   return (
     <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>

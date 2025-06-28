@@ -76,7 +76,7 @@ export function generateOrderSummaryHtml(summary: OrderSummary): string {
   `;
 }
 
-import { VipNetworkingReception } from '@/types/events';
+import { MatchmakingSession, VipNetworkingReception } from '@/types/events';
 // Email templates for different registration types
 import { getEnv } from '../../env';
 import { getCdnPath } from '@/utils/image';
@@ -407,13 +407,13 @@ export function sponsorTemplate({
   eventUrl,
   orderId,
   sponsorshipLevel,
-  sponsorshipPerks,
   attendeePasses,
+  exhibitorInstructions,
   eventImage,
   orderSummaryHtml,
   hotelInfo,
   vipNetworkingReception,
-  exhibitorInstructions,
+  matchmakingSessions,
 }: {
   firstName: string;
   eventName: string;
@@ -422,26 +422,75 @@ export function sponsorTemplate({
   eventUrl?: string;
   orderId: string;
   sponsorshipLevel: string;
-  sponsorshipPerks: string[];
   attendeePasses: number;
+  exhibitorInstructions: string;
   eventImage: string;
   orderSummaryHtml?: string;
   hotelInfo?: string;
   vipNetworkingReception?: VipNetworkingReception;
-  exhibitorInstructions: string;
+  matchmakingSessions: MatchmakingSession;
 }): string {
+  const sponsorshipTitle = sponsorshipLevel.toLowerCase();
+
+  const getSpeakingTime = () => {
+    if (sponsorshipTitle.includes('platinum')) return '20-minute';
+    if (sponsorshipTitle.includes('gold')) return '15-minute';
+    if (sponsorshipTitle.includes('silver')) return '10-minute';
+    if (sponsorshipTitle.includes('bronze')) return '5-minute';
+    return '';
+  };
+
+  const speakingTime = getSpeakingTime();
+
   const content = `
-    <p>Dear ${firstName},</p>
+    <p><strong>Dear ${firstName},</strong></p>
+    
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
 
-    <p>If you wish to purchase additional attendee passes, you can do so by clicking the button below.</p>
-    <p>Note for mason for now: We need to develop a system such that we validate users so that they can purchase additional attendee passes.</p>
-    <p> Need to figure out a good way to do this...</p>
-    <p>Please send a high quality image of your company's logo to Chayil Dickerson (<a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a>).</p>
+    <p>You may register additional attendees not included in the (${attendeePasses}) complimentary VIP Attendee Passes for $395 each using the Additional Sponsorship Attendee Pass option.</p>
 
+    <p>Please send a high-quality image of your company's logo to Chayil Dickerson (<a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a>).</p>
+
+    <!-- VIP Networking Reception Host -->
+    ${sponsorshipTitle.includes('vip networking reception') ? `
+      <p>You are the exclusive host of the VIP Networking Reception and are invited to provide welcoming remarks at the VIP Networking Reception. Please identify who will be providing welcoming remarks and send a Photo/Bio to Lana Corrigan (<a href="mailto:lana@americandefensealliance.org">lana@americandefensealliance.org</a>) for inclusion on our website.</p>
+    ` : ''}
+    
+      
+
+    <!-- Speaking Opportunity -->
+    ${speakingTime ? `
+    <div class="highlight">
+      <p><strong>Speaking Opportunity</strong></p>
+      <p>You will be given a <strong>${speakingTime} Speaking Opportunity</strong> during the General Session. as a standalone presentation or part of a panel. Please send Charles Sills (<a href="mailto:csills@trillacorpeconstruction.com">csills@trillacorpeconstruction.com</a>) a Photo/Bio and Session Topic as soon as possible.</p>
+    </div>
+    ` : ''}
+
+    <!-- Matchmaking Table Host -->
+    ${sponsorshipTitle !== 'small business sponsor' ? `
+    <div class="highlight">
+      <p><strong>Matchmaking Table Host</strong></p>
+      <p>Matchmaking Sessions will take place on ${matchmakingSessions.sessions[0].date} from ${matchmakingSessions.sessions[0].sessionTime} and on ${matchmakingSessions.sessions[1].date} from ${matchmakingSessions.sessions[1].sessionTime}. You are invited to host a Matchmaking Table on either one or both days. If you wish to host a table, please send the Table Host Information and Description of your Company to <a href="mailto:lana@americandefensealliance.org">lana@americandefensealliance.org</a>.</p>
+    </div>
+    ` : ''}
+
+    ${sponsorshipTitle.includes('gold') || sponsorshipTitle.includes('platinum') ? `
+    <div class="highlight">
+      <p><strong>Sponsor Spotlight Email</strong></p>
+      <p>Send Company Description and Capabilities Statement to Kody Izumi (<a href="mailto:kody@americandefensealliance.org">kody@americandefensealliance.org</a>) to be featured in a promotional email sent to all registered attendees pre-conference.</p>
+    </div>
+    ` : ''}
+
+    ${sponsorshipTitle.includes('platinum') ? `
+    <div class="highlight">
+      <p><strong>Lanyard & Name Badge Sponsorship</strong></p>
+      <p>Please coordinate with our Meeting & Events Executive, Lana Corrigan (<a href="mailto:lana@americandefensealliance.org">lana@americandefensealliance.org</a>) to coordinate the placement of your company's logo on all conference lanyards and name badges.</p>
+    </div>
+    ` : ''}
+    
     <div class="highlight">
       <p><strong>Exhibitor Instructions</strong></p>
-      <p>Exhibitor Instructions are available on our website. <a href="${getCdnPath(exhibitorInstructions)}">Exhibitor Instructions</a></p>
+      <p>Exhibitor setup and other important instructions are available on our website. <a href="${getCdnPath(exhibitorInstructions)}">View Exhibitor Instructions</a></p>
     </div>
     
     <div class="highlight">
@@ -450,23 +499,18 @@ export function sponsorTemplate({
       <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
       <p><strong>Location:</strong> ${eventLocation}</p>
     </div>
-
-
-
     
-
     ${hotelInfo ? `
     <div class="highlight">
       <p><strong>Hotel Accommodations</strong></p>
-      <p>Room Block Information is available <a href="${hotelInfo}">here.</a></p>
+      <p>Room block information is available <a href="${hotelInfo}">here.</a></p>
     </div>
     ` : ''}
 
     ${vipNetworkingReception ? `
     <div class="highlight">
       <p><strong>VIP Networking Reception</strong></p>
-      <p>
-     ${vipNetworkingReception.description}
+      <p>As a sponsor, you and your guests are invited to our exclusive VIP Networking Reception. ${vipNetworkingReception.description}</p>
     </div>
     ` : ''}
     
@@ -482,16 +526,16 @@ export function sponsorTemplate({
 
     ${orderSummaryHtml || ''}
     
-    <p>If you have any questions or need further assistance, feel free to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
+    <p>If you have any questions or need further assistance, please do not hesitate to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
     
-    <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
+    <p>We look forward to a successful partnership and welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
     
     <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
-
   `;
   
   return baseEmailTemplate(content, eventImage);
 }
+
 function getMonthFromDate(eventDate: string) {
   const date = new Date(eventDate);
   const month = date.toLocaleString('default', { month: 'long' });

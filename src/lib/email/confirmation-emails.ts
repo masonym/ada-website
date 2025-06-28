@@ -175,7 +175,6 @@ export async function sendRegistrationConfirmationEmail({
           eventUrl,
           orderId,
           sponsorshipLevel: registration.title,
-          sponsorshipPerks: registration.perks || [],
           attendeePasses: registration.sponsorPasses || attendeePasses || 0,
           eventImage: event.image,
           orderSummaryHtml,

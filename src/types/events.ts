@@ -1,6 +1,17 @@
 import { ReactNode } from "react";
 import { RegistrationType } from "./event-registration/registration";
 
+export interface MatchmakingSession {
+    signUpTime: string;
+    signUpDate: string;
+    sessionDurationMinutes: number;
+    slotsPerHost: number;
+    sessions: Array<{
+        sessionTime: string;
+        date: string;
+    }>;
+}
+
 export interface VipNetworkingReception {
     title: string;
     description: string;
@@ -82,16 +93,7 @@ export interface Event {
         customContactText?: ReactNode;
         exhibitorSpacesText?: ReactNode;
     };
-    matchmakingSessions?: {
-        signUpTime: string;
-        slotsPerHost: number;
-        sessionDurationMinutes: number;
-        signUpDate: string;
-        sessions: Array<{
-            sessionTime: string;
-            date: string;
-        }>;
-    };
+    matchmakingSessions?: MatchmakingSession;
     customFooterText?: ReactNode;
     placeID?: string;
     directions?: Array<{ title: string; description: string }>;
