@@ -16,7 +16,7 @@ const s3Client = new S3Client({
   },
 });
 
-const fetchFileNamesFromCloud = async (eventShorthand: string): Promise<string[]> => {
+export const fetchFileNamesFromCloud = async (eventShorthand: string): Promise<string[]> => {
   const bucketName = process.env.AWS_S3_BUCKET_NAME;
   const prefix = `events/${eventShorthand}/`;
 

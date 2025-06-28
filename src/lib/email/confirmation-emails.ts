@@ -9,6 +9,7 @@ import {
   OrderSummary, 
   generateOrderSummaryHtml,
 } from './templates';
+import { fetchFileNamesFromCloud } from '@/app/components/ExhibitInstructionsButton';
 
 // Define ticket tiers in order of priority (highest to lowest)
 export enum TicketTier {
@@ -126,6 +127,9 @@ export async function sendRegistrationConfirmationEmail({
   const hotelInfo = `https://americandefensealliance.org/events/${event.slug}/about/venue-and-lodging`;
   const vipNetworkingReception = event.vipNetworkingReception;
 
+  const bucketFiles = await fetchFileNamesFromCloud('exhibitor-instructions');
+  const exhibitorInstructions = bucketFiles.find(name => name.includes("Instructions"));
+
   // Get any ticket-specific attachments
   let ticketAttachments: Array<{
     filename: string;
@@ -193,12 +197,7 @@ export async function sendRegistrationConfirmationEmail({
           eventUrl,
           orderId,
           exhibitorType: registration.title,
-          exhibitorInstructions: `
-            <p>Setup time: Day before event, 2-5pm or day of event 7-8am</p>
-            <p>Teardown: After event conclusion</p>
-            <p>Each exhibit space includes one 6' table and two chairs.</p>
-            <p>Please bring your own tablecloth, signage, and promotional materials.</p>
-          `,
+          exhibitorInstructions: exhibitorInstructions || '',
           eventImage: event.image,
           orderSummaryHtml,
           hotelInfo,

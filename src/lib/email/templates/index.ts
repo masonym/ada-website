@@ -346,7 +346,7 @@ export function exhibitorTemplate({
 
     <div class="highlight">
       <p><strong>Exhibitor Instructions</strong></p>
-      <p>${exhibitorInstructions}</p>
+      <p>Exhibitor Instructions are available on our website. <a href="${getCdnPath(exhibitorInstructions)}">Exhibitor Instructions</a></p>
     </div>
     
     <div class="highlight">
