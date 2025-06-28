@@ -293,7 +293,7 @@ const RegistrationModal = ({
     const error = validationError[reg.id];
 
     return (
-      <div className="mt-2 p-3 bg-gray-50 border border-gray-200 rounded-md">
+      <div className="mt-2 p-3 bg-white border border-gray-200 rounded-md">
         <label htmlFor={`order-id-${reg.id}`} className="block text-sm font-medium text-gray-700">
           Enter previous Order ID to unlock
         </label>
@@ -1443,6 +1443,14 @@ const RegistrationModal = ({
                       )}
 
                       {typeof reg.price === 'number' && reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() >= new Date(reg.earlyBirdDeadline) && (
+                        <div className="mb-2">
+                          <p className="text-lg font-semibold text-gray-800">
+                            ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(reg.price)}
+                          </p>
+                        </div>
+                      )}
+                      {/* fallback price if no early bird price */}
+                      {typeof reg.price === 'number' && !reg.earlyBirdPrice && (
                         <div className="mb-2">
                           <p className="text-lg font-semibold text-gray-800">
                             ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(reg.price)}
