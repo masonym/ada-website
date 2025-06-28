@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     }
 
     console.log('Validating order:', { orderId, eventId });
-    const registration = await getConfirmedRegistration(orderId);
+    const registration = await getConfirmedRegistration(orderId.trim());
 
     if (!registration) {
       return NextResponse.json({ isValid: false, message: 'Order not found.' }, { status: 404 });
