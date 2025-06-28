@@ -1,4 +1,12 @@
-export const SPONSORSHIP_TYPES = [
+import { Sponsorship } from '@/types/sponsorships';
+
+interface SponsorshipTier {
+    id: number;
+    primeSponsor?: Sponsorship;
+    sponsorships: Sponsorship[];
+}
+
+export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
     {
         id: 1,
         sponsorships: [
@@ -324,6 +332,19 @@ export const SPONSORSHIP_TYPES = [
                     { tagline: "Media Coverage", description: "Photographs of your Participation" },
                 ],
                 showRemaining: true,
+            },
+            {
+                id: "small-business-sponsor-without-exhibit-space",
+                title: "Small Business Sponsor without Exhibit Space",
+                cost: 1250,
+                slotsPerEvent: 15,
+                perks: [
+                    { tagline: "Event Access", description: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each" },
+                    { tagline: "Brand Visibility", description: "Logo Placement on select Conference Material" },
+                    { tagline: "Media Coverage", description: "Photographs of your Participation" },
+                ],
+                showRemaining: true,
+                showOnSponsorshipPage: false,
             },
         ],
     },

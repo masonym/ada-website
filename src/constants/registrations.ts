@@ -240,7 +240,7 @@ export const REGISTRATION_TYPES = [
                     "Onsite Sign-up for Matchmaking Sessions",
                     "Breakfast & Buffet Lunch",
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
-                    "<b>Access to VIP Networking Reception on July 29, 2025 from 5:30 PM - 7:30 PM</b>",
+                    "<b>Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM</b>",
                 ],
                 buttonText: "Register Now",
                 buttonLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
@@ -291,7 +291,7 @@ export const REGISTRATION_TYPES = [
         addOns: [
             {
                 title: "VIP Networking Reception",
-                description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from 5:30 PM - 7:30 PM on July 29, 2025.",
+                description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from 6:00 PM - 8:00 PM on July 29, 2025.",
                 price: "+$100"
             },
             // {

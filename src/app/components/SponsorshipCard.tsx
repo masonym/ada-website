@@ -16,6 +16,7 @@ type SponsorTypes = {
     colour?: string;
     slotsPerEvent?: number;
     showRemaining?: boolean;
+    showOnSponsorshipPage?: boolean;
 };
 
 type SponsorProp = {

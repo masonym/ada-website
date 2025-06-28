@@ -83,8 +83,11 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                         </div>
                     )}
 
+                    {/* this prop isn't required, so we want to only filter ones out that are EXPLICITLY FALSE */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-                        {currentEvent.sponsorships.map((item, index) => (
+                        {currentEvent.sponsorships
+                        .filter((item) => item.showOnSponsorshipPage !== false)
+                        .map((item, index) => (
                             <div key={index} className="flex justify-center">
                                 <SponsorshipCard item={item} event={event} />
                             </div>
