@@ -38,7 +38,7 @@ export interface OrderSummary {
 }
 
 export function generateOrderSummaryHtml(summary: OrderSummary): string {
-  const formatCurrency = (amount: number) => `$${amount.toFixed(2)}`;
+  const formatCurrency = (amount: number) => `${amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`;
 
   return `
     <div class="order-summary">
