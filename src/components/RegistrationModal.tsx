@@ -1299,6 +1299,7 @@ const RegistrationModal = ({
                                 currentTicketId={reg.id}
                                 formErrors={formErrors}
                                 isComplimentaryTicket={reg.type === 'complimentary'}
+                                ticketType={reg.category}
                               />
                             </div>
                           );
@@ -1371,6 +1372,7 @@ const RegistrationModal = ({
                               currentTicketId={`${sponsorId}-passes`}
                               formErrors={formErrors}
                               isComplimentaryTicket={true} // Sponsor passes are complimentary
+                              ticketType="sponsor"
                             />
                           </div>
                         ))}

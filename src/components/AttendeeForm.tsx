@@ -30,6 +30,7 @@ interface AttendeeFormProps {
   currentTicketId: string;
   formErrors?: Record<string, string>; // Add formErrors prop
   isComplimentaryTicket?: boolean; // Add flag for complimentary tickets
+  ticketType?: string; // Type of ticket: 'sponsor', 'exhibit', etc.
 }
 
 export const AttendeeForm: React.FC<AttendeeFormProps> = ({
@@ -41,7 +42,8 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
   allAttendees,
   currentTicketId,
   formErrors = {},
-  isComplimentaryTicket = false
+  isComplimentaryTicket = false,
+  ticketType = ''
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -327,66 +329,72 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
             ))}
           </select>
         </div>
-        <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Are you interested in becoming a Sponsor or Exhibitor? *
-          </label>
-          <div className="flex flex-col">
-            <label className="inline-flex items-center text-sm">
-              <input
-                type="radio"
-                className="form-radio"
-                name={`sponsorInterest-${index}`}
-                value="yes"
-                checked={attendee.sponsorInterest === 'yes'}
-                onChange={handleRadioChange}
-                required={attendee.sponsorInterest === ''}
-              />
-              <span className="ml-2">Yes, please contact us at <a className="text-blue-500 hover:underline" href="mailto:marketing@americandefensealliance.org">marketing@americandefensealliance.org</a></span>
+        {/* Only show sponsorship interest for general admission tickets (not for sponsor/exhibit) */}
+        {ticketType !== 'sponsor' && ticketType !== 'exhibit' && (
+          <div className="md:col-span-2">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Are you interested in becoming a Sponsor or Exhibitor? *
             </label>
-            <label className="inline-flex items-center text-sm">
-              <input
-                type="radio"
-                className="form-radio"
-                name={`sponsorInterest-${index}`}
-                value="no"
-                checked={attendee.sponsorInterest === 'no'}
-                onChange={handleRadioChange}
-              />
-              <span className="ml-2">No</span>
-            </label>
+            <div className="flex flex-col">
+              <label className="inline-flex items-center text-sm">
+                <input
+                  type="radio"
+                  className="form-radio"
+                  name={`sponsorInterest-${index}`}
+                  value="yes"
+                  checked={attendee.sponsorInterest === 'yes'}
+                  onChange={handleRadioChange}
+                  required={attendee.sponsorInterest === ''}
+                />
+                <span className="ml-2">Yes, please contact us at <a className="text-blue-500 hover:underline" href="mailto:marketing@americandefensealliance.org">marketing@americandefensealliance.org</a></span>
+              </label>
+              <label className="inline-flex items-center text-sm">
+                <input
+                  type="radio"
+                  className="form-radio"
+                  name={`sponsorInterest-${index}`}
+                  value="no"
+                  checked={attendee.sponsorInterest === 'no'}
+                  onChange={handleRadioChange}
+                />
+                <span className="ml-2">No</span>
+              </label>
+            </div>
           </div>
-        </div>
-        <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Are you interested in becoming a Speaking Opportunity? *
-          </label>
-          <div className="flex flex-col">
-            <label className="inline-flex items-center text-sm">
-              <input
-                type="radio"
-                className="form-radio"
-                name={`speakingInterest-${index}`}
-                value="yes"
-                checked={attendee.speakingInterest === 'yes'}
-                onChange={handleRadioChange}
-                required={attendee.speakingInterest === ''}
-              />
-              <span className="ml-2">Yes, please contact us at <a className="text-blue-500 hover:underline" href="mailto:marketing@americandefensealliance.org">info@americandefensealliance.org</a></span>
+        )}
+        {/* Only show speaking interest for government/military tickets */}
+        {currentTicketId.includes('govt') && (
+          <div className="md:col-span-2">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Are you interested in a Speaking Opportunity? *
             </label>
-            <label className="inline-flex items-center text-sm">
-              <input
-                type="radio"
-                className="form-radio"
-                name={`speakingInterest-${index}`}
-                value="no"
-                checked={attendee.speakingInterest === 'no'}
-                onChange={handleRadioChange}
-              />
-              <span className="ml-2">No</span>
-            </label>
+            <div className="flex flex-col">
+              <label className="inline-flex items-center text-sm">
+                <input
+                  type="radio"
+                  className="form-radio"
+                  name={`speakingInterest-${index}`}
+                  value="yes"
+                  checked={attendee.speakingInterest === 'yes'}
+                  onChange={handleRadioChange}
+                  required={attendee.speakingInterest === ''}
+                />
+                <span className="ml-2">Yes, please contact us at <a className="text-blue-500 hover:underline" href="mailto:marketing@americandefensealliance.org">info@americandefensealliance.org</a></span>
+              </label>
+              <label className="inline-flex items-center text-sm">
+                <input
+                  type="radio"
+                  className="form-radio"
+                  name={`speakingInterest-${index}`}
+                  value="no"
+                  checked={attendee.speakingInterest === 'no'}
+                  onChange={handleRadioChange}
+                />
+                <span className="ml-2">No</span>
+              </label>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
