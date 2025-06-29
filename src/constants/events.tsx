@@ -141,7 +141,6 @@ export const EVENTS: Event[] = [
       },
     ],
     placeID: "ChIJ44HT0_u3t4kR9J5_0CQu3ic",
-    registerLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
     password: "ADA2025DIF",
     eventShorthand: "2025DIF",
 
@@ -312,7 +311,6 @@ invaluable connections that can shape the future of your business.
       },
     ],
     placeID: "ChIJ__IuDHcE9YgRl74p-48jkpU",
-    registerLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
     password: "SDPC2025ADA",
 
     featuredTopicsTitle: "Featured Contracting Commands",
@@ -722,7 +720,6 @@ invaluable connections that can shape the future of your business.
     locationImage: "locations/temp_venue.webp",
     locationAddress: `235 E Main St, Norfolk, Virginia 23510`,
     placeID: "ChIJBdD-jwuYuokRyjyu_hU0jUg",
-    registerLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
 
     matchmakingSessions: {
       signUpTime: "7:30 AM",

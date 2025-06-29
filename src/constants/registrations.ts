@@ -15,7 +15,6 @@ export const REGISTRATION_TYPES = [
                     "Access to Photos & Videos from Conference",
                 ],
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
                 earlyBirdPrice: 550,
                 price: 395,
                 earlyBirdDeadline: "2024-10-18T08:00:00Z",
@@ -38,7 +37,6 @@ export const REGISTRATION_TYPES = [
                     "Access to Photos & Videos from Conference",
                 ],
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
                 type: "complimentary",
                 availabilityInfo: "Limited availability."
             },
@@ -56,7 +54,6 @@ export const REGISTRATION_TYPES = [
                     "Media Coverage",
                 ],
                 buttonText: "Explore Sponsorship Opportunities",
-                buttonLink: `2025-defense-industry-forecast/sponsors-exhibitors/sponsorship-opportunities`,
                 type: "sponsor",
                 availabilityInfo: "Limited availability."
             },
@@ -85,7 +82,6 @@ export const REGISTRATION_TYPES = [
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
                 ],
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
                 earlyBirdPrice: 550,
                 price: 495,
                 // earlyBirdDeadline: "2025-02-18T08:00:00Z",
@@ -106,7 +102,6 @@ export const REGISTRATION_TYPES = [
                     "<b>Access to VIP Networking Reception on March 11, 2025 from 5:30 PM - 7:30 PM</b>",
                 ],
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
                 earlyBirdPrice: 550,
                 price: 550,
                 // earlyBirdDeadline: "2025-02-18T08:00:00Z",
@@ -126,7 +121,6 @@ export const REGISTRATION_TYPES = [
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
                 ],
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
                 type: "complimentary",
                 // availabilityInfo: "Limited availability."
             },
@@ -146,7 +140,6 @@ export const REGISTRATION_TYPES = [
             //     ],
             //     subtitle: "Includes:",
             //     buttonText: "Explore Sponsorship Opportunities",
-            //     buttonLink: `2025-southeast-defense-procurement-conference/about/sponsor`,
             //     type: "sponsor",
             //     availabilityInfo: "Limited availability."
             // },
@@ -175,7 +168,6 @@ export const REGISTRATION_TYPES = [
                     "Meals",
                 ],
                 buttonText: "Register Now",
-                buttonLink: "https://www.industrializing.space/product/attendee-pass/",
                 earlyBirdPrice: 550,
                 price: 299,
                 earlyBirdDeadline: "2024-10-18T08:00:00Z",
@@ -188,7 +180,6 @@ export const REGISTRATION_TYPES = [
                     "Mix and Mingle with our Guest Star Astronauts and other VIP Guests at Zarrella’s Italian & Wood Fired Pizza in Cape Canaveral, FL while Sampling Select Smooth Bourbons."
                 ],
                 buttonText: "Register Now",
-                buttonLink: "https://www.industrializing.space/product/pass-to-meet-greet-bourbon-tasting-with-astronauts/",
                 price: 100,
                 type: "paid",
             },
@@ -203,7 +194,6 @@ export const REGISTRATION_TYPES = [
                     "Brand Visibility",
                 ],
                 buttonText: "View Sponsorship Packages",
-                buttonLink: "/events/2025-driving-the-industrialization-of-space/sponsors-exhibitors/sponsorship-opportunities",
                 type: "sponsor",
             }
         ],
@@ -224,7 +214,6 @@ export const REGISTRATION_TYPES = [
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
                 ],
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
                 price: 495,
                 type: "paid",
             },
@@ -243,7 +232,6 @@ export const REGISTRATION_TYPES = [
                     "<b>Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM</b>",
                 ],
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
                 price: 550,
                 type: "paid",
             },
@@ -262,7 +250,6 @@ export const REGISTRATION_TYPES = [
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
                 ],
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
                 type: "complimentary",
                 price: "Complimentary",
                 // availabilityInfo: "Limited availability."
@@ -283,7 +270,6 @@ export const REGISTRATION_TYPES = [
             //     ],
             //     subtitle: "Includes:",
             //     buttonText: "Explore Sponsorship Opportunities",
-            //     buttonLink: `2025-southeast-defense-procurement-conference/about/sponsor`,
             //     type: "sponsor",
             //     availabilityInfo: "Limited availability."
             // },

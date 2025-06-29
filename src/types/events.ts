@@ -77,7 +77,7 @@ export interface Event {
     locationAddress: string;
     testimonials?: EventTestimonial[];
     eventShorthand: string;
-    registerLink: string;
+    registerLink?: string;
     password?: string;
     registrationTypes?: RegistrationType[];
     sponsorProspectusPath?: string;
