@@ -1159,9 +1159,9 @@ const RegistrationModal = ({
               setAttendeeCountStep(false);
               setCurrentStep(1); // Go back to billing info
             }}
-            className="text-sm font-medium text-gray-600 hover:text-gray-900"
+            className="px-6 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            &larr; Back to Billing Information
+            Back
           </button>
           <button
             type="button"
