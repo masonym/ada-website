@@ -38,6 +38,7 @@ export interface SponsorshipType {
   perks?: PerkType[];
   colour?: string;
   sponsorPasses?: number; // Number of attendee passes included with this sponsorship
+  slotsPerEvent?: number;
 };
 
 type PrimeSponsorType = SponsorshipType;
@@ -159,8 +160,8 @@ export function getSponsorshipsForEvent(eventId: number | string): ModalRegistra
       buttonText: 'Select',
       perks: processedPerks,
       category: 'sponsorship',
-      quantityAvailable: 1, // Default to 1 if slotsPerEvent is not provided
-      maxQuantityPerOrder: 1,
+      quantityAvailable: sponsor.slotsPerEvent || 1, // Default to 1 if slotsPerEvent is not provided
+      maxQuantityPerOrder: sponsor.slotsPerEvent || 1,
       sponsorPasses: sponsorPasses || 0, // Include sponsorPasses in the returned object
       colour: 'colour' in sponsor ? sponsor.colour : undefined,
     };

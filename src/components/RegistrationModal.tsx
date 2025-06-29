@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import * as yup from 'yup';
-import { X, CreditCard, Ticket, Package, Award } from 'lucide-react';
+import { X, CreditCard, Ticket, Package, Award, AlertTriangle } from 'lucide-react';
 import { Event } from '@/types/events';
 import { BillingInformation } from './BillingInformation';
 import { AttendeeForm } from './AttendeeForm';
@@ -15,9 +15,10 @@ import type { AttendeeInfo as EventAttendeeInfo, AttendeeInfo as EventRegAttende
 import { Elements } from '@stripe/react-stripe-js';
 import StripePaymentForm, { StripePaymentFormRef } from './StripePaymentForm';
 import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, ModalRegistrationType as AdapterModalRegistrationType } from '@/lib/registration-adapters';
+import { EVENT_SPONSORS } from '@/constants/eventSponsors';
 
 // Define a type that combines both RegistrationType and additional card props
-type ModalRegistrationType = {
+interface ModalRegistrationType {
   id: string;
   name: string;
   description: string;
@@ -38,9 +39,10 @@ type ModalRegistrationType = {
   receptionPrice?: string;
   quantityAvailable?: number;
   maxQuantityPerOrder?: number;
-  category?: 'ticket' | 'exhibit' | 'sponsorship'; // Made category optional to avoid breaking existing code
-  sponsorPasses?: number; // Number of attendee passes included with this sponsorship
+  category?: 'ticket' | 'exhibit' | 'sponsorship';
+  sponsorPasses?: number;
   requiresValidation?: boolean;
+  slotsPerEvent?: number; // Number of available slots for this event sponsorship
 };
 
 interface EventWithContact extends Omit<Event, 'id'> {
@@ -102,6 +104,41 @@ const initialModalAttendeeInfo: ModalAttendeeInfo = {
   accessibilityNeeds: '',
 };
 
+// Helper function to check if a sponsorship item is sold out
+const isSoldOut = (item: ModalRegistrationType, eventSponsors: any, eventId: string | number): boolean => {
+  // If it's not a sponsorship or doesn't have slotsPerEvent defined, it's not sold out
+  if (item.category !== 'sponsorship' && item.category !== 'exhibit' || !item.id || !item.quantityAvailable) {
+    return false;
+  }
+  console.log('item', item);
+  console.log('eventSponsors', eventSponsors);
+  console.log('eventId', eventId);
+  console.log("item.quantityAvailable", item.quantityAvailable)
+  console.log("item.maxQuantityPerOrder", item.maxQuantityPerOrder)
+  
+  // Find how many slots are available for this sponsorship
+  const slotsAvailable = item.quantityAvailable;
+  
+  // Count how many slots are taken by checking eventSponsors
+  let slotsTaken = 0;
+  const eventSponsorList = eventSponsors.find((es: any) => es.id === eventId);
+
+  console.log("eventSponsorList", eventSponsorList)
+  
+  if (eventSponsorList) {
+    // Check all tiers to find sponsors with this sponsorship id
+    Object.values(eventSponsorList.tiers || {}).forEach((tier: any) => {
+      // need to match tier.id with item.id, then if match, count length of sponsorIds
+      if (tier.id === item.id) {
+        slotsTaken += tier.sponsorIds.length;
+      }
+    });
+  }
+  
+  // Item is sold out if all slots are taken
+  return slotsTaken >= slotsAvailable;
+};
+
 const initialBillingInfo: BillingInfo = {
   firstName: '',
   lastName: '',
@@ -135,8 +172,22 @@ const RegistrationModal = ({
   const allRegistrations = useMemo<ModalRegistrationType[]>(() => getRegistrationsForEvent(event.id), [event.id]);
   const sponsorships = useMemo<ModalRegistrationType[]>(() => getSponsorshipsForEvent(event.id), [event.id]);
   const exhibitors = useMemo<ModalRegistrationType[]>(() => getExhibitorsForEvent(event.id), [event.id]);
+  
+  // Debug data that should be available
+  useEffect(() => {
+    console.log('Sponsorships available:', sponsorships);
+    console.log('EVENT_SPONSORS data:', EVENT_SPONSORS);
+    console.log('Current event ID:', event.id);
+  }, [sponsorships, event.id]);
+
+  // We'll use the original sponsorships list without sorting
   // State for active category tab
   const [activeCategory, setActiveCategory] = useState<'ticket' | 'exhibit' | 'sponsorship'>('ticket');
+  
+  // Debug when category changes
+  useEffect(() => {
+    console.log('Active category changed to:', activeCategory);
+  }, [activeCategory]);
   const [ticketQuantities, setTicketQuantities] = useState<Record<string, number>>({});
   const [isCheckout, setIsCheckout] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
@@ -1529,7 +1580,10 @@ const RegistrationModal = ({
                   )}
                   {sponsorships.length > 0 && (
                     <button
-                      onClick={() => setActiveCategory('sponsorship')}
+                      onClick={() => {
+                        console.log('Sponsorship tab clicked');
+                        setActiveCategory('sponsorship');
+                      }}
                       className={`flex items-center px-4 py-2 ${activeCategory === 'sponsorship' ? 'border-b-2 border-indigo-600 text-indigo-600' : 'text-gray-500'}`}
                     >
                       <Award size={16} className="mr-2" />
@@ -1595,7 +1649,7 @@ const RegistrationModal = ({
                         </span>
                         <button
                           onClick={() => handleIncrement(reg.id, reg.type)}
-                          disabled={isLoading}
+                          disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading}
                           className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                         >
                           +
@@ -1606,9 +1660,18 @@ const RegistrationModal = ({
                   ))}
 
                   {/* Show exhibitors when activeCategory is 'exhibit' */}
-                  {activeCategory === 'exhibit' && exhibitors.filter(reg => reg.isActive).map(reg => (
-                    <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
+                  {activeCategory === 'exhibit' && exhibitors.filter(reg => reg.isActive).map(reg => {
+                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id);
+                    return (
+                    <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut ? 'opacity-75 bg-gray-200' : ''}`}>
+                      <div className="flex justify-between items-start">
                       <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
+                      {itemIsSoldOut && (
+                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                          SOLD OUT
+                        </span>
+                      )}
+                      </div>
                       {reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline) && (
                         <div className="mb-2">
                           <p className="text-lg font-semibold">
@@ -1669,7 +1732,7 @@ const RegistrationModal = ({
                         </span>
                         <button
                           onClick={() => handleIncrement(reg.id, reg.type)}
-                          disabled={isLoading}
+                          disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading}
                           className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                         >
                           +
@@ -1677,12 +1740,21 @@ const RegistrationModal = ({
                       </div>
                       {renderValidationUI(reg)}
                     </div>
-                  ))}
+                  )})}
 
                   {/* Show sponsorships when activeCategory is 'sponsorship' */}
-                  {activeCategory === 'sponsorship' && sponsorships.filter(reg => reg.isActive).map(reg => (
-                    <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
-                      <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
+                  {activeCategory === 'sponsorship' && sponsorships.filter(reg => reg.isActive).map(reg => {
+                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id);
+                    return (
+                    <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut ? 'opacity-75 bg-gray-200' : ''}`}>
+                      <div className="flex justify-between items-start">
+                        <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
+                        {itemIsSoldOut && (
+                          <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                            SOLD OUT
+                          </span>
+                        )}
+                      </div>
                       {reg.price && (
                         <p className="text-lg font-semibold text-indigo-600 mb-2">
                           ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(typeof reg.price === 'string' ? parseFloat(reg.price.replace(/[^0-9.]/g, '')) || 0 : (typeof reg.price === 'number' ? reg.price : 0))}
@@ -1707,7 +1779,7 @@ const RegistrationModal = ({
                         </span>
                         <button
                           onClick={() => handleIncrement(reg.id, reg.type)}
-                          disabled={isLoading}
+                          disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading}
                           className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                         >
                           +
@@ -1715,7 +1787,7 @@ const RegistrationModal = ({
                       </div>
                       {renderValidationUI(reg)}
                     </div>
-                  ))}
+                  )})}
                 </div>
                 {/* Total and checkout button at bottom of modal */}
                 <div className="mt-auto border-t pt-4 bg-white">
