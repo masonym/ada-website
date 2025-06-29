@@ -1632,6 +1632,13 @@ const RegistrationModal = ({
                           </p>
                         </div>
                       )}
+                      {typeof reg.price === 'number' && !reg.earlyBirdPrice && !reg.earlyBirdDeadline && (
+                        <div className="mb-2">
+                          <p className="text-lg font-semibold text-gray-800">
+                            ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(reg.price)}
+                          </p>
+                        </div>
+                      )}
                       {reg.perks && reg.perks.length > 0 && (
                         <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
                           {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
@@ -1807,10 +1814,19 @@ const RegistrationModal = ({
                             .map(reg => {
                               const price = getEffectivePrice(reg);
                               const formattedPrice = typeof price === 'string' ? price : `$${price.toFixed(2)}`;
+                              const total = price as number * (ticketQuantities[reg.id] || 0);
+                              if (typeof price === 'string') {
+                                return (
+                                  <li key={reg.id} className="flex justify-between">
+                                    <span>{reg.name} × {ticketQuantities[reg.id]}</span>
+                                    <span>{formattedPrice}</span>
+                                  </li>
+                                );
+                              }
                               return (
                                 <li key={reg.id} className="flex justify-between">
                                   <span>{reg.name} × {ticketQuantities[reg.id]}</span>
-                                  <span>{formattedPrice}</span>
+                                  <span>${total.toLocaleString()}</span>
                                 </li>
                               );
                             })}
@@ -1863,7 +1879,7 @@ const RegistrationModal = ({
 
                   {/* Total and checkout button */}
                   <div className="flex justify-between items-center border-t pt-3">
-                    <p className="text-xl font-semibold">Total: ${calculateTotal().toFixed(2)}</p>
+                    <p className="text-xl font-semibold">Total: ${calculateTotal().toLocaleString()}</p>
                     <button
                       onClick={handleCheckout}
                       disabled={getTotalTickets() === 0 || isLoading}
