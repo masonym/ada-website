@@ -56,8 +56,16 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
   };
 
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // Extract the base field name without the index
-    const fieldName = e.target.name.split('-')[0];
+    // Extract the base field name from format: ticketId-fieldName-index
+    const nameParts = e.target.name.split('-');
+    // The field name will be either sponsorInterest or speakingInterest
+    // We know these specific field names so we can identify them
+    let fieldName = '';
+    if (e.target.name.includes('sponsorInterest')) {
+      fieldName = 'sponsorInterest';
+    } else if (e.target.name.includes('speakingInterest')) {
+      fieldName = 'speakingInterest';
+    }
     onChange(index, fieldName, e.target.value);
   };
 
@@ -341,9 +349,10 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
             <div className="flex flex-col">
               <label className="inline-flex items-center text-sm">
                 <input
+                  key={`${currentTicketId}-${index}-sponsorInterest-yes`}
                   type="radio"
                   className="form-radio"
-                  name={`sponsorInterest-${index}`}
+                  name={`${currentTicketId}-sponsorInterest-${index}`}
                   value="yes"
                   checked={attendee.sponsorInterest === 'yes'}
                   onChange={handleRadioChange}
@@ -353,9 +362,10 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
               </label>
               <label className="inline-flex items-center text-sm">
                 <input
+                  key={`${currentTicketId}-${index}-sponsorInterest-no`}
                   type="radio"
                   className="form-radio"
-                  name={`sponsorInterest-${index}`}
+                  name={`${currentTicketId}-sponsorInterest-${index}`}
                   value="no"
                   checked={attendee.sponsorInterest === 'no'}
                   onChange={handleRadioChange}
@@ -374,9 +384,10 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
             <div className="flex flex-col">
               <label className="inline-flex items-center text-sm">
                 <input
+                  key={`${currentTicketId}-${index}-speakingInterest-yes`}
                   type="radio"
                   className="form-radio"
-                  name={`speakingInterest-${index}`}
+                  name={`${currentTicketId}-speakingInterest-${index}`}
                   value="yes"
                   checked={attendee.speakingInterest === 'yes'}
                   onChange={handleRadioChange}
@@ -386,9 +397,10 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
               </label>
               <label className="inline-flex items-center text-sm">
                 <input
+                  key={`${currentTicketId}-${index}-speakingInterest-no`}
                   type="radio"
                   className="form-radio"
-                  name={`speakingInterest-${index}`}
+                  name={`${currentTicketId}-speakingInterest-${index}`}
                   value="no"
                   checked={attendee.speakingInterest === 'no'}
                   onChange={handleRadioChange}
@@ -402,3 +414,4 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
     </div>
   );
 };
+

@@ -129,6 +129,8 @@ export async function logRegistration(
             attendee.businessSize || '',
             attendee.sbaIdentification || '',
             attendee.industry || '',
+            attendee.sponsorInterest || '',
+            attendee.speakingInterest || '',
           ];
           rowsToAppend.push(row);
         }
@@ -141,7 +143,7 @@ export async function logRegistration(
             ticketType,
             commonData.amountPaid,
             commonData.amountPaid,
-            '', '', '', '',
+            '', '', '', '', '', '',
           ];
           rowsToAppend.push(row);
         }
@@ -151,7 +153,7 @@ export async function logRegistration(
     if (rowsToAppend.length > 0) {
       await appendToSheet(
         env.GOOGLE_SHEETS_SPREADSHEET_ID,
-        '🛡️ Attendee Registration Information 🛡️!A:N',
+        '🛡️ Attendee Registration Information 🛡️!A:P',
         rowsToAppend,
         'USER_ENTERED'
       );
