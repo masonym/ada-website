@@ -84,11 +84,6 @@ const isSoldOut = (item: AdapterModalRegistrationType, eventSponsors: any, event
   if (item.category !== 'sponsorship' && item.category !== 'exhibit' || !item.id || !item.quantityAvailable) {
     return false;
   }
-  console.log('item', item);
-  console.log('eventSponsors', eventSponsors);
-  console.log('eventId', eventId);
-  console.log("item.quantityAvailable", item.quantityAvailable)
-  console.log("item.maxQuantityPerOrder", item.maxQuantityPerOrder)
 
   // Find how many slots are available for this sponsorship
   const slotsAvailable = item.quantityAvailable;
@@ -96,8 +91,6 @@ const isSoldOut = (item: AdapterModalRegistrationType, eventSponsors: any, event
   // Count how many slots are taken by checking eventSponsors
   let slotsTaken = 0;
   const eventSponsorList = eventSponsors.find((es: any) => es.id === eventId);
-
-  console.log("eventSponsorList", eventSponsorList)
 
   if (eventSponsorList) {
     // Check all tiers to find sponsors with this sponsorship id
@@ -139,6 +132,8 @@ const RegistrationModal = ({
   selectedRegistration,
   event,
 }: RegistrationModalProps): JSX.Element | null => {
+  // Add state for the close confirmation dialog
+  const [showCloseConfirmation, setShowCloseConfirmation] = useState(false);
   // Check if registration is closed for this event
   const registrationClosed = useMemo(() => isRegistrationClosed(event), [event]);
 
@@ -146,13 +141,6 @@ const RegistrationModal = ({
   const allRegistrations = useMemo<AdapterModalRegistrationType[]>(() => getRegistrationsForEvent(event.id), [event.id]);
   const sponsorships = useMemo<AdapterModalRegistrationType[]>(() => getSponsorshipsForEvent(event.id), [event.id]);
   const exhibitors = useMemo<AdapterModalRegistrationType[]>(() => getExhibitorsForEvent(event.id), [event.id]);
-
-  // Debug data that should be available
-  useEffect(() => {
-    console.log('Sponsorships available:', sponsorships);
-    console.log('EVENT_SPONSORS data:', EVENT_SPONSORS);
-    console.log('Current event ID:', event.id);
-  }, [sponsorships, event.id]);
 
   // We'll use the original sponsorships list without sorting
   // State for active category tab
@@ -212,6 +200,8 @@ const RegistrationModal = ({
   // Track previous modal open state to help with state management
   const prevIsOpenRef = useRef(isOpen);
   const prevShowConfirmationRef = useRef(showConfirmationView);
+  
+
 
   // Effect to manage state when modal is opened or closed
   useEffect(() => {
@@ -219,7 +209,7 @@ const RegistrationModal = ({
     if (isOpen) {
       // If this is a fresh opening (was previously closed)
       if (!prevIsOpenRef.current) {
-        // If the previous session ended with a confirmation, we need to reset for a new session
+        // If the previous session ended with a confirmation or payment was successful, we need to reset for a new session
         if (prevShowConfirmationRef.current || paymentSuccessful) {
           resetState();
         } else {
@@ -232,7 +222,6 @@ const RegistrationModal = ({
       }
     } else {
       // When modal is closed, just reset payment-related states
-      // Just reset the active payment processing states
       setAttemptingStripePayment(false);
       setIsStripeReady(false);
 
@@ -389,31 +378,18 @@ const RegistrationModal = ({
   };
 
   const resetState = () => {
-    setCurrentStep(0); // Or 1, depending on your initial step for attendee info
+    setCurrentStep(1); // Set to 1 to ensure consistent reset
     setIsCheckout(false); // Show ticket selection first
     setTicketQuantities({});
-    // Reset attendeesByTicket by re-initializing based on initial (zero) quantities or just empty
-    const initialAttendees: { [key: string]: ModalAttendeeInfo[] } = {};
-
-    // Helper function to reset attendees for any registration type
-    const resetAttendeesForRegistrationType = (registrations: AdapterModalRegistrationType[]) => {
-      registrations.forEach(reg => {
-        if (ticketQuantities[reg.id] && ticketQuantities[reg.id] > 0) {
-          initialAttendees[reg.id] = resetAttendeesForTicket(reg.id, ticketQuantities[reg.id]);
-        } else {
-          initialAttendees[reg.id] = [];
-        }
-      });
-    };
-
-    // Reset attendees for all registration types
-    resetAttendeesForRegistrationType(allRegistrations);
-    resetAttendeesForRegistrationType(exhibitors);
-    resetAttendeesForRegistrationType(sponsorships);
-    setAttendeesByTicket(initialAttendees); // Or simply {}
+    setActiveCategory('ticket'); // Reset to default tab
+    
+    // Reset attendeesByTicket to empty
+    setAttendeesByTicket({});
 
     // Reset sponsor pass attendees
     setSponsorPassAttendees({});
+    setSponsorAttendeesToRegister({});
+    setAttendeeCountStep(false);
     setBillingInfo({ ...initialBillingInfo });
     setAgreedToTerms(false);
     setFormErrors({});
@@ -421,11 +397,11 @@ const RegistrationModal = ({
     setClientSecret(null);
     setPaymentIntentId(null);
     setPaymentSuccessful(false);
-    setAttemptingStripePayment(false); // Reset payment attempt flag
+    setAttemptingStripePayment(false);
     setShowConfirmationView(false);
     setConfirmationData(null);
     setPendingConfirmationData(null);
-    setIsStripeReady(false); // Reset Stripe ready state
+    setIsStripeReady(false);
     setIsLoading(false);
   };
 
@@ -489,8 +465,8 @@ const RegistrationModal = ({
       }
     });
 
-    setTicketQuantities(initialQuantities);
-    setAttendeesByTicket(initialAttendees);
+    // setTicketQuantities(initialQuantities);
+    // setAttendeesByTicket(initialAttendees);
   }, [allRegistrations, sponsorships, selectedRegistration, isOpen]);
 
   const handleIncrement = (id: string, type?: string) => {
@@ -1470,7 +1446,7 @@ const RegistrationModal = ({
                               currentTicketId={`${sponsorId}-passes`}
                               formErrors={formErrors}
                               isComplimentaryTicket={true} // Sponsor passes are complimentary
-                              ticketType="sponsor"
+                              ticketType="sponsorship"
                             />
                           </div>
                         ))}
@@ -1657,8 +1633,51 @@ const RegistrationModal = ({
     );
   }
 
+
+
+  // Function to handle the confirmation dialog result
+  const handleCloseConfirmation = (saveChanges: boolean) => {
+    if (!saveChanges) {
+      // Only reset state if user chooses to discard changes
+      resetState();
+    }
+    setShowCloseConfirmation(false);
+    onClose();
+  };
+
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex justify-center items-center">
+      {/* Close confirmation dialog */}
+      {showCloseConfirmation && (
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 z-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full">
+            <h3 className="text-sm font-semibold text-gray-900 mb-3">Unsaved Changes</h3>
+            <p className="text-sm text-gray-600 mb-5">
+              When closing this window, you can choose to save your changes and come back to them, or discard them and start over.
+            </p>
+            <div className="flex justify-end space-x-3">
+              <button 
+                onClick={() => handleCloseConfirmation(true)} 
+                className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-colors text-sm"
+              >
+                Save & Close
+              </button>
+              <button 
+                onClick={() => handleCloseConfirmation(false)} 
+                className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-100 transition-colors text-sm"
+              >
+                Discard Changes
+              </button>
+              <button 
+                onClick={() => setShowCloseConfirmation(false)} 
+                className="px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors text-sm"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="relative mx-auto p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white overflow-y-auto max-h-[90vh]">
         {attendeeCountStep ? renderAttendeeCountStep() : showConfirmationView && confirmationData ? (
           // Confirmation View
@@ -1682,7 +1701,22 @@ const RegistrationModal = ({
                 {isCheckout ? `Register for ${event.title}` : `Select Tickets for ${event.title}`}
               </h3>
               <button
-                onClick={onClose}
+                onClick={() => {
+                  // Check if there are any unsaved changes before closing
+                  const hasUnsavedChanges = 
+                    Object.values(ticketQuantities).some(qty => qty > 0) || 
+                    Object.keys(attendeesByTicket).some(key => attendeesByTicket[key].length > 0) ||
+                    Object.keys(sponsorPassAttendees).length > 0 ||
+                    billingInfo.firstName || billingInfo.lastName || billingInfo.email || billingInfo.confirmEmail ||
+                    isCheckout;
+                    
+                  if (hasUnsavedChanges && !showConfirmationView && !paymentSuccessful) {
+                    setShowCloseConfirmation(true);
+                  } else {
+                    // No changes or already completed, close directly
+                    onClose();
+                  }
+                }}
                 className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
                 aria-label="Close modal"
               >

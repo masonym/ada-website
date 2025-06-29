@@ -171,9 +171,6 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                   const isCurrentTicket = ticketGroup.ticketId === currentTicketId;
                   const attendees = ticketGroup.attendees;
                   
-                  // For debugging
-                  console.log(`Dropdown ticketGroup: ${ticketGroup.ticketId} with ${attendees.length} attendees`);
-
                   // Create a group of options for each ticket type
                   return attendees.map((_, i) => {
                     // Skip self (current ticket + current index)
@@ -336,7 +333,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
           </select>
         </div>
         {/* Only show sponsorship interest for general admission tickets (not for sponsor/exhibit) */}
-        {ticketType !== 'sponsor' && ticketType !== 'exhibit' && (
+        {ticketType !== 'sponsorship' && ticketType !== 'exhibit' && (
           <div className="md:col-span-2">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Are you interested in becoming a Sponsor or Exhibitor? *
