@@ -1298,33 +1298,6 @@ const RegistrationModal = ({
 
               return (
                 <>
-                  {/* Regular registration attendee forms - exclude sponsorships */}
-                  {allRegistrationTypes
-                    .filter(reg => reg.requiresAttendeeInfo && (ticketQuantities[reg.id] || 0) > 0 && reg.category !== 'sponsorship')
-                    .map(reg => (
-                      <div key={reg.id}>
-                        <h4 className="text-lg font-medium mt-4 mb-2">{reg.name} - {reg.categoryName} Attendees</h4>
-                        {Array.from({ length: ticketQuantities[reg.id] || 0 }).map((_, index) => {
-                          const attendeeData = attendeesByTicket[reg.id]?.[index] || initialModalAttendeeInfo;
-                          return (
-                            <div key={`${reg.id}-${index}`} className="mb-4 border-b pb-4">
-                              <AttendeeForm
-                                attendee={attendeeData}
-                                index={index}
-                                onChange={(attendeeIdx, fieldName, fieldValue) => handleAttendeeChange(reg.id, attendeeIdx, fieldName as keyof EventAttendeeInfo, fieldValue)}
-                                onCopyFrom={(sourceTicketId, sourceAttendeeIdx) => handleCopyAttendee(sourceTicketId, sourceAttendeeIdx, reg.id, index)}
-                                totalAttendees={(attendeesByTicket[reg.id] || []).length}
-                                allAttendees={allAttendeesForCopy}
-                                currentTicketId={reg.id}
-                                formErrors={formErrors}
-                                isComplimentaryTicket={reg.type === 'complimentary'}
-                                ticketType={reg.category}
-                              />
-                            </div>
-                          );
-                        })}
-                      </div>
-                    ))}
 
                   {/* Sponsor pass attendee forms */}
                   {Object.keys(sponsorPassAttendees).map(sponsorId => {
@@ -1398,6 +1371,39 @@ const RegistrationModal = ({
                       </div>
                     );
                   })}
+
+                  {/* Regular registration attendee forms - exclude regular sponsorships but include Additional Sponsor Attendee passes */}
+                  {/* This might be kind of hacky, but it works for now */}
+                  {/* TODO: Refactor this. One idea is to change the `category` field of the adapted Sponsor in `registration-adapters.ts` to `sponsorship-pass` */}
+                  {/* Unsure if this would break things elsewhere */}
+                  {allRegistrationTypes
+                    .filter(reg => reg.requiresAttendeeInfo && (ticketQuantities[reg.id] || 0) > 0 && 
+                      (reg.category !== 'sponsorship' || (reg.name && reg.name.includes('Additional Sponsor Attendee'))))
+                    .map(reg => (
+                      <div key={reg.id}>
+                        <h4 className="text-lg font-medium mt-4 mb-2">{reg.name} - {reg.categoryName} Attendees</h4>
+                        {Array.from({ length: ticketQuantities[reg.id] || 0 }).map((_, index) => {
+                          const attendeeData = attendeesByTicket[reg.id]?.[index] || initialModalAttendeeInfo;
+                          return (
+                            <div key={`${reg.id}-${index}`} className="mb-4 border-b pb-4">
+                              <AttendeeForm
+                                attendee={attendeeData}
+                                index={index}
+                                onChange={(attendeeIdx, fieldName, fieldValue) => handleAttendeeChange(reg.id, attendeeIdx, fieldName as keyof EventAttendeeInfo, fieldValue)}
+                                onCopyFrom={(sourceTicketId, sourceAttendeeIdx) => handleCopyAttendee(sourceTicketId, sourceAttendeeIdx, reg.id, index)}
+                                totalAttendees={(attendeesByTicket[reg.id] || []).length}
+                                allAttendees={allAttendeesForCopy}
+                                currentTicketId={reg.id}
+                                formErrors={formErrors}
+                                isComplimentaryTicket={reg.type === 'complimentary'}
+                                ticketType={reg.category}
+                              />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ))}
+
                 </>
               );
             })()}
