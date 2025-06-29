@@ -545,23 +545,8 @@ const RegistrationModal = ({
     }
 
     if (getTotalTickets() > 0) {
-      const selectedSponsorshipsWithPasses = sponsorships.filter(
-        s => (ticketQuantities[s.id] || 0) > 0 && s.sponsorPasses && s.sponsorPasses > 0
-      );
-
-      if (selectedSponsorshipsWithPasses.length > 0) {
-        const initialToRegister: Record<string, number> = {};
-        selectedSponsorshipsWithPasses.forEach(s => {
-          if (s.sponsorPasses) {
-            const totalPasses = s.sponsorPasses * (ticketQuantities[s.id] || 0);
-            initialToRegister[s.id] = totalPasses;
-          }
-        });
-        setSponsorAttendeesToRegister(initialToRegister);
-        setAttendeeCountStep(true);
-      } else {
-        setIsCheckout(true);
-      }
+      // Always proceed to checkout first regardless of sponsorship passes
+      setIsCheckout(true);
     }
   };
 
@@ -573,7 +558,7 @@ const RegistrationModal = ({
     setFormErrors({});
     setApiError(null);
 
-    if (currentStep === 1) { // Moving from Billing Info to Attendee/Payment
+    if (currentStep === 1) { // Moving from Billing Info to Attendee Count or Attendee/Payment
       // Validate Billing Info
       try {
         const billingInfoSchema = yup.object().shape({
@@ -585,7 +570,27 @@ const RegistrationModal = ({
             .required('Please confirm your email.'),
         });
         await billingInfoSchema.validate(billingInfo, { abortEarly: false });
-        setCurrentStep(2);
+        
+        // Check if we need to show attendee count step for sponsorships with passes
+        const selectedSponsorshipsWithPasses = sponsorships.filter(
+          s => (ticketQuantities[s.id] || 0) > 0 && s.sponsorPasses && s.sponsorPasses > 0
+        );
+
+        if (selectedSponsorshipsWithPasses.length > 0) {
+          // Initialize attendee count for sponsorships
+          const initialToRegister: Record<string, number> = {};
+          selectedSponsorshipsWithPasses.forEach(s => {
+            if (s.sponsorPasses) {
+              const totalPasses = s.sponsorPasses * (ticketQuantities[s.id] || 0);
+              initialToRegister[s.id] = totalPasses;
+            }
+          });
+          setSponsorAttendeesToRegister(initialToRegister);
+          setAttendeeCountStep(true);
+        } else {
+          // Skip attendee count step if no sponsorships with passes
+          setCurrentStep(2);
+        }
       } catch (error) {
         if (error instanceof ValidationError) {
           const errors: Record<string, string> = {};
@@ -599,12 +604,25 @@ const RegistrationModal = ({
         }
         return; // Ensure we don't proceed if billing validation fails
       }
+    } else if (currentStep === 2) { // If we're on step 2 (Attendee Info) and want to move to step 3
+      setCurrentStep(3);
     }
     // For other steps, direct increment is fine, or specific logic will be in their buttons
   };
 
   const handlePrevStep = () => {
-    setCurrentStep(prev => prev - 1);
+    // Check if we need to go back to attendee count step
+    const selectedSponsorshipsWithPasses = sponsorships.filter(
+      s => (ticketQuantities[s.id] || 0) > 0 && s.sponsorPasses && s.sponsorPasses > 0
+    );
+
+    if (currentStep === 2 && selectedSponsorshipsWithPasses.length > 0) {
+      // If we're on step 2 and have sponsorships with passes, go back to attendee count
+      setAttendeeCountStep(true);
+    } else {
+      // Otherwise, just go back one step
+      setCurrentStep(prev => prev - 1);
+    }
   };
 
   const handleBillingInfoChange = (field: string, value: string) => {
@@ -1095,25 +1113,41 @@ const RegistrationModal = ({
           {selectedSponsorships.map(s => {
             if (!s.sponsorPasses) return null;
             const totalPasses = s.sponsorPasses * (ticketQuantities[s.id] || 0);
+            const currentCount = sponsorAttendeesToRegister[s.id] || totalPasses;
             return (
-              <div key={s.id} className="p-4 border border-gray-200 rounded-lg bg-gray-50">
+              <div key={s.id} className="p-4 border border-gray-200 rounded-lg bg-gray-200">
                 <label htmlFor={`attendee-count-${s.id}`} className="block text-md font-medium text-gray-800">
                   {s.name}
                 </label>
                 <p className="text-sm text-gray-500">You have up to {totalPasses} attendee passes.</p>
-                <select
-                  id={`attendee-count-${s.id}`}
-                  value={sponsorAttendeesToRegister[s.id] || totalPasses}
-                  onChange={(e) => {
-                    const count = parseInt(e.target.value, 10);
-                    setSponsorAttendeesToRegister(prev => ({ ...prev, [s.id]: count }));
-                  }}
-                  className="mt-2 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                >
-                  {[...Array(totalPasses).keys()].map(i => (
-                    <option key={i + 1} value={i + 1}>{i + 1} Attendee(s)</option>
-                  ))}
-                </select>
+                
+                <div className="flex items-center mt-2">
+                  <button 
+                    onClick={() => {
+                      const newCount = Math.max(1, (sponsorAttendeesToRegister[s.id] || totalPasses) - 1);
+                      setSponsorAttendeesToRegister(prev => ({ ...prev, [s.id]: newCount }));
+                    }}
+                    className="p-2 bg-gray-200 rounded-l-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-700 font-bold"
+                    aria-label="Decrease attendee count"
+                  >
+                    -
+                  </button>
+                  <div className="px-4 py-2 bg-white border-t border-b border-gray-300 text-center min-w-[60px]">
+                    {currentCount}
+                  </div>
+                  <button 
+                    onClick={() => {
+                      const newCount = Math.min(totalPasses, (sponsorAttendeesToRegister[s.id] || totalPasses) + 1);
+                      setSponsorAttendeesToRegister(prev => ({ ...prev, [s.id]: newCount }));
+                    }}
+                    className="p-2 bg-gray-200 rounded-r-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-700 font-bold"
+                    aria-label="Increase attendee count"
+                    disabled={currentCount >= totalPasses}
+                  >
+                    +
+                  </button>
+                  <span className="ml-3 text-sm text-gray-600">{currentCount} {currentCount === 1 ? 'Attendee' : 'Attendees'}</span>
+                </div>
               </div>
             );
           })}
@@ -1121,10 +1155,13 @@ const RegistrationModal = ({
         <div className="mt-8 flex justify-between items-center">
           <button
             type="button"
-            onClick={() => setAttendeeCountStep(false)}
+            onClick={() => {
+              setAttendeeCountStep(false);
+              setCurrentStep(1); // Go back to billing info
+            }}
             className="text-sm font-medium text-gray-600 hover:text-gray-900"
           >
-            &larr; Back to Selections
+            &larr; Back to Billing Information
           </button>
           <button
             type="button"
@@ -1136,7 +1173,7 @@ const RegistrationModal = ({
               });
               setSponsorPassAttendees(prev => ({ ...prev, ...newSponsorPassAttendees }));
               setAttendeeCountStep(false);
-              setIsCheckout(true);
+              setCurrentStep(2); // Move to attendee info step
             }}
             className="bg-blue-600 text-white py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
