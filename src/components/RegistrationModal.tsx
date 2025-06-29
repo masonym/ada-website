@@ -1741,10 +1741,11 @@ const RegistrationModal = ({
                             .map(reg => {
                               const price = getEffectivePrice(reg);
                               const formattedPrice = typeof price === 'string' ? price : `$${price.toFixed(2)}`;
+                              const total = price as number * (ticketQuantities[reg.id] || 0);
                               return (
                                 <li key={reg.id} className="flex justify-between">
                                   <span>{reg.name} × {ticketQuantities[reg.id]}</span>
-                                  <span>{formattedPrice}</span>
+                                  <span>${total.toLocaleString()}</span>
                                 </li>
                               );
                             })}
@@ -1762,10 +1763,11 @@ const RegistrationModal = ({
                             .map(reg => {
                               const price = getEffectivePrice(reg);
                               const formattedPrice = typeof price === 'string' ? price : `$${price.toFixed(2)}`;
+                              const total = price as number * (ticketQuantities[reg.id] || 0);
                               return (
                                 <li key={reg.id} className="flex justify-between">
                                   <span>{reg.name} × {ticketQuantities[reg.id]}</span>
-                                  <span>{formattedPrice}</span>
+                                  <span>${total.toLocaleString()}</span>
                                 </li>
                               );
                             })}
