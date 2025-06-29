@@ -539,6 +539,51 @@ const RegistrationModal = ({
         setValidationError(prev => ({ ...prev, [ticketId]: null }));
         setOrderIdInput(prev => ({ ...prev, [ticketId]: '' }));
       }
+      
+      // Check if this is a sponsorship
+      const selectedSponsorship = sponsorships.find(s => s.id === ticketId);
+      
+      if (selectedSponsorship) {
+        // For sponsorships, we keep the attendeesByTicket array empty
+        const newAttendees: Record<string, ModalAttendeeInfo[]> = { ...attendeesByTicket };
+        newAttendees[ticketId] = [];
+        setAttendeesByTicket(newAttendees);
+        
+        // Clear sponsor pass attendees when quantity reaches zero
+        if (newQuantity === 0) {
+          // Remove this sponsorship from sponsorPassAttendees
+          setSponsorPassAttendees(prev => {
+            const updated = { ...prev };
+            delete updated[ticketId];
+            return updated;
+          });
+          
+          // Also clear any sponsorAttendeesToRegister counts
+          setSponsorAttendeesToRegister(prev => {
+            const updated = { ...prev };
+            delete updated[ticketId];
+            return updated;
+          });
+        }
+      } else {
+        // For regular tickets, update attendees array to match new quantity
+        if (newQuantity === 0) {
+          // If quantity is now 0, set to empty array
+          setAttendeesByTicket(prev => ({
+            ...prev,
+            [ticketId]: []
+          }));
+        } else {
+          // Otherwise, keep only the first newQuantity attendees
+          setAttendeesByTicket(prev => {
+            const currentAttendees = prev[ticketId] || [];
+            return {
+              ...prev,
+              [ticketId]: currentAttendees.slice(0, newQuantity)
+            };
+          });
+        }
+      }
     }
   };
 
