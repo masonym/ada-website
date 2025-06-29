@@ -424,6 +424,10 @@ export function exhibitorTemplate({
     </div>
 
 
+    <div class="highlight">
+      <p><strong>Exhibitor Instructions</strong></p>
+      <p>Exhibitor setup and other important instructions are available on our website. <a href="${getCdnPath(exhibitorInstructions)}">View Exhibitor Instructions</a></p>
+    </div>
 
     
 
