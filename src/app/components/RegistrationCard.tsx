@@ -3,31 +3,18 @@
 import { useState } from 'react';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
-import { Event } from '@/types/events';
-import { getCdnPath } from '@/utils/image';
 import RegistrationModal from '@/components/RegistrationModal';
-import { ModalRegistrationType } from '@/lib/registration-adapters';
-
-interface ContactInfo {
-  contactEmail2?: string;
-  [key: string]: any;
-}
-
-// Extend the base Event type to include additional properties
-interface EventWithContact extends Omit<Event, 'id'> {
-  contactInfo?: ContactInfo;
-  eventShorthand: string;
-  title: string;
-  id: string | number; // Allow both string and number for flexibility
-  slug: string;
-}
+import { getCdnPath } from '@/utils/image';
+import PriceDisplay from '@/components/PriceDisplay';
+import { AdapterModalRegistrationType } from '@/lib/registration-adapters';
+import { Event } from '@/types/events';
 
 // Use the ModalRegistrationType from our adapter
-type RegistrationCardProps = ModalRegistrationType;
+type RegistrationCardProps = AdapterModalRegistrationType;
 
 type RegistrationProp = {
   item: RegistrationCardProps;
-  event: EventWithContact;
+  event: Event;
 };
 
 const RegistrationCard = ({ item, event }: RegistrationProp) => {
@@ -100,24 +87,10 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
             ))}
           </ul>
 
-          {/* Price */}
-          {(
-            <div className="mt-auto mx-auto mb-4">
-              <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-bold text-gray-900">
-                  {isPaid ? `$${currentPrice}` : 'Complimentary'}
-                </span>
-                {isEarlyBird && (
-                  <span className="text-sm bg-green-100 text-green-800 px-2 py-0.5 rounded-full">
-                    Early Bird
-                  </span>
-                )}
-              </div>
-              {isEarlyBird && deadlineDate && (
-                <p className="text-xs text-gray-500 mt-1">Early bird ends {deadlineDate}</p>
-              )}
-            </div>
-          )}
+          {/* Price Display */}
+          <div className="mt-auto mx-auto mb-4">
+            <PriceDisplay registration={item} className="text-center" />
+          </div>
 
           {/* Additional Info */}
           <div className=" text-center">

@@ -1,6 +1,7 @@
 import { REGISTRATION_TYPES } from '@/constants/registrations';
 import { SPONSORSHIP_TYPES } from '@/constants/sponsorships';
 import { EXHIBITOR_TYPES, ExhibitorType } from '@/constants/exhibitors';
+import { ModalRegistrationType } from '@/types/registration';
 
 // Define types based on the structure of the constants files
 type RegistrationType = {
@@ -44,7 +45,7 @@ export interface SponsorshipType {
 type PrimeSponsorType = SponsorshipType;
 
 // Define the common type for all registration items
-export interface ModalRegistrationType {
+export interface AdapterModalRegistrationType extends ModalRegistrationType {
   id: string;
   name: string;
   description: string;
@@ -75,13 +76,13 @@ export interface ModalRegistrationType {
 /**
  * Converts registration data from constants to the format expected by RegistrationModal
  * @param eventId The ID of the event
- * @returns An array of ModalRegistrationType objects for tickets
+ * @returns An array of AdapterModalRegistrationType objects for tickets
  */
-export function getRegistrationsForEvent(eventId: number | string): ModalRegistrationType[] {
+export function getRegistrationsForEvent(eventId: number | string): AdapterModalRegistrationType[] {
   const eventData = REGISTRATION_TYPES.find(event => event.id.toString() === eventId.toString());
   if (!eventData) return [];
 
-  return eventData.registrations.map((reg: any): ModalRegistrationType => ({
+  return eventData.registrations.map((reg: any): AdapterModalRegistrationType => ({
     id: reg.id,
     name: reg.name || reg.title,
     title: reg.title,
@@ -109,9 +110,9 @@ export function getRegistrationsForEvent(eventId: number | string): ModalRegistr
 /**
  * Converts sponsorship data from constants to the format expected by RegistrationModal
  * @param eventId The ID of the event
- * @returns An array of ModalRegistrationType objects for sponsorships
+ * @returns An array of AdapterModalRegistrationType objects for sponsorships
  */
-export function getSponsorshipsForEvent(eventId: number | string): ModalRegistrationType[] {
+export function getSponsorshipsForEvent(eventId: number | string): AdapterModalRegistrationType[] {
   const eventData = SPONSORSHIP_TYPES.find(event => event.id.toString() === eventId.toString());
   if (!eventData) return [];
 
@@ -121,7 +122,7 @@ export function getSponsorshipsForEvent(eventId: number | string): ModalRegistra
     ...(eventData.sponsorships || []),
   ];
 
-  const adaptedSponsors = allSponsors.map((sponsor: SponsorshipType | PrimeSponsorType): ModalRegistrationType => {
+  const adaptedSponsors = allSponsors.map((sponsor: SponsorshipType | PrimeSponsorType): AdapterModalRegistrationType => {
     // Process perks to handle both string and object types
     const processedPerks = sponsor.perks ? sponsor.perks.map((perk: PerkType) =>
       typeof perk === 'string'
@@ -204,13 +205,13 @@ export function getSponsorshipsForEvent(eventId: number | string): ModalRegistra
 /**
  * Converts exhibitor data from constants to the format expected by RegistrationModal
  * @param eventId The ID of the event
- * @returns An array of ModalRegistrationType objects for exhibitors
+ * @returns An array of AdapterModalRegistrationType objects for exhibitors
  */
-export function getExhibitorsForEvent(eventId: number | string): ModalRegistrationType[] {
+export function getExhibitorsForEvent(eventId: number | string): AdapterModalRegistrationType[] {
   const eventData = EXHIBITOR_TYPES.find(event => event.id.toString() === eventId.toString());
   if (!eventData) return [];
 
-  const adaptedExhibitors = eventData.exhibitors.map((exhibitor: ExhibitorType): ModalRegistrationType => {
+  const adaptedExhibitors = eventData.exhibitors.map((exhibitor: ExhibitorType): AdapterModalRegistrationType => {
     // Process perks to handle both string and object types
     const processedPerks = exhibitor.perks ? exhibitor.perks.map((perk: PerkType) =>
       typeof perk === 'string'

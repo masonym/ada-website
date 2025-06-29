@@ -4,7 +4,7 @@ import { stripe } from '@/lib/stripe/server';
 import { logRegistration } from '@/lib/google-sheets';
 import { validateRegistrationData } from '@/lib/event-registration/validation';
 import { sendRegistrationConfirmationEmail } from '@/lib/email/confirmation-emails';
-import { ModalRegistrationType } from '@/lib/registration-adapters';
+import { AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { EVENTS } from '@/constants/events';
 import { isGovOrMilEmail } from '@/lib/event-registration/validation';
 import { REGISTRATION_TYPES } from '@/constants/registrations';
@@ -155,7 +155,7 @@ export async function POST(request: Request) {
       const event = EVENTS.find(e => e.id === eventId);
 
       if (event) {
-        const registrationsForEmail: ModalRegistrationType[] = validatedData.tickets
+        const registrationsForEmail: AdapterModalRegistrationType[] = validatedData.tickets
           .map(ticket => {
             const registrationType = eventRegistrations.registrations.find(reg => 'id' in reg && reg.id === ticket.ticketId);
             if (!registrationType) return null;
@@ -164,7 +164,7 @@ export async function POST(request: Request) {
               quantity: ticket.quantity,
             };
           })
-          .filter((r): r is ModalRegistrationType => r !== null);
+          .filter((r): r is AdapterModalRegistrationType => r !== null);
 
         await sendRegistrationConfirmationEmail({
           email: validatedData.email,

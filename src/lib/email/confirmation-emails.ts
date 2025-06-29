@@ -1,4 +1,4 @@
-import { ModalRegistrationType } from '../registration-adapters';
+import { AdapterModalRegistrationType } from '../registration-adapters';
 import { Event } from '@/types/events';
 import { sendEmail } from './index';
 import { 
@@ -26,7 +26,7 @@ export enum TicketTier {
 
 interface TicketInfo {
   tier: TicketTier;
-  registration: ModalRegistrationType;
+  registration: AdapterModalRegistrationType;
 }
 
 /**
@@ -34,7 +34,7 @@ interface TicketInfo {
  * @param registration The registration type to check
  * @returns The ticket tier
  */
-export function determineTicketTier(registration: ModalRegistrationType): TicketTier {
+export function determineTicketTier(registration: AdapterModalRegistrationType): TicketTier {
   // Check category first
   if (registration.category === 'sponsorship') {
     // Check sponsorship level
@@ -70,7 +70,7 @@ export function determineTicketTier(registration: ModalRegistrationType): Ticket
  * @param registrations Array of registrations in the order
  * @returns The highest tier registration info or null if no registrations
  */
-export function findHighestTierRegistration(registrations: ModalRegistrationType[]): TicketInfo | null {
+export function findHighestTierRegistration(registrations: AdapterModalRegistrationType[]): TicketInfo | null {
   if (!registrations || registrations.length === 0) {
     return null;
   }
@@ -112,7 +112,7 @@ export async function sendRegistrationConfirmationEmail({
   email: string;
   firstName: string;
   event: Event;
-  registrations: ModalRegistrationType[];
+  registrations: AdapterModalRegistrationType[];
   orderId: string;
   orderSummary?: OrderSummary;
   attendeePasses?: number;

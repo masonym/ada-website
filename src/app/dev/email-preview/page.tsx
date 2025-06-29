@@ -20,7 +20,7 @@ const mockData = {
     'Exclusive networking opportunities',
     'Special gift bag'
   ],
-  sponsorshipLevel: 'Bronze Sponsor',
+  sponsorshipLevel: 'Exhibitor',
 matchmakingSessions: {
       signUpTime: "7:30 AM",
       signUpDate: "July 29, 2025",

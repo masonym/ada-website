@@ -14,11 +14,29 @@ export interface ModalRegistrationType {
   id: string;
   name: string;
   description: string;
-  price: number;
+  price: number | string;
+  earlyBirdPrice?: number | string;
+  earlyBirdDeadline?: string;
   isActive: boolean;
   requiresAttendeeInfo: boolean;
-  type?: 'paid' | 'free' | 'complimentary' | 'sponsor';
-}
+  isGovtFreeEligible: boolean;
+  perks?: string[];
+  availabilityInfo?: string;
+  type: 'paid' | 'free' | 'complimentary' | 'sponsor';
+  title: string;
+  headerImage: string;
+  subtitle?: string;
+  buttonText: string;
+  buttonLink?: string;
+  receptionPrice?: string;
+  quantityAvailable?: number;
+  maxQuantityPerOrder?: number;
+  category: 'ticket' | 'exhibit' | 'sponsorship';
+  sponsorPasses?: number;
+  requiresValidation?: boolean;
+  slotsPerEvent?: number; // Number of available slots for this event sponsorship
+};
+
 
 export interface AttendeeInfo {
   firstName: string;

@@ -8,10 +8,11 @@ import { Award, ChevronRight, Mail } from 'lucide-react';
 import SponsorProspectus from './SponsorProspectus';
 import ExhibitInstructionsButton from './ExhibitInstructionsButton';
 import { RegistrationType } from '@/types/event-registration/registration';
-import { getRegistrationsForEvent, getExhibitorsForEvent, ModalRegistrationType } from '@/lib/registration-adapters';
+import { getRegistrationsForEvent, getExhibitorsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
 
 export type RegistrationProps = {
     event: Event;
+
 };
 
 type AddOn = {
@@ -28,8 +29,8 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
     }
 
     // Use the adapter functions to get properly typed registration and exhibitor data
-    const registrationCards: ModalRegistrationType[] = getRegistrationsForEvent(event.id);
-    const exhibitorCards: ModalRegistrationType[] = getExhibitorsForEvent(event.id);
+    const registrationCards: AdapterModalRegistrationType[] = getRegistrationsForEvent(event.id);
+    const exhibitorCards: AdapterModalRegistrationType[] = getExhibitorsForEvent(event.id);
     
     // Combine registration and exhibitor cards
     const allCards = [...registrationCards, ...exhibitorCards];

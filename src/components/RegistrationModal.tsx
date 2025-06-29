@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import * as yup from 'yup';
 import { X, CreditCard, Ticket, Package, Award, AlertTriangle } from 'lucide-react';
+import { getPriceDisplay } from '@/lib/price-formatting';
+import PriceDisplay from './PriceDisplay';
 import { Event } from '@/types/events';
 import { BillingInformation } from './BillingInformation';
 import { AttendeeForm } from './AttendeeForm';
@@ -14,36 +16,8 @@ import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js';
 import type { AttendeeInfo as EventAttendeeInfo, AttendeeInfo as EventRegAttendeeInfo } from '@/types/event-registration/registration';
 import { Elements } from '@stripe/react-stripe-js';
 import StripePaymentForm, { StripePaymentFormRef } from './StripePaymentForm';
-import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, ModalRegistrationType as AdapterModalRegistrationType } from '@/lib/registration-adapters';
+import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { EVENT_SPONSORS } from '@/constants/eventSponsors';
-
-// Define a type that combines both RegistrationType and additional card props
-interface ModalRegistrationType {
-  id: string;
-  name: string;
-  description: string;
-  price: number | string;
-  earlyBirdPrice?: number | string;
-  earlyBirdDeadline?: string;
-  isActive: boolean;
-  requiresAttendeeInfo: boolean;
-  isGovtFreeEligible: boolean;
-  perks?: string[];
-  availabilityInfo?: string;
-  type: 'paid' | 'free' | 'complimentary' | 'sponsor' | 'exhibit';
-  title: string;
-  headerImage: string;
-  subtitle?: string;
-  buttonText: string;
-  buttonLink?: string;
-  receptionPrice?: string;
-  quantityAvailable?: number;
-  maxQuantityPerOrder?: number;
-  category?: 'ticket' | 'exhibit' | 'sponsorship';
-  sponsorPasses?: number;
-  requiresValidation?: boolean;
-  slotsPerEvent?: number; // Number of available slots for this event sponsorship
-};
 
 interface EventWithContact extends Omit<Event, 'id'> {
   contactInfo?: {
@@ -81,7 +55,7 @@ interface BillingInfo {
 interface RegistrationModalProps {
   isOpen: boolean;
   onClose: () => void;
-  selectedRegistration: ModalRegistrationType | null; // Allow null for register button
+  selectedRegistration: AdapterModalRegistrationType | null; // Allow null for register button
   event: EventWithContact;
 }
 
@@ -105,7 +79,7 @@ const initialModalAttendeeInfo: ModalAttendeeInfo = {
 };
 
 // Helper function to check if a sponsorship item is sold out
-const isSoldOut = (item: ModalRegistrationType, eventSponsors: any, eventId: string | number): boolean => {
+const isSoldOut = (item: AdapterModalRegistrationType, eventSponsors: any, eventId: string | number): boolean => {
   // If it's not a sponsorship or doesn't have slotsPerEvent defined, it's not sold out
   if (item.category !== 'sponsorship' && item.category !== 'exhibit' || !item.id || !item.quantityAvailable) {
     return false;
@@ -169,9 +143,9 @@ const RegistrationModal = ({
   const registrationClosed = useMemo(() => isRegistrationClosed(event), [event]);
 
   // Get registrations, sponsorships, and exhibitors directly using the event ID
-  const allRegistrations = useMemo<ModalRegistrationType[]>(() => getRegistrationsForEvent(event.id), [event.id]);
-  const sponsorships = useMemo<ModalRegistrationType[]>(() => getSponsorshipsForEvent(event.id), [event.id]);
-  const exhibitors = useMemo<ModalRegistrationType[]>(() => getExhibitorsForEvent(event.id), [event.id]);
+  const allRegistrations = useMemo<AdapterModalRegistrationType[]>(() => getRegistrationsForEvent(event.id), [event.id]);
+  const sponsorships = useMemo<AdapterModalRegistrationType[]>(() => getSponsorshipsForEvent(event.id), [event.id]);
+  const exhibitors = useMemo<AdapterModalRegistrationType[]>(() => getExhibitorsForEvent(event.id), [event.id]);
   
   // Debug data that should be available
   useEffect(() => {
@@ -362,7 +336,7 @@ const RegistrationModal = ({
     }
   };
 
-  const renderValidationUI = (reg: ModalRegistrationType) => {
+  const renderValidationUI = (reg: AdapterModalRegistrationType) => {
     if (!reg.requiresValidation || (ticketQuantities[reg.id] || 0) === 0) {
       return null;
     }
@@ -422,7 +396,7 @@ const RegistrationModal = ({
     const initialAttendees: { [key: string]: ModalAttendeeInfo[] } = {};
 
     // Helper function to reset attendees for any registration type
-    const resetAttendeesForRegistrationType = (registrations: ModalRegistrationType[]) => {
+    const resetAttendeesForRegistrationType = (registrations: AdapterModalRegistrationType[]) => {
       registrations.forEach(reg => {
         if (ticketQuantities[reg.id] && ticketQuantities[reg.id] > 0) {
           initialAttendees[reg.id] = resetAttendeesForTicket(reg.id, ticketQuantities[reg.id]);
@@ -741,7 +715,7 @@ const RegistrationModal = ({
 
   const calculateTotal = () => {
     // Calculate total from all registration types (tickets, exhibitors, sponsorships)
-    const calculateSubtotal = (registrations: ModalRegistrationType[]) => {
+    const calculateSubtotal = (registrations: AdapterModalRegistrationType[]) => {
       return registrations.reduce((total, reg) => {
         const quantity = ticketQuantities[reg.id] || 0;
 
@@ -779,7 +753,7 @@ const RegistrationModal = ({
   };
 
   // Helper function to get the effective price for a registration item (considering early bird pricing)
-  const getEffectivePrice = (reg: ModalRegistrationType): number | string => {
+  const getEffectivePrice = (reg: AdapterModalRegistrationType): number | string => {
     // If price is a string (e.g., "Complimentary"), return it directly
     if (typeof reg.price === 'string') {
       return reg.price;
@@ -847,7 +821,7 @@ const RegistrationModal = ({
     setIsLoading(true);
 
     // Helper function to process registrations of any type
-    const processRegistrations = (registrations: ModalRegistrationType[], category: 'ticket' | 'exhibit' | 'sponsorship') => {
+    const processRegistrations = (registrations: AdapterModalRegistrationType[], category: 'ticket' | 'exhibit' | 'sponsorship') => {
       return registrations
         .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
         .map(reg => {
@@ -935,7 +909,7 @@ const RegistrationModal = ({
 
     // Find the first registration type that has attendees and requires attendee info
     // Check across all registration types
-    const findFirstRegWithAttendees = (registrations: ModalRegistrationType[]) => {
+    const findFirstRegWithAttendees = (registrations: AdapterModalRegistrationType[]) => {
       return registrations.find(reg =>
         reg.requiresAttendeeInfo &&
         (ticketQuantities[reg.id] || 0) > 0 &&
@@ -1599,46 +1573,7 @@ const RegistrationModal = ({
                   {activeCategory === 'ticket' && allRegistrations.filter(reg => reg.isActive).map(reg => (
                     <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
                       <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
-                      {reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline) && (
-                        <div className="mb-2">
-                          <p className="text-lg font-semibold">
-                            <span className="text-green-600 mr-2">
-                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(
-                                typeof reg.earlyBirdPrice === 'string'
-                                  ? parseFloat(reg.earlyBirdPrice.replace(/[^0-9.]/g, '')) || 0
-                                  : (typeof reg.earlyBirdPrice === 'number' ? reg.earlyBirdPrice : 0)
-                              )}
-                            </span>
-                            <span className="line-through text-gray-500 text-base">
-                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(
-                                typeof reg.price === 'string'
-                                  ? parseFloat(reg.price.replace(/[^0-9.]/g, '')) || 0
-                                  : (typeof reg.price === 'number' ? reg.price : 0)
-                              )}
-                            </span>
-                          </p>
-                        </div>
-                      )}
-                      {typeof reg.price === 'string' && (
-                        <p className="text-lg font-semibold text-indigo-600 mb-2">
-                          {reg.price}
-                        </p>
-                      )}
-
-                      {typeof reg.price === 'number' && reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() >= new Date(reg.earlyBirdDeadline) && (
-                        <div className="mb-2">
-                          <p className="text-lg font-semibold text-gray-800">
-                            ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(reg.price)}
-                          </p>
-                        </div>
-                      )}
-                      {typeof reg.price === 'number' && !reg.earlyBirdPrice && !reg.earlyBirdDeadline && (
-                        <div className="mb-2">
-                          <p className="text-lg font-semibold text-gray-800">
-                            ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(reg.price)}
-                          </p>
-                        </div>
-                      )}
+                      <PriceDisplay registration={reg} />
                       {reg.perks && reg.perks.length > 0 && (
                         <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
                           {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
@@ -1674,54 +1609,13 @@ const RegistrationModal = ({
                     return (
                     <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut ? 'opacity-75 bg-gray-200' : ''}`}>
                       <div className="flex justify-between items-start">
-                      <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
+                      <h4 className="text-lg font-medium text-gray-800">{reg.name} - <PriceDisplay registration={reg} /></h4>
                       {itemIsSoldOut && (
                         <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
                           SOLD OUT
                         </span>
                       )}
                       </div>
-                      {reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline) && (
-                        <div className="mb-2">
-                          <p className="text-lg font-semibold">
-                            <span className="text-green-600 mr-2">
-                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(
-                                typeof reg.earlyBirdPrice === 'string'
-                                  ? parseFloat(reg.earlyBirdPrice.replace(/[^0-9.]/g, '')) || 0
-                                  : (typeof reg.earlyBirdPrice === 'number' ? reg.earlyBirdPrice : 0)
-                              )}
-                            </span>
-                            <span className="line-through text-gray-500 text-base">
-                              ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(
-                                typeof reg.price === 'string'
-                                  ? parseFloat(reg.price.replace(/[^0-9.]/g, '')) || 0
-                                  : (typeof reg.price === 'number' ? reg.price : 0)
-                              )}
-                            </span>
-                          </p>
-                        </div>
-                      )}
-                      {typeof reg.price === 'string' && (
-                        <p className="text-lg font-semibold text-indigo-600 mb-2">
-                          {reg.price}
-                        </p>
-                      )}
-
-                      {typeof reg.price === 'number' && reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() >= new Date(reg.earlyBirdDeadline) && (
-                        <div className="mb-2">
-                          <p className="text-lg font-semibold text-gray-800">
-                            ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(reg.price)}
-                          </p>
-                        </div>
-                      )}
-                      {/* fallback price if no early bird price */}
-                      {typeof reg.price === 'number' && !reg.earlyBirdPrice && (
-                        <div className="mb-2">
-                          <p className="text-lg font-semibold text-gray-800">
-                            ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(reg.price)}
-                          </p>
-                        </div>
-                      )}
                       {reg.perks && reg.perks.length > 0 && (
                         <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
                           {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
@@ -1764,11 +1658,7 @@ const RegistrationModal = ({
                           </span>
                         )}
                       </div>
-                      {reg.price && (
-                        <p className="text-lg font-semibold text-indigo-600 mb-2">
-                          ${new Intl.NumberFormat('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(typeof reg.price === 'string' ? parseFloat(reg.price.replace(/[^0-9.]/g, '')) || 0 : (typeof reg.price === 'number' ? reg.price : 0))}
-                        </p>
-                      )}
+                      <PriceDisplay registration={reg} />
                       {reg.perks && reg.perks.length > 0 && (
                         <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
                           {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}

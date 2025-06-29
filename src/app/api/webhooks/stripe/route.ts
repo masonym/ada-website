@@ -7,7 +7,7 @@ import { sendRegistrationConfirmationEmail } from '@/lib/email/confirmation-emai
 import { headers } from 'next/headers';
 import { RegistrationFormData } from '@/types/event-registration/registration';
 import { EVENTS } from '@/constants/events';
-import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, ModalRegistrationType } from '@/lib/registration-adapters';
+import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { getPendingRegistration, saveConfirmedRegistration } from '@/lib/aws/dynamodb';
 
 async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent) {
@@ -51,15 +51,15 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
       return;
     }
 
-    const allRegistrationTypes: ModalRegistrationType[] = [
+    const allRegistrationTypes: AdapterModalRegistrationType[] = [
       ...getRegistrationsForEvent(eventId),
       ...getSponsorshipsForEvent(eventId),
       ...getExhibitorsForEvent(eventId)
     ];
 
-    const purchasedRegistrations: ModalRegistrationType[] = registrationData.tickets
+    const purchasedRegistrations: AdapterModalRegistrationType[] = registrationData.tickets
       .map(ticket => allRegistrationTypes.find(regType => regType.id === ticket.ticketId))
-      .filter((r): r is ModalRegistrationType => r !== undefined);
+      .filter((r): r is AdapterModalRegistrationType => r !== undefined);
 
     if (purchasedRegistrations.length !== registrationData.tickets.length) {
       console.warn('Mismatch between tickets in order and found registration types.');
