@@ -71,6 +71,7 @@ export interface AdapterModalRegistrationType extends ModalRegistrationType {
   // Add any other fields that might be needed
   colour?: string;
   sponsorPasses?: number; // Number of attendee passes included with this sponsorship
+  shownOnRegistrationPage?: boolean;
 };
 
 /**
@@ -104,6 +105,7 @@ export function getRegistrationsForEvent(eventId: number | string): AdapterModal
     quantityAvailable: reg.quantityAvailable,
     maxQuantityPerOrder: reg.maxQuantityPerOrder,
     category: 'ticket',
+    shownOnRegistrationPage: reg.shownOnRegistrationPage,
   }));
 }
 
@@ -239,6 +241,7 @@ export function getExhibitorsForEvent(eventId: number | string): AdapterModalReg
       quantityAvailable: exhibitor.slotsPerEvent || 1,
       maxQuantityPerOrder: exhibitor.maxQuantityPerOrder || 1,
       colour: exhibitor.colour,
+      shownOnRegistrationPage: exhibitor.shownOnRegistrationPage || true,
     };
   });
 
@@ -268,6 +271,7 @@ export function getExhibitorsForEvent(eventId: number | string): AdapterModalReg
         "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
         "<b>Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM</b>",
       ],
+      shownOnRegistrationPage: false,
     });
   }
 

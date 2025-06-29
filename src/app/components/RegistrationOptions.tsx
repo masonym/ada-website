@@ -30,7 +30,7 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
 
     // Use the adapter functions to get properly typed registration and exhibitor data
     const registrationCards: AdapterModalRegistrationType[] = getRegistrationsForEvent(event.id);
-    const exhibitorCards: AdapterModalRegistrationType[] = getExhibitorsForEvent(event.id);
+    const exhibitorCards: AdapterModalRegistrationType[] = getExhibitorsForEvent(event.id).filter((e) => e.shownOnRegistrationPage);
     
     // Combine registration and exhibitor cards
     const allCards = [...registrationCards, ...exhibitorCards];

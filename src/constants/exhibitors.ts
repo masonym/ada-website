@@ -21,6 +21,7 @@ export interface ExhibitorType {
     requiresAttendeeInfo?: boolean;
     maxQuantityPerOrder?: number;
     isGovtFreeEligible?: boolean;
+    shownOnRegistrationPage?: boolean;
 }
 
 // Define the structure for exhibitor types by event
@@ -53,7 +54,8 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                     { tagline: "Documentation", description: "Digital/Physical Copies of Agenda" },
                     { tagline: "Dining", description: "Buffet Lunch" },
                     { tagline: "Media Access", description: "Access to Photos & Videos from Conference" },
-                ]
+                ],
+                shownOnRegistrationPage: true,
             },
         ]
     },
@@ -78,7 +80,8 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                     { tagline: "Recognition", description: "Acknowledgement before Networking Breaks at the Conference" },
                     { tagline: "Media Coverage", description: "Photographs of your Participation" },
                 ],
-                colour: "#3FB4E6"
+                colour: "#3FB4E6",
+                shownOnRegistrationPage: true,
             },
         ]
     },
@@ -107,7 +110,8 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                     { tagline: "Recognition", description: "Acknowledgement before Networking Breaks at the Conference" },
                     { tagline: "Media Coverage", description: "Photographs of your Participation" },
                 ],
-                colour: "#3FB4E6"
+                colour: "#3FB4E6",
+                shownOnRegistrationPage: true,
             },
         ]
     }
