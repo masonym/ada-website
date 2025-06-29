@@ -13,36 +13,35 @@ interface PriceDisplayProps {
  */
 const PriceDisplay: React.FC<PriceDisplayProps> = ({ registration, className = '' }) => {
   const priceInfo = getPriceDisplay(registration);
-  
+
   return (
-    <div className={`mb-2 ${className}`}>
-      <p className="text-lg font-semibold">
-        {/* Primary price display */}
-        <span className={priceInfo.priceClasses + ' mr-2'}>
+    <div className={className}>
+      <div className="text-lg font-semibold flex flex-wrap items-center">
+        <span className={`${priceInfo.priceClasses} mr-2`}>
           {priceInfo.displayPrice}
         </span>
-        
-        {/* Original price display (strikethrough if early bird) */}
+
         {priceInfo.originalPrice && (
           <span className="line-through text-gray-500 text-base">
             {priceInfo.originalPrice}
           </span>
         )}
-        
-        {/* Early bird label */}
+
         {priceInfo.priceLabel && (
           <span className="ml-2 text-sm bg-green-100 text-green-800 px-2 py-0.5 rounded-full">
             {priceInfo.priceLabel}
           </span>
         )}
-      </p>
-      
-      {/* Deadline information */}
+      </div>
+
       {priceInfo.deadlineInfo && (
-        <p className="text-xs text-gray-500 mt-1">{priceInfo.deadlineInfo}</p>
+        <div className="text-xs text-gray-500 mt-1">
+          {priceInfo.deadlineInfo}
+        </div>
       )}
     </div>
   );
+
 };
 
 export default PriceDisplay;

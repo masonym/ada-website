@@ -124,7 +124,7 @@ export function getPriceDisplay(registration: PriceFormattingRegistration): Pric
   // Handle regular numeric prices
   else {
     displayPrice = formatPrice(registration.price);
-    priceClasses = 'text-gray-800';
+    priceClasses = 'text-indigo-800';
     numericValue = registration.price;
   }
   

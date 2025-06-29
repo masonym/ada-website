@@ -72,4 +72,16 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography')
   ],
+  safelist: [
+    'text-navy-100',
+    'text-navy-200',
+    'text-navy-300',
+    'text-navy-400',
+    'text-navy-500',
+    'text-navy-600',
+    'text-navy-700',
+    'text-navy-800',
+    'text-navy-900',
+    'text-indigo-800',
+  ]
 };

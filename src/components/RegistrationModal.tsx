@@ -89,16 +89,16 @@ const isSoldOut = (item: AdapterModalRegistrationType, eventSponsors: any, event
   console.log('eventId', eventId);
   console.log("item.quantityAvailable", item.quantityAvailable)
   console.log("item.maxQuantityPerOrder", item.maxQuantityPerOrder)
-  
+
   // Find how many slots are available for this sponsorship
   const slotsAvailable = item.quantityAvailable;
-  
+
   // Count how many slots are taken by checking eventSponsors
   let slotsTaken = 0;
   const eventSponsorList = eventSponsors.find((es: any) => es.id === eventId);
 
   console.log("eventSponsorList", eventSponsorList)
-  
+
   if (eventSponsorList) {
     // Check all tiers to find sponsors with this sponsorship id
     Object.values(eventSponsorList.tiers || {}).forEach((tier: any) => {
@@ -108,7 +108,7 @@ const isSoldOut = (item: AdapterModalRegistrationType, eventSponsors: any, event
       }
     });
   }
-  
+
   // Item is sold out if all slots are taken
   return slotsTaken >= slotsAvailable;
 };
@@ -146,7 +146,7 @@ const RegistrationModal = ({
   const allRegistrations = useMemo<AdapterModalRegistrationType[]>(() => getRegistrationsForEvent(event.id), [event.id]);
   const sponsorships = useMemo<AdapterModalRegistrationType[]>(() => getSponsorshipsForEvent(event.id), [event.id]);
   const exhibitors = useMemo<AdapterModalRegistrationType[]>(() => getExhibitorsForEvent(event.id), [event.id]);
-  
+
   // Debug data that should be available
   useEffect(() => {
     console.log('Sponsorships available:', sponsorships);
@@ -157,7 +157,7 @@ const RegistrationModal = ({
   // We'll use the original sponsorships list without sorting
   // State for active category tab
   const [activeCategory, setActiveCategory] = useState<'ticket' | 'exhibit' | 'sponsorship'>('ticket');
-  
+
   // Debug when category changes
   useEffect(() => {
     console.log('Active category changed to:', activeCategory);
@@ -595,7 +595,7 @@ const RegistrationModal = ({
             .required('Please confirm your email.'),
         });
         await billingInfoSchema.validate(billingInfo, { abortEarly: false });
-        
+
         // Check if we need to show attendee count step for sponsorships with passes
         const selectedSponsorshipsWithPasses = sponsorships.filter(
           s => (ticketQuantities[s.id] || 0) > 0 && s.sponsorPasses && s.sponsorPasses > 0
@@ -1145,9 +1145,9 @@ const RegistrationModal = ({
                   {s.name}
                 </label>
                 <p className="text-sm text-gray-500">You have up to {totalPasses} attendee passes.</p>
-                
+
                 <div className="flex items-center mt-2">
-                  <button 
+                  <button
                     onClick={() => {
                       const newCount = Math.max(1, (sponsorAttendeesToRegister[s.id] || totalPasses) - 1);
                       setSponsorAttendeesToRegister(prev => ({ ...prev, [s.id]: newCount }));
@@ -1160,7 +1160,7 @@ const RegistrationModal = ({
                   <div className="px-4 py-2 bg-white border-t border-b border-gray-300 text-center min-w-[60px]">
                     {currentCount}
                   </div>
-                  <button 
+                  <button
                     onClick={() => {
                       const newCount = Math.min(totalPasses, (sponsorAttendeesToRegister[s.id] || totalPasses) + 1);
                       setSponsorAttendeesToRegister(prev => ({ ...prev, [s.id]: newCount }));
@@ -1572,8 +1572,10 @@ const RegistrationModal = ({
                   {/* Show tickets when activeCategory is 'ticket' */}
                   {activeCategory === 'ticket' && allRegistrations.filter(reg => reg.isActive).map(reg => (
                     <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
-                      <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
-                      <PriceDisplay registration={reg} />
+                      <div className="flex items-center">
+                        <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} -</h4>
+                        <PriceDisplay registration={reg} />
+                      </div>
                       {reg.perks && reg.perks.length > 0 && (
                         <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
                           {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
@@ -1607,86 +1609,91 @@ const RegistrationModal = ({
                   {activeCategory === 'exhibit' && exhibitors.filter(reg => reg.isActive).map(reg => {
                     const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id);
                     return (
-                    <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut ? 'opacity-75 bg-gray-200' : ''}`}>
-                      <div className="flex justify-between items-start">
-                      <h4 className="text-lg font-medium text-gray-800">{reg.name} - <PriceDisplay registration={reg} /></h4>
-                      {itemIsSoldOut && (
-                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
-                          SOLD OUT
-                        </span>
-                      )}
+                      <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut ? 'opacity-75 bg-gray-200' : ''}`}>
+                        <div className="flex items-center">
+                          <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} -</h4>
+                          <PriceDisplay registration={reg} />
+                          {itemIsSoldOut && (
+                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                              SOLD OUT
+                            </span>
+                          )}
+                        </div>
+                        {reg.perks && reg.perks.length > 0 && (
+                          <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
+                            {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
+                          </ul>
+                        )}
+                        {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
+                        <div className="flex items-center">
+                          <button
+                            onClick={() => handleDecrement(reg.id, reg.type)}
+                            disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
+                            className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                          >
+                            -
+                          </button>
+                          <span className="px-4 py-1 border-t border-b text-center w-12">
+                            {ticketQuantities[reg.id] || 0}
+                          </span>
+                          <button
+                            onClick={() => handleIncrement(reg.id, reg.type)}
+                            disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading}
+                            className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                          >
+                            +
+                          </button>
+                        </div>
+                        {renderValidationUI(reg)}
                       </div>
-                      {reg.perks && reg.perks.length > 0 && (
-                        <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
-                          {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
-                        </ul>
-                      )}
-                      {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
-                      <div className="flex items-center">
-                        <button
-                          onClick={() => handleDecrement(reg.id, reg.type)}
-                          disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
-                          className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                        >
-                          -
-                        </button>
-                        <span className="px-4 py-1 border-t border-b text-center w-12">
-                          {ticketQuantities[reg.id] || 0}
-                        </span>
-                        <button
-                          onClick={() => handleIncrement(reg.id, reg.type)}
-                          disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading}
-                          className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                        >
-                          +
-                        </button>
-                      </div>
-                      {renderValidationUI(reg)}
-                    </div>
-                  )})}
+                    )
+                  })}
 
                   {/* Show sponsorships when activeCategory is 'sponsorship' */}
                   {activeCategory === 'sponsorship' && sponsorships.filter(reg => reg.isActive).map(reg => {
                     const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id);
                     return (
-                    <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut ? 'opacity-75 bg-gray-200' : ''}`}>
-                      <div className="flex justify-between items-start">
-                        <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
-                        {itemIsSoldOut && (
-                          <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
-                            SOLD OUT
-                          </span>
+                      <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut ? 'opacity-75 bg-gray-200' : ''}`}>
+                        <div className="flex justify-between items-start">
+                          <div className="flex items-center">
+                            <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} -</h4>
+                            <PriceDisplay registration={reg} />
+                          </div>
+                          {itemIsSoldOut && (
+                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                              SOLD OUT
+                            </span>
+                          )}
+                        </div>
+                        {reg.perks && reg.perks.length > 0 && (
+                          <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
+                            {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
+                          </ul>
                         )}
+                        {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
+                        <div className="flex items-center">
+                          <button
+                            onClick={() => handleDecrement(reg.id, reg.type)}
+                            disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
+                            className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                          >
+                            -
+                          </button>
+                          <span className="px-4 py-1 border-t border-b text-center w-12">
+                            {ticketQuantities[reg.id] || 0}
+                          </span>
+                          <button
+                            onClick={() => handleIncrement(reg.id, reg.type)}
+                            disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading}
+                            className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                          >
+                            +
+                          </button>
+                        </div>
+                        {renderValidationUI(reg)}
                       </div>
-                      <PriceDisplay registration={reg} />
-                      {reg.perks && reg.perks.length > 0 && (
-                        <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
-                          {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
-                        </ul>
-                      )}
-                      {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
-                      <div className="flex items-center">
-                        <button
-                          onClick={() => handleDecrement(reg.id, reg.type)}
-                          disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
-                          className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                        >
-                          -
-                        </button>
-                        <span className="px-4 py-1 border-t border-b text-center w-12">
-                          {ticketQuantities[reg.id] || 0}
-                        </span>
-                        <button
-                          onClick={() => handleIncrement(reg.id, reg.type)}
-                          disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading}
-                          className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                        >
-                          +
-                        </button>
-                      </div>
-                      {renderValidationUI(reg)}
-                    </div>
-                  )})}
+                    )
+                  })}
                 </div>
                 {/* Total and checkout button at bottom of modal */}
                 <div className="mt-auto border-t pt-4 bg-white">
