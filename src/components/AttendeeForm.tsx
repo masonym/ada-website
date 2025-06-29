@@ -161,7 +161,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
             <div className="flex items-center space-x-2">
               <span className="text-sm text-gray-600">Copy from:</span>
               <select
-                className="border rounded px-2 py-1 text-sm"
+                className="border rounded px-2 py-1 text-sm max-w-xs"
                 onChange={handleCopyFromChange}
                 value=""
               >
@@ -170,14 +170,20 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                   // Skip the current attendee
                   const isCurrentTicket = ticketGroup.ticketId === currentTicketId;
                   const attendees = ticketGroup.attendees;
+                  
+                  // For debugging
+                  console.log(`Dropdown ticketGroup: ${ticketGroup.ticketId} with ${attendees.length} attendees`);
 
                   // Create a group of options for each ticket type
                   return attendees.map((_, i) => {
                     // Skip self (current ticket + current index)
                     if (isCurrentTicket && i === index) return null;
+                    
+                    // Use the state-compatible ticketId
+                    const stateCompatibleId = ticketGroup.ticketId;
 
                     return (
-                      <option key={`${ticketGroup.ticketId}-${i}`} value={`${ticketGroup.ticketId}|${i}`}>
+                      <option key={`${ticketGroup.ticketId}-${i}`} value={`${stateCompatibleId}|${i}`}>
                         {ticketGroup.ticketName} - Attendee {i + 1}
                       </option>
                     );

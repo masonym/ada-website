@@ -733,29 +733,135 @@ const RegistrationModal = ({
   };
 
   const handleCopyAttendee = (sourceTicketId: string, sourceIndex: number, targetTicketId: string, targetIndex: number) => {
-    setAttendeesByTicket(prev => {
-      // Get source attendees and ensure it exists
-      const sourceAttendees = prev[sourceTicketId] || [];
-      // Get target attendees and ensure it exists
-      const targetAttendees = prev[targetTicketId] ? [...prev[targetTicketId]] : [];
-
-      // Check if indices are valid
-      if (sourceIndex < sourceAttendees.length && targetIndex < targetAttendees.length) {
+    // Log detailed information about the copy request and current state
+    console.log('Copy attendee request:', { sourceTicketId, sourceIndex, targetTicketId, targetIndex });
+    console.log('Available attendeesByTicket:', Object.keys(attendeesByTicket));
+    console.log('Available sponsorPassAttendees:', Object.keys(sponsorPassAttendees));
+    
+    // Create mapping between different ID formats
+    const getPossibleTicketIds = (id: string) => {
+      const possibleIds = [id];
+      
+      // Handle sponsor tickets with or without -passes suffix
+      if (id.includes('-sponsor-passes')) {
+        possibleIds.push(id.replace('-passes', ''));
+      } else if (id.includes('-sponsor')) {
+        possibleIds.push(id + '-passes');
+      }
+      
+      // Handle VIP passes that might be formatted differently
+      if (id.includes('-vip-pass')) {
+        possibleIds.push(id.replace('-vip-pass', '-sponsor'));
+      } else if (id.includes('-sponsor')) {
+        possibleIds.push(id.replace('-sponsor', '-vip-pass'));
+      }
+      
+      return possibleIds;
+    };
+    
+    // Find the source attendee checking all possible formats
+    let sourceAttendee = null;
+    const possibleSourceIds = getPossibleTicketIds(sourceTicketId);
+    
+    console.log('Checking source IDs:', possibleSourceIds);
+    
+    // First check attendeesByTicket
+    for (const id of possibleSourceIds) {
+      if (attendeesByTicket[id] && attendeesByTicket[id][sourceIndex]) {
+        sourceAttendee = attendeesByTicket[id][sourceIndex];
+        console.log(`Found source attendee in attendeesByTicket with ID: ${id}`);
+        break;
+      }
+    }
+    
+    // If not found, check sponsorPassAttendees
+    if (!sourceAttendee) {
+      for (const id of possibleSourceIds) {
+        if (sponsorPassAttendees[id] && sponsorPassAttendees[id][sourceIndex]) {
+          sourceAttendee = sponsorPassAttendees[id][sourceIndex];
+          console.log(`Found source attendee in sponsorPassAttendees with ID: ${id}`);
+          break;
+        }
+      }
+    }
+    
+    if (!sourceAttendee) {
+      console.error('Failed to copy attendee: Source attendee not found.', {
+        sourceTicketId, sourceIndex,
+        possibleIds: possibleSourceIds,
+        attendeesByTicket: Object.keys(attendeesByTicket),
+        sponsorPassAttendees: Object.keys(sponsorPassAttendees)
+      });
+      return; // Exit if source attendee not found
+    }
+    
+    // For the target, we need to find the right state object to update
+    const possibleTargetIds = getPossibleTicketIds(targetTicketId);
+    console.log('Checking target IDs:', possibleTargetIds);
+    
+    // Determine if we should update attendeesByTicket or sponsorPassAttendees
+    let foundTarget = false;
+    
+    // First try the primary target ID in attendeesByTicket
+    if (attendeesByTicket[targetTicketId] !== undefined) {
+      setAttendeesByTicket(prev => {
+        let targetAttendees = prev[targetTicketId] ? [...prev[targetTicketId]] : [];
+        
+        // Ensure target has enough entries by padding with empty attendees if needed
+        while (targetIndex >= targetAttendees.length) {
+          console.log('Initializing new attendee at index', targetAttendees.length);
+          targetAttendees.push({ ...initialModalAttendeeInfo });
+        }
+        
         // Copy the source attendee info to the target attendee
-        targetAttendees[targetIndex] = { ...sourceAttendees[sourceIndex] };
+        targetAttendees[targetIndex] = { ...sourceAttendee };
+        console.log('Successfully copied to attendeesByTicket', { targetTicketId });
+        
         return {
           ...prev,
           [targetTicketId]: targetAttendees
         };
-      } else {
-        console.error('Failed to copy attendee: Invalid indices or ticket ID not found.', {
-          sourceTicketId, sourceIndex, targetTicketId, targetIndex,
-          sourceLength: sourceAttendees.length,
-          targetLength: targetAttendees.length
-        });
-        return prev;
+      });
+      foundTarget = true;
+    }
+    
+    // If not found, try sponsorPassAttendees
+    else if (!foundTarget) {
+      for (const id of possibleTargetIds) {
+        if (sponsorPassAttendees[id] !== undefined) {
+          setSponsorPassAttendees(prev => {
+            let targetAttendees = prev[id] ? [...prev[id]] : [];
+            
+            // Ensure target has enough entries by padding with empty attendees if needed
+            while (targetIndex >= targetAttendees.length) {
+              console.log('Initializing new sponsor pass attendee at index', targetAttendees.length);
+              targetAttendees.push({ ...initialModalAttendeeInfo });
+            }
+            
+            // Copy the source attendee info to the target attendee
+            targetAttendees[targetIndex] = { ...sourceAttendee };
+            console.log('Successfully copied to sponsorPassAttendees', { originalTarget: targetTicketId, actualTarget: id });
+            
+            return {
+              ...prev,
+              [id]: targetAttendees
+            };
+          });
+          foundTarget = true;
+          break;
+        }
       }
-    });
+    }
+    
+    // If target wasn't found in either state object
+    if (!foundTarget) {
+      console.error('Failed to copy attendee: Target ticket ID not found', {
+        targetTicketId,
+        possibleTargetIds,
+        availableRegular: Object.keys(attendeesByTicket),
+        availableSponsor: Object.keys(sponsorPassAttendees)
+      });
+    }
   };
 
   const calculateTotal = () => {
