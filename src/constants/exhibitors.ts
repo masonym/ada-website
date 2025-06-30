@@ -44,7 +44,7 @@ export const EXHIBITOR_TYPES = [
                 id: "exhibitor",
                 title: "Table-Top Exhibit Space",
                 cost: "$1,250",
-                slotsPerEvent: 50,
+                slotsPerEvent: 60,
                 showRemaining: true,
                 perks: [
                     { tagline: "Event Access", description: " (1) Exhibitor Pass. Additional Passes can be Purchased for $395 each" },
