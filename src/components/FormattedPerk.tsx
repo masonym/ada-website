@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { ChevronRight } from 'lucide-react';
 
 interface FormattedPerkProps {
   content: string;
@@ -9,100 +8,138 @@ interface FormattedPerkProps {
 }
 
 /**
- * Component for rendering perks with HTML-like formatting and indentation
- * Supports <b> tags for bold text and handles indentation with proper styling
+ * Component for rendering perks with HTML-like formatting and native HTML nested lists
+ * Supports <b> tags for bold text and handles indentation with proper HTML list structure
  */
 const FormattedPerk: React.FC<FormattedPerkProps> = ({ content, className = '' }) => {
-  // Process the content string to extract indentation and formatting
+  // Process the content string and convert it to a nested list structure
   const processContent = () => {
-    // If content has line breaks, split and render each line separately
-    if (content.includes('\n')) {
-      return content.split('\n').map((line, index) => {
-        return (
-          <div key={index} className="mt-1 first:mt-0">
-            {renderFormattedLine(line)}
-          </div>
-        );
-      });
-    }
+    if (!content) return null;
     
-    // Otherwise just render the single line
-    return renderFormattedLine(content);
-  };
-  
-  const renderFormattedLine = (line: string) => {
-    // Calculate indentation based on leading spaces
-    const indentMatch = line.match(/^(\s+)/);
-    const indentLevel = indentMatch ? Math.floor(indentMatch[1].length / 2) : 0;
-    const trimmedLine = line.trimStart();
+    // Split content into lines and build list structure
+    const lines = content.split('\n').filter(line => line.trim() !== '');
     
-    // Check if line contains bold tags
-    const hasBoldTags = trimmedLine.includes('<b>') && trimmedLine.includes('</b>');
+    // Group lines by indentation level to form proper nested lists
+    const rootItems: { content: JSX.Element | string; level: number; children: any[] }[] = [];
+    let currentList = rootItems;
+    let parentStack: any[] = [];
     
-    // Replace <b> tags with proper React elements
-    let content = trimmedLine;
-    if (hasBoldTags) {
-      // Split the content by bold tags
-      const parts = [];
-      let currentIndex = 0;
-      let boldStart = content.indexOf('<b>', currentIndex);
+    lines.forEach(line => {
+      // Calculate indentation level
+      const indentMatch = line.match(/^(\s+)/);
+      const level = indentMatch ? Math.floor(indentMatch[1].length / 2) : 0;
+      const trimmedLine = line.trimStart();
       
-      while (boldStart !== -1) {
-        // Add the text before the bold tag
-        if (boldStart > currentIndex) {
-          parts.push({
-            text: content.substring(currentIndex, boldStart),
-            bold: false
-          });
+      // Process any bold formatting in the line
+      const formattedContent = processBoldTags(trimmedLine);
+      
+      // Create new item for this line
+      const newItem = {
+        content: formattedContent,
+        level,
+        children: []
+      };
+      
+      if (level === 0) {
+        // Top-level item
+        rootItems.push(newItem);
+        currentList = newItem.children;
+        parentStack = [newItem];
+      } else {
+        // Find the appropriate parent for this level
+        while (parentStack.length > level) {
+          parentStack.pop();
         }
         
-        // Find the closing bold tag
-        const boldEnd = content.indexOf('</b>', boldStart + 3);
-        if (boldEnd === -1) break; // Malformed HTML, no closing tag
-        
-        // Add the bold text
-        parts.push({
-          text: content.substring(boldStart + 3, boldEnd),
-          bold: true
-        });
-        
-        currentIndex = boldEnd + 4; // Move past the closing tag
-        boldStart = content.indexOf('<b>', currentIndex);
+        if (parentStack.length === level) {
+          const parent = parentStack[level - 1];
+          if (parent) {
+            parent.children.push(newItem);
+            parentStack.push(newItem);
+            currentList = newItem.children;
+          }
+        }
       }
-      
-      // Add any remaining text after the last bold tag
-      if (currentIndex < content.length) {
+    });
+    
+    // Render the nested list structure
+    return renderNestedList(rootItems);
+  };
+  
+  // Process bold tags within text
+  const processBoldTags = (text: string): JSX.Element | string => {
+    if (!text.includes('<b>') || !text.includes('</b>')) {
+      return text;
+    }
+    
+    const parts = [];
+    let currentIndex = 0;
+    let boldStart = text.indexOf('<b>', currentIndex);
+    
+    while (boldStart !== -1) {
+      // Add the text before the bold tag
+      if (boldStart > currentIndex) {
         parts.push({
-          text: content.substring(currentIndex),
+          text: text.substring(currentIndex, boldStart),
           bold: false
         });
       }
       
-      // Render the parts
-      return (
-        <div className={`flex items-start ${indentLevel > 0 ? `ml-${indentLevel * 1}` : ''}`}>
-          {indentLevel > 0 && (
-            <ChevronRight className="h-4 w-4 mr-1 text-navy-800 flex-shrink-0 mt-[0.15rem]" />
-          )}
-          <div>
-            {parts.map((part, i) => (
-              <span key={i} className={part.bold ? 'font-bold' : ''}>
-                {part.text}
-              </span>
-            ))}
-          </div>
-        </div>
-      );
+      // Find the closing bold tag
+      const boldEnd = text.indexOf('</b>', boldStart + 3);
+      if (boldEnd === -1) break; // Malformed HTML
+      
+      // Add the bold text
+      parts.push({
+        text: text.substring(boldStart + 3, boldEnd),
+        bold: true
+      });
+      
+      currentIndex = boldEnd + 4; // Move past the closing tag
+      boldStart = text.indexOf('<b>', currentIndex);
     }
     
-    // If no bold tags, just render the text with indentation
+    // Add any remaining text
+    if (currentIndex < text.length) {
+      parts.push({
+        text: text.substring(currentIndex),
+        bold: false
+      });
+    }
+    
     return (
-      <div className={`flex items-start ${indentLevel > 0 ? `ml-${indentLevel * 1}` : ''}`}>
-        {indentLevel > 0 && (
-          <ChevronRight className="h-4 w-4 mr-1 text-navy-800 flex-shrink-0 mt-[0.15rem]" />
-        )}
-        <span>{trimmedLine}</span>
-      </div>
+      <>
+        {parts.map((part, i) => (
+          <span key={i} className={part.bold ? 'font-bold' : ''}>
+            {part.text}
+          </span>
+        ))}
+      </>
+    );
+  };
+  
+  // Render a nested list structure using actual <ul> and <li> elements
+  const renderNestedList = (items: any[]) => {
+    if (!items || items.length === 0) return null;
+    
+    return (
+      <ul className="list-disc pl-5">
+        {items.map((item, index) => (
+          <li key={index} className="mt-1 first:mt-0">
+            {item.content}
+            {item.children && item.children.length > 0 && (
+              <ul className="list-square pl-5 mt-1">
+                {item.children.map((child: any, childIndex: number) => (
+                  <li key={childIndex}>
+                    {child.content}
+                    {child.children && child.children.length > 0 && renderNestedList(child.children)}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
     );
   };
 

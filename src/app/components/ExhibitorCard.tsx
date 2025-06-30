@@ -54,7 +54,7 @@ const ExhibitorCard = ({ item, event }: ExhibitorProp) => {
                         if (typeof perk === 'string') {
                             return (
                                 <li key={index} className="flex items-start">
-                                    <ChevronRight className="h-5 w-5 mr-2 text-navy-800 flex-shrink-0 mt-1" />
+                                    {/* <ChevronRight className="h-5 w-5 mr-2 text-navy-800 flex-shrink-0 mt-1" /> */}
                                     <div>{perk}</div>
                                 </li>
                             );
@@ -73,7 +73,7 @@ const ExhibitorCard = ({ item, event }: ExhibitorProp) => {
                             
                             return (
                                 <li key={index} className="flex items-start">
-                                    <ChevronRight className="h-5 w-5 mr-2 text-navy-800 flex-shrink-0 mt-1" />
+                                    {/* <ChevronRight className="h-5 w-5 mr-2 text-navy-800 flex-shrink-0 mt-1" /> */}
                                     <div className="flex-1">
                                         <FormattedPerk content={formattedContent} />
                                     </div>
@@ -84,7 +84,7 @@ const ExhibitorCard = ({ item, event }: ExhibitorProp) => {
                         // Legacy format with tagline and description
                         return (
                             <li key={index} className="flex items-start">
-                                <ChevronRight className="h-5 w-5 mr-2 text-navy-800 flex-shrink-0 mt-1" />
+                                {/* <ChevronRight className="h-5 w-5 mr-2 text-navy-800 flex-shrink-0 mt-1" /> */}
                                 <div>
                                     {perk.tagline && <span className="font-bold">{perk.tagline}: </span>}
                                     {perk.description && <span>{perk.description}</span>}
