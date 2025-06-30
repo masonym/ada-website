@@ -3,7 +3,7 @@
 import React from 'react';
 import DirectionsMap from './DirectionsMap';
 import { getCdnPath } from '@/utils/image';
-import { MapPin, Clock, CalendarDays, Phone, Globe } from 'lucide-react';
+import { MapPin, Clock, CalendarDays } from 'lucide-react';
 import { VIPReceptionProps } from '@/types/events';
 
 const VIPReceptionSection: React.FC<VIPReceptionProps> = ({ vipReception }) => {
@@ -70,6 +70,11 @@ const VIPReceptionSection: React.FC<VIPReceptionProps> = ({ vipReception }) => {
             />
           </div>
         </div>
+        {vipReception.description2 && (
+          <div className="mt-6 text-center text-balance">
+            <p dangerouslySetInnerHTML={{ __html: vipReception.description2 }} />
+          </div>
+        )}
       </div>
     </div>
   );

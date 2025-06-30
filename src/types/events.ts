@@ -35,6 +35,7 @@ export interface VIPReceptionProps {
         date: string;
         time: string;
         description: string;
+        description2?: string;
         locationName: string;
         locationAddress: string;
         placeId: string;
