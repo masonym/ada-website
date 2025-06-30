@@ -109,12 +109,25 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
   ];
 
   const adaptedSponsors = allSponsors.map((sponsor: SponsorshipType | PrimeSponsorType): AdapterModalRegistrationType => {
-    // Process perks to handle both string and object types
-    const processedPerks = sponsor.perks ? sponsor.perks.map((perk: PerkType) =>
-      typeof perk === 'string'
-        ? perk
-        : `<b>${perk.tagline}</b>: ${perk.description}`
-    ) : [];
+    // Process perks to handle all perk formats (string, tagline/description, and formatted arrays)
+    const processedPerks = sponsor.perks ? sponsor.perks.map((perk: PerkType): string => {
+      if (typeof perk === 'string') {
+        return perk;
+      } else if (perk.formatted && perk.formatted.length > 0) {
+        // Handle new formatted perks structure - convert to HTML-like format
+        return perk.formatted.map((formattedPerk) => {
+          const prefix = formattedPerk.indent ? '  '.repeat(formattedPerk.indent) : '';
+          const content = formattedPerk.bold ? `<b>${formattedPerk.content}</b>` : formattedPerk.content;
+          return `${prefix}${content}`;
+        }).join('\n');
+      } else if (perk.description) {
+        // Handle legacy format - combine tagline (bold) and description
+        return perk.tagline ? `<b>${perk.tagline}</b>: ${perk.description}` : perk.description;
+      } else {
+        // Fallback
+        return perk.tagline || '';
+      }
+    }).filter(Boolean) : [];
     
     // Extract sponsorPasses from perks if not explicitly defined
     let sponsorPasses = sponsor.sponsorPasses;
