@@ -310,7 +310,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
         </div>
         {attendee.businessSize === 'Small Business' && (
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">SBA Identification *</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">SBA Identification</label>
             <select
               className="w-full border rounded px-3 py-2 text-sm"
               name="sbaIdentification"
