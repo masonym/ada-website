@@ -2,8 +2,6 @@ import { MatchmakingSession, VipNetworkingReception } from '@/types/events';
 import { getEnv } from '../../env';
 import { getCdnPath } from '@/utils/image';
 
-const env = getEnv();
-
 function getMonthFromDate(dateString: string): string {
     if (!dateString) return '';
     // Handles ranges like "October 28-29, 2024" or single dates "October 28, 2024"
@@ -102,6 +100,8 @@ export function generateOrderSummaryHtml(summary: OrderSummary): string {
 
 // Base template that all emails will use
 export function baseEmailTemplate(content: string, eventImage: string): string {
+  const env = getEnv();
+
   return `
     <!DOCTYPE html>
     <html>
