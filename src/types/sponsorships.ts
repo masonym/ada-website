@@ -31,6 +31,7 @@ export interface Sponsorship {
     maxQuantityPerOrder?: number;
     isGovtFreeEligible?: boolean;
     shownOnRegistrationPage?: boolean;
+    sponsorPasses?: number; // Number of attendee passes included with this sponsorship
 }
 
 // Define the structure for sponsorship tiers by event

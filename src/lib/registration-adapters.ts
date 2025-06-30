@@ -129,22 +129,8 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
       }
     }).filter(Boolean) : [];
     
-    // Extract sponsorPasses from perks if not explicitly defined
-    let sponsorPasses = sponsor.sponsorPasses;
-    if (!sponsorPasses) {
-      // Try to extract from perks that mention "Event Access" or similar
-      const eventAccessPerk = sponsor.perks?.find(perk => 
-        typeof perk !== 'string' && 
-        perk.tagline && perk.tagline.includes('Event Access'));
-      
-      if (eventAccessPerk && typeof eventAccessPerk !== 'string' && eventAccessPerk.description) {
-        // Extract the number from descriptions like "(3) conference passes"
-        const match = eventAccessPerk.description.match(/\((\d+)\)/);
-        if (match && match[1]) {
-          sponsorPasses = parseInt(match[1], 10);
-        }
-      }
-    }
+    // Get sponsorPasses from the explicit field or default to 0
+    const sponsorPasses = sponsor.sponsorPasses || 0;
 
     return {
       id: sponsor.id,
