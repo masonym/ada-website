@@ -1,7 +1,9 @@
+
 import React from 'react';
 import { EVENTS } from '@/constants/events';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import RegisterButtonModal from './RegisterButtonModal';
 import Button from '@/app/components/Button';
 import SponsorOptions from '@/app/components/SponsorOptions';
 import CountdownTimer from '@/app/components/CountdownTimer';
@@ -144,16 +146,15 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             <div className="mt-0 text-center flex flex-col items-center">
               <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Place at this Groundbreaking Event!</p>
-              <Button
+                <RegisterButtonModal 
+                event={event}
                 title="REGISTER"
                 variant="btn_blue"
-                link={event.registerLink}
-                className="max-w-xs sm:max-w-sm"
+                className="max-w-sm sm:max-w-xs"
               />
             </div>
 
             <FooterEventText event={event} />
-
           </div>
         </div>
       </div>

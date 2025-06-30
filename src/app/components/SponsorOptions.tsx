@@ -1,5 +1,7 @@
+'use client';
+
 import { SPONSORSHIP_TYPES } from '@/constants/sponsorships'
-import React from 'react'
+import React, { useState } from 'react'
 import { Event } from '@/types/events'
 import { notFound } from 'next/navigation'
 import SponsorshipCard from './SponsorshipCard'
@@ -9,6 +11,8 @@ import Button from './Button'
 import SponsorProspectus from './SponsorProspectus'
 import SponsorLogos from './SponsorLogos'
 import ExhibitInstructionsButton from './ExhibitInstructionsButton'
+import RegistrationModal from '@/components/RegistrationModal'
+import { getSponsorshipsForEvent } from '@/lib/registration-adapters'
 
 export type SponsorProps = {
     event: Event;
@@ -17,10 +21,21 @@ export type SponsorProps = {
 
 const SponsorOptions = ({ event }: SponsorProps) => {
     const currentEvent = SPONSORSHIP_TYPES.find((e) => e.id === event.id);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     if (!currentEvent) {
         notFound();
     }
+    
+    const handleOpenRegistration = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+    
+    const sponsorOptions = getSponsorshipsForEvent(event.id);
 
     const defaultExhibitorText = (
         <>
@@ -63,7 +78,7 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                         <Button
                             title="Sign-up Here to Sponsor"
                             variant="btn_red"
-                            link={event.registerLink}
+                            onClick={handleOpenRegistration}
                             className="max-w-xs sm:max-w-sm"
                         />
                     </div>
@@ -115,11 +130,21 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                         <Button
                             title="REGISTER"
                             variant="btn_blue"
-                            link={event.registerLink}
+                            onClick={handleOpenRegistration}
                             className="max-w-xs sm:max-w-sm"
                         />
                     </div>
                 </div>
+                
+                {/* Registration Modal */}
+                {sponsorOptions && sponsorOptions.length > 0 && (
+                    <RegistrationModal
+                        isOpen={isModalOpen}
+                        onClose={handleCloseModal}
+                        selectedRegistration={sponsorOptions[0]}
+                        event={event}
+                    />
+                )}
             </div>
         </div>
     )

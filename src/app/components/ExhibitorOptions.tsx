@@ -1,5 +1,7 @@
+'use client';
+
 import { EXHIBITOR_TYPES } from '@/constants/exhibitors';
-import React from 'react';
+import React, { useState } from 'react';
 import { Event } from '@/types/events';
 import { notFound } from 'next/navigation';
 import ExhibitorCard from './ExhibitorCard';
@@ -8,6 +10,8 @@ import Button from './Button';
 import SponsorProspectus from './SponsorProspectus';
 import SponsorLogos from './SponsorLogos';
 import ExhibitInstructionsButton from './ExhibitInstructionsButton';
+import RegistrationModal from '@/components/RegistrationModal';
+import { getExhibitorsForEvent } from '@/lib/registration-adapters';
 
 export type ExhibitorProps = {
     event: Event;
@@ -15,10 +19,21 @@ export type ExhibitorProps = {
 
 const ExhibitorOptions = ({ event }: ExhibitorProps) => {
     const currentEvent = EXHIBITOR_TYPES.find((e) => e.id === event.id);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     if (!currentEvent) {
         notFound();
     }
+    
+    const handleOpenRegistration = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+    
+    const exhibitorOptions = getExhibitorsForEvent(event.id);
 
     return (
         <div className="max-container mx-auto pb-8 pt-0 px-4 flex flex-col items-center">
@@ -34,7 +49,7 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                     <Button
                         title="Sign-up Here to Exhibit"
                         variant="btn_red"
-                        link={event.registerLink}
+                        onClick={handleOpenRegistration}
                         className="max-w-xs sm:max-w-sm"
                     />
                 </div>
@@ -64,11 +79,21 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                     <Button
                         title="REGISTER"
                         variant="btn_blue"
-                        link={event.registerLink}
+                        onClick={handleOpenRegistration}
                         className="max-w-xs sm:max-w-sm"
                     />
                 </div>
             </div>
+            
+            {/* Registration Modal */}
+            {exhibitorOptions && exhibitorOptions.length > 0 && (
+                <RegistrationModal
+                    isOpen={isModalOpen}
+                    onClose={handleCloseModal}
+                    selectedRegistration={exhibitorOptions[0]}
+                    event={event}
+                />
+            )}
         </div>
     );
 };

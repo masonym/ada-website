@@ -15,9 +15,9 @@ export default function AboutPage({ params }: { params: { slug: string } }) {
   return (
     <EventDetails
       title={event.title}
+      eventId={event.id}
       eventText={event.aboutEventText || event.eventText}
       topicalCoverage={event.topicalCoverage}
-      registerLink={event.registerLink}
       expectations={event.expectations}
       expectationsText={event.expectationsText}
       featuredTopics={event.featuredTopics}
