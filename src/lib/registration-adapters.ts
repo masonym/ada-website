@@ -4,9 +4,16 @@ import { EXHIBITOR_TYPES, ExhibitorType } from '@/constants/exhibitors';
 import { ModalRegistrationType } from '@/types/registration';
 
 // Define types based on the structure of the constants files
+interface FormattedPerkType {
+  content: string;
+  bold?: boolean;
+  indent?: number;
+}
+
 type PerkType = string | {
-  tagline: string;
-  description: string;
+  tagline?: string;
+  description?: string;
+  formatted?: FormattedPerkType[];
 };
 
 export interface SponsorshipType {
@@ -115,9 +122,9 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
       // Try to extract from perks that mention "Event Access" or similar
       const eventAccessPerk = sponsor.perks?.find(perk => 
         typeof perk !== 'string' && 
-        perk.tagline.includes('Event Access'));
+        perk.tagline && perk.tagline.includes('Event Access'));
       
-      if (eventAccessPerk && typeof eventAccessPerk !== 'string') {
+      if (eventAccessPerk && typeof eventAccessPerk !== 'string' && eventAccessPerk.description) {
         // Extract the number from descriptions like "(3) conference passes"
         const match = eventAccessPerk.description.match(/\((\d+)\)/);
         if (match && match[1]) {
@@ -192,11 +199,25 @@ export function getExhibitorsForEvent(eventId: number | string): AdapterModalReg
 
   const adaptedExhibitors = eventData.exhibitors.map((exhibitor: ExhibitorType): AdapterModalRegistrationType => {
     // Process perks to handle both string and object types
-    const processedPerks = exhibitor.perks ? exhibitor.perks.map((perk: PerkType) =>
-      typeof perk === 'string'
-        ? perk
-        : perk.description
-    ) : [];
+    const processedPerks = exhibitor.perks ? exhibitor.perks.map((perk: PerkType): string => {
+      if (typeof perk === 'string') {
+        return perk;
+      } else if (perk.formatted && perk.formatted.length > 0) {
+        // Handle new formatted perks structure - convert to HTML-like format
+        // that can be processed by the FormattedPerk component
+        return perk.formatted.map((formattedPerk) => {
+          const prefix = formattedPerk.indent ? '  '.repeat(formattedPerk.indent) : '';
+          const content = formattedPerk.bold ? `<b>${formattedPerk.content}</b>` : formattedPerk.content;
+          return `${prefix}${content}`;
+        }).join('\n');
+      } else if (perk.description) {
+        // Handle legacy format - combine tagline (bold) and description
+        return perk.tagline ? `<b>${perk.tagline}:</b> ${perk.description}` : perk.description;
+      } else {
+        // Fallback
+        return perk.tagline || '';
+      }
+    }).filter(Boolean) : [];
 
     return {
       id: exhibitor.id,

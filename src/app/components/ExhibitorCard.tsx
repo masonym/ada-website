@@ -3,6 +3,7 @@ import { ChevronRight } from 'lucide-react';
 import { Event } from '@/types/events';
 import { getEventSponsors } from '@/constants/eventSponsors';
 import { ExhibitorType } from '@/constants/exhibitors';
+import FormattedPerk from '@/components/FormattedPerk';
 
 type ExhibitorProp = {
     item: ExhibitorType;
@@ -48,15 +49,49 @@ const ExhibitorCard = ({ item, event }: ExhibitorProp) => {
             </div>
             <div className="p-6">
                 <ul className="space-y-4">
-                    {item.perks.map((perk, index) => (
-                        <li key={index} className="flex items-start">
-                            <ChevronRight className="h-5 w-5 mr-2 text-navy-800 flex-shrink-0 mt-1" />
-                            <div>
-                                <span className="font-bold">{perk.tagline}: </span>
-                                <span>{perk.description}</span>
-                            </div>
-                        </li>
-                    ))}
+                    {item.perks.map((perk, index) => {
+                        // Handle string perks directly
+                        if (typeof perk === 'string') {
+                            return (
+                                <li key={index} className="flex items-start">
+                                    <ChevronRight className="h-5 w-5 mr-2 text-navy-800 flex-shrink-0 mt-1" />
+                                    <div>{perk}</div>
+                                </li>
+                            );
+                        }
+                        
+                        // Handle formatted perks using our new FormattedPerk component
+                        if (perk.formatted && perk.formatted.length > 0) {
+                            // Convert formatted perks to the string format expected by FormattedPerk
+                            const formattedContent = perk.formatted.map((formattedItem) => {
+                                const prefix = formattedItem.indent ? '  '.repeat(formattedItem.indent) : '';
+                                const content = formattedItem.bold ? 
+                                    `<b>${formattedItem.content}</b>` : 
+                                    formattedItem.content;
+                                return `${prefix}${content}`;
+                            }).join('\n');
+                            
+                            return (
+                                <li key={index} className="flex items-start">
+                                    <ChevronRight className="h-5 w-5 mr-2 text-navy-800 flex-shrink-0 mt-1" />
+                                    <div className="flex-1">
+                                        <FormattedPerk content={formattedContent} />
+                                    </div>
+                                </li>
+                            );
+                        }
+                        
+                        // Legacy format with tagline and description
+                        return (
+                            <li key={index} className="flex items-start">
+                                <ChevronRight className="h-5 w-5 mr-2 text-navy-800 flex-shrink-0 mt-1" />
+                                <div>
+                                    {perk.tagline && <span className="font-bold">{perk.tagline}: </span>}
+                                    {perk.description && <span>{perk.description}</span>}
+                                </div>
+                            </li>
+                        );
+                    })}
                 </ul>
             </div>
         </div>

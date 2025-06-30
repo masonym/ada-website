@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import * as yup from 'yup';
+import FormattedPerk from './FormattedPerk';
 import { X, CreditCard, Ticket, Package, Award, AlertTriangle } from 'lucide-react';
 import { getPriceDisplay } from '@/lib/price-formatting';
 import PriceDisplay from './PriceDisplay';
@@ -1768,8 +1769,12 @@ const RegistrationModal = ({
                         <PriceDisplay registration={reg} />
                       </div>
                       {reg.perks && reg.perks.length > 0 && (
-                        <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
-                          {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
+                        <ul className="list-none text-sm text-gray-500 mb-2">
+                          {reg.perks.map((perk, index) => (
+                            <li key={index} className="py-0.5">
+                              <FormattedPerk content={perk} />
+                            </li>
+                          ))}
                         </ul>
                       )}
                       {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
@@ -1811,8 +1816,10 @@ const RegistrationModal = ({
                           )}
                         </div>
                         {reg.perks && reg.perks.length > 0 && (
-                          <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
-                            {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
+                          <ul className="list-none text-sm text-gray-500 mb-2">
+                            {reg.perks.map((perk, index) => <li key={index} className="py-0.5">
+                                <FormattedPerk content={perk} />
+                              </li>)}
                           </ul>
                         )}
                         {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
@@ -1857,8 +1864,10 @@ const RegistrationModal = ({
                           )}
                         </div>
                         {reg.perks && reg.perks.length > 0 && (
-                          <ul className="list-disc list-inside text-sm text-gray-500 mb-2">
-                            {reg.perks.map((perk, index) => <li key={index} dangerouslySetInnerHTML={{ __html: perk }}></li>)}
+                          <ul className="list-none text-sm text-gray-500 mb-2">
+                            {reg.perks.map((perk, index) => <li key={index} className="py-0.5">
+                                <FormattedPerk content={perk} />
+                              </li>)}
                           </ul>
                         )}
                         {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}

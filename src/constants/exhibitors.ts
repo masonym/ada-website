@@ -1,7 +1,14 @@
 // Define the exhibitor type with all necessary fields for registration display
+interface FormattedPerk {
+    content: string;       // The actual text content
+    bold?: boolean;        // Whether to bold the entire content
+    indent?: number;       // Level of indentation (0 = no indent, 1 = first level, etc.)
+}
+
 interface Perk {
-    tagline: string;
-    description: string;
+    tagline?: string;       // For backward compatibility
+    description?: string;   // For backward compatibility
+    formatted?: FormattedPerk[]; // New formatted structure
 }
 export interface ExhibitorType {
     id: string;
@@ -104,11 +111,24 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                 slotsPerEvent: 50,
                 showRemaining: true,
                 perks: [
-                    { tagline: "Event Access", description: " (1) Exhibitor Pass. Additional Passes can be Purchased for $395 each" },
-                    { tagline: "Exhibit Space", description: "8'x10' Exhibit Space Placed in Exhibit Area/Foyer. 6' Exhibit Table and Chairs" },
-                    { tagline: "Brand Visibility", description: "Logo Placement on select Conference Materials, including Marketing Emails and Website" },
-                    { tagline: "Recognition", description: "Acknowledgement before Networking Breaks at the Conference" },
-                    { tagline: "Media Coverage", description: "Photographs of your Participation" },
+                    { formatted: [
+                        { content: " (1) Exhibitor Pass." },
+                        { content: "Additional Exhibitor Passes can be purchased for $395 each below.", indent: 1 },
+                    ]},
+                    { formatted: [
+                        { content: "8’x10' Table-Top Exhibit Space in Exhibit Area/Foyer" },
+                        { content: "6' Tableclothed Table and Chairs", indent: 1 },
+                    ]},
+                    { formatted: [
+                        { content: "Logo Placement on select Conference Materials" },
+                        { content: "Marketing Emails and Website", indent: 1 },
+                    ]},
+                    { formatted: [
+                        { content: "Acknowledgement before Networking Breaks at the Conference" },
+                    ]},
+                    { formatted: [
+                        { content: "Photographs of your Participation" },
+                    ]},
                 ],
                 colour: "#3FB4E6",
                 shownOnRegistrationPage: true,
