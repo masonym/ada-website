@@ -261,7 +261,7 @@ export function getExhibitorsForEvent(eventId: number | string): AdapterModalReg
       requiresValidation: true,
       maxQuantityPerOrder: 10, // Example limit
       perks: [
-        "(1) VIP Attendee Pass",
+        "(1) Exhibitor Attendee Pass",
         "Access to General Sessions",
         "Access to Exhibit Area",
         "Onsite Sign-up for Matchmaking Sessions",
