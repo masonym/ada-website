@@ -30,7 +30,6 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
     : isFree
       ? 'Complimentary'
       : '';
-  console.log("Item: ", item);
   const deadlineDate = isPaid && item.earlyBirdDeadline
     ? new Date(item.earlyBirdDeadline).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -42,7 +41,6 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
   const handleCardClick = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (item.buttonLink) {
-      console.log(item.buttonLink);
       window.open(item.buttonLink, '_blank', 'noopener,noreferrer');
       return;
     }

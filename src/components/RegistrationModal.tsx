@@ -147,10 +147,6 @@ const RegistrationModal = ({
   // State for active category tab
   const [activeCategory, setActiveCategory] = useState<'ticket' | 'exhibit' | 'sponsorship'>('ticket');
 
-  // Debug when category changes
-  useEffect(() => {
-    console.log('Active category changed to:', activeCategory);
-  }, [activeCategory]);
   const [ticketQuantities, setTicketQuantities] = useState<Record<string, number>>({});
   const [isCheckout, setIsCheckout] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
@@ -311,7 +307,6 @@ const RegistrationModal = ({
       });
 
       const result = await response.json();
-      console.log(result);
 
       if (response.ok && result.isValid) {
         setValidationStatus(prev => ({ ...prev, [ticketId]: 'valid' }));
@@ -472,7 +467,6 @@ const RegistrationModal = ({
 
   const handleIncrement = (id: string, type?: string) => {
     const newQuantity = (ticketQuantities[id] || 0) + 1;
-    console.log(`Incrementing ticket ${id} to quantity ${newQuantity}`);
     setTicketQuantities(prev => ({
       ...prev,
       [id]: newQuantity
@@ -710,11 +704,6 @@ const RegistrationModal = ({
   };
 
   const handleCopyAttendee = (sourceTicketId: string, sourceIndex: number, targetTicketId: string, targetIndex: number) => {
-    // Log detailed information about the copy request and current state
-    console.log('Copy attendee request:', { sourceTicketId, sourceIndex, targetTicketId, targetIndex });
-    console.log('Available attendeesByTicket:', Object.keys(attendeesByTicket));
-    console.log('Available sponsorPassAttendees:', Object.keys(sponsorPassAttendees));
-    
     // Create mapping between different ID formats
     const getPossibleTicketIds = (id: string) => {
       const possibleIds = [id];
@@ -740,13 +729,10 @@ const RegistrationModal = ({
     let sourceAttendee = null;
     const possibleSourceIds = getPossibleTicketIds(sourceTicketId);
     
-    console.log('Checking source IDs:', possibleSourceIds);
-    
     // First check attendeesByTicket
     for (const id of possibleSourceIds) {
       if (attendeesByTicket[id] && attendeesByTicket[id][sourceIndex]) {
         sourceAttendee = attendeesByTicket[id][sourceIndex];
-        console.log(`Found source attendee in attendeesByTicket with ID: ${id}`);
         break;
       }
     }
@@ -756,7 +742,6 @@ const RegistrationModal = ({
       for (const id of possibleSourceIds) {
         if (sponsorPassAttendees[id] && sponsorPassAttendees[id][sourceIndex]) {
           sourceAttendee = sponsorPassAttendees[id][sourceIndex];
-          console.log(`Found source attendee in sponsorPassAttendees with ID: ${id}`);
           break;
         }
       }
@@ -774,7 +759,6 @@ const RegistrationModal = ({
     
     // For the target, we need to find the right state object to update
     const possibleTargetIds = getPossibleTicketIds(targetTicketId);
-    console.log('Checking target IDs:', possibleTargetIds);
     
     // Determine if we should update attendeesByTicket or sponsorPassAttendees
     let foundTarget = false;
@@ -786,13 +770,11 @@ const RegistrationModal = ({
         
         // Ensure target has enough entries by padding with empty attendees if needed
         while (targetIndex >= targetAttendees.length) {
-          console.log('Initializing new attendee at index', targetAttendees.length);
           targetAttendees.push({ ...initialModalAttendeeInfo });
         }
         
         // Copy the source attendee info to the target attendee
         targetAttendees[targetIndex] = { ...sourceAttendee };
-        console.log('Successfully copied to attendeesByTicket', { targetTicketId });
         
         return {
           ...prev,
@@ -811,13 +793,11 @@ const RegistrationModal = ({
             
             // Ensure target has enough entries by padding with empty attendees if needed
             while (targetIndex >= targetAttendees.length) {
-              console.log('Initializing new sponsor pass attendee at index', targetAttendees.length);
               targetAttendees.push({ ...initialModalAttendeeInfo });
             }
             
             // Copy the source attendee info to the target attendee
             targetAttendees[targetIndex] = { ...sourceAttendee };
-            console.log('Successfully copied to sponsorPassAttendees', { originalTarget: targetTicketId, actualTarget: id });
             
             return {
               ...prev,
@@ -1749,7 +1729,6 @@ const RegistrationModal = ({
                   {sponsorships.length > 0 && (
                     <button
                       onClick={() => {
-                        console.log('Sponsorship tab clicked');
                         setActiveCategory('sponsorship');
                       }}
                       className={`flex items-center px-4 py-2 ${activeCategory === 'sponsorship' ? 'border-b-2 border-indigo-600 text-indigo-600' : 'text-gray-500'}`}

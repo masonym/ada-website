@@ -6,7 +6,7 @@ import FeaturedSection from './FeaturedSection';
 import GridSection from './GridSection';
 import MasonrySection from './MasonrySection';
 import CarouselSection from './CarouselSection';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 interface SectionRendererProps {
   section: RecapSection;
@@ -15,10 +15,6 @@ interface SectionRendererProps {
 export const SectionRenderer: React.FC<SectionRendererProps> = ({ section }) => {
   const [error, setError] = useState<string | null>(null);
   
-  useEffect(() => {
-    console.log(`Rendering section with layout: ${section.layout}`, section);
-  }, [section]);
-
   try {
     switch (section.layout) {
       case 'featured':
