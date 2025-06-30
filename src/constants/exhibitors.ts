@@ -19,7 +19,7 @@ export interface ExhibitorType {
     description?: string;
     isActive?: boolean;
     requiresAttendeeInfo?: boolean;
-    maxQuantityPerOrder?: number;
+    maxQuantityPerOrder: number | 100;
     isGovtFreeEligible?: boolean;
     shownOnRegistrationPage?: boolean;
 }

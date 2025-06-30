@@ -4,29 +4,6 @@ import { EXHIBITOR_TYPES, ExhibitorType } from '@/constants/exhibitors';
 import { ModalRegistrationType } from '@/types/registration';
 
 // Define types based on the structure of the constants files
-type RegistrationType = {
-  id: string;
-  title: string;
-  name?: string;
-  description?: string;
-  price: number | string;
-  earlyBirdPrice?: number | string;
-  earlyBirdDeadline?: string;
-  isActive?: boolean;
-  requiresAttendeeInfo?: boolean;
-  isGovtFreeEligible?: boolean;
-  perks?: string[];
-  availabilityInfo?: string;
-  type?: 'paid' | 'free' | 'complimentary' | 'sponsor';
-  headerImage?: string;
-  subtitle?: string;
-  buttonText?: string;
-  buttonLink?: string;
-  receptionPrice?: string;
-  quantityAvailable?: number;
-  maxQuantityPerOrder?: number;
-};
-
 type PerkType = string | {
   tagline: string;
   description: string;
@@ -65,7 +42,7 @@ export interface AdapterModalRegistrationType extends ModalRegistrationType {
   buttonLink?: string;
   receptionPrice?: string;
   quantityAvailable?: number;
-  maxQuantityPerOrder?: number;
+  maxQuantityPerOrder: number;
   category: 'ticket' | 'exhibit' | 'sponsorship';
   requiresValidation?: boolean; // New flag for special validation
   // Add any other fields that might be needed
@@ -164,7 +141,7 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
       perks: processedPerks,
       category: 'sponsorship',
       quantityAvailable: sponsor.slotsPerEvent || 1, // Default to 1 if slotsPerEvent is not provided
-      maxQuantityPerOrder: sponsor.slotsPerEvent || 1,
+      maxQuantityPerOrder: 1,
       sponsorPasses: sponsorPasses || 0, // Include sponsorPasses in the returned object
       colour: 'colour' in sponsor ? sponsor.colour : undefined,
     };
@@ -187,7 +164,7 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
       buttonText: 'Add',
       category: 'sponsorship',
       requiresValidation: true,
-      maxQuantityPerOrder: 10, // Example limit
+      maxQuantityPerOrder: 10,
       perks: [
         "(1) VIP Attendee Pass",
         "Access to General Sessions",

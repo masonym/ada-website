@@ -1786,7 +1786,7 @@ const RegistrationModal = ({
                         </span>
                         <button
                           onClick={() => handleIncrement(reg.id, reg.type)}
-                          disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading}
+                          disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
                           className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                         >
                           +
@@ -1829,7 +1829,7 @@ const RegistrationModal = ({
                           </span>
                           <button
                             onClick={() => handleIncrement(reg.id, reg.type)}
-                            disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading}
+                            disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
                             className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                           >
                             +
@@ -1875,7 +1875,7 @@ const RegistrationModal = ({
                           </span>
                           <button
                             onClick={() => handleIncrement(reg.id, reg.type)}
-                            disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading}
+                            disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
                             className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                           >
                             +
