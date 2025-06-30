@@ -634,6 +634,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/rite-in-the-rain.webp",
     website: "https://www.riteintherain.com/",
     size: 'small'
+  },
+  "bounce-imaging": {
+    id: "bounce-imaging",
+    name: "Bounce Imaging",
+    logo: "/sponsors/bounce-imaging.webp",
+    website: "https://bounceimaging.com/",
+    size: 'small'
   }
 };
 
