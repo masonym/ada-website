@@ -209,7 +209,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         primeSponsor:
         {
             id: "platinum-sponsor",
-            title: "Platinum Sponsor",
+            title: "Platinum Sponsorship",
             cost: 10000,
             slotsPerEvent: 1,
             perks: [
@@ -257,7 +257,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         sponsorships: [
             {
                 id: "gold-sponsor",
-                title: "Gold Sponsor",
+                title: "Gold Sponsorship",
                 cost: 7000,
                 slotsPerEvent: 2,
                 perks: [
@@ -300,7 +300,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             },
             {
                 id: "silver-sponsor",
-                title: "Silver Sponsor",
+                title: "Silver Sponsorship",
                 cost: 5000,
                 slotsPerEvent: 3,
                 perks: [
@@ -342,7 +342,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             },
             {
                 id: "bronze-sponsor",
-                title: "Bronze Sponsor",
+                title: "Bronze Sponsorship",
                 cost: 3000,
                 slotsPerEvent: 5,
                 perks: [
@@ -406,7 +406,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             },
             {
                 id: "vip-networking-reception-sponsor",
-                title: "VIP Networking Reception Sponsor",
+                title: "VIP Networking Reception Sponsorship",
                 cost: 3500,
                 slotsPerEvent: 1,
                 perks: [
@@ -452,7 +452,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             },
             {
                 id: "networking-luncheon-sponsor",
-                title: "Networking Luncheon Sponsor",
+                title: "Networking Luncheon Sponsorship",
                 cost: 2500,
                 slotsPerEvent: 2,
                 perks: [
@@ -498,13 +498,13 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             },
             {
                 id: "small-business-sponsor",
-                title: "Small Business Sponsor",
+                title: "Small Business Sponsorship",
                 cost: 1500,
                 slotsPerEvent: 15,
                 perks: [
                     { formatted: [
                         { content: "Event Access", bold: true },
-                        { content: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each", indent: 1 }
+                        { content: "(2) VIP Attendee Passes. Additional Passes can be Purchased for $395 each", indent: 1 }
                     ]},
                     { formatted: [
                         { content: "Branding", bold: true },
@@ -525,13 +525,13 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             },
             {
                 id: "small-business-sponsor-without-exhibit-space",
-                title: "Small Business Sponsor without Exhibit Space",
+                title: "Small Business Sponsorship without Exhibit Space",
                 cost: 1250,
                 slotsPerEvent: 15,
                 perks: [
                     { formatted: [
                         { content: "Event Access", bold: true },
-                        { content: "(2) Sponsor Passes. Additional Passes can be Purchased for $395 each", indent: 1 }
+                        { content: "(2) VIP Attendee Passes. Additional Passes can be Purchased for $395 each", indent: 1 }
                     ]},
                     { formatted: [
                         { content: "Branding", bold: true },
