@@ -66,38 +66,36 @@ matchmakingSessions: {
 
 const orderSummaryHtml = generateOrderSummaryHtml(mockData.orderSummary);
 
-const templates = {
-  'Standard Attendee': attendeePassTemplate({
-    ...mockData,
-    orderSummaryHtml,
-  }),
-  'VIP Attendee': vipAttendeePassTemplate({
-    ...mockData,
-    orderSummaryHtml,
-  }),
-  'Exhibitor': exhibitorTemplate({
-    ...mockData,
-    orderSummaryHtml,
-  }),
-  'Sponsor': sponsorTemplate({
-    ...mockData,
-    orderSummaryHtml,
-  }),
-  'Gov/Mil Pass': govMilPassTemplate({
-    ...mockData,
-    orderSummaryHtml,
-  }),
+// Define template functions that can be called with dynamic data
+const templateFunctions = {
+  'Standard Attendee': (data: any) => attendeePassTemplate(data),
+  'VIP Attendee': (data: any) => vipAttendeePassTemplate(data),
+  'Exhibitor': (data: any) => exhibitorTemplate(data),
+  'Sponsor': (data: any) => sponsorTemplate(data),
+  'Gov/Mil Pass': (data: any) => govMilPassTemplate(data),
 };
 
-type TemplateName = keyof typeof templates;
+const sponsorLevels = [
+  'Small Business Sponsor',
+  'Small Business Sponsor without Exhibit Space',
+  'Bronze Sponsor',
+  'Silver Sponsor',
+  'Gold Sponsor',
+  'Platinum Sponsor',
+]
+
+type TemplateName = keyof typeof templateFunctions;
+type SponsorLevel = typeof sponsorLevels[number];
+
 
 export default function EmailPreviewPage() {
   const [selectedTemplate, setSelectedTemplate] = useState<TemplateName>('Sponsor');
+  const [selectedSponsorLevel, setSelectedSponsorLevel] = useState<SponsorLevel>('Small Business Sponsor');
 
   return (
     <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
       <h1>Email Template Preview</h1>
-      <div style={{ marginBottom: '20px' }}>
+      <div style={{ marginBottom: '20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
         <label htmlFor="template-select" style={{ marginRight: '10px' }}>Select a template:</label>
         <select
           id="template-select"
@@ -105,14 +103,39 @@ export default function EmailPreviewPage() {
           onChange={(e) => setSelectedTemplate(e.target.value as TemplateName)}
           style={{ padding: '8px', fontSize: '16px' }}
         >
-          {Object.keys(templates).map((name) => (
+          {Object.keys(templateFunctions).map((name) => (
             <option key={name} value={name}>{name}</option>
           ))}
         </select>
+        {selectedTemplate === 'Sponsor' && (
+          <>
+            <label htmlFor="sponsor-select" style={{ marginRight: '10px' }}>Select a sponsor level:</label>
+            <select
+              id="sponsor-select"
+              value={selectedSponsorLevel}
+              onChange={(e) => setSelectedSponsorLevel(e.target.value as SponsorLevel)}
+          style={{ padding: '8px', fontSize: '16px' }}
+        >
+          {sponsorLevels.map((name) => (
+            <option key={name} value={name}>{name}</option>
+          ))}
+        </select>
+          </>
+        )}
       </div>
       <div style={{ border: '1px solid #ccc', height: '80vh' }}>
         <iframe
-          srcDoc={templates[selectedTemplate]}
+          srcDoc={templateFunctions[selectedTemplate](
+            // Only update sponsorshipLevel when selectedTemplate is 'Sponsor'
+            selectedTemplate === 'Sponsor' ? {
+              ...mockData,
+              sponsorshipLevel: selectedSponsorLevel,
+              orderSummaryHtml,
+            } : {
+              ...mockData,
+              orderSummaryHtml,
+            }
+  )}
           title="Email Preview"
           width="100%"
           height="100%"

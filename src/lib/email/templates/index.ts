@@ -268,33 +268,19 @@ export function attendeePassTemplate({
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
     
     <div class="highlight">
-      <p><strong>Event Details</strong></p>
+      <h2>Event Details</h2>
       <p><strong>Event:</strong> ${eventName}</p>
       <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
       <p><strong>Location:</strong> ${eventLocation}</p>
+      ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here</a></p>` : ''}
     </div>
 
-    
-    ${hotelInfo ? `
-    <div class="highlight">
-      <p><strong>Hotel Accommodations</strong></p>
-      <p>Room Block Information is available <a href="${hotelInfo}">here.</a></p>
-    </div>
-    ` : ''}
-    
-    <div class="highlight">
-      <p><strong>Please Note</strong></p>
-      <ul>
-        <li><strong>All registrations are final</strong>. We are unable to offer refunds for this event.</li>
-        <li>Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org/</a></li>
-      </ul>
-    </div>
-    
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
     
     ${orderSummaryHtml || ''}
     
     <p>If you have any questions or need further assistance, feel free to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
+    <p>Please note all registrations are final. We are unable to offer refunds for this event. Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org</a></p>
     
     <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
     
@@ -335,43 +321,25 @@ export function vipAttendeePassTemplate({
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
     
     <div class="highlight">
-      <p><strong>Event Details</strong></p>
+      <h2>Event Details</h2>
       <p><strong>Event:</strong> ${eventName}</p>
       <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
       <p><strong>Location:</strong> ${eventLocation}</p>
+      ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here</a></p>` : ''}
     </div>
-
-
-    
-
-    ${hotelInfo ? `
-    <div class="highlight">
-      <p><strong>Hotel Accommodations</strong></p>
-      <p>Room Block Information is available <a href="${hotelInfo}">here.</a></p>
-    </div>
-    ` : ''}
 
     ${vipNetworkingReception ? `
     <div class="highlight">
-      <h2><strong>VIP Networking Reception</strong></h2>
-      <p>
-     ${vipNetworkingReception.description}
-    </div>
-    ` : ''}
-    
-    <div class="highlight">
-      <p><strong>Please Note</strong></p>
-      <ul>
-        <li><strong>All registrations are final</strong>. We are unable to offer refunds for this event.</li>
-        <li>Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org/</a></li>
-      </ul>
-    </div>
-    
+      <h2>VIP Networking Reception</h2>
+      <p>${vipNetworkingReception.description}</p>
+    </div>` : ''}
+
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
     
     ${orderSummaryHtml || ''}
     
     <p>If you have any questions or need further assistance, feel free to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
+<p>Please note all registrations are final. We are unable to offer refunds for this event. Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org</a></p>
     
     <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
     
@@ -413,53 +381,33 @@ export function exhibitorTemplate({
     <p>Dear ${firstName},</p>
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
 
-    <p>If you wish to purchase additional attendee passes, you can do so by clicking the button below.</p>
-    <p>Note for mason for now: We need to develop a system such that we validate users so that they can purchase additional attendee passes.</p>
-    <p> Need to figure out a good way to do this...</p>
+    <p>If you wish to purchase additional attendee passes, you can do so using the $395 registration option on our website. Please send a high-quality image of your company logo to Chayil Dickerson <a href="mailto:chayil@americandefensealliance.org">(chayil@americandefensealliance.org)</a></p>
     
-    <div class="highlight">
-      <p><strong>Event Details</strong></p>
-      <p><strong>Event:</strong> ${eventName}</p>
-      <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
-      <p><strong>Location:</strong> ${eventLocation}</p>
-    </div>
+<div class="highlight">
+  <h2>Event Details</h2>
+  <p><strong>Event:</strong> ${eventName}</p>
+  <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
+  <p><strong>Location:</strong> ${eventLocation}</p>
+  ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here</a></p>` : ''}
+</div>
 
+<div class="highlight">
+  <h2>Exhibitor Instructions</h2>
+  <p>Exhibitor setup and other important instructions are available on our website. <a href="${getCdnPath(exhibitorInstructions)}">View Exhibitor Instructions</a></p>
+</div>
 
-    <div class="highlight">
-      <p><strong>Exhibitor Instructions</strong></p>
-      <p>Exhibitor setup and other important instructions are available on our website. <a href="${getCdnPath(exhibitorInstructions)}">View Exhibitor Instructions</a></p>
-    </div>
+${vipNetworkingReception ? `
+<div class="highlight">
+  <h2>VIP Networking Reception</h2>
+  <p>As an exhibitor, you and your guests are invited to our exclusive VIP Networking Reception. ${vipNetworkingReception.description}</p>
+</div>` : ''}
 
-    
-
-    ${hotelInfo ? `
-    <div class="highlight">
-      <p><strong>Hotel Accommodations</strong></p>
-      <p>Room Block Information is available <a href="${hotelInfo}">here.</a></p>
-    </div>
-    ` : ''}
-
-    ${vipNetworkingReception ? `
-    <div class="highlight">
-      <p><strong>VIP Networking Reception</strong></p>
-      <p>
-     ${vipNetworkingReception.description}
-    </div>
-    ` : ''}
-    
-    <div class="highlight">
-      <p><strong>Please Note</strong></p>
-      <ul>
-        <li><strong>All registrations are final</strong>. We are unable to offer refunds for this event.</li>
-        <li>Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org/</a></li>
-      </ul>
-    </div>
-    
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
 
     ${orderSummaryHtml || ''}
     
     <p>If you have any questions or need further assistance, feel free to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
+    <p>Please note all registrations are final. We are unable to offer refunds for this event. Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org</a></p>
     
     <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
     
@@ -504,10 +452,10 @@ export function sponsorTemplate({
   const sponsorshipTitle = sponsorshipLevel.toLowerCase();
 
   const getSpeakingTime = () => {
-    if (sponsorshipTitle.includes('platinum')) return '20-minute';
-    if (sponsorshipTitle.includes('gold')) return '15-minute';
-    if (sponsorshipTitle.includes('silver')) return '10-minute';
-    if (sponsorshipTitle.includes('bronze')) return '5-minute';
+    if (sponsorshipTitle.includes('platinum')) return '20-minutes';
+    if (sponsorshipTitle.includes('gold')) return '15-minutes';
+    if (sponsorshipTitle.includes('silver')) return '10-minutes';
+    if (sponsorshipTitle.includes('bronze')) return '5-minutes';
     return '';
   };
 
@@ -609,32 +557,19 @@ export function govMilPassTemplate({
     
     <p>If you have indicated interest in a Speaking Opportunity, please contact Charles Sills (<a href="mailto:csills@trillacorpeconstruction.com">csills@trillacorpeconstruction.com</a>).</p>
     
-    <div class="highlight">
-      <p><strong>Event Details</strong></p>
-      <p><strong>Event:</strong> ${eventName}</p>
-      <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
-      <p><strong>Location:</strong> ${eventLocation}</p>
-    </div>
+<div class="highlight">
+  <h2>Event Details</h2>
+  <p><strong>Event:</strong> ${eventName}</p>
+  <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
+  <p><strong>Location:</strong> ${eventLocation}</p>
+  ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here</a></p>` : ''}
+</div>
 
-    
-    ${hotelInfo ? `
-    <div class="highlight">
-      <p><strong>Hotel Accommodations</strong></p>
-      <p>Room Block Information is available <a href="${hotelInfo}">here.</a></p>
-    </div>
-    ` : ''}
-    
-    <div class="highlight">
-      <p><strong>Please Note</strong></p>
-      <ul>
-        <li><strong>All registrations are final</strong>. We are unable to offer refunds for this event.</li>
-        <li>Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org/</a></li>
-      </ul>
-    </div>
     
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
     
     <p>If you have any questions or need further assistance, feel free to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
+    <p>Please note all registrations are final. We are unable to offer refunds for this event. Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org</a></p>
     
     <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
     
