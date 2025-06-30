@@ -1,7 +1,7 @@
 export function getEnv() {
   return {
     // Stripe
-    STRIPE_PUBLISHABLE_KEY: getRequiredEnv('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY', 'Stripe Publishable Key'),
+    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: getRequiredEnv('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY', 'Stripe Publishable Key'),
     STRIPE_SECRET_KEY: getRequiredEnv('STRIPE_SECRET_KEY', 'Stripe Secret Key'),
     STRIPE_WEBHOOK_SECRET: getRequiredEnv('STRIPE_WEBHOOK_SECRET', 'Stripe Webhook Secret'),
     
