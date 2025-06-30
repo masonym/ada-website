@@ -8,6 +8,7 @@ import { getCdnPath } from '@/utils/image';
 import PriceDisplay from '@/components/PriceDisplay';
 import { AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { Event } from '@/types/events';
+import FormattedPerk from '@/components/FormattedPerk';
 
 // Use the ModalRegistrationType from our adapter
 type RegistrationCardProps = AdapterModalRegistrationType;
@@ -79,8 +80,10 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
           <ul className="space-y-2 mb-6">
             {item.perks?.map((perk, index) => (
               <li key={index} className="flex items-start">
-                <ChevronRight className="h-4 w-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
-                <span className="text-sm text-gray-700" dangerouslySetInnerHTML={{ __html: perk }}></span>
+                {/* <ChevronRight className="h-4 w-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" /> */}
+                <div className="text-sm text-gray-700">
+                  <FormattedPerk content={perk} />
+                </div>
               </li>
             ))}
           </ul>

@@ -10,10 +10,16 @@ interface FormattedPerkType {
   indent?: number;
 }
 
-type PerkType = string | {
+/**
+ * PerkType matches both the FormattedPerk component's props structure and legacy format:
+ * - string: Simple text with optional <b> tags and indentation via spaces
+ * - object with formatted: Structured content with bold/indent properties for FormattedPerk
+ * - object with tagline/description: Legacy format used in sponsorships
+ */
+type PerkType = string | { 
+  formatted?: FormattedPerkType[];
   tagline?: string;
   description?: string;
-  formatted?: FormattedPerkType[];
 };
 
 export interface SponsorshipType {

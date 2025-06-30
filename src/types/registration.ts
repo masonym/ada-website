@@ -20,6 +20,11 @@ export interface ModalRegistrationType {
   isActive: boolean;
   requiresAttendeeInfo: boolean;
   isGovtFreeEligible: boolean;
+  /**
+   * Perks can be either plain strings or formatted objects
+   * - Strings can contain <b> tags for bold and use indentation for hierarchy
+   * - Formatted objects use a structured approach with content, bold, and indent properties
+   */
   perks?: (string | {formatted: {content: string; bold?: boolean; indent?: number;}[]})[];
   availabilityInfo?: string;
   type: 'paid' | 'free' | 'complimentary' | 'sponsor';
