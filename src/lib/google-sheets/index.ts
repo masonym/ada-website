@@ -113,13 +113,10 @@ export async function logRegistration(
     const loggedSponsorships: Record<string, boolean> = {};
 
     for (const ticket of registrationData.tickets) {
-      // Skip sponsorship products, only log attendee tickets
-      // But keep tickets that are included with sponsorships
-      if (ticket.category === 'sponsorship') {
-        // Skip the sponsorship product itself
-        continue;
-      }
+      // We now handle sponsorship products too - we need to log them
+      // Previously we were skipping them, but now we want to log them with their correct name
       
+      console.log(ticket);
       const ticketType = ticket.ticketName || 'N/A';
       const attendees = ticket.attendeeInfo || [];
 
@@ -128,8 +125,12 @@ export async function logRegistration(
           // Determine what amount to log based on ticket type
           let amountToLog = 0;
           
+          // Always set complimentary tickets to $0
+          if (ticket.ticketPrice === 'Complimentary') {
+            amountToLog = 0;
+          }
           // For sponsor-included tickets, show the sponsor amount for the first ticket only
-          if (ticket.isIncludedWithSponsorship && ticket.sponsorshipId) {
+          else if (ticket.isIncludedWithSponsorship && ticket.sponsorshipId) {
             if (!loggedSponsorships[ticket.sponsorshipId]) {
               // Find the sponsorship ticket and get its price
               const sponsorTicket = registrationData.tickets.find(t => t.ticketId === ticket.sponsorshipId);

@@ -110,7 +110,6 @@ const isSoldOut = (item: AdapterModalRegistrationType, eventSponsors: any, event
 // Helper function to get the number of remaining slots for an item
 const getRemainingSlots = (item: AdapterModalRegistrationType, eventSponsors: any, eventId: string | number): number | null => {
   // If it's not a sponsorship or exhibit, or doesn't have quantityAvailable defined, return null
-  console.log(item);
   if ((item.category !== 'sponsorship' && item.category !== 'exhibit') || !item.id || !item.quantityAvailable) {
     return null;
   }
@@ -130,7 +129,6 @@ const getRemainingSlots = (item: AdapterModalRegistrationType, eventSponsors: an
       }
     });
   }
-  console.log(slotsAvailable, slotsTaken);
 
   // Return the number of remaining slots
   return slotsAvailable - slotsTaken;
@@ -978,14 +976,21 @@ const RegistrationModal = ({
               ? parseFloat(effectivePrice.replace(/[^0-9.]/g, '')) || reg.price
               : effectivePrice;
 
+          // For sponsorships, check if there are sponsor pass attendees and use the first one as the POC
+          let attendeeInfo = (attendeesByTicket[reg.id] || []).map(att => ({ ...att }));
+          
+          // If this is a sponsorship and it has sponsor passes, use the first attendee as the POC
+          if (category === 'sponsorship' && sponsorPassAttendees[reg.id] && sponsorPassAttendees[reg.id].length > 0) {
+            attendeeInfo = [{ ...sponsorPassAttendees[reg.id][0] }];
+          }
+
           return {
             ticketId: reg.id,
             ticketName: reg.title,
             ticketPrice: processedPrice,
             quantity: ticketQuantities[reg.id] || 0,
             category, // Add category to identify the type of registration
-            // Ensure attendeeInfo structure matches what the schema expects for validation
-            attendeeInfo: (attendeesByTicket[reg.id] || []).map(att => ({ ...att })),
+            attendeeInfo,
             // Include type information for the backend to properly identify sponsorships
             type: reg.type,
           };
@@ -1004,19 +1009,8 @@ const RegistrationModal = ({
         const passAttendees = sponsorPassAttendees[sponsorId] || [];
         if (passAttendees.length === 0) return;
 
-        // Handle first attendee - labeled just as the sponsor name
-        if (passAttendees.length > 0) {
-          sponsorPassTickets.push({
-            ticketId: `${sponsorId}-sponsor`,
-            ticketName: `${sponsor.name}`,
-            ticketPrice: 'Complimentary', // These are free as part of sponsorship
-            quantity: 1,
-            category: 'ticket', // Treat as tickets for processing
-            isIncludedWithSponsorship: true, // Flag to identify these are from sponsorship
-            sponsorshipId: sponsorId, // Reference back to the sponsorship
-            attendeeInfo: [{ ...passAttendees[0] }],
-          });
-        }
+        // REMOVED: no longer creating a separate sponsor ticket for the first attendee
+        // Instead, the attendee info will be added to the main sponsorship ticket in processRegistrations()
 
         // Handle additional attendees - labeled as "Additional Sponsor Attendee Pass"
         if (passAttendees.length > 1) {
