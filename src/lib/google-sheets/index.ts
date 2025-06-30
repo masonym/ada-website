@@ -93,10 +93,11 @@ export async function logRegistration(
     }
 
     const registrationTimestamp = new Date().toISOString();
+    const formattedRegistrationTimestamp = new Date(registrationTimestamp).toLocaleString();
     const rowsToAppend: any[][] = [];
 
     const commonData = {
-      registrationTimestamp,
+      registrationTimestamp: formattedRegistrationTimestamp,
       orderId,
       paymentStatus,
       amountPaid: amountPaid / 100, // Convert from cents
@@ -109,6 +110,13 @@ export async function logRegistration(
     };
 
     for (const ticket of registrationData.tickets) {
+      // Skip sponsorship products, only log attendee tickets
+      // But keep tickets that are included with sponsorships
+      if (ticket.category === 'sponsorship') {
+        // Skip the sponsorship product itself
+        continue;
+      }
+      
       const ticketType = ticket.ticketName || 'N/A';
       const attendees = ticket.attendeeInfo || [];
 

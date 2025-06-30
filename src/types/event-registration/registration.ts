@@ -41,6 +41,9 @@ export interface TicketSelection {
   ticketName: string;
   ticketPrice: string | number; // Can be a string (e.g., "Complimentary")
   quantity: number;
+  category?: 'ticket' | 'exhibit' | 'sponsorship';
+  isIncludedWithSponsorship?: boolean;
+  sponsorshipId?: string;
   attendeeInfo?: AttendeeInfo[];
 }
 

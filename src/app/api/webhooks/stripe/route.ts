@@ -71,7 +71,7 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
       items: registrationData.tickets.map(ticket => {
         const regType = allRegistrationTypes.find(rt => rt.id === ticket.ticketId);
         return {
-          name: regType?.title || 'Unknown Ticket',
+          name: ticket.ticketName || regType?.name || 'Unknown Ticket',
           quantity: ticket.quantity,
           price: (Number(regType?.price) || 0), // Price is in dollars, converting from string
         };
