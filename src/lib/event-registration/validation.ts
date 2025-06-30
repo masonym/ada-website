@@ -51,11 +51,7 @@ export const registrationSchema = yup.object().shape({
           company: yup.string().required('Company name is required'),
           businessSize: yup.string().required('Business size is required'),
           industry: yup.string().required('Industry is required'),
-          sbaIdentification: yup.string().when('businessSize', {
-            is: 'Small Business',
-            then: schema => schema.required('Small Business Administration (SBA) identification is required for small businesses'),
-            otherwise: schema => schema.optional(),
-          }),
+          sbaIdentification: yup.string().optional(),
         })
       )
     }).test(
