@@ -100,7 +100,7 @@ export async function logRegistration(
       registrationTimestamp: formattedRegistrationTimestamp,
       orderId,
       paymentStatus,
-      amountPaid: amountPaid / 100, // Convert from cents
+      totalAmountPaid: amountPaid / 100, // Convert from cents
       promoCode: promoCode || '',
       discountApplied: discountApplied || 0,
       buyerFirstName: registrationData.firstName,
@@ -108,6 +108,9 @@ export async function logRegistration(
       buyerEmail: registrationData.email,
       buyerCompany: registrationData.company,
     };
+    
+    // Track if we've logged a sponsorship amount
+    const loggedSponsorships: Record<string, boolean> = {};
 
     for (const ticket of registrationData.tickets) {
       // Skip sponsorship products, only log attendee tickets
@@ -122,6 +125,24 @@ export async function logRegistration(
 
       if (attendees.length > 0) {
         for (const attendee of attendees) {
+          // Determine what amount to log based on ticket type
+          let amountToLog = 0;
+          
+          // For sponsor-included tickets, show the sponsor amount for the first ticket only
+          if (ticket.isIncludedWithSponsorship && ticket.sponsorshipId) {
+            if (!loggedSponsorships[ticket.sponsorshipId]) {
+              // Find the sponsorship ticket and get its price
+              const sponsorTicket = registrationData.tickets.find(t => t.ticketId === ticket.sponsorshipId);
+              if (sponsorTicket) {
+                amountToLog = typeof sponsorTicket.ticketPrice === 'number' ? sponsorTicket.ticketPrice : 0;
+                loggedSponsorships[ticket.sponsorshipId] = true;
+              }
+            }
+          } else {
+            // Regular ticket - use per-ticket price
+            amountToLog = typeof ticket.ticketPrice === 'number' ? ticket.ticketPrice : 0;
+          }
+          
           const row = [
             attendee.company || '',
             attendee.jobTitle || '',
@@ -131,8 +152,8 @@ export async function logRegistration(
             attendee.phone || '',
             commonData.registrationTimestamp,
             ticketType,
-            commonData.amountPaid,
-            commonData.amountPaid, // Placeholder for a different value if needed
+            amountToLog,
+            commonData.totalAmountPaid, // Total order amount
             attendee.website || '',
             attendee.businessSize || '',
             attendee.sbaIdentification || '',
@@ -145,12 +166,30 @@ export async function logRegistration(
       } else {
         // Create generic rows if no attendee info is provided for the quantity
         for (let i = 0; i < ticket.quantity; i++) {
+          // Use the same payment logic as above
+          let amountToLog = 0;
+          
+          // For sponsor-included tickets, show the sponsor amount for the first ticket only
+          if (ticket.isIncludedWithSponsorship && ticket.sponsorshipId) {
+            if (!loggedSponsorships[ticket.sponsorshipId]) {
+              // Find the sponsorship ticket and get its price
+              const sponsorTicket = registrationData.tickets.find(t => t.ticketId === ticket.sponsorshipId);
+              if (sponsorTicket) {
+                amountToLog = typeof sponsorTicket.ticketPrice === 'number' ? sponsorTicket.ticketPrice : 0;
+                loggedSponsorships[ticket.sponsorshipId] = true;
+              }
+            }
+          } else {
+            // Regular ticket - use per-ticket price
+            amountToLog = typeof ticket.ticketPrice === 'number' ? ticket.ticketPrice : 0;
+          }
+          
           const row = [
             '', '', '', '', '', '',
             commonData.registrationTimestamp,
             ticketType,
-            commonData.amountPaid,
-            commonData.amountPaid,
+            amountToLog,
+            commonData.totalAmountPaid, // Total order amount
             '', '', '', '', '', '',
           ];
           rowsToAppend.push(row);
