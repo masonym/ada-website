@@ -1007,7 +1007,7 @@ const RegistrationModal = ({
         // Create a special ticket entry for these sponsor passes
         sponsorPassTickets.push({
           ticketId: `${sponsorId}-vip-pass`,
-          ticketName: `${sponsor.name} VIP Pass`,
+          ticketName: `${sponsor.name} VIP Attendee Pass`,
           ticketPrice: 'Complimentary', // These are free as part of sponsorship
           quantity: passAttendees.length,
           category: 'ticket', // Treat as tickets for processing

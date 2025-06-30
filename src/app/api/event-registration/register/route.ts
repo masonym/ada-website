@@ -50,7 +50,7 @@ export async function POST(request: Request) {
   try {
     const env = getEnv();
     const body = await request.json();
-    // console.log("BODY FROM REGISTRATION ROUTE: ", body);
+    console.log("BODY FROM REGISTRATION ROUTE: ", body);
     const eventIdFromBody = body.eventId; // Extract eventId from the raw body
 
     const { isValid, errors, validatedData } = await validateRegistrationData(body);
