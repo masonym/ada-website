@@ -110,21 +110,20 @@ Ms. Buehler represents the Secretary of the Army at congressional committee and 
 	"david-canada": {
 		"image": "david-canada.webp",
 		"name": "David Canada",
-		"position": "Director, Global Supplier Diversity",
+		"position": "Director, Strategic Sourcing & Partnerships",
 		"company": "Boeing Defense Space & Security, The Boeing Company",
 		"bio": `
-David Canada is director of Strategic Sourcing & Partnerships for Boeing Defense Space & Security (BDS). Named to this role in 2023, he has primary responsibility for building stronger relationships with the small business offices at the DoD and NASA as well as with the respective representatives of the branches of services. The goal is to provide opportunities for small business, service-disabled veteran-owned small business, HUBZone small business, small disadvantaged business, and women-owned small business as defined by the Small Business Administration and/or other entities designated or defined by applicable law. David is also responsible for supply chain strategy, which includes country segmentation for campaigns, offset obligations, supplier risk assessment reporting on geopolitical, labor, natural disaster & raw materials and market enablement. 
+David Canada is Director of Strategic Sourcing & Partnerships for Boeing Defense Space & Security (BDS). Named to this role in 2023, he has primary responsibility for building stronger relationships with the small business offices at the DoD and NASA as well as with the respective representatives of the branches of services. The goal is to provide opportunities for small business, service-disabled veteran-owned small business, HUBZone small business, small disadvantaged business, and women-owned small business as defined by the Small Business Administration and/or other entities designated or defined by applicable law. David is also responsible for supply chain strategy, which includes country segmentation for campaigns, offset obligations, supplier risk assessment reporting on geopolitical, labor, natural disaster & raw materials and market enablement.
 <br/><br/>
-David joined The Boeing Company in 2007 as an industrial engineer on the V-22 Osprey line. He implemented new project management tools that resulted in automated workforce planning and improved the schedule planning efficiency. David grew, taking on new challenges and roles across Boeing. 
+David joined The Boeing Company in 2007 as an Industrial Engineer on the V-22 Osprey line. He implemented new project management tools that resulted in automated workforce planning and improved the schedule planning efficiency. David grew, taking on new challenges and roles across Boeing.
 <br/><br/>
-As IT procurement manager, he managed 18 procurement agents, 30 suppliers, and more than $250 million in contracts. He moved on to serve as chief of staff to the Vice President of BDS IT Business Partners. 
+As IT Procurement Manager, he managed 18 procurement agents, 30 suppliers, and more than $250 million in contracts. He moved on to serve as Chief of Staff to the Vice President of BDS IT Business Partners.
 <br/><br/>
-He continued his career as the Senior Manager, Mergers & Acquisitions Integration Strategy, where he led mergers and acquisitions estimated at $2.5 billion, and also managed critical cybersecurity issues and systems tied to subsidiary integration. Canada also has served as the Director of Business Operations for Boeing Global Services (BGS) where is he responsible for business transformation and improve operational efficiency.  
+He continued his career as the Senior Manager, Mergers & Acquisitions Integration Strategy, where he led mergers and acquisitions estimated at $2.5 billion, and also managed critical cybersecurity issues and systems tied to subsidiary integration. Canada also has served as the Director of Business Operations for Boeing Global Services (BGS) where is he responsible for business transformation and improve operational efficiency.
 <br/><br/>
-David earned a bachelor’s degree in mechanical engineering from Howard University, and a master’s degree in Business Administration and a Certification in Project Management. 
+David earned a Bachelor’s Degree in Mechanical Engineering from Howard University, and a Master’s Degree in Business Administration and a Certification in Project Management.
 <br/><br/>
-Giving back is a part of who David is. He serves on the board of the following non-profit organizations: DC CAP, BeOrg, Black Alliance of Colleges & Employers (BACE), Step Afrika and Wearable Tech Ventures. David is also very passionate about STEM education and increasing the number of minorities in technology fields.  He serves as an active corporate representative for the Black Engineer of the Year Awards as well as the Execution Sponsor for the National Society of Black Engineers.
-<br/><br/>
+Giving back is a part of who David is. He serves on the board of the following non-profit organizations: DC CAP, BeOrg, Black Alliance of Colleges & Employers (BACE), Step Afrika and Wearable Tech Ventures. David is also very passionate about STEM education and increasing the number of minorities in technology fields. He serves as an active corporate representative for the Black Engineer of the Year Awards as well as the Execution Sponsor for the National Society of Black Engineers.
 `
 	},
 	"patricia-waddell": {
@@ -827,9 +826,9 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	,
 	"stephen-mongold": {
 		"image": "stephen-mongold.webp",
-		"name": "CAPT Stephen Mongold",
-		"position": "Director",
-		"company": "COMSUBFOR Submarine Maintenance Operations Center",
+		"name": "Captain Steven E. Mongold",
+		"position": "Director, COMSUBFOR Submarine Maintenance Operations Center",
+		"company": "Submarine Forces Atlantic (COMSUBLANT)",
 		"bio": `CAPT Steve Mongold enlisted in the Navy in 1995 as a Nuclear Propulsion Officer Candidate (NUPOC) and received his commission from Officer Candidate School (OCS) in 1996.  He resides in Chesapeake, Virginia and earned a Bachelor’s degree in Chemical Engineering from Villanova University, and Master’s degree in Engineering Management from Old Dominion University.
 	<br/>
 	
@@ -884,7 +883,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	"diane-dempsey": {
 		"image": "diane-dempsey.webp",
 		"name": "Diane Dempsey",
-		"position": "Director, Small Business Programs",
+		"position": "Director, Small Business Programs, Intelligence & Security",
 		"company": "BAE Systems",
 		"bio": `Ms. Dempsey has enjoyed an extensive career in the field of procurement, subcontracts and supplier diversity.  Currently she is the Director, Small Business Programs for BAE Systems Intelligence & Security Sector.   Ms. Dempsey has also been a small business advocate for several prime contractors in the DC Metropolitan area.   She serves on multiple boards and committees, most recently served as the Chair, Capital Region Minority Supplier Development Council Board of Directors.  She formerly chaired the Community Business Partnership Board of Directors.  Additionally, she has served as the TRIAD Industry Group Co-Chair since 2006.  Her leadership and advocacy have been recognized with many awards, most recently the National Veterans Small Business Coalition 2021 Prime Contractor – Advocate of the Year, U.S. Women’s Chamber of Commerce, 2021 CEO Award and 2024 VA Asian Chamber of Commerce Diversity Award.
 	<br/>
@@ -1017,7 +1016,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	},
 	"robyn-card": {
 		"image": "robyn-card.webp",
-		"name": "Robyn Card",
+		"name": "Dr. Robyn Card",
 		"position": "Director, Small Business Office (SBO)",
 		"company": "General Dynamics Information Technology, Inc. (GDIT)",
 		"bio": `Dr. Robyn Card has worked as a contracting officer for General Dynamics Information Technology, Inc. (GDIT) since 2012, and currently serves as the Director of the Small Business Office (SBO). She leads a dynamic team of professionals who champion the inclusion of small businesses as team members and partners with GDIT. With a focus on teambuilding and informal mentorship, Dr. Card leads initiatives within GDIT’s SBO to actively educate suppliers regarding best practices including increased engagement with government and industry partners, and training internal stakeholders on process improvements to support legislative changes. 
@@ -1050,7 +1049,14 @@ Ms. Plath's naval decorations include the Navy Commendation Medal (two awards), 
 			"isKeynote": true,
 		},
 	}
-};
+,
+  "paul-wichert": {
+    "image": "paul-wichert.webp",
+    "name": "Paul Wichert",
+    "position": "VP of Sales",
+    "company": "DMG Mori Federal Services",
+    "bio": `Paul Wichert is a 45-year veteran of the manufacturing industry. His experience is multi-faceted, Operational Executive of machine tool builders, Owner/Operator of contract machining services business, President of manufacturing facilities in US, China & Taiwan. Importing and consulting in global manufacturing. Currently he is working with DMG MORI Federal Services (DMFS). DMFS is the representative for DMG MORI, the leader in innovative metal cutting 3D Metal Printing and Hybrid machine tools.`,
+  }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 	"1": [
@@ -1139,6 +1145,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"katina-adams",
 		"stacey-r-washington",
 		"erica-h-plath",
+		"paul-wichert",
 	]
 };
 
