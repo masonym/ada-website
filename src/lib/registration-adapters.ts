@@ -267,7 +267,7 @@ export function getExhibitorsForEvent(eventId: number | string): AdapterModalReg
         "Onsite Sign-up for Matchmaking Sessions",
         "Breakfast & Buffet Lunch",
         "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
-        "<b>Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM</b>",
+        "<b>Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM</b>", // TODO: this won't work if we have multiple events going concurrently. need to pull from event.vipNetworkingReception info but we don't have access to that here
       ],
       shownOnRegistrationPage: false,
     });
