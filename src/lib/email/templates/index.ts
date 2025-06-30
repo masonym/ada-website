@@ -298,7 +298,6 @@ export function vipAttendeePassTemplate({
   eventLocation,
   eventUrl,
   orderId,
-  vipPerks,
   eventImage,
   orderSummaryHtml,
   hotelInfo,
@@ -310,7 +309,6 @@ export function vipAttendeePassTemplate({
   eventLocation: string;
   eventUrl?: string;
   orderId: string;
-  vipPerks: string[];
   eventImage: string;
   orderSummaryHtml?: string;
   hotelInfo?: string;

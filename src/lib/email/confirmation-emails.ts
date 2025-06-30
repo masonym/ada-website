@@ -241,12 +241,6 @@ export async function sendRegistrationConfirmationEmail({
           eventLocation,
           eventUrl,
           orderId,
-          vipPerks: registration.perks || [
-            'Priority seating',
-            'Access to VIP reception',
-            'Exclusive networking opportunities',
-            'Special gift bag'
-          ],
           eventImage: event.image,
           orderSummaryHtml,
           hotelInfo,
