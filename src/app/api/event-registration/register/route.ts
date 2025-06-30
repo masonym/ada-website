@@ -184,6 +184,7 @@ export async function POST(request: Request) {
       currency: 'usd',
       description: `Registration for event ${body.eventTitle} by ${validatedData.firstName} ${validatedData.lastName}`,
       receipt_email: email,
+      // statement_descriptor_suffix: `${body.eventTitle.substring(0, 12)}`, // Add event title as descriptor suffix (limited to 12 chars for safety)
       metadata: {
         eventId: currentEventId,
         orderType: 'event-registration',

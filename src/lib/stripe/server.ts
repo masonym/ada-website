@@ -14,12 +14,14 @@ export const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
  * @param amount Amount in cents (integer)
  * @param metadata Optional metadata to attach to the payment intent
  * @param captureMethod 'automatic' (default) or 'manual' - determines if payment is automatically captured
+ * @param statementDescriptorSuffix Optional suffix for statement descriptor (for card payments)
  * @returns Object containing the payment intent client secret and ID
  */
 export async function createPaymentIntent(
   amount: number,
   metadata: Record<string, any> = {},
-  captureMethod: 'automatic' | 'manual' = 'automatic'
+  captureMethod: 'automatic' | 'manual' = 'automatic',
+  statementDescriptorSuffix?: string
 ) {
   try {
     // Ensure amount is an integer
@@ -36,6 +38,7 @@ export async function createPaymentIntent(
       automatic_payment_methods: {
         enabled: true,
       },
+      // statement_descriptor_suffix: statementDescriptorSuffix,
     });
 
     return {
