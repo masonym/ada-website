@@ -3,7 +3,7 @@
 import React from 'react';
 
 interface FormattedPerkProps {
-  content: string;
+  content: string | { formatted: { content: string; bold?: boolean; indent?: number; }[] };
   className?: string;
 }
 
@@ -12,58 +12,110 @@ interface FormattedPerkProps {
  * Supports <b> tags for bold text and handles indentation with proper HTML list structure
  */
 const FormattedPerk: React.FC<FormattedPerkProps> = ({ content, className = '' }) => {
-  // Process the content string and convert it to a nested list structure
+  // Process the content based on its type
   const processContent = () => {
     if (!content) return null;
     
-    // Split content into lines and build list structure
-    const lines = content.split('\n').filter(line => line.trim() !== '');
-    
-    // Group lines by indentation level to form proper nested lists
-    const rootItems: { content: JSX.Element | string; level: number; children: any[] }[] = [];
-    let currentList = rootItems;
-    let parentStack: any[] = [];
-    
-    lines.forEach(line => {
-      // Calculate indentation level
-      const indentMatch = line.match(/^(\s+)/);
-      const level = indentMatch ? Math.floor(indentMatch[1].length / 2) : 0;
-      const trimmedLine = line.trimStart();
+    // If content is a formatted object
+    if (typeof content === 'object' && content.formatted) {
+      // Build a tree structure from formatted perks
+      const rootItems: { content: JSX.Element | string; level: number; children: any[] }[] = [];
+      let currentList = rootItems;
+      let parentStack: any[] = [];
       
-      // Process any bold formatting in the line
-      const formattedContent = processBoldTags(trimmedLine);
-      
-      // Create new item for this line
-      const newItem = {
-        content: formattedContent,
-        level,
-        children: []
-      };
-      
-      if (level === 0) {
-        // Top-level item
-        rootItems.push(newItem);
-        currentList = newItem.children;
-        parentStack = [newItem];
-      } else {
-        // Find the appropriate parent for this level
-        while (parentStack.length > level) {
-          parentStack.pop();
-        }
+      content.formatted.forEach(formattedItem => {
+        const level = formattedItem.indent || 0;
         
-        if (parentStack.length === level) {
-          const parent = parentStack[level - 1];
-          if (parent) {
-            parent.children.push(newItem);
-            parentStack.push(newItem);
-            currentList = newItem.children;
+        // Create the content with or without bold formatting
+        const itemContent = formattedItem.bold ? (
+          <span className="font-bold">{formattedItem.content}</span>
+        ) : formattedItem.content;
+        
+        // Create new item for this formatted item
+        const newItem = {
+          content: itemContent,
+          level,
+          children: []
+        };
+        
+        if (level === 0) {
+          // Top-level item
+          rootItems.push(newItem);
+          currentList = newItem.children;
+          parentStack = [newItem];
+        } else {
+          // Find the appropriate parent for this level
+          while (parentStack.length > level) {
+            parentStack.pop();
+          }
+          
+          if (parentStack.length === level) {
+            const parent = parentStack[level - 1];
+            if (parent) {
+              parent.children.push(newItem);
+              parentStack.push(newItem);
+              currentList = newItem.children;
+            }
           }
         }
-      }
-    });
+      });
+      
+      // Render the nested list structure
+      return renderNestedList(rootItems);
+    }
+    // If content is a string
+    else if (typeof content === 'string') {
+      // Split content into lines and build list structure
+      const lines = content.split('\n').filter(line => line.trim() !== '');
+      
+      // Group lines by indentation level to form proper nested lists
+      const rootItems: { content: JSX.Element | string; level: number; children: any[] }[] = [];
+      let currentList = rootItems;
+      let parentStack: any[] = [];
+      
+      lines.forEach(line => {
+        // Calculate indentation level
+        const indentMatch = line.match(/^(\s+)/);
+        const level = indentMatch ? Math.floor(indentMatch[1].length / 2) : 0;
+        const trimmedLine = line.trimStart();
+        
+        // Process any bold formatting in the line
+        const formattedContent = processBoldTags(trimmedLine);
+        
+        // Create new item for this line
+        const newItem = {
+          content: formattedContent,
+          level,
+          children: []
+        };
+        
+        if (level === 0) {
+          // Top-level item
+          rootItems.push(newItem);
+          currentList = newItem.children;
+          parentStack = [newItem];
+        } else {
+          // Find the appropriate parent for this level
+          while (parentStack.length > level) {
+            parentStack.pop();
+          }
+          
+          if (parentStack.length === level) {
+            const parent = parentStack[level - 1];
+            if (parent) {
+              parent.children.push(newItem);
+              parentStack.push(newItem);
+              currentList = newItem.children;
+            }
+          }
+        }
+      });
+      
+      // Render the nested list structure
+      return renderNestedList(rootItems);
+    }
     
-    // Render the nested list structure
-    return renderNestedList(rootItems);
+    return null;
   };
   
   // Process bold tags within text

@@ -20,7 +20,7 @@ export interface ModalRegistrationType {
   isActive: boolean;
   requiresAttendeeInfo: boolean;
   isGovtFreeEligible: boolean;
-  perks?: string[];
+  perks?: (string | {formatted: {content: string; bold?: boolean; indent?: number;}[]})[];
   availabilityInfo?: string;
   type: 'paid' | 'free' | 'complimentary' | 'sponsor';
   title: string;

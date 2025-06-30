@@ -39,7 +39,7 @@ export interface AdapterModalRegistrationType extends ModalRegistrationType {
   isActive: boolean;
   requiresAttendeeInfo: boolean;
   isGovtFreeEligible: boolean;
-  perks?: string[];
+  perks?: (string | {formatted: FormattedPerkType[]})[];
   availabilityInfo?: string;
   type: 'paid' | 'free' | 'complimentary' | 'sponsor';
   title: string;
@@ -186,13 +186,16 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
       requiresValidation: true,
       maxQuantityPerOrder: 10,
       perks: [
-        "(1) VIP Attendee Pass",
-        "Access to General Sessions",
-        "Access to Exhibit Area",
-        "Onsite Sign-up for Matchmaking Sessions",
-        "Breakfast & Buffet Lunch",
-        "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
-        "<b>Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM</b>",
+        // update to format 
+        { formatted: [
+          { content: "(1) VIP Attendee Pass", bold: true },
+          { content: "Access to General Sessions", indent: 1 },
+          { content: "Access to Exhibit Area", indent: 1 },
+          { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+          { content: "Breakfast & Buffet Lunch", indent: 1 },
+          { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+          { content: "Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM", indent: 1 },
+        ]},
       ],
     },
   );
@@ -274,13 +277,16 @@ export function getExhibitorsForEvent(eventId: number | string): AdapterModalReg
       requiresValidation: true,
       maxQuantityPerOrder: 10, // Example limit
       perks: [
-        "(1) Exhibitor Attendee Pass",
-        "Access to General Sessions",
-        "Access to Exhibit Area",
-        "Onsite Sign-up for Matchmaking Sessions",
-        "Breakfast & Buffet Lunch",
-        "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
-        "<b>Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM</b>", // TODO: this won't work if we have multiple events going concurrently. need to pull from event.vipNetworkingReception info but we don't have access to that here
+        // Updated to use formatted perks structure like the sponsor VIP pass
+        { formatted: [
+                        { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                        { content: "Access to General Sessions", indent: 1 },
+                        { content: "Access to Exhibit Area", indent: 1 },
+                        { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                        { content: "Breakfast & Buffet Lunch", indent: 1 },
+                        { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                        { content: "Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM", indent: 0, bold: true, },
+        ]},
       ],
       shownOnRegistrationPage: false,
     });

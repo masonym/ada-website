@@ -112,22 +112,22 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                 showRemaining: true,
                 perks: [
                     { formatted: [
-                        { content: " (1) Exhibitor Pass." },
+                        { content: "Event Access: (1) VIP Attendee Pass", bold: true },
                         { content: "Additional Exhibitor Passes can be purchased for $395 each below.", indent: 1 },
                     ]},
                     { formatted: [
-                        { content: "8’x10' Table-Top Exhibit Space in Exhibit Area/Foyer" },
-                        { content: "6' Tableclothed Table and Chairs", indent: 1 },
+                        { content: "Branding: Conference Materials", bold: true },
+                        { content: "Logo Placement on Conference Materials", indent: 1 },
+                        { content: "Marketing Emails and Printed Program", indent: 2 },
                     ]},
                     { formatted: [
-                        { content: "Logo Placement on select Conference Materials" },
-                        { content: "Marketing Emails and Website", indent: 1 },
+                        { content: "Table-Top Exhibit Space", bold: true },
+                        { content: "8'x10' Table-Top Exhibit Space in Exhibit Area/Foyer", indent: 1 },
+                        { content: "6' Tablecloth Table and Chairs", indent: 1 },
                     ]},
                     { formatted: [
-                        { content: "Acknowledgement before Networking Breaks at the Conference" },
-                    ]},
-                    { formatted: [
-                        { content: "Photographs of your Participation" },
+                        { content: "Recognition/Visibility", bold: true },
+                        { content: "Photographs of your Participation", indent: 1 },
                     ]},
                 ],
                 colour: "#3FB4E6",
