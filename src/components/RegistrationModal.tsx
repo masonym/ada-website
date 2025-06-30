@@ -1004,17 +1004,33 @@ const RegistrationModal = ({
         const passAttendees = sponsorPassAttendees[sponsorId] || [];
         if (passAttendees.length === 0) return;
 
-        // Create a special ticket entry for these sponsor passes
-        sponsorPassTickets.push({
-          ticketId: `${sponsorId}-vip-pass`,
-          ticketName: `${sponsor.name} VIP Attendee Pass`,
-          ticketPrice: 'Complimentary', // These are free as part of sponsorship
-          quantity: passAttendees.length,
-          category: 'ticket', // Treat as tickets for processing
-          isIncludedWithSponsorship: true, // Flag to identify these are from sponsorship
-          sponsorshipId: sponsorId, // Reference back to the sponsorship
-          attendeeInfo: passAttendees.map(att => ({ ...att })),
-        });
+        // Handle first attendee - labeled just as the sponsor name
+        if (passAttendees.length > 0) {
+          sponsorPassTickets.push({
+            ticketId: `${sponsorId}-sponsor`,
+            ticketName: `${sponsor.name}`,
+            ticketPrice: 'Complimentary', // These are free as part of sponsorship
+            quantity: 1,
+            category: 'ticket', // Treat as tickets for processing
+            isIncludedWithSponsorship: true, // Flag to identify these are from sponsorship
+            sponsorshipId: sponsorId, // Reference back to the sponsorship
+            attendeeInfo: [{ ...passAttendees[0] }],
+          });
+        }
+
+        // Handle additional attendees - labeled as "Additional Sponsor Attendee Pass"
+        if (passAttendees.length > 1) {
+          sponsorPassTickets.push({
+            ticketId: `${sponsorId}-additional-pass`,
+            ticketName: 'Additional Sponsor Attendee Pass',
+            ticketPrice: 'Complimentary', // These are free as part of sponsorship
+            quantity: passAttendees.length - 1,
+            category: 'ticket', // Treat as tickets for processing
+            isIncludedWithSponsorship: true, // Flag to identify these are from sponsorship
+            sponsorshipId: sponsorId, // Reference back to the sponsorship
+            attendeeInfo: passAttendees.slice(1).map(att => ({ ...att })),
+          });
+        }
       });
 
       return sponsorPassTickets;
