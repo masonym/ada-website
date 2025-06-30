@@ -1519,6 +1519,12 @@ const RegistrationModal = ({
               agreed={agreedToTerms}
               onAgree={setAgreedToTerms} // Corrected prop name
             />
+            {/* Disclaimer about credit card info */}
+            <div className="mt-4 mb-6 bg-gray-100 p-4 rounded">
+            <p className="text-sm text-gray-600">
+            <strong>Disclaimer:</strong> All transactions are processed through <strong>Stripe</strong>, a third-party payment processor. The American Defense Alliance does not store or have access to your payment details. For more information on Stripe’s security measures, please visit <a href="https://docs.stripe.com/security" className="text-blue-600 hover:underline">Stripe’s website</a>.
+            </p>
+            </div>
             {calculateTotal() > 0 && (
               <div className="mt-6">
                 <h3 className="text-xl font-semibold mb-2 text-gray-800">Payment Details</h3>
