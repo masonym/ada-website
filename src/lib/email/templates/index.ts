@@ -1,5 +1,6 @@
 import { MatchmakingSession, VipNetworkingReception } from '@/types/events';
 import { getEnv } from '../../env';
+import { getClientEnv } from '../../client-env';
 import { getCdnPath } from '@/utils/image';
 
 function getMonthFromDate(dateString: string): string {
@@ -100,7 +101,8 @@ export function generateOrderSummaryHtml(summary: OrderSummary): string {
 
 // Base template that all emails will use
 export function baseEmailTemplate(content: string, eventImage: string): string {
-  const env = getEnv();
+  // Use client-safe env for client components
+  const env = typeof window === 'undefined' ? getEnv() : getClientEnv();
 
   return `
     <!DOCTYPE html>
