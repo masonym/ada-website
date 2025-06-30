@@ -107,6 +107,41 @@ const isSoldOut = (item: AdapterModalRegistrationType, eventSponsors: any, event
   return slotsTaken >= slotsAvailable;
 };
 
+// Helper function to get the number of remaining slots for an item
+const getRemainingSlots = (item: AdapterModalRegistrationType, eventSponsors: any, eventId: string | number): number | null => {
+  // If it's not a sponsorship or exhibit, or doesn't have quantityAvailable defined, return null
+  console.log(item);
+  if ((item.category !== 'sponsorship' && item.category !== 'exhibit') || !item.id || !item.quantityAvailable) {
+    return null;
+  }
+
+  // Find how many slots are available for this item
+  const slotsAvailable = item.quantityAvailable;
+
+  // Count how many slots are taken by checking eventSponsors
+  let slotsTaken = 0;
+  const eventSponsorList = eventSponsors.find((es: any) => es.id === eventId);
+
+  if (eventSponsorList) {
+    // Check all tiers to find sponsors with this sponsorship id
+    Object.values(eventSponsorList.tiers || {}).forEach((tier: any) => {
+      if (tier.id === item.id) {
+        slotsTaken = tier.sponsorIds.length;
+      }
+    });
+  }
+  console.log(slotsAvailable, slotsTaken);
+
+  // Return the number of remaining slots
+  return slotsAvailable - slotsTaken;
+};
+
+// Helper function to determine if remaining slots should be shown
+const shouldShowRemaining = (item: AdapterModalRegistrationType, eventSponsors: any, eventId: string | number): boolean => {
+  const remainingSlots = getRemainingSlots(item, eventSponsors, eventId);
+  return remainingSlots !== null && remainingSlots > 0 && remainingSlots < 10;
+};
+
 const initialBillingInfo: BillingInfo = {
   firstName: '',
   lastName: '',
@@ -1793,6 +1828,11 @@ const RegistrationModal = ({
                               SOLD OUT
                             </span>
                           )}
+                          {!itemIsSoldOut && shouldShowRemaining(reg, EVENT_SPONSORS, event.id) && (
+                            <span className="inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                              {getRemainingSlots(reg, EVENT_SPONSORS, event.id)} remaining
+                            </span>
+                          )}
                         </div>
                         {reg.perks && reg.perks.length > 0 && (
                           <ul className="list-none text-sm text-gray-500 mb-2">
@@ -1835,12 +1875,17 @@ const RegistrationModal = ({
                           <div className="flex items-center">
                             <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} -</h4>
                             <PriceDisplay registration={reg} />
+                            {itemIsSoldOut && (
+                              <span className="inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                                SOLD OUT
+                              </span>
+                            )}
+                            {!itemIsSoldOut && shouldShowRemaining(reg, EVENT_SPONSORS, event.id) && (
+                              <span className="inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                {getRemainingSlots(reg, EVENT_SPONSORS, event.id)} remaining
+                              </span>
+                            )}
                           </div>
-                          {itemIsSoldOut && (
-                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
-                              SOLD OUT
-                            </span>
-                          )}
                         </div>
                         {reg.perks && reg.perks.length > 0 && (
                           <ul className="list-none text-sm text-gray-500 mb-2">
