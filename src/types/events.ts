@@ -75,6 +75,7 @@ export interface Event {
     slug: string;
     locationImage: string;
     locationAddress: string;
+    venueName?: string;
     testimonials?: EventTestimonial[];
     eventShorthand: string;
     registerLink?: string;

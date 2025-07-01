@@ -719,6 +719,7 @@ invaluable connections that can shape the future of your business.
     slug: "2025-navy-marine-corps-procurement-conference",
     locationImage: "locations/temp_venue.webp",
     locationAddress: `235 E Main St, Norfolk, Virginia 23510`,
+    venueName: "Norfolk Waterside Marriott",
     placeID: "ChIJBdD-jwuYuokRyjyu_hU0jUg",
 
     matchmakingSessions: {

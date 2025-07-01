@@ -10,6 +10,7 @@ const mockData = {
   eventName: '2025 Navy Marine Corps Procurement Conference',
   eventDate: 'July 29-30, 2025',
   eventLocation: '235 E Main St, Norfolk, Virginia 23510',
+  venueName: 'Norfolk Waterside Marriott',
   eventUrl: 'https://americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference',
   orderId: 'pi_1234567890',
   hotelInfo: 'https://americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference/about/venue-and-lodging',

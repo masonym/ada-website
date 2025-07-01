@@ -129,6 +129,7 @@ export async function sendRegistrationConfirmationEmail({
   const eventUrl = `https://americandefensealliance.org/events/${event.slug}`;
   const eventDate = event.date || 'TBA';
   const eventLocation = event.locationAddress || 'TBA';
+  const venueName = event.venueName || 'TBA';
   const hotelInfo = `https://americandefensealliance.org/events/${event.slug}/about/venue-and-lodging`;
   const vipNetworkingReception = event.vipNetworkingReception;
 
@@ -177,6 +178,7 @@ export async function sendRegistrationConfirmationEmail({
           eventName: event.title,
           eventDate,
           eventLocation,
+          venueName,
           eventUrl,
           orderId,
           sponsorshipLevel: registration.title,
@@ -200,6 +202,7 @@ export async function sendRegistrationConfirmationEmail({
           eventName: event.title,
           eventDate,
           eventLocation,
+          venueName,
           eventUrl,
           orderId,
           exhibitorType: registration.title,
@@ -221,6 +224,7 @@ export async function sendRegistrationConfirmationEmail({
           eventName: event.title,
           eventDate,
           eventLocation,
+          venueName,
           eventUrl,
           orderId,
           hotelInfo,
@@ -239,6 +243,7 @@ export async function sendRegistrationConfirmationEmail({
           eventName: event.title,
           eventDate,
           eventLocation,
+          venueName,
           eventUrl,
           orderId,
           eventImage: event.image,
@@ -259,6 +264,7 @@ export async function sendRegistrationConfirmationEmail({
           eventName: event.title,
           eventDate,
           eventLocation,
+          venueName,
           eventUrl,
           orderId,
           hotelInfo: hotelInfo,
