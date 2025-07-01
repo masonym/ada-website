@@ -42,7 +42,7 @@ matchmakingSessions: {
   // TODO: is this passed in normally? idk
   attendeePasses: 4,
   exhibitorType: 'Standard Exhibitor Booth',
-  exhibitorInstructions: 'https://americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference/about/exhibitor-instructions',
+  exhibitorInstructions: '/events/2025NMCPC/2025%20Navy%20&%20Marine%20Corps%20Procurement%20Conference%20-%20Exhibitor%20Instructions.pdf',
   vipNetworkingReception: {
       title: "VIP Networking Reception",
       description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
@@ -56,12 +56,12 @@ matchmakingSessions: {
     orderId: 'pi_1234567890',
     orderDate: new Date().toLocaleDateString(),
     items: [
-      { name: 'Bronze Sponsorship', quantity: 1, price: 25000 },
-      { name: 'Additional VIP Pass', quantity: 2, price: 999 },
+      { name: 'Platinum Sponsorship', quantity: 1, price: 10000 },
+      { name: 'VIP Attendee Pass', quantity: 2, price: 550 },
     ],
-    subtotal: 26998,
+    subtotal: 11100,
     discount: 0,
-    total: 26998,
+    total: 11100,
   }
 };
 
