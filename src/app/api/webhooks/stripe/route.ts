@@ -3,7 +3,7 @@ import Stripe from 'stripe';
 import { stripe } from '@/lib/stripe/server';
 import { getEnv } from '@/lib/env';
 import { logRegistration } from '@/lib/google-sheets';
-import { sendRegistrationConfirmationEmail } from '@/lib/email/confirmation-emails';
+import { sendRegistrationConfirmationEmails } from '@/lib/email/confirmation-emails';
 import { headers } from 'next/headers';
 import { RegistrationFormData } from '@/types/event-registration/registration';
 import { EVENTS } from '@/constants/events';
@@ -81,10 +81,9 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
       total: paymentIntent.amount / 100, // in dollars
     };
 
-    // Send the confirmation email
-    await sendRegistrationConfirmationEmail({
-      email: registrationData.email,
-      firstName: registrationData.firstName,
+    // Send confirmation emails to all unique attendees
+    await sendRegistrationConfirmationEmails({
+      registrationData,
       event,
       registrations: purchasedRegistrations,
       orderId: paymentIntent.id,
