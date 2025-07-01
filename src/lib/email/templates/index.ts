@@ -550,6 +550,7 @@ export function sponsorTemplate({
     if (sponsorshipTitle.includes('gold')) return '15-minutes';
     if (sponsorshipTitle.includes('silver')) return '10-minutes';
     if (sponsorshipTitle.includes('bronze')) return '5-minutes';
+    if (sponsorshipTitle.includes('networking luncheon')) return '5-minutes';
     return '';
   };
 
