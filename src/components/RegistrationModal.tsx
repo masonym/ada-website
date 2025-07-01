@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import * as yup from 'yup';
 import FormattedPerk from './FormattedPerk';
-import { X, CreditCard, Ticket, Package, Award, AlertTriangle } from 'lucide-react';
+import { X, CreditCard, Ticket, Package, Award, AlertTriangle, Landmark } from 'lucide-react';
 import { getPriceDisplay } from '@/lib/price-formatting';
 import PriceDisplay from './PriceDisplay';
 import { Event } from '@/types/events';
@@ -1520,10 +1520,15 @@ const RegistrationModal = ({
               onAgree={setAgreedToTerms} // Corrected prop name
             />
             {/* Disclaimer about credit card info */}
-            <div className="mt-4 mb-6 bg-gray-100 p-4 rounded">
+            <div className="mt-4 mb-6 bg-gray-100 p-4 rounded flex flex-col">
             <p className="text-sm text-gray-600">
             <strong>Disclaimer:</strong> All transactions are processed through <strong>Stripe</strong>, a third-party payment processor. The American Defense Alliance does not store or have access to your payment details. For more information on Stripe’s security measures, please visit <a href="https://docs.stripe.com/security" className="text-blue-600 hover:underline">Stripe’s website</a>.
             </p>
+            {/* this is how it will show up on your bank statement */}
+            <div className="flex flex-row items-center mt-2">
+            <Landmark className="text-sm text-gray-600 mr-2"></Landmark>
+            <p className="text-sm text-gray-600">This transaction will appear on your bank statement as <strong className="whitespace-nowrap">AMER. DEFENSE ALLIANCE</strong>.</p>
+            </div>
             </div>
             {calculateTotal() > 0 && (
               <div className="mt-6">
