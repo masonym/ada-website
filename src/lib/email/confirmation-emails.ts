@@ -9,6 +9,8 @@ import {
   govMilPassTemplate,
   OrderSummary, 
   generateOrderSummaryHtml,
+  AttendeeDetails,
+  generateAttendeeDetailsHtml,
 } from './templates';
 import { fetchFileNamesFromCloud } from '@/lib/s3';
 import { RegistrationFormData } from '@/types/event-registration/registration';
@@ -146,6 +148,29 @@ export async function sendRegistrationConfirmationEmails({
   
   console.log("uniqueEmails: ", uniqueEmails);
 
+  // Collect all attendees to create attendee details
+  const allAttendees: AttendeeDetails[] = [];
+  registrationData.tickets.forEach(ticket => {
+    if (ticket.attendeeInfo && Array.isArray(ticket.attendeeInfo)) {
+      ticket.attendeeInfo.forEach(attendee => {
+        if (attendee) {
+          allAttendees.push({
+            firstName: attendee.firstName,
+            lastName: attendee.lastName,
+            email: attendee.email,
+            company: attendee.company,
+            jobTitle: attendee.jobTitle,
+            phone: attendee.phone,
+            website: attendee.website,
+            businessSize: attendee.businessSize,
+            sbaIdentification: attendee.sbaIdentification,
+            industry: attendee.industry
+          });
+        }
+      });
+    }
+  });
+
   for (const email of uniqueEmails) {
     console.log("email: ", email);
     // Find the attendee info for this email to get the correct first name
@@ -172,7 +197,8 @@ export async function sendRegistrationConfirmationEmails({
       orderId,
       orderSummary,
       attendeePasses,
-      attachments
+      attachments,
+      attendees: allAttendees
     });
     
     results.push({ email, result });
@@ -201,7 +227,8 @@ export async function sendRegistrationConfirmationEmail({
   orderId,
   orderSummary,
   attendeePasses = 0,
-  attachments = []
+  attachments = [],
+  attendees = []
 }: {
   email: string;
   firstName: string;
@@ -211,6 +238,7 @@ export async function sendRegistrationConfirmationEmail({
   orderSummary?: OrderSummary;
   attendeePasses?: number;
   attachments?: any[];
+  attendees?: AttendeeDetails[];
 }) {
   const highestTierInfo = findHighestTierRegistration(registrations);
   
@@ -257,6 +285,8 @@ export async function sendRegistrationConfirmationEmail({
   const emailAttachments = [...attachments, ...ticketAttachments];
 
   const orderSummaryHtml = orderSummary ? generateOrderSummaryHtml(orderSummary) : '';
+  const attendeeDetailsHtml = attendees && attendees.length > 0 ? generateAttendeeDetailsHtml(attendees) : '';
+  console.log("ATTENDEE DETAILS HTML: ", attendeeDetailsHtml);
   
   // Send appropriate email template based on ticket tier
   switch (tier) {
@@ -279,6 +309,7 @@ export async function sendRegistrationConfirmationEmail({
           attendeePasses: registration.sponsorPasses || attendeePasses || 0,
           eventImage: event.image,
           orderSummaryHtml,
+          attendeeDetailsHtml,
           hotelInfo,
           vipNetworkingReception,
           matchmakingSessions: event.matchmakingSessions || undefined,
@@ -303,6 +334,7 @@ export async function sendRegistrationConfirmationEmail({
           exhibitorInstructions: exhibitorInstructions || '',
           eventImage: event.image,
           orderSummaryHtml,
+          attendeeDetailsHtml,
           hotelInfo,
           vipNetworkingReception,
         }),
@@ -324,6 +356,7 @@ export async function sendRegistrationConfirmationEmail({
           hotelInfo,
           eventImage: event.image,
           orderSummaryHtml: '', // No order summary for free passes
+          attendeeDetailsHtml,
         }),
         attachments: emailAttachments,
       });
@@ -331,7 +364,7 @@ export async function sendRegistrationConfirmationEmail({
     case TicketTier.VIP_ATTENDEE:
       return sendEmail({
         to: email,
-        subject: `Your VIP Registration for ${event.title}`,
+        subject: `Registration Confirmation - ${event.title}`,
         html: vipAttendeePassTemplate({
           firstName,
           eventName: event.title,
@@ -342,6 +375,7 @@ export async function sendRegistrationConfirmationEmail({
           orderId,
           eventImage: event.image,
           orderSummaryHtml,
+          attendeeDetailsHtml,
           hotelInfo,
           vipNetworkingReception,
         }),
@@ -364,6 +398,7 @@ export async function sendRegistrationConfirmationEmail({
           hotelInfo: hotelInfo,
           eventImage: event.image,
           orderSummaryHtml,
+          attendeeDetailsHtml,
         })
       });
   }

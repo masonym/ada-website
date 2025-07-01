@@ -35,6 +35,72 @@ export interface OrderSummary {
   discount: number; // in dollars
   total: number; // in dollars
 }
+
+// Interface for attendee details in emails
+export interface AttendeeDetails {
+  firstName: string;
+  lastName: string;
+  email: string;
+  company?: string;
+  jobTitle?: string;
+  phone?: string;
+  website?: string;
+  businessSize?: string;
+  sbaIdentification?: string;
+  industry?: string;
+}
+
+/**
+ * Generates HTML for attendee details section in emails
+ */
+export function generateAttendeeDetailsHtml(attendees: AttendeeDetails[]): string {
+  if (!attendees || attendees.length === 0) return '';
+
+  const attendeeRows = attendees.map((attendee, index) => {
+    return `
+      <div class="attendee-details${index > 0 ? ' attendee-separator' : ''}">
+        <h3>Attendee ${attendees.length > 1 ? (index + 1) : ''} Information</h3>
+        <table class="attendee-info">
+          <tr>
+            <td><strong>Name:</strong></td>
+            <td>${attendee.firstName} ${attendee.lastName}</td>
+          </tr>
+          <tr>
+            <td><strong>Email:</strong></td>
+            <td>${attendee.email}</td>
+          </tr>
+          ${attendee.jobTitle ? `
+          <tr>
+            <td><strong>Title:</strong></td>
+            <td>${attendee.jobTitle}</td>
+          </tr>` : ''}
+          ${attendee.company ? `
+          <tr>
+            <td><strong>Organization:</strong></td>
+            <td>${attendee.company}</td>
+          </tr>` : ''}
+          ${attendee.phone ? `
+          <tr>
+            <td><strong>Phone:</strong></td>
+            <td>${attendee.phone}</td>
+          </tr>` : ''}
+          ${attendee.website ? `
+          <tr>
+            <td><strong>Website:</strong></td>
+            <td>${attendee.website}</td>
+          </tr>` : ''}
+        </table>
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <div class="attendee-details-container">
+      <h2>Attendee Details</h2>
+      ${attendeeRows}
+    </div>
+  `;
+}
 type Tier = 'platinum' | 'gold' | 'silver' | 'bronze' | 'vip networking reception' | 'networking luncheon';
 
 const benefitMap: Record<Tier, string[]> = {
@@ -321,6 +387,37 @@ export function baseEmailTemplate(content: string, eventImage: string): string {
         p {
           margin: 5px 0 0 0;
         }
+        .attendee-details-container {
+          margin-top: 20px; 
+          padding-top: 20px; 
+          border-top: 1px solid #EEEEEE; /* gray-10 */
+        }
+        .attendee-details-container h2 {
+          margin-top: 0;
+          margin-bottom: 15px;
+        }
+        .attendee-details {
+          background-color: #f9f9f9;
+          padding: 15px;
+          border-radius: 5px;
+          margin-bottom: 15px;
+        }
+        .attendee-separator {
+          margin-top: 20px;
+          border-top: 1px dashed #EEEEEE;
+          padding-top: 20px;
+        }
+        .attendee-info {
+          width: 100%;
+          border-collapse: collapse;
+        }
+        .attendee-info td {
+          padding: 5px;
+          vertical-align: top;
+        }
+        .attendee-info td:first-child {
+          width: 120px;
+        }
       </style>
     </head>
     <body>
@@ -357,6 +454,7 @@ export function attendeePassTemplate({
   hotelInfo,
   eventImage,
   orderSummaryHtml,
+  attendeeDetailsHtml,
 }: {
   firstName: string;
   eventName: string;
@@ -368,6 +466,7 @@ export function attendeePassTemplate({
   hotelInfo: string;
   eventImage: string;
   orderSummaryHtml?: string;
+  attendeeDetailsHtml?: string;
 }): string {
   const content = `
     <p><strong>Dear ${firstName},</strong></p>
@@ -389,6 +488,7 @@ export function attendeePassTemplate({
 
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
     ${orderSummaryHtml || ''}
+    ${attendeeDetailsHtml || ''}
   `;
   
   return baseEmailTemplate(content, eventImage);
@@ -407,6 +507,7 @@ export function vipAttendeePassTemplate({
   orderSummaryHtml,
   hotelInfo,
   vipNetworkingReception,
+  attendeeDetailsHtml,
 }: {
   firstName: string;
   eventName: string;
@@ -417,8 +518,9 @@ export function vipAttendeePassTemplate({
   orderId: string;
   eventImage: string;
   orderSummaryHtml?: string;
-  hotelInfo?: string;
+  hotelInfo: string;
   vipNetworkingReception?: VipNetworkingReception;
+  attendeeDetailsHtml?: string;
 }): string {
   const content = `
     <p><strong>Dear ${firstName},</strong></p>
@@ -443,6 +545,7 @@ export function vipAttendeePassTemplate({
     ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'attendee')}
 
     ${orderSummaryHtml || ''}
+    ${attendeeDetailsHtml || ''}
   `;
   
   return baseEmailTemplate(content, eventImage);
@@ -463,6 +566,7 @@ export function exhibitorTemplate({
   orderSummaryHtml,
   hotelInfo,
   vipNetworkingReception,
+  attendeeDetailsHtml,
 }: {
   firstName: string;
   eventName: string;
@@ -477,6 +581,7 @@ export function exhibitorTemplate({
   orderSummaryHtml?: string;
   hotelInfo?: string;
   vipNetworkingReception?: VipNetworkingReception;
+  attendeeDetailsHtml?: string;
 }): string {
   const content = `
     <p><strong>Dear ${firstName},</strong></p>
@@ -504,6 +609,7 @@ export function exhibitorTemplate({
     ${generateExhibitorInstructionsHtml(exhibitorInstructions)}
 
     ${orderSummaryHtml || ''}
+    ${attendeeDetailsHtml || ''}
   `;
   
   return baseEmailTemplate(content, eventImage);
@@ -526,6 +632,7 @@ export function sponsorTemplate({
   hotelInfo,
   vipNetworkingReception,
   matchmakingSessions,
+  attendeeDetailsHtml,
 }: {
   firstName: string;
   eventName: string;
@@ -542,6 +649,7 @@ export function sponsorTemplate({
   hotelInfo?: string;
   vipNetworkingReception?: VipNetworkingReception;
   matchmakingSessions: MatchmakingSession | undefined;
+  attendeeDetailsHtml?: string;
 }): string {
   const sponsorshipTitle = sponsorshipLevel.toLowerCase();
 
@@ -620,6 +728,7 @@ export function sponsorTemplate({
     ${sponsorshipTitle.includes('without exhibit space') ? '' : generateExhibitorInstructionsHtml(exhibitorInstructions, true)}
 
     ${orderSummaryHtml || ''}
+    ${attendeeDetailsHtml || ''}
   `;
   
   return baseEmailTemplate(content, eventImage);
@@ -637,6 +746,7 @@ export function govMilPassTemplate({
   hotelInfo,
   eventImage,
   orderSummaryHtml,
+  attendeeDetailsHtml,
 }: {
   firstName: string;
   eventName: string;
@@ -648,6 +758,7 @@ export function govMilPassTemplate({
   hotelInfo: string;
   eventImage: string;
   orderSummaryHtml?: string;
+  attendeeDetailsHtml?: string;
 }): string {
   const content = `
     <p><strong>Dear ${firstName},</strong></p>
@@ -668,8 +779,9 @@ export function govMilPassTemplate({
       ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here.</a></p>` : ''}
     </div>
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
+    ${orderSummaryHtml || ''}
+    ${attendeeDetailsHtml || ''}
   `;
   
   return baseEmailTemplate(content, eventImage);
 }
-

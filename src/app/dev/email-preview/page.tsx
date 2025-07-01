@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { attendeePassTemplate, vipAttendeePassTemplate, exhibitorTemplate, sponsorTemplate, generateOrderSummaryHtml, govMilPassTemplate } from '@/lib/email/templates';
+import { attendeePassTemplate, vipAttendeePassTemplate, exhibitorTemplate, sponsorTemplate, generateOrderSummaryHtml, govMilPassTemplate, AttendeeDetails, generateAttendeeDetailsHtml } from '@/lib/email/templates';
 import { VipNetworkingReception } from '@/types/events';
 
 // Mock data for the email templates
@@ -69,10 +69,36 @@ matchmakingSessions: {
     subtotal: 11100,
     discount: 0,
     total: 11100,
-  }
+  },
+  attendees: [
+    {
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john.doe@example.com',
+      company: 'Acme Corporation',
+      jobTitle: 'Chief Technology Officer',
+      phone: '(555) 123-4567',
+      website: 'https://example.com',
+      businessSize: 'Large Business',
+      industry: 'Defense',
+    },
+    {
+      firstName: 'Jane',
+      lastName: 'Smith',
+      email: 'jane.smith@example.com',
+      company: 'Tech Innovations LLC',
+      jobTitle: 'Director of Operations',
+      phone: '(555) 987-6543',
+      website: 'https://techinnovations.example.com',
+      businessSize: 'Small Business',
+      sbaIdentification: 'WOSB',
+      industry: 'Aerospace',
+    }
+  ]
 };
 
 const orderSummaryHtml = generateOrderSummaryHtml(mockData.orderSummary);
+const attendeeDetailsHtml = generateAttendeeDetailsHtml(mockData.attendees);
 
 // Define template functions that can be called with dynamic data
 const templateFunctions = {
@@ -141,9 +167,11 @@ export default function EmailPreviewPage() {
               ...mockData,
               sponsorshipLevel: selectedSponsorLevel,
               orderSummaryHtml,
+              attendeeDetailsHtml,
             } : {
               ...mockData,
               orderSummaryHtml,
+              attendeeDetailsHtml,
             }
   )}
           title="Email Preview"
