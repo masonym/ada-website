@@ -35,6 +35,51 @@ export interface OrderSummary {
   discount: number; // in dollars
   total: number; // in dollars
 }
+type Tier = 'platinum' | 'gold' | 'silver' | 'bronze';
+
+const benefitMap: Record<Tier, string[]> = {
+  platinum: [
+    'scheduling your speaking opportunity',
+    'finalizing branding assets',
+    'reserving your matchmaking session(s)',
+    'coordinating your spotlight email',
+  ],
+  gold: [
+    'scheduling your speaking opportunity',
+    'finalizing branding assets',
+    'reserving your matchmaking session(s)',
+    'coordinating your spotlight email',
+  ],
+  silver: [
+    'scheduling your speaking opportunity',
+    'finalizing branding assets',
+    'reserving your matchmaking session(s)',
+  ],
+  bronze: [
+    'scheduling your speaking opportunity',
+    'finalizing branding assets',
+    'reserving your matchmaking session(s)',
+  ],
+};
+
+function getBenefitMsg(title: string): string {
+  const contact = `Please reach out to our team at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> to coordinate your benefits, including `;
+
+  const matchedTier = (Object.keys(benefitMap) as Tier[]).find(t =>
+    title.toLowerCase().includes(t)
+  );
+
+  if (!matchedTier) return '';
+
+  const benefits = benefitMap[matchedTier];
+  const list =
+    benefits.length > 1
+      ? `${benefits.slice(0, -1).join(', ')}, and ${benefits[benefits.length - 1]}`
+      : benefits[0];
+
+
+  return `<p>${contact}${list}.</p>`;
+}
 
 export function generateOrderSummaryHtml(summary: OrderSummary): string {
   const formatCurrency = (amount: number) => `${amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`;
@@ -213,7 +258,7 @@ export function baseEmailTemplate(content: string, eventImage: string): string {
           padding: 12px 25px;
           text-decoration: none;
           border-radius: 5px;
-          margin: 20px 0;
+          margin: 0px 0;
           font-weight: bold;
           text-align: center;
         }
@@ -535,22 +580,31 @@ export function sponsorTemplate({
     <h2>${sponsorshipTitle.replace(/\b\w/g, l => l.toUpperCase())} Benefits</h2>
     <!-- Speaking Opportunity -->
     ${speakingTime ? `
-      <p><strong>Speaking Opportunity: </strong>You will be given ${speakingTime} during the General Session as a standalone presentation or part of a panel. </p>
+      <p><strong>Speaking Opportunity: </strong>You will be given ${speakingTime} during the General Session. This may be a standalone presentation or part of a panel. Please provide your speaker’s name, bio (any length), high-resolution photo, and session topic for approval and scheduling.</p>
     ` : ''}
 
     ${sponsorshipTitle.includes('platinum') ? `
-      <p><strong>Lanyard & Name Badge Branding:</strong> Your company logo will be featured on the lanyard and name badge of all attendees. </p>
+      <p><strong>Lanyard & Name Badge Branding:</strong> As the exclusive Lanyard and Name Badge Sponsor, you will have your company’s branding prominently displayed. Please arrange for the delivery of lanyards and coordinate branding specifications. </p>
     ` : ''}
 
     <!-- Matchmaking Table Host -->
-      <p><strong>Matchmaking Table Host:</strong> Matchmaking sessions will take place on ${matchmakingSessions?.sessions[0].date} from ${matchmakingSessions?.sessions[0].sessionTime} and on ${matchmakingSessions?.sessions[1].date} from ${matchmakingSessions?.sessions[1].sessionTime}. You are invited to host a Matchmaking Table on either one or both days. </p>
+      <p><strong>Matchmaking Table Host:</strong> You are invited to host a Matchmaking Table during the scheduled sessions. Please provide the name of your representative and a brief company description. </p>
+      <!-- Date 1 -->
+      <ul>
+      <li>${matchmakingSessions?.sessions[0].date} from ${matchmakingSessions?.sessions[0].sessionTime}</li>
+      </ul>
+      <!-- Date 2 -->
+      <ul>
+        <li>${matchmakingSessions?.sessions[1].date} from ${matchmakingSessions?.sessions[1].sessionTime}</li>
+      </ul>
     
 
     ${sponsorshipTitle.includes('gold') || sponsorshipTitle.includes('platinum') ? `
-      <p><strong>Sponsor Spotlight Email:</strong> A sponsor spotlight email will be sent to all registered attendees highlighting your company and its products/services. </p>
+      <p><strong>Sponsor Spotlight Email:</strong> Your company will be featured in a pre-conference promotional email sent to all registered attendees. Please submit a company description and capabilities statement.</p>
     ` : ''}
     <h4 style="margin-top: 20px; margin-bottom: 2px;">Next Steps</h4>
-    <p>Please reach out to our team at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> to coordinate your benefits, including scheduling your speaking opportunity, finalizing branding assets, reserving your matchmaking session(s), and coordinating your spotlight email.</p>
+    ${getBenefitMsg(sponsorshipTitle)}
+
     </div>
     ` : ''}
     ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'sponsor')}

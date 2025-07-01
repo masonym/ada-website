@@ -21,7 +21,7 @@ export async function sendEmail({
   to,
   subject,
   html,
-  from = env.MY_EMAIL || 'onboarding@resend.dev', // Default from address
+  from = 'events@americandefensealliance.org', // Default from address
   attachments = [], // Default to an empty array if not provided
 }: EmailParams) {
   // Ensure RESEND_API_KEY is loaded
