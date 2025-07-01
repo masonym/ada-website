@@ -444,8 +444,7 @@ export function exhibitorTemplate({
       ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here.</a></p>` : ''}
     </div>
 
-        ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
-
+    ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
 
     ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'exhibitor')}
 
@@ -505,13 +504,27 @@ export function sponsorTemplate({
 
   const content = `
     <p><strong>Dear ${firstName},</strong></p>
-    
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
 
-    <p>You may register additional attendees not included in the (${attendeePasses}) complimentary VIP Attendee Passes for $395 each using the Additional Sponsorship Attendee Pass option.</p>
+    <p>You may register additional attendees not included in the (${attendeePasses}) complimentary VIP Attendee Passes for $395 each using the Additional Sponsorship Attendee Pass option on our website.</p>
+    
+    <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077.</span></p>
+    <p>Please note, all registrations are final. We are unable to offer refunds for this event. You can request an Event Credit up to one week from the event date. All event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
+    <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]}` : 'to this event'}!</p>
+    <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
 
-    <p>Please send a high-quality image of your company's logo to Chayil Dickerson (<a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a>).</p>
 
+    <div class="highlight">
+      <h2>Event Details</h2>
+      <p><strong>Event:</strong> ${eventName}</p>
+      <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
+        <p><strong>Location:</strong> ${venueName}, ${eventLocation}</p>
+      ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here.</a></p>` : ''}
+    </div>
+
+    ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
+
+    
     <!-- VIP Networking Reception Host -->
     ${sponsorshipTitle.includes('vip networking reception') ? `
       <p>You are the exclusive host of the VIP Networking Reception and are invited to provide welcoming remarks at the VIP Networking Reception. Please identify who will be providing welcoming remarks and send a Photo/Bio to Lana Corrigan (<a href="mailto:lana@americandefensealliance.org">lana@americandefensealliance.org</a>) for inclusion on our website.</p>
@@ -522,43 +535,27 @@ export function sponsorTemplate({
     <h2>${sponsorshipTitle.replace(/\b\w/g, l => l.toUpperCase())} Benefits</h2>
     <!-- Speaking Opportunity -->
     ${speakingTime ? `
-      <p><strong>Speaking Opportunity: </strong>You will be given ${speakingTime} during the General Session as a standalone presentation or part of a panel. Please coordinate with our President/CEO, Charles Sills (<a href="mailto:csills@trillacorpeconstruction.com">csills@trillacorpeconstruction.com</a>) and submit the speaker information, any length bio, high resolution photo, and session topic as soon as possible.</p>
+      <p><strong>Speaking Opportunity: </strong>You will be given ${speakingTime} during the General Session as a standalone presentation or part of a panel. </p>
     ` : ''}
 
     ${sponsorshipTitle.includes('platinum') ? `
-      <p><strong>Lanyard & Name Badge Branding:</strong> Please coordinate with our Meeting & Events Executive, Lana Corrigan (<a href="mailto:lana@americandefensealliance.org">lana@americandefensealliance.org</a>) to coordinate the delivery of lanyards and placement of company branding on conference name badges.</p>
+      <p><strong>Lanyard & Name Badge Branding:</strong> Your company logo will be featured on the lanyard and name badge of all attendees. </p>
     ` : ''}
 
     <!-- Matchmaking Table Host -->
-      <p><strong>Matchmaking Table Host:</strong> Matchmaking sessions will take place on ${matchmakingSessions?.sessions[0].date} from ${matchmakingSessions?.sessions[0].sessionTime} and on ${matchmakingSessions?.sessions[1].date} from ${matchmakingSessions?.sessions[1].sessionTime}. You are invited to host a Matchmaking Table on either one or both days. If you wish to host a table, please send the table host information and description of your company to Lana Corrigan (<a href="mailto:lana@americandefensealliance.org">lana@americandefensealliance.org</a>).</p>
+      <p><strong>Matchmaking Table Host:</strong> Matchmaking sessions will take place on ${matchmakingSessions?.sessions[0].date} from ${matchmakingSessions?.sessions[0].sessionTime} and on ${matchmakingSessions?.sessions[1].date} from ${matchmakingSessions?.sessions[1].sessionTime}. You are invited to host a Matchmaking Table on either one or both days. </p>
     
 
     ${sponsorshipTitle.includes('gold') || sponsorshipTitle.includes('platinum') ? `
-      <p><strong>Sponsor Spotlight Email:</strong> Send company description and capabilities statement to Kody Izumi (<a href="mailto:kody@americandefensealliance.org">kody@americandefensealliance.org</a>) to be featured in a promotional email sent to all registered attendees pre-conference.</p>
+      <p><strong>Sponsor Spotlight Email:</strong> A sponsor spotlight email will be sent to all registered attendees highlighting your company and its products/services. </p>
     ` : ''}
-    </div>` : ''}
-
-    <div class="highlight">
-      <h2>Event Details</h2>
-      <p><strong>Event:</strong> ${eventName}</p>
-      <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
-        <p><strong>Location:</strong> ${venueName}, ${eventLocation}</p>
-      ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here.</a></p>` : ''}
-      ${!sponsorshipTitle.includes('without exhibit space') ? generateExhibitorInstructionsHtml(exhibitorInstructions, false) : ''}
+    <h4 style="margin-top: 20px; margin-bottom: 2px;">Next Steps</h4>
+    <p>Please reach out to our team at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> to coordinate your benefits, including scheduling your speaking opportunity, finalizing branding assets, reserving your matchmaking session(s), and coordinating your spotlight email.</p>
     </div>
-    
-
+    ` : ''}
     ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'sponsor')}
-    
+    ${sponsorshipTitle.includes('without exhibit space') ? '' : generateExhibitorInstructionsHtml(exhibitorInstructions, true)}
 
-    <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077.</span></p>
-        <p>Please note, all registrations are final. We are unable to offer refunds for this event. All necessary event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
-    
-    <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
-    
-    <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
-
-    ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
     ${orderSummaryHtml || ''}
   `;
   
