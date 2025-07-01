@@ -35,7 +35,7 @@ export interface OrderSummary {
   discount: number; // in dollars
   total: number; // in dollars
 }
-type Tier = 'platinum' | 'gold' | 'silver' | 'bronze';
+type Tier = 'platinum' | 'gold' | 'silver' | 'bronze' | 'vip networking reception' | 'networking luncheon';
 
 const benefitMap: Record<Tier, string[]> = {
   platinum: [
@@ -57,6 +57,14 @@ const benefitMap: Record<Tier, string[]> = {
   ],
   bronze: [
     'scheduling your speaking opportunity',
+    'finalizing branding assets',
+    'reserving your matchmaking session(s)',
+  ],
+  'vip networking reception': [
+    'finalizing branding assets',
+    'reserving your matchmaking session(s)',
+  ],
+  'networking luncheon': [
     'finalizing branding assets',
     'reserving your matchmaking session(s)',
   ],
@@ -571,13 +579,15 @@ export function sponsorTemplate({
 
     
     <!-- VIP Networking Reception Host -->
-    ${sponsorshipTitle.includes('vip networking reception') ? `
-      <p>You are the exclusive host of the VIP Networking Reception and are invited to provide welcoming remarks at the VIP Networking Reception. Please identify who will be providing welcoming remarks and send a Photo/Bio to Lana Corrigan (<a href="mailto:lana@americandefensealliance.org">lana@americandefensealliance.org</a>) for inclusion on our website.</p>
-    ` : ''}
     
     ${!sponsorshipTitle.includes('small business sponsor') ? `
     <div class="highlight">
-    <h2>${sponsorshipTitle.replace(/\b\w/g, l => l.toUpperCase())} Benefits</h2>
+    <h2>${sponsorshipTitle.replace(/\b(vip)\b/gi, m => m.toUpperCase()).replace(/\b\w/g, l => l.toUpperCase())} Benefits</h2>
+
+    ${sponsorshipTitle.includes('vip networking reception') ? `
+      <p>You are the exclusive host of the VIP Networking Reception and are invited to provide welcoming remarks at the VIP Networking Reception. Please identify who will be providing welcoming remarks and provide a Photo/Bio for inclusion on our website.</p>
+    ` : ''}
+
     <!-- Speaking Opportunity -->
     ${speakingTime ? `
       <p><strong>Speaking Opportunity: </strong>You will be given ${speakingTime} during the General Session. This may be a standalone presentation or part of a panel. Please provide your speaker’s name, bio (any length), high-resolution photo, and session topic for approval and scheduling.</p>

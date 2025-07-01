@@ -83,6 +83,8 @@ const sponsorLevels = [
   'Silver Sponsor',
   'Gold Sponsor',
   'Platinum Sponsor',
+  'VIP Networking Reception Sponsor',
+  'Networking Luncheon Sponsor'
 ]
 
 type TemplateName = keyof typeof templateFunctions;
