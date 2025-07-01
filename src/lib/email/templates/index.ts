@@ -99,6 +99,56 @@ export function generateOrderSummaryHtml(summary: OrderSummary): string {
   `;
 }
 
+/**
+ * Generates HTML for VIP networking reception section in emails
+ */
+export function generateVipNetworkingReceptionHtml(
+  vipNetworkingReception: VipNetworkingReception | undefined,
+  recipientType: 'exhibitor' | 'sponsor' | 'attendee' = 'attendee'
+): string {
+  if (!vipNetworkingReception) return '';
+
+  let introText = '';
+  
+  // if (recipientType === 'exhibitor') {
+  //   introText = 'As an exhibitor, you and your guests are invited to our exclusive VIP Networking Reception.';
+  // } else if (recipientType === 'sponsor') {
+  //   introText = 'As a sponsor, you and your guests are invited to our exclusive VIP Networking Reception.';
+  // }
+
+  return `
+    <div class="highlight">
+      <h2>VIP Networking Reception</h2>
+      <p>${introText} ${vipNetworkingReception.description}</p>
+      <p><strong>Location:</strong> ${vipNetworkingReception.location}</p>
+      <p><strong>Date:</strong> ${vipNetworkingReception.date} from ${vipNetworkingReception.timeStart} to ${vipNetworkingReception.timeEnd}</p>
+      <p>${vipNetworkingReception.additionalInfo}</p>
+    </div>
+  `;
+}
+
+/**
+ * Generates HTML for exhibitor instructions section in emails
+ */
+export function generateExhibitorInstructionsHtml(
+  exhibitorInstructions: string,
+  isFullSection: boolean = true
+): string {
+  if (!exhibitorInstructions) return '';
+  
+  if (isFullSection) {
+    return `
+      <div class="highlight">
+        <h2>Exhibitor Instructions</h2>
+        <p>Exhibitor setup and other important instructions are available on our website.</p>
+        <a href="${getCdnPath(exhibitorInstructions)}">View Exhibitor Instructions</a>
+      </div>
+    `;
+  } else {
+    return `<p><strong>Exhibitor Instructions:</strong> Exhibitor setup and other important instructions are available on our website. <a href="${getCdnPath(exhibitorInstructions)}">View Exhibitor Instructions</a></p>`;
+  }
+}
+
 // Base template that all emails will use
 export function baseEmailTemplate(content: string, eventImage: string): string {
   // Use client-safe env for client components
@@ -337,11 +387,7 @@ export function vipAttendeePassTemplate({
 
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
 
-    ${vipNetworkingReception ? `
-    <div class="highlight">
-      <h2>VIP Networking Reception</h2>
-      <p>${vipNetworkingReception.description}</p>
-    </div>` : ''}
+    ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'attendee')}
 
     ${orderSummaryHtml || ''}
   `;
@@ -380,39 +426,31 @@ export function exhibitorTemplate({
   vipNetworkingReception?: VipNetworkingReception;
 }): string {
   const content = `
-    <p>Dear ${firstName},</p>
+    <p><strong>Dear ${firstName},</strong></p>
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
 
-    <p>If you wish to purchase additional attendee passes, you can do so using the $395 registration option on our website. Please send a high-quality image of your company logo to Chayil Dickerson <a href="mailto:chayil@americandefensealliance.org">(chayil@americandefensealliance.org)</a></p>
+    <p>If you wish to purchase additional attendee passes, you can do so using the $395 registration option on our website. Please send a high-quality image of your company logo to <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a></p>
     
-<div class="highlight">
-  <h2>Event Details</h2>
-  <p><strong>Event:</strong> ${eventName}</p>
-  <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
-    <p><strong>Location:</strong> ${venueName}, ${eventLocation}</p>
-  ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here.</a></p>` : ''}
-</div>
-
-<div class="highlight">
-  <h2>Exhibitor Instructions</h2>
-  <p>Exhibitor setup and other important instructions are available on our website. <a href="${getCdnPath(exhibitorInstructions)}">View Exhibitor Instructions</a></p>
-</div>
-
-${vipNetworkingReception ? `
-<div class="highlight">
-  <h2>VIP Networking Reception</h2>
-  <p>As an exhibitor, you and your guests are invited to our exclusive VIP Networking Reception. ${vipNetworkingReception.description}</p>
-</div>` : ''}
-
-
     <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077.</span></p>
-        <p>Please note, all registrations are final. We are unable to offer refunds for this event. All necessary event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
-    
-    <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
-    
+    <p>Please note, all registrations are final. We are unable to offer refunds for this event. You can request an Event Credit up to one week from the event date. All event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
+    <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]}` : 'to this event'}!</p>
     <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
 
-    ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
+    <div class="highlight">
+      <h2>Event Details</h2>
+      <p><strong>Event:</strong> ${eventName}</p>
+      <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
+        <p><strong>Location:</strong> ${venueName}, ${eventLocation}</p>
+      ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here.</a></p>` : ''}
+    </div>
+
+        ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
+
+
+    ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'exhibitor')}
+
+    ${generateExhibitorInstructionsHtml(exhibitorInstructions)}
+
     ${orderSummaryHtml || ''}
   `;
   
@@ -506,16 +544,11 @@ export function sponsorTemplate({
       <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
         <p><strong>Location:</strong> ${venueName}, ${eventLocation}</p>
       ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here.</a></p>` : ''}
-      ${!sponsorshipTitle.includes('without exhibit space') ? `<p><strong>Exhibitor Instructions:</strong> Exhibitor setup and other important instructions are available on our website. <a href="${getCdnPath(exhibitorInstructions)}">View Exhibitor Instructions</a></p>` : ''}
+      ${!sponsorshipTitle.includes('without exhibit space') ? generateExhibitorInstructionsHtml(exhibitorInstructions, false) : ''}
     </div>
     
 
-    ${vipNetworkingReception ? `
-    <div class="highlight">
-      <h2>VIP Networking Reception</h2>
-      <p>As a sponsor, you and your guests are invited to our exclusive VIP Networking Reception. ${vipNetworkingReception.description}</p>
-    </div>
-    ` : ''}
+    ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'sponsor')}
     
 
     <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077.</span></p>
