@@ -602,9 +602,7 @@ export function sponsorTemplate({
       <!-- Date 1 -->
       <ul>
       <li>${matchmakingSessions?.sessions[0].date} from ${matchmakingSessions?.sessions[0].sessionTime}</li>
-      </ul>
       <!-- Date 2 -->
-      <ul>
         <li>${matchmakingSessions?.sessions[1].date} from ${matchmakingSessions?.sessions[1].sessionTime}</li>
       </ul>
     
