@@ -594,7 +594,7 @@ export function govMilPassTemplate({
     
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
 
-    <p>We have very limited complimentary Table-Top Exhibit Spaces available for Government Agencies & Military Commands for those willing to host a Matchmaking Session Table on either one or both days of the conference. If you are interested in a Speaking Opportunity, please contact Charles Sills (<a href="mailto:csills@trillacorpeconstruction.com">csills@trillacorpeconstruction.com</a>).</p>
+    <p>We have very limited complimentary Table-Top Exhibit Spaces available for Government Agencies & Military Commands for those willing to host a Matchmaking Session Table on either one or both days of the conference. If you are interested in a Speaking Opportunity, please contact Charles Sills (<a href="mailto:csills@americandefensealliance.org">csills@americandefensealliance.org</a>).</p>
     <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077.</span></p>
     <p>All event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
     <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]}` : 'to this event'}!</p>
