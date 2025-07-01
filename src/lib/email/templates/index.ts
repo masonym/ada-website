@@ -121,7 +121,7 @@ export function baseEmailTemplate(content: string, eventImage: string): string {
           background-color: #f8f9fa;
         }
         .container {
-          max-width: 600px;
+          max-width: 800px;
           margin: 20px auto;
           padding: 0;
           background-color: #ffffff;
