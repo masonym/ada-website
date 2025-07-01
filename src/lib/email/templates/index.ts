@@ -279,14 +279,14 @@ export function attendeePassTemplate({
 
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
     
-    ${orderSummaryHtml || ''}
-    
     <p>If you have any questions or need further assistance, feel free to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
     <p>Please note all registrations are final. We are unable to offer refunds for this event. Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org</a></p>
     
     <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
     
     <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
+
+    ${orderSummaryHtml || ''}
   `;
   
   return baseEmailTemplate(content, eventImage);
@@ -336,14 +336,14 @@ export function vipAttendeePassTemplate({
 
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
     
-    ${orderSummaryHtml || ''}
-    
     <p>If you have any questions or need further assistance, feel free to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
 <p>Please note all registrations are final. We are unable to offer refunds for this event. Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org</a></p>
     
     <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
     
     <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
+
+    ${orderSummaryHtml || ''}
   `;
   
   return baseEmailTemplate(content, eventImage);
@@ -404,14 +404,14 @@ ${vipNetworkingReception ? `
 
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
 
-    ${orderSummaryHtml || ''}
-    
     <p>If you have any questions or need further assistance, feel free to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
     <p>Please note all registrations are final. We are unable to offer refunds for this event. Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org</a></p>
     
     <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
     
     <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
+
+    ${orderSummaryHtml || ''}
   `;
   
   return baseEmailTemplate(content, eventImage);
@@ -515,14 +515,14 @@ export function sponsorTemplate({
     
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
 
-    ${orderSummaryHtml || ''}
-    
     <p>If you have any questions or need further assistance, please do not hesitate to contact us at <a href="mailto:chayil@americandefensealliance.org">chayil@americandefensealliance.org</a> or call (771) 474-1077.</p>
     <p>Please note all registrations are final. We are unable to offer refunds for this event. Additional Event Information, including the Agenda, Speaker Lineup, and Venue Details can be found on our website: <a href="https://www.americandefensealliance.org/">www.americandefensealliance.org</a></p>
     
     <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
     
     <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
+
+    ${orderSummaryHtml || ''}
   `;
   
   return baseEmailTemplate(content, eventImage);
