@@ -201,7 +201,7 @@ export async function logRegistration(
     if (rowsToAppend.length > 0) {
       await appendToSheet(
         env.GOOGLE_SHEETS_SPREADSHEET_ID,
-        '🛡️ Attendee Registration Information 🛡️!A:P',
+        '🛡️ Attendee Registration Information 🛡️!A2',
         rowsToAppend,
         'USER_ENTERED'
       );
