@@ -585,7 +585,7 @@ export function sponsorTemplate({
     <h2>${sponsorshipTitle.replace(/\b(vip)\b/gi, m => m.toUpperCase()).replace(/\b\w/g, l => l.toUpperCase())} Benefits</h2>
 
     ${sponsorshipTitle.includes('vip networking reception') ? `
-      <p>You are the exclusive host of the VIP Networking Reception and are invited to provide welcoming remarks at the VIP Networking Reception. Please identify who will be providing welcoming remarks and provide a Photo/Bio for inclusion on our website.</p>
+      <p><strong>Speaking Opportunity:</strong> You are the exclusive host of the VIP Networking Reception and are invited to provide welcoming remarks at the VIP Networking Reception. Please identify who will be providing welcoming remarks and provide a photo and bio for inclusion on our website.</p>
     ` : ''}
 
     <!-- Speaking Opportunity -->
