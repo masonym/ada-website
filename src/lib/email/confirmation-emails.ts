@@ -114,6 +114,9 @@ export function collectUniqueEmails(registrationData: RegistrationFormData): str
       });
     }
   });
+
+  // add events @ ada to unique emails to create a notification email
+  uniqueEmails.add('events@americandefensealliance.org');
   
   return Array.from(uniqueEmails);
 }
