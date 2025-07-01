@@ -125,6 +125,8 @@ export function isGovOrMilEmail(email: string): boolean {
     domain.endsWith('.mil') ||
     domain.endsWith('.gouv.qc.ca') ||
     domain.endsWith('.gc.ca') ||
+    domain.endsWith('.dk') ||
+    domain.endsWith('.do') ||
     /\gov\.[a-z]{2}\.ca$/i.test(domain) // provinces
   );
 }
