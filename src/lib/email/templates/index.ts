@@ -280,7 +280,7 @@ export function attendeePassTemplate({
     </div>
 
     
-    <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call (771) 474-1077.</p>
+    <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077.</span></p>
     <p>Please note, all registrations are final. We are unable to offer refunds for this event. All necessary event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
     
     <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
@@ -339,7 +339,7 @@ export function vipAttendeePassTemplate({
     </div>` : ''}
 
     
-    <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call (771) 474-1077.</p>
+    <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077.</span></p>
     <p>Please note, all registrations are final. We are unable to offer refunds for this event. All necessary event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
     
     <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
@@ -409,7 +409,7 @@ ${vipNetworkingReception ? `
 </div>` : ''}
 
 
-    <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call (771) 474-1077.</p>
+    <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077.</span></p>
         <p>Please note, all registrations are final. We are unable to offer refunds for this event. All necessary event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
     
     <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
@@ -522,7 +522,7 @@ export function sponsorTemplate({
     ` : ''}
     
 
-    <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call (771) 474-1077.</p>
+    <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077.</span></p>
         <p>Please note, all registrations are final. We are unable to offer refunds for this event. All necessary event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
     
     <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
@@ -577,8 +577,8 @@ export function govMilPassTemplate({
 
     
     
-    <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call (771) 474-1077.</p>
-        <p>Please note, all registrations are final. We are unable to offer refunds for this event. All necessary event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
+    <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077.</span></p>
+    <p>Please note, all registrations are final. We are unable to offer refunds for this event. All necessary event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
     
     <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]} this ${getMonthFromDate(eventDate)}` : 'to this event'}!</p>
     
