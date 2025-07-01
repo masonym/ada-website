@@ -11,6 +11,7 @@ import {
   generateOrderSummaryHtml,
 } from './templates';
 import { fetchFileNamesFromCloud } from '@/lib/s3';
+import { RegistrationFormData } from '@/types/event-registration/registration';
 
 // Define ticket tiers in order of priority (highest to lowest)
 export enum TicketTier {
@@ -88,6 +89,99 @@ export function findHighestTierRegistration(registrations: AdapterModalRegistrat
   }
 
   return highestTier;
+}
+
+/**
+ * Collects unique email addresses from a registration form data
+ * @param registrationData The complete registration form data
+ * @returns Array of unique email addresses
+ */
+export function collectUniqueEmails(registrationData: RegistrationFormData): string[] {
+  const uniqueEmails = new Set<string>();
+  
+  // Add billing email
+  uniqueEmails.add(registrationData.email.toLowerCase().trim());
+  
+  // Add all attendee emails
+  registrationData.tickets.forEach(ticket => {
+    if (ticket.attendeeInfo && Array.isArray(ticket.attendeeInfo)) {
+      ticket.attendeeInfo.forEach(attendee => {
+        if (attendee.email && typeof attendee.email === 'string') {
+          uniqueEmails.add(attendee.email.toLowerCase().trim());
+        }
+      });
+    }
+  });
+  
+  return Array.from(uniqueEmails);
+}
+
+/**
+ * Sends confirmation emails to all unique attendee emails
+ * @param registrationData Complete registration form data
+ * @param event Event information
+ * @param registrations Array of registrations in the order
+ * @param orderId Order ID (payment intent ID)
+ * @returns Results of email sending operations
+ */
+export async function sendRegistrationConfirmationEmails({
+  registrationData,
+  event,
+  registrations,
+  orderId,
+  orderSummary,
+  attendeePasses = 0,
+  attachments = []
+}: {
+  registrationData: RegistrationFormData;
+  event: Event;
+  registrations: AdapterModalRegistrationType[];
+  orderId: string;
+  orderSummary?: OrderSummary;
+  attendeePasses?: number;
+  attachments?: any[];
+}) {
+  const uniqueEmails = collectUniqueEmails(registrationData);
+  const results: Array<{email: string; result: any}> = [];
+  
+  console.log("uniqueEmails: ", uniqueEmails);
+
+  for (const email of uniqueEmails) {
+    console.log("email: ", email);
+    // Find the attendee info for this email to get the correct first name
+    let firstName = registrationData.firstName; // Default to billing contact's first name
+    
+    // Try to find a matching attendee
+    for (const ticket of registrationData.tickets) {
+      if (ticket.attendeeInfo) {
+        const matchingAttendee = ticket.attendeeInfo.find(attendee => 
+          attendee.email.toLowerCase().trim() === email.toLowerCase().trim());
+        if (matchingAttendee) {
+          firstName = matchingAttendee.firstName;
+          break;
+        }
+      }
+    }
+    
+    // Send the confirmation email
+    const result = await sendRegistrationConfirmationEmail({
+      email,
+      firstName,
+      event,
+      registrations,
+      orderId,
+      orderSummary,
+      attendeePasses,
+      attachments
+    });
+    
+    results.push({ email, result });
+  }
+  
+  return {
+    success: results.every(r => r.result.success),
+    results
+  };
 }
 
 /**

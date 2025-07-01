@@ -3,7 +3,7 @@ import { getEnv } from '@/lib/env';
 import { stripe } from '@/lib/stripe/server';
 import { logRegistration } from '@/lib/google-sheets';
 import { validateRegistrationData } from '@/lib/event-registration/validation';
-import { sendRegistrationConfirmationEmail } from '@/lib/email/confirmation-emails';
+import { sendRegistrationConfirmationEmails } from '@/lib/email/confirmation-emails';
 import { AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { EVENTS } from '@/constants/events';
 import { isGovOrMilEmail } from '@/lib/event-registration/validation';
@@ -166,9 +166,8 @@ export async function POST(request: Request) {
           })
           .filter((r): r is AdapterModalRegistrationType => r !== null);
 
-        await sendRegistrationConfirmationEmail({
-          email: validatedData.email,
-          firstName: validatedData.firstName,
+        await sendRegistrationConfirmationEmails({
+          registrationData: validatedData,
           event,
           registrations: registrationsForEmail,
           orderId: orderId,
