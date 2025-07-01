@@ -8,7 +8,7 @@ export interface Speaker {
 	bio?: string;
 	keynote?: {
 		isKeynote: boolean;
-		headerText: string;
+		headerText?: string;
 	};
 }
 
@@ -110,17 +110,21 @@ Ms. Buehler represents the Secretary of the Army at congressional committee and 
 	"david-canada": {
 		"image": "david-canada.webp",
 		"name": "David Canada",
-		"position": "Director, Global Supplier Diversity",
-		"company": "Boeing Defense Space & Security",
-		"bio": `David Canada is Director of Global Supplier Diversity for Boeing Defense Space & Security (BDS). Named to this role in 2023, he has primary responsibility for building stronger relationships with the diversity office at the DoD and with the respective representatives of the branches of services. 
+		"position": "Director, Strategic Sourcing & Partnerships",
+		"company": "Boeing Defense Space & Security, The Boeing Company",
+		"bio": `
+David Canada is Director of Strategic Sourcing & Partnerships for Boeing Defense Space & Security (BDS). Named to this role in 2023, he has primary responsibility for building stronger relationships with the small business offices at the DoD and NASA as well as with the respective representatives of the branches of services. The goal is to provide opportunities for small business, service-disabled veteran-owned small business, HUBZone small business, small disadvantaged business, and women-owned small business as defined by the Small Business Administration and/or other entities designated or defined by applicable law. David is also responsible for supply chain strategy, which includes country segmentation for campaigns, offset obligations, supplier risk assessment reporting on geopolitical, labor, natural disaster & raw materials and market enablement.
 <br/><br/>
-David joined The Boeing Company in 2007 as an Industrial Engineer on the V-22 Osprey line. He implemented new project management tools that resulted in automated workforce planning and improved the schedule planning efficiency. David grew, taking on new challenges and roles across Boeing. 
+David joined The Boeing Company in 2007 as an Industrial Engineer on the V-22 Osprey line. He implemented new project management tools that resulted in automated workforce planning and improved the schedule planning efficiency. David grew, taking on new challenges and roles across Boeing.
 <br/><br/>
-As IT Procurement Manager, he managed 18 procurement agents, 30 suppliers, and more than $250 million in contracts. He moved on to serve as Chief of Staff to the Vice President of BDS IT Business Partners. He continued his career as the Senior Manager, Mergers & Acquisitions Integration Strategy, where he led mergers and acquisitions estimated at $2.5 billion, and also manages critical cybersecurity issues and systems.             
+As IT Procurement Manager, he managed 18 procurement agents, 30 suppliers, and more than $250 million in contracts. He moved on to serve as Chief of Staff to the Vice President of BDS IT Business Partners.
 <br/><br/>
-David earned a bachelor’s degree in Mechanical Engineering from Howard University, and a master’s degree in Business Administration and a Certification in Project Management. 
+He continued his career as the Senior Manager, Mergers & Acquisitions Integration Strategy, where he led mergers and acquisitions estimated at $2.5 billion, and also managed critical cybersecurity issues and systems tied to subsidiary integration. Canada also has served as the Director of Business Operations for Boeing Global Services (BGS) where is he responsible for business transformation and improve operational efficiency.
 <br/><br/>
-Giving back is a part of who David is. He serves on the board of the following non-profit organizations:  Black Alliance of Colleges & Employers (BACE), Step Afrika, Wearable Tech Ventures and Positive Deposits. David is also very passionate about STEM education and increasing the number of minorities in technology fields.  He serves as an active corporate representative for the Black Engineer of the Year Awards, Advancing Minorities Interest in Engineering as well as the National Society of Black Engineers. In addition, he was selected to be a member of the Racial Equity Task Force and is co-leader of the BGS Diversity & Inclusion Council.\n`
+David earned a Bachelor’s Degree in Mechanical Engineering from Howard University, and a Master’s Degree in Business Administration and a Certification in Project Management.
+<br/><br/>
+Giving back is a part of who David is. He serves on the board of the following non-profit organizations: DC CAP, BeOrg, Black Alliance of Colleges & Employers (BACE), Step Afrika and Wearable Tech Ventures. David is also very passionate about STEM education and increasing the number of minorities in technology fields. He serves as an active corporate representative for the Black Engineer of the Year Awards as well as the Execution Sponsor for the National Society of Black Engineers.
+`
 	},
 	"patricia-waddell": {
 		"image": "patricia-waddell.webp",
@@ -822,9 +826,9 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	,
 	"stephen-mongold": {
 		"image": "stephen-mongold.webp",
-		"name": "CAPT Stephen Mongold",
-		"position": "Director",
-		"company": "COMSUBFOR Submarine Maintenance Operations Center",
+		"name": "Captain Steven E. Mongold",
+		"position": "Director, COMSUBFOR Submarine Maintenance Operations Center",
+		"company": "Submarine Forces Atlantic (COMSUBLANT)",
 		"bio": `CAPT Steve Mongold enlisted in the Navy in 1995 as a Nuclear Propulsion Officer Candidate (NUPOC) and received his commission from Officer Candidate School (OCS) in 1996.  He resides in Chesapeake, Virginia and earned a Bachelor’s degree in Chemical Engineering from Villanova University, and Master’s degree in Engineering Management from Old Dominion University.
 	<br/>
 	
@@ -843,7 +847,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	"stacey-l-cooper": {
 		"image": "stacey-cooper.webp",
 		"name": "Stacey L. Cooper",
-		"position": "Deputy of Small Business Programs",
+		"position": "Deputy Director, Small Business Programs",
 		"company": "Mid-Atlantic Regional Maintenance Center (MARMC)",
 		"bio": `Stacey Cooper was born and raised in Hampton, Virginia. She attended and graduated from Christopher Newport University in 1998 with a Bachelor’s of Science in Business Administration Degree with concentrations in Finance and Real Estate. She received a Master’s Degree in Healthcare Management from University of Phoenix in 2006. A second Master’s Degree in Acquisition Management from University of Management and Technology in 2012.
 	<br/>
@@ -879,7 +883,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	"diane-dempsey": {
 		"image": "diane-dempsey.webp",
 		"name": "Diane Dempsey",
-		"position": "Director, Small Business Programs",
+		"position": "Director, Small Business Programs, Intelligence & Security",
 		"company": "BAE Systems",
 		"bio": `Ms. Dempsey has enjoyed an extensive career in the field of procurement, subcontracts and supplier diversity.  Currently she is the Director, Small Business Programs for BAE Systems Intelligence & Security Sector.   Ms. Dempsey has also been a small business advocate for several prime contractors in the DC Metropolitan area.   She serves on multiple boards and committees, most recently served as the Chair, Capital Region Minority Supplier Development Council Board of Directors.  She formerly chaired the Community Business Partnership Board of Directors.  Additionally, she has served as the TRIAD Industry Group Co-Chair since 2006.  Her leadership and advocacy have been recognized with many awards, most recently the National Veterans Small Business Coalition 2021 Prime Contractor – Advocate of the Year, U.S. Women’s Chamber of Commerce, 2021 CEO Award and 2024 VA Asian Chamber of Commerce Diversity Award.
 	<br/>
@@ -967,7 +971,92 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 		"company": "Pioneer Motor Bearing Company",
 		"bio": ``,
 	}
-};
+	,
+	"katina-adams": {
+		"image": "katina-adams.webp",
+		"name": "Katina Adams",
+		"position": "Manager, Small Business Programs",
+		"company": "Newport News Shipbuilding, A Dvision of HII",
+		"bio": `Katina Adams is the Small Business Liaison Officer (SBLO) and Socio-Economic Small Business Programs Officer for Newport News Shipbuilding (NNS), A Division of HII. Katina is responsible for ensuring that NNS and its almost 30,000 employees comply with federal requirements for soliciting and subcontracting with small businesses. Katina has oversight of government reporting on prime and sub- tier contracts valued over $40B and annual subcontract spend of approximately $3B. Katina leads HII’s SBLO Council which consists of SBLOs and small business professionals from HII’s Ingalls Shipbuilding and Mission Technologies Divisions. Katina and her team are dedicated to advocacy for all categories of small businesses.
+	<br/>
+	
+	<br/>
+	Under Katina’s leadership, HII was awarded Veteran Small Business Advocate of the Year and has earned the National Veteran Small Business Coalition’s Champion Award for the past two consecutive years; NNS earned the Minority Business Enterprise (MBE) Input Committee Development Award for advancing the growth and development of MBEs, and NNS annually exceeds DoD’s small business subcontracting goals.
+	<br/>
+	
+	<br/>
+	Katina is a graduate of George Mason University and Florida Institute of Technology. Katina has earned various certifications to include Certified Supplier Diversity Professional, Certified Purchasing Manager, Certified in Production & Inventory Management, Certificate of Lean Practice and Virginia Contracting Officer. Katina serves on the Board of Directors for Women in Defense Greater Hampton Roads, Carolinas-Virginia Minority Supplier Development Council, and National Veteran Small Business Coalition’s Hampton Roads Community of Interest.`,
+	},
+	"stacey-r-washington": {
+		"image": "stacey-r-washington.webp",
+		"name": "Stacey R. Washington",
+		"position": "Small Business Program Manager",
+		"company": "Lockheed Martin Missiles and Fire Control",
+		"bio": `Stacey Washington serves as the Small Business Program Manager for Lockheed Martin Missiles and Fire Control (MFC), where she leads the development and execution of daily operations and long-term strategic goals for the business area’s Small Business Program. With over 15 years of experience in global supply chain management, small business advocacy, and compliance, Ms. Washington brings a wealth of expertise and commitment to her role.
+	<br/>
+	
+	<br/>
+	A passionate advocate for small and diverse businesses, Stacey believes these enterprises are the backbone of local communities. She recognizes their role not only in economic development but also in driving community-focused initiatives and creating meaningful employment opportunities.
+	<br/>
+	
+	<br/>
+	Ms. Washington holds multiple professional certifications and training credentials. She is a Level II Trainer for the Advanced Small Business Liaison Officer Certification Program through the Alliance of Supplier Diversity Professionals, Inc. (ASDP); a certified Six Sigma Green Belt through Textron’s Continuous Improvement Program; and holds a Certificate in Federal Contract Management Essentials from The University of Alabama in Huntsville. Additionally, she earned a Program Management Certification from The George Washington University TwentyEighty Strategy Execution Program.
+	<br/>
+	
+	<br/>
+	A 2016 graduate of the National African American Women’s Leadership Institute (NAAWLI), Stacey previously served as Chair of the Board for the organization, demonstrating her dedication to leadership development and service.
+	<br/>
+	
+	<br/>
+	Academically, she earned a Bachelor of Arts and Science in Interdisciplinary Studies from Dallas Baptist University and a Master of Business Administration from Louisiana State University Shreveport.
+	<br/>
+	
+	<br/>
+	Outside of her professional responsibilities, Stacey is devoted to empowering the next generation. In 2018, she founded the Big Sis Lil Sis Program, a mentorship initiative for young women that focuses on self-empowerment through goal setting, positive self-image, and self-leadership. She remains actively involved in mentoring, helping young women recognize their potential and lead with confidence and authenticity.`,
+	},
+	"robyn-card": {
+		"image": "robyn-card.webp",
+		"name": "Dr. Robyn Card",
+		"position": "Director, Small Business Office (SBO)",
+		"company": "General Dynamics Information Technology, Inc. (GDIT)",
+		"bio": `Dr. Robyn Card has worked as a contracting officer for General Dynamics Information Technology, Inc. (GDIT) since 2012, and currently serves as the Director of the Small Business Office (SBO). She leads a dynamic team of professionals who champion the inclusion of small businesses as team members and partners with GDIT. With a focus on teambuilding and informal mentorship, Dr. Card leads initiatives within GDIT’s SBO to actively educate suppliers regarding best practices including increased engagement with government and industry partners, and training internal stakeholders on process improvements to support legislative changes. 
+	<br/>
+	
+	<br/>
+	Recently, the GDIT Small Business team received the National 8a Council and HUBZone Contractor’s National Council Large Business of the Year Award for their innovative approach to promoting small business utilization. Dr. Card serves on the Contracts Leadership Team at GDIT and as the chair of the Supplier Diversity Committee which is comprised of representatives from all General Dynamics individual business units. She has been a guest presenter at several events including those hosted by the Capital Business Development Association, the DoD Mid-Atlantic Regional Council, and the Virginia APEX Accelerator. Dr. Card is a longtime member of NCMA, holding both the CPCM and CFCM certifications and is also certified by the Alliance of Supplier Diversity Professionals. 
+	<br/>
+	`,
+	}
+	,
+	"erica-h-plath": {
+		"image": "erica-h-plath.webp",
+		"name": "Erica H. Plath",
+		"position": "Deputy Assistant Secretary of the Navy (Sustainment) Office of the Assistant Secretary of the Navy for Research, Development and Acquisition",
+		"company": "United States Department of the Navy",
+		"bio": `
+Ms. Erica H. Plath assumed the responsibilities of the Deputy Assistant Secretary of the Navy for Sustainment in May of 2022. She serves as the principal advisor to the Assistant Secretary of the Navy for Research, Development and Acquisition (ASN (RDA)) on all matters related to the planning, budgeting and execution of sustainment and supply chain activities of the Department of the Navy and Marine Corps.
+
+<br/><br/>
+Prior to this assignment, Ms. Plath served as the Director, Installations and Logistics Integration (OPNAV N4Z) in the office of the Chief of Naval Operations. In this capacity, she supported the development, integration and resourcing of a roughly $20 billion annual budget for the Navy’s Fleet Readiness and Logistics portfolio which includes combat logistics, military sealift, and shore infrastructure.
+<br/><br/>
+Ms. Plath was appointed to the Senior Executive Service in August 2018. In years’ prior, Ms. Plath served as the Director, Strategic Mobility and Combat Logistics Division (OPNAV N42) inthe office of the Chief of Naval Operations from August 2018 to November 2021. In this capacity, she supported the development, integration and resourcing of a roughly $3 billion annual portfolio for Navy’s combat logistics, maritime prepositioning, and strategic sealift ships. Ms. Plath served as Deputy for the Maintenance and Modernization Branch in the Surface Warfare Division (OPNAV N96) from November 2012 to August 2018. She began federal civilian service in 2011 at Naval Sea Systems Command within the Surface Warfare Directorate.
+<br/><br/>
+Ms. Plath graduated from the U.S. Naval Academy with a Bachelor of Science in Aerospace Engineering and was commissioned as an Ensign, United States Navy in May 2001. Following commissioning, she served as a Surface Warfare Officer in USS PORTER (DDG 78), USS COWPENS (CG 63) and the Navy Operations Center at the Pentagon. Ms. Plath left active duty as a Lieutenant in December 2007.
+<br/><br/>
+Ms. Plath's naval decorations include the Navy Commendation Medal (two awards), Navy Achievement Medal (two awards), Meritorious Unit Commendation, and Global War on Terrorism Expeditionary and Service medals.
+`,
+		"keynote": {
+			"isKeynote": true,
+		},
+	}
+,
+  "paul-wichert": {
+    "image": "paul-wichert.webp",
+    "name": "Paul Wichert",
+    "position": "VP of Sales",
+    "company": "DMG Mori Federal Services",
+    "bio": `Paul Wichert is a 45-year veteran of the manufacturing industry. His experience is multi-faceted, Operational Executive of machine tool builders, Owner/Operator of contract machining services business, President of manufacturing facilities in US, China & Taiwan. Importing and consulting in global manufacturing. Currently he is working with DMG MORI Federal Services (DMFS). DMFS is the representative for DMG MORI, the leader in innovative metal cutting 3D Metal Printing and Hybrid machine tools.`,
+  }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 	"1": [
@@ -1052,6 +1141,11 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"christopher-m-haar",
 		{ id: "joel-lundy", label: "Pending Agency Approval" },
 		"don-mcginnis",
+		"robyn-card",
+		"katina-adams",
+		"stacey-r-washington",
+		"erica-h-plath",
+		"paul-wichert",
 	]
 };
 

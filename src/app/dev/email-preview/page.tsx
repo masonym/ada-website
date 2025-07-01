@@ -43,14 +43,21 @@ matchmakingSessions: {
   attendeePasses: 4,
   exhibitorType: 'Standard Exhibitor Booth',
   exhibitorInstructions: '/events/2025NMCPC/2025%20Navy%20&%20Marine%20Corps%20Procurement%20Conference%20-%20Exhibitor%20Instructions.pdf',
-  vipNetworkingReception: {
+    vipReception: {
       title: "VIP Networking Reception",
-      description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
       date: "July 29, 2025",
       timeStart: "6:00 PM",
       timeEnd: "8:00 PM",
-      location: "The Harbor Club, 333 Waterside Dr. Suite 200, Norfolk, Virginia 23510",
-      additionalInfo: "The Harbor Club is a short walking distance from the Norfolk Waterside Marriott."
+      description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
+      additionalInfo: "Join us for the VIP Networking Reception at The Harbor Club featuring a cash bar, one complimentary drink ticket, and a selection of hors d’oeuvres.",
+      locationName: "The Harbor Club",
+      locationAddress: "333 Waterside Dr Suite 200, Norfolk, VA 23510, USA",
+      placeId: "ChIJI8LspwuYuokR79KzVtIGqlY", // Google Maps Place ID for the reception venue
+      eventPlaceId: "ChIJBdD-jwuYuokRyjyu_hU0jUg", // Google Maps Place ID for the main event venue
+      eventLocationName: "Norfolk Waterside Marriott", // Optional name for the main event location
+      locationPhoto: "/locations/harbor_club.webp",
+      locationPhone: "(757) 426-7433",
+      website: "https://watersidedistrict.com/private-events/the-harbor-club",
     } as VipNetworkingReception,
   orderSummary: {
     orderId: 'pi_1234567890',

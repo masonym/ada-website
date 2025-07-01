@@ -385,7 +385,7 @@ export const SPONSORS: Record<string, Sponsor> = {
   "bn-inspection": {
     id: "bn-inspection",
     name: "B&N Inspection",
-    logo: "/sponsors/bni.webp",
+    logo: "/sponsors/bn-inspection.webp",
     website: "https://www.bninspects.com/",
     size: 'small'
   },
@@ -499,7 +499,7 @@ export const SPONSORS: Record<string, Sponsor> = {
     name: "MCS Government Services",
     logo: "/sponsors/mcs-government-services.webp",
     website: "https://www.mcs360.com/",
-    size: 'small'
+    size: 'medium'
   },
   "virginia-apex": {
     id: "virginia-apex",
@@ -550,6 +550,98 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.conductivecontainers.com/",
     size: 'small'
   },
+  "cinch": {
+    id: "cinch",
+    name: "Cinch Systems",
+    logo: "/sponsors/cinch.webp",
+    website: "https://www.cinchsystems.com/",
+    size: 'small'
+  },
+  "didlake": {
+    id: "didlake",
+    name: "Didlake, Inc.",
+    logo: "/sponsors/didlake.webp",
+    website: "https://www.didlake.org/",
+    size: 'small'
+  },
+  "equipment-share": {
+    id: "equipment-share",
+    name: "EquipmentShare",
+    logo: "/sponsors/equipment-share.webp",
+    website: "https://www.equipmentshare.com/",
+    size: 'small'
+  },
+  "dmg-mori": {
+    id: "dmg-mori",
+    name: "DMG Mori",
+    logo: "/sponsors/dmg-mori.webp",
+    website: "https://www.dmgmori-fs.com/",
+    size: 'large',
+    description: "The DMG MORI Group is a leading innovator in the machine tool industry with an expansive portfolio of manufacturing equipment. We are focused on customer support, quality, service, and advanced technology. Our product line includes 5-Axis Milling machines, 4 and 5-Axis Horizontal Machining Centers, Additive machines, Hybrid machines, Vertical Machining Centers, CNC Turning machines, CNC Boring mills, and a variety of Palletized systems and Grinding machines. With over 12,000 team members world-wide, our group companies specialize in providing unmatched applications support, service and training to large OEMs, Tier-one contractors, and the US government itself. DMG MORI Federal Services (DMFS) works exclusively with US federal and State government agencies to support government initiatives while focusing on federal acquisition regulations and cybersecurity compliance. DMFS is also (ITAR) Registered, (CMMC) 2.0 level 2 compliant ready, and (NIST) compliant. We currently have active projects with the Army, Navy, Air Force, Department of Energy, and NASA.",
+  },
+  "visit-norfolk": {
+    id: "visit-norfolk",
+    name: "Visit Norfolk",
+    logo: "/sponsors/visit-norfolk.webp",
+    website: "https://www.visitnorfolktoday.com/",
+    size: 'medium',
+  },
+  "don-office-of-small-business-programs": {
+    id: "don-office-of-small-business-programs",
+    name: "DON Office of Small Business Programs",
+    logo: "/sponsors/don-office-of-small-business-programs.webp",
+    website: "https://www.secnav.navy.mil/smallbusiness",
+    size: 'small'
+  },
+  "navsup-fleet-logistics-center-norfolk": {
+    id: "navsup-fleet-logistics-center-norfolk",
+    name: "NAVSUP Fleet Logistics Center Norfolk",
+    logo: "/sponsors/navsup-fleet-logistics-center-norfolk.webp",
+    website: "https://www.navsup.navy.mil/navsup-enterprise/navsup-flc-norfolk",
+    size: 'small'
+  },
+  "norfolk-naval-shipyard": {
+    id: "norfolk-naval-shipyard",
+    name: "Norfolk Naval Shipyard",
+    logo: "/sponsors/norfolk-naval-shipyard.webp",
+    website: "https://www.navsea.navy.mil/home/shipyards/norfolk",
+    size: 'small'
+  },
+  "cignys": {
+    id: "cignys",
+    name: "CIGNYS",
+    logo: "/sponsors/cignys.webp",
+    website: "https://www.cignys.com/",
+    size: 'small'
+  },
+  "metgreen-solutions": {
+    id: "metgreen-solutions",
+    name: "MetGreen Solutions",
+    logo: "/sponsors/metgreen-solutions.webp",
+    website: "https://metgreensolutions.com/",
+    size: 'small'
+  },
+  "marzen-group-llc": {
+    id: "marzen-group-llc",
+    name: "Marzen Group, LLC",
+    logo: "/sponsors/marzen-group-llc.webp",
+    website: "https://www.marzen-group.com/",
+    size: 'small'
+  },
+  "rite-in-the-rain": {
+    id: "rite-in-the-rain",
+    name: "Rite in the Rain",
+    logo: "/sponsors/rite-in-the-rain.webp",
+    website: "https://www.riteintherain.com/",
+    size: 'small'
+  },
+  "bounce-imaging": {
+    id: "bounce-imaging",
+    name: "Bounce Imaging",
+    logo: "/sponsors/bounce-imaging.webp",
+    website: "https://bounceimaging.com/",
+    size: 'small'
+  }
 };
 
 // Helper function to get a sponsor by ID

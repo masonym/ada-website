@@ -173,7 +173,7 @@ export function generateVipNetworkingReceptionHtml(
     <div class="highlight">
       <h2>VIP Networking Reception</h2>
       <p>${introText} ${vipNetworkingReception.description}</p>
-      <p><strong>Location:</strong> ${vipNetworkingReception.location}</p>
+      <p><strong>Location:</strong> ${vipNetworkingReception.locationName}, ${vipNetworkingReception.locationAddress}</p>
       <p><strong>Date:</strong> ${vipNetworkingReception.date} from ${vipNetworkingReception.timeStart} to ${vipNetworkingReception.timeEnd}</p>
       <p>${vipNetworkingReception.additionalInfo}</p>
     </div>

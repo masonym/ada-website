@@ -906,7 +906,7 @@ export const SCHEDULES = [
                     {
                         time: "3:00 PM - 6:00 PM",
                         title: "Exhibitor Set-up",
-                        location: "Hampton Ballroom Pre-Function, 3rd FL",
+                        location: "Hampton Roads Ballroom (I-V), 3rd FL",
                     },
                     {
                         time: "6:00 PM - 7:00 PM",
@@ -926,7 +926,7 @@ export const SCHEDULES = [
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Networking Breakfast with Exhibitors",
-                        location: "Hampton Ballroom Pre-Function, 3rd FL",
+                        location: "Hampton Roads Ballroom (I-V), 3rd FL",
                     },
                     {
                         time: "7:30 AM - 8:30 AM",
@@ -936,90 +936,92 @@ export const SCHEDULES = [
                     {
                         time: "8:30 AM",
                         title: "Conference Opening",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "8:35 AM",
                         title: "State of Virginia, Hampton Roads Alliance and/or Norfolk Chamber of Commerce – Welcoming Remarks",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "8:45 AM",
                         title: "CONGRESSIONAL KEYNOTE ADDRESS",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "9:15 AM",
                         title: "Navy Small Business Program Panel",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "10:15 AM",
                         title: "How DEFENSEWERX Hubs are Accelerating Innovative Tech Contracting",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "10:45 AM",
                         title: "Networking Break",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (I-V), 3rd Floor",
                     },
                     {
                         time: "11:00 AM",
                         title: "Sponsor Remarks",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "11:15 AM",
                         title: "Military Base-Community Partnerships Promoting Local Build Contracts",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "11:45 AM",
                         title: "NATIONAL SECURITY KEYNOTE ADDRESS",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "12:00 PM",
                         title: "Fleet Readiness Panel – Addressing Critical Challenges & Requirements",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "12:45 PM",
                         title: "Networking Lunch with Exhibitors",
-                        location: "Hampton Ballroom Pre-Function, 3rd FL",
+                        location: "Hampton Roads Ballroom (I-V), 3rd FL",
                     },
                     {
                         time: "1:30 PM",
                         title: "The ‘SHIPS ACT’ & the National Shipbuilding Revival: Driving Major New Contracts",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "2:40 PM",
                         title: "Sponsor Remarks",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "2:55 PM",
                         title: "Force Projection & Contested Logistics in the Indo-Pacific",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "3:55 PM",
                         title: "Accessing Government-Wide Acquisition Contracts (GWAC’s)",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "4:30 PM",
                         title: "Day One Closing Remarks",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "4:30 PM - 5:30 PM",
                         title: "Matchmaking Session I",
+                        location: "Franklin-Yorktown Meeting Room, 2nd Floor"
                     },
                     {
-                        time: "5:30 PM - 7:30 PM",
+                        time: "6:00 PM - 8:00 PM",
                         title: "VIP Networking Reception",
+                        location: "The Harbor Club, Waterside District. 333 Waterside Dr Suite 200, Norfolk, VA 23510",
                     },
                 ],
             },
@@ -1029,56 +1031,57 @@ export const SCHEDULES = [
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Networking Breakfast with Exhibitors",
-                        location: "Hampton Ballroom Pre-Function, 3rd FL",
+                        location: "Hampton Roads Ballroom (I-V), 3rd Floor",
                     },
                     {
                         time: "8:30 AM",
                         title: "Welcome Back Remarks",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "8:35 AM",
                         title: "CONGRESSIONAL KEYNOTE ADDRESS",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "9:05 AM",
                         title: "How to do Business with the Primes",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "10:00 AM",
                         title: "Cybersecurity Update: Safeguarding the Supply Chain",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "10:30 AM",
                         title: "Artificial Intelligence in Defense – Leveraging Navy Use Cases",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "11:00 AM",
                         title: "The ‘Golden Dome’ Integrated Missile Defense Initiative: Navy Role",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "11:30 AM",
                         title: "Army Corps of Engineers – Project Opportunities",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "12:05 PM",
                         title: "How to Use OTA’s (Other Transaction Authorities) to Win Sole-Source Contracts",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "12:30 PM",
                         title: "Closing Remarks",
-                        location: "Hampton Ballroom, 3rd FL",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
                         time: "12:30 PM - 1:30 PM",
                         title: "Matchmaking Session II",
+                        location: "Franklin-Yorktown Meeting Room, 2nd Floor"
                     },
                 ],
             },

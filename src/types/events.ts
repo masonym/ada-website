@@ -18,8 +18,15 @@ export interface VipNetworkingReception {
     date: string;
     timeStart: string;
     timeEnd: string;
-    location: string;
     additionalInfo?: string;
+    locationName?: string;
+    locationAddress?: string;
+    placeId?: string;
+    eventPlaceId?: string;
+    eventLocationName?: string;
+    locationPhoto?: string;
+    locationPhone?: string;
+    website?: string;
 }
 
 export interface Sale {
@@ -57,6 +64,22 @@ export interface EventTestimonial {
     title: string;
     affiliation: string;
     videoId?: string;
+}
+export interface VIPReceptionProps {
+        title: string;
+        date: string;
+        timeStart: string;
+        timeEnd: string;
+        description: string;
+        additionalInfo?: string;
+        locationName: string;
+        locationAddress: string;
+        placeId: string;
+        eventPlaceId: string;
+        eventLocationName?: string;
+        locationPhoto?: string;
+        locationPhone: string;
+        website: string;
 }
 
 export interface Event {
