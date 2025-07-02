@@ -1,13 +1,13 @@
 import { AdapterModalRegistrationType } from '../registration-adapters';
 import { Event } from '@/types/events';
 import { sendEmail } from './index';
-import { 
-  attendeePassTemplate, 
-  vipAttendeePassTemplate, 
-  exhibitorTemplate, 
-  sponsorTemplate, 
+import {
+  attendeePassTemplate,
+  vipAttendeePassTemplate,
+  exhibitorTemplate,
+  sponsorTemplate,
   govMilPassTemplate,
-  OrderSummary, 
+  OrderSummary,
   generateOrderSummaryHtml,
   AttendeeDetails,
   generateAttendeeDetailsHtml,
@@ -100,10 +100,10 @@ export function findHighestTierRegistration(registrations: AdapterModalRegistrat
  */
 export function collectUniqueEmails(registrationData: RegistrationFormData): string[] {
   const uniqueEmails = new Set<string>();
-  
+
   // Add billing email
   uniqueEmails.add(registrationData.email.toLowerCase().trim());
-  
+
   // Add all attendee emails
   registrationData.tickets.forEach(ticket => {
     if (ticket.attendeeInfo && Array.isArray(ticket.attendeeInfo)) {
@@ -117,7 +117,7 @@ export function collectUniqueEmails(registrationData: RegistrationFormData): str
 
   // add events @ ada to unique emails to create a notification email
   uniqueEmails.add('events@americandefensealliance.org');
-  
+
   return Array.from(uniqueEmails);
 }
 
@@ -147,9 +147,8 @@ export async function sendRegistrationConfirmationEmails({
   attachments?: any[];
 }) {
   const uniqueEmails = collectUniqueEmails(registrationData);
-  const results: Array<{email: string; result: any}> = [];
-  
-  console.log("uniqueEmails: ", uniqueEmails);
+  const results: Array<{ email: string; result: any }> = [];
+
 
   // Collect all attendees to create attendee details
   const allAttendees: AttendeeDetails[] = [];
@@ -174,15 +173,17 @@ export async function sendRegistrationConfirmationEmails({
     }
   });
 
-  for (const email of uniqueEmails) {
-    console.log("email: ", email);
+  // Helper function to create a delay
+  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+  for (const [index, email] of uniqueEmails.entries()) {
     // Find the attendee info for this email to get the correct first name
     let firstName = registrationData.firstName; // Default to billing contact's first name
-    
+
     // Try to find a matching attendee
     for (const ticket of registrationData.tickets) {
       if (ticket.attendeeInfo) {
-        const matchingAttendee = ticket.attendeeInfo.find(attendee => 
+        const matchingAttendee = ticket.attendeeInfo.find(attendee =>
           attendee.email.toLowerCase().trim() === email.toLowerCase().trim());
         if (matchingAttendee) {
           firstName = matchingAttendee.firstName;
@@ -190,7 +191,13 @@ export async function sendRegistrationConfirmationEmails({
         }
       }
     }
-    
+
+    // Add delay between email sends to avoid rate limiting (except for the first email)
+    if (index > 0) {
+      // Wait 1200ms between sends to stay under the rate limit of 2 requests per second
+      await delay(1200);
+    }
+
     // Send the confirmation email
     const result = await sendRegistrationConfirmationEmail({
       email,
@@ -203,10 +210,10 @@ export async function sendRegistrationConfirmationEmails({
       attachments,
       attendees: allAttendees
     });
-    
+
     results.push({ email, result });
   }
-  
+
   return {
     success: results.every(r => r.result.success),
     results
@@ -244,7 +251,7 @@ export async function sendRegistrationConfirmationEmail({
   attendees?: AttendeeDetails[];
 }) {
   const highestTierInfo = findHighestTierRegistration(registrations);
-  
+
   if (!highestTierInfo) {
     console.error('No registrations found for confirmation email');
     return { success: false, error: 'No registrations found' };
@@ -268,12 +275,12 @@ export async function sendRegistrationConfirmationEmail({
     path?: string;
     contentType?: string;
   }> = [];
-  
+
   // For example, sponsors might get a sponsorship guide PDF
-  if (tier === TicketTier.PLATINUM_SPONSOR || 
-      tier === TicketTier.GOLD_SPONSOR || 
-      tier === TicketTier.SILVER_SPONSOR || 
-      tier === TicketTier.BRONZE_SPONSOR) {
+  if (tier === TicketTier.PLATINUM_SPONSOR ||
+    tier === TicketTier.GOLD_SPONSOR ||
+    tier === TicketTier.SILVER_SPONSOR ||
+    tier === TicketTier.BRONZE_SPONSOR) {
     // Add sponsor-specific attachments if available
     if (event.sponsorProspectusPath) {
       // This would be implemented to fetch the actual file
@@ -283,14 +290,13 @@ export async function sendRegistrationConfirmationEmail({
       // });
     }
   }
-  
+
   // Combine any provided attachments with ticket-specific ones
   const emailAttachments = [...attachments, ...ticketAttachments];
 
   const orderSummaryHtml = orderSummary ? generateOrderSummaryHtml(orderSummary) : '';
   const attendeeDetailsHtml = attendees && attendees.length > 0 ? generateAttendeeDetailsHtml(attendees) : '';
-  console.log("ATTENDEE DETAILS HTML: ", attendeeDetailsHtml);
-  
+
   // Send appropriate email template based on ticket tier
   switch (tier) {
     case TicketTier.PLATINUM_SPONSOR:
@@ -320,7 +326,7 @@ export async function sendRegistrationConfirmationEmail({
         }),
         attachments: emailAttachments,
       });
-      
+
     case TicketTier.EXHIBITOR:
       return sendEmail({
         to: email,
@@ -343,7 +349,7 @@ export async function sendRegistrationConfirmationEmail({
         }),
         attachments: emailAttachments,
       });
-      
+
     case TicketTier.GOV_MIL_PASS:
       return sendEmail({
         to: email,
@@ -384,7 +390,7 @@ export async function sendRegistrationConfirmationEmail({
         }),
         attachments: emailAttachments,
       });
-      
+
     case TicketTier.STANDARD_ATTENDEE:
     default:
       return sendEmail({
