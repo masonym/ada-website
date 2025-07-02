@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { EVENTS } from '@/constants/events';
+import RegistrationModalController from './RegistrationModalController';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import RegisterButtonModal from './RegisterButtonModal';
@@ -84,6 +85,9 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
   return (
     <>
+      {/* Add RegistrationModalController for URL-based modal control */}
+      <RegistrationModalController event={event} />
+      
       <Script id="event-schema" type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",

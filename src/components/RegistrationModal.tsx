@@ -58,6 +58,7 @@ interface RegistrationModalProps {
   onClose: () => void;
   selectedRegistration: AdapterModalRegistrationType | null; // Allow null for register button
   event: EventWithContact;
+  initialActiveTab?: 'ticket' | 'exhibit' | 'sponsorship'; // Optional tab to open initially
 }
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
@@ -165,6 +166,7 @@ const RegistrationModal = ({
   onClose,
   selectedRegistration,
   event,
+  initialActiveTab,
 }: RegistrationModalProps): JSX.Element | null => {
   // Add state for the close confirmation dialog
   const [showCloseConfirmation, setShowCloseConfirmation] = useState(false);
@@ -178,7 +180,7 @@ const RegistrationModal = ({
 
   // We'll use the original sponsorships list without sorting
   // State for active category tab
-  const [activeCategory, setActiveCategory] = useState<'ticket' | 'exhibit' | 'sponsorship'>('ticket');
+  const [activeCategory, setActiveCategory] = useState<'ticket' | 'exhibit' | 'sponsorship'>(initialActiveTab || 'ticket');
 
   const [ticketQuantities, setTicketQuantities] = useState<Record<string, number>>({});
   const [isCheckout, setIsCheckout] = useState(false);
