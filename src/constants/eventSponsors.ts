@@ -131,6 +131,12 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         id: 4, // NMPCPC
         tiers: [
             {
+                id: "platinum-sponsor",
+                name: "Platinum Sponsor",
+                sponsorIds: ["hanwha-defense-usa"],
+                topTier: true
+            },
+            {
                 id: "gold-sponsor",
                 name: "Gold Sponsor",
                 style: "bg-amber-400 text-slate-900",
@@ -232,6 +238,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "marzen-group-llc",
                     "rite-in-the-rain",
                     "bounce-imaging",
+                    "hanwha-defense-usa",
+                    "trust-consulting-services"
                 ],
             },
             {

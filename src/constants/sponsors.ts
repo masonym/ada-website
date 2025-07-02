@@ -641,6 +641,21 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/bounce-imaging.webp",
     website: "https://bounceimaging.com/",
     size: 'small'
+  },
+  "hanwha-defense-usa": {
+    id: "hanwha-defense-usa",
+    name: "Hanwha Defense USA",
+    logo: "/sponsors/hanwha-defense-usa.webp",
+    website: "https://hanwhadefenseusa.com/",
+    size: 'large',
+    description: "Hanwha Defense USA develops and supplies advanced ground and sea combat systems, including manned and unmanned platforms, artillery, and ammunition, to enhance the capabilities and survivability of military forces We specialize in providing advanced ground combat platforms, maritime solutions, and ammunition systems. We develop and supply a wide array of manned and unmanned combat systems, including state-of-the-art artillery and advanced ammunition designed to meet the rigorous demands of modern warfare. Our products aim to enhance the firepower, mobility, and survivability of military forces, ensuring they remain highly effective and adaptable in diverse combat scenarios With a focus on innovation and operational efficiency, Hanwha Defense USA is committed to delivering mission-oriented solutions that significantly improve the operational capabilities of ground and maritime forces. Our expertise encompasses developing technologies that ensure superior performance in the field, thereby contributing to the safety and effectiveness of military personnel. Our dedication to excellence makes us a key player in the defense industry, providing robust and reliable solutions tailored to the needs of our clients.",
+  },
+  "trust-consulting-services": {
+    id: "trust-consulting-services",
+    name: "Trust Consulting Services",
+    logo: "/sponsors/trust-consulting-services.webp",
+    website: "https://www.trustconsultingservices.com/",
+    size: 'small'
   }
 };
 
