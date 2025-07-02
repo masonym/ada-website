@@ -87,7 +87,7 @@ export async function logRegistration(
 ) {
   try {
     const env = getEnv();
-    const event = EVENTS.find(e => e.id.toString() === eventId);
+    const event = EVENTS.find(e => e.id === Number(eventId));
     if (!event) {
       throw new Error(`Event with ID ${eventId} not found`);
     }
