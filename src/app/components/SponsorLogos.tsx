@@ -94,7 +94,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
 
     // List of sponsor tiers that should display descriptions
     const tiersWithDescriptions = [
-        'gold-sponsor', 'silver-sponsor', 'bronze-sponsor', 'platinum-sponsor', 'diamond-sponsor', 'premier',
+        'gold-sponsor', 'silver-sponsor', 'bronze-sponsor', 'platinum-sponsor', 'diamond-sponsor', 'premier', 'vip-networking-reception-sponsor'
     ];
 
     return (
