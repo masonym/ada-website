@@ -431,10 +431,10 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.nib.org/",
     size: 'small'
   },
-  "one-blue-yonder": {
-    id: "one-blue-yonder",
-    name: "One Blue Yonder",
-    logo: "/sponsors/one-blue-yonder.webp",
+  "blue-yonder": {
+    id: "blue-yonder",
+    name: "Blue Yonder",
+    logo: "/sponsors/blue-yonder.webp",
     website: "https://www.onenetwork.com/industries/public-sector-and-defense/",
     size: 'large',
     description: "One Network Enterprises (ONE), a Blue Yonder company, is the leader in supply chain control towers, and provider of the Digital Supply Chain NetworkTM. It is the only solution that gives supply chain managers and executives end-to-end visibility and control with one data model and one truth, from raw material to last mile delivery. Powered by NEO, One Network’s machine learning and intelligent agent technology, it enables seamless planning and execution, across inbound supply, outbound order fulfillment, and logistics, matching demand with available supply in real-time. Lead your industry by providing the highest service levels and product quality at the lowest possible cost.",
@@ -499,7 +499,8 @@ export const SPONSORS: Record<string, Sponsor> = {
     name: "MCS Government Services",
     logo: "/sponsors/mcs-government-services.webp",
     website: "https://www.mcs360.com/",
-    size: 'medium'
+    size: 'medium',
+    description: "MCS Government Services brings nearly 40 years of experience delivering comprehensive property preservation, facilities maintenance, and asset management services across government and private sectors.  Our core capabilities include inspection services, general maintenance, landscaping, plumbing, renovations, disaster response, and full-spectrum facility support—enabled by a cloud-based platform that ensures real-time visibility and performance tracking. We are actively seeking small business partners who bring specialized trade skills, federal government experience, or mission-aligned capabilities in areas such as grounds maintenance, emergency management, and O&M. Whether you're a niche provider or a growing firm with federal experience, we’re looking to build long-term, mutually beneficial relationships that expand our reach and strengthen our delivery. Let’s connect and explore how we can team together to serve government customers more effectively."
   },
   "virginia-apex": {
     id: "virginia-apex",

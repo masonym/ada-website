@@ -141,7 +141,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 name: "Gold Sponsor",
                 style: "bg-amber-400 text-slate-900",
                 sponsorIds: [
-                    "one-blue-yonder",
+                    "blue-yonder",
                     "dmg-mori",
                 ],
             },
