@@ -186,7 +186,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                             />
                                         )}
                                         {tiersWithDescriptions.includes(tier.id) && sponsor.description && (
-                                            <div className="text-lg mt-4 text-center text-slate-600">
+                                            <div className="text-lg mt-4 text-center text-pretty text-slate-600">
                                                 <span dangerouslySetInnerHTML={{ __html: sponsor.description }}></span>
                                             </div>
                                         )}
