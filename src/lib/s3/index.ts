@@ -21,7 +21,6 @@ export const fetchFileNamesFromCloud = async (eventShorthand: string): Promise<s
   try {
     const data = await s3Client.send(command);
     const fileNames = data.Contents?.map(item => item.Key || '') || [];
-    console.log(fileNames.filter(name => name.includes("Instructions")));
     return fileNames.filter(name => name.includes("Instructions"));
   } catch (error) {
     console.error("Error fetching file names from S3:", error);
