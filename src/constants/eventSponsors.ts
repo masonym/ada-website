@@ -181,6 +181,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "cp2s-alytic",
                     "oak-theory",
                     "metgreen-solutions",
+                    "turbo-federal"
                 ],
             },
             {
@@ -239,7 +240,10 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "rite-in-the-rain",
                     "bounce-imaging",
                     "hanwha-defense-usa",
-                    "trust-consulting-services"
+                    "trust-consulting-services",
+                    "pc-campana",
+                    "pferd-tools",
+                    "turbo-federal"
                 ],
             },
             {

@@ -657,6 +657,27 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/trust-consulting-services.webp",
     website: "https://www.trustconsultingservices.com/",
     size: 'small'
+  },
+  "pc-campana": {
+    id: "pc-campana",
+    name: "PC Campana",
+    logo: "/sponsors/pc-campana.webp",
+    website: "https://www.pccampana.com/",
+    size: 'small'
+  },
+  "pferd-tools": {
+    id: "pferd-tools",
+    name: "Pferd Tools",
+    logo: "/sponsors/pferd-tools.webp",
+    website: "https://www.pferd.com/",
+    size: 'small'
+  },
+  "turbo-federal": {
+    id: "turbo-federal",
+    name: "Turbo Federal",
+    logo: "/sponsors/turbo-federal.webp",
+    website: "https://www.turbofederal.com/",
+    size: 'small'
   }
 };
 
