@@ -90,7 +90,8 @@ export const SPONSORS: Record<string, Sponsor> = {
     name: "PMB Machine Works",
     logo: "/sponsors/pmb-machine-works.webp",
     website: "https://pmbmachineworks.com/",
-    size: 'medium'
+    size: 'medium',
+    description: "PMB Machine Works is the specialty machining division of Pioneer Motor Bearing Company that incorporates the vast machining experience of the legacy 100+ year old business, which has proudly served the DOD since the 1950s. PMB has provided high quality machined parts and engineering services to the U.S. Navy for multiple Navy vessels including nuclear submarines. PMB has also served the Department of Energy’s nuclear laboratories, as well as performed work for the Army Corps of Engineers on multiple hydro and gas turbine power generation facilities. Our history of high reliability, superior quality and getting it right the first time is what we are known for. PMB Machine Works’ legacy unit is the exclusive bearing licensee of GE Vernova and the senior bearing licensee of Siemens Energy. Furthermore, they have served the majority of electrical utilities in the USA and are sought after throughout the world for their turn-key engineering and manufacturing expertise.",
   },
   "redstone": {
     id: "redstone",
