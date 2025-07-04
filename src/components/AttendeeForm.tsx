@@ -283,14 +283,14 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Website</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Website *</label>
           <input
             type="url"
             className="w-full border rounded px-3 py-2 text-sm"
             name="website"
             value={attendee.website}
             onChange={handleChange}
-            placeholder="Enter company website (optional)"
+            placeholder="Enter company website"
           />
         </div>
         <div>
@@ -353,7 +353,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                   type="radio"
                   className="form-radio"
                   name={`${currentTicketId}-sponsorInterest-${index}`}
-                  value="yes"
+                  value="Yes"
                   checked={attendee.sponsorInterest === 'yes'}
                   onChange={handleRadioChange}
                   required={attendee.sponsorInterest === ''}
@@ -366,7 +366,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                   type="radio"
                   className="form-radio"
                   name={`${currentTicketId}-sponsorInterest-${index}`}
-                  value="no"
+                  value="No"
                   checked={attendee.sponsorInterest === 'no'}
                   onChange={handleRadioChange}
                 />
@@ -388,7 +388,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                   type="radio"
                   className="form-radio"
                   name={`${currentTicketId}-speakingInterest-${index}`}
-                  value="yes"
+                  value="Yes"
                   checked={attendee.speakingInterest === 'yes'}
                   onChange={handleRadioChange}
                   required={attendee.speakingInterest === ''}
@@ -401,7 +401,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                   type="radio"
                   className="form-radio"
                   name={`${currentTicketId}-speakingInterest-${index}`}
-                  value="no"
+                  value="No"
                   checked={attendee.speakingInterest === 'no'}
                   onChange={handleRadioChange}
                 />

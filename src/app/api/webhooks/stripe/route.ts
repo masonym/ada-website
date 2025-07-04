@@ -8,7 +8,7 @@ import { headers } from 'next/headers';
 import { RegistrationFormData } from '@/types/event-registration/registration';
 import { EVENTS } from '@/constants/events';
 import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
-import { getPendingRegistration, saveConfirmedRegistration } from '@/lib/aws/dynamodb';
+import { getPendingRegistration, saveConfirmedRegistration, getConfirmedRegistration } from '@/lib/aws/dynamodb';
 
 async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent) {
   console.log(`PaymentIntent ${paymentIntent.id} succeeded.`);
@@ -20,6 +20,20 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
   if (!pendingRegistrationId || !eventId) {
     console.error('Error: Missing pendingRegistrationId or eventId in payment intent metadata.', { metadata });
     return;
+  }
+  
+  // Idempotency check - see if this payment has already been processed
+  try {
+    // Check if the registration is already confirmed with this payment ID
+    // Since we use the payment intent ID as the primary key in our confirmed registrations table
+    const existingRegistration = await getConfirmedRegistration(paymentIntent.id);
+    if (existingRegistration) {
+      console.log(`Payment ${paymentIntent.id} has already been processed. Skipping to prevent duplicates.`);
+      return;
+    }
+  } catch (error) {
+    console.error('Error checking for existing registration:', error);
+    // Continue with processing since we couldn't confirm if it exists
   }
 
   try {
@@ -128,21 +142,46 @@ export async function POST(request: Request) {
   }
 
   console.log(`Received verified Stripe event: ${event.type}`);
-
-  // Handle the event
-  switch (event.type) {
-    case 'payment_intent.succeeded':
-      await handlePaymentIntentSucceeded(event.data.object as Stripe.PaymentIntent);
-      break;
-    case 'payment_intent.payment_failed':
-      await handlePaymentIntentFailed(event.data.object as Stripe.PaymentIntent);
-      break;
-    case 'charge.refunded':
-      await handleChargeRefunded(event.data.object as Stripe.Charge);
-      break;
-    default:
-      console.log(`Unhandled event type: ${event.type}`);
-  }
-
+  
+  // Immediately acknowledge receipt to Stripe to prevent timeouts
+  // Then process the event asynchronously
+  const eventId = event.id;
+  const eventType = event.type;
+  const eventObject = event.data.object;
+  
+  // Fire and forget - don't await these operations
+  // This prevents timeout errors while ensuring the webhook responds quickly
+  processStripeEvent(eventId, eventType, eventObject)
+    .catch(error => console.error(`Error in background processing of ${eventId}:`, error));
+  
+  // Return successful response immediately
   return NextResponse.json({ received: true });
+};
+
+/**
+ * Process a Stripe event in the background without blocking the webhook response
+ */
+async function processStripeEvent(eventId: string, eventType: string, eventObject: any) {
+  console.log(`Processing Stripe event ${eventId} of type ${eventType} in background`);
+  
+  try {
+    // Handle the event based on type
+    switch (eventType) {
+      case 'payment_intent.succeeded':
+        await handlePaymentIntentSucceeded(eventObject as Stripe.PaymentIntent);
+        break;
+      case 'payment_intent.payment_failed':
+        await handlePaymentIntentFailed(eventObject as Stripe.PaymentIntent);
+        break;
+      case 'charge.refunded':
+        await handleChargeRefunded(eventObject as Stripe.Charge);
+        break;
+      default:
+        console.log(`Unhandled event type: ${eventType}`);
+    }
+    console.log(`Successfully processed Stripe event ${eventId}`);
+  } catch (error) {
+    console.error(`Error processing Stripe event ${eventId}:`, error);
+    // We intentionally don't rethrow here as this is background processing
+  }
 }
