@@ -1056,6 +1056,33 @@ Ms. Plath's naval decorations include the Navy Commendation Medal (two awards), 
     "position": "VP of Sales",
     "company": "DMG Mori Federal Services",
     "bio": `Paul Wichert is a 45-year veteran of the manufacturing industry. His experience is multi-faceted, Operational Executive of machine tool builders, Owner/Operator of contract machining services business, President of manufacturing facilities in US, China & Taiwan. Importing and consulting in global manufacturing. Currently he is working with DMG MORI Federal Services (DMFS). DMFS is the representative for DMG MORI, the leader in innovative metal cutting 3D Metal Printing and Hybrid machine tools.`,
+  },
+  "vice-admiral-richard-w-hunt": {
+    "image": "vice-admiral-richard-w-hunt.webp",
+    "name": "Vice Admiral Richard W. Hunt",
+    "position": "President",
+    "company": "Fincantieri Marinette Marine",
+    "bio": `Vice Admiral Hunt graduated from the University of Wisconsin-Madison in 1975 with a Bachelor of Science in Bacteriology.  He was commissioned in February 1976 through the Officer Candidate School program in Newport, R.I.  He attended Naval Post Graduate School, receiving a Master of Science in Telecommunications Systems Management in March 1988.
+	<br/>
+	
+	<br/>
+	Hunt is a Surface Warfare Officer who served in multiple ships, including Commanding Officer of USS Crommelin (FFG 37) and USS Philippine Sea (CG 58).  As a Flag Officer, he was Commander, Carrier Strike Group Six/John F Kennedy Strike Group; Commander, Combined Joint Task Force-Horn of Africa, United States Central Command; Commander, U.S. THIRD Fleet; and Commander, Naval Surface Forces/Naval Surface Force, U.S. Pacific Fleet.
+	<br/>
+	
+	<br/>
+	Shore assignments alternated between Navy and Joint Staff positions in the Pentagon including
+	<br/>
+	Executive Assistant to the Chairman, Joint Chiefs of Staff and Flag assignments as Deputy Director, Strategy & Policy (J5), Joint Staff; Director, Programming Division (N80), Navy Staff; and Director, Navy Staff where he served until he retired from the Navy in November 2013.
+	<br/>
+	
+	<br/>
+	Personal decorations include the Navy Distinguished Service Medal, Defense Superior Service Medal, Legion of Merit, Defense Meritorious Service Medal, Meritorious Service Medal and various service and unit awards. 
+	<br/>
+	
+	<br/>
+	Hunt joined Raytheon Company in the position of Vice President, Business Development, Navy/Marine Corps Programs in January 2014 and assumed the role of Vice President for U.S. Business Development in June 2015.  He transitioned to Chief Strategy Officer at Fincantieri Marinette Marine in April 2018 and became President, Fincantieri Marinette Marine in July 2019.
+	<br/>
+	`,
   }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -1146,6 +1173,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"stacey-r-washington",
 		"erica-h-plath",
 		"paul-wichert",
+		"vice-admiral-richard-w-hunt"
 	]
 };
 
