@@ -22,19 +22,19 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
     return;
   }
   
-  // // Idempotency check - see if this payment has already been processed
-  // try {
-  //   // Check if the registration is already confirmed with this payment ID
-  //   // Since we use the payment intent ID as the primary key in our confirmed registrations table
-  //   const existingRegistration = await getConfirmedRegistration(paymentIntent.id);
-  //   if (existingRegistration) {
-  //     console.log(`Payment ${paymentIntent.id} has already been processed. Skipping to prevent duplicates.`);
-  //     return;
-  //   }
-  // } catch (error) {
-  //   console.error('Error checking for existing registration:', error);
-  //   // Continue with processing since we couldn't confirm if it exists
-  // }
+  // Idempotency check - see if this payment has already been processed
+  try {
+    // Check if the registration is already confirmed with this payment ID
+    // Since we use the payment intent ID as the primary key in our confirmed registrations table
+    const existingRegistration = await getConfirmedRegistration(paymentIntent.id);
+    if (existingRegistration) {
+      console.log(`Payment ${paymentIntent.id} has already been processed. Skipping to prevent duplicates.`);
+      return;
+    }
+  } catch (error) {
+    console.error('Error checking for existing registration:', error);
+    // Continue with processing since we couldn't confirm if it exists
+  }
 
   try {
     const registrationData = await getPendingRegistration(pendingRegistrationId);
@@ -48,15 +48,26 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
     await saveConfirmedRegistration(registrationData, paymentIntent.id);
 
     // Log the registration to Google Sheets
-    await logRegistration(
-      eventId,
-      registrationData,
-      paymentIntent.id,
-      'succeeded',
-      paymentIntent.amount,
-      registrationData.promoCode,
-      Number(metadata.discountAmount) || 0
-    );
+    try {
+      const logResult = await logRegistration(
+        eventId,
+        registrationData,
+        paymentIntent.id,
+        'succeeded',
+        paymentIntent.amount,
+        registrationData.promoCode,
+        Number(metadata.discountAmount) || 0
+      );
+      
+      if (!logResult.success) {
+        console.error(`Failed to log registration to Google Sheets: ${logResult.error}`);
+      } else {
+        console.log(`Successfully logged registration ${paymentIntent.id} to Google Sheets`);
+      }
+    } catch (sheetError) {
+      console.error('Unexpected error logging to Google Sheets:', sheetError);
+      // Continue processing to still try sending emails
+    }
 
     // --- Prepare data for confirmation email ---
     const event = EVENTS.find(e => e.id.toString() === eventId);
@@ -96,13 +107,23 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
     };
 
     // Send confirmation emails to all unique attendees
-    await sendRegistrationConfirmationEmails({
-      registrationData,
-      event,
-      registrations: purchasedRegistrations,
-      orderId: paymentIntent.id,
-      orderSummary,
-    });
+    try {
+      const emailResult = await sendRegistrationConfirmationEmails({
+        registrationData,
+        event,
+        registrations: purchasedRegistrations,
+        orderId: paymentIntent.id,
+        orderSummary,
+      });
+      
+      if (!emailResult.success) {
+        console.error(`Failed to send confirmation emails: ${JSON.stringify(emailResult.results)}`);
+      } else {
+        console.log(`Successfully sent confirmation emails for registration ${paymentIntent.id}`);
+      }
+    } catch (emailError) {
+      console.error('Unexpected error sending confirmation emails:', emailError);
+    }
 
   } catch (error) {
     console.error('Error processing successful payment intent:', error);
