@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { getEventMatchmakingSponsors, getEventMatchmakingMetadata } from '@/constants/matchmaking-sponsors';
 import { Sponsor } from '@/constants/sponsors';
 import { ExternalLink } from 'lucide-react';
+import { getCdnPath } from '@/utils/image';
 
 interface MatchmakingSponsorsProps {
   eventSlug: string;
@@ -16,7 +17,7 @@ const MatchmakingSponsorCard: React.FC<{ sponsor: Sponsor }> = ({ sponsor }) => 
     <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col sm:flex-row items-center sm:items-start gap-6">
       <div className="flex-shrink-0 w-40 h-40 relative flex items-center justify-center">
         <Image
-          src={sponsor.logo}
+          src={getCdnPath(sponsor.logo)}
           alt={`${sponsor.name} logo`}
           width={160}
           height={160}
