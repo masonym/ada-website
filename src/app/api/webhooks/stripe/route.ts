@@ -164,19 +164,35 @@ export async function POST(request: Request) {
 
   console.log(`Received verified Stripe event: ${event.type}`);
   
-  // Immediately acknowledge receipt to Stripe to prevent timeouts
-  // Then process the event asynchronously
+  // Process the event synchronously for critical events like payment_intent.succeeded
+  // For other events, we can process asynchronously
   const eventId = event.id;
   const eventType = event.type;
   const eventObject = event.data.object;
   
-  // Fire and forget - don't await these operations
-  // This prevents timeout errors while ensuring the webhook responds quickly
-  processStripeEvent(eventId, eventType, eventObject)
-    .catch(error => console.error(`Error in background processing of ${eventId}:`, error));
-  
-  // Return successful response immediately
-  return NextResponse.json({ received: true });
+  // For payment_intent.succeeded, we need to ensure emails and logging completes
+  if (eventType === 'payment_intent.succeeded') {
+    console.log(`Processing critical event ${eventId} of type ${eventType} synchronously`);
+    try {
+      // Process synchronously - wait for completion
+      await processStripeEvent(eventId, eventType, eventObject);
+      console.log(`Successfully completed processing of ${eventId}`);
+      return NextResponse.json({ received: true, processed: true });
+    } catch (error) {
+      console.error(`Error processing Stripe event ${eventId}:`, error);
+      // Return 200 even on error to prevent Stripe from retrying
+      // We've already logged the error for investigation
+      return NextResponse.json({ received: true, error: 'Processing error occurred, check logs' });
+    }
+  } else {
+    // For non-critical events, continue with async processing
+    // Fire and forget - don't await these operations
+    processStripeEvent(eventId, eventType, eventObject)
+      .catch(error => console.error(`Error in background processing of ${eventId}:`, error));
+    
+    // Return successful response immediately for non-critical events
+    return NextResponse.json({ received: true });
+  }
 };
 
 /**
