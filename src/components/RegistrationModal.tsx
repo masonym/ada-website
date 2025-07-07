@@ -40,8 +40,8 @@ interface ModalAttendeeInfo {
   businessSize: BusinessSize | '';
   sbaIdentification?: string;
   industry: string;
-  sponsorInterest: 'yes' | 'no' | '';
-  speakingInterest: 'yes' | 'no' | '';
+  sponsorInterest: 'Yes' | 'No' | '';
+  speakingInterest: 'Yes' | 'No' | '';
   dietaryRestrictions?: string;
   accessibilityNeeds?: string;
 }
@@ -1100,8 +1100,8 @@ const RegistrationModal = ({
       // If they were, they'd need defaults like 'N/A' or to be made optional. 
       // Survey questions - not in current modal, provide defaults
       howDidYouHearAboutUs: '',
-      interestedInSponsorship: primaryAttendeeData.sponsorInterest === 'yes',
-      interestedInSpeaking: primaryAttendeeData.speakingInterest === 'yes',
+      interestedInSponsorship: primaryAttendeeData.sponsorInterest === 'Yes',
+      interestedInSpeaking: primaryAttendeeData.speakingInterest === 'Yes',
       agreeToPhotoRelease: false, // Defaulting, consider adding to form
 
       tickets: ticketsForValidation,

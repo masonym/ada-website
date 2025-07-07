@@ -58,8 +58,8 @@ export interface AttendeeInfo {
   businessSize: string; // Changed to required, using string to match ModalAttendeeInfo
   sbaIdentification?: string; // Added for SBA identification
   industry: string; // Changed to required
-  sponsorInterest: 'yes' | 'no' | ''; // Changed to required
-  speakingInterest: 'yes' | 'no' | ''; // Changed to required
+  sponsorInterest: 'Yes' | 'No' | ''; // Changed to required
+  speakingInterest: 'Yes' | 'No' | ''; // Changed to required
   dietaryRestrictions?: string;
   accessibilityNeeds?: string;
 }
