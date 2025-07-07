@@ -70,7 +70,7 @@ const MatchmakingSponsors: React.FC<MatchmakingSponsorsProps> = ({ eventSlug }) 
       </h2>
       {metadata.description && (
         <p className="text-lg text-slate-600 max-w-4xl mx-auto text-center mb-10">
-          {metadata.description}
+          <span dangerouslySetInnerHTML={{ __html: metadata.description }} />
         </p>
       )}
       <div className="space-y-6">

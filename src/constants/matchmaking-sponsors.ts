@@ -30,7 +30,7 @@ export const EVENT_MATCHMAKING_SPONSORS: Record<string, MatchmakingSponsorsData>
       "hanwha-defense-usa",
     ],
     title: "Companies Participating in Matchmaking Sessions",
-    description: "These industry leaders will be available for one-on-one matchmaking sessions during the event. Sign up early to secure your spot."
+    description: "These industry leaders will be available for one-on-one matchmaking sessions during the event.<br />Sign up early to secure your spot."
   },
 };
 
