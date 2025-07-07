@@ -12,8 +12,8 @@ interface AttendeeInfo {
   businessSize: string;
   sbaIdentification?: string; // Added for SBA identification
   industry: string;
-  sponsorInterest: 'yes' | 'no' | '';
-  speakingInterest: 'yes' | 'no' | '';
+  sponsorInterest: 'Yes' | 'No' | '';
+  speakingInterest: 'Yes' | 'No' | '';
 }
 
 interface AttendeeFormProps {
@@ -354,7 +354,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                   className="form-radio"
                   name={`${currentTicketId}-sponsorInterest-${index}`}
                   value="Yes"
-                  checked={attendee.sponsorInterest === 'yes'}
+                  checked={attendee.sponsorInterest === 'Yes'}
                   onChange={handleRadioChange}
                   required={attendee.sponsorInterest === ''}
                 />
@@ -367,7 +367,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                   className="form-radio"
                   name={`${currentTicketId}-sponsorInterest-${index}`}
                   value="No"
-                  checked={attendee.sponsorInterest === 'no'}
+                  checked={attendee.sponsorInterest === 'No'}
                   onChange={handleRadioChange}
                 />
                 <span className="ml-2">No</span>
@@ -389,7 +389,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                   className="form-radio"
                   name={`${currentTicketId}-speakingInterest-${index}`}
                   value="Yes"
-                  checked={attendee.speakingInterest === 'yes'}
+                  checked={attendee.speakingInterest === 'Yes'}
                   onChange={handleRadioChange}
                   required={attendee.speakingInterest === ''}
                 />
@@ -402,7 +402,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                   className="form-radio"
                   name={`${currentTicketId}-speakingInterest-${index}`}
                   value="No"
-                  checked={attendee.speakingInterest === 'no'}
+                  checked={attendee.speakingInterest === 'No'}
                   onChange={handleRadioChange}
                 />
                 <span className="ml-2">No</span>
