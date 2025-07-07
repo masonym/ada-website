@@ -694,7 +694,7 @@ export const SPONSORS: Record<string, Sponsor> = {
     id: "marmc",
     name: "Mid-Atlantic Regional Maintenance Center (MARMC)",
     logo: "/sponsors/marmc.webp",
-    website: "https://www.secnav.navy.mil/smallbusiness",
+    website: "https://www.navsea.navy.mil/Home/RMC/MARMC/",
     size: 'small',
     description: "The Department of the Navy (DON) Office of Small Business Programs (OSBP) is dedicated to maximizing opportunities for small businesses in its acquisitions. The OSBP focuses on fostering acquisition opportunities where small businesses can best support the needs of Sailors and Marines, ensuring they receive the necessary resources and products at affordable prices. OSPB also works to create a culture of small business inclusivity within the Department of the Navy. MARMC is a directorate under Naval Sea Systems Command. MARMC is the leader of the ship repair industry in all aspects of ship maintenance."
   },
