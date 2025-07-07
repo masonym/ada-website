@@ -231,7 +231,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "equipment-share",
                     "dmg-mori",
                     "precision-resource",
-                    "don-office-of-small-business-programs",
+                    // "don-office-of-small-business-programs",
+                    "marmc", // this and don osbp are the same thing with diff logos/names
                     "navsup-fleet-logistics-center-norfolk",
                     "norfolk-naval-shipyard",
                     "cignys",

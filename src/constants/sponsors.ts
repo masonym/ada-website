@@ -600,14 +600,16 @@ export const SPONSORS: Record<string, Sponsor> = {
     name: "NAVSUP Fleet Logistics Center Norfolk",
     logo: "/sponsors/navsup-fleet-logistics-center-norfolk.webp",
     website: "https://www.navsup.navy.mil/navsup-enterprise/navsup-flc-norfolk",
-    size: 'small'
+    size: 'small',
+    description: "We are the U.S. Navy’s oldest and largest Fleet Logistics Center, providing quality supply and logistics support on the Norfolk waterfront for more than a century. Our command footprint includes 30 naval installations in 13 states, plus the District of Columbia. Our team of more than 1,800 dedicated military, civil service, and contractor professionals provides support across twelve distinct products and services, tailored to the needs of each individual customer",
   },
   "norfolk-naval-shipyard": {
     id: "norfolk-naval-shipyard",
     name: "Norfolk Naval Shipyard",
     logo: "/sponsors/norfolk-naval-shipyard.webp",
     website: "https://www.navsea.navy.mil/home/shipyards/norfolk",
-    size: 'small'
+    size: 'small',
+    description: "Norfolk Naval Shipyard’s mission is to repair, modernize, and inactivate our Navy’s warships and training platforms. We do that by winning as a team, being excellent in all that we do, and continuously improving our processes and flow. Our vision is to deliver on time, every time, and everywhere to protect America."
   },
   "cignys": {
     id: "cignys",
@@ -679,7 +681,54 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/turbo-federal.webp",
     website: "https://www.turbofederal.com/",
     size: 'small'
-  }
+  },
+  "bae-systems": {
+    id: "bae-systems",
+    name: "BAE Systems",
+    logo: "/sponsors/bae-systems.webp",
+    website: "https://www.baesystems.com/",
+    size: 'small',
+    description: "BAE Systems and its partners develop, engineer, manufacture and support products and systems to deliver military capability, protect national security and keep critical information and infrastructure secure. Our products and services include radar, satellite & marine services, sensors, electronic warfare and systems engineering to the Department of Defense, NASA and civilian agencies supporting security initiatives.",
+  },
+  "marmc": {
+    id: "marmc",
+    name: "Mid-Atlantic Regional Maintenance Center (MARMC)",
+    logo: "/sponsors/marmc.webp",
+    website: "https://www.secnav.navy.mil/smallbusiness",
+    size: 'small',
+    description: "The Department of the Navy (DON) Office of Small Business Programs (OSBP) is dedicated to maximizing opportunities for small businesses in its acquisitions. The OSBP focuses on fostering acquisition opportunities where small businesses can best support the needs of Sailors and Marines, ensuring they receive the necessary resources and products at affordable prices. OSPB also works to create a culture of small business inclusivity within the Department of the Navy. MARMC is a directorate under Naval Sea Systems Command. MARMC is the leader of the ship repair industry in all aspects of ship maintenance."
+  },
+  "navair": {
+    id: "navair",
+    name: "Naval Air Systems Command (NAVAIR)",
+    logo: "/sponsors/navair.webp",
+    website: "https://www.navair.navy.mil/",
+    size: 'small',
+    description: "Naval Air Systems Command (NAVAIR) Office of Small Business (OSBP) focuses on providing the Warfighter with creative solutions, brought to them through small businesses, that are fully aligned with NAVAIR’s Strategic Imperatives. NAVAIR OSBP strives to be the premier Department of Defense Small Business Office advocating for the Best Solutions for the Warfighter, while promoting NAVAIR’s Strategic imperatives, through maximizing opportunities for small business participation. NAVAIR delivers integrated air warfare capabilities to enable the fleet to compete, deter and win – tonight, tomorrow and in the future. Providing the Nation's warfighters with air warfare capabilities to fight and win in every domain is NAVAIR’s unequivocal focus. Our dedication and commitment to deliver advanced, integrated capabilities has a single objective – equipping our warfighters for victory."
+  },
+  "general-dynamics-information-technology": {
+    id: "general-dynamics-information-technology",
+    name: "General Dynamics Information Technology",
+    logo: "/sponsors/general-dynamics-information-technology.webp",
+    website: "https://www.gdit.com/",
+    size: 'small',
+    description: "General Dynamics Information Technology (GDIT) is a global technology and professional services company that delivers technology solutions and mission services to every major agency across the U.S. government, defense and intelligence community. GDIT recognizes the importance of small businesses and is committed to ensuring it remains an integral part of our strategic sourcing, procurement, and teaming processes. Areas of interest and need of small businesses support include extensive logistics support, system integration, operational and task analysis, documentation and technical support of mission critical systems, strategic IT policy and technical services, portfolio management, Information Technology (IT) Governance and Enterprise Architecture (EA) solutions, help desk, medical IT, training, simulation, and environmental services support, zero trust, multi-cloud management, automation for IT operations, software factory, mission AI/ML, and 5G. Through our Small Business Program, GDIT continues to actively seek and establish mutually beneficial relationships with small businesses capable of providing products and services that meet our supply needs and service requirements."
+  },
+  "us-army-contracting-command": {
+    id: "us-army-contracting-command",
+    name: "US Army Contracting Command",
+    logo: "/sponsors/us-army-contracting-command.webp",
+    website: "https://www.army.mil/ACC",
+    size: 'small',
+    description: "The Army Contracting Command Office of Small Business Programs serves as a small business industrial base advocate seeking to maximize small business opportunities that support Army materiel readiness, by aiding in the growth of current and future sources of innovative and sustaining solutions for globally dominant Warfighter capabilities. We actively seek collaboration and partnership with industry in order to operationalize contracting in support of the HCA and Secretary of the Army priorities while capitalizing on small business opportunities.",
+  },
+  "newport-news-shipbuilding": {
+    id: "newport-news-shipbuilding",
+    name: "Newport News Shipbuilding",
+    logo: "/sponsors/newport-news-shipbuilding.webp",
+    website: "https://hii.com/what-we-do/divisions/newport-news-shipbuilding/",
+    size: 'small',
+  },
 };
 
 // Helper function to get a sponsor by ID

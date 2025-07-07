@@ -6,6 +6,7 @@ import { RiGovernmentLine } from "react-icons/ri";
 import Link from 'next/link';
 import { EVENTS } from '@/constants/events';
 import { notFound, useParams } from 'next/navigation';
+import MatchmakingSponsors from '@/components/MatchmakingSponsors';
 
 const MatchmakingPage = () => {
   const { slug } = useParams();
@@ -184,6 +185,9 @@ const MatchmakingPage = () => {
           ))}
         </div>
       </div>
+      
+      {/* Matchmaking Sponsors Section */}
+      <MatchmakingSponsors eventSlug={slug as string} />
     </div>
   );
 };
