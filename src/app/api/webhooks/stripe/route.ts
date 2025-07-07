@@ -22,19 +22,19 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
     return;
   }
   
-  // Idempotency check - see if this payment has already been processed
-  try {
-    // Check if the registration is already confirmed with this payment ID
-    // Since we use the payment intent ID as the primary key in our confirmed registrations table
-    const existingRegistration = await getConfirmedRegistration(paymentIntent.id);
-    if (existingRegistration) {
-      console.log(`Payment ${paymentIntent.id} has already been processed. Skipping to prevent duplicates.`);
-      return;
-    }
-  } catch (error) {
-    console.error('Error checking for existing registration:', error);
-    // Continue with processing since we couldn't confirm if it exists
-  }
+  // // Idempotency check - see if this payment has already been processed
+  // try {
+  //   // Check if the registration is already confirmed with this payment ID
+  //   // Since we use the payment intent ID as the primary key in our confirmed registrations table
+  //   const existingRegistration = await getConfirmedRegistration(paymentIntent.id);
+  //   if (existingRegistration) {
+  //     console.log(`Payment ${paymentIntent.id} has already been processed. Skipping to prevent duplicates.`);
+  //     return;
+  //   }
+  // } catch (error) {
+  //   console.error('Error checking for existing registration:', error);
+  //   // Continue with processing since we couldn't confirm if it exists
+  // }
 
   try {
     const registrationData = await getPendingRegistration(pendingRegistrationId);
