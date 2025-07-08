@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getCdnPath } from '@/utils/image';
+import { PDFDownloadButton } from './SchedulePDF';
 
 interface PrintableScheduleProps {
   eventId: number;
@@ -291,14 +292,29 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
             ))}
           </div>
 
-          {/* Print button */}
+          {/* Print and PDF buttons */}
           <div className="control-section">
-            <button
-              onClick={handlePrint}
-              className="print-button"
-            >
-              Print Schedule
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={handlePrint}
+                className="print-button"
+              >
+                Print Schedule
+              </button>
+              
+              {/* PDF Download Button */}
+              <PDFDownloadButton
+                schedule={filteredSchedule}
+                event={event}
+                showSpeakers={showSpeakers}
+                showLocations={showLocations}
+                customTitle={customTitle}
+                customSubtitle={customSubtitle}
+                selectedDays={selectedDays}
+                twoColumnLayout={twoColumnLayout}
+                fileName={`${event.title.toLowerCase().replace(/\s+/g, '-')}-schedule.pdf`}
+              />
+            </div>
           </div>
         </div>
       </div>
