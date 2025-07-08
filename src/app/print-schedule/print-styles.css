@@ -109,7 +109,7 @@
 }
 
 .speakers {
-  margin-top: 4px;
+  margin-top: 10px;
 }
 
 .speaker-name {
@@ -125,7 +125,7 @@
 
 .description {
   font-size: 14px;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 /* Ensure day headers and items don't break across columns */
@@ -285,7 +285,7 @@
 
   /* Only show the day-specific header for the current page */
   .day-print-header {
-    display: block !important; /* Hidden by default */
+    display: none !important; /* Hidden by default */
   }
   
   /* The active day header will be shown via JavaScript */
@@ -304,6 +304,7 @@
   /* Force two columns for print */
   .columns-1.md\:columns-2 {
     columns: 2 !important;
+    column-fill: auto !important;
     column-gap: 0.25rem !important;
     height: auto !important; /* Let browser handle pagination */
   }
@@ -321,7 +322,6 @@
   
   /* Force each day to start on a new page */
   .schedule-day {
-    margin-top: 300px !important; /* Space for header */
     page-break-before: always !important;
     break-before: page !important;
     position: relative;
@@ -329,7 +329,6 @@
   
   /* First day shouldn't have a page break */
   .schedule-day:first-child {
-    margin-top: 0 !important;
     page-break-before: auto !important;
     break-before: auto !important;
   }
@@ -363,20 +362,5 @@
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-  }
-}
-@media print {
-  .page {
-    margin-top: 90px !important; /* space for fixed header */
-    page-break-before: always !important;
-  }
-
-  .page:first-child {
-    margin-top: 0 !important;
-    page-break-before: auto !important;
-  }
-
-  .schedule-day {
-    margin-top: 0 !important; /* no more compounding offsets */
   }
 }
