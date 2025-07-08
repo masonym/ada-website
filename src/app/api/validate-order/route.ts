@@ -4,7 +4,7 @@ import { EXHIBITOR_TYPES } from '@/constants/exhibitors';
 import { SPONSORSHIP_TYPES } from '@/constants/sponsorships';
 
 // Master key for order validation - falls back to a default if not set
-const MASTER_ORDER_KEY = process.env.MASTER_ORDER_KEY || 'ADA-MASTER-KEY';
+const MASTER_ORDER_KEY = process.env.MASTER_ORDER_KEY || 'ADA-VALIDATION-KEY';
 
 // Helper function to get all exhibitor and sponsor IDs for a given event
 const getEligibleTicketIdsForEvent = (eventId: number): string[] => {
