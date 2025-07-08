@@ -1830,7 +1830,7 @@ const RegistrationModal = ({
                   {activeCategory === 'ticket' && allRegistrations.filter(reg => reg.isActive).map(reg => (
                     <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
                       <div className="flex items-center">
-                        <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} -</h4>
+                        <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} <span className="hidden sm:inline text-gray-500">-</span></h4>
                         <PriceDisplay registration={reg} />
                       </div>
                       {reg.perks && reg.perks.length > 0 && (
@@ -1872,15 +1872,15 @@ const RegistrationModal = ({
                     return (
                       <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut ? 'opacity-75 bg-gray-200' : ''}`}>
                         <div className="flex items-center">
-                          <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} -</h4>
+                          <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} <span className="hidden sm:inline text-gray-500">-</span></h4>
                           <PriceDisplay registration={reg} />
                           {itemIsSoldOut && (
-                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                            <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
                               SOLD OUT
                             </span>
                           )}
                           {!itemIsSoldOut && shouldShowRemaining(reg, EVENT_SPONSORS, event.id) && (
-                            <span className="inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                            <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
                               {getRemainingSlots(reg, EVENT_SPONSORS, event.id)} remaining
                             </span>
                           )}
@@ -1924,15 +1924,15 @@ const RegistrationModal = ({
                       <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut ? 'opacity-75 bg-gray-200' : ''}`}>
                         <div className="flex justify-between items-start">
                           <div className="flex items-center">
-                            <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} -</h4>
+                            <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} <span className="hidden sm:inline text-gray-500">-</span></h4>
                             <PriceDisplay registration={reg} />
                             {itemIsSoldOut && (
-                              <span className="inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                              <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-200 text-red-800">
                                 SOLD OUT
                               </span>
                             )}
                             {!itemIsSoldOut && shouldShowRemaining(reg, EVENT_SPONSORS, event.id) && (
-                              <span className="inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                              <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                 {getRemainingSlots(reg, EVENT_SPONSORS, event.id)} remaining
                               </span>
                             )}
