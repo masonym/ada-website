@@ -912,7 +912,13 @@ export const SCHEDULES = [
                     {
                         time: "3:00 PM - 6:00 PM",
                         title: "Exhibitor Set-up",
+                        location: "Hampton Roads Ballroom (I-V), 3rd FL",
                     },
+                    {
+                        time: "6:00 PM - 7:00 PM",
+                        title: "Social Hour: Jumpstart Your Networking Over Drinks with Fellow Attendees, Exhibitors, and Sponsors.",
+                        location: "The Great Room, 2nd FL (by \"START\" Restaurant)",
+                    }
                 ],
             },
             {
@@ -920,55 +926,109 @@ export const SCHEDULES = [
                 items: [
                     {
                         time: "7:30 AM - 8:30 AM",
-                        title: "Registration & Networking Breakfast, On-Site Sign-up for Matchmaking Sessions",
-                        // location: "Ballroom and Foyer",
+                        title: "On-Site Attendee Registration & Check-in",
+                        location: "Hampton Ballroom Pre-Function, 3rd FL",
                     },
                     {
-                        time: "8:30 AM - 10:00 AM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Networking Breakfast with Exhibitors",
+                        location: "Hampton Roads Ballroom (I-V), 3rd FL",
                     },
                     {
-                        time: "10:00 AM - 10:15 AM",
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Matchmaking Sign-up",
+                        location: "Hampton Ballroom Pre-Function, 3rd FL",
+                    },
+                    {
+                        time: "8:30 AM",
+                        title: "Conference Opening",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                    },
+                    {
+                        time: "8:35 AM",
+                        title: "State of Virginia, Hampton Roads Alliance and/or Norfolk Chamber of Commerce – Welcoming Remarks",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                    },
+                    {
+                        time: "8:45 AM",
+                        title: "CONGRESSIONAL KEYNOTE ADDRESS",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                    },
+                    {
+                        time: "9:15 AM",
+                        title: "Navy Small Business Program Panel",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                    },
+                    {
+                        time: "10:15 AM",
+                        title: "How DEFENSEWERX Hubs are Accelerating Innovative Tech Contracting",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                    },
+                    {
+                        time: "10:45 AM",
                         title: "Networking Break",
-                        // location: "Fourth Estate Meeting Room"
+                        location: "Hampton Roads Ballroom (I-V), 3rd Floor",
                     },
                     {
-                        time: "10:15 AM - 12:30 PM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        time: "11:00 AM",
+                        title: "Sponsor Remarks",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
-                        time: "12:30 PM - 1:30 PM",
-                        title: "Networking Lunch for Speakers, Sponsors, Exhibitors, and Attendees",
-                        // location: "Ballroom",
+                        time: "11:15 AM",
+                        title: "Military Base-Community Partnerships Promoting Local Build Contracts",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
-                        time: "1:30 PM - 3:00 PM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        time: "11:45 AM",
+                        title: "NATIONAL SECURITY KEYNOTE ADDRESS",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
-                        time: "3:00 PM - 3:15 PM",
-                        title: "Networking Break",
-                        // location: "Fourth Estate Meeting Room"
+                        time: "12:00 PM",
+                        title: "Fleet Readiness Panel – Addressing Critical Challenges & Requirements",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
-                        time: "3:15 PM - 4:00 PM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        time: "12:45 PM",
+                        title: "Networking Lunch with Exhibitors",
+                        location: "Hampton Roads Ballroom (I-V), 3rd FL",
                     },
                     {
-                        time: "4:00 PM - 5:30 PM",
-                        title: "Matchmaking Sessions",
-                        // location: "Fourth Estate Meeting Room"
+                        time: "1:30 PM",
+                        title: "The ‘SHIPS ACT’ & the National Shipbuilding Revival: Driving Major New Contracts",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
-                        time: "5:30 PM - 7:30 PM",
-                        title: "VIP Networking Reception with Speakers, Sponsors, Exhibitors, and VIP Attendees",
-                        // location: "Fourth Estate Meeting Room"
+                        time: "2:40 PM",
+                        title: "Sponsor Remarks",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
-
+                    {
+                        time: "2:55 PM",
+                        title: "Force Projection & Contested Logistics in the Indo-Pacific",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                    },
+                    {
+                        time: "3:55 PM",
+                        title: "Accessing Government-Wide Acquisition Contracts (GWAC’s)",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                    },
+                    {
+                        time: "4:30 PM",
+                        title: "Day One Closing Remarks",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                    },
+                    {
+                        time: "4:30 PM - 5:30 PM",
+                        title: "Matchmaking Session I",
+                        location: "Franklin-Yorktown Meeting Room, 2nd Floor"
+                    },
+                    {
+                        time: "6:00 PM - 8:00 PM",
+                        title: "VIP Networking Reception",
+                        location: "The Harbor Club, Waterside District. 333 Waterside Dr Suite 200, Norfolk, VA 23510",
+                    },
                 ],
             },
             {
@@ -976,27 +1036,61 @@ export const SCHEDULES = [
                 items: [
                     {
                         time: "7:30 AM - 8:30 AM",
-                        title: "Registration & Networking Breakfast, On-Site Signup for Matchmaking Sessions",
-                        // location: "Ballroom and Foyer",
+                        title: "Networking Breakfast with Exhibitors",
+                        location: "Hampton Roads Ballroom (I-V), 3rd Floor",
                     },
                     {
-                        time: "8:30 AM - 10:30 AM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        time: "8:30 AM",
+                        title: "Welcome Back Remarks",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
-                        time: "10:30 AM - 10:45 AM",
-                        title: "Networking Break",
-                        // location: "Fourth Estate Meeting Room"
+                        time: "8:35 AM",
+                        title: "CONGRESSIONAL KEYNOTE ADDRESS",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
-                        time: "10:45 AM - 12:00 PM",
-                        title: "General Sessions",
-                        // location: "Ballroom",
+                        time: "9:05 AM",
+                        title: "How to do Business with the Primes",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                    },
+                    {
+                        time: "10:00 AM",
+                        title: "Cybersecurity Update: Safeguarding the Supply Chain",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                    },
+                    {
+                        time: "10:30 AM",
+                        title: "Artificial Intelligence in Defense – Leveraging Navy Use Cases",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                    },
+                    {
+                        time: "11:00 AM",
+                        title: "The ‘Golden Dome’ Integrated Missile Defense Initiative: Navy Role",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                    },
+                    {
+                        time: "11:30 AM",
+                        title: "Army Corps of Engineers – Project Opportunities",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                    },
+                    {
+                        time: "12:05 PM",
+                        title: "How to Use OTA’s (Other Transaction Authorities) to Win Sole-Source Contracts",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                    },
+                    {
+                        time: "12:30 PM",
+                        title: "Closing Remarks",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                    },
+                    {
+                        time: "12:30 PM - 1:30 PM",
+                        title: "Matchmaking Session II",
+                        location: "Franklin-Yorktown Meeting Room, 2nd Floor"
                     },
                 ],
-            }
-
-        ]
-    },
+            },
+        ],
+    }
 ];

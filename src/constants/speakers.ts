@@ -8,7 +8,7 @@ export interface Speaker {
 	bio?: string;
 	keynote?: {
 		isKeynote: boolean;
-		headerText: string;
+		headerText?: string;
 	};
 }
 
@@ -67,7 +67,7 @@ In the military, Colonel Cancian spent over three decades in the U.S. Marine Cor
 		"name": "David Leinberger",
 		"position": "Acting Director, Army Partnerships",
 		"company": "Deputy Chief of Staff, G-9 (Installations)",
-		"bio": `Dave Leinberger assumed the role as the Chief of Army Community Partnerships in July 2024.In this position, Mr. Leinberger encourages innovation and collaboration between ourinstallations and local communities to develop partnerships that are mutually beneficial,identify cost efficiencies, reduce installation service response times, and strengthens therelationship with the local communities outside our installations. Mr. Leinberger focuses theutilization of collaborative partnership authorities to achieve these goals. These authoritiesinclude Intergovernmental Support Agreements (IGSAs), Cooperative Agreements, Mutual AidAgreements, Memorandum of Understanding, Enhanced Use Lease, and Other TransactionAuthority.<br><br>Previously, Mr. Leinberger served as the Army Community Partnership Program Manager,Assistant Chief of Staff for Installation Management, in September 2019 and maintained thatrole following the ACSIM’s transition to Deputy Chief of Staff, G-9 (Installations).`
+		"bio": `Dave Leinberger assumed the role as the Chief of Army Community Partnerships in July 2024.In this position, Mr. Leinberger encourages innovation and collaboration between our installations and local communities to develop partnerships that are mutually beneficial, identify cost efficiencies, reduce installation service response times, and strengthens the relationship with the local communities outside our installations. Mr. Leinberger focuses the utilization of collaborative partnership authorities to achieve these goals. These authorities include Intergovernmental Support Agreements (IGSAs), Cooperative Agreements, Mutual Aid Agreements, Memorandum of Understanding, Enhanced Use Lease, and Other Transaction Authority.<br><br>Previously, Mr. Leinberger served as the Army Community Partnership Program Manager, Assistant Chief of Staff for Installation Management, in September 2019 and maintained that role following the ACSIM’s transition to Deputy Chief of Staff, G-9 (Installations).`
 	},
 	"brian-liesveld": {
 		"image": "brian-liesveld.webp",
@@ -92,11 +92,11 @@ As a former Naval Intelligence Officer, he held positions at the Defense Intelli
 		"name": "Arveice Washington",
 		"position": "Director, Office of Small Business Programs",
 		"company": "Office of the Secretary of the Navy",
-		"bio": `Ms. Washington was appointed to the Senior Executive Service in November 2023 as theDirector, Office of Small Business Programs after 15 years of civilian service. In this roleshe serves as the principal advisor to the Secretary of the Navy on all small businessmatters. Ms. Washington has been charged with overseeing small business acquisitionpolicy; strengthening government and private sector partnerships; and fosteringopportunities to leverage small business as a strategic advantage for the benefit of ourwarfighters. From April 2018 until October 2023, Ms. Washington served as the DeputyDirector in this office.
+		"bio": `Ms. Washington was appointed to the Senior Executive Service in November 2023 as theDirector, Office of Small Business Programs after 15 years of civilian service. In this role she serves as the principal advisor to the Secretary of the Navy on all small business matters. Ms. Washington has been charged with overseeing small business acquisition policy; strengthening government and private sector partnerships; and fostering opportunities to leverage small business as a strategic advantage for the benefit of our warfighters. From April 2018 until October 2023, Ms. Washington served as the Deputy Director in this office.
 <br/><br/>
-Ms. Washington’s previous experience includes serving as the Director of Acquisitionand Contracts for the Naval Sea Systems (NAVSEA) Command Program ExecutiveOffice for Submarines from October 2016 until March 2018. In this capacity, she wasresponsible for directing, prioritizing and coordinating all acquisition initiatives acrossTeam Submarine.
+Ms. Washington’s previous experience includes serving as the Director of Acquisition and Contracts for the Naval Sea Systems (NAVSEA) Command Program Executive Office for Submarines from October 2016 until March 2018. In this capacity, she was responsible for directing, prioritizing and coordinating all acquisition initiatives across Team Submarine.
 <br/><br/>
-From June 2009 until January 2016, Ms. Washington assumed the duties as the TeamSubmarine Enterprise Wide Contractor Support Services Manager. She was the subjectmatter expert for management responsibilities for five support services contracts totalingexecution of over $125 million annually and oversight of 600 contractors. As theContracting Officer Representative (COR) for these contracts, Ms. Washington wasresponsible for cradle to grave requirements generation, contract award and post-awardexecution.`
+From June 2009 until January 2016, Ms. Washington assumed the duties as the Team Submarine Enterprise Wide Contractor Support Services Manager. She was the subject matter expert for management responsibilities for five support services contracts totaling execution of over $125 million annually and oversight of 600 contractors. As the Contracting Officer Representative (COR) for these contracts, Ms. Washington was responsible for cradle to grave requirements generation, contract award and post-award execution.`
 	},
 	"kimberly-buehler": {
 		"image": "kimberly-buhler.webp",
@@ -110,17 +110,21 @@ Ms. Buehler represents the Secretary of the Army at congressional committee and 
 	"david-canada": {
 		"image": "david-canada.webp",
 		"name": "David Canada",
-		"position": "Director, Global Supplier Diversity",
-		"company": "Boeing Defense Space & Security",
-		"bio": `David Canada is Director of Global Supplier Diversity for Boeing Defense Space & Security (BDS). Named to this role in 2023, he has primary responsibility for building stronger relationships with the diversity office at the DoD and with the respective representatives of the branches of services. 
+		"position": "Director, Strategic Sourcing & Partnerships",
+		"company": "Boeing Defense Space & Security, The Boeing Company",
+		"bio": `
+David Canada is Director of Strategic Sourcing & Partnerships for Boeing Defense Space & Security (BDS). Named to this role in 2023, he has primary responsibility for building stronger relationships with the small business offices at the DoD and NASA as well as with the respective representatives of the branches of services. The goal is to provide opportunities for small business, service-disabled veteran-owned small business, HUBZone small business, small disadvantaged business, and women-owned small business as defined by the Small Business Administration and/or other entities designated or defined by applicable law. David is also responsible for supply chain strategy, which includes country segmentation for campaigns, offset obligations, supplier risk assessment reporting on geopolitical, labor, natural disaster & raw materials and market enablement.
 <br/><br/>
-David joined The Boeing Company in 2007 as an Industrial Engineer on the V-22 Osprey line. He implemented new project management tools that resulted in automated workforce planning and improved the schedule planning efficiency. David grew, taking on new challenges and roles across Boeing. 
+David joined The Boeing Company in 2007 as an Industrial Engineer on the V-22 Osprey line. He implemented new project management tools that resulted in automated workforce planning and improved the schedule planning efficiency. David grew, taking on new challenges and roles across Boeing.
 <br/><br/>
-As IT Procurement Manager, he managed 18 procurement agents, 30 suppliers, and more than $250 million in contracts. He moved on to serve as Chief of Staff to the Vice President of BDS IT Business Partners. He continued his career as the Senior Manager, Mergers & Acquisitions Integration Strategy, where he led mergers and acquisitions estimated at $2.5 billion, and also manages critical cybersecurity issues and systems.             
+As IT Procurement Manager, he managed 18 procurement agents, 30 suppliers, and more than $250 million in contracts. He moved on to serve as Chief of Staff to the Vice President of BDS IT Business Partners.
 <br/><br/>
-David earned a bachelor’s degree in Mechanical Engineering from Howard University, and a master’s degree in Business Administration and a Certification in Project Management. 
+He continued his career as the Senior Manager, Mergers & Acquisitions Integration Strategy, where he led mergers and acquisitions estimated at $2.5 billion, and also managed critical cybersecurity issues and systems tied to subsidiary integration. Canada also has served as the Director of Business Operations for Boeing Global Services (BGS) where is he responsible for business transformation and improve operational efficiency.
 <br/><br/>
-Giving back is a part of who David is. He serves on the board of the following non-profit organizations:  Black Alliance of Colleges & Employers (BACE), Step Afrika, Wearable Tech Ventures and Positive Deposits. David is also very passionate about STEM education and increasing the number of minorities in technology fields.  He serves as an active corporate representative for the Black Engineer of the Year Awards, Advancing Minorities Interest in Engineering as well as the National Society of Black Engineers. In addition, he was selected to be a member of the Racial Equity Task Force and is co-leader of the BGS Diversity & Inclusion Council.\n`
+David earned a Bachelor’s Degree in Mechanical Engineering from Howard University, and a Master’s Degree in Business Administration and a Certification in Project Management.
+<br/><br/>
+Giving back is a part of who David is. He serves on the board of the following non-profit organizations: DC CAP, BeOrg, Black Alliance of Colleges & Employers (BACE), Step Afrika and Wearable Tech Ventures. David is also very passionate about STEM education and increasing the number of minorities in technology fields. He serves as an active corporate representative for the Black Engineer of the Year Awards as well as the Execution Sponsor for the National Society of Black Engineers.
+`
 	},
 	"patricia-waddell": {
 		"image": "patricia-waddell.webp",
@@ -737,7 +741,7 @@ His final Navy assignment was China Branch of Navy Staff at the Pentagon. `,
 	"kareem-sykes": {
 		"image": "kareem-sykes.webp",
 		"name": "Kareem A. Sykes",
-		"position": "Program Manager, Project Spectrum",
+		"position": "Director, Industry and Engagement, Project Spectrum",
 		"company": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of Defense",
 		"bio": `Kareem A. Sykes currently serves as Program Manager for Project Spectrum, a U.S. Department of Defense (DoD) recognized cybersecurity awareness initiative that offer resources, training and tools toward increasing cybersecurity awareness and hygiene for small businesses in particular. Mr. Sykes provides strategic leadership for a dynamic team of cybersecurity and outreach professionals whose collective aim centers around providing the educational resources and tools small businesses and institutions need to develop, implement, and maintain cybersecurity compliance. He oversees and directs the daily execution of multiple projects within the large-scale program and assures that the initiative adheres to government regulatory guidance. Mr. Sykes also manages contractual requirements to assure that Project Spectrum meets the cost, schedule, and performance goals required by the DoD Office of Small Business Programs (OSBP).
 	<br/>
@@ -819,7 +823,267 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	<br/>
 	Mr Inman began his Air Force career as a contracting intern, and held and used a contracting officer’s warrant. He moved into program management, managing new and legacy information technology programs for cost, schedule, and performance. He deployed to Qatar and Afghanistan for a fifteen-month assignment as Director of Policy for Central Command’s Joint Theater Support Contracting Command. At the Air Force Sustainment Center, he directed the contract for the Air Force’s weapon system supply chains, and immediately prior to his current position, he was Technical Director for Contracting at Robins AFB.`,
 	}
-};
+	,
+	"stephen-mongold": {
+		"image": "stephen-mongold.webp",
+		"name": "Captain Steven E. Mongold",
+		"position": "Director, COMSUBFOR Submarine Maintenance Operations Center",
+		"company": "Submarine Forces Atlantic (COMSUBLANT)",
+		"bio": `CAPT Steve Mongold enlisted in the Navy in 1995 as a Nuclear Propulsion Officer Candidate (NUPOC) and received his commission from Officer Candidate School (OCS) in 1996.  He resides in Chesapeake, Virginia and earned a Bachelor’s degree in Chemical Engineering from Villanova University, and Master’s degree in Engineering Management from Old Dominion University.
+	<br/>
+	
+	<br/>
+	CAPT Mongold’s operational assignments include USS HAMPTON (SSN 767) as a Division Officer, USS BOISE (SSN 764) as Engineer Officer, and USS RHODE ISLAND (SSBN 740) Gold as Executive Officer.  CAPT Mongold commanded USS MONTPELIER (SSN 765) from 2013-2016.
+	<br/>
+	
+	<br/>
+	Ashore, CAPT Mongold served as a Submarine Tactics instructor, Prospective Nuclear Engineering instructor, Submarine Squadron Eight Material Officer, Executive Assistant to COMSUBFOR, and Senior Member of the Fleet Forces Nuclear Propulsion Examining Board.  He served as the Commanding Officer of the Nuclear Power Training Unit in Goose Creek, SC from 2019-2021 before reporting to COMSUBLANT as the Director for Maintenance and Material Readiness.  In May 2023, CAPT Mongold established the COMSUBFOR Submarine Maintenance Operations Center (S-MOC) and reported as its first Director.
+	<br/>
+	
+	<br/>
+	CAPT Mongold has been privileged to serve on teams that were awarded the 2015 Arleigh Burke Fleet Trophy, the Navy Unit Commendation, Meritorious Unit Commendation, and Battle Efficiency ‘E’. His personal awards include the Legion of Merit, Meritorious Service Medal, Navy and Marine Corps Commendation Medal, and Navy and Marine Corps Achievement Medal.`,
+	}
+	,
+	"stacey-l-cooper": {
+		"image": "stacey-cooper.webp",
+		"name": "Stacey L. Cooper",
+		"position": "Deputy Director, Small Business Programs",
+		"company": "Mid-Atlantic Regional Maintenance Center (MARMC)",
+		"bio": `Stacey Cooper was born and raised in Hampton, Virginia. She attended and graduated from Christopher Newport University in 1998 with a Bachelor’s of Science in Business Administration Degree with concentrations in Finance and Real Estate. She received a Master’s Degree in Healthcare Management from University of Phoenix in 2006. A second Master’s Degree in Acquisition Management from University of Management and Technology in 2012.
+	<br/>
+	
+	<br/>
+	Stacey entered Government service in the Navy Acquisition Intern Program as a Contract Specialist. From April 2007 to April 2010, she trained at Mid-Atlantic Regional Maintenance Center (MARMC) and received Level I and II certifications in Contracts. In April 2010, she graduated from the intern program as a GS-12, Contract Specialist. In 2011 she received her Contracting Officer warrant and Level III certification in Contracts. She continued to work her way up the ladder, being promoted to a GS-13 Lead Contract Specialist in July 2012. As an Administrative Contracting Officer, she administered many high level availabilities from 2009 – 2020 that has totaled over $1 billion dollars. During the administering of these contracts she has received many awards and accolades from Leadership, the Maintenance/Project Team, Captains, Ships Force and Contractors on the waterfront. In February 2020 she was promoted to Branch Head of the Amphibious Class Ships. In December 2020 she became the Branch Head of the Policy Division until February 2022.
+	<br/>
+	
+	<br/>
+	In April 2022, she became the Deputy of Small Business programs and it has been the best career move. In year one, she has transformed the Small Business office. Outreach and advocating is one of her best strengths. Many small businesses has reached out to NAVSEA Director of Office of Small Business Programs and her Executive Director at MARMC to express their gratitude and how much they appreciate all she does for small businesses. She attends many outreach events and strives to be one of the best Deputy of Small Business in the Department of Navy.`,
+	}
+	,
+	"terressa-bebout": {
+		"image": "terressa-bebout.webp",
+		"name": "Terressa Bebout",
+		"position": "Technical Director of Small Business Strategy, Office of Small Business Programs",
+		"company": "Naval Air Systems Command (NAVAIR)",
+		"bio": `Ms. Terressa Bebout has served the United States Navy both as contractor service support (CSS) and as a civil servant for a combined 36 years of service. Currently, she serves as the Technical Director of Small Business Strategy for the Office of Small Business Program (OSBP) Naval Air Systems Command (NAVAIR), as well as the COMFRC OSBP Director. 
+	<br/>
+	
+	<br/>
+	Ms. Bebout has also supported NAVAIR as a Workforce Advisor in Career Development and Planning Division and as the Director of Training and Strategic Initiatives, serving as Training Lead, Supervisory Contracting Officer and procurement subject matter expert for NAVAIR Procurement Group. 
+	<br/>
+	
+	<br/>
+	Previously, she served as a Senior Procurement Analyst Deputy for the Assistant Secretary of the Navy (Acquisition and Procurement) (DASN (AP)). In this capacity, she was the NAVSEA/NAVWAR Action Officer responsible for contractual oversight of portfolios that include the nation’s most complex shipbuilding, weapons systems and IT procurement programs, as well as the Navy’s web-based services acquisition marketplace, SeaPort. She has also supported Naval Supply Systems Command (NAVSUP) as a Contracting Officer and the Africa Command Grants Officer supporting Naval Health Research Center DOD HIV Prevention Program and President's Emergency Plan for AIDS Relief. Ms. Bebout started her career serving the Marines at Cherry Point, NC. She spent her first 15 years in logistics at the facility currently now known as FRC East.   
+	<br/>
+	
+	<br/>
+	Ms. Bebout has been bestowed a BS in Logistic and Business Management, two Master of Science degrees – American University Program Management and Eisenhower School of National Security and Resource Strategy, and a Liberty University Executive Certificate in Strategic Leadership. `,
+	}
+	,
+	"diane-dempsey": {
+		"image": "diane-dempsey.webp",
+		"name": "Diane Dempsey",
+		"position": "Director, Small Business Programs, Intelligence & Security",
+		"company": "BAE Systems",
+		"bio": `Ms. Dempsey has enjoyed an extensive career in the field of procurement, subcontracts and supplier diversity.  Currently she is the Director, Small Business Programs for BAE Systems Intelligence & Security Sector.   Ms. Dempsey has also been a small business advocate for several prime contractors in the DC Metropolitan area.   She serves on multiple boards and committees, most recently served as the Chair, Capital Region Minority Supplier Development Council Board of Directors.  She formerly chaired the Community Business Partnership Board of Directors.  Additionally, she has served as the TRIAD Industry Group Co-Chair since 2006.  Her leadership and advocacy have been recognized with many awards, most recently the National Veterans Small Business Coalition 2021 Prime Contractor – Advocate of the Year, U.S. Women’s Chamber of Commerce, 2021 CEO Award and 2024 VA Asian Chamber of Commerce Diversity Award.
+	<br/>
+	
+	<br/>
+	Under her leadership, BAE Systems Inc. received the 2022 Capital Region Minority Supplier Development Council, Corporation of the Year and the Intelligence & Security Sector received the prestigious SBA Dwight D. Eisenhower Award in 2023.
+	<br/>
+	
+	<br/>
+	She received her B.S. from Mary Washington College, Certificate in Contracts & Procurement, University of Virginia, and Master’s Certificate in Procurement & Supply Chain Management, MS and MBA from the University of Maryland.  She is also a certified supplier diversity professional and instructor for the Alliance of Supplier Diversity Professionals for 13 years.`,
+	},
+	"kurt-garrett": {
+		"image": "kurt-garrett.webp",
+		"name": "Kurt Garrett",
+		"position": "VP Global Defense Solutions",
+		"company": "One Network Enterprises (ONE)",
+		"bio": `Kurt C. Garrett is a distinguished professional with over 36 years of combined experience in logistics and defense solutions. As a former US Marine Logistician, Kurt dedicated 24+ years to serving his country, honing his expertise in strategic logistics and operational excellence. Transitioning from military service, he has spent the past 12+ years at One Network Enterprises™ (ONE), where he serves as the Vice President of Defense Solutions Consulting and a Defense Subject Matter Expert. 
+	<br/>
+	
+	<br/>
+	Kurt is recognized for his leadership in the Digital Supply Chain Network™, where he drives innovation and efficiency across numerous global projects for the Department of Defense and the defense industry. His commitment to advancing defense solutions has made him a pivotal figure in transforming supply chain operations to meet the dynamic needs of modern defense strategies.`,
+	}
+	,
+	"joel-lundy": {
+		"image": "joel-lundy.webp",
+		"name": "Joel Lundy",
+		"position": "Acting Deputy Assistant Commissioner, Category Management, Office of Information Technology Category, Federal Acquisition Service",
+		"company": "U.S. General Services Administration",
+		"bio": `Joel Lundy is the Acting Deputy Assistant Commissioner, Category Management within the Information Technology Category of the Federal Acquisition Service. In this role, Joel provides executive leadership over a broad portfolio that customer agencies use to buy over $42 billion in IT products and services. These solutions include the Government-wide Acquisition Contracts (GWACs): Alliant 2, VETS 2, and 8(a) STARS III. His portfolio also includes the IT Multiple Award Schedule, Enterprise Infrastructure Solutions (EIS), and the USAccess shared services program. Joel’s guidance and oversight of the category teams ensure that GSA continues to play a critical role in the Administration’s IT modernization efforts to drive a more efficient and effective government for the American people. 
+	<br/>
+	 
+	<br/>
+	Previously, Joel directed a portfolio of contracts and programs that offer government agencies a diverse set of IT software, cloud, and hardware product and service solutions valued at $8 billion annually. Some of these offerings include Multiple Award Schedule Special Item Numbers for IT Software, IT Hardware, and Cloud Computing and Cloud-Related IT Professional Services; Defense Enterprise Office Solution; 2nd Generation IT Blanket Purchase Agreements; and Government-wide Strategic Solutions Desktop and Laptop Program.  
+	<br/>
+	
+	<br/>
+	Prior to joining ITC, Joel held a range of positions at GSA. Joel was the Director of Portfolio Outreach for GSA’s Office of General Supplies and Services. There, he assisted in the GSA Global Supply Program transition to a new business model in addition to leading business development, communications, and strategic planning support to GSA’s Personal Property Program, Retail Operations Program, GSA Global Supply, and non-IT MAS Programs. Joel also served as Program Manager of GSA’s Central Asia Local Procurement Initiative, managing the agency’s $150 million supply chain in Central Asia and the South Caucasus to support the U.S. military and civilian agencies in Afghanistan while promoting economic development and cooperation across the region.  
+	<br/>
+	
+	<br/>
+	Joel entered federal service with GSA as a Presidential Management Fellow.  
+	<br/>
+	
+	<br/>
+	Joel graduated with honors from the University of Chicago with a Bachelor of Arts in history and holds a Master of Public Administration from the University of Illinois at Chicago.  
+	<br/>
+	`,
+	}
+	,
+	"christopher-m-haar": {
+		"image": "christopher-m-haar.webp",
+		"name": "Brigadier General Christopher M. Haar",
+		"position": "Assistant Deputy Commandant, Combat Development and Integration/Deputy Commanding General",
+		"company": "Marine Corps Combat Development Command",
+		"bio": `Brigadier General Haar is a pastor’s son from the Midwest, growing up in Minnesota and Kansas. He enlisted in the Marine Corps in 1991 and was promoted to Staff Sergeant before being commissioned in 1998.  He was designated as a Combat Engineer Officer.  He assumed his current position as Deputy Commanding General, Marine Corps Combat Development Command and Director, Joint and Naval Integration Directorate, Combat Development and Integration in May 2025.
+	<br/>
+	
+	<br/>
+	He has commanded at the platoon, company, battalion, and regimental-level, to include an engineer company during Operation Iraqi Freedom 1, 1st Combat Engineer Battalion, and Combat Logistics Regiment 3.
+	<br/>
+	
+	<br/>
+	As a graduate of the School of Advanced Warfighting, his planner assignments included MARCENT (FWD) in Bahrain where he was lead planner for JTF-NEO; Future Operations Planner for III Marine Expeditionary Force focused on Korea; lead planner for JTF-505 as it deployed to provide Humanitarian Assistance and Disaster Relief to the people of the Philippines during Operation Damayan; and the US INDOPACOM East and Southeast Asia Contingency Plans Chief.
+	<br/>
+	
+	<br/>
+	His staff tours include Academics Officer and Officer Instructor at Marine Corps Engineer School; Small Group Leader at US Army Engineer School; Operations Officer for MEU Service Support Group 26 for an OIF deployment; Executive Officer of 9th Engineer Support Battalion for an OIF deployment; the Combat Engineer Proponent in PP&O; Deputy Assistant Chief of Staff G-3 for 3d Marine Logistics Group; and as the Executive Assistant to DC, I&L.
+	<br/>
+	
+	<br/>
+	Brigadier General Haar is a graduate of Expeditionary Warfare School, the US Army Engineer Captains Career Course, Marine Corps Command and Staff College, the School of Advanced Warfighting, the National War College, and the United Kingdom Higher Command and Staff Course. He holds a BS in Civil Engineering from the University of Kansas, a MS in Engineering Management from the Missouri University of Science and Technology, a MS in Operational Studies from the Marine Corps University, and a MS in Strategic Studies with an emphasis in Long-Term Strategy from the National Defense University.
+	<br/>
+	
+	<br/>
+	Brigadier General Haar’s personal awards include: the Defense Superior Service Medal; the Legion of Merit; the Meritorious Service Medal with four gold stars; the Joint Commendation Medal; the Navy Commendation Medal with gold star; the Navy Achievement Medal; the Humanitarian Assistance Medal; the Volunteer Service Medal; and the Combat Action Ribbon.
+	<br/>
+	
+	<br/>
+	He is married to his High School Sweetheart, Shelly, and they have two adult children, two granddaughters, and two grandsons.`,
+	},
+	"don-mcginnis": {
+		"image": "don-mcginnis.webp",
+		"name": "Don McGinnis",
+		"position": "Director, Business Development",
+		"company": "Pioneer Motor Bearing Company",
+		"bio": ``,
+	}
+	,
+	"katina-adams": {
+		"image": "katina-adams.webp",
+		"name": "Katina Adams",
+		"position": "Manager, Small Business Programs",
+		"company": "Newport News Shipbuilding, A Dvision of HII",
+		"bio": `Katina Adams is the Small Business Liaison Officer (SBLO) and Socio-Economic Small Business Programs Officer for Newport News Shipbuilding (NNS), A Division of HII. Katina is responsible for ensuring that NNS and its almost 30,000 employees comply with federal requirements for soliciting and subcontracting with small businesses. Katina has oversight of government reporting on prime and sub- tier contracts valued over $40B and annual subcontract spend of approximately $3B. Katina leads HII’s SBLO Council which consists of SBLOs and small business professionals from HII’s Ingalls Shipbuilding and Mission Technologies Divisions. Katina and her team are dedicated to advocacy for all categories of small businesses.
+	<br/>
+	
+	<br/>
+	Under Katina’s leadership, HII was awarded Veteran Small Business Advocate of the Year and has earned the National Veteran Small Business Coalition’s Champion Award for the past two consecutive years; NNS earned the Minority Business Enterprise (MBE) Input Committee Development Award for advancing the growth and development of MBEs, and NNS annually exceeds DoD’s small business subcontracting goals.
+	<br/>
+	
+	<br/>
+	Katina is a graduate of George Mason University and Florida Institute of Technology. Katina has earned various certifications to include Certified Supplier Diversity Professional, Certified Purchasing Manager, Certified in Production & Inventory Management, Certificate of Lean Practice and Virginia Contracting Officer. Katina serves on the Board of Directors for Women in Defense Greater Hampton Roads, Carolinas-Virginia Minority Supplier Development Council, and National Veteran Small Business Coalition’s Hampton Roads Community of Interest.`,
+	},
+	"stacey-r-washington": {
+		"image": "stacey-r-washington.webp",
+		"name": "Stacey R. Washington",
+		"position": "Small Business Program Manager",
+		"company": "Lockheed Martin Missiles and Fire Control",
+		"bio": `Stacey Washington serves as the Small Business Program Manager for Lockheed Martin Missiles and Fire Control (MFC), where she leads the development and execution of daily operations and long-term strategic goals for the business area’s Small Business Program. With over 15 years of experience in global supply chain management, small business advocacy, and compliance, Ms. Washington brings a wealth of expertise and commitment to her role.
+	<br/>
+	
+	<br/>
+	A passionate advocate for small and diverse businesses, Stacey believes these enterprises are the backbone of local communities. She recognizes their role not only in economic development but also in driving community-focused initiatives and creating meaningful employment opportunities.
+	<br/>
+	
+	<br/>
+	Ms. Washington holds multiple professional certifications and training credentials. She is a Level II Trainer for the Advanced Small Business Liaison Officer Certification Program through the Alliance of Supplier Diversity Professionals, Inc. (ASDP); a certified Six Sigma Green Belt through Textron’s Continuous Improvement Program; and holds a Certificate in Federal Contract Management Essentials from The University of Alabama in Huntsville. Additionally, she earned a Program Management Certification from The George Washington University TwentyEighty Strategy Execution Program.
+	<br/>
+	
+	<br/>
+	A 2016 graduate of the National African American Women’s Leadership Institute (NAAWLI), Stacey previously served as Chair of the Board for the organization, demonstrating her dedication to leadership development and service.
+	<br/>
+	
+	<br/>
+	Academically, she earned a Bachelor of Arts and Science in Interdisciplinary Studies from Dallas Baptist University and a Master of Business Administration from Louisiana State University Shreveport.
+	<br/>
+	
+	<br/>
+	Outside of her professional responsibilities, Stacey is devoted to empowering the next generation. In 2018, she founded the Big Sis Lil Sis Program, a mentorship initiative for young women that focuses on self-empowerment through goal setting, positive self-image, and self-leadership. She remains actively involved in mentoring, helping young women recognize their potential and lead with confidence and authenticity.`,
+	},
+	"robyn-card": {
+		"image": "robyn-card.webp",
+		"name": "Dr. Robyn Card",
+		"position": "Director, Small Business Office (SBO)",
+		"company": "General Dynamics Information Technology, Inc. (GDIT)",
+		"bio": `Dr. Robyn Card has worked as a contracting officer for General Dynamics Information Technology, Inc. (GDIT) since 2012, and currently serves as the Director of the Small Business Office (SBO). She leads a dynamic team of professionals who champion the inclusion of small businesses as team members and partners with GDIT. With a focus on teambuilding and informal mentorship, Dr. Card leads initiatives within GDIT’s SBO to actively educate suppliers regarding best practices including increased engagement with government and industry partners, and training internal stakeholders on process improvements to support legislative changes. 
+	<br/>
+	
+	<br/>
+	Recently, the GDIT Small Business team received the National 8a Council and HUBZone Contractor’s National Council Large Business of the Year Award for their innovative approach to promoting small business utilization. Dr. Card serves on the Contracts Leadership Team at GDIT and as the chair of the Supplier Diversity Committee which is comprised of representatives from all General Dynamics individual business units. She has been a guest presenter at several events including those hosted by the Capital Business Development Association, the DoD Mid-Atlantic Regional Council, and the Virginia APEX Accelerator. Dr. Card is a longtime member of NCMA, holding both the CPCM and CFCM certifications and is also certified by the Alliance of Supplier Diversity Professionals. 
+	<br/>
+	`,
+	}
+	,
+	"erica-h-plath": {
+		"image": "erica-h-plath.webp",
+		"name": "Erica H. Plath",
+		"position": "Deputy Assistant Secretary of the Navy (Sustainment) Office of the Assistant Secretary of the Navy for Research, Development and Acquisition",
+		"company": "United States Department of the Navy",
+		"bio": `
+Ms. Erica H. Plath assumed the responsibilities of the Deputy Assistant Secretary of the Navy for Sustainment in May of 2022. She serves as the principal advisor to the Assistant Secretary of the Navy for Research, Development and Acquisition (ASN (RDA)) on all matters related to the planning, budgeting and execution of sustainment and supply chain activities of the Department of the Navy and Marine Corps.
+
+<br/><br/>
+Prior to this assignment, Ms. Plath served as the Director, Installations and Logistics Integration (OPNAV N4Z) in the office of the Chief of Naval Operations. In this capacity, she supported the development, integration and resourcing of a roughly $20 billion annual budget for the Navy’s Fleet Readiness and Logistics portfolio which includes combat logistics, military sealift, and shore infrastructure.
+<br/><br/>
+Ms. Plath was appointed to the Senior Executive Service in August 2018. In years’ prior, Ms. Plath served as the Director, Strategic Mobility and Combat Logistics Division (OPNAV N42) inthe office of the Chief of Naval Operations from August 2018 to November 2021. In this capacity, she supported the development, integration and resourcing of a roughly $3 billion annual portfolio for Navy’s combat logistics, maritime prepositioning, and strategic sealift ships. Ms. Plath served as Deputy for the Maintenance and Modernization Branch in the Surface Warfare Division (OPNAV N96) from November 2012 to August 2018. She began federal civilian service in 2011 at Naval Sea Systems Command within the Surface Warfare Directorate.
+<br/><br/>
+Ms. Plath graduated from the U.S. Naval Academy with a Bachelor of Science in Aerospace Engineering and was commissioned as an Ensign, United States Navy in May 2001. Following commissioning, she served as a Surface Warfare Officer in USS PORTER (DDG 78), USS COWPENS (CG 63) and the Navy Operations Center at the Pentagon. Ms. Plath left active duty as a Lieutenant in December 2007.
+<br/><br/>
+Ms. Plath's naval decorations include the Navy Commendation Medal (two awards), Navy Achievement Medal (two awards), Meritorious Unit Commendation, and Global War on Terrorism Expeditionary and Service medals.
+`,
+		"keynote": {
+			"isKeynote": true,
+		},
+	}
+,
+  "paul-wichert": {
+    "image": "paul-wichert.webp",
+    "name": "Paul Wichert",
+    "position": "VP of Sales",
+    "company": "DMG Mori Federal Services",
+    "bio": `Paul Wichert is a 45-year veteran of the manufacturing industry. His experience is multi-faceted, Operational Executive of machine tool builders, Owner/Operator of contract machining services business, President of manufacturing facilities in US, China & Taiwan. Importing and consulting in global manufacturing. Currently he is working with DMG MORI Federal Services (DMFS). DMFS is the representative for DMG MORI, the leader in innovative metal cutting 3D Metal Printing and Hybrid machine tools.`,
+  },
+  "vice-admiral-richard-w-hunt": {
+    "image": "vice-admiral-richard-w-hunt.webp",
+    "name": "Vice Admiral Richard W. Hunt",
+    "position": "President",
+    "company": "Fincantieri Marinette Marine",
+    "bio": `Vice Admiral Hunt graduated from the University of Wisconsin-Madison in 1975 with a Bachelor of Science in Bacteriology.  He was commissioned in February 1976 through the Officer Candidate School program in Newport, R.I.  He attended Naval Post Graduate School, receiving a Master of Science in Telecommunications Systems Management in March 1988.
+	<br/>
+	
+	<br/>
+	Hunt is a Surface Warfare Officer who served in multiple ships, including Commanding Officer of USS Crommelin (FFG 37) and USS Philippine Sea (CG 58).  As a Flag Officer, he was Commander, Carrier Strike Group Six/John F Kennedy Strike Group; Commander, Combined Joint Task Force-Horn of Africa, United States Central Command; Commander, U.S. THIRD Fleet; and Commander, Naval Surface Forces/Naval Surface Force, U.S. Pacific Fleet.
+	<br/>
+	
+	<br/>
+	Shore assignments alternated between Navy and Joint Staff positions in the Pentagon including
+	<br/>
+	Executive Assistant to the Chairman, Joint Chiefs of Staff and Flag assignments as Deputy Director, Strategy & Policy (J5), Joint Staff; Director, Programming Division (N80), Navy Staff; and Director, Navy Staff where he served until he retired from the Navy in November 2013.
+	<br/>
+	
+	<br/>
+	Personal decorations include the Navy Distinguished Service Medal, Defense Superior Service Medal, Legion of Merit, Defense Meritorious Service Medal, Meritorious Service Medal and various service and unit awards. 
+	<br/>
+	
+	<br/>
+	Hunt joined Raytheon Company in the position of Vice President, Business Development, Navy/Marine Corps Programs in January 2014 and assumed the role of Vice President for U.S. Business Development in June 2015.  He transitioned to Chief Strategy Officer at Fincantieri Marinette Marine in April 2018 and became President, Fincantieri Marinette Marine in July 2019.
+	<br/>
+	`,
+  }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 	"1": [
@@ -888,13 +1152,34 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		//"carl-m-wade",
 		//"david-willis",
 		//{ id: "patricia-waddell", invited: true },
-
+	],
+	"4": [ // 2025NMCPC
+		"stephen-mongold",
+		"stacey-l-cooper",
+		"charles-sills",
+		"brian-liesveld",
+		"arveice-washington",
+		{ id: "kareem-sykes", label: "Pending Agency Approval" },
+		"terressa-bebout",
+		"dave-leinberger",
+		"david-canada",
+		"kurt-garrett",
+		"diane-dempsey",
+		"christopher-m-haar",
+		{ id: "joel-lundy", label: "Pending Agency Approval" },
+		"don-mcginnis",
+		"robyn-card",
+		"katina-adams",
+		"stacey-r-washington",
+		"erica-h-plath",
+		"paul-wichert",
+		"vice-admiral-richard-w-hunt"
 	]
 };
 
-type EventSpeakerEntry = string | { id: string; invited?: boolean };
+type EventSpeakerEntry = string | { id: string; label?: string };
 
-export function getSpeakersForEvent(eventId: number): (Speaker & { id: string; invited?: boolean })[] {
+export function getSpeakersForEvent(eventId: number): (Speaker & { id: string; label?: string })[] {
 	const speakerEntries = EVENT_SPEAKERS[eventId] || [];
 	return speakerEntries.map(entry => {
 		if (typeof entry === 'string') {
@@ -908,7 +1193,7 @@ export function getSpeakersForEvent(eventId: number): (Speaker & { id: string; i
 			return {
 				...SPEAKERS[entry.id],
 				id: entry.id,
-				invited: entry.invited
+				label: entry.label
 			};
 		}
 	});

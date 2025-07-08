@@ -23,7 +23,7 @@ type Speaker = {
         isKeynote: boolean;
         headerText: string;
     };
-    invited?: boolean;
+    label?: string;
 };
 
 const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) => {
@@ -77,7 +77,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                                 alt={`${speaker.name}`}
                                 className="rounded-lg"
                             />
-                            <p className="mt-4 font-semibold whitespace-nowrap text-wrap">{speaker.name}{speaker.invited && <span className="text-md font-semibold border bg-gray-700 rounded-full px-3 py-1 text-white ml-2">Invited</span>}</p>
+                            <p className="mt-4 font-semibold whitespace-nowrap text-wrap">{speaker.name}{speaker.label && <span className="text-sm font-semibold border bg-gray-700 rounded-full px-2 py-1 text-white ml-2">{speaker.label}</span>}</p>
                             <p className="text-sm text-gray-600">{speaker.position}</p>
                             <p className="text-sm text-gray-600">{speaker.company}</p>
 

@@ -18,7 +18,7 @@ const HomePage = () => {
       <MissionStatement />
       <FocusAreas />
       <Testimonials />
-      <MailingListSubscription/>
+      <MailingListSubscription />
       {/* <LatestNews /> */}
       <FAQSection />
       <ContactUs />

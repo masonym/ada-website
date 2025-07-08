@@ -22,13 +22,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         title: "Our Sponsors and Partners",
         tiers: [
             {
-                id: "platinum",
+                id: "platinum-sponsor",
                 name: "Platinum Sponsor",
                 sponsorIds: ["modtech-solutions"],
                 topTier: true
             },
             {
-                id: "silver",
+                id: "silver-sponsor",
                 name: "Silver Sponsor",
                 sponsorIds: ["secure-itsm"],
             },
@@ -99,13 +99,13 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         title: "This event is Organized and Presented by",
         tiers: [
             {
-                id: "gold",
+                id: "gold-sponsor",
                 name: "Gold Sponsor",
                 style: "bg-amber-400 text-slate-900",
                 sponsorIds: ["lockheed-martin"],
             },
             {
-                id: "silver",
+                id: "silver-sponsor",
                 name: "Silver Sponsors",
                 style: "bg-gray-300 text-slate-900",
                 sponsorIds: [
@@ -131,7 +131,22 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         id: 4, // NMPCPC
         tiers: [
             {
-                id: "bronze",
+                id: "platinum-sponsor",
+                name: "Platinum Sponsor",
+                sponsorIds: ["hanwha-defense-usa"],
+                topTier: true
+            },
+            {
+                id: "gold-sponsor",
+                name: "Gold Sponsor",
+                style: "bg-amber-400 text-slate-900",
+                sponsorIds: [
+                    "blue-yonder",
+                    "dmg-mori",
+                ],
+            },
+            {
+                id: "bronze-sponsor",
                 name: "Bronze Sponsor",
                 style: "bg-amber-700 text-slate-900",
                 sponsorIds: [
@@ -139,7 +154,15 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 ],
             },
             {
-                id: "small-business",
+                id: "vip-networking-reception-sponsor",
+                name: "VIP Networking Reception Sponsor",
+                style: "bg-sky-300 text-slate-900",
+                sponsorIds: [
+                    "mcs-government-services",
+                ],
+            },
+            {
+                id: "small-business-sponsor",
                 name: "Small Business Sponsors",
                 style: "bg-sb-100 text-slate-900",
                 sponsorIds: [
@@ -149,10 +172,20 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "normandeau",
                     "us-hazmat-rentals",
                     "hartwood-consulting-group",
+                    "wise-technical-innovations",
+                    "smart-choice-technologies",
+                    "yadejs",
+                    "avanti",
+                    "westwind",
+                    "ana-sourcing",
+                    "cp2s-alytic",
+                    "oak-theory",
+                    "metgreen-solutions",
+                    "turbo-federal"
                 ],
             },
             {
-                id: "exhibitors",
+                id: "exhibit",
                 name: "Exhibitors",
                 style: "bg-navy-800 text-white", // Custom styling for organizers
                 sponsorIds: [
@@ -168,7 +201,60 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "advance-safety-equipment",
                     "us-hazmat-rentals",
                     "pmb-machine-works",
+                    "wise-technical-innovations",
+                    "deschamps",
+                    "bn-inspection",
+                    "yadejs",
+                    "lysol",
+                    "north-american-rescue",
+                    "curtis-power-solutions",
+                    "nib",
+                    "one-blue-yonder",
+                    "westwind",
+                    "training-concepts",
+                    "dronexus",
+                    "ana-sourcing",
+                    "allied-materials",
+                    "reel-coh",
+                    "cp2s-alytic",
+                    "imsm",
+                    "mcs-government-services",
+                    "virginia-apex",
+                    "oak-theory",
+                    "admark",
+                    "mass-virtual",
+                    "lgh",
+                    "iti",
+                    "conductive-containers",
+                    "cinch",
+                    "didlake",
+                    "equipment-share",
+                    "dmg-mori",
+                    "precision-resource",
+                    // "don-office-of-small-business-programs",
+                    "marmc", // this and don osbp are the same thing with diff logos/names
+                    "navsup-fleet-logistics-center-norfolk",
+                    "norfolk-naval-shipyard",
+                    "cignys",
+                    "metgreen-solutions",
+                    "marzen-group-llc",
+                    "rite-in-the-rain",
+                    "bounce-imaging",
+                    "hanwha-defense-usa",
+                    "trust-consulting-services",
+                    "pc-campana",
+                    "pferd-tools",
+                    "turbo-federal"
                 ],
+            },
+            {
+                id: "supporting-organizations",
+                name: "Supporting Organizations",
+                style: "bg-navy-800 text-white",
+                sponsorIds: [
+                    "hampton-roads-alliance",
+                    "visit-norfolk",
+                ]
             }
         ]
     }

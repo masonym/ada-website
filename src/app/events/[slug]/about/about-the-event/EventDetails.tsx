@@ -1,5 +1,7 @@
 import React from 'react';
 import Button from '@/app/components/Button';
+import RegisterButtonModal from '@/app/events/[slug]/RegisterButtonModal';
+import { EVENTS } from '@/constants/events';
 import ExpectationsSection from './ExpectationsSection';
 import { FeaturedTopicDetail } from '@/types/events';
 
@@ -20,9 +22,9 @@ type AudienceExpectations = {
 
 type EventDetailsProps = {
   title: string;
+  eventId: number;
   eventText: React.ReactNode;
   topicalCoverage: TopicalCoverage[];
-  registerLink: string;
   expectations?: AudienceExpectations[];
   expectationsText?: string;
   featuredTopics?: FeaturedTopicDetail[];
@@ -32,15 +34,17 @@ type EventDetailsProps = {
 
 const EventDetails: React.FC<EventDetailsProps> = ({ 
   title, 
+  eventId,
   eventText, 
   topicalCoverage, 
-  registerLink,
   expectations,
   expectationsText,
   featuredTopics,
   featuredTopicsTitle,
   featuredTopicsSubtitle
 }) => {
+  // Find the full event object using the ID
+  const fullEvent = eventId ? EVENTS.find(e => e.id === eventId) : undefined;
   return (
     <div className="min-h-screen text-navy-800 text-center">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
@@ -106,12 +110,14 @@ const EventDetails: React.FC<EventDetailsProps> = ({
           <p className="text-2xl text-navy-500 mb-6 text-center mx-8">
             Act Now and Secure your Place at this Groundbreaking Event!
           </p>
-          <Button
-            title="REGISTER"
-            variant="btn_blue"
-            link={registerLink}
-            className="max-w-xs sm:max-w-sm"
-          />
+          {fullEvent && (
+            <RegisterButtonModal
+              event={fullEvent}
+              title="REGISTER"
+              variant="btn_blue"
+              className="max-w-xs sm:max-w-sm"
+            />
+          )}
         </div>
       </div>
     </div>

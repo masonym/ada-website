@@ -1,13 +1,4 @@
-import React from 'react';
-
-export interface EventTestimonial {
-    type: 'video' | 'text';
-    quote: string;
-    name: string;
-    title: string;
-    affiliation: string;
-    videoId?: string;
-}
+import { EventTestimonial } from "@/types/events";
 
 interface EventTestimonialsProps {
     testimonials?: EventTestimonial[];

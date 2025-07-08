@@ -1,4 +1,5 @@
 export const REGISTRATION_TYPES = [
+    // 2025 Defense Industry Forecast - DIF2025
     {
         id: 1,
         registrations: [
@@ -13,40 +14,16 @@ export const REGISTRATION_TYPES = [
                     "Buffet Lunch",
                     "Access to Photos & Videos from Conference",
                 ],
-                subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
-                earlyBirdPrice: "$550",
-                regularPrice: "$395",
+                earlyBirdPrice: 550,
+                price: 395,
                 earlyBirdDeadline: "2024-10-18T08:00:00Z",
                 type: "paid",
                 receptionPrice: "$450"
             },
 
 
-            // display table
-            {
-                title: "Display Table",
-                headerImage: "display-table-pass.webp",
-                perks: [
-                    "Registration for 2 People",
-                    "2 Networking Reception Tickets",
-                    "6' Display Table in General Session",
-                    "Access to All Event Sessions",
-                    "Speaker Presentations and Materials",
-                    "Digital/Physical Copies of Agenda",
-                    "Buffet Lunch",
-                    "Access to Photos & Videos from Conference",
-                    "Use code ADDITIONAL to Register 2nd Attendee"
-                ],
-                subtitle: "Includes:",
-                buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
-                // earlyBirdPrice: "$550",
-                regularPrice: "$1000",
-                // earlyBirdDeadline: "2024-10-18T08:00:00Z",
-                type: "paid"
-            },
+            // Display table information moved to exhibitors.ts
 
             {
                 title: "Government Official & Military Pass",
@@ -59,9 +36,7 @@ export const REGISTRATION_TYPES = [
                     "Buffet Lunch",
                     "Access to Photos & Videos from Conference",
                 ],
-                subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
                 type: "complimentary",
                 availabilityInfo: "Limited availability."
             },
@@ -78,9 +53,7 @@ export const REGISTRATION_TYPES = [
                     "Event Access",
                     "Media Coverage",
                 ],
-                subtitle: "Includes:",
                 buttonText: "Explore Sponsorship Opportunities",
-                buttonLink: `2025-defense-industry-forecast/sponsors-exhibitors/sponsorship-opportunities`,
                 type: "sponsor",
                 availabilityInfo: "Limited availability."
             },
@@ -108,11 +81,9 @@ export const REGISTRATION_TYPES = [
                     "Breakfast & Buffet Lunch",
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
                 ],
-                subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
-                earlyBirdPrice: "$550",
-                regularPrice: "$495",
+                earlyBirdPrice: 550,
+                price: 495,
                 // earlyBirdDeadline: "2025-02-18T08:00:00Z",
                 type: "paid",
                 // receptionPrice: "$550"
@@ -130,33 +101,13 @@ export const REGISTRATION_TYPES = [
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
                     "<b>Access to VIP Networking Reception on March 11, 2025 from 5:30 PM - 7:30 PM</b>",
                 ],
-                subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
-                earlyBirdPrice: "$550",
-                regularPrice: "$550",
+                earlyBirdPrice: 550,
+                price: 550,
                 // earlyBirdDeadline: "2025-02-18T08:00:00Z",
                 type: "paid",
             },
 
-            {
-                title: "Table-Top Exhibit Space",
-                headerImage: "exhibit-table-pass.webp",
-                perks: [
-                    "(1) Exhibitor Pass",
-                    "Additional Passes can be purchased for $395 each",
-                    "<b>8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and Chairs</b>",
-                    "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
-                    "Access to VIP Networking Reception on March 11, 2025 from 5:30 PM - 7:30 PM",
-                ],
-                subtitle: "Includes:",
-                buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
-                earlyBirdPrice: "$1,250",
-                regularPrice: "$1,500",
-                earlyBirdDeadline: "2025-01-18T08:00:00Z",
-                type: "paid"
-            },
 
             {
                 title: "Government Official & Military Pass",
@@ -169,9 +120,7 @@ export const REGISTRATION_TYPES = [
                     "Breakfast & Buffet Lunch",
                     "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
                 ],
-                subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
                 type: "complimentary",
                 // availabilityInfo: "Limited availability."
             },
@@ -191,7 +140,6 @@ export const REGISTRATION_TYPES = [
             //     ],
             //     subtitle: "Includes:",
             //     buttonText: "Explore Sponsorship Opportunities",
-            //     buttonLink: `2025-southeast-defense-procurement-conference/about/sponsor`,
             //     type: "sponsor",
             //     availabilityInfo: "Limited availability."
             // },
@@ -219,11 +167,9 @@ export const REGISTRATION_TYPES = [
                     "(1) Complimentary Pass to the KSC's Visitor Center attractions",
                     "Meals",
                 ],
-                subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "https://www.industrializing.space/product/attendee-pass/",
-                earlyBirdPrice: "$550",
-                regularPrice: "$299",
+                earlyBirdPrice: 550,
+                price: 299,
                 earlyBirdDeadline: "2024-10-18T08:00:00Z",
                 type: "paid",
             },
@@ -233,10 +179,8 @@ export const REGISTRATION_TYPES = [
                 perks: [
                     "Mix and Mingle with our Guest Star Astronauts and other VIP Guests at Zarrella’s Italian & Wood Fired Pizza in Cape Canaveral, FL while Sampling Select Smooth Bourbons."
                 ],
-                subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "https://www.industrializing.space/product/pass-to-meet-greet-bourbon-tasting-with-astronauts/",
-                regularPrice: "$100",
+                price: 100,
                 type: "paid",
             },
             {
@@ -249,9 +193,7 @@ export const REGISTRATION_TYPES = [
                     "Exhibit Space: Table-Top Display",
                     "Brand Visibility",
                 ],
-                subtitle: "Includes:",
                 buttonText: "View Sponsorship Packages",
-                buttonLink: "/events/2025-driving-the-industrialization-of-space/sponsors-exhibitors/sponsorship-opportunities",
                 type: "sponsor",
             }
         ],
@@ -260,81 +202,66 @@ export const REGISTRATION_TYPES = [
         id: 4,
         registrations: [
             {
+                id: "attendee-pass",
                 title: "Attendee Pass",
                 headerImage: "attendee-pass.webp",
                 perks: [
-                    "(1) Attendee Pass",
-                    "Access to General Sessions",
-                    "Access to Exhibit Area",
-                    "Onsite Sign-up for Matchmaking Sessions",
-                    "Breakfast & Buffet Lunch",
-                    "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
+                { formatted: [
+                    { content: "Event Access: (1) Attendee Pass", bold: true },
+                    { content: "Access to General Sessions", indent: 1 },
+                    { content: "Access to Exhibit Area", indent: 1 },
+                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                    { content: "Breakfast & Buffet Lunch", indent: 1 },
+                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                ]}
                 ],
-                subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
-                earlyBirdPrice: "$550",
-                regularPrice: "$495",
-                // earlyBirdDeadline: "2025-02-18T08:00:00Z",
+                price: 545,
+                earlyBirdPrice: 495,
+                earlyBirdDeadline: "2025-07-11T04:00:00Z", // midnight ET on July 11th
                 type: "paid",
-                // receptionPrice: "$550"
             },
 
             {
+                id: "vip-attendee-pass",
                 title: "VIP Attendee Pass",
                 headerImage: "vip-attendee-pass.webp",
                 perks: [
-                    "(1) VIP Attendee Pass",
-                    "Access to General Sessions",
-                    "Access to Exhibit Area",
-                    "Onsite Sign-up for Matchmaking Sessions",
-                    "Breakfast & Buffet Lunch",
-                    "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
-                    "<b>Access to VIP Networking Reception on July 29, 2025 from 5:30 PM - 7:30 PM</b>",
+                { formatted: [
+                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                    { content: "Access to General Sessions", indent: 1 },
+                    { content: "Access to Exhibit Area", indent: 1 },
+                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                    { content: "Breakfast & Buffet Lunch", indent: 1 },
+                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                    { content: "Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM", bold: true },
+                ]}
                 ],
-                subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
-                earlyBirdPrice: "$550",
-                regularPrice: "$550",
-                // earlyBirdDeadline: "2025-02-18T08:00:00Z",
+                price: 600,
+                earlyBirdPrice: 550,
+                earlyBirdDeadline: "2025-07-11T04:00:00Z", // midnight ET on July 11th
                 type: "paid",
             },
 
-            {
-                title: "Table-Top Exhibit Space",
-                headerImage: "exhibit-table-pass.webp",
-                perks: [
-                    "(1) Exhibitor Pass",
-                    "Additional Passes can be purchased for $395 each",
-                    "<b>8'x10' Exhibit Space in Exhibit Area/Foyer. 6' Exhibit Table and Chairs</b>",
-                    "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
-                    "Access to VIP Networking Reception on July 29, 2025 from 5:30 PM - 7:30 PM",
-                ],
-                subtitle: "Includes:",
-                buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
-                earlyBirdPrice: "$1,250",
-                regularPrice: "$1,500",
-                earlyBirdDeadline: "2025-04-10T08:00:00Z",
-                type: "paid"
-            },
 
             {
+                id: "govt-official-military-pass",
                 title: "Government Official & Military Pass",
                 headerImage: "gov-pass.webp",
                 perks: [
-                    "(1) Attendee Pass",
-                    "Access to General Sessions",
-                    "Access to Exhibit Area",
-                    "Onsite Sign-up for Matchmaking Sessions",
-                    "Breakfast & Buffet Lunch",
-                    "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
+                { formatted: [
+                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                    { content: "Access to General Sessions", indent: 1 },
+                    { content: "Access to Exhibit Area", indent: 1 },
+                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                    { content: "Breakfast & Buffet Lunch", indent: 1 },
+                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                ]}
                 ],
-                subtitle: "Includes:",
                 buttonText: "Register Now",
-                buttonLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
                 type: "complimentary",
+                price: "Complimentary",
                 // availabilityInfo: "Limited availability."
             },
 
@@ -353,17 +280,16 @@ export const REGISTRATION_TYPES = [
             //     ],
             //     subtitle: "Includes:",
             //     buttonText: "Explore Sponsorship Opportunities",
-            //     buttonLink: `2025-southeast-defense-procurement-conference/about/sponsor`,
             //     type: "sponsor",
             //     availabilityInfo: "Limited availability."
             // },
         ],
         addOns: [
-            {
-                title: "VIP Networking Reception",
-                description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from 5:30 PM - 7:30 PM on July 29, 2025.",
-                price: "+$100"
-            },
+            //{
+            //    title: "VIP Networking Reception",
+            //    description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from 6:00 PM - 8:00 PM on July 29, 2025.",
+            //    price: "+$100"
+            //},
             // {
             //     title: "Networking Reception",
             //     description: "Join us for an exclusive evening networking

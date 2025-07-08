@@ -18,6 +18,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
     }
 
     const [openElems, setOpenElems] = useState<number[]>([]);
+    const [isDiningGuideOpen, setIsDiningGuideOpen] = useState(false);
 
     const toggleElem = (index: number) => {
         setOpenElems(prev =>
@@ -90,6 +91,45 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                             </div>
                         ))}
                     </div>
+                </section>
+            )}
+
+            {/* Norfolk Dining Guide Section */}
+            {event.id === 4 && (
+                <section className="max-w-[86rem] mx-auto my-12">
+                <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 transition-all duration-300 hover:shadow-lg hover:border-blue-300 max-w-[90%] md:max-w-[60%] mx-auto">
+                    <div className="bg-navy-300 p-4 cursor-pointer flex justify-between items-center" onClick={() => setIsDiningGuideOpen(!isDiningGuideOpen)}>
+                        <h4 className="text-xl font-semibold text-white flex items-center">
+                            {isDiningGuideOpen ? <ChevronDown className="mr-2" /> : <ChevronRight className="mr-2" />}
+                            Norfolk Dining Guide
+                        </h4>
+                    </div>
+                    <div
+                        className={`overflow-hidden transition-all duration-300 ease-in-out ${isDiningGuideOpen ? 'max-h-[2500px] opacity-100' : 'max-h-0 opacity-0'}`}
+                    >
+                        <div className="p-4 sm:p-6">
+                            <p className="text-gray-600 mb-4 text-center">
+                                Explore the local dining scene with this guide provided by Visit Norfolk.
+                            </p>
+                            <div className="grid grid-cols-1 gap-4">
+                                <Image
+                                    src={getCdnPath("/events/2025NMCPC/norfolk-dining-guide-1.webp")}
+                                    alt="Norfolk Dining Guide Page 1"
+                                    width={790}
+                                    height={1024}
+                                    className="w-full h-auto rounded-md shadow-sm border"
+                                />
+                                <Image
+                                    src={getCdnPath("/events/2025NMCPC/norfolk-dining-guide-2.webp")}
+                                    alt="Norfolk Dining Guide Page 2"
+                                    width={790}
+                                    height={1024}
+                                    className="w-full h-auto rounded-md shadow-sm border"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </section>
             )}
 

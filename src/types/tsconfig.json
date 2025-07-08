@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/types/*": ["./event-registration/*"]
+    },
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["./event-registration/**/*.ts"],
+  "exclude": ["node_modules"]
+}

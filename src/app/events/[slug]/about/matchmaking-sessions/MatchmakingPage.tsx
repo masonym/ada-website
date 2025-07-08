@@ -6,6 +6,7 @@ import { RiGovernmentLine } from "react-icons/ri";
 import Link from 'next/link';
 import { EVENTS } from '@/constants/events';
 import { notFound, useParams } from 'next/navigation';
+import MatchmakingSponsors from '@/components/MatchmakingSponsors';
 
 const MatchmakingPage = () => {
   const { slug } = useParams();
@@ -13,7 +14,7 @@ const MatchmakingPage = () => {
 
   if (!event) {
     notFound();
-}
+  }
 
   const benefits = [
     { title: "Direct Connections", description: "Establish direct connections that could lead to contracts and partnerships" },
@@ -111,7 +112,7 @@ const MatchmakingPage = () => {
             <div>
               <h3 className="font-semibold mb-2">Matchmaking Sign-ups</h3>
               <p className="text-gray-200">
-                Sign-ups for the Matchmaking Sessions will begin at {event.matchmakingSessions?.signUpTime} on {event.matchmakingSessions?.date} and will be on a first-come, first-served basis. Businesses will need to provide their contact information and details about their capabilities, products, and services during the sign-up process.
+                Sign-ups for the Matchmaking Sessions will begin at {event.matchmakingSessions?.signUpTime} on {event.matchmakingSessions?.signUpDate} and will be on a first-come, first-served basis. Businesses will need to provide their contact information and details about their capabilities, products, and services during the sign-up process.
               </p>
             </div>
           </div>
@@ -120,7 +121,24 @@ const MatchmakingPage = () => {
             <div>
               <h3 className="font-semibold mb-2">Host Scheduling</h3>
               <p className="text-gray-200">
-              Matchmaking Sessions will take place from {event.matchmakingSessions?.sessionTime} on {event.matchmakingSessions?.date}. Each host will have {event.matchmakingSessions?.slotsPerHost} available slots, with each session lasting {event.matchmakingSessions?.sessionDurationMinutes} minutes. The system is designed to ensure that both parties can maximize their time, focusing on relevant opportunities.
+                Matchmaking Sessions will take place
+                {event.matchmakingSessions?.sessions && event.matchmakingSessions.sessions.length > 0 && (
+                  <>
+                    {" from "}
+                    {event.matchmakingSessions.sessions.map((s, i, arr) => {
+                      const isLast = i === arr.length - 1;
+                      const isSecondLast = i === arr.length - 2;
+
+                      return (
+                        <span key={i}>
+                          {s.sessionTime} on {s.date}
+                          {arr.length > 1 && !isLast && (isSecondLast ? " and " : ", ")}
+                        </span>
+                      );
+                    })}
+                    . Each host will have {event.matchmakingSessions.slotsPerHost} available slots, with each session lasting {event.matchmakingSessions.sessionDurationMinutes} minutes. The system is designed to ensure that both parties can maximize their time, focusing on relevant opportunities.
+                  </>
+                )}
               </p>
             </div>
           </div>
@@ -167,6 +185,9 @@ const MatchmakingPage = () => {
           ))}
         </div>
       </div>
+      
+      {/* Matchmaking Sponsors Section */}
+      <MatchmakingSponsors eventSlug={slug as string} />
     </div>
   );
 };

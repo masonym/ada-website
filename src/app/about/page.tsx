@@ -51,7 +51,6 @@ const AboutUsPage = () => {
 
       {/* New section for the company president */}
       <div className="mb-12">
-        <h2 className="text-3xl font-semibold text-navy-800 mb-4 text-center">Leadership</h2>
         <div className="flex flex-col md:flex-row items-start">
           <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
             <Image
@@ -63,6 +62,7 @@ const AboutUsPage = () => {
             />
           </div>
           <div className="md:w-2/3">
+            <h2 className="text-3xl font-semibold text-navy-800 mb-4 text-left">Leadership</h2>
             <h3 className="text-xl font-semibold text-navy-800 mb-2">Charles Sills - President & CEO</h3>
             <p className="text-gray-700 mb-4">
               Charles F. Sills is a recognized authority on U.S. Government contracting, and an advocate for Small/Medium-sized Business access to Federal and Military acquisition opportunities, serving as the President & CEO of the American Defense Alliance – which hosts major Defense Requirements conferences across the country, connecting private sector innovators with the Pentagon, Military commands, and Congress to accelerate National Security solutions.

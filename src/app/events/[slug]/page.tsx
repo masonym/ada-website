@@ -1,7 +1,10 @@
+
 import React from 'react';
 import { EVENTS } from '@/constants/events';
+import RegistrationModalController from './RegistrationModalController';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import RegisterButtonModal from './RegisterButtonModal';
 import Button from '@/app/components/Button';
 import SponsorOptions from '@/app/components/SponsorOptions';
 import CountdownTimer from '@/app/components/CountdownTimer';
@@ -14,7 +17,10 @@ import KeynoteSpeaker from '@/app/components/KeynoteSpeaker';
 import SponsorLogos from '@/app/components/SponsorLogos';
 import SpecialFeatures from '@/app/components/SpecialFeatures';
 import FooterEventText from '@/app/components/FooterEventText';
-import ExhibitInstructionsButton from '@/app/components/ExhibitInstructionsButton';
+import { EventSaleBanner } from '@/app/components/EventSaleBanner';
+import VIPReceptionSection from '@/app/components/VIPReceptionSection';
+import SponsorAdvert from '@/app/components/SponsorAdvert';
+import EventWarningNotice from '@/app/components/EventWarningNotice';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -79,6 +85,9 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
   return (
     <>
+      {/* Add RegistrationModalController for URL-based modal control */}
+      <RegistrationModalController event={event} />
+      
       <Script id="event-schema" type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
@@ -120,6 +129,10 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} backgroundColor={event.countdownColour} />
 
+            {event.sales && event.sales.length > 0 && (
+              <EventSaleBanner sales={event.sales} />
+            )}
+
 
 
             <div className="flex flex-col leading-relaxed text-slate-600 text-center text-lg px-4 sm:px-6 lg:px-8 max-w-[95vw] mx-auto">
@@ -131,24 +144,30 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             <SpecialFeatures event={event} />
 
+            <EventWarningNotice eventTitle={event.title}/>
+
             <RegistrationOptions event={event} />
 
+            {event.vipNetworkingReception && (
+              <VIPReceptionSection vipNetworkingReception={event.vipNetworkingReception} />
+            )}
+
+            <SponsorAdvert event={event} />
 
             <SponsorLogos event={event} />
 
 
             <div className="mt-0 text-center flex flex-col items-center">
               <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Place at this Groundbreaking Event!</p>
-              <Button
+                <RegisterButtonModal 
+                event={event}
                 title="REGISTER"
                 variant="btn_blue"
-                link={event.registerLink}
-                className="max-w-xs sm:max-w-sm"
+                className="max-w-sm sm:max-w-xs"
               />
             </div>
 
             <FooterEventText event={event} />
-
           </div>
         </div>
       </div>

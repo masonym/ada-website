@@ -1,7 +1,7 @@
 import { getCdnPath } from "@/utils/image";
 import { Mail, Phone, CircleAlert } from "lucide-react";
 import Image from "next/image";
-import { Event } from "@/types/events";
+import { Event, VipNetworkingReception } from "@/types/events";
 
 export const EVENTS: Event[] = [
   {
@@ -26,7 +26,7 @@ export const EVENTS: Event[] = [
     topicalCoverage: [
       { tagline: "", description: "Defense Department, Service, and Combat Command Acquisition Priorities", },
       { tagline: "", description: "DoD Small Business Contracting Programs", },
-      { tagline: "", description: "Prime Defense Contractors — Subcontracting & Teaming", },
+      { tagline: "", description: "Prime Defense Contractors - Subcontracting & Teaming", },
       { tagline: "", description: "Accelerated Contracting Opportunities for Innovative Technology Solutions (DARPA, DIU, DEFENSEWERX)", },
       { tagline: "", description: "GWAC's (Government-Wide Acquisition Contracts) and Their Small Business Tracks", },
       { tagline: "", description: "Mentor-Protégé Programs as Business Accelerators for Smalls and Primes", },
@@ -141,7 +141,6 @@ export const EVENTS: Event[] = [
       },
     ],
     placeID: "ChIJ44HT0_u3t4kR9J5_0CQu3ic",
-    registerLink: "https://www.eventbrite.com/e/2025-defense-industry-forecast-tickets-997306910817",
     password: "ADA2025DIF",
     eventShorthand: "2025DIF",
 
@@ -312,7 +311,6 @@ invaluable connections that can shape the future of your business.
       },
     ],
     placeID: "ChIJ__IuDHcE9YgRl74p-48jkpU",
-    registerLink: "https://www.eventbrite.com/e/2025-southeast-defense-procurement-conference-registration-1059452313389",
     password: "SDPC2025ADA",
 
     featuredTopicsTitle: "Featured Contracting Commands",
@@ -439,12 +437,17 @@ invaluable connections that can shape the future of your business.
       }
     ],
     matchmakingSessions: {
+      signUpDate: "March 11, 2025",
       signUpTime: "7:30 AM",
-      sessionTime: "4:00 PM - 5:30 PM",
-      date: "March 11",
+      sessionDurationMinutes: 10,
       slotsPerHost: 9,
-      sessionDurationMinutes: 10
-    }
+      sessions: [
+        {
+          date: "March 11",
+          sessionTime: "4:00 PM - 5:30 PM",
+        }
+      ]
+    },
   },
   {
     id: 3,
@@ -626,6 +629,16 @@ invaluable connections that can shape the future of your business.
     eventShorthand: "2025NMCPC",
     password: "2025NMCPCADA",
     title: "2025 Navy & Marine Corps Procurement Conference",
+    sales: [
+      {
+        id: 'memorial-day-2025',
+        title: 'Special Memorial Day Sale',
+        description: 'Get 15% off your registration with promo code',
+        promoCode: 'MEMORIAL15',
+        validUntil: '2025-05-27T17:59:59-04:00',
+        isActive: true
+      }
+    ],
     date: "July 29-30, 2025",
     timeStart: "2025-07-29T11:30:00Z",
     description: `Join us for the 2025 Navy & Marine Corps Procurement Conference on July 29-30, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.`,
@@ -647,25 +660,24 @@ invaluable connections that can shape the future of your business.
             <li>New Navy & Marine Corps Littoral Warfighting Requirements & Contracts</li>
             <li>New Navy & Marine Corps Technology Initiatives</li>
             <li>Upcoming Projects - NAVFAC, MARCORSYSCOM, and USACE</li>
-            <li>Military Base-Community Partnerships Driving Local Build Contracts</li>
+            <li>Military Base-Community Partnerships Promoting Local Build Contracts</li>
             <li>Indo-Pacific ‘Pivot’ – Deployment & Logistics Challenges Driving Major New Acquisitions</li>
             <li>Contracts Supporting U.S. Leadership in AI</li>
             <li>The Surge in Autonomous/Unmanned Systems Development & Deployment</li>
             <li>Base & Installation Physical Security Upgrades</li>
             <li>Major Command IT & Cyber Protection Contracts</li>
-            <li>Prime Defense Contractors — Subcontracting & Teaming Opportunities</li>
+            <li>Prime Defense Contractors - Subcontracting & Teaming Opportunities</li>
             <li>Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)</li>
-            <li>How to Access GWACs (Government-Wide Acquisition Contracts)</li>
+            <li>How to Access GWAC's (Government-Wide Acquisition Contracts)</li>
             <li>Mentor-Protégé Programs as Business Accelerators for Smalls & Primes</li>
             <li>Cybersecurity Compliance Mandates and CMMC Training Options</li>
-            <li>Defense Contract Audit Agency Support for Small & Medium-Size Contractors</li>
           </ul>
         </div>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
         <p className="mb-4 max-w-6xl mx-auto text-center">
-          The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands, as well as Army, Air Force, and Space Force Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
+          The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
         </p>
       </div>
     ),
@@ -681,7 +693,7 @@ invaluable connections that can shape the future of your business.
           What to Expect
         </h2>
         <p className="mb-4 max-w-6xl mx-auto text-center">
-          The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands, as well as Army, Air Force, and Space Force Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
+          The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
         </p>
       </div>
     ),
@@ -691,35 +703,43 @@ invaluable connections that can shape the future of your business.
       { "tagline": "New Navy & Marine Corps Littoral Warfighting Requirements & Contracts", "description": "New operational needs and contracts focused on enhancing littoral (coastal) warfare capabilities for the Navy and Marine Corps" },
       { "tagline": "New Navy & Marine Corps Technology Initiatives", "description": "Cutting-edge technology advancements being pursued by the Navy and Marine Corps to modernize operations and capabilities" },
       { "tagline": "Upcoming Projects - NAVFAC, MARCORSYSCOM, and USACE", "description": "Upcoming infrastructure and development projects led by NAVFAC, MARCORSYSCOM, and USACE, with a focus on military needs" },
-      { "tagline": "Military Base-Community Partnerships Driving Local Build Contracts", "description": "How partnerships between military bases and local communities are generating construction contracts for regional infrastructure development" },
+      { "tagline": "Military Base-Community Partnerships Promoting Local Build Contracts", "description": "How partnerships between military bases and local communities are generating construction contracts for regional infrastructure development" },
       { "tagline": "Indo-Pacific ‘Pivot’ – Deployment & Logistics Challenges Driving Major New Acquisitions", "description": "Strategic 'Indo-Pacific Pivot,' emphasizing the logistical and deployment challenges that are shaping new defense acquisitions" },
       { "tagline": "Contracts Supporting U.S. Leadership in AI", "description": "Defense contracts aimed at advancing U.S. leadership in artificial intelligence technologies for military applications" },
       { "tagline": "The Surge in Autonomous/Unmanned Systems Development & Deployment", "description": "Rapid development and deployment of autonomous and unmanned systems in the military, with a focus on new contracts" },
       { "tagline": "Base & Installation Physical Security Upgrades", "description": "Initiatives and contracts aimed at upgrading physical security systems at military bases and installations to ensure safety and resilience" },
       { "tagline": "Major Command IT & Cyber Protection Contracts", "description": "Contracts focused on enhancing IT and cybersecurity protections for major military commands against growing cyber threats" },
-      { "tagline": "Prime Defense Contractors — Subcontracting & Teaming Opportunities", "description": "Subcontracting and teaming opportunities for small and medium-sized businesses to work with prime defense contractors on large-scale projects" },
+      { "tagline": "Prime Defense Contractors - Subcontracting & Teaming Opportunities", "description": "Subcontracting and teaming opportunities for small and medium-sized businesses to work with prime defense contractors on large-scale projects" },
       { "tagline": "Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)", "description": "Fast-tracked contracting vehicles like DARPA, DIU, and DEFENSEWERX are enabling the acquisition of cutting-edge defense technologies" },
-      { "tagline": "How to Access GWACs (Government-Wide Acquisition Contracts)", "description": "How contractors can navigate and access Government-Wide Acquisition Contracts (GWACs) for defense and federal opportunities" },
+      { "tagline": "How to Access GWAC's (Government-Wide Acquisition Contracts)", "description": "How contractors can navigate and access Government-Wide Acquisition Contracts (GWAC's) for defense and federal opportunities" },
       { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "How Mentor-Protégé programs help accelerate business growth for small businesses by pairing them with larger prime contractors" },
       { "tagline": "Cybersecurity Compliance Mandates and CMMC Training Options", "description": "New cybersecurity compliance requirements under CMMC and training resources available for contractors to meet these standards" },
-      { "tagline": "Defense Contract Audit Agency Support for Small & Medium-Size Contractors", "description": "Role of the Defense Contract Audit Agency (DCAA) in providing audit support to help small and medium-sized contractors" }
     ],
     image: "2025NMCPC_wide.webp",
     slug: "2025-navy-marine-corps-procurement-conference",
     locationImage: "locations/temp_venue.webp",
-    locationAddress: `111 Google Ave`,
+    locationAddress: `235 E Main St, Norfolk, Virginia 23510`,
+    venueName: "Norfolk Waterside Marriott",
     placeID: "ChIJBdD-jwuYuokRyjyu_hU0jUg",
-    registerLink: "https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669",
 
     matchmakingSessions: {
       signUpTime: "7:30 AM",
-      sessionTime: "4:00 PM - 5:30 PM",
-      date: "July 29",
+      signUpDate: "July 29, 2025",
+      sessionDurationMinutes: 10,
       slotsPerHost: 9,
-      sessionDurationMinutes: 10
+      sessions: [
+        {
+          date: "July 29",
+          sessionTime: "4:00 PM - 5:30 PM",
+        },
+        {
+          date: "July 30",
+          sessionTime: "12:30 PM - 1:30 PM",
+        },
+      ]
     },
     countdownColour: "#1C2D3D",
-    expectationsText: `The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands, as well as Army, Air Force, and Space Force Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!`,
+    expectationsText: `The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!`,
     parkingInfo: [
       {
         title: "",
@@ -777,5 +797,22 @@ invaluable connections that can shape the future of your business.
         </ul>
         `
       },
-    ]
-  }];
+    ],
+    vipNetworkingReception: {
+      title: "VIP Networking Reception",
+      date: "July 29, 2025",
+      timeStart: "6:00 PM",
+      timeEnd: "8:00 PM",
+      description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
+      additionalInfo: "Join us at The Harbor Club featuring a cash bar, one complimentary drink ticket, and a selection of hors d’oeuvres.",
+      locationName: "The Harbor Club",
+      locationAddress: "333 Waterside Dr Suite 200, Norfolk, VA 23510, USA",
+      placeId: "ChIJI8LspwuYuokR79KzVtIGqlY", // Google Maps Place ID for the reception venue
+      eventPlaceId: "ChIJBdD-jwuYuokRyjyu_hU0jUg", // Google Maps Place ID for the main event venue
+      eventLocationName: "Norfolk Waterside Marriott", // Optional name for the main event location
+      locationPhoto: "/locations/harbor_club.webp",
+      locationPhone: "(757) 426-7433",
+      website: "https://watersidedistrict.com/private-events/the-harbor-club",
+    } as VipNetworkingReception
+  }
+];

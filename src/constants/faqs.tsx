@@ -29,7 +29,7 @@ export const FAQs = [
             },
             {
                 question: "Will there be networking opportunities?",
-                answer: "Yes, the event will include designated networking sessions, allowing attendees to connect with industry peers, policymakers, and other professionals. As well as a special ticketed Networking Reception from 5:30 PM - 7:30 PM ($100 Add-On option).",
+                answer: "Yes, the event will include designated networking sessions, allowing attendees to connect with industry peers, policymakers, and other professionals. As well as a special ticketed Networking Reception from 6:00 PM - 8:00 PM ($100 Add-On option).",
             },
             {
                 question: "What is the agenda for the event?",
@@ -121,12 +121,12 @@ export const FAQs = [
         faqs: [
             {
                 question: "What is the 2025 Navy & Marine Corps Procurement Conference?",
-                answer: "The 2025 Navy & Marine Corps Procurement Conference will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands, as well as Army, Air Force, and Space Force Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!",
+                answer: "The 2025 Navy & Marine Corps Procurement Conference will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!",
             },
             {
                 question: "When and where will the event take place?",
                 answer: `Date: July 29 - 30, 2025<br>
-                Time: July 29, 2025: 7:30 AM - 7:30 PM and July 30, 2025: 7:30 AM - 12:00 PM<br>
+                Time: July 29, 2025: 7:30 AM - 5:30 PM and July 30, 2025: 7:30 AM - 1:30 PM<br>
                 Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
                 `,
             },
@@ -145,7 +145,7 @@ export const FAQs = [
             },
             {
                 question: "Will there be networking opportunities?",
-                answer: "Yes, the conference will include designated Networking Breaks as well as a Networking Luncheon, allowing attendees to connect with Industry Peers, Policymakers, and other Professionals. A special VIP Networking Reception will take place from 5:30 PM - 7:30 PM on July 29, 2025 for Speakers, Sponsors, Exhibitors and VIP Attendees.",
+                answer: "Yes, the conference will include designated Networking Breaks as well as a Networking Luncheon, allowing attendees to connect with Industry Peers, Policymakers, and other Professionals. A special VIP Networking Reception will take place from 6:00 PM - 8:00 PM on July 29, 2025 for Speakers, Sponsors, Exhibitors and VIP Attendees.",
             },
             {
                 question: "What is the agenda for the event?",
@@ -168,10 +168,29 @@ export const FAQs = [
                 answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media. If you have any concerns, please contact us prior to the event.",
             },
             {
+                question: "Does the American Defense Alliance sell or rent attendee lists?",
+                answer: "No. The American Defense Alliance does not sell, rent, or publish attendee list information under any circumstances."
+            },
+            {
+                question: "How can I get access to the attendee list for an American Defense Alliance event?",
+                answer: "Attendee list access is exclusively available to Platinum Sponsors as part of their sponsorship benefits. No other sponsorship level or exhibitor package includes attendee list access."
+            },
+            {
+                question: "I received an email offering to sell me the attendee list for an American Defense Alliance event. Is it legitimate?",
+                answer: "No. These emails are fraudulent and not affiliated with the American Defense Alliance. We do not authorize any third parties to distribute or sell our attendee information."
+            },
+            {
+                question: "Who should I contact if I have concerns about a suspicious email offering attendee data?",
+                answer: `Please forward the suspicious email to us at <a href="mailto:marketing@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">marketing@americandefensealliance.org</a> so we can investigate and take appropriate action.`
+            },
+            {
+                question: "How can I verify if a communication is officially from the American Defense Alliance?",
+                answer: "All official communication will come from an @americandefensealliance.org email address. If you're unsure about a message, feel free to reach out to us directly for verification."
+            },
+            {
                 question: "Who can I contact for more information?",
                 answer: `For any additional questions or concerns, please contact our event support team at <a href="mailto:info@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">info@americandefensealliance.org</a> or call (771) 474-1077.`,
             }
-            // Add more FAQs here...
         ]
     },
     // Add more FAQ sets for additional events...
