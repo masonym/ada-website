@@ -95,10 +95,23 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
       orderDate: new Date(paymentIntent.created * 1000).toLocaleDateString(),
       items: registrationData.tickets.map(ticket => {
         const regType = allRegistrationTypes.find(rt => rt.id === ticket.ticketId);
+        
+        // Check if early bird pricing should apply
+        let itemPrice = Number(regType?.price) || 0;
+        if (regType?.earlyBirdPrice && regType?.earlyBirdDeadline) {
+          const orderDate = new Date(paymentIntent.created * 1000);
+          const earlyBirdDeadline = new Date(regType.earlyBirdDeadline);
+          
+          // Use early bird price if order date is before the deadline
+          if (orderDate < earlyBirdDeadline) {
+            itemPrice = Number(regType.earlyBirdPrice);
+          }
+        }
+        
         return {
           name: ticket.ticketName || regType?.name || 'Unknown Ticket',
           quantity: ticket.quantity,
-          price: (Number(regType?.price) || 0), // Price is in dollars, converting from string
+          price: itemPrice, // Price is in dollars, using early bird price when applicable
         };
       }),
       subtotal: (paymentIntent.amount + (Number(metadata.discountAmount) || 0)) / 100, // in dollars
