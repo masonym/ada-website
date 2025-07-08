@@ -1795,10 +1795,10 @@ const RegistrationModal = ({
               // Ticket Selection View
               <div className="flex flex-col h-[70vh]">
                 {/* Category tabs */}
-                <div className="flex border-b mb-4 text-base">
+                <div className="flex border-b mb-4 text-base flex-col sm:flex-row">
                   <button
                     onClick={() => setActiveCategory('ticket')}
-                    className={`flex items-center px-4 py-2 ${activeCategory === 'ticket' ? 'border-b-2 border-indigo-600 text-indigo-600' : 'text-gray-500'}`}
+                    className={`flex items-center px-4 py-2 ${activeCategory === 'ticket' ? 'border-l-2 sm:border-b-2 sm:border-l-0 border-indigo-600 text-indigo-600' : 'text-gray-500'}`}
                   >
                     <Ticket size={16} className="mr-2" />
                     <span>General Admission</span>
@@ -1806,7 +1806,7 @@ const RegistrationModal = ({
                   {exhibitors.length > 0 && (
                     <button
                       onClick={() => setActiveCategory('exhibit')}
-                      className={`flex items-center px-4 py-2 ${activeCategory === 'exhibit' ? 'border-b-2 border-indigo-600 text-indigo-600' : 'text-gray-500'}`}
+                      className={`flex items-center px-4 py-2 ${activeCategory === 'exhibit' ? 'border-l-2 sm:border-b-2 sm:border-l-0 border-indigo-600 text-indigo-600' : 'text-gray-500'}`}
                     >
                       <Package size={16} className="mr-2" />
                       <span>Exhibit Space</span>
@@ -1817,7 +1817,7 @@ const RegistrationModal = ({
                       onClick={() => {
                         setActiveCategory('sponsorship');
                       }}
-                      className={`flex items-center px-4 py-2 ${activeCategory === 'sponsorship' ? 'border-b-2 border-indigo-600 text-indigo-600' : 'text-gray-500'}`}
+                      className={`flex items-center px-4 py-2 ${activeCategory === 'sponsorship' ? 'border-l-2 sm:border-b-2 sm:border-l-0 border-indigo-600 text-indigo-600' : 'text-gray-500'}`}
                     >
                       <Award size={16} className="mr-2" />
                       <span>Sponsorships</span>
