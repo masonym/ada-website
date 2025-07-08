@@ -203,7 +203,6 @@ const RegistrationModal = ({
   type ValidationState = 'idle' | 'validating' | 'valid' | 'invalid';
   const [validationStatus, setValidationStatus] = useState<Record<string, ValidationState>>({});
   const [validationError, setValidationError] = useState<Record<string, string | null>>({});
-  const [manuallyValidated, setManuallyValidated] = useState<Record<string, boolean>>({});
 
   const [isLoading, setIsLoading] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
@@ -273,6 +272,9 @@ const RegistrationModal = ({
     return eligibleInCart;
   };
 
+  // Track manually validated tickets to prevent auto-invalidation
+  const [manuallyValidatedTickets, setManuallyValidatedTickets] = useState<Record<string, boolean>>({});
+
   // Automatically validate or invalidate discounted passes based on cart contents
   useEffect(() => {
     const isEligible = hasEligibleTicketInCart();
@@ -289,7 +291,7 @@ const RegistrationModal = ({
     ticketsToProcess.forEach((reg) => {
       const quantity = ticketQuantities[reg.id] || 0;
       const currentStatus = validationStatus[reg.id] || 'idle';
-      const wasManuallyValidated = manuallyValidated[reg.id] || false;
+      const isManuallyValidated = manuallyValidatedTickets[reg.id] === true;
 
       if (quantity > 0) {
         // Ticket is in the cart, its validation depends on eligibility
@@ -301,24 +303,24 @@ const RegistrationModal = ({
             needsUpdate = true;
           }
         } else {
-          // If not eligible, any auto-validation is revoked, but preserve manual validations
-          // Only reset validation status if it was NOT manually validated
-          if (currentStatus === 'valid' && !wasManuallyValidated) {
+          // If not eligible and NOT manually validated, any auto-validation is revoked
+          // But preserve manually validated tickets even if no eligible item in cart
+          if (currentStatus === 'valid' && !isManuallyValidated) {
             statusUpdates[reg.id] = 'idle';
             needsUpdate = true;
           }
         }
       } else {
         // Ticket is not in the cart, ensure its validation state is reset
-        // and also clear the manual validation flag
+        // Also clear the manually validated flag since the ticket is no longer in cart
         if (currentStatus !== 'idle') {
           statusUpdates[reg.id] = 'idle';
           errorUpdates[reg.id] = null;
           needsUpdate = true;
           
-          // Also reset the manual validation flag when removed from cart
-          if (wasManuallyValidated) {
-            setManuallyValidated(prev => {
+          // Remove from manually validated tickets if not in cart anymore
+          if (isManuallyValidated) {
+            setManuallyValidatedTickets(prev => {
               const updated = { ...prev };
               delete updated[reg.id];
               return updated;
@@ -334,7 +336,7 @@ const RegistrationModal = ({
         setValidationError((prev) => ({ ...prev, ...errorUpdates }));
       }
     }
-  }, [ticketQuantities, validationStatus, exhibitors, sponsorships, manuallyValidated]);
+  }, [ticketQuantities, validationStatus, exhibitors, sponsorships, manuallyValidatedTickets]);
 
   const handleValidateOrderId = async (ticketId: string) => {
     const orderId = orderIdInput[ticketId];
@@ -357,8 +359,8 @@ const RegistrationModal = ({
 
       if (response.ok && result.isValid) {
         setValidationStatus(prev => ({ ...prev, [ticketId]: 'valid' }));
-        // Mark this validation as manual so it won't be reset by automatic eligibility checks
-        setManuallyValidated(prev => ({ ...prev, [ticketId]: true }));
+        // Mark this ticket as manually validated to prevent automatic invalidation
+        setManuallyValidatedTickets(prev => ({ ...prev, [ticketId]: true }));
       } else {
         setValidationStatus(prev => ({ ...prev, [ticketId]: 'invalid' }));
         setValidationError(prev => ({ ...prev, [ticketId]: result.message || 'Invalid or expired Order ID.' }));
@@ -383,20 +385,6 @@ const RegistrationModal = ({
 
     const status = validationStatus[reg.id] || 'idle';
     const error = validationError[reg.id];
-    const input = orderIdInput[reg.id] || '';
-    const isManuallyValidated = manuallyValidated[reg.id] || false;
-    
-    // If there's an eligible ticket in the cart, no need to manually validate
-    // But still show success message if manually validated
-    if (isEligibleFromCart && !isManuallyValidated) {
-      return (
-        <div className="mt-2 p-3 bg-gray-50 border border-gray-200 rounded-md">
-          <p className="text-sm text-gray-600">
-            Your cart includes items that automatically unlock this pass.
-          </p>
-        </div>
-      );
-    }
 
     return (
       <div className="mt-2 p-3 bg-white border border-gray-200 rounded-md">
@@ -441,6 +429,12 @@ const RegistrationModal = ({
     setIsCheckout(false); // Show ticket selection first
     setTicketQuantities({});
     setActiveCategory('ticket'); // Reset to default tab
+    
+    // Reset all validation-related state
+    setValidationStatus({});
+    setValidationError({});
+    setOrderIdInput({});
+    setManuallyValidatedTickets({});
     
     // Reset attendeesByTicket to empty
     setAttendeesByTicket({});
@@ -569,11 +563,11 @@ const RegistrationModal = ({
 
       const registration = [...allRegistrations, ...exhibitors, ...sponsorships].find(r => r.id === ticketId);
       if (registration?.requiresValidation && newQuantity === 0) {
+        // Clear validation status and also remove from manually validated list
         setValidationStatus(prev => ({ ...prev, [ticketId]: 'idle' }));
         setValidationError(prev => ({ ...prev, [ticketId]: null }));
         setOrderIdInput(prev => ({ ...prev, [ticketId]: '' }));
-        // Also clear manual validation flag when quantity becomes zero
-        setManuallyValidated(prev => {
+        setManuallyValidatedTickets(prev => {
           const updated = { ...prev };
           delete updated[ticketId];
           return updated;
