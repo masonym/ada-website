@@ -153,7 +153,7 @@ export async function logRegistration(
             attendee.phone || '',
             commonData.registrationTimestamp,
             ticketType,
-            amountToLog,
+            (amountToLog * 0.971) - 0.3,
             commonData.totalAmountPaid, // Total order amount
             attendee.website || '',
             attendee.businessSize || '',
@@ -189,7 +189,7 @@ export async function logRegistration(
             '', '', '', '', '', '',
             commonData.registrationTimestamp,
             ticketType,
-            amountToLog,
+            (amountToLog * 0.971) - 0.3,
             commonData.totalAmountPaid, // Total order amount
             '', '', '', '', '', '',
           ];
