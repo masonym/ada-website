@@ -976,7 +976,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 		"image": "katina-adams.webp",
 		"name": "Katina Adams",
 		"position": "Manager, Small Business Programs",
-		"company": "Newport News Shipbuilding, A Dvision of HII",
+		"company": "Newport News Shipbuilding, A Division of HII",
 		"bio": `Katina Adams is the Small Business Liaison Officer (SBLO) and Socio-Economic Small Business Programs Officer for Newport News Shipbuilding (NNS), A Division of HII. Katina is responsible for ensuring that NNS and its almost 30,000 employees comply with federal requirements for soliciting and subcontracting with small businesses. Katina has oversight of government reporting on prime and sub- tier contracts valued over $40B and annual subcontract spend of approximately $3B. Katina leads HII’s SBLO Council which consists of SBLOs and small business professionals from HII’s Ingalls Shipbuilding and Mission Technologies Divisions. Katina and her team are dedicated to advocacy for all categories of small businesses.
 	<br/>
 	
@@ -1031,7 +1031,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	"erica-h-plath": {
 		"image": "erica-h-plath.webp",
 		"name": "Erica H. Plath",
-		"position": "Deputy Assistant Secretary of the Navy (Sustainment) Office of the Assistant Secretary of the Navy for Research, Development and Acquisition",
+		"position": "Deputy Assistant Secretary of the Navy for Sustainment, Office of the Assistant Secretary of the Navy for Research, Development and Acquisition",
 		"company": "United States Department of the Navy",
 		"bio": `
 Ms. Erica H. Plath assumed the responsibilities of the Deputy Assistant Secretary of the Navy for Sustainment in May of 2022. She serves as the principal advisor to the Assistant Secretary of the Navy for Research, Development and Acquisition (ASN (RDA)) on all matters related to the planning, budgeting and execution of sustainment and supply chain activities of the Department of the Navy and Marine Corps.
