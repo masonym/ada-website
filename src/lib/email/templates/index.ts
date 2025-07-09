@@ -239,6 +239,7 @@ export function generateVipNetworkingReceptionHtml(
     <div class="highlight">
       <h2>VIP Networking Reception</h2>
       <p>${introText} ${vipNetworkingReception.description}</p>
+      <p><strong>Who's invited:</strong> Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.</p>
       <p><strong>Location:</strong> ${vipNetworkingReception.locationName}, ${vipNetworkingReception.locationAddress}</p>
       <p><strong>Date:</strong> ${vipNetworkingReception.date} from ${vipNetworkingReception.timeStart} to ${vipNetworkingReception.timeEnd}</p>
       <p>${vipNetworkingReception.additionalInfo}</p>
