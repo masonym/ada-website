@@ -161,6 +161,41 @@ const isRegistrationClosed = (event: EventWithContact, daysBeforeToClose: number
   return new Date() >= cutoffDate;
 };
 
+// Function to validate the promo code
+const isValidPromoCode = (code: string): { valid: boolean; reason?: string } => {
+  // Add valid promo codes here
+  const validPromoCodes = ['ADA15'];
+  
+  // Check if code exists
+  if (!validPromoCodes.includes(code)) {
+    return { valid: false, reason: 'invalid' };
+  }
+  
+  // Check if code is expired (example implementation)
+  // In a real implementation, you would check against an expiration date
+  const now = new Date();
+  const expirationDates: Record<string, Date> = {
+    'ADA15': new Date('2026-12-31') // Example expiration date
+  };
+  
+  if (expirationDates[code] && now > expirationDates[code]) {
+    return { valid: false, reason: 'expired' };
+  }
+  
+  // If we reach here, the code is valid
+  return { valid: true };
+};
+
+// Function to check if a registration is eligible for promo discount
+const isEligibleForPromoDiscount = (reg: AdapterModalRegistrationType): boolean => {
+  // Only apply discount to Attendee and VIP Attendee passes
+  return (
+    reg.category === 'ticket' && 
+    (reg.title === 'Attendee Pass' || reg.title === 'VIP Attendee Pass' || 
+     reg.id === 'attendee-pass' || reg.id === 'vip-attendee-pass')
+  );
+};
+
 const RegistrationModal = ({
   isOpen,
   onClose,
@@ -215,6 +250,66 @@ const RegistrationModal = ({
   const [pendingConfirmationData, setPendingConfirmationData] = useState<any>(null);
   const [attemptingStripePayment, setAttemptingStripePayment] = useState(false);
   const stripeFormRef = useRef<StripePaymentFormRef>(null);
+  
+  // Promo code state
+  const [promoCode, setPromoCode] = useState<string>('');
+  const [promoCodeValid, setPromoCodeValid] = useState<boolean>(false);
+  const [promoCodeError, setPromoCodeError] = useState<string | null>(null);
+  const [applyingPromoCode, setApplyingPromoCode] = useState<boolean>(false);
+
+  // Handler function for applying promo code
+  const handleApplyPromoCode = () => {
+    // Reset previous error/success states
+    setPromoCodeError(null);
+    setApplyingPromoCode(true);
+    
+    // Trim and normalize code
+    const normalizedCode = promoCode.trim().toUpperCase();
+    
+    // Empty code validation
+    if (!normalizedCode) {
+      setPromoCodeError('Please enter a promo code');
+      setApplyingPromoCode(false);
+      return;
+    }
+    
+    // Check if there are any eligible tickets in the cart
+    const hasEligibleTickets = [...allRegistrations].some(reg => 
+      (ticketQuantities[reg.id] || 0) > 0 && isEligibleForPromoDiscount(reg)
+    );
+    
+    if (!hasEligibleTickets) {
+      setPromoCodeError('No eligible tickets in your cart. Promo code only applies to Attendee and VIP Attendee passes.');
+      setApplyingPromoCode(false);
+      return;
+    }
+    
+    // Simulate API call delay with setTimeout
+    // In a real implementation, you would call the backend API here
+    setTimeout(() => {
+      const result = isValidPromoCode(normalizedCode);
+      
+      if (result.valid) {
+        setPromoCodeValid(true);
+      } else {
+        setPromoCodeValid(false);
+        
+        // Show different error messages based on validation reason
+        switch(result.reason) {
+          case 'expired':
+            setPromoCodeError('This promo code has expired');
+            break;
+          case 'invalid':
+            setPromoCodeError('Invalid promo code');
+            break;
+          default:
+            setPromoCodeError('Error validating promo code');
+        }
+      }
+      
+      setApplyingPromoCode(false);
+    }, 500); // Simulating a 500ms delay for API call
+  };
 
   // Memoize Stripe Elements appearance to prevent unnecessary re-initialization
   const appearance = useMemo(() => ({
@@ -456,6 +551,12 @@ const RegistrationModal = ({
     setPendingConfirmationData(null);
     setIsStripeReady(false);
     setIsLoading(false);
+    
+    // Reset promo code state
+    setPromoCode('');
+    setPromoCodeValid(false);
+    setPromoCodeError(null);
+    setApplyingPromoCode(false);
   };
 
   // Helper function to handle payment errors in the useEffect hook
@@ -904,8 +1005,15 @@ const RegistrationModal = ({
         const numericPrice = typeof ticketPrice === 'string' ?
           parseFloat(ticketPrice.replace(/[^0-9.]/g, '')) || 0 :
           ticketPrice;
+          
+        // Apply promo discount if valid code is entered and registration is eligible
+        let finalPrice = numericPrice;
+        if (promoCodeValid && isEligibleForPromoDiscount(reg)) {
+          // 15% discount
+          finalPrice = finalPrice * 0.85;
+        }
 
-        return total + (quantity * numericPrice);
+        return total + (quantity * finalPrice);
       }, 0);
     };
 
@@ -923,7 +1031,7 @@ const RegistrationModal = ({
     return Object.values(ticketQuantities).reduce((sum, qty) => sum + qty, 0);
   };
 
-  // Helper function to get the effective price for a registration item (considering early bird pricing)
+  // Helper function to get the effective price for a registration item (considering early bird pricing and promo code)
   const getEffectivePrice = (reg: AdapterModalRegistrationType): number | string => {
     // If price is a string (e.g., "Complimentary"), return it directly
     if (typeof reg.price === 'string') {
@@ -931,14 +1039,23 @@ const RegistrationModal = ({
     }
 
     // Check if early bird pricing applies
+    let effectivePrice;
     if (reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline)) {
-      return typeof reg.earlyBirdPrice === 'string'
+      effectivePrice = typeof reg.earlyBirdPrice === 'string'
         ? parseFloat(reg.earlyBirdPrice.replace(/[^0-9.]/g, '')) || 0
         : reg.earlyBirdPrice;
+    } else {
+      // Use regular price
+      effectivePrice = reg.price;
     }
-
-    // Otherwise return regular price
-    return reg.price;
+    
+    // Apply promo code discount if valid and the registration is eligible
+    if (promoCodeValid && isEligibleForPromoDiscount(reg)) {
+      // Apply 15% discount
+      return typeof effectivePrice === 'number' ? effectivePrice * 0.85 : effectivePrice;
+    }
+    
+    return effectivePrice;
   };
 
   // Pre-validate complimentary tickets to ensure they have gov/mil emails
@@ -2051,9 +2168,42 @@ const RegistrationModal = ({
                     )}
                   </div>
 
+                  {/* Promo code section */}
+                  <div className="mb-4">
+                    <h5 className="text-sm font-medium mb-2">Promo Code</h5>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="text"
+                        placeholder="Enter promo code"
+                        className="flex-grow px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        value={promoCode}
+                        onChange={(e) => setPromoCode(e.target.value)}
+                        disabled={promoCodeValid || applyingPromoCode}
+                      />
+                      <button
+                        onClick={() => handleApplyPromoCode()}
+                        disabled={!promoCode || promoCodeValid || applyingPromoCode}
+                        className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+                      >
+                        {applyingPromoCode ? 'Applying...' : promoCodeValid ? 'Applied' : 'Apply'}
+                      </button>
+                    </div>
+                    {promoCodeError && (
+                      <p className="text-sm text-red-600 mt-1">{promoCodeError}</p>
+                    )}
+                    {promoCodeValid && (
+                      <p className="text-sm text-green-600 mt-1">15% discount applied to eligible passes!</p>
+                    )}
+                  </div>
+
                   {/* Total and checkout button */}
                   <div className="flex justify-between items-center border-t pt-3">
-                    <p className="text-xl font-semibold">Total: ${calculateTotal().toLocaleString()}</p>
+                    <div>
+                      <p className="text-xl font-semibold">Total: ${calculateTotal().toLocaleString()}</p>
+                      {promoCodeValid && (
+                        <p className="text-sm text-green-600">15% discount applied to eligible passes!</p>
+                      )}
+                    </div>
                     <button
                       onClick={handleCheckout}
                       disabled={getTotalTickets() === 0 || isLoading}
