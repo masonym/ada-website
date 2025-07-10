@@ -161,39 +161,57 @@ const isRegistrationClosed = (event: EventWithContact, daysBeforeToClose: number
   return new Date() >= cutoffDate;
 };
 
+// Define promo code type
+interface PromoCode {
+  code: string;
+  discountPercentage: number;
+  eligibleTicketTypes: string[];
+  expirationDate: Date;
+  description?: string;
+}
+
+// Define available promo codes
+const PROMO_CODES: PromoCode[] = [
+  {
+    code: 'ACEC15',
+    discountPercentage: 15,
+    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass', 'Attendee Pass', 'VIP Attendee Pass'],
+    expirationDate: new Date('2025-08-01'),
+    description: 'ACEC15 - 15% off Attendee and VIP Attendee passes'
+  },
+  {
+    code: 'EARLY10',
+    discountPercentage: 10,
+    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass', 'Attendee Pass', 'VIP Attendee Pass',],
+    expirationDate: new Date('2025-08-01'),
+    description: 'EARLY10 - 10% off all passes and Basic Exhibitor Package'
+  }
+];
+
 // Function to validate the promo code
-const isValidPromoCode = (code: string): { valid: boolean; reason?: string } => {
-  // Add valid promo codes here
-  const validPromoCodes = ['ADA15'];
+const isValidPromoCode = (code: string): { valid: boolean; reason?: string; promoDetails?: PromoCode } => {
+  // Find the promo code in our list
+  const promoCode = PROMO_CODES.find(promo => promo.code === code);
   
   // Check if code exists
-  if (!validPromoCodes.includes(code)) {
+  if (!promoCode) {
     return { valid: false, reason: 'invalid' };
   }
   
-  // Check if code is expired (example implementation)
-  // In a real implementation, you would check against an expiration date
+  // Check if code is expired
   const now = new Date();
-  const expirationDates: Record<string, Date> = {
-    'ADA15': new Date('2026-12-31') // Example expiration date
-  };
-  
-  if (expirationDates[code] && now > expirationDates[code]) {
+  if (now > promoCode.expirationDate) {
     return { valid: false, reason: 'expired' };
   }
   
   // If we reach here, the code is valid
-  return { valid: true };
+  return { valid: true, promoDetails: promoCode };
 };
 
-// Function to check if a registration is eligible for promo discount
-const isEligibleForPromoDiscount = (reg: AdapterModalRegistrationType): boolean => {
-  // Only apply discount to Attendee and VIP Attendee passes
-  return (
-    reg.category === 'ticket' && 
-    (reg.title === 'Attendee Pass' || reg.title === 'VIP Attendee Pass' || 
-     reg.id === 'attendee-pass' || reg.id === 'vip-attendee-pass')
-  );
+// Function to check if a registration is eligible for a specific promo discount
+const isEligibleForPromoDiscount = (registration: AdapterModalRegistrationType, eligibleTypes: string[]): boolean => {
+  // Check by ID or title
+  return eligibleTypes.includes(registration.id) || eligibleTypes.includes(registration.title);
 };
 
 const RegistrationModal = ({
@@ -256,6 +274,7 @@ const RegistrationModal = ({
   const [promoCodeValid, setPromoCodeValid] = useState<boolean>(false);
   const [promoCodeError, setPromoCodeError] = useState<string | null>(null);
   const [applyingPromoCode, setApplyingPromoCode] = useState<boolean>(false);
+  const [activePromoCode, setActivePromoCode] = useState<PromoCode | null>(null);
 
   // Handler function for applying promo code
   const handleApplyPromoCode = () => {
@@ -273,26 +292,28 @@ const RegistrationModal = ({
       return;
     }
     
-    // Check if there are any eligible tickets in the cart
-    const hasEligibleTickets = [...allRegistrations].some(reg => 
-      (ticketQuantities[reg.id] || 0) > 0 && isEligibleForPromoDiscount(reg)
-    );
-    
-    if (!hasEligibleTickets) {
-      setPromoCodeError('No eligible tickets in your cart. Promo code only applies to Attendee and VIP Attendee passes.');
-      setApplyingPromoCode(false);
-      return;
-    }
-    
     // Simulate API call delay with setTimeout
     // In a real implementation, you would call the backend API here
     setTimeout(() => {
       const result = isValidPromoCode(normalizedCode);
       
-      if (result.valid) {
-        setPromoCodeValid(true);
+      if (result.valid && result.promoDetails) {
+        // Check if there are any eligible tickets in the cart for this specific promo code
+        const hasEligibleTickets = [...allRegistrations].some(reg => 
+          (ticketQuantities[reg.id] || 0) > 0 && isEligibleForPromoDiscount(reg, result.promoDetails!.eligibleTicketTypes)
+        );
+        
+        if (!hasEligibleTickets) {
+          setPromoCodeValid(false);
+          setPromoCodeError(`No eligible tickets in your cart. This promo code only applies to specific ticket types.`);
+          setActivePromoCode(null);
+        } else {
+          setPromoCodeValid(true);
+          setActivePromoCode(result.promoDetails);
+        }
       } else {
         setPromoCodeValid(false);
+        setActivePromoCode(null);
         
         // Show different error messages based on validation reason
         switch(result.reason) {
@@ -1008,9 +1029,11 @@ const RegistrationModal = ({
           
         // Apply promo discount if valid code is entered and registration is eligible
         let finalPrice = numericPrice;
-        if (promoCodeValid && isEligibleForPromoDiscount(reg)) {
-          // 15% discount
-          finalPrice = finalPrice * 0.85;
+        if (promoCodeValid && activePromoCode) {
+          if (isEligibleForPromoDiscount(reg, activePromoCode.eligibleTicketTypes)) {
+            // Apply discount percentage
+            finalPrice = finalPrice * (1 - activePromoCode.discountPercentage / 100);
+          }
         }
 
         return total + (quantity * finalPrice);
@@ -1031,34 +1054,22 @@ const RegistrationModal = ({
     return Object.values(ticketQuantities).reduce((sum, qty) => sum + qty, 0);
   };
 
-  // Helper function to get the effective price for a registration item (considering early bird pricing and promo code)
-  const getEffectivePrice = (reg: AdapterModalRegistrationType): number | string => {
-    // If price is a string (e.g., "Complimentary"), return it directly
-    if (typeof reg.price === 'string') {
-      return reg.price;
-    }
-
-    // Check if early bird pricing applies
-    let effectivePrice;
-    if (reg.earlyBirdPrice && reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline)) {
-      effectivePrice = typeof reg.earlyBirdPrice === 'string'
-        ? parseFloat(reg.earlyBirdPrice.replace(/[^0-9.]/g, '')) || 0
-        : reg.earlyBirdPrice;
-    } else {
-      // Use regular price
-      effectivePrice = reg.price;
+  // Helper function to get the effective price of a registration
+  const getEffectivePrice = (registration: AdapterModalRegistrationType): number => {
+    const isEarlyBird = registration.earlyBirdDeadline && new Date() < new Date(registration.earlyBirdDeadline);
+    const displayPrice = isEarlyBird && registration.earlyBirdPrice !== undefined ? registration.earlyBirdPrice : registration.price;
+    // Convert displayPrice to number if it's a string
+    let numericPrice = typeof displayPrice === 'string' ? parseFloat(displayPrice.replace(/[^0-9.]/g, '')) || 0 : displayPrice;
+    
+    // Apply promo code discount if valid and registration is eligible
+    if (promoCodeValid && activePromoCode) {
+      if (isEligibleForPromoDiscount(registration, activePromoCode.eligibleTicketTypes)) {
+        numericPrice = numericPrice * (1 - activePromoCode.discountPercentage / 100); // Apply discount percentage
+      }
     }
     
-    // Apply promo code discount if valid and the registration is eligible
-    if (promoCodeValid && isEligibleForPromoDiscount(reg)) {
-      // Apply 15% discount
-      return typeof effectivePrice === 'number' ? effectivePrice * 0.85 : effectivePrice;
-    }
-    
-    return effectivePrice;
+    return numericPrice;
   };
-
-  // Pre-validate complimentary tickets to ensure they have gov/mil emails
 
   const handlePaymentSuccess = (paymentIntentId: string) => {
     setApiError(null); // Clear any previous payment errors
@@ -1118,10 +1129,6 @@ const RegistrationModal = ({
 
           // For sponsorships, ensure we pass a numeric price to the API
           // This is crucial because the API needs numeric prices for payment processing
-          const processedPrice =
-            category === 'sponsorship' && typeof effectivePrice === 'string'
-              ? parseFloat(effectivePrice.replace(/[^0-9.]/g, '')) || reg.price
-              : effectivePrice;
 
           // For sponsorships, check if there are sponsor pass attendees and use the first one as the POC
           let attendeeInfo = (attendeesByTicket[reg.id] || []).map(att => ({ ...att }));
@@ -1134,7 +1141,7 @@ const RegistrationModal = ({
           return {
             ticketId: reg.id,
             ticketName: reg.title,
-            ticketPrice: processedPrice,
+            ticketPrice: effectivePrice,
             quantity: ticketQuantities[reg.id] || 0,
             category, // Add category to identify the type of registration
             attendeeInfo,
@@ -1195,9 +1202,6 @@ const RegistrationModal = ({
         // Ensure we have a numeric price
         if (typeof effectivePrice === 'number') {
           ticketPrices[reg.id] = effectivePrice;
-        } else if (typeof effectivePrice === 'string' && reg.type === 'sponsor') {
-          // For sponsorships with string prices, convert to number
-          ticketPrices[reg.id] = parseFloat(effectivePrice.replace(/[^0-9.]/g, '')) || 0;
         }
       }
     });
@@ -2191,9 +2195,6 @@ const RegistrationModal = ({
                     {promoCodeError && (
                       <p className="text-sm text-red-600 mt-1">{promoCodeError}</p>
                     )}
-                    {promoCodeValid && (
-                      <p className="text-sm text-green-600 mt-1">15% discount applied to eligible passes!</p>
-                    )}
                   </div>
 
                   {/* Total and checkout button */}
@@ -2201,7 +2202,7 @@ const RegistrationModal = ({
                     <div>
                       <p className="text-xl font-semibold">Total: ${calculateTotal().toLocaleString()}</p>
                       {promoCodeValid && (
-                        <p className="text-sm text-green-600">15% discount applied to eligible passes!</p>
+                        <p className="text-sm text-green-600">{activePromoCode?.discountPercentage}% discount applied to eligible passes!</p>
                       )}
                     </div>
                     <button
