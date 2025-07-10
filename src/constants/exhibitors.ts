@@ -108,7 +108,7 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                 requiresAttendeeInfo: true,
                 maxQuantityPerOrder: 1,
                 isGovtFreeEligible: false,
-                slotsPerEvent: 60,
+                slotsPerEvent: 65,
                 showRemaining: true,
                 perks: [
                     { formatted: [
