@@ -115,7 +115,7 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
         };
       }),
       subtotal: (paymentIntent.amount + (Number(metadata.discountAmount) || 0)) / 100, // in dollars
-      discount: (Number(metadata.discountAmount) || 0) / 100, // in dollars
+      discount: Number(metadata.discountAmount) || 0, // already in dollars
       total: paymentIntent.amount / 100, // in dollars
     };
 
