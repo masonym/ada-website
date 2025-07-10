@@ -147,7 +147,13 @@ export async function POST(request: Request) {
       promoCodeDetails = promoData;
     }
 
-    const { subtotal, discount, total } = calculateOrderTotal(tickets, paidTickets, promoCodeDetails);
+    // Format promoCodeDetails to match what calculateOrderTotal expects
+    const promoCodeForCalc = promoCodeDetails ? {
+      discountPercentage: promoCodeDetails.discountPercentage
+      // eligibleTicketTypes is not used in calculateOrderTotal
+    } : undefined;
+    
+    const { subtotal, discount, total } = calculateOrderTotal(tickets, paidTickets, promoCodeForCalc);
 
     if (total === 0) {
       const orderId = `ORDER-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
