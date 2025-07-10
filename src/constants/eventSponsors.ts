@@ -244,7 +244,9 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "trust-consulting-services",
                     "pc-campana",
                     "pferd-tools",
-                    "turbo-federal"
+                    "turbo-federal",
+                    "amazon-business",
+                    "isi-defense",
                 ],
             },
             {

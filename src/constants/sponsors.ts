@@ -729,6 +729,20 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://hii.com/what-we-do/divisions/newport-news-shipbuilding/",
     size: 'small',
   },
+  "amazon-business": {
+    id: "amazon-business",
+    name: "Amazon Business",
+    logo: "/sponsors/amazon-business.webp",
+    website: "https://business.amazon.com/",
+    size: 'small'
+  },
+  "isi-defense": {
+    id: "isi-defense",
+    name: "ISI Defense",
+    logo: "/sponsors/isi-defense.webp",
+    website: "https://www.isidefense.com/",
+    size: 'small'
+  }
 };
 
 // Helper function to get a sponsor by ID
