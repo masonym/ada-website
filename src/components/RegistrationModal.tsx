@@ -2179,7 +2179,7 @@ const RegistrationModal = ({
                       <input
                         type="text"
                         placeholder="Enter promo code"
-                        className="flex-grow px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        className="text-sm flex-grow px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                         value={promoCode}
                         onChange={(e) => setPromoCode(e.target.value)}
                         disabled={promoCodeValid || applyingPromoCode}
