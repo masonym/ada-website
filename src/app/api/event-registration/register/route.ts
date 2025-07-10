@@ -3,6 +3,7 @@ import { getEnv } from '@/lib/env';
 import { stripe } from '@/lib/stripe/server';
 import { logRegistration } from '@/lib/google-sheets';
 import { validateRegistrationData } from '@/lib/event-registration/validation';
+import { OrderSummary } from '@/lib/email/templates';
 import { sendRegistrationConfirmationEmails } from '@/lib/email/confirmation-emails';
 import { AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { EVENTS } from '@/constants/events';
@@ -146,7 +147,7 @@ export async function POST(request: Request) {
       promoCodeDetails = promoData;
     }
 
-    const { discount, total } = calculateOrderTotal(tickets, paidTickets, promoCodeDetails);
+    const { subtotal, discount, total } = calculateOrderTotal(tickets, paidTickets, promoCodeDetails);
 
     if (total === 0) {
       const orderId = `ORDER-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
@@ -165,12 +166,40 @@ export async function POST(request: Request) {
             };
           })
           .filter((r): r is AdapterModalRegistrationType => r !== null);
+          
+        // Create order summary for confirmation email
+        const orderSummaryItems = validatedData.tickets.map(ticket => {
+          const registrationType = eventRegistrations.registrations.find(reg => 'id' in reg && reg.id === ticket.ticketId);
+          let price = 0;
+          
+          if (body.ticketPrices && typeof body.ticketPrices[ticket.ticketId] === 'number') {
+            price = body.ticketPrices[ticket.ticketId];
+          } else if (registrationType && 'price' in registrationType && typeof registrationType.price === 'number') {
+            price = registrationType.price;
+          }
+          
+          return {
+            name: registrationType?.title || ticket.ticketId,
+            quantity: ticket.quantity,
+            price: price
+          };
+        });
+        
+        const orderSummary: OrderSummary = {
+          orderId: orderId,
+          orderDate: new Date().toLocaleDateString(),
+          items: orderSummaryItems,
+          subtotal: subtotal,
+          discount: discount,
+          total: total
+        };
 
         await sendRegistrationConfirmationEmails({
           registrationData: validatedData,
           event,
           registrations: registrationsForEmail,
           orderId: orderId,
+          orderSummary: orderSummary,
         });
       }
 
@@ -178,6 +207,7 @@ export async function POST(request: Request) {
     }
 
     const pendingRegistrationId = await savePendingRegistration(validatedData);
+    // Create order summary for payment receipt
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(total * 100), // Convert to cents
       currency: 'usd',

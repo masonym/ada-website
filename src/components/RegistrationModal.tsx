@@ -1301,6 +1301,7 @@ const RegistrationModal = ({
             eventTitle: event.title, // Include event name for clarity
             eventImage: event.image,
             ticketPrices, // Include the ticket prices object for accurate pricing
+            promoCode: activePromoCode?.code || null, // Pass the active promo code to the backend for validation
             // The register endpoint will calculate amount and use necessary fields from formDataToValidate
           }),
         });

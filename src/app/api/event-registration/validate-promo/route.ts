@@ -1,8 +1,54 @@
 import { NextResponse } from 'next/server';
-import { stripe } from '@/lib/stripe/server';
+
+// Define promo code type to match frontend
+interface PromoCode {
+  code: string;
+  discountPercentage: number;
+  eligibleTicketTypes: string[];
+  expirationDate: Date;
+  description?: string;
+}
 
 // In-memory cache for promo codes (in a real app, use a database or cache like Redis)
-const promoCodeCache = new Map<string, { valid: boolean; discountAmount?: number; discountPercentage?: number; expiresAt?: number }>();
+const promoCodeCache = new Map<string, { valid: boolean; promoDetails?: PromoCode }>();
+
+// Define available promo codes - MUST MATCH THE FRONTEND DEFINITIONS
+const PROMO_CODES: PromoCode[] = [
+  {
+    code: 'ACEC15',
+    discountPercentage: 15,
+    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass', 'Attendee Pass', 'VIP Attendee Pass'],
+    expirationDate: new Date('2025-12-31'),
+    description: 'ACEC15 - 15% off Attendee and VIP Attendee passes'
+  },
+  {
+    code: 'EARLY10',
+    discountPercentage: 10,
+    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass', 'Attendee Pass', 'VIP Attendee Pass'],
+    expirationDate: new Date('2025-08-01'),
+    description: 'EARLY10 - 10% off all passes and Basic Exhibitor Package'
+  }
+];
+
+// Function to validate the promo code - similar to frontend
+const isValidPromoCode = (code: string): { valid: boolean; reason?: string; promoDetails?: PromoCode } => {
+  // Find the promo code in our list
+  const promoCode = PROMO_CODES.find(promo => promo.code === code);
+  
+  // Check if code exists
+  if (!promoCode) {
+    return { valid: false, reason: 'invalid' };
+  }
+  
+  // Check if code is expired
+  const now = new Date();
+  if (now > promoCode.expirationDate) {
+    return { valid: false, reason: 'expired' };
+  }
+  
+  // If we reach here, the code is valid
+  return { valid: true, promoDetails: promoCode };
+};
 
 export async function POST(request: Request) {
   try {
@@ -18,107 +64,75 @@ export async function POST(request: Request) {
     // Check cache first
     const cachedPromo = promoCodeCache.get(promoCode);
     if (cachedPromo) {
-      // Check if the cached promo is expired
-      if (cachedPromo.expiresAt && cachedPromo.expiresAt < Date.now()) {
-        promoCodeCache.delete(promoCode);
+      if (cachedPromo.valid && cachedPromo.promoDetails) {
+        // Check if the cached promo is expired
+        const now = new Date();
+        if (now > cachedPromo.promoDetails.expirationDate) {
+          promoCodeCache.delete(promoCode);
+          return NextResponse.json({
+            valid: false,
+            error: 'Promo code has expired',
+          });
+        }
+        
         return NextResponse.json({
-          valid: false,
-          error: 'Promo code has expired',
+          valid: true,
+          discountPercentage: cachedPromo.promoDetails.discountPercentage,
+          eligibleTicketTypes: cachedPromo.promoDetails.eligibleTicketTypes,
+          description: cachedPromo.promoDetails.description
         });
+      }
+    }
+
+    // Validate the promo code using same logic as frontend
+    const validationResult = isValidPromoCode(promoCode);
+    
+    if (!validationResult.valid) {
+      return NextResponse.json({
+        valid: false,
+        error: validationResult.reason === 'invalid' ? 'Invalid promo code' : 'Promo code has expired',
+      }, { status: 400 });
+    }
+    
+    // At this point, we know the promo code is valid
+    const promoDetails = validationResult.promoDetails!;
+    
+    // Check if the tickets are eligible for this promo code
+    if (tickets && tickets.length > 0) {
+      let hasEligibleTicket = false;
+      
+      for (const ticket of tickets) {
+        if (promoDetails.eligibleTicketTypes.includes(ticket.ticketId)) {
+          hasEligibleTicket = true;
+          break;
+        }
       }
       
-      return NextResponse.json({
-        valid: true,
-        discountAmount: cachedPromo.discountAmount,
-        discountPercentage: cachedPromo.discountPercentage,
-      });
-    }
-
-    // In a real app, you would validate the promo code against your database
-    // For this example, we'll use a simple hardcoded promo code
-    const validPromoCodes = [
-      {
-        code: 'EARLYBIRD',
-        discountPercentage: 20, // 20% off
-        expiresAt: new Date('2024-12-31T23:59:59Z').getTime(),
-        minTickets: 1,
-      },
-      {
-        code: 'GROUP10',
-        discountPercentage: 10, // 10% off for groups of 5 or more
-        minTickets: 5,
-      },
-      {
-        code: 'FREEPASS',
-        discountAmount: 100000, // $1000 off (effectively free for most events)
-        maxUses: 10,
-        uses: 0, // Track usage
-      },
-    ];
-
-    const promo = validPromoCodes.find(p => p.code === promoCode);
-    
-    if (!promo) {
-      return NextResponse.json(
-        { valid: false, error: 'Invalid promo code' },
-        { status: 400 }
-      );
-    }
-
-    // Check if promo code has expired
-    if (promo.expiresAt && promo.expiresAt < Date.now()) {
-      return NextResponse.json({
-        valid: false,
-        error: 'Promo code has expired',
-      });
-    }
-
-    // Check minimum ticket requirement
-    if (promo.minTickets) {
-      const totalTickets = tickets.reduce((sum: number, t: any) => sum + t.quantity, 0);
-      if (totalTickets < promo.minTickets) {
+      if (!hasEligibleTicket) {
         return NextResponse.json({
           valid: false,
-          error: `This promo code requires a minimum of ${promo.minTickets} tickets`,
-        });
+          error: 'This promo code is not applicable to any of the selected tickets',
+        }, { status: 400 });
       }
     }
-
-    // Check max uses for the promo code
-    if (promo.maxUses !== undefined && promo.uses !== undefined && promo.uses >= promo.maxUses) {
-      return NextResponse.json({
-        valid: false,
-        error: 'This promo code has reached its maximum number of uses',
-      });
-    }
-
+    
     // Cache the promo code validation for 1 hour
     promoCodeCache.set(promoCode, {
       valid: true,
-      discountAmount: promo.discountAmount,
-      discountPercentage: promo.discountPercentage,
-      expiresAt: promo.expiresAt || Date.now() + 3600000, // 1 hour from now
+      promoDetails
     });
-
-    // Increment uses if tracking
-    if (promo.uses !== undefined) {
-      promo.uses += 1;
-    }
-
+    
     return NextResponse.json({
       valid: true,
-      discountAmount: promo.discountAmount,
-      discountPercentage: promo.discountPercentage,
+      discountPercentage: promoDetails.discountPercentage,
+      eligibleTicketTypes: promoDetails.eligibleTicketTypes,
+      description: promoDetails.description
     });
 
   } catch (error) {
     console.error('Error validating promo code:', error);
     return NextResponse.json(
-      { 
-        valid: false, 
-        error: 'An error occurred while validating the promo code',
-        details: error instanceof Error ? error.message : 'Unknown error'
-      },
+      { valid: false, error: 'An error occurred while validating the promo code' },
       { status: 500 }
     );
   }
