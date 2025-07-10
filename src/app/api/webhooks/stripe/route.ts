@@ -114,7 +114,7 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
           price: itemPrice, // Price is in dollars, using early bird price when applicable
         };
       }),
-      subtotal: (paymentIntent.amount + (Number(metadata.discountAmount) || 0)) / 100, // in dollars
+      subtotal: (paymentIntent.amount / 100) + (Number(metadata.discountAmount) || 0), // in dollars
       discount: Number(metadata.discountAmount) || 0, // already in dollars
       total: paymentIntent.amount / 100, // in dollars
     };
