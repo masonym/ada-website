@@ -15,10 +15,12 @@ import { savePendingRegistration } from '@/lib/aws/dynamodb';
 function calculateOrderTotal(
   ticketSelections: Array<{ ticketId: string; quantity: number }>,
   availableTickets: Array<{ id: string; price: number; earlyBirdPrice?: number; earlyBirdDeadline?: string }>,
-  promoCode?: { discountAmount?: number; discountPercentage?: number }
+  promoCode?: { discountAmount?: number; discountPercentage?: number; eligibleTicketTypes?: string[] }
 ): { subtotal: number; discount: number; total: number } {
   let subtotal = 0;
+  let eligibleSubtotal = 0;
   const now = new Date();
+  const ticketSubtotals = new Map<string, number>();
 
   // Calculate subtotal based on ticket prices
   for (const selection of ticketSelections) {
@@ -27,17 +29,27 @@ function calculateOrderTotal(
 
     const isEarlyBird = ticket.earlyBirdDeadline && new Date(ticket.earlyBirdDeadline) > now;
     const price = isEarlyBird && ticket.earlyBirdPrice ? ticket.earlyBirdPrice : ticket.price;
-
-    subtotal += price * selection.quantity;
+    const ticketSubtotal = price * selection.quantity;
+    
+    subtotal += ticketSubtotal;
+    ticketSubtotals.set(selection.ticketId, ticketSubtotal);
+    
+    // Track subtotal for eligible tickets if promo code has eligibility restrictions
+    if (promoCode?.eligibleTicketTypes && promoCode.eligibleTicketTypes.includes(selection.ticketId)) {
+      eligibleSubtotal += ticketSubtotal;
+    }
   }
 
   // Apply promo code discount if available
   let discount = 0;
   if (promoCode) {
+    // If eligibleTicketTypes is provided, only apply discount to eligible tickets
+    const baseForDiscount = promoCode.eligibleTicketTypes ? eligibleSubtotal : subtotal;
+    
     if (promoCode.discountAmount) {
-      discount = Math.min(promoCode.discountAmount, subtotal);
+      discount = Math.min(promoCode.discountAmount, baseForDiscount);
     } else if (promoCode.discountPercentage) {
-      discount = subtotal * (promoCode.discountPercentage / 100);
+      discount = baseForDiscount * (promoCode.discountPercentage / 100);
     }
   }
 
@@ -149,8 +161,8 @@ export async function POST(request: Request) {
 
     // Format promoCodeDetails to match what calculateOrderTotal expects
     const promoCodeForCalc = promoCodeDetails ? {
-      discountPercentage: promoCodeDetails.discountPercentage
-      // eligibleTicketTypes is not used in calculateOrderTotal
+      discountPercentage: promoCodeDetails.discountPercentage,
+      eligibleTicketTypes: promoCodeDetails.eligibleTicketTypes // Include eligibleTicketTypes for selective discount
     } : undefined;
     
     const { subtotal, discount, total } = calculateOrderTotal(tickets, paidTickets, promoCodeForCalc);
@@ -228,6 +240,8 @@ export async function POST(request: Request) {
         contactName: `${validatedData.firstName} ${validatedData.lastName}`,
         discountAmount: discount.toString(),
         pendingRegistrationId,
+        // Store eligible ticket types if promo code has restrictions
+        eligibleTicketTypes: promoCodeDetails?.eligibleTicketTypes ? JSON.stringify(promoCodeDetails.eligibleTicketTypes) : '',
       },
     });
 
