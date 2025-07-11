@@ -1089,6 +1089,13 @@ Ms. Plath's naval decorations include the Navy Commendation Medal (two awards), 
     "name": "Brian W. Miller",
     "position": "Deputy Director of Real Estate",
     "company": "Office of the Assistant Secretary of the Navy (Energy, Installations & Environment)",
+  },
+  "roger-camp": {
+    "image": "roger-camp.webp",
+    "name": "Roger Camp",
+    "position": "Senior Director for Business Development, Naval Programs",
+    "company": "Hanwha Defense USA",
+    "bio": `Roger Camp is the Senior Director for Business Development, Naval Programs at Hanwha Defense USA. A large part of his role is supporting Hanwha Philly Shipyard. After completing his undergraduate degree at Vanderbilt University, Roger served on four ships in the United States Navy as a Surface Warfare Officer for 20 years, with much of the last half of his career spent in missile defense. He spent two years at General Dynamics working Common Display System, and Littoral Combat Ship programs before spending seven years at Raytheon working on missile defense issues. He spent the last 5 1/2 years at General Atomics Electromagnetics and joined Hanwha in February 2025. Roger has been involved with the National Shipbuilding Research Program since 2019 and is also the President and Chief Executive Officer of the American Shipbuilding Suppliers Association, and served four years as President of the Northern Virginia Council, Navy League of the United States.`,
   }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -1181,6 +1188,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"paul-wichert",
 		"vice-admiral-richard-w-hunt",
 		"brian-w-miller",
+		"roger-camp",
 	]
 };
 
