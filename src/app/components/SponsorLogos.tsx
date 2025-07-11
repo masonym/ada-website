@@ -146,12 +146,12 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                     <div
                                         key={sponsorIndex}
                                         className={`flex flex-col items-center justify-center p-4 transition-transform hover:scale-105 duration-300 ${isTopTier
-                                            ? 'relative p-6 rounded-xl bg-gradient-to-r from-slate-50 to-white shadow-md'
+                                            ? 'relative p-6 rounded-xl  '
                                             : ''
                                             }`}
                                     >
                                         {isTopTier && (
-                                            <div className="w-fit text-nowrap absolute -top-1 md:-top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-slate-900 px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
+                                            <div className="w-fit text-nowrap absolute -top-1 md:-top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-slate-900 px-4 py-1 rounded-full text-sm font-semibold ">
                                                 ★ Featured Sponsor
                                             </div>
                                         )}
@@ -170,7 +170,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                                     priority={sponsor.priority || isTopTier}
                                                     unoptimized={true}
                                                     sizes={`(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px`}
-                                                    className={`object-contain max-w-full max-h-full ${isTopTier ? 'drop-shadow-md' : ''}`}
+                                                    className={`object-contain max-w-full max-h-full `}
                                                 />
                                             </Link>
                                         ) : (
