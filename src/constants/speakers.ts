@@ -1166,7 +1166,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"kurt-garrett",
 		"diane-dempsey",
 		"christopher-m-haar",
-		{ id: "joel-lundy", label: "Pending Agency Approval" },
+		"joel-lundy",
 		"don-mcginnis",
 		"robyn-card",
 		"katina-adams",
