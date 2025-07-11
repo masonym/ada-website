@@ -1083,6 +1083,12 @@ Ms. Plath's naval decorations include the Navy Commendation Medal (two awards), 
 	Hunt joined Raytheon Company in the position of Vice President, Business Development, Navy/Marine Corps Programs in January 2014 and assumed the role of Vice President for U.S. Business Development in June 2015.  He transitioned to Chief Strategy Officer at Fincantieri Marinette Marine in April 2018 and became President, Fincantieri Marinette Marine in July 2019.
 	<br/>
 	`,
+  },
+  "brian-w-miller": {
+    "image": "brian-w-miller.webp",
+    "name": "Brian W. Miller",
+    "position": "Deputy Director of Real Estate",
+    "company": "Office of the Assistant Secretary of the Navy (Energy, Installations & Environment)",
   }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -1173,7 +1179,8 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"stacey-r-washington",
 		"erica-h-plath",
 		"paul-wichert",
-		"vice-admiral-richard-w-hunt"
+		"vice-admiral-richard-w-hunt",
+		"brian-w-miller",
 	]
 };
 
