@@ -1031,8 +1031,8 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	"erica-h-plath": {
 		"image": "erica-h-plath.webp",
 		"name": "Erica H. Plath",
-		"position": "Deputy Assistant Secretary of the Navy for Sustainment, Office of the Assistant Secretary of the Navy for Research, Development and Acquisition",
-		"company": "United States Department of the Navy",
+		"position": "Deputy Assistant Secretary of the Navy for Sustainment",
+		"company": "Office of the Assistant Secretary of the Navy for Research, Development and Acquisition",
 		"bio": `
 Ms. Erica H. Plath assumed the responsibilities of the Deputy Assistant Secretary of the Navy for Sustainment in May of 2022. She serves as the principal advisor to the Assistant Secretary of the Navy for Research, Development and Acquisition (ASN (RDA)) on all matters related to the planning, budgeting and execution of sustainment and supply chain activities of the Department of the Navy and Marine Corps.
 
