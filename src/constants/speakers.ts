@@ -1089,6 +1089,14 @@ Ms. Plath's naval decorations include the Navy Commendation Medal (two awards), 
     "name": "Brian W. Miller",
     "position": "Deputy Director of Real Estate",
     "company": "Office of the Assistant Secretary of the Navy (Energy, Installations & Environment)",
+	"bio": `
+	As Deputy Director of Real Estate, Mr. Miller manages and coordinates a wide range of real estate activities for the Navy and Marine Corps, reporting to the Deputy Assistant Secretary of the Navy for Installations and Facilities. His responsibilities include developing and implementing policies for real estate acquisition, disposal, and management, as well as overseeing the Navy and Marine Corps Intergovernmental Support Agreements (IGSA) programs.
+
+<br/><br/>
+Previously, he served as a Public Private Venture (PPV) Program Specialist at Naval Facilities Engineering Systems Command (NAVFAC) HQ, focusing on Military Housing Privatization Initiative (MHPI) projects. His responsibilities included developing programmatic policy, overseeing MHPI Partner compliance with legal agreements and project financial health, establishing quality assurance programs, advising leadership on courses of action to address complex housing issues, and negotiating agreements for partnership restructures and new phases of construction.
+<br/><br/>
+Prior to federal service, Mr. Miller managed commercial property in the Washington, D.C., region at Lincoln Property Company. He holds a Bachelor's degree in Economics from the University of Maryland and a Master's degree in Real Estate Development from Georgetown University.
+	`
   },
   "roger-camp": {
     "image": "roger-camp.webp",
