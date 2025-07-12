@@ -484,7 +484,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { content: "Provide 5-minute Remarks before the Networking Luncheon", indent: 1 },
                     { content: "Logo Placement at Networking Luncheon", indent: 1 },
                     { content: "Table Tents on Networking Luncheon Tables", indent: 2 },
-                    { content: "Table Tents near Food/Beverage Areas", indent: 2 }
+                    { content: "Signage near Food/Beverage Areas", indent: 2 }
                 ]},
                 { formatted: [
                     { content: "Recognition/Visibility", bold: true },
