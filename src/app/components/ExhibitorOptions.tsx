@@ -12,6 +12,7 @@ import SponsorLogos from './SponsorLogos';
 import ExhibitInstructionsButton from './ExhibitInstructionsButton';
 import RegistrationModal from '@/components/RegistrationModal';
 import { getExhibitorsForEvent } from '@/lib/registration-adapters';
+import EventFloorPlan from './EventFloorPlan';
 
 export type ExhibitorProps = {
     event: Event;
@@ -53,6 +54,8 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                         className="max-w-xs sm:max-w-sm"
                     />
                 </div>
+
+
                 <ExhibitInstructionsButton eventShorthand={event.eventShorthand} />
                 <SponsorProspectus eventShorthand={event.eventShorthand} />
                 <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
@@ -65,6 +68,13 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                         event={event}
                     />
                 ))}
+                {/* Event Floorplan Section */}
+                {event.id === 4 && (
+                    <EventFloorPlan 
+                        eventId={event.id} 
+                        floorPlanImage={`/events/${event.eventShorthand}/event-floorplan.webp`}
+                    />
+                )}
                 <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-6xl mx-auto mb-6">
                     <b>Exhibitor Spaces:</b> The configuration of Exhibitor Areas varies by event and may encompass locations such as the General Session room, Pre-Function Areas, or a dedicated Exhibit Hall. For detailed information about each event, please reach out to us directly. Exhibitor Spaces are designed for table-top displays only, with no carpeting or pipe and drape required. Each Exhibitor will receive a 6' Table and Chairs. An Exhibit Space display area accommodates up to 8'x10'. We recommend using a maximum of (2) Pop-up Banners or (1) Backdrop. Please note that Electrical Services and other add-on items, including Internet Connections are not part of the Exhibit Space and will need to be purchased separately. A comprehensive Exhibitor Document will be available for download on the Event Page of our website.
                 </p>
