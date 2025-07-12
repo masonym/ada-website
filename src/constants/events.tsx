@@ -730,7 +730,7 @@ invaluable connections that can shape the future of your business.
       sessions: [
         {
           date: "July 29",
-          sessionTime: "4:00 PM - 5:30 PM",
+          sessionTime: "4:30 PM - 5:30 PM",
         },
         {
           date: "July 30",
