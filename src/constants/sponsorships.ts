@@ -430,9 +430,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Pop-up Banners", indent: 2 },
-                        { content: "Digital Agenda and Event Website", indent: 2 },
-                        { content: "Marketing Emails and Printed Program", indent: 2 }
+                        { content: "Conference Pop-up Banners", indent: 1 },
+                        { content: "Digital Agenda and Event Website", indent: 1 },
+                        { content: "Marketing Emails and Printed Program", indent: 1 }
                     ]},
                     { formatted: [
                         { content: "Exclusive Host of the VIP Networking Reception", bold: true },
