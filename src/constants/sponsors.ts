@@ -742,6 +742,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/isi-defense.webp",
     website: "https://www.isidefense.com/",
     size: 'small'
+  },
+  "big-top": {
+    id: "big-top",
+    name: "Big Top",
+    logo: "/sponsors/big-top.webp",
+    website: "https://bigtopusa.com/",
+    size: 'small'
   }
 };
 

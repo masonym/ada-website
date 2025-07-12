@@ -525,7 +525,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
-                        { content: "Photographs & Videos of your Participation", indent: 1 }
+                        { content: "Photographs of your Participation", indent: 1 }
                     ]},
                     { formatted: [
                         { content: "Exhibit Space", bold: true },
@@ -554,7 +554,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
-                        { content: "Photographs & Videos of your Participation", indent: 1 }
+                        { content: "Photographs of your Participation", indent: 1 }
                     ]},
                 ],
                 showRemaining: true,
