@@ -969,7 +969,17 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 		"name": "Don McGinnis",
 		"position": "Director, Business Development",
 		"company": "Pioneer Motor Bearing Company",
-		"bio": ``,
+		"bio": `
+		Don began his professional career in the mortgage industry, which naturally evolved into a role in real estate in the mountains of North Carolina. As market conditions shifted, he transitioned into the construction industry, where he spent nearly two decades building a successful career. During that time, he owned and operated his own construction company in a coastal North Carolina community.
+<br/><br/>
+It was one of his construction clients who recognized Don’s sharp business instincts and customer-focused approach and recruited him into the Babbitt bearing industry. Less than a year later, in 2006, Don was hired by Pioneer Motor Bearing Company, where he held several roles—including Sales Manager for North America.
+<br/><br/>
+His success at Pioneer caught the attention of Kingsbury, Inc., where he was brought on as Sales Manager for Fluid Film Products in their repair and service division in 2014. It was during his time with Kingsbury that Don got his first real taste of doing business with the US Navy.  Over the next 6½ years, Don continued to grow his reputation for results and relationship-building.
+<br/><br/>
+In 2021, Pioneer Motor Bearing invited Don back - this time as a member of its leadership team. Beginning in 2023, alongside his colleague Scott Derushia, Don championed the launch of a new division: PMB Machine Works, a DBA focused almost entirely on machining - specifically for the defense industry..
+<br/><br/>
+In under two years, Don and the PMB Machine Works team have secured major contracts with OEM’s supporting the mission of the U.S. Navy and achieved several critical milestones that he is now excited to share with you.
+		`,
 	}
 	,
 	"katina-adams": {
