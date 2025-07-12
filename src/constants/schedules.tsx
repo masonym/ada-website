@@ -960,7 +960,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "10:40 AM",
-                        title: "Networking Break",
+                        title: "Networking Break with Exhibitors",
                         location: "Hampton Roads Ballroom (I-V), 3rd Floor",
                     },
                     {
@@ -1017,6 +1017,11 @@ export const SCHEDULES = [
                         time: "4:30 PM - 5:30 PM",
                         title: "Matchmaking Session I",
                         location: "Franklin-Yorktown Meeting Room, 2nd Floor"
+                    },
+                    {
+                        time: "4:30 PM - 5:30 PM",
+                        title: "Networking with Exhibitors",
+                        location: "Hampton Roads Ballroom (I-V), 3rd Floor"
                     },
                     {
                         time: "6:00 PM - 8:00 PM",
@@ -1082,6 +1087,11 @@ export const SCHEDULES = [
                         time: "12:30 PM - 1:30 PM",
                         title: "Matchmaking Session II",
                         location: "Franklin-Yorktown Meeting Room, 2nd Floor"
+                    },
+                    {
+                        time: "12:30 PM - 1:30 PM",
+                        title: "Networking with Exhibitors",
+                        location: "Hampton Roads Ballroom (I-V), 3rd Floor"
                     },
                 ],
             },
