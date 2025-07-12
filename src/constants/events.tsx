@@ -725,7 +725,7 @@ invaluable connections that can shape the future of your business.
     matchmakingSessions: {
       signUpTime: "7:30 AM",
       signUpDate: "July 29, 2025",
-      sessionDurationMinutes: 10,
+      sessionDurationMinutes: 6,
       slotsPerHost: 9,
       sessions: [
         {
