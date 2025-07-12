@@ -726,7 +726,7 @@ invaluable connections that can shape the future of your business.
       signUpTime: "7:30 AM",
       signUpDate: "July 29, 2025",
       sessionDurationMinutes: 6,
-      slotsPerHost: 9,
+      slotsPerHost: 10,
       sessions: [
         {
           date: "July 29",
