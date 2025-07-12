@@ -429,8 +429,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Foam Boards & Signage", indent: 1 },
                         { content: "Conference Pop-up Banners", indent: 1 },
+                        { content: "Foam Boards & Signage", indent: 1 },
                         { content: "Digital Agenda & Event Website", indent: 1 },
                         { content: "Marketing Emails & Printed Program", indent: 1 }
                     ]},
@@ -474,8 +474,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 ]},
                 { formatted: [
                     { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Foam Boards & Signage", indent: 1 },
                     { content: "Conference Pop-up Banners", indent: 1 },
+                    { content: "Foam Boards & Signage", indent: 1 },
                     { content: "Digital Agenda & Event Website", indent: 1 },
                     { content: "Marketing Emails & Printed Program", indent: 1 }
                 ]},
