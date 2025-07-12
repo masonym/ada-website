@@ -277,11 +277,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
                     ]},
                     { formatted: [
-                        { content: "Branding: Conference Materials", bold: true },
-                        { content: "Prime Logo Placement on Conference Materials", indent: 1 },
-                        { content: "Conference Pop-up Banners", indent: 2 },
-                        { content: "Digital Agenda & Event Website", indent: 2 },
-                        { content: "Marketing Emails & Printed Program", indent: 2 }
+                        { content: "Logo Branding: Conference Materials", bold: true },
+                        { content: "Conference Pop-up Banners", indent: 1 },
+                        { content: "Digital Agenda & Event Website", indent: 1 },
+                        { content: "Marketing Emails & Printed Program", indent: 1 }
                     ]},
                     { formatted: [
                         { content: "Speaking Opportunity", bold: true },
@@ -430,6 +429,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Logo Branding: Conference Materials", bold: true },
+                        { content: "Foam Boards & Signage", indent: 1 },
                         { content: "Conference Pop-up Banners", indent: 1 },
                         { content: "Digital Agenda & Event Website", indent: 1 },
                         { content: "Marketing Emails & Printed Program", indent: 1 }
@@ -474,6 +474,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 ]},
                 { formatted: [
                     { content: "Logo Branding: Conference Materials", bold: true },
+                        { content: "Foam Boards & Signage", indent: 1 },
                     { content: "Conference Pop-up Banners", indent: 1 },
                     { content: "Digital Agenda & Event Website", indent: 1 },
                     { content: "Marketing Emails & Printed Program", indent: 1 }
