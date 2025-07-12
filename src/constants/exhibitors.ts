@@ -122,7 +122,7 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                     { formatted: [
                         { content: "Table-Top Exhibit Space", bold: true },
                         { content: "8'x10' Table-Top Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
-                        { content: "6' Tablecloth Table and Chairs", indent: 1 },
+                        { content: "6' Tablecloth Table & Chairs", indent: 1 },
                     ]},
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
