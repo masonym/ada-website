@@ -29,7 +29,7 @@ const EventFloorPlan: React.FC<EventFloorPlanProps> = ({
   // If not, we should not render the floor plan section
   if (eventId === 4) {
     return (
-      <section className="max-w-[86rem] mx-auto my-12">
+      <section className="max-w-[86rem] mx-auto my-4">
         <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 transition-all duration-300 hover:shadow-lg hover:border-blue-300 max-w-[90%] md:max-w-[60%] mx-auto">
           <div
             className="bg-navy-300 p-4 cursor-pointer flex justify-between items-center"
