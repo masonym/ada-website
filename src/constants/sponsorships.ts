@@ -233,7 +233,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { content: "Company Logo prominently displayed on Name Badges", indent: 1 },
                     { content: "Prime Logo Placement on Conference Materials", indent: 1 },
                     { content: "Conference Pop-up Banners", indent: 2 },
-                    { content: "Digital Agenda and Event Website", indent: 2 },
+                    { content: "Digital Agenda & Event Website", indent: 2 },
                     { content: "Marketing Emails & Printed Program", indent: 2 }
                 ]},
                 { formatted: [
@@ -242,15 +242,15 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 ]},
                 { formatted: [
                     { content: "Recognition/Visibility", bold: true },
-                    { content: "Recognition during General Session and Networking Breaks", indent: 1 },
+                    { content: "Recognition during General Session & Networking Breaks", indent: 1 },
                     { content: "Sponsor Spotlight Email highlighting your Company's Capabilities", indent: 1 },
-                    { content: "Social Media Recognition before and after the Conference", indent: 1 },
-                    { content: "Photographs and Videos of your Participation", indent: 1 }
+                    { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                    { content: "Photographs & Videos of your Participation", indent: 1 }
                 ]},
                 { formatted: [
                     { content: "Table-Top Exhibit Space", bold: true },
                     { content: "8'x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
-                    { content: "6' Tablecloth Table and Chairs", indent: 2 },
+                    { content: "6' Tablecloth Table & Chairs", indent: 2 },
                     { content: "Priority Placement Option", indent: 2 }
                 ]},
                 { formatted: [
@@ -280,7 +280,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         { content: "Branding: Conference Materials", bold: true },
                         { content: "Prime Logo Placement on Conference Materials", indent: 1 },
                         { content: "Conference Pop-up Banners", indent: 2 },
-                        { content: "Digital Agenda and Event Website", indent: 2 },
+                        { content: "Digital Agenda & Event Website", indent: 2 },
                         { content: "Marketing Emails & Printed Program", indent: 2 }
                     ]},
                     { formatted: [
@@ -289,14 +289,14 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
-                        { content: "Recognition during General Session and Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition before and after the Conference", indent: 1 },
-                        { content: "Photographs and Videos of your Participation", indent: 1 }
+                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Photographs & Videos of your Participation", indent: 1 }
                     ]},
                     { formatted: [
                         { content: "Table-Top Exhibit Space", bold: true },
                         { content: "8'x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
-                        { content: "6' Tablecloth Table and Chairs", indent: 2 },
+                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
                         { content: "Priority Placement Option", indent: 2 }
                     ]},
                     { formatted: [
@@ -323,7 +323,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { formatted: [
                         { content: "Logo Branding: Conference Materials", bold: true },
                         { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda and Event Website", indent: 1 },
+                        { content: "Digital Agenda & Event Website", indent: 1 },
                         { content: "Marketing Emails & Printed Program", indent: 1 }
                     ]},
                     { formatted: [
@@ -332,14 +332,14 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
-                        { content: "Recognition during General Session and Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition before and after the Conference", indent: 1 },
-                        { content: "Photographs and Videos of your Participation", indent: 1 }
+                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Photographs & Videos of your Participation", indent: 1 }
                     ]},
                     { formatted: [
                         { content: "Table-Top Exhibit Space", bold: true },
                         { content: "8’x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
-                        { content: "6' Tablecloth Table and Chairs", indent: 2 },
+                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
                         { content: "Priority Placement Option", indent: 2 },
                     ]},
                     { formatted: [
@@ -366,7 +366,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { formatted: [
                         { content: "Logo Branding: Conference Materials", bold: true },
                         { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda and Event Website", indent: 1 },
+                        { content: "Digital Agenda & Event Website", indent: 1 },
                         { content: "Marketing Emails & Printed Program", indent: 1 }
                     ]},
                     { formatted: [
@@ -375,14 +375,14 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
-                        { content: "Recognition during General Session and Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition before and after the Conference", indent: 1 },
-                        { content: "Photographs and Videos of your Participation", indent: 1 }
+                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Photographs & Videos of your Participation", indent: 1 }
                     ]},
                     { formatted: [
                         { content: "Table-Top Exhibit Space", bold: true },
                         { content: "8’x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
-                        { content: "6' Tablecloth Table and Chairs", indent: 2 },
+                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
                         { content: "Priority Placement Option", indent: 2 },
                     ]},
                     { formatted: [
@@ -431,7 +431,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { formatted: [
                         { content: "Logo Branding: Conference Materials", bold: true },
                         { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda and Event Website", indent: 1 },
+                        { content: "Digital Agenda & Event Website", indent: 1 },
                         { content: "Marketing Emails & Printed Program", indent: 1 }
                     ]},
                     { formatted: [
@@ -443,13 +443,13 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
                         { content: "Recognition during General Session before VIP Networking Reception", indent: 1 },
-                        { content: "Social Media Recognition before and after the Conference", indent: 1 },
-                        { content: "Photographs and Videos of your Participation", indent: 1 }
+                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Photographs & Videos of your Participation", indent: 1 }
                     ]},
                     { formatted: [
                         { content: "Table-Top Exhibit Space", bold: true },
                         { content: "8’x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
-                        { content: "6' Tablecloth Table and Chairs", indent: 2 }
+                        { content: "6' Tablecloth Table & Chairs", indent: 2 }
                     ]},
                     { formatted: [
                         { content: "Matchmaking Host Invitation", bold: true },
@@ -475,7 +475,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 { formatted: [
                     { content: "Logo Branding: Conference Materials", bold: true },
                     { content: "Conference Pop-up Banners", indent: 1 },
-                    { content: "Digital Agenda and Event Website", indent: 1 },
+                    { content: "Digital Agenda & Event Website", indent: 1 },
                     { content: "Marketing Emails & Printed Program", indent: 1 }
                 ]},
                 { formatted: [
@@ -488,13 +488,13 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 { formatted: [
                     { content: "Recognition/Visibility", bold: true },
                     { content: "Recognition during General Session before Networking Luncheon", indent: 1 },
-                    { content: "Social Media Recognition before and after the Conference", indent: 1 },
-                    { content: "Photographs and Videos of your Participation", indent: 1 }
+                    { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                    { content: "Photographs & Videos of your Participation", indent: 1 }
                 ]},
                 { formatted: [
                     { content: "Table-Top Exhibit Space", bold: true },
                     { content: "8’x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
-                    { content: "6' Tablecloth Table and Chairs", indent: 2 }
+                    { content: "6' Tablecloth Table & Chairs", indent: 2 }
                 ]},
                 { formatted: [
                     { content: "Matchmaking Host Invitation", bold: true },
@@ -519,17 +519,17 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Digital Agenda and Event Website", indent: 1 },
+                        { content: "Digital Agenda & Event Website", indent: 1 },
                         { content: "Marketing Emails & Printed Program", indent: 1 }
                     ]},
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
-                        { content: "Photographs and Videos of your Participation", indent: 1 }
+                        { content: "Photographs & Videos of your Participation", indent: 1 }
                     ]},
                     { formatted: [
                         { content: "Exhibit Space", bold: true },
                         { content: "8'x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
-                        { content: "6' Tablecloth Table and Chairs", indent: 2 }
+                        { content: "6' Tablecloth Table & Chairs", indent: 2 }
                     ]},
                 ],
                 showRemaining: true,
@@ -548,12 +548,12 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { formatted: [
                         { content: "Logo Branding: Conference Materials", bold: true },
                         { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda and Event Website", indent: 1 },
+                        { content: "Digital Agenda & Event Website", indent: 1 },
                         { content: "Marketing Emails & Printed Program", indent: 1 }
                     ]},
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
-                        { content: "Photographs and Videos of your Participation", indent: 1 }
+                        { content: "Photographs & Videos of your Participation", indent: 1 }
                     ]},
                 ],
                 showRemaining: true,

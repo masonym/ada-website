@@ -116,13 +116,12 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                         { content: "Additional Exhibitor Passes can be purchased for $395 each below.", indent: 1 },
                     ]},
                     { formatted: [
-                        { content: "Branding: Conference Materials", bold: true },
-                        { content: "Logo Placement on Conference Materials", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 2 },
+                        { content: "Logo Branding: Conference Materials", bold: true },
+                        { content: "Marketing Emails & Printed Program", indent: 1 },
                     ]},
                     { formatted: [
                         { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "8'x10' Table-Top Exhibit Space in Exhibit Area/Foyer", indent: 1 },
+                        { content: "8'x10' Table-Top Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
                         { content: "6' Tablecloth Table and Chairs", indent: 1 },
                     ]},
                     { formatted: [
