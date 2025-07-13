@@ -814,5 +814,64 @@ invaluable connections that can shape the future of your business.
       locationPhone: "(757) 426-7433",
       website: "https://watersidedistrict.com/private-events/the-harbor-club",
     } as VipNetworkingReception
-  }
+  },
+  {
+    id: 5,
+    title: "2025 Defense Technology & Aerospace Procurement Conference",
+    date: "November 5-6, 2025",
+    timeStart: "2025-11-05T11:30:00Z", // This is in UTC time
+    description: "TBD",
+    eventText: (
+      <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Event Overview
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Join us for the <b>2025 Defense Technology & Aerospace Procurement Conference</b> on November 5-6, 2025 in Austin, Texas, home to the Renaissance Austin Hotel. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
+        </p>
+        <p className="font-bold text-xl text-center font-gotham">
+          Topical Coverage:
+        </p>
+        <ul className="list-disc pl-4">
+          <li>Defense Procurement Trends and Opportunities</li>
+          <li>Defense Procurement Regulations and Compliance</li>
+          <li>Defense Procurement Contracts and Subcontracts</li>
+          <li>Defense Procurement Procurement and Contracting</li>
+          <li>Defense Procurement Procurement and Contracting</li>
+        </ul>
+      </div>
+    ),
+    topicalCoverage: [
+      {
+        tagline: "TBD",
+        description: "TBD"
+      }
+    ],
+    image: "2025DTAPC.webp",
+    slug: "2025-defense-technology-aerospace-procurement-conference",
+    eventShorthand: "2025DTAPC",
+    password: "2025DTAPCADA",
+    locationImage: "locations/temp_venue.webp",
+    locationAddress: "9721 Arboretum Blvd, Austin, TX 78759",
+    venueName: "Renaissance Austin Hotel",
+    placeID: "ChIJL_jXUoLMRIYRdMJC6h3clUU",
+    matchmakingSessions: {
+      signUpTime: "7:30 AM",
+      signUpDate: "November 5, 2025",
+      sessionDurationMinutes: 6,
+      slotsPerHost: 10,
+      sessions: [
+        {
+          date: "November 5",
+          sessionTime: "4:30 PM - 5:30 PM",
+        },
+        {
+          date: "November 6",
+          sessionTime: "12:30 PM - 1:30 PM",
+        },
+      ]
+    },
+    expectationsText: `The conference will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across all sectors from IT, AI and Quantum, to cybersecurity qualification, to next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, to military base security, assured logistics and forward energy supply – with spotlights on multi-Billion-dollar acquisition programs from the Golden Dome initiative to next-generation aircraft and satellites, and the development of advanced unmanned platforms (‘loyal wingmen’ to drones).  Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.`
+    
+  },
 ];
