@@ -31,10 +31,23 @@ export interface ExhibitorType {
     shownOnRegistrationPage?: boolean;
 }
 
+// Define the structure for additional passes
+export interface AdditionalPassType {
+    name?: string;
+    title?: string;
+    description?: string;
+    price?: number;
+    headerImage?: string;
+    buttonText?: string;
+    maxQuantityPerOrder?: number;
+    perks?: Array<string | {formatted: FormattedPerk[]}>;
+}
+
 // Define the structure for exhibitor types by event
 export interface ExhibitorEventType {
     id: number;
     exhibitors: ExhibitorType[];
+    additionalPass?: AdditionalPassType;
 }
 
 export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
@@ -94,6 +107,26 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
     },
     {
         id: 4,
+        additionalPass: {
+            name: 'Additional Exhibitor Attendee Pass',
+            title: 'Additional Exhibitor Attendee Pass',
+            description: 'For registered Exhibitors. Purchase additional Exhibitor passes for your team at a discounted rate. A valid order ID from a previous Exhibitor or Sponsor registration is required.',
+            price: 395,
+            headerImage: 'vip.webp',
+            buttonText: 'Add',
+            maxQuantityPerOrder: 10,
+            perks: [
+                { formatted: [
+                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                    { content: "Access to General Sessions", indent: 1 },
+                    { content: "Access to Exhibit Area", indent: 1 },
+                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                    { content: "Breakfast & Buffet Lunch", indent: 1 },
+                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                    { content: "Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM", bold: true },
+                ]},
+            ],
+        },
         exhibitors: [
             {
                 id: "exhibit",
@@ -136,6 +169,26 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
     },
     {
         id: 5,
+        additionalPass: {
+            name: 'Additional Exhibitor Attendee Pass',
+            title: 'Additional Exhibitor Attendee Pass',
+            description: 'For registered Exhibitors. Purchase additional Exhibitor passes for your team at a discounted rate. A valid order ID from a previous Exhibitor or Sponsor registration is required.',
+            price: 395,
+            headerImage: 'vip.webp',
+            buttonText: 'Add',
+            maxQuantityPerOrder: 10,
+            perks: [
+                { formatted: [
+                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                    { content: "Access to General Sessions", indent: 1 },
+                    { content: "Access to Exhibit Area", indent: 1 },
+                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                    { content: "Breakfast & Buffet Lunch", indent: 1 },
+                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                    { content: "Access to VIP Networking Reception on November 5, 2025 from 6:00 PM - 8:00 PM", bold: true },
+                ]},
+            ],
+        },
         exhibitors: [
             {
                 id: "exhibit",

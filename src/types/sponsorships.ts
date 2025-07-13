@@ -34,9 +34,22 @@ export interface Sponsorship {
     sponsorPasses?: number; // Number of attendee passes included with this sponsorship
 }
 
+// Define the structure for additional passes
+export interface AdditionalPassType {
+    name?: string;
+    title?: string;
+    description?: string;
+    price?: number;
+    headerImage?: string;
+    buttonText?: string;
+    maxQuantityPerOrder?: number;
+    perks?: Array<string | {formatted: FormattedPerk[]}>;
+}
+
 // Define the structure for sponsorship tiers by event
 export interface SponsorshipTier {
     id: number;
     primeSponsor?: Sponsorship;
     sponsorships: Sponsorship[];
+    additionalPass?: AdditionalPassType;
 }

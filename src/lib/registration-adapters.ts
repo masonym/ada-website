@@ -1,7 +1,8 @@
 import { REGISTRATION_TYPES } from '@/constants/registrations';
 import { SPONSORSHIP_TYPES } from '@/constants/sponsorships';
-import { EXHIBITOR_TYPES, ExhibitorType } from '@/constants/exhibitors';
+import { EXHIBITOR_TYPES, ExhibitorType, AdditionalPassType as ExhibitorAdditionalPassType } from '@/constants/exhibitors';
 import { ModalRegistrationType } from '@/types/registration';
+import { AdditionalPassType as SponsorAdditionalPassType } from '@/types/sponsorships';
 
 // Define types based on the structure of the constants files
 interface FormattedPerkType {
@@ -159,38 +160,58 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
     };
   });
 
-  // If there are any sponsorships, add the discounted VIP pass
+  // If there are any sponsorships, look for event-specific additional pass or use default
   if (adaptedSponsors.length > 0) {
-    adaptedSponsors.push(
-      {
-      id: 'vip-discount-sponsor',
-      name: 'Additional Sponsor Attendee Pass',
-      title: 'Additional Sponsor Attendee Pass',
-      description: 'For registered Sponsors. Purchase additional Sponsor passes for your team at a discounted rate. A valid order ID from a previous Exhibitor or Sponsor registration is required.',
-      price: 395,
-      isActive: true,
-      requiresAttendeeInfo: true,
-      isGovtFreeEligible: false,
-      type: 'paid',
-      headerImage: 'vip.webp',
-      buttonText: 'Add',
-      category: 'sponsorship',
-      requiresValidation: true,
-      maxQuantityPerOrder: 10,
-      perks: [
-        // update to format 
-        { formatted: [
-              { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-              { content: "Access to General Sessions", indent: 1 },
-              { content: "Access to Exhibit Area", indent: 1 },
-              { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-              { content: "Breakfast & Buffet Lunch", indent: 1 },
-              { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-              { content: "Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM", indent: 0, bold: true, },
-        ]},
-      ],
-    },
-  );
+    const eventSpecificAdditionalPass: SponsorAdditionalPassType | undefined = eventData.additionalPass;
+    
+    if (eventSpecificAdditionalPass) {
+      // Use the event-specific additional pass
+      adaptedSponsors.push({
+        id: 'vip-discount-sponsor',
+        name: eventSpecificAdditionalPass.name || 'Additional Sponsor Attendee Pass',
+        title: eventSpecificAdditionalPass.title || 'Additional Sponsor Attendee Pass',
+        description: eventSpecificAdditionalPass.description || 'For registered Sponsors. Purchase additional Sponsor passes for your team at a discounted rate. A valid order ID from a previous Exhibitor or Sponsor registration is required.',
+        price: eventSpecificAdditionalPass.price || 395,
+        isActive: true,
+        requiresAttendeeInfo: true,
+        isGovtFreeEligible: false,
+        type: 'paid',
+        headerImage: eventSpecificAdditionalPass.headerImage || 'vip.webp',
+        buttonText: eventSpecificAdditionalPass.buttonText || 'Add',
+        category: 'sponsorship',
+        requiresValidation: true,
+        maxQuantityPerOrder: eventSpecificAdditionalPass.maxQuantityPerOrder || 10,
+        perks: eventSpecificAdditionalPass.perks || [],
+      });
+    } else {
+      // Fallback to default if no event-specific additional pass is defined
+      adaptedSponsors.push({
+        id: 'vip-discount-sponsor',
+        name: 'Additional Sponsor Attendee Pass',
+        title: 'Additional Sponsor Attendee Pass',
+        description: 'For registered Sponsors. Purchase additional Sponsor passes for your team at a discounted rate. A valid order ID from a previous Exhibitor or Sponsor registration is required.',
+        price: 395,
+        isActive: true,
+        requiresAttendeeInfo: true,
+        isGovtFreeEligible: false,
+        type: 'paid',
+        headerImage: 'vip.webp',
+        buttonText: 'Add',
+        category: 'sponsorship',
+        requiresValidation: true,
+        maxQuantityPerOrder: 10,
+        perks: [
+          { formatted: [
+                { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                { content: "Access to General Sessions", indent: 1 },
+                { content: "Access to Exhibit Area", indent: 1 },
+                { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                { content: "Breakfast & Buffet Lunch", indent: 1 },
+                { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+          ]},
+        ],
+      });
+    }
   }
   
   return adaptedSponsors;
@@ -251,37 +272,60 @@ export function getExhibitorsForEvent(eventId: number | string): AdapterModalReg
     };
   });
 
-  // If there are any exhibitor options, add the discounted VIP pass
+  // If there are any exhibitor options, look for event-specific additional pass or use default
   if (adaptedExhibitors.length > 0) {
-    adaptedExhibitors.push({
-      id: 'vip-discount-exhibitor',
-      name: 'Additional Exhibitor Attendee Pass',
-      title: 'Additional Exhibitor Attendee Pass',
-      description: 'For registered Exhibitors. Purchase additional Exhibitor passes for your team at a discounted rate. A valid order ID from a previous Exhibitor or Sponsor registration is required.',
-      price: 395,
-      isActive: true,
-      requiresAttendeeInfo: true,
-      isGovtFreeEligible: false,
-      type: 'paid',
-      headerImage: 'vip.webp',
-      buttonText: 'Add',
-      category: 'exhibit',
-      requiresValidation: true,
-      maxQuantityPerOrder: 10, // Example limit
-      perks: [
-        // Updated to use formatted perks structure like the sponsor VIP pass
-        { formatted: [
-                        { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-                        { content: "Access to General Sessions", indent: 1 },
-                        { content: "Access to Exhibit Area", indent: 1 },
-                        { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                        { content: "Breakfast & Buffet Lunch", indent: 1 },
-                        { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                        { content: "Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM", indent: 0, bold: true, },
-        ]},
-      ],
-      shownOnRegistrationPage: false,
-    });
+    const eventSpecificAdditionalPass: ExhibitorAdditionalPassType | undefined = eventData.additionalPass;
+    
+    if (eventSpecificAdditionalPass) {
+      // Use the event-specific additional pass
+      adaptedExhibitors.push({
+        id: 'vip-discount-exhibitor',
+        name: eventSpecificAdditionalPass.name || 'Additional Exhibitor Attendee Pass',
+        title: eventSpecificAdditionalPass.title || 'Additional Exhibitor Attendee Pass',
+        description: eventSpecificAdditionalPass.description || 'For registered Exhibitors. Purchase additional Exhibitor passes for your team at a discounted rate. A valid order ID from a previous Exhibitor or Sponsor registration is required.',
+        price: eventSpecificAdditionalPass.price || 395,
+        isActive: true,
+        requiresAttendeeInfo: true,
+        isGovtFreeEligible: false,
+        type: 'paid',
+        headerImage: eventSpecificAdditionalPass.headerImage || 'vip.webp',
+        buttonText: eventSpecificAdditionalPass.buttonText || 'Add',
+        category: 'exhibit',
+        requiresValidation: true,
+        maxQuantityPerOrder: eventSpecificAdditionalPass.maxQuantityPerOrder || 10,
+        perks: eventSpecificAdditionalPass.perks || [],
+        shownOnRegistrationPage: false,
+      });
+    } else {
+      // Fallback to default if no event-specific additional pass is defined
+      adaptedExhibitors.push({
+        id: 'vip-discount-exhibitor',
+        name: 'Additional Exhibitor Attendee Pass',
+        title: 'Additional Exhibitor Attendee Pass',
+        description: 'For registered Exhibitors. Purchase additional Exhibitor passes for your team at a discounted rate. A valid order ID from a previous Exhibitor or Sponsor registration is required.',
+        price: 395,
+        isActive: true,
+        requiresAttendeeInfo: true,
+        isGovtFreeEligible: false,
+        type: 'paid',
+        headerImage: 'vip.webp',
+        buttonText: 'Add',
+        category: 'exhibit',
+        requiresValidation: true,
+        maxQuantityPerOrder: 10,
+        perks: [
+          { formatted: [
+                { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                { content: "Access to General Sessions", indent: 1 },
+                { content: "Access to Exhibit Area", indent: 1 },
+                { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                { content: "Breakfast & Buffet Lunch", indent: 1 },
+                { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+          ]},
+        ],
+        shownOnRegistrationPage: false,
+      });
+    }
   }
 
   return adaptedExhibitors;
