@@ -4,7 +4,66 @@ import { getEnv } from '../env';
 import { RegistrationFormData, TicketSelection, AttendeeInfo } from '@/types/event-registration/registration';
 import { EVENTS } from '@/constants/events';
 
+// Configuration for event-specific spreadsheet mapping
+interface SpreadsheetConfig {
+  spreadsheetId: string;
+  registrationSheetName?: string;
+  description?: string;
+}
+
+// Map event IDs to their respective spreadsheet configurations
+interface EventSpreadsheetMapping {
+  [eventId: string]: SpreadsheetConfig;
+  default: SpreadsheetConfig;
+}
+
 const env = getEnv();
+
+/**
+ * EVENT_SPREADSHEET_MAPPING
+ * 
+ * Maps each event to its specific Google Spreadsheet.
+ * The 'default' entry is used as a fallback for any events not explicitly mapped.
+ * 
+ * Each entry contains:
+ * - spreadsheetId: The Google Sheets ID for the specific event
+ * - registrationSheetName: The name of the sheet tab in the spreadsheet where registrations are logged
+ * - description: Optional description of what the spreadsheet is used for
+ */
+const EVENT_SPREADSHEET_MAPPING: EventSpreadsheetMapping = {
+  // Default spreadsheet (fallback for any unmapped event)
+  default: {
+    spreadsheetId: env.GOOGLE_SHEETS_SPREADSHEET_ID,
+    registrationSheetName: '🛡️ Attendee Registration Information 🛡️',
+    description: 'Default registration spreadsheet'
+  },
+  
+  '1': {
+    spreadsheetId: env.GOOGLE_SHEETS_SPREADSHEET_ID_2025DIF || env.GOOGLE_SHEETS_SPREADSHEET_ID,
+    registrationSheetName: '🛡️ Attendee Registration Information 🛡️',
+    description: '2025 Defense Industry Forecast registrations'
+  },
+  
+  '2': {
+    spreadsheetId: env.GOOGLE_SHEETS_SPREADSHEET_ID_2025SDPC || env.GOOGLE_SHEETS_SPREADSHEET_ID,
+    registrationSheetName: '🛡️ Attendee Registration Information 🛡️',
+    description: '2025 Southeast Defense Procurement Conference registrations'
+  },
+  '4': {
+    spreadsheetId: env.GOOGLE_SHEETS_SPREADSHEET_ID_2025NMCPC || env.GOOGLE_SHEETS_SPREADSHEET_ID,
+    registrationSheetName: '🛡️ Attendee Registration Information 🛡️',
+    description: '2025 Defense Technology and Acquisition Conference registrations'
+  },
+  '5': {
+    spreadsheetId: env.GOOGLE_SHEETS_SPREADSHEET_ID_2025DTAPC || env.GOOGLE_SHEETS_SPREADSHEET_ID,
+    registrationSheetName: '🛡️ Attendee Registration Information 🛡️',
+    description: '2025 Navy Marine Corps Procurement Conference registrations'
+  },
+  
+  // Add more event mappings as needed
+};
+
+
 
 // Initialize the Google Sheets API client
 async function getAuthClient() {
@@ -18,10 +77,6 @@ async function getAuthClient() {
     );
 
     oAuth2Client.setCredentials({ refresh_token: env.GOOGLE_REFRESH_TOKEN });
-
-    // The access token will be automatically refreshed if it's expired.
-    // You can manually refresh if needed, but typically not necessary for each call.
-    // await oAuth2Client.refreshAccessToken(); 
 
     return oAuth2Client;
   } catch (error) {
@@ -86,12 +141,18 @@ export async function logRegistration(
   discountApplied?: number
 ) {
   try {
-    const env = getEnv();
     const event = EVENTS.find(e => e.id === Number(eventId));
     if (!event) {
       throw new Error(`Event with ID ${eventId} not found`);
     }
 
+    // Get the spreadsheet configuration for this event
+    // If no specific config exists for this event, use the default
+    const spreadsheetConfig = EVENT_SPREADSHEET_MAPPING[eventId] || EVENT_SPREADSHEET_MAPPING.default;
+    
+    // Get the sheet name (with fallback)
+    const sheetName = spreadsheetConfig.registrationSheetName || '🛡️ Attendee Registration Information 🛡️';
+    
     const registrationTimestamp = new Date().toISOString();
     const formattedRegistrationTimestamp = new Date(registrationTimestamp).toLocaleString();
     const rowsToAppend: any[][] = [];
@@ -199,12 +260,15 @@ export async function logRegistration(
     }
 
     if (rowsToAppend.length > 0) {
+      // Use the event-specific spreadsheet ID and sheet name
       await appendToSheet(
-        env.GOOGLE_SHEETS_SPREADSHEET_ID,
-        '🛡️ Attendee Registration Information 🛡️!A2',
+        spreadsheetConfig.spreadsheetId,
+        `${sheetName}!A2`,
         rowsToAppend,
         'USER_ENTERED'
       );
+      
+      console.log(`Registration logged to spreadsheet for event ${eventId} (${event.eventShorthand})`);
     } else {
       console.warn('No rows generated for logging registration. Order ID:', orderId);
     }
