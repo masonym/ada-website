@@ -133,5 +133,47 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                 shownOnRegistrationPage: true,
             },
         ]
+    },
+    {
+        id: 5,
+        exhibitors: [
+            {
+                id: "exhibit",
+                title: "Table-Top Exhibit Space",
+                cost: 1250,
+                earlyBirdPrice: 1000,
+                earlyBirdDeadline: "2025-01-18T08:00:00Z",
+                headerImage: "exhibit-table-pass.webp",
+                buttonText: "Register Now",
+                description: "Table-Top Exhibit Space for your organization",
+                isActive: true,
+                requiresAttendeeInfo: true,
+                maxQuantityPerOrder: 1,
+                isGovtFreeEligible: false,
+                slotsPerEvent: 65,
+                showRemaining: true,
+                perks: [
+                    { formatted: [
+                        { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                        { content: "Additional Exhibitor Passes can be purchased for $395 each below.", indent: 1 },
+                    ]},
+                    { formatted: [
+                        { content: "Logo Branding: Conference Materials", bold: true },
+                        { content: "Marketing Emails & Printed Program", indent: 1 },
+                    ]},
+                    { formatted: [
+                        { content: "Table-Top Exhibit Space", bold: true },
+                        { content: "8'x10' Table-Top Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                        { content: "6' Tablecloth Table & Chairs", indent: 1 },
+                    ]},
+                    { formatted: [
+                        { content: "Recognition/Visibility", bold: true },
+                        { content: "Photographs of your Participation", indent: 1 },
+                    ]},
+                ],
+                colour: "#3FB4E6",
+                shownOnRegistrationPage: true,
+            },
+        ]
     }
 ];

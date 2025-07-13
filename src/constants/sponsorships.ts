@@ -391,28 +391,6 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
                     ]}
                 ],
-                /*
-- **Event Access:** (2) VIP Attendee Passes
-  - Additional Sponsor Passes can be purchased for $395 each
-- **Branding:** Conference Materials
-  - Logo Placement on Conference Materials
-    - Conference Pop-up Banners
-    - Digital Agenda and Event Website
-    - Marketing Emails & Printed Program
-- **Speaking Opportunity**
-  - 5-Minute Speaking Opportunity during General Session
-- **Recognition/Visibility**
-  - Recognition during General Session and Networking Breaks
-  - Social Media Recognition before and after the Conference
-  - Photographs and Videos of your Participation
-- **Table-Top Exhibit Space**
-  - 8’x10' Exhibit Space in Exhibit Hall/Foyer
-    - 6' Tablecloth Table and Chairs
-- **Matchmaking Host Invitation**
-  - Opportunity to Host a Matchmaking Table on either or both days
-    - July 29: 4:30 PM - 5:30 PM
-    - July 30: 12:30 PM - 1:30 PM
-    */
                 colour: "#CD7F32",
                 showRemaining: true
             },
@@ -502,6 +480,333 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
                     { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
                     { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
+                ]},
+                ],
+                colour: "#3FB4E6",
+                showRemaining: true,
+            },
+            {
+                id: "small-business-sponsor",
+                title: "Small Business Sponsorship",
+                cost: 1500,
+                slotsPerEvent: 20,
+                sponsorPasses: 2,
+                perks: [
+                    { formatted: [
+                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                        { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Logo Branding: Conference Materials", bold: true },
+                        { content: "Digital Agenda & Event Website", indent: 1 },
+                        { content: "Marketing Emails & Printed Program", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Recognition/Visibility", bold: true },
+                        { content: "Photographs of your Participation", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Exhibit Space", bold: true },
+                        { content: "8'x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                        { content: "6' Tablecloth Table & Chairs", indent: 2 }
+                    ]},
+                ],
+                showRemaining: true,
+            },
+            {
+                id: "small-business-sponsor-without-exhibit-space",
+                title: "Small Business Sponsorship without Exhibit Space",
+                cost: 1250,
+                slotsPerEvent: 20,
+                sponsorPasses: 2,
+                perks: [
+                    { formatted: [
+                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                        { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Logo Branding: Conference Materials", bold: true },
+                        { content: "Conference Pop-up Banners", indent: 1 },
+                        { content: "Digital Agenda & Event Website", indent: 1 },
+                        { content: "Marketing Emails & Printed Program", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Recognition/Visibility", bold: true },
+                        { content: "Photographs of your Participation", indent: 1 }
+                    ]},
+                ],
+                showRemaining: true,
+                showOnSponsorshipPage: false,
+            },
+        ],
+    },
+    {
+        id: 5,
+        primeSponsor:
+        {
+            id: "platinum-sponsor",
+            title: "Platinum Sponsorship",
+            cost: 10000,
+            slotsPerEvent: 1,
+            sponsorPasses: 5,
+            perks: [
+                { formatted: [
+                    { content: "Event Access: (5) VIP Attendee Passes", bold: true },
+                    { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                ]},
+                { formatted: [
+                    { content: "Exclusive Branding: Lanyards, Name Badges, and Conference Materials", bold: true },
+                    { content: "Branded Lanyards used with all attendee Name Badges", indent: 1 },
+                    { content: "Company Logo prominently displayed on Name Badges", indent: 1 },
+                    { content: "Prime Logo Placement on Conference Materials", indent: 1 },
+                    { content: "Conference Pop-up Banners", indent: 2 },
+                    { content: "Digital Agenda & Event Website", indent: 2 },
+                    { content: "Marketing Emails & Printed Program", indent: 2 }
+                ]},
+                { formatted: [
+                    { content: "Speaking Opportunity", bold: true },
+                    { content: "20-Minute Speaking Opportunity during General Session", indent: 1 }
+                ]},
+                { formatted: [
+                    { content: "Recognition/Visibility", bold: true },
+                    { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                    { content: "Sponsor Spotlight Email highlighting your Company's Capabilities", indent: 1 },
+                    { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                    { content: "Photographs & Videos of your Participation", indent: 1 }
+                ]},
+                { formatted: [
+                    { content: "Table-Top Exhibit Space", bold: true },
+                    { content: "8'x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                    { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                    { content: "Priority Placement Option", indent: 2 }
+                ]},
+                { formatted: [
+                    { content: "Matchmaking Host Invitation", bold: true },
+                    { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                    { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
+                    { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
+                ]}
+            ],
+            colour: "bg-sky-300",
+            showRemaining: true,
+        },
+
+        sponsorships: [
+            {
+                id: "gold-sponsor",
+                title: "Gold Sponsorship",
+                cost: 7000,
+                slotsPerEvent: 2,
+                sponsorPasses: 4,
+                perks: [
+                    { formatted: [
+                        { content: "Event Access: (4) VIP Attendee Passes", bold: true },
+                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Logo Branding: Conference Materials", bold: true },
+                        { content: "Conference Pop-up Banners", indent: 1 },
+                        { content: "Digital Agenda & Event Website", indent: 1 },
+                        { content: "Marketing Emails & Printed Program", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Speaking Opportunity", bold: true },
+                        { content: "15-Minute Speaking Opportunity during General Session", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Recognition/Visibility", bold: true },
+                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Photographs & Videos of your Participation", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Table-Top Exhibit Space", bold: true },
+                        { content: "8'x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                        { content: "Priority Placement Option", indent: 2 }
+                    ]},
+                    { formatted: [
+                        { content: "Matchmaking Host Invitation", bold: true },
+                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                        { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
+                        { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
+                    ]}
+                ],
+                colour: "#ffaf00",
+                showRemaining: true
+            },
+            {
+                id: "silver-sponsor",
+                title: "Silver Sponsorship",
+                cost: 5000,
+                slotsPerEvent: 3,
+                sponsorPasses: 3,
+                perks: [
+                    { formatted: [
+                        { content: "Event Access: (3) VIP Attendee Passes", bold: true },
+                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Logo Branding: Conference Materials", bold: true },
+                        { content: "Conference Pop-up Banners", indent: 1 },
+                        { content: "Digital Agenda & Event Website", indent: 1 },
+                        { content: "Marketing Emails & Printed Program", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Speaking Opportunity", bold: true },
+                        { content: "10-Minute Speaking Opportunity during General Session", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Recognition/Visibility", bold: true },
+                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Photographs & Videos of your Participation", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Table-Top Exhibit Space", bold: true },
+                        { content: "8’x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                        { content: "Priority Placement Option", indent: 2 },
+                    ]},
+                    { formatted: [
+                        { content: "Matchmaking Host Invitation", bold: true },
+                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                        { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
+                        { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
+                    ]}
+                ],
+                colour: "#C0C0C0",
+                showRemaining: true
+            },
+            {
+                id: "bronze-sponsor",
+                title: "Bronze Sponsorship",
+                cost: 3000,
+                slotsPerEvent: 5,
+                sponsorPasses: 2,
+                perks: [
+                    { formatted: [
+                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Logo Branding: Conference Materials", bold: true },
+                        { content: "Conference Pop-up Banners", indent: 1 },
+                        { content: "Digital Agenda & Event Website", indent: 1 },
+                        { content: "Marketing Emails & Printed Program", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Speaking Opportunity", bold: true },
+                        { content: "5-Minute Speaking Opportunity during General Session", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Recognition/Visibility", bold: true },
+                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Photographs & Videos of your Participation", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Table-Top Exhibit Space", bold: true },
+                        { content: "8’x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                        { content: "Priority Placement Option", indent: 2 },
+                    ]},
+                    { formatted: [
+                        { content: "Matchmaking Host Invitation", bold: true },
+                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                        { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
+                        { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
+                    ]}
+                ],
+                colour: "#CD7F32",
+                showRemaining: true
+            },
+            {
+                id: "vip-networking-reception-sponsor",
+                title: "VIP Networking Reception Sponsorship",
+                cost: 3500,
+                slotsPerEvent: 1,
+                sponsorPasses: 2,
+                perks: [
+                    { formatted: [
+                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Logo Branding: Conference Materials", bold: true },
+                        { content: "Conference Pop-up Banners", indent: 1 },
+                        { content: "Foam Boards & Signage", indent: 1 },
+                        { content: "Digital Agenda & Event Website", indent: 1 },
+                        { content: "Marketing Emails & Printed Program", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Exclusive Host of the VIP Networking Reception", bold: true },
+                        { content: "Provide Welcoming Remarks at the VIP Networking Reception", indent: 1 },
+                        { content: "Logo Placement at VIP Networking Reception", indent: 1 },
+                        { content: "Table Tents on VIP Networking Reception Tables", indent: 2 }
+                    ]},
+                    { formatted: [
+                        { content: "Recognition/Visibility", bold: true },
+                        { content: "Recognition during General Session before VIP Networking Reception", indent: 1 },
+                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Photographs & Videos of your Participation", indent: 1 }
+                    ]},
+                    { formatted: [
+                        { content: "Table-Top Exhibit Space", bold: true },
+                        { content: "8’x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                        { content: "6' Tablecloth Table & Chairs", indent: 2 }
+                    ]},
+                    { formatted: [
+                        { content: "Matchmaking Host Invitation", bold: true },
+                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                        { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
+                        { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
+                    ]},
+                ],
+                colour: "#3FB4E6",
+                showRemaining: true,
+            },
+            {
+                id: "networking-luncheon-sponsor",
+                title: "Networking Luncheon Sponsorship",
+                cost: 5000,
+                slotsPerEvent: 2,
+                sponsorPasses: 3,
+                perks: [
+                { formatted: [
+                    { content: "Event Access: (3) VIP Attendee Passes", bold: true },
+                    { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
+                ]},
+                { formatted: [
+                    { content: "Logo Branding: Conference Materials", bold: true },
+                    { content: "Conference Pop-up Banners", indent: 1 },
+                    { content: "Foam Boards & Signage", indent: 1 },
+                    { content: "Digital Agenda & Event Website", indent: 1 },
+                    { content: "Marketing Emails & Printed Program", indent: 1 }
+                ]},
+                { formatted: [
+                    { content: "Host of the Networking Luncheon with Exhibitors", bold: true },
+                    { content: "Provide 5-minute Remarks before the Networking Luncheon", indent: 1 },
+                    { content: "Logo Placement at Networking Luncheon", indent: 1 },
+                    { content: "Table Tents on Networking Luncheon Tables", indent: 2 },
+                    { content: "Signage near Food/Beverage Areas", indent: 2 }
+                ]},
+                { formatted: [
+                    { content: "Recognition/Visibility", bold: true },
+                    { content: "Recognition during General Session before Networking Luncheon", indent: 1 },
+                    { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                    { content: "Photographs & Videos of your Participation", indent: 1 }
+                ]},
+                { formatted: [
+                    { content: "Table-Top Exhibit Space", bold: true },
+                    { content: "8’x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                    { content: "6' Tablecloth Table & Chairs", indent: 2 }
+                ]},
+                { formatted: [
+                    { content: "Matchmaking Host Invitation", bold: true },
+                    { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                    { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
+                    { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
                 ]},
                 ],
                 colour: "#3FB4E6",

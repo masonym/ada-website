@@ -820,7 +820,7 @@ invaluable connections that can shape the future of your business.
     title: "2025 Defense Technology & Aerospace Procurement Conference",
     date: "November 5-6, 2025",
     timeStart: "2025-11-05T11:30:00Z", // This is in UTC time
-    description: "TBD",
+    description: "The 2025 Defense Technology & Aerospace Procurement Conference will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across all sectors from IT, AI and Quantum, to cybersecurity qualification, to next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, to military base security, assured logistics and forward energy supply – with spotlights on multi-Billion-dollar acquisition programs from the Golden Dome initiative to next-generation aircraft and satellites, and the development of advanced unmanned platforms (‘loyal wingmen’ to drones).  Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
     eventText: (
       <div className="max-container font-light">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
@@ -832,7 +832,7 @@ invaluable connections that can shape the future of your business.
         <p className="font-bold text-xl text-center font-gotham">
           Topical Coverage:
         </p>
-        <ul className="list-disc pl-4">
+        <ul className="list-inside">
           <li>Defense Procurement Trends and Opportunities</li>
           <li>Defense Procurement Regulations and Compliance</li>
           <li>Defense Procurement Contracts and Subcontracts</li>
@@ -843,11 +843,27 @@ invaluable connections that can shape the future of your business.
     ),
     topicalCoverage: [
       {
-        tagline: "TBD",
-        description: "TBD"
+        tagline: "Defense Procurement Trends and Opportunities",
+        description: "Defense Procurement Trends and Opportunities"
+      },
+      {
+        tagline: "Defense Procurement Regulations and Compliance",
+        description: "Defense Procurement Regulations and Compliance"
+      },
+      {
+        tagline: "Defense Procurement Contracts and Subcontracts",
+        description: "Defense Procurement Contracts and Subcontracts"
+      },
+      {
+        tagline: "Defense Procurement Procurement and Contracting",
+        description: "Defense Procurement Procurement and Contracting"
+      },
+      {
+        tagline: "Defense Procurement Procurement and Contracting",
+        description: "Defense Procurement Procurement and Contracting"
       }
     ],
-    image: "2025DTAPC.webp",
+    image: "2025DTAPC_wide.webp",
     slug: "2025-defense-technology-aerospace-procurement-conference",
     eventShorthand: "2025DTAPC",
     password: "2025DTAPCADA",
