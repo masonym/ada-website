@@ -1133,6 +1133,72 @@ Prior to federal service, Mr. Miller managed commercial property in the Washingt
 	
 	<br/>
 	Today, he is one of the industry’s most innovative entrepreneurs and American thought leaders.`,
+  },
+  "joel-coulter": {
+    "image": "placeholder.webp",
+    "name": "Joel Coulter",
+    "position": "Strategic Growth Officer",
+    "company": "Neptune SHIELD Tech Hub",
+    "bio": `Joel has led strategic initiatives to strengthen America’s national security, focusing on counterterrorism, maritime domain awareness, and expeditionary disaster response capacities, while fostering innovations in drones, AI, and robotics through public-private partnerships. Following 9/11, he supported efforts to counter global cybersecurity threats, including China’s Golden Shield, and advanced the Navy’s port and riverine security enterprise alongside multi-agency collaborations. In recent years, he has worked to establish state innovation hubs and international alliances in drone, cyber, and electronic warfare, enhancing critical infrastructure protection and early warning systems for defense and intelligence communities.`,
+  },
+  "nicholas-antonio-rocha": {
+    "image": "placeholder.webp",
+    "name": "Nicholas Antonio Rocha",
+    "position": "President/CEO",
+    "company": "Neptune SHIELD Tech Hub",
+    "bio": `Nick successfully completed a 26-year career as a Navy SEAL. He graduated from Norwich University with a BS in Strategic Studies and Defense Analysis and business certification from Harvard.  Nick served at various command levels across CENTCOM, EUCOM, and NORTHCOM and led functioning teams, completed endless training, extreme missions, while facing life-and-death challenges. But it’s those very experiences, where innovation, adaptation, and quick decision-making were critical, that have shaped how he approaches the work we do here at Neptune SHIELD. It’s about pushing the limits, finding solutions in high-pressure environments, and ensuring mission success for all stakeholders.`,
+  },
+  "jeffrey-hoffman": {
+    "image": "jeffrey-hoffman.webp",
+    "name": "Jeffrey Hoffman",
+    "position": "President and CEO",
+    "company": "Cyber Intelligent Partners",
+    "bio": `
+Mr. Jeff Hoffmann is a CISO certified, dedicated professional with proven performance in certified PMI management, leadership, and communication. Results-oriented, retired war college military veteran with over 20 years of experience in national security, cyber, and urban and rural economic development that began in the United States Senate and Congressional Affairs for the Office of the Secretary of Defense.
+<br/>
+<br/>
+Alongside leadership for CIP, Mr. Hoffmann is an Adjunct Professor for the New York University Global Security, Conflict and Cyber Crime Graduate STEM program. His specific course is partnered with the EC Council C|TIA. Mr. Hoffmann is a graduate of the NYU Tandon School of Engineering Chief Information Security Officer (CISO) Executive Leadership program. He also sits on an Advisory Board for the Virginia Department of Education, which is updating standards of learning (SOL) for Computer Science in public schools. This includes improvement and addition of cybersecurity SOL goals.
+<br/>
+<br/>
+In 2017, (as a private sector trusted agent for the U.S. government), Mr. Hoffmann was awarded by the Office of the Director of National Intelligence (ODNI) for managing the mission engagement portfolio for a four-year priority technology modernization initiative called IC-ITE. This transformational effort advanced data analytics, including open-source techniques and Artificial Intelligence (AI)/machine learning, leveraged multi-agency cloud computing, and expanded collection tradecraft. Results of this work were written into first-ever Intelligence Community Mission Capabilities Strategic Guidance.
+<br/>
+<br/>
+For ODNI, he was also a contributing author for two National Intelligence Council annual cyber threat assessments and a representative on the Cyber Threat Intelligence Integration Center Cybercrime Working Group.
+<br/>
+<br/>
+Mr. Hoffmann has received corporate awards for work on proposals valued over $15 billion for intelligence services and was a contributor to an RFP for White House Office of Science & Technology (S&T) alternative GPS/6G solutions.
+<br/>
+<br/>
+In 2021, Mr. Hoffmann returned from the United Kingdom where he designed cyber threat intelligence (CTI) and information and communication technologies (ICT) analysis, counterintelligence, and targeting capabilities for the U.S. European Command.
+<br/>
+<br/>
+Prior to ownership of CIP, Mr. Hoffmann was the Regional Cyber Lead for the Defense Security Cooperation Agency Institute for Security Governance. In this capacity, he led teams to advise foreign partner cyber command elements, Presidential staff/council members, interagency, and Ministry of Defense groups on incident response, workforce development, critical infrastructure, crisis planning, and security operations center infrastructure.
+<br/>
+<br/>
+In earlier years of his career, Mr. Hoffmann was employed by the U.S. government for seven years managing initiatives, missions, and projects across air, space, and cyberspace and a director for a multi-million U.S. Department of Agriculture program that provided economic development. These included programs that led to jobs, workforce development, such as CTE and other community improvement initiatives – many with direct impacts to public schools.
+<br/>
+<br/>
+Mr. Hoffmann has a strong academic background in cyber and digital transformation, to include research with the University of Oxford Global Cyber Security Capacity Center in England and recipient of the Oxford Saïd Business School Executive AI certification in program management.
+	`
+  },
+  "daniel-hudson": {
+    "image": "daniel-hudson.webp",
+    "name": "Daniel Hudson",
+    "position": "Director, AI Applications",
+    "company": "Huntington Ingalls Industries",
+    "bio": `Dan Hudson is the Senior Director of Applied Technologies for the Fleet Sustainment business group in the Mission Technologies division of Huntington Ingalls Industries (HII). He has more than 25 years of professional experience and is a multi-disciplinary expert in applying human factors and reliability engineering, data science and advanced analytics, artificial intelligence and intelligent automation, and digital transformation to create enterprise value across multiple domains, including healthcare and public health, cybersecurity and intelligence, reliability and safety of engineered systems, and enterprise risk management.
+	<br/>
+	
+	<br/>
+	Before joining HII in 2022, Hudson served in a spectrum of data science and technology leadership roles in the private sector supporting the missions of the Department of Defense, Department of Veterans Affairs, and the Intelligence Community. He also served for 10 years as a Reliability Engineer and Risk Analyst for the U.S. Nuclear Regulatory Commission and is a Veteran of the U.S. Navy (Navy Diver and Submarine Warfare Officer) and U.S. Marine Corps (Electronics Technician).
+	<br/>
+	
+	<br/>
+	Hudson earned a Bachelor of Science with Distinction degree in Aerospace and Space Systems Engineering from the U.S. Naval Academy, a Master of Science degree in Reliability Engineering and Predictive Analytics from the University of Maryland, and a Doctor of Philosophy degree in Data Science and Decision Intelligence from the Johns Hopkins University. He is a Certified Analytics Professional (CAP), Certified Cloud Practitioner (CCP), and is Certified in Public Health (CPH). Hudson’s volunteer activities include serving as the Vice-President/President-Elect of the INFORMS Analytics Society, as a Director for the INFORMS Analytics Certification Board (ACB), and as a Committee Member for the National Academies of Sciences, Engineering, and Medicine (NASEM) Standing Committee on Aerospace Medicine and Medicine of Extreme Environments (CAMMEE).
+	<br/>
+	
+	<br/>
+	HII is a global, all-domain defense provider, delivering the world’s most powerful ships and technologies that safeguard our seas, sky, land, space and cyber. Headquartered in Virginia, we are united by our mission of more than 135-years in service of the nation, creating the advantage for our customers to protect peace and freedom around the world. For more information, please visit: <a href="http://HII.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">HII.com</a>.`,
   }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -1227,6 +1293,10 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"brian-w-miller",
 		"anthony-livanios",
 		"roger-camp",
+		"joel-coulter",
+		"nicholas-antonio-rocha",
+		"jeffrey-hoffman",
+		"daniel-hudson",
 	]
 };
 
