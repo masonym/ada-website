@@ -150,7 +150,7 @@ export async function logRegistration(
             attendee.firstName || '',
             attendee.lastName || '',
             attendee.email || '',
-            attendee.phone || '',
+            (attendee.phone).replace(/\D/g, '') || '',
             commonData.registrationTimestamp,
             ticketType,
             Math.max((amountToLog * 0.971) - 0.3, 0),
