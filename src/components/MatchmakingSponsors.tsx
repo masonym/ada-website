@@ -12,7 +12,7 @@ interface MatchmakingSponsorsProps {
   eventSlug: string;
 }
 
-const MatchmakingSponsorCard: React.FC<{ sponsor: Sponsor }> = ({ sponsor }) => {
+const MatchmakingSponsorCard: React.FC<{ sponsor: Sponsor; note?: string }> = ({ sponsor, note }) => {
   return (
     <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col sm:flex-row items-center sm:items-start gap-6">
       <div className="flex-shrink-0 w-40 h-40 relative flex items-center justify-center">
@@ -51,6 +51,11 @@ const MatchmakingSponsorCard: React.FC<{ sponsor: Sponsor }> = ({ sponsor }) => 
             This company will be participating in matchmaking sessions. Visit their website to learn more.
           </p>
         )}
+        {note && (
+          <p className="text-slate-600 italic mt-4">
+            {note}
+          </p>
+        )}
       </div>
     </div>
   );
@@ -76,7 +81,7 @@ const MatchmakingSponsors: React.FC<MatchmakingSponsorsProps> = ({ eventSlug }) 
       )}
       <div className="space-y-6">
         {sponsors.map((sponsor) => (
-          <MatchmakingSponsorCard key={sponsor.id} sponsor={sponsor} />
+          <MatchmakingSponsorCard key={sponsor.sponsor.id} sponsor={sponsor.sponsor} note={sponsor.note} />
         ))}
       </div>
     </div>

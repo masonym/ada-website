@@ -80,7 +80,12 @@ export const LODGING_INFO: LodgingInfo[] = [
         },
       },
     ],
-    note: "Group Block Name: Navy & Marine Corps Procurement Conference<br />Group Rate: Standard Room: $159.00 + Tax | Waterview Room: $179.00 + Tax<br />Rate Available: July 27-31, 2025<br />Group Rate Cut-off Date: July 14, 2025 or Until Group Block is Sold Out<br /><a href='https://www.marriott.com/event-reservations/reservation-link.mi?guestreslink2=true&id=1740589200251&key=GRP' target='_blank' rel='noopener noreferrer' class='underline hover:text-accent text-blue-500'>Reservation Link</a>"
+    note: `
+    <b>Group Block Name</b>: Navy & Marine Corps Procurement Conference<br />
+    <b>Group Rate</b>: Standard Room: $159.00 + Tax | Waterview Room: $179.00 + Tax<br />
+    <b>Rate Available</b>: July 27-31, 2025<br />
+    <b>Group Rate Cut-off Date</b>: <s>July 14, 2025</s> Extended to July 18, 2025 (More Rooms Added)<br />
+    <a href='https://www.marriott.com/event-reservations/reservation-link.mi?guestreslink2=true&id=1740589200251&key=GRP' target='_blank' rel='noopener noreferrer' class='underline hover:text-accent text-blue-500'>Reservation Link</a>`
   }
   // Add more events' lodging info here
 ];

@@ -242,6 +242,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             cost: 10000,
             slotsPerEvent: 1,
             sponsorPasses: 5,
+            requiresAttendeeInfo: true,
             perks: [
                 { formatted: [
                     { content: "Event Access: (5) VIP Attendee Passes", bold: true },
@@ -289,6 +290,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 id: "gold-sponsor",
                 title: "Gold Sponsorship",
                 cost: 7000,
+                requiresAttendeeInfo: true,
                 slotsPerEvent: 2,
                 sponsorPasses: 4,
                 perks: [
@@ -332,6 +334,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 id: "silver-sponsor",
                 title: "Silver Sponsorship",
                 cost: 5000,
+                requiresAttendeeInfo: true,
                 slotsPerEvent: 3,
                 sponsorPasses: 3,
                 perks: [
@@ -375,6 +378,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 id: "bronze-sponsor",
                 title: "Bronze Sponsorship",
                 cost: 3000,
+                requiresAttendeeInfo: true,
                 slotsPerEvent: 5,
                 sponsorPasses: 2,
                 perks: [
@@ -418,6 +422,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 id: "vip-networking-reception-sponsor",
                 title: "VIP Networking Reception Sponsorship",
                 cost: 3500,
+                requiresAttendeeInfo: true,
                 slotsPerEvent: 1,
                 sponsorPasses: 2,
                 perks: [
@@ -463,6 +468,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 id: "networking-luncheon-sponsor",
                 title: "Networking Luncheon Sponsorship",
                 cost: 5000,
+                requiresAttendeeInfo: true,
                 slotsPerEvent: 2,
                 sponsorPasses: 3,
                 perks: [
@@ -510,6 +516,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 title: "Small Business Sponsorship",
                 cost: 1500,
                 slotsPerEvent: 20,
+                requiresAttendeeInfo: true,
                 sponsorPasses: 2,
                 perks: [
                     { formatted: [
@@ -537,6 +544,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 id: "small-business-sponsor-without-exhibit-space",
                 title: "Small Business Sponsorship without Exhibit Space",
                 cost: 1250,
+                requiresAttendeeInfo: true,
                 slotsPerEvent: 20,
                 sponsorPasses: 2,
                 perks: [
