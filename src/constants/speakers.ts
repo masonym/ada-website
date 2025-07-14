@@ -1114,6 +1114,25 @@ Prior to federal service, Mr. Miller managed commercial property in the Washingt
     "position": "Senior Director for Business Development, Naval Programs",
     "company": "Hanwha Defense USA",
     "bio": `Roger Camp is the Senior Director for Business Development, Naval Programs at Hanwha Defense USA. A large part of his role is supporting Hanwha Philly Shipyard. After completing his undergraduate degree at Vanderbilt University, Roger served on four ships in the United States Navy as a Surface Warfare Officer for 20 years, with much of the last half of his career spent in missile defense. He spent two years at General Dynamics working Common Display System, and Littoral Combat Ship programs before spending seven years at Raytheon working on missile defense issues. He spent the last 5 1/2 years at General Atomics Electromagnetics and joined Hanwha in February 2025. Roger has been involved with the National Shipbuilding Research Program since 2019 and is also the President and Chief Executive Officer of the American Shipbuilding Suppliers Association, and served four years as President of the Northern Virginia Council, Navy League of the United States.`,
+  },
+  "anthony-livanios": {
+    "image": "anthony-livanios.webp",
+    "name": "Anthony Livanios",
+    "position": "CEO",
+    "company": "U.S. Energy Stream, Inc.",
+    "bio": `Anthony Livanios is a business owner and highly experienced international economist. He founded US Energy Stream in 2010 with a mission to bring the highest intelligence to educate and empower business and government leaders. He has over thirty years of experience in leading and negotiating agreements for energy majors, independents, national gas companies, and governments. He successfully executed gas pipeline negotiations, LNG projects, geopolitical risk assessments, and market intelligence. He has created one of the most influential government networks in Washington, DC.
+	<br/>
+	
+	<br/>
+	He has a lifelong passion in education and teaching. For more than thirty years as a Visiting Professor and Senior Training Instructor has been teaching international energy markets, energy and national security, and energy transition leadership, to University students, business leaders and government officials.
+	<br/>
+	
+	<br/>
+	He has lived and worked in eight cities, four countries, and two continents, while implementing international business and government projects. He has a proven track record in delivering shareholder return.
+	<br/>
+	
+	<br/>
+	Today, he is one of the industry’s most innovative entrepreneurs and American thought leaders.`,
   }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -1206,6 +1225,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"paul-wichert",
 		"vice-admiral-richard-w-hunt",
 		"brian-w-miller",
+		"anthony-livanios",
 		"roger-camp",
 	]
 };
