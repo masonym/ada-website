@@ -1211,28 +1211,40 @@ const RegistrationModal = ({
       ticketPrices[`${sponsorId}-vip-pass`] = 0; // Sponsor passes are complimentary
     });
 
+    console.log(ticketPrices);
+
     // Find the first registration type that has attendees and requires attendee info
     // Check across all registration types
     const findFirstRegWithAttendees = (registrations: AdapterModalRegistrationType[]) => {
       return registrations.find(reg =>
         reg.requiresAttendeeInfo &&
         (ticketQuantities[reg.id] || 0) > 0 &&
-        (attendeesByTicket[reg.id] || []).length > 0
+        ((attendeesByTicket[reg.id] || []).length > 0 || (sponsorPassAttendees[reg.id] || []).length > 0)
       )?.id;
     };
+    console.log(allRegistrations);
+    console.log(exhibitors);
+    console.log(sponsorships);
 
     const firstRegWithAttendeesId =
       findFirstRegWithAttendees(allRegistrations) ||
       findFirstRegWithAttendees(exhibitors) ||
       findFirstRegWithAttendees(sponsorships);
+    console.log("firstRegWithAttendeesId: ", firstRegWithAttendeesId);
 
     let primaryAttendeeData: Partial<ModalAttendeeInfo> = {};
+    // First check attendeesByTicket
     if (firstRegWithAttendeesId && attendeesByTicket[firstRegWithAttendeesId] && attendeesByTicket[firstRegWithAttendeesId][0]) {
       primaryAttendeeData = attendeesByTicket[firstRegWithAttendeesId][0];
+    }
+    // If not found, check sponsorPassAttendees
+    else if (firstRegWithAttendeesId && sponsorPassAttendees[firstRegWithAttendeesId] && sponsorPassAttendees[firstRegWithAttendeesId][0]) {
+      primaryAttendeeData = sponsorPassAttendees[firstRegWithAttendeesId][0];
     }
 
     const totalAmount = calculateTotal();
     const determinedPaymentMethod = totalAmount === 0 && selectedRegistration?.type === 'free' ? 'free' : 'creditCard';
+    console.log("primaryAttendeeData: ", primaryAttendeeData);
 
     const formDataToValidate: Partial<RegistrationFormData> = {
       eventId: event.id.toString(),
@@ -1242,7 +1254,7 @@ const RegistrationModal = ({
       phone: primaryAttendeeData.phone || 'N/A',
       jobTitle: primaryAttendeeData.jobTitle || 'N/A',
       company: primaryAttendeeData.company || 'N/A',
-      companyWebsite: primaryAttendeeData.website || undefined, // Schema allows undefined, regex for valid URL if present
+      companyWebsite: primaryAttendeeData.website || 'N/A', // Schema allows undefined, regex for valid URL if present
       businessSize: getValidatedBusinessSize(primaryAttendeeData.businessSize),
       industry: primaryAttendeeData.industry || 'N/A',
       // Address fields are not in the current yup schema, so not providing them here for validation.
