@@ -233,7 +233,8 @@ export const SPONSORS: Record<string, Sponsor> = {
     name: "UNICOR",
     logo: "/sponsors/unicor.webp",
     website: "https://www.unicor.gov/",
-    size: 'medium'
+    size: 'medium',
+    description: "UNICOR, the trade name for Federal Prison Industries (FPI), is a self-sustaining government corporation operating under the U.S. Department of Justice and Bureau of Prisons. Established in 1934, UNICOR provides job training and work experience to federal inmates, reducing recidivism and enhancing public safety - at no cost to taxpayers.",
   },
   // Additional sponsors from exhibitors list
   "medava": {
@@ -652,7 +653,7 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/hanwha-defense-usa.webp",
     website: "https://hanwhadefenseusa.com/",
     size: 'large',
-    description: "Hanwha Defense USA develops and supplies advanced ground and sea combat systems, including manned and unmanned platforms, artillery, and ammunition, to enhance the capabilities and survivability of military forces We specialize in providing advanced ground combat platforms, maritime solutions, and ammunition systems. We develop and supply a wide array of manned and unmanned combat systems, including state-of-the-art artillery and advanced ammunition designed to meet the rigorous demands of modern warfare. Our products aim to enhance the firepower, mobility, and survivability of military forces, ensuring they remain highly effective and adaptable in diverse combat scenarios With a focus on innovation and operational efficiency, Hanwha Defense USA is committed to delivering mission-oriented solutions that significantly improve the operational capabilities of ground and maritime forces. Our expertise encompasses developing technologies that ensure superior performance in the field, thereby contributing to the safety and effectiveness of military personnel.",
+    description: "Hanwha is a Fortune Global 500 company and the 7th largest business group in South Korea comprised of 380 offices globally. <b>Hanwha Defense USA, a US defense subsidiary of Hanwha Aerospace</b>, develops and supplies advanced ground and sea combat systems, including manned and unmanned platforms, artillery, and ammunition, to enhance the capabilities and survivability of military forces. We specialize in providing advanced ground combat platforms, maritime solutions, and ammunition systems. We develop and supply a wide array of manned and unmanned combat systems, including state-of-the-art artillery and advanced ammunition.",
   },
   "trust-consulting-services": {
     id: "trust-consulting-services",
@@ -724,10 +725,11 @@ export const SPONSORS: Record<string, Sponsor> = {
   },
   "newport-news-shipbuilding": {
     id: "newport-news-shipbuilding",
-    name: "Newport News Shipbuilding",
+    name: "Newport News Shipbuilding, A Division of HII",
     logo: "/sponsors/newport-news-shipbuilding.webp",
     website: "https://hii.com/what-we-do/divisions/newport-news-shipbuilding/",
     size: 'small',
+    description: "Newport News Shipbuilding (NNS), a division of Huntington Ingalls Industries (HII), headquartered in Newport News, VA,  is the sole industrial designer, builder and refueler of US Navy aircraft carriers and one of two providers of US Navy submarines. We have served the nation for more than 135 years by designing, constructing, and repairing more than 800 ships for the U.S. Navy and commercial customers. Our Small Business and Prospective Supplier Office is focused on supporting and integrating small businesses into NNS supply chain. This program includes initiatives to connect with, qualify, and train small businesses for potential contracting opportunities. If your business capabilities can contribute to higher quality products and services, cost improvements, and better overall performance, please register on the <a href='https://hii.com/suppliers/newport-news-suppliers/nns-become-a-supplier/' target='_blank' class='text-blue-500 underline hover:text-blue-700'>NNS Prospective Suppliers webpage</a>."
   },
   "amazon-business": {
     id: "amazon-business",
@@ -749,6 +751,27 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/big-top.webp",
     website: "https://bigtopusa.com/",
     size: 'small'
+  },
+  "us-gsa": {
+    id: "us-gsa",
+    name: "U.S. General Services Administration",
+    logo: "/sponsors/us-gsa.webp",
+    website: "https://www.gsa.gov/",
+    size: 'small',
+    description: `
+    <b>U.S. General Services Administration</b>, Office of Small and Disadvantaged Business Utilization, (OSDBU) carries out our nationwide responsibility for GSA’s small business programs. We are the chief advocate for small and disadvantaged businesses. OSDBU promotes increased access to GSA’s nationwide procurement opportunities and engages in activities that make it possible for the small business community to interact with key contracting experts and to receive counseling on the federal procurement process.
+    <br/><br/>
+    We monitor and implement small business policies at GSA and support <a href="https://www.sba.gov/" target="_blank" rel="noopener noreferrer" class="text-blue-500 underline hover:text-blue-700">Small Business Administration</a> programs, including:
+    <br/>
+    <ul class="list-inside pl-4">
+      <li><a href="https://www.sba.gov/document/support--agency-contracting-goals" target="_blank" rel="noopener noreferrer" class="text-blue-500 underline hover:text-blue-700">Small Business Procurement Preference Goaling Program</a></li>
+      <li><a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/8a-business-development-program" target="_blank" rel="noopener noreferrer" class="text-blue-500 underline hover:text-blue-700">Section 8(a) Business Development Program</a></li>
+      <li><a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/women-owned-small-business-federal-contracting-program" target="_blank" rel="noopener noreferrer" class="text-blue-500 underline hover:text-blue-700">Women-Owned Small Business (WOSB) Program</a></li>
+      <li><a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/hubzone-program" target="_blank" rel="noopener noreferrer" class="text-blue-500 underline hover:text-blue-700">Historically Underutilized Business Zone (HUBZone) Program</a></li>
+      <li><a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/service-disabled-veteran-owned-small-businesses-program" target="_blank" rel="noopener noreferrer" class="text-blue-500 underline hover:text-blue-700">Service-Disabled Veteran-Owned Small Businesses Program (SDVOSB)</a></li>
+      <li><a href="https://www.sba.gov/federal-contracting/contracting-guide/prime-subcontracting" target="_blank" rel="noopener noreferrer" class="text-blue-500 underline hover:text-blue-700">Subcontracting Assistance Program</a></li>
+    </ul>
+    `,
   }
 };
 
