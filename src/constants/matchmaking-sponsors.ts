@@ -36,7 +36,7 @@ export const EVENT_MATCHMAKING_SPONSORS: Record<string, MatchmakingSponsorsData>
       "mcs-government-services",
       "newport-news-shipbuilding",
       "general-dynamics-information-technology",
-      "us-army-contracting-command",
+      { sponsorId: "us-army-contracting-command", note: "Participating on Tuesday, July 29th only." },
       "hanwha-defense-usa",
       "us-gsa",
     ],
