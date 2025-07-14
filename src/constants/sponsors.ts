@@ -575,7 +575,7 @@ export const SPONSORS: Record<string, Sponsor> = {
   },
   "dmg-mori": {
     id: "dmg-mori",
-    name: "DMG Mori",
+    name: "DMG Mori Federal Services",
     logo: "/sponsors/dmg-mori.webp",
     website: "https://www.dmgmori-fs.com/",
     size: 'large',
