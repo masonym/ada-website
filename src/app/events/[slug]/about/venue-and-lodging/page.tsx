@@ -39,7 +39,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                         Event Venue & Lodging
                     </h2>
 
-                    <div className="grid grid-cols-1 md:grid-cols-1 max-w-[90%] md:max-w-[50%] gap-8 mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-1 max-w-[90%] md:max-w-[60%] gap-8 mx-auto">
                         {lodging.hotels.map((hotel, index) => (
                             <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
                                 <div className="relative h-[30rem]">
