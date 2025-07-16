@@ -250,8 +250,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 ]},
                 { formatted: [
                     { content: "Exclusive Branding: Lanyards, Name Badges, and Conference Materials", bold: true },
-                    { content: "Branded Lanyards used with all attendee Name Badges (Sponsor Provided)", indent: 1 },
-                    { content: "Company Logo prominently displayed on Name Badges", indent: 1 },
+                    { content: "Branded Lanyards used with all Attendee Name Badges (Sponsor Provided)", indent: 1 },
+                    { content: "Company Logo prominently displayed on Attendee Name Badges", indent: 1 },
                     { content: "Prime Logo Placement on Conference Materials", indent: 1 },
                     { content: "Conference Pop-up Banners", indent: 2 },
                     { content: "Digital Agenda & Event Website", indent: 2 },
