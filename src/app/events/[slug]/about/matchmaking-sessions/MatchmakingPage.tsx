@@ -86,7 +86,7 @@ const MatchmakingPage = () => {
           Matchmaking Sessions
         </h1>
         <p className="text-lg text-slate-600 max-w-7xl mx-auto">
-          The <b>{event.title}</b> will offer a special opportunity for businesses to engage in One-on-One Matchmaking Sessions with key decision-makers from the Department of Defense (DoD), Government Agencies, and Prime Contractors.
+          The <b>{event.title}</b> will offer a special opportunity for attendees to engage in One-on-One appointments with representatives and subject matter experts from the Department of Defense (DoD), Government Agencies, and Prime Contractors.
         </p>
         <div className="text-lg mt-4 mx-auto max-w-7xl text-slate-600">
           <p className="text-xl">
@@ -112,7 +112,7 @@ const MatchmakingPage = () => {
             <div>
               <h3 className="font-semibold mb-2">Matchmaking Sign-ups</h3>
               <p className="text-gray-200">
-                Sign-ups for the Matchmaking Sessions will begin at {event.matchmakingSessions?.signUpTime} on {event.matchmakingSessions?.signUpDate} and will be on a first-come, first-served basis. Businesses will need to provide their contact information and details about their capabilities, products, and services during the sign-up process.
+                Sign-ups for the Matchmaking Sessions will begin at {event.matchmakingSessions?.signUpTime} on {event.matchmakingSessions?.signUpDate} and will be on a first-come, first-served basis. 
               </p>
             </div>
           </div>
@@ -136,7 +136,7 @@ const MatchmakingPage = () => {
                         </span>
                       );
                     })}
-                    . Each host will have {event.matchmakingSessions.slotsPerHost} available slots, with each session lasting {event.matchmakingSessions.sessionDurationMinutes} minutes. The system is designed to ensure that both parties can maximize their time, focusing on relevant opportunities.
+                    . Each host will have {event.matchmakingSessions.slotsPerHost} available slots, with each session lasting {event.matchmakingSessions.sessionDurationMinutes} minutes. Each host will have {event.matchmakingSessions.sessionDurationMinutes + 2} minutes allocated for each appointment.
                   </>
                 )}
               </p>
@@ -145,9 +145,9 @@ const MatchmakingPage = () => {
           <div className="flex items-start gap-4">
             <Users className="w-6 h-6 mt-1 flex-shrink-0" />
             <div>
-              <h3 className="font-semibold mb-2">Networking and Partnerships</h3>
+              <h3 className="font-semibold mb-2">Networking and Information Exchange</h3>
               <p className="text-gray-200">
-                Matchmaking Sessions foster collaboration, creating a platform for businesses to form valuable partnerships, discuss subcontracting opportunities, and explore joint ventures that align with the needs of the defense industry.
+                Matchmaking Sessions foster collaboration, creating a platform for businesses to form valuable partnerships, discuss subcontracting opportunities, and explore teaming opportunities that align with the needs of the defense industry.
               </p>
             </div>
           </div>

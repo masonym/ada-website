@@ -844,10 +844,11 @@ invaluable connections that can shape the future of your business.
           <li>Race to Exploit Quantum Technology</li>
           <li>Accelerating Innovative Tech Contracting – DEFENSEWERX & DIU</li>
           <li>Critical Defense Infrastructure Cyber Protection</li>
+          <li>Cybersecurity & CMMC Update</li>
           <li>Military Base-Community Partnerships Promoting Local Build Contracts</li>
-          <li>New Defense Dept. Acquisition Initiatives/Guidelines</li>
+          <li>New Defense Department Acquisition Initiatives/Guidelines</li>
           <li>How to do Business with the Primes – Subcontracting & Teaming</li>
-          <li>Accessing Govt.-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's</li>
+          <li>Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's</li>
           <li>Mentor-Protégé Programs as Business Accelerators for Smalls & Primes</li>
         </ul>
       </div>
@@ -864,10 +865,11 @@ invaluable connections that can shape the future of your business.
           { "tagline": "Race to Exploit Quantum Technology", "description": "Placeholder Text" },
           { "tagline": "Accelerating Innovative Tech Contracting – DEFENSEWERX & DIU", "description": "Placeholder Text" },
           { "tagline": "Critical Defense Infrastructure Cyber Protection", "description": "Placeholder Text" },
+          { "tagline": "Cybersecurity & CMMC Update", "description": "Placeholder Text" },
           { "tagline": "Military Base-Community Partnerships Promoting Local Build Contracts", "description": "Placeholder Text" },
-          { "tagline": "New Defense Dept. Acquisition Initiatives/Guidelines", "description": "Placeholder Text" },
+          { "tagline": "New Defense Department Acquisition Initiatives/Guidelines", "description": "Placeholder Text" },
           { "tagline": "How to do Business with the Primes – Subcontracting & Teaming", "description": "Placeholder Text" },
-          { "tagline": "Accessing Govt.-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's", "description": "Placeholder Text" },
+          { "tagline": "Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's", "description": "Placeholder Text" },
           { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "Placeholder Text" }
     ],
     image: "2025DTAPC_wide.webp",

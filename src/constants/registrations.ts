@@ -251,11 +251,10 @@ export const REGISTRATION_TYPES = [
                 headerImage: "gov-pass.webp",
                 perks: [
                 { formatted: [
-                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                    { content: "Event Access: (1) Attendee Pass", bold: true },
                     { content: "Access to General Sessions", indent: 1 },
                     { content: "Access to Exhibit Area", indent: 1 },
                     { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Breakfast & Buffet Lunch", indent: 1 },
                     { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
                 ]}
                 ],
@@ -348,11 +347,10 @@ export const REGISTRATION_TYPES = [
                 headerImage: "gov-pass.webp",
                 perks: [
                 { formatted: [
-                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                    { content: "Event Access: (1) Attendee Pass", bold: true },
                     { content: "Access to General Sessions", indent: 1 },
                     { content: "Access to Exhibit Area", indent: 1 },
                     { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Breakfast & Buffet Lunch", indent: 1 },
                     { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
                 ]}
                 ],

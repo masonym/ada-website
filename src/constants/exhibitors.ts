@@ -213,6 +213,7 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                     { formatted: [
                         { content: "Logo Branding: Conference Materials", bold: true },
                         { content: "Marketing Emails & Printed Program", indent: 1 },
+                        { content: "Event Website", indent: 1 },
                     ]},
                     { formatted: [
                         { content: "Table-Top Exhibit Space", bold: true },

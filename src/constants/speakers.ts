@@ -1183,22 +1183,18 @@ Mr. Hoffmann has a strong academic background in cyber and digital transformatio
   },
   "daniel-hudson": {
     "image": "daniel-hudson.webp",
-    "name": "Daniel Hudson",
-    "position": "Director, AI Applications",
-    "company": "Huntington Ingalls Industries",
-    "bio": `Dan Hudson is the Senior Director of Applied Technologies for the Fleet Sustainment business group in the Mission Technologies division of Huntington Ingalls Industries (HII). He has more than 25 years of professional experience and is a multi-disciplinary expert in applying human factors and reliability engineering, data science and advanced analytics, artificial intelligence and intelligent automation, and digital transformation to create enterprise value across multiple domains, including healthcare and public health, cybersecurity and intelligence, reliability and safety of engineered systems, and enterprise risk management.
-	<br/>
-	
-	<br/>
-	Before joining HII in 2022, Hudson served in a spectrum of data science and technology leadership roles in the private sector supporting the missions of the Department of Defense, Department of Veterans Affairs, and the Intelligence Community. He also served for 10 years as a Reliability Engineer and Risk Analyst for the U.S. Nuclear Regulatory Commission and is a Veteran of the U.S. Navy (Navy Diver and Submarine Warfare Officer) and U.S. Marine Corps (Electronics Technician).
-	<br/>
-	
-	<br/>
-	Hudson earned a Bachelor of Science with Distinction degree in Aerospace and Space Systems Engineering from the U.S. Naval Academy, a Master of Science degree in Reliability Engineering and Predictive Analytics from the University of Maryland, and a Doctor of Philosophy degree in Data Science and Decision Intelligence from the Johns Hopkins University. He is a Certified Analytics Professional (CAP), Certified Cloud Practitioner (CCP), and is Certified in Public Health (CPH). Hudson’s volunteer activities include serving as the Vice-President/President-Elect of the INFORMS Analytics Society, as a Director for the INFORMS Analytics Certification Board (ACB), and as a Committee Member for the National Academies of Sciences, Engineering, and Medicine (NASEM) Standing Committee on Aerospace Medicine and Medicine of Extreme Environments (CAMMEE).
-	<br/>
-	
-	<br/>
-	HII is a global, all-domain defense provider, delivering the world’s most powerful ships and technologies that safeguard our seas, sky, land, space and cyber. Headquartered in Virginia, we are united by our mission of more than 135-years in service of the nation, creating the advantage for our customers to protect peace and freedom around the world. For more information, please visit: <a href="http://HII.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">HII.com</a>.`,
+    "name": "Dan Hudson",
+    "position": "Senior Technology Director",
+    "company": "HII Mission Technologies",
+    "bio": `
+Dan Hudson is a Senior Technology Director in the Mission Technologies division of Huntington Ingalls Industries (HII). He has more than 20 years of experience and is an expert in applying human factors and reliability engineering, data science and advanced analytics, model-based engineering, and digital transformation across multiple industries and domains, including healthcare and public health, national security and defense, cybersecurity and intelligence, reliability and safety of engineered systems, and risk management.
+<br/><br/>
+Before joining HII in 2022, Hudson served in a variety of data science and AI leadership roles in the private sector supporting the Department of Defense, Department of Veterans Affairs, and the Intelligence Community. He also served for more than 20 years in the Federal Government, including service as an enlisted Marine, as a Navy Diver and Submarine Warfare Officer, and finally as a Reliability Engineer and Risk Analyst for the U.S. Nuclear Regulatory Commission.
+<br/><br/>
+Hudson earned a Bachelor of Science with Distinction degree in Aerospace Engineering from the U.S. Naval Academy, a Master of Science degree in Predictive Analytics from the University of Maryland, and a Doctor of Philosophy degree in Decision Science from the Johns Hopkins University. He also holds several professional certifications in data science, AI, and cloud technologies.
+<br/><br/>
+HII is an all-domain defense and technologies partner, recognized worldwide as America’s largest shipbuilder. With a 135-year history of trusted partnerships in advancing U.S. national security, HII delivers critical capabilities ranging from the most powerful and survivable naval ships ever built, to unmanned systems, ISR, and AI/ML analytics. HII leads the industry in mission-driven solutions that support and enable an all-domain force. Headquartered in Virginia, HII’s skilled workforce is 44,000 strong. For more information please visit: HII.com.
+	`,
   }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {

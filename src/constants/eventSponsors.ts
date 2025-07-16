@@ -183,7 +183,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "metgreen-solutions",
                     "turbo-federal",
                     "big-top",
-                    "ari-hetra"
+                    "ari-hetra",
+                    "kdm",
                 ],
             },
             {
