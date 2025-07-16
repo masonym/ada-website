@@ -417,13 +417,13 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             {
                 id: "vip-networking-reception-sponsor",
                 title: "VIP Networking Reception Sponsorship",
-                cost: 6000,
+                cost: 3500,
                 requiresAttendeeInfo: true,
                 slotsPerEvent: 1,
-                sponsorPasses: 3,
+                sponsorPasses: 2,
                 perks: [
                     { formatted: [
-                        { content: "Event Access: (3) VIP Attendee Passes", bold: true },
+                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
                         { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
                     ]},
                     { formatted: [
@@ -762,13 +762,13 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             },
             {
                 id: "vip-networking-reception-sponsor",
-                title: "VIP Networking Reception Sponsorship",
-                cost: 3500,
+                title: "Exclusive VIP Networking Reception Sponsorship",
+                cost: 6000,
                 slotsPerEvent: 1,
-                sponsorPasses: 2,
+                sponsorPasses: 3,
                 perks: [
                     { formatted: [
-                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                        { content: "Event Access: (3) VIP Attendee Passes", bold: true },
                         { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
                     ]},
                     { formatted: [
@@ -806,7 +806,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             },
             {
                 id: "networking-luncheon-sponsor",
-                title: "Networking Luncheon & Coffee Station Sponsorship",
+                title: "Coffee Station Sponsorship",
                 cost: 5000,
                 slotsPerEvent: 2,
                 sponsorPasses: 3,
@@ -822,13 +822,6 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { content: "Foam Boards & Signage", indent: 1 },
                     { content: "Digital Agenda & Event Website", indent: 1 },
                     { content: "Marketing Emails & Printed Program", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Host of the Networking Luncheon with Exhibitors", bold: true },
-                    { content: "Provide 5-minute Remarks before the Networking Luncheon", indent: 1 },
-                    { content: "Logo Placement at Networking Luncheon", indent: 1 },
-                    { content: "Table Tents on Networking Luncheon Tables", indent: 2 },
-                    { content: "Signage near Food/Beverage Areas", indent: 2 }
                 ]},
                 { formatted: [
                     { content: "Recognition/Visibility", bold: true },
