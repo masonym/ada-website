@@ -264,15 +264,14 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 { formatted: [
                     { content: "Recognition/Visibility", bold: true },
                     { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                    { content: "Sponsor Spotlight Email highlighting your Company's Capabilities", indent: 1 },
+                    { content: "Sponsor Spotlight Email highlighting your Company's Capabilities to Attendees", indent: 1 },
                     { content: "Social Media Recognition before & after the Conference", indent: 1 },
                     { content: "Photographs & Videos of your Participation", indent: 1 }
                 ]},
                 { formatted: [
                     { content: "Table-Top Exhibit Space", bold: true },
-                    { content: "8'x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                    { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
                     { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                    { content: "Priority Placement Option", indent: 2 }
                 ]},
                 { formatted: [
                     { content: "Matchmaking Host Invitation", bold: true },
@@ -316,9 +315,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "8'x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
                         { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                        { content: "Priority Placement Option", indent: 2 }
                     ]},
                     { formatted: [
                         { content: "Matchmaking Host Invitation", bold: true },
@@ -360,9 +358,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "8’x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
                         { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                        { content: "Priority Placement Option", indent: 2 },
                     ]},
                     { formatted: [
                         { content: "Matchmaking Host Invitation", bold: true },
@@ -379,7 +376,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 title: "Bronze Sponsorship",
                 cost: 3000,
                 requiresAttendeeInfo: true,
-                slotsPerEvent: 5,
+                slotsPerEvent: 3,
                 sponsorPasses: 2,
                 perks: [
                     { formatted: [
@@ -404,9 +401,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "8’x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
                         { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                        { content: "Priority Placement Option", indent: 2 },
                     ]},
                     { formatted: [
                         { content: "Matchmaking Host Invitation", bold: true },
@@ -618,15 +614,14 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 { formatted: [
                     { content: "Recognition/Visibility", bold: true },
                     { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                    { content: "Sponsor Spotlight Email highlighting your Company's Capabilities", indent: 1 },
+                    { content: "Sponsor Spotlight Email highlighting your Company's Capabilities to Attendees", indent: 1 },
                     { content: "Social Media Recognition before & after the Conference", indent: 1 },
                     { content: "Photographs & Videos of your Participation", indent: 1 }
                 ]},
                 { formatted: [
                     { content: "Table-Top Exhibit Space", bold: true },
-                    { content: "8'x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                    { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
                     { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                    { content: "Priority Placement Option", indent: 2 }
                 ]},
                 { formatted: [
                     { content: "Matchmaking Host Invitation", bold: true },
@@ -669,9 +664,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "8'x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
                         { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                        { content: "Priority Placement Option", indent: 2 }
                     ]},
                     { formatted: [
                         { content: "Matchmaking Host Invitation", bold: true },
@@ -712,9 +706,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "8’x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
                         { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                        { content: "Priority Placement Option", indent: 2 },
                     ]},
                     { formatted: [
                         { content: "Matchmaking Host Invitation", bold: true },
@@ -730,7 +723,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 id: "bronze-sponsor",
                 title: "Bronze Sponsorship",
                 cost: 3000,
-                slotsPerEvent: 5,
+                slotsPerEvent: 3,
                 sponsorPasses: 2,
                 perks: [
                     { formatted: [
@@ -755,9 +748,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "8’x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
                         { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                        { content: "Priority Placement Option", indent: 2 },
                     ]},
                     { formatted: [
                         { content: "Matchmaking Host Invitation", bold: true },
