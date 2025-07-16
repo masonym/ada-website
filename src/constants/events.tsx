@@ -834,48 +834,41 @@ invaluable connections that can shape the future of your business.
         </p>
         <ul className="list-inside">
           <li>DoD Integration of Commercial Space Assets/Technologies</li>
-          <li>Space Force Support Functions Across All Domains/COCOMS</li>
+          <li>Space Force Support Functions Across Domains/COCOMS</li>
+          <li>Spaceport Projects Driving Launch Activity</li>
           <li>Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)</li>
+          <li>Unmanned Platforms Across Services – Prototype & Testing Contracts</li>
+          <li>Golden Dome Financing for Missile Defense Integration & Component Teams</li>
           <li>Defense Industrial Base Expansion – Ordnance, Missiles, Drones, etc.</li>
-          <li>Military Workforce Challenges & Programs</li>
-          <li>Space Force Launch & Range Support</li>
-          <li>Golden Dome Development Contracts – Across-the-Board Missile Defense Integration</li>
-          <li>AI Employment Across Defense Sectors</li>
+          <li>Expansion of AI Throughout Defense Sectors</li>
           <li>Race to Exploit Quantum Technology</li>
-          <li>Unmanned Platforms – Prototype & Testing Contracts</li>
-          <li>Defense Installation & Mission Support</li>
+          <li>Accelerating Innovative Tech Contracting – DEFENSEWERX & DIU</li>
+          <li>Critical Defense Infrastructure Cyber Protection</li>
           <li>Military Base-Community Partnerships Promoting Local Build Contracts</li>
-          <li>Accelerating Innovative Tech Contracting - DEFENSEWERX & DIU</li>
-          <li>Force Projection & Contested Logistics in the Pacific</li>
           <li>New Defense Dept. Acquisition Initiatives/Guidelines</li>
-          <li>How to do Business with the Primes - Subcontracting & Teaming</li>
+          <li>How to do Business with the Primes – Subcontracting & Teaming</li>
           <li>Accessing Govt.-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's</li>
           <li>Mentor-Protégé Programs as Business Accelerators for Smalls & Primes</li>
-          <li>Cybersecurity & CMMC Update</li>
         </ul>
       </div>
     ),
     topicalCoverage: [
-      {
-        tagline: "Defense Procurement Trends and Opportunities",
-        description: "Defense Procurement Trends and Opportunities"
-      },
-      {
-        tagline: "Defense Procurement Regulations and Compliance",
-        description: "Defense Procurement Regulations and Compliance"
-      },
-      {
-        tagline: "Defense Procurement Contracts and Subcontracts",
-        description: "Defense Procurement Contracts and Subcontracts"
-      },
-      {
-        tagline: "Defense Procurement Procurement and Contracting",
-        description: "Defense Procurement Procurement and Contracting"
-      },
-      {
-        tagline: "Defense Procurement Procurement and Contracting",
-        description: "Defense Procurement Procurement and Contracting"
-      }
+          { "tagline": "DoD Integration of Commercial Space Assets/Technologies", "description": "Placeholder Text" },
+          { "tagline": "Space Force Support Functions Across Domains/COCOMS", "description": "Placeholder Text" },
+          { "tagline": "Spaceport Projects Driving Launch Activity", "description": "Placeholder Text" },
+          { "tagline": "Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)", "description": "Placeholder Text" },
+          { "tagline": "Unmanned Platforms Across Services – Prototype & Testing Contracts", "description": "Placeholder Text" },
+          { "tagline": "Golden Dome Financing for Missile Defense Integration & Component Teams", "description": "Placeholder Text" },
+          { "tagline": "Defense Industrial Base Expansion – Ordnance, Missiles, Drones, etc.", "description": "Placeholder Text" },
+          { "tagline": "Expansion of AI Throughout Defense Sectors", "description": "Placeholder Text" },
+          { "tagline": "Race to Exploit Quantum Technology", "description": "Placeholder Text" },
+          { "tagline": "Accelerating Innovative Tech Contracting – DEFENSEWERX & DIU", "description": "Placeholder Text" },
+          { "tagline": "Critical Defense Infrastructure Cyber Protection", "description": "Placeholder Text" },
+          { "tagline": "Military Base-Community Partnerships Promoting Local Build Contracts", "description": "Placeholder Text" },
+          { "tagline": "New Defense Dept. Acquisition Initiatives/Guidelines", "description": "Placeholder Text" },
+          { "tagline": "How to do Business with the Primes – Subcontracting & Teaming", "description": "Placeholder Text" },
+          { "tagline": "Accessing Govt.-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's", "description": "Placeholder Text" },
+          { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "Placeholder Text" }
     ],
     image: "2025DTAPC_wide.webp",
     slug: "2025-defense-technology-aerospace-procurement-conference",
