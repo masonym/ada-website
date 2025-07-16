@@ -817,7 +817,7 @@ invaluable connections that can shape the future of your business.
   },
   {
     id: 5,
-    shown: true,
+    shown: false,
     title: "2025 Defense Technology & Aerospace Procurement Conference",
     date: "November 5-6, 2025",
     timeStart: "2025-11-05T11:30:00Z", // This is in UTC time
