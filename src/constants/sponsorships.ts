@@ -417,19 +417,18 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             {
                 id: "vip-networking-reception-sponsor",
                 title: "VIP Networking Reception Sponsorship",
-                cost: 3500,
+                cost: 6000,
                 requiresAttendeeInfo: true,
                 slotsPerEvent: 1,
-                sponsorPasses: 2,
+                sponsorPasses: 3,
                 perks: [
                     { formatted: [
-                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                        { content: "Event Access: (3) VIP Attendee Passes", bold: true },
                         { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
                     ]},
                     { formatted: [
                         { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Foam Boards & Signage", indent: 1 },
+                        { content: "Conference Signage", indent: 1 },
                         { content: "Digital Agenda & Event Website", indent: 1 },
                         { content: "Marketing Emails & Printed Program", indent: 1 }
                     ]},
@@ -774,8 +773,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Foam Boards & Signage", indent: 1 },
+                        { content: "Conference Signage", indent: 1 },
                         { content: "Digital Agenda & Event Website", indent: 1 },
                         { content: "Marketing Emails & Printed Program", indent: 1 }
                     ]},
@@ -793,7 +791,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     ]},
                     { formatted: [
                         { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "8’x10' Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                        { content: "8’x10' Exhibit Space", indent: 1 },
                         { content: "6' Tablecloth Table & Chairs", indent: 2 }
                     ]},
                     { formatted: [
