@@ -42,7 +42,7 @@ export default function LodgingSection({
   imageShown = true,
 }: LodgingSectionProps) {
   return (
-    <section className={`max-w-[86rem] mx-auto ${className}`}>
+    <section className={`mx-auto ${className}`}>
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-8">
         {title}
       </h2>
