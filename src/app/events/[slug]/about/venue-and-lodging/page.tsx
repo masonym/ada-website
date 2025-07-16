@@ -78,6 +78,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
             <section className="max-w-8xl mx-auto flex flex-col sm:flex-row justify-center gap-4 lg:gap-8">
 
                 {/* directions */}
+                {event.directions && (
                 <div className="mb-12 flex flex-col items-center">
                     <h3 className="text-3xl font-bold mt-6 mb-6 text-slate-800">Directions</h3>
                     <div className="grid gap-6 grid-cols-1 auto-rows-auto">
@@ -104,8 +105,10 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                         ))}
                     </div>
                 </div>
+                )}
 
                 {/* Parking Section */}
+                {event.parkingInfo && (
                 <div className="mb-12">
                     <h3 className="text-4xl font-bold mt-6 mb-6 text-slate-800 text-center">Parking</h3>
                     <div className="bg-white px-6 py-4 rounded-lg shadow-md flex flex-col gap-6">
@@ -124,12 +127,12 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
                         ))}
                     </div>
                 </div>
-
+                )}
 
             </section>
 
             {/* Google Map */}
-            <div className="h-[400px] rounded-lg overflow-hidden max-w-7xl mx-auto">
+            <div className="h-[400px] rounded-lg overflow-hidden max-w-7xl mx-auto mt-12">
                 <Map placeId={event.placeID || ''} />
             </div>
         </div>
