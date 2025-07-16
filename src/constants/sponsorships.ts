@@ -265,7 +265,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { content: "Recognition/Visibility", bold: true },
                     { content: "Recognition during General Session & Networking Breaks", indent: 1 },
                     { content: "Sponsor Spotlight Email highlighting your Company's Capabilities to Attendees", indent: 1 },
-                    { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                    { content: "Social Media Recognition", indent: 1 },
                     { content: "Photographs & Videos of your Participation", indent: 1 }
                 ]},
                 { formatted: [
@@ -310,7 +310,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
                         { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Social Media Recognition", indent: 1 },
                         { content: "Photographs & Videos of your Participation", indent: 1 }
                     ]},
                     { formatted: [
@@ -353,7 +353,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
                         { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Social Media Recognition", indent: 1 },
                         { content: "Photographs & Videos of your Participation", indent: 1 }
                     ]},
                     { formatted: [
@@ -396,7 +396,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
                         { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Social Media Recognition", indent: 1 },
                         { content: "Photographs & Videos of your Participation", indent: 1 }
                     ]},
                     { formatted: [
@@ -441,7 +441,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
                         { content: "Recognition during General Session before VIP Networking Reception", indent: 1 },
-                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Social Media Recognition", indent: 1 },
                         { content: "Photographs & Videos of your Participation", indent: 1 }
                     ]},
                     { formatted: [
@@ -488,7 +488,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 { formatted: [
                     { content: "Recognition/Visibility", bold: true },
                     { content: "Recognition during General Session before Networking Luncheon", indent: 1 },
-                    { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                    { content: "Social Media Recognition", indent: 1 },
                     { content: "Photographs & Videos of your Participation", indent: 1 }
                 ]},
                 { formatted: [
@@ -614,7 +614,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { content: "Recognition/Visibility", bold: true },
                     { content: "Recognition during General Session & Networking Breaks", indent: 1 },
                     { content: "Sponsor Spotlight Email highlighting your Company's Capabilities to Attendees", indent: 1 },
-                    { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                    { content: "Social Media Recognition", indent: 1 },
                     { content: "Photographs & Videos of your Participation", indent: 1 }
                 ]},
                 { formatted: [
@@ -658,7 +658,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
                         { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Social Media Recognition", indent: 1 },
                         { content: "Photographs & Videos of your Participation", indent: 1 }
                     ]},
                     { formatted: [
@@ -700,7 +700,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
                         { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Social Media Recognition", indent: 1 },
                         { content: "Photographs & Videos of your Participation", indent: 1 }
                     ]},
                     { formatted: [
@@ -742,7 +742,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
                         { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Social Media Recognition", indent: 1 },
                         { content: "Photographs & Videos of your Participation", indent: 1 }
                     ]},
                     { formatted: [
@@ -786,7 +786,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
                         { content: "Recognition during General Session before VIP Networking Reception", indent: 1 },
-                        { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                        { content: "Social Media Recognition", indent: 1 },
                         { content: "Photographs & Videos of your Participation", indent: 1 }
                     ]},
                     { formatted: [
@@ -826,7 +826,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 { formatted: [
                     { content: "Recognition/Visibility", bold: true },
                     { content: "Branded Coffee Napkins (Sponsor Provided)", indent: 1 },
-                    { content: "Social Media Recognition before & after the Conference", indent: 1 },
+                    { content: "Social Media Recognition", indent: 1 },
                     { content: "Photographs of your Participation", indent: 1 }
                 ]},
                 { formatted: [
