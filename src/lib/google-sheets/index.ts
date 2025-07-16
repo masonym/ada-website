@@ -211,10 +211,10 @@ export async function logRegistration(
             attendee.firstName || '',
             attendee.lastName || '',
             attendee.email || '',
-            attendee.phone || '',
+            (attendee.phone).replace(/\D/g, '') || '',
             commonData.registrationTimestamp,
             ticketType,
-            (amountToLog * 0.971) - 0.3,
+            Math.max((amountToLog * 0.971) - 0.3, 0),
             commonData.totalAmountPaid, // Total order amount
             attendee.website || '',
             attendee.businessSize || '',
@@ -250,7 +250,7 @@ export async function logRegistration(
             '', '', '', '', '', '',
             commonData.registrationTimestamp,
             ticketType,
-            (amountToLog * 0.971) - 0.3,
+            Math.max((amountToLog * 0.971) - 0.3, 0),
             commonData.totalAmountPaid, // Total order amount
             '', '', '', '', '', '',
           ];

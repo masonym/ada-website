@@ -182,7 +182,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "oak-theory",
                     "metgreen-solutions",
                     "turbo-federal",
-                    "big-top"
+                    "big-top",
+                    "ari-hetra"
                 ],
             },
             {

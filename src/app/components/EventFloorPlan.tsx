@@ -37,7 +37,7 @@ const EventFloorPlan: React.FC<EventFloorPlanProps> = ({
           >
             <h4 className="text-xl font-semibold text-white flex items-center">
               {isFloorplanOpen ? <ChevronDown className="mr-2" /> : <ChevronRight className="mr-2" />}
-              Event Floorplan
+              Event Floor Plan
             </h4>
           </div>
           <div
@@ -46,7 +46,7 @@ const EventFloorPlan: React.FC<EventFloorPlanProps> = ({
           >
             <div className="p-4 sm:p-6">
               <p className="text-gray-600 mb-4 text-center">
-                View the event floorplan below. Click on the image to view in high resolution.
+                View the event floor plan below. Click on the image to view in high resolution.
               </p>
               <div className="grid grid-cols-1 gap-4">
                 <div
@@ -55,7 +55,7 @@ const EventFloorPlan: React.FC<EventFloorPlanProps> = ({
                 >
                   <Image
                     src={getCdnPath(floorPlanImage)}
-                    alt="Event Floorplan"
+                    alt="Event Floor Plan"
                     width={790}
                     height={1024}
                     className="w-full h-auto rounded-md shadow-sm border"
@@ -76,7 +76,7 @@ const EventFloorPlan: React.FC<EventFloorPlanProps> = ({
           slides={[
             {
               src: getCdnPath(floorPlanImage),
-              alt: "Event Floorplan"
+              alt: "Event Floor Plan"
             }
           ]}
           plugins={[Zoom]}

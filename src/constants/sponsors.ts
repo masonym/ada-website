@@ -772,6 +772,13 @@ export const SPONSORS: Record<string, Sponsor> = {
       <li><a href="https://www.sba.gov/federal-contracting/contracting-guide/prime-subcontracting" target="_blank" rel="noopener noreferrer" class="text-blue-500 underline hover:text-blue-700">Subcontracting Assistance Program</a></li>
     </ul>
     `,
+  },
+  "ari-hetra": {
+    id: "ari-hetra",
+    name: "ARI-HETRA",
+    logo: "/sponsors/ari-hetra.webp",
+    website: "https://www.ari-hetra.com/",
+    size: 'small'
   }
 };
 
