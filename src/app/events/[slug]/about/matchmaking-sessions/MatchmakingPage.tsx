@@ -136,7 +136,7 @@ const MatchmakingPage = () => {
                         </span>
                       );
                     })}
-                    . Each host will have {event.matchmakingSessions.slotsPerHost} available slots, with each session lasting {event.matchmakingSessions.sessionDurationMinutes} minutes. Each host will have {event.matchmakingSessions.sessionDurationMinutes + 2} minutes allocated for each appointment.
+                    . Each host will have {event.matchmakingSessions.sessionDurationMinutes} minutes allocated for each appointment. The system is designed to ensure that both parties can maximize their time, focusing on relevant opportunities.
                   </>
                 )}
               </p>
