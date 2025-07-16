@@ -180,6 +180,13 @@ const PROMO_CODES: PromoCode[] = [
     description: 'ACEC15 - 15% off Attendee and VIP Attendee passes'
   },
   {
+    code: 'ADA20',
+    discountPercentage: 20,
+    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass', 'Attendee Pass', 'VIP Attendee Pass'],
+    expirationDate: new Date('2025-12-31'),
+    description: 'ADA20 - 20% off Attendee and VIP Attendee passes'
+  },
+  {
     code: 'EARLY10',
     discountPercentage: 10,
     eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass', 'Attendee Pass', 'VIP Attendee Pass',],
