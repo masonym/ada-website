@@ -163,7 +163,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
                 <LodgingSection 
                   lodging={lodging} 
                   title="Event Venue & Lodging" 
-                  className="px-4 sm:px-6 lg:px-8"
+                  className="px-4 sm:px-6 lg:px-8 mt-12"
                   imageShown={false}
                 />
               </div>
