@@ -12,6 +12,11 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'd3hatd5vc8h86k.cloudfront.net',
                 port: '',
+            },
+            {
+                protocol: 'https',
+                hostname: 'cdn.americandefensealliance.org',
+                port: '',
             }
         ],
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840, 4096],

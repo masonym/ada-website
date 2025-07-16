@@ -7,6 +7,12 @@ export function getEnv() {
     
     // Google Sheets (OAuth 2.0 Client)
     GOOGLE_SHEETS_SPREADSHEET_ID: getRequiredEnv('GOOGLE_SHEETS_SPREADSHEET_ID', 'Google Sheets Spreadsheet ID'),
+    // Event-specific spreadsheet IDs - these are optional and will fallback to the default if not provided
+    GOOGLE_SHEETS_SPREADSHEET_ID_2025DIF: process.env.GOOGLE_SHEETS_SPREADSHEET_ID_2025DIF || '',
+    GOOGLE_SHEETS_SPREADSHEET_ID_2025SDPC: process.env.GOOGLE_SHEETS_SPREADSHEET_ID_2025SDPC || '',
+    GOOGLE_SHEETS_SPREADSHEET_ID_2025NMCPC: process.env.GOOGLE_SHEETS_SPREADSHEET_ID_2025NMCPC || '',
+    GOOGLE_SHEETS_SPREADSHEET_ID_2025DTAPC: process.env.GOOGLE_SHEETS_SPREADSHEET_ID_2025DTAPC || '',
+    // Google OAuth credentials
     GOOGLE_CLIENT_ID: getRequiredEnv('GOOGLE_CLIENT_ID', 'Google Client ID'),
     GOOGLE_CLIENT_SECRET: getRequiredEnv('GOOGLE_CLIENT_SECRET', 'Google Client Secret'),
     GOOGLE_REFRESH_TOKEN: getRequiredEnv('GOOGLE_REFRESH_TOKEN', 'Google Refresh Token'),

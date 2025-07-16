@@ -137,4 +137,5 @@ export interface Event {
     countdownColour?: string;
     sales?: Sale[];
     vipNetworkingReception?: VipNetworkingReception;
+    shown?: boolean; // Controls whether this event should be displayed in event listings
 }
