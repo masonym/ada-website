@@ -55,6 +55,7 @@ const NavBar = () => {
     .filter(event => {
       // First, check if the event has a timeStart
       if (!event.timeStart) return false;
+      if (event.shown === false ) return false;
 
       // Use the safer isEventUpcoming function
       return isEventUpcoming(event.date, event.timeStart, now);

@@ -98,6 +98,9 @@ const UpcomingEvents = ({
       // First, check if the event has a timeStart
       if (!event.timeStart) return false;
 
+      // Skip events that are explicitly hidden
+      if (event.shown === false) return false;
+
       // Use the safer isEventUpcoming function
       return isEventUpcoming(event.date, event.timeStart, now);
     })
