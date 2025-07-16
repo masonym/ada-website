@@ -1195,6 +1195,12 @@ Hudson earned a Bachelor of Science with Distinction degree in Aerospace Enginee
 <br/><br/>
 HII is an all-domain defense and technologies partner, recognized worldwide as America’s largest shipbuilder. With a 135-year history of trusted partnerships in advancing U.S. national security, HII delivers critical capabilities ranging from the most powerful and survivable naval ships ever built, to unmanned systems, ISR, and AI/ML analytics. HII leads the industry in mission-driven solutions that support and enable an all-domain force. Headquartered in Virginia, HII’s skilled workforce is 44,000 strong. For more information please visit: HII.com.
 	`,
+  },
+  "victorino-mercado": {
+    "image": "placeholder.webp",
+    "name": "The Honorable Victorino ('Vic') G. Mercado",
+    "position": "U.S. Navy & Marine Corps Strategic Growth Partner and Leader, Federal Defense Consulting",
+    "company": "IBM",
   }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -1293,6 +1299,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"nicholas-antonio-rocha",
 		"jeffrey-hoffman",
 		"daniel-hudson",
+		"victorino-mercado",
 	]
 };
 
