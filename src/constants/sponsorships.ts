@@ -762,7 +762,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             },
             {
                 id: "vip-networking-reception-sponsor",
-                title: "Exclusive VIP Networking Reception Sponsorship",
+                title: "VIP Networking Reception Sponsorship",
                 cost: 6000,
                 slotsPerEvent: 1,
                 sponsorPasses: 3,
