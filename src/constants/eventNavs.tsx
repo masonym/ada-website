@@ -81,8 +81,8 @@ export const EVENT_NAVS = [
         subItems: [
           { label: 'About the Event', path: 'about-the-event' },
           { label: 'Event Venue & Lodging', path: 'venue-and-lodging' },
-          { label: 'FAQs', path: 'faqs' },
           { label: 'Matchmaking Sessions', path: 'matchmaking-sessions' },
+          { label: 'FAQs', path: 'faqs' },
           { label: 'Event Recap', path: 'event-recap' },
         ],
       },
@@ -106,8 +106,8 @@ export const EVENT_NAVS = [
         subItems: [
           { label: 'About the Event', path: 'about-the-event' },
           { label: 'Event Venue & Lodging', path: 'venue-and-lodging' },
-          { label: 'FAQs', path: 'faqs' },
           { label: 'Matchmaking Sessions', path: 'matchmaking-sessions' },
+          { label: 'FAQs', path: 'faqs' },
           { label: 'Event Recap', path: 'event-recap' },
         ],
       },
