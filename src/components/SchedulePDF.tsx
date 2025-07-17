@@ -1,8 +1,9 @@
 'use client';
 
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet, Font, PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Font, PDFDownloadLink, PDFViewer, Image } from '@react-pdf/renderer';
 import { Event } from '@/types/events';
+import { getCdnPath } from '@/utils/image';
 
 // Define schedule types locally since they may not be directly exported from the project
 type Speaker = {
@@ -115,17 +116,33 @@ const styles = StyleSheet.create({
   },
   speaker: {
     fontSize: 8,
-    marginBottom: 1,
+    marginBottom: 3,
     color: '#444444',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  speakerImageContainer: {
+    marginRight: 6,
+    flexShrink: 0,
+  },
+  speakerImage: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+  },
+  speakerInfo: {
+    flex: 1,
   },
   speakerName: {
     fontWeight: 'bold',
     fontSize: 8,
+    marginBottom: 1,
   },
   speakerTitle: {
     fontSize: 7,
     fontStyle: 'italic',
     color: '#666666',
+    marginBottom: 1,
   },
   speakerAffiliation: {
     fontSize: 7,
@@ -205,17 +222,49 @@ const SchedulePDF = ({
         )}
         {showSpeakers && item.speakers && item.speakers.length > 0 && (
           <View style={styles.speakersContainer}>
-            {item.speakers.map((speaker, speakerIndex) => (
-              <View key={speakerIndex} style={styles.speaker}>
-                <Text style={styles.speakerName}>{speaker.name}</Text>
-                {speaker.title && (
-                  <Text style={styles.speakerTitle}>{speaker.title}</Text>
-                )}
-                {speaker.affiliation && (
-                  <Text style={styles.speakerAffiliation}>{speaker.affiliation}</Text>
-                )}
-              </View>
-            ))}
+            {item.speakers.map((speaker, speakerIndex) => {
+              // Get PNG image URL for PDF compatibility
+              const getPDFImageUrl = (photo: string) => {
+                if (!photo) return null;
+                
+                // Convert WebP filename to PNG for PDF rendering
+                const pngFilename = photo.replace('.webp', '.png');
+                
+                // Use local PNG images from public/speakers/png/ directory
+                const pngPath = `/speakers/png/${pngFilename}`;
+                
+                // Return absolute URL for PDF rendering
+                if (typeof window !== 'undefined') {
+                  return new URL(pngPath, window.location.origin).href;
+                }
+                // Fallback for server-side rendering
+                return `https://americandefensealliance.org${pngPath}`;
+              };
+
+              const imageSrc = speaker.photo ? getPDFImageUrl(speaker.photo) : null;
+              
+              return (
+                <View key={speakerIndex} style={styles.speaker}>
+                  {imageSrc && (
+                    <View style={styles.speakerImageContainer}>
+                      <Image
+                        src={imageSrc}
+                        style={styles.speakerImage}
+                      />
+                    </View>
+                  )}
+                  <View style={styles.speakerInfo}>
+                    <Text style={styles.speakerName}>{speaker.name}</Text>
+                    {speaker.title && (
+                      <Text style={styles.speakerTitle}>{speaker.title}</Text>
+                    )}
+                    {speaker.affiliation && (
+                      <Text style={styles.speakerAffiliation}>{speaker.affiliation}</Text>
+                    )}
+                  </View>
+                </View>
+              );
+            })}
           </View>
         )}
         {showLocations && item.location && (
