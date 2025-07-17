@@ -19,6 +19,7 @@ export interface VipNetworkingReception {
     timeStart: string;
     timeEnd: string;
     additionalInfo?: string;
+    additionalInfo2?: string;
     locationName?: string;
     locationAddress?: string;
     placeId?: string;
