@@ -1197,10 +1197,44 @@ HII is an all-domain defense and technologies partner, recognized worldwide as A
 	`,
   },
   "victorino-mercado": {
-    "image": "placeholder.webp",
+    "image": "vic-mercado.webp",
     "name": "The Honorable Victorino ('Vic') G. Mercado",
-    "position": "U.S. Navy & Marine Corps Strategic Growth Partner and Leader, Federal Defense Consulting",
-    "company": "IBM",
+    "position": "Leader, Navy & Marine Corps Strategic Growth",
+    "company": "IBM Federal Services",
+	"bio": `
+	Vic Mercado joined IBM in May 2023 as its Leader for Navy and Marine Corps Strategic Growth.
+	<br/><br/>
+	He is a former Assistant Secretary of Defense for Strategy, Plans, and Capabilities (ASD SPC), where he advised the Secretary of Defense and the Under Secretary of Defense for Policy on national security and defense strategy; the forces, contingency plans, and associated posture necessary to implement the defense strategy; nuclear deterrence and missile defense policy; and security cooperation plans and policies. Mercado ensured that Department program and budget decisions support and advance senior DoD leaders' strategic direction, especially as articulated in defense planning guidance.
+	<br/><br/>
+	As ASD SPC, Mr. Mercado also chaired NATO’s High Level Group responsible for reviewing and providing recommendations regarding NATO’s nuclear policy, planning and force posture to ensure the safety, security and effectiveness of NATO’s nuclear deterrent.
+	<br/><br/>
+	Prior to being confirmed by the Senate and appointed as ASD SPC, Mercado served as the Deputy Assistant Secretary of Defense for Plans and Posture after retiring from the Navy in November 2018. 
+	<br/><br/>
+	His final assignment on active duty was Director, Maritime Operations for the U.S. Pacific Fleet where he managed the daily operations of 200 ships and submarines and 1,500 aircraft within the world’s largest naval area of responsibility – encompassing the West Coast of the United States outward to the Indian Ocean. 
+	<br/><br/>
+	Other flag assignments included Deputy Director, Surface Warfare (N96B) and Director, Assessments Division (N81) on the staff of the Chief of Naval Operations; Vice Director, Strategy, Plans and Policy (J5) at U.S. Central Command; and he commanded Carrier Strike Group 8. 
+	<br/><br/>
+	A surface warfare officer, he served aboard cruisers and destroyers, culminating with command of USS Decatur (DDG 73) during an accelerated deployment with the John C. Stennis Battle Group in support of Operation Enduring Freedom – Afghanistan and United Nations sanctions on Iraq. He also commanded Destroyer Squadron 21 with duties as sea combat commander for the John C. Stennis Carrier Strike Group. 
+	<br/><br/>
+	Ashore, he served with the Navy’s engineering and acquisition community as the Command, Control, Communications and Intelligence Warfare Systems Engineering Manager for the AEGIS Program Manager (PMS 400), as an action officer and Vice Director, Navy Staff for Staff Operations and Special Events, as the National Defense Legislative Fellow for Sen. Edward M. Kennedy, and led the Commander’s Action Group for Commander, U.S. Pacific Fleet. On the Joint Staff, he served as the Joint Staff lead in the Joint Chiefs of Staff Strategy Group; as Assistant Deputy Director, Global Strategic Partnerships (J-5); as Executive Assistant to the Director, Strategic Plans and Policy (J-5); and Executive Assistant to the Chairman, Joint Chiefs of Staff. Following his tour on the Joint Staff, he served as the Military Assistant to the Deputy Secretary of Defense. 
+	<br/><br/>
+	Mercado graduated from the U.S. Naval Academy in 1983 with a Bachelor of Science in Mathematics/Computer Science, and earned a Masters in Systems Technology in Joint Command, Control and Communications from the Naval Postgraduate School.
+	`
+  },
+  "jared-chalk": {
+    "image": "jared-chalk.webp",
+    "name": "Jared Chalk",
+    "position": "Chief Business Development Officer",
+    "company": "Hampton Roads Alliance",
+    "bio": `Jared Chalk joined the Alliance in September 2022 as Chief Business Development Officer. In this role, Jared leads the organization’s business development and investor relations efforts, bringing his considerable experience attracting and retaining companies to the region’s leading economic development organization.
+	<br/>
+	
+	<br/>
+	Jared previously served as the Director of the Norfolk Department of Economic Development since 2018. He worked for the City of Norfolk for nearly 17 years in a variety of roles, including in the Office of Budget and Management, City Manager’s Office, and the Department of Development. Under his leadership, the Norfolk Department of Development has received three awards from the International Economic Development Council including two gold awards for the department’s multi-year economic development program and the public-private partnership with the Greater Norfolk Corporation to create the Norfolk Innovation Corridor. Some of the recent signature projects Jared worked on include the development of the Hilton Main Hotel and successfully attracting both ADP and IKEA to Hampton Roads and bringing Simon Premium Outlets to the former Lake Wright Golf Course. He was also instrumental in the decision for the Headwaters Resort and Casino to locate in Norfolk. He led the effort to the retain the North American headquarters of CMA CGM Group, a world leader in shipping and logistics and was pivotal in bringing the country’s eighth-largest fiber internet company, MetroNet, to Norfolk making Norfolk a “gigabit city” in the process. Most recently, he worked with the EDA to acquire Military Circle Mall which has positioned this entire corridor for redevelopment. He helped stand up a new workforce development program designed to align economic and workforce development efforts, champion the recruitment of diverse talent to support business attraction, retention, and expansion, and collaborate with workforce partners to help residents prepare for and connect to in-demand employment opportunities.
+	<br/>
+	
+	<br/>
+	Jared is a graduate of Bridgewater College with a bachelor’s degree in business administration and a Certificate in Real Estate Finance and Development from the Massachusetts Institute of Technology. He serves on numerous boards and organizations throughout the region and was named to Virginia Business’s Top 500 Power List in 2021 and 2022. He is also a 2019 graduate of Lead Hampton Roads and made Hampton Roads’ Top 40 Under 40 and Top 100 People to Meet in Virginia lists in 2020. Jared is a Hampton Roads native, and he and his wife reside in Norfolk.`,
   }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -1300,6 +1334,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"jeffrey-hoffman",
 		"daniel-hudson",
 		"victorino-mercado",
+		"jared-chalk",
 	]
 };
 
