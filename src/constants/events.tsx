@@ -448,6 +448,9 @@ invaluable connections that can shape the future of your business.
         }
       ]
     },
+    features: {
+      showKeynoteSpeaker: true,
+    }
   },
   {
     id: 3,
@@ -813,7 +816,10 @@ invaluable connections that can shape the future of your business.
       locationPhoto: "/locations/harbor_club.webp",
       locationPhone: "(757) 426-7433",
       website: "https://watersidedistrict.com/private-events/the-harbor-club",
-    } as VipNetworkingReception
+    } as VipNetworkingReception,
+    features: {
+      showKeynoteSpeaker: false,
+    }
   },
   {
     id: 5,
@@ -897,7 +903,9 @@ invaluable connections that can shape the future of your business.
         },
       ]
     },
-    expectationsText: `Austin, Texas has become a major hub for Military and Defense technology innovation.  Accordingly, the conference will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across all sectors from IT, AI and Quantum, to cybersecurity qualification, to next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, to military base security, assured logistics and forward energy supply – with spotlights on multi-Billion-dollar acquisition programs from the Golden Dome initiative to next-generation aircraft and satellites, and the development of advanced unmanned platforms (‘loyal wingmen’ to drones).  Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.`
-    
+    expectationsText: `Austin, Texas has become a major hub for Military and Defense technology innovation.  Accordingly, the conference will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across all sectors from IT, AI and Quantum, to cybersecurity qualification, to next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, to military base security, assured logistics and forward energy supply – with spotlights on multi-Billion-dollar acquisition programs from the Golden Dome initiative to next-generation aircraft and satellites, and the development of advanced unmanned platforms (‘loyal wingmen’ to drones).  Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.`,
+    features: {
+      showKeynoteSpeaker: true,
+    }
   },
 ];
