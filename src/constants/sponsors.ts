@@ -437,9 +437,12 @@ export const SPONSORS: Record<string, Sponsor> = {
     id: "blue-yonder",
     name: "Blue Yonder",
     logo: "/sponsors/blue-yonder.webp",
-    website: "https://www.onenetwork.com/industries/public-sector-and-defense/",
+    website: "https://www.onenetwork.com",
     size: 'large',
-    description: "One Network Enterprises (ONE), a Blue Yonder company, is the leader in supply chain control towers, and provider of the Digital Supply Chain NetworkTM. It is the only solution that gives supply chain managers and executives end-to-end visibility and control with one data model and one truth, from raw material to last mile delivery. Powered by NEO, One Network’s machine learning and intelligent agent technology, it enables seamless planning and execution, across inbound supply, outbound order fulfillment, and logistics, matching demand with available supply in real-time. Lead your industry by providing the highest service levels and product quality at the lowest possible cost.",
+    description: `
+    <b>Transform global defense and government supply chains and logistics operations with AI-Powered solutions</b>
+    <br/>
+    One Network Enterprises, Inc is transitioning to Blue Yonder Defense Solutions, LLC Proven solutions built specifically for Defense, Government & Humanitarian Aid customers, delivering high reliability, security, and performance for the world’s largest and most complex supply chains. Visit: <a href="https://www.onenetwork.com" target="_blank" rel="noopener noreferrer" class="underline text-blue-500">www.onenetwork.com</a>`,
   },
   "westwind": {
     id: "westwind",

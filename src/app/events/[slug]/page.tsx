@@ -148,10 +148,6 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             <RegistrationOptions event={event} />
 
-            {event.vipNetworkingReception && (
-              <VIPReceptionSection vipNetworkingReception={event.vipNetworkingReception} />
-            )}
-
             <SponsorAdvert event={event} />
             
 
