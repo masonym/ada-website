@@ -34,7 +34,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
             {/* Venue Section */}
 
             {/* Lodging Section */}
-            {lodging && <LodgingSection lodging={lodging} className="max-w-[46rem] mx-auto"/>}
+            {lodging && <LodgingSection lodging={lodging} className="max-w-[50rem] mx-auto"/>}
 
             {/* Norfolk Dining Guide Section */}
             {event.id === 4 && (
