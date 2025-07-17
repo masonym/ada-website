@@ -330,7 +330,7 @@ export const REGISTRATION_TYPES = [
                     { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
                     { content: "Breakfast & Buffet Lunch", indent: 1 },
                     { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                    { content: "Access to VIP Networking Reception on November 5, 2025 from X:00 PM - X:00 PM", bold: true },
+                    { content: "Access to VIP Networking Reception on November 5, 2025 from 5:30 PM - 7:30 PM", bold: true },
                 ]}
                 ],
                 buttonText: "Register Now",
