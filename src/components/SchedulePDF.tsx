@@ -44,69 +44,106 @@ const styles = StyleSheet.create({
   page: {
     flexDirection: 'column',
     backgroundColor: '#ffffff',
-    padding: 30,
+    padding: 20,
+    fontSize: 10,
   },
   header: {
-    marginBottom: 20,
+    marginBottom: 15,
     textAlign: 'center',
+    borderBottomWidth: 2,
+    borderBottomColor: '#0047AB',
+    paddingBottom: 10,
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
-    marginBottom: 5,
+    marginBottom: 4,
+    color: '#0047AB',
   },
   subtitle: {
-    fontSize: 14,
-    marginBottom: 15,
+    fontSize: 12,
+    marginBottom: 8,
+    color: '#666666',
   },
   dayHeader: {
-    backgroundColor: '#0047AB', // ADA blue
+    backgroundColor: '#0047AB',
     color: 'white',
-    padding: 8,
-    fontSize: 14,
+    padding: 6,
+    fontSize: 12,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 8,
+    marginTop: 10,
   },
   scheduleItem: {
     flexDirection: 'row',
-    marginBottom: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#EEEEEE',
-    paddingBottom: 8,
+    marginBottom: 8,
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#DDDDDD',
+    paddingBottom: 6,
     breakInside: 'avoid',
+    pageBreakInside: 'avoid',
   },
   timeColumn: {
-    width: '20%',
-    paddingRight: 10,
+    width: '18%',
+    paddingRight: 8,
+    flexShrink: 0,
   },
   contentColumn: {
-    width: '80%',
+    width: '82%',
+    flex: 1,
   },
   time: {
     fontWeight: 'bold',
-    fontSize: 11,
+    fontSize: 9,
+    color: '#0047AB',
   },
-  title2: { // renamed to avoid conflict with title style
-    fontSize: 12,
+  itemTitle: {
+    fontSize: 10,
     fontWeight: 'bold',
-    marginBottom: 3,
+    marginBottom: 2,
+    lineHeight: 1.2,
   },
   description: {
-    fontSize: 10,
+    fontSize: 8,
     marginBottom: 3,
+    lineHeight: 1.3,
+    color: '#333333',
+  },
+  speakersContainer: {
+    marginTop: 3,
+    marginBottom: 2,
   },
   speaker: {
-    fontSize: 10,
-    fontStyle: 'italic',
+    fontSize: 8,
+    marginBottom: 1,
     color: '#444444',
   },
-  location: {
-    fontSize: 10,
+  speakerName: {
+    fontWeight: 'bold',
+    fontSize: 8,
+  },
+  speakerTitle: {
+    fontSize: 7,
+    fontStyle: 'italic',
     color: '#666666',
   },
-  twoColumnLayout: {
+  speakerAffiliation: {
+    fontSize: 7,
+    fontWeight: 'bold',
+    color: '#0047AB',
+  },
+  location: {
+    fontSize: 8,
+    color: '#666666',
+    fontStyle: 'italic',
+    marginTop: 2,
+  },
+  twoColumnContainer: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+  column: {
+    width: '48%',
   },
   columnLeft: {
     width: '48%',
@@ -115,6 +152,18 @@ const styles = StyleSheet.create({
   columnRight: {
     width: '48%',
     marginLeft: '2%',
+  },
+  footer: {
+    position: 'absolute',
+    bottom: 20,
+    left: 20,
+    right: 20,
+    textAlign: 'center',
+    fontSize: 8,
+    color: '#666666',
+    borderTopWidth: 0.5,
+    borderTopColor: '#CCCCCC',
+    paddingTop: 5,
   },
 });
 
@@ -144,18 +193,30 @@ const SchedulePDF = ({
     : schedule;
 
   // Render a single schedule item
-  const renderScheduleItem = (item: ScheduleItem) => (
-    <View style={styles.scheduleItem} key={`${item.time}-${item.title}`}>
+  const renderScheduleItem = (item: ScheduleItem, index: number) => (
+    <View style={styles.scheduleItem} key={`${item.time}-${item.title}-${index}`} wrap={false}>
       <View style={styles.timeColumn}>
         <Text style={styles.time}>{item.time}</Text>
       </View>
       <View style={styles.contentColumn}>
-        <Text style={styles.title2}>{item.title}</Text>
+        <Text style={styles.itemTitle}>{item.title}</Text>
         {item.description && (
           <Text style={styles.description}>{item.description}</Text>
         )}
         {showSpeakers && item.speakers && item.speakers.length > 0 && (
-          <Text style={styles.speaker}>Speaker: {item.speakers[0].name}</Text>
+          <View style={styles.speakersContainer}>
+            {item.speakers.map((speaker, speakerIndex) => (
+              <View key={speakerIndex} style={styles.speaker}>
+                <Text style={styles.speakerName}>{speaker.name}</Text>
+                {speaker.title && (
+                  <Text style={styles.speakerTitle}>{speaker.title}</Text>
+                )}
+                {speaker.affiliation && (
+                  <Text style={styles.speakerAffiliation}>{speaker.affiliation}</Text>
+                )}
+              </View>
+            ))}
+          </View>
         )}
         {showLocations && item.location && (
           <Text style={styles.location}>Location: {item.location}</Text>
@@ -164,41 +225,72 @@ const SchedulePDF = ({
     </View>
   );
 
+  // Helper function to distribute items across columns more evenly
+  const distributeItemsInColumns = (items: ScheduleItem[]) => {
+    if (!twoColumnLayout) {
+      return { leftColumn: items, rightColumn: [] };
+    }
+
+    const leftColumn: ScheduleItem[] = [];
+    const rightColumn: ScheduleItem[] = [];
+    
+    // Simple alternating distribution for better balance
+    items.forEach((item, index) => {
+      if (index % 2 === 0) {
+        leftColumn.push(item);
+      } else {
+        rightColumn.push(item);
+      }
+    });
+    
+    return { leftColumn, rightColumn };
+  };
+
   return (
     <Document>
-      <Page size="A4" style={styles.page}>
-        <View style={styles.header}>
-          <Text style={styles.title}>
-            {customTitle || `${event.title} Schedule`}
-          </Text>
-          {(customSubtitle || event.date) && (
-            <Text style={styles.subtitle}>
-              {customSubtitle || event.date}
-            </Text>
-          )}
-        </View>
+      {filteredSchedule.map((day, dayIndex) => {
+        const { leftColumn, rightColumn } = distributeItemsInColumns(day.items);
         
-        {filteredSchedule.map((day) => (
-          <View key={day.date} wrap={false}>
+        return (
+          <Page key={day.date} size="A4" style={styles.page}>
+            {/* Header on each page */}
+            <View style={styles.header}>
+              <Text style={styles.title}>
+                {customTitle || `${event.title} Schedule`}
+              </Text>
+              {(customSubtitle || event.date) && (
+                <Text style={styles.subtitle}>
+                  {customSubtitle || event.date}
+                </Text>
+              )}
+            </View>
+            
+            {/* Day header */}
             <Text style={styles.dayHeader}>{day.date}</Text>
             
+            {/* Content layout */}
             {twoColumnLayout ? (
-              <View style={styles.twoColumnLayout}>
+              <View style={styles.twoColumnContainer}>
                 <View style={styles.columnLeft}>
-                  {day.items.slice(0, Math.ceil(day.items.length / 2)).map(renderScheduleItem)}
+                  {leftColumn.map((item, index) => renderScheduleItem(item, index))}
                 </View>
                 <View style={styles.columnRight}>
-                  {day.items.slice(Math.ceil(day.items.length / 2)).map(renderScheduleItem)}
+                  {rightColumn.map((item, index) => renderScheduleItem(item, index + leftColumn.length))}
                 </View>
               </View>
             ) : (
               <View>
-                {day.items.map(renderScheduleItem)}
+                {day.items.map((item, index) => renderScheduleItem(item, index))}
               </View>
             )}
-          </View>
-        ))}
-      </Page>
+            
+            {/* Footer */}
+            <View style={styles.footer}>
+              <Text>Presented by American Defense Alliance • americandefensealliance.org</Text>
+            </View>
+          </Page>
+        );
+      })}
     </Document>
   );
 };
