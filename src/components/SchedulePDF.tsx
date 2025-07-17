@@ -281,7 +281,7 @@ const SchedulePDF = ({
     </View>
   );
 
-  // Helper function to distribute items across columns more evenly
+  // Helper function to distribute items across columns vertically (downwards)
   const distributeItemsInColumns = (items: ScheduleItem[]) => {
     if (!twoColumnLayout) {
       return { leftColumn: items, rightColumn: [] };
@@ -290,14 +290,18 @@ const SchedulePDF = ({
     const leftColumn: ScheduleItem[] = [];
     const rightColumn: ScheduleItem[] = [];
     
-    // Simple alternating distribution for better balance
-    items.forEach((item, index) => {
-      if (index % 2 === 0) {
-        leftColumn.push(item);
-      } else {
-        rightColumn.push(item);
-      }
-    });
+    // Calculate midpoint to split items vertically
+    const midpoint = Math.ceil(items.length / 2);
+    
+    // Fill left column with first half of items
+    for (let i = 0; i < midpoint; i++) {
+      leftColumn.push(items[i]);
+    }
+    
+    // Fill right column with second half of items
+    for (let i = midpoint; i < items.length; i++) {
+      rightColumn.push(items[i]);
+    }
     
     return { leftColumn, rightColumn };
   };
