@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet, Font, PDFDownloadLink, PDFViewer, Image } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Font, PDFDownloadLink, PDFViewer, Image, BlobProvider } from '@react-pdf/renderer';
 import { Event } from '@/types/events';
 import { getCdnPath } from '@/utils/image';
 
@@ -42,6 +42,13 @@ type ScheduleDay = {
 
 // Create styles
 const styles = StyleSheet.create({
+  textWrap: {
+    display: "flex",
+    flexWrap: "wrap",
+    flexGrow: 1,
+    flexBasis: 0,
+    padding: 2,
+  },
   page: {
     flexDirection: 'column',
     backgroundColor: '#ffffff',
@@ -49,11 +56,9 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
   header: {
-    marginBottom: 15,
+    marginBottom: 0,
     textAlign: 'center',
-    borderBottomWidth: 2,
-    borderBottomColor: '#0047AB',
-    paddingBottom: 10,
+    paddingBottom: 0,
   },
   title: {
     fontSize: 16,
@@ -73,13 +78,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     marginBottom: 8,
-    marginTop: 10,
+    marginTop: 0,
   },
   scheduleItem: {
     flexDirection: 'row',
     marginBottom: 8,
-    borderBottomWidth: 0.5,
-    borderBottomColor: '#DDDDDD',
     paddingBottom: 6,
     breakInside: 'avoid',
     pageBreakInside: 'avoid',
@@ -182,6 +185,10 @@ const styles = StyleSheet.create({
     borderTopColor: '#CCCCCC',
     paddingTop: 5,
   },
+});
+
+Font.registerHyphenationCallback((word) => {
+  return [word];
 });
 
 // Schedule PDF Document Component
@@ -420,6 +427,58 @@ export const PDFPreview = ({
       />
     </PDFViewer>
   </div>
+);
+
+// PDF Preview Button (opens in new tab)
+export const PDFPreviewButton = ({ 
+  schedule, 
+  event, 
+  showSpeakers,
+  showLocations,
+  customTitle,
+  customSubtitle,
+  selectedDays,
+  twoColumnLayout,
+}: {
+  schedule: ScheduleDay[];
+  event: Event;
+  showSpeakers: boolean;
+  showLocations: boolean;
+  customTitle: string;
+  customSubtitle: string;
+  selectedDays: string[];
+  twoColumnLayout: boolean;
+}) => (
+  <BlobProvider document={
+    <SchedulePDF 
+      schedule={schedule} 
+      event={event} 
+      showSpeakers={showSpeakers}
+      showLocations={showLocations}
+      customTitle={customTitle}
+      customSubtitle={customSubtitle}
+      selectedDays={selectedDays}
+      twoColumnLayout={twoColumnLayout}
+    />
+  }>
+    {({ blob, url, loading, error }) => {
+      const handlePreview = () => {
+        if (url) {
+          window.open(url, '_blank');
+        }
+      };
+
+      return (
+        <button
+          onClick={handlePreview}
+          disabled={loading || !url}
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+        >
+          {loading ? 'Generating Preview...' : 'Preview PDF'}
+        </button>
+      );
+    }}
+  </BlobProvider>
 );
 
 export default SchedulePDF;

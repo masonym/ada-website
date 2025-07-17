@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getCdnPath } from '@/utils/image';
-import { PDFDownloadButton } from './SchedulePDF';
+import { PDFDownloadButton, PDFPreview, PDFPreviewButton } from './SchedulePDF';
 
 interface PrintableScheduleProps {
   eventId: number;
@@ -301,6 +301,18 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
               >
                 Print Schedule
               </button>
+              
+              {/* PDF Preview Button */}
+              <PDFPreviewButton
+                schedule={filteredSchedule}
+                event={event}
+                showSpeakers={showSpeakers}
+                showLocations={showLocations}
+                customTitle={customTitle}
+                customSubtitle={customSubtitle}
+                selectedDays={selectedDays}
+                twoColumnLayout={twoColumnLayout}
+              />
               
               {/* PDF Download Button */}
               <PDFDownloadButton
