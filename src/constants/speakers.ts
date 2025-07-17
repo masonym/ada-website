@@ -1235,6 +1235,12 @@ HII is an all-domain defense and technologies partner, recognized worldwide as A
 	
 	<br/>
 	Jared is a graduate of Bridgewater College with a bachelor’s degree in business administration and a Certificate in Real Estate Finance and Development from the Massachusetts Institute of Technology. He serves on numerous boards and organizations throughout the region and was named to Virginia Business’s Top 500 Power List in 2021 and 2022. He is also a 2019 graduate of Lead Hampton Roads and made Hampton Roads’ Top 40 Under 40 and Top 100 People to Meet in Virginia lists in 2020. Jared is a Hampton Roads native, and he and his wife reside in Norfolk.`,
+  },
+  "hunter-stires": {
+    "image": "placeholder.webp",
+    "name": "Hunter Stires",
+    "position": "Founder and CEO",
+    "company": "Maritime Strategy Group",
   }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -1335,6 +1341,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"daniel-hudson",
 		"victorino-mercado",
 		"jared-chalk",
+		"hunter-stires",
 	]
 };
 
