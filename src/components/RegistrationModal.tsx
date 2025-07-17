@@ -175,21 +175,21 @@ const PROMO_CODES: PromoCode[] = [
   {
     code: 'ACEC15',
     discountPercentage: 15,
-    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass', 'Attendee Pass', 'VIP Attendee Pass'],
+    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass', ''],
     expirationDate: new Date('2025-08-01'),
     description: 'ACEC15 - 15% off Attendee and VIP Attendee passes'
   },
   {
     code: 'ADA20',
     discountPercentage: 20,
-    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass', 'Attendee Pass', 'VIP Attendee Pass'],
+    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass', 'exhibit', 'platinum-sponsor', 'gold-sponsor', 'silver-sponsor', 'bronze-sponsor', 'vip-networking-reception-sponsor', 'networking-luncheon-sponsor', 'small-business-sponsor', 'small-business-sponsor-without-exhibit-space'],
     expirationDate: new Date('2025-12-31'),
     description: 'ADA20 - 20% off Attendee and VIP Attendee passes'
   },
   {
     code: 'EARLY10',
     discountPercentage: 10,
-    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass', 'Attendee Pass', 'VIP Attendee Pass',],
+    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass'],
     expirationDate: new Date('2025-08-01'),
     description: 'EARLY10 - 10% off all passes and Basic Exhibitor Package'
   }
@@ -306,7 +306,7 @@ const RegistrationModal = ({
       
       if (result.valid && result.promoDetails) {
         // Check if there are any eligible tickets in the cart for this specific promo code
-        const hasEligibleTickets = [...allRegistrations].some(reg => 
+        const hasEligibleTickets = [...allRegistrations, ...sponsorships, ...exhibitors].some(reg => 
           (ticketQuantities[reg.id] || 0) > 0 && isEligibleForPromoDiscount(reg, result.promoDetails!.eligibleTicketTypes)
         );
         

@@ -448,6 +448,9 @@ invaluable connections that can shape the future of your business.
         }
       ]
     },
+    features: {
+      showKeynoteSpeaker: true,
+    }
   },
   {
     id: 3,
@@ -725,7 +728,7 @@ invaluable connections that can shape the future of your business.
     matchmakingSessions: {
       signUpTime: "7:30 AM",
       signUpDate: "July 29, 2025",
-      sessionDurationMinutes: 6,
+      sessionDurationMinutes: 8,
       slotsPerHost: 10,
       sessions: [
         {
@@ -805,6 +808,7 @@ invaluable connections that can shape the future of your business.
       timeEnd: "8:00 PM",
       description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
       additionalInfo: "Join us at The Harbor Club featuring a cash bar, one complimentary drink ticket, and a selection of hors d’oeuvres.",
+      additionalInfo2: "The Norfolk Waterside Marriott is connected to the Harbor Club via a Parking Garage. From the Marriott’s 2nd Floor, next to the escalators, enter doors to the Parking Garage. Follow the garage’s pedestrian bridge to the Waterside District building. Entry for Harbor Club is on the 2nd Floor of the building.",
       locationName: "The Harbor Club",
       locationAddress: "333 Waterside Dr Suite 200, Norfolk, VA 23510, USA",
       placeId: "ChIJI8LspwuYuokR79KzVtIGqlY", // Google Maps Place ID for the reception venue
@@ -813,11 +817,14 @@ invaluable connections that can shape the future of your business.
       locationPhoto: "/locations/harbor_club.webp",
       locationPhone: "(757) 426-7433",
       website: "https://watersidedistrict.com/private-events/the-harbor-club",
-    } as VipNetworkingReception
+    } as VipNetworkingReception,
+    features: {
+      showKeynoteSpeaker: false,
+    }
   },
   {
     id: 5,
-    shown: true,
+    shown: false,
     title: "2025 Defense Technology & Aerospace Procurement Conference",
     date: "November 5-6, 2025",
     timeStart: "2025-11-05T11:30:00Z", // This is in UTC time
@@ -897,7 +904,9 @@ Austin, Texas has become a major hub for Military and Defense technology innovat
         },
       ]
     },
-    expectationsText: `Austin, Texas has become a major hub for Military and Defense technology innovation.  Accordingly, the <b>2025 Defense Technology Aerospace Procurement Conference</b> will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across all sectors from IT, AI and Quantum, to cybersecurity qualification, to next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, to military base security, assured logistics and forward energy supply – with spotlights on multi-Billion-dollar acquisition programs from the Golden Dome initiative to next-generation aircraft and satellites, and the development of advanced unmanned platforms (‘loyal wingmen’ to drones).  Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.`
-    
+    expectationsText: `Austin, Texas has become a major hub for Military and Defense technology innovation.  Accordingly, the <b>2025 Defense Technology Aerospace Procurement Conference</b> will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across all sectors from IT, AI and Quantum, to cybersecurity qualification, to next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, to military base security, assured logistics and forward energy supply – with spotlights on multi-Billion-dollar acquisition programs from the Golden Dome initiative to next-generation aircraft and satellites, and the development of advanced unmanned platforms (‘loyal wingmen’ to drones).  Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.`,
+    features: {
+      showKeynoteSpeaker: true,
+    }
   },
 ];

@@ -262,7 +262,7 @@ export async function sendRegistrationConfirmationEmail({
   const eventDate = event.date || 'TBA';
   const eventLocation = event.locationAddress || 'TBA';
   const venueName = event.venueName || 'TBA';
-  const hotelInfo = `https://americandefensealliance.org/events/${event.slug}/about/venue-and-lodging`;
+  const hotelInfo = `https://americandefensealliance.org/events/${event.slug}/venue-and-lodging`;
   const vipNetworkingReception = event.vipNetworkingReception;
 
   const bucketFiles = await fetchFileNamesFromCloud(event.eventShorthand);

@@ -2,15 +2,10 @@
 import React from 'react';
 import { EVENTS } from '@/constants/events';
 import RegistrationModalController from './RegistrationModalController';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import RegisterButtonModal from './RegisterButtonModal';
-import Button from '@/app/components/Button';
-import SponsorOptions from '@/app/components/SponsorOptions';
 import CountdownTimer from '@/app/components/CountdownTimer';
 import RegistrationOptions from '@/app/components/RegistrationOptions';
-import Link from 'next/link';
-import { ChevronLeft } from 'lucide-react';
 import Script from 'next/script';
 import { Metadata } from 'next';
 import KeynoteSpeaker from '@/app/components/KeynoteSpeaker';
@@ -18,11 +13,8 @@ import SponsorLogos from '@/app/components/SponsorLogos';
 import SpecialFeatures from '@/app/components/SpecialFeatures';
 import FooterEventText from '@/app/components/FooterEventText';
 import { EventSaleBanner } from '@/app/components/EventSaleBanner';
-import VIPReceptionSection from '@/app/components/VIPReceptionSection';
 import SponsorAdvert from '@/app/components/SponsorAdvert';
 import EventWarningNotice from '@/app/components/EventWarningNotice';
-import LodgingSection from '@/app/components/LodgingSection';
-import { LODGING_INFO } from '@/constants/lodging';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -73,9 +65,6 @@ export default function EventPage({ params }: { params: { slug: string } }) {
   if (!event) {
     notFound();
   }
-  
-  // Find lodging information for this event
-  const lodging = LODGING_INFO.find((l) => l.eventId === event.id);
 
   const now = new Date().getTime();
   const targetTime = new Date(event.timeStart).getTime();
@@ -144,7 +133,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
               {event.eventText}
             </div>
 
-            <KeynoteSpeaker eventId={event.id} eventShorthand={event.eventShorthand} showExpandedBio={false} />
+            {event.features?.showKeynoteSpeaker && <KeynoteSpeaker eventId={event.id} eventShorthand={event.eventShorthand} showExpandedBio={false} />}
 
 
             <SpecialFeatures event={event} />
@@ -152,22 +141,6 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             <EventWarningNotice eventTitle={event.title}/>
 
             <RegistrationOptions event={event} />
-
-            {event.vipNetworkingReception && (
-              <VIPReceptionSection vipNetworkingReception={event.vipNetworkingReception} />
-            )}
-
-            {/* Lodging Section - show if available */}
-            {lodging && (
-              <div className="">
-                <LodgingSection 
-                  lodging={lodging} 
-                  title="Event Venue & Lodging" 
-                  className="px-4 sm:px-6 lg:px-8 mt-12"
-                  imageShown={false}
-                />
-              </div>
-            )}
 
             <SponsorAdvert event={event} />
             

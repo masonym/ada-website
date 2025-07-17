@@ -19,6 +19,7 @@ export interface VipNetworkingReception {
     timeStart: string;
     timeEnd: string;
     additionalInfo?: string;
+    additionalInfo2?: string;
     locationName?: string;
     locationAddress?: string;
     placeId?: string;
@@ -82,6 +83,11 @@ export interface VIPReceptionProps {
         website: string;
 }
 
+export interface EventFeatures {
+    showKeynoteSpeaker?: boolean;
+    // add stuff here later. these are flags to hide or show certain components in our dynamic route page
+}
+
 export interface Event {
     id: number;
     title: string;
@@ -138,4 +144,5 @@ export interface Event {
     sales?: Sale[];
     vipNetworkingReception?: VipNetworkingReception;
     shown?: boolean; // Controls whether this event should be displayed in event listings
+    features?: EventFeatures;
 }
