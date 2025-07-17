@@ -969,14 +969,24 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 		"name": "Don McGinnis",
 		"position": "Director, Business Development",
 		"company": "Pioneer Motor Bearing Company",
-		"bio": ``,
+		"bio": `
+		Don began his professional career in the mortgage industry, which naturally evolved into a role in real estate in the mountains of North Carolina. As market conditions shifted, he transitioned into the construction industry, where he spent nearly two decades building a successful career. During that time, he owned and operated his own construction company in a coastal North Carolina community.
+<br/><br/>
+It was one of his construction clients who recognized Don’s sharp business instincts and customer-focused approach and recruited him into the Babbitt bearing industry. Less than a year later, in 2006, Don was hired by Pioneer Motor Bearing Company, where he held several roles—including Sales Manager for North America.
+<br/><br/>
+His success at Pioneer caught the attention of Kingsbury, Inc., where he was brought on as Sales Manager for Fluid Film Products in their repair and service division in 2014. It was during his time with Kingsbury that Don got his first real taste of doing business with the US Navy.  Over the next 6½ years, Don continued to grow his reputation for results and relationship-building.
+<br/><br/>
+In 2021, Pioneer Motor Bearing invited Don back - this time as a member of its leadership team. Beginning in 2023, alongside his colleague Scott Derushia, Don championed the launch of a new division: PMB Machine Works, a DBA focused almost entirely on machining - specifically for the defense industry..
+<br/><br/>
+In under two years, Don and the PMB Machine Works team have secured major contracts with OEM’s supporting the mission of the U.S. Navy and achieved several critical milestones that he is now excited to share with you.
+		`,
 	}
 	,
 	"katina-adams": {
 		"image": "katina-adams.webp",
 		"name": "Katina Adams",
 		"position": "Manager, Small Business Programs",
-		"company": "Newport News Shipbuilding, A Dvision of HII",
+		"company": "Newport News Shipbuilding, A Division of HII",
 		"bio": `Katina Adams is the Small Business Liaison Officer (SBLO) and Socio-Economic Small Business Programs Officer for Newport News Shipbuilding (NNS), A Division of HII. Katina is responsible for ensuring that NNS and its almost 30,000 employees comply with federal requirements for soliciting and subcontracting with small businesses. Katina has oversight of government reporting on prime and sub- tier contracts valued over $40B and annual subcontract spend of approximately $3B. Katina leads HII’s SBLO Council which consists of SBLOs and small business professionals from HII’s Ingalls Shipbuilding and Mission Technologies Divisions. Katina and her team are dedicated to advocacy for all categories of small businesses.
 	<br/>
 	
@@ -1031,8 +1041,8 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	"erica-h-plath": {
 		"image": "erica-h-plath.webp",
 		"name": "Erica H. Plath",
-		"position": "Deputy Assistant Secretary of the Navy (Sustainment) Office of the Assistant Secretary of the Navy for Research, Development and Acquisition",
-		"company": "United States Department of the Navy",
+		"position": "Deputy Assistant Secretary of the Navy for Sustainment",
+		"company": "Office of the Assistant Secretary of the Navy for Research, Development and Acquisition",
 		"bio": `
 Ms. Erica H. Plath assumed the responsibilities of the Deputy Assistant Secretary of the Navy for Sustainment in May of 2022. She serves as the principal advisor to the Assistant Secretary of the Navy for Research, Development and Acquisition (ASN (RDA)) on all matters related to the planning, budgeting and execution of sustainment and supply chain activities of the Department of the Navy and Marine Corps.
 
@@ -1083,6 +1093,148 @@ Ms. Plath's naval decorations include the Navy Commendation Medal (two awards), 
 	Hunt joined Raytheon Company in the position of Vice President, Business Development, Navy/Marine Corps Programs in January 2014 and assumed the role of Vice President for U.S. Business Development in June 2015.  He transitioned to Chief Strategy Officer at Fincantieri Marinette Marine in April 2018 and became President, Fincantieri Marinette Marine in July 2019.
 	<br/>
 	`,
+  },
+  "brian-w-miller": {
+    "image": "brian-w-miller.webp",
+    "name": "Brian W. Miller",
+    "position": "Deputy Director of Real Estate",
+    "company": "Office of the Assistant Secretary of the Navy (Energy, Installations & Environment)",
+	"bio": `
+	As Deputy Director of Real Estate, Mr. Miller manages and coordinates a wide range of real estate activities for the Navy and Marine Corps, reporting to the Deputy Assistant Secretary of the Navy for Installations and Facilities. His responsibilities include developing and implementing policies for real estate acquisition, disposal, and management, as well as overseeing the Navy and Marine Corps Intergovernmental Support Agreements (IGSA) programs.
+
+<br/><br/>
+Previously, he served as a Public Private Venture (PPV) Program Specialist at Naval Facilities Engineering Systems Command (NAVFAC) HQ, focusing on Military Housing Privatization Initiative (MHPI) projects. His responsibilities included developing programmatic policy, overseeing MHPI Partner compliance with legal agreements and project financial health, establishing quality assurance programs, advising leadership on courses of action to address complex housing issues, and negotiating agreements for partnership restructures and new phases of construction.
+<br/><br/>
+Prior to federal service, Mr. Miller managed commercial property in the Washington, D.C., region at Lincoln Property Company. He holds a Bachelor's degree in Economics from the University of Maryland and a Master's degree in Real Estate Development from Georgetown University.
+	`
+  },
+  "roger-camp": {
+    "image": "roger-camp.webp",
+    "name": "Roger Camp",
+    "position": "Senior Director for Business Development, Naval Programs",
+    "company": "Hanwha Defense USA",
+    "bio": `Roger Camp is the Senior Director for Business Development, Naval Programs at Hanwha Defense USA. A large part of his role is supporting Hanwha Philly Shipyard. After completing his undergraduate degree at Vanderbilt University, Roger served on four ships in the United States Navy as a Surface Warfare Officer for 20 years, with much of the last half of his career spent in missile defense. He spent two years at General Dynamics working Common Display System, and Littoral Combat Ship programs before spending seven years at Raytheon working on missile defense issues. He spent the last 5 1/2 years at General Atomics Electromagnetics and joined Hanwha in February 2025. Roger has been involved with the National Shipbuilding Research Program since 2019 and is also the President and Chief Executive Officer of the American Shipbuilding Suppliers Association, and served four years as President of the Northern Virginia Council, Navy League of the United States.`,
+  },
+  "anthony-livanios": {
+    "image": "anthony-livanios.webp",
+    "name": "Anthony Livanios",
+    "position": "CEO",
+    "company": "U.S. Energy Stream, Inc.",
+    "bio": `Anthony Livanios is a business owner and highly experienced international economist. He founded US Energy Stream in 2010 with a mission to bring the highest intelligence to educate and empower business and government leaders. He has over thirty years of experience in leading and negotiating agreements for energy majors, independents, national gas companies, and governments. He successfully executed gas pipeline negotiations, LNG projects, geopolitical risk assessments, and market intelligence. He has created one of the most influential government networks in Washington, DC.
+	<br/>
+	
+	<br/>
+	He has a lifelong passion in education and teaching. For more than thirty years as a Visiting Professor and Senior Training Instructor has been teaching international energy markets, energy and national security, and energy transition leadership, to University students, business leaders and government officials.
+	<br/>
+	
+	<br/>
+	He has lived and worked in eight cities, four countries, and two continents, while implementing international business and government projects. He has a proven track record in delivering shareholder return.
+	<br/>
+	
+	<br/>
+	Today, he is one of the industry’s most innovative entrepreneurs and American thought leaders.`,
+  },
+  "joel-coulter": {
+    "image": "placeholder.webp",
+    "name": "Joel Coulter",
+    "position": "Strategic Growth Officer",
+    "company": "Neptune SHIELD Tech Hub",
+    "bio": `Joel has led strategic initiatives to strengthen America’s national security, focusing on counterterrorism, maritime domain awareness, and expeditionary disaster response capacities, while fostering innovations in drones, AI, and robotics through public-private partnerships. Following 9/11, he supported efforts to counter global cybersecurity threats, including China’s Golden Shield, and advanced the Navy’s port and riverine security enterprise alongside multi-agency collaborations. In recent years, he has worked to establish state innovation hubs and international alliances in drone, cyber, and electronic warfare, enhancing critical infrastructure protection and early warning systems for defense and intelligence communities.`,
+  },
+  "nicholas-antonio-rocha": {
+    "image": "placeholder.webp",
+    "name": "Nicholas Antonio Rocha",
+    "position": "President/CEO",
+    "company": "Neptune SHIELD Tech Hub",
+    "bio": `Nick successfully completed a 26-year career as a Navy SEAL. He graduated from Norwich University with a BS in Strategic Studies and Defense Analysis and business certification from Harvard.  Nick served at various command levels across CENTCOM, EUCOM, and NORTHCOM and led functioning teams, completed endless training, extreme missions, while facing life-and-death challenges. But it’s those very experiences, where innovation, adaptation, and quick decision-making were critical, that have shaped how he approaches the work we do here at Neptune SHIELD. It’s about pushing the limits, finding solutions in high-pressure environments, and ensuring mission success for all stakeholders.`,
+  },
+  "jeffrey-hoffman": {
+    "image": "jeffrey-hoffman.webp",
+    "name": "Jeffrey Hoffman",
+    "position": "President and CEO",
+    "company": "Cyber Intelligent Partners",
+    "bio": `
+Mr. Jeff Hoffmann is a CISO certified, dedicated professional with proven performance in certified PMI management, leadership, and communication. Results-oriented, retired war college military veteran with over 20 years of experience in national security, cyber, and urban and rural economic development that began in the United States Senate and Congressional Affairs for the Office of the Secretary of Defense.
+<br/>
+<br/>
+Alongside leadership for CIP, Mr. Hoffmann is an Adjunct Professor for the New York University Global Security, Conflict and Cyber Crime Graduate STEM program. His specific course is partnered with the EC Council C|TIA. Mr. Hoffmann is a graduate of the NYU Tandon School of Engineering Chief Information Security Officer (CISO) Executive Leadership program. He also sits on an Advisory Board for the Virginia Department of Education, which is updating standards of learning (SOL) for Computer Science in public schools. This includes improvement and addition of cybersecurity SOL goals.
+<br/>
+<br/>
+In 2017, (as a private sector trusted agent for the U.S. government), Mr. Hoffmann was awarded by the Office of the Director of National Intelligence (ODNI) for managing the mission engagement portfolio for a four-year priority technology modernization initiative called IC-ITE. This transformational effort advanced data analytics, including open-source techniques and Artificial Intelligence (AI)/machine learning, leveraged multi-agency cloud computing, and expanded collection tradecraft. Results of this work were written into first-ever Intelligence Community Mission Capabilities Strategic Guidance.
+<br/>
+<br/>
+For ODNI, he was also a contributing author for two National Intelligence Council annual cyber threat assessments and a representative on the Cyber Threat Intelligence Integration Center Cybercrime Working Group.
+<br/>
+<br/>
+Mr. Hoffmann has received corporate awards for work on proposals valued over $15 billion for intelligence services and was a contributor to an RFP for White House Office of Science & Technology (S&T) alternative GPS/6G solutions.
+<br/>
+<br/>
+In 2021, Mr. Hoffmann returned from the United Kingdom where he designed cyber threat intelligence (CTI) and information and communication technologies (ICT) analysis, counterintelligence, and targeting capabilities for the U.S. European Command.
+<br/>
+<br/>
+Prior to ownership of CIP, Mr. Hoffmann was the Regional Cyber Lead for the Defense Security Cooperation Agency Institute for Security Governance. In this capacity, he led teams to advise foreign partner cyber command elements, Presidential staff/council members, interagency, and Ministry of Defense groups on incident response, workforce development, critical infrastructure, crisis planning, and security operations center infrastructure.
+<br/>
+<br/>
+In earlier years of his career, Mr. Hoffmann was employed by the U.S. government for seven years managing initiatives, missions, and projects across air, space, and cyberspace and a director for a multi-million U.S. Department of Agriculture program that provided economic development. These included programs that led to jobs, workforce development, such as CTE and other community improvement initiatives – many with direct impacts to public schools.
+<br/>
+<br/>
+Mr. Hoffmann has a strong academic background in cyber and digital transformation, to include research with the University of Oxford Global Cyber Security Capacity Center in England and recipient of the Oxford Saïd Business School Executive AI certification in program management.
+	`
+  },
+  "daniel-hudson": {
+    "image": "daniel-hudson.webp",
+    "name": "Dan Hudson",
+    "position": "Senior Technology Director",
+    "company": "HII Mission Technologies",
+    "bio": `
+Dan Hudson is a Senior Technology Director in the Mission Technologies division of Huntington Ingalls Industries (HII). He has more than 20 years of experience and is an expert in applying human factors and reliability engineering, data science and advanced analytics, model-based engineering, and digital transformation across multiple industries and domains, including healthcare and public health, national security and defense, cybersecurity and intelligence, reliability and safety of engineered systems, and risk management.
+<br/><br/>
+Before joining HII in 2022, Hudson served in a variety of data science and AI leadership roles in the private sector supporting the Department of Defense, Department of Veterans Affairs, and the Intelligence Community. He also served for more than 20 years in the Federal Government, including service as an enlisted Marine, as a Navy Diver and Submarine Warfare Officer, and finally as a Reliability Engineer and Risk Analyst for the U.S. Nuclear Regulatory Commission.
+<br/><br/>
+Hudson earned a Bachelor of Science with Distinction degree in Aerospace Engineering from the U.S. Naval Academy, a Master of Science degree in Predictive Analytics from the University of Maryland, and a Doctor of Philosophy degree in Decision Science from the Johns Hopkins University. He also holds several professional certifications in data science, AI, and cloud technologies.
+<br/><br/>
+HII is an all-domain defense and technologies partner, recognized worldwide as America’s largest shipbuilder. With a 135-year history of trusted partnerships in advancing U.S. national security, HII delivers critical capabilities ranging from the most powerful and survivable naval ships ever built, to unmanned systems, ISR, and AI/ML analytics. HII leads the industry in mission-driven solutions that support and enable an all-domain force. Headquartered in Virginia, HII’s skilled workforce is 44,000 strong. For more information please visit: HII.com.
+	`,
+  },
+  "victorino-mercado": {
+    "image": "vic-mercado.webp",
+    "name": "The Honorable Victorino ('Vic') G. Mercado",
+    "position": "Leader, Navy & Marine Corps Strategic Growth",
+    "company": "IBM Federal Services",
+	"bio": `
+	Vic Mercado joined IBM in May 2023 as its Leader for Navy and Marine Corps Strategic Growth.
+	<br/><br/>
+	He is a former Assistant Secretary of Defense for Strategy, Plans, and Capabilities (ASD SPC), where he advised the Secretary of Defense and the Under Secretary of Defense for Policy on national security and defense strategy; the forces, contingency plans, and associated posture necessary to implement the defense strategy; nuclear deterrence and missile defense policy; and security cooperation plans and policies. Mercado ensured that Department program and budget decisions support and advance senior DoD leaders' strategic direction, especially as articulated in defense planning guidance.
+	<br/><br/>
+	As ASD SPC, Mr. Mercado also chaired NATO’s High Level Group responsible for reviewing and providing recommendations regarding NATO’s nuclear policy, planning and force posture to ensure the safety, security and effectiveness of NATO’s nuclear deterrent.
+	<br/><br/>
+	Prior to being confirmed by the Senate and appointed as ASD SPC, Mercado served as the Deputy Assistant Secretary of Defense for Plans and Posture after retiring from the Navy in November 2018. 
+	<br/><br/>
+	His final assignment on active duty was Director, Maritime Operations for the U.S. Pacific Fleet where he managed the daily operations of 200 ships and submarines and 1,500 aircraft within the world’s largest naval area of responsibility – encompassing the West Coast of the United States outward to the Indian Ocean. 
+	<br/><br/>
+	Other flag assignments included Deputy Director, Surface Warfare (N96B) and Director, Assessments Division (N81) on the staff of the Chief of Naval Operations; Vice Director, Strategy, Plans and Policy (J5) at U.S. Central Command; and he commanded Carrier Strike Group 8. 
+	<br/><br/>
+	A surface warfare officer, he served aboard cruisers and destroyers, culminating with command of USS Decatur (DDG 73) during an accelerated deployment with the John C. Stennis Battle Group in support of Operation Enduring Freedom – Afghanistan and United Nations sanctions on Iraq. He also commanded Destroyer Squadron 21 with duties as sea combat commander for the John C. Stennis Carrier Strike Group. 
+	<br/><br/>
+	Ashore, he served with the Navy’s engineering and acquisition community as the Command, Control, Communications and Intelligence Warfare Systems Engineering Manager for the AEGIS Program Manager (PMS 400), as an action officer and Vice Director, Navy Staff for Staff Operations and Special Events, as the National Defense Legislative Fellow for Sen. Edward M. Kennedy, and led the Commander’s Action Group for Commander, U.S. Pacific Fleet. On the Joint Staff, he served as the Joint Staff lead in the Joint Chiefs of Staff Strategy Group; as Assistant Deputy Director, Global Strategic Partnerships (J-5); as Executive Assistant to the Director, Strategic Plans and Policy (J-5); and Executive Assistant to the Chairman, Joint Chiefs of Staff. Following his tour on the Joint Staff, he served as the Military Assistant to the Deputy Secretary of Defense. 
+	<br/><br/>
+	Mercado graduated from the U.S. Naval Academy in 1983 with a Bachelor of Science in Mathematics/Computer Science, and earned a Masters in Systems Technology in Joint Command, Control and Communications from the Naval Postgraduate School.
+	`
+  },
+  "jared-chalk": {
+    "image": "jared-chalk.webp",
+    "name": "Jared Chalk",
+    "position": "Chief Business Development Officer",
+    "company": "Hampton Roads Alliance",
+    "bio": `Jared Chalk joined the Alliance in September 2022 as Chief Business Development Officer. In this role, Jared leads the organization’s business development and investor relations efforts, bringing his considerable experience attracting and retaining companies to the region’s leading economic development organization.
+	<br/>
+	
+	<br/>
+	Jared previously served as the Director of the Norfolk Department of Economic Development since 2018. He worked for the City of Norfolk for nearly 17 years in a variety of roles, including in the Office of Budget and Management, City Manager’s Office, and the Department of Development. Under his leadership, the Norfolk Department of Development has received three awards from the International Economic Development Council including two gold awards for the department’s multi-year economic development program and the public-private partnership with the Greater Norfolk Corporation to create the Norfolk Innovation Corridor. Some of the recent signature projects Jared worked on include the development of the Hilton Main Hotel and successfully attracting both ADP and IKEA to Hampton Roads and bringing Simon Premium Outlets to the former Lake Wright Golf Course. He was also instrumental in the decision for the Headwaters Resort and Casino to locate in Norfolk. He led the effort to the retain the North American headquarters of CMA CGM Group, a world leader in shipping and logistics and was pivotal in bringing the country’s eighth-largest fiber internet company, MetroNet, to Norfolk making Norfolk a “gigabit city” in the process. Most recently, he worked with the EDA to acquire Military Circle Mall which has positioned this entire corridor for redevelopment. He helped stand up a new workforce development program designed to align economic and workforce development efforts, champion the recruitment of diverse talent to support business attraction, retention, and expansion, and collaborate with workforce partners to help residents prepare for and connect to in-demand employment opportunities.
+	<br/>
+	
+	<br/>
+	Jared is a graduate of Bridgewater College with a bachelor’s degree in business administration and a Certificate in Real Estate Finance and Development from the Massachusetts Institute of Technology. He serves on numerous boards and organizations throughout the region and was named to Virginia Business’s Top 500 Power List in 2021 and 2022. He is also a 2019 graduate of Lead Hampton Roads and made Hampton Roads’ Top 40 Under 40 and Top 100 People to Meet in Virginia lists in 2020. Jared is a Hampton Roads native, and he and his wife reside in Norfolk.`,
   }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -1166,14 +1318,23 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"kurt-garrett",
 		"diane-dempsey",
 		"christopher-m-haar",
-		{ id: "joel-lundy", label: "Pending Agency Approval" },
+		"joel-lundy",
 		"don-mcginnis",
 		"robyn-card",
 		"katina-adams",
 		"stacey-r-washington",
 		"erica-h-plath",
 		"paul-wichert",
-		"vice-admiral-richard-w-hunt"
+		"vice-admiral-richard-w-hunt",
+		"brian-w-miller",
+		"anthony-livanios",
+		"roger-camp",
+		"joel-coulter",
+		"nicholas-antonio-rocha",
+		"jeffrey-hoffman",
+		"daniel-hudson",
+		"victorino-mercado",
+		"jared-chalk",
 	]
 };
 

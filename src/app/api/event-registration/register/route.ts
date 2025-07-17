@@ -3,6 +3,7 @@ import { getEnv } from '@/lib/env';
 import { stripe } from '@/lib/stripe/server';
 import { logRegistration } from '@/lib/google-sheets';
 import { validateRegistrationData } from '@/lib/event-registration/validation';
+import { OrderSummary } from '@/lib/email/templates';
 import { sendRegistrationConfirmationEmails } from '@/lib/email/confirmation-emails';
 import { AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { EVENTS } from '@/constants/events';
@@ -14,10 +15,12 @@ import { savePendingRegistration } from '@/lib/aws/dynamodb';
 function calculateOrderTotal(
   ticketSelections: Array<{ ticketId: string; quantity: number }>,
   availableTickets: Array<{ id: string; price: number; earlyBirdPrice?: number; earlyBirdDeadline?: string }>,
-  promoCode?: { discountAmount?: number; discountPercentage?: number }
+  promoCode?: { discountAmount?: number; discountPercentage?: number; eligibleTicketTypes?: string[] }
 ): { subtotal: number; discount: number; total: number } {
   let subtotal = 0;
+  let eligibleSubtotal = 0;
   const now = new Date();
+  const ticketSubtotals = new Map<string, number>();
 
   // Calculate subtotal based on ticket prices
   for (const selection of ticketSelections) {
@@ -26,17 +29,27 @@ function calculateOrderTotal(
 
     const isEarlyBird = ticket.earlyBirdDeadline && new Date(ticket.earlyBirdDeadline) > now;
     const price = isEarlyBird && ticket.earlyBirdPrice ? ticket.earlyBirdPrice : ticket.price;
-
-    subtotal += price * selection.quantity;
+    const ticketSubtotal = price * selection.quantity;
+    
+    subtotal += ticketSubtotal;
+    ticketSubtotals.set(selection.ticketId, ticketSubtotal);
+    
+    // Track subtotal for eligible tickets if promo code has eligibility restrictions
+    if (promoCode?.eligibleTicketTypes && promoCode.eligibleTicketTypes.includes(selection.ticketId)) {
+      eligibleSubtotal += ticketSubtotal;
+    }
   }
 
   // Apply promo code discount if available
   let discount = 0;
   if (promoCode) {
+    // If eligibleTicketTypes is provided, only apply discount to eligible tickets
+    const baseForDiscount = promoCode.eligibleTicketTypes ? eligibleSubtotal : subtotal;
+    
     if (promoCode.discountAmount) {
-      discount = Math.min(promoCode.discountAmount, subtotal);
+      discount = Math.min(promoCode.discountAmount, baseForDiscount);
     } else if (promoCode.discountPercentage) {
-      discount = subtotal * (promoCode.discountPercentage / 100);
+      discount = baseForDiscount * (promoCode.discountPercentage / 100);
     }
   }
 
@@ -146,7 +159,13 @@ export async function POST(request: Request) {
       promoCodeDetails = promoData;
     }
 
-    const { discount, total } = calculateOrderTotal(tickets, paidTickets, promoCodeDetails);
+    // Format promoCodeDetails to match what calculateOrderTotal expects
+    const promoCodeForCalc = promoCodeDetails ? {
+      discountPercentage: promoCodeDetails.discountPercentage,
+      eligibleTicketTypes: promoCodeDetails.eligibleTicketTypes // Include eligibleTicketTypes for selective discount
+    } : undefined;
+    
+    const { subtotal, discount, total } = calculateOrderTotal(tickets, paidTickets, promoCodeForCalc);
 
     if (total === 0) {
       const orderId = `ORDER-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
@@ -165,12 +184,40 @@ export async function POST(request: Request) {
             };
           })
           .filter((r): r is AdapterModalRegistrationType => r !== null);
+          
+        // Create order summary for confirmation email
+        const orderSummaryItems = validatedData.tickets.map(ticket => {
+          const registrationType = eventRegistrations.registrations.find(reg => 'id' in reg && reg.id === ticket.ticketId);
+          let price = 0;
+          
+          if (body.ticketPrices && typeof body.ticketPrices[ticket.ticketId] === 'number') {
+            price = body.ticketPrices[ticket.ticketId];
+          } else if (registrationType && 'price' in registrationType && typeof registrationType.price === 'number') {
+            price = registrationType.price;
+          }
+          
+          return {
+            name: registrationType?.title || ticket.ticketId,
+            quantity: ticket.quantity,
+            price: price
+          };
+        });
+        
+        const orderSummary: OrderSummary = {
+          orderId: orderId,
+          orderDate: new Date().toLocaleDateString(),
+          items: orderSummaryItems,
+          subtotal: subtotal,
+          discount: discount,
+          total: total
+        };
 
         await sendRegistrationConfirmationEmails({
           registrationData: validatedData,
           event,
           registrations: registrationsForEmail,
           orderId: orderId,
+          orderSummary: orderSummary,
         });
       }
 
@@ -178,6 +225,7 @@ export async function POST(request: Request) {
     }
 
     const pendingRegistrationId = await savePendingRegistration(validatedData);
+    // Create order summary for payment receipt
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(total * 100), // Convert to cents
       currency: 'usd',
@@ -192,6 +240,8 @@ export async function POST(request: Request) {
         contactName: `${validatedData.firstName} ${validatedData.lastName}`,
         discountAmount: discount.toString(),
         pendingRegistrationId,
+        // Store eligible ticket types if promo code has restrictions
+        eligibleTicketTypes: promoCodeDetails?.eligibleTicketTypes ? JSON.stringify(promoCodeDetails.eligibleTicketTypes) : '',
       },
     });
 

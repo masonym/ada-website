@@ -94,7 +94,23 @@ matchmakingSessions: {
       sbaIdentification: 'WOSB',
       industry: 'Aerospace',
     }
-  ]
+  ],
+    vipNetworkingReception: {
+      title: "VIP Networking Reception",
+      date: "July 29, 2025",
+      timeStart: "6:00 PM",
+      timeEnd: "8:00 PM",
+      description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
+      additionalInfo: "Join us at The Harbor Club featuring a cash bar, one complimentary drink ticket, and a selection of hors d’oeuvres.",
+      locationName: "The Harbor Club",
+      locationAddress: "333 Waterside Dr Suite 200, Norfolk, VA 23510, USA",
+      placeId: "ChIJI8LspwuYuokR79KzVtIGqlY", // Google Maps Place ID for the reception venue
+      eventPlaceId: "ChIJBdD-jwuYuokRyjyu_hU0jUg", // Google Maps Place ID for the main event venue
+      eventLocationName: "Norfolk Waterside Marriott", // Optional name for the main event location
+      locationPhoto: "/locations/harbor_club.webp",
+      locationPhone: "(757) 426-7433",
+      website: "https://watersidedistrict.com/private-events/the-harbor-club",
+    } as VipNetworkingReception
 };
 
 const orderSummaryHtml = generateOrderSummaryHtml(mockData.orderSummary);

@@ -12,6 +12,7 @@ import SponsorLogos from './SponsorLogos';
 import ExhibitInstructionsButton from './ExhibitInstructionsButton';
 import RegistrationModal from '@/components/RegistrationModal';
 import { getExhibitorsForEvent } from '@/lib/registration-adapters';
+import EventFloorPlan from './EventFloorPlan';
 
 export type ExhibitorProps = {
     event: Event;
@@ -53,11 +54,20 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                         className="max-w-xs sm:max-w-sm"
                     />
                 </div>
+
+
                 <ExhibitInstructionsButton eventShorthand={event.eventShorthand} />
                 <SponsorProspectus eventShorthand={event.eventShorthand} />
-                <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-6 text-center">
-                    Registered Exhibitors: Please submit a high-quality logo for inclusion in the conference materials, along with the desired link for the logo on the event website, to <Link className="text-blue-600 hover:underline text-nowrap" href="mailto:marketing@americandefensealliance.org">marketing@americandefensealliance.org</Link>.
+                <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-2 text-center">
+                    Registered Exhibitors: Please submit a high-quality logo for inclusion in the conference materials, along with the desired link for the logo on the event website, to <Link className="text-blue-600 hover:underline text-nowrap" href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</Link>.
                 </p>
+                {/* Event Floorplan Section */}
+                {event.id === 4 && (
+                    <EventFloorPlan 
+                        eventId={event.id} 
+                        floorPlanImage={`/events/${event.eventShorthand}/event-floorplan.webp`}
+                    />
+                )}
                 {currentEvent.exhibitors.map((item, index) => (
                     <ExhibitorCard
                         key={index}
@@ -72,7 +82,7 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                     Explore our discounted Exhibitor Opportunities available when you Register for Multiple Events. For more information and to secure your sponsorship, contact:  <a href="mailto:marketing@americandefensealliance.org" className='underline'>marketing@americandefensealliance.org</a>
                 </p>
 
-                <SponsorLogos event={event} showTiers={["Exhibitors"]} titleOverride=' ' />
+                <SponsorLogos event={event} showTiers={["Exhibitors"]}/>
 
                 <div className="mt-4 text-center flex flex-col items-center">
                     <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Place at this Groundbreaking Event!</p>

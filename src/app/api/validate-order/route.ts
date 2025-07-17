@@ -3,6 +3,9 @@ import { getConfirmedRegistration } from '@/lib/aws/dynamodb';
 import { EXHIBITOR_TYPES } from '@/constants/exhibitors';
 import { SPONSORSHIP_TYPES } from '@/constants/sponsorships';
 
+// Master key for order validation - falls back to a default if not set
+const MASTER_ORDER_KEY = process.env.MASTER_ORDER_KEY || 'ADA-VALIDATION-KEY';
+
 // Helper function to get all exhibitor and sponsor IDs for a given event
 const getEligibleTicketIdsForEvent = (eventId: number): string[] => {
   const exhibitorEvent = EXHIBITOR_TYPES.find(e => e.id === eventId);
@@ -25,6 +28,12 @@ export async function POST(request: Request) {
 
     if (!orderId || !eventId) {
       return NextResponse.json({ error: 'Order ID and Event ID are required' }, { status: 400 });
+    }
+    
+    // Check if the provided order ID matches the master key
+    if (orderId.trim() === MASTER_ORDER_KEY) {
+      console.log('Master key used for validation');
+      return NextResponse.json({ isValid: true, message: 'Master key validation successful' });
     }
 
     console.log('Validating order:', { orderId, eventId });

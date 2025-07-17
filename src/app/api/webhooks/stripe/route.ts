@@ -90,20 +90,51 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
       console.warn('Mismatch between tickets in order and found registration types.');
     }
 
-        const orderSummary = {
+        // Parse eligible ticket types if available in metadata
+    let eligibleTicketTypes: string[] = [];
+    try {
+      if (metadata.eligibleTicketTypes) {
+        eligibleTicketTypes = JSON.parse(metadata.eligibleTicketTypes);
+      }
+    } catch (e) {
+      console.error('Error parsing eligibleTicketTypes from metadata:', e);
+    }
+
+    const orderSummary = {
       orderId: paymentIntent.id,
       orderDate: new Date(paymentIntent.created * 1000).toLocaleDateString(),
       items: registrationData.tickets.map(ticket => {
         const regType = allRegistrationTypes.find(rt => rt.id === ticket.ticketId);
+        
+        // Check if early bird pricing should apply
+        let itemPrice = Number(regType?.price) || 0;
+        if (regType?.earlyBirdPrice && regType?.earlyBirdDeadline) {
+          const orderDate = new Date(paymentIntent.created * 1000);
+          const earlyBirdDeadline = new Date(regType.earlyBirdDeadline);
+          
+          // Use early bird price if order date is before the deadline
+          if (orderDate < earlyBirdDeadline) {
+            itemPrice = Number(regType.earlyBirdPrice);
+          }
+        }
+
+        // Note whether this ticket type was eligible for promo discount
+        const isEligibleForPromo = registrationData.promoCode && 
+          eligibleTicketTypes.length > 0 && 
+          eligibleTicketTypes.includes(ticket.ticketId);
+        
         return {
           name: ticket.ticketName || regType?.name || 'Unknown Ticket',
           quantity: ticket.quantity,
-          price: (Number(regType?.price) || 0), // Price is in dollars, converting from string
+          price: itemPrice, // Price is in dollars, using early bird price when applicable
+          eligibleForPromo: isEligibleForPromo
         };
       }),
-      subtotal: (paymentIntent.amount + (Number(metadata.discountAmount) || 0)) / 100, // in dollars
-      discount: (Number(metadata.discountAmount) || 0) / 100, // in dollars
+      subtotal: (paymentIntent.amount / 100) + (Number(metadata.discountAmount) || 0), // in dollars
+      discount: Number(metadata.discountAmount) || 0, // already in dollars
       total: paymentIntent.amount / 100, // in dollars
+      promoCode: registrationData.promoCode || null,
+      eligibleTicketTypes: eligibleTicketTypes.length > 0 ? eligibleTicketTypes : null
     };
 
     // Send confirmation emails to all unique attendees

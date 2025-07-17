@@ -238,7 +238,7 @@ export function generateVipNetworkingReceptionHtml(
   return `
     <div class="highlight">
       <h2>VIP Networking Reception</h2>
-      <p>${introText} ${vipNetworkingReception.description}</p>
+      <p><strong>Who's Invited:</strong> Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.</p>
       <p><strong>Location:</strong> ${vipNetworkingReception.locationName}, ${vipNetworkingReception.locationAddress}</p>
       <p><strong>Date:</strong> ${vipNetworkingReception.date} from ${vipNetworkingReception.timeStart} to ${vipNetworkingReception.timeEnd}</p>
       <p>${vipNetworkingReception.additionalInfo}</p>
@@ -587,7 +587,8 @@ export function exhibitorTemplate({
     <p><strong>Dear ${firstName},</strong></p>
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
 
-    <p>If you wish to purchase additional attendee passes, you can do so using the $395 registration Additional Exhibitor Attendee Pass option on our website. Please send a high-quality image of your company logo.</p>
+    <p>If you wish to purchase additional attendee passes, you can do so using the $395 registration Additional Exhibitor Attendee Pass option on our website.</p>
+    <p><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
     
     <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077.</span></p>
     <p>Please note, all registrations are final. We are unable to offer refunds for this event. You can request an Event Credit up to one week from the event date. All event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
@@ -668,7 +669,8 @@ export function sponsorTemplate({
     <p><strong>Dear ${firstName},</strong></p>
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
 
-    <p>You may register additional attendees not included in the (${attendeePasses}) complimentary VIP Attendee Passes for $395 each using the Additional Sponsorship Attendee Pass option on our website. Please send us a high-quality image of your company logo.</p>
+    <p>You may register additional attendees not included in the (${attendeePasses}) complimentary VIP Attendee Passes for $395 each using the Additional Sponsorship Attendee Pass option on our website.</p>
+    <p><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
     
     <p>If you have any questions or need to make changes to your registration, feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077.</span></p>
     <p>Please note, all registrations are final. We are unable to offer refunds for this event. You can request an Event Credit up to one week from the event date. All event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>

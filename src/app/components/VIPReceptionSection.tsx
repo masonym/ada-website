@@ -8,7 +8,7 @@ import { VipNetworkingReception } from '@/types/events';
 
 const VIPReceptionSection: React.FC<{ vipNetworkingReception: VipNetworkingReception }> = ({ vipNetworkingReception }) => {
   return (
-    <div className="my-12 py-8 px-4 sm:px-6 bg-slate-50 rounded-xl">
+    <div className="py-8 px-4 sm:px-6  rounded-xl max-w-[96rem] mx-auto">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-center font-gotham text-slate-700 mb-6">
           {vipNetworkingReception.title}

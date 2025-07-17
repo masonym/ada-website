@@ -2,15 +2,10 @@
 import React from 'react';
 import { EVENTS } from '@/constants/events';
 import RegistrationModalController from './RegistrationModalController';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import RegisterButtonModal from './RegisterButtonModal';
-import Button from '@/app/components/Button';
-import SponsorOptions from '@/app/components/SponsorOptions';
 import CountdownTimer from '@/app/components/CountdownTimer';
 import RegistrationOptions from '@/app/components/RegistrationOptions';
-import Link from 'next/link';
-import { ChevronLeft } from 'lucide-react';
 import Script from 'next/script';
 import { Metadata } from 'next';
 import KeynoteSpeaker from '@/app/components/KeynoteSpeaker';
@@ -18,7 +13,6 @@ import SponsorLogos from '@/app/components/SponsorLogos';
 import SpecialFeatures from '@/app/components/SpecialFeatures';
 import FooterEventText from '@/app/components/FooterEventText';
 import { EventSaleBanner } from '@/app/components/EventSaleBanner';
-import VIPReceptionSection from '@/app/components/VIPReceptionSection';
 import SponsorAdvert from '@/app/components/SponsorAdvert';
 import EventWarningNotice from '@/app/components/EventWarningNotice';
 
@@ -139,7 +133,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
               {event.eventText}
             </div>
 
-            <KeynoteSpeaker eventId={event.id} eventShorthand={event.eventShorthand} showExpandedBio={false} />
+            {event.features?.showKeynoteSpeaker && <KeynoteSpeaker eventId={event.id} eventShorthand={event.eventShorthand} showExpandedBio={false} />}
 
 
             <SpecialFeatures event={event} />
@@ -148,11 +142,8 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             <RegistrationOptions event={event} />
 
-            {event.vipNetworkingReception && (
-              <VIPReceptionSection vipNetworkingReception={event.vipNetworkingReception} />
-            )}
-
             <SponsorAdvert event={event} />
+            
 
             <SponsorLogos event={event} />
 

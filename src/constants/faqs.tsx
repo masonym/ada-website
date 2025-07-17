@@ -45,7 +45,7 @@ export const FAQs = [
             },
             {
                 question: "Is there a refund policy for the event?",
-                answer: `All event registrations are final, and refunds are not available under any circumstances.  We understand that the unexpected can occur, therefore, if you cannot attend, you may transfer your registration to another individual up to one week before the event by contacting us at <a href="mailto:info@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">info@americandefensealliance.org</a>.`,
+                answer: `All event registrations are final, and refunds are not available under any circumstances.  We understand that the unexpected can occur, therefore, if you cannot attend, you may transfer your registration to another individual up to one week before the event by contacting us at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a>.`,
             },
             {
                 question: "Will photos or videos be taken at the event?",
@@ -53,7 +53,7 @@ export const FAQs = [
             },
             {
                 question: "Who can I contact for more information?",
-                answer: `For any additional questions or concerns, please contact our event support team at <a href="mailto:info@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">info@americandefensealliance.org</a> or call (771) 474-1077.`,
+                answer: `For any additional questions or concerns, please contact our event support team at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a> or call (771) 474-1077.`,
             }
             // Add more FAQs here...
         ]
@@ -103,7 +103,7 @@ export const FAQs = [
             },
             {
                 question: "Is there a refund policy for the event?",
-                answer: `All event registrations are final, and refunds are not available under any circumstances.  We understand that the unexpected can occur, therefore, if you cannot attend, you may transfer your registration to another individual up to one week before the event or request an event credit to an upcoming event by contacting us at <a href="mailto:info@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">info@americandefensealliance.org</a>.`,
+                answer: `All event registrations are final, and refunds are not available under any circumstances.  We understand that the unexpected can occur, therefore, if you cannot attend, you may transfer your registration to another individual up to one week before the event or request an event credit to an upcoming event by contacting us at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a>.`,
             },
             {
                 question: "Will photos or videos be taken at the event?",
@@ -111,7 +111,7 @@ export const FAQs = [
             },
             {
                 question: "Who can I contact for more information?",
-                answer: `For any additional questions or concerns, please contact our event support team at <a href="mailto:info@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">info@americandefensealliance.org</a> or call (771) 474-1077.`,
+                answer: `For any additional questions or concerns, please contact our event support team at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a> or call (771) 474-1077.`,
             }
             // Add more FAQs here...
         ]
@@ -137,7 +137,7 @@ export const FAQs = [
             },
             {
                 question: "How can I register for the event?",
-                answer: `You can register for the event online through the <a href="https://www.eventbrite.com/e/2025-navy-marine-corps-procurement-conference-tickets-1119534781669" target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot and Table-Top Exhibit Spaces tend to sell out fast!`,
+                answer: `You can register for the event online through the <a href="https://www.americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference?register=true" target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot and Table-Top Exhibit Spaces tend to sell out fast!`,
             },
             {
                 question: "Is there a cost to attend the event?",
@@ -161,7 +161,7 @@ export const FAQs = [
             },
             {
                 question: "Is there a refund policy for the event?",
-                answer: `All event registrations are final, and refunds are not available under any circumstances.  We understand that the unexpected can occur, therefore, if you cannot attend, you may transfer your registration to another individual up to one week before the event or request an event credit to an upcoming event by contacting us at <a href="mailto:info@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">info@americandefensealliance.org</a>.`,
+                answer: `All event registrations are final, and refunds are not available under any circumstances.  We understand that the unexpected can occur, therefore, if you cannot attend, you may transfer your registration to another individual up to one week before the event or request an event credit to an upcoming event by contacting us at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a>.`,
             },
             {
                 question: "Will photos or videos be taken at the event?",
@@ -189,7 +189,7 @@ export const FAQs = [
             },
             {
                 question: "Who can I contact for more information?",
-                answer: `For any additional questions or concerns, please contact our event support team at <a href="mailto:info@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">info@americandefensealliance.org</a> or call (771) 474-1077.`,
+                answer: `For any additional questions or concerns, please contact our event support team at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a> or call (771) 474-1077.`,
             }
         ]
     },

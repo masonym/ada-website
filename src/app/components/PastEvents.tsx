@@ -56,7 +56,12 @@ const PastEvents = () => {
     const eventsByYear = useMemo(() => {
         const now = new Date();
         const pastEvents = EVENTS
-            .filter(event => new Date(event.timeStart) < now)
+            .filter(event => {
+                // Skip events that are explicitly hidden
+                if (event.shown === false) return false;
+                // Only include past events
+                return new Date(event.timeStart) < now;
+            })
             .reduce((acc, event) => {
                 const year = new Date(event.timeStart).getFullYear();
                 if (!acc[year]) {
