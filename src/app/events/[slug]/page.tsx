@@ -21,8 +21,6 @@ import { EventSaleBanner } from '@/app/components/EventSaleBanner';
 import VIPReceptionSection from '@/app/components/VIPReceptionSection';
 import SponsorAdvert from '@/app/components/SponsorAdvert';
 import EventWarningNotice from '@/app/components/EventWarningNotice';
-import LodgingSection from '@/app/components/LodgingSection';
-import { LODGING_INFO } from '@/constants/lodging';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -73,9 +71,6 @@ export default function EventPage({ params }: { params: { slug: string } }) {
   if (!event) {
     notFound();
   }
-  
-  // Find lodging information for this event
-  const lodging = LODGING_INFO.find((l) => l.eventId === event.id);
 
   const now = new Date().getTime();
   const targetTime = new Date(event.timeStart).getTime();
@@ -155,18 +150,6 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             {event.vipNetworkingReception && (
               <VIPReceptionSection vipNetworkingReception={event.vipNetworkingReception} />
-            )}
-
-            {/* Lodging Section - show if available */}
-            {lodging && (
-              <div className="">
-                <LodgingSection 
-                  lodging={lodging} 
-                  title="Event Venue & Lodging" 
-                  className="px-4 sm:px-6 lg:px-8 mt-12"
-                  imageShown={false}
-                />
-              </div>
             )}
 
             <SponsorAdvert event={event} />
