@@ -12,7 +12,7 @@ export const registrationSchema = yup.object().shape({
   phone: yup.string().required('Phone number is required'),
   jobTitle: yup.string().required('Job title is required'),
   company: yup.string().required('Company name is required'),
-  companyWebsite: yup.string().matches(/^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})(\/\S*)?$/gm, 'Must be a valid URL').required('Company website is required'),
+  companyWebsite: yup.string().matches(/^(https?:\/\/)?([\w-]+\.)+[\w-]{2,}(\/\S*)?$/, 'Must be a valid URL').required('Company website is required'),
   businessSize: yup.string().oneOf([
     'Small Business',
     'Medium-Sized Business',
