@@ -785,9 +785,16 @@ export const SPONSORS: Record<string, Sponsor> = {
   },
   "heller": {
     id: "heller",
-    name: "Heller",
+    name: "HELLAR Machine Tools",
     logo: "/sponsors/heller.webp",
     website: "https://us.heller.biz/",
+    size: 'small'
+  },
+  "gov-solutions": {
+    id: "gov-solutions",
+    name: "GovSolutions, Inc.",
+    logo: "/sponsors/gov-solutions.webp",
+    website: "https://govsolutionsinc.com/",
     size: 'small'
   }
 };
