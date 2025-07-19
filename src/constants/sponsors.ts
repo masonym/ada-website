@@ -782,6 +782,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/ari-hetra.webp",
     website: "https://www.ari-hetra.com/",
     size: 'small'
+  },
+  "heller": {
+    id: "heller",
+    name: "Heller",
+    logo: "/sponsors/heller.webp",
+    website: "https://us.heller.biz/",
+    size: 'small'
   }
 };
 
