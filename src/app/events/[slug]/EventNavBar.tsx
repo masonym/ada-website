@@ -10,19 +10,19 @@ import { EVENTS } from "@/constants/events";
 import { EVENT_NAVS } from "@/constants/eventNavs";
 import Button from "@/app/components/Button";
 import RegistrationModal from "@/components/RegistrationModal";
-import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent } from "@/lib/registration-adapters";
-import { Menu } from 'lucide-react';
 
 export default function Navbar() {
     const params = useParams();
     const event = EVENTS.find(event => event.slug === params?.slug);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [dropdownIndex, setDropdownIndex] = useState<number | null>(null);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     // Registration modal state
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+
 
     const handleMouseEnter = (index: number) => {
         if (timeoutRef.current) {
@@ -50,9 +50,7 @@ export default function Navbar() {
 
     const navItems = EVENT_NAVS.find((nav: any) => nav.eventId === event.id)?.items || [];
 
-    const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
-    };
+
 
     const labelToPath = (label: string) => {
         // replace & with dash
@@ -65,76 +63,83 @@ export default function Navbar() {
     }
 
     return (
-        <nav className="text-navy-800 text-[24px] my-0 p-4">
-            <ul className="flex-col lg:flex-row flex relative items-center justify-center list-none">
-                <div className="flex-col md:flex-row flex items-center">
-                    <li className="relative p-2 flex grow" />
-                    {params?.slug && navItems.map((navItem: any, index: number) => (
-                        <li
-                            key={index}
-                            className="relative p-2 rounded-full"
-                            onMouseEnter={() => handleMouseEnter(index)}
-                            onMouseLeave={handleMouseLeave}
-                        >
-                            {navItem.subItems ? (
-                                <>
-                                    <span className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full cursor-pointer flex items-center text-center">
-                                        {navItem.label}
-                                        <ChevronDown className="ml-1 h-4 w-4" />
-                                    </span>
-                                    {isDropdownOpen && dropdownIndex === index && (
-                                        <ul className="mt-4 absolute left-1/2 -translate-x-1/2 bg-gray-700 rounded-md shadow-lg list-none whitespace-nowrap z-30">
-                                            {navItem.subItems.map((subItem: any) => (
-                                                <li key={subItem.path}>
-                                                    <Link
-                                                        href={`/events/${params.slug}/${labelToPath(navItem.label)}/${subItem.path}`}
-                                                        className="block hover:bg-gray-600 hover:text-white transition-colors duration-300 rounded-md px-12 py-4 text-white"
-                                                        onClick={handleLinkClick}
-                                                    >
-                                                        {subItem.label}
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    )}
-                                </>
-                            ) : (
-                                <Link
-                                    href={`/events/${params.slug}/${navItem.path}`}
-                                    className="hover:bg-lightBlue-400 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full"
-                                    onClick={handleLinkClick}
-                                >
-                                    {navItem.label}
-                                </Link>
-                            )}
-                        </li>
-                    ))}
-                    <li className="relative p-2 flex grow" />
-                </div>
+        <nav className="sticky top-0 z-40 py-3">
+            <div className="mx-auto px-2 sm:px-4 lg:px-8">
+                {/* Main Navigation - Always Visible */}
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center lg:gap-4">
+                    {/* Navigation Items */}
+                    <div className="flex flex-wrap items-start justify-center lg:justify-start gap-2 py-2 lg:py-0">
+                        {params?.slug && navItems.map((navItem: any, index: number) => (
+                            <div
+                                key={index}
+                                className="relative"
+                                onMouseEnter={() => handleMouseEnter(index)}
+                                onMouseLeave={handleMouseLeave}
+                            >
+                                {navItem.subItems ? (
+                                    <>
+                                        <button className="relative flex items-center px-3 sm:px-4 py-2 text-sm sm:text-xl font-semibold text-navy-800 bg-white border border-navy-200 rounded-lg shadow-sm hover:shadow-md hover:border-lightBlue-400 transition-all duration-200 whitespace-nowrap group overflow-hidden">
+                                            <span className="relative z-10 hidden sm:inline group-hover:text-white transition-colors duration-300">{navItem.label}</span>
+                                            <span className="relative z-10 sm:hidden group-hover:text-white transition-colors duration-300">{navItem.label.split(' ')[0]}</span>
+                                            <ChevronDown className="relative z-10 ml-2 h-4 w-4 group-hover:text-white transition-colors duration-300" />
+                                            <span className="absolute inset-0 bg-lightBlue-400 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100 rounded-lg"></span>
+                                        </button>
+                                        {isDropdownOpen && dropdownIndex === index && (
+                                            <div className="absolute top-full left-0 mt-2 w-48 sm:w-60 bg-white rounded-lg shadow-xl border border-gray-200 z-50">
+                                                <div className="py-2">
+                                                    {navItem.subItems.map((subItem: any) => (
+                                                        <Link
+                                                            key={subItem.path}
+                                                            href={`/events/${params.slug}/${labelToPath(navItem.label)}/${subItem.path}`}
+                                                            className="relative block px-4 py-3 text-sm text-gray-700 hover:bg-lightBlue-50 hover:text-lightBlue-700 hover:font-medium transition-all duration-200 border-l-4 border-transparent hover:border-lightBlue-400 group overflow-hidden"
+                                                            onClick={handleLinkClick}
+                                                        >
+                                                            <span className="relative z-10 group-hover:text-lightBlue-700 transition-colors duration-300">{subItem.label}</span>
+                                                            <span className="absolute inset-0 bg-lightBlue-50 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </>
+                                ) : (
+                                    <Link
+                                        href={`/events/${params.slug}/${navItem.path}`}
+                                        className="relative inline-block px-3 sm:px-4 py-2 text-sm sm:text-xl font-semibold text-navy-800 bg-white border border-navy-200 rounded-lg shadow-sm hover:shadow-md hover:border-lightBlue-400 transition-all duration-200 whitespace-nowrap group overflow-hidden"
+                                        onClick={handleLinkClick}
+                                    >
+                                        <span className="relative z-10 hidden sm:inline group-hover:text-white transition-colors duration-300">{navItem.label}</span>
+                                        <span className="relative z-10 sm:hidden group-hover:text-white transition-colors duration-300">{navItem.label.split(' ')[0]}</span>
+                                        <span className="absolute inset-0 bg-lightBlue-400 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100 rounded-lg"></span>
+                                    </Link>
+                                )}
+                            </div>
+                        ))}
+                    </div>
 
-                <div className="flex justify-end">
-                    <li className="relative p-2 flex grow max-w-[840px]">
+                    {/* Register Button */}
+                    <div className="flex justify-center lg:justify-end py-2 lg:py-0">
                         <Button
                             title="REGISTER"
                             variant="btn_sqr_blue"
                             onClick={() => setIsModalOpen(true)}
                         />
-                    </li>
+                    </div>
                 </div>
+            </div>
 
-                {/* Registration Modal */}
-                {event && (
-                    <RegistrationModal
-                        isOpen={isModalOpen}
-                        onClose={() => setIsModalOpen(false)}
-                        selectedRegistration={null}
-                        event={{
-                            ...event,
-                            contactInfo: event.contactInfo || { contactEmail: "" }
-                        }}
-                    />
-                )}
-            </ul>
+            {/* Registration Modal */}
+            {event && (
+                <RegistrationModal
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    selectedRegistration={null}
+                    event={{
+                        ...event,
+                        contactInfo: event.contactInfo || { contactEmail: "" }
+                    }}
+                />
+            )}
         </nav>
     );
 }
