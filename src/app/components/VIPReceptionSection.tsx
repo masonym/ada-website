@@ -75,6 +75,11 @@ const VIPReceptionSection: React.FC<{ vipNetworkingReception: VipNetworkingRecep
             <p dangerouslySetInnerHTML={{ __html: vipNetworkingReception.additionalInfo }} />
           </div>
         )}
+        {vipNetworkingReception.additionalInfo2 && (
+          <div className="mt-4 text-center text-balance">
+            <p>{vipNetworkingReception.additionalInfo2}</p>
+          </div>
+        )}
       </div>
     </div>
   );

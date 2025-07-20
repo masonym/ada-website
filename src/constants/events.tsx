@@ -728,7 +728,7 @@ invaluable connections that can shape the future of your business.
     matchmakingSessions: {
       signUpTime: "7:30 AM",
       signUpDate: "July 29, 2025",
-      sessionDurationMinutes: 6,
+      sessionDurationMinutes: 8,
       slotsPerHost: 10,
       sessions: [
         {
@@ -808,6 +808,7 @@ invaluable connections that can shape the future of your business.
       timeEnd: "8:00 PM",
       description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
       additionalInfo: "Join us at The Harbor Club featuring a cash bar, one complimentary drink ticket, and a selection of hors d’oeuvres.",
+      additionalInfo2: "The Norfolk Waterside Marriott is connected to the Harbor Club via a Parking Garage. From the Marriott’s 2nd Floor, next to the escalators, enter doors to the Parking Garage. Follow the garage’s pedestrian bridge to the Waterside District building. Entry for Harbor Club is on the 2nd Floor of the building.",
       locationName: "The Harbor Club",
       locationAddress: "333 Waterside Dr Suite 200, Norfolk, VA 23510, USA",
       placeId: "ChIJI8LspwuYuokR79KzVtIGqlY", // Google Maps Place ID for the reception venue

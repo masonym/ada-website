@@ -35,7 +35,7 @@ const Hamburger = ({ isOpen, onClose }: HamburgerMenuProps) => {
 
   const now = new Date();
   const sortedEvents = [...EVENTS]
-    .filter(event => new Date(event.timeStart) >= now)
+    .filter(event => new Date(event.timeStart) >= now && event.shown !== false)
     .sort((a, b) => {
       const dateA = new Date(a.timeStart);
       const dateB = new Date(b.timeStart);

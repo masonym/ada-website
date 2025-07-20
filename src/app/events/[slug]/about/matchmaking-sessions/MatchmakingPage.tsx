@@ -136,7 +136,7 @@ const MatchmakingPage = () => {
                         </span>
                       );
                     })}
-                    . Each host will have {event.matchmakingSessions.sessionDurationMinutes} minutes allocated for each appointment. The system is designed to ensure that both parties can maximize their time, focusing on relevant opportunities.
+                    . Each host will have {event.matchmakingSessions.sessionDurationMinutes} minutes allocated for each appointment. The system is designed to ensure that both parties can maximize their time.
                   </>
                 )}
               </p>
