@@ -78,7 +78,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <link rel="canonical" href="https://www.americandefensealliance.org/" />
+        <link rel="canonical" href="/" />
         <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonData) }}
