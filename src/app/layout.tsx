@@ -17,6 +17,10 @@ const StripeProvider = dynamic(
 
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.americandefensealliance.org/'),
+  alternates: {
+    canonical: '/',
+  },
   title: {
     default: 'American Defense Alliance',
     template: '%s',
