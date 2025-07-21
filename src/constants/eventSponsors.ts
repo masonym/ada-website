@@ -185,6 +185,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "big-top",
                     "ari-hetra",
                     "kdm",
+                    "heller",
+                    "gov-solutions",
                 ],
             },
             {
@@ -251,6 +253,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "amazon-business",
                     "isi-defense",
                     "big-top",
+                    "heller",
+                    "gov-solutions",
                 ],
             },
             {

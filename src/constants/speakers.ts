@@ -1342,6 +1342,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"victorino-mercado",
 		"jared-chalk",
 		"hunter-stires",
+		"aimee-zick"
 	]
 };
 

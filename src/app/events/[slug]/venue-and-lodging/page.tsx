@@ -109,7 +109,7 @@ export default function VenueAndLodgingPage({ params }: { params: { slug: string
 
                 {/* Parking Section */}
                 {event.parkingInfo && (
-                <div className="mb-12">
+                <div className="mb-12 max-w-[45%]">
                     <h3 className="text-4xl font-bold mt-6 mb-6 text-slate-800 text-center">Parking</h3>
                     <div className="bg-white px-6 py-4 rounded-lg shadow-md flex flex-col gap-6">
                         {event.parkingInfo?.map((option, index) => (

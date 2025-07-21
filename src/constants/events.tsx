@@ -745,14 +745,30 @@ invaluable connections that can shape the future of your business.
     expectationsText: `The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!`,
     parkingInfo: [
       {
-        title: "",
-        description: `
-        <b>On-Site Parking</b> - Daily: $22.00
-        </br>
-        <b>Off-Site Parking</b> - Main Street Garage 0.1 Miles
-        </br>
-        <b>Valet</b> - Daily: $33.00`,
+        title: "Self-Parking",
+        description: 
+        `Available in the City of Norfolk owned and operated Public Parking Garage. Norfolk City rates apply: $1.50/hour up to $13.00 per 24 hours.
+        <br/>
+        <div class="pl-6">
+        <ul class="list-inside">
+          <li><span class="font-bold">Main Street Garage:</span> Located across from the hotel. A covered pedestrian bridge connects to the hotel on the 3rd Floor, where the conference takes place.</li>
+          <li><span class="font-bold">Waterside Street Garage:</span> Located at the back of the hotel. A ramp entrance connects the garage to the hotel on the 2nd floor.</li>
+        </ul>
+        </div>
+        `,
       },
+      {
+        title: "Overnight Guests",
+        description: `Please park at the Main Street Garage if you plan to exit the garage multiple times during your stay or if you would like to apply charges to your guest room.
+        <br/>
+        <br/>
+A discounted parking rate of $22.00/Car/Night is offered with in and out privileges. To receive the discounted rate, the parking ticket must be validated at the hotel front desk. Once validated, you will receive a QR code to your email that you will use to enter and exit the garage. A printed copy will also be provided by the front desk. Parking Fee charges will automatically be charged to your guest room.`,
+
+      },
+      {
+        title: "Valet Parking",
+        description: "$33.00/Night"
+      }
     ],
     directions: [
       {

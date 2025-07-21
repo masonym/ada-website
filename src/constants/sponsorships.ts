@@ -510,7 +510,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 id: "small-business-sponsor",
                 title: "Small Business Sponsorship",
                 cost: 1500,
-                slotsPerEvent: 20,
+                slotsPerEvent: 23,
                 requiresAttendeeInfo: true,
                 sponsorPasses: 2,
                 perks: [
