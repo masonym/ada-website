@@ -11,21 +11,6 @@ type SpeakerProps = {
     onRequestPassword: () => void;
 };
 
-type Speaker = {
-    id: string;
-    image: string;
-    name: string;
-    position: string;
-    company: string;
-    bio?: string;
-    presentation?: string;
-    keynote?: {
-        isKeynote: boolean;
-        headerText: string;
-    };
-    label?: string;
-};
-
 const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) => {
     const speakers = getSpeakersForEvent(event.id);
     const [expandedBios, setExpandedBios] = useState<boolean[]>([]);
@@ -53,7 +38,6 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
         return nameParts[nameParts.length - 1];
     };
 
-    const nonKeynoteSpeakers = speakers.filter(speaker => !speaker.keynote);
     const isEventFuture = event.timeStart
         ? new Date(new Date(event.timeStart).getTime() - 0.5 * 24 * 60 * 60 * 1000) > new Date()
         : false;
@@ -66,7 +50,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                 <p className="text-l font-bold text-center mb-8 text-slate-600">More speaker information will be added as we get closer to the event date, please check back later for updates.</p>
             )}
             <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-4">
-                {nonKeynoteSpeakers
+                {speakers
                     .sort((a, b) => getLastName(a.name).localeCompare(getLastName(b.name)))
                     .map((speaker, index) => (
                         <div key={speaker.id} className="flex flex-col items-center text-center">
@@ -77,7 +61,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                                 alt={`${speaker.name}`}
                                 className="rounded-lg"
                             />
-                            <p className="mt-4 font-semibold whitespace-nowrap text-wrap">{speaker.name}{speaker.label && <span className="text-sm font-semibold border bg-gray-700 rounded-full px-2 py-1 text-white ml-2">{speaker.label}</span>}</p>
+                            <p className="mt-4 font-semibold whitespace-nowrap text-wrap"><span dangerouslySetInnerHTML={{ __html: speaker.name }}></span>{speaker.label && <span className="text-sm font-semibold border bg-gray-700 rounded-full px-2 py-1 text-white ml-2">{speaker.label}</span>}</p>
                             <p className="text-sm text-gray-600">{speaker.position}</p>
                             <p className="text-sm text-gray-600">{speaker.company}</p>
 

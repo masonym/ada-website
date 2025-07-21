@@ -143,6 +143,19 @@ export const EVENTS: Event[] = [
     placeID: "ChIJ44HT0_u3t4kR9J5_0CQu3ic",
     password: "ADA2025DIF",
     eventShorthand: "2025DIF",
+    features: {
+      showKeynoteSpeaker: true,
+      keynoteSpeakers: [
+        {
+          speakerId: "michael-waltz",
+          headerText: "Congressional Keynote Speaker"
+        },
+        {
+          speakerId: "honorable-john-p-sean-coffey",
+          headerText: "Defense Department Keynote Speaker"
+        }
+      ]
+    }
 
   },
   {
@@ -450,6 +463,20 @@ invaluable connections that can shape the future of your business.
     },
     features: {
       showKeynoteSpeaker: true,
+      keynoteSpeakers: [
+      {
+        speakerId: 	"representative-rob-wittman",
+        headerText: "Congressional Keynote Speaker",
+      },
+      {
+        speakerId: "neal-dunn",
+        headerText: "Congressional Keynote Speaker",
+      },
+      {
+        speakerId: "brandon-cockrell",
+        headerText: "United States Army Keynote Speaker",
+      }
+      ]
     }
   },
   {
@@ -745,15 +772,14 @@ invaluable connections that can shape the future of your business.
     expectationsText: `The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!`,
     parkingInfo: [
       {
-        title: "Self-Parking",
+        title: ``,
         description: 
-        `Available in the City of Norfolk owned and operated Public Parking Garage. Norfolk City rates apply: $1.50/hour up to $13.00 per 24 hours.
+        `
+        <b>Self-Parking</b>: Available in the City of Norfolk owned and operated Public Parking Garage. Norfolk City rates apply: $1.50/hour up to $13.00 per 24 hours.
         <br/>
         <div class="pl-6">
-        <ul class="list-inside">
-          <li><span class="font-bold">Main Street Garage:</span> Located across from the hotel. A covered pedestrian bridge connects to the hotel on the 3rd Floor, where the conference takes place.</li>
-          <li><span class="font-bold">Waterside Street Garage:</span> Located at the back of the hotel. A ramp entrance connects the garage to the hotel on the 2nd floor.</li>
-        </ul>
+          <p><span class="font-bold">Main Street Garage:</span> Located across from the hotel. A covered pedestrian bridge connects to the hotel on the 3rd Floor, where the conference takes place.</p>
+          <p><span class="font-bold">Waterside Street Garage:</span> Located at the back of the hotel. A ramp entrance connects the garage to the hotel on the 2nd floor.</p>
         </div>
         `,
       },
@@ -766,8 +792,8 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
 
       },
       {
-        title: "Valet Parking",
-        description: "$33.00/Night"
+        title: "",
+        description: `<b>Valet Parking</b>: $33.00/Night`
       }
     ],
     directions: [
@@ -836,6 +862,12 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     } as VipNetworkingReception,
     features: {
       showKeynoteSpeaker: false,
+      keynoteSpeakers: [
+        {
+          speakerId: "erica-h-plath",
+          headerText: "Keynote Speaker",
+        }
+      ]
     }
   },
   {
@@ -933,6 +965,12 @@ Austin, Texas has become a major hub for Military and Defense technology innovat
     expectationsText: `Austin, Texas has become a major hub for Military and Defense technology innovation.  Accordingly, the <b>2025 Defense Technology Aerospace Procurement Conference</b> will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across all sectors from IT, AI and Quantum, to cybersecurity qualification, to next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, to military base security, assured logistics and forward energy supply – with spotlights on multi-Billion-dollar acquisition programs from the Golden Dome initiative to next-generation aircraft and satellites, and the development of advanced unmanned platforms (‘loyal wingmen’ to drones).  Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.`,
     features: {
       showKeynoteSpeaker: true,
+      keynoteSpeakers: [
+        {
+          speakerId: "michael-waltz",
+          headerText: "Keynote Speaker"
+        }
+      ]
     },
     vipNetworkingReception: {
       title: "VIP Networking Reception",

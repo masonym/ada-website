@@ -19,6 +19,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import StripePaymentForm, { StripePaymentFormRef } from './StripePaymentForm';
 import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { EVENT_SPONSORS } from '@/constants/eventSponsors';
+import { validatePromoCode, isEligibleForPromoDiscount, type PromoCode } from '@/lib/promo-codes';
 
 interface EventWithContact extends Omit<Event, 'id'> {
   contactInfo?: {
@@ -161,66 +162,6 @@ const isRegistrationClosed = (event: EventWithContact, daysBeforeToClose: number
   return new Date() >= cutoffDate;
 };
 
-// Define promo code type
-interface PromoCode {
-  code: string;
-  discountPercentage: number;
-  eligibleTicketTypes: string[];
-  expirationDate: Date;
-  description?: string;
-}
-
-// Define available promo codes
-const PROMO_CODES: PromoCode[] = [
-  {
-    code: 'ACEC15',
-    discountPercentage: 15,
-    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass', ''],
-    expirationDate: new Date('2025-08-01'),
-    description: 'ACEC15 - 15% off Attendee and VIP Attendee passes'
-  },
-  {
-    code: 'ADA20',
-    discountPercentage: 20,
-    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass', 'exhibit', 'platinum-sponsor', 'gold-sponsor', 'silver-sponsor', 'bronze-sponsor', 'vip-networking-reception-sponsor', 'networking-luncheon-sponsor', 'small-business-sponsor', 'small-business-sponsor-without-exhibit-space'],
-    expirationDate: new Date('2025-12-31'),
-    description: 'ADA20 - 20% off Attendee and VIP Attendee passes'
-  },
-  {
-    code: 'EARLY10',
-    discountPercentage: 10,
-    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass'],
-    expirationDate: new Date('2025-08-01'),
-    description: 'EARLY10 - 10% off all passes and Basic Exhibitor Package'
-  }
-];
-
-// Function to validate the promo code
-const isValidPromoCode = (code: string): { valid: boolean; reason?: string; promoDetails?: PromoCode } => {
-  // Find the promo code in our list
-  const promoCode = PROMO_CODES.find(promo => promo.code === code);
-  
-  // Check if code exists
-  if (!promoCode) {
-    return { valid: false, reason: 'invalid' };
-  }
-  
-  // Check if code is expired
-  const now = new Date();
-  if (now > promoCode.expirationDate) {
-    return { valid: false, reason: 'expired' };
-  }
-  
-  // If we reach here, the code is valid
-  return { valid: true, promoDetails: promoCode };
-};
-
-// Function to check if a registration is eligible for a specific promo discount
-const isEligibleForPromoDiscount = (registration: AdapterModalRegistrationType, eligibleTypes: string[]): boolean => {
-  // Check by ID or title
-  return eligibleTypes.includes(registration.id) || eligibleTypes.includes(registration.title);
-};
-
 const RegistrationModal = ({
   isOpen,
   onClose,
@@ -284,7 +225,7 @@ const RegistrationModal = ({
   const [activePromoCode, setActivePromoCode] = useState<PromoCode | null>(null);
 
   // Handler function for applying promo code
-  const handleApplyPromoCode = () => {
+  const handleApplyPromoCode = async () => {
     // Reset previous error/success states
     setPromoCodeError(null);
     setApplyingPromoCode(true);
@@ -299,15 +240,28 @@ const RegistrationModal = ({
       return;
     }
     
-    // Simulate API call delay with setTimeout
-    // In a real implementation, you would call the backend API here
-    setTimeout(() => {
-      const result = isValidPromoCode(normalizedCode);
+    try {
+      // Call the backend API for validation
+      const response = await fetch('/api/event-registration/validate-promo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          promoCode: normalizedCode,
+          eventId: event.id,
+          tickets: Object.entries(ticketQuantities)
+            .filter(([_, quantity]) => quantity > 0)
+            .map(([ticketId, quantity]) => ({ ticketId, quantity }))
+        }),
+      });
       
-      if (result.valid && result.promoDetails) {
+      const result = await response.json();
+      
+      if (result.valid) {
         // Check if there are any eligible tickets in the cart for this specific promo code
         const hasEligibleTickets = [...allRegistrations, ...sponsorships, ...exhibitors].some(reg => 
-          (ticketQuantities[reg.id] || 0) > 0 && isEligibleForPromoDiscount(reg, result.promoDetails!.eligibleTicketTypes)
+          (ticketQuantities[reg.id] || 0) > 0 && isEligibleForPromoDiscount(reg.id, result.eligibleTicketTypes)
         );
         
         if (!hasEligibleTickets) {
@@ -316,27 +270,29 @@ const RegistrationModal = ({
           setActivePromoCode(null);
         } else {
           setPromoCodeValid(true);
-          setActivePromoCode(result.promoDetails);
+          setActivePromoCode({
+            code: normalizedCode,
+            discountPercentage: result.discountPercentage,
+            eligibleTicketTypes: result.eligibleTicketTypes,
+            expirationDate: new Date(), // This will be validated by backend
+            description: result.description,
+            eligibleEventIds: [event.id],
+            isActive: true
+          });
         }
       } else {
         setPromoCodeValid(false);
         setActivePromoCode(null);
-        
-        // Show different error messages based on validation reason
-        switch(result.reason) {
-          case 'expired':
-            setPromoCodeError('This promo code has expired');
-            break;
-          case 'invalid':
-            setPromoCodeError('Invalid promo code');
-            break;
-          default:
-            setPromoCodeError('Error validating promo code');
-        }
+        setPromoCodeError(result.error || 'Invalid promo code');
       }
-      
-      setApplyingPromoCode(false);
-    }, 500); // Simulating a 500ms delay for API call
+    } catch (error) {
+      console.error('Error validating promo code:', error);
+      setPromoCodeValid(false);
+      setActivePromoCode(null);
+      setPromoCodeError('Error validating promo code. Please try again.');
+    }
+    
+    setApplyingPromoCode(false);
   };
 
   // Memoize Stripe Elements appearance to prevent unnecessary re-initialization
@@ -1037,7 +993,7 @@ const RegistrationModal = ({
         // Apply promo discount if valid code is entered and registration is eligible
         let finalPrice = numericPrice;
         if (promoCodeValid && activePromoCode) {
-          if (isEligibleForPromoDiscount(reg, activePromoCode.eligibleTicketTypes)) {
+          if (isEligibleForPromoDiscount(reg.id, activePromoCode.eligibleTicketTypes)) {
             // Apply discount percentage
             finalPrice = finalPrice * (1 - activePromoCode.discountPercentage / 100);
           }
@@ -1061,19 +1017,14 @@ const RegistrationModal = ({
     return Object.values(ticketQuantities).reduce((sum, qty) => sum + qty, 0);
   };
 
-  // Helper function to get the effective price of a registration
+  // Helper function to get the effective price of a registration (without promo discount)
   const getEffectivePrice = (registration: AdapterModalRegistrationType): number => {
     const isEarlyBird = registration.earlyBirdDeadline && new Date() < new Date(registration.earlyBirdDeadline);
     const displayPrice = isEarlyBird && registration.earlyBirdPrice !== undefined ? registration.earlyBirdPrice : registration.price;
     // Convert displayPrice to number if it's a string
-    let numericPrice = typeof displayPrice === 'string' ? parseFloat(displayPrice.replace(/[^0-9.]/g, '')) || 0 : displayPrice;
+    const numericPrice = typeof displayPrice === 'string' ? parseFloat(displayPrice.replace(/[^0-9.]/g, '')) || 0 : displayPrice;
     
-    // Apply promo code discount if valid and registration is eligible
-    if (promoCodeValid && activePromoCode) {
-      if (isEligibleForPromoDiscount(registration, activePromoCode.eligibleTicketTypes)) {
-        numericPrice = numericPrice * (1 - activePromoCode.discountPercentage / 100); // Apply discount percentage
-      }
-    }
+    // Note: Promo code discount is applied in calculateTotal() to avoid double application
     
     return numericPrice;
   };

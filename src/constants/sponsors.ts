@@ -796,6 +796,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/gov-solutions.webp",
     website: "https://govsolutionsinc.com/",
     size: 'small'
+  },
+  "isn-corp": {
+    id: "isn-corp",
+    name: "Information Systems & Networks Corp.",
+    logo: "/sponsors/isn-corp.webp",
+    website: "https://www.isncorp.com/",
+    size: 'small'
   }
 };
 
