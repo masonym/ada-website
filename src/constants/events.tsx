@@ -861,6 +861,16 @@ Austin, Texas has become a major hub for Military and Defense technology innovat
         </ul>
       </div>
     ),
+    aboutEventText: (
+      <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Event Overview
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Join us for the <b>2025 Defense Technology & Aerospace Procurement Conference</b> on November 5-6, 2025 in Austin, Texas, home to the Renaissance Austin Hotel. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
+        </p>
+      </div>
+    ),
     topicalCoverage: [
           { "tagline": "DoD Integration of Commercial Space Assets/Technologies", "description": "The Department of Defense is increasingly partnering with commercial space companies to integrate advanced satellite, launch, and communications technologies into military operations, boosting resilience and rapid response capabilities." },
           { "tagline": "Space Force Support Functions Across Domains/COCOMS", "description": "The U.S. Space Force is expanding its role in supporting Combatant Commands (COCOMs) and joint operations by delivering space-based intelligence, navigation, and communication services across all warfighting domains." },
