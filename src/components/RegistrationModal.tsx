@@ -1061,19 +1061,14 @@ const RegistrationModal = ({
     return Object.values(ticketQuantities).reduce((sum, qty) => sum + qty, 0);
   };
 
-  // Helper function to get the effective price of a registration
+  // Helper function to get the effective price of a registration (without promo discount)
   const getEffectivePrice = (registration: AdapterModalRegistrationType): number => {
     const isEarlyBird = registration.earlyBirdDeadline && new Date() < new Date(registration.earlyBirdDeadline);
     const displayPrice = isEarlyBird && registration.earlyBirdPrice !== undefined ? registration.earlyBirdPrice : registration.price;
     // Convert displayPrice to number if it's a string
-    let numericPrice = typeof displayPrice === 'string' ? parseFloat(displayPrice.replace(/[^0-9.]/g, '')) || 0 : displayPrice;
+    const numericPrice = typeof displayPrice === 'string' ? parseFloat(displayPrice.replace(/[^0-9.]/g, '')) || 0 : displayPrice;
     
-    // Apply promo code discount if valid and registration is eligible
-    if (promoCodeValid && activePromoCode) {
-      if (isEligibleForPromoDiscount(registration, activePromoCode.eligibleTicketTypes)) {
-        numericPrice = numericPrice * (1 - activePromoCode.discountPercentage / 100); // Apply discount percentage
-      }
-    }
+    // Note: Promo code discount is applied in calculateTotal() to avoid double application
     
     return numericPrice;
   };
