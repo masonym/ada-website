@@ -966,10 +966,6 @@ Austin, Texas has become a major hub for Military and Defense technology innovat
     features: {
       showKeynoteSpeaker: true,
       keynoteSpeakers: [
-        {
-          speakerId: "michael-waltz",
-          headerText: "Keynote Speaker"
-        }
       ]
     },
     vipNetworkingReception: {
