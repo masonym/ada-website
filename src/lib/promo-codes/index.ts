@@ -43,15 +43,6 @@ export const PROMO_CODES: PromoCode[] = [
     description: 'ADA20 - 20% off eligible passes and sponsorships for Navy & Marine Corps and Defense Technology conferences',
     isActive: true
   },
-  {
-    code: 'EARLY10',
-    discountPercentage: 10,
-    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass'],
-    eligibleEventIds: [4, 5], // Valid for both events
-    expirationDate: new Date('2025-08-01'),
-    description: 'EARLY10 - 10% off attendee passes (early bird special)',
-    isActive: true
-  }
 ];
 
 // Function to validate promo code for a specific event
