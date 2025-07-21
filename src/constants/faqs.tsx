@@ -198,7 +198,7 @@ export const FAQs = [
         faqs: [
             {
                 question: "What is the 2025 Defense Technology & Aerospace Procurement Conference?",
-                answer: "The 2025 Defense Technology & Aerospace Procurement Conference will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!",
+                answer: "The 2025 Defense Technology & Aerospace Procurement Conference will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across multiple sectors. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
             },
             {
                 question: "When and where will the event take place?",
