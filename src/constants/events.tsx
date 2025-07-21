@@ -974,6 +974,12 @@ Austin, Texas has become a major hub for Military and Defense technology innovat
       timeStart: "5:30 PM",
       timeEnd: "7:30 PM",
       description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
+      locationName: "Renaissance Austin Hotel",
+      locationAddress: "9721 Arboretum Blvd, Austin, TX 78759",
+      eventPlaceId: "ChIJL_jXUoLMRIYRdMJC6h3clUU",
+      locationPhoto: "/hotels/renaissance-austin.webp",
+      locationPhone: "512-681-6000",
+      website: "https://renaissancehotels.com/renaissance-austin-hotel",
     } as VipNetworkingReception,
     //     parkingInfo: [
     //  {

@@ -14,15 +14,15 @@ const VIPReceptionSection: React.FC<{ vipNetworkingReception: VipNetworkingRecep
           {vipNetworkingReception.title}
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className={`${vipNetworkingReception.placeId ? "grid grid-cols-1 lg:grid-cols-2 gap-8" : "flex flex-row items-center justify-center"}`}>
           <div>
             <div className="mb-6">
               <div dangerouslySetInnerHTML={{ __html: vipNetworkingReception.description }}
                 className="prose max-w-none text-md text-slate-600" />
             </div>
 
-            <div className=" mb-0">
-              <div className="flex items-start">
+            <div className={`${vipNetworkingReception.placeId ? "" : "flex flex-row items-center justify-center gap-8"}`}>
+              <div className={`${vipNetworkingReception.placeId ? "flex items-start" : "flex flex-row items-start justify-center"}`}>
                 <CalendarDays className="w-6 h-6 mr-3 text-blue-600 flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-lg">Date</h4>
@@ -30,7 +30,7 @@ const VIPReceptionSection: React.FC<{ vipNetworkingReception: VipNetworkingRecep
                 </div>
               </div>
 
-              <div className="flex items-start">
+              <div className={`flex items-start ${vipNetworkingReception.placeId ? "" : "flex-row justify-center"}`}>
                 <Clock className="w-6 h-6 mr-3 text-blue-600 flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-lg">Time</h4>
@@ -38,7 +38,7 @@ const VIPReceptionSection: React.FC<{ vipNetworkingReception: VipNetworkingRecep
                 </div>
               </div>
 
-              <div className="flex items-start">
+              <div className={`${vipNetworkingReception.placeId ? "flex items-start" : "flex flex-row items-start justify-center"}`}>
                 <MapPin className="w-6 h-6 mr-3 text-blue-600 flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-lg">Location</h4>
@@ -53,12 +53,13 @@ const VIPReceptionSection: React.FC<{ vipNetworkingReception: VipNetworkingRecep
                   </p>
                 </div>
               </div>
-              <div className="mt-4 hidden lg:flex mx-auto items-end justify-center">
+            </div>
+              <div className={`${vipNetworkingReception.locationPhoto ? "mt-4 hidden lg:flex mx-auto items-end justify-center" : ""}`}>
                 <img className="rounded-lg" src={getCdnPath(vipNetworkingReception.locationPhoto || "")} alt="VIP Reception Location" />
               </div>
-            </div>
           </div>
 
+            {vipNetworkingReception.eventPlaceId && vipNetworkingReception.placeId && (
           <div>
             <h3 className="text-xl font-semibold mb-4">Walking Directions</h3>
             <DirectionsMap
@@ -69,6 +70,7 @@ const VIPReceptionSection: React.FC<{ vipNetworkingReception: VipNetworkingRecep
               travelMode="WALKING"
             />
           </div>
+        )}
         </div>
         {vipNetworkingReception.additionalInfo && (
           <div className="mt-6 text-center text-balance">
