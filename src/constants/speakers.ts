@@ -875,7 +875,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 		"image": "kurt-garrett.webp",
 		"name": "Kurt Garrett",
 		"position": "VP Global Defense Solutions",
-		"company": "One Network Enterprises (ONE)",
+		"company": "Blue Yonder",
 		"bio": `Kurt C. Garrett is a distinguished professional with over 36 years of combined experience in logistics and defense solutions. As a former US Marine Logistician, Kurt dedicated 24+ years to serving his country, honing his expertise in strategic logistics and operational excellence. Transitioning from military service, he has spent the past 12+ years at One Network Enterprises™ (ONE), where he serves as the Vice President of Defense Solutions Consulting and a Defense Subject Matter Expert. 
 	<br/>
 	
