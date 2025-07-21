@@ -633,7 +633,7 @@ export const SPONSORS: Record<string, Sponsor> = {
     id: "marzen-group-llc",
     name: "Marzen Group, LLC",
     logo: "/sponsors/marzen-group-llc.webp",
-    website: "https://www.marzen-group.com/",
+    website: "https://www.marzen.com/",
     size: 'small'
   },
   "rite-in-the-rain": {
