@@ -112,6 +112,12 @@ export const LODGING_INFO: LodgingInfo[] = [
     <b>Booking Deadline</b>: October 21, 2025<br />
     <br/>
     <p> Reservation Link Coming Soon</p>
+    <br/>
+    <p class="font-bold"> Parking: </p>
+    <ul class="list-inside">
+      <li>Complimentary for Hotel Guests</li>
+      <li>Complimentary for Meeting Attendees up to 8 Hours</li>
+    </ul>
   `
   }
 ];

@@ -975,17 +975,17 @@ Austin, Texas has become a major hub for Military and Defense technology innovat
       timeEnd: "7:30 PM",
       description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
     } as VipNetworkingReception,
-    parkingInfo: [
- {
-        title: "Parking: ",
-        description: 
-        `
-        <ul class="list-inside">
-        <li>Complimentary for Hotel Guests</li>
-        <li>Complimentary for Meeting Attendees up to 8 Hours</li>
-        </ul>
-        `
-      },
-    ],
+    //     parkingInfo: [
+    //  {
+    //         title: "Parking: ",
+    //         description:
+    //         `
+    //         <ul class="list-inside">
+    //         <li>Complimentary for Hotel Guests</li>
+    //         <li>Complimentary for Meeting Attendees up to 8 Hours</li>
+    //         </ul>
+    //         `
+    //       },
+    //     ],
   },
 ];
