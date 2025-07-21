@@ -6,10 +6,6 @@ export interface Speaker {
 	position: string;
 	company: string;
 	bio?: string;
-	keynote?: {
-		isKeynote: boolean;
-		headerText?: string;
-	};
 }
 
 export const SPEAKERS: { [key: string]: Speaker } = {
@@ -41,10 +37,6 @@ As a Floridian, Mike has fought to help maintain Florida’s way of life, introd
 His commitment in Washington, D.C. is the same now as it was in combat: To serve with everything he has, without regard for his own self and with a sense of duty.
 <br/><br/>
 Mike has a daughter in college and a baby boy. He is married to Dr. Julia Nesheiwat, a combat veteran who served in multiple presidential administrations, as well as most recently as Homeland Security Advisor to President Trump. They live in St. Johns County, Florida.`,
-		"keynote": {
-			"isKeynote": true,
-			"headerText": "Congressional Keynote Speaker"
-		}
 	},
 	"mark-cancian": {
 		"image": "mark-cancian.webp",
@@ -171,11 +163,7 @@ A native of New York City, Mr. Coffey is the oldest of seven children born to Ir
 After leaving active duty, Mr. Coffey continued to serve in the Navy Reserve for eighteenyears. Among other things, he flew anti-submarine missions in the North Atlantic andMediterranean, counter-narcotics missions in the Caribbean, and armed missions insupport of the blockade of the former Yugoslavia. Mr. Coffey was selected to serve ascommanding officer both of a reserve P-3C squadron (VP-92) and the reserve componentof the Enterprise carrier battle group staff (CCDG-12), and served as a staff officer in the Office of the Secretary of Defense (Reserve Affairs). Mr. Coffey retired at the rank ofCaptain in 2004.
 <br/><br/>
 Prior to returning to public service, Mr. Coffey served as the President of the Federal BarFoundation and on the boards of various non-profit organizations, including ThanksUSA,Common Cause New York, Georgetown Law’s Board of Visitors, and the Holocaust andHuman Rights Education Center. Mr. Coffey has been married for over thirty years toAnne Churchill, an actress whose credits include This is Spinal Tap. They have threegrown children. `,
-		"keynote": {
-			"isKeynote": true,
-			"headerText": "Defense Department Keynote Speaker"
-		}
-	},
+		},
 	"bianca-henderson": {
 		"image": "bianca-henderson.webp",
 		"name": "Bianca Henderson",
@@ -535,10 +523,6 @@ Dr. Harrington earned a Doctor of Business Administration degree through Trevecc
 		"name": "Representative Rob Wittman <br/>(R-VA)",
 		"position": "Vice Chairman, House Armed Services Committee, Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding Caucus",
 		"company": "U.S. House of Representatives",
-		"keynote": {
-			"isKeynote": true,
-			"headerText": "Congressional Keynote Speaker"
-		},
 		"bio": `Congressman Rob Wittman was first elected to the United States Congress to serve Virginia’s First Congressional District in 2007. While in office, he has focused on strengthening our military and supporting our nation’s veterans, promoting a flourishing economy through fiscal responsibility and pro-growth policies, fixing our crumbling infrastructure, increasing access to high-speed internet, and promoting workforce development through Career and Technical Education (CTE) and Science, Technology, Engineering, and Math (STEM) programs.
 <br/>
 
@@ -633,10 +617,6 @@ He also partners with defense contractors to develop predictive decision-making 
 		"name": "Brandon Cockrell",
 		"position": "Deputy Assistant Secretary of the Army for Energy and Sustainability",
 		"company": "Office of the Assistant Secretary of the Army for Installations, Energy and Environment",
-		"keynote": {
-			"isKeynote": true,
-			"headerText": "United States Army Keynote Speaker"
-		},
 		"bio": `Mr. Brandon Cockrell is the Assistant Secretary of the Army for Energy and Sustainability (DASA(E&S)), leading the program development and oversight of installation energy and water security, resilience and conservation; sustainability; and operational energy. Mr. Cockrell began this position on August 12, 2024.
 <br/>
 
@@ -763,10 +743,6 @@ His final Navy assignment was China Branch of Navy Staff at the Pentagon. `,
 		"name": `Representative Neal Dunn <br/>(R-FL)`,
 		"position": "Member, House Committee on Energy and Commerce, and House Select Committee on the Strategic Competition between the U.S. and the Chinese Communist Party",
 		"company": "U.S. House of Representatives",
-		"keynote": {
-			"isKeynote": true,
-			"headerText": "Congressional Keynote Speaker"
-		},
 		"bio": `
 	Dr. Dunn currently serves on the House Energy and Commerce Committee, the oldest standing legislative committee in the U.S. House of Representatives. The committee is responsible for energy policy, interstate and foreign commerce, telecommunications, consumer protection, food and drug safety, public health and research, and environmental quality among others. Additionally, Dr. Dunn serves as Vice Chair of the Subcommittee on Health, the Subcommittee on Innovation, Data, & Commerce, the Subcommittee on Communications and Technology, as well as the Parliament of NATO, and the House Select Committee on the CCP.,
 
@@ -1055,9 +1031,6 @@ Ms. Plath graduated from the U.S. Naval Academy with a Bachelor of Science in Ae
 <br/><br/>
 Ms. Plath's naval decorations include the Navy Commendation Medal (two awards), Navy Achievement Medal (two awards), Meritorious Unit Commendation, and Global War on Terrorism Expeditionary and Service medals.
 `,
-		"keynote": {
-			"isKeynote": true,
-		},
 	}
 ,
   "paul-wichert": {
@@ -1241,6 +1214,18 @@ HII is an all-domain defense and technologies partner, recognized worldwide as A
     "name": "Hunter Stires",
     "position": "Founder and CEO",
     "company": "Maritime Strategy Group",
+  },
+  "tiffany-l-trotter": {
+    "image": "placeholder.webp",
+    "name": "Tiffany L. Trotter",
+    "position": "Deputy Chief, Contracting Office",
+    "company": "Norfolk Naval Shipyard",
+  },
+  "rosetta-rodwell": {
+    "image": "placeholder.webp",
+    "name": "Rosetta Rodwell",
+    "position": "Former Area Director - Mid Atlantic, Office of Government Contracting",
+    "company": "U.S. Small Business Administration",
   }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -1316,7 +1301,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"stacey-l-cooper",
 		"charles-sills",
 		"brian-liesveld",
-		"arveice-washington",
+		// "arveice-washington",
 		{ id: "kareem-sykes", label: "Pending Agency Approval" },
 		"terressa-bebout",
 		"dave-leinberger",
@@ -1342,7 +1327,10 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"victorino-mercado",
 		"jared-chalk",
 		"hunter-stires",
-		"aimee-zick"
+		"aimee-zick",
+		"tiffany-l-trotter",
+		"rosetta-rodwell",
+		{ id: "representative-rob-wittman", label: "Pre-Recorded Address" }
 	]
 };
 

@@ -2,7 +2,8 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { getSpeakersForEvent } from '@/constants/speakers';
+import { getSpeakersForEvent, SPEAKERS } from '@/constants/speakers';
+import { EVENTS } from '@/constants/events';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { getCdnPath } from '@/utils/image';
 
@@ -37,8 +38,23 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
   const bioRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const collapsedRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
-  const speakers = getSpeakersForEvent(eventId);
-  const keynoteSpeakers = speakers.filter(speaker => speaker.keynote);
+  // Get the event and its keynote speaker configuration
+  const event = EVENTS.find(e => e.id === eventId);
+  const keynoteConfig = event?.features?.keynoteSpeakers || [];
+  
+  // Map keynote speaker IDs to actual speaker data
+  const keynoteSpeakers = keynoteConfig.map(config => {
+    const speaker = SPEAKERS[config.speakerId];
+    if (!speaker) return null;
+    return {
+      ...speaker,
+      id: config.speakerId,
+      keynote: {
+        isKeynote: true,
+        headerText: config.headerText
+      }
+    };
+  }).filter(Boolean) as (typeof SPEAKERS[string] & { id: string; keynote: { isKeynote: boolean; headerText: string } })[];
 
   useEffect(() => {
     if (!keynoteSpeakers) return;

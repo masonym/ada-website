@@ -85,6 +85,10 @@ export interface VIPReceptionProps {
 
 export interface EventFeatures {
     showKeynoteSpeaker?: boolean;
+    keynoteSpeakers?: Array<{
+        speakerId: string;
+        headerText: string;
+    }>;
     // add stuff here later. these are flags to hide or show certain components in our dynamic route page
 }
 
