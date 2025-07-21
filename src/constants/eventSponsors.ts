@@ -255,6 +255,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "big-top",
                     "heller",
                     "gov-solutions",
+                    "isn-corp",
                 ],
             },
             {
