@@ -192,7 +192,7 @@ export const EVENTS: Event[] = [
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
-        <p className="mb-4 max-w-6xl mx-auto text-center">
+        <p className="max-w-6xl mx-auto text-center">
           The <b>2025 Southeast Defense Procurement Conference</b> is the premier event to
           explore the latest contracting opportunities across a wide range of industries.
           From <b>Aerospace and Aviation</b> to <b>Military Base Construction, Facility Support,
@@ -706,7 +706,7 @@ invaluable connections that can shape the future of your business.
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
-        <p className="mb-4 max-w-6xl mx-auto text-center">
+        <p className="max-w-6xl mx-auto text-center">
           The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
         </p>
       </div>
@@ -722,7 +722,7 @@ invaluable connections that can shape the future of your business.
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
-        <p className="mb-4 max-w-6xl mx-auto text-center">
+        <p className="max-w-6xl mx-auto text-center">
           The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
         </p>
       </div>
