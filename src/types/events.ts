@@ -28,6 +28,7 @@ export interface VipNetworkingReception {
     locationPhoto?: string;
     locationPhone?: string;
     website?: string;
+    locationRoom?: string;
 }
 
 export interface Sale {
@@ -81,6 +82,7 @@ export interface VIPReceptionProps {
         locationPhoto?: string;
         locationPhone: string;
         website: string;
+        locationRoom?: string;
 }
 
 export interface EventFeatures {
