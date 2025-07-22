@@ -872,7 +872,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
   },
   {
     id: 5,
-    shown: false,
+    shown: true,
     title: "2025 Defense Technology & Aerospace Procurement Conference",
     date: "November 5-6, 2025",
     timeStart: "2025-11-05T11:30:00Z", // This is in UTC time
