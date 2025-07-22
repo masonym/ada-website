@@ -971,7 +971,12 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       date: "November 5, 2025",
       timeStart: "5:30 PM",
       timeEnd: "7:30 PM",
-      description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
+      description: `The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.
+      <br/>
+      <b>Featuring Western Style Line Dancing Entertainment</b>
+      <br/>
+      Optional Attire: Cowboy Boots/Hats/Denim
+      `,
       locationName: "Renaissance Austin Hotel",
       locationAddress: "9721 Arboretum Blvd, Austin, TX 78759",
       locationRoom: "Lower Level, Rio Grande Hall",
@@ -979,7 +984,6 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       locationPhoto: "/hotels/renaissance-austin.webp",
       locationPhone: "(512) 681-6000",
       website: "https://www.marriott.com/en-us/hotels/aussh-renaissance-austin-hotel/overview/",
-      additionalInfo: `Featuring Western Style Line Dancing Entertainment<br/>Optional Attire: Cowboy Boots/Hats/Denim`,
     } as VipNetworkingReception,
     //     parkingInfo: [
     //  {
