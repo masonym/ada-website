@@ -996,7 +996,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
   },
   {
     id: 6,
-    shown: true,
+    shown: false,
     eventShorthand: "2026NMCPC",
     password: "2026NMCPCADA",
     title: "2026 Navy & Marine Corps Procurement Conference",
@@ -1004,14 +1004,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     timeStart: "2026-07-29T11:30:00Z",
     description: `This event's description is currently being finalized.`,
     eventText: (
-      <div className="max-container font-light">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
-          Event Overview
-        </h2>
-        <p className="mb-4 leading-relaxed">
-          This event's description is currently being finalized.
-        </p>
-      </div>
+    <></>
     ),
     topicalCoverage: [
       { "tagline": "Navy's Critical Maintenance & Repair and Shipbuilding Needs", "description": "Navy's urgent need for maintenance, repair, and new shipbuilding to ensure operational readiness and technological superiority" },
