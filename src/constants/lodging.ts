@@ -115,7 +115,8 @@ export const LODGING_INFO: LodgingInfo[] = [
     <b>Subject Line: "Request to Add Reservation at Group Rate" 2025 Defense Technology & Aerospace Procurement Conference</b>
     <br/>
     <br/>
-    <p> Reservation Link Coming Soon</p>
+    <a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1753131167945&key=GRP&app=resvlink" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">Reservation Link</a>
+    <br/>
     <br/>
     <p class="font-bold"> Parking: </p>
     <ul class="list-inside">
