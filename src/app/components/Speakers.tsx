@@ -33,10 +33,22 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
     };
 
     const getLastName = (name: string) => {
-        const cleanedName = name.replace(/\([^)]*\)/g, '').replace(/,.*/, '').trim();
-        const nameParts = cleanedName.split(' ');
-        return nameParts[nameParts.length - 1];
-    };
+    // strip common suffixes like ranks and titles
+    const removeTitles = (s: string) =>
+        s
+            .replace(/\([^)]*\)/g, '') // remove things in parens
+            .replace(/\b(Vice\s+)?Admiral\b|USN|Ret\.?|Capt\.?|Major|Col\.?|Lt\.?|General|Commander|Rear\s+Admiral/gi, '')
+            .replace(/^[^a-zA-Z]*|[^a-zA-Z]*$/g, '') // trim non-alpha edges
+            .replace(/,\s*.*$/, '') // remove stuff after commas
+            .trim();
+
+    const cleanedName = removeTitles(name);
+    const nameParts = cleanedName.split(/\s+/);
+
+    if (nameParts.length === 0) return '';
+    return nameParts[nameParts.length - 1];
+};
+
 
     const isEventFuture = event.timeStart
         ? new Date(new Date(event.timeStart).getTime() - 0.5 * 24 * 60 * 60 * 1000) > new Date()
