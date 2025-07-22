@@ -42,7 +42,7 @@ const VIPReceptionSection: React.FC<{ vipNetworkingReception: VipNetworkingRecep
                 <MapPin className="w-6 h-6 mr-3 text-blue-600 flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-lg">Location</h4>
-                  <p className="font-medium">{vipNetworkingReception.locationName}</p>
+                  <p className="font-medium" dangerouslySetInnerHTML={{ __html: vipNetworkingReception.locationName || "" }} />
                   <p dangerouslySetInnerHTML={{ __html: vipNetworkingReception.locationAddress || "" }} />
 
                   <p>{vipNetworkingReception.locationPhone}</p>

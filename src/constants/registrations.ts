@@ -312,9 +312,9 @@ export const REGISTRATION_TYPES = [
                 ]}
                 ],
                 buttonText: "Register Now",
-                price: 495,
-                // earlyBirdPrice: 495,
-                // earlyBirdDeadline: "2025-10-15T04:00:00Z", // midnight ET on July 11th
+                price: 545,
+                earlyBirdPrice: 495,
+                earlyBirdDeadline: "2025-09-01T04:00:00Z", // midnight ET on September 1st
                 type: "paid",
             },
 
@@ -334,9 +334,9 @@ export const REGISTRATION_TYPES = [
                 ]}
                 ],
                 buttonText: "Register Now",
-                price: 550,
-                // earlyBirdPrice: 550,
-                // earlyBirdDeadline: "2025-10-15T04:00:00Z", // midnight ET on July 11th
+                price: 645,
+                earlyBirdPrice: 595,
+                earlyBirdDeadline: "2025-09-01T04:00:00Z", // midnight ET on September 1st
                 type: "paid",
             },
 

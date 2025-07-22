@@ -147,7 +147,7 @@ const MatchmakingPage = () => {
             <div>
               <h3 className="font-semibold mb-2">Networking and Information Exchange</h3>
               <p className="text-gray-200">
-                Matchmaking Sessions foster collaboration, creating a platform for businesses to form valuable partnerships, discuss subcontracting opportunities, and explore teaming opportunities that align with the needs of the defense industry.
+                Matchmaking Sessions foster collaboration, creating a platform for businesses to form valuable partnerships, discuss subcontracting opportunities, and explore teaming opportunities that align defense needs with industry capabilities.
               </p>
             </div>
           </div>
