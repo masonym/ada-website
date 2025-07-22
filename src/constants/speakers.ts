@@ -1221,7 +1221,7 @@ Mr. Stires has been recognized twice with the U.S. Naval Institute’s General P
 	`
   },
   "tiffany-l-trotter": {
-    "image": "placeholder.webp",
+    "image": "tiffany-l-trotter.webp",
     "name": "Tiffany L. Trotter",
     "position": "Deputy Chief, Contracting Office",
     "company": "Norfolk Naval Shipyard",
