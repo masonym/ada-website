@@ -1038,7 +1038,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "kurt-garrett",
                                 sponsor: "Gold Sponsor",
-                                sponsorStyle: "bg-yellow-300 text-slate-900"
+                                sponsorStyle: "bg-[#ffaf00] text-slate-900"
                             }
                         ]
                     },
@@ -1078,7 +1078,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "don-mcginnis",
                                 sponsor: "Bronze Sponsor",
-                                sponsorStyle: "bg-orange-300 text-slate-900"
+                                sponsorStyle: "bg-[#CD7F32] text-slate-900"
                             }
                         ]
                     },
@@ -1202,7 +1202,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "paul-wichert",
                                 sponsor: "Gold Sponsor",
-                                sponsorStyle: "bg-yellow-300 text-slate-900"
+                                sponsorStyle: "bg-[#ffaf00] text-slate-900"
                             }
                         ]
                     },
