@@ -6,7 +6,7 @@ export const FAQs = [
         faqs: [
             {
                 question: "What is the 2025 Defense Industry Forecast?",
-                answer: "The conference will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across multiple sectors. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
+                answer: "The conference will provide actionable business intelligence on upcoming acquisition opportunities across the Department of Defense. It covers key areas such as advanced IT, AI, cyber, weapons systems development and sustainment, logistics, military base construction, shipyard modernization, and space defense. Attendees will hear directly from Program Managers, Contracting Officers, Small Business Program Directors, and leaders from various military branches and prime defense contractors about the latest purchasing opportunities.",
             },
             {
                 question: "When and where will the event take place?",
@@ -63,7 +63,7 @@ export const FAQs = [
         faqs: [
             {
                 question: "What is the 2025 Southeast Defense Procurement Conference?",
-                answer: "The conference will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across multiple sectors. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
+                answer: "The conference is a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
             },
             {
                 question: "When and where will the event take place?",
@@ -121,7 +121,7 @@ export const FAQs = [
         faqs: [
             {
                 question: "What is the 2025 Navy & Marine Corps Procurement Conference?",
-                answer: "The conference will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across multiple sectors. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
+                answer: "The conference will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!",
             },
             {
                 question: "When and where will the event take place?",
@@ -194,7 +194,7 @@ export const FAQs = [
         faqs: [
             {
                 question: "What is the 2025 Defense Technology & Aerospace Procurement Conference?",
-                answer: "The conference will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across multiple sectors. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
+                answer: "The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors. ",
             },
             {
                 question: "When and where will the event take place?",

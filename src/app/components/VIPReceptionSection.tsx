@@ -18,7 +18,7 @@ const VIPReceptionSection: React.FC<{ vipNetworkingReception: VipNetworkingRecep
           <div>
             <div className="mb-6">
               <div dangerouslySetInnerHTML={{ __html: vipNetworkingReception.description }}
-                className="prose max-w-none text-md text-slate-600" />
+                className="prose max-w-none text-md text-slate-600 text-center" />
             </div>
 
             <div className={`${vipNetworkingReception.placeId ? "" : "flex flex-row items-center justify-center gap-8"}`}>
@@ -44,7 +44,9 @@ const VIPReceptionSection: React.FC<{ vipNetworkingReception: VipNetworkingRecep
                   <h4 className="font-semibold text-lg">Location</h4>
                   <p className="font-medium" dangerouslySetInnerHTML={{ __html: vipNetworkingReception.locationName || "" }} />
                   <p dangerouslySetInnerHTML={{ __html: vipNetworkingReception.locationAddress || "" }} />
-
+                  {vipNetworkingReception.locationRoom && (
+                    <p className="font-medium">Room: {vipNetworkingReception.locationRoom}</p>
+                  )}
                   <p>{vipNetworkingReception.locationPhone}</p>
                   <p>
                     <a href={vipNetworkingReception.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
