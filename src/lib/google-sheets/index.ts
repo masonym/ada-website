@@ -59,6 +59,11 @@ const EVENT_SPREADSHEET_MAPPING: EventSpreadsheetMapping = {
     registrationSheetName: '🛡️ Attendee Registration Information 🛡️',
     description: '2025 Navy Marine Corps Procurement Conference registrations'
   },
+  '6': {
+    spreadsheetId: env.GOOGLE_SHEETS_SPREADSHEET_ID_2026NMCPC || env.GOOGLE_SHEETS_SPREADSHEET_ID,
+    registrationSheetName: '🛡️ Attendee Registration Information 🛡️',
+    description: '2026 Navy Marine Corps Procurement Conference registrations'
+  },
   
   // Add more event mappings as needed
 };

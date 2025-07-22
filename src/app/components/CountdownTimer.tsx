@@ -52,8 +52,8 @@ const CountdownTimer = ({ targetDate, initialTimeLeft, backgroundColor = 'bg-nav
   const getBoxWidth = (value: number) => {
     const digitCount = value.toString().length;
     if (digitCount <= 2) return 'w-12 sm:w-24';
-    if (digitCount === 3) return 'w-14 sm:w-28';
-    return 'w-20 sm:w-40'; // For 4 digits or more
+    if (digitCount === 3) return 'w-20 sm:w-32';
+    return 'w-24 sm:w-40'; // For 4 digits or more
   };
 
   return (

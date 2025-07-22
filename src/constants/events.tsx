@@ -872,7 +872,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
   },
   {
     id: 5,
-    shown: true,
+    shown: false,
     title: "2025 Defense Technology & Aerospace Procurement Conference",
     date: "November 5-6, 2025",
     timeStart: "2025-11-05T11:30:00Z", // This is in UTC time
@@ -997,5 +997,44 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     //         `
     //       },
     //     ],
+  },
+  {
+    id: 6,
+    shown: false,
+    eventShorthand: "2026NMCPC",
+    password: "2026NMCPCADA",
+    title: "2026 Navy & Marine Corps Procurement Conference",
+    date: "May 19-20, 2026",
+    timeStart: "2026-05-19T11:30:00Z",
+    description: `This event's description is currently being finalized.`,
+    eventText: (
+    <></>
+    ),
+    topicalCoverage: [
+      { "tagline": "Navy's Critical Maintenance & Repair and Shipbuilding Needs", "description": "Navy's urgent need for maintenance, repair, and new shipbuilding to ensure operational readiness and technological superiority" },
+      { "tagline": "SIOP - Shipyard Infrastructure Optimization Plan - Driving $ Billions in Construction & Facility Support Contracts", "description": "Massive investments under the SIOP to upgrade facilities and boost Navy shipbuilding and repair capabilities" },
+      { "tagline": "New Navy & Marine Corps Littoral Warfighting Requirements & Contracts", "description": "New operational needs and contracts focused on enhancing littoral (coastal) warfare capabilities for the Navy and Marine Corps" },
+      { "tagline": "New Navy & Marine Corps Technology Initiatives", "description": "Cutting-edge technology advancements being pursued by the Navy and Marine Corps to modernize operations and capabilities" },
+      { "tagline": "Upcoming Projects - NAVFAC, MARCORSYSCOM, and USACE", "description": "Upcoming infrastructure and development projects led by NAVFAC, MARCORSYSCOM, and USACE, with a focus on military needs" },
+      { "tagline": "Military Base-Community Partnerships Promoting Local Build Contracts", "description": "How partnerships between military bases and local communities are generating construction contracts for regional infrastructure development" },
+      { "tagline": "Indo-Pacific ‘Pivot’ – Deployment & Logistics Challenges Driving Major New Acquisitions", "description": "Strategic 'Indo-Pacific Pivot,' emphasizing the logistical and deployment challenges that are shaping new defense acquisitions" },
+      { "tagline": "Contracts Supporting U.S. Leadership in AI", "description": "Defense contracts aimed at advancing U.S. leadership in artificial intelligence technologies for military applications" },
+      { "tagline": "The Surge in Autonomous/Unmanned Systems Development & Deployment", "description": "Rapid development and deployment of autonomous and unmanned systems in the military, with a focus on new contracts" },
+      { "tagline": "Base & Installation Physical Security Upgrades", "description": "Initiatives and contracts aimed at upgrading physical security systems at military bases and installations to ensure safety and resilience" },
+      { "tagline": "Major Command IT & Cyber Protection Contracts", "description": "Contracts focused on enhancing IT and cybersecurity protections for major military commands against growing cyber threats" },
+      { "tagline": "Prime Defense Contractors - Subcontracting & Teaming Opportunities", "description": "Subcontracting and teaming opportunities for small and medium-sized businesses to work with prime defense contractors on large-scale projects" },
+      { "tagline": "Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)", "description": "Fast-tracked contracting vehicles like DARPA, DIU, and DEFENSEWERX are enabling the acquisition of cutting-edge defense technologies" },
+      { "tagline": "How to Access GWAC's (Government-Wide Acquisition Contracts)", "description": "How contractors can navigate and access Government-Wide Acquisition Contracts (GWAC's) for defense and federal opportunities" },
+      { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "How Mentor-Protégé programs help accelerate business growth for small businesses by pairing them with larger prime contractors" },
+      { "tagline": "Cybersecurity Compliance Mandates and CMMC Training Options", "description": "New cybersecurity compliance requirements under CMMC and training resources available for contractors to meet these standards" },
+    ],
+    image: "2026NMCPC_wide.webp",
+    slug: "2026-navy-marine-corps-procurement-conference",
+    locationImage: "locations/temp_venue.webp",
+    locationAddress: `235 E Main St, Norfolk, Virginia 23510`,
+    venueName: "Norfolk Waterside Marriott",
+    placeID: "ChIJBdD-jwuYuokRyjyu_hU0jUg",
+
+    countdownColour: "#1C2D3D",
   },
 ];

@@ -137,7 +137,7 @@ export const FAQs = [
             },
             {
                 question: "How can I register for the event?",
-                answer: `You can register for the event online through the <a href="https://www.americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference?register=true" target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot and Table-Top Exhibit Spaces tend to sell out fast!`,
+                answer: `You can register for the event online through the <a href="https://www.americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference?register=true" target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot to receive the cheapest rates and Table-Top Exhibit Spaces tend to sell out fast! Sponsorship Options are also available without Table-Top Exhibit Spaces. <br/> For more information regarding Sponsorship Opportunities, contact us at <a href="mailto:marketing@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">marketing@americandefensealliance.org</a>`,
             },
             {
                 question: "Is there a cost to attend the event?",
@@ -165,7 +165,7 @@ export const FAQs = [
             },
             {
                 question: "Will photos or videos be taken at the event?",
-                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media. If you have any concerns, please contact us prior to the event.<br/>Access to Photos and Videos will be available post-event.",
+                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media. If you have any concerns, please contact us prior to the event. Access to Photos and Videos will be available post-event.",
             },
             {
                 question: "Does the American Defense Alliance sell or rent attendee lists?",
@@ -238,7 +238,7 @@ export const FAQs = [
             },
             {
                 question: "Will photos or videos be taken at the event?",
-                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media.<br/> If you have any concerns, please contact us prior to the event.<br/>Access to Photos and Videos will be available post-event.",
+                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media.<br/> If you have any concerns, please contact us prior to the event. Access to Photos and Videos will be available post-event.",
             },
             {
                 question: "Does the American Defense Alliance sell or rent attendee lists?",
