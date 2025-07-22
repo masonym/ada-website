@@ -945,7 +945,9 @@ export const SCHEDULES = [
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                         speakers: [
                             {
-                                speakerId: "charles-sills"
+                                speakerId: "charles-sills",
+                                sponsor: "Conference Moderator",
+                                sponsorStyle: "bg-red-999",
                             }
                         ]
                     },
@@ -983,6 +985,8 @@ export const SCHEDULES = [
                         speakers: [
                             {
                                 speakerId: "roger-camp",
+                                sponsor: "Platinum Sponsor",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
                             },
                             {
                                 speakerId: "vice-admiral-richard-w-hunt",
@@ -1032,7 +1036,9 @@ export const SCHEDULES = [
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                         speakers: [
                             {
-                                speakerId: "kurt-garrett"
+                                speakerId: "kurt-garrett",
+                                sponsor: "Gold Sponsor",
+                                sponsorStyle: "bg-yellow-300 text-slate-900"
                             }
                         ]
                     },
@@ -1070,7 +1076,9 @@ export const SCHEDULES = [
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                         speakers: [
                             {
-                                speakerId: "don-mcginnis"
+                                speakerId: "don-mcginnis",
+                                sponsor: "Bronze Sponsor",
+                                sponsorStyle: "bg-orange-300 text-slate-900"
                             }
                         ]
                     },
@@ -1115,7 +1123,9 @@ export const SCHEDULES = [
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                         speakers: [
                             {
-                                speakerId: "charles-sills"
+                                speakerId: "charles-sills",
+                                sponsor: "Conference Moderator",
+                                sponsorStyle: "bg-red-999",
                             }
                         ]
                     },
@@ -1151,7 +1161,9 @@ export const SCHEDULES = [
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                         speakers: [
                             {
-                                speakerId: "charles-sills"
+                                speakerId: "charles-sills",
+                                sponsor: "Conference Moderator",
+                                sponsorStyle: "bg-red-999",
                             }
                         ]
                     },
@@ -1188,7 +1200,9 @@ export const SCHEDULES = [
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                         speakers: [
                             {
-                                speakerId: "paul-wichert"
+                                speakerId: "paul-wichert",
+                                sponsor: "Gold Sponsor",
+                                sponsorStyle: "bg-yellow-300 text-slate-900"
                             }
                         ]
                     },
@@ -1252,7 +1266,9 @@ export const SCHEDULES = [
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                         speakers: [
                             {
-                                speakerId: "charles-sills"
+                                speakerId: "charles-sills",
+                                sponsor: "Conference Moderator",
+                                sponsorStyle: "bg-red-999",
                             }
                         ]
                     },
