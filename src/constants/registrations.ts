@@ -263,35 +263,6 @@ export const REGISTRATION_TYPES = [
                 price: "Complimentary",
                 // availabilityInfo: "Limited availability."
             },
-
-            // {
-            //     title: "Sponsor",
-            //     headerImage: "sponsor-pass.webp",
-            //     perks: [
-            //         "Brand Visibility",
-            //         "Speaking Opportunity",
-            //         "Recognition",
-            //         "<i>Reception Hosting</i> (Premier)",
-            //         "<i>Luncheon Hosting </i>(Prestige)",
-            //         "Display Table",
-            //         "Event Access",
-            //         "Media Coverage",
-            //     ],
-            //     subtitle: "Includes:",
-            //     buttonText: "Explore Sponsorship Opportunities",
-            //     type: "sponsor",
-            //     availabilityInfo: "Limited availability."
-            // },
-        ],
-        addOns: [
-            //{
-            //    title: "VIP Networking Reception",
-            //    description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from 6:00 PM - 8:00 PM on July 29, 2025.",
-            //    price: "+$100"
-            //},
-            // {
-            //     title: "Networking Reception",
-            //     description: "Join us for an exclusive evening networking
         ],
     },
     {
@@ -339,6 +310,71 @@ export const REGISTRATION_TYPES = [
                 earlyBirdDeadline: "2025-09-01T04:00:00Z", // midnight ET on September 1st
                 type: "paid",
             },
+            {
+                id: "govt-official-military-pass",
+                title: "Government Official & Military Pass",
+                headerImage: "gov-pass.webp",
+                perks: [
+                { formatted: [
+                    { content: "Event Access: (1) Attendee Pass", bold: true },
+                    { content: "Access to General Sessions", indent: 1 },
+                    { content: "Access to Exhibit Area", indent: 1 },
+                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                ]}
+                ],
+                buttonText: "Register Now",
+                type: "complimentary",
+                price: "Complimentary",
+                // availabilityInfo: "Limited availability."
+            },
+        ],
+    },
+    {
+        id: 6,
+        registrations: [
+            {
+                id: "attendee-pass",
+                title: "Attendee Pass",
+                headerImage: "attendee-pass.webp",
+                perks: [
+                { formatted: [
+                    { content: "Event Access: (1) Attendee Pass", bold: true },
+                    { content: "Access to General Sessions", indent: 1 },
+                    { content: "Access to Exhibit Area", indent: 1 },
+                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                    { content: "Breakfast & Buffet Lunch", indent: 1 },
+                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                ]}
+                ],
+                buttonText: "Register Now",
+                price: 495,
+                earlyBirdPrice: 495,
+                earlyBirdDeadline: "2025-07-11T04:00:00Z", // midnight ET on July 11th
+                type: "paid",
+            },
+
+            {
+                id: "vip-attendee-pass",
+                title: "VIP Attendee Pass",
+                headerImage: "vip-attendee-pass.webp",
+                perks: [
+                { formatted: [
+                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                    { content: "Access to General Sessions", indent: 1 },
+                    { content: "Access to Exhibit Area", indent: 1 },
+                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                    { content: "Breakfast & Buffet Lunch", indent: 1 },
+                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                    { content: "Access to VIP Networking Reception", bold: true },
+                ]}
+                ],
+                buttonText: "Register Now",
+                price: 545,
+                earlyBirdPrice: 550,
+                earlyBirdDeadline: "2025-07-11T04:00:00Z", // midnight ET on July 11th
+                type: "paid",
+            },
 
 
             {
@@ -359,28 +395,6 @@ export const REGISTRATION_TYPES = [
                 price: "Complimentary",
                 // availabilityInfo: "Limited availability."
             },
-
-            // {
-            //     title: "Sponsor",
-            //     headerImage: "sponsor-pass.webp",
-            //     perks: [
-            //         "Brand Visibility",
-            //         "Speaking Opportunity",
-            //         "Recognition",
-            //         "<i>Reception Hosting</i> (Premier)",
-            //         "<i>Luncheon Hosting </i>(Prestige)",
-            //         "Display Table",
-            //         "Event Access",
-            //         "Media Coverage",
-            //     ],
-            //     subtitle: "Includes:",
-            //     buttonText: "Explore Sponsorship Opportunities",
-            //     type: "sponsor",
-            //     availabilityInfo: "Limited availability."
-            // },
         ],
-        addOns: [
-            
-        ]
-    }
+    },
 ];
