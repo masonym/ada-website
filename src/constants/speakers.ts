@@ -520,7 +520,7 @@ Dr. Harrington earned a Doctor of Business Administration degree through Trevecc
 	,
 	"representative-rob-wittman": {
 		"image": "rob-wittman.webp",
-		"name": "Representative Rob Wittman <br/>(R-VA)",
+		"name": "Representative Rob Wittman (R-VA)",
 		"position": "Vice Chairman, House Armed Services Committee, Chairman, Tactical Air and Land Forces Subcommittee, and Co-Chair, Congressional Shipbuilding Caucus",
 		"company": "U.S. House of Representatives",
 		"bio": `Congressman Rob Wittman was first elected to the United States Congress to serve Virginia’s First Congressional District in 2007. While in office, he has focused on strengthening our military and supporting our nation’s veterans, promoting a flourishing economy through fiscal responsibility and pro-growth policies, fixing our crumbling infrastructure, increasing access to high-speed internet, and promoting workforce development through Career and Technical Education (CTE) and Science, Technology, Engineering, and Math (STEM) programs.
@@ -1210,10 +1210,15 @@ HII is an all-domain defense and technologies partner, recognized worldwide as A
 	Jared is a graduate of Bridgewater College with a bachelor’s degree in business administration and a Certificate in Real Estate Finance and Development from the Massachusetts Institute of Technology. He serves on numerous boards and organizations throughout the region and was named to Virginia Business’s Top 500 Power List in 2021 and 2022. He is also a 2019 graduate of Lead Hampton Roads and made Hampton Roads’ Top 40 Under 40 and Top 100 People to Meet in Virginia lists in 2020. Jared is a Hampton Roads native, and he and his wife reside in Norfolk.`,
   },
   "hunter-stires": {
-    "image": "placeholder.webp",
+    "image": "hunter-stires.webp",
     "name": "Hunter Stires",
     "position": "Founder and CEO",
     "company": "Maritime Strategy Group",
+	"bio": `
+	Hunter Stires is the Founder and CEO of The Maritime Strategy Group.  He most recently served in government as the Maritime Strategist to the 78th Secretary of the Navy, completing his term in June 2025.  He is one of the principal architects of Secretary Del Toro's Maritime Statecraft strategy to rebuild America's comprehensive maritime power, both commercial and naval.  Additionally, Mr. Stires serves as the Project Director of the U.S. Naval Institute’s Maritime Counterinsurgency Project, a Fellow with the U.S. Naval War College’s John B. Hattendorf Center for Maritime Historical Research, and a Non-Resident Fellow with the Navy League’s Center for Maritime Strategy.  A graduate of Columbia University, Mr. Stires previously served in the Office of the Undersecretary of Defense for Policy and several positions on the Navy Staff, including OPNAV N96 Surface Warfare Directorate, OPNAV N95 Expeditionary Warfare Directorate, and OPNAV N522 Navy Irregular Warfare Group.
+<br/><br/>
+Mr. Stires has been recognized twice with the U.S. Naval Institute’s General Prize.  His article in the Summer 2019 issue of the Naval War College Review, “‘They Were Playing Chicken:’ The U.S. Asiatic Fleet’s Gray-Zone Deterrence Campaign against Japan, 1937-40,” was selected for inclusion in the monograph Deterrence.  Mr. Stires’ published work has been cited in a wide range of outlets, including Voice of America, Radio Free Asia, War on the Rocks, 19FortyFive, the Liberty Times, Rappler, and the South China Morning Post —as well as the Chinese language edition of the Global Times.
+	`
   },
   "tiffany-l-trotter": {
     "image": "placeholder.webp",
@@ -1222,10 +1227,55 @@ HII is an all-domain defense and technologies partner, recognized worldwide as A
     "company": "Norfolk Naval Shipyard",
   },
   "rosetta-rodwell": {
-    "image": "placeholder.webp",
+    "image": "rosetta-rodwell.webp",
     "name": "Rosetta Rodwell",
     "position": "Former Area Director - Mid Atlantic, Office of Government Contracting",
     "company": "U.S. Small Business Administration",
+	"bio": `
+	Rosetta Rodwell stands out as a distinguished expert in federal contracting with over 20 years of experience , bringing a wealth of knowledge and experience to her role as the CEO of Government Gateway Solutions. With a career spanning over two decades, Rosetta has developed a deep understanding of the intricacies of government procurement and has become a leading figure in the industry.
+<br/><br/>
+Rosetta's academic credentials are as impressive as her professional achievements. She holds a Master of Business Administration (MBA) from the University of Maryland Global Campus and a Master of Science in Supply Chain Management. These qualifications have provided her with a robust foundation in business strategy and operational efficiency, key elements in navigating the complex landscape of on government contracts.
+<br/><br/>
+Prior to her tenure at Government Gateway Solutions, Rosetta served as the Area Director at the Small Business Administration (SBA). In this role, she was responsible for overseeing more than 1,400 procurement centers across six states, a testament to her exceptional leadership and strategic planning capabilities. Her efforts at the SBA were instrumental in enhancing the accessibility and opportunities for small businesses in federal contracting.
+<br/><br/>
+Rosetta’s career is marked by her commitment to fostering innovation and collaboration between government agencies and the private sector. Her strategic insight and forward-thinking approach have not only propelled her clients to secure lucrative government contracts but have also advanced the broader industry standards for procurement and compliance.
+<br/><br/>
+Through her leadership, expertise, and dedication, Rosetta Rodwell continues to shape the future of government contracting, ensuring that businesses can successfully navigate this competitive and rewarding arena. She quickly recognized the challenges faced by manufacturers in navigating government contracts and made it her mission to bridge this gap.
+<br/><br/>
+Rosetta is a sought-after speaker and thought leader, frequently invited to share her knowledge at industry conferences and workshops. Her passion for education and empowerment is evident in her dedication to developing training programs that equip manufacturers with the tools they need to succeed in the competitive landscape of government contracting.
+<br/><br/>
+Through her unwavering dedication and extensive experience, Rosetta Rodwell continues to lead Government Gateway Solutions to new heights, ensuring that her clients are well-prepared to meet the demands of government contracting and achieve their business objectives.`
+  },
+  "captain-rick-tyler": {
+    "image": "rick-tyler.webp",
+    "name": "Richard S. Tyler, PE, MBA",
+    "position": "Chief Engineer / Planning Design and Construction Director",
+    "company": "Naval Facilities Engineering Systems Command (NAVFAC) Atlantic",
+    "bio": `Richard (Rick) Tyler serves as the Chief Engineer and Planning Design and Construction (PDC) Director at NAVFAC Atlantic in Norfolk, Virginia, directly overseeing the Military Construction planning, design, and construction program for the Shipyard Infrastructure Optimization Program (SIOP) at the Norfolk Naval Shipyard (Portsmouth VA) and Portsmouth Naval Shipyard (Kittery, ME) as well as within the NAVFAC EURAFCENT (Naples, Italy) Area of Responsibility. 
+	<br/>
+	 
+	<br/>
+	Rick is responsible for professional engineering community management and development/implementation of engineering concepts, practices, programs and advanced technologies for improvement of planning, design and construction activities. He is the senior technical advisor for the NAVFAC Atlantic command.  Previously, Rick served as the Facility Energy/Cybersecurity Criteria Manager at NAVFAC’s Engineering Criteria and Program Office responsible for translating federal energy mandates into design and construction criteria to deliver and maintain quality, sustainable facilities for the Department of Navy, as well as managing the development of cybersecurity facilities criteria for facilityrelated control systems. 
+	<br/>
+	 
+	<br/>
+	Rick has spent the better part of his career with NAVFAC, joining the Atlantic Division (LANTDIV) in 1996 as an electrical design engineer supporting projects for MCIEAST, EFAMED), and many naval facilities in the Hampton Roads area. In 2002, Rick accepted an electrical engineering position at Engineering Field Activity, Mediterranean (EFAMED) in Naples, Italy. 
+	<br/>
+	 
+	<br/>
+	He returned to NAVFAC Atlantic in 2004 and served as a lead electrical engineer for five years until 2009 when he moved back to NAVFAC Europe Africa Southwest Asia (EURAFSWA) in Naples, Italy for a second tour. There Rick was dual hatted as the Capital Improvements Design Product Line Coordinator and the MILCON Program Manager. In 2012, Rick returned to NAVFAC Atlantic as the Facility Energy and Cybersecurity Criteria Manager in the NAVFAC Engineering Criteria and Programs Office. 
+	<br/>
+	 
+	<br/>
+	A native of Virginia, Rick received a Bachelor of Science degree in Electrical Engineering from Old Dominion University in 1992 and a Master of Business Administration from the College of William and Mary 2008. He is registered as a Professional Engineer in the Commonwealth of Virginia, a member of the Acquisition Professional Community and is a graduate of NAVFAC’s Leadership Development Program (Level III) as well as the Federal Executive Institute’s “Leadership for a Democratic Society”. 
+	<br/>
+	 
+	<br/>
+	In 2009, Rick was selected as the NAVFAC Atlantic Engineer of the Year. He has also received numerous other personal citations, awards, and letters of appreciation. He is the current President of the Virginia Society of Professional Engineers (VSPE). 
+	<br/>
+	 
+	<br/>
+	Rick currently resides in Newport News, VA with his wife Shannon.  Together, they are the proud parents of one son, two daughters, and one granddaughter, and are active in their community and church. `,
   }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -1330,7 +1380,8 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"aimee-zick",
 		"tiffany-l-trotter",
 		"rosetta-rodwell",
-		{ id: "representative-rob-wittman", label: "Pre-Recorded Address" }
+		{ id: "representative-rob-wittman", label: "Pre-Recorded Address" },
+		"captain-rick-tyler"
 	]
 };
 

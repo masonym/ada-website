@@ -1,3 +1,15 @@
+import { SPEAKERS } from './speakers';
+
+// Extended speaker type for schedule-specific data
+export type ScheduleSpeaker = {
+  speakerId: string; // Reference to SPEAKERS object
+  presentation?: string;
+  videoId?: string;
+  videoStartTime?: number;
+  sponsor?: string;
+  sponsorStyle?: string;
+};
+
 export const SCHEDULES = [
     {
         id: 1, // This should match the event ID from EVENTS
@@ -26,10 +38,7 @@ export const SCHEDULES = [
                         title: "Congressional Keynote Address",
                         location: "National Press Club Ballroom",
                         speakers: [{
-                            name: "Congressman Michael Waltz (6th District, Florida)",
-                            title: "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
-                            affiliation: "U.S. House of Representatives",
-                            photo: "michael-waltz.webp",
+                            speakerId: "michael-waltz"
                         }],
                     },
                     {
@@ -37,10 +46,7 @@ export const SCHEDULES = [
                         title: "Artificial Intelligence — Impact on Defense Acquisition",
                         location: "National Press Club Ballroom",
                         speakers: [{
-                            name: "Amir Bagherpour, PhD",
-                            title: "Managing Director and Analytics & Visualization Lead for Data & AI",
-                            affiliation: "Accenture Federal Services",
-                            photo: "amir-bagherpour.webp",
+                            speakerId: "amir-bagherpour-phd",
                             presentation: "2025 Defense Industry Forecast - Amir Bagherpour, PhD.pdf",
                             videoId: "U_7h6bcAbGw"
                         }]
@@ -937,19 +943,36 @@ export const SCHEDULES = [
                         time: "8:30 AM",
                         title: "Conference Opening",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "charles-sills"
+                            }
+                        ]
                     },
                     {
                         time: "8:35 AM",
-                        title: "State of Virginia / Hampton Roads Alliance / Norfolk Chamber of Commerce – Welcoming Remarks",
+                        title: "Welcoming Remarks – Commonwealth of Virginia & Hampton Roads Alliance",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "jared-chalk",
+                            }
+                        ]
                     },
                     {
-                        time: "8:50 AM",
+                        time: "9:05 AM",
                         title: "CONGRESSIONAL KEYNOTE ADDRESS I",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "representative-rob-wittman",
+                                sponsor: "Pre-Recorded Address",
+                                sponsorStyle: "bg-gray-300",
+                            }
+                        ]
                     },
                     {
-                        time: "9:15 AM",
+                        time: "9:20 AM",
                         title: "DEFENSE/MARITIME INDUSTRY KEYNOTE ADDRESS",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
@@ -957,26 +980,61 @@ export const SCHEDULES = [
                         time: "9:40 AM",
                         title: "The 'SHIPS ACT' & the American Shipbuilding Industrial Base – Partnering for Success",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "roger-camp",
+                            },
+                            {
+                                speakerId: "vice-admiral-richard-w-hunt",
+                            },
+                            {
+                                speakerId: "victorino-mercado",
+                            }
+                        ]
                     },
                     {
-                        time: "10:40 AM",
+                        time: "10:30 AM",
                         title: "Networking Break with Exhibitors",
                         location: "Hampton Roads Ballroom (I-V), 3rd Floor",
                     },
                     {
-                        time: "10:55 AM",
+                        time: "11:00 AM",
                         title: "How DEFENSEWERX Hubs Are Accelerating Innovative Tech Contracting",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "brian-liesveld",
+                            },
+                        ]
                     },
                     {
-                        time: "11:20 AM",
+                        time: "11:25 AM",
                         title: "Fleet Readiness Panel – Addressing Critical Challenges & Requirements",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "erica-h-plath"
+                            },
+                            {
+                                speakerId: "captain-rick-tyler"
+                            },
+                            {
+                                speakerId: "stephen-mongold"
+                            },
+                            {
+                                speakerId: "hunter-stires"
+                            }
+                        ]
                     },
                     {
                         time: "12:15 PM",
-                        title: "Briefing: Contested Logistics",
+                        title: "Industry Insights: Contested Logistics",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "kurt-garrett"
+                            }
+                        ]
                     },
                     {
                         time: "12:30 PM",
@@ -984,34 +1042,82 @@ export const SCHEDULES = [
                         location: "Hampton Roads Ballroom (I-V), 3rd FL",
                     },
                     {
-                        time: "1:15 PM",
+                        time: "1:30 PM",
                         title: "Artificial Intelligence in Defense – Leveraging Navy Use Cases",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "daniel-hudson"
+                            },
+                            // {
+                            //     speakerId: "amir-bagherpour-phd",
+                            // }
+                        ]
                     },
                     {
-                        time: "1:55 PM",
-                        title: "Force Projection & Contested Logistics in the Indo-Pacific",
+                        time: "2:10 PM",
+                        title: "UNITED STATES MARINE CORPS KEYNOTE ADDRESS",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "christopher-m-haar"
+                            }
+                        ]
                     },
                     {
                         time: "2:40 PM",
-                        title: "Briefing: Defense Industry – Vendor-Purchaser Relations",
+                        title: "Industry Insights: Defense Vendor Relationships",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "don-mcginnis"
+                            }
+                        ]
                     },
                     {
                         time: "2:55 PM",
                         title: "Military Base-Community Partnerships Promoting Local Build Contracts",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "dave-leinberger"
+                            },
+                            {
+                                speakerId: "brian-w-miller"
+                            }
+                        ]
                     },
                     {
-                        time: "3:35 PM",
-                        title: "Navy Small Business Program Panel",
+                        time: "3:30 PM",
+                        title: "Small Business Programs/Opportunities – Plus Accessing GWAC’S, OTA’S & SBIR’S",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "charles-sills"
+                            },
+                            {
+                                speakerId: "terressa-bebout"
+                            },
+                            {
+                                speakerId: "stacey-l-cooper"
+                            },
+                            {
+                                speakerId: "tiffany-l-trotter"
+                            },
+                            {
+                                speakerId: "rosetta-rodwell"
+                            }
+                        ]
                     },
                     {
                         time: "4:30 PM",
                         title: "Day One Closing Remarks",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "charles-sills"
+                            }
+                        ]
                     },
                     {
                         time: "4:30 PM - 5:30 PM",
@@ -1026,6 +1132,7 @@ export const SCHEDULES = [
                     {
                         time: "6:00 PM - 8:00 PM",
                         title: "VIP Networking Reception",
+                        description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
                         location: "The Harbor Club, Waterside District. 333 Waterside Dr Suite 200, Norfolk, VA 23510",
                     },
                 ],
@@ -1042,6 +1149,11 @@ export const SCHEDULES = [
                         time: "8:30 AM",
                         title: "Welcome Back Remarks",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "charles-sills"
+                            }
+                        ]
                     },
                     {
                         time: "8:35 AM",
@@ -1049,39 +1161,100 @@ export const SCHEDULES = [
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                     },
                     {
-                        time: "9:00 AM",
+                        time: "8:50 AM",
                         title: "How to do Business with the Primes",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "diane-dempsey"
+                            },
+                            {
+                                speakerId: "katina-adams"
+                            },
+                            {
+                                speakerId: "stacey-r-washington"
+                            },
+                            {
+                                speakerId: "robyn-card"
+                            },
+                            {
+                                speakerId: "david-canada"
+                            }
+                        ]
+                    },
+                    {
+                        time: "9:45 AM",
+                        title: "Industry Insights: Forward Opening Base Mobile Manufacturing",
+                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "paul-wichert"
+                            }
+                        ]
                     },
                     {
                         time: "10:00 AM",
-                        title: "SUPPLY CHAIN/CYBER PROTECTION KEYNOTE ADDRESS",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        title: "Networking Break with Exhibitors",
+                        location: "Hampton Roads Ballroom (I-V), 3rd Floor"
                     },
                     {
                         time: "10:30 AM",
-                        title: "Briefing: Modernizing U.S. Defense Manufacturing",
+                        title: "Streamlined Acquisition – Win-Win for Warfighters & Contractors",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "aimee-zick",
+                            }
+                        ]
                     },
                     {
-                        time: "10:45 AM",
-                        title: "Cybersecurity Update: Safeguarding the Supply Chain",
+                        time: "11:00 AM",
+                        title: "Geopolitical SITREP: The Military-Energy Nexus",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "anthony-livanios"
+                            }
+                        ]
                     },
                     {
-                        time: "11:15 AM",
-                        title: "The ‘Golden Dome’ Integrated Missile Defense Initiative: Navy Role",
+                        time: "11:25 AM",
+                        title: "Procurement Strategies for Navy Port Security & Cyber Protection",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "joel-coulter"
+                            },
+                            {
+                                speakerId: "nicholas-antonio-rocha"
+                            },
+                            {
+                                speakerId: "jeffrey-hoffman",
+                            },
+                            // {
+                            //     speakerId: "nicholas-diehl"
+                            // }
+                        ]
                     },
                     {
-                        time: "11:50 AM",
-                        title: "Mid-Atlantic Tech Bridge / NavalX / Neptune SHIELD",
+                        time: "12:05 PM",
+                        title: "Using Mentor-Protégé Partnerships to Drive the ‘Combat Capability Factory’",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            // {
+                            //     speakerId: ""
+                            // }
+                        ]
                     },
                     {
                         time: "12:30 PM",
                         title: "Closing Remarks",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        speakers: [
+                            {
+                                speakerId: "charles-sills"
+                            }
+                        ]
                     },
                     {
                         time: "12:30 PM - 1:30 PM",
