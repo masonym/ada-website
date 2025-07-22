@@ -111,6 +111,10 @@ export const LODGING_INFO: LodgingInfo[] = [
     <b>Rate Available</b>: November 3-8, 2025<br />
     <b>Booking Deadline</b>: October 21, 2025<br />
     <br/>
+    <b>To Book Extra Nights at the Group Rate, please email <a href="mailto:kaitlin.cahill@renaissancehotels.com" class="text-blue-600 hover:underline text-nowrap">kaitlin.cahill@renaissancehotels.com</a></b>
+    <b>Subject Line: "Request to Add Reservation at Group Rate" 2025 Defense Technology & Aerospace Procurement Conference</b>
+    <br/>
+    <br/>
     <p> Reservation Link Coming Soon</p>
     <br/>
     <p class="font-bold"> Parking: </p>
