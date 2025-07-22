@@ -1020,6 +1020,9 @@ export const SCHEDULES = [
                                 speakerId: "erica-h-plath"
                             },
                             {
+                                speakerId: "philip-hart-cullum"
+                            },
+                            {
                                 speakerId: "captain-rick-tyler"
                             },
                             {
@@ -1245,9 +1248,9 @@ export const SCHEDULES = [
                             {
                                 speakerId: "jeffrey-hoffman",
                             },
-                            // {
-                            //     speakerId: "nicholas-diehl"
-                            // }
+                            {
+                                speakerId: "nicholas-diehl"
+                            }
                         ]
                     },
                     {

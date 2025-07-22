@@ -1249,7 +1249,7 @@ Through her unwavering dedication and extensive experience, Rosetta Rodwell cont
   "captain-rick-tyler": {
     "image": "rick-tyler.webp",
     "name": "Richard S. Tyler, PE, MBA",
-    "position": "Chief Engineer / Planning Design and Construction Director",
+    "position": "Chief Engineer/Planning Design and Construction Director",
     "company": "Naval Facilities Engineering Systems Command (NAVFAC) Atlantic",
     "bio": `Richard (Rick) Tyler serves as the Chief Engineer and Planning Design and Construction (PDC) Director at NAVFAC Atlantic in Norfolk, Virginia, directly overseeing the Military Construction planning, design, and construction program for the Shipyard Infrastructure Optimization Program (SIOP) at the Norfolk Naval Shipyard (Portsmouth VA) and Portsmouth Naval Shipyard (Kittery, ME) as well as within the NAVFAC EURAFCENT (Naples, Italy) Area of Responsibility. 
 	<br/>
@@ -1276,6 +1276,18 @@ Through her unwavering dedication and extensive experience, Rosetta Rodwell cont
 	 
 	<br/>
 	Rick currently resides in Newport News, VA with his wife Shannon.  Together, they are the proud parents of one son, two daughters, and one granddaughter, and are active in their community and church. `,
+  },
+  "philip-hart-cullum": {
+    "image": "placeholder.webp",
+    "name": "Vice Admiral, USN (Ret.) Philip Hart Cullum",
+    "position": "Former Commander, Fleet Readiness",
+    "company": "United States Navy",
+  },
+  "nicholas-diehl": {
+    "image": "placeholder.webp",
+    "name": "Nicholas Diehl",
+    "position": "Global Director, Security Innovation and Technology",
+    "company": "Littoral Dynamics",
   }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -1352,14 +1364,14 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"charles-sills",
 		"brian-liesveld",
 		// "arveice-washington",
-		{ id: "kareem-sykes", label: "Pending Agency Approval" },
+		// { id: "kareem-sykes", label: "Pending Agency Approval" },
 		"terressa-bebout",
 		"dave-leinberger",
 		"david-canada",
 		"kurt-garrett",
 		"diane-dempsey",
 		"christopher-m-haar",
-		"joel-lundy",
+		// "joel-lundy",
 		"don-mcginnis",
 		"robyn-card",
 		"katina-adams",
@@ -1381,7 +1393,9 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"tiffany-l-trotter",
 		"rosetta-rodwell",
 		{ id: "representative-rob-wittman", label: "Pre-Recorded Address" },
-		"captain-rick-tyler"
+		"captain-rick-tyler",
+		"philip-hart-cullum",
+		"nicholas-diehl"
 	]
 };
 
