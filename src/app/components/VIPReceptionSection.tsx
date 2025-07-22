@@ -39,54 +39,82 @@ const VIPReceptionSection: React.FC<{ vipNetworkingReception: VipNetworkingRecep
                       <p>{vipNetworkingReception.timeStart} - {vipNetworkingReception.timeEnd}</p>
                     </div>
                   </div>
+
+                  <div className="flex items-start">
+                    <MapPin className="w-6 h-6 mr-3 text-blue-600 flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-semibold text-lg">Location</h4>
+                      <p className="font-medium" dangerouslySetInnerHTML={{ __html: vipNetworkingReception.locationName || "" }} />
+                      <p dangerouslySetInnerHTML={{ __html: vipNetworkingReception.locationAddress || "" }} />
+                      {vipNetworkingReception.locationRoom && (
+                        <p className="font-medium">Room: {vipNetworkingReception.locationRoom}</p>
+                      )}
+                      <p>{vipNetworkingReception.locationPhone}</p>
+                      <p>
+                        <a href={vipNetworkingReception.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                          {vipNetworkingReception.locationName}
+                        </a>
+                      </p>
+                    </div>
+                  </div>
                 </>
               ) : (
-                <div className="flex flex-row items-start justify-center">
-                  <CalendarDays className="w-6 h-6 mr-3 text-blue-600 flex-shrink-0 mt-1" />
-                  <div className="text-center">
-                    <h4 className="font-semibold text-lg">Date & Time</h4>
-                    <p>{new Date(vipNetworkingReception.date).toLocaleDateString('en-US', { weekday: 'long' })}</p>
-                    <p>{vipNetworkingReception.date}</p>
-                    <p>{vipNetworkingReception.timeStart} - {vipNetworkingReception.timeEnd}</p>
+                <>
+                  <div className="flex flex-row items-start justify-center">
+                    <div className="text-center">
+                      <div className="flex flex-row items-center justify-center mb-2">
+                        <CalendarDays className="w-6 h-6 mr-2 text-blue-600 flex-shrink-0" />
+                        <h4 className="font-semibold text-lg">Date & Time</h4>
+                      </div>
+                      <div>
+                        <p>{new Date(vipNetworkingReception.date).toLocaleDateString('en-US', { weekday: 'long' })}</p>
+                        <p>{vipNetworkingReception.date}</p>
+                        <p>{vipNetworkingReception.timeStart} - {vipNetworkingReception.timeEnd}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
+
+                  <div className="flex flex-row items-start justify-center">
+                    <div className="text-center">
+                      <div className="flex flex-row items-center justify-center mb-2">
+                        <MapPin className="w-6 h-6 mr-2 text-blue-600 flex-shrink-0" />
+                        <h4 className="font-semibold text-lg">Location</h4>
+                      </div>
+                      <div>
+                        <p className="font-medium" dangerouslySetInnerHTML={{ __html: vipNetworkingReception.locationName || "" }} />
+                        <p dangerouslySetInnerHTML={{ __html: vipNetworkingReception.locationAddress || "" }} />
+                        {vipNetworkingReception.locationRoom && (
+                          <p className="font-medium">Room: {vipNetworkingReception.locationRoom}</p>
+                        )}
+                        <p>{vipNetworkingReception.locationPhone}</p>
+                        <p>
+                          <a href={vipNetworkingReception.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                            {vipNetworkingReception.locationName}
+                          </a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </>
               )}
-
-              <div className={`${vipNetworkingReception.placeId ? "flex items-start" : "flex flex-row items-start justify-center"}`}>
-                <MapPin className="w-6 h-6 mr-3 text-blue-600 flex-shrink-0 mt-1" />
-                <div>
-                  <h4 className="font-semibold text-lg">Location</h4>
-                  <p className="font-medium" dangerouslySetInnerHTML={{ __html: vipNetworkingReception.locationName || "" }} />
-                  <p dangerouslySetInnerHTML={{ __html: vipNetworkingReception.locationAddress || "" }} />
-                  {vipNetworkingReception.locationRoom && (
-                    <p className="font-medium">Room: {vipNetworkingReception.locationRoom}</p>
-                  )}
-                  <p>{vipNetworkingReception.locationPhone}</p>
-                  <p>
-                    <a href={vipNetworkingReception.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                      {vipNetworkingReception.locationName}
-                    </a>
-                  </p>
-                </div>
-              </div>
             </div>
-              <div className={`${vipNetworkingReception.locationPhoto ? "mt-4 hidden lg:flex mx-auto items-end justify-center" : ""}`}>
-                <img className="rounded-lg" src={getCdnPath(vipNetworkingReception.locationPhoto || "")} alt="VIP Reception Location" />
-              </div>
+            <div className={`${vipNetworkingReception.locationPhoto ? "mt-4 hidden lg:flex mx-auto items-end justify-center" : ""}`}>
+              <img className="rounded-lg" src={getCdnPath(vipNetworkingReception.locationPhoto || "")} alt="VIP Reception Location" />
+            </div>
           </div>
 
-            {vipNetworkingReception.eventPlaceId && vipNetworkingReception.placeId && (
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Walking Directions</h3>
-            <DirectionsMap
-              originPlaceId={vipNetworkingReception.eventPlaceId || ""}
-              destinationPlaceId={vipNetworkingReception.placeId || ""}
-              originName={vipNetworkingReception.eventLocationName || "Event Location"}
-              destinationName={vipNetworkingReception.locationName}
-              travelMode="WALKING"
-            />
-          </div>
-        )}
+          {vipNetworkingReception.eventPlaceId && vipNetworkingReception.placeId && (
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Walking Directions</h3>
+              <DirectionsMap
+                originPlaceId={vipNetworkingReception.eventPlaceId || ""}
+                destinationPlaceId={vipNetworkingReception.placeId || ""}
+                originName={vipNetworkingReception.eventLocationName || "Event Location"}
+                destinationName={vipNetworkingReception.locationName}
+                travelMode="WALKING"
+              />
+            </div>
+          )}
         </div>
         {vipNetworkingReception.additionalInfo && (
           <div className="mt-6 text-center text-balance">
