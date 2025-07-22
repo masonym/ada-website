@@ -43,8 +43,8 @@ export default function AgendaPage({ params }: { params: { slug: string } }) {
     return (
       <div className="text-center">
         {/* <h1 className="text-3xl font-bold mb-4">{event.title} - Agenda</h1> */}
-        <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Agenda</h1>
-        <p className="text-l font-bold text-center mb-8 text-slate-600">Agenda not available at this time. Please check back later.</p>
+        <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Event Agenda</h1>
+        <p className="text-l font-bold text-center mb-8 text-slate-600">Event Agenda not available at this time. Please check back later.</p>
       </div>
     );
   }
