@@ -4,6 +4,7 @@ import React from 'react';
 import { FAQs } from '@/constants/faqs';
 import { useParams } from 'next/navigation';
 import { EVENTS } from '@/constants/events';
+import EventWarningNotice from '@/app/components/EventWarningNotice';
 
 const FAQsPage = () => {
     const params = useParams(); // Get the dynamic slug
@@ -12,6 +13,9 @@ const FAQsPage = () => {
 
     // Find the corresponding FAQs based on the event ID
     const eventFAQs = FAQs.find(faq => faq.id === eventId)?.faqs || [];
+    if (!event) {
+        return null;
+    }
 
     return (
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,6 +35,7 @@ const FAQsPage = () => {
                     <p className="text-slate-600">No FAQs available for this event.</p>
                 )}
             </div>
+            <EventWarningNotice eventTitle={event.title}/>
         </div>
     );
 };

@@ -192,7 +192,7 @@ export const EVENTS: Event[] = [
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
-        <p className="mb-4 max-w-6xl mx-auto text-center">
+        <p className="max-w-6xl mx-auto text-center">
           The <b>2025 Southeast Defense Procurement Conference</b> is the premier event to
           explore the latest contracting opportunities across a wide range of industries.
           From <b>Aerospace and Aviation</b> to <b>Military Base Construction, Facility Support,
@@ -706,7 +706,7 @@ invaluable connections that can shape the future of your business.
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
-        <p className="mb-4 max-w-6xl mx-auto text-center">
+        <p className="max-w-6xl mx-auto text-center">
           The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
         </p>
       </div>
@@ -722,7 +722,7 @@ invaluable connections that can shape the future of your business.
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
-        <p className="mb-4 max-w-6xl mx-auto text-center">
+        <p className="max-w-6xl mx-auto text-center">
           The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
         </p>
       </div>
@@ -872,18 +872,18 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
   },
   {
     id: 5,
-    shown: false,
+    shown: true,
     title: "2025 Defense Technology & Aerospace Procurement Conference",
     date: "November 5-6, 2025",
     timeStart: "2025-11-05T11:30:00Z", // This is in UTC time
-    description: "The 2025 Defense Technology & Aerospace Procurement Conference will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across all sectors from IT, AI and Quantum, to cybersecurity qualification, to next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, to military base security, assured logistics and forward energy supply – with spotlights on multi-Billion-dollar acquisition programs from the Golden Dome initiative to next-generation aircraft and satellites, and the development of advanced unmanned platforms (‘loyal wingmen’ to drones).  Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
+    description: "Join us at the 2025 Defense Technology & Aerospace Procurement Conference in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
     eventText: (
       <div className="max-container font-light">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          Join us for the <b>2025 Defense Technology & Aerospace Procurement Conference</b> on November 5-6, 2025 in Austin, Texas, home to the Renaissance Austin Hotel. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
+          Join us at the 2025 Defense Technology & Aerospace Procurement Conference in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.
         </p>
         <p className="font-bold text-xl text-center font-gotham">
           Topical Coverage:
@@ -891,7 +891,6 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         <ul className="list-inside">
           <li>DoD Integration of Commercial Space Assets/Technologies</li>
           <li>Space Force Support Functions Across Domains/COCOMS</li>
-          <li>Spaceport Projects Driving Launch Activity</li>
           <li>Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)</li>
           <li>Unmanned Platforms Across Services – Prototype & Testing Contracts</li>
           <li>Golden Dome Financing for Missile Defense Integration & Component Teams</li>
@@ -909,24 +908,33 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         </ul>
       </div>
     ),
+    aboutEventText: (
+      <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Event Overview
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Join us at the 2025 Defense Technology & Aerospace Procurement Conference in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.
+        </p>
+      </div>
+    ),
     topicalCoverage: [
-          { "tagline": "DoD Integration of Commercial Space Assets/Technologies", "description": "Placeholder Text" },
-          { "tagline": "Space Force Support Functions Across Domains/COCOMS", "description": "Placeholder Text" },
-          { "tagline": "Spaceport Projects Driving Launch Activity", "description": "Placeholder Text" },
-          { "tagline": "Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)", "description": "Placeholder Text" },
-          { "tagline": "Unmanned Platforms Across Services – Prototype & Testing Contracts", "description": "Placeholder Text" },
-          { "tagline": "Golden Dome Financing for Missile Defense Integration & Component Teams", "description": "Placeholder Text" },
-          { "tagline": "Defense Industrial Base Expansion – Ordnance, Missiles, Drones, etc.", "description": "Placeholder Text" },
-          { "tagline": "Expansion of AI Throughout Defense Sectors", "description": "Placeholder Text" },
-          { "tagline": "Race to Exploit Quantum Technology", "description": "Placeholder Text" },
-          { "tagline": "Accelerating Innovative Tech Contracting – DEFENSEWERX & DIU", "description": "Placeholder Text" },
-          { "tagline": "Critical Defense Infrastructure Cyber Protection", "description": "Placeholder Text" },
-          { "tagline": "Cybersecurity & CMMC Update", "description": "Placeholder Text" },
-          { "tagline": "Military Base-Community Partnerships Promoting Local Build Contracts", "description": "Placeholder Text" },
-          { "tagline": "New Defense Department Acquisition Initiatives/Guidelines", "description": "Placeholder Text" },
-          { "tagline": "How to do Business with the Primes – Subcontracting & Teaming", "description": "Placeholder Text" },
-          { "tagline": "Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's", "description": "Placeholder Text" },
-          { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "Placeholder Text" }
+          { "tagline": "DoD Integration of Commercial Space Assets/Technologies", "description": "The Department of Defense is increasingly partnering with commercial space companies to integrate advanced satellite, launch, and communications technologies into military operations, boosting resilience and rapid response capabilities." },
+          { "tagline": "Space Force Support Functions Across Domains/COCOMS", "description": "The U.S. Space Force is expanding its role in supporting Combatant Commands (COCOMs) and joint operations by delivering space-based intelligence, navigation, and communication services across all warfighting domains." },
+          { "tagline": "Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)", "description": "Next-generation air platforms ranging from stealth fighters and electronic warfare (EW) aircraft to refueling and airlift systems are redefining air dominance and joint force interoperability across multiple mission sets." },
+          { "tagline": "Unmanned Platforms Across Services – Prototype & Testing Contracts", "description": "The DoD continues to invest in unmanned aerial, ground, and maritime systems, awarding prototype and test contracts that advance autonomous capabilities and support ISR, logistics, and combat operations." },
+          { "tagline": "Golden Dome Financing for Missile Defense Integration & Component Teams", "description": "Through \"Golden Dome\" funding strategies, the DoD is accelerating development and integration of missile defense systems and supporting component teams focused on layered defense against advanced threats." },
+          { "tagline": "Defense Industrial Base Expansion – Ordnance, Missiles, Drones, etc.", "description": "The DoD is scaling up production capacity across the defense industrial base, with a focus on critical systems like munitions, precision missiles, and unmanned platforms to meet rising demand and strategic stockpile needs." },
+          { "tagline": "Expansion of AI Throughout Defense Sectors", "description": "Artificial Intelligence is being deployed across warfighting, logistics, and cyber missions, enhancing decision-making, threat detection, and operational efficiency in real time." },
+          { "tagline": "Race to Exploit Quantum Technology", "description": "The DoD is investing in quantum sensing, secure communications, and computing technologies to gain a strategic edge in battlefield awareness, encryption, and data processing." },
+          { "tagline": "Accelerating Innovative Tech Contracting – DEFENSEWERX & DIU", "description": "Organizations like DEFENSEWERX and the Defense Innovation Unit (DIU) are streamlining pathways for non-traditional vendors to deliver cutting-edge tech solutions." },
+          { "tagline": "Critical Defense Infrastructure Cyber Protection", "description": "New initiatives are hardening military infrastructure bases, defense contractors, and logistics networks against cyberattacks, with a focus on resilience, continuity, and active threat response." },
+          { "tagline": "Cybersecurity & CMMC Update", "description": "The evolving Cybersecurity Maturity Model Certification (CMMC) requirements are reshaping how contractors handle sensitive data, with updates guiding compliance and audit readiness across the supply chain." },
+          { "tagline": "Military Base-Community Partnerships Promoting Local Build Contracts", "description": "Public-private partnerships are enhancing mission readiness through local infrastructure and facility contracts, supporting economic development in defense communities." },
+          { "tagline": "New Defense Department Acquisition Initiatives/Guidelines", "description": "Recent acquisition reforms aim to improve speed, transparency, and innovation in defense procurement, including updated guidelines for pricing, evaluation, and agile delivery." },
+          { "tagline": "How to do Business with the Primes – Subcontracting & Teaming", "description": "Explore strategies for small and mid-sized firms to win subcontracts and form teaming agreements with major defense contractors, boosting competitiveness and visibility. " },
+          { "tagline": "Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's", "description": "Leveraging GWACs, Small Business Innovation Research (SBIR) grants, and Other Transaction Authorities (OTAs) to secure non-traditional, fast-track funding and contracting opportunities." },
+          { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "These programs pair small businesses with experienced primes to share resources, improve competitiveness, and accelerate growth in defense contracting through structured mentorship." }
     ],
     image: "2025DTAPC_wide.webp",
     slug: "2025-defense-technology-aerospace-procurement-conference",
@@ -952,9 +960,37 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         },
       ]
     },
-    expectationsText: `Austin, Texas has become a major hub for Military and Defense technology innovation.  Accordingly, the conference will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across all sectors from IT, AI and Quantum, to cybersecurity qualification, to next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, to military base security, assured logistics and forward energy supply – with spotlights on multi-Billion-dollar acquisition programs from the Golden Dome initiative to next-generation aircraft and satellites, and the development of advanced unmanned platforms (‘loyal wingmen’ to drones).  Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.`,
+    expectationsText: `Austin, Texas has become a major hub for Military and Defense technology innovation.  Accordingly, the <b>2025 Defense Technology Aerospace Procurement Conference</b> will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across all sectors from IT, AI and Quantum, to cybersecurity qualification, to next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, to military base security, assured logistics and forward energy supply – with spotlights on multi-Billion-dollar acquisition programs from the Golden Dome initiative to next-generation aircraft and satellites, and the development of advanced unmanned platforms (‘loyal wingmen’ to drones).  Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.`,
     features: {
       showKeynoteSpeaker: true,
-    }
+      keynoteSpeakers: [
+      ]
+    },
+    vipNetworkingReception: {
+      title: "VIP Networking Reception",
+      date: "November 5, 2025",
+      timeStart: "5:30 PM",
+      timeEnd: "7:30 PM",
+      description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
+      locationName: "Renaissance Austin Hotel<br/>Lower Level, Rio Grande Hall",
+      locationAddress: "9721 Arboretum Blvd, Austin, TX 78759",
+      eventPlaceId: "ChIJL_jXUoLMRIYRdMJC6h3clUU",
+      locationPhoto: "/hotels/renaissance-austin.webp",
+      locationPhone: "(512) 681-6000",
+      website: "https://www.marriott.com/en-us/hotels/aussh-renaissance-austin-hotel/overview/",
+      additionalInfo: `Featuring Western Style Line Dancing Entertainment<br/>Optional Attire: Cowboy Boots/Hats/Denim`,
+    } as VipNetworkingReception,
+    //     parkingInfo: [
+    //  {
+    //         title: "Parking: ",
+    //         description:
+    //         `
+    //         <ul class="list-inside">
+    //         <li>Complimentary for Hotel Guests</li>
+    //         <li>Complimentary for Meeting Attendees up to 8 Hours</li>
+    //         </ul>
+    //         `
+    //       },
+    //     ],
   },
 ];

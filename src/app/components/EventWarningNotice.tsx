@@ -9,7 +9,7 @@ interface EventWarningNoticeProps {
 
 const EventWarningNotice: React.FC<EventWarningNoticeProps> = ({ eventTitle }) => {
   return (
-    <div className="my-8 w-full max-w-4xl mx-auto">
+    <div className="my-4 w-full max-w-4xl mx-auto">
       <div className="bg-amber-50 border-l-4 border-amber-500 rounded-md shadow-md overflow-hidden">
         <div className="p-4 sm:p-6">
           <div className="flex items-center mb-3">

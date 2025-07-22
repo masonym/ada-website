@@ -772,16 +772,15 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
                     ]},
                     { formatted: [
+                        { content: "Exclusive Host of the VIP Networking Reception", bold: true },
+                        { content: "Provide Welcoming Remarks at the Reception Opening", indent: 1 },
+                        { content: "Branding on Reception Tables", indent: 1 },
+                    ]},
+                    { formatted: [
                         { content: "Logo Branding: Conference Materials", bold: true },
                         { content: "Conference Signage", indent: 1 },
                         { content: "Digital Agenda & Event Website", indent: 1 },
                         { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Exclusive Host of the VIP Networking Reception", bold: true },
-                        { content: "Provide Welcoming Remarks at the VIP Networking Reception", indent: 1 },
-                        { content: "Logo Placement at VIP Networking Reception", indent: 1 },
-                        { content: "Table Tents on VIP Networking Reception Tables", indent: 2 }
                     ]},
                     { formatted: [
                         { content: "Recognition/Visibility", bold: true },
@@ -807,12 +806,12 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             {
                 id: "networking-luncheon-sponsor",
                 title: "Coffee Station Sponsorship",
-                cost: 5000,
+                cost: 2500,
                 slotsPerEvent: 2,
-                sponsorPasses: 3,
+                sponsorPasses: 2,
                 perks: [
                 { formatted: [
-                    { content: "Event Access: (3) VIP Attendee Passes", bold: true },
+                    { content: "Event Access: (2) VIP Attendee Passes", bold: true },
                     { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
                 ]},
                 { formatted: [
@@ -832,7 +831,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 { formatted: [
                     { content: "Table-Top Exhibit Space", bold: true },
                     { content: "8’x10' Exhibit Space", indent: 1 },
-                    { content: "6' Tablecloth Table & Chairs", indent: 2 }
+                    { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                    { content: "Exhibit Near Coffee Station", indent: 2 }
                 ]},
                 ],
                 colour: "#3FB4E6",
