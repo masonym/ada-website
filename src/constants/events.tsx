@@ -1024,7 +1024,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "How Mentor-Protégé programs help accelerate business growth for small businesses by pairing them with larger prime contractors" },
       { "tagline": "Cybersecurity Compliance Mandates and CMMC Training Options", "description": "New cybersecurity compliance requirements under CMMC and training resources available for contractors to meet these standards" },
     ],
-    image: "placeholder.webp",
+    image: "2026NMCPC_wide.webp",
     slug: "2026-navy-marine-corps-procurement-conference",
     locationImage: "locations/temp_venue.webp",
     locationAddress: `235 E Main St, Norfolk, Virginia 23510`,
