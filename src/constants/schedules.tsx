@@ -1195,7 +1195,7 @@ export const SCHEDULES = [
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "10:45 AM - 12:00 PM",
+                        time: "10:45 AM - 12:30 PM",
                         title: "General Sessions",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
