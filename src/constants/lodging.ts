@@ -115,7 +115,7 @@ export const LODGING_INFO: LodgingInfo[] = [
     <br/>
     <p class="font-bold"> Parking: </p>
     <ul class="list-inside">
-      <li>Complimentary for Hotel Guests</li>
+      <li>Self-Parking Fee of $11.50 for Overnight Hotel Guests</li>
       <li>Complimentary for Meeting Attendees up to 8 Hours</li>
     </ul>
   `
