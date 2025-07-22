@@ -59,9 +59,10 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
                                 width={256}
                                 height={256}
                                 alt={`${speaker.name}`}
-                                className="rounded-lg"
+                                className="rounded-lg mb-4"
                             />
-                            <p className="mt-4 font-semibold whitespace-nowrap text-wrap"><span dangerouslySetInnerHTML={{ __html: speaker.name }}></span>{speaker.label && <span className="text-sm font-semibold border bg-gray-700 rounded-full px-2 py-1 text-white ml-2">{speaker.label}</span>}</p>
+                            {speaker.label && <span className="text-sm font-semibold border bg-gray-700 rounded-full px-2 py-1 text-white ml-2">{speaker.label}</span>}
+                            <p className="mt-0 font-semibold whitespace-nowrap text-wrap"><span dangerouslySetInnerHTML={{ __html: speaker.name }}></span></p>
                             <p className="text-sm text-gray-600">{speaker.position}</p>
                             <p className="text-sm text-gray-600">{speaker.company}</p>
 
