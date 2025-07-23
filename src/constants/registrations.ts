@@ -125,24 +125,6 @@ export const REGISTRATION_TYPES = [
                 // availabilityInfo: "Limited availability."
             },
 
-            // {
-            //     title: "Sponsor",
-            //     headerImage: "sponsor-pass.webp",
-            //     perks: [
-            //         "Brand Visibility",
-            //         "Speaking Opportunity",
-            //         "Recognition",
-            //         "<i>Reception Hosting</i> (Premier)",
-            //         "<i>Luncheon Hosting </i>(Prestige)",
-            //         "Display Table",
-            //         "Event Access",
-            //         "Media Coverage",
-            //     ],
-            //     subtitle: "Includes:",
-            //     buttonText: "Explore Sponsorship Opportunities",
-            //     type: "sponsor",
-            //     availabilityInfo: "Limited availability."
-            // },
         ],
         addOns: [
             {
@@ -150,9 +132,6 @@ export const REGISTRATION_TYPES = [
                 description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests and will take place from 5:30 PM - 7:30 PM on March 11, 2025.",
                 price: "+$100"
             },
-            // {
-            //     title: "Networking Reception",
-            //     description: "Join us for an exclusive evening networking
         ],
     },
     {
@@ -264,6 +243,23 @@ export const REGISTRATION_TYPES = [
                 price: "Complimentary",
                 // availabilityInfo: "Limited availability."
             },
+            {
+                id: "reception-add-on",
+                title: "VIP Networking Reception Add-On",
+                description: "Exclusive add-on pass. Requires special access code to register.",
+                price: 100,
+                headerImage: "vip-reception.webp",
+                buttonText: "Add to Cart",
+                type: "paid",
+                requiresCode: true,  // New property
+                validationCode: "RECEPTION0729",  // The required code
+                maxQuantityPerOrder: 5,
+                perks: [
+                    "Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM"
+                ],
+                availabilityInfo: "Access code required."
+
+            }
         ],
     },
     {

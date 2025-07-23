@@ -213,6 +213,11 @@ const RegistrationModal = ({
   const [validationStatus, setValidationStatus] = useState<Record<string, ValidationState>>({});
   const [validationError, setValidationError] = useState<Record<string, string | null>>({});
 
+  // For code validation (add-ons that require special codes)
+  const [codeInput, setCodeInput] = useState<Record<string, string>>({});
+  const [codeValidationStatus, setCodeValidationStatus] = useState<Record<string, ValidationState>>({});
+  const [codeValidationError, setCodeValidationError] = useState<Record<string, string | null>>({});
+
   const [isLoading, setIsLoading] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [apiError, setApiError] = useState<string | null>(null);
@@ -494,6 +499,45 @@ const RegistrationModal = ({
     autoApplyPromoCode();
   }, [isOpen, initialPromoCode, promoCodeValid, activePromoCode, promoCode, event.id]);
 
+  // Code validation function for add-ons that require special codes
+  const validateCode = (registrationId: string, inputCode: string) => {
+    const registration = allRegistrations.find(reg => reg.id === registrationId);
+    if (!registration || !registration.requiresCode || !registration.validationCode) {
+      return false;
+    }
+    
+    // Simple case-insensitive comparison
+    return inputCode.trim().toUpperCase() === registration.validationCode.toUpperCase();
+  };
+
+  // Handle code validation
+  const handleCodeValidation = (registrationId: string) => {
+    const inputCode = codeInput[registrationId] || '';
+    
+    if (!inputCode.trim()) {
+      setCodeValidationStatus(prev => ({ ...prev, [registrationId]: 'invalid' }));
+      setCodeValidationError(prev => ({ ...prev, [registrationId]: 'Please enter a code' }));
+      return;
+    }
+    
+    setCodeValidationStatus(prev => ({ ...prev, [registrationId]: 'validating' }));
+    
+    // Simulate validation (in real app, this might be an API call)
+    setTimeout(() => {
+      const isValid = validateCode(registrationId, inputCode);
+      
+      if (isValid) {
+        setCodeValidationStatus(prev => ({ ...prev, [registrationId]: 'valid' }));
+        setCodeValidationError(prev => ({ ...prev, [registrationId]: null }));
+      } else {
+        setCodeValidationStatus(prev => ({ ...prev, [registrationId]: 'invalid' }));
+        const registration = allRegistrations.find(reg => reg.id === registrationId);
+        const errorMessage = registration?.codeValidationMessage || 'Invalid code. Please check and try again.';
+        setCodeValidationError(prev => ({ ...prev, [registrationId]: errorMessage }));
+      }
+    }, 500);
+  };
+
   const handleValidateOrderId = async (ticketId: string) => {
     const orderId = orderIdInput[ticketId];
     if (!orderId) {
@@ -575,6 +619,59 @@ const RegistrationModal = ({
     );
   };
 
+  // Render code validation UI for tickets that require a code
+  const renderCodeValidationUI = (reg: AdapterModalRegistrationType) => {
+    if (!reg.requiresCode) {
+      return null;
+    }
+
+    const status = codeValidationStatus[reg.id] || 'idle';
+    const error = codeValidationError[reg.id];
+    const currentQuantity = ticketQuantities[reg.id] || 0;
+
+    // Only show code validation UI after ticket is selected (quantity > 0)
+    if (currentQuantity === 0) {
+      return null;
+    }
+
+    return (
+      <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-md">
+        <label htmlFor={`code-${reg.id}`} className="block text-sm font-medium text-gray-700">
+          {reg.codeValidationMessage || 'Enter access code to unlock this ticket'}
+        </label>
+        <div className="mt-1 flex items-center space-x-2">
+          <input
+            type="text"
+            id={`code-${reg.id}`}
+            value={codeInput[reg.id] || ''}
+            onChange={(e) => setCodeInput(prev => ({ ...prev, [reg.id]: e.target.value }))}
+            className="flex-grow block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            placeholder="Enter code"
+            disabled={status === 'validating' || status === 'valid'}
+          />
+          <button
+            onClick={() => handleCodeValidation(reg.id)}
+            disabled={status === 'validating' || status === 'valid' || !(codeInput[reg.id]?.trim())}
+            className="px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-gray-400"
+          >
+            {status === 'validating' ? 'Validating...' : status === 'valid' ? 'Validated' : 'Validate'}
+          </button>
+        </div>
+        {status === 'valid' && (
+          <p className="mt-2 text-sm text-green-600">✓ Code validated. You can now register for this ticket.</p>
+        )}
+        {error && (
+          <p className="mt-2 text-sm text-red-600">{error}</p>
+        )}
+        {status !== 'valid' && (
+          <p className="mt-2 text-sm text-orange-600">
+            ⚠️ Please enter the required access code.
+          </p>
+        )}
+      </div>
+    );
+  };
+
   // Helper to reset attendee info for a given ticket ID
   const resetAttendeesForTicket = (ticketId: string, count: number): ModalAttendeeInfo[] => {
     return Array(count).fill(null).map(() => ({ ...initialModalAttendeeInfo }));
@@ -591,6 +688,11 @@ const RegistrationModal = ({
     setValidationError({});
     setOrderIdInput({});
     setManuallyValidatedTickets({});
+    
+    // Reset code validation state
+    setCodeValidationStatus({});
+    setCodeValidationError({});
+    setCodeInput({});
     
     // Reset attendeesByTicket to empty
     setAttendeesByTicket({});
@@ -799,6 +901,13 @@ const RegistrationModal = ({
         });
       }
       
+      // Clear code validation state if quantity reaches zero
+      if (registration?.requiresCode && newQuantity === 0) {
+        setCodeValidationStatus(prev => ({ ...prev, [ticketId]: 'idle' }));
+        setCodeValidationError(prev => ({ ...prev, [ticketId]: null }));
+        setCodeInput(prev => ({ ...prev, [ticketId]: '' }));
+      }
+      
       // Check if this is a sponsorship
       const selectedSponsorship = sponsorships.find(s => s.id === ticketId);
       
@@ -847,21 +956,37 @@ const RegistrationModal = ({
   };
 
   const handleCheckout = () => {
-    const ticketsToValidate = [...exhibitors, ...sponsorships].filter(
-      (reg) => reg.requiresValidation && (ticketQuantities[reg.id] || 0) > 0
+    const ticketsToValidate = [...allRegistrations, ...exhibitors, ...sponsorships].filter(
+      (reg) => ((reg.requiresCode && (ticketQuantities[reg.id] || 0) > 0) || (reg.requiresValidation && (ticketQuantities[reg.id] || 0) > 0))
     );
 
     const isValidationPending = ticketsToValidate.some(
-      (reg) => validationStatus[reg.id] !== 'valid'
+      (reg) => {
+        if (reg.requiresCode && codeValidationStatus[reg.id] !== 'valid') {
+          return true;
+        }
+        if (reg.requiresValidation && validationStatus[reg.id] !== 'valid') {
+          return true;
+        }
+        return false;
+      }
     );
 
     if (isValidationPending) {
       alert(
-        'You have selected a discounted pass that requires validation. Please verify your previous order ID or add an eligible exhibitor/sponsor package to your cart.'
+        'You have selected a pass that requires validation. Please complete the required validation before checkout.'
       );
       // Highlight the tickets that need validation
       ticketsToValidate.forEach((reg) => {
-        if (validationStatus[reg.id] !== 'valid') {
+        if (reg.requiresCode && codeValidationStatus[reg.id] !== 'valid') {
+          setCodeValidationError((prev) => ({
+            ...prev,
+            [reg.id]:
+              prev[reg.id] ||
+              'This ticket requires code validation before checkout.',
+          }));
+        }
+        if (reg.requiresValidation && validationStatus[reg.id] !== 'valid') {
           setValidationError((prev) => ({
             ...prev,
             [reg.id]:
@@ -2092,6 +2217,7 @@ const RegistrationModal = ({
                         </button>
                       </div>
                       {renderValidationUI(reg)}
+                      {renderCodeValidationUI(reg)}
                     </div>
                     )
                   })}
