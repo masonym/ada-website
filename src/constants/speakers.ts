@@ -1,5 +1,3 @@
-// This file is auto-generated. Do not edit directly.
-
 export interface Speaker {
 	image: string;
 	name: string;
@@ -163,7 +161,7 @@ A native of New York City, Mr. Coffey is the oldest of seven children born to Ir
 After leaving active duty, Mr. Coffey continued to serve in the Navy Reserve for eighteenyears. Among other things, he flew anti-submarine missions in the North Atlantic andMediterranean, counter-narcotics missions in the Caribbean, and armed missions insupport of the blockade of the former Yugoslavia. Mr. Coffey was selected to serve ascommanding officer both of a reserve P-3C squadron (VP-92) and the reserve componentof the Enterprise carrier battle group staff (CCDG-12), and served as a staff officer in the Office of the Secretary of Defense (Reserve Affairs). Mr. Coffey retired at the rank ofCaptain in 2004.
 <br/><br/>
 Prior to returning to public service, Mr. Coffey served as the President of the Federal BarFoundation and on the boards of various non-profit organizations, including ThanksUSA,Common Cause New York, Georgetown Law’s Board of Visitors, and the Holocaust andHuman Rights Education Center. Mr. Coffey has been married for over thirty years toAnne Churchill, an actress whose credits include This is Spinal Tap. They have threegrown children. `,
-		},
+	},
 	"bianca-henderson": {
 		"image": "bianca-henderson.webp",
 		"name": "Bianca Henderson",
@@ -1032,20 +1030,20 @@ Ms. Plath graduated from the U.S. Naval Academy with a Bachelor of Science in Ae
 Ms. Plath's naval decorations include the Navy Commendation Medal (two awards), Navy Achievement Medal (two awards), Meritorious Unit Commendation, and Global War on Terrorism Expeditionary and Service medals.
 `,
 	}
-,
-  "paul-wichert": {
-    "image": "paul-wichert.webp",
-    "name": "Paul Wichert",
-    "position": "VP of Sales",
-    "company": "DMG Mori Federal Services",
-    "bio": `Paul Wichert is a 45-year veteran of the manufacturing industry. His experience is multi-faceted, Operational Executive of machine tool builders, Owner/Operator of contract machining services business, President of manufacturing facilities in US, China & Taiwan. Importing and consulting in global manufacturing. Currently he is working with DMG MORI Federal Services (DMFS). DMFS is the representative for DMG MORI, the leader in innovative metal cutting 3D Metal Printing and Hybrid machine tools.`,
-  },
-  "vice-admiral-richard-w-hunt": {
-    "image": "vice-admiral-richard-w-hunt.webp",
-    "name": "Vice Admiral Richard W. Hunt",
-    "position": "President",
-    "company": "Fincantieri Marinette Marine",
-    "bio": `Vice Admiral Hunt graduated from the University of Wisconsin-Madison in 1975 with a Bachelor of Science in Bacteriology.  He was commissioned in February 1976 through the Officer Candidate School program in Newport, R.I.  He attended Naval Post Graduate School, receiving a Master of Science in Telecommunications Systems Management in March 1988.
+	,
+	"paul-wichert": {
+		"image": "paul-wichert.webp",
+		"name": "Paul Wichert",
+		"position": "VP of Sales",
+		"company": "DMG Mori Federal Services",
+		"bio": `Paul Wichert is a 45-year veteran of the manufacturing industry. His experience is multi-faceted, Operational Executive of machine tool builders, Owner/Operator of contract machining services business, President of manufacturing facilities in US, China & Taiwan. Importing and consulting in global manufacturing. Currently he is working with DMG MORI Federal Services (DMFS). DMFS is the representative for DMG MORI, the leader in innovative metal cutting 3D Metal Printing and Hybrid machine tools.`,
+	},
+	"vice-admiral-richard-w-hunt": {
+		"image": "vice-admiral-richard-w-hunt.webp",
+		"name": "Vice Admiral Richard W. Hunt",
+		"position": "President",
+		"company": "Fincantieri Marinette Marine",
+		"bio": `Vice Admiral Hunt graduated from the University of Wisconsin-Madison in 1975 with a Bachelor of Science in Bacteriology.  He was commissioned in February 1976 through the Officer Candidate School program in Newport, R.I.  He attended Naval Post Graduate School, receiving a Master of Science in Telecommunications Systems Management in March 1988.
 	<br/>
 	
 	<br/>
@@ -1066,13 +1064,13 @@ Ms. Plath's naval decorations include the Navy Commendation Medal (two awards), 
 	Hunt joined Raytheon Company in the position of Vice President, Business Development, Navy/Marine Corps Programs in January 2014 and assumed the role of Vice President for U.S. Business Development in June 2015.  He transitioned to Chief Strategy Officer at Fincantieri Marinette Marine in April 2018 and became President, Fincantieri Marinette Marine in July 2019.
 	<br/>
 	`,
-  },
-  "brian-w-miller": {
-    "image": "brian-w-miller.webp",
-    "name": "Brian W. Miller",
-    "position": "Deputy Director of Real Estate",
-    "company": "Office of the Assistant Secretary of the Navy (Energy, Installations & Environment)",
-	"bio": `
+	},
+	"brian-w-miller": {
+		"image": "brian-w-miller.webp",
+		"name": "Brian W. Miller",
+		"position": "Deputy Director of Real Estate",
+		"company": "Office of the Assistant Secretary of the Navy (Energy, Installations & Environment)",
+		"bio": `
 	As Deputy Director of Real Estate, Mr. Miller manages and coordinates a wide range of real estate activities for the Navy and Marine Corps, reporting to the Deputy Assistant Secretary of the Navy for Installations and Facilities. His responsibilities include developing and implementing policies for real estate acquisition, disposal, and management, as well as overseeing the Navy and Marine Corps Intergovernmental Support Agreements (IGSA) programs.
 
 <br/><br/>
@@ -1080,20 +1078,20 @@ Previously, he served as a Public Private Venture (PPV) Program Specialist at Na
 <br/><br/>
 Prior to federal service, Mr. Miller managed commercial property in the Washington, D.C., region at Lincoln Property Company. He holds a Bachelor's degree in Economics from the University of Maryland and a Master's degree in Real Estate Development from Georgetown University.
 	`
-  },
-  "roger-camp": {
-    "image": "roger-camp.webp",
-    "name": "Roger Camp",
-    "position": "Senior Director for Business Development, Naval Programs",
-    "company": "Hanwha Defense USA",
-    "bio": `Roger Camp is the Senior Director for Business Development, Naval Programs at Hanwha Defense USA. A large part of his role is supporting Hanwha Philly Shipyard. After completing his undergraduate degree at Vanderbilt University, Roger served on four ships in the United States Navy as a Surface Warfare Officer for 20 years, with much of the last half of his career spent in missile defense. He spent two years at General Dynamics working Common Display System, and Littoral Combat Ship programs before spending seven years at Raytheon working on missile defense issues. He spent the last 5 1/2 years at General Atomics Electromagnetics and joined Hanwha in February 2025. Roger has been involved with the National Shipbuilding Research Program since 2019 and is also the President and Chief Executive Officer of the American Shipbuilding Suppliers Association, and served four years as President of the Northern Virginia Council, Navy League of the United States.`,
-  },
-  "anthony-livanios": {
-    "image": "anthony-livanios.webp",
-    "name": "Anthony Livanios",
-    "position": "CEO",
-    "company": "U.S. Energy Stream, Inc.",
-    "bio": `Anthony Livanios is a business owner and highly experienced international economist. He founded US Energy Stream in 2010 with a mission to bring the highest intelligence to educate and empower business and government leaders. He has over thirty years of experience in leading and negotiating agreements for energy majors, independents, national gas companies, and governments. He successfully executed gas pipeline negotiations, LNG projects, geopolitical risk assessments, and market intelligence. He has created one of the most influential government networks in Washington, DC.
+	},
+	"roger-camp": {
+		"image": "roger-camp.webp",
+		"name": "Roger Camp",
+		"position": "Senior Director for Business Development, Naval Programs",
+		"company": "Hanwha Defense USA",
+		"bio": `Roger Camp is the Senior Director for Business Development, Naval Programs at Hanwha Defense USA. A large part of his role is supporting Hanwha Philly Shipyard. After completing his undergraduate degree at Vanderbilt University, Roger served on four ships in the United States Navy as a Surface Warfare Officer for 20 years, with much of the last half of his career spent in missile defense. He spent two years at General Dynamics working Common Display System, and Littoral Combat Ship programs before spending seven years at Raytheon working on missile defense issues. He spent the last 5 1/2 years at General Atomics Electromagnetics and joined Hanwha in February 2025. Roger has been involved with the National Shipbuilding Research Program since 2019 and is also the President and Chief Executive Officer of the American Shipbuilding Suppliers Association, and served four years as President of the Northern Virginia Council, Navy League of the United States.`,
+	},
+	"anthony-livanios": {
+		"image": "anthony-livanios.webp",
+		"name": "Anthony Livanios",
+		"position": "CEO",
+		"company": "U.S. Energy Stream, Inc.",
+		"bio": `Anthony Livanios is a business owner and highly experienced international economist. He founded US Energy Stream in 2010 with a mission to bring the highest intelligence to educate and empower business and government leaders. He has over thirty years of experience in leading and negotiating agreements for energy majors, independents, national gas companies, and governments. He successfully executed gas pipeline negotiations, LNG projects, geopolitical risk assessments, and market intelligence. He has created one of the most influential government networks in Washington, DC.
 	<br/>
 	
 	<br/>
@@ -1106,33 +1104,33 @@ Prior to federal service, Mr. Miller managed commercial property in the Washingt
 	
 	<br/>
 	Today, he is one of the industry’s most innovative entrepreneurs and American thought leaders.`,
-  },
-  "joel-coulter": {
-    "image": "joel-coulter.webp",
-    "name": "Joel Coulter",
-    "position": "Strategic Growth Officer",
-    "company": "Neptune SHIELD Tech Hub",
-    "bio": `
+	},
+	"joel-coulter": {
+		"image": "joel-coulter.webp",
+		"name": "Joel Coulter",
+		"position": "Strategic Growth Officer",
+		"company": "Neptune SHIELD Tech Hub",
+		"bio": `
 	Serial Entrepreneur that has worked to launch-deploy wearable, mobile and tactical edge computing data pod Small Business innovations addressing DoD, Energy and Port-Maritime clients, Security-Resilience and Counter-Terrorism Drone, Cyber, and Early Warning Crisis Information Sharing solutions including dual use multimodal logistics operations.  Formed strategic private-public partnerships to strengthen customers risk management-continuity capacities in response to adversaries growing Irregular Warfare capabilities targeting Defense-Critical Infrastructures .   Since 2016 engaged by Sheila Thompson, Thompson and Gray to advance her Joint DoD Global Financial Enterprise System (GFEBS) and Honeycomb Security Systems data pod investments forming strategic alliances with Innovation Hubs, DoD-Academic National Security Collaboration Centers, and Civ-Mil HADR Programs including DoD’s Tides and National Guard State Partnership Programs.  Prior to this he was IBM’s Outreach Chair for their Mid-Atlantic Group Systems Innovation Committee (MAGIC) and then OSD’s Joint Human Interoperability Enterprise Committee (HIE).  During this time, he worked with  JFCOM’s Multi-Agency Joint Intelligence Integration Center (MAJIIC) and Navy RMAC-DJC2 Prepositioned Maritime Awareness Programs.
 <br/><br/>
 While engaged with Bob Darling Turning Point Crisis Management and Tim Carty with EMP Shield, he supported XCORP team’s Quantico Cyber Hub launch and growth comprising the American Cyber League, STEM cyber, drone and AI camps, and Quantico Cyber Hub evolving their Network and Critical Infrastructure Labs and forming Cyber Hub alliances.  This was built upon engaging with disruptive tech startups including WebIQ, Xybernaut’ s Xyberlink, E-SIM, EchoStorm’s adlib and Convene, and KSI Video cloud enabled FMV ISR enterprise.
 <br/><br/>
 Currently Joel serves as Strategic Growth Officer for Neptune Shield Tech Hub, growing their Small Business innovation instructional and and lab capacities and alliances with Virginia’s Mid Atlantic Aviation Partnership, International Mid-Atlantic Tech Bridge Naval-X, Maryland Technology Advancement Center, Virginia Innovation Partnership Corp. and NATO Maritime Innovation Hub.  He has previously served on the Boards of AUVSI, CRDF Global, and First Robotics and is now supporting America’s INCITS National Standards BCI-AI Committee building upon America’s Joint Common Alert Protocol EDXL, Stanag Drone FMV ISR Joint Common Operations Picture (JCOP)  and the Army’s Joint Robotic Acquisition Command and Control (RAC2) program.
 	`,
-  },
-  "nicholas-antonio-rocha": {
-    "image": "placeholder.webp",
-    "name": "Nicholas Antonio Rocha",
-    "position": "President/CEO",
-    "company": "Neptune SHIELD Tech Hub",
-    "bio": `Nick successfully completed a 26-year career as a Navy SEAL. He graduated from Norwich University with a BS in Strategic Studies and Defense Analysis and business certification from Harvard.  Nick served at various command levels across CENTCOM, EUCOM, and NORTHCOM and led functioning teams, completed endless training, extreme missions, while facing life-and-death challenges. But it’s those very experiences, where innovation, adaptation, and quick decision-making were critical, that have shaped how he approaches the work we do here at Neptune SHIELD. It’s about pushing the limits, finding solutions in high-pressure environments, and ensuring mission success for all stakeholders.`,
-  },
-  "jeffrey-hoffman": {
-    "image": "jeffrey-hoffman.webp",
-    "name": "Jeffrey Hoffman",
-    "position": "President and CEO",
-    "company": "Cyber Intelligent Partners",
-    "bio": `
+	},
+	"nicholas-antonio-rocha": {
+		"image": "placeholder.webp",
+		"name": "Nicholas Antonio Rocha",
+		"position": "President/CEO",
+		"company": "Neptune SHIELD Tech Hub",
+		"bio": `Nick successfully completed a 26-year career as a Navy SEAL. He graduated from Norwich University with a BS in Strategic Studies and Defense Analysis and business certification from Harvard.  Nick served at various command levels across CENTCOM, EUCOM, and NORTHCOM and led functioning teams, completed endless training, extreme missions, while facing life-and-death challenges. But it’s those very experiences, where innovation, adaptation, and quick decision-making were critical, that have shaped how he approaches the work we do here at Neptune SHIELD. It’s about pushing the limits, finding solutions in high-pressure environments, and ensuring mission success for all stakeholders.`,
+	},
+	"jeffrey-hoffman": {
+		"image": "jeffrey-hoffman.webp",
+		"name": "Jeffrey Hoffman",
+		"position": "President and CEO",
+		"company": "Cyber Intelligent Partners",
+		"bio": `
 Mr. Jeff Hoffmann is a CISO certified, dedicated professional with proven performance in certified PMI management, leadership, and communication. Results-oriented, retired war college military veteran with over 20 years of experience in national security, cyber, and urban and rural economic development that began in the United States Senate and Congressional Affairs for the Office of the Secretary of Defense.
 <br/>
 <br/>
@@ -1159,13 +1157,13 @@ In earlier years of his career, Mr. Hoffmann was employed by the U.S. government
 <br/>
 Mr. Hoffmann has a strong academic background in cyber and digital transformation, to include research with the University of Oxford Global Cyber Security Capacity Center in England and recipient of the Oxford Saïd Business School Executive AI certification in program management.
 	`
-  },
-  "daniel-hudson": {
-    "image": "daniel-hudson.webp",
-    "name": "Dan Hudson",
-    "position": "Senior Technology Director",
-    "company": "HII Mission Technologies",
-    "bio": `
+	},
+	"daniel-hudson": {
+		"image": "daniel-hudson.webp",
+		"name": "Dan Hudson",
+		"position": "Senior Technology Director",
+		"company": "HII Mission Technologies",
+		"bio": `
 Dan Hudson is a Senior Technology Director in the Mission Technologies division of Huntington Ingalls Industries (HII). He has more than 20 years of experience and is an expert in applying human factors and reliability engineering, data science and advanced analytics, model-based engineering, and digital transformation across multiple industries and domains, including healthcare and public health, national security and defense, cybersecurity and intelligence, reliability and safety of engineered systems, and risk management.
 <br/><br/>
 Before joining HII in 2022, Hudson served in a variety of data science and AI leadership roles in the private sector supporting the Department of Defense, Department of Veterans Affairs, and the Intelligence Community. He also served for more than 20 years in the Federal Government, including service as an enlisted Marine, as a Navy Diver and Submarine Warfare Officer, and finally as a Reliability Engineer and Risk Analyst for the U.S. Nuclear Regulatory Commission.
@@ -1174,13 +1172,13 @@ Hudson earned a Bachelor of Science with Distinction degree in Aerospace Enginee
 <br/><br/>
 HII is an all-domain defense and technologies partner, recognized worldwide as America’s largest shipbuilder. With a 135-year history of trusted partnerships in advancing U.S. national security, HII delivers critical capabilities ranging from the most powerful and survivable naval ships ever built, to unmanned systems, ISR, and AI/ML analytics. HII leads the industry in mission-driven solutions that support and enable an all-domain force. Headquartered in Virginia, HII’s skilled workforce is 44,000 strong. For more information please visit: HII.com.
 	`,
-  },
-  "victorino-mercado": {
-    "image": "vic-mercado.webp",
-    "name": "The Honorable Victorino ('Vic') G. Mercado",
-    "position": "Leader, Navy & Marine Corps Strategic Growth",
-    "company": "IBM Federal Services",
-	"bio": `
+	},
+	"victorino-mercado": {
+		"image": "vic-mercado.webp",
+		"name": "The Honorable Victorino ('Vic') G. Mercado",
+		"position": "Leader, Navy & Marine Corps Strategic Growth",
+		"company": "IBM Federal Services",
+		"bio": `
 	Vic Mercado joined IBM in May 2023 as its Leader for Navy and Marine Corps Strategic Growth.
 	<br/><br/>
 	He is a former Assistant Secretary of Defense for Strategy, Plans, and Capabilities (ASD SPC), where he advised the Secretary of Defense and the Under Secretary of Defense for Policy on national security and defense strategy; the forces, contingency plans, and associated posture necessary to implement the defense strategy; nuclear deterrence and missile defense policy; and security cooperation plans and policies. Mercado ensured that Department program and budget decisions support and advance senior DoD leaders' strategic direction, especially as articulated in defense planning guidance.
@@ -1199,13 +1197,13 @@ HII is an all-domain defense and technologies partner, recognized worldwide as A
 	<br/><br/>
 	Mercado graduated from the U.S. Naval Academy in 1983 with a Bachelor of Science in Mathematics/Computer Science, and earned a Masters in Systems Technology in Joint Command, Control and Communications from the Naval Postgraduate School.
 	`
-  },
-  "jared-chalk": {
-    "image": "jared-chalk.webp",
-    "name": "Jared Chalk",
-    "position": "Chief Business Development Officer",
-    "company": "Hampton Roads Alliance",
-    "bio": `Jared Chalk joined the Alliance in September 2022 as Chief Business Development Officer. In this role, Jared leads the organization’s business development and investor relations efforts, bringing his considerable experience attracting and retaining companies to the region’s leading economic development organization.
+	},
+	"jared-chalk": {
+		"image": "jared-chalk.webp",
+		"name": "Jared Chalk",
+		"position": "Chief Business Development Officer",
+		"company": "Hampton Roads Alliance",
+		"bio": `Jared Chalk joined the Alliance in September 2022 as Chief Business Development Officer. In this role, Jared leads the organization’s business development and investor relations efforts, bringing his considerable experience attracting and retaining companies to the region’s leading economic development organization.
 	<br/>
 	
 	<br/>
@@ -1214,30 +1212,30 @@ HII is an all-domain defense and technologies partner, recognized worldwide as A
 	
 	<br/>
 	Jared is a graduate of Bridgewater College with a bachelor’s degree in business administration and a Certificate in Real Estate Finance and Development from the Massachusetts Institute of Technology. He serves on numerous boards and organizations throughout the region and was named to Virginia Business’s Top 500 Power List in 2021 and 2022. He is also a 2019 graduate of Lead Hampton Roads and made Hampton Roads’ Top 40 Under 40 and Top 100 People to Meet in Virginia lists in 2020. Jared is a Hampton Roads native, and he and his wife reside in Norfolk.`,
-  },
-  "hunter-stires": {
-    "image": "hunter-stires.webp",
-    "name": "Hunter Stires",
-    "position": "Founder and CEO",
-    "company": "Maritime Strategy Group",
-	"bio": `
+	},
+	"hunter-stires": {
+		"image": "hunter-stires.webp",
+		"name": "Hunter Stires",
+		"position": "Founder and CEO",
+		"company": "Maritime Strategy Group",
+		"bio": `
 	Hunter Stires is the Founder and CEO of The Maritime Strategy Group.  He most recently served in government as the Maritime Strategist to the 78th Secretary of the Navy, completing his term in June 2025.  He is one of the principal architects of Secretary Del Toro's Maritime Statecraft strategy to rebuild America's comprehensive maritime power, both commercial and naval.  Additionally, Mr. Stires serves as the Project Director of the U.S. Naval Institute’s Maritime Counterinsurgency Project, a Fellow with the U.S. Naval War College’s John B. Hattendorf Center for Maritime Historical Research, and a Non-Resident Fellow with the Navy League’s Center for Maritime Strategy.  A graduate of Columbia University, Mr. Stires previously served in the Office of the Undersecretary of Defense for Policy and several positions on the Navy Staff, including OPNAV N96 Surface Warfare Directorate, OPNAV N95 Expeditionary Warfare Directorate, and OPNAV N522 Navy Irregular Warfare Group.
 <br/><br/>
 Mr. Stires has been recognized twice with the U.S. Naval Institute’s General Prize.  His article in the Summer 2019 issue of the Naval War College Review, “‘They Were Playing Chicken:’ The U.S. Asiatic Fleet’s Gray-Zone Deterrence Campaign against Japan, 1937-40,” was selected for inclusion in the monograph Deterrence.  Mr. Stires’ published work has been cited in a wide range of outlets, including Voice of America, Radio Free Asia, War on the Rocks, 19FortyFive, the Liberty Times, Rappler, and the South China Morning Post —as well as the Chinese language edition of the Global Times.
 	`
-  },
-  "tiffany-l-trotter": {
-    "image": "tiffany-l-trotter.webp",
-    "name": "Tiffany L. Trotter",
-    "position": "Deputy Chief, Contracting Office",
-    "company": "Norfolk Naval Shipyard",
-  },
-  "rosetta-rodwell": {
-    "image": "rosetta-rodwell.webp",
-    "name": "Rosetta Rodwell",
-    "position": "Former Area Director - Mid Atlantic, Office of Government Contracting",
-    "company": "U.S. Small Business Administration",
-	"bio": `
+	},
+	"tiffany-l-trotter": {
+		"image": "tiffany-l-trotter.webp",
+		"name": "Tiffany L. Trotter",
+		"position": "Deputy Chief, Contracting Office",
+		"company": "Norfolk Naval Shipyard",
+	},
+	"rosetta-rodwell": {
+		"image": "rosetta-rodwell.webp",
+		"name": "Rosetta Rodwell",
+		"position": "Former Area Director - Mid Atlantic, Office of Government Contracting",
+		"company": "U.S. Small Business Administration",
+		"bio": `
 	Rosetta Rodwell stands out as a distinguished expert in federal contracting with over 20 years of experience , bringing a wealth of knowledge and experience to her role as the CEO of Government Gateway Solutions. With a career spanning over two decades, Rosetta has developed a deep understanding of the intricacies of government procurement and has become a leading figure in the industry.
 <br/><br/>
 Rosetta's academic credentials are as impressive as her professional achievements. She holds a Master of Business Administration (MBA) from the University of Maryland Global Campus and a Master of Science in Supply Chain Management. These qualifications have provided her with a robust foundation in business strategy and operational efficiency, key elements in navigating the complex landscape of on government contracts.
@@ -1251,13 +1249,13 @@ Through her leadership, expertise, and dedication, Rosetta Rodwell continues to 
 Rosetta is a sought-after speaker and thought leader, frequently invited to share her knowledge at industry conferences and workshops. Her passion for education and empowerment is evident in her dedication to developing training programs that equip manufacturers with the tools they need to succeed in the competitive landscape of government contracting.
 <br/><br/>
 Through her unwavering dedication and extensive experience, Rosetta Rodwell continues to lead Government Gateway Solutions to new heights, ensuring that her clients are well-prepared to meet the demands of government contracting and achieve their business objectives.`
-  },
-  "captain-rick-tyler": {
-    "image": "rick-tyler.webp",
-    "name": "Richard S. Tyler, PE, MBA",
-    "position": "Chief Engineer/Planning Design and Construction Director",
-    "company": "Naval Facilities Engineering Systems Command (NAVFAC) Atlantic",
-    "bio": `Richard (Rick) Tyler serves as the Chief Engineer and Planning Design and Construction (PDC) Director at NAVFAC Atlantic in Norfolk, Virginia, directly overseeing the Military Construction planning, design, and construction program for the Shipyard Infrastructure Optimization Program (SIOP) at the Norfolk Naval Shipyard (Portsmouth VA) and Portsmouth Naval Shipyard (Kittery, ME) as well as within the NAVFAC EURAFCENT (Naples, Italy) Area of Responsibility. 
+	},
+	"captain-rick-tyler": {
+		"image": "rick-tyler.webp",
+		"name": "Richard S. Tyler, PE, MBA",
+		"position": "Chief Engineer/Planning Design and Construction Director",
+		"company": "Naval Facilities Engineering Systems Command (NAVFAC) Atlantic",
+		"bio": `Richard (Rick) Tyler serves as the Chief Engineer and Planning Design and Construction (PDC) Director at NAVFAC Atlantic in Norfolk, Virginia, directly overseeing the Military Construction planning, design, and construction program for the Shipyard Infrastructure Optimization Program (SIOP) at the Norfolk Naval Shipyard (Portsmouth VA) and Portsmouth Naval Shipyard (Kittery, ME) as well as within the NAVFAC EURAFCENT (Naples, Italy) Area of Responsibility. 
 	<br/>
 	 
 	<br/>
@@ -1282,19 +1280,20 @@ Through her unwavering dedication and extensive experience, Rosetta Rodwell cont
 	 
 	<br/>
 	Rick currently resides in Newport News, VA with his wife Shannon.  Together, they are the proud parents of one son, two daughters, and one granddaughter, and are active in their community and church. `,
-  },
-  "philip-hart-cullum": {
-    "image": "placeholder.webp",
-    "name": "Vice Admiral, USN (Ret.) Philip Hart Cullum",
-    "position": "Former Commander, Fleet Readiness",
-    "company": "United States Navy",
-  },
-  "nicholas-diehl": {
-    "image": "placeholder.webp",
-    "name": "Nicholas Diehl",
-    "position": "Global Director, Security Innovation and Technology",
-    "company": "Littoral Dynamics",
-  }};
+	},
+	"philip-hart-cullum": {
+		"image": "placeholder.webp",
+		"name": "Vice Admiral, USN (Ret.) Philip Hart Cullum",
+		"position": "Former Commander, Fleet Readiness",
+		"company": "United States Navy",
+	},
+	"nicholas-diehl": {
+		"image": "placeholder.webp",
+		"name": "Nicholas Diehl",
+		"position": "Global Director, Security Innovation and Technology",
+		"company": "Littoral Dynamics",
+	}
+};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 	"1": [

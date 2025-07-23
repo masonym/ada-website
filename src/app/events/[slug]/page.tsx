@@ -14,6 +14,7 @@ import SpecialFeatures from '@/app/components/SpecialFeatures';
 import FooterEventText from '@/app/components/FooterEventText';
 import { EventSaleBanner } from '@/app/components/EventSaleBanner';
 import SponsorAdvert from '@/app/components/SponsorAdvert';
+import { getCdnPath } from '@/utils/image';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: event.description,
       images: [
         {
-          url: event.image,
+          url: getCdnPath(event.image),
           width: 1200,
           height: 630,
           alt: event.title,
