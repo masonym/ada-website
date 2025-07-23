@@ -1243,6 +1243,17 @@ Mr. Stires has been recognized twice with the U.S. Naval Institute’s General P
 		"name": "Tiffany L. Trotter",
 		"position": "Deputy Chief, Contracting Office",
 		"company": "Norfolk Naval Shipyard",
+		"bio": `
+		Tiffany Trotter is Norfolk Naval Shipyard’s (NNSY) Deputy Chief of Contracting Office (DCCO), a position she assumed in July 2024.  
+		<br/><br/>
+As the Deputy Chief of the Contracting Office at Norfolk Naval Shipyard, Tiffany Trotter oversees all contracting operations essential to supporting one of the Navy’s largest and most critical ship repair facilities. With extensive experience in federal acquisition and contract management, she ensures the timely and compliant procurement of goods and services vital to the shipyard’s mission readiness. Her role includes the formulation and implementation of both strategic and tactical plans to ensure resources and processes are in place to support current and long range US Navy maintenance and modernization requirements for Fleet units necessary to meet NNSY’s mission.  Under Naval Sea Systems Command’s (NAVSEA’s) authority, Ms. Trotter holds an Unlimited Contracting Warrant overseeing and directing the execution of contracts ranging in size, magnitude and complexity to supports requirements as simple as equipment rentals to major ship overhaul and repair actions collectively valued in excess of $500 million. 
+		<br/><br/>
+Prior to assuming the role as the DCCO, Ms. Trotter led the Submarine Support Services Division (C450) as the Division Head executing the procurement and administration process for submarine preservation services and waterfront production support.  Prior to joining the NNSY C400 team she served as a contracting officer/specialist within Military Sealift Command (MSC), Naval Facilities Engineering Command (NAVFAC), and Air Force Space Command (AFSPC). 
+		<br/><br/>
+Ms. Trotter holds a Bachelor of Science in Business Management from Norfolk State University and a Master of Business Administration from Webster University.  Ms. Trotter is also a Certified Contracting Professional.
+		<br/><br/>
+
+		`
 	},
 	"rosetta-rodwell": {
 		"image": "rosetta-rodwell.webp",
@@ -1295,9 +1306,9 @@ Through her unwavering dedication and extensive experience, Rosetta Rodwell cont
 	<br/>
 	Rick currently resides in Newport News, VA with his wife Shannon.  Together, they are the proud parents of one son, two daughters, and one granddaughter, and are active in their community and church. `,
 	},
-	"philip-hart-cullum": {
-		"image": "placeholder.webp",
-		"name": "Vice Admiral, USN (Ret.) Philip Hart Cullum",
+	"philip-hart-cullom": {
+		"image": "philip-cullom.webp",
+		"name": "Vice Admiral, USN (Ret.) Philip Hart Cullom",
 		"position": "Former Commander, Fleet Readiness",
 		"company": "United States Navy",
 	},
@@ -1413,7 +1424,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"rosetta-rodwell",
 		{ id: "representative-rob-wittman", label: "Pre-Recorded Address" },
 		"captain-rick-tyler",
-		"philip-hart-cullum",
+		"philip-hart-cullom",
 		"nicholas-diehl"
 	]
 };
