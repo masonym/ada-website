@@ -1329,7 +1329,30 @@ His 20 personal awards include the Navy Distinguished Service Medal, Defense Sup
 		"position": "Global Director, Security Innovation and Technology",
 		"company": "Littoral Dynamics",
 	}
-};
+,
+  "dr-steven-wills": {
+    "image": "steven-wills.webp",
+    "name": "Dr. Steven Wills",
+    "position": "Navalist, Center for Maritime Strategy",
+    "company": "Navy League of the United States",
+    "bio": `Dr. Steven Wills currently serves as a Navalist for the Center for Maritime Strategy at the Navy League of the United States. He is an expert in U.S. Navy strategy and policy and U.S. Navy surface warfare programs and platforms.
+	<br/>
+	
+	<br/>
+	His research interests include the history of U.S. Navy strategy development over the Cold War and immediate, post-Cold War era, and the history of the post-World War II U.S. Navy surface fleet.
+	<br/>
+	
+	<br/>
+	Dr. Wills had a 20-year career as an active-duty U.S. Navy officer and served on a variety of small and medium surface combatants, including an assignment as the executive officer of a mine countermeasures ship. He also held shore-based billets at the Defense Intelligence Agency, the Joint Non-Lethal Weapons Directorate, NATO Joint Forces Command, Naples, Italy, and the NATO Joint Force Maritime Component Command, also in Naples.
+	<br/>
+	
+	<br/>
+	After retiring from the Navy in 2010, he completed a master’s and a Ph.D. in History with a concentration on Military History at Ohio University, graduating in 2017. He is the author of “Strategy Shelved: The Collapse of Cold War Naval Strategic Planning,” published by Naval Institute Press in July 2021 and, with former Navy Secretary John Lehman, “Where are the Carriers? U.S. National Strategy and the Choices Ahead,” published by Foreign Policy Research Institute in August 2021. His articles have appeared in the U.S. Naval War College Review, U.S. Naval Institute News, Real Clear Defense, the Center for International Maritime Security, War on the Rocks, and http://InformationDissemination.net .
+	<br/>
+	
+	<br/>
+	Dr. Wills holds a master’s in National Security Studies from the U.S. Naval War College and a bachelor’s in History from Miami University in Oxford, Ohio.`,
+  }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 	"1": [
@@ -1437,7 +1460,8 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"captain-rick-tyler",
 		"philip-hart-cullom",
 		"nicholas-diehl",
-		"andrew-gardner"
+		"andrew-gardner",
+		"dr-steven-wills"
 	]
 };
 

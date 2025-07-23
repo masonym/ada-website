@@ -993,6 +993,9 @@ export const SCHEDULES = [
                             },
                             {
                                 speakerId: "victorino-mercado",
+                            },
+                            {
+                                speakerId: "dr-steven-wills"
                             }
                         ]
                     },
