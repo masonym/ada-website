@@ -869,7 +869,11 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       keynoteSpeakers: [
         {
           speakerId: "erica-h-plath",
-          headerText: "Keynote Speaker",
+          headerText: "U.S. Navy Keynote Speaker",
+        },
+        {
+          speakerId: "christopher-m-haar",
+          headerText: "U.S. Marine Corps Keynote Speaker",
         }
       ]
     }

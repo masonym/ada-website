@@ -1258,9 +1258,9 @@ export const SCHEDULES = [
                         title: "Using Mentor-Protégé Partnerships to Drive the ‘Combat Capability Factory’",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
                         speakers: [
-                            // {
-                            //     speakerId: ""
-                            // }
+                            {
+                                speakerId: "andrew-gardner"
+                            }
                         ]
                     },
                     {

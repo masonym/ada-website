@@ -1311,6 +1311,17 @@ Through her unwavering dedication and extensive experience, Rosetta Rodwell cont
 		"name": "Vice Admiral, USN (Ret.) Philip Hart Cullom",
 		"position": "Former Commander, Fleet Readiness",
 		"company": "United States Navy",
+		"bio": `
+		A native of Flossmoor, Illinois, Vice Adm. Philip H. Cullom graduated with distinction from the U.S. Naval Academy with a bachelor's degree in physics. He also holds a master's degree in business administration with distinction from Harvard Business School.
+<br/><br/>
+His career has been marked by service in every combatant command theater of operations; participation in nine named operations supporting U.S. military efforts in the Middle East, Mediterranean, Adriatic, Caribbean and Western Pacific; and six Carrier/Expeditionary Strike Group deployments.
+<br/><br/>
+Afloat, he commanded the Eisenhower and George Washington Strike Groups, Amphibious Squadron 3, USS Mitscher (DDG 57) and served as chief of staff to Commander, 2nd Fleet/Striking Fleet Atlantic. Other tours included USS Mobile Bay (CG 53), USS Dwight D. Eisenhower (CVN 69), USS Jesse L. Brown (FF 1089) and USS Truxtun (CGN 35).
+<br/><br/>
+Ashore, flag assignments included Fleet Readiness and Logistics (N4) deputy chief of naval operations; Energy and Environmental Readiness Division (N45) director; Fleet Readiness Division (N43) director; Strategy & Policy Division (N5SP) director; and Deep Blue director.  He served at the White House twice as special assistant to the director, Office of Management & Budget and as director of Defense Policy/Arms Control on the National Security Council. Other Shore tours included: head of Nuclear Officer Programs and Placement (PERS 424/41N); Chief of Naval Operations (CNO) Staff’s Strategy and Policy Branch (N513); Joint Staff’s Program Budget & Analysis Division (J-8); CNO’s Executive Panel (OP-00K); the White House Fellowship Program; and staff positions at Idaho National Engineering Laboratory.
+<br/><br/>
+His 20 personal awards include the Navy Distinguished Service Medal, Defense Superior Service Medal, Legion of Merit, Department of State Superior Honor Award, l'Ordre National du Mérite (Officier) – Republic of France and the Ellis Island Award. Crews with whom Cullom served were awarded 10 unit commendations including the Battle E award for operational excellence. He considers those awards earned throughout his career associated with unit performance to be most representative of naval service and of greatest impact.
+		`,
 	},
 	"nicholas-diehl": {
 		"image": "placeholder.webp",
@@ -1425,7 +1436,8 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		{ id: "representative-rob-wittman", label: "Pre-Recorded Address" },
 		"captain-rick-tyler",
 		"philip-hart-cullom",
-		"nicholas-diehl"
+		"nicholas-diehl",
+		"andrew-gardner"
 	]
 };
 
