@@ -1108,7 +1108,7 @@ Prior to federal service, Mr. Miller managed commercial property in the Washingt
 	Today, he is one of the industry’s most innovative entrepreneurs and American thought leaders.`,
   },
   "joel-coulter": {
-    "image": "placeholder.webp",
+    "image": "joel-coulter.webp",
     "name": "Joel Coulter",
     "position": "Strategic Growth Officer",
     "company": "Neptune SHIELD Tech Hub",
