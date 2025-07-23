@@ -803,6 +803,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/isn-corp.webp",
     website: "https://www.isncorp.com/",
     size: 'small'
+  },
+  "neptune-shield": {
+    id: "neptune-shield",
+    name: "Neptune SHIELD Tech Hub",
+    logo: "/sponsors/neptune-shield.webp",
+    website: "https://neptuneshield.com/",
+    size: 'small'
   }
 };
 

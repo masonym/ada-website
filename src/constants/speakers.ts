@@ -1119,11 +1119,25 @@ Currently Joel serves as Strategic Growth Officer for Neptune Shield Tech Hub, g
 	`,
 	},
 	"nicholas-antonio-rocha": {
-		"image": "placeholder.webp",
+		"image": "nicholas-antonio-rocha.webp",
 		"name": "Nicholas Antonio Rocha",
 		"position": "President/CEO",
 		"company": "Neptune SHIELD Tech Hub",
-		"bio": `Nick successfully completed a 26-year career as a Navy SEAL. He graduated from Norwich University with a BS in Strategic Studies and Defense Analysis and business certification from Harvard.  Nick served at various command levels across CENTCOM, EUCOM, and NORTHCOM and led functioning teams, completed endless training, extreme missions, while facing life-and-death challenges. But it’s those very experiences, where innovation, adaptation, and quick decision-making were critical, that have shaped how he approaches the work we do here at Neptune SHIELD. It’s about pushing the limits, finding solutions in high-pressure environments, and ensuring mission success for all stakeholders.`,
+		"bio": `Nick is the founder and Chief Executive Officer of the Neptune SHIELD Mid-Atlantic Innovation and Technology Hub.  With a mission to rapidly develop and quickly field defense applications of emerging dual-use technologies to enhance naval warfighting advantage and the lethality of U.S. joint forces, as well as support the maritime industry, streamline efficiencies, and protect the homeland ports and harbors. 
+<br/><br/>
+The Neptune SHIELD Tech Hub (NSTH) is both a function and future facility envisioned by Nick Rocha. The NSTH will leverage operationally experienced students, defense-expert faculty, partner ecosystem, and location in the Lynnhaven Tech Corridor of Virginia Beach to accelerate technology concepts and capabilities at greater speed and scale. Empowering Veterans thru education and training while developing innovative technologies to support the warfighter, intelligence community, local law enforcement, and emergency management practitioners. NSTH brings together the trifecta of Academia, Government and Industry. 
+<br/><br/>
+Nick is a combat proven Senior Enlisted Leader who served 26 years as a Navy SEAL in various positions and commands across three major Theatres of Operation. His tours within the Special Operations community include nine combat deployments to Bosnia, Iraq, and Afghanistan. From 2013 to 2016 Nick served as Senior Enlisted Leader for the Operations Department of Naval Special Warfare Unit Two in Stuttgart, Germany.  He was responsible for the leadership and direct oversight of 160 permanent and deployed personnel, managing 36 annual operational exercises in collaboration with 28 NATO partner nations, and two real world military maritime missions, while overseeing a $35.5M budget under Special Operations Command Europe (SOCEUR). This elite organization honed his abilities to deliver results with efficiency under intensely challenging circumstances by leveraging the strengths of his personnel as well as professional training to complete the mission. 
+<br/><br/>
+Nick is a graduate of Norwich University, earning a Bachelor of Science in Strategic Studies and Defense Analysis with 3.8GPA summa cum laude (2018), a graduate of the Joint Special Operations University graduating from the prestigious Senior Enlisted Academy with a focus on Cyber Security (2019), and received a partial scholarship to attend Harvard Business Online – Business 
+Fundamentals CORE certification program (2024) 
+<br/><br/>
+Historically, In 2002, Nick became the founding President of Special Ops Survivors, a non-profit 501(c)3 charity with a mission to embrace and empower military widows to find peace, healing, and community with other military widows. Their programs include educational workshops, college scholarship grants, and forget-me-not outreaches. After 20 years, SpecialOpsSurvivors.org has helped thousands of military widows across the USA turn tragedy into triumph.  
+<br/><br/>
+Nick’s Federal legislative accomplishments include lobbying to get the Service Group Life Insurance (SGLI) increased from $150K to $400k in (2010), and in (2018) the Fry’s College Scholarship bill into law. 
+<br/><br/>
+Nick has demonstrated sustained superior performance over a career-long journey guiding multi-faceted cross-functional teams in the design and deployment of critical projects across diverse environments. The ability to forge solid strategic level relationships building consensus across multiple organizational levels, nations, and cultures.
+`,
 	},
 	"jeffrey-hoffman": {
 		"image": "jeffrey-hoffman.webp",
@@ -1216,8 +1230,8 @@ HII is an all-domain defense and technologies partner, recognized worldwide as A
 	"hunter-stires": {
 		"image": "hunter-stires.webp",
 		"name": "Hunter Stires",
-		"position": "Founder and CEO",
-		"company": "Maritime Strategy Group",
+		"position": "Fellow, Center for Maritime Strategy",
+		"company": "Navy League of the United States",
 		"bio": `
 	Hunter Stires is the Founder and CEO of The Maritime Strategy Group.  He most recently served in government as the Maritime Strategist to the 78th Secretary of the Navy, completing his term in June 2025.  He is one of the principal architects of Secretary Del Toro's Maritime Statecraft strategy to rebuild America's comprehensive maritime power, both commercial and naval.  Additionally, Mr. Stires serves as the Project Director of the U.S. Naval Institute’s Maritime Counterinsurgency Project, a Fellow with the U.S. Naval War College’s John B. Hattendorf Center for Maritime Historical Research, and a Non-Resident Fellow with the Navy League’s Center for Maritime Strategy.  A graduate of Columbia University, Mr. Stires previously served in the Office of the Undersecretary of Defense for Policy and several positions on the Navy Staff, including OPNAV N96 Surface Warfare Directorate, OPNAV N95 Expeditionary Warfare Directorate, and OPNAV N522 Navy Irregular Warfare Group.
 <br/><br/>
