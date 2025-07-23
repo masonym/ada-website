@@ -974,7 +974,7 @@ const RegistrationModal = ({
 
     if (isValidationPending) {
       alert(
-        'You have selected a pass that requires validation. Please complete the required validation before checkout.'
+        'You have selected a discounted pass that requires validation. Please verify your previous order ID or add an eligible exhibitor/sponsor package to your cart.'
       );
       // Highlight the tickets that need validation
       ticketsToValidate.forEach((reg) => {
@@ -2092,7 +2092,7 @@ const RegistrationModal = ({
           </div>
         </div>
       )}
-      <div className="relative mx-auto p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white overflow-y-auto max-h-[90vh]">
+      <div className="relative mx-auto p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white overflow-y-auto h-fit max-h-[100vh] sm:max-h-[90vh]">
         {attendeeCountStep ? renderAttendeeCountStep() : showConfirmationView && confirmationData ? (
           // Confirmation View
           <div className="text-center">
@@ -2110,8 +2110,8 @@ const RegistrationModal = ({
         ) : (
           // Main Registration Flow
           <>
-            <div className="flex justify-between items-center pb-3 mb-4 border-b">
-              <h3 className="text-xl font-semibold text-gray-900">
+            <div className="flex justify-between items-center pb-3 border-b">
+              <h3 className="text-base sm:text-xl font-semibold text-gray-900">
                 {isCheckout ? `Register for ${event.title}` : `Select Tickets for ${event.title}`}
               </h3>
               <button
@@ -2140,9 +2140,9 @@ const RegistrationModal = ({
 
             {!isCheckout ? (
               // Ticket Selection View
-              <div className="flex flex-col h-[70vh]">
+              <div className="flex flex-col h-fit">
                 {/* Category tabs */}
-                <div className="flex border-b mb-4 text-base flex-col sm:flex-row">
+                <div className="flex border-b mb-4 flex-col sm:flex-row text-sm sm:text-base">
                   <button
                     onClick={() => setActiveCategory('ticket')}
                     className={`flex items-center px-4 py-2 ${activeCategory === 'ticket' ? 'border-l-2 sm:border-b-2 sm:border-l-0 border-indigo-600 text-indigo-600' : 'text-gray-500'}`}
