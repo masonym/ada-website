@@ -5,10 +5,11 @@ export interface PromoCode {
   code: string;
   discountPercentage: number;
   eligibleTicketTypes: string[];
-  eligibleEventIds: (string | number)[]; // Event IDs this promo code is valid for
+  eligibleEventIds: (string | number)[];
   expirationDate: Date;
   description?: string;
   isActive: boolean; // Allow enabling/disabling codes
+  autoApply?: boolean; // Optional: automatically apply this promo code for eligible events
 }
 
 // Centralized promo code definitions
@@ -17,7 +18,7 @@ export const PROMO_CODES: PromoCode[] = [
     code: 'ACEC15',
     discountPercentage: 15,
     eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass'],
-    eligibleEventIds: [4], // Only valid for 2025NMCPC (event ID 4)
+    eligibleEventIds: [4], // Only valid for 2025NMCPC
     expirationDate: new Date('2025-12-31'),
     description: 'ACEC15 - 15% off Attendee and VIP Attendee passes for Navy & Marine Corps Conference',
     isActive: true
@@ -42,6 +43,29 @@ export const PROMO_CODES: PromoCode[] = [
     expirationDate: new Date('2025-12-31'),
     description: 'ADA20 - 20% off eligible passes and sponsorships for Navy & Marine Corps and Defense Technology conferences',
     isActive: true
+  },
+  {
+    code: 'EARLY10',
+    discountPercentage: 10,
+    eligibleTicketTypes: [
+      'attendee-pass',
+      'vip-attendee-pass', 
+      'exhibit',
+      'platinum-sponsor',
+      'gold-sponsor',
+      'silver-sponsor',
+      'bronze-sponsor',
+      'vip-networking-reception-sponsor',
+      'networking-luncheon-sponsor',
+      'small-business-sponsor',
+      'small-business-sponsor-without-exhibit-space'
+      // Excludes: additional-exhibitor-attendee-pass, additional-sponsor-attendee-pass
+    ],
+    eligibleEventIds: [6], // 2026NMCPC
+    expirationDate: new Date('2025-08-02T04:00:00Z'),
+    description: 'EARLY10 - 10% off eligible tickets for event (excludes additional passes)',
+    isActive: true,
+    autoApply: true // Automatically apply this promo code for event ID 6
   },
 ];
 
@@ -87,6 +111,17 @@ export const getActivePromoCodesForEvent = (eventId: string | number): PromoCode
   const eventIdToCheck = typeof eventId === 'string' ? parseInt(eventId) : eventId;
   return PROMO_CODES.filter(promo => 
     promo.isActive && 
+    promo.eligibleEventIds.includes(eventIdToCheck) &&
+    new Date() <= promo.expirationDate
+  );
+};
+
+// Function to get promo codes that should be automatically applied for a specific event
+export const getAutoApplyPromoCodesForEvent = (eventId: string | number): PromoCode[] => {
+  const eventIdToCheck = typeof eventId === 'string' ? parseInt(eventId) : eventId;
+  return PROMO_CODES.filter(promo => 
+    promo.isActive && 
+    promo.autoApply === true &&
     promo.eligibleEventIds.includes(eventIdToCheck) &&
     new Date() <= promo.expirationDate
   );

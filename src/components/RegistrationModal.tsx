@@ -19,7 +19,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import StripePaymentForm, { StripePaymentFormRef } from './StripePaymentForm';
 import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { EVENT_SPONSORS } from '@/constants/eventSponsors';
-import { validatePromoCode, isEligibleForPromoDiscount, type PromoCode } from '@/lib/promo-codes';
+import { validatePromoCode, isEligibleForPromoDiscount, getAutoApplyPromoCodesForEvent, type PromoCode } from '@/lib/promo-codes';
 
 interface EventWithContact extends Omit<Event, 'id'> {
   contactInfo?: {
@@ -60,6 +60,7 @@ interface RegistrationModalProps {
   selectedRegistration: AdapterModalRegistrationType | null; // Allow null for register button
   event: EventWithContact;
   initialActiveTab?: 'ticket' | 'exhibit' | 'sponsorship'; // Optional tab to open initially
+  initialPromoCode?: string; // Optional promo code to auto-apply from URL
 }
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
@@ -168,6 +169,7 @@ const RegistrationModal = ({
   selectedRegistration,
   event,
   initialActiveTab,
+  initialPromoCode,
 }: RegistrationModalProps): JSX.Element | null => {
   // Add state for the close confirmation dialog
   const [showCloseConfirmation, setShowCloseConfirmation] = useState(false);
@@ -259,27 +261,18 @@ const RegistrationModal = ({
       const result = await response.json();
       
       if (result.valid) {
-        // Check if there are any eligible tickets in the cart for this specific promo code
-        const hasEligibleTickets = [...allRegistrations, ...sponsorships, ...exhibitors].some(reg => 
-          (ticketQuantities[reg.id] || 0) > 0 && isEligibleForPromoDiscount(reg.id, result.eligibleTicketTypes)
-        );
-        
-        if (!hasEligibleTickets) {
-          setPromoCodeValid(false);
-          setPromoCodeError(`No eligible tickets in your cart. This promo code only applies to specific ticket types.`);
-          setActivePromoCode(null);
-        } else {
-          setPromoCodeValid(true);
-          setActivePromoCode({
-            code: normalizedCode,
-            discountPercentage: result.discountPercentage,
-            eligibleTicketTypes: result.eligibleTicketTypes,
-            expirationDate: new Date(), // This will be validated by backend
-            description: result.description,
-            eligibleEventIds: [event.id],
-            isActive: true
-          });
-        }
+        // Always accept valid promo codes - the discount logic will handle eligibility per ticket
+        setPromoCodeValid(true);
+        setPromoCodeError(null);
+        setActivePromoCode({
+          code: normalizedCode,
+          discountPercentage: result.discountPercentage,
+          eligibleTicketTypes: result.eligibleTicketTypes,
+          expirationDate: new Date(result.expirationDate),
+          description: result.description,
+          eligibleEventIds: [event.id],
+          isActive: true
+        });
       } else {
         setPromoCodeValid(false);
         setActivePromoCode(null);
@@ -417,6 +410,84 @@ const RegistrationModal = ({
     }
   }, [ticketQuantities, validationStatus, exhibitors, sponsorships, manuallyValidatedTickets]);
 
+  // Automatic promo code application (URL-based and event-based)
+  useEffect(() => {
+    if (!isOpen || promoCodeValid || activePromoCode || promoCode !== '') {
+      return; // Don't auto-apply if modal is closed, promo already applied, or user has entered a code
+    }
+
+    let codeToApply: string | null = null;
+    
+    // Priority 1: URL parameter promo code
+    if (initialPromoCode) {
+      codeToApply = initialPromoCode.trim().toUpperCase();
+    } else {
+      // Priority 2: Event-based auto-apply promo codes
+      const autoApplyCodes = getAutoApplyPromoCodesForEvent(event.id);
+      if (autoApplyCodes.length > 0) {
+        // Use the first auto-apply code found
+        codeToApply = autoApplyCodes[0].code;
+      }
+    }
+
+    if (!codeToApply) {
+      return; // No promo code to auto-apply
+    }
+      
+    // Set the promo code in the input field
+    setPromoCode(codeToApply);
+    
+    // Automatically apply the promo code
+    const autoApplyPromoCode = async () => {
+      setPromoCodeError(null);
+      setApplyingPromoCode(true);
+      
+      try {
+        const response = await fetch('/api/event-registration/validate-promo', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            promoCode: codeToApply,
+            eventId: event.id,
+          }),
+        });
+        
+        const result = await response.json();
+        
+        if (result.valid) {
+          // Always accept valid promo codes - the discount logic will handle eligibility per ticket
+          setPromoCodeValid(true);
+          setPromoCodeError(null);
+          setActivePromoCode({
+            code: codeToApply,
+            discountPercentage: result.discountPercentage,
+            eligibleTicketTypes: result.eligibleTicketTypes,
+            expirationDate: new Date(result.expirationDate),
+            description: result.description,
+            eligibleEventIds: [event.id],
+            isActive: true
+          });
+        } else {
+          setPromoCodeValid(false);
+          setActivePromoCode(null);
+          setPromoCodeError(result.error || 'Invalid promo code');
+        }
+      } catch (error) {
+        console.error('Error auto-applying promo code:', error);
+        setPromoCodeValid(false);
+        setActivePromoCode(null);
+        setPromoCodeError('Error applying promo code. Please try again.');
+      }
+      
+      setApplyingPromoCode(false);
+    };
+    
+    // Apply the promo code automatically
+    autoApplyPromoCode();
+  }, [isOpen, initialPromoCode, promoCodeValid, activePromoCode, promoCode, event.id]);
+
   const handleValidateOrderId = async (ticketId: string) => {
     const orderId = orderIdInput[ticketId];
     if (!orderId) {
@@ -549,6 +620,69 @@ const RegistrationModal = ({
     setApiError(`Payment error: ${errorMessage}`);
     setAttemptingStripePayment(false);
     setIsLoading(false);
+  };
+
+  // Helper function to get effective price including early bird and promo discounts
+  const getEffectivePrice = (registration: AdapterModalRegistrationType): number | string => {
+    // Handle string prices first (like "Contact for pricing")
+    if (typeof registration.price === 'string' && isNaN(parseFloat(registration.price.replace(/[^0-9.]/g, '')))) {
+      return registration.price;
+    }
+    
+    // Calculate base price (early bird or regular)
+    const isEarlyBird = registration.earlyBirdDeadline && new Date() < new Date(registration.earlyBirdDeadline);
+    const basePrice = isEarlyBird && registration.earlyBirdPrice !== undefined ? registration.earlyBirdPrice : registration.price;
+    
+    // Convert to number
+    const numericPrice = typeof basePrice === 'string' ? parseFloat(basePrice.replace(/[^0-9.]/g, '')) || 0 : basePrice;
+    
+    // Apply promo code discount if applicable
+    if (promoCodeValid && activePromoCode && isEligibleForPromoDiscount(registration.id, activePromoCode.eligibleTicketTypes)) {
+      const discountAmount = numericPrice * (activePromoCode.discountPercentage / 100);
+      return numericPrice - discountAmount;
+    }
+    
+    return numericPrice;
+  };
+
+  // Helper function to render price display with strikethrough for discounted items
+  const renderPriceDisplay = (reg: AdapterModalRegistrationType, quantity: number) => {
+    const effectivePrice = getEffectivePrice(reg);
+    
+    // Handle string prices (like "Contact for pricing")
+    if (typeof effectivePrice === 'string') {
+      return <span>{effectivePrice}</span>;
+    }
+    
+    // Calculate original price (early bird or regular, but without promo discount)
+    const isEarlyBird = reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline);
+    const originalPrice = isEarlyBird && reg.earlyBirdPrice !== undefined ? reg.earlyBirdPrice : reg.price;
+    const originalPriceNum = typeof originalPrice === 'number' ? originalPrice : 
+      (typeof originalPrice === 'string' ? parseFloat(originalPrice.replace(/[^0-9.]/g, '')) || 0 : 0);
+    
+    const effectivePriceNum = typeof effectivePrice === 'number' ? effectivePrice : 0;
+    const originalTotal = originalPriceNum * quantity;
+    const effectiveTotal = effectivePriceNum * quantity;
+    
+    // Check if promo discount is applied
+    const isDiscounted = promoCodeValid && activePromoCode && 
+      isEligibleForPromoDiscount(reg.id, activePromoCode.eligibleTicketTypes) && 
+      originalPriceNum > effectivePriceNum;
+    
+    if (isDiscounted) {
+      return (
+        <span className="text-right flex flex-row">
+          <div className="text-sm text-gray-500 line-through">
+            ${originalTotal.toLocaleString()}
+          </div>
+          <div className="text-green-600 font-medium ml-2">
+            ${effectiveTotal.toLocaleString()}
+          </div>
+        </span>
+      );
+    }
+    
+    return <span>${effectiveTotal.toLocaleString()}</span>;
   };
 
   useEffect(() => {
@@ -1017,17 +1151,7 @@ const RegistrationModal = ({
     return Object.values(ticketQuantities).reduce((sum, qty) => sum + qty, 0);
   };
 
-  // Helper function to get the effective price of a registration (without promo discount)
-  const getEffectivePrice = (registration: AdapterModalRegistrationType): number => {
-    const isEarlyBird = registration.earlyBirdDeadline && new Date() < new Date(registration.earlyBirdDeadline);
-    const displayPrice = isEarlyBird && registration.earlyBirdPrice !== undefined ? registration.earlyBirdPrice : registration.price;
-    // Convert displayPrice to number if it's a string
-    const numericPrice = typeof displayPrice === 'string' ? parseFloat(displayPrice.replace(/[^0-9.]/g, '')) || 0 : displayPrice;
-    
-    // Note: Promo code discount is applied in calculateTotal() to avoid double application
-    
-    return numericPrice;
-  };
+
 
   const handlePaymentSuccess = (paymentIntentId: string) => {
     setApiError(null); // Clear any previous payment errors
@@ -2076,21 +2200,11 @@ const RegistrationModal = ({
                           {allRegistrations
                             .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
                             .map(reg => {
-                              const price = getEffectivePrice(reg);
-                              const formattedPrice = typeof price === 'string' ? price : `$${price.toFixed(2)}`;
-                              const total = price as number * (ticketQuantities[reg.id] || 0);
-                              if (typeof price === 'string') {
-                                return (
-                                  <li key={reg.id} className="flex justify-between">
-                                    <span>{reg.name} × {ticketQuantities[reg.id]}</span>
-                                    <span>{formattedPrice}</span>
-                                  </li>
-                                );
-                              }
+                              const quantity = ticketQuantities[reg.id] || 0;
                               return (
-                                <li key={reg.id} className="flex justify-between">
-                                  <span>{reg.name} × {ticketQuantities[reg.id]}</span>
-                                  <span>${total.toLocaleString()}</span>
+                                <li key={reg.id} className="flex justify-between items-center">
+                                  <span>{reg.name} × {quantity}</span>
+                                  {renderPriceDisplay(reg, quantity)}
                                 </li>
                               );
                             })}
@@ -2106,13 +2220,11 @@ const RegistrationModal = ({
                           {exhibitors
                             .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
                             .map(reg => {
-                              const price = getEffectivePrice(reg);
-                              const formattedPrice = typeof price === 'string' ? price : `$${price.toFixed(2)}`;
-                              const total = price as number * (ticketQuantities[reg.id] || 0);
+                              const quantity = ticketQuantities[reg.id] || 0;
                               return (
-                                <li key={reg.id} className="flex justify-between">
-                                  <span>{reg.name} × {ticketQuantities[reg.id]}</span>
-                                  <span>${total.toLocaleString()}</span>
+                                <li key={reg.id} className="flex justify-between items-center">
+                                  <span>{reg.name} × {quantity}</span>
+                                  {renderPriceDisplay(reg, quantity)}
                                 </li>
                               );
                             })}
@@ -2128,13 +2240,11 @@ const RegistrationModal = ({
                           {sponsorships
                             .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
                             .map(reg => {
-                              const price = getEffectivePrice(reg);
-                              const formattedPrice = typeof price === 'string' ? price : `$${price.toFixed(2)}`;
-                              const total = price as number * (ticketQuantities[reg.id] || 0);
+                              const quantity = ticketQuantities[reg.id] || 0;
                               return (
-                                <li key={reg.id} className="flex justify-between">
-                                  <span>{reg.name} × {ticketQuantities[reg.id]}</span>
-                                  <span>${total.toLocaleString()}</span>
+                                <li key={reg.id} className="flex justify-between items-center">
+                                  <span>{reg.name} × {quantity}</span>
+                                  {renderPriceDisplay(reg, quantity)}
                                 </li>
                               );
                             })}

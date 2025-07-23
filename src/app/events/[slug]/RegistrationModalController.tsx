@@ -15,7 +15,7 @@ export default function RegistrationModalController({ event }: RegistrationModal
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Get URL parameters
-  const { openModal, activeTab, selectedRegistrationId } = useRegistrationUrlParams();
+  const { openModal, activeTab, selectedRegistrationId, promoCode } = useRegistrationUrlParams();
   
   // Get available registrations for this event
   const allRegistrations = getRegistrationsForEvent(event.id);
@@ -55,6 +55,7 @@ export default function RegistrationModalController({ event }: RegistrationModal
         contactInfo: event.contactInfo || { contactEmail: "" }
       }}
       initialActiveTab={activeTab}
+      initialPromoCode={promoCode}
     />
   );
 }
