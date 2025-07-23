@@ -9,6 +9,7 @@ export const EVENTS: Event[] = [
     title: "2025 Defense Industry Forecast",
     date: "November 14, 2024",
     timeStart: "2024-11-14T13:00:00Z",
+    timeEnd: "2024-11-15T00:30:00Z",
     description: "The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities — covering Defense Dept. and Combat Command mission priorities — Army, Navy, Air Force, Marine Corps, Space Force and Coast Guard — focused on all major sectors from advanced IT, AI and Cyber, all-domain command & control, and weapons system development & sustainment, to logistics & transport, facility management, Military base building design & construction, energy resiliency and environmental remediation, to new Government-Private Sector collaborations in critical infrastructure security, U.S. manufacturing base revitalization, ship building and shipyard modernization, Space defense and other major initiatives.",
     eventText: (
       <div className="max-container font-light">
@@ -163,7 +164,8 @@ export const EVENTS: Event[] = [
     eventShorthand: "2025SDPC",
     title: "2025 Southeast Defense Procurement Conference",
     date: "March 11-12, 2025",
-    timeStart: "2025-03-11T11:30:00Z", // TODO: change to actual time
+    timeStart: "2025-03-11T11:30:00Z", // 2025, march 11, at 7:30am EST
+    timeEnd: "2025-03-12T16:30:00Z", // 2025, march 12, at 12:30pm EST
     description: "Join us for the 2025 Southeast Defense Procurement Conference on March 11-12, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
     eventText: (
       <div className="max-w-[92rem] font-light text-balance">
@@ -485,6 +487,7 @@ invaluable connections that can shape the future of your business.
     title: "Driving the Industrialization of Space",
     date: "December 8-9, 2024",
     timeStart: "2024-12-09T15:00:00Z",
+    timeEnd: "2024-12-09T22:30:00Z",
     description: "The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems.",
     eventText: (
       <div className="max-container font-light">
@@ -671,6 +674,7 @@ invaluable connections that can shape the future of your business.
     ],
     date: "July 29-30, 2025",
     timeStart: "2025-07-29T11:30:00Z",
+    timeEnd: "2025-07-30T17:30:00Z",
     description: `Join us for the 2025 Navy & Marine Corps Procurement Conference on July 29-30, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.`,
     eventText: (
       <div className="max-container font-light">
@@ -876,6 +880,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     title: "2025 Defense Technology & Aerospace Procurement Conference",
     date: "November 5-6, 2025",
     timeStart: "2025-11-05T11:30:00Z", // This is in UTC time
+    timeEnd: "2025-11-06T18:30:00Z",
     description: "Join us at the 2025 Defense Technology & Aerospace Procurement Conference in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
     eventText: (
       <div className="max-container font-light">
@@ -1002,6 +1007,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     title: "2026 Navy & Marine Corps Procurement Conference",
     date: "May 19-20, 2026",
     timeStart: "2026-05-19T11:30:00Z",
+    timeEnd: "2026-05-20T17:30:00Z",
     description: `This event's description is currently being finalized.`,
     eventText: (
     <></>

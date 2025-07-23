@@ -99,6 +99,7 @@ export interface Event {
     title: string;
     date: string;
     timeStart: string;
+    timeEnd: string;
     description: string;
     eventText: ReactNode;
     aboutEventText?: ReactNode;

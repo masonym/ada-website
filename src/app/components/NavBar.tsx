@@ -58,7 +58,7 @@ const NavBar = () => {
       if (event.shown === false ) return false;
 
       // Use the safer isEventUpcoming function
-      return isEventUpcoming(event.date, event.timeStart, now);
+      return isEventUpcoming(event.timeEnd, now);
     })
     .sort((a, b) => {
       const dateA = new Date(a.timeStart);
