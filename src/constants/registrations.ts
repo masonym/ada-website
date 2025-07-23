@@ -242,6 +242,7 @@ export const REGISTRATION_TYPES = [
                 earlyBirdPrice: 550,
                 earlyBirdDeadline: "2025-07-11T04:00:00Z", // midnight ET on July 11th
                 type: "paid",
+                saleEndTime: "2025-07-24T04:00:20.000Z",
             },
 
 

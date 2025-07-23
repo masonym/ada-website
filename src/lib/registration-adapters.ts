@@ -63,6 +63,7 @@ export interface AdapterModalRegistrationType extends ModalRegistrationType {
   colour?: string;
   sponsorPasses?: number; // Number of attendee passes included with this sponsorship
   shownOnRegistrationPage?: boolean;
+  saleEndTime?: string;
 };
 
 /**
@@ -97,6 +98,7 @@ export function getRegistrationsForEvent(eventId: number | string): AdapterModal
     maxQuantityPerOrder: reg.maxQuantityPerOrder,
     category: 'ticket',
     shownOnRegistrationPage: reg.shownOnRegistrationPage,
+    saleEndTime: reg.saleEndTime,
   }));
 }
 

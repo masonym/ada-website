@@ -163,6 +163,12 @@ const isRegistrationClosed = (event: EventWithContact, daysBeforeToClose: number
   return new Date() >= cutoffDate;
 };
 
+// Helper function to check if a ticket has expired based on saleEndTime
+const isTicketExpired = (registration: AdapterModalRegistrationType): boolean => {
+  if (!registration.saleEndTime) return false;
+  return new Date() > new Date(registration.saleEndTime);
+};
+
 const RegistrationModal = ({
   isOpen,
   onClose,
@@ -2043,12 +2049,19 @@ const RegistrationModal = ({
 
                 <div className="flex-grow overflow-y-auto">
                   {/* Show tickets when activeCategory is 'ticket' */}
-                  {activeCategory === 'ticket' && allRegistrations.filter(reg => reg.isActive).map(reg => (
-                    <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
-                      <div className="flex items-center">
-                        <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} <span className="hidden sm:inline text-gray-500">-</span></h4>
-                        <PriceDisplay registration={reg} />
-                      </div>
+                  {activeCategory === 'ticket' && allRegistrations.filter(reg => reg.isActive).map(reg => {
+                    const ticketIsExpired = isTicketExpired(reg);
+                    return (
+                      <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${ticketIsExpired ? 'opacity-75 bg-gray-200' : ''}`}>
+                        <div className="flex items-center">
+                          <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} <span className="hidden sm:inline text-gray-500">-</span></h4>
+                          <PriceDisplay registration={reg} />
+                          {ticketIsExpired && (
+                            <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                              SOLD OUT
+                            </span>
+                          )}
+                        </div>
                       {reg.perks && reg.perks.length > 0 && (
                         <ul className="list-none text-sm text-gray-500 mb-2">
                           {reg.perks.map((perk, index) => (
@@ -2072,7 +2085,7 @@ const RegistrationModal = ({
                         </span>
                         <button
                           onClick={() => handleIncrement(reg.id, reg.type)}
-                          disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
+                          disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isTicketExpired(reg) || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
                           className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                         >
                           +
@@ -2080,11 +2093,12 @@ const RegistrationModal = ({
                       </div>
                       {renderValidationUI(reg)}
                     </div>
-                  ))}
+                    )
+                  })}
 
                   {/* Show exhibitors when activeCategory is 'exhibit' */}
                   {activeCategory === 'exhibit' && exhibitors.filter(reg => reg.isActive).map(reg => {
-                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id);
+                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id) || isTicketExpired(reg);
                     return (
                       <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut ? 'opacity-75 bg-gray-200' : ''}`}>
                         <div className="flex items-center">
@@ -2135,7 +2149,7 @@ const RegistrationModal = ({
 
                   {/* Show sponsorships when activeCategory is 'sponsorship' */}
                   {activeCategory === 'sponsorship' && sponsorships.filter(reg => reg.isActive).map(reg => {
-                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id);
+                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id) || isTicketExpired(reg);
                     return (
                       <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut ? 'opacity-75 bg-gray-200' : ''}`}>
                         <div className="flex justify-between items-start">
