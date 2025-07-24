@@ -912,7 +912,7 @@ export const SCHEDULES = [
                     {
                         time: "3:00 PM - 6:00 PM",
                         title: "Exhibitor Set-up",
-                        location: "Hampton Roads Ballroom (I-V), 3rd FL",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
                         time: "6:00 PM - 7:00 PM",
@@ -927,22 +927,22 @@ export const SCHEDULES = [
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "On-Site Attendee Registration & Check-in",
-                        location: "Hampton Ballroom Pre-Function, 3rd FL",
+                        location: "Norfolk Ballroom Pre-Function, Ground Level",
                     },
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Networking Breakfast with Exhibitors",
-                        location: "Hampton Roads Ballroom (I-V), 3rd FL",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Matchmaking Session I Sign-up",
-                        location: "Hampton Ballroom Pre-Function, 3rd FL",
+                        location: "Norfolk Ballroom Pre-Function, Ground Level",
                     },
                     {
                         time: "8:30 AM",
                         title: "Conference Opening",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "charles-sills",
@@ -954,7 +954,7 @@ export const SCHEDULES = [
                     {
                         time: "8:35 AM",
                         title: "Welcoming Remarks – Commonwealth of Virginia & Hampton Roads Alliance",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "jared-chalk",
@@ -964,7 +964,7 @@ export const SCHEDULES = [
                     {
                         time: "9:05 AM",
                         title: "CONGRESSIONAL KEYNOTE ADDRESS I",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "representative-rob-wittman",
@@ -976,12 +976,12 @@ export const SCHEDULES = [
                     {
                         time: "9:20 AM",
                         title: "DEFENSE/MARITIME INDUSTRY KEYNOTE ADDRESS",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                     },
                     {
                         time: "9:40 AM",
                         title: "The 'SHIPS ACT' & the American Shipbuilding Industrial Base – Partnering for Success",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "roger-camp",
@@ -1007,7 +1007,7 @@ export const SCHEDULES = [
                     {
                         time: "11:00 AM",
                         title: "How DEFENSEWERX Hubs Are Accelerating Innovative Tech Contracting",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "brian-liesveld",
@@ -1017,7 +1017,7 @@ export const SCHEDULES = [
                     {
                         time: "11:25 AM",
                         title: "Fleet Readiness Panel – Addressing Critical Challenges & Requirements",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "erica-h-plath"
@@ -1039,7 +1039,7 @@ export const SCHEDULES = [
                     {
                         time: "12:15 PM",
                         title: "Industry Insights: Contested Logistics",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "kurt-garrett",
@@ -1051,12 +1051,12 @@ export const SCHEDULES = [
                     {
                         time: "12:30 PM",
                         title: "Networking Lunch with Exhibitors",
-                        location: "Hampton Roads Ballroom (I-V), 3rd FL",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
                         time: "1:30 PM",
                         title: "Artificial Intelligence in Defense – Leveraging Navy Use Cases",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "daniel-hudson"
@@ -1069,7 +1069,7 @@ export const SCHEDULES = [
                     {
                         time: "2:10 PM",
                         title: "UNITED STATES MARINE CORPS KEYNOTE ADDRESS",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "christopher-m-haar"
@@ -1079,7 +1079,7 @@ export const SCHEDULES = [
                     {
                         time: "2:40 PM",
                         title: "Industry Insights: Defense Vendor Relationships",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "don-mcginnis",
@@ -1091,7 +1091,7 @@ export const SCHEDULES = [
                     {
                         time: "2:55 PM",
                         title: "Military Base-Community Partnerships Promoting Local Build Contracts",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "dave-leinberger"
@@ -1104,7 +1104,7 @@ export const SCHEDULES = [
                     {
                         time: "3:30 PM",
                         title: "Small Business Programs/Opportunities – Plus Accessing GWAC’S, OTA’S & SBIR’S",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "charles-sills"
@@ -1126,7 +1126,7 @@ export const SCHEDULES = [
                     {
                         time: "4:30 PM",
                         title: "Day One Closing Remarks",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "charles-sills",
@@ -1169,7 +1169,7 @@ export const SCHEDULES = [
                     {
                         time: "8:30 AM",
                         title: "Welcome Back Remarks",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "charles-sills",
@@ -1181,12 +1181,12 @@ export const SCHEDULES = [
                     {
                         time: "8:35 AM",
                         title: "CONGRESSIONAL KEYNOTE ADDRESS II",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                     },
                     {
                         time: "8:50 AM",
                         title: "How to do Business with the Primes",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "diane-dempsey"
@@ -1208,7 +1208,7 @@ export const SCHEDULES = [
                     {
                         time: "9:45 AM",
                         title: "Industry Insights: Forward Opening Base Mobile Manufacturing",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "paul-wichert",
@@ -1225,7 +1225,7 @@ export const SCHEDULES = [
                     {
                         time: "10:30 AM",
                         title: "Streamlined Acquisition – Win-Win for Warfighters & Contractors",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "aimee-zick",
@@ -1235,7 +1235,7 @@ export const SCHEDULES = [
                     {
                         time: "11:00 AM",
                         title: "Geopolitical SITREP: The Military-Energy Nexus",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "anthony-livanios"
@@ -1245,7 +1245,7 @@ export const SCHEDULES = [
                     {
                         time: "11:25 AM",
                         title: "Procurement Strategies for Navy Port Security & Cyber Protection",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "joel-coulter"
@@ -1264,7 +1264,7 @@ export const SCHEDULES = [
                     {
                         time: "12:05 PM",
                         title: "Using Mentor-Protégé Partnerships to Drive the ‘Combat Capability Factory’",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "andrew-gardner"
@@ -1274,7 +1274,7 @@ export const SCHEDULES = [
                     {
                         time: "12:30 PM",
                         title: "Closing Remarks",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "charles-sills",
