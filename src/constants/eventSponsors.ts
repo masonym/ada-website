@@ -187,6 +187,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "kdm",
                     "heller",
                     "gov-solutions",
+                    "css-energy",
                 ],
             },
             {
@@ -257,6 +258,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "gov-solutions",
                     "isn-corp",
                     "neptune-shield",
+                    "css-energy",
                 ],
             },
             {
