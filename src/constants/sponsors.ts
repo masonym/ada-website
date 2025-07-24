@@ -810,6 +810,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/neptune-shield.webp",
     website: "https://neptuneshield.com/",
     size: 'small'
+  },
+  "finley-asphalt-concrete": {
+    id: "finley-asphalt-concrete",
+    name: "Finley Asphalt & Concrete",
+    logo: "/sponsors/finley-asphalt-concrete.webp",
+    website: "https://www.finleyasphalt.com/",
+    size: 'small'
   }
 };
 

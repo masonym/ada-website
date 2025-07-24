@@ -259,6 +259,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "isn-corp",
                     "neptune-shield",
                     "css-energy",
+                    "finley-asphalt-concrete",
                 ],
             },
             {
