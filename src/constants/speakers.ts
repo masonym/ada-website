@@ -1324,7 +1324,7 @@ His 20 personal awards include the Navy Distinguished Service Medal, Defense Sup
 		`,
 	},
 	"nicholas-diehl": {
-		"image": "placeholder.webp",
+		"image": "nicholas-diehl.webp",
 		"name": "Nicholas Diehl",
 		"position": "Global Director, Security Innovation and Technology",
 		"company": "Littoral Dynamics",
@@ -1352,7 +1352,8 @@ His 20 personal awards include the Navy Distinguished Service Medal, Defense Sup
 	
 	<br/>
 	Dr. Wills holds a master’s in National Security Studies from the U.S. Naval War College and a bachelor’s in History from Miami University in Oxford, Ohio.`,
-  }};
+  },
+};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 	"1": [
