@@ -962,7 +962,7 @@ export const SCHEDULES = [
                         ]
                     },
                     {
-                        time: "9:05 AM",
+                        time: "9:00 AM",
                         title: "CONGRESSIONAL KEYNOTE ADDRESS I",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
@@ -1094,7 +1094,7 @@ export const SCHEDULES = [
                         ]
                     },
                     {
-                        time: "2:55 PM",
+                        time: "3:00 PM",
                         title: "Military Base-Community Partnerships Promoting Local Build Contracts",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
@@ -1107,12 +1107,14 @@ export const SCHEDULES = [
                         ]
                     },
                     {
-                        time: "3:30 PM",
+                        time: "3:35 PM",
                         title: "Small Business Programs/Opportunities – Plus Accessing GWAC’S, OTA’S & SBIR’S",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "charles-sills"
+                                speakerId: "charles-sills",
+                                sponsor: "Panel Moderator",
+                                sponsorStyle: "bg-red-999",
                             },
                             {
                                 speakerId: "terressa-bebout"
@@ -1253,7 +1255,9 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "charles-sills"
+                                speakerId: "charles-sills",
+                                sponsor: "Panel Moderator",
+                                sponsorStyle: "bg-red-999",
                             },
                             {
                                 speakerId: "joel-coulter"
