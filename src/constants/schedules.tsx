@@ -974,9 +974,14 @@ export const SCHEDULES = [
                         ]
                     },
                     {
-                        time: "9:20 AM",
-                        title: "DEFENSE/MARITIME INDUSTRY KEYNOTE ADDRESS",
+                        time: "9:15 AM",
+                        title: "America’s Defense Industry in Context",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "brad-williamson",
+                            }
+                        ]
                     },
                     {
                         time: "9:40 AM",
@@ -1002,7 +1007,7 @@ export const SCHEDULES = [
                     {
                         time: "10:30 AM",
                         title: "Networking Break with Exhibitors",
-                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
                         time: "11:00 AM",
@@ -1051,10 +1056,10 @@ export const SCHEDULES = [
                     {
                         time: "12:30 PM",
                         title: "Networking Lunch with Exhibitors",
-                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
-                        time: "1:30 PM",
+                        time: "1:45 PM",
                         title: "Artificial Intelligence in Defense – Leveraging Navy Use Cases",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
@@ -1067,7 +1072,7 @@ export const SCHEDULES = [
                         ]
                     },
                     {
-                        time: "2:10 PM",
+                        time: "2:15 PM",
                         title: "UNITED STATES MARINE CORPS KEYNOTE ADDRESS",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
@@ -1077,8 +1082,8 @@ export const SCHEDULES = [
                         ]
                     },
                     {
-                        time: "2:40 PM",
-                        title: "Industry Insights: Defense Vendor Relationships",
+                        time: "2:45 PM",
+                        title: "Industry Insights: The Machine Shop You Didn’t Know You Had",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
@@ -1164,7 +1169,7 @@ export const SCHEDULES = [
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Matchmaking Session II Sign-up",
-                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                        location: "Norfolk Ballroom Pre-Function, Ground Level",
                     },
                     {
                         time: "8:30 AM",
@@ -1224,7 +1229,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "10:30 AM",
-                        title: "Streamlined Acquisition – Win-Win for Warfighters & Contractors",
+                        title: "From the Small Business Front Line: Streamlined Acquisition Examples",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
@@ -1248,6 +1253,9 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
+                                speakerId: "charles-sills"
+                            },
+                            {
                                 speakerId: "joel-coulter"
                             },
                             {
@@ -1268,6 +1276,9 @@ export const SCHEDULES = [
                         speakers: [
                             {
                                 speakerId: "andrew-gardner"
+                            },
+                            {
+                                speakerId: "brian-wilson",
                             }
                         ]
                     },

@@ -1365,7 +1365,42 @@ Professor Diehl has had engagements Instructing at NATO's Defense Against Terror
 	<br/>
 	Dr. Wills holds a master’s in National Security Studies from the U.S. Naval War College and a bachelor’s in History from Miami University in Oxford, Ohio.`,
   },
-};
+
+  "brad-williamson": {
+    "image": "brad-williamson.webp",
+    "name": "Brad Williamson, RADM, USN (Ret.)",
+    "position": "President & CEO",
+    "company": "Perrarus Solutions, Inc.",
+    "bio": `Rear Admiral (Ret.) Brad Williamson is a 1985 graduate of the United States Naval Academy.  He received a Master of Science in National Security Strategy from the National War College in 2001 and completed Executive Education at Harvard’s John F. Kennedy School and University of Virginia’s Darden School.
+	<br/>
+	
+	<br/>
+	As a career U.S. Navy surface warfare officer, he commanded USS Thunderbolt (PC 12), USS Porter (DDG 78), and Destroyer Squadron (DESRON) Two.  As a Flag Officer, he commanded Standing NATO Maritime Group 2 where he led the largest group of NATO ships ever into the Black Sea at a time of heightened tensions with Russia while he also led NATO’s at-sea maritime counterterrorism and anti-piracy operations.  Ashore, Brad served in multiple analysis positions, to include OSD PA&E (now CAPE) and Naval Assessments where his detailed understanding of naval weapons systems and cost analysis were utilized. His final military assignment was as the 32nd Commandant of the Joint Forces Staff College.
+	<br/>
+	
+	<br/>
+	After his Naval Service, Brad transitioned to an extraordinarily successful business career.  He started as the Director of Strategic Initiatives for Systems, Planning, and Analysis (SPA) a defense consulting company in Alexandria, VA, and was then the Chief Operating Officer/Chief Strategy Officer at ITA International, a defense integrated services provider in Newport News, Virginia.  Brad was successful in quickly winning more than $200M in government contracts for each company. 
+	<br/>
+	
+	<br/>
+	In 2020, Brad assumed the position as the first Executive Director for the Hampton Roads Maritime Industrial Base Ecosystem (MIBE), a consortium born from Newport News Shipbuilding to align Maritime Industry stakeholders to address critical needs facing the industry.  Here Brad applied his vision to develop initiatives to improve workforce training, enhance the supply base, drive innovation, and improve shipyard facilities in the region. Working with OSD and Navy (pre-SIB/MIB), Brad garnered the first funding to implement initiatives to support training programs to address critical workforce shortfalls.  He also led the Virginia Digital Shipbuilding Program, a partnership of industry, government, and academic institutes working to modernize the shipbuilding industry.
+	<br/>
+	
+	<br/>
+	Brad founded Mission, Vision, Strategy, Execution, and Analysis (MVSEA) as a Strategic Planning and Business Development consultancy to assist companies in developing constructs and processes, and to examine opportunities for growth.  The company delivered success for multiple clients focused on the Government/DoD engineering, technology, and innovation sectors.  In August of 2023, this led Perrarus Solutions, Inc. to acquire MVSEA, LLC and Brad assumed duties as the President and CEO at Perrarus.
+	<br/>
+	
+	<br/>
+	In 2023, Governor Youngkin appointed Brad to serve on the Board of Trustees for the Virginia Veterans Services Foundation where he now serves as the Chair.  He is also a Board Member for the Center for American Studies at Christopher Newport University, a Board Member for Versability Resources, a company that provides careers for special needs personnel, and a Board Member for the Tidewater Area Service Contractors (TASC).
+	<br/>
+	`,
+  },
+  "brian-wilson": {
+    "image": "brian-wilson.webp",
+    "name": "Brian Wilson",
+    "position": "Director of Strategic Solutions",
+    "company": "MAG Aerospace",
+  }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 	"1": [
@@ -1474,7 +1509,9 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"philip-hart-cullom",
 		"nicholas-diehl",
 		"andrew-gardner",
-		"dr-steven-wills"
+		"dr-steven-wills",
+		"brad-williamson",
+		"brian-wilson",
 	]
 };
 
