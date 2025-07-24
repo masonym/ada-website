@@ -731,24 +731,13 @@ const RegistrationModal = ({
   };
 
   // Helper function to get effective price including early bird and promo discounts
-  const getEffectivePrice = (registration: AdapterModalRegistrationType): number | string => {
-    // Handle string prices first (like "Contact for pricing")
-    if (typeof registration.price === 'string' && isNaN(parseFloat(registration.price.replace(/[^0-9.]/g, '')))) {
-      return registration.price;
-    }
-    
-    // Calculate base price (early bird or regular)
+const getEffectivePrice = (registration: AdapterModalRegistrationType): number => {
     const isEarlyBird = registration.earlyBirdDeadline && new Date() < new Date(registration.earlyBirdDeadline);
-    const basePrice = isEarlyBird && registration.earlyBirdPrice !== undefined ? registration.earlyBirdPrice : registration.price;
+    const displayPrice = isEarlyBird && registration.earlyBirdPrice !== undefined ? registration.earlyBirdPrice : registration.price;
+    // Convert displayPrice to number if it's a string
+    const numericPrice = typeof displayPrice === 'string' ? parseFloat(displayPrice.replace(/[^0-9.]/g, '')) || 0 : displayPrice;
     
-    // Convert to number
-    const numericPrice = typeof basePrice === 'string' ? parseFloat(basePrice.replace(/[^0-9.]/g, '')) || 0 : basePrice;
-    
-    // Apply promo code discount if applicable
-    if (promoCodeValid && activePromoCode && isEligibleForPromoDiscount(registration.id, activePromoCode.eligibleTicketTypes)) {
-      const discountAmount = numericPrice * (activePromoCode.discountPercentage / 100);
-      return numericPrice - discountAmount;
-    }
+    // Note: Promo code discount is applied in calculateTotal() to avoid double application
     
     return numericPrice;
   };
