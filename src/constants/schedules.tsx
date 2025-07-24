@@ -1002,7 +1002,7 @@ export const SCHEDULES = [
                     {
                         time: "10:30 AM",
                         title: "Networking Break with Exhibitors",
-                        location: "Hampton Roads Ballroom (I-V), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                     },
                     {
                         time: "11:00 AM",
@@ -1051,7 +1051,7 @@ export const SCHEDULES = [
                     {
                         time: "12:30 PM",
                         title: "Networking Lunch with Exhibitors",
-                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                     },
                     {
                         time: "1:30 PM",
@@ -1143,7 +1143,7 @@ export const SCHEDULES = [
                     {
                         time: "4:30 PM - 5:30 PM",
                         title: "Networking with Exhibitors",
-                        location: "Hampton Roads Ballroom (I-V), 3rd Floor"
+                        location: "Norfolk Ballroom (I-IV), Ground Level"
                     },
                     {
                         time: "6:00 PM - 8:00 PM",
@@ -1159,12 +1159,12 @@ export const SCHEDULES = [
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Networking Breakfast with Exhibitors",
-                        location: "Hampton Roads Ballroom (I-V), 3rd Floor",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Matchmaking Session II Sign-up",
-                        location: "Hampton Roads Ballroom (I-V), 3rd Floor",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
                         time: "8:30 AM",
@@ -1220,7 +1220,7 @@ export const SCHEDULES = [
                     {
                         time: "10:00 AM",
                         title: "Networking Break with Exhibitors",
-                        location: "Hampton Roads Ballroom (I-V), 3rd Floor"
+                        location: "Norfolk Ballroom (I-IV), Ground Level"
                     },
                     {
                         time: "10:30 AM",
@@ -1291,7 +1291,7 @@ export const SCHEDULES = [
                     {
                         time: "12:30 PM - 1:30 PM",
                         title: "Networking with Exhibitors",
-                        location: "Hampton Roads Ballroom (I-V), 3rd Floor"
+                        location: "Norfolk Ballroom (I-IV), Ground Level"
                     },
                 ],
             },
