@@ -1,5 +1,5 @@
 import { MatchmakingSession, VipNetworkingReception } from '@/types/events';
-import { getEnv } from '../../env';
+import { getServerEnv } from '../../env';
 import { getClientEnv } from '../../client-env';
 import { getCdnPath } from '@/utils/image';
 
@@ -270,8 +270,8 @@ export function generateExhibitorInstructionsHtml(
 
 // Base template that all emails will use
 export function baseEmailTemplate(content: string, eventImage: string): string {
-  // Use client-safe env for client components
-  const env = typeof window === 'undefined' ? getEnv() : getClientEnv();
+  // Use server env for email templates (server-side only)
+  const env = getServerEnv();
 
   return `
     <!DOCTYPE html>

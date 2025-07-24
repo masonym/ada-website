@@ -20,6 +20,7 @@ import StripePaymentForm, { StripePaymentFormRef } from './StripePaymentForm';
 import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { EVENT_SPONSORS } from '@/constants/eventSponsors';
 import { validatePromoCode, isEligibleForPromoDiscount, getAutoApplyPromoCodesForEvent, type PromoCode } from '@/lib/promo-codes';
+import { getEnv } from '@/lib/env';
 
 interface EventWithContact extends Omit<Event, 'id'> {
   contactInfo?: {
@@ -63,7 +64,8 @@ interface RegistrationModalProps {
   initialPromoCode?: string; // Optional promo code to auto-apply from URL
 }
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
+const env = getEnv();
+const stripePromise = loadStripe(env.STRIPE_PUBLISHABLE_KEY);
 
 const initialModalAttendeeInfo: ModalAttendeeInfo = {
   firstName: '',
