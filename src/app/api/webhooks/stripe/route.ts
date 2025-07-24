@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { stripe } from '@/lib/stripe/server';
-import { getEnv } from '@/lib/env';
+import { getServerEnv } from '@/lib/env';
 import { logRegistration } from '@/lib/google-sheets';
 import { sendRegistrationConfirmationEmails } from '@/lib/email/confirmation-emails';
 import { headers } from 'next/headers';
@@ -172,7 +172,7 @@ async function handleChargeRefunded(charge: Stripe.Charge) {
 }
 
 export async function POST(request: Request) {
-  const env = getEnv();
+  const env = getServerEnv();
   const signature = headers().get('stripe-signature');
 
   if (!signature) {

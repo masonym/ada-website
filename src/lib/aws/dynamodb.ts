@@ -1,10 +1,10 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, PutCommand, GetCommand } from '@aws-sdk/lib-dynamodb';
-import { getEnv } from '@/lib/env';
+import { getServerEnv } from '@/lib/env';
 import { RegistrationFormData } from '@/types/event-registration/registration';
 import { v4 as uuidv4 } from 'uuid';
 
-const env = getEnv();
+const env = getServerEnv();
 
 const client = new DynamoDBClient({
   region: env.AWS_REGION,
@@ -79,7 +79,7 @@ export async function getPendingRegistration(id: string): Promise<RegistrationFo
  * @param paymentIntentId The payment intent ID.
  */
 export async function saveConfirmedRegistration(registrationData: RegistrationFormData, paymentIntentId: string): Promise<void> {
-  const env = getEnv();
+  const env = getServerEnv();
   const tableName = env.PERMANENT_REGISTRATIONS_TABLE_NAME;
 
   const item = {
@@ -108,7 +108,7 @@ export async function saveConfirmedRegistration(registrationData: RegistrationFo
  * @returns The registration data, or null if not found.
  */
 export async function getConfirmedRegistration(id: string): Promise<RegistrationFormData | null> {
-  const env = getEnv();
+  const env = getServerEnv();
   const tableName = env.PERMANENT_REGISTRATIONS_TABLE_NAME;
 
   const command = new GetCommand({

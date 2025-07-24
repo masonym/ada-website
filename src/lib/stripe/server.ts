@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
-import { getEnv } from '../env';
+import { getServerEnv } from '../env';
 
-const env = getEnv();
+const env = getServerEnv();
 
 // Initialize Stripe with the server-side secret key
 export const stripe = new Stripe(env.STRIPE_SECRET_KEY, {

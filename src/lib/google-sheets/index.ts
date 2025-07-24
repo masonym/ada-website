@@ -1,6 +1,6 @@
 import { google } from 'googleapis';
 import { OAuth2Client } from 'google-auth-library';
-import { getEnv } from '../env';
+import { getServerEnv } from '../env';
 import { RegistrationFormData, TicketSelection, AttendeeInfo } from '@/types/event-registration/registration';
 import { EVENTS } from '@/constants/events';
 
@@ -17,7 +17,7 @@ interface EventSpreadsheetMapping {
   default: SpreadsheetConfig;
 }
 
-const env = getEnv();
+const env = getServerEnv();
 
 /**
  * EVENT_SPREADSHEET_MAPPING
@@ -178,6 +178,29 @@ export async function logRegistration(
     // Track if we've logged a sponsorship amount
     const loggedSponsorships: Record<string, boolean> = {};
 
+    // Calculate total original ticket value to determine discount ratio
+    let totalOriginalValue = 0;
+    let totalEligibleValue = 0; // Value of tickets eligible for discount
+    
+    for (const ticket of registrationData.tickets) {
+      if (typeof ticket.ticketPrice === 'number') {
+        const ticketValue = ticket.ticketPrice * ticket.quantity;
+        totalOriginalValue += ticketValue;
+        // Assume all paid tickets are eligible for discount (this could be refined based on promo code logic)
+        if (ticket.ticketPrice > 0) {
+          totalEligibleValue += ticketValue;
+        }
+      }
+    }
+    
+    // Calculate discount ratio to apply to individual tickets
+    // Note: discountApplied is in dollars (e.g., 99 for $99 off)
+    // ticketPrice values are also in dollars (e.g., 545 for $545)
+    // So we can directly calculate the ratio
+    const discountRatio = (discountApplied && totalEligibleValue > 0) ? discountApplied / totalEligibleValue : 0;
+    
+    console.log(`Discount calculation: discountApplied=${discountApplied}, totalEligibleValue=${totalEligibleValue}, discountRatio=${discountRatio}`);
+
     for (const ticket of registrationData.tickets) {
       // We now handle sponsorship products too - we need to log them
       // Previously we were skipping them, but now we want to log them with their correct name
@@ -206,8 +229,17 @@ export async function logRegistration(
               }
             }
           } else {
-            // Regular ticket - use per-ticket price
-            amountToLog = typeof ticket.ticketPrice === 'number' ? ticket.ticketPrice : 0;
+            // Regular ticket - use per-ticket price with discount applied
+            if (typeof ticket.ticketPrice === 'number') {
+              amountToLog = ticket.ticketPrice;
+              // Apply promo discount if applicable and ticket is eligible
+              if (discountRatio > 0 && ticket.ticketPrice > 0) {
+                const discountAmount = amountToLog * discountRatio;
+                amountToLog = Math.max(amountToLog - discountAmount, 0);
+              }
+            } else {
+              amountToLog = 0;
+            }
           }
           
           const row = [
@@ -247,8 +279,17 @@ export async function logRegistration(
               }
             }
           } else {
-            // Regular ticket - use per-ticket price
-            amountToLog = typeof ticket.ticketPrice === 'number' ? ticket.ticketPrice : 0;
+            // Regular ticket - use per-ticket price with discount applied
+            if (typeof ticket.ticketPrice === 'number') {
+              amountToLog = ticket.ticketPrice;
+              // Apply promo discount if applicable and ticket is eligible
+              if (discountRatio > 0 && ticket.ticketPrice > 0) {
+                const discountAmount = amountToLog * discountRatio;
+                amountToLog = Math.max(amountToLog - discountAmount, 0);
+              }
+            } else {
+              amountToLog = 0;
+            }
           }
           
           const row = [
