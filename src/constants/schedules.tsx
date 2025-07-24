@@ -1335,7 +1335,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "10:00 AM - 10:15 AM",
-                        title: "Networking Break",
+                        title: "Networking Break with Exhibitors",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
@@ -1355,7 +1355,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "3:00 PM - 3:15 PM",
-                        title: "Networking Break",
+                        title: "Networking Break with Exhibitors",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
@@ -1397,7 +1397,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "10:30 AM - 10:45 AM",
-                        title: "Networking Break",
+                        title: "Networking Break with Exhibitors",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
