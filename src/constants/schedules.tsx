@@ -936,7 +936,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "7:30 AM - 8:30 AM",
-                        title: "Matchmaking Sign-up",
+                        title: "Matchmaking Session I Sign-up",
                         location: "Hampton Ballroom Pre-Function, 3rd FL",
                     },
                     {
@@ -1159,6 +1159,11 @@ export const SCHEDULES = [
                         location: "Hampton Roads Ballroom (I-V), 3rd Floor",
                     },
                     {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Matchmaking Session II Sign-up",
+                        location: "Hampton Roads Ballroom (I-V), 3rd Floor",
+                    },
+                    {
                         time: "8:30 AM",
                         title: "Welcome Back Remarks",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
@@ -1317,7 +1322,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "7:30 AM - 8:30 AM",
-                        title: "Matchmaking Sign-up",
+                        title: "Matchmaking Session I Sign-up",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
@@ -1337,7 +1342,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "12:30 PM - 1:30 PM",
-                        title: "Networking Lunch for Speakers, Sponsors, Exhibitors, and Attendees",
+                        title: "Networking Lunch with Exhibitors",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
@@ -1362,8 +1367,9 @@ export const SCHEDULES = [
                     },
                     {
                         time: "5:30 PM - 7:30 PM",
-                        title: "VIP Networking Reception with Speakers, Sponsors, Exhibitors, and VIP Attendees",
+                        title: "VIP Networking Reception",
                         location: "Rio Grande Hall, Plaza Lower Level",
+                        description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
                     },
 
                 ],
@@ -1374,6 +1380,11 @@ export const SCHEDULES = [
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Networking Breakfast with Exhibitors",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Matchmaking Session II Sign-up",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
