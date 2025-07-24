@@ -1324,7 +1324,7 @@ export const SCHEDULES = [
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "On-Site Attendee Registration & Check-in",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Grande Hall Pre-Function",
                     },
                     {
                         time: "7:30 AM - 8:30 AM",
@@ -1334,7 +1334,7 @@ export const SCHEDULES = [
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Matchmaking Session I Sign-up",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Grande Hall Pre-Function",
                     },
                     {
                         time: "8:30 AM - 10:00 AM",
@@ -1396,7 +1396,7 @@ export const SCHEDULES = [
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Matchmaking Session II Sign-up",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Grande Hall Pre-Function",
                     },
                     {
                         time: "8:30 AM - 10:30 AM",
