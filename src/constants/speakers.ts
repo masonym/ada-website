@@ -1328,6 +1328,18 @@ His 20 personal awards include the Navy Distinguished Service Medal, Defense Sup
 		"name": "Nicholas Diehl",
 		"position": "Global Director, Security Innovation and Technology",
 		"company": "Littoral Dynamics",
+		"bio": `
+Nicholas Diehl is a leading expert in global security, technology, and risk analysis, currently serving as the Global Director of Security Innovation and Technologies at Littoral Dynamics. In this role, he advises clients worldwide on emerging threats, develops mitigation strategies for global security risks, and oversees the implementation of innovative solutions.
+<br/>
+<br/>
+As a Professor at The Pennsylvania State University, Nicholas specializes in Security, Risk, and Analysis, where he has modernized key courses and guides students in intelligence gathering, risk assessment, and geopolitical threat analysis.
+<br/>
+<br/>
+His background includes extensive work at Penn State as a Technical Project Manager, where he developed 5G-enabled solutions incorporating Artificial Intelligence/Machine Learning (AI/ML), Internet of Things (IoT), Cloud/Edge Computing, Advanced and Additive Manufacturing (AAM) and Extended Reality (XR) technologies. He was also a Subject Matter Expert for Penn State, effectively bridging academic research with government and industry needs.
+<br/>
+<br/>
+Professor Diehl has had engagements Instructing at NATO's Defense Against Terrorism course in Oberammergau (NSO), building a Table Top Exercise (TTX) for NATO SOFCOM during the SOF Roles in Counter-Terrorism in Crisis Response Seminar at NATO’s Center of Excellence Defence Against Terrorism in Türkiye, and various speaking engagements with industry partners.
+		`
 	}
 ,
   "dr-steven-wills": {
