@@ -936,7 +936,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "7:30 AM - 8:30 AM",
-                        title: "Matchmaking Sign-up",
+                        title: "Matchmaking Session I Sign-up",
                         location: "Hampton Ballroom Pre-Function, 3rd FL",
                     },
                     {
@@ -1162,6 +1162,11 @@ export const SCHEDULES = [
                         location: "Hampton Roads Ballroom (I-V), 3rd Floor",
                     },
                     {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Matchmaking Session II Sign-up",
+                        location: "Hampton Roads Ballroom (I-V), 3rd Floor",
+                    },
+                    {
                         time: "8:30 AM",
                         title: "Welcome Back Remarks",
                         location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
@@ -1291,5 +1296,124 @@ export const SCHEDULES = [
                 ],
             },
         ],
-    }
+    },
+    {
+        id: 5,
+        schedule: [
+            {
+                date: "November 4, 2025",
+                items: [
+                    {
+                        time: "3:00 PM - 6:00 PM",
+                        title: "Exhibitor Set-up",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                ],
+            },
+            {
+                date: "November 5, 2025",
+                items: [
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "On-Site Attendee Registration & Check-in",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Networking Breakfast with Exhibitors",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Matchmaking Session I Sign-up",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "8:30 AM - 10:00 AM",
+                        title: "General Sessions",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "10:00 AM - 10:15 AM",
+                        title: "Networking Break",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "10:15 AM - 12:30 PM",
+                        title: "General Sessions",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "12:30 PM - 1:30 PM",
+                        title: "Networking Lunch with Exhibitors",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "1:30 PM - 3:00 PM",
+                        title: "General Sessions",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "3:00 PM - 3:15 PM",
+                        title: "Networking Break",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "3:15 PM - 4:30 PM",
+                        title: "General Sessions",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "4:30 PM - 5:30 PM",
+                        title: "Matchmaking Session I",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "5:30 PM - 7:30 PM",
+                        title: "VIP Networking Reception",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
+                    },
+
+                ],
+            },
+            {
+                date: "November 6, 2025",
+                items: [
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Networking Breakfast with Exhibitors",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Matchmaking Session II Sign-up",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "8:30 AM - 10:30 AM",
+                        title: "General Sessions",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "10:30 AM - 10:45 AM",
+                        title: "Networking Break",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "10:45 AM - 12:30 PM",
+                        title: "General Sessions",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "12:30 PM - 1:30 PM",
+                        title: "Matchmaking Session II",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                ],
+            }
+
+        ]
+    },
+
 ];
