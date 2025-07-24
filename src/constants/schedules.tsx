@@ -1277,9 +1277,6 @@ export const SCHEDULES = [
                             {
                                 speakerId: "andrew-gardner"
                             },
-                            {
-                                speakerId: "brian-wilson",
-                            }
                         ]
                     },
                     {

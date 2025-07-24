@@ -1511,7 +1511,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"andrew-gardner",
 		"dr-steven-wills",
 		"brad-williamson",
-		"brian-wilson",
+		// "brian-wilson",
 	]
 };
 
