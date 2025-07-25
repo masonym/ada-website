@@ -211,7 +211,7 @@ const SchedulePDF = ({
     : schedule;
 
   // Render a single schedule item
-  const renderScheduleItem = (item: ScheduleItem, index: number) => (
+  const renderScheduleItem = (item: ScheduleItem, index: number, prevItem?: ScheduleItem) => (
     <View style={styles.scheduleItem} key={`${item.time}-${item.title}-${index}`} wrap={false}>
       <View style={styles.timeColumn}>
         <Text style={styles.time}>{item.time}</Text>
@@ -269,7 +269,7 @@ const SchedulePDF = ({
             })}
           </View>
         )}
-        {showLocations && item.location && (
+        {showLocations && item.location && item.location !== prevItem?.location && (
           <Text style={styles.location}>Location: {item.location}</Text>
         )}
       </View>
@@ -294,7 +294,7 @@ const SchedulePDF = ({
     return Math.ceil(text.length / charsPerLine);
   };
 
-  const estimateItemHeight = (item: ScheduleItem) => {
+  const estimateItemHeight = (item: ScheduleItem, prevItem?: ScheduleItem) => {
     let height = 14; // Base for padding/margin
 
     const contentWidth = 400; // Estimated width of content column in points
@@ -303,7 +303,7 @@ const SchedulePDF = ({
     if (item.description) {
       height += estimateLineHeight(item.description, contentWidth, 9) * 11;
     }
-    if (showLocations && item.location) {
+    if (showLocations && item.location && item.location !== prevItem?.location) {
       height += 12;
     }
     if (showSpeakers && item.speakers && item.speakers.length > 0) {
@@ -332,8 +332,9 @@ const SchedulePDF = ({
       let currentRightHeight = 0;
       let currentColumn: 'left' | 'right' = 'left';
 
-      day.items.forEach(item => {
-        const itemHeight = estimateItemHeight(item);
+      day.items.forEach((item, index) => {
+        const prevItem = day.items[index - 1];
+        const itemHeight = estimateItemHeight(item, prevItem);
 
         if (currentColumn === 'left') {
           if (currentLeftHeight + itemHeight > CONTENT_HEIGHT) {
@@ -389,10 +390,15 @@ const SchedulePDF = ({
 
             <View style={styles.columnsContainer}>
               <View style={styles.column}>
-                {page.left.map((item, index) => renderScheduleItem(item, index))}
+                {page.left.map((item, index) => renderScheduleItem(item, index, page.left[index - 1]))}
               </View>
               <View style={styles.column}>
-                {page.right.map((item, index) => renderScheduleItem(item, index))}
+                {page.right.map((item, index) => {
+                  const prevItem = index === 0 ? page.left[page.left.length - 1] : page.right[index - 1];
+                  // The key index needs to be unique across the whole page.
+                  const keyIndex = page.left.length + index;
+                  return renderScheduleItem(item, keyIndex, prevItem);
+                })}
               </View>
             </View>
 
