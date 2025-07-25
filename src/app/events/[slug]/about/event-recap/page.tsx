@@ -34,9 +34,9 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
   if (!eventHasOccurred) {
     return (
       <div className="text-center py-12">
-        <h2 className="text-2xl font-bold mb-4">Event Recap Coming Soon</h2>
+        <h2 className="text-2xl font-bold mb-4">Event Recap Not Available</h2>
         <p className="text-lg">
-          Please check back after {event.date} for highlights and photographs from the event.
+          Event Recap Usually Available 1 Week Post-Event.
         </p>
       </div>
     );

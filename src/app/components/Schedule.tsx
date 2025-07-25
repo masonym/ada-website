@@ -8,9 +8,10 @@ import 'react-modal-video/css/modal-video.css';
 import { getCdnPath } from '@/utils/image';
 import Link from 'next/link';
 import { Printer } from 'lucide-react';
+import { SPEAKERS } from '@/constants/speakers';
 
 type Speaker = {
-  name: string;
+  name?: string; // Optional when using speakerId
   title?: string;
   sponsor?: string;
   sponsorStyle?: string;
@@ -19,6 +20,26 @@ type Speaker = {
   presentation?: string;
   videoId?: string;      // YouTube video ID only
   videoStartTime?: number; // Optional start time in seconds
+  // New field for speaker ID reference
+  speakerId?: string;
+};
+
+// Helper function to resolve speaker data
+const resolveSpeaker = (speaker: Speaker): Speaker => {
+  if (speaker.speakerId && SPEAKERS[speaker.speakerId]) {
+    const speakerData = SPEAKERS[speaker.speakerId];
+    return {
+      // Start with schedule-specific data
+      ...speaker,
+      // Override with resolved speaker data
+      name: speakerData.name,
+      title: speakerData.position,
+      affiliation: speakerData.company,
+      photo: speakerData.image,
+    };
+  }
+  // Return original speaker data if no speakerId or speaker not found
+  return speaker;
 };
 
 type ScheduleItem = {
@@ -160,48 +181,51 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
 
                 {item.speakers && item.speakers.length > 0 && (
                   <div className="space-y-4 mt-3">
-                    {item.speakers.map((speaker, speakerIndex) => (
-                      <div key={speakerIndex} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                        <div className="flex items-center flex-grow">
-                          {speaker.photo && (
-                            <Image
-                              src={getCdnPath(`speakers/${speaker.photo}`)}
-                              alt={speaker.name}
-                              width={48}
-                              height={48}
-                              className="rounded-full mr-4"
-                            />
-                          )}
-                          <div>
-                            <div className="font-semibold text-lg md:block flex flex-col">{speaker.name} <span className={`w-fit rounded-lg md:mx-1 text-sm px-2 py-1 ${speaker.sponsorStyle}`}>{speaker.sponsor}</span></div>
-                            {speaker.title && <div className="text-sm text-gray-600">{speaker.title}</div>}
-                            {speaker.affiliation && <div className="text-sm text-gray-600">{speaker.affiliation}</div>}
+                    {item.speakers.map((speaker, speakerIndex) => {
+                      const resolvedSpeaker = resolveSpeaker(speaker);
+                      return (
+                        <div key={speakerIndex} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                          <div className="flex items-center flex-grow">
+                            {resolvedSpeaker.photo && (
+                              <Image
+                                src={getCdnPath(`speakers/${resolvedSpeaker.photo}`)}
+                                alt={resolvedSpeaker.name || 'Speaker'}
+                                width={48}
+                                height={48}
+                                className="rounded-full mr-4"
+                              />
+                            )}
+                            <div>
+                              <div className="font-semibold text-lg md:block flex flex-col">{resolvedSpeaker.name} <span className={`w-fit rounded-lg md:mx-1 text-sm px-2 py-1 ${resolvedSpeaker.sponsorStyle}`}>{resolvedSpeaker.sponsor}</span></div>
+                              {resolvedSpeaker.title && <div className="text-sm text-gray-600" dangerouslySetInnerHTML={{ __html: resolvedSpeaker.title }}></div>}
+                              {resolvedSpeaker.affiliation && <div className="text-sm text-gray-600">{resolvedSpeaker.affiliation}</div>}
+                            </div>
+                          </div>
+
+                          <div className="flex gap-2">
+                            {resolvedSpeaker.presentation && isEventPassed && (
+                              <button
+                                onClick={() => handleMediaClick('presentation',
+                                  getCdnPath(`/events/${event.eventShorthand}/presentations/${resolvedSpeaker.presentation}`))}
+                                className={`text-white px-4 py-2 rounded-md transition-all text-nowrap ${isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
+                                  }`}
+                              >
+                                Presentation Slides
+                              </button>
+                            )}
+                            {resolvedSpeaker.videoId && (
+                              <button
+                                onClick={() => handleMediaClick('video', undefined, resolvedSpeaker.videoId, resolvedSpeaker.videoStartTime)}
+                                className={`text-white px-4 py-2 rounded-md transition-all text-nowrap ${isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
+                                  }`}
+                              >
+                                Watch Video
+                              </button>
+                            )}
                           </div>
                         </div>
-
-                        <div className="flex gap-2">
-                          {speaker.presentation && isEventPassed && (
-                            <button
-                              onClick={() => handleMediaClick('presentation',
-                                getCdnPath(`/events/${event.eventShorthand}/presentations/${speaker.presentation}`))}
-                              className={`text-white px-4 py-2 rounded-md transition-all text-nowrap ${isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
-                                }`}
-                            >
-                              Presentation Slides
-                            </button>
-                          )}
-                          {speaker.videoId && (
-                            <button
-                              onClick={() => handleMediaClick('video', undefined, speaker.videoId, speaker.videoStartTime)}
-                              className={`text-white px-4 py-2 rounded-md transition-all text-nowrap ${isAuthenticated ? 'bg-lightBlue-400 hover:bg-blue-500' : 'bg-gray-400'
-                                }`}
-                            >
-                              Watch Video
-                            </button>
-                          )}
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 )}
 

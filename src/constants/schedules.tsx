@@ -1,3 +1,15 @@
+import { SPEAKERS } from './speakers';
+
+// Extended speaker type for schedule-specific data
+export type ScheduleSpeaker = {
+  speakerId: string; // Reference to SPEAKERS object
+  presentation?: string;
+  videoId?: string;
+  videoStartTime?: number;
+  sponsor?: string;
+  sponsorStyle?: string;
+};
+
 export const SCHEDULES = [
     {
         id: 1, // This should match the event ID from EVENTS
@@ -26,10 +38,7 @@ export const SCHEDULES = [
                         title: "Congressional Keynote Address",
                         location: "National Press Club Ballroom",
                         speakers: [{
-                            name: "Congressman Michael Waltz (6th District, Florida)",
-                            title: "Chairman, Subcommittee on Readiness and Member, Subcommittee on Strategic Forces and Subcommittee on Intelligence and Operations, and Task Force on Critical Supply Chain, House Armed Services Committee; and Member, House Foreign Affairs Committee and Permanent Select Committee on Intelligence",
-                            affiliation: "U.S. House of Representatives",
-                            photo: "michael-waltz.webp",
+                            speakerId: "michael-waltz"
                         }],
                     },
                     {
@@ -37,10 +46,7 @@ export const SCHEDULES = [
                         title: "Artificial Intelligence — Impact on Defense Acquisition",
                         location: "National Press Club Ballroom",
                         speakers: [{
-                            name: "Amir Bagherpour, PhD",
-                            title: "Managing Director and Analytics & Visualization Lead for Data & AI",
-                            affiliation: "Accenture Federal Services",
-                            photo: "amir-bagherpour.webp",
+                            speakerId: "amir-bagherpour-phd",
                             presentation: "2025 Defense Industry Forecast - Amir Bagherpour, PhD.pdf",
                             videoId: "U_7h6bcAbGw"
                         }]
@@ -912,7 +918,7 @@ export const SCHEDULES = [
                     {
                         time: "3:00 PM - 6:00 PM",
                         title: "Exhibitor Set-up",
-                        location: "Hampton Roads Ballroom (I-V), 3rd FL",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
                         time: "6:00 PM - 7:00 PM",
@@ -927,97 +933,220 @@ export const SCHEDULES = [
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "On-Site Attendee Registration & Check-in",
-                        location: "Hampton Ballroom Pre-Function, 3rd FL",
+                        location: "Norfolk Ballroom Pre-Function, Ground Level",
                     },
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Networking Breakfast with Exhibitors",
-                        location: "Hampton Roads Ballroom (I-V), 3rd FL",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
                         time: "7:30 AM - 8:30 AM",
-                        title: "Matchmaking Sign-up",
-                        location: "Hampton Ballroom Pre-Function, 3rd FL",
+                        title: "Matchmaking Session I Sign-up",
+                        location: "Norfolk Ballroom Pre-Function, Ground Level",
                     },
                     {
                         time: "8:30 AM",
                         title: "Conference Opening",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "charles-sills",
+                                sponsor: "Conference Moderator",
+                                sponsorStyle: "bg-red-999",
+                            }
+                        ]
                     },
                     {
                         time: "8:35 AM",
-                        title: "State of Virginia / Hampton Roads Alliance / Norfolk Chamber of Commerce – Welcoming Remarks",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        title: "Welcoming Remarks – Commonwealth of Virginia & Hampton Roads Alliance",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "jared-chalk",
+                            }
+                        ]
                     },
                     {
-                        time: "8:50 AM",
+                        time: "9:00 AM",
                         title: "CONGRESSIONAL KEYNOTE ADDRESS I",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "representative-rob-wittman",
+                                sponsor: "Pre-Recorded Address",
+                                sponsorStyle: "bg-gray-300",
+                            }
+                        ]
                     },
                     {
                         time: "9:15 AM",
-                        title: "DEFENSE/MARITIME INDUSTRY KEYNOTE ADDRESS",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        title: "America’s Defense Industry in Context",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "brad-williamson",
+                            }
+                        ]
                     },
                     {
                         time: "9:40 AM",
                         title: "The 'SHIPS ACT' & the American Shipbuilding Industrial Base – Partnering for Success",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "roger-camp",
+                                sponsor: "Platinum Sponsor",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                            },
+                            {
+                                speakerId: "vice-admiral-richard-w-hunt",
+                            },
+                            {
+                                speakerId: "victorino-mercado",
+                            },
+                            {
+                                speakerId: "dr-steven-wills"
+                            }
+                        ]
                     },
                     {
-                        time: "10:40 AM",
+                        time: "10:30 AM",
                         title: "Networking Break with Exhibitors",
-                        location: "Hampton Roads Ballroom (I-V), 3rd Floor",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
-                        time: "10:55 AM",
+                        time: "11:00 AM",
                         title: "How DEFENSEWERX Hubs Are Accelerating Innovative Tech Contracting",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "brian-liesveld",
+                            },
+                        ]
                     },
                     {
-                        time: "11:20 AM",
+                        time: "11:25 AM",
                         title: "Fleet Readiness Panel – Addressing Critical Challenges & Requirements",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "erica-h-plath"
+                            },
+                            {
+                                speakerId: "philip-hart-cullom"
+                            },
+                            {
+                                speakerId: "captain-rick-tyler"
+                            },
+                            {
+                                speakerId: "stephen-mongold"
+                            },
+                            {
+                                speakerId: "hunter-stires"
+                            }
+                        ]
                     },
                     {
                         time: "12:15 PM",
-                        title: "Briefing: Contested Logistics",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        title: "Industry Insights: Contested Logistics",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "kurt-garrett",
+                                sponsor: "Gold Sponsor",
+                                sponsorStyle: "bg-[#ffaf00] text-slate-900"
+                            }
+                        ]
                     },
                     {
                         time: "12:30 PM",
                         title: "Networking Lunch with Exhibitors",
-                        location: "Hampton Roads Ballroom (I-V), 3rd FL",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
-                        time: "1:15 PM",
+                        time: "1:45 PM",
                         title: "Artificial Intelligence in Defense – Leveraging Navy Use Cases",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "daniel-hudson"
+                            },
+                            // {
+                            //     speakerId: "amir-bagherpour-phd",
+                            // }
+                        ]
                     },
                     {
-                        time: "1:55 PM",
-                        title: "Force Projection & Contested Logistics in the Indo-Pacific",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        time: "2:15 PM",
+                        title: "UNITED STATES MARINE CORPS KEYNOTE ADDRESS",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "christopher-m-haar"
+                            }
+                        ]
                     },
                     {
-                        time: "2:40 PM",
-                        title: "Briefing: Defense Industry – Vendor-Purchaser Relations",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        time: "2:45 PM",
+                        title: "Industry Insights: The Machine Shop You Didn’t Know You Had",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "don-mcginnis",
+                                sponsor: "Bronze Sponsor",
+                                sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                            }
+                        ]
                     },
                     {
-                        time: "2:55 PM",
+                        time: "3:00 PM",
                         title: "Military Base-Community Partnerships Promoting Local Build Contracts",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "dave-leinberger"
+                            },
+                            {
+                                speakerId: "brian-w-miller"
+                            }
+                        ]
                     },
                     {
                         time: "3:35 PM",
-                        title: "Navy Small Business Program Panel",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        title: "Small Business Programs/Opportunities – Plus Accessing GWAC’S, OTA’S & SBIR’S",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "charles-sills",
+                                sponsor: "Panel Moderator",
+                                sponsorStyle: "bg-red-999",
+                            },
+                            {
+                                speakerId: "terressa-bebout"
+                            },
+                            {
+                                speakerId: "stacey-l-cooper"
+                            },
+                            {
+                                speakerId: "tiffany-l-trotter"
+                            },
+                            {
+                                speakerId: "rosetta-rodwell"
+                            }
+                        ]
                     },
                     {
                         time: "4:30 PM",
                         title: "Day One Closing Remarks",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "charles-sills",
+                                sponsor: "Conference Moderator",
+                                sponsorStyle: "bg-red-999",
+                            }
+                        ]
                     },
                     {
                         time: "4:30 PM - 5:30 PM",
@@ -1027,11 +1156,12 @@ export const SCHEDULES = [
                     {
                         time: "4:30 PM - 5:30 PM",
                         title: "Networking with Exhibitors",
-                        location: "Hampton Roads Ballroom (I-V), 3rd Floor"
+                        location: "Norfolk Ballroom (I-IV), Ground Level"
                     },
                     {
                         time: "6:00 PM - 8:00 PM",
                         title: "VIP Networking Reception",
+                        description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
                         location: "The Harbor Club, Waterside District. 333 Waterside Dr Suite 200, Norfolk, VA 23510",
                     },
                 ],
@@ -1042,52 +1172,134 @@ export const SCHEDULES = [
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Networking Breakfast with Exhibitors",
-                        location: "Hampton Roads Ballroom (I-V), 3rd Floor",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                    },
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Matchmaking Session II Sign-up",
+                        location: "Norfolk Ballroom Pre-Function, Ground Level",
                     },
                     {
                         time: "8:30 AM",
                         title: "Welcome Back Remarks",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "charles-sills",
+                                sponsor: "Conference Moderator",
+                                sponsorStyle: "bg-red-999",
+                            }
+                        ]
                     },
                     {
                         time: "8:35 AM",
                         title: "CONGRESSIONAL KEYNOTE ADDRESS II",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                     },
                     {
-                        time: "9:00 AM",
+                        time: "8:50 AM",
                         title: "How to do Business with the Primes",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "diane-dempsey"
+                            },
+                            {
+                                speakerId: "katina-adams"
+                            },
+                            {
+                                speakerId: "stacey-r-washington"
+                            },
+                            {
+                                speakerId: "robyn-card"
+                            },
+                            {
+                                speakerId: "david-canada"
+                            }
+                        ]
+                    },
+                    {
+                        time: "9:45 AM",
+                        title: "Industry Insights: Forward Opening Base Mobile Manufacturing",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "paul-wichert",
+                                sponsor: "Gold Sponsor",
+                                sponsorStyle: "bg-[#ffaf00] text-slate-900"
+                            }
+                        ]
                     },
                     {
                         time: "10:00 AM",
-                        title: "SUPPLY CHAIN/CYBER PROTECTION KEYNOTE ADDRESS",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        title: "Networking Break with Exhibitors",
+                        location: "Norfolk Ballroom (I-IV), Ground Level"
                     },
                     {
                         time: "10:30 AM",
-                        title: "Briefing: Modernizing U.S. Defense Manufacturing",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        title: "From the Small Business Front Line: Streamlined Acquisition Examples",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "aimee-zick",
+                            }
+                        ]
                     },
                     {
-                        time: "10:45 AM",
-                        title: "Cybersecurity Update: Safeguarding the Supply Chain",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        time: "11:00 AM",
+                        title: "Geopolitical SITREP: The Military-Energy Nexus",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "anthony-livanios"
+                            }
+                        ]
                     },
                     {
-                        time: "11:15 AM",
-                        title: "The ‘Golden Dome’ Integrated Missile Defense Initiative: Navy Role",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        time: "11:25 AM",
+                        title: "Procurement Strategies for Navy Port Security & Cyber Protection",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "charles-sills",
+                                sponsor: "Panel Moderator",
+                                sponsorStyle: "bg-red-999",
+                            },
+                            {
+                                speakerId: "joel-coulter"
+                            },
+                            {
+                                speakerId: "nicholas-antonio-rocha"
+                            },
+                            {
+                                speakerId: "jeffrey-hoffman",
+                            },
+                            {
+                                speakerId: "nicholas-diehl"
+                            }
+                        ]
                     },
                     {
-                        time: "11:50 AM",
-                        title: "Mid-Atlantic Tech Bridge / NavalX / Neptune SHIELD",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        time: "12:05 PM",
+                        title: "Using Mentor-Protégé Partnerships to Drive the ‘Combat Capability Factory’",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "andrew-gardner"
+                            },
+                        ]
                     },
                     {
                         time: "12:30 PM",
                         title: "Closing Remarks",
-                        location: "Hampton Roads Ballroom (VI-VII), 3rd Floor",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "charles-sills",
+                                sponsor: "Conference Moderator",
+                                sponsorStyle: "bg-red-999",
+                            }
+                        ]
                     },
                     {
                         time: "12:30 PM - 1:30 PM",
@@ -1097,10 +1309,129 @@ export const SCHEDULES = [
                     {
                         time: "12:30 PM - 1:30 PM",
                         title: "Networking with Exhibitors",
-                        location: "Hampton Roads Ballroom (I-V), 3rd Floor"
+                        location: "Norfolk Ballroom (I-IV), Ground Level"
                     },
                 ],
             },
         ],
-    }
+    },
+    {
+        id: 5,
+        schedule: [
+            {
+                date: "November 4, 2025",
+                items: [
+                    {
+                        time: "3:00 PM - 6:00 PM",
+                        title: "Exhibitor Set-up",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                ],
+            },
+            {
+                date: "November 5, 2025",
+                items: [
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "On-Site Attendee Registration & Check-in",
+                        location: "Rio Grande Hall Pre-Function",
+                    },
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Networking Breakfast with Exhibitors",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Matchmaking Session I Sign-up",
+                        location: "Rio Grande Hall Pre-Function",
+                    },
+                    {
+                        time: "8:30 AM - 10:00 AM",
+                        title: "General Sessions",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "10:00 AM - 10:15 AM",
+                        title: "Networking Break with Exhibitors",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "10:15 AM - 12:30 PM",
+                        title: "General Sessions",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "12:30 PM - 1:30 PM",
+                        title: "Networking Lunch with Exhibitors",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "1:30 PM - 3:00 PM",
+                        title: "General Sessions",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "3:00 PM - 3:15 PM",
+                        title: "Networking Break with Exhibitors",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "3:15 PM - 4:30 PM",
+                        title: "General Sessions",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "4:30 PM - 5:30 PM",
+                        title: "Matchmaking Session I",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "5:30 PM - 7:30 PM",
+                        title: "VIP Networking Reception",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
+                    },
+
+                ],
+            },
+            {
+                date: "November 6, 2025",
+                items: [
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Networking Breakfast with Exhibitors",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Matchmaking Session II Sign-up",
+                        location: "Rio Grande Hall Pre-Function",
+                    },
+                    {
+                        time: "8:30 AM - 10:30 AM",
+                        title: "General Sessions",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "10:30 AM - 10:45 AM",
+                        title: "Networking Break with Exhibitors",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "10:45 AM - 12:30 PM",
+                        title: "General Sessions",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "12:30 PM - 1:30 PM",
+                        title: "Matchmaking Session II",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                ],
+            }
+
+        ]
+    },
+
 ];

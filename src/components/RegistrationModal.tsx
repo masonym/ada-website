@@ -19,6 +19,8 @@ import { Elements } from '@stripe/react-stripe-js';
 import StripePaymentForm, { StripePaymentFormRef } from './StripePaymentForm';
 import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { EVENT_SPONSORS } from '@/constants/eventSponsors';
+import { validatePromoCode, isEligibleForPromoDiscount, getAutoApplyPromoCodesForEvent, type PromoCode } from '@/lib/promo-codes';
+import { getEnv } from '@/lib/env';
 
 interface EventWithContact extends Omit<Event, 'id'> {
   contactInfo?: {
@@ -59,9 +61,11 @@ interface RegistrationModalProps {
   selectedRegistration: AdapterModalRegistrationType | null; // Allow null for register button
   event: EventWithContact;
   initialActiveTab?: 'ticket' | 'exhibit' | 'sponsorship'; // Optional tab to open initially
+  initialPromoCode?: string; // Optional promo code to auto-apply from URL
 }
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
+const env = getEnv();
+const stripePromise = loadStripe(env.STRIPE_PUBLISHABLE_KEY);
 
 const initialModalAttendeeInfo: ModalAttendeeInfo = {
   firstName: '',
@@ -161,64 +165,10 @@ const isRegistrationClosed = (event: EventWithContact, daysBeforeToClose: number
   return new Date() >= cutoffDate;
 };
 
-// Define promo code type
-interface PromoCode {
-  code: string;
-  discountPercentage: number;
-  eligibleTicketTypes: string[];
-  expirationDate: Date;
-  description?: string;
-}
-
-// Define available promo codes
-const PROMO_CODES: PromoCode[] = [
-  {
-    code: 'ACEC15',
-    discountPercentage: 15,
-    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass', ''],
-    expirationDate: new Date('2025-08-01'),
-    description: 'ACEC15 - 15% off Attendee and VIP Attendee passes'
-  },
-  {
-    code: 'ADA20',
-    discountPercentage: 20,
-    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass', 'exhibit', 'platinum-sponsor', 'gold-sponsor', 'silver-sponsor', 'bronze-sponsor', 'vip-networking-reception-sponsor', 'networking-luncheon-sponsor', 'small-business-sponsor', 'small-business-sponsor-without-exhibit-space'],
-    expirationDate: new Date('2025-12-31'),
-    description: 'ADA20 - 20% off Attendee and VIP Attendee passes'
-  },
-  {
-    code: 'EARLY10',
-    discountPercentage: 10,
-    eligibleTicketTypes: ['attendee-pass', 'vip-attendee-pass'],
-    expirationDate: new Date('2025-08-01'),
-    description: 'EARLY10 - 10% off all passes and Basic Exhibitor Package'
-  }
-];
-
-// Function to validate the promo code
-const isValidPromoCode = (code: string): { valid: boolean; reason?: string; promoDetails?: PromoCode } => {
-  // Find the promo code in our list
-  const promoCode = PROMO_CODES.find(promo => promo.code === code);
-  
-  // Check if code exists
-  if (!promoCode) {
-    return { valid: false, reason: 'invalid' };
-  }
-  
-  // Check if code is expired
-  const now = new Date();
-  if (now > promoCode.expirationDate) {
-    return { valid: false, reason: 'expired' };
-  }
-  
-  // If we reach here, the code is valid
-  return { valid: true, promoDetails: promoCode };
-};
-
-// Function to check if a registration is eligible for a specific promo discount
-const isEligibleForPromoDiscount = (registration: AdapterModalRegistrationType, eligibleTypes: string[]): boolean => {
-  // Check by ID or title
-  return eligibleTypes.includes(registration.id) || eligibleTypes.includes(registration.title);
+// Helper function to check if a ticket has expired based on saleEndTime
+const isTicketExpired = (registration: AdapterModalRegistrationType): boolean => {
+  if (!registration.saleEndTime) return false;
+  return new Date() > new Date(registration.saleEndTime);
 };
 
 const RegistrationModal = ({
@@ -227,6 +177,7 @@ const RegistrationModal = ({
   selectedRegistration,
   event,
   initialActiveTab,
+  initialPromoCode,
 }: RegistrationModalProps): JSX.Element | null => {
   // Add state for the close confirmation dialog
   const [showCloseConfirmation, setShowCloseConfirmation] = useState(false);
@@ -264,6 +215,11 @@ const RegistrationModal = ({
   const [validationStatus, setValidationStatus] = useState<Record<string, ValidationState>>({});
   const [validationError, setValidationError] = useState<Record<string, string | null>>({});
 
+  // For code validation (add-ons that require special codes)
+  const [codeInput, setCodeInput] = useState<Record<string, string>>({});
+  const [codeValidationStatus, setCodeValidationStatus] = useState<Record<string, ValidationState>>({});
+  const [codeValidationError, setCodeValidationError] = useState<Record<string, string | null>>({});
+
   const [isLoading, setIsLoading] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [apiError, setApiError] = useState<string | null>(null);
@@ -284,7 +240,7 @@ const RegistrationModal = ({
   const [activePromoCode, setActivePromoCode] = useState<PromoCode | null>(null);
 
   // Handler function for applying promo code
-  const handleApplyPromoCode = () => {
+  const handleApplyPromoCode = async () => {
     // Reset previous error/success states
     setPromoCodeError(null);
     setApplyingPromoCode(true);
@@ -299,44 +255,50 @@ const RegistrationModal = ({
       return;
     }
     
-    // Simulate API call delay with setTimeout
-    // In a real implementation, you would call the backend API here
-    setTimeout(() => {
-      const result = isValidPromoCode(normalizedCode);
+    try {
+      // Call the backend API for validation
+      const response = await fetch('/api/event-registration/validate-promo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          promoCode: normalizedCode,
+          eventId: event.id,
+          tickets: Object.entries(ticketQuantities)
+            .filter(([_, quantity]) => quantity > 0)
+            .map(([ticketId, quantity]) => ({ ticketId, quantity }))
+        }),
+      });
       
-      if (result.valid && result.promoDetails) {
-        // Check if there are any eligible tickets in the cart for this specific promo code
-        const hasEligibleTickets = [...allRegistrations, ...sponsorships, ...exhibitors].some(reg => 
-          (ticketQuantities[reg.id] || 0) > 0 && isEligibleForPromoDiscount(reg, result.promoDetails!.eligibleTicketTypes)
-        );
-        
-        if (!hasEligibleTickets) {
-          setPromoCodeValid(false);
-          setPromoCodeError(`No eligible tickets in your cart. This promo code only applies to specific ticket types.`);
-          setActivePromoCode(null);
-        } else {
-          setPromoCodeValid(true);
-          setActivePromoCode(result.promoDetails);
-        }
+      const result = await response.json();
+      
+      if (result.valid) {
+        // Always accept valid promo codes - the discount logic will handle eligibility per ticket
+        setPromoCodeValid(true);
+        setPromoCodeError(null);
+        setActivePromoCode({
+          code: normalizedCode,
+          discountPercentage: result.discountPercentage,
+          eligibleTicketTypes: result.eligibleTicketTypes,
+          expirationDate: new Date(result.expirationDate),
+          description: result.description,
+          eligibleEventIds: [event.id],
+          isActive: true
+        });
       } else {
         setPromoCodeValid(false);
         setActivePromoCode(null);
-        
-        // Show different error messages based on validation reason
-        switch(result.reason) {
-          case 'expired':
-            setPromoCodeError('This promo code has expired');
-            break;
-          case 'invalid':
-            setPromoCodeError('Invalid promo code');
-            break;
-          default:
-            setPromoCodeError('Error validating promo code');
-        }
+        setPromoCodeError(result.error || 'Invalid promo code');
       }
-      
-      setApplyingPromoCode(false);
-    }, 500); // Simulating a 500ms delay for API call
+    } catch (error) {
+      console.error('Error validating promo code:', error);
+      setPromoCodeValid(false);
+      setActivePromoCode(null);
+      setPromoCodeError('Error validating promo code. Please try again.');
+    }
+    
+    setApplyingPromoCode(false);
   };
 
   // Memoize Stripe Elements appearance to prevent unnecessary re-initialization
@@ -461,6 +423,123 @@ const RegistrationModal = ({
     }
   }, [ticketQuantities, validationStatus, exhibitors, sponsorships, manuallyValidatedTickets]);
 
+  // Automatic promo code application (URL-based and event-based)
+  useEffect(() => {
+    if (!isOpen || promoCodeValid || activePromoCode || promoCode !== '') {
+      return; // Don't auto-apply if modal is closed, promo already applied, or user has entered a code
+    }
+
+    let codeToApply: string | null = null;
+    
+    // Priority 1: URL parameter promo code
+    if (initialPromoCode) {
+      codeToApply = initialPromoCode.trim().toUpperCase();
+    } else {
+      // Priority 2: Event-based auto-apply promo codes
+      const autoApplyCodes = getAutoApplyPromoCodesForEvent(event.id);
+      if (autoApplyCodes.length > 0) {
+        // Use the first auto-apply code found
+        codeToApply = autoApplyCodes[0].code;
+      }
+    }
+
+    if (!codeToApply) {
+      return; // No promo code to auto-apply
+    }
+      
+    // Set the promo code in the input field
+    setPromoCode(codeToApply);
+    
+    // Automatically apply the promo code
+    const autoApplyPromoCode = async () => {
+      setPromoCodeError(null);
+      setApplyingPromoCode(true);
+      
+      try {
+        const response = await fetch('/api/event-registration/validate-promo', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            promoCode: codeToApply,
+            eventId: event.id,
+          }),
+        });
+        
+        const result = await response.json();
+        
+        if (result.valid) {
+          // Always accept valid promo codes - the discount logic will handle eligibility per ticket
+          setPromoCodeValid(true);
+          setPromoCodeError(null);
+          setActivePromoCode({
+            code: codeToApply,
+            discountPercentage: result.discountPercentage,
+            eligibleTicketTypes: result.eligibleTicketTypes,
+            expirationDate: new Date(result.expirationDate),
+            description: result.description,
+            eligibleEventIds: [event.id],
+            isActive: true
+          });
+        } else {
+          setPromoCodeValid(false);
+          setActivePromoCode(null);
+          setPromoCodeError(result.error || 'Invalid promo code');
+        }
+      } catch (error) {
+        console.error('Error auto-applying promo code:', error);
+        setPromoCodeValid(false);
+        setActivePromoCode(null);
+        setPromoCodeError('Error applying promo code. Please try again.');
+      }
+      
+      setApplyingPromoCode(false);
+    };
+    
+    // Apply the promo code automatically
+    autoApplyPromoCode();
+  }, [isOpen, initialPromoCode, promoCodeValid, activePromoCode, promoCode, event.id]);
+
+  // Code validation function for add-ons that require special codes
+  const validateCode = (registrationId: string, inputCode: string) => {
+    const registration = allRegistrations.find(reg => reg.id === registrationId);
+    if (!registration || !registration.requiresCode || !registration.validationCode) {
+      return false;
+    }
+    
+    // Simple case-insensitive comparison
+    return inputCode.trim().toUpperCase() === registration.validationCode.toUpperCase();
+  };
+
+  // Handle code validation
+  const handleCodeValidation = (registrationId: string) => {
+    const inputCode = codeInput[registrationId] || '';
+    
+    if (!inputCode.trim()) {
+      setCodeValidationStatus(prev => ({ ...prev, [registrationId]: 'invalid' }));
+      setCodeValidationError(prev => ({ ...prev, [registrationId]: 'Please enter a code' }));
+      return;
+    }
+    
+    setCodeValidationStatus(prev => ({ ...prev, [registrationId]: 'validating' }));
+    
+    // Simulate validation (in real app, this might be an API call)
+    setTimeout(() => {
+      const isValid = validateCode(registrationId, inputCode);
+      
+      if (isValid) {
+        setCodeValidationStatus(prev => ({ ...prev, [registrationId]: 'valid' }));
+        setCodeValidationError(prev => ({ ...prev, [registrationId]: null }));
+      } else {
+        setCodeValidationStatus(prev => ({ ...prev, [registrationId]: 'invalid' }));
+        const registration = allRegistrations.find(reg => reg.id === registrationId);
+        const errorMessage = registration?.codeValidationMessage || 'Invalid code. Please check and try again.';
+        setCodeValidationError(prev => ({ ...prev, [registrationId]: errorMessage }));
+      }
+    }, 500);
+  };
+
   const handleValidateOrderId = async (ticketId: string) => {
     const orderId = orderIdInput[ticketId];
     if (!orderId) {
@@ -542,6 +621,59 @@ const RegistrationModal = ({
     );
   };
 
+  // Render code validation UI for tickets that require a code
+  const renderCodeValidationUI = (reg: AdapterModalRegistrationType) => {
+    if (!reg.requiresCode) {
+      return null;
+    }
+
+    const status = codeValidationStatus[reg.id] || 'idle';
+    const error = codeValidationError[reg.id];
+    const currentQuantity = ticketQuantities[reg.id] || 0;
+
+    // Only show code validation UI after ticket is selected (quantity > 0)
+    if (currentQuantity === 0) {
+      return null;
+    }
+
+    return (
+      <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-md">
+        <label htmlFor={`code-${reg.id}`} className="block text-sm font-medium text-gray-700">
+          {reg.codeValidationMessage || 'Enter access code to unlock this ticket'}
+        </label>
+        <div className="mt-1 flex items-center space-x-2">
+          <input
+            type="text"
+            id={`code-${reg.id}`}
+            value={codeInput[reg.id] || ''}
+            onChange={(e) => setCodeInput(prev => ({ ...prev, [reg.id]: e.target.value }))}
+            className="flex-grow block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            placeholder="Enter code"
+            disabled={status === 'validating' || status === 'valid'}
+          />
+          <button
+            onClick={() => handleCodeValidation(reg.id)}
+            disabled={status === 'validating' || status === 'valid' || !(codeInput[reg.id]?.trim())}
+            className="px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-gray-400"
+          >
+            {status === 'validating' ? 'Validating...' : status === 'valid' ? 'Validated' : 'Validate'}
+          </button>
+        </div>
+        {status === 'valid' && (
+          <p className="mt-2 text-sm text-green-600">✓ Code validated. You can now register for this ticket.</p>
+        )}
+        {error && (
+          <p className="mt-2 text-sm text-red-600">{error}</p>
+        )}
+        {status !== 'valid' && (
+          <p className="mt-2 text-sm text-orange-600">
+            ⚠️ Please enter the required access code.
+          </p>
+        )}
+      </div>
+    );
+  };
+
   // Helper to reset attendee info for a given ticket ID
   const resetAttendeesForTicket = (ticketId: string, count: number): ModalAttendeeInfo[] => {
     return Array(count).fill(null).map(() => ({ ...initialModalAttendeeInfo }));
@@ -558,6 +690,11 @@ const RegistrationModal = ({
     setValidationError({});
     setOrderIdInput({});
     setManuallyValidatedTickets({});
+    
+    // Reset code validation state
+    setCodeValidationStatus({});
+    setCodeValidationError({});
+    setCodeInput({});
     
     // Reset attendeesByTicket to empty
     setAttendeesByTicket({});
@@ -593,6 +730,58 @@ const RegistrationModal = ({
     setApiError(`Payment error: ${errorMessage}`);
     setAttemptingStripePayment(false);
     setIsLoading(false);
+  };
+
+  // Helper function to get effective price including early bird and promo discounts
+const getEffectivePrice = (registration: AdapterModalRegistrationType): number => {
+    const isEarlyBird = registration.earlyBirdDeadline && new Date() < new Date(registration.earlyBirdDeadline);
+    const displayPrice = isEarlyBird && registration.earlyBirdPrice !== undefined ? registration.earlyBirdPrice : registration.price;
+    // Convert displayPrice to number if it's a string
+    const numericPrice = typeof displayPrice === 'string' ? parseFloat(displayPrice.replace(/[^0-9.]/g, '')) || 0 : displayPrice;
+    
+    // Note: Promo code discount is applied in calculateTotal() to avoid double application
+    
+    return numericPrice;
+  };
+
+  // Helper function to render price display with strikethrough for discounted items
+  const renderPriceDisplay = (reg: AdapterModalRegistrationType, quantity: number) => {
+    const effectivePrice = getEffectivePrice(reg);
+    
+    // Handle string prices (like "Contact for pricing")
+    if (typeof effectivePrice === 'string') {
+      return <span>{effectivePrice}</span>;
+    }
+    
+    // Calculate original price (early bird or regular, but without promo discount)
+    const isEarlyBird = reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline);
+    const originalPrice = isEarlyBird && reg.earlyBirdPrice !== undefined ? reg.earlyBirdPrice : reg.price;
+    const originalPriceNum = typeof originalPrice === 'number' ? originalPrice : 
+      (typeof originalPrice === 'string' ? parseFloat(originalPrice.replace(/[^0-9.]/g, '')) || 0 : 0);
+    
+    const effectivePriceNum = typeof effectivePrice === 'number' ? effectivePrice : 0;
+    const originalTotal = originalPriceNum * quantity;
+    const effectiveTotal = effectivePriceNum * quantity;
+    
+    // Check if promo discount is applied
+    const isDiscounted = promoCodeValid && activePromoCode && 
+      isEligibleForPromoDiscount(reg.id, activePromoCode.eligibleTicketTypes) && 
+      originalPriceNum > effectivePriceNum;
+    
+    if (isDiscounted) {
+      return (
+        <span className="text-right flex flex-row">
+          <div className="text-sm text-gray-500 line-through">
+            ${originalTotal.toLocaleString()}
+          </div>
+          <div className="text-green-600 font-medium ml-2">
+            ${effectiveTotal.toLocaleString()}
+          </div>
+        </span>
+      );
+    }
+    
+    return <span>${effectiveTotal.toLocaleString()}</span>;
   };
 
   useEffect(() => {
@@ -703,6 +892,13 @@ const RegistrationModal = ({
         });
       }
       
+      // Clear code validation state if quantity reaches zero
+      if (registration?.requiresCode && newQuantity === 0) {
+        setCodeValidationStatus(prev => ({ ...prev, [ticketId]: 'idle' }));
+        setCodeValidationError(prev => ({ ...prev, [ticketId]: null }));
+        setCodeInput(prev => ({ ...prev, [ticketId]: '' }));
+      }
+      
       // Check if this is a sponsorship
       const selectedSponsorship = sponsorships.find(s => s.id === ticketId);
       
@@ -751,12 +947,20 @@ const RegistrationModal = ({
   };
 
   const handleCheckout = () => {
-    const ticketsToValidate = [...exhibitors, ...sponsorships].filter(
-      (reg) => reg.requiresValidation && (ticketQuantities[reg.id] || 0) > 0
+    const ticketsToValidate = [...allRegistrations, ...exhibitors, ...sponsorships].filter(
+      (reg) => ((reg.requiresCode && (ticketQuantities[reg.id] || 0) > 0) || (reg.requiresValidation && (ticketQuantities[reg.id] || 0) > 0))
     );
 
     const isValidationPending = ticketsToValidate.some(
-      (reg) => validationStatus[reg.id] !== 'valid'
+      (reg) => {
+        if (reg.requiresCode && codeValidationStatus[reg.id] !== 'valid') {
+          return true;
+        }
+        if (reg.requiresValidation && validationStatus[reg.id] !== 'valid') {
+          return true;
+        }
+        return false;
+      }
     );
 
     if (isValidationPending) {
@@ -765,7 +969,15 @@ const RegistrationModal = ({
       );
       // Highlight the tickets that need validation
       ticketsToValidate.forEach((reg) => {
-        if (validationStatus[reg.id] !== 'valid') {
+        if (reg.requiresCode && codeValidationStatus[reg.id] !== 'valid') {
+          setCodeValidationError((prev) => ({
+            ...prev,
+            [reg.id]:
+              prev[reg.id] ||
+              'This ticket requires code validation before checkout.',
+          }));
+        }
+        if (reg.requiresValidation && validationStatus[reg.id] !== 'valid') {
           setValidationError((prev) => ({
             ...prev,
             [reg.id]:
@@ -1037,7 +1249,7 @@ const RegistrationModal = ({
         // Apply promo discount if valid code is entered and registration is eligible
         let finalPrice = numericPrice;
         if (promoCodeValid && activePromoCode) {
-          if (isEligibleForPromoDiscount(reg, activePromoCode.eligibleTicketTypes)) {
+          if (isEligibleForPromoDiscount(reg.id, activePromoCode.eligibleTicketTypes)) {
             // Apply discount percentage
             finalPrice = finalPrice * (1 - activePromoCode.discountPercentage / 100);
           }
@@ -1061,22 +1273,7 @@ const RegistrationModal = ({
     return Object.values(ticketQuantities).reduce((sum, qty) => sum + qty, 0);
   };
 
-  // Helper function to get the effective price of a registration
-  const getEffectivePrice = (registration: AdapterModalRegistrationType): number => {
-    const isEarlyBird = registration.earlyBirdDeadline && new Date() < new Date(registration.earlyBirdDeadline);
-    const displayPrice = isEarlyBird && registration.earlyBirdPrice !== undefined ? registration.earlyBirdPrice : registration.price;
-    // Convert displayPrice to number if it's a string
-    let numericPrice = typeof displayPrice === 'string' ? parseFloat(displayPrice.replace(/[^0-9.]/g, '')) || 0 : displayPrice;
-    
-    // Apply promo code discount if valid and registration is eligible
-    if (promoCodeValid && activePromoCode) {
-      if (isEligibleForPromoDiscount(registration, activePromoCode.eligibleTicketTypes)) {
-        numericPrice = numericPrice * (1 - activePromoCode.discountPercentage / 100); // Apply discount percentage
-      }
-    }
-    
-    return numericPrice;
-  };
+
 
   const handlePaymentSuccess = (paymentIntentId: string) => {
     setApiError(null); // Clear any previous payment errors
@@ -1886,7 +2083,7 @@ const RegistrationModal = ({
           </div>
         </div>
       )}
-      <div className="relative mx-auto p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white overflow-y-auto max-h-[90vh]">
+      <div className="relative mx-auto p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white overflow-y-auto h-fit max-h-[100vh] sm:max-h-[90vh]">
         {attendeeCountStep ? renderAttendeeCountStep() : showConfirmationView && confirmationData ? (
           // Confirmation View
           <div className="text-center">
@@ -1904,8 +2101,8 @@ const RegistrationModal = ({
         ) : (
           // Main Registration Flow
           <>
-            <div className="flex justify-between items-center pb-3 mb-4 border-b">
-              <h3 className="text-xl font-semibold text-gray-900">
+            <div className="flex justify-between items-center pb-3 border-b">
+              <h3 className="text-base sm:text-xl font-semibold text-gray-900">
                 {isCheckout ? `Register for ${event.title}` : `Select Tickets for ${event.title}`}
               </h3>
               <button
@@ -1934,9 +2131,9 @@ const RegistrationModal = ({
 
             {!isCheckout ? (
               // Ticket Selection View
-              <div className="flex flex-col h-[70vh]">
+              <div className="flex flex-col h-fit">
                 {/* Category tabs */}
-                <div className="flex border-b mb-4 text-base flex-col sm:flex-row">
+                <div className="flex border-b mb-4 flex-col sm:flex-row text-sm sm:text-base">
                   <button
                     onClick={() => setActiveCategory('ticket')}
                     className={`flex items-center px-4 py-2 ${activeCategory === 'ticket' ? 'border-l-2 sm:border-b-2 sm:border-l-0 border-indigo-600 text-indigo-600' : 'text-gray-500'}`}
@@ -1968,12 +2165,19 @@ const RegistrationModal = ({
 
                 <div className="flex-grow overflow-y-auto">
                   {/* Show tickets when activeCategory is 'ticket' */}
-                  {activeCategory === 'ticket' && allRegistrations.filter(reg => reg.isActive).map(reg => (
-                    <div key={reg.id} className="mb-4 p-4 border rounded-lg shadow-sm">
-                      <div className="flex items-center">
-                        <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} <span className="hidden sm:inline text-gray-500">-</span></h4>
-                        <PriceDisplay registration={reg} />
-                      </div>
+                  {activeCategory === 'ticket' && allRegistrations.filter(reg => reg.isActive).map(reg => {
+                    const ticketIsExpired = isTicketExpired(reg);
+                    return (
+                      <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${ticketIsExpired ? 'opacity-75 bg-gray-200' : ''}`}>
+                        <div className="flex items-center">
+                          <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} <span className="hidden sm:inline text-gray-500">-</span></h4>
+                          <PriceDisplay registration={reg} />
+                          {ticketIsExpired && (
+                            <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                              SOLD OUT
+                            </span>
+                          )}
+                        </div>
                       {reg.perks && reg.perks.length > 0 && (
                         <ul className="list-none text-sm text-gray-500 mb-2">
                           {reg.perks.map((perk, index) => (
@@ -1997,19 +2201,21 @@ const RegistrationModal = ({
                         </span>
                         <button
                           onClick={() => handleIncrement(reg.id, reg.type)}
-                          disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
+                          disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isTicketExpired(reg) || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
                           className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                         >
                           +
                         </button>
                       </div>
                       {renderValidationUI(reg)}
+                      {renderCodeValidationUI(reg)}
                     </div>
-                  ))}
+                    )
+                  })}
 
                   {/* Show exhibitors when activeCategory is 'exhibit' */}
                   {activeCategory === 'exhibit' && exhibitors.filter(reg => reg.isActive).map(reg => {
-                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id);
+                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id) || isTicketExpired(reg);
                     return (
                       <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut ? 'opacity-75 bg-gray-200' : ''}`}>
                         <div className="flex items-center">
@@ -2060,7 +2266,7 @@ const RegistrationModal = ({
 
                   {/* Show sponsorships when activeCategory is 'sponsorship' */}
                   {activeCategory === 'sponsorship' && sponsorships.filter(reg => reg.isActive).map(reg => {
-                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id);
+                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id) || isTicketExpired(reg);
                     return (
                       <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut ? 'opacity-75 bg-gray-200' : ''}`}>
                         <div className="flex justify-between items-start">
@@ -2125,21 +2331,11 @@ const RegistrationModal = ({
                           {allRegistrations
                             .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
                             .map(reg => {
-                              const price = getEffectivePrice(reg);
-                              const formattedPrice = typeof price === 'string' ? price : `$${price.toFixed(2)}`;
-                              const total = price as number * (ticketQuantities[reg.id] || 0);
-                              if (typeof price === 'string') {
-                                return (
-                                  <li key={reg.id} className="flex justify-between">
-                                    <span>{reg.name} × {ticketQuantities[reg.id]}</span>
-                                    <span>{formattedPrice}</span>
-                                  </li>
-                                );
-                              }
+                              const quantity = ticketQuantities[reg.id] || 0;
                               return (
-                                <li key={reg.id} className="flex justify-between">
-                                  <span>{reg.name} × {ticketQuantities[reg.id]}</span>
-                                  <span>${total.toLocaleString()}</span>
+                                <li key={reg.id} className="flex justify-between items-center">
+                                  <span>{reg.name} × {quantity}</span>
+                                  {renderPriceDisplay(reg, quantity)}
                                 </li>
                               );
                             })}
@@ -2155,13 +2351,11 @@ const RegistrationModal = ({
                           {exhibitors
                             .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
                             .map(reg => {
-                              const price = getEffectivePrice(reg);
-                              const formattedPrice = typeof price === 'string' ? price : `$${price.toFixed(2)}`;
-                              const total = price as number * (ticketQuantities[reg.id] || 0);
+                              const quantity = ticketQuantities[reg.id] || 0;
                               return (
-                                <li key={reg.id} className="flex justify-between">
-                                  <span>{reg.name} × {ticketQuantities[reg.id]}</span>
-                                  <span>${total.toLocaleString()}</span>
+                                <li key={reg.id} className="flex justify-between items-center">
+                                  <span>{reg.name} × {quantity}</span>
+                                  {renderPriceDisplay(reg, quantity)}
                                 </li>
                               );
                             })}
@@ -2177,13 +2371,11 @@ const RegistrationModal = ({
                           {sponsorships
                             .filter(reg => (ticketQuantities[reg.id] || 0) > 0)
                             .map(reg => {
-                              const price = getEffectivePrice(reg);
-                              const formattedPrice = typeof price === 'string' ? price : `$${price.toFixed(2)}`;
-                              const total = price as number * (ticketQuantities[reg.id] || 0);
+                              const quantity = ticketQuantities[reg.id] || 0;
                               return (
-                                <li key={reg.id} className="flex justify-between">
-                                  <span>{reg.name} × {ticketQuantities[reg.id]}</span>
-                                  <span>${total.toLocaleString()}</span>
+                                <li key={reg.id} className="flex justify-between items-center">
+                                  <span>{reg.name} × {quantity}</span>
+                                  {renderPriceDisplay(reg, quantity)}
                                 </li>
                               );
                             })}

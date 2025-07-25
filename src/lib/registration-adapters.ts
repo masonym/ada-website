@@ -59,10 +59,14 @@ export interface AdapterModalRegistrationType extends ModalRegistrationType {
   maxQuantityPerOrder: number;
   category: 'ticket' | 'exhibit' | 'sponsorship';
   requiresValidation?: boolean; // New flag for special validation
+  requiresCode?: boolean; // Flag for code validation
+  validationCode?: string; // The required code
+  codeValidationMessage?: string; // Custom message for code validation
   // Add any other fields that might be needed
   colour?: string;
   sponsorPasses?: number; // Number of attendee passes included with this sponsorship
   shownOnRegistrationPage?: boolean;
+  saleEndTime?: string;
 };
 
 /**
@@ -96,7 +100,11 @@ export function getRegistrationsForEvent(eventId: number | string): AdapterModal
     quantityAvailable: reg.quantityAvailable,
     maxQuantityPerOrder: reg.maxQuantityPerOrder,
     category: 'ticket',
+    requiresCode: reg.requiresCode,
+    validationCode: reg.validationCode,
+    codeValidationMessage: reg.codeValidationMessage,
     shownOnRegistrationPage: reg.shownOnRegistrationPage,
+    saleEndTime: reg.saleEndTime,
   }));
 }
 

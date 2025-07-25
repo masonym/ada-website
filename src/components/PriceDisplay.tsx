@@ -16,7 +16,7 @@ const PriceDisplay: React.FC<PriceDisplayProps> = ({ registration, className = '
 
   return (
     <div className={className}>
-      <div className="text-lg font-semibold flex flex-wrap items-center">
+      <div className="text-lg font-semibold flex flex-wrap items-center justify-center">
         <span className={`${priceInfo.priceClasses} mr-2`}>
           {priceInfo.displayPrice}
         </span>

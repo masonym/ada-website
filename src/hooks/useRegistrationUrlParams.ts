@@ -7,6 +7,7 @@ export interface RegistrationUrlParams {
   openModal: boolean;
   activeTab?: 'ticket' | 'exhibit' | 'sponsorship';
   selectedRegistrationId?: string;
+  promoCode?: string;
 }
 
 /**
@@ -24,6 +25,7 @@ export function useRegistrationUrlParams(): RegistrationUrlParams {
     const register = searchParams?.get('register');
     const tab = searchParams?.get('tab');
     const registrationId = searchParams?.get('registration');
+    const promo = searchParams?.get('promo');
 
     // Process register parameter
     const shouldOpenModal = register === 'true';
@@ -38,7 +40,8 @@ export function useRegistrationUrlParams(): RegistrationUrlParams {
     setParams({
       openModal: shouldOpenModal,
       activeTab,
-      selectedRegistrationId: registrationId || undefined
+      selectedRegistrationId: registrationId || undefined,
+      promoCode: promo || undefined
     });
   }, [searchParams]);
 

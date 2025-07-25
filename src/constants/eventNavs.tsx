@@ -123,5 +123,18 @@ export const EVENT_NAVS = [
         ],
       },
     ],
-  }
+  },
+  {
+    eventId: 6, // 2026NMCPC
+    items: [
+      { label: 'Event Overview', path: '/' },
+      {
+        label: 'Sponsors & Exhibitors',
+        subItems: [
+          { label: "Sponsorship Opportunities", path: 'sponsorship-opportunities' },
+          { label: "Exhibitor Opportunities", path: 'exhibitor-opportunities' },
+        ],
+      },
+    ],
+  },
 ];

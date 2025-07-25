@@ -79,13 +79,13 @@ const MatchmakingPage = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-[92rem] mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header Section */}
       <div className="text-center mb-6">
         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
           Matchmaking Sessions
         </h1>
-        <p className="text-lg text-slate-600 max-w-7xl mx-auto">
+        <p className="text-lg text-slate-600 max-w-[92rem] mx-auto">
           The <b>{event.title}</b> will offer a special opportunity for attendees to engage in One-on-One appointments with representatives and subject matter experts from the Department of Defense (DoD), Government Agencies, and Prime Contractors.
         </p>
         <div className="text-lg mt-4 mx-auto max-w-7xl text-slate-600">
@@ -147,7 +147,7 @@ const MatchmakingPage = () => {
             <div>
               <h3 className="font-semibold mb-2">Networking and Information Exchange</h3>
               <p className="text-gray-200">
-                Matchmaking Sessions foster collaboration, creating a platform for businesses to form valuable partnerships, discuss subcontracting opportunities, and explore teaming opportunities that align with the needs of the defense industry.
+                Matchmaking Sessions foster collaboration, creating a platform for businesses to form valuable partnerships, discuss subcontracting opportunities, and explore teaming opportunities that align defense needs with industry capabilities.
               </p>
             </div>
           </div>

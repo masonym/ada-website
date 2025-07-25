@@ -40,6 +40,7 @@ export interface ModalRegistrationType {
   sponsorPasses?: number;
   requiresValidation?: boolean;
   slotsPerEvent?: number; // Number of available slots for this event sponsorship
+  saleEndTime?: string; // ISO timestamp when ticket sales should end (ticket becomes "Sold Out")
 };
 
 

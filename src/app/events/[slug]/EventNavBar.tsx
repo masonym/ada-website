@@ -63,7 +63,7 @@ export default function Navbar() {
     }
 
     return (
-        <nav className="sticky top-0 z-40 py-3">
+        <nav className="z-40 py-3">
             <div className="mx-auto px-2 sm:px-4 lg:px-8">
                 {/* Main Navigation - Always Visible */}
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center lg:gap-4">

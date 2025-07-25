@@ -28,6 +28,7 @@ export interface VipNetworkingReception {
     locationPhoto?: string;
     locationPhone?: string;
     website?: string;
+    locationRoom?: string;
 }
 
 export interface Sale {
@@ -81,10 +82,15 @@ export interface VIPReceptionProps {
         locationPhoto?: string;
         locationPhone: string;
         website: string;
+        locationRoom?: string;
 }
 
 export interface EventFeatures {
     showKeynoteSpeaker?: boolean;
+    keynoteSpeakers?: Array<{
+        speakerId: string;
+        headerText: string;
+    }>;
     // add stuff here later. these are flags to hide or show certain components in our dynamic route page
 }
 
@@ -93,6 +99,7 @@ export interface Event {
     title: string;
     date: string;
     timeStart: string;
+    timeEnd: string;
     description: string;
     eventText: ReactNode;
     aboutEventText?: ReactNode;

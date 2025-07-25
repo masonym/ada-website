@@ -83,5 +83,9 @@ module.exports = {
     'text-navy-800',
     'text-navy-900',
     'text-indigo-800',
+    'bg-[#ffaf00]',
+    'bg-[#C0C0C0]',
+    'bg-[#3FB4E6]',
+    'bg-[#CD7F32]'
   ]
 };

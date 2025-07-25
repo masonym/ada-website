@@ -78,13 +78,6 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.itgonline.com/",
     size: 'medium'
   },
-  "avery-group": {
-    id: "avery-group",
-    name: "The Avery Group",
-    logo: "/sponsors/avery-group.webp",
-    website: "https://theaverygroupllc.com/",
-    size: 'medium'
-  },
   "pmb-machine-works": {
     id: "pmb-machine-works",
     name: "PMB Machine Works",
@@ -633,7 +626,7 @@ export const SPONSORS: Record<string, Sponsor> = {
     id: "marzen-group-llc",
     name: "Marzen Group, LLC",
     logo: "/sponsors/marzen-group-llc.webp",
-    website: "https://www.marzen-group.com/",
+    website: "https://www.marzen.com/",
     size: 'small'
   },
   "rite-in-the-rain": {
@@ -796,6 +789,27 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/gov-solutions.webp",
     website: "https://govsolutionsinc.com/",
     size: 'small'
+  },
+  "isn-corp": {
+    id: "isn-corp",
+    name: "Information Systems & Networks Corp.",
+    logo: "/sponsors/isn-corp.webp",
+    website: "https://www.isncorp.com/",
+    size: 'small'
+  },
+  "neptune-shield": {
+    id: "neptune-shield",
+    name: "Neptune SHIELD Tech Hub",
+    logo: "/sponsors/neptune-shield.webp",
+    website: "https://neptuneshield.com/",
+    size: 'small'
+  },
+  "finley-asphalt-concrete": {
+    id: "finley-asphalt-concrete",
+    name: "Finley Asphalt & Concrete",
+    logo: "/sponsors/finley-asphalt-concrete.webp",
+    website: "https://www.finleyasphalt.com/",
+    size: 'small'
   }
 };
 
@@ -828,3 +842,4 @@ export const SPONSOR_SIZES = {
     maxHeight: 400
   }
 };
+

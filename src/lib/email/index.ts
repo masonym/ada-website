@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
-import { getEnv } from '../env';
+import { getServerEnv } from '../env';
 
-const env = getEnv();
+const env = getServerEnv();
 const resend = new Resend(env.RESEND_API_KEY);
 
 interface EmailParams {
