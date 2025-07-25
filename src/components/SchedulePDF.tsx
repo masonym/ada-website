@@ -159,20 +159,13 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     marginTop: 2,
   },
-  twoColumnContainer: {
+  columnsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   column: {
     width: '48%',
-  },
-  columnLeft: {
-    width: '48%',
-    marginRight: '2%',
-  },
-  columnRight: {
-    width: '48%',
-    marginLeft: '2%',
+    flexDirection: 'column',
   },
   footer: {
     position: 'absolute',
@@ -252,7 +245,6 @@ const SchedulePDF = ({
 
               const imageSrc = speakerData.photo ? getPDFImageUrl(speakerData.photo) : null;
               
-              console.log(speakerData)
               return (
                 <View key={speakerIndex} style={styles.speaker}>
                   {imageSrc && (
@@ -284,76 +276,132 @@ const SchedulePDF = ({
     </View>
   );
 
-  // Helper function to distribute items across columns vertically (downwards)
-  const distributeItemsInColumns = (items: ScheduleItem[]) => {
-    if (!twoColumnLayout) {
-      return { leftColumn: items, rightColumn: [] };
-    }
 
-    const leftColumn: ScheduleItem[] = [];
-    const rightColumn: ScheduleItem[] = [];
-    
-    // Calculate midpoint to split items vertically
-    const midpoint = Math.ceil(items.length / 2);
-    
-    // Fill left column with first half of items
-    for (let i = 0; i < midpoint; i++) {
-      leftColumn.push(items[i]);
-    }
-    
-    // Fill right column with second half of items
-    for (let i = midpoint; i < items.length; i++) {
-      rightColumn.push(items[i]);
-    }
-    
-    return { leftColumn, rightColumn };
+
+
+
+  // --- Newspaper-Style Column Pagination Logic ---
+
+  const A4_HEIGHT = 1000;
+  const PAGE_MARGIN_TOP = 30;
+  const PAGE_MARGIN_BOTTOM = 40; // Space for footer
+  const HEADER_HEIGHT = 60;
+  const DAY_HEADER_HEIGHT = 30;
+  const CONTENT_HEIGHT = A4_HEIGHT - PAGE_MARGIN_TOP - PAGE_MARGIN_BOTTOM - HEADER_HEIGHT - DAY_HEADER_HEIGHT;
+
+  const estimateLineHeight = (text: string, width: number, fontSize: number) => {
+    const charsPerLine = width / (fontSize * 0.6);
+    return Math.ceil(text.length / charsPerLine);
   };
+
+  const estimateItemHeight = (item: ScheduleItem) => {
+    let height = 14; // Base for padding/margin
+
+    const contentWidth = 400; // Estimated width of content column in points
+
+    height += estimateLineHeight(item.title, contentWidth, 10) * 12;
+    if (item.description) {
+      height += estimateLineHeight(item.description, contentWidth, 9) * 11;
+    }
+    if (showLocations && item.location) {
+      height += 12;
+    }
+    if (showSpeakers && item.speakers && item.speakers.length > 0) {
+      item.speakers.forEach(speakerId => {
+        const speaker = resolveSpeaker(speakerId);
+        height += 24; // Approx height for speaker photo + text
+        if (speaker.title) height += 10;
+        if (speaker.affiliation) height += 10;
+      });
+    }
+    return height;
+  };
+
+  const paginateDays = () => {
+    const paginatedData: { date: string; pages: { left: ScheduleItem[]; right: ScheduleItem[] }[] }[] = [];
+
+    filteredSchedule.forEach(day => {
+      if (!twoColumnLayout) {
+        paginatedData.push({ date: day.date, pages: [{ left: day.items, right: [] }] });
+        return;
+      }
+
+      const pages: { left: ScheduleItem[]; right: ScheduleItem[] }[] = [];
+      let currentPage: { left: ScheduleItem[]; right: ScheduleItem[] } = { left: [], right: [] };
+      let currentLeftHeight = 0;
+      let currentRightHeight = 0;
+      let currentColumn: 'left' | 'right' = 'left';
+
+      day.items.forEach(item => {
+        const itemHeight = estimateItemHeight(item);
+
+        if (currentColumn === 'left') {
+          if (currentLeftHeight + itemHeight > CONTENT_HEIGHT) {
+            currentColumn = 'right'; // Switch to right column
+          }
+        }
+
+        if (currentColumn === 'right') {
+          if (currentRightHeight + itemHeight > CONTENT_HEIGHT) {
+            // Page is full, start a new one
+            pages.push(currentPage);
+            currentPage = { left: [], right: [] };
+            currentLeftHeight = 0;
+            currentRightHeight = 0;
+            currentColumn = 'left';
+          }
+        }
+
+        if (currentColumn === 'left') {
+          currentPage.left.push(item);
+          currentLeftHeight += itemHeight;
+        } else {
+          currentPage.right.push(item);
+          currentRightHeight += itemHeight;
+        }
+      });
+
+      if (currentPage.left.length > 0 || currentPage.right.length > 0) {
+        pages.push(currentPage);
+      }
+
+      paginatedData.push({ date: day.date, pages });
+    });
+
+    return paginatedData;
+  };
+
+  const paginatedSchedule = paginateDays();
 
   return (
     <Document>
-      {filteredSchedule.map((day, dayIndex) => {
-        const { leftColumn, rightColumn } = distributeItemsInColumns(day.items);
-        
-        return (
-          <Page key={day.date} size="A4" style={styles.page}>
-            {/* Header on each page */}
+      {paginatedSchedule.map(day =>
+        day.pages.map((page, pageIndex) => (
+          <Page key={`${day.date}-${pageIndex}`} size="A4" style={styles.page}>
             <View style={styles.header}>
-              <Text style={styles.title}>
-                {customTitle || `${event.title} Schedule`}
-              </Text>
+              <Text style={styles.title}>{customTitle || `${event.title} Schedule`}</Text>
               {(customSubtitle || event.date) && (
-                <Text style={styles.subtitle}>
-                  {customSubtitle || event.date}
-                </Text>
+                <Text style={styles.subtitle}>{customSubtitle || event.date}</Text>
               )}
             </View>
-            
-            {/* Day header */}
+
             <Text style={styles.dayHeader}>{day.date}</Text>
-            
-            {/* Content layout */}
-            {twoColumnLayout ? (
-              <View style={styles.twoColumnContainer}>
-                <View style={styles.columnLeft}>
-                  {leftColumn.map((item, index) => renderScheduleItem(item, index))}
-                </View>
-                <View style={styles.columnRight}>
-                  {rightColumn.map((item, index) => renderScheduleItem(item, index + leftColumn.length))}
-                </View>
+
+            <View style={styles.columnsContainer}>
+              <View style={styles.column}>
+                {page.left.map((item, index) => renderScheduleItem(item, index))}
               </View>
-            ) : (
-              <View>
-                {day.items.map((item, index) => renderScheduleItem(item, index))}
+              <View style={styles.column}>
+                {page.right.map((item, index) => renderScheduleItem(item, index))}
               </View>
-            )}
-            
-            {/* Footer */}
+            </View>
+
             <View style={styles.footer}>
               <Text>Presented by American Defense Alliance • americandefensealliance.org</Text>
             </View>
           </Page>
-        );
-      })}
+        ))
+      )}
     </Document>
   );
 };
