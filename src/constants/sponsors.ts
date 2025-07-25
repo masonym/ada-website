@@ -78,13 +78,6 @@ export const SPONSORS: Record<string, Sponsor> = {
     website: "https://www.itgonline.com/",
     size: 'medium'
   },
-  "avery-group": {
-    id: "avery-group",
-    name: "The Avery Group",
-    logo: "/sponsors/avery-group.webp",
-    website: "https://theaverygroupllc.com/",
-    size: 'medium'
-  },
   "pmb-machine-works": {
     id: "pmb-machine-works",
     name: "PMB Machine Works",
@@ -849,3 +842,4 @@ export const SPONSOR_SIZES = {
     maxHeight: 400
   }
 };
+

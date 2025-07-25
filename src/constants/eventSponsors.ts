@@ -43,7 +43,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "iuvo-systems",
                     "atlas-flags",
                     "itg",
-                    "avery-group",
+                    "the-avery-group",
                     "pmb-machine-works",
                     "redstone",
                     "perimeter",
@@ -237,7 +237,6 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "equipment-share",
                     "dmg-mori",
                     "precision-resource",
-                    // "don-office-of-small-business-programs",
                     "marmc", // this and don osbp are the same thing with diff logos/names
                     "navsup-fleet-logistics-center-norfolk",
                     "norfolk-naval-shipyard",
@@ -260,6 +259,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "neptune-shield",
                     "css-energy",
                     "finley-asphalt-concrete",
+                    "blue-yonder",
                 ],
             },
             {
