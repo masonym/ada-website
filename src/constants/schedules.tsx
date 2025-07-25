@@ -947,7 +947,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "8:30 AM",
-                        title: "Conference Opening",
+                        title: "American Defense Alliance – Conference Launch",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
@@ -959,12 +959,9 @@ export const SCHEDULES = [
                     },
                     {
                         time: "8:35 AM",
-                        title: "Welcoming Remarks – Commonwealth of Virginia & Hampton Roads Alliance",
+                        title: "Welcoming Remarks – Hampton Roads Alliance",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
-                            {
-                                speakerId: "juan-pablo-segura",
-                            },
                             {
                                 speakerId: "jared-chalk",
                             }
@@ -1194,13 +1191,13 @@ export const SCHEDULES = [
                             }
                         ]
                     },
+                    // {
+                    //     time: "8:35 AM",
+                    //     title: "CONGRESSIONAL KEYNOTE ADDRESS II",
+                    //     location: "Norfolk Ballroom (V-VI), Ground Level",
+                    // },
                     {
-                        time: "8:35 AM",
-                        title: "CONGRESSIONAL KEYNOTE ADDRESS II",
-                        location: "Norfolk Ballroom (V-VI), Ground Level",
-                    },
-                    {
-                        time: "8:50 AM",
+                        time: "8:40 AM",
                         title: "How to do Business with the Primes",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
@@ -1222,7 +1219,7 @@ export const SCHEDULES = [
                         ]
                     },
                     {
-                        time: "9:45 AM",
+                        time: "9:40 AM",
                         title: "Industry Insights: Forward Opening Base Mobile Manufacturing",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
@@ -1230,6 +1227,16 @@ export const SCHEDULES = [
                                 speakerId: "paul-wichert",
                                 sponsor: "Gold Sponsor",
                                 sponsorStyle: "bg-[#ffaf00] text-slate-900"
+                            }
+                        ]
+                    },
+                    {
+                        time: "9:55 AM",
+                        title: "Welcoming Remarks – Commonwealth of Virginia",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "juan-pablo-segura",
                             }
                         ]
                     },
@@ -1250,7 +1257,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "11:00 AM",
-                        title: "Geopolitical SITREP: The Military-Energy Nexus",
+                        title: "Geopolitical Threat Assessment – Where We Stand and What Comes Next",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
