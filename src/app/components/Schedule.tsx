@@ -25,7 +25,7 @@ type Speaker = {
 };
 
 // Helper function to resolve speaker data
-const resolveSpeaker = (speaker: Speaker): Speaker => {
+export const resolveSpeaker = (speaker: Speaker): Speaker => {
   if (speaker.speakerId && SPEAKERS[speaker.speakerId]) {
     const speakerData = SPEAKERS[speaker.speakerId];
     return {

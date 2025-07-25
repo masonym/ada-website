@@ -4,6 +4,7 @@ import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Font, PDFDownloadLink, PDFViewer, Image, BlobProvider } from '@react-pdf/renderer';
 import { Event } from '@/types/events';
 import { getCdnPath } from '@/utils/image';
+import { resolveSpeaker } from '@/app/components/Schedule';
 
 // Define schedule types locally since they may not be directly exported from the project
 type Speaker = {
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   page: {
     flexDirection: 'column',
     backgroundColor: '#ffffff',
-    padding: 20,
+    padding: 10,
     fontSize: 10,
   },
   header: {
@@ -231,6 +232,7 @@ const SchedulePDF = ({
           <View style={styles.speakersContainer}>
             {item.speakers.map((speaker, speakerIndex) => {
               // Get PNG image URL for PDF compatibility
+              const speakerData = resolveSpeaker(speaker);
               const getPDFImageUrl = (photo: string) => {
                 if (!photo) return null;
                 
@@ -248,8 +250,9 @@ const SchedulePDF = ({
                 return `https://americandefensealliance.org${pngPath}`;
               };
 
-              const imageSrc = speaker.photo ? getPDFImageUrl(speaker.photo) : null;
+              const imageSrc = speakerData.photo ? getPDFImageUrl(speakerData.photo) : null;
               
+              console.log(speakerData)
               return (
                 <View key={speakerIndex} style={styles.speaker}>
                   {imageSrc && (
@@ -261,12 +264,12 @@ const SchedulePDF = ({
                     </View>
                   )}
                   <View style={styles.speakerInfo}>
-                    <Text style={styles.speakerName}>{speaker.name}</Text>
-                    {speaker.title && (
-                      <Text style={styles.speakerTitle}>{speaker.title}</Text>
+                    <Text style={styles.speakerName}>{speakerData.name}</Text>
+                    {speakerData.title && (
+                      <Text style={styles.speakerTitle}>{speakerData.title}</Text>
                     )}
-                    {speaker.affiliation && (
-                      <Text style={styles.speakerAffiliation}>{speaker.affiliation}</Text>
+                    {speakerData.affiliation && (
+                      <Text style={styles.speakerAffiliation}>{speakerData.affiliation}</Text>
                     )}
                   </View>
                 </View>
