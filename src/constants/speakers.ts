@@ -1145,31 +1145,19 @@ Nick has demonstrated sustained superior performance over a career-long journey 
 		"position": "President and CEO",
 		"company": "Cyber Intelligent Partners",
 		"bio": `
-Mr. Jeff Hoffmann is a CISO certified, dedicated professional with proven performance in certified PMI management, leadership, and communication. Results-oriented, retired war college military veteran with over 20 years of experience in national security, cyber, and urban and rural economic development that began in the United States Senate and Congressional Affairs for the Office of the Secretary of Defense.
-<br/>
-<br/>
-Alongside leadership for CIP, Mr. Hoffmann is an Adjunct Professor for the New York University Global Security, Conflict and Cyber Crime Graduate STEM program. His specific course is partnered with the EC Council C|TIA. Mr. Hoffmann is a graduate of the NYU Tandon School of Engineering Chief Information Security Officer (CISO) Executive Leadership program. He also sits on an Advisory Board for the Virginia Department of Education, which is updating standards of learning (SOL) for Computer Science in public schools. This includes improvement and addition of cybersecurity SOL goals.
-<br/>
-<br/>
-In 2017, (as a private sector trusted agent for the U.S. government), Mr. Hoffmann was awarded by the Office of the Director of National Intelligence (ODNI) for managing the mission engagement portfolio for a four-year priority technology modernization initiative called IC-ITE. This transformational effort advanced data analytics, including open-source techniques and Artificial Intelligence (AI)/machine learning, leveraged multi-agency cloud computing, and expanded collection tradecraft. Results of this work were written into first-ever Intelligence Community Mission Capabilities Strategic Guidance.
-<br/>
-<br/>
-For ODNI, he was also a contributing author for two National Intelligence Council annual cyber threat assessments and a representative on the Cyber Threat Intelligence Integration Center Cybercrime Working Group.
-<br/>
-<br/>
-Mr. Hoffmann has received corporate awards for work on proposals valued over $15 billion for intelligence services and was a contributor to an RFP for White House Office of Science & Technology (S&T) alternative GPS/6G solutions.
-<br/>
-<br/>
-In 2021, Mr. Hoffmann returned from the United Kingdom where he designed cyber threat intelligence (CTI) and information and communication technologies (ICT) analysis, counterintelligence, and targeting capabilities for the U.S. European Command.
-<br/>
-<br/>
-Prior to ownership of CIP, Mr. Hoffmann was the Regional Cyber Lead for the Defense Security Cooperation Agency Institute for Security Governance. In this capacity, he led teams to advise foreign partner cyber command elements, Presidential staff/council members, interagency, and Ministry of Defense groups on incident response, workforce development, critical infrastructure, crisis planning, and security operations center infrastructure.
-<br/>
-<br/>
-In earlier years of his career, Mr. Hoffmann was employed by the U.S. government for seven years managing initiatives, missions, and projects across air, space, and cyberspace and a director for a multi-million U.S. Department of Agriculture program that provided economic development. These included programs that led to jobs, workforce development, such as CTE and other community improvement initiatives – many with direct impacts to public schools.
-<br/>
-<br/>
-Mr. Hoffmann has a strong academic background in cyber and digital transformation, to include research with the University of Oxford Global Cyber Security Capacity Center in England and recipient of the Oxford Saïd Business School Executive AI certification in program management.
+Mr. Jeff Hoffmann is a retired war college military veteran with over 25 years of public and private experience in national security, cyber, and economic development that began in the United States Senate and congressional affairs for the Under Secretary of Defense for Acquisition & Technology. Other early acquisition certified work included Deputy Assistant Secretary of the Army for Defense Exports and Cooperation, OPNAV N7-F Warfighting Integration, Navy IPO, and the F-35 Joint Program Office.
+<br/><br/>
+In private sector capacity, for The Lafayette Group, he serves as a manager for the Department of Homeland Security/Cybersecurity and Infrastructure Security Agency and is an Adjunct Instructor for the New York University Global Security, Conflict and Cyber Crime Graduate STEM program.
+<br/><br/>
+Mr. Hoffmann is also the President and CEO of Virginia-based Cyber Intelligent Partners LLC, which received two outstanding leader awards in Las Vegas, NV at the Education and CXO 2.0 Conferences in 2023 and 2024 for cyber and digital transformation solutions. He has been a cyber panelist at other events, most recently for the Homeland Security Conference at Christopher Newport News University and for the fourth Danube Institute - Heritage Foundation Geopolitical Summit in Budapest, Hungary.
+<br/><br/>
+In 2021, Mr. Hoffmann returned from the United Kingdom where he designed cyber threat intelligence analysis, counterintelligence, and targeting capabilities for the U.S. European Command. He is the former Regional Cyber Lead for a U.S. defense program that advised foreign partner cyber command elements, Presidential staff/council members, interagency, and Ministry of Defense groups on incident response, cyber intelligence fusion, workforce development, protection of critical infrastructure, crisis planning, and security operations center infrastructure. Mr. Hoffmann continues this capacity building as a part-time instructor for the DoD Cyber Workforce Development course.
+<br/><br/>
+In 2017, he was awarded by the Office of the Director of National Intelligence for managing a four-year technology modernization initiative that advanced data analytics and open-source techniques through new innovations such as Artificial Intelligence (AI). He was a contributing author for two National Intelligence Council annual cyber threat assessments and a representative on the CTI Integration Center Cybercrime working group. For the U.S. government from 2008-2015, Mr. Hoffmann led missions and activities across air, space, and cyberspace in Europe, the Pacific, and Middle East with successful operations reported in the President's Daily Brief. He was a contributor for corporate proposals valued over $15 billion and other requests for information, including a White House Office of Science & Technology alternative GPS/6G project.
+<br/><br/>
+Mr. Hoffmann completed the NYU Tandon School of Engineering Chief Information Security Officer (CISO) certification program in 2024 and in 2007, received a M.S., International Commerce, Policy & Security from George Mason University. He published additional research on cyber terrorism for the University of Oxford Global Cyber Security Capacity Center and on emerging technology competition for a University of Cambridge/Kings College London program chaired by the former Head of the British Secret Intelligence Service (MI6).
+<br/><br/>
+Mr. Hoffmann completed work on an Advisory Board for the Virginia Department of Education, which updated standards of learning for Computer Science in K-12 public schools and is a member of the Northern Virginia Technology Council.
 	`
 	},
 	"daniel-hudson": {
