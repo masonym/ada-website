@@ -957,6 +957,9 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
+                                speakerId: "juan-pablo-segura",
+                            },
+                            {
                                 speakerId: "jared-chalk",
                             }
                         ]

@@ -1388,6 +1388,29 @@ Professor Diehl has had engagements Instructing at NATO's Defense Against Terror
     "name": "Brian Wilson",
     "position": "Director of Strategic Solutions",
     "company": "MAG Aerospace",
+  },
+  "juan-pablo-segura": {
+    "image": "juan-pablo-segura.webp",
+    "name": "Juan Pablo Segura",
+    "position": "Secretary of Commerce and Trade",
+    "company": "Commonwealth of Virginia",
+    "bio": `Juan Pablo Segura is the Secretary of Commerce and Trade for the Commonwealth of Virginia.  He oversees 13 agencies with 1,300 team members and a $3B budget.  Juan Pablo leads economic growth through a variety of initiatives and agencies to generate an environment that makes Virginia the best place to start, grow, or relocate a business.  Agencies include the Virginia Economic Development Partnership, the Virginia Innovation Partnership Corporation, Virginia Housing, Virginia Energy, Activation Capital, Small Business Finance Authority, and Virginia Tourism. 
+	<br/>
+	
+	<br/>
+	Juan Pablo is a Virginia native and has spent a majority of his career focused on starting businesses and transforming antiquated industries. Juan Pablo is one of the founders of Babyscripts, a next generation maternity monitoring company that over the last 10 years has become one of the largest maternity management platforms in the world, recently being named one of the 150 most innovative healthcare technology companies in the world by CB Insights.
+	<br/>
+	
+	<br/>
+	Since 2014, Juan Pablo has been named a Healthcare Transformer by the Startup Health Academy in New York, a Wireless Lifechanger by CTIA for his work in detecting problems in pregnancy faster, selected as a finalist for the EY Entrepreneur Of The Year 2019 Mid-Atlantic Award, and named to the inaugural class of the Greater Washington Hispanic Chamber of Commerce’s Hispanic Business Hall of Fame. Juan Pablo is the architect of the first "Prenatal Care Moonshot" focused on eliminating maternal mortality by 2030 through mobile/digital technology, and Babyscripts has been named a Champion of Change in Precision Medicine by Barack Obama and the White House. Juan Pablo has raised more than $40 million in venture/strategic financing for furthering his vision of a data centric model in prenatal care. He has orchestrated large partnerships that include investments from Cigna Healthcare, Philips International, General Electric and their Healthymagination initiative and the March of Dimes, specifically targeting the elimination of premature birth. 
+	<br/>
+	
+	<br/>
+	Juan Pablo is also involved locally in the nonprofit space. He is on the board of Youth for Tomorrow, was on the board of Volunteers of America, the Business School at Catholic University, and the Spanish Catholic Center in Washington DC. 
+	<br/>
+	
+	<br/>
+	Juan Pablo is a CPA holder and a proud graduate of the University of Notre Dame. He currently resides in Henrico, Virginia with his wife Cecilia and sons Luca and Teodoro.`,
   }};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
@@ -1499,6 +1522,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"andrew-gardner",
 		"dr-steven-wills",
 		"brad-williamson",
+		"juan-pablo-segura",
 		// "brian-wilson",
 	]
 };
