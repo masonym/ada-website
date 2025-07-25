@@ -953,7 +953,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "8:35 AM",
-                        title: "Welcoming Remarks – Commonwealth of Virginia & Hampton Roads Alliance",
+                        title: "Welcoming Remarks – Hampton Roads Alliance",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
