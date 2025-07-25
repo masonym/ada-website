@@ -18,6 +18,10 @@ foreach ($file in $webpFiles) {
     $baseName = [System.IO.Path]::GetFileNameWithoutExtension($file.Name)
     $targetFile = Join-Path $targetDir "$baseName.png"
     
+    if (Test-Path $targetFile) {
+        Write-Host "Skipping $($file.Name), PNG already exists."
+        continue
+    }
     Write-Host "Converting $($file.Name) to PNG..."
     
     # Using ImageMagick (install with: winget install ImageMagick.ImageMagick)
