@@ -1141,7 +1141,7 @@ Nick has demonstrated sustained superior performance over a career-long journey 
 	},
 	"jeffrey-hoffman": {
 		"image": "jeffrey-hoffman.webp",
-		"name": "Jeffrey Hoffman",
+		"name": "Jeffrey Hoffmann",
 		"position": "President and CEO",
 		"company": "Cyber Intelligent Partners",
 		"bio": `
