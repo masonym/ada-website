@@ -782,7 +782,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 		"image": "andrew-gardner.webp",
 		"name": "Andrew Gardner",
 		"position": "Chief Executive Officer",
-		"company": "Crux Defense and Partner, NADWC Combat Capabilities Factory",
+		"company": "Crux Defense and Partner, NADWC Combat Capability Factory",
 		"bio": `Andrew Gardner is CEO of Crux Defense, a partner with the National All-Domain Warfighting Center's Combat Capabilities Factory.  The purpose of the Combat Capabilities Factory is to Integrate, Fund and Field Warfighting Capabilities through Experiment-Driven Exercises.  Leveraging these innovations, Crux is able to help companies cross the DoD's innovation valley of death and ensure that the best capabilities get into the hands of the warfighter.`,
 	}
 	,
