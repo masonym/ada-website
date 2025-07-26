@@ -910,7 +910,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	"christopher-m-haar": {
 		"image": "christopher-m-haar.webp",
 		"name": "Brigadier General Christopher M. Haar",
-		"position": "Assistant Deputy Commandant, Combat Development and Integration/Deputy Commanding General",
+		"position": "Assistant Deputy Commandant, Combat Development and Integration & Deputy Commanding General",
 		"company": "Marine Corps Combat Development Command",
 		"bio": `Brigadier General Haar is a pastor’s son from the Midwest, growing up in Minnesota and Kansas. He enlisted in the Marine Corps in 1991 and was promoted to Staff Sergeant before being commissioned in 1998.  He was designated as a Combat Engineer Officer.  He assumed his current position as Deputy Commanding General, Marine Corps Combat Development Command and Director, Joint and Naval Integration Directorate, Combat Development and Integration in May 2025.
 	<br/>
@@ -1162,7 +1162,7 @@ Mr. Hoffmann completed work on an Advisory Board for the Virginia Department of 
 	},
 	"daniel-hudson": {
 		"image": "daniel-hudson.webp",
-		"name": "Dan Hudson",
+		"name": "Daniel Hudson",
 		"position": "Senior Technology Director",
 		"company": "HII Mission Technologies",
 		"bio": `
