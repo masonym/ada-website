@@ -241,7 +241,7 @@ export function generateVipNetworkingReceptionHtml(
       <p><strong>Who's Invited:</strong> Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.</p>
       <p><strong>Location:</strong> ${vipNetworkingReception.locationName}, ${vipNetworkingReception.locationAddress}</p>
       <p><strong>Date:</strong> ${vipNetworkingReception.date} from ${vipNetworkingReception.timeStart} to ${vipNetworkingReception.timeEnd}</p>
-      <p>${vipNetworkingReception.additionalInfo}</p>
+      ${vipNetworkingReception.additionalInfo ? `<p>${vipNetworkingReception.additionalInfo}</p>` : ''}
     </div>
   `;
 }
