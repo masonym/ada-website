@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 4,
-    color: '#0047AB',
+    color: '#58799c',
   },
   subtitle: {
     fontSize: 12,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     color: '#666666',
   },
   dayHeader: {
-    backgroundColor: '#0047AB',
+    backgroundColor: '#58799c',
     color: 'white',
     padding: 6,
     fontSize: 12,
