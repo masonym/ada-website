@@ -437,7 +437,7 @@ const SchedulePDF = ({
     <Document>
       {paginatedSchedule.map(day =>
         day.pages.map((page, pageIndex) => (
-          <Page key={`${day.date}-${pageIndex}`} size="A4" style={styles.page}>
+          <Page key={`${day.date}-${pageIndex}`} size="LETTER" style={styles.page}>
             <View style={styles.header}>
               <Text style={styles.title}>{customTitle || `${event.title} Schedule`}</Text>
               {(customSubtitle || event.date) && (
