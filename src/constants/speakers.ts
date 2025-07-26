@@ -910,7 +910,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	"christopher-m-haar": {
 		"image": "christopher-m-haar.webp",
 		"name": "Brigadier General Christopher M. Haar",
-		"position": "Assistant Deputy Commandant, Combat Development and Integration/Deputy Commanding General",
+		"position": "Assistant Deputy Commandant, Combat Development and Integration & Deputy Commanding General",
 		"company": "Marine Corps Combat Development Command",
 		"bio": `Brigadier General Haar is a pastor’s son from the Midwest, growing up in Minnesota and Kansas. He enlisted in the Marine Corps in 1991 and was promoted to Staff Sergeant before being commissioned in 1998.  He was designated as a Combat Engineer Officer.  He assumed his current position as Deputy Commanding General, Marine Corps Combat Development Command and Director, Joint and Naval Integration Directorate, Combat Development and Integration in May 2025.
 	<br/>
@@ -1035,7 +1035,7 @@ Ms. Plath's naval decorations include the Navy Commendation Medal (two awards), 
 		"image": "paul-wichert.webp",
 		"name": "Paul Wichert",
 		"position": "VP of Sales",
-		"company": "DMG Mori Federal Services",
+		"company": "DMG MORI Federal Services",
 		"bio": `Paul Wichert is a 45-year veteran of the manufacturing industry. His experience is multi-faceted, Operational Executive of machine tool builders, Owner/Operator of contract machining services business, President of manufacturing facilities in US, China & Taiwan. Importing and consulting in global manufacturing. Currently he is working with DMG MORI Federal Services (DMFS). DMFS is the representative for DMG MORI, the leader in innovative metal cutting 3D Metal Printing and Hybrid machine tools.`,
 	},
 	"vice-admiral-richard-w-hunt": {
@@ -1162,7 +1162,7 @@ Mr. Hoffmann completed work on an Advisory Board for the Virginia Department of 
 	},
 	"daniel-hudson": {
 		"image": "daniel-hudson.webp",
-		"name": "Dan Hudson",
+		"name": "Daniel Hudson",
 		"position": "Senior Technology Director",
 		"company": "HII Mission Technologies",
 		"bio": `
@@ -1356,7 +1356,7 @@ Professor Diehl has had engagements Instructing at NATO's Defense Against Terror
 
   "brad-williamson": {
     "image": "brad-williamson.webp",
-    "name": "Brad Williamson, RADM, USN (Ret.)",
+    "name": "Brad Williamson, RDML (Ret.)",
     "position": "President & CEO",
     "company": "Perrarus Solutions, Inc.",
     "bio": `Rear Admiral (Ret.) Brad Williamson is a 1985 graduate of the United States Naval Academy.  He received a Master of Science in National Security Strategy from the National War College in 2001 and completed Executive Education at Harvard’s John F. Kennedy School and University of Virginia’s Darden School.
