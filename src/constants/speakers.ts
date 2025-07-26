@@ -1034,7 +1034,7 @@ Ms. Plath's naval decorations include the Navy Commendation Medal (two awards), 
 	"paul-wichert": {
 		"image": "paul-wichert.webp",
 		"name": "Paul Wichert",
-		"position": "Vice President, Sales",
+		"position": "Vice President Sales",
 		"company": "DMG MORI Federal Services",
 		"bio": `Paul Wichert is a 45-year veteran of the manufacturing industry. His experience is multi-faceted, Operational Executive of machine tool builders, Owner/Operator of contract machining services business, President of manufacturing facilities in US, China & Taiwan. Importing and consulting in global manufacturing. Currently he is working with DMG MORI Federal Services (DMFS). DMFS is the representative for DMG MORI, the leader in innovative metal cutting 3D Metal Printing and Hybrid machine tools.`,
 	},
