@@ -952,7 +952,7 @@ export const SCHEDULES = [
                         ]
                     },
                     {
-                        time: "8:35 AM",
+                        time: "8:40 AM",
                         title: "Welcoming Remarks – Hampton Roads Alliance",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
@@ -1185,13 +1185,23 @@ export const SCHEDULES = [
                             }
                         ]
                     },
+                    {
+                        time: "8:35 AM",
+                        title: "Geopolitical Threat Assessment – Where We Stand and What Comes Next",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        speakers: [
+                            {
+                                speakerId: "anthony-livanios"
+                            }
+                        ]
+                    },
                     // {
                     //     time: "8:35 AM",
                     //     title: "CONGRESSIONAL KEYNOTE ADDRESS II",
                     //     location: "Norfolk Ballroom (V-VI), Ground Level",
                     // },
                     {
-                        time: "8:40 AM",
+                        time: "9:00 AM",
                         title: "How to do Business with the Primes",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
@@ -1213,7 +1223,7 @@ export const SCHEDULES = [
                         ]
                     },
                     {
-                        time: "9:40 AM",
+                        time: "9:50 AM",
                         title: "Industry Insights: Forward Opening Base Mobile Manufacturing",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
@@ -1225,7 +1235,7 @@ export const SCHEDULES = [
                         ]
                     },
                     {
-                        time: "9:55 AM",
+                        time: "10:05 AM",
                         title: "Welcoming Remarks – Commonwealth of Virginia",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
@@ -1235,12 +1245,12 @@ export const SCHEDULES = [
                         ]
                     },
                     {
-                        time: "10:00 AM",
+                        time: "10:20 AM",
                         title: "Networking Break with Exhibitors",
                         location: "Norfolk Ballroom (I-IV), Ground Level"
                     },
                     {
-                        time: "10:30 AM",
+                        time: "10:50 AM",
                         title: "From the Small Business Front Line: Streamlined Acquisition Examples",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
@@ -1250,17 +1260,7 @@ export const SCHEDULES = [
                         ]
                     },
                     {
-                        time: "11:00 AM",
-                        title: "Geopolitical Threat Assessment – Where We Stand and What Comes Next",
-                        location: "Norfolk Ballroom (V-VI), Ground Level",
-                        speakers: [
-                            {
-                                speakerId: "anthony-livanios"
-                            }
-                        ]
-                    },
-                    {
-                        time: "11:25 AM",
+                        time: "11:20 AM",
                         title: "Procurement Strategies for Navy Port Security & Cyber Protection",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
@@ -1284,7 +1284,7 @@ export const SCHEDULES = [
                         ]
                     },
                     {
-                        time: "12:05 PM",
+                        time: "12:00 PM",
                         title: "Using Mentor-Protégé Partnerships to Drive the ‘Combat Capability Factory’",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
