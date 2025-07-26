@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 12,
-    marginBottom: 8,
+    marginBottom: 2,
     color: '#666666',
   },
   dayHeader: {
@@ -83,14 +83,15 @@ const styles = StyleSheet.create({
   },
   scheduleItem: {
     flexDirection: 'row',
-    marginBottom: 8,
-    paddingBottom: 6,
+    marginBottom: 2,
+    paddingBottom: 0,
+    marginTop: 4,
     breakInside: 'avoid',
     pageBreakInside: 'avoid',
   },
   timeColumn: {
-    width: '18%',
-    paddingRight: 8,
+    width: '20%',
+    paddingRight: 6,
     flexShrink: 0,
   },
   contentColumn: {
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     lineHeight: 1.2,
   },
   description: {
-    fontSize: 8,
+    fontSize: 9,
     marginBottom: 3,
     lineHeight: 1.3,
     color: '#333333',
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
   },
   speaker: {
     fontSize: 8,
-    marginBottom: 3,
+    marginBottom: 2,
     color: '#444444',
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -143,21 +144,32 @@ const styles = StyleSheet.create({
     marginBottom: 1,
   },
   speakerTitle: {
-    fontSize: 7,
+    fontSize: 8,
     fontStyle: 'italic',
     color: '#666666',
     marginBottom: 1,
   },
   speakerAffiliation: {
-    fontSize: 7,
+    fontSize: 8,
     fontWeight: 'bold',
     color: '#0047AB',
+  },
+  speakerSponsor: {
+    fontSize: 8,
+    color: '#fff',
+    backgroundColor: '#dc2626', // Default red background
+    paddingHorizontal: 4,
+    paddingVertical: 1,
+    borderRadius: 2,
+    marginTop: 2,
+    alignSelf: 'flex-start',
   },
   location: {
     fontSize: 8,
     color: '#666666',
     fontStyle: 'italic',
-    marginTop: 2,
+    marginTop: 1,
+    marginBottom: 2,
   },
   columnsContainer: {
     flexDirection: 'row',
@@ -168,22 +180,63 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   footer: {
-    position: 'absolute',
-    bottom: 20,
-    left: 20,
-    right: 20,
+    // position: 'absolute',
+    // bottom: 20,
+    // left: 20,
+    // right: 20,
     textAlign: 'center',
     fontSize: 8,
     color: '#666666',
-    borderTopWidth: 0.5,
-    borderTopColor: '#CCCCCC',
-    paddingTop: 5,
+    // borderTopWidth: 0.5,
+    // borderTopColor: '#CCCCCC',
+    marginTop: 2,
+    marginBottom: 2,
   },
 });
 
 Font.registerHyphenationCallback((word) => {
   return [word];
 });
+
+// Function to convert Tailwind CSS classes to PDF styles
+const convertSponsorStyleToPDF = (sponsorStyle?: string) => {
+  if (!sponsorStyle) {
+    return {
+      backgroundColor: '#dc2626', // Default red
+      color: '#fff'
+    };
+  }
+
+  let backgroundColor = '#dc2626'; // Default red
+  let color = '#fff'; // Default white text
+
+  // Parse background colors
+  if (sponsorStyle.includes('bg-red-999')) {
+    backgroundColor = '#dc2626'; // Red
+  } else if (sponsorStyle.includes('bg-sky-300')) {
+    backgroundColor = '#7dd3fc'; // Sky blue
+  } else if (sponsorStyle.includes('bg-gray-300')) {
+    backgroundColor = '#d1d5db'; // Gray
+  } else if (sponsorStyle.includes('bg-[#ffaf00]')) {
+    backgroundColor = '#ffaf00'; // Gold/Yellow
+  } else if (sponsorStyle.includes('bg-[#CD7F32]')) {
+    backgroundColor = '#CD7F32'; // Bronze
+  } else if (sponsorStyle.includes('bg-navy-800')) {
+    backgroundColor = '#000080'; // Dark slate
+  }
+
+  // Parse text colors
+  if (sponsorStyle.includes('text-slate-900')) {
+    color = '#0f172a'; // Dark slate
+  } else if (sponsorStyle.includes('text-white')) {
+    color = '#fff'; // White
+  }
+
+  return {
+    backgroundColor,
+    color
+  };
+};
 
 // Schedule PDF Document Component
 const SchedulePDF = ({ 
@@ -263,6 +316,12 @@ const SchedulePDF = ({
                     {speakerData.affiliation && (
                       <Text style={styles.speakerAffiliation}>{speakerData.affiliation}</Text>
                     )}
+                    {speakerData.sponsor && (
+                      <Text style={{
+                        ...styles.speakerSponsor,
+                        ...convertSponsorStyleToPDF(speakerData.sponsorStyle)
+                      }}>{speakerData.sponsor}</Text>
+                    )}
                   </View>
                 </View>
               );
@@ -282,7 +341,7 @@ const SchedulePDF = ({
 
   // --- Newspaper-Style Column Pagination Logic ---
 
-  const A4_HEIGHT = 1000;
+  const A4_HEIGHT = 750;
   const PAGE_MARGIN_TOP = 30;
   const PAGE_MARGIN_BOTTOM = 40; // Space for footer
   const HEADER_HEIGHT = 60;
@@ -295,7 +354,7 @@ const SchedulePDF = ({
   };
 
   const estimateItemHeight = (item: ScheduleItem, prevItem?: ScheduleItem) => {
-    let height = 14; // Base for padding/margin
+    let height = 0; // Base for padding/margin
 
     const contentWidth = 400; // Estimated width of content column in points
 
@@ -304,14 +363,14 @@ const SchedulePDF = ({
       height += estimateLineHeight(item.description, contentWidth, 9) * 11;
     }
     if (showLocations && item.location && item.location !== prevItem?.location) {
-      height += 12;
+      height += 10;
     }
     if (showSpeakers && item.speakers && item.speakers.length > 0) {
       item.speakers.forEach(speakerId => {
         const speaker = resolveSpeaker(speakerId);
-        height += 24; // Approx height for speaker photo + text
-        if (speaker.title) height += 10;
-        if (speaker.affiliation) height += 10;
+        height += 20; // Approx height for speaker photo + text
+        if (speaker.title) height += 8;
+        if (speaker.affiliation) height += 8;
       });
     }
     return height;
@@ -385,8 +444,19 @@ const SchedulePDF = ({
                 <Text style={styles.subtitle}>{customSubtitle || event.date}</Text>
               )}
             </View>
+            <View style={styles.footer}>
+              <Text>Presented by American Defense Alliance • americandefensealliance.org</Text>
+            </View>
 
-            <Text style={styles.dayHeader}>{day.date}</Text>
+            <Text style={styles.dayHeader}>
+              {new Date(day.date).toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </Text>
+
 
             <View style={styles.columnsContainer}>
               <View style={styles.column}>
@@ -402,9 +472,6 @@ const SchedulePDF = ({
               </View>
             </View>
 
-            <View style={styles.footer}>
-              <Text>Presented by American Defense Alliance • americandefensealliance.org</Text>
-            </View>
           </Page>
         ))
       )}

@@ -608,7 +608,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "9:20 AM",
-                        "title": "Using Mentor-Protégé Partnerships to Drive the Combat Capability Factory",
+                        "title": "Using Mentor-Protégé Partnerships to Drive the Combat Capabilities Factory",
 
                         "speakers": [{
                             "name": "Andrew Gardner",
@@ -969,13 +969,13 @@ export const SCHEDULES = [
                     },
                     {
                         time: "9:00 AM",
-                        title: "CONGRESSIONAL KEYNOTE ADDRESS I",
+                        title: "CONGRESSIONAL KEYNOTE ADDRESS",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "representative-rob-wittman",
                                 sponsor: "Pre-Recorded Address",
-                                sponsorStyle: "bg-gray-300",
+                                sponsorStyle: "bg-gray-300 text-slate-900",
                             }
                         ]
                     },
@@ -996,7 +996,7 @@ export const SCHEDULES = [
                         speakers: [
                             {
                                 speakerId: "roger-camp",
-                                sponsor: "Platinum Sponsor",
+                                sponsor: "Platinum Sponsor and Panel Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900",
                             },
                             {
@@ -1031,7 +1031,9 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "erica-h-plath"
+                                speakerId: "erica-h-plath",
+                                sponsor: "Keynote Speaker and Panel Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
                             },
                             {
                                 speakerId: "philip-hart-cullom"
@@ -1120,7 +1122,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "charles-sills",
                                 sponsor: "Panel Moderator",
-                                sponsorStyle: "bg-red-999",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
                             },
                             {
                                 speakerId: "terressa-bebout"
@@ -1162,7 +1164,7 @@ export const SCHEDULES = [
                         time: "6:00 PM - 8:00 PM",
                         title: "VIP Networking Reception",
                         description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
-                        location: "The Harbor Club, Waterside District. 333 Waterside Dr Suite 200, Norfolk, VA 23510",
+                        location: "The Harbor Club, 333 Waterside Drive, Suite 200, Norfolk VA 23510",
                     },
                 ],
             },
@@ -1212,7 +1214,9 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "diane-dempsey"
+                                speakerId: "diane-dempsey",
+                                sponsor: "Panel Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
                             },
                             {
                                 speakerId: "katina-adams"
@@ -1230,7 +1234,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "9:50 AM",
-                        title: "Industry Insights: Forward Opening Base Mobile Manufacturing",
+                        title: "Industry Insights: Forward Operating Base Mobile Manufacturing",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
@@ -1273,7 +1277,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "charles-sills",
                                 sponsor: "Panel Moderator",
-                                sponsorStyle: "bg-red-999",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
                             },
                             {
                                 speakerId: "joel-coulter"

@@ -1035,7 +1035,7 @@ Ms. Plath's naval decorations include the Navy Commendation Medal (two awards), 
 		"image": "paul-wichert.webp",
 		"name": "Paul Wichert",
 		"position": "VP of Sales",
-		"company": "DMG Mori Federal Services",
+		"company": "DMG MORI Federal Services",
 		"bio": `Paul Wichert is a 45-year veteran of the manufacturing industry. His experience is multi-faceted, Operational Executive of machine tool builders, Owner/Operator of contract machining services business, President of manufacturing facilities in US, China & Taiwan. Importing and consulting in global manufacturing. Currently he is working with DMG MORI Federal Services (DMFS). DMFS is the representative for DMG MORI, the leader in innovative metal cutting 3D Metal Printing and Hybrid machine tools.`,
 	},
 	"vice-admiral-richard-w-hunt": {
@@ -1356,7 +1356,7 @@ Professor Diehl has had engagements Instructing at NATO's Defense Against Terror
 
   "brad-williamson": {
     "image": "brad-williamson.webp",
-    "name": "Brad Williamson, RADM, USN (Ret.)",
+    "name": "Brad Williamson, RDML (Ret.)",
     "position": "President & CEO",
     "company": "Perrarus Solutions, Inc.",
     "bio": `Rear Admiral (Ret.) Brad Williamson is a 1985 graduate of the United States Naval Academy.  He received a Master of Science in National Security Strategy from the National War College in 2001 and completed Executive Education at Harvard’s John F. Kennedy School and University of Virginia’s Darden School.
