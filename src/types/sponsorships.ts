@@ -25,6 +25,7 @@ export interface Sponsorship {
     buttonLink?: string;
     earlyBirdPrice?: number;
     earlyBirdDeadline?: string;
+    saleEndTime?: string;
     description?: string;
     isActive?: boolean;
     requiresAttendeeInfo?: boolean;
@@ -40,6 +41,7 @@ export interface AdditionalPassType {
     title?: string;
     description?: string;
     price?: number;
+    saleEndTime?: string;
     headerImage?: string;
     buttonText?: string;
     maxQuantityPerOrder?: number;

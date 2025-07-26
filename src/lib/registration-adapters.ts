@@ -27,6 +27,7 @@ export interface SponsorshipType {
   id: string;
   title: string;
   cost: number | string;
+  saleEndTime?: string;
   perks?: PerkType[];
   colour?: string;
   sponsorPasses?: number; // Number of attendee passes included with this sponsorship
@@ -153,6 +154,7 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
       title: sponsor.title,
       description: `${sponsor.title} Sponsorship Package`,
       price: sponsor.cost,
+      saleEndTime: sponsor.saleEndTime, 
       isActive: true,
       requiresAttendeeInfo: true,
       isGovtFreeEligible: false,
@@ -264,6 +266,7 @@ export function getExhibitorsForEvent(eventId: number | string): AdapterModalReg
       price: exhibitor.cost,
       earlyBirdPrice: exhibitor.earlyBirdPrice,
       earlyBirdDeadline: exhibitor.earlyBirdDeadline,
+      saleEndTime: exhibitor.saleEndTime,
       isActive: exhibitor.isActive ?? true,
       requiresAttendeeInfo: exhibitor.requiresAttendeeInfo ?? true,
       isGovtFreeEligible: exhibitor.isGovtFreeEligible ?? false,

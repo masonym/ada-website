@@ -23,6 +23,7 @@ export interface ExhibitorType {
     buttonLink?: string;
     earlyBirdPrice?: number;
     earlyBirdDeadline?: string;
+    saleEndTime?: string;
     description?: string;
     isActive?: boolean;
     requiresAttendeeInfo?: boolean;
