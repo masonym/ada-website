@@ -273,6 +273,11 @@ export const SCHEDULES = [
                         "location": "Galleria Level, Pre-Function",
                     },
                     {
+                        "time": "8:30 AM - 4:00 PM",
+                        "title": "Matchmaking Sign-up",
+                        "location": "Galleria 4",
+                    },
+                    {
                         "time": "8:30 AM",
                         "title": "Conference Opening Remarks",
                         "speakers": [
@@ -286,7 +291,7 @@ export const SCHEDULES = [
                                 "videoId": "M1FmtrcHE5s",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "8:35 AM",
@@ -300,7 +305,7 @@ export const SCHEDULES = [
                                 "videoId": "8mJzEcUiAIs",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "8:45 AM",
@@ -315,7 +320,7 @@ export const SCHEDULES = [
                                 "videoId": "IqJep-z-nPY",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "9:20 AM",
@@ -338,7 +343,7 @@ export const SCHEDULES = [
                                 "videoId": "O-IXLwNwtW4",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "10:00 AM",
@@ -352,7 +357,7 @@ export const SCHEDULES = [
                                 "videoId": "1nBA5FCs0Wg",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "10:35 AM",
@@ -374,7 +379,7 @@ export const SCHEDULES = [
                                 "videoId": "zDu7nwf2NkA",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "11:20 AM",
@@ -390,7 +395,7 @@ export const SCHEDULES = [
                                 "videoId": "WQ5oQzWY2JE"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "11:30 AM",
@@ -405,7 +410,7 @@ export const SCHEDULES = [
                                 "videoId": "mWIgkwu0-GI",
                             },
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "12:10 PM",
@@ -440,7 +445,7 @@ export const SCHEDULES = [
                             //    //"photo": "bailey-bickley.webp"
                             //}
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "12:30 PM",
@@ -466,7 +471,7 @@ export const SCHEDULES = [
                                 "photo": "cliff-holbeck.webp",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "2:30 PM",
@@ -481,7 +486,7 @@ export const SCHEDULES = [
                                 "videoId": "uflobAWpy6g"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "3:10 PM",
@@ -520,7 +525,7 @@ export const SCHEDULES = [
                             //    "photo": "austin-johnson.webp"
                             //}
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "3:45 PM",
@@ -533,7 +538,7 @@ export const SCHEDULES = [
                                 "photo": "charles-sills.webp"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "4:00 PM - 5:30 PM",
@@ -559,6 +564,7 @@ export const SCHEDULES = [
                     {
                         "time": "8:30 AM",
                         "title": "Welcome Back Remarks",
+                        "location": "Galleria 4",
                         "speakers": [
                             {
                                 "name": "Charles F. Sills",
@@ -569,7 +575,7 @@ export const SCHEDULES = [
                                 "sponsorStyle": "bg-red-999",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "8:35 AM",
@@ -585,12 +591,12 @@ export const SCHEDULES = [
                                 "videoId": "UK3HO8I25-o",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "8:45 AM",
                         "title": "Artificial Intelligence — Impact on Defense Acquisition",
-                        "location": "Galleria 4",
+
                         "speakers": [{
                             "name": "Amir Bagherpour, PhD",
                             "title": "Managing Director and Analytics & Visualization Lead for Data & AI",
@@ -602,8 +608,8 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "9:20 AM",
-                        "title": "Using Mentor-Protégé Partnerships to Drive the Combat Capability Factory",
-                        "location": "Galleria 4",
+                        "title": "Using Mentor-Protégé Partnerships to Drive the Combat Capabilities Factory",
+
                         "speakers": [{
                             "name": "Andrew Gardner",
                             "title": "Chief Executive Officer",
@@ -625,7 +631,7 @@ export const SCHEDULES = [
                                 "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Brent_D._Sadler.pdf",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "10:15 AM",
@@ -639,7 +645,7 @@ export const SCHEDULES = [
                                 "videoId": "mqxg3IjE7CM",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     //{
                     //    "time": "10:40 AM",
@@ -667,7 +673,7 @@ export const SCHEDULES = [
                                 "videoId": "cM0UYZQCsJs",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "11:00 AM",
@@ -682,7 +688,7 @@ export const SCHEDULES = [
                                 "videoId": "OhPg2CIopu0",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "11:30 AM",
@@ -704,7 +710,7 @@ export const SCHEDULES = [
                                 "photo": "james-simpson.webp"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "11:45 AM",
@@ -719,7 +725,7 @@ export const SCHEDULES = [
                                 "videoId": "_4WTRx-h8Dc",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     //{
                     //    "time": "11:40 AM",
@@ -756,7 +762,7 @@ export const SCHEDULES = [
                     //        //    "photo": "cindy-readal.webp"
                     //        //}
                     //    ],
-                    //    "location": "Galleria 4",
+                    //    
                     //},
                     //{
                     //    "time": "12:15 PM",
@@ -781,7 +787,7 @@ export const SCHEDULES = [
                     //        //    "photo": "shynta-hudson.webp"
                     //        //}
                     //    ],
-                    //    "location": "Galleria 4",
+                    //    
                     //}, 
                     {
                         "time": "12:15 PM",
@@ -796,7 +802,7 @@ export const SCHEDULES = [
                                 "videoId": "OYMq4CEnh9c",
                             }
                         ],
-                        "location": "Galleria 4",
+
                     },
                     {
                         "time": "12:30 PM",
@@ -809,7 +815,7 @@ export const SCHEDULES = [
                                 "photo": "charles-sills.webp"
                             }
                         ],
-                        "location": "Galleria 4",
+
                     }
                 ]
             }
@@ -963,13 +969,13 @@ export const SCHEDULES = [
                     },
                     {
                         time: "9:00 AM",
-                        title: "CONGRESSIONAL KEYNOTE ADDRESS I",
+                        title: "CONGRESSIONAL KEYNOTE ADDRESS",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
                                 speakerId: "representative-rob-wittman",
                                 sponsor: "Pre-Recorded Address",
-                                sponsorStyle: "bg-gray-300",
+                                sponsorStyle: "bg-gray-300 text-slate-900",
                             }
                         ]
                     },
@@ -990,7 +996,7 @@ export const SCHEDULES = [
                         speakers: [
                             {
                                 speakerId: "roger-camp",
-                                sponsor: "Platinum Sponsor",
+                                sponsor: "Platinum Sponsor and Panel Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900",
                             },
                             {
@@ -1025,7 +1031,9 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "erica-h-plath"
+                                speakerId: "erica-h-plath",
+                                sponsor: "Keynote Speaker and Panel Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
                             },
                             {
                                 speakerId: "philip-hart-cullom"
@@ -1114,7 +1122,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "charles-sills",
                                 sponsor: "Panel Moderator",
-                                sponsorStyle: "bg-red-999",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
                             },
                             {
                                 speakerId: "terressa-bebout"
@@ -1156,7 +1164,7 @@ export const SCHEDULES = [
                         time: "6:00 PM - 8:00 PM",
                         title: "VIP Networking Reception",
                         description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
-                        location: "The Harbor Club, Waterside District. 333 Waterside Dr Suite 200, Norfolk, VA 23510",
+                        location: "The Harbor Club, 333 Waterside Drive, Suite 200, Norfolk VA 23510",
                     },
                 ],
             },
@@ -1206,7 +1214,9 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "diane-dempsey"
+                                speakerId: "diane-dempsey",
+                                sponsor: "Panel Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
                             },
                             {
                                 speakerId: "katina-adams"
@@ -1224,7 +1234,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "9:50 AM",
-                        title: "Industry Insights: Forward Opening Base Mobile Manufacturing",
+                        title: "Industry Insights: Forward Operating Base Mobile Manufacturing",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
@@ -1267,7 +1277,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "charles-sills",
                                 sponsor: "Panel Moderator",
-                                sponsorStyle: "bg-red-999",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
                             },
                             {
                                 speakerId: "joel-coulter"
