@@ -6,7 +6,7 @@ import { Event } from '@/types/events';
 import ModalVideo from 'react-modal-video';
 import 'react-modal-video/css/modal-video.css';
 import { getCdnPath } from '@/utils/image';
-import { SPEAKERS } from '@/constants/speakers';
+import { SPEAKERS, Speaker as SpeakerData } from '@/constants/speakers';
 
 type Speaker = {
   name?: string; // Optional when using speakerId
@@ -68,12 +68,14 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
 }) => {
   const [selectedDay, setSelectedDay] = useState(0);
   const [isVideoOpen, setVideoOpen] = useState(false);
-  const [currentVideoId, setCurrentVideoId] = useState<string>('');
-  const [currentStartTime, setCurrentStartTime] = useState<number | null>(null);
+  const [currentVideoId, setCurrentVideoId] = useState<string | null>(null);
+  const [currentStartTime, setCurrentStartTime] = useState<number | undefined>(undefined);
+  const [isSpeakerModalOpen, setSpeakerModalOpen] = useState(false);
+  const [selectedSpeaker, setSelectedSpeaker] = useState<SpeakerData | null>(null);
 
   const handleMediaClick = (
-    type: 'presentation' | 'video',
-    link?: string,
+    type: 'video' | 'presentation',
+    url?: string,
     videoId?: string,
     startTime?: number
   ) => {
@@ -82,13 +84,27 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
       return;
     }
 
-    if (type === 'presentation' && link) {
-      window.open(link, '_blank');
-    } else if (type === 'video' && videoId) {
+    if (type === 'video' && videoId) {
       setCurrentVideoId(videoId);
-      setCurrentStartTime(startTime || null);
+      setCurrentStartTime(startTime);
       setVideoOpen(true);
+    } else if (type === 'presentation' && url) {
+      window.open(url, '_blank');
     }
+  };
+
+  const handleSpeakerClick = (speaker: Speaker) => {
+    const resolvedSpeaker = resolveSpeaker(speaker);
+    // Only open modal if we have speaker data with bio
+    if (resolvedSpeaker.speakerId && SPEAKERS[resolvedSpeaker.speakerId]) {
+      setSelectedSpeaker(SPEAKERS[resolvedSpeaker.speakerId]);
+      setSpeakerModalOpen(true);
+    }
+  };
+
+  const closeSpeakerModal = () => {
+    setSpeakerModalOpen(false);
+    setSelectedSpeaker(null);
   };
 
   // if day 0 has only 1 item, select day 1
@@ -109,7 +125,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
         channel="youtube"
         youtube={{ mute: 0, autoplay: 1, start: currentVideoId && currentStartTime ? currentStartTime : 0 } as any}
         isOpen={isVideoOpen}
-        videoId={currentVideoId}
+        videoId={currentVideoId || ''}
         onClose={() => setVideoOpen(false)}
       />
 
@@ -169,7 +185,18 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                       const resolvedSpeaker = resolveSpeaker(speaker);
                       return (
                         <div key={speakerIndex} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                          <div className="flex items-center flex-grow">
+                          <div 
+                            className="flex items-center flex-grow cursor-pointer hover:bg-gray-200 rounded-lg p-2 -m-2 transition-colors duration-200"
+                            onClick={() => handleSpeakerClick(speaker)}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                handleSpeakerClick(speaker);
+                              }
+                            }}
+                          >
                             {resolvedSpeaker.photo && (
                               <Image
                                 src={getCdnPath(`speakers/${resolvedSpeaker.photo}`)}
@@ -180,9 +207,17 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                               />
                             )}
                             <div>
-                              <div className="font-semibold text-lg md:block flex flex-col">{resolvedSpeaker.name} <span className={`w-fit rounded-lg md:mx-1 text-sm px-2 py-1 ${resolvedSpeaker.sponsorStyle}`}>{resolvedSpeaker.sponsor}</span></div>
+                              <div className="font-semibold text-lg md:block flex flex-col">
+                                {resolvedSpeaker.name} 
+                                <span className={`w-fit rounded-lg md:mx-1 text-sm px-2 py-1 ${resolvedSpeaker.sponsorStyle}`}>
+                                  {resolvedSpeaker.sponsor}
+                                </span>
+                              </div>
                               {resolvedSpeaker.title && <div className="text-sm text-gray-600" dangerouslySetInnerHTML={{ __html: resolvedSpeaker.title }}></div>}
                               {resolvedSpeaker.affiliation && <div className="text-sm text-gray-600">{resolvedSpeaker.affiliation}</div>}
+                              {resolvedSpeaker.speakerId && SPEAKERS[resolvedSpeaker.speakerId]?.bio && (
+                                <div className="text-xs text-blue-600 mt-1">Click to view bio</div>
+                              )}
                             </div>
                           </div>
 
@@ -233,6 +268,65 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
           ))}
         </div>
       </div>
+
+      {/* Speaker Bio Modal */}
+      {isSpeakerModalOpen && selectedSpeaker && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          onClick={closeSpeakerModal}
+        >
+          <div 
+            className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+              <h2 className="text-2xl font-bold text-navy-800">Speaker Bio</h2>
+              <button
+                onClick={closeSpeakerModal}
+                className="text-gray-500 hover:text-gray-700 text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+                aria-label="Close modal"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6">
+              <div className="flex flex-col md:flex-row gap-6">
+                {/* Speaker Photo */}
+                <div className="flex-shrink-0">
+                  <div className="w-48 h-48 mx-auto md:mx-0">
+                    <Image
+                      src={getCdnPath(`speakers/${selectedSpeaker.image}`)}
+                      alt={selectedSpeaker.name}
+                      width={192}
+                      height={192}
+                      className="rounded-lg object-cover w-full h-full"
+                    />
+                  </div>
+                </div>
+
+                {/* Speaker Info */}
+                <div className="flex-grow">
+                  <h3 className="text-3xl font-bold text-navy-800 mb-2">{selectedSpeaker.name}</h3>
+                  <div className="text-lg text-gray-700 mb-2" dangerouslySetInnerHTML={{ __html: selectedSpeaker.position }}></div>
+                  <div className="text-lg text-gray-600 mb-4">{selectedSpeaker.company}</div>
+                  
+                  {selectedSpeaker.bio && (
+                    <div className="prose prose-lg max-w-none">
+                      <div 
+                        className="text-gray-700 leading-relaxed"
+                        dangerouslySetInnerHTML={{ __html: selectedSpeaker.bio }}
+                      ></div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
