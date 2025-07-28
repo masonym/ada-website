@@ -153,7 +153,7 @@ const initialBillingInfo: BillingInfo = {
 };
 
 // Helper function to check if registration is closed
-const isRegistrationClosed = (event: EventWithContact, daysBeforeToClose: number = 1): boolean => {
+const isRegistrationClosed = (event: EventWithContact, daysBeforeToClose: number = -1): boolean => {
   // Parse event start date and time from ISO format: "YYYY-MM-DDT00:00:00Z"
   const eventStartDateTime = new Date(event.timeStart);
 
