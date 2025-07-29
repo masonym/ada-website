@@ -55,7 +55,7 @@ In the military, Colonel Cancian spent over three decades in the U.S. Marine Cor
 	"dave-leinberger": {
 		"image": "dave-leinberger.webp",
 		"name": "David Leinberger",
-		"position": "Acting Director, Army Partnerships",
+		"position": "Deputy Director, Army Partnerships",
 		"company": "Deputy Chief of Staff, G-9 (Installations)",
 		"bio": `Dave Leinberger assumed the role as the Chief of Army Community Partnerships in July 2024.In this position, Mr. Leinberger encourages innovation and collaboration between our installations and local communities to develop partnerships that are mutually beneficial, identify cost efficiencies, reduce installation service response times, and strengthens the relationship with the local communities outside our installations. Mr. Leinberger focuses the utilization of collaborative partnership authorities to achieve these goals. These authorities include Intergovernmental Support Agreements (IGSAs), Cooperative Agreements, Mutual Aid Agreements, Memorandum of Understanding, Enhanced Use Lease, and Other Transaction Authority.<br><br>Previously, Mr. Leinberger served as the Army Community Partnership Program Manager, Assistant Chief of Staff for Installation Management, in September 2019 and maintained that role following the ACSIM’s transition to Deputy Chief of Staff, G-9 (Installations).`
 	},
@@ -942,7 +942,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 		"image": "don-mcginnis.webp",
 		"name": "Don McGinnis",
 		"position": "Director, Business Development",
-		"company": "Pioneer Motor Bearing Company",
+		"company": "PMB Machine Works",
 		"bio": `
 		Don began his professional career in the mortgage industry, which naturally evolved into a role in real estate in the mountains of North Carolina. As market conditions shifted, he transitioned into the construction industry, where he spent nearly two decades building a successful career. During that time, he owned and operated his own construction company in a coastal North Carolina community.
 <br/><br/>

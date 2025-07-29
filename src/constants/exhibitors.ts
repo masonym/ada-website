@@ -23,6 +23,7 @@ export interface ExhibitorType {
     buttonLink?: string;
     earlyBirdPrice?: number;
     earlyBirdDeadline?: string;
+    saleEndTime?: string;
     description?: string;
     isActive?: boolean;
     requiresAttendeeInfo?: boolean;
@@ -143,6 +144,7 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                 isGovtFreeEligible: false,
                 slotsPerEvent: 65,
                 showRemaining: true,
+                saleEndTime: "2025-07-29T08:00:00Z",
                 perks: [
                     { formatted: [
                         { content: "Event Access: (1) VIP Attendee Pass", bold: true },

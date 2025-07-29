@@ -199,6 +199,7 @@ export const REGISTRATION_TYPES = [
                 earlyBirdPrice: 495,
                 earlyBirdDeadline: "2025-07-11T04:00:00Z", // midnight ET on July 11th
                 type: "paid",
+                saleEndTime: "2025-07-29T04:00:00Z" // midnight ET on July 29th
             },
 
             {
@@ -243,25 +244,24 @@ export const REGISTRATION_TYPES = [
                 price: "Complimentary",
                 // availabilityInfo: "Limited availability."
             },
-            // TODO: Make this live on July 28th
-            // {
-            //     id: "reception-add-on",
-            //     title: "VIP Networking Reception Add-On",
-            //     description: "Exclusive add-on pass. Requires special access code to register.",
-            //     price: 100,
-            //     headerImage: "vip-reception.webp",
-            //     buttonText: "Add to Cart",
-            //     type: "paid",
-            //     requiresCode: true,  // New property
-            //     validationCode: "RECEPTION0729",  // The required code
-            //     maxQuantityPerOrder: 5,
-            //     saleEndTime: "2025-07-30T04:00:00.000Z",
-            //     perks: [
-            //         "Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM"
-            //     ],
-            //     availabilityInfo: "Access code required."
+            {
+                id: "reception-add-on",
+                title: "VIP Networking Reception Add-On",
+                description: "Exclusive add-on pass. Requires special access code to register.",
+                price: 100,
+                headerImage: "vip-reception.webp",
+                buttonText: "Add to Cart",
+                type: "paid",
+                requiresCode: true,  // New property
+                validationCode: "RECEPTION0729",  // The required code
+                maxQuantityPerOrder: 5,
+                saleEndTime: "2025-07-30T04:00:00.000Z",
+                perks: [
+                    "Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM"
+                ],
+                availabilityInfo: "Access code required."
 
-            // }
+            }
         ],
     },
     {

@@ -335,6 +335,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 requiresAttendeeInfo: true,
                 slotsPerEvent: 3,
                 sponsorPasses: 3,
+                saleEndTime: "2025-07-26T04:00:20.000Z",
                 perks: [
                     { formatted: [
                         { content: "Event Access: (3) VIP Attendee Passes", bold: true },
@@ -378,6 +379,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 requiresAttendeeInfo: true,
                 slotsPerEvent: 3,
                 sponsorPasses: 2,
+                saleEndTime: "2025-07-26T04:00:20.000Z",
                 perks: [
                     { formatted: [
                         { content: "Event Access: (2) VIP Attendee Passes", bold: true },
@@ -421,6 +423,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 requiresAttendeeInfo: true,
                 slotsPerEvent: 1,
                 sponsorPasses: 2,
+                saleEndTime: "2025-07-26T04:00:20.000Z",
                 perks: [
                     { formatted: [
                         { content: "Event Access: (2) VIP Attendee Passes", bold: true },
@@ -466,6 +469,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 requiresAttendeeInfo: true,
                 slotsPerEvent: 2,
                 sponsorPasses: 3,
+                saleEndTime: "2025-07-26T04:00:20.000Z",
                 perks: [
                 { formatted: [
                     { content: "Event Access: (3) VIP Attendee Passes", bold: true },
@@ -513,6 +517,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 slotsPerEvent: 23,
                 requiresAttendeeInfo: true,
                 sponsorPasses: 2,
+                saleEndTime: "2025-07-26T04:00:20.000Z",
                 perks: [
                     { formatted: [
                         { content: "Event Access: (2) VIP Attendee Passes", bold: true },
@@ -542,6 +547,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 requiresAttendeeInfo: true,
                 slotsPerEvent: 20,
                 sponsorPasses: 2,
+                saleEndTime: "2025-07-26T04:00:20.000Z",
                 perks: [
                     { formatted: [
                         { content: "Event Access: (2) VIP Attendee Passes", bold: true },

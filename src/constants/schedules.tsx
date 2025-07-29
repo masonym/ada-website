@@ -964,6 +964,7 @@ export const SCHEDULES = [
                         speakers: [
                             {
                                 speakerId: "jared-chalk",
+                                presentation: "2025 NMCPC - Jared Chalk.pdf",
                             }
                         ]
                     },
@@ -986,6 +987,7 @@ export const SCHEDULES = [
                         speakers: [
                             {
                                 speakerId: "brad-williamson",
+                                presentation: "2025 NMCPC - Brad Williamson.pdf",
                             }
                         ]
                     },
@@ -1022,6 +1024,7 @@ export const SCHEDULES = [
                         speakers: [
                             {
                                 speakerId: "brian-liesveld",
+                                presentation: "2025 NMCPC - Brian Liesveld.pdf",
                             },
                         ]
                     },
@@ -1039,10 +1042,12 @@ export const SCHEDULES = [
                                 speakerId: "philip-hart-cullom"
                             },
                             {
-                                speakerId: "captain-rick-tyler"
+                                speakerId: "captain-rick-tyler",
+                                presentation: "2025 NMCPC - Richard S. Tyler.pdf",
                             },
                             {
-                                speakerId: "stephen-mongold"
+                                speakerId: "stephen-mongold",
+                                presentation: "2025 NMCPC - Captain Steven E. Mongold.pdf",
                             },
                             {
                                 speakerId: "hunter-stires"
@@ -1056,6 +1061,7 @@ export const SCHEDULES = [
                         speakers: [
                             {
                                 speakerId: "kurt-garrett",
+                                presentation: "2025 NMCPC - Kurt Garrett.pdf",
                                 sponsor: "Gold Sponsor",
                                 sponsorStyle: "bg-[#ffaf00] text-slate-900"
                             }
@@ -1072,7 +1078,8 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "daniel-hudson"
+                                speakerId: "daniel-hudson",
+                                presentation: "2025 NMCPC - Daniel Hudson.pdf",
                             },
                             // {
                             //     speakerId: "amir-bagherpour-phd",
@@ -1096,6 +1103,7 @@ export const SCHEDULES = [
                         speakers: [
                             {
                                 speakerId: "don-mcginnis",
+                                presentation: "2025 NMCPC - Don McGinnis.pdf",
                                 sponsor: "Bronze Sponsor",
                                 sponsorStyle: "bg-[#CD7F32] text-slate-900"
                             }
@@ -1107,10 +1115,12 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "dave-leinberger"
+                                speakerId: "dave-leinberger",
+                                presentation: "2025 NMCPC - Dave Leinberger & Brian W. Miller.pdf",
                             },
                             {
-                                speakerId: "brian-w-miller"
+                                speakerId: "brian-w-miller",
+                                presentation: "2025 NMCPC - Dave Leinberger & Brian W. Miller.pdf",
                             }
                         ]
                     },
@@ -1125,10 +1135,11 @@ export const SCHEDULES = [
                                 sponsorStyle: "bg-sky-300 text-slate-900",
                             },
                             {
-                                speakerId: "terressa-bebout"
+                                speakerId: "terressa-bebout",
+                                presentation: "2025 NMCPC - Terressa Bebout.pdf",
                             },
                             {
-                                speakerId: "stacey-l-cooper"
+                                speakerId: "stacey-l-cooper",
                             },
                             {
                                 speakerId: "tiffany-l-trotter"
@@ -1240,7 +1251,8 @@ export const SCHEDULES = [
                             {
                                 speakerId: "paul-wichert",
                                 sponsor: "Gold Sponsor",
-                                sponsorStyle: "bg-[#ffaf00] text-slate-900"
+                                sponsorStyle: "bg-[#ffaf00] text-slate-900",
+                                presentation: "2025 NMCPC - Paul Wichert.pdf",
                             }
                         ]
                     },
@@ -1266,6 +1278,7 @@ export const SCHEDULES = [
                         speakers: [
                             {
                                 speakerId: "aimee-zick",
+                                presentation: "2025 NMCPC - Aimee Zick.pdf",
                             }
                         ]
                     },
@@ -1280,10 +1293,11 @@ export const SCHEDULES = [
                                 sponsorStyle: "bg-sky-300 text-slate-900",
                             },
                             {
-                                speakerId: "joel-coulter"
+                                speakerId: "joel-coulter",
+                                presentation: "2025 NMCPC - Joel Coulter.pdf",
                             },
                             {
-                                speakerId: "nicholas-antonio-rocha"
+                                speakerId: "nicholas-antonio-rocha",
                             },
                             {
                                 speakerId: "jeffrey-hoffman",
@@ -1299,7 +1313,8 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "andrew-gardner"
+                                speakerId: "andrew-gardner",
+                                presentation: "2025 NMCPC - Andrew Gardner.pdf",
                             },
                         ]
                     },

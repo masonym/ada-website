@@ -153,7 +153,7 @@ const initialBillingInfo: BillingInfo = {
 };
 
 // Helper function to check if registration is closed
-const isRegistrationClosed = (event: EventWithContact, daysBeforeToClose: number = 3): boolean => {
+const isRegistrationClosed = (event: EventWithContact, daysBeforeToClose: number = -1): boolean => {
   // Parse event start date and time from ISO format: "YYYY-MM-DDT00:00:00Z"
   const eventStartDateTime = new Date(event.timeStart);
 
@@ -2215,22 +2215,26 @@ const getEffectivePrice = (registration: AdapterModalRegistrationType): number =
 
                   {/* Show exhibitors when activeCategory is 'exhibit' */}
                   {activeCategory === 'exhibit' && exhibitors.filter(reg => reg.isActive).map(reg => {
-                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id) || isTicketExpired(reg);
+                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id);
+                    const isSaleEnded = isTicketExpired(reg);
                     return (
-                      <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut ? 'opacity-75 bg-gray-200' : ''}`}>
+                      <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut || isSaleEnded ? 'opacity-75 bg-gray-200' : ''}`}>
                         <div className="flex items-center">
                           <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} <span className="hidden sm:inline text-gray-500">-</span></h4>
                           <PriceDisplay registration={reg} />
-                          {itemIsSoldOut && (
-                            <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
-                              SOLD OUT
-                            </span>
-                          )}
-                          {!itemIsSoldOut && shouldShowRemaining(reg, EVENT_SPONSORS, event.id) && (
-                            <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                              {getRemainingSlots(reg, EVENT_SPONSORS, event.id)} remaining
-                            </span>
-                          )}
+                            {itemIsSoldOut ? (
+                              <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                                SOLD OUT
+                              </span>
+                            ) : isSaleEnded ? (
+                              <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                SALE ENDED
+                              </span>
+                            ) : shouldShowRemaining(reg, EVENT_SPONSORS, event.id) ? (
+                              <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                {getRemainingSlots(reg, EVENT_SPONSORS, event.id)} remaining
+                              </span>
+                            ) : null}
                         </div>
                         {reg.perks && reg.perks.length > 0 && (
                           <ul className="list-none text-sm text-gray-500 mb-2">
@@ -2253,7 +2257,7 @@ const getEffectivePrice = (registration: AdapterModalRegistrationType): number =
                           </span>
                           <button
                             onClick={() => handleIncrement(reg.id, reg.type)}
-                            disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
+                            disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isSaleEnded || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
                             className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                           >
                             +
@@ -2266,24 +2270,32 @@ const getEffectivePrice = (registration: AdapterModalRegistrationType): number =
 
                   {/* Show sponsorships when activeCategory is 'sponsorship' */}
                   {activeCategory === 'sponsorship' && sponsorships.filter(reg => reg.isActive).map(reg => {
-                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id) || isTicketExpired(reg);
+                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id);
+                    const isSaleEnded = isTicketExpired(reg);
                     return (
-                      <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut ? 'opacity-75 bg-gray-200' : ''}`}>
+                      <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut || isSaleEnded ? 'opacity-75 bg-gray-200' : ''}`}>
                         <div className="flex justify-between items-start">
                           <div className="flex items-center">
-                            <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} <span className="hidden sm:inline text-gray-500">-</span></h4>
+                            <h4 className="text-lg font-medium text-gray-800 mr-2">
+                              {reg.name} <span className="hidden sm:inline text-gray-500">-</span>
+                            </h4>
                             <PriceDisplay registration={reg} />
-                            {itemIsSoldOut && (
+
+                            {itemIsSoldOut ? (
                               <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-200 text-red-800">
                                 SOLD OUT
                               </span>
-                            )}
-                            {!itemIsSoldOut && shouldShowRemaining(reg, EVENT_SPONSORS, event.id) && (
+                            ) : isSaleEnded ? (
+                              <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                SALE ENDED
+                              </span>
+                            ) : shouldShowRemaining(reg, EVENT_SPONSORS, event.id) ? (
                               <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                 {getRemainingSlots(reg, EVENT_SPONSORS, event.id)} remaining
                               </span>
-                            )}
+                            ) : null}
                           </div>
+
                         </div>
                         {reg.perks && reg.perks.length > 0 && (
                           <ul className="list-none text-sm text-gray-500 mb-2">
@@ -2306,7 +2318,7 @@ const getEffectivePrice = (registration: AdapterModalRegistrationType): number =
                           </span>
                           <button
                             onClick={() => handleIncrement(reg.id, reg.type)}
-                            disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
+                            disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isSaleEnded || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
                             className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                           >
                             +

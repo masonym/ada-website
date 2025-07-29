@@ -39,9 +39,30 @@ export const PROMO_CODES: PromoCode[] = [
       'small-business-sponsor', 
       'small-business-sponsor-without-exhibit-space'
     ],
-    eligibleEventIds: [4, 5], // Valid for both 2025NMCPC and 2025DTAPC
+    eligibleEventIds: [4, 5, 6], // Valid for both 2025NMCPC and 2025DTAPC and 2026NMCPC
     expirationDate: new Date('2025-12-31'),
     description: 'ADA20 - 20% off eligible passes and sponsorships for Navy & Marine Corps and Defense Technology conferences',
+    isActive: true
+  },
+  {
+    code: 'ADA10',
+    discountPercentage: 10,
+    eligibleTicketTypes: [
+      'attendee-pass', 
+      'vip-attendee-pass', 
+      'exhibit', 
+      'platinum-sponsor', 
+      'gold-sponsor', 
+      'silver-sponsor', 
+      'bronze-sponsor', 
+      'vip-networking-reception-sponsor', 
+      'networking-luncheon-sponsor', 
+      'small-business-sponsor', 
+      'small-business-sponsor-without-exhibit-space'
+    ],
+    eligibleEventIds: [4, 5, 6], // Valid for both 2025NMCPC and 2025DTAPC and 2026NMCPC
+    expirationDate: new Date('2026-12-31'),
+    description: 'ADA10 - 10% off eligible passes and sponsorships for Navy & Marine Corps and Defense Technology conferences',
     isActive: true
   },
   {
@@ -61,7 +82,7 @@ export const PROMO_CODES: PromoCode[] = [
       'small-business-sponsor-without-exhibit-space'
       // Excludes: additional-exhibitor-attendee-pass, additional-sponsor-attendee-pass
     ],
-    eligibleEventIds: [6], // 2026NMCPC
+    eligibleEventIds: [5, 6], // 2025DTAPC and 2026NMCPC
     expirationDate: new Date('2025-08-09T04:00:00Z'),
     description: 'EARLY10 - 10% off eligible tickets for event (excludes additional passes)',
     isActive: true,
