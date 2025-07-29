@@ -199,7 +199,10 @@ export const REGISTRATION_TYPES = [
                 earlyBirdPrice: 495,
                 earlyBirdDeadline: "2025-07-11T04:00:00Z", // midnight ET on July 11th
                 type: "paid",
-                saleEndTime: "2025-07-29T04:00:00Z" // midnight ET on July 29th
+                saleEndTime: "2025-07-30T16:00:00Z", // noon ET on July 30th
+                requiresCode: true,
+                validationCode: "ADAEXTENDED",
+                availabilityInfo: "Access code required. See registration desk for code."
             },
 
             {
