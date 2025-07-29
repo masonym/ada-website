@@ -55,8 +55,8 @@ In the military, Colonel Cancian spent over three decades in the U.S. Marine Cor
 	"dave-leinberger": {
 		"image": "dave-leinberger.webp",
 		"name": "David Leinberger",
-		"position": "Deputy Chief of Staff",
-		"company": "G-9 (Installations)",
+		"position": "Deputy Director, Army Partnerships",
+		"company": "Deputy Chief of Staff, G-9 (Installations)",
 		"bio": `Dave Leinberger assumed the role as the Chief of Army Community Partnerships in July 2024.In this position, Mr. Leinberger encourages innovation and collaboration between our installations and local communities to develop partnerships that are mutually beneficial, identify cost efficiencies, reduce installation service response times, and strengthens the relationship with the local communities outside our installations. Mr. Leinberger focuses the utilization of collaborative partnership authorities to achieve these goals. These authorities include Intergovernmental Support Agreements (IGSAs), Cooperative Agreements, Mutual Aid Agreements, Memorandum of Understanding, Enhanced Use Lease, and Other Transaction Authority.<br><br>Previously, Mr. Leinberger served as the Army Community Partnership Program Manager, Assistant Chief of Staff for Installation Management, in September 2019 and maintained that role following the ACSIM’s transition to Deputy Chief of Staff, G-9 (Installations).`
 	},
 	"brian-liesveld": {
