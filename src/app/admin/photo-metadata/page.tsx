@@ -114,6 +114,32 @@ export default function PhotoMetadataManager() {
     URL.revokeObjectURL(url);
   };
 
+  // Natural sort function for filenames with numbers
+  const naturalSort = (a: string, b: string): number => {
+    const regex = /(\d+)|(\D+)/g;
+    const aParts = a.match(regex) || [];
+    const bParts = b.match(regex) || [];
+    
+    const maxLength = Math.max(aParts.length, bParts.length);
+    
+    for (let i = 0; i < maxLength; i++) {
+      const aPart = aParts[i] || '';
+      const bPart = bParts[i] || '';
+      
+      // If both parts are numbers, compare numerically
+      if (/^\d+$/.test(aPart) && /^\d+$/.test(bPart)) {
+        const diff = parseInt(aPart, 10) - parseInt(bPart, 10);
+        if (diff !== 0) return diff;
+      } else {
+        // Compare as strings
+        const diff = aPart.localeCompare(bPart);
+        if (diff !== 0) return diff;
+      }
+    }
+    
+    return 0;
+  };
+
   const groupedPhotos = photos.reduce((acc, photo, index) => {
     if (!acc[photo.section]) {
       acc[photo.section] = [];
@@ -121,6 +147,11 @@ export default function PhotoMetadataManager() {
     acc[photo.section].push({ ...photo, index });
     return acc;
   }, {} as Record<string, Array<PhotoFile & { index: number }>>);
+
+  // Sort photos within each section using natural sort
+  Object.keys(groupedPhotos).forEach(section => {
+    groupedPhotos[section].sort((a, b) => naturalSort(a.name, b.name));
+  });
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
