@@ -1,0 +1,68 @@
+{
+  "eventShorthand": "2025NMCPC",
+  "title": "2025 Navy & Marine Corps Procurement Conference",
+  "introduction": "A successful conference bringing together defense industry leaders and government officials.",
+  "sections": {
+    "speakers": {
+      "title": "Keynote Speakers",
+      "description": "Our distinguished speakers who shared their expertise",
+      "layout": "carousel",
+      "photos": {
+        "speaker_001.webp": {
+          "alt": "Admiral John Smith delivering opening keynote",
+          "caption": "Admiral Smith discusses future naval procurement strategies",
+          "people": ["Admiral John Smith"],
+          "width": 1920,
+          "height": 1280,
+          "featured": true
+        },
+        "speaker_002.webp": {
+          "alt": "Dr. Sarah Johnson presenting on innovation",
+          "caption": "Dr. Johnson explores emerging technologies in defense",
+          "people": ["Dr. Sarah Johnson"],
+          "width": 1920,
+          "height": 1280
+        }
+      }
+    },
+    "sponsors": {
+      "title": "Event Sponsors",
+      "layout": "masonry",
+      "photos": {
+        "sponsor_booth_001.webp": {
+          "alt": "Lockheed Martin sponsor booth",
+          "caption": "Lockheed Martin showcasing their latest solutions",
+          "tags": ["sponsor", "booth"],
+          "width": 1600,
+          "height": 1200
+        }
+      }
+    },
+    "exhibitors": {
+      "title": "Exhibitor Showcase",
+      "layout": "grid",
+      "photos": {
+        "exhibitor_001.webp": {
+          "alt": "Small business exhibitor demonstration",
+          "caption": "Local defense contractor demonstrating innovative solutions",
+          "tags": ["exhibitor", "small-business"],
+          "width": 1600,
+          "height": 1200
+        }
+      }
+    },
+    "general": {
+      "title": "Event Highlights",
+      "layout": "masonry",
+      "photos": {
+        "networking_001.webp": {
+          "alt": "Attendees networking during coffee break",
+          "caption": "Productive networking sessions throughout the day",
+          "tags": ["networking", "general"],
+          "width": 1600,
+          "height": 1200
+        }
+      }
+    }
+  }
+}

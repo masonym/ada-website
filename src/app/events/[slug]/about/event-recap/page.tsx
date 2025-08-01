@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { validateImagePaths } from '@/utils/imageUtils';
 import Link from 'next/link';
 import EventTestimonials from '@/app/components/EventTestimonials';
-import { getEventRecap } from '@/constants/eventRecaps';
+import { getEventRecap } from '@/lib/eventRecap';
 import { SectionRenderer } from './sections';
 
 // Generate static params for all event slugs
@@ -24,8 +24,8 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
   // Validate if images directory exists
   const hasImages = await validateImagePaths(event.eventShorthand);
 
-  // Get event recap data
-  const recapData = getEventRecap(event.eventShorthand);
+  // Get event recap data using hybrid system
+  const recapData = await getEventRecap(event.eventShorthand);
 
   const eventDate = new Date(event.timeStart);
   const currentDate = new Date();
