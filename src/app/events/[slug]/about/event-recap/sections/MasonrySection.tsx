@@ -5,6 +5,8 @@ import Masonry from 'react-masonry-css';
 import Image from 'next/image';
 import { RecapSection } from '@/types/eventRecap';
 import { getCdnPath } from '@/utils/image';
+import { usePagination } from '@/hooks/usePagination';
+import Pagination from '@/components/Pagination';
 import Lightbox from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
@@ -20,8 +22,23 @@ interface MasonrySectionProps {
 const MasonrySection: React.FC<MasonrySectionProps> = ({ section }) => {
   const [currentImage, setCurrentImage] = useState<number | null>(null);
 
+  // Pagination settings - adjust based on section size
+  const photosPerPage = section.images.length > 50 ? 24 : section.images.length > 20 ? 16 : section.images.length;
+  const shouldPaginate = section.images.length > 20;
+
+  // Use pagination hook if needed
+  const pagination = usePagination({
+    items: section.images,
+    itemsPerPage: photosPerPage,
+    initialPage: 1
+  });
+
+  const displayImages = shouldPaginate ? pagination.currentItems : section.images;
+
   const handleClick = (index: number) => {
-    setCurrentImage(index);
+    // Adjust index for pagination - need to account for current page offset
+    const actualIndex = shouldPaginate ? (pagination.currentPage - 1) * photosPerPage + index : index;
+    setCurrentImage(actualIndex);
   };
 
   const closeLightbox = () => {
@@ -56,7 +73,7 @@ const MasonrySection: React.FC<MasonrySectionProps> = ({ section }) => {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {section.images.map((image, index) => {
+        {displayImages.map((image, index) => {
           const minSize = 500; // minimum width/height
           const scaleFactor = Math.max(1 / 10, minSize / image.width, minSize / image.height);
 
@@ -93,6 +110,20 @@ const MasonrySection: React.FC<MasonrySectionProps> = ({ section }) => {
           )
         })}
       </Masonry>
+
+      {/* Pagination controls */}
+      {shouldPaginate && (
+        <div className="mt-8">
+          <Pagination
+            currentPage={pagination.currentPage}
+            totalPages={pagination.totalPages}
+            totalItems={pagination.totalItems}
+            itemsPerPage={photosPerPage}
+            onPageChange={pagination.goToPage}
+            className="justify-center"
+          />
+        </div>
+      )}
 
       {currentImage !== null && (
         <Lightbox

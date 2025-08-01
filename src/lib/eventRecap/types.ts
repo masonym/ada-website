@@ -43,6 +43,11 @@ export interface SectionMetadata {
   description?: string;
   layout: 'grid' | 'masonry' | 'carousel' | 'featured';
   photos: Record<string, PhotoMetadata>; // filename -> metadata
+  pagination?: {
+    enabled?: boolean;
+    itemsPerPage?: number;
+    threshold?: number; // minimum photos before pagination kicks in
+  };
 }
 
 export interface EventRecapMetadata {
