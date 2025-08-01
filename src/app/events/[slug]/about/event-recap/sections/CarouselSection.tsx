@@ -26,6 +26,33 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ section }) => {
     dragFree: true
   });
 
+  // Natural sort function to handle filenames with numbers
+  const naturalSort = (a: string, b: string): number => {
+    // Extract numbers from parentheses in filenames like "Name (123).ext"
+    const getNumber = (filename: string): number => {
+      const match = filename.match(/\((\d+)\)/);
+      return match ? parseInt(match[1], 10) : 0;
+    };
+
+    const numA = getNumber(a);
+    const numB = getNumber(b);
+
+    // If both have numbers, sort by number
+    if (numA !== 0 && numB !== 0) {
+      return numA - numB;
+    }
+
+    // If only one has a number, prioritize the one with number
+    if (numA !== 0) return -1;
+    if (numB !== 0) return 1;
+
+    // If neither has numbers, fall back to string comparison
+    return a.localeCompare(b);
+  };
+
+  // Sort images naturally by filename
+  const sortedImages = [...section.images].sort((a, b) => naturalSort(a.src, b.src));
+
   const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
   const scrollNext = () => emblaApi && emblaApi.scrollNext();
 
@@ -38,7 +65,7 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ section }) => {
   };
 
   // Create slides for lightbox with captions
-  const slides = section.images.map(img => ({
+  const slides = sortedImages.map(img => ({
     src: getCdnPath(img.src),
     alt: img.alt,
     title: img.caption,
@@ -49,19 +76,18 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ section }) => {
 
   return (
     <div className="mb-16">
-      <h2 className="text-3xl font-bold text-slate-700 mb-4">{section.title}</h2>
       {section.description && <div className="mb-6">{section.description}</div>}
 
       <div className="relative">
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex">
-            {section.images.map((image, index) => {
+            {sortedImages.map((image, index) => {
               // Calculate aspect ratio for consistent heights
               const aspectRatio = image.width / image.height;
               const imageHeight = 300; // Base height for all images
               const imageWidth = imageHeight * aspectRatio;
 
-              const minSize = 500; // minimum width/height
+              const minSize = 100; // minimum width/height
               const scaleFactor = Math.max(1 / 10, minSize / image.width, minSize / image.height);
 
               const scaledWidth = Math.round(image.width * scaleFactor);
@@ -74,32 +100,30 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ section }) => {
                   style={{ width: `${imageWidth}px` }}
                 >
                   <div
-                    className="relative overflow-hidden rounded-lg group cursor-pointer h-full"
+                    className="relative overflow-hidden rounded-lg group cursor-pointer"
                     onClick={() => handleClick(index)}
                   >
-                    <div className="relative" style={{ height: `${imageHeight}px` }}>
+                    <div className="relative">
 
-                      <Image
+                      <img
                         src={getCdnPath(image.src)}
                         alt={image.alt}
-                        width={scaledWidth}
-                        height={scaledHeight}
                         className="object-contain"
                         sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                         loading={index < 4 ? "eager" : "lazy"}
-                      />;
+                      />
                     </div>
 
-                    {image.caption || image.people && (
-                      <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-2 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                        <p className="text-sm">{image.caption}</p>
-                        {image.people && image.people.length > 0 && (
-                          <p className="text-xs mt-1 text-gray-300">
-                            Featuring: {image.people.join(', ')}
-                          </p>
-                        )}
-                      </div>
-                    )}
+                    <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-2 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      {image.caption && (
+                        <p className="text-sm mt-1">{image.caption}</p>
+                      )}
+                      {image.people && image.people.length > 0 && (
+                        <p className="text-xs mt-1 text-gray-300">
+                          Featuring: {image.people.join(', ')}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
               );
