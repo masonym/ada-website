@@ -88,11 +88,11 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
 
       {/* Social Media Sharing Section */}
       {recapData?.metadata?.socialSharing?.enabled && (
-        <div className="max-w-4xl mx-auto mb-12 text-center bg-gradient-to-r from-navy-50 to-blue-50 rounded-lg p-8">
-          <h2 className="text-2xl font-bold mb-4 text-navy-800">
+        <div className="max-w-4xl mx-auto mb-12 text-center bg-navy-400 rounded-lg p-8">
+          <h2 className="text-2xl font-bold mb-4 text-gray-200">
             Share Your Favorite Moments
           </h2>
-          <p className="text-lg mb-6 text-gray-700">
+          <p className="text-lg mb-6 text-white">
             {recapData.metadata.socialSharing.message || `Feel free to share your favorite moments from the ${event.title} on Social Media and don't forget to tag us and use ${recapData.metadata.socialSharing.hashtag || '#2025NMCPC'}!`}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
