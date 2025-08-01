@@ -76,6 +76,7 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ section }) => {
 
   return (
     <div className="mb-16">
+      <h2 className="text-3xl font-bold text-slate-700 mb-4">{section.title}</h2>
       {section.description && <div className="mb-6">{section.description}</div>}
 
       <div className="relative">

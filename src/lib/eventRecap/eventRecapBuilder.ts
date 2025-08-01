@@ -20,16 +20,20 @@ export async function buildEventRecap(options: EventRecapBuilderOptions): Promis
   const { 
     eventShorthand, 
     bucketName = 'americandefensealliance',
-    baseUrl = 'https://d3gvnlbntpm4ho.cloudfront.net'
+    baseUrl = 'https://cdn.americandefensealliance.org'
   } = options;
 
   try {
     // Load metadata overrides if they exist
     const metadataOverrides = await loadEventMetadata(eventShorthand);
 
-    // For now, we'll use a fallback approach since S3 scanning needs AWS SDK setup
-    // In production, this would scan S3 for actual photos
-    const photoSections = await getPhotoSectionsFromS3OrFallback(eventShorthand, bucketName);
+    // Scan S3 for photos
+    const scanResult = await scanS3ForPhotos({
+      bucketName,
+      prefix: `events/${eventShorthand}/photos/`,
+    });
+    
+    const photoSections = scanResult.sections;
 
     if (Object.keys(photoSections).length === 0) {
       return null; // No photos found
@@ -38,7 +42,25 @@ export async function buildEventRecap(options: EventRecapBuilderOptions): Promis
     // Build sections
     const sections: RecapSection[] = [];
 
-    for (const [sectionId, photos] of Object.entries(photoSections)) {
+    // Determine section order: use metadata order if available, otherwise alphabetical
+    let sectionOrder: string[];
+    if (metadataOverrides?.sections) {
+      // Use the order from metadata file, but only include sections that have photos
+      const metadataSectionIds = Object.keys(metadataOverrides.sections);
+      const photoSectionIds = Object.keys(photoSections);
+      
+      // Start with sections from metadata (in order), then add any additional photo sections
+      sectionOrder = [
+        ...metadataSectionIds.filter(id => photoSectionIds.includes(id)),
+        ...photoSectionIds.filter(id => !metadataSectionIds.includes(id))
+      ];
+    } else {
+      // Fall back to alphabetical order
+      sectionOrder = Object.keys(photoSections).sort();
+    }
+
+    for (const sectionId of sectionOrder) {
+      const photos = photoSections[sectionId];
       // Create default metadata for this section
       const photoFilenames = photos.map(photo => photo.Key.split('/').pop() || '');
       const defaultSectionMetadata = createDefaultSectionMetadata(sectionId, photoFilenames);
@@ -83,6 +105,7 @@ export async function buildEventRecap(options: EventRecapBuilderOptions): Promis
       title: metadataOverrides?.title,
       introduction: metadataOverrides?.introduction,
       sections,
+      metadata: metadataOverrides || undefined,
     };
 
   } catch (error) {
@@ -91,31 +114,7 @@ export async function buildEventRecap(options: EventRecapBuilderOptions): Promis
   }
 }
 
-/**
- * Temporary fallback function until S3 scanning is fully implemented
- * This will try to fetch from S3, but fall back to known structure
- */
-async function getPhotoSectionsFromS3OrFallback(
-  eventShorthand: string, 
-  bucketName: string
-): Promise<Record<string, Array<{ Key: string; LastModified: Date; Size: number }>>> {
-  
-  // TODO: Replace this with actual S3 scanning once AWS SDK is set up
-  // For now, return empty object - this will be replaced with real S3 data
-  
-  try {
-    // Attempt to use the S3 scanner (will be mock for now)
-    const scanResult = await scanS3ForPhotos({
-      bucketName,
-      prefix: `events/${eventShorthand}/photos/`,
-    });
 
-    return scanResult.sections;
-  } catch (error) {
-    console.warn('S3 scanning not available, using fallback');
-    return {};
-  }
-}
 
 /**
  * Gets image dimensions from CloudFront URL

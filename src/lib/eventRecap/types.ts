@@ -25,6 +25,7 @@ export interface EventRecap {
   title?: string; // Optional custom title
   introduction?: ReactNode; // Optional introduction text
   sections: RecapSection[];
+  metadata?: EventRecapMetadata; // Optional metadata for social sharing, credits, etc.
 }
 
 // New types for the hybrid system
@@ -55,6 +56,16 @@ export interface EventRecapMetadata {
   title?: string;
   introduction?: string;
   sections: Record<string, SectionMetadata>; // section id -> metadata
+  socialSharing?: {
+    enabled?: boolean;
+    message?: string;
+    hashtag?: string;
+  };
+  photoCredits?: {
+    photographer?: string;
+    website?: string;
+    enabled?: boolean;
+  };
 }
 
 // S3 object structure

@@ -1,4 +1,3 @@
-// types/eventRecap.ts
 import { ReactNode } from 'react';
 
 export interface RecapImage {
@@ -25,4 +24,51 @@ export interface EventRecap {
   title?: string; // Optional custom title
   introduction?: ReactNode; // Optional introduction text
   sections: RecapSection[];
+}
+
+// New types for the hybrid system
+export interface PhotoMetadata {
+  alt?: string;
+  caption?: string;
+  people?: string[];
+  tags?: string[];
+  featured?: boolean;
+  width?: number;
+  height?: number;
+}
+
+export interface SectionMetadata {
+  title: string;
+  description?: string;
+  layout: 'grid' | 'masonry' | 'carousel' | 'featured';
+  photos: Record<string, PhotoMetadata>; // filename -> metadata
+  pagination?: {
+    enabled?: boolean;
+    itemsPerPage?: number;
+    threshold?: number; // minimum photos before pagination kicks in
+  };
+}
+
+export interface EventRecapMetadata {
+  eventShorthand: string;
+  title?: string;
+  introduction?: string;
+  sections: Record<string, SectionMetadata>; // section id -> metadata
+  socialSharing?: {
+    enabled?: boolean;
+    message?: string;
+    hashtag?: string;
+  };
+  photoCredits?: {
+    photographer?: string;
+    website?: string;
+    enabled?: boolean;
+  };
+}
+
+// S3 object structure
+export interface S3Object {
+  Key: string;
+  LastModified: Date;
+  Size: number;
 }

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import EventTestimonials from '@/app/components/EventTestimonials';
 import { getEventRecap } from '@/lib/eventRecap';
 import { SectionRenderer } from './sections';
+import { SOCIALS } from '@/constants';
 
 // Generate static params for all event slugs
 export async function generateStaticParams() {
@@ -84,6 +85,52 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
       {recapData?.sections.map(section => (
         <SectionRenderer key={section.id} section={section} />
       ))}
+
+      {/* Social Media Sharing Section */}
+      {recapData?.metadata?.socialSharing?.enabled && (
+        <div className="max-w-4xl mx-auto mb-12 text-center bg-gradient-to-r from-navy-50 to-blue-50 rounded-lg p-8">
+          <h2 className="text-2xl font-bold mb-4 text-navy-800">
+            Share Your Favorite Moments
+          </h2>
+          <p className="text-lg mb-6 text-gray-700">
+            {recapData.metadata.socialSharing.message || `Feel free to share your favorite moments from the ${event.title} on Social Media and don't forget to tag us and use ${recapData.metadata.socialSharing.hashtag || '#2025NMCPC'}!`}
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            {SOCIALS.links.map((social) => {
+              const IconComponent = social.Icon;
+              return (
+                <Link
+                  key={social.title}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-700 hover:text-navy-600 px-4 py-2 rounded-lg border border-gray-200 transition-colors duration-200 shadow-sm hover:shadow-md"
+                >
+                  <IconComponent className="w-5 h-5" />
+                  <span className="font-medium">{social.title}</span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Photo Credits Section */}
+      {recapData?.metadata?.photoCredits?.enabled && (
+        <div className="max-w-4xl mx-auto mb-8 text-center border-t border-gray-200 pt-8">
+          <p className="text-sm text-gray-600">
+            Photography by{' '}
+            <Link
+              href={recapData.metadata.photoCredits.website || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-navy-600 hover:text-navy-800 font-medium underline"
+            >
+              {recapData.metadata.photoCredits.photographer || "Professional Event Photography"}
+            </Link>
+          </p>
+        </div>
+      )}
 
       {/* Fallback if no recap data is available but images exist */}
       {hasImages && !recapData && (

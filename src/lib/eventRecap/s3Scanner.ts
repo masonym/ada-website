@@ -1,8 +1,15 @@
 // lib/eventRecap/s3Scanner.ts
+import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
 import { S3Object } from './types';
 
-// Since we're using CloudFront, we'll need to work with the S3 API
-// This utility will help scan S3 directories for photos
+// Initialize S3 client
+const s3Client = new S3Client({
+  region: process.env.AWS_REGION || "us-west-2",
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
+  },
+});
 
 export interface S3ScanOptions {
   bucketName: string;
@@ -23,28 +30,52 @@ export async function scanS3ForPhotos(options: S3ScanOptions): Promise<S3ScanRes
   const { bucketName, prefix, imageExtensions = ['.jpg', '.jpeg', '.png', '.webp'] } = options;
 
   try {
-    // For now, we'll create a mock implementation since we need AWS SDK setup
-    // This will be replaced with actual S3 API calls
-    const mockResult: S3ScanResult = {
-      photos: [],
-      sections: {}
+    const allPhotos: S3Object[] = [];
+    let continuationToken: string | undefined;
+
+    // Scan all objects in the prefix (may require multiple requests for large directories)
+    do {
+      const command = new ListObjectsV2Command({
+        Bucket: bucketName,
+        Prefix: prefix,
+        ContinuationToken: continuationToken,
+        MaxKeys: 1000, // Process in batches
+      });
+
+      const response = await s3Client.send(command);
+      
+      if (response.Contents) {
+        // Filter for image files only
+        const imageFiles = response.Contents.filter(obj => {
+          if (!obj.Key) return false;
+          const extension = obj.Key.toLowerCase().substring(obj.Key.lastIndexOf('.'));
+          return imageExtensions.includes(extension);
+        }).map(obj => ({
+          Key: obj.Key!,
+          LastModified: obj.LastModified || new Date(),
+          Size: obj.Size || 0,
+        }));
+
+        allPhotos.push(...imageFiles);
+      }
+
+      continuationToken = response.NextContinuationToken;
+    } while (continuationToken);
+
+    // Group photos by section (subdirectory)
+    const sections = groupPhotosBySection(allPhotos, prefix);
+
+    return {
+      photos: allPhotos,
+      sections,
     };
-
-    // TODO: Implement actual S3 scanning
-    // const s3 = new AWS.S3();
-    // const params = {
-    //   Bucket: bucketName,
-    //   Prefix: prefix,
-    //   Delimiter: '/'
-    // };
-    
-    // const data = await s3.listObjectsV2(params).promise();
-    // Process the results and group by subdirectory
-
-    return mockResult;
   } catch (error) {
     console.error('Error scanning S3 for photos:', error);
-    throw new Error('Failed to scan S3 for photos');
+    // Return empty result instead of throwing to allow graceful degradation
+    return {
+      photos: [],
+      sections: {},
+    };
   }
 }
 

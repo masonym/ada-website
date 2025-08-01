@@ -1,23 +1,43 @@
 // lib/eventRecap/metadataManager.ts
+import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
 import { EventRecapMetadata, SectionMetadata, PhotoMetadata } from './types';
 
+// Initialize S3 client
+const s3Client = new S3Client({
+  region: process.env.AWS_REGION || "us-west-2",
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
+  },
+});
+
 /**
- * Loads metadata overrides for an event from a JSON file
+ * Loads metadata overrides for an event from S3
  * This allows manual specification of alt text, captions, etc.
  */
 export async function loadEventMetadata(eventShorthand: string): Promise<EventRecapMetadata | null> {
   try {
-    // Try to load metadata file from public directory
-    const response = await fetch(`/events/${eventShorthand}/metadata.json`);
+    const bucketName = process.env.AWS_BUCKET_NAME || "americandefensealliance";
+    const key = `events/${eventShorthand}/metadata.json`;
     
-    if (!response.ok) {
-      // No metadata file found, return null
+    const command = new GetObjectCommand({
+      Bucket: bucketName,
+      Key: key,
+    });
+
+    const response = await s3Client.send(command);
+    
+    if (!response.Body) {
       return null;
     }
 
-    const metadata: EventRecapMetadata = await response.json();
+    // Convert the stream to string
+    const bodyString = await response.Body.transformToString();
+    const metadata: EventRecapMetadata = JSON.parse(bodyString);
+    
     return metadata;
   } catch (error) {
+    // If the file doesn't exist or there's an error, return null
     console.warn(`No metadata file found for event ${eventShorthand}:`, error);
     return null;
   }
