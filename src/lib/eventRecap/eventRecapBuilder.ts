@@ -6,6 +6,7 @@ import {
   createDefaultSectionMetadata, 
   mergeSectionMetadata 
 } from './metadataManager';
+import { naturalSort } from '@/utils/naturalSort';
 
 export interface EventRecapBuilderOptions {
   eventShorthand: string;
@@ -71,8 +72,15 @@ export async function buildEventRecap(options: EventRecapBuilderOptions): Promis
         metadataOverrides?.sections[sectionId]
       );
 
+      // Sort photos by filename using natural sort before building images array
+      const sortedPhotos = [...photos].sort((a, b) => {
+        const filenameA = a.Key.split('/').pop() || '';
+        const filenameB = b.Key.split('/').pop() || '';
+        return naturalSort(filenameA, filenameB);
+      });
+
       // Build images array
-      const images: RecapImage[] = photos.map(photo => {
+      const images: RecapImage[] = sortedPhotos.map(photo => {
         const filename = photo.Key.split('/').pop() || '';
         const photoMetadata = sectionMetadata.photos[filename];
         
