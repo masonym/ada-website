@@ -12,7 +12,14 @@ export async function getEventRecap(eventShorthand: string): Promise<EventRecap 
     // First, try the new hybrid system
     const hybridRecap = await buildEventRecap({ eventShorthand });
     
-    if (hybridRecap && hybridRecap.sections.length > 0) {
+    // Check if hybrid system returned meaningful data
+    // If it only has a single "general" section, it means photos are in root directory
+    // without proper organization, so we should fall back to legacy data
+    const hasProperOrganization = hybridRecap && 
+      hybridRecap.sections.length > 0 && 
+      !(hybridRecap.sections.length === 1 && hybridRecap.sections[0].id === 'general');
+    
+    if (hasProperOrganization) {
       return hybridRecap;
     }
 

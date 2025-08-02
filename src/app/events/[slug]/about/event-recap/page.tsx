@@ -69,23 +69,6 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
           </Link>
         </div>
       </div>
-
-      {event.testimonials && event.testimonials.length > 0 && (
-        <EventTestimonials testimonials={event.testimonials} />
-      )}
-
-      {/* Display custom introduction if available */}
-      {recapData?.introduction && (
-        <div className="max-w-4xl mx-auto mb-12 text-center">
-          {recapData.introduction}
-        </div>
-      )}
-
-      {/* Render each section based on its layout type */}
-      {recapData?.sections.map(section => (
-        <SectionRenderer key={section.id} section={section} />
-      ))}
-
       {/* Social Media Sharing Section */}
       {recapData?.metadata?.socialSharing?.enabled && (
         <div className="max-w-4xl mx-auto mb-12 text-center bg-navy-400 rounded-lg p-8">
@@ -114,6 +97,23 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
           </div>
         </div>
       )}
+
+      {event.testimonials && event.testimonials.length > 0 && (
+        <EventTestimonials testimonials={event.testimonials} />
+      )}
+
+      {/* Display custom introduction if available */}
+      {recapData?.introduction && (
+        <div className="max-w-4xl mx-auto mb-12 text-center">
+          {recapData.introduction}
+        </div>
+      )}
+
+      {/* Render each section based on its layout type */}
+      {recapData?.sections.map(section => (
+        <SectionRenderer key={section.id} section={section} />
+      ))}
+
 
       {/* Photo Credits Section */}
       {recapData?.metadata?.photoCredits?.enabled && (
