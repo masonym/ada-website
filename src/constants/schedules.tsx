@@ -954,8 +954,9 @@ export const SCHEDULES = [
                                 speakerId: "charles-sills",
                                 sponsor: "Conference Moderator",
                                 sponsorStyle: "bg-red-999",
+                        videoId: "EjKLqEr3L1g",
                             }
-                        ]
+                        ],
                     },
                     {
                         time: "8:40 AM",
@@ -965,6 +966,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "jared-chalk",
                                 presentation: "2025 NMCPC - Jared Chalk.pdf",
+                                videoId: "3speJ7hMJAc",
                             }
                         ]
                     },
@@ -977,6 +979,7 @@ export const SCHEDULES = [
                                 speakerId: "representative-rob-wittman",
                                 sponsor: "Pre-Recorded Address",
                                 sponsorStyle: "bg-gray-300 text-slate-900",
+                                videoId: "mbYrRbD1KSA",
                             }
                         ]
                     },
@@ -988,6 +991,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "brad-williamson",
                                 presentation: "2025 NMCPC - Brad Williamson.pdf",
+                                videoId: "ImB2hGsx_oU",
                             }
                         ]
                     },
@@ -1000,15 +1004,22 @@ export const SCHEDULES = [
                                 speakerId: "roger-camp",
                                 sponsor: "Platinum Sponsor and Panel Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "MNJjd_9ubzc",
                             },
                             {
                                 speakerId: "vice-admiral-richard-w-hunt",
+                                videoId: "MNJjd_9ubzc",
+                                videoStartTime: 510,
                             },
                             {
                                 speakerId: "victorino-mercado",
+                                videoId: "MNJjd_9ubzc",
+                                videoStartTime: 1612,
                             },
                             {
-                                speakerId: "dr-steven-wills"
+                                speakerId: "dr-steven-wills",
+                                videoId: "MNJjd_9ubzc",
+                                videoStartTime: 2656,
                             }
                         ]
                     },
@@ -1025,6 +1036,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "brian-liesveld",
                                 presentation: "2025 NMCPC - Brian Liesveld.pdf",
+                                videoId: "s7kVlPzMzik",
                             },
                         ]
                     },
@@ -1037,6 +1049,7 @@ export const SCHEDULES = [
                                 speakerId: "erica-h-plath",
                                 sponsor: "Keynote Speaker and Panel Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "otYHekZPggc",
                             },
                             {
                                 speakerId: "philip-hart-cullom"
@@ -1063,7 +1076,8 @@ export const SCHEDULES = [
                                 speakerId: "kurt-garrett",
                                 presentation: "2025 NMCPC - Kurt Garrett.pdf",
                                 sponsor: "Gold Sponsor",
-                                sponsorStyle: "bg-[#ffaf00] text-slate-900"
+                                sponsorStyle: "bg-[#ffaf00] text-slate-900",
+                                videoId: "5c7bBNkcNoI",
                             }
                         ]
                     },
@@ -1080,6 +1094,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "daniel-hudson",
                                 presentation: "2025 NMCPC - Daniel Hudson.pdf",
+                                videoId: "LCi4UVSe6dE",
                             },
                             // {
                             //     speakerId: "amir-bagherpour-phd",
@@ -1092,7 +1107,8 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "christopher-m-haar"
+                                speakerId: "christopher-m-haar",
+                                videoId: "oZmzKG98wUM",
                             }
                         ]
                     },
@@ -1105,7 +1121,8 @@ export const SCHEDULES = [
                                 speakerId: "don-mcginnis",
                                 presentation: "2025 NMCPC - Don McGinnis.pdf",
                                 sponsor: "Bronze Sponsor",
-                                sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                                sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                                videoId: "aQQLSTFVviY",
                             }
                         ]
                     },
@@ -1117,10 +1134,13 @@ export const SCHEDULES = [
                             {
                                 speakerId: "dave-leinberger",
                                 presentation: "2025 NMCPC - Dave Leinberger & Brian W. Miller.pdf",
+                                videoId: "vD0WP5Fl90Q",
                             },
                             {
                                 speakerId: "brian-w-miller",
                                 presentation: "2025 NMCPC - Dave Leinberger & Brian W. Miller.pdf",
+                                videoId: "vD0WP5Fl90Q",
+                                videoStartTime: 743,
                             }
                         ]
                     },
@@ -1133,19 +1153,25 @@ export const SCHEDULES = [
                                 speakerId: "charles-sills",
                                 sponsor: "Panel Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "l-tNmi6QGzs",
                             },
                             {
                                 speakerId: "terressa-bebout",
                                 presentation: "2025 NMCPC - Terressa Bebout.pdf",
+                                videoId: "l-tNmi6QGzs",
                             },
                             {
                                 speakerId: "stacey-l-cooper",
                             },
                             {
-                                speakerId: "tiffany-l-trotter"
+                                speakerId: "tiffany-l-trotter",
+                                videoId: "l-tNmi6QGzs",
+                                videoStartTime: 463,
                             },
                             {
-                                speakerId: "rosetta-rodwell"
+                                speakerId: "rosetta-rodwell",
+                                videoId: "l-tNmi6QGzs",
+                                videoStartTime: 1512,
                             }
                         ]
                     },
@@ -1201,6 +1227,7 @@ export const SCHEDULES = [
                                 speakerId: "charles-sills",
                                 sponsor: "Conference Moderator",
                                 sponsorStyle: "bg-red-999",
+                                videoId: "iAWl0CLOuuU",
                             }
                         ]
                     },
@@ -1228,6 +1255,7 @@ export const SCHEDULES = [
                                 speakerId: "diane-dempsey",
                                 sponsor: "Panel Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "CqG04ajCSKw",
                             },
                             {
                                 speakerId: "katina-adams"
@@ -1253,6 +1281,7 @@ export const SCHEDULES = [
                                 sponsor: "Gold Sponsor",
                                 sponsorStyle: "bg-[#ffaf00] text-slate-900",
                                 presentation: "2025 NMCPC - Paul Wichert.pdf",
+                                videoId: "Vgs4lLmbw4w",
                             }
                         ]
                     },
@@ -1279,6 +1308,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "aimee-zick",
                                 presentation: "2025 NMCPC - Aimee Zick.pdf",
+                                videoId: "mmjSe3KgnWA",
                             }
                         ]
                     },
@@ -1291,19 +1321,28 @@ export const SCHEDULES = [
                                 speakerId: "charles-sills",
                                 sponsor: "Panel Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "3BfHzlaZSvQ",
                             },
                             {
                                 speakerId: "joel-coulter",
                                 presentation: "2025 NMCPC - Joel Coulter.pdf",
+                                videoId: "3BfHzlaZSvQ",
+                                videoStartTime: 76,
                             },
                             {
                                 speakerId: "nicholas-antonio-rocha",
+                                videoId: "3BfHzlaZSvQ",
+                                videoStartTime: 671,
                             },
                             {
                                 speakerId: "jeffrey-hoffman",
+                                videoId: "3BfHzlaZSvQ",
+                                videoStartTime: 325,
                             },
                             {
-                                speakerId: "nicholas-diehl"
+                                speakerId: "nicholas-diehl",
+                                videoId: "3BfHzlaZSvQ",
+                                videoStartTime: 927,
                             }
                         ]
                     },
@@ -1315,6 +1354,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "andrew-gardner",
                                 presentation: "2025 NMCPC - Andrew Gardner.pdf",
+                                videoId: "PnQG794FqFo",
                             },
                         ]
                     },
