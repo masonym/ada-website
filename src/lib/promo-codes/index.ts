@@ -83,7 +83,7 @@ export const PROMO_CODES: PromoCode[] = [
       // Excludes: additional-exhibitor-attendee-pass, additional-sponsor-attendee-pass
     ],
     eligibleEventIds: [5, 6], // 2025DTAPC and 2026NMCPC
-    expirationDate: new Date('2025-08-09T04:00:00Z'),
+    expirationDate: new Date('2025-08-12T04:00:00Z'),
     description: 'EARLY10 - 10% off eligible tickets for event (excludes additional passes)',
     isActive: true,
     autoApply: true // Automatically apply this promo code for event ID 6
