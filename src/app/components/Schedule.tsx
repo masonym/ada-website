@@ -110,7 +110,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
   // if day 0 has only 1 item, select day 1
   // also manage local storage to remember the selected day
   useEffect(() => {
-    if (selectedDay == 0 && schedule[0].items.length === 1) {
+    if (selectedDay == 0 && schedule[0].items.length < 3) {
       setSelectedDay(1);
     }
   }, []);
