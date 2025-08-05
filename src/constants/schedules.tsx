@@ -1167,6 +1167,7 @@ export const SCHEDULES = [
                                 speakerId: "tiffany-l-trotter",
                                 videoId: "l-tNmi6QGzs",
                                 videoStartTime: 463,
+                                presentation: "2025 NMCPC - Tiffany L. Trotter.pdf",
                             },
                             {
                                 speakerId: "rosetta-rodwell",
