@@ -4,11 +4,13 @@ import React, { useState } from 'react';
 import { RecapSection } from '@/types/eventRecap';
 import { getCdnPath } from '@/utils/image';
 import { naturalSort } from '@/utils/naturalSort';
+import { getOriginalImagePath, getOriginalExtension } from '@/utils/originalImage';
 import Image from 'next/image';
 import Lightbox from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Captions from "yet-another-react-lightbox/plugins/captions";
+import Download from "yet-another-react-lightbox/plugins/download";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/plugins/captions.css";
@@ -44,15 +46,21 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ section }) => {
     setCurrentImage(null);
   };
 
-  // Create slides for lightbox with captions
-  const slides = sortedImages.map(img => ({
-    src: getCdnPath(img.src),
-    alt: img.alt,
-    title: img.caption,
-    description: img.people?.length
-      ? `Featuring: ${img.people.join(', ')}`
-      : undefined
-  }));
+  // Create slides for lightbox with captions and download URLs
+  const slides = sortedImages.map(img => {
+    const originalExtension = getOriginalExtension(img.src);
+    const downloadUrl = getOriginalImagePath(img.src, originalExtension);
+    
+    return {
+      src: getCdnPath(img.src),
+      alt: img.alt,
+      title: img.caption,
+      description: img.people?.length
+        ? `Featuring: ${img.people.join(', ')}`
+        : undefined,
+      download: downloadUrl
+    };
+  });
 
   return (
     <div className="mb-16">
@@ -136,7 +144,7 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ section }) => {
           close={closeLightbox}
           index={currentImage}
           slides={slides}
-          plugins={[Thumbnails, Zoom, Captions]}
+          plugins={[Thumbnails, Zoom, Captions, Download]}
           carousel={{
             finite: false,
           }}

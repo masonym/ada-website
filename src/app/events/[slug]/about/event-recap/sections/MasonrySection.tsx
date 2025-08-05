@@ -12,9 +12,11 @@ import Lightbox from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Captions from "yet-another-react-lightbox/plugins/captions";
+import Download from "yet-another-react-lightbox/plugins/download";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/plugins/captions.css";
+import { getOriginalExtension, getOriginalImagePath } from '@/utils/originalImage';
 
 interface MasonrySectionProps {
   section: RecapSection;
@@ -59,14 +61,19 @@ const MasonrySection: React.FC<MasonrySectionProps> = ({ section }) => {
   const sortedImages = [...section.images].sort((a, b) => naturalSort(a.src, b.src));
 
   // Create slides for lightbox with captions
-  const slides = sortedImages.map(img => ({
+  const slides = section.images.map(img => {
+    const originalExtension = getOriginalExtension(img.src);
+    const downloadUrl = getOriginalImagePath(img.src, originalExtension);
+    return {
     src: getCdnPath(img.src),
     alt: img.alt,
     title: img.caption,
     description: img.people?.length
       ? `Featuring: ${img.people.join(', ')}`
-      : undefined
-  }));
+      : undefined,
+    download: downloadUrl
+    };
+  });
 
   return (
     <div className="mb-16">
@@ -136,7 +143,7 @@ const MasonrySection: React.FC<MasonrySectionProps> = ({ section }) => {
           close={closeLightbox}
           index={currentImage}
           slides={slides}
-          plugins={[Thumbnails, Zoom, Captions]}
+          plugins={[Thumbnails, Zoom, Captions, Download]}
           carousel={{
             finite: false,
           }}
