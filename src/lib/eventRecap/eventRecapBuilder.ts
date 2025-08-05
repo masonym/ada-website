@@ -35,8 +35,13 @@ export async function buildEventRecap(options: EventRecapBuilderOptions): Promis
     });
     
     const photoSections = scanResult.sections;
+    
+    // Filter out folder called "originals"
+    const filteredSections = Object.fromEntries(
+      Object.entries(photoSections).filter(([key]) => key !== 'originals')
+    );
 
-    if (Object.keys(photoSections).length === 0) {
+    if (Object.keys(filteredSections).length === 0) {
       return null; // No photos found
     }
 
@@ -48,7 +53,7 @@ export async function buildEventRecap(options: EventRecapBuilderOptions): Promis
     if (metadataOverrides?.sections) {
       // Use the order from metadata file, but only include sections that have photos
       const metadataSectionIds = Object.keys(metadataOverrides.sections);
-      const photoSectionIds = Object.keys(photoSections);
+      const photoSectionIds = Object.keys(filteredSections);
       
       // Start with sections from metadata (in order), then add any additional photo sections
       sectionOrder = [
@@ -57,11 +62,11 @@ export async function buildEventRecap(options: EventRecapBuilderOptions): Promis
       ];
     } else {
       // Fall back to alphabetical order
-      sectionOrder = Object.keys(photoSections).sort();
+      sectionOrder = Object.keys(filteredSections).sort();
     }
 
     for (const sectionId of sectionOrder) {
-      const photos = photoSections[sectionId];
+      const photos = filteredSections[sectionId];
       // Create default metadata for this section
       const photoFilenames = photos.map(photo => photo.Key.split('/').pop() || '');
       const defaultSectionMetadata = createDefaultSectionMetadata(sectionId, photoFilenames);
