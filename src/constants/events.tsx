@@ -466,18 +466,18 @@ invaluable connections that can shape the future of your business.
     features: {
       showKeynoteSpeaker: true,
       keynoteSpeakers: [
-      {
-        speakerId: 	"representative-rob-wittman",
-        headerText: "Congressional Keynote Speaker",
-      },
-      {
-        speakerId: "neal-dunn",
-        headerText: "Congressional Keynote Speaker",
-      },
-      {
-        speakerId: "brandon-cockrell",
-        headerText: "United States Army Keynote Speaker",
-      }
+        {
+          speakerId: "representative-rob-wittman",
+          headerText: "Congressional Keynote Speaker",
+        },
+        {
+          speakerId: "neal-dunn",
+          headerText: "Congressional Keynote Speaker",
+        },
+        {
+          speakerId: "brandon-cockrell",
+          headerText: "United States Army Keynote Speaker",
+        }
       ]
     }
   },
@@ -777,8 +777,8 @@ invaluable connections that can shape the future of your business.
     parkingInfo: [
       {
         title: ``,
-        description: 
-        `
+        description:
+          `
         <b>Self-Parking</b>: Available in the City of Norfolk owned and operated Public Parking Garage. Norfolk City rates apply: $1.50/hour up to $13.00 per 24 hours.
         <br/>
         <div class="pl-6">
@@ -946,22 +946,22 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     //       { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "These programs pair small businesses with experienced primes to share resources, improve competitiveness, and accelerate growth in defense contracting through structured mentorship." }
     // ],
     topicalCoverage: [
-          { "tagline": "DoD Integration of Commercial Space Assets/Technologies", "description": "" },
-          { "tagline": "Space Force Support Functions Across Domains/COCOMS", "description": "" },
-          { "tagline": "Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)", "description": "" },
-          { "tagline": "Unmanned Platforms Across Services – Prototype & Testing Contracts", "description": "" },
-          { "tagline": "Golden Dome Financing for Missile Defense Integration & Component Teams", "description": "" },
-          { "tagline": "Defense Industrial Base Expansion – Ordnance, Missiles, Drones, etc.", "description": "" },
-          { "tagline": "Expansion of AI Throughout Defense Sectors", "description": "" },
-          { "tagline": "Race to Exploit Quantum Technology", "description": "" },
-          { "tagline": "Accelerating Innovative Tech Contracting – DEFENSEWERX & DIU", "description": "" },
-          { "tagline": "Critical Defense Infrastructure Cyber Protection", "description": "" },
-          { "tagline": "Cybersecurity & CMMC Update", "description": "" },
-          { "tagline": "Military Base-Community Partnerships Promoting Local Build Contracts", "description": "" },
-          { "tagline": "New Defense Department Acquisition Initiatives/Guidelines", "description": "" },
-          { "tagline": "How to do Business with the Primes – Subcontracting & Teaming", "description": "" },
-          { "tagline": "Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's", "description": "" },
-          { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "" }
+      { "tagline": "DoD Integration of Commercial Space Assets/Technologies", "description": "" },
+      { "tagline": "Space Force Support Functions Across Domains/COCOMS", "description": "" },
+      { "tagline": "Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)", "description": "" },
+      { "tagline": "Unmanned Platforms Across Services – Prototype & Testing Contracts", "description": "" },
+      { "tagline": "Golden Dome Financing for Missile Defense Integration & Component Teams", "description": "" },
+      { "tagline": "Defense Industrial Base Expansion – Ordnance, Missiles, Drones, etc.", "description": "" },
+      { "tagline": "Expansion of AI Throughout Defense Sectors", "description": "" },
+      { "tagline": "Race to Exploit Quantum Technology", "description": "" },
+      { "tagline": "Accelerating Innovative Tech Contracting – DEFENSEWERX & DIU", "description": "" },
+      { "tagline": "Critical Defense Infrastructure Cyber Protection", "description": "" },
+      { "tagline": "Cybersecurity & CMMC Update", "description": "" },
+      { "tagline": "Military Base-Community Partnerships Promoting Local Build Contracts", "description": "" },
+      { "tagline": "New Defense Department Acquisition Initiatives/Guidelines", "description": "" },
+      { "tagline": "How to do Business with the Primes – Subcontracting & Teaming", "description": "" },
+      { "tagline": "Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's", "description": "" },
+      { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "" }
     ],
     image: "2025DTAPC_wide.webp",
     slug: "2025-defense-technology-aerospace-procurement-conference",
@@ -1031,12 +1031,12 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     eventShorthand: "2026NMCPC",
     password: "2026NMCPCADA",
     title: "2026 Navy & Marine Corps Procurement Conference",
-    date: "May 19-20, 2026",
-    timeStart: "2026-05-19T11:30:00Z",
-    timeEnd: "2026-05-20T17:30:00Z",
+    date: "May 27-29, 2026",
+    timeStart: "2026-05-27T11:30:00Z",
+    timeEnd: "2026-05-29T17:30:00Z",
     description: `This event's description is currently being finalized.`,
     eventText: (
-    <></>
+      <></>
     ),
     topicalCoverage: [
       { "tagline": "Navy's Critical Maintenance & Repair and Shipbuilding Needs", "description": "Navy's urgent need for maintenance, repair, and new shipbuilding to ensure operational readiness and technological superiority" },
