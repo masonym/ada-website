@@ -38,7 +38,7 @@ export const EVENT_NAVS = [
           { label: 'Event Recap', path: 'event-recap' },
         ],
       },
-      { label: 'Event Venue & Lodging', path: 'venue-and-lodging' },
+      { label: 'Venue & Lodging', path: 'venue-and-lodging' },
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {
@@ -86,7 +86,7 @@ export const EVENT_NAVS = [
           { label: 'Event Recap', path: 'event-recap' },
         ],
       },
-      { label: 'Event Venue & Lodging', path: '/venue-and-lodging' },
+      { label: 'Venue & Lodging', path: '/venue-and-lodging' },
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {
@@ -112,7 +112,7 @@ export const EVENT_NAVS = [
           { label: 'Event Recap', path: 'event-recap' },
         ],
       },
-      { label: 'Event Venue & Lodging', path: '/venue-and-lodging' },
+      { label: 'Venue & Lodging', path: '/venue-and-lodging' },
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {
