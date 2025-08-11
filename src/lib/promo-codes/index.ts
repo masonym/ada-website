@@ -27,16 +27,16 @@ export const PROMO_CODES: PromoCode[] = [
     code: 'ADA20',
     discountPercentage: 20,
     eligibleTicketTypes: [
-      'attendee-pass', 
-      'vip-attendee-pass', 
-      'exhibit', 
-      'platinum-sponsor', 
-      'gold-sponsor', 
-      'silver-sponsor', 
-      'bronze-sponsor', 
-      'vip-networking-reception-sponsor', 
-      'networking-luncheon-sponsor', 
-      'small-business-sponsor', 
+      'attendee-pass',
+      'vip-attendee-pass',
+      'exhibit',
+      'platinum-sponsor',
+      'gold-sponsor',
+      'silver-sponsor',
+      'bronze-sponsor',
+      'vip-networking-reception-sponsor',
+      'networking-luncheon-sponsor',
+      'small-business-sponsor',
       'small-business-sponsor-without-exhibit-space'
     ],
     eligibleEventIds: [4, 5, 6], // Valid for both 2025NMCPC and 2025DTAPC and 2026NMCPC
@@ -48,16 +48,16 @@ export const PROMO_CODES: PromoCode[] = [
     code: 'ADA10',
     discountPercentage: 10,
     eligibleTicketTypes: [
-      'attendee-pass', 
-      'vip-attendee-pass', 
-      'exhibit', 
-      'platinum-sponsor', 
-      'gold-sponsor', 
-      'silver-sponsor', 
-      'bronze-sponsor', 
-      'vip-networking-reception-sponsor', 
-      'networking-luncheon-sponsor', 
-      'small-business-sponsor', 
+      'attendee-pass',
+      'vip-attendee-pass',
+      'exhibit',
+      'platinum-sponsor',
+      'gold-sponsor',
+      'silver-sponsor',
+      'bronze-sponsor',
+      'vip-networking-reception-sponsor',
+      'networking-luncheon-sponsor',
+      'small-business-sponsor',
       'small-business-sponsor-without-exhibit-space'
     ],
     eligibleEventIds: [4, 5, 6], // Valid for both 2025NMCPC and 2025DTAPC and 2026NMCPC
@@ -70,7 +70,7 @@ export const PROMO_CODES: PromoCode[] = [
     discountPercentage: 10,
     eligibleTicketTypes: [
       'attendee-pass',
-      'vip-attendee-pass', 
+      'vip-attendee-pass',
       'exhibit',
       'platinum-sponsor',
       'gold-sponsor',
@@ -83,7 +83,7 @@ export const PROMO_CODES: PromoCode[] = [
       // Excludes: additional-exhibitor-attendee-pass, additional-sponsor-attendee-pass
     ],
     eligibleEventIds: [5, 6], // 2025DTAPC and 2026NMCPC
-    expirationDate: new Date('2025-08-12T04:00:00Z'),
+    expirationDate: new Date('2025-08-18T04:00:00Z'),
     description: 'EARLY10 - 10% off eligible tickets for event (excludes additional passes)',
     isActive: true,
     autoApply: true // Automatically apply this promo code for event ID 6
@@ -92,36 +92,36 @@ export const PROMO_CODES: PromoCode[] = [
 
 // Function to validate promo code for a specific event
 export const validatePromoCode = (
-  code: string, 
+  code: string,
   eventId: string | number
 ): { valid: boolean; reason?: string; promoDetails?: PromoCode } => {
   // Find the promo code in our list
-  const promoCode = PROMO_CODES.find(promo => 
+  const promoCode = PROMO_CODES.find(promo =>
     promo.code.toLowerCase() === code.toLowerCase() && promo.isActive
   );
-  
+
   // Check if code exists
   if (!promoCode) {
     return { valid: false, reason: 'invalid' };
   }
-  
+
   // Check if code is expired
   if (new Date() > promoCode.expirationDate) {
     return { valid: false, reason: 'expired' };
   }
-  
+
   // Check if code is valid for this specific event
   const eventIdToCheck = typeof eventId === 'string' ? parseInt(eventId) : eventId;
   if (!promoCode.eligibleEventIds.includes(eventIdToCheck)) {
     return { valid: false, reason: 'not_valid_for_event' };
   }
-  
+
   return { valid: true, promoDetails: promoCode };
 };
 
 // Function to check if a registration type is eligible for a specific promo discount
 export const isEligibleForPromoDiscount = (
-  registrationId: string, 
+  registrationId: string,
   eligibleTicketTypes: string[]
 ): boolean => {
   return eligibleTicketTypes.includes(registrationId);
@@ -130,8 +130,8 @@ export const isEligibleForPromoDiscount = (
 // Function to get all active promo codes for a specific event
 export const getActivePromoCodesForEvent = (eventId: string | number): PromoCode[] => {
   const eventIdToCheck = typeof eventId === 'string' ? parseInt(eventId) : eventId;
-  return PROMO_CODES.filter(promo => 
-    promo.isActive && 
+  return PROMO_CODES.filter(promo =>
+    promo.isActive &&
     promo.eligibleEventIds.includes(eventIdToCheck) &&
     new Date() <= promo.expirationDate
   );
@@ -140,8 +140,8 @@ export const getActivePromoCodesForEvent = (eventId: string | number): PromoCode
 // Function to get promo codes that should be automatically applied for a specific event
 export const getAutoApplyPromoCodesForEvent = (eventId: string | number): PromoCode[] => {
   const eventIdToCheck = typeof eventId === 'string' ? parseInt(eventId) : eventId;
-  return PROMO_CODES.filter(promo => 
-    promo.isActive && 
+  return PROMO_CODES.filter(promo =>
+    promo.isActive &&
     promo.autoApply === true &&
     promo.eligibleEventIds.includes(eventIdToCheck) &&
     new Date() <= promo.expirationDate
