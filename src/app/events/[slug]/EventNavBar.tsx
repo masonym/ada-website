@@ -109,7 +109,7 @@ export default function Navbar() {
                                         onClick={handleLinkClick}
                                     >
                                         <span className="relative z-10 hidden sm:inline group-hover:text-white transition-colors duration-300">{navItem.label}</span>
-                                        <span className="relative z-10 sm:hidden group-hover:text-white transition-colors duration-300">{navItem.label.split(' ')[0]}</span>
+                                        <span className="relative z-10 sm:hidden group-hover:text-white transition-colors duration-300">{navItem.label}</span>
                                         <span className="absolute inset-0 bg-lightBlue-400 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100 rounded-lg"></span>
                                     </Link>
                                 )}
