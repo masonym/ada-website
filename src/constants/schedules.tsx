@@ -2,12 +2,12 @@ import { SPEAKERS } from './speakers';
 
 // Extended speaker type for schedule-specific data
 export type ScheduleSpeaker = {
-  speakerId: string; // Reference to SPEAKERS object
-  presentation?: string;
-  videoId?: string;
-  videoStartTime?: number;
-  sponsor?: string;
-  sponsorStyle?: string;
+    speakerId: string; // Reference to SPEAKERS object
+    presentation?: string;
+    videoId?: string;
+    videoStartTime?: number;
+    sponsor?: string;
+    sponsorStyle?: string;
 };
 
 export const SCHEDULES = [
@@ -954,7 +954,7 @@ export const SCHEDULES = [
                                 speakerId: "charles-sills",
                                 sponsor: "Conference Moderator",
                                 sponsorStyle: "bg-red-999",
-                        videoId: "EjKLqEr3L1g",
+                                videoId: "EjKLqEr3L1g",
                             }
                         ],
                     },
@@ -1452,12 +1452,12 @@ export const SCHEDULES = [
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "4:30 PM - 5:30 PM",
+                        time: "4:30 PM - 6:00 PM",
                         title: "Matchmaking Session I",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "5:30 PM - 7:30 PM",
+                        time: "6:30 PM - 8:30 PM",
                         title: "VIP Networking Reception",
                         location: "Rio Grande Hall, Plaza Lower Level",
                         description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",

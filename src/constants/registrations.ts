@@ -185,14 +185,16 @@ export const REGISTRATION_TYPES = [
                 title: "Attendee Pass",
                 headerImage: "attendee-pass.webp",
                 perks: [
-                { formatted: [
-                    { content: "Event Access: (1) Attendee Pass", bold: true },
-                    { content: "Access to General Sessions", indent: 1 },
-                    { content: "Access to Exhibit Area", indent: 1 },
-                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Breakfast & Buffet Lunch", indent: 1 },
-                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) Attendee Pass", bold: true },
+                            { content: "Access to General Sessions", indent: 1 },
+                            { content: "Access to Exhibit Area", indent: 1 },
+                            { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                            { content: "Breakfast & Buffet Lunch", indent: 1 },
+                            { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                        ]
+                    }
                 ],
                 buttonText: "Register Now",
                 price: 545,
@@ -207,15 +209,17 @@ export const REGISTRATION_TYPES = [
                 title: "VIP Attendee Pass",
                 headerImage: "vip-attendee-pass.webp",
                 perks: [
-                { formatted: [
-                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-                    { content: "Access to General Sessions", indent: 1 },
-                    { content: "Access to Exhibit Area", indent: 1 },
-                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Breakfast & Buffet Lunch", indent: 1 },
-                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                    { content: "Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM", bold: true },
-                ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                            { content: "Access to General Sessions", indent: 1 },
+                            { content: "Access to Exhibit Area", indent: 1 },
+                            { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                            { content: "Breakfast & Buffet Lunch", indent: 1 },
+                            { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                            { content: "Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM", bold: true },
+                        ]
+                    }
                 ],
                 buttonText: "Register Now",
                 price: 600,
@@ -231,13 +235,15 @@ export const REGISTRATION_TYPES = [
                 title: "Government Official & Military Pass",
                 headerImage: "gov-pass.webp",
                 perks: [
-                { formatted: [
-                    { content: "Event Access: (1) Attendee Pass", bold: true },
-                    { content: "Access to General Sessions", indent: 1 },
-                    { content: "Access to Exhibit Area", indent: 1 },
-                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) Attendee Pass", bold: true },
+                            { content: "Access to General Sessions", indent: 1 },
+                            { content: "Access to Exhibit Area", indent: 1 },
+                            { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                            { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                        ]
+                    }
                 ],
                 buttonText: "Register Now",
                 type: "complimentary",
@@ -272,14 +278,16 @@ export const REGISTRATION_TYPES = [
                 title: "Attendee Pass",
                 headerImage: "attendee-pass.webp",
                 perks: [
-                { formatted: [
-                    { content: "Event Access: (1) Attendee Pass", bold: true },
-                    { content: "Access to General Sessions", indent: 1 },
-                    { content: "Access to Exhibit Area", indent: 1 },
-                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Breakfast & Buffet Lunch", indent: 1 },
-                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) Attendee Pass", bold: true },
+                            { content: "Access to General Sessions", indent: 1 },
+                            { content: "Access to Exhibit Area", indent: 1 },
+                            { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                            { content: "Breakfast & Buffet Lunch", indent: 1 },
+                            { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                        ]
+                    }
                 ],
                 buttonText: "Register Now",
                 price: 545,
@@ -293,15 +301,17 @@ export const REGISTRATION_TYPES = [
                 title: "VIP Attendee Pass",
                 headerImage: "vip-attendee-pass.webp",
                 perks: [
-                { formatted: [
-                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-                    { content: "Access to General Sessions", indent: 1 },
-                    { content: "Access to Exhibit Area", indent: 1 },
-                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Breakfast & Buffet Lunch", indent: 1 },
-                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                    { content: "Access to VIP Networking Reception on November 5, 2025 from 5:30 PM - 7:30 PM", bold: true },
-                ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                            { content: "Access to General Sessions", indent: 1 },
+                            { content: "Access to Exhibit Area", indent: 1 },
+                            { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                            { content: "Breakfast & Buffet Lunch", indent: 1 },
+                            { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                            { content: "Access to VIP Networking Reception on November 5, 2025 from 6:30 PM - 8:30 PM", bold: true },
+                        ]
+                    }
                 ],
                 buttonText: "Register Now",
                 price: 645,
@@ -314,13 +324,15 @@ export const REGISTRATION_TYPES = [
                 title: "Government Official & Military Pass",
                 headerImage: "gov-pass.webp",
                 perks: [
-                { formatted: [
-                    { content: "Event Access: (1) Attendee Pass", bold: true },
-                    { content: "Access to General Sessions", indent: 1 },
-                    { content: "Access to Exhibit Area", indent: 1 },
-                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) Attendee Pass", bold: true },
+                            { content: "Access to General Sessions", indent: 1 },
+                            { content: "Access to Exhibit Area", indent: 1 },
+                            { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                            { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                        ]
+                    }
                 ],
                 buttonText: "Register Now",
                 type: "complimentary",
@@ -337,14 +349,16 @@ export const REGISTRATION_TYPES = [
                 title: "Attendee Pass",
                 headerImage: "attendee-pass.webp",
                 perks: [
-                { formatted: [
-                    { content: "Event Access: (1) Attendee Pass", bold: true },
-                    { content: "Access to General Sessions", indent: 1 },
-                    { content: "Access to Exhibit Area", indent: 1 },
-                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Breakfast & Buffet Lunch", indent: 1 },
-                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) Attendee Pass", bold: true },
+                            { content: "Access to General Sessions", indent: 1 },
+                            { content: "Access to Exhibit Area", indent: 1 },
+                            { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                            { content: "Breakfast & Buffet Lunch", indent: 1 },
+                            { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                        ]
+                    }
                 ],
                 buttonText: "Register Now",
                 price: 545,
@@ -358,15 +372,17 @@ export const REGISTRATION_TYPES = [
                 title: "VIP Attendee Pass",
                 headerImage: "vip-attendee-pass.webp",
                 perks: [
-                { formatted: [
-                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-                    { content: "Access to General Sessions", indent: 1 },
-                    { content: "Access to Exhibit Area", indent: 1 },
-                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Breakfast & Buffet Lunch", indent: 1 },
-                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                    { content: "Access to VIP Networking Reception", bold: true },
-                ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                            { content: "Access to General Sessions", indent: 1 },
+                            { content: "Access to Exhibit Area", indent: 1 },
+                            { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                            { content: "Breakfast & Buffet Lunch", indent: 1 },
+                            { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                            { content: "Access to VIP Networking Reception", bold: true },
+                        ]
+                    }
                 ],
                 buttonText: "Register Now",
                 price: 645,
@@ -381,13 +397,15 @@ export const REGISTRATION_TYPES = [
                 title: "Government Official & Military Pass",
                 headerImage: "gov-pass.webp",
                 perks: [
-                { formatted: [
-                    { content: "Event Access: (1) Attendee Pass", bold: true },
-                    { content: "Access to General Sessions", indent: 1 },
-                    { content: "Access to Exhibit Area", indent: 1 },
-                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) Attendee Pass", bold: true },
+                            { content: "Access to General Sessions", indent: 1 },
+                            { content: "Access to Exhibit Area", indent: 1 },
+                            { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                            { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                        ]
+                    }
                 ],
                 buttonText: "Register Now",
                 type: "complimentary",

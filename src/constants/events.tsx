@@ -979,7 +979,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       sessions: [
         {
           date: "November 5",
-          sessionTime: "4:30 PM - 5:30 PM",
+          sessionTime: "4:30 PM - 6:00 PM",
         },
         {
           date: "November 6",
@@ -996,8 +996,8 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     vipNetworkingReception: {
       title: "VIP Networking Reception",
       date: "November 5, 2025",
-      timeStart: "5:30 PM",
-      timeEnd: "7:30 PM",
+      timeStart: "6:30 PM",
+      timeEnd: "8:30 PM",
       description: `The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.
       <br/>
       <b>Featuring Western Style Line Dancing Entertainment</b>

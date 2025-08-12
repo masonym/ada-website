@@ -112,7 +112,7 @@ const MatchmakingPage = () => {
             <div>
               <h3 className="font-semibold mb-2">Matchmaking Sign-ups</h3>
               <p className="text-gray-200">
-                Sign-ups for the Matchmaking Sessions will begin at {event.matchmakingSessions?.signUpTime} on {event.matchmakingSessions?.signUpDate} and will be on a first-come, first-served basis. 
+                Sign-ups for the Matchmaking Sessions will begin at {event.matchmakingSessions?.signUpTime} on {event.matchmakingSessions?.signUpDate} and will be on a first-come, first-served basis.
               </p>
             </div>
           </div>
@@ -155,6 +155,7 @@ const MatchmakingPage = () => {
       </div>
 
       {/* Who Should Participate Section */}
+      {/*
       <div className="mb-12">
         <h2 className="text-4xl font-bold text-slate-900 mb-6 text-center">Who Should Participate?</h2>
         <div className="grid md:grid-cols-2 gap-3">
@@ -169,6 +170,7 @@ const MatchmakingPage = () => {
           ))}
         </div>
       </div>
+      */}
 
       {/* Key Outcomes Section */}
       <div className="bg-navy-800 rounded-xl p-8">
@@ -185,7 +187,7 @@ const MatchmakingPage = () => {
           ))}
         </div>
       </div>
-      
+
       {/* Matchmaking Sponsors Section */}
       <MatchmakingSponsors eventSlug={slug as string} />
     </div>
