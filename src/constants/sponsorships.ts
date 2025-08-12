@@ -224,15 +224,17 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             buttonText: 'Add',
             maxQuantityPerOrder: 10,
             perks: [
-                { formatted: [
-                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-                    { content: "Access to General Sessions", indent: 1 },
-                    { content: "Access to Exhibit Area", indent: 1 },
-                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Breakfast & Buffet Lunch", indent: 1 },
-                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                    { content: "Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM", bold: true },
-                ]},
+                {
+                    formatted: [
+                        { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                        { content: "Access to General Sessions", indent: 1 },
+                        { content: "Access to Exhibit Area", indent: 1 },
+                        { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                        { content: "Breakfast & Buffet Lunch", indent: 1 },
+                        { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                        { content: "Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM", bold: true },
+                    ]
+                },
             ],
         },
         primeSponsor:
@@ -244,41 +246,53 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             sponsorPasses: 5,
             requiresAttendeeInfo: true,
             perks: [
-                { formatted: [
-                    { content: "Event Access: (5) VIP Attendee Passes", bold: true },
-                    { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Exclusive Branding: Lanyards, Name Badges, and Conference Materials", bold: true },
-                    { content: "Branded Lanyards used with all Attendee Name Badges (Sponsor Provided)", indent: 1 },
-                    { content: "Company Logo prominently displayed on Attendee Name Badges", indent: 1 },
-                    { content: "Prime Logo Placement on Conference Materials", indent: 1 },
-                    { content: "Conference Pop-up Banners", indent: 2 },
-                    { content: "Digital Agenda & Event Website", indent: 2 },
-                    { content: "Marketing Emails & Printed Program", indent: 2 }
-                ]},
-                { formatted: [
-                    { content: "Speaking Opportunity", bold: true },
-                    { content: "20-Minute Speaking Opportunity during General Session", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Recognition/Visibility", bold: true },
-                    { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                    { content: "Sponsor Spotlight Email highlighting your Company's Capabilities to Attendees", indent: 1 },
-                    { content: "Social Media Recognition", indent: 1 },
-                    { content: "Photographs & Videos of your Participation", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Table-Top Exhibit Space", bold: true },
-                    { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
-                    { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                ]},
-                { formatted: [
-                    { content: "Matchmaking Host Invitation", bold: true },
-                    { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                    { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
-                    { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
-                ]}
+                {
+                    formatted: [
+                        { content: "Event Access: (5) VIP Attendee Passes", bold: true },
+                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                    ]
+                },
+                {
+                    formatted: [
+                        { content: "Exclusive Branding: Lanyards, Name Badges, and Conference Materials", bold: true },
+                        { content: "Branded Lanyards used with all Attendee Name Badges (Sponsor Provided)", indent: 1 },
+                        { content: "Company Logo prominently displayed on Attendee Name Badges", indent: 1 },
+                        { content: "Prime Logo Placement on Conference Materials", indent: 1 },
+                        { content: "Conference Pop-up Banners", indent: 2 },
+                        { content: "Digital Agenda & Event Website", indent: 2 },
+                        { content: "Marketing Emails & Printed Program", indent: 2 }
+                    ]
+                },
+                {
+                    formatted: [
+                        { content: "Speaking Opportunity", bold: true },
+                        { content: "20-Minute Speaking Opportunity during General Session", indent: 1 }
+                    ]
+                },
+                {
+                    formatted: [
+                        { content: "Recognition/Visibility", bold: true },
+                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                        { content: "Sponsor Spotlight Email highlighting your Company's Capabilities to Attendees", indent: 1 },
+                        { content: "Social Media Recognition", indent: 1 },
+                        { content: "Photographs & Videos of your Participation", indent: 1 }
+                    ]
+                },
+                {
+                    formatted: [
+                        { content: "Table-Top Exhibit Space", bold: true },
+                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                    ]
+                },
+                {
+                    formatted: [
+                        { content: "Matchmaking Host Invitation", bold: true },
+                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                        { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
+                        { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
+                    ]
+                }
             ],
             colour: "bg-sky-300",
             showRemaining: true,
@@ -293,37 +307,49 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 slotsPerEvent: 2,
                 sponsorPasses: 4,
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (4) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Speaking Opportunity", bold: true },
-                        { content: "15-Minute Speaking Opportunity during General Session", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition", indent: 1 },
-                        { content: "Photographs & Videos of your Participation", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                    ]},
-                    { formatted: [
-                        { content: "Matchmaking Host Invitation", bold: true },
-                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                        { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
-                        { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
-                    ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (4) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Speaking Opportunity", bold: true },
+                            { content: "15-Minute Speaking Opportunity during General Session", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                            { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
+                            { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
+                        ]
+                    }
                 ],
                 colour: "#ffaf00",
                 showRemaining: true
@@ -337,37 +363,49 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 sponsorPasses: 3,
                 saleEndTime: "2025-07-26T04:00:20.000Z",
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (3) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Speaking Opportunity", bold: true },
-                        { content: "10-Minute Speaking Opportunity during General Session", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition", indent: 1 },
-                        { content: "Photographs & Videos of your Participation", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                    ]},
-                    { formatted: [
-                        { content: "Matchmaking Host Invitation", bold: true },
-                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                        { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
-                        { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
-                    ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (3) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Speaking Opportunity", bold: true },
+                            { content: "10-Minute Speaking Opportunity during General Session", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                            { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
+                            { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
+                        ]
+                    }
                 ],
                 colour: "#C0C0C0",
                 showRemaining: true
@@ -381,37 +419,49 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 sponsorPasses: 2,
                 saleEndTime: "2025-07-26T04:00:20.000Z",
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Speaking Opportunity", bold: true },
-                        { content: "5-Minute Speaking Opportunity during General Session", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition", indent: 1 },
-                        { content: "Photographs & Videos of your Participation", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                    ]},
-                    { formatted: [
-                        { content: "Matchmaking Host Invitation", bold: true },
-                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                        { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
-                        { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
-                    ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Speaking Opportunity", bold: true },
+                            { content: "5-Minute Speaking Opportunity during General Session", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                            { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
+                            { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
+                        ]
+                    }
                 ],
                 colour: "#CD7F32",
                 showRemaining: true
@@ -425,39 +475,51 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 sponsorPasses: 2,
                 saleEndTime: "2025-07-26T04:00:20.000Z",
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Signage", indent: 1 },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Exclusive Host of the VIP Networking Reception", bold: true },
-                        { content: "Provide Welcoming Remarks at the VIP Networking Reception", indent: 1 },
-                        { content: "Logo Placement at VIP Networking Reception", indent: 1 },
-                        { content: "Table Tents on VIP Networking Reception Tables", indent: 2 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Recognition during General Session before VIP Networking Reception", indent: 1 },
-                        { content: "Social Media Recognition", indent: 1 },
-                        { content: "Photographs & Videos of your Participation", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "8’x10' Exhibit Space", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 2 }
-                    ]},
-                    { formatted: [
-                        { content: "Matchmaking Host Invitation", bold: true },
-                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                        { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
-                        { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
-                    ]},
+                    {
+                        formatted: [
+                            { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Signage", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Exclusive Host of the VIP Networking Reception", bold: true },
+                            { content: "Provide Welcoming Remarks at the VIP Networking Reception", indent: 1 },
+                            { content: "Logo Placement at VIP Networking Reception", indent: 1 },
+                            { content: "Table Tents on VIP Networking Reception Tables", indent: 2 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session before VIP Networking Reception", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "8’x10' Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                            { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
+                            { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
+                        ]
+                    },
                 ],
                 colour: "#3FB4E6",
                 showRemaining: true,
@@ -471,41 +533,53 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 sponsorPasses: 3,
                 saleEndTime: "2025-07-26T04:00:20.000Z",
                 perks: [
-                { formatted: [
-                    { content: "Event Access: (3) VIP Attendee Passes", bold: true },
-                    { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Logo Branding: Conference Materials", bold: true },
-                    { content: "Conference Pop-up Banners", indent: 1 },
-                    { content: "Foam Boards & Signage", indent: 1 },
-                    { content: "Digital Agenda & Event Website", indent: 1 },
-                    { content: "Marketing Emails & Printed Program", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Host of the Networking Luncheon with Exhibitors", bold: true },
-                    { content: "Provide 5-minute Remarks before the Networking Luncheon", indent: 1 },
-                    { content: "Logo Placement at Networking Luncheon", indent: 1 },
-                    { content: "Table Tents on Networking Luncheon Tables", indent: 2 },
-                    { content: "Signage near Food/Beverage Areas", indent: 2 }
-                ]},
-                { formatted: [
-                    { content: "Recognition/Visibility", bold: true },
-                    { content: "Recognition during General Session before Networking Luncheon", indent: 1 },
-                    { content: "Social Media Recognition", indent: 1 },
-                    { content: "Photographs & Videos of your Participation", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Table-Top Exhibit Space", bold: true },
-                    { content: "8’x10' Exhibit Space", indent: 1 },
-                    { content: "6' Tablecloth Table & Chairs", indent: 2 }
-                ]},
-                { formatted: [
-                    { content: "Matchmaking Host Invitation", bold: true },
-                    { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                    { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
-                    { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
-                ]},
+                    {
+                        formatted: [
+                            { content: "Event Access: (3) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Foam Boards & Signage", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Host of the Networking Luncheon with Exhibitors", bold: true },
+                            { content: "Provide 5-minute Remarks before the Networking Luncheon", indent: 1 },
+                            { content: "Logo Placement at Networking Luncheon", indent: 1 },
+                            { content: "Table Tents on Networking Luncheon Tables", indent: 2 },
+                            { content: "Signage near Food/Beverage Areas", indent: 2 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session before Networking Luncheon", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "8’x10' Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                            { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
+                            { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
+                        ]
+                    },
                 ],
                 colour: "#3FB4E6",
                 showRemaining: true,
@@ -519,24 +593,32 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 sponsorPasses: 2,
                 saleEndTime: "2025-07-26T04:00:20.000Z",
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Photographs of your Participation", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Exhibit Space", bold: true },
-                        { content: "8'x10' Exhibit Space", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 2 }
-                    ]},
+                    {
+                        formatted: [
+                            { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Photographs of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Exhibit Space", bold: true },
+                            { content: "8'x10' Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 }
+                        ]
+                    },
                 ],
                 showRemaining: true,
             },
@@ -549,20 +631,26 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 sponsorPasses: 2,
                 saleEndTime: "2025-07-26T04:00:20.000Z",
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Photographs of your Participation", indent: 1 }
-                    ]},
+                    {
+                        formatted: [
+                            { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Photographs of your Participation", indent: 1 }
+                        ]
+                    },
                 ],
                 showRemaining: true,
                 showOnSponsorshipPage: false,
@@ -580,15 +668,17 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             buttonText: 'Add',
             maxQuantityPerOrder: 10,
             perks: [
-                { formatted: [
-                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-                    { content: "Access to General Sessions", indent: 1 },
-                    { content: "Access to Exhibit Area", indent: 1 },
-                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Breakfast & Buffet Lunch", indent: 1 },
-                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                    { content: "Access to VIP Networking Reception on November 5, 2025 from 6:00 PM - 8:00 PM", bold: true },
-                ]},
+                {
+                    formatted: [
+                        { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                        { content: "Access to General Sessions", indent: 1 },
+                        { content: "Access to Exhibit Area", indent: 1 },
+                        { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                        { content: "Breakfast & Buffet Lunch", indent: 1 },
+                        { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                        { content: "Access to VIP Networking Reception on November 5, 2025 from 6:00 PM - 8:00 PM", bold: true },
+                    ]
+                },
             ],
         },
         primeSponsor:
@@ -599,41 +689,53 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             slotsPerEvent: 1,
             sponsorPasses: 5,
             perks: [
-                { formatted: [
-                    { content: "Event Access: (5) VIP Attendee Passes", bold: true },
-                    { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Exclusive Branding: Lanyards, Name Badges, and Conference Materials", bold: true },
-                    { content: "Branded Lanyards used with all attendee Name Badges (Sponsor Provided)", indent: 1 },
-                    { content: "Company Logo prominently displayed on Name Badges", indent: 1 },
-                    { content: "Prime Logo Placement on Conference Materials", indent: 1 },
-                    { content: "Conference Pop-up Banners", indent: 2 },
-                    { content: "Digital Agenda & Event Website", indent: 2 },
-                    { content: "Marketing Emails & Printed Program", indent: 2 }
-                ]},
-                { formatted: [
-                    { content: "Speaking Opportunity", bold: true },
-                    { content: "20-Minute Speaking Opportunity during General Session", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Recognition/Visibility", bold: true },
-                    { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                    { content: "Sponsor Spotlight Email highlighting your Company's Capabilities to Attendees", indent: 1 },
-                    { content: "Social Media Recognition", indent: 1 },
-                    { content: "Photographs & Videos of your Participation", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Table-Top Exhibit Space", bold: true },
-                    { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
-                    { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                ]},
-                { formatted: [
-                    { content: "Matchmaking Host Invitation", bold: true },
-                    { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                    { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
-                    { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
-                ]}
+                {
+                    formatted: [
+                        { content: "Event Access: (5) VIP Attendee Passes", bold: true },
+                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                    ]
+                },
+                {
+                    formatted: [
+                        { content: "Exclusive Branding: Lanyards, Name Badges, and Conference Materials", bold: true },
+                        { content: "Branded Lanyards used with all attendee Name Badges (Sponsor Provided)", indent: 1 },
+                        { content: "Company Logo prominently displayed on Name Badges", indent: 1 },
+                        { content: "Prime Logo Placement on Conference Materials", indent: 1 },
+                        { content: "Conference Pop-up Banners", indent: 2 },
+                        { content: "Digital Agenda & Event Website", indent: 2 },
+                        { content: "Marketing Emails & Printed Program", indent: 2 }
+                    ]
+                },
+                {
+                    formatted: [
+                        { content: "Speaking Opportunity", bold: true },
+                        { content: "20-Minute Speaking Opportunity during General Session", indent: 1 }
+                    ]
+                },
+                {
+                    formatted: [
+                        { content: "Recognition/Visibility", bold: true },
+                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                        { content: "Sponsor Spotlight Email highlighting your Company's Capabilities to Attendees", indent: 1 },
+                        { content: "Social Media Recognition", indent: 1 },
+                        { content: "Photographs & Videos of your Participation", indent: 1 }
+                    ]
+                },
+                {
+                    formatted: [
+                        { content: "Table-Top Exhibit Space", bold: true },
+                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                    ]
+                },
+                {
+                    formatted: [
+                        { content: "Matchmaking Host Invitation", bold: true },
+                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                        { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
+                        { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
+                    ]
+                }
             ],
             colour: "bg-sky-300",
             showRemaining: true,
@@ -647,37 +749,49 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 slotsPerEvent: 2,
                 sponsorPasses: 4,
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (4) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Speaking Opportunity", bold: true },
-                        { content: "15-Minute Speaking Opportunity during General Session", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition", indent: 1 },
-                        { content: "Photographs & Videos of your Participation", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                    ]},
-                    { formatted: [
-                        { content: "Matchmaking Host Invitation", bold: true },
-                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                        { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
-                        { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
-                    ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (4) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Speaking Opportunity", bold: true },
+                            { content: "15-Minute Speaking Opportunity during General Session", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                            { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
+                            { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
+                        ]
+                    }
                 ],
                 colour: "#ffaf00",
                 showRemaining: true
@@ -689,40 +803,52 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 slotsPerEvent: 3,
                 sponsorPasses: 3,
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (3) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Speaking Opportunity", bold: true },
-                        { content: "10-Minute Speaking Opportunity during General Session", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition", indent: 1 },
-                        { content: "Photographs & Videos of your Participation", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                    ]},
-                    { formatted: [
-                        { content: "Matchmaking Host Invitation", bold: true },
-                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                        { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
-                        { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
-                    ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (3) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Speaking Opportunity", bold: true },
+                            { content: "10-Minute Speaking Opportunity during General Session", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                            { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
+                            { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
+                        ]
+                    }
                 ],
                 colour: "#C0C0C0",
-                showRemaining: true
+                showRemaining: false
             },
             {
                 id: "bronze-sponsor",
@@ -731,40 +857,52 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 slotsPerEvent: 3,
                 sponsorPasses: 2,
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Speaking Opportunity", bold: true },
-                        { content: "5-Minute Speaking Opportunity during General Session", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition", indent: 1 },
-                        { content: "Photographs & Videos of your Participation", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                    ]},
-                    { formatted: [
-                        { content: "Matchmaking Host Invitation", bold: true },
-                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                        { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
-                        { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
-                    ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Speaking Opportunity", bold: true },
+                            { content: "5-Minute Speaking Opportunity during General Session", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                            { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
+                            { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
+                        ]
+                    }
                 ],
                 colour: "#CD7F32",
-                showRemaining: true
+                showRemaining: false
             },
             {
                 id: "vip-networking-reception-sponsor",
@@ -773,38 +911,50 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 slotsPerEvent: 1,
                 sponsorPasses: 3,
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (3) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Exclusive Host of the VIP Networking Reception", bold: true },
-                        { content: "Provide Welcoming Remarks at the Reception Opening", indent: 1 },
-                        { content: "Branding on Reception Tables", indent: 1 },
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Signage", indent: 1 },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Recognition during General Session before VIP Networking Reception", indent: 1 },
-                        { content: "Social Media Recognition", indent: 1 },
-                        { content: "Photographs & Videos of your Participation", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "8’x10' Exhibit Space", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 2 }
-                    ]},
-                    { formatted: [
-                        { content: "Matchmaking Host Invitation", bold: true },
-                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                        { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
-                        { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
-                    ]},
+                    {
+                        formatted: [
+                            { content: "Event Access: (3) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Exclusive Host of the VIP Networking Reception", bold: true },
+                            { content: "Provide Welcoming Remarks at the Reception Opening", indent: 1 },
+                            { content: "Branding on Reception Tables", indent: 1 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Signage", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session before VIP Networking Reception", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "8’x10' Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                            { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
+                            { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
+                        ]
+                    },
                 ],
                 colour: "#3FB4E6",
                 showRemaining: true,
@@ -816,30 +966,38 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 slotsPerEvent: 2,
                 sponsorPasses: 2,
                 perks: [
-                { formatted: [
-                    { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-                    { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Logo Branding: Conference Materials", bold: true },
-                    { content: "Signage near Coffee Station", indent: 1 },
-                    { content: "Conference Pop-up Banners", indent: 1 },
-                    { content: "Foam Boards & Signage", indent: 1 },
-                    { content: "Digital Agenda & Event Website", indent: 1 },
-                    { content: "Marketing Emails & Printed Program", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Recognition/Visibility", bold: true },
-                    { content: "Branded Coffee Napkins (Sponsor Provided)", indent: 1 },
-                    { content: "Social Media Recognition", indent: 1 },
-                    { content: "Photographs of your Participation", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Table-Top Exhibit Space", bold: true },
-                    { content: "8’x10' Exhibit Space", indent: 1 },
-                    { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                    { content: "Exhibit Near Coffee Station", indent: 2 }
-                ]},
+                    {
+                        formatted: [
+                            { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Signage near Coffee Station", indent: 1 },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Foam Boards & Signage", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Branded Coffee Napkins (Sponsor Provided)", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "8’x10' Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                            { content: "Exhibit Near Coffee Station", indent: 2 }
+                        ]
+                    },
                 ],
                 colour: "#3FB4E6",
                 showRemaining: true,
@@ -851,24 +1009,32 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 slotsPerEvent: 20,
                 sponsorPasses: 2,
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Photographs of your Participation", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Exhibit Space", bold: true },
-                        { content: "8'x10' Exhibit Space", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 2 }
-                    ]},
+                    {
+                        formatted: [
+                            { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Photographs of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Exhibit Space", bold: true },
+                            { content: "8'x10' Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 }
+                        ]
+                    },
                 ],
                 showRemaining: true,
             },
@@ -879,20 +1045,26 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 slotsPerEvent: 20,
                 sponsorPasses: 2,
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Photographs of your Participation", indent: 1 }
-                    ]},
+                    {
+                        formatted: [
+                            { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Photographs of your Participation", indent: 1 }
+                        ]
+                    },
                 ],
                 showRemaining: true,
                 showOnSponsorshipPage: false,
@@ -910,15 +1082,17 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             buttonText: 'Add',
             maxQuantityPerOrder: 10,
             perks: [
-                { formatted: [
-                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-                    { content: "Access to General Sessions", indent: 1 },
-                    { content: "Access to Exhibit Area", indent: 1 },
-                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Breakfast & Buffet Lunch", indent: 1 },
-                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                    { content: "Access to VIP Networking Reception", bold: true },
-                ]},
+                {
+                    formatted: [
+                        { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                        { content: "Access to General Sessions", indent: 1 },
+                        { content: "Access to Exhibit Area", indent: 1 },
+                        { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                        { content: "Breakfast & Buffet Lunch", indent: 1 },
+                        { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                        { content: "Access to VIP Networking Reception", bold: true },
+                    ]
+                },
             ],
         },
         primeSponsor:
@@ -930,41 +1104,53 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             sponsorPasses: 5,
             requiresAttendeeInfo: true,
             perks: [
-                { formatted: [
-                    { content: "Event Access: (5) VIP Attendee Passes", bold: true },
-                    { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Exclusive Branding: Lanyards, Name Badges, and Conference Materials", bold: true },
-                    { content: "Branded Lanyards used with all Attendee Name Badges (Sponsor Provided)", indent: 1 },
-                    { content: "Company Logo prominently displayed on Attendee Name Badges", indent: 1 },
-                    { content: "Prime Logo Placement on Conference Materials", indent: 1 },
-                    { content: "Conference Pop-up Banners", indent: 2 },
-                    { content: "Digital Agenda & Event Website", indent: 2 },
-                    { content: "Marketing Emails & Printed Program", indent: 2 }
-                ]},
-                { formatted: [
-                    { content: "Speaking Opportunity", bold: true },
-                    { content: "20-Minute Speaking Opportunity during General Session", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Recognition/Visibility", bold: true },
-                    { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                    { content: "Sponsor Spotlight Email highlighting your Company's Capabilities to Attendees", indent: 1 },
-                    { content: "Social Media Recognition", indent: 1 },
-                    { content: "Photographs & Videos of your Participation", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Table-Top Exhibit Space", bold: true },
-                    { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
-                    { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                ]},
-                { formatted: [
-                    { content: "Matchmaking Host Invitation", bold: true },
-                    { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                    // { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
-                    // { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
-                ]}
+                {
+                    formatted: [
+                        { content: "Event Access: (5) VIP Attendee Passes", bold: true },
+                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                    ]
+                },
+                {
+                    formatted: [
+                        { content: "Exclusive Branding: Lanyards, Name Badges, and Conference Materials", bold: true },
+                        { content: "Branded Lanyards used with all Attendee Name Badges (Sponsor Provided)", indent: 1 },
+                        { content: "Company Logo prominently displayed on Attendee Name Badges", indent: 1 },
+                        { content: "Prime Logo Placement on Conference Materials", indent: 1 },
+                        { content: "Conference Pop-up Banners", indent: 2 },
+                        { content: "Digital Agenda & Event Website", indent: 2 },
+                        { content: "Marketing Emails & Printed Program", indent: 2 }
+                    ]
+                },
+                {
+                    formatted: [
+                        { content: "Speaking Opportunity", bold: true },
+                        { content: "20-Minute Speaking Opportunity during General Session", indent: 1 }
+                    ]
+                },
+                {
+                    formatted: [
+                        { content: "Recognition/Visibility", bold: true },
+                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                        { content: "Sponsor Spotlight Email highlighting your Company's Capabilities to Attendees", indent: 1 },
+                        { content: "Social Media Recognition", indent: 1 },
+                        { content: "Photographs & Videos of your Participation", indent: 1 }
+                    ]
+                },
+                {
+                    formatted: [
+                        { content: "Table-Top Exhibit Space", bold: true },
+                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                    ]
+                },
+                {
+                    formatted: [
+                        { content: "Matchmaking Host Invitation", bold: true },
+                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                        // { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
+                        // { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
+                    ]
+                }
             ],
             colour: "bg-sky-300",
             showRemaining: true,
@@ -979,37 +1165,49 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 slotsPerEvent: 2,
                 sponsorPasses: 4,
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (4) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Speaking Opportunity", bold: true },
-                        { content: "15-Minute Speaking Opportunity during General Session", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition", indent: 1 },
-                        { content: "Photographs & Videos of your Participation", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                    ]},
-                    { formatted: [
-                        { content: "Matchmaking Host Invitation", bold: true },
-                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                        // { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
-                        // { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
-                    ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (4) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Speaking Opportunity", bold: true },
+                            { content: "15-Minute Speaking Opportunity during General Session", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                            // { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
+                            // { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
+                        ]
+                    }
                 ],
                 colour: "#ffaf00",
                 showRemaining: true
@@ -1022,37 +1220,49 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 slotsPerEvent: 3,
                 sponsorPasses: 3,
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (3) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Speaking Opportunity", bold: true },
-                        { content: "10-Minute Speaking Opportunity during General Session", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition", indent: 1 },
-                        { content: "Photographs & Videos of your Participation", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                    ]},
-                    { formatted: [
-                        { content: "Matchmaking Host Invitation", bold: true },
-                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                        // { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
-                        // { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
-                    ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (3) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Speaking Opportunity", bold: true },
+                            { content: "10-Minute Speaking Opportunity during General Session", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                            // { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
+                            // { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
+                        ]
+                    }
                 ],
                 colour: "#C0C0C0",
                 showRemaining: true
@@ -1065,37 +1275,49 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 slotsPerEvent: 3,
                 sponsorPasses: 2,
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Speaking Opportunity", bold: true },
-                        { content: "5-Minute Speaking Opportunity during General Session", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-                        { content: "Social Media Recognition", indent: 1 },
-                        { content: "Photographs & Videos of your Participation", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                    ]},
-                    { formatted: [
-                        { content: "Matchmaking Host Invitation", bold: true },
-                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                        // { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
-                        // { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
-                    ]}
+                    {
+                        formatted: [
+                            { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Speaking Opportunity", bold: true },
+                            { content: "5-Minute Speaking Opportunity during General Session", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                            // { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
+                            // { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
+                        ]
+                    }
                 ],
                 colour: "#CD7F32",
                 showRemaining: true
@@ -1108,39 +1330,51 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 slotsPerEvent: 1,
                 sponsorPasses: 2,
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Signage", indent: 1 },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Exclusive Host of the VIP Networking Reception", bold: true },
-                        { content: "Provide Welcoming Remarks at the VIP Networking Reception", indent: 1 },
-                        { content: "Logo Placement at VIP Networking Reception", indent: 1 },
-                        { content: "Table Tents on VIP Networking Reception Tables", indent: 2 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Recognition during General Session before VIP Networking Reception", indent: 1 },
-                        { content: "Social Media Recognition", indent: 1 },
-                        { content: "Photographs & Videos of your Participation", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "8’x10' Exhibit Space", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 2 }
-                    ]},
-                    { formatted: [
-                        { content: "Matchmaking Host Invitation", bold: true },
-                        { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                        // { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
-                        // { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
-                    ]},
+                    {
+                        formatted: [
+                            { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Signage", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Exclusive Host of the VIP Networking Reception", bold: true },
+                            { content: "Provide Welcoming Remarks at the VIP Networking Reception", indent: 1 },
+                            { content: "Logo Placement at VIP Networking Reception", indent: 1 },
+                            { content: "Table Tents on VIP Networking Reception Tables", indent: 2 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session before VIP Networking Reception", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "8’x10' Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+                            // { content: "July 29: 4:30 PM - 5:30 PM", indent: 2 },
+                            // { content: "July 30: 12:30 PM - 1:30 PM", indent: 2 }
+                        ]
+                    },
                 ],
                 colour: "#3FB4E6",
                 showRemaining: true,
@@ -1152,30 +1386,38 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 slotsPerEvent: 2,
                 sponsorPasses: 2,
                 perks: [
-                { formatted: [
-                    { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-                    { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Logo Branding: Conference Materials", bold: true },
-                    { content: "Signage near Coffee Station", indent: 1 },
-                    { content: "Conference Pop-up Banners", indent: 1 },
-                    { content: "Foam Boards & Signage", indent: 1 },
-                    { content: "Digital Agenda & Event Website", indent: 1 },
-                    { content: "Marketing Emails & Printed Program", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Recognition/Visibility", bold: true },
-                    { content: "Branded Coffee Napkins (Sponsor Provided)", indent: 1 },
-                    { content: "Social Media Recognition", indent: 1 },
-                    { content: "Photographs of your Participation", indent: 1 }
-                ]},
-                { formatted: [
-                    { content: "Table-Top Exhibit Space", bold: true },
-                    { content: "8’x10' Exhibit Space", indent: 1 },
-                    { content: "6' Tablecloth Table & Chairs", indent: 2 },
-                    { content: "Exhibit Near Coffee Station", indent: 2 }
-                ]},
+                    {
+                        formatted: [
+                            { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Signage near Coffee Station", indent: 1 },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Foam Boards & Signage", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Branded Coffee Napkins (Sponsor Provided)", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "8’x10' Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 },
+                            { content: "Exhibit Near Coffee Station", indent: 2 }
+                        ]
+                    },
                 ],
                 colour: "#3FB4E6",
                 showRemaining: true,
@@ -1188,24 +1430,32 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 requiresAttendeeInfo: true,
                 sponsorPasses: 2,
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Photographs of your Participation", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Exhibit Space", bold: true },
-                        { content: "8'x10' Exhibit Space", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 2 }
-                    ]},
+                    {
+                        formatted: [
+                            { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Photographs of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Exhibit Space", bold: true },
+                            { content: "8'x10' Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 }
+                        ]
+                    },
                 ],
                 showRemaining: true,
             },
@@ -1217,20 +1467,26 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 slotsPerEvent: 20,
                 sponsorPasses: 2,
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-                        { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Conference Pop-up Banners", indent: 1 },
-                        { content: "Digital Agenda & Event Website", indent: 1 },
-                        { content: "Marketing Emails & Printed Program", indent: 1 }
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Photographs of your Participation", indent: 1 }
-                    ]},
+                    {
+                        formatted: [
+                            { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be Purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Digital Agenda & Event Website", indent: 1 },
+                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Photographs of your Participation", indent: 1 }
+                        ]
+                    },
                 ],
                 showRemaining: true,
                 showOnSponsorshipPage: false,
