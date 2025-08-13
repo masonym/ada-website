@@ -800,7 +800,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 id: "silver-sponsor",
                 title: "Silver Sponsorship",
                 cost: 5000,
-                slotsPerEvent: 3,
+                // slotsPerEvent: 3,
                 sponsorPasses: 3,
                 perks: [
                     {
@@ -854,7 +854,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 id: "bronze-sponsor",
                 title: "Bronze Sponsorship",
                 cost: 3000,
-                slotsPerEvent: 3,
+                // slotsPerEvent: 3,
                 sponsorPasses: 2,
                 perks: [
                     {
