@@ -166,7 +166,7 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
       buttonText: 'Select',
       perks: processedPerks,
       category: 'sponsorship',
-      quantityAvailable: sponsor.slotsPerEvent || 1, // Default to 1 if slotsPerEvent is not provided
+      quantityAvailable: sponsor.slotsPerEvent || 10, // Default to 10 if slotsPerEvent is not provided
       maxQuantityPerOrder: 1,
       sponsorPasses: sponsorPasses || 0, // Include sponsorPasses in the returned object
       colour: 'colour' in sponsor ? sponsor.colour : undefined,
@@ -282,7 +282,7 @@ export function getExhibitorsForEvent(eventId: number | string): AdapterModalReg
       buttonLink: exhibitor.buttonLink,
       perks: processedPerks,
       category: 'exhibit',
-      quantityAvailable: exhibitor.slotsPerEvent || 1,
+      quantityAvailable: exhibitor.slotsPerEvent || 10,
       maxQuantityPerOrder: exhibitor.maxQuantityPerOrder || 1,
       colour: exhibitor.colour,
       shownOnRegistrationPage: exhibitor.shownOnRegistrationPage || true,
