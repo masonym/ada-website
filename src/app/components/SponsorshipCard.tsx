@@ -8,9 +8,10 @@ import FormattedPerk from '@/components/FormattedPerk';
 type SponsorProp = {
     item: Sponsorship;
     event: Event;
+    eyebrow?: string;
 };
 
-const SponsorshipCard = ({ item, event }: SponsorProp) => {
+const SponsorshipCard = ({ item, event, eyebrow }: SponsorProp) => {
     const eventDateTime = new Date(`${event.date}T${event.timeStart}`);
     const hasEventEnded = eventDateTime < new Date();
     const eventSponsorsData = getEventSponsors(event.id);
@@ -40,6 +41,11 @@ const SponsorshipCard = ({ item, event }: SponsorProp) => {
             >
                 <div>
                     <h4 className="text-[1rem] font-bold text-white">{item.title}</h4>
+                    {eyebrow && (
+                        <span className="inline-block mb-1 px-2 py-0.5 rounded-full bg-white/20 text-white text-[16px] font-semibold tracking-wide uppercase">
+                            {eyebrow}
+                        </span>
+                    )}
                     {item.slotsPerEvent !== undefined && (
                         <p className="text-sm font-medium text-white">
                             {item.slotsPerEvent} available per event

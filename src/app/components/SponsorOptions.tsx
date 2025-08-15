@@ -97,11 +97,8 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                     )}
                     {currentEvent.primeSponsor && (
                         <div className="mb-8 w-full">
-                            <h2 className="text-3xl font-bold text-center text-slate-800 mb-4">
-                                EXCLUSIVE
-                            </h2>
                             <div className="flex justify-center">
-                                <SponsorshipCard item={currentEvent.primeSponsor} event={event} />
+                                <SponsorshipCard eyebrow="Exclusive" item={currentEvent.primeSponsor} event={event} />
                             </div>
                         </div>
                     )}
