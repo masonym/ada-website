@@ -94,6 +94,19 @@ export interface EventFeatures {
     // add stuff here later. these are flags to hide or show certain components in our dynamic route page
 }
 
+export interface EventLink {
+    /** The slug of the target event to link to (e.g., "2025-southeast-defense-procurement-conference") */
+    targetSlug: string;
+    /** Optional custom label for the link CTA (defaults based on intent/target) */
+    label?: string;
+    /** The purpose of the link (recap = /about/event-recap, speakers = /speakers, sponsor = /sponsor, event = root, custom = use hrefOverride) */
+    intent?: 'recap' | 'speakers' | 'sponsor' | 'event' | 'custom';
+    /** Relationship to the current event */
+    relation?: 'previous' | 'next' | 'related';
+    /** Optional override for href to support fully custom paths */
+    hrefOverride?: string;
+}
+
 export interface Event {
     id: number;
     title: string;
@@ -152,4 +165,6 @@ export interface Event {
     vipNetworkingReception?: VipNetworkingReception;
     shown?: boolean; // Controls whether this event should be displayed in event listings
     features?: EventFeatures;
+    /** Optional related/linked events (e.g., link to previous year's recap) */
+    links?: EventLink[];
 }

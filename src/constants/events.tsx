@@ -1116,5 +1116,14 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     placeID: "ChIJBdD-jwuYuokRyjyu_hU0jUg",
 
     countdownColour: "#1C2D3D",
+    links: [
+      {
+        targetSlug: "2025-navy-marine-corps-procurement-conference",
+        intent: "event",
+        relation: "previous",
+        label: "View the Event Recap from the 2025 Navy & Marine Corps Procurement Conference",
+        hrefOverride: "/events/2025-navy-marine-corps-procurement-conference/about/event-recap"
+      },
+    ],
   },
 ];

@@ -15,6 +15,7 @@ import FooterEventText from '@/app/components/FooterEventText';
 import { EventSaleBanner } from '@/app/components/EventSaleBanner';
 import SponsorAdvert from '@/app/components/SponsorAdvert';
 import { getCdnPath } from '@/utils/image';
+import RelatedEventLinks from '@/app/components/RelatedEventLinks';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -123,6 +124,9 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} backgroundColor={event.countdownColour} />
 
+            {/* Related/Linked events section (e.g., previous year's recap) */}
+            <RelatedEventLinks event={event} />
+
             {event.sales && event.sales.length > 0 && (
               <EventSaleBanner sales={event.sales} />
             )}
@@ -155,6 +159,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
                 className="max-w-sm sm:max-w-xs"
               />
             </div>
+
 
             <FooterEventText event={event} />
           </div>
