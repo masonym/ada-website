@@ -45,6 +45,29 @@ export default function RelatedEventLinks({ event }: { event: Event }) {
   const links = event.links ?? [];
   if (!links.length) return null;
 
+  const renderLink = (link: EventLink, key?: string | number) => {
+    const badge = resolveRelationBadge(link);
+    return (
+      <Link
+        key={key ?? link.targetSlug}
+        href={resolveHref(link)}
+        className="group inline-flex items-center gap-3 rounded-lg border border-slate-300 bg-white/90 px-4 py-3 text-slate-700 shadow-sm backdrop-blur transition-all hover:-translate-y-0.5 hover:border-navy-300 hover:shadow-md"
+      >
+        {badge && (
+          <span className="text-[10px] font-semibold uppercase tracking-wide text-navy-700 bg-navy-600/10 px-2 py-1 rounded">
+            {badge}
+          </span>
+        )}
+        <span className="font-medium">{resolveLabel(link)}</span>
+        <ArrowRight className="h-4 w-4 text-navy-700 transition-transform group-hover:translate-x-0.5" />
+      </Link>
+    );
+  };
+
+  if (links.length === 1) {
+    return <div className="w-fit mx-auto mb-4">{renderLink(links[0])}</div>;
+  }
+
   return (
     <section className="w-fit max-w-6xl mx-auto px-4 mb-4">
       <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-6 shadow-sm">
@@ -54,28 +77,11 @@ export default function RelatedEventLinks({ event }: { event: Event }) {
           </span>
           <h2 className="text-xl sm:text-2xl font-gotham font-bold text-slate-800">Related Links</h2>
         </div>
-
         <div className="flex flex-wrap gap-3 justify-center">
-          {links.map((link, idx) => {
-            const badge = resolveRelationBadge(link);
-            return (
-              <Link
-                key={`${link.targetSlug}-${idx}`}
-                href={resolveHref(link)}
-                className="group inline-flex items-center gap-3 rounded-lg border border-slate-300 bg-white/90 px-4 py-3 text-slate-700 shadow-sm backdrop-blur transition-all hover:-translate-y-0.5 hover:border-navy-300 hover:shadow-md"
-              >
-                {badge && (
-                  <span className="text-[10px] font-semibold uppercase tracking-wide text-navy-700 bg-navy-600/10 px-2 py-1 rounded">
-                    {badge}
-                  </span>
-                )}
-                <span className="font-medium">{resolveLabel(link)}</span>
-                <ArrowRight className="h-4 w-4 text-navy-700 transition-transform group-hover:translate-x-0.5" />
-              </Link>
-            );
-          })}
+          {links.map((link, idx) => renderLink(link, idx))}
         </div>
       </div>
     </section>
   );
 }
+
