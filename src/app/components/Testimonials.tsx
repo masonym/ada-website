@@ -1,4 +1,7 @@
 import React from 'react';
+import EventTestimonials from './EventTestimonials';
+import { EVENTS } from '@/constants/events';
+import Link from 'next/link';
 
 interface Testimonial {
     type: 'video' | 'text';
@@ -9,7 +12,23 @@ interface Testimonial {
     videoId?: string;
 }
 
-const Testimonials = () => {
+interface TestimonialsProps {
+    /** Event IDs to display testimonials from. If omitted, shows all events with testimonials. */
+    eventIds?: number[];
+    /** Whether to render event testimonial sections. Default: true */
+    showEvents?: boolean;
+    /** Whether to render the default, static video testimonial cards at the top. Default: true */
+    showDefaultVideos?: boolean;
+    /** Optional type filter for testimonials when rendering events. If omitted, shows all types. */
+    types?: Array<'video' | 'image' | 'text'>;
+}
+
+const Testimonials = ({ eventIds, showEvents = true, showDefaultVideos = true, types }: TestimonialsProps) => {
+    const eventsWithAnyTestimonials = EVENTS.filter(e => (e.testimonials || []).length > 0);
+    const selectedEvents = (eventIds && eventIds.length > 0)
+        ? eventsWithAnyTestimonials.filter(e => eventIds.includes(e.id))
+        : eventsWithAnyTestimonials;
+
     const testimonials: Testimonial[] = [
         {
             type: 'video',
@@ -38,33 +57,64 @@ const Testimonials = () => {
     ];
 
     return (
-        <section className="pt-8 pb-16 px-4 bg-gray-100">
+        <section className="pt-4 pb-4 px-4 bg-gray-100">
             <div className="container mx-auto">
                 <h3 className="text-xl font-bold text-center mb-0 text-navy-800">Don't just hear it from us</h3>
                 <h2 className="text-3xl font-semibold text-center mb-12 text-navy-300">Hear what our attendees have to say</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {testimonials.map((testimonial, index) => (
-                        <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
-                            {testimonial.type === 'video' && testimonial.videoId && (
-                                <div className="relative pb-[56.25%] h-0">
-                                    <iframe
-                                        className="absolute top-0 left-0 w-full h-full"
-                                        src={`https://www.youtube.com/embed/${testimonial.videoId}`}
-                                        title={`Testimonial from ${testimonial.name}`}
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                        loading="lazy"
+                {showDefaultVideos && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {testimonials.map((testimonial, index) => (
+                            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
+                                {testimonial.type === 'video' && testimonial.videoId && (
+                                    <div className="relative pb-[56.25%] h-0">
+                                        <iframe
+                                            className="absolute top-0 left-0 w-full h-full"
+                                            src={`https://www.youtube.com/embed/${testimonial.videoId}`}
+                                            title={`Testimonial from ${testimonial.name}`}
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                )}
+                                <div className="p-6">
+                                    <p className="text-gray-600 mb-4">{testimonial.quote}</p>
+                                    <p className="font-semibold">- {testimonial.name}</p>
+                                    <p className="text-gray-500 text-sm">{testimonial.title} at {testimonial.affiliation}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+
+                {/* Event testimonials grouped by event title (all types unless filtered) */}
+                {showEvents && selectedEvents.length > 0 && (
+                    <div className="mt-4">
+                        <div className="space-y-2">
+                            {selectedEvents.map(event => (
+                                <div key={event.id}>
+                                    <div className="mb-4 flex flex-wrap items-center justify-center gap-3">
+                                        <h4 className="text-xl md:text-3xl font-semibold text-slate-700 text-center mb-0">
+                                            {event.title}
+                                        </h4>
+                                        {event.slug && (
+                                            <Link
+                                                href={`/events/${event.slug}/about/event-recap`}
+                                                className="inline-flex items-center rounded-md border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                                            >
+                                                View recap
+                                            </Link>
+                                        )}
+                                    </div>
+                                    <EventTestimonials
+                                        showTitle={false}
+                                        testimonials={(event.testimonials || []).filter(t => !types || types.includes(t.type as any))}
                                     />
                                 </div>
-                            )}
-                            <div className="p-6">
-                                <p className="text-gray-600 mb-4">{testimonial.quote}</p>
-                                <p className="font-semibold">- {testimonial.name}</p>
-                                <p className="text-gray-500 text-sm">{testimonial.title} at {testimonial.affiliation}</p>
-                            </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
+                    </div>
+                )}
             </div>
         </section>
     );

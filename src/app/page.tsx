@@ -17,7 +17,7 @@ const HomePage = () => {
       <UpcomingEvents />
       <MissionStatement />
       <FocusAreas />
-      <Testimonials />
+      <Testimonials eventIds={[1, 4]} types={['video', 'image']} showDefaultVideos={false} />
       <MailingListSubscription />
       {/* <LatestNews /> */}
       <FAQSection />
