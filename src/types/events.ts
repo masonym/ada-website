@@ -134,6 +134,8 @@ export interface Event {
     locationAddress: string;
     venueName?: string;
     testimonials?: EventTestimonial[];
+    /** If set, pull testimonials from another event's id instead of this event */
+    testimonialsFromEventId?: number;
     eventShorthand: string;
     registerLink?: string;
     password?: string;

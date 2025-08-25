@@ -1063,6 +1063,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     date: "May 28-29, 2026",
     timeStart: "2026-05-28T11:30:00Z",
     timeEnd: "2026-05-29T17:30:00Z",
+    testimonialsFromEventId: 4,
     description: `Join us for the 2026 Navy & Marine Corps Procurement Conference on May 28-29, 2026 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.`,
     eventText: (
       <div className="max-container font-light">

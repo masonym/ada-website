@@ -16,6 +16,7 @@ import { EventSaleBanner } from '@/app/components/EventSaleBanner';
 import SponsorAdvert from '@/app/components/SponsorAdvert';
 import { getCdnPath } from '@/utils/image';
 import RelatedEventLinks from '@/app/components/RelatedEventLinks';
+import EventTestimonials from '@/app/components/EventTestimonials';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -149,6 +150,24 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             <SponsorLogos event={event} />
 
+
+            {/* Testimonials section: allow borrowing from another event via testimonialsFromEventId */}
+            {(() => {
+              const sourceEvent = (event.testimonialsFromEventId
+                ? EVENTS.find(e => e.id === event.testimonialsFromEventId)
+                : event) || null;
+              const testimonials = sourceEvent?.testimonials || [];
+              if (testimonials.length === 0) return null;
+              return (
+                <div className="w-full">
+                  <EventTestimonials
+                    title={`What attendees said about the <br/>${sourceEvent?.title ?? event.title}`}
+                    showTitle={true}
+                    testimonials={testimonials}
+                  />
+                </div>
+              );
+            })()}
 
             <div className="mt-0 text-center flex flex-col items-center">
               <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Place at this Groundbreaking Event!</p>
