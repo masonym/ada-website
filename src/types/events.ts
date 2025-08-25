@@ -60,12 +60,20 @@ export interface FeaturedTopicDetail {
 }
 
 export interface EventTestimonial {
-    type: 'video' | 'text';
+    type: 'video' | 'text' | 'image';
+    /** Short quote or blurb to display in the card */
     quote: string;
     name: string;
     title: string;
     affiliation: string;
+    /** YouTube video ID for video testimonials */
     videoId?: string;
+    /** Image URL for image-based testimonials */
+    imageUrl?: string;
+    /** Alt text for the testimonial image */
+    imageAlt?: string;
+    /** Optional full transcript text to show in an expandable section */
+    fullTranscript?: string;
 }
 export interface VIPReceptionProps {
         title: string;

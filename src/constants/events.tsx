@@ -876,7 +876,27 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           headerText: "U.S. Marine Corps Keynote Speaker",
         }
       ]
-    }
+    },
+    testimonials: [
+      {
+        type: 'image',
+        quote: "We have had the unique opportunity to connect with new Prime partners and also within our cohort of small and medium-sized businesses, where we are able to develop relationships, look at future opportunities, and also gain an extensive amount of knowledge the learn where the industry is going and how we can be a part of it.",
+        name: "Rashad Gray",
+        title: "Business Program Development Officer",
+        affiliation: "Mechanical Rubber",
+        imageUrl: "/testimonials/rashad-gray.webp",
+        imageAlt: "Rashad Gray"
+      },
+      {
+        type: 'image',
+        quote: "Placeholder text",
+        name: "Bradney Napier",
+        title: "CEO",
+        affiliation: "Napier Industries",
+        imageUrl: "/testimonials/bradney-napier.webp",
+        imageAlt: "Bradney Napier"
+      }
+    ],
   },
   {
     id: 5,
