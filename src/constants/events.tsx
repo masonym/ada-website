@@ -1047,16 +1047,68 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
   },
   {
     id: 6,
-    shown: false,
+    shown: true,
     eventShorthand: "2026NMCPC",
     password: "2026NMCPCADA",
     title: "2026 Navy & Marine Corps Procurement Conference",
     date: "May 28-29, 2026",
     timeStart: "2026-05-28T11:30:00Z",
     timeEnd: "2026-05-29T17:30:00Z",
-    description: `This event's description is currently being finalized.`,
+    description: `Join us for the 2026 Navy & Marine Corps Procurement Conference on May 28-29, 2026 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.`,
     eventText: (
-      <></>
+      <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Event Overview
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Join us for the <b>2026 Navy & Marine Corps Procurement Conference</b> on May 28-29, 2026 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
+        </p>
+        <p className="font-bold text-xl text-center font-gotham">
+          Topical Coverage:
+        </p>
+        <div className="">
+          <ul className="list-inside">
+            <li>Navy's Critical Maintenance & Repair and Shipbuilding Needs</li>
+            <li>SIOP - Shipyard Infrastructure Optimization Plan - Driving $ Billions in Construction & Facility Support Contracts</li>
+            <li>New Navy & Marine Corps Littoral Warfighting Requirements & Contracts</li>
+            <li>New Navy & Marine Corps Technology Initiatives</li>
+            <li>Upcoming Projects - NAVFAC, MARCORSYSCOM, and USACE</li>
+            <li>Military Base-Community Partnerships Promoting Local Build Contracts</li>
+            <li>Indo-Pacific ‘Pivot’ – Deployment & Logistics Challenges Driving Major New Acquisitions</li>
+            <li>Contracts Supporting U.S. Leadership in AI</li>
+            <li>The Surge in Autonomous/Unmanned Systems Development & Deployment</li>
+            <li>Base & Installation Physical Security Upgrades</li>
+            <li>Major Command IT & Cyber Protection Contracts</li>
+            <li>Prime Defense Contractors - Subcontracting & Teaming Opportunities</li>
+            <li>Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)</li>
+            <li>How to Access GWAC's (Government-Wide Acquisition Contracts)</li>
+            <li>Mentor-Protégé Programs as Business Accelerators for Smalls & Primes</li>
+            <li>Cybersecurity Compliance Mandates and CMMC Training Options</li>
+          </ul>
+        </div>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+          What to Expect
+        </h2>
+        <p className="max-w-6xl mx-auto text-center">
+          The <b>2026 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
+        </p>
+      </div>
+    ),
+    aboutEventText: (
+      <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Event Overview
+        </h2>
+        <p className="mb-0 leading-9">
+          Join us for the <b>2026 Navy & Marine Corps Procurement Conference</b> on May 28-29, 2026 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
+        </p>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+          What to Expect
+        </h2>
+        <p className="max-w-6xl mx-auto text-center">
+          The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
+        </p>
+      </div>
     ),
     topicalCoverage: [
       { "tagline": "Navy's Critical Maintenance & Repair and Shipbuilding Needs", "description": "Navy's urgent need for maintenance, repair, and new shipbuilding to ensure operational readiness and technological superiority" },
@@ -1084,5 +1136,14 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     placeID: "ChIJBdD-jwuYuokRyjyu_hU0jUg",
 
     countdownColour: "#1C2D3D",
+    links: [
+      {
+        targetSlug: "2025-navy-marine-corps-procurement-conference",
+        intent: "event",
+        relation: "previous",
+        label: "View the Event Recap from the 2025 Navy & Marine Corps Procurement Conference",
+        hrefOverride: "/events/2025-navy-marine-corps-procurement-conference/about/event-recap"
+      },
+    ],
   },
 ];

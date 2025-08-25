@@ -88,6 +88,29 @@ export const PROMO_CODES: PromoCode[] = [
     isActive: true,
     autoApply: true // Automatically apply this promo code for event ID 6
   },
+  {
+    code: 'NSIC10',
+    discountPercentage: 10,
+    eligibleTicketTypes: [
+      'attendee-pass',
+      'vip-attendee-pass',
+      'exhibit',
+      'platinum-sponsor',
+      'gold-sponsor',
+      'silver-sponsor',
+      'bronze-sponsor',
+      'vip-networking-reception-sponsor',
+      'networking-luncheon-sponsor',
+      'small-business-sponsor',
+      'small-business-sponsor-without-exhibit-space'
+      // Excludes: additional-exhibitor-attendee-pass, additional-sponsor-attendee-pass
+    ],
+    eligibleEventIds: [5], // 2025DTAPC
+    expirationDate: new Date('2025-11-18T04:00:00Z'),
+    description: 'NSIC10 - 10% off eligible tickets for event (excludes additional passes)',
+    isActive: true,
+    autoApply: false
+  }
 ];
 
 // Function to validate promo code for a specific event
