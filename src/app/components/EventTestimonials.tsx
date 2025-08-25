@@ -38,7 +38,7 @@ const EventTestimonials = ({ testimonials = [] }: EventTestimonialsProps) => {
                             )}
 
                             {testimonial.type === 'image' && testimonial.imageUrl && (
-                                <div className="relative w-full h-56 bg-gray-100">
+                                <div className="relative w-full h-80 bg-gray-100">
                                     <Image
                                         src={getCdnPath(testimonial.imageUrl)}
                                         alt={testimonial.imageAlt || `${testimonial.name} headshot`}
