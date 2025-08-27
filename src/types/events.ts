@@ -136,6 +136,8 @@ export interface Event {
     testimonials?: EventTestimonial[];
     /** If set, pull testimonials from another event's id instead of this event */
     testimonialsFromEventId?: number;
+    /** If set, indicates a related event to use for derived sections (e.g., highlights sourced from a prior year) */
+    relatedEventId?: number;
     eventShorthand: string;
     registerLink?: string;
     password?: string;

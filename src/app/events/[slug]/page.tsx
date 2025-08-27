@@ -17,6 +17,8 @@ import SponsorAdvert from '@/app/components/SponsorAdvert';
 import { getCdnPath } from '@/utils/image';
 import RelatedEventLinks from '@/app/components/RelatedEventLinks';
 import EventTestimonials from '@/app/components/EventTestimonials';
+import EventHighlights from '@/app/components/EventHighlights';
+import { HIGHLIGHTS } from '@/constants/highlights';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -142,6 +144,25 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
 
             <SpecialFeatures event={event} />
+
+            {(() => {
+              if (!event.relatedEventId) return null;
+              const related = EVENTS.find(e => e.id === event.relatedEventId);
+              if (!related) return null;
+              // Only show if the related event is older than the current event
+              const relatedEnd = new Date(related.timeEnd || related.timeStart).getTime();
+              const currentStart = new Date(event.timeStart).getTime();
+              const isOlder = relatedEnd < currentStart;
+              const hasHighlights = Array.isArray(HIGHLIGHTS[related.id]) && HIGHLIGHTS[related.id].length > 0;
+              if (!isOlder || !hasHighlights) return null;
+              return (
+                <EventHighlights
+                  sourceEventId={related.id}
+                  title={`${related.title} Highlights`}
+                  subtitle={`Watch standout moments from ${related.title}`}
+                />
+              );
+            })()}
 
             <RegistrationOptions event={event} />
 
