@@ -154,17 +154,36 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             <SponsorLogos event={event} />
 
 
-            {/* Testimonials section: allow borrowing from another event via testimonialsFromEventId */}
+            {/* Testimonials section: only render when borrowing from explicit or older related event */}
             {(() => {
-              const sourceEvent = (event.testimonialsFromEventId
-                ? EVENTS.find(e => e.id === event.testimonialsFromEventId)
-                : event) || null;
-              const testimonials = sourceEvent?.testimonials || [];
+              let sourceEvent = null as typeof event | null;
+              // 1) Explicit mapping takes precedence
+              if (event.testimonialsFromEventId) {
+                const explicit = EVENTS.find(e => e.id === event.testimonialsFromEventId) || null;
+                if (explicit && (explicit.testimonials?.length ?? 0) > 0) {
+                  sourceEvent = explicit;
+                }
+              }
+              // 2) Else fallback to older related event with testimonials
+              if (!sourceEvent && event.relatedEventId) {
+                const related = EVENTS.find(e => e.id === event.relatedEventId) || null;
+                if (related) {
+                  const relatedEnd = new Date(related.timeEnd || related.timeStart).getTime();
+                  const currentStart = new Date(event.timeStart).getTime();
+                  const isOlder = relatedEnd < currentStart;
+                  if (isOlder && (related.testimonials?.length ?? 0) > 0) {
+                    sourceEvent = related;
+                  }
+                }
+              }
+              if (!sourceEvent) return null; // Do not show for current event by default
+              if (sourceEvent.id === event.id) return null; // Extra guard: only show when borrowing from another event
+              const testimonials = sourceEvent.testimonials || [];
               if (testimonials.length === 0) return null;
               return (
                 <div className="w-full">
                   <EventTestimonials
-                    title={`What attendees said about the <br/>${sourceEvent?.title ?? event.title}`}
+                    title={`What attendees said about the <br/>${sourceEvent.title}`}
                     showTitle={true}
                     testimonials={testimonials}
                   />
