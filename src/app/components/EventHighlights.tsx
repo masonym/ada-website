@@ -65,7 +65,7 @@ const EventHighlights: React.FC<Props> = ({ sourceEventId, title, subtitle }) =>
   };
 
   return (
-    <section className="pt-8 pb-16 px-4 bg-gray-100">
+    <section className="pt-8 pb-16 px-4">
       <div className="max-w-[90rem] mx-auto">
         <h4 className="text-xl md:text-3xl font-semibold text-slate-700 text-center mb-0">
           {title || 'Event Highlights'}
