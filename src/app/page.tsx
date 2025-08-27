@@ -22,7 +22,7 @@ const HomePage = () => {
       <EventHighlights
         sourceEventId={4}
         title="2025 Navy & Marine Corps Procurement Conference Highlights"
-        subtitle="Watch standout moments from last year's Navy & Marine Corps Procurement Conference"
+        subtitle="Watch standout moments from the 2025 Navy & Marine Corps Procurement Conference"
       />
       <MailingListSubscription />
       {/* <LatestNews /> */}

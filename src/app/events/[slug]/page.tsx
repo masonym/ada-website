@@ -186,7 +186,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
                 <EventHighlights
                   sourceEventId={related.id}
                   title={`${related.title} Highlights`}
-                  subtitle={`Watch standout moments from ${related.title}`}
+                  subtitle={`Watch standout moments from the ${related.title}`}
                 />
               );
             })()}
