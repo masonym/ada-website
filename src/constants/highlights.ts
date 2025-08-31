@@ -21,13 +21,13 @@ export const HIGHLIGHTS: HighlightsMap = {
       sessionDayDate: 'July 29, 2025',
       sessionTime: '11:25 AM',
       sessionTitle: 'Fleet Readiness Panel – Addressing Critical Challenges & Requirements',
-      videoId: 'Qfpk0DPH0Mg'
+      videoId: 'Vx2AlbER8kU'
     },
     {
       sessionDayDate: 'July 29, 2025',
       sessionTime: '2:15 PM',
       sessionTitle: 'UNITED STATES MARINE CORPS KEYNOTE ADDRESS',
-      videoId: 'JbiElkPPYrc'
+      videoId: 'zluxA6R5K_g'
     },
     {
       sessionDayDate: 'July 30, 2025',
