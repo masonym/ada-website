@@ -271,6 +271,29 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 ]
             }
         ]
+    },
+    {
+        id: 5, // DTAPC 2025
+        tiers: [
+            {
+                id: "small-business-sponsor",
+                name: "Small Business Sponsors",
+                style: "bg-sb-100 text-slate-900",
+                sponsorIds: [
+                    "isi-defense",
+                ],
+            },
+            {
+                id: "exhibit",
+                name: "Exhibitors",
+                style: "bg-navy-800 text-white", // Custom styling for organizers
+                sponsorIds: [
+                    "trust-consulting-services",
+                    "imsm",
+                    "isi-defense",
+                ],
+            },
+        ],
     }
 ];
 
