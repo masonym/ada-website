@@ -27,7 +27,7 @@ const SponsorOptions = ({ event }: SponsorProps) => {
     if (!currentEvent) {
         notFound();
     }
-    
+
     const handleOpenRegistration = () => {
         setIsModalOpen(true);
     };
@@ -35,7 +35,7 @@ const SponsorOptions = ({ event }: SponsorProps) => {
     const handleCloseModal = () => {
         setIsModalOpen(false);
     };
-    
+
     const sponsorOptions = getSponsorshipsForEvent(event.id);
 
     const defaultExhibitorText = (
@@ -90,15 +90,15 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                     </p>
                     {/* Event Floorplan Section */}
                     {event.id === 4 && (
-                        <EventFloorPlan 
-                            eventId={event.id} 
+                        <EventFloorPlan
+                            eventId={event.id}
                             floorPlanImage={`/events/${event.eventShorthand}/event-floorplan.webp`}
                         />
                     )}
                     {currentEvent.primeSponsor && (
                         <div className="mb-8 w-full">
                             <div className="flex justify-center">
-                                <SponsorshipCard eyebrow="Exclusive" item={currentEvent.primeSponsor} event={event} />
+                                <SponsorshipCard item={currentEvent.primeSponsor} event={event} />
                             </div>
                         </div>
                     )}
@@ -106,12 +106,12 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                     {/* this prop isn't required, so we want to only filter ones out that are EXPLICITLY FALSE */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
                         {currentEvent.sponsorships
-                        .filter((item) => item.showOnSponsorshipPage !== false)
-                        .map((item, index) => (
-                            <div key={index} className="flex justify-center">
-                                <SponsorshipCard item={item} event={event} />
-                            </div>
-                        ))}
+                            .filter((item) => item.showOnSponsorshipPage !== false)
+                            .map((item, index) => (
+                                <div key={index} className="flex justify-center">
+                                    <SponsorshipCard item={item} event={event} />
+                                </div>
+                            ))}
                     </div>
                     <p className="text-[16px] mt-4 font-gotham text-slate-600 text-center w-full max-w-6xl mx-auto mb-6">
                         <b>Exhibitor Spaces:</b>{' '}
@@ -140,7 +140,7 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                         />
                     </div>
                 </div>
-                
+
                 {/* Registration Modal */}
                 {sponsorOptions && sponsorOptions.length > 0 && (
                     <RegistrationModal
