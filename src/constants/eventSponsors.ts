@@ -276,6 +276,14 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         id: 5, // DTAPC 2025
         tiers: [
             {
+                id: "bronze-sponsor",
+                name: "Bronze Sponsor",
+                style: "bg-amber-700 text-slate-900",
+                sponsorIds: [
+                    "omega-technical-services",
+                ],
+            },
+            {
                 id: "small-business-sponsor",
                 name: "Small Business Sponsors",
                 style: "bg-sb-100 text-slate-900",

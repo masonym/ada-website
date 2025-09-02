@@ -817,7 +817,14 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/magna-bsp.webp",
     website: "https://www.magnabsp.com/",
     size: 'small'
-  }
+  },
+  "omega-technical-services": {
+    id: "omega-technical-services",
+    name: "Omega Technical Services",
+    logo: "/sponsors/omega-technical-services.webp",
+    website: "https://omegatechserv.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID
