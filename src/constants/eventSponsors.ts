@@ -291,6 +291,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "trust-consulting-services",
                     "imsm",
                     "isi-defense",
+                    "magna-bsp",
                 ],
             },
         ],

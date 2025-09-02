@@ -810,6 +810,13 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/finley-asphalt-concrete.webp",
     website: "https://www.finleyasphalt.com/",
     size: 'small'
+  },
+  "magna-bsp": {
+    id: "magna-bsp",
+    name: "Magna BSP",
+    logo: "/sponsors/magna-bsp.webp",
+    website: "https://www.magnabsp.com/",
+    size: 'small'
   }
 };
 
