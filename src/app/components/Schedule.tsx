@@ -7,6 +7,7 @@ import ModalVideo from 'react-modal-video';
 import 'react-modal-video/css/modal-video.css';
 import { getCdnPath } from '@/utils/image';
 import { SPEAKERS, Speaker as SpeakerData } from '@/constants/speakers';
+import { slugify } from '@/utils/slugify';
 
 type Speaker = {
   name?: string; // Optional when using speakerId
@@ -156,6 +157,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
           {schedule[selectedDay].items.map((item, itemIndex, array) => (
             <div
               key={itemIndex}
+              id={`session-${slugify(item.time)}-${slugify(item.title)}`}
               className={`flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center min-h-[120px] ${itemIndex !== array.length - 1 ? 'mb-8 pb-8 border-b border-gray-200' : ''
                 }`}
             >

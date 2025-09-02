@@ -16,6 +16,9 @@ import { EventSaleBanner } from '@/app/components/EventSaleBanner';
 import SponsorAdvert from '@/app/components/SponsorAdvert';
 import { getCdnPath } from '@/utils/image';
 import RelatedEventLinks from '@/app/components/RelatedEventLinks';
+import EventTestimonials from '@/app/components/EventTestimonials';
+import EventHighlights from '@/app/components/EventHighlights';
+import { HIGHLIGHTS } from '@/constants/highlights';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -142,6 +145,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             <SpecialFeatures event={event} />
 
+
             <RegistrationOptions event={event} />
 
             <SponsorAdvert event={event} />
@@ -149,6 +153,62 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             <SponsorLogos event={event} />
 
+
+            {/* Testimonials section: only render when borrowing from explicit or older related event */}
+            {(() => {
+              let sourceEvent = null as typeof event | null;
+              // 1) Explicit mapping takes precedence
+              if (event.testimonialsFromEventId) {
+                const explicit = EVENTS.find(e => e.id === event.testimonialsFromEventId) || null;
+                if (explicit && (explicit.testimonials?.length ?? 0) > 0) {
+                  sourceEvent = explicit;
+                }
+              }
+              // 2) Else fallback to older related event with testimonials
+              if (!sourceEvent && event.relatedEventId) {
+                const related = EVENTS.find(e => e.id === event.relatedEventId) || null;
+                if (related) {
+                  const relatedEnd = new Date(related.timeEnd || related.timeStart).getTime();
+                  const currentStart = new Date(event.timeStart).getTime();
+                  const isOlder = relatedEnd < currentStart;
+                  if (isOlder && (related.testimonials?.length ?? 0) > 0) {
+                    sourceEvent = related;
+                  }
+                }
+              }
+              if (!sourceEvent) return null; // Do not show for current event by default
+              if (sourceEvent.id === event.id) return null; // Extra guard: only show when borrowing from another event
+              const testimonials = sourceEvent.testimonials || [];
+              if (testimonials.length === 0) return null;
+              return (
+                <div className="w-full">
+                  <EventTestimonials
+                    title={`What attendees said about the <br/>${sourceEvent.title}`}
+                    showTitle={true}
+                    testimonials={testimonials}
+                  />
+                </div>
+              );
+            })()}
+
+            {(() => {
+              if (!event.relatedEventId) return null;
+              const related = EVENTS.find(e => e.id === event.relatedEventId);
+              if (!related) return null;
+              // Only show if the related event is older than the current event
+              const relatedEnd = new Date(related.timeEnd || related.timeStart).getTime();
+              const currentStart = new Date(event.timeStart).getTime();
+              const isOlder = relatedEnd < currentStart;
+              const hasHighlights = Array.isArray(HIGHLIGHTS[related.id]) && HIGHLIGHTS[related.id].length > 0;
+              if (!isOlder || !hasHighlights) return null;
+              return (
+                <EventHighlights
+                  sourceEventId={related.id}
+                  title={`${related.title} Highlights`}
+                  subtitle={`Watch standout moments from the ${related.title}`}
+                />
+              );
+            })()}
 
             <div className="mt-0 text-center flex flex-col items-center">
               <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Place at this Groundbreaking Event!</p>

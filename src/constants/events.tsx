@@ -876,7 +876,36 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           headerText: "U.S. Marine Corps Keynote Speaker",
         }
       ]
-    }
+    },
+    testimonials: [
+      {
+        type: 'image',
+        quote: "We're here at the 2025 Navy and Marine Corps Procurement Conference in Norfolk, connecting with businesses of all sizes in the national defense space. It's been a great opportunity to connect with new Prime partners, to build relationships, explore future partnerships, and gain valuable industry insights. We've discovered key resources around compliance and collaboration that will help us grow and enreach our opportunities as a business. Thanks to the organizers for this incredible experience, and we will be at future events",
+        name: "Rashad Gray",
+        title: "Business Program Development Officer",
+        affiliation: "Mechanical Rubber",
+        imageUrl: "/testimonials/rashad-gray.webp",
+        imageAlt: "Rashad Gray"
+      },
+      {
+        type: 'image',
+        quote: "A big shout-out to the American Defense Alliance! Great conference in Norfolk, VA that was well put-together, provided outstanding networking, and the food was amazing! As a relative newcomer to government contracting we felt very welcomed.",
+        name: "Bradney Napier",
+        title: "CEO",
+        affiliation: "Napier Industries",
+        imageUrl: "/testimonials/bradney-napier.webp",
+        imageAlt: "Bradney Napier"
+      },
+      {
+        type: 'image',
+        quote: "A wonderful organization [American Defense Alliance] and an outstanding venue to meet like-minded professionals in the industry promoting investment in the defense sector, and hear directly from the military and government leaders about upcoming procurement opportunities in the Navy.",
+        name: "Bruce Sumlin",
+        title: "Founder & CEO",
+        affiliation: "CSS Energy Solutions",
+        imageUrl: "/testimonials/bruce-sumlin.webp",
+        imageAlt: "Bruce Sumlin"
+      }
+    ],
   },
   {
     id: 5,
@@ -1034,6 +1063,8 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     date: "May 28-29, 2026",
     timeStart: "2026-05-28T11:30:00Z",
     timeEnd: "2026-05-29T17:30:00Z",
+    testimonialsFromEventId: 4,
+    relatedEventId: 4,
     description: `Join us for the 2026 Navy & Marine Corps Procurement Conference on May 28-29, 2026 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.`,
     eventText: (
       <div className="max-container font-light">
