@@ -280,6 +280,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 name: "Bronze Sponsor",
                 style: "bg-amber-700 text-slate-900",
                 sponsorIds: [
+                    "trust-consulting-services",
                     "omega-technical-services",
                 ],
             },
@@ -300,6 +301,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "imsm",
                     "isi-defense",
                     "magna-bsp",
+                    "omega-technical-services",
                 ],
             },
         ],
