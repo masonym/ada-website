@@ -218,7 +218,7 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                 maxQuantityPerOrder: 1,
                 isGovtFreeEligible: false,
                 slotsPerEvent: 50,
-                showRemaining: true,
+                showRemaining: false,
                 perks: [
                     {
                         formatted: [
@@ -291,7 +291,7 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                 maxQuantityPerOrder: 1,
                 isGovtFreeEligible: false,
                 slotsPerEvent: 65,
-                showRemaining: true,
+                showRemaining: false,
                 perks: [
                     {
                         formatted: [
