@@ -294,7 +294,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
             },
             {
                 id: "exhibit",
-                name: "Exhibitors",
+                name: "Exhibitor Spotlight",
                 style: "bg-navy-800 text-white", // Custom styling for organizers
                 sponsorIds: [
                     "trust-consulting-services",
