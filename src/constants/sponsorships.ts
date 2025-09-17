@@ -738,7 +738,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 }
             ],
             colour: "bg-sky-300",
-            showRemaining: true,
+            showRemaining: false,
         },
 
         sponsorships: [
@@ -794,7 +794,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     }
                 ],
                 colour: "#ffaf00",
-                showRemaining: true
+                showRemaining: false
             },
             {
                 id: "silver-sponsor",
@@ -957,7 +957,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     },
                 ],
                 colour: "#3FB4E6",
-                showRemaining: true,
+                showRemaining: false,
             },
             {
                 id: "networking-luncheon-sponsor",
@@ -1000,7 +1000,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     },
                 ],
                 colour: "#3FB4E6",
-                showRemaining: true,
+                showRemaining: false,
             },
             {
                 id: "small-business-sponsor",
@@ -1036,7 +1036,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         ]
                     },
                 ],
-                showRemaining: true,
+                showRemaining: false,
             },
             {
                 id: "small-business-sponsor-without-exhibit-space",
@@ -1066,7 +1066,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         ]
                     },
                 ],
-                showRemaining: true,
+                showRemaining: false,
                 showOnSponsorshipPage: false,
             },
         ],
@@ -1153,7 +1153,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 }
             ],
             colour: "bg-sky-300",
-            showRemaining: true,
+            showRemaining: false,
         },
 
         sponsorships: [
@@ -1210,7 +1210,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     }
                 ],
                 colour: "#ffaf00",
-                showRemaining: true
+                showRemaining: false
             },
             {
                 id: "silver-sponsor",
@@ -1265,7 +1265,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     }
                 ],
                 colour: "#C0C0C0",
-                showRemaining: true
+                showRemaining: false
             },
             {
                 id: "bronze-sponsor",
@@ -1320,7 +1320,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     }
                 ],
                 colour: "#CD7F32",
-                showRemaining: true
+                showRemaining: false
             },
             {
                 id: "vip-networking-reception-sponsor",
@@ -1377,7 +1377,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     },
                 ],
                 colour: "#3FB4E6",
-                showRemaining: true,
+                showRemaining: false,
             },
             {
                 id: "networking-luncheon-sponsor",
@@ -1420,7 +1420,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     },
                 ],
                 colour: "#3FB4E6",
-                showRemaining: true,
+                showRemaining: false,
             },
             {
                 id: "small-business-sponsor",
@@ -1457,7 +1457,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         ]
                     },
                 ],
-                showRemaining: true,
+                showRemaining: false,
             },
             {
                 id: "small-business-sponsor-without-exhibit-space",
@@ -1488,7 +1488,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         ]
                     },
                 ],
-                showRemaining: true,
+                showRemaining: false,
                 showOnSponsorshipPage: false,
             },
         ],
