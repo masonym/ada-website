@@ -1117,7 +1117,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           What to Expect
         </h2>
         <p className="max-w-6xl mx-auto text-center">
-          The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
+          The <b>2026 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
         </p>
       </div>
     ),
@@ -1156,5 +1156,38 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         hrefOverride: "/events/2025-navy-marine-corps-procurement-conference/about/event-recap"
       },
     ],
+    matchmakingSessions: {
+      signUpTime: "7:30 AM",
+      signUpDate: "May 28, 2025",
+      sessionDurationMinutes: 8,
+      slotsPerHost: 10,
+      sessions: [
+        {
+          date: "May 28",
+          sessionTime: "4:30 PM - 5:30 PM",
+        },
+        {
+          date: "May 29",
+          sessionTime: "12:30 PM - 1:30 PM",
+        },
+      ],
+    },
+    vipNetworkingReception: {
+      title: "VIP Networking Reception",
+      date: "May 28, 2025",
+      timeStart: "6:00 PM",
+      timeEnd: "8:00 PM",
+      description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
+      additionalInfo: "Join us at The Harbor Club featuring a cash bar, one complimentary drink ticket, and a selection of hors d’oeuvres.",
+      additionalInfo2: "The Norfolk Waterside Marriott is connected to the Harbor Club via a Parking Garage. From the Marriott’s 2nd Floor, next to the escalators, enter doors to the Parking Garage. Follow the garage’s pedestrian bridge to the Waterside District building. Entry for Harbor Club is on the 2nd Floor of the building.",
+      locationName: "The Harbor Club",
+      locationAddress: "333 Waterside Dr Suite 200, Norfolk, VA 23510, USA",
+      placeId: "ChIJI8LspwuYuokR79KzVtIGqlY", // Google Maps Place ID for the reception venue
+      eventPlaceId: "ChIJBdD-jwuYuokRyjyu_hU0jUg", // Google Maps Place ID for the main event venue
+      eventLocationName: "Norfolk Waterside Marriott", // Optional name for the main event location
+      locationPhoto: "/locations/harbor_club.webp",
+      locationPhone: "(757) 426-7433",
+      website: "https://watersidedistrict.com/private-events/the-harbor-club",
+    } as VipNetworkingReception,
   },
 ];

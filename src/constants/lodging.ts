@@ -124,5 +124,23 @@ export const LODGING_INFO: LodgingInfo[] = [
       <li>Complimentary for Meeting Attendees up to 8 Hours</li>
     </ul>
   `
-  }
+  },
+  {
+    eventId: 6, // 2026NMCPC
+    hotels: [
+      {
+        name: "Norfolk Waterside Marriott",
+        address: "235 E Main St",
+        city: "Norfolk",
+        state: "Virginia",
+        zip: "23510",
+        phone: "(757) 627-4200",
+        image: "/hotels/norfolk-waterside-marriott.webp",
+        link: {
+          href: "https://www.marriott.com/en-us/hotels/orfws-norfolk-waterside-marriott/overview/",
+          label: "Norfolk Waterside Marriott"
+        },
+      },
+    ],
+  },
 ];
