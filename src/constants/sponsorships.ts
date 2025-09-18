@@ -259,8 +259,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         { content: "Company Logo prominently displayed on Attendee Name Badges", indent: 1 },
                         { content: "Prime Logo Placement on Conference Materials", indent: 1 },
                         { content: "Conference Pop-up Banners", indent: 2 },
-                        { content: "Digital Agenda & Event Website", indent: 2 },
-                        { content: "Marketing Emails & Printed Program", indent: 2 }
+                        { content: "Event Website", indent: 2 },
+                        { content: "Digital Agenda & Printed Program", indent: 2 },
+                        { content: "Conference Marketing Emails", indent: 2 }
                     ]
                 },
                 {
@@ -317,8 +318,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Pop-up Banners", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -373,8 +375,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Pop-up Banners", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -429,8 +432,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Pop-up Banners", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -485,8 +489,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Signage", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -544,8 +549,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Pop-up Banners", indent: 1 },
                             { content: "Foam Boards & Signage", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -602,8 +608,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     {
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -641,8 +648,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Pop-up Banners", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -702,8 +710,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         { content: "Company Logo prominently displayed on Name Badges", indent: 1 },
                         { content: "Prime Logo Placement on Conference Materials", indent: 1 },
                         { content: "Conference Pop-up Banners", indent: 2 },
-                        { content: "Digital Agenda & Event Website", indent: 2 },
-                        { content: "Marketing Emails & Printed Program", indent: 2 }
+                        { content: "Event Website", indent: 2 },
+                        { content: "Digital Agenda & Printed Program", indent: 2 },
+                        { content: "Conference Marketing Emails", indent: 2 }
                     ]
                 },
                 {
@@ -759,8 +768,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Pop-up Banners", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 2 },
+                            { content: "Digital Agenda & Printed Program", indent: 2 },
+                            { content: "Conference Marketing Emails", indent: 2 }
                         ]
                     },
                     {
@@ -813,8 +823,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Pop-up Banners", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -867,8 +878,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Pop-up Banners", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -928,8 +940,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Signage", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -978,8 +991,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                             { content: "Signage near Coffee Station", indent: 1 },
                             { content: "Conference Pop-up Banners", indent: 1 },
                             { content: "Foam Boards & Signage", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -1018,8 +1032,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     {
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -1055,8 +1070,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Pop-up Banners", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -1117,8 +1133,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         { content: "Company Logo prominently displayed on Attendee Name Badges", indent: 1 },
                         { content: "Prime Logo Placement on Conference Materials", indent: 1 },
                         { content: "Conference Pop-up Banners", indent: 2 },
-                        { content: "Digital Agenda & Event Website", indent: 2 },
-                        { content: "Marketing Emails & Printed Program", indent: 2 }
+                        { content: "Event Website", indent: 2 },
+                        { content: "Digital Agenda & Printed Program", indent: 2 },
+                        { content: "Conference Marketing Emails", indent: 2 }
                     ]
                 },
                 {
@@ -1175,8 +1192,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Pop-up Banners", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -1230,8 +1248,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Pop-up Banners", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -1285,8 +1304,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Pop-up Banners", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -1340,8 +1360,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Signage", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -1398,8 +1419,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                             { content: "Signage near Coffee Station", indent: 1 },
                             { content: "Conference Pop-up Banners", indent: 1 },
                             { content: "Foam Boards & Signage", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -1439,8 +1461,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     {
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
@@ -1477,8 +1500,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Logo Branding: Conference Materials", bold: true },
                             { content: "Conference Pop-up Banners", indent: 1 },
-                            { content: "Digital Agenda & Event Website", indent: 1 },
-                            { content: "Marketing Emails & Printed Program", indent: 1 }
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
                         ]
                     },
                     {
