@@ -4,6 +4,7 @@ import { Event } from '@/types/events';
 import { getEventSponsors } from '@/constants/eventSponsors';
 import { Sponsorship } from '@/types/sponsorships';
 import FormattedPerk from '@/components/FormattedPerk';
+import { getPriceDisplay } from '@/lib/price-formatting';
 
 type SponsorProp = {
     item: Sponsorship;
@@ -18,10 +19,18 @@ const SponsorshipCard = ({ item, event, eyebrow }: SponsorProp) => {
     const showRemainingFlag = !!item.showRemaining;
     let remainingCount: number | undefined;
     if (item.slotsPerEvent !== undefined && eventSponsorsData) {
-        const tierObj = eventSponsorsData.tiers.find(t => t.id === item.id || t.id === item.id + "-without-exhibit-space"); 
+        const tierObj = eventSponsorsData.tiers.find(t => t.id === item.id || t.id === item.id + "-without-exhibit-space");
         const used = tierObj?.sponsorIds.length ?? 0;
         remainingCount = item.slotsPerEvent - used;
     }
+
+    // Use shared price display logic to support early bird formatting
+    const priceInfo = getPriceDisplay({
+        price: item.cost,
+        earlyBirdPrice: item.earlyBirdPrice,
+        earlyBirdDeadline: item.earlyBirdDeadline,
+        type: 'paid',
+    });
 
     return (
         <div className="w-full h-full max-w-7xl mx-auto mb-6 rounded-lg border border-gray-200 bg-white shadow-md relative">
@@ -52,7 +61,19 @@ const SponsorshipCard = ({ item, event, eyebrow }: SponsorProp) => {
                         </p>
                     )}
                 </div>
-                <span className="text-xl font-bold text-white">${item.cost.toLocaleString()}</span>
+                <div className="text-right">
+                    <div className="flex items-center gap-2">
+                        <span className="text-xl font-bold text-white">{priceInfo.displayPrice}</span>
+                        {priceInfo.originalPrice && (
+                            <span className="line-through text-white/80 text-base">{priceInfo.originalPrice}</span>
+                        )}
+                        {priceInfo.isEarlyBird && (
+                            <span className="ml-1 text-[10px] font-semibold bg-white/20 text-white px-2 py-0.5 rounded-full uppercase tracking-wide">
+                                Early Bird
+                            </span>
+                        )}
+                    </div>
+                </div>
             </div>
             <div className="p-6">
                 <ul className="space-y-4">
@@ -65,18 +86,18 @@ const SponsorshipCard = ({ item, event, eyebrow }: SponsorProp) => {
                                 </li>
                             );
                         }
-                        
+
                         // Handle formatted perks using FormattedPerk component
                         if (perk.formatted && perk.formatted.length > 0) {
                             // Convert formatted perks to the string format expected by FormattedPerk
                             const formattedContent = perk.formatted.map((formattedItem) => {
                                 const prefix = formattedItem.indent ? '  '.repeat(formattedItem.indent) : '';
-                                const content = formattedItem.bold ? 
-                                    `<b>${formattedItem.content}</b>` : 
+                                const content = formattedItem.bold ?
+                                    `<b>${formattedItem.content}</b>` :
                                     formattedItem.content;
                                 return `${prefix}${content}`;
                             }).join('\n');
-                            
+
                             return (
                                 <li key={index} className="flex items-start">
                                     <div className="flex-1">
@@ -85,7 +106,7 @@ const SponsorshipCard = ({ item, event, eyebrow }: SponsorProp) => {
                                 </li>
                             );
                         }
-                        
+
                         // Legacy format with tagline and description
                         return (
                             <li key={index} className="flex items-start">
