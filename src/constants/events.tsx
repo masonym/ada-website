@@ -1072,29 +1072,29 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          Join us for the <b>2026 Navy & Marine Corps Procurement Conference</b> on May 28-29, 2026 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
+          Join us for the <b>2026 Navy & Marine Corps Procurement Conference</b> on May 28-29, 2026 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is a premier opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Defense Industry Leaders and Government Program Managers and Contracting Officers, and gain critical information on current Defense spending plans and procurement priorities.
         </p>
         <p className="font-bold text-xl text-center font-gotham">
           Topical Coverage:
         </p>
         <div className="">
           <ul className="list-inside">
-            <li>Navy's Critical Maintenance & Repair and Shipbuilding Needs</li>
-            <li>SIOP - Shipyard Infrastructure Optimization Plan - Driving $ Billions in Construction & Facility Support Contracts</li>
-            <li>New Navy & Marine Corps Littoral Warfighting Requirements & Contracts</li>
-            <li>New Navy & Marine Corps Technology Initiatives</li>
-            <li>Upcoming Projects - NAVFAC, MARCORSYSCOM, and USACE</li>
-            <li>Military Base-Community Partnerships Promoting Local Build Contracts</li>
-            <li>Indo-Pacific ‘Pivot’ – Deployment & Logistics Challenges Driving Major New Acquisitions</li>
-            <li>Contracts Supporting U.S. Leadership in AI</li>
-            <li>The Surge in Autonomous/Unmanned Systems Development & Deployment</li>
-            <li>Base & Installation Physical Security Upgrades</li>
-            <li>Major Command IT & Cyber Protection Contracts</li>
-            <li>Prime Defense Contractors - Subcontracting & Teaming Opportunities</li>
-            <li>Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)</li>
-            <li>How to Access GWAC's (Government-Wide Acquisition Contracts)</li>
-            <li>Mentor-Protégé Programs as Business Accelerators for Smalls & Primes</li>
-            <li>Cybersecurity Compliance Mandates and CMMC Training Options</li>
+            <li>Updated Navy & Marine Corps Purchasing Priorities</li>
+            <li>Enhancing Fleet Readiness – the Navy's Critical Maintenance & Repair and Shipbuilding Needs</li>
+            <li>SIOP – How the Shipyard Infrastructure Optimization Plan is Driving $ Billions in Construction & Facility Support Contracts</li>
+            <li>Reviving U.S. Military Bases in the Pacific Islands – Opportunities with NAVFAC and the Army Corps for Airfield & Supply Hub Reconstruction/Modernization</li>
+            <li>Marine Corps Dispersed Forces and Littoral Warfighting Requirements</li>
+            <li>New Technology Initiatives and Programs – from AI and Quantum to Software Powering Missile Defense and Counter-Drone Systems</li>
+            <li>Major Projects from Alaska to Guam & Saipan – NAVFAC, USACE and MARCORSYSCOM</li>
+            <li>Acquisition Forecasts – NAVSEA, NAVAIR, NAVSUP, NAVWAR, Military Sealift Command</li>
+            <li>Navy Role in ‘Golden Dome’ Procurement</li>
+            <li>CYBER/CMMC Update and Critical Infrastructure/Ports & Harbors Protection</li>
+            <li>Military Base-Adjacent Community Partnerships Promoting Local Build Contracts</li>
+            <li>Briefing on the Administration’s Changes in Federal & Defense Contracting Rules (FAR/DFAR Update)</li>
+            <li>Prime Defense Contractors – Current and Upcoming Subcontracting & Teaming Opportunities for Small & Medium-size Suppliers</li>
+            <li>Special Contracting Vehicles Promoting Accelerated/Non-Compete Contracts for Innovative Tech (DARPA, DIU, DEFENSEWERX)</li>
+            <li>How to Access GWAC's (Multi-year Government-Wide Acquisition Contracts) – and Major Navy GWAC’s Coming Down the Pipeline</li>
+            <li>Defense Dept. and SBA Mentor-Protégé Programs – Super Business Accelerators for Both Smalls & Primes</li>
           </ul>
         </div>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
@@ -1111,7 +1111,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           Event Overview
         </h2>
         <p className="mb-0 leading-9">
-          Join us for the <b>2026 Navy & Marine Corps Procurement Conference</b> on May 28-29, 2026 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
+          Join us for the <b>2026 Navy & Marine Corps Procurement Conference</b> on May 28-29, 2026 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is a premier opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Defense Industry Leaders and Government Program Managers and Contracting Officers, and gain critical information on current Defense spending plans and procurement priorities.
         </p>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
@@ -1122,22 +1122,22 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       </div>
     ),
     topicalCoverage: [
-      { "tagline": "Navy's Critical Maintenance & Repair and Shipbuilding Needs", "description": "Navy's urgent need for maintenance, repair, and new shipbuilding to ensure operational readiness and technological superiority" },
-      { "tagline": "SIOP - Shipyard Infrastructure Optimization Plan - Driving $ Billions in Construction & Facility Support Contracts", "description": "Massive investments under the SIOP to upgrade facilities and boost Navy shipbuilding and repair capabilities" },
-      { "tagline": "New Navy & Marine Corps Littoral Warfighting Requirements & Contracts", "description": "New operational needs and contracts focused on enhancing littoral (coastal) warfare capabilities for the Navy and Marine Corps" },
-      { "tagline": "New Navy & Marine Corps Technology Initiatives", "description": "Cutting-edge technology advancements being pursued by the Navy and Marine Corps to modernize operations and capabilities" },
-      { "tagline": "Upcoming Projects - NAVFAC, MARCORSYSCOM, and USACE", "description": "Upcoming infrastructure and development projects led by NAVFAC, MARCORSYSCOM, and USACE, with a focus on military needs" },
-      { "tagline": "Military Base-Community Partnerships Promoting Local Build Contracts", "description": "How partnerships between military bases and local communities are generating construction contracts for regional infrastructure development" },
-      { "tagline": "Indo-Pacific ‘Pivot’ – Deployment & Logistics Challenges Driving Major New Acquisitions", "description": "Strategic 'Indo-Pacific Pivot,' emphasizing the logistical and deployment challenges that are shaping new defense acquisitions" },
-      { "tagline": "Contracts Supporting U.S. Leadership in AI", "description": "Defense contracts aimed at advancing U.S. leadership in artificial intelligence technologies for military applications" },
-      { "tagline": "The Surge in Autonomous/Unmanned Systems Development & Deployment", "description": "Rapid development and deployment of autonomous and unmanned systems in the military, with a focus on new contracts" },
-      { "tagline": "Base & Installation Physical Security Upgrades", "description": "Initiatives and contracts aimed at upgrading physical security systems at military bases and installations to ensure safety and resilience" },
-      { "tagline": "Major Command IT & Cyber Protection Contracts", "description": "Contracts focused on enhancing IT and cybersecurity protections for major military commands against growing cyber threats" },
-      { "tagline": "Prime Defense Contractors - Subcontracting & Teaming Opportunities", "description": "Subcontracting and teaming opportunities for small and medium-sized businesses to work with prime defense contractors on large-scale projects" },
-      { "tagline": "Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)", "description": "Fast-tracked contracting vehicles like DARPA, DIU, and DEFENSEWERX are enabling the acquisition of cutting-edge defense technologies" },
-      { "tagline": "How to Access GWAC's (Government-Wide Acquisition Contracts)", "description": "How contractors can navigate and access Government-Wide Acquisition Contracts (GWAC's) for defense and federal opportunities" },
-      { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "How Mentor-Protégé programs help accelerate business growth for small businesses by pairing them with larger prime contractors" },
-      { "tagline": "Cybersecurity Compliance Mandates and CMMC Training Options", "description": "New cybersecurity compliance requirements under CMMC and training resources available for contractors to meet these standards" },
+            { tagline: "Updated Navy & Marine Corps Purchasing Priorities", description: "" },
+            { tagline: "Enhancing Fleet Readiness – the Navy's Critical Maintenance & Repair and Shipbuilding Needs", description: "" },
+            { tagline: "SIOP – How the Shipyard Infrastructure Optimization Plan is Driving $ Billions in Construction & Facility Support Contracts", description: "" },
+            { tagline: "Reviving U.S. Military Bases in the Pacific Islands – Opportunities with NAVFAC and the Army Corps for Airfield & Supply Hub Reconstruction/Modernization", description: "" },
+            { tagline: "Marine Corps Dispersed Forces and Littoral Warfighting Requirements", description: "" },
+            { tagline: "New Technology Initiatives and Programs – from AI and Quantum to Software Powering Missile Defense and Counter-Drone Systems", description: "" },
+            { tagline: "Major Projects from Alaska to Guam & Saipan – NAVFAC, USACE and MARCORSYSCOM", description: "" },
+            { tagline: "Acquisition Forecasts – NAVSEA, NAVAIR, NAVSUP, NAVWAR, Military Sealift Command", description: "" },
+            { tagline: "Navy Role in ‘Golden Dome’ Procurement", description: "" },
+            { tagline: "CYBER/CMMC Update and Critical Infrastructure/Ports & Harbors Protection", description: "" },
+            { tagline: "Military Base-Adjacent Community Partnerships Promoting Local Build Contracts", description: "" },
+            { tagline: "Briefing on the Administration’s Changes in Federal & Defense Contracting Rules (FAR/DFAR Update)", description: "" },
+            { tagline: "Prime Defense Contractors – Current and Upcoming Subcontracting & Teaming Opportunities for Small & Medium-size Suppliers", description: "" },
+            { tagline: "Special Contracting Vehicles Promoting Accelerated/Non-Compete Contracts for Innovative Tech (DARPA, DIU, DEFENSEWERX)", description: "" },
+            { tagline: "How to Access GWAC's (Multi-year Government-Wide Acquisition Contracts) – and Major Navy GWAC’s Coming Down the Pipeline", description: "" },
+            { tagline: "Defense Dept. and SBA Mentor-Protégé Programs – Super Business Accelerators for Both Smalls & Primes", description: "" },
     ],
     image: "2026NMCPC_wide.webp",
     slug: "2026-navy-marine-corps-procurement-conference",
