@@ -1572,7 +1572,7 @@ export const SCHEDULES = [
                     {
                         time: "4:30 PM - 6:00 PM",
                         title: "Matchmaking Session I",
-                        location: "TBD",
+                        location: "Franklin-Yorktown Meeting Room, 2nd Floor",
                     },
                     {
                         time: "6:30 PM - 8:30 PM",
@@ -1614,7 +1614,7 @@ export const SCHEDULES = [
                     {
                         time: "12:30 PM - 1:30 PM",
                         title: "Matchmaking Session II",
-                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                        location: "Franklin-Yorktown Meeting Room, 2nd Floor",
                     },
                 ],
             }
