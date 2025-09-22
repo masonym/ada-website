@@ -1503,5 +1503,123 @@ export const SCHEDULES = [
 
         ]
     },
+    {
+        id: 6,
+        schedule: [
+            {
+                date: "May 27, 2026",
+                items: [
+                    {
+                        time: "3:00 PM - 6:00 PM",
+                        title: "Exhibitor Set-up",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                    },
+                ],
+            },
+            {
+                date: "May 28, 2026",
+                items: [
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "On-Site Attendee Registration & Check-in",
+                        location: "Norfolk Ballroom Pre-Function, Ground Level",
+                    },
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Networking Breakfast with Exhibitors",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                    },
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Matchmaking Session I Sign-up",
+                        location: "Norfolk Ballroom Pre-Function, Ground Level",
+                    },
+                    {
+                        time: "8:30 AM - 10:00 AM",
+                        title: "General Sessions",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                    },
+                    {
+                        time: "10:00 AM - 10:15 AM",
+                        title: "Networking Break with Exhibitors",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                    },
+                    {
+                        time: "10:15 AM - 12:30 PM",
+                        title: "General Sessions",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                    },
+                    {
+                        time: "12:30 PM - 1:30 PM",
+                        title: "Networking Lunch with Exhibitors",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                    },
+                    {
+                        time: "1:30 PM - 3:00 PM",
+                        title: "General Sessions",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                    },
+                    {
+                        time: "3:00 PM - 3:15 PM",
+                        title: "Networking Break with Exhibitors",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                    },
+                    {
+                        time: "3:15 PM - 4:30 PM",
+                        title: "General Sessions",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                    },
+                    {
+                        time: "4:30 PM - 6:00 PM",
+                        title: "Matchmaking Session I",
+                        location: "TBD",
+                    },
+                    {
+                        time: "6:30 PM - 8:30 PM",
+                        title: "VIP Networking Reception",
+                        description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
+                        location: "The Harbor Club, 333 Waterside Drive, Suite 200, Norfolk VA 23510",
+                    },
+
+                ],
+            },
+            {
+                date: "May 29, 2026",
+                items: [
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Networking Breakfast with Exhibitors",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                    },
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Matchmaking Session II Sign-up",
+                        location: "Norfolk Ballroom Pre-Function, Ground Level",
+                    },
+                    {
+                        time: "8:30 AM - 10:30 AM",
+                        title: "General Sessions",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                    },
+                    {
+                        time: "10:30 AM - 10:45 AM",
+                        title: "Networking Break with Exhibitors",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                    },
+                    {
+                        time: "10:45 AM - 12:30 PM",
+                        title: "General Sessions",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                    },
+                    {
+                        time: "12:30 PM - 1:30 PM",
+                        title: "Matchmaking Session II",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                    },
+                ],
+            }
+
+        ]
+    },
 
 ];
