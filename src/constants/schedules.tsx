@@ -1413,42 +1413,277 @@ export const SCHEDULES = [
                     },
                     {
                         time: "7:30 AM - 8:30 AM",
-                        title: "Matchmaking Session I Sign-up",
+                        title: "Matchmaking Sign-up",
                         location: "Rio Grande Hall Pre-Function",
                     },
                     {
-                        time: "8:30 AM - 10:00 AM",
-                        title: "General Sessions",
+                        time: "8:30 AM",
+                        title: "American Defense Alliance – Conference Launch",
                         location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Charles F. Sills",
+                        //         title: "President & CEO",
+                        //         affiliation: "American Defense Alliance",
+                        //         photo: "charles-sills.webp"
+                        //     }
+                        // ],
                     },
                     {
-                        time: "10:00 AM - 10:15 AM",
+                        time: "8:35 AM",
+                        title: "Welcoming Remarks – State of Texas",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "State of Texas Representative",
+                        //         title: "Representative",
+                        //         affiliation: "State of Texas"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "8:50 AM",
+                        title: "Welcoming Remarks – National Security Innovation Council",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Drew Scheberle",
+                        //         title: "Co-Founder & Director",
+                        //         affiliation: "the National Security Innovation Council (NSIC)"
+                        //     },
+                        //     {
+                        //         name: "Brian S. FitzPatrick, CSM",
+                        //         title: "Business Development Executive",
+                        //         affiliation: "IBM"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "9:05 AM",
+                        title: "DEPARTMENT OF THE AIR FORCE KEYNOTE ADDRESS",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Hon. William D. Bailey",
+                        //         title: "Assistant Secretary of the Air Force for Acquisition, Technology & Logistics",
+                        //         affiliation: "Department of the Air Force"
+                        //     },
+                        //     {
+                        //         name: "Lieutenant General Douglas A. Schiess",
+                        //         title: "Commander, U.S. Space Forces – Space Combined Joint Force Space Component Commander",
+                        //         affiliation: "U.S. Space Force"
+                        //     },
+                        //     {
+                        //         name: "Lieutenant General Tom James",
+                        //         title: "U.S. Army, Deputy Commander",
+                        //         affiliation: "USSPACECOM"
+                        //     },
+                        //     {
+                        //         name: "Brigadier General Mike Zuhlsdorf",
+                        //         title: "Deputy Director, Resource Integration Directorate, Logistics, Engineering & Force Protection",
+                        //         affiliation: "U.S. Air Force"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "9:35 AM",
+                        title: "Major Air Force Programs Driving Contracts",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Major General Joseph Kunkel",
+                        //         title: "Director of Force Design, Integration, and Wargaming, Deputy Chief of Staff for Air Force Futures",
+                        //         affiliation: "U.S. Air Force"
+                        //     },
+                        //     {
+                        //         name: "Brigadier General Jason E. Bartolomei",
+                        //         title: "Commander",
+                        //         affiliation: "Air Force Research Laboratory"
+                        //     },
+                        //     {
+                        //         name: "Lieutenant General Thomas K. Hensley",
+                        //         title: "Commander, 16th Air Force, and Commander, Air Forces Cyber",
+                        //         affiliation: "U.S. Air Force"
+                        //     },
+                        //     {
+                        //         name: "General Joy Kaczor",
+                        //         title: "Assistant Deputy Chief of Staff, Warfighter Communications and Cyber",
+                        //         affiliation: "U.S. Air Force"
+                        //     },
+                        //     {
+                        //         name: "Charleen Laughlin",
+                        //         title: "Deputy Chief of Space Operations for Cyber and Data",
+                        //         affiliation: "U.S. Space Force"
+                        //     },
+                        //     {
+                        //         name: "Jon A. Norman",
+                        //         title: "Vice President, Air Power, Requirements & Capabilities",
+                        //         affiliation: "Raytheon/An RTX Business"
+                        //     },
+                        //     {
+                        //         name: "Robert Fitzpatrick",
+                        //         title: "President, Customer Requirements & Capabilities",
+                        //         affiliation: "Raytheon/An RTX Business"
+                        //     },
+                        //     {
+                        //         name: "Alex Dely",
+                        //         title: "Contracts Manager, Advanced Missile Systems, Cyber, Autonomy, Space, DARPA",
+                        //         affiliation: "Raytheon/An RTX Business"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "10:30 AM",
                         title: "Networking Break with Exhibitors",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "10:15 AM - 12:30 PM",
-                        title: "General Sessions",
+                        time: "11:00 AM",
+                        title: "The American Aerospace Industry in Context",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Brad Williamson",
+                        //         title: "Rear Admiral, USN (Ret.), President & CEO",
+                        //         affiliation: "Perrarus Solutions, Inc."
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "11:20 AM",
+                        title: "Major Space Force Programs Driving Contracts",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Colonel Bryan E. C. McClain",
+                        //         title: "Program Executive Officer, Space Domain Awareness and Combat Power",
+                        //         affiliation: "Space Systems Command"
+                        //     },
+                        //     {
+                        //         name: "Dan Ourada",
+                        //         title: "Vice President, Captures & Business Development, Critical Missions, Ranges & Aerial Operations",
+                        //         affiliation: "Amentum"
+                        //     },
+                        //     {
+                        //         name: "Hunter Lahasky",
+                        //         title: "Strategy Manager",
+                        //         affiliation: "BLUE ORIGIN"
+                        //     },
+                        //     {
+                        //         name: "Kathleen Karika",
+                        //         title: "Director, Research Operations, Government Affairs",
+                        //         affiliation: "VIRGIN GALACTIC"
+                        //     },
+                        //     {
+                        //         name: "James (Jim) Reynolds",
+                        //         title: "Vice President, Defense Space Business Development, Space Business Unit",
+                        //         affiliation: "SAIC"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "12:15 PM",
+                        title: "6th Generation Combat Aircraft – and the Legacy of Plant 42",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Dr. David G. ('Jester') Smith",
+                        //         title: "Brigadier General, USAF (Ret.), CEO",
+                        //         affiliation: "Mohave Air and Space Port, and former Director, Air Force Production and Flight Test Facility, Plant 42, 12th Test Wing, Edwards Air Force Base"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "12:45 PM",
+                        title: "Industry Insight",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "12:30 PM - 1:30 PM",
+                        time: "1:00 PM",
                         title: "Networking Lunch with Exhibitors",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "1:30 PM - 3:00 PM",
-                        title: "General Sessions",
+                        time: "2:00 PM",
+                        title: "Industry Insight",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "3:00 PM - 3:15 PM",
-                        title: "Networking Break with Exhibitors",
+                        time: "2:15 PM",
+                        title: "Quantum Innovation Supporting the Golden Dome Project",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Gavin Brown",
+                        //         title: "CEO",
+                        //         affiliation: "Predictive Engineering"
+                        //     },
+                        //     {
+                        //         name: "Brian S. FitzPatrick, CSM",
+                        //         title: "Business Development Executive",
+                        //         affiliation: "IBM"
+                        //     },
+                        //     {
+                        //         name: "Steve Bonner",
+                        //         title: "Vice President, Worldwide Government Relations",
+                        //         affiliation: "Texas Instruments"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "2:50 PM",
+                        title: "CONGRESSIONAL KEYNOTE ADDRESS",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "3:15 PM - 4:30 PM",
-                        title: "General Sessions",
+                        time: "3:15 PM",
+                        title: "DEFENSEWERX & DIU – Accelerating Innovative Tech Solutions",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Brian Liesveld",
+                        //         title: "Chief Executive Officer",
+                        //         affiliation: "DEFENSEWERX"
+                        //     },
+                        //     {
+                        //         name: "Mike Edwards",
+                        //         title: "Director",
+                        //         affiliation: "Doolittle Institute"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "3:45 PM",
+                        title: "Air Force/Space Force Small Business Programs Panel",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "David Sikora",
+                        //         title: "Mentor-Protégé Program Manager, Office of Small Business Programs",
+                        //         affiliation: "Department of the Air Force"
+                        //     },
+                        //     {
+                        //         name: "Paula S. Trimble",
+                        //         title: "Chief, Policy and Director, Small Business Programs",
+                        //         affiliation: "Space Development Agency"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "4:30 PM",
+                        title: "Day One Closing Remarks",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Charles F. Sills",
+                        //         title: "President & CEO",
+                        //         affiliation: "American Defense Alliance"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "4:30 PM - 6:00 PM",
+                        title: "Networking with Exhibitors",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
@@ -1462,7 +1697,6 @@ export const SCHEDULES = [
                         location: "Rio Grande Hall, Plaza Lower Level",
                         description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
                     },
-
                 ],
             },
             {
@@ -1479,18 +1713,148 @@ export const SCHEDULES = [
                         location: "Rio Grande Hall Pre-Function",
                     },
                     {
-                        time: "8:30 AM - 10:30 AM",
-                        title: "General Sessions",
+                        time: "8:30 AM",
+                        title: "Welcome Back Remarks",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Charles F. Sills",
+                        //         title: "President & CEO",
+                        //         affiliation: "American Defense Alliance"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "8:35 AM",
+                        title: "ARMY FUTURES COMMAND KEYNOTE ADDRESS",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "General James E. Rainey",
+                        //         title: "Commanding General",
+                        //         affiliation: "Army Futures Command"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "9:00 AM",
+                        title: "How to do Business with the Primes",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Diane Dempsey",
+                        //         title: "Director, Small Business Programs, Intelligence & Security, Systems"
+                        //     },
+                        //     {
+                        //         name: "David Canada",
+                        //         title: "Director, Strategic Sourcing & Partnerships",
+                        //         affiliation: "Boeing Defense Space & Security, The Boeing Company"
+                        //     },
+                        //     {
+                        //         name: "Stacey R. Washington",
+                        //         title: "Small Business Program Manager",
+                        //         affiliation: "Lockheed Martin Missiles and Fire Control"
+                        //     },
+                        //     {
+                        //         name: "Dr. Robyn Card",
+                        //         title: "Director, Small Business Office",
+                        //         affiliation: "General Dynamics Information Technology, Inc. (GDIT)"
+                        //     },
+                        //     {
+                        //         name: "Todd Semonite",
+                        //         title: "President, Federal Programs",
+                        //         affiliation: "WSP USA and former Commanding General, U.S. Army Corps of Engineers"
+                        //     },
+                        //     {
+                        //         name: "Mark Correll, P.E.",
+                        //         title: "Vice President, Federal Strategy Director",
+                        //         affiliation: "HDR"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "9:45 AM",
+                        title: "Geopolitical Threat Assessment – Where We Stand and What Comes Next",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Anthony Livanios",
+                        //         title: "CEO",
+                        //         affiliation: "U.S. Energy Stream, Inc."
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "10:05 AM",
+                        title: "Industry Insight",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "10:30 AM - 10:45 AM",
+                        time: "10:15 AM",
                         title: "Networking Break with Exhibitors",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "10:45 AM - 12:30 PM",
-                        title: "General Sessions",
+                        time: "10:45 AM",
+                        title: "Army Corps of Engineers – Project Priorities",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Denver S. Heath",
+                        //         title: "Director of Contracting",
+                        //         affiliation: "U.S. Army Corps of Engineers (USACE)"
+                        //     },
+                        //     {
+                        //         name: "Ali Marshall",
+                        //         title: "Deputy Director, Small Business Programs",
+                        //         affiliation: "U.S. Army Corps of Engineers – Ft. Worth District"
+                        //     },
+                        //     {
+                        //         name: "Stephanie Parra",
+                        //         title: "Deputy Director, Small Business Programs",
+                        //         affiliation: "U.S. Army Corps of Engineers – Albuquerque District"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "11:20 AM",
+                        title: "Military Base-Community Partnerships Promoting Local Build Contracts",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "David Leinberger",
+                        //         title: "Acting Director, Army Partnerships",
+                        //         affiliation: "Deputy Chief of Staff, G-9 (Installations)"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "11:50 PM",
+                        title: "Aerospace RDTE (R&D, Test & Evaluation) Rapid Contracting Vehicles",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Joel Coulter",
+                        //         title: "Strategic Growth Officer",
+                        //         affiliation: "Neptune SHIELD Tech Hub"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "12:30 PM",
+                        title: "Closing Remarks",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Charles F. Sills",
+                        //         title: "President & CEO",
+                        //         affiliation: "American Defense Alliance"
+                        //     }
+                        // ],
+                    },
+                    {
+                        time: "12:30 PM - 1:30 PM",
+                        title: "Networking with Exhibitors",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
