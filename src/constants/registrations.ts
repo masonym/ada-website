@@ -362,8 +362,8 @@ export const REGISTRATION_TYPES = [
                 ],
                 buttonText: "Register Now",
                 price: 545,
-                earlyBirdPrice: 495,
-                earlyBirdDeadline: "2026-01-01T04:00:00Z", // midnight ET on January 1st
+                earlyBirdPrice: 445,
+                earlyBirdDeadline: "2025-09-30T04:00:00Z", // midnight ET on September 30th
                 type: "paid",
             },
 

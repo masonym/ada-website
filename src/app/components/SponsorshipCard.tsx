@@ -68,11 +68,16 @@ const SponsorshipCard = ({ item, event, eyebrow }: SponsorProp) => {
                             <span className="line-through text-white/80 text-base">{priceInfo.originalPrice}</span>
                         )}
                         {priceInfo.isEarlyBird && (
-                            <span className="ml-1 text-[10px] font-semibold bg-white/20 text-white px-2 py-0.5 rounded-full uppercase tracking-wide">
+                            <span className="ml-1 text-center text-[10px] font-semibold bg-white/20 text-white px-2 py-0.5 rounded-full uppercase tracking-wide">
                                 Early Bird
                             </span>
                         )}
                     </div>
+                    {priceInfo.deadlineInfo && (
+                        <div className="text-[10px] text-center text-balance text-white/90 mt-1">
+                            {priceInfo.deadlineInfo}
+                        </div>
+                    )}
                 </div>
             </div>
             <div className="p-6">

@@ -1448,6 +1448,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 id: "small-business-sponsor",
                 title: "Small Business Sponsorship",
                 cost: 1750,
+                earlyBirdPrice: 1500,
+                earlyBirdDeadline: "2025-09-30T04:00:00Z", // midnight ET on September 30th
                 slotsPerEvent: 20,
                 requiresAttendeeInfo: true,
                 sponsorPasses: 2,

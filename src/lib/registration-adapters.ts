@@ -27,6 +27,8 @@ export interface SponsorshipType {
   id: string;
   title: string;
   cost: number | string;
+  earlyBirdPrice?: number | string;
+  earlyBirdDeadline?: string;
   saleEndTime?: string;
   perks?: PerkType[];
   colour?: string;
@@ -157,6 +159,8 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
       title: sponsor.title,
       description: `${sponsor.title} Sponsorship Package`,
       price: sponsor.cost,
+      earlyBirdPrice: sponsor.earlyBirdPrice,
+      earlyBirdDeadline: sponsor.earlyBirdDeadline,
       saleEndTime: sponsor.saleEndTime,
       isActive: true,
       requiresAttendeeInfo: true,
