@@ -1237,5 +1237,79 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       locationPhone: "(757) 426-7433",
       website: "https://watersidedistrict.com/private-events/the-harbor-club",
     } as VipNetworkingReception,
+    parkingInfo: [
+      {
+        title: ``,
+        description:
+          `
+        <b>Self-Parking</b>: Available in the City of Norfolk owned and operated Public Parking Garage. Norfolk City rates apply: $1.50/hour up to $13.00 per 24 hours.
+        <br/>
+        <div class="pl-6">
+          <p><span class="font-bold">Main Street Garage:</span> Located across from the hotel. A covered pedestrian bridge connects to the hotel on the 3rd Floor, where the conference takes place.</p>
+          <p><span class="font-bold">Waterside Street Garage:</span> Located at the back of the hotel. A ramp entrance connects the garage to the hotel on the 2nd floor.</p>
+        </div>
+        `,
+      },
+      {
+        title: "Overnight Guests",
+        description: `Please park at the Main Street Garage if you plan to exit the garage multiple times during your stay or if you would like to apply charges to your guest room.
+        <br/>
+        <br/>
+A discounted parking rate of $22.00/Car/Night is offered with in and out privileges. To receive the discounted rate, the parking ticket must be validated at the hotel front desk. Once validated, you will receive a QR code to your email that you will use to enter and exit the garage. A printed copy will also be provided by the front desk. Parking Fee charges will automatically be charged to your guest room.`,
+
+      },
+      {
+        title: "",
+        description: `<b>Valet Parking</b>: $33.00/Night`
+      }
+    ],
+    directions: [
+      {
+        title: "NORTH",
+        description: `
+          <ul class="list-decimal pl-4">
+            <li>Take Highway 13 South to 64 East, to 264 West. Follow the Waterside Drive Exit.</li>
+            <li>Take a right at second light onto Atlantic Street. Go down one block, take a left onto Main Street.</li>
+            <li>The Marriott Hotel is immediately on the left.</li>
+          </ul>
+          `
+      },
+      {
+        title: "SOUTH",
+        description: `
+        <ul class="list-decimal pl-4">
+          <li>Take 95 North to the Emporia Exit.</li>
+          <li>Go East on Highway 58 to 64 East (approximately 2 1/2 hours), to 264 West.</li>
+          <li>Follow the Waterside Drive Exit.</li>
+          <li>Take a right at second light onto Atlantic Street.</li>
+          <li>Go down one block, take a left onto Main Street.</li>
+          <li>The Marriott Hotel is immediately on the left.</li>
+        </ul>
+        `
+      },
+      {
+        title: "EAST",
+        description: `
+        <ul class="list-decimal pl-4">
+          <li>44 West to 264 West. Follow the Waterside Drive Exit.</li>
+          <li>Take a right at second light onto Atlantic Street.</li>
+          <li>Go down one Block, take a left onto Main Street.</li>
+          <li>The Marriott Hotel is immediately on the left.</li>
+        </ul>
+        `
+      },
+      {
+        title: "WEST",
+        description: `
+        <ul class="list-decimal pl-4">
+          <li>64 East to 264 West. Follow the Waterside Drive Exit.</li>
+          <li>Take a right at second light onto Atlantic Street.</li>
+          <li>Go down one block, take a left onto Main Street.</li>
+          <li>The Marriott Hotel is immediately on the left.</li>
+        </ul>
+        `
+      },
+    ],
   },
+
 ];

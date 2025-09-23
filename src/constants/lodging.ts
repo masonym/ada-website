@@ -142,5 +142,9 @@ export const LODGING_INFO: LodgingInfo[] = [
         },
       },
     ],
+    note: `
+    <b>Group Block Name</b>: Navy & Marine Corps Procurement Conference<br />
+    <b>Group Rate</b>: Standard Room: $159.00 + Tax | Waterview Room: $179.00 + Tax<br />
+    `
   },
 ];
