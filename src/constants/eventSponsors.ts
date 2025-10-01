@@ -282,6 +282,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 sponsorIds: [
                     "trust-consulting-services",
                     "omega-technical-services",
+                    "pmb-machine-works",
                 ],
             },
             {
