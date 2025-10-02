@@ -823,7 +823,10 @@ export const SPONSORS: Record<string, Sponsor> = {
     name: "Omega Technical Services",
     logo: "/sponsors/omega-technical-services.webp",
     website: "https://omegatechserv.com/",
-    size: 'small'
+    size: 'small',
+    description: `
+Omega Technical Services is an award-winning nuclear and high-reliability operations support firm. Since its inception in 1995, Omega has operated as a Service-Disabled Veteran-Owned Small Business (SDVOSB) that is the recognized leader in critical infrastructure lifecycle management across the DOE and NNSA. Throughout its 30 years, Omega has worked to support national labs across the United States, completing over 1000 contracts. We ensure the mission success of our national security clients through products aligned to our core capabilities: work integration & management; startup, readiness & commissioning; nuclear safety & operations; and program & project support.
+    `
   },
 };
 
