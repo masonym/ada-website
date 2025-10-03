@@ -303,6 +303,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "isi-defense",
                     "magna-bsp",
                     "omega-technical-services",
+                    "pmb-machine-works",
+                    "hui-huliau",
                 ],
             },
         ],
