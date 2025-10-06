@@ -834,7 +834,21 @@ Omega Technical Services is an award-winning nuclear and high-reliability operat
     logo: "/sponsors/hui-huliau.webp",
     website: "https://huihuliau.com/",
     size: 'small'
-  }
+  },
+  "new-pig": {
+    id: "new-pig",
+    name: "New Pig",
+    logo: "/sponsors/new-pig.webp",
+    website: "https://www.newpig.com/",
+    size: 'small'
+  },
+  "sierra-peaks": {
+    id: "sierra-peaks",
+    name: "Sierra Peaks Corporation",
+    logo: "/sponsors/sierra-peaks.webp",
+    website: "https://www.sierra-peaks.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID

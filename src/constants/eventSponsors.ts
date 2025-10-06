@@ -296,7 +296,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
             {
                 id: "exhibit",
                 name: "Exhibitor Spotlight",
-                style: "bg-navy-800 text-white", // Custom styling for organizers
+                style: "bg-navy-800 text-white",
                 sponsorIds: [
                     "trust-consulting-services",
                     "imsm",
@@ -308,7 +308,23 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 ],
             },
         ],
+    },
+    {
+        id: 6, // NMCPC 2026
+        tiers: [
+            {
+                id: "exhibit",
+                name: "Exhibitor Spotlight",
+                style: "bg-navy-800 text-white",
+                sponsorIds: [
+                    "melrose",
+                    "new-pig",
+                    "sierra-peaks",
+                ],
+            }
+        ]
     }
+
 ];
 
 // Helper function to find event sponsors by event ID
