@@ -154,6 +154,11 @@ const initialBillingInfo: BillingInfo = {
 
 // Helper function to check if registration is closed
 const isRegistrationClosed = (event: EventWithContact, daysBeforeToClose: number = -2): boolean => {
+  // if event has a custom registration closing time, use that
+  if (event.registrationClosedTime) {
+    return new Date() >= new Date(event.registrationClosedTime);
+  }
+
   // Parse event start date and time from ISO format: "YYYY-MM-DDT00:00:00Z"
   const eventStartDateTime = new Date(event.timeStart);
 
@@ -1993,7 +1998,7 @@ const RegistrationModal = ({
   if (registrationClosed && !showConfirmationView) {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none bg-black bg-opacity-50">
-        <div className="relative w-full max-w-md mx-auto my-6">
+        <div className="relative w-full max-w-6xl mx-auto my-6">
           <div className="relative flex flex-col w-full bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
             {/* Header */}
             <div className="flex items-center justify-between p-5 border-b border-solid rounded-t border-slate-200">
@@ -2008,16 +2013,25 @@ const RegistrationModal = ({
 
             {/* Body */}
             <div className="relative p-6 flex-auto">
-              <p className="my-4 text-slate-700 text-lg leading-relaxed">
-                Registration for this event has closed.
-              </p>
-              <p className="my-4 text-slate-600 text-base leading-relaxed text-center">
-                The event is scheduled for: <br /> {event.date}.
-              </p>
+              {event.registrationClosedNotice ? (
+                <div 
+                  className="my-4 text-slate-700 text-lg leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: event.registrationClosedNotice }}
+                />
+              ) : (
+                <>
+                  <p className="my-4 text-slate-700 text-lg leading-relaxed">
+                    Registration for this event has closed.
+                  </p>
+                  <p className="my-4 text-slate-600 text-base leading-relaxed text-center">
+                    The event is scheduled for: <br /> {event.date}.
+                  </p>
+                </>
+              )}
               <p className="my-4 text-slate-600 text-base leading-relaxed">
                 For any questions or special registration requests, please contact the event organizers at{' '}
-                <a href={`mailto:${event.contactInfo?.contactEmail2 || 'info@americandefensealliance.org'}`} className="text-blue-600 hover:text-blue-800">
-                  {event.contactInfo?.contactEmail2 || 'info@americandefensealliance.org'}
+                <a href={`mailto:${event.contactInfo?.contactEmail2 || 'events@americandefensealliance.org'}`} className="text-blue-600 hover:text-blue-800">
+                  {event.contactInfo?.contactEmail2 || 'events@americandefensealliance.org'}
                 </a>
               </p>
             </div>

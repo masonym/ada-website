@@ -179,4 +179,12 @@ export interface Event {
     features?: EventFeatures;
     /** Optional related/linked events (e.g., link to previous year's recap) */
     links?: EventLink[];
+    /** Optional custom time when registration should close (ISO timestamp). Overrides default closing logic. */
+    registrationClosedTime?: string;
+    /** Optional custom notice to display when registration is closed (supports HTML) */
+    registrationClosedNotice?: string;
+    /** Optional notice banner to display on the event page itself (supports HTML) */
+    eventPageNotice?: string;
+    /** Optional variant for the event page notice banner: 'warning' (yellow), 'info' (blue), 'error' (red) */
+    eventPageNoticeVariant?: 'warning' | 'info' | 'error';
 }

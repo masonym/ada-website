@@ -19,6 +19,7 @@ import RelatedEventLinks from '@/app/components/RelatedEventLinks';
 import EventTestimonials from '@/app/components/EventTestimonials';
 import EventHighlights from '@/app/components/EventHighlights';
 import { HIGHLIGHTS } from '@/constants/highlights';
+import EventNoticeBanner from '@/app/components/EventNoticeBanner';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -126,6 +127,9 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             /> */}
 
             <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} backgroundColor={event.countdownColour} />
+
+            {/* Event notice banner (e.g., postponement, shutdown) - client-side time check */}
+            <EventNoticeBanner event={event} />
 
             {/* Related/Linked events section (e.g., previous year's recap) */}
             <RelatedEventLinks event={event} />
