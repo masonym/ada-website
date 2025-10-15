@@ -126,7 +126,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             // className="w-full sm:w-auto"
             /> */}
 
-            <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} backgroundColor={event.countdownColour} />
+            {event.id != 5 && <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} backgroundColor={event.countdownColour} />}
 
             {/* Event notice banner (e.g., postponement, shutdown) - client-side time check */}
             <EventNoticeBanner event={event} />
