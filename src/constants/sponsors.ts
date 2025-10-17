@@ -849,6 +849,13 @@ Omega Technical Services is an award-winning nuclear and high-reliability operat
     website: "https://www.sierra-peaks.com/",
     size: 'small'
   },
+  "american-diving-and-marine-supply": {
+    id: "american-diving-and-marine-supply",
+    name: "American Diving & Marine Supply",
+    logo: "/sponsors/american-diving-and-marine-supply.webp",
+    website: "https://www.americandivingsupply.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID

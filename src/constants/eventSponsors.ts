@@ -313,6 +313,14 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         id: 6, // NMCPC 2026
         tiers: [
             {
+                id: "small-business-sponsor",
+                name: "Small Business Sponsors",
+                style: "bg-sb-100 text-slate-900",
+                sponsorIds: [
+                    "american-diving-and-marine-supply",
+                ],
+            },
+            {
                 id: "exhibit",
                 name: "Exhibitor Spotlight",
                 style: "bg-navy-800 text-white",
@@ -320,6 +328,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "melrose",
                     "new-pig",
                     "sierra-peaks",
+                    "american-diving-and-marine-supply",
                 ],
             }
         ]
