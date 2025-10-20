@@ -329,6 +329,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "new-pig",
                     "sierra-peaks",
                     "american-diving-and-marine-supply",
+                    "virginia-apex",
                 ],
             }
         ]
