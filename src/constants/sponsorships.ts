@@ -684,7 +684,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
                         { content: "Breakfast & Buffet Lunch", indent: 1 },
                         { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                        { content: "Access to VIP Networking Reception on November 5, 2025 from 6:30 PM - 8:30 PM", bold: true },
+                        { content: "Access to VIP Networking Reception on March 4, 2026 from 6:30 PM - 8:30 PM", bold: true },
                     ]
                 },
             ],
@@ -741,8 +741,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     formatted: [
                         { content: "Matchmaking Host Invitation", bold: true },
                         { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                        { content: "November 5: 4:30 PM - 5:30 PM", indent: 2 },
-                        { content: "November 6: 12:30 PM - 1:30 PM", indent: 2 }
+                        { content: "March 4: 4:30 PM - 5:30 PM", indent: 2 },
+                        { content: "March 5: 12:30 PM - 1:30 PM", indent: 2 }
                     ]
                 }
             ],

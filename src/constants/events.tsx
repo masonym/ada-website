@@ -911,9 +911,9 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     id: 5,
     shown: true,
     title: "2025 Defense Technology & Aerospace Procurement Conference",
-    date: "Rescheduled",
-    timeStart: "2026-11-05T11:30:00Z", // This is in UTC time
-    timeEnd: "2026-11-06T18:30:00Z",
+    date: "March 4-5, 2026",
+    timeStart: "2026-03-04T11:30:00Z",
+    timeEnd: "2026-03-05T18:30:00Z",
     description: "Join us at the 2025 Defense Technology & Aerospace Procurement Conference in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
     eventText: (
       <div className="max-container font-light">
@@ -1002,16 +1002,16 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     placeID: "ChIJL_jXUoLMRIYRdMJC6h3clUU",
     matchmakingSessions: {
       signUpTime: "7:30 AM",
-      signUpDate: "November 5, 2025",
+      signUpDate: "March 4, 2026",
       sessionDurationMinutes: 8,
       slotsPerHost: 10,
       sessions: [
         {
-          date: "November 5",
+          date: "March 4",
           sessionTime: "4:30 PM - 6:00 PM",
         },
         {
-          date: "November 6",
+          date: "March 5",
           sessionTime: "12:30 PM - 1:30 PM",
         },
       ]
@@ -1024,7 +1024,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     },
     vipNetworkingReception: {
       title: "VIP Networking Reception",
-      date: "November 5, 2025",
+      date: "March 4, 2026",
       timeStart: "6:30 PM",
       timeEnd: "8:30 PM",
       description: `The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.
@@ -1053,38 +1053,32 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     //         `
     //       },
     //     ],
-    registrationClosedTime: "2025-10-15T13:00:00Z", // 9am ET on October 15, 2025
-    registrationClosedNotice: `
-In light of the ongoing Government shutdown, which is preventing many of our attendees, partners, and presenters from proceeding with their participation, we have made the decision to reschedule the 2025 Defense Technology & Aerospace Procurement Conference. The event was originally scheduled to take place on November 5-6, 2025, at the Renaissance Austin Hotel in Austin, Texas.
-<br/>
-<br/>
-We are actively working with the venue and partners to determine the best alternative dates in 2026, and will notify all registered attendees as soon as they are finalized. All current registrations will remain valid for the rescheduled event. If you are unable to attend on those dates, please contact us at <a class="text-blue-600 hover:underline" href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or <a href="tel:+17714741077">(771) 474-1077</a> and we will assist you with transferring the credit for this event to another American Defense Alliance conference in 2026.
-<br/>
-<br/>
-Just a friendly reminder under the Terms & Conditions upon registering, "In the unlikely event that the American Defense Alliance cancels or significantly alters the date of an event, you will be promptly notified. In such cases, you will have the option to transfer your registration to a future event or another individual, but refunds will not be provided."
-<br/>
-<br/>
-Please note that you need to contact the hotel directly to cancel your sleeping room reservation. A new room block will be established once the revised dates are confirmed, and details will be shared in your updated registration confirmation.
-<br/>
-<br/>
-We truly appreciate your patience and understanding as we navigate the circumstances of the continuing Government shutdown. Our team remains committed to delivering a valuable, high-quality experience, and we look forward to gathering with you in Austin soon.
-`,
-    eventPageNotice: `<h2><b>Important Notice</b></h2><br/>
-In light of the ongoing Government shutdown, which is preventing many of our attendees, partners, and presenters from proceeding with their participation, we have made the decision to reschedule the 2025 Defense Technology & Aerospace Procurement Conference. The event was originally scheduled to take place on November 5-6, 2025, at the Renaissance Austin Hotel in Austin, Texas.
-<br/>
-<br/>
-We are actively working with the venue and partners to determine the best alternative dates in 2026, and will notify all registered attendees as soon as they are finalized. All current registrations will remain valid for the rescheduled event. If you are unable to attend on those dates, please contact us at <a class="text-blue-600 hover:underline" href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or <a href="tel:+17714741077">(771) 474-1077</a> and we will assist you with transferring the credit for this event to another American Defense Alliance conference in 2026.
-<br/>
-<br/>
-Just a friendly reminder under the Terms & Conditions upon registering, "In the unlikely event that the American Defense Alliance cancels or significantly alters the date of an event, you will be promptly notified. In such cases, you will have the option to transfer your registration to a future event or another individual, but refunds will not be provided."
-<br/>
-<br/>
-Please note that you need to contact the hotel directly to cancel your sleeping room reservation. A new room block will be established once the revised dates are confirmed, and details will be shared in your updated registration confirmation.
-<br/>
-<br/>
-We truly appreciate your patience and understanding as we navigate the circumstances of the continuing Government shutdown. Our team remains committed to delivering a valuable, high-quality experience, and we look forward to gathering with you in Austin soon.
-                              `,
-    eventPageNoticeVariant: 'warning',
+//     registrationClosedTime: "2025-10-15T13:00:00Z", // 9am ET on October 15, 2025
+//     registrationClosedNotice: `
+// The 2025 Defense Technology & Aerospace Procurement Conference has been rescheduled to <b>March 4-5, 2026</b> at the Renaissance Austin Hotel in Austin, Texas.
+// <br/>
+// <br/>
+// All current registrations will remain valid for the rescheduled event. If you are unable to attend on the new dates, please contact us at <a class="text-blue-600 hover:underline" href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or <a href="tel:+17714741077">(771) 474-1077</a> and we will assist you with transferring the credit for this event to another American Defense Alliance conference in 2026.
+// <br/>
+// <br/>
+// Please note that you need to contact the hotel directly to update your sleeping room reservation to the new dates. A new room block has been established for March 4-5, 2026, and details are included in your registration confirmation.
+// <br/>
+// <br/>
+// We appreciate your patience and understanding during the rescheduling process. Our team remains committed to delivering a valuable, high-quality experience, and we look forward to gathering with you in Austin in March 2026.
+// `,
+//     eventPageNotice: `<h2><b>Event Rescheduled - New Dates Confirmed</b></h2><br/>
+// The 2025 Defense Technology & Aerospace Procurement Conference has been rescheduled to <b>March 4-5, 2026</b> at the Renaissance Austin Hotel in Austin, Texas.
+// <br/>
+// <br/>
+// All current registrations will remain valid for the rescheduled event. If you are unable to attend on the new dates, please contact us at <a class="text-blue-600 hover:underline" href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or <a href="tel:+17714741077">(771) 474-1077</a> and we will assist you with transferring the credit for this event to another American Defense Alliance conference in 2026.
+// <br/>
+// <br/>
+// Please note that you need to contact the hotel directly to update your sleeping room reservation to the new dates. A new room block has been established for March 4-5, 2026, and details are included in your registration confirmation.
+// <br/>
+// <br/>
+// We appreciate your patience and understanding during the rescheduling process. Our team remains committed to delivering a valuable, high-quality experience, and we look forward to gathering with you in Austin in March 2026.
+//                               `,
+//     eventPageNoticeVariant: 'warning',
   },
   {
     id: 6,

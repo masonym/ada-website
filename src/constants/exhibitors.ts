@@ -198,7 +198,7 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                         { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
                         { content: "Breakfast & Buffet Lunch", indent: 1 },
                         { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                        { content: "Access to VIP Networking Reception on November 5, 2025 from 6:30 PM - 8:30 PM", bold: true },
+                        { content: "Access to VIP Networking Reception on March 4, 2026 from 6:30 PM - 8:30 PM", bold: true },
                     ]
                 },
             ],

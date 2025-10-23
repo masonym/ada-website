@@ -1389,7 +1389,7 @@ export const SCHEDULES = [
         id: 5,
         schedule: [
             {
-                date: "November 4, 2025",
+                date: "March 3, 2026",
                 items: [
                     {
                         time: "3:00 PM - 6:00 PM",
@@ -1399,7 +1399,7 @@ export const SCHEDULES = [
                 ],
             },
             {
-                date: "November 5, 2025",
+                date: "March 4, 2026",
                 items: [
                     {
                         time: "7:30 AM - 8:30 AM",
@@ -1700,7 +1700,7 @@ export const SCHEDULES = [
                 ],
             },
             {
-                date: "November 6, 2025",
+                date: "March 5, 2026",
                 items: [
                     {
                         time: "7:30 AM - 8:30 AM",
