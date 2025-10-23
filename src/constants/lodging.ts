@@ -108,8 +108,8 @@ export const LODGING_INFO: LodgingInfo[] = [
     <b>Event Room</b>: Rio Grande Hall, Plaza Lower Level<br />
     <b>Group Block Name</b>: 2026 Defense Technology & Aerospace Procurement Conference<br />
     <b>Group Rate</b>: $244 Plus Tax<br />
-    <b>Rate Available</b>: November 3-8, 2025<br />
-    <b>Booking Deadline</b>: October 21, 2025<br />
+    <b>Rate Available</b>: March 2-6, 2026<br />
+    <b>Booking Deadline</b>: February 17, 2026<br />
     <br/>
     <a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1753131167945&key=GRP&app=resvlink" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">Book your group rate for 2026 Defense Technology & Aerospace Procurement Conference</a>
     <br/>
