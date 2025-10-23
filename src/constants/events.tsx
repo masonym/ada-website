@@ -910,18 +910,18 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
   {
     id: 5,
     shown: true,
-    title: "2025 Defense Technology & Aerospace Procurement Conference",
+    title: "2026 Defense Technology & Aerospace Procurement Conference",
     date: "March 4-5, 2026",
     timeStart: "2026-03-04T11:30:00Z",
     timeEnd: "2026-03-05T18:30:00Z",
-    description: "Join us at the 2025 Defense Technology & Aerospace Procurement Conference in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
+    description: "Join us at the 2026 Defense Technology & Aerospace Procurement Conference in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
     eventText: (
       <div className="max-container font-light">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          Join us at the <b>2025 Defense Technology & Aerospace Procurement Conference</b> in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.
+          Join us at the <b>2026 Defense Technology & Aerospace Procurement Conference</b> in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.
         </p>
         <p className="font-bold text-xl text-center font-gotham">
           Topical Coverage:
@@ -952,7 +952,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          Join us at the <b>2025 Defense Technology & Aerospace Procurement Conference</b> in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.
+          Join us at the <b>2026 Defense Technology & Aerospace Procurement Conference</b> in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.
         </p>
       </div>
     ),
@@ -993,9 +993,9 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "" }
     ],
     image: "2025DTAPC_wide.webp",
-    slug: "2025-defense-technology-aerospace-procurement-conference",
-    eventShorthand: "2025DTAPC",
-    password: "2025DTAPCADA",
+    slug: "2026-defense-technology-aerospace-procurement-conference",
+    eventShorthand: "2026DTAPC",
+    password: "2026DTAPCADA",
     locationImage: "locations/temp_venue.webp",
     locationAddress: "9721 Arboretum Blvd, Austin, TX 78759",
     venueName: "Renaissance Austin Hotel",
@@ -1016,7 +1016,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         },
       ]
     },
-    expectationsText: `Austin, Texas has become a major hub for Military and Defense technology innovation.  Accordingly, the <b>2025 Defense Technology Aerospace Procurement Conference</b> will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across all sectors from IT, AI and Quantum, to cybersecurity qualification, to next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, to military base security, assured logistics and forward energy supply – with spotlights on multi-Billion-dollar acquisition programs from the Golden Dome initiative to next-generation aircraft and satellites, and the development of advanced unmanned platforms (‘loyal wingmen’ to drones).  Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.`,
+    expectationsText: `Austin, Texas has become a major hub for Military and Defense technology innovation.  Accordingly, the <b>2026 Defense Technology & Aerospace Procurement Conference</b> will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across all sectors from IT, AI and Quantum, to cybersecurity qualification, to next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, to military base security, assured logistics and forward energy supply – with spotlights on multi-Billion-dollar acquisition programs from the Golden Dome initiative to next-generation aircraft and satellites, and the development of advanced unmanned platforms (‘loyal wingmen’ to drones).  Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.`,
     features: {
       showKeynoteSpeaker: true,
       keynoteSpeakers: [
@@ -1055,7 +1055,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     //     ],
 //     registrationClosedTime: "2025-10-15T13:00:00Z", // 9am ET on October 15, 2025
 //     registrationClosedNotice: `
-// The 2025 Defense Technology & Aerospace Procurement Conference has been rescheduled to <b>March 4-5, 2026</b> at the Renaissance Austin Hotel in Austin, Texas.
+// The 2026 Defense Technology & Aerospace Procurement Conference has been rescheduled to <b>March 4-5, 2026</b> at the Renaissance Austin Hotel in Austin, Texas.
 // <br/>
 // <br/>
 // All current registrations will remain valid for the rescheduled event. If you are unable to attend on the new dates, please contact us at <a class="text-blue-600 hover:underline" href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or <a href="tel:+17714741077">(771) 474-1077</a> and we will assist you with transferring the credit for this event to another American Defense Alliance conference in 2026.
@@ -1067,7 +1067,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
 // We appreciate your patience and understanding during the rescheduling process. Our team remains committed to delivering a valuable, high-quality experience, and we look forward to gathering with you in Austin in March 2026.
 // `,
 //     eventPageNotice: `<h2><b>Event Rescheduled - New Dates Confirmed</b></h2><br/>
-// The 2025 Defense Technology & Aerospace Procurement Conference has been rescheduled to <b>March 4-5, 2026</b> at the Renaissance Austin Hotel in Austin, Texas.
+// The 2026 Defense Technology & Aerospace Procurement Conference has been rescheduled to <b>March 4-5, 2026</b> at the Renaissance Austin Hotel in Austin, Texas.
 // <br/>
 // <br/>
 // All current registrations will remain valid for the rescheduled event. If you are unable to attend on the new dates, please contact us at <a class="text-blue-600 hover:underline" href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or <a href="tel:+17714741077">(771) 474-1077</a> and we will assist you with transferring the credit for this event to another American Defense Alliance conference in 2026.

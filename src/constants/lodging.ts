@@ -106,16 +106,16 @@ export const LODGING_INFO: LodgingInfo[] = [
     ],
     note: `
     <b>Event Room</b>: Rio Grande Hall, Plaza Lower Level<br />
-    <b>Group Block Name</b>: 2025 Defense Technology & Aerospace Procurement Conference<br />
+    <b>Group Block Name</b>: 2026 Defense Technology & Aerospace Procurement Conference<br />
     <b>Group Rate</b>: $244 Plus Tax<br />
     <b>Rate Available</b>: November 3-8, 2025<br />
     <b>Booking Deadline</b>: October 21, 2025<br />
     <br/>
-    <a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1753131167945&key=GRP&app=resvlink" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">Book your group rate for 2025 Defense Technology & Aerospace Procurement Conference</a>
+    <a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1753131167945&key=GRP&app=resvlink" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">Book your group rate for 2026 Defense Technology & Aerospace Procurement Conference</a>
     <br/>
     <br/>
     <b>To Book Extra Nights at the Group Rate, please email <a href="mailto:kaitlin.cahill@renaissancehotels.com" class="text-blue-600 hover:underline text-nowrap">kaitlin.cahill@renaissancehotels.com</a></b>
-    <b>Subject Line: "Request to Add Reservation at Group Rate" 2025 Defense Technology & Aerospace Procurement Conference</b>
+    <b>Subject Line: "Request to Add Reservation at Group Rate" 2026 Defense Technology & Aerospace Procurement Conference</b>
     <br/>
     <br/>
     <p class="font-bold"> Parking: </p>

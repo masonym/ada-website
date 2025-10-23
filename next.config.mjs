@@ -28,6 +28,15 @@ const nextConfig = {
         AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
         AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
     },
+    async redirects() {
+        return [
+            {
+                source: '/events/2025-defense-technology-aerospace-procurement-conference/:path*',
+                destination: '/events/2026-defense-technology-aerospace-procurement-conference/:path*',
+                permanent: true,
+            },
+        ];
+    },
 };
 
 export default nextConfig;
