@@ -33,21 +33,21 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
     };
 
     const getLastName = (name: string) => {
-    // strip common suffixes like ranks and titles
-    const removeTitles = (s: string) =>
-        s
-            .replace(/\([^)]*\)/g, '') // remove things in parens
-            .replace(/\b(Vice\s+)?Admiral\b|USN|Ret\.?|Capt\.?|Major|Col\.?|Lt\.?|General|Commander|Rear\s+Admiral/gi, '')
-            .replace(/^[^a-zA-Z]*|[^a-zA-Z]*$/g, '') // trim non-alpha edges
-            .replace(/,\s*.*$/, '') // remove stuff after commas
-            .trim();
+        // strip common suffixes like ranks and titles
+        const removeTitles = (s: string) =>
+            s
+                .replace(/\([^)]*\)/g, '') // remove things in parens
+                .replace(/\b(Vice\s+)?Admiral\b|USN|Ret\.?|Capt\.?|Major|Col\.?|Lt\.?|General|Commander|Rear\s+Admiral/gi, '')
+                .replace(/^[^a-zA-Z]*|[^a-zA-Z]*$/g, '') // trim non-alpha edges
+                .replace(/,\s*.*$/, '') // remove stuff after commas
+                .trim();
 
-    const cleanedName = removeTitles(name);
-    const nameParts = cleanedName.split(/\s+/);
+        const cleanedName = removeTitles(name);
+        const nameParts = cleanedName.split(/\s+/);
 
-    if (nameParts.length === 0) return '';
-    return nameParts[nameParts.length - 1];
-};
+        if (nameParts.length === 0) return '';
+        return nameParts[nameParts.length - 1];
+    };
 
 
     const isEventFuture = event.timeStart
@@ -58,6 +58,10 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
         <div className="max-container flex flex-col items-center">
             <KeynoteSpeaker eventId={event.id} eventShorthand={event.eventShorthand} />
             <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Speaker Spotlight</h1>
+            {/* TODO: Remove this stupid hack after March 2026 event */}
+            {event.id === 5 && (
+                <p className="text-l font-bold text-center mb-8 text-slate-600">We are in the process of reconfirming speakers for the new conference dates on March 4-5, 2026.</p>
+            )}
             {isEventFuture && (
                 <p className="text-l font-bold text-center mb-8 text-slate-600">More speaker information will be added as we get closer to the event date, please check back later for updates.</p>
             )}
