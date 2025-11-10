@@ -111,7 +111,7 @@ export const LODGING_INFO: LodgingInfo[] = [
 <b>Rate Available</b>: March 2–7, 2026<br />
 <b>Booking Deadline</b>: February 17, 2026<br />
 <br/>
-<a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1753131167945&key=GRP&app=resvlink" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">
+<a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1762453906826&key=GRP&app=resvlink&_branch_match_id=1509893008548409044&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXTywo0MtNLCrKzC8p0UvOz9UvSi3OyczLtgdK2ALZZSCOWmaKraG5mZGJqbGlgZmFkZladmqlrXtQgFpdUWpaKlB3Xnp8UlF%2BeXFqka1zRlF%2BbioAeCFZtWAAAAA%3D" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">
   Book your group rate for 2026 Defense Technology & Aerospace Procurement Conference
 </a>
 <br/>
