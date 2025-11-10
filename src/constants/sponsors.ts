@@ -856,6 +856,27 @@ Omega Technical Services is an award-winning nuclear and high-reliability operat
     website: "https://www.americandivingsupply.com/",
     size: 'small'
   },
+  "infotek-consulting": {
+    id: "infotek-consulting",
+    name: "Infotek Consulting LLC",
+    logo: "/sponsors/infotek-consulting.webp",
+    website: "https://www.infotekconsulting.net/",
+    size: 'small'
+  },
+  "flx-solutions": {
+    id: "flx-solutions",
+    name: "FLX Solutions",
+    logo: "/sponsors/flx-solutions.webp",
+    website: "https://flxsolutions.com/",
+    size: 'small'
+  },
+  "neousys-technology": {
+    id: "neousys-technology",
+    name: "Neousys Technology America, Inc.",
+    logo: "/sponsors/neousys-technology.webp",
+    website: "https://www.neousys-tech.com/",
+    size: 'small'
+  },
 };
 
 // Helper function to get a sponsor by ID

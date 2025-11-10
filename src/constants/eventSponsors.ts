@@ -283,6 +283,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "trust-consulting-services",
                     "omega-technical-services",
                     "pmb-machine-works",
+                    "css-energy",
                 ],
             },
             {
@@ -291,6 +292,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 style: "bg-sb-100 text-slate-900",
                 sponsorIds: [
                     "isi-defense",
+                    "infotek-consulting",
+                    "alpha-elite",
                 ],
             },
             {
@@ -305,6 +308,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "omega-technical-services",
                     "pmb-machine-works",
                     "hui-huliau",
+                    "infotek-consulting",
+                    "css-energy",
                 ],
             },
         ],
@@ -318,6 +323,8 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 style: "bg-sb-100 text-slate-900",
                 sponsorIds: [
                     "american-diving-and-marine-supply",
+                    "infotek-consulting",
+                    "flx-solutions",
                 ],
             },
             {
@@ -330,6 +337,9 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "sierra-peaks",
                     "american-diving-and-marine-supply",
                     "virginia-apex",
+                    "infotek-consulting",
+                    "neousys-technology",
+                    "flx-solutions",
                 ],
             }
         ]
