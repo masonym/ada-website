@@ -656,7 +656,8 @@ export const SPONSORS: Record<string, Sponsor> = {
     name: "Trust Consulting Services",
     logo: "/sponsors/trust-consulting-services.webp",
     website: "https://www.trustconsultingservices.com/",
-    size: 'small'
+    size: 'small',
+    description: "Trust Consulting Services (TRUST) is a selfless organization founded to give professional services covering multiple disciplines. Our services are built to assist our clients in achieving the desired impacts for their operations. TRUST offers a wide range of services, including acquisition management, program management, financial management, and facilities management, as well as IT systems and networking. These services come with complete security and satisfaction, which we aim to improve and maintain in the upcoming years. We are committed to serving you better.",
   },
   "pc-campana": {
     id: "pc-campana",
@@ -876,6 +877,13 @@ Omega Technical Services is an award-winning nuclear and high-reliability operat
     logo: "/sponsors/neousys-technology.webp",
     website: "https://www.neousys-tech.com/",
     size: 'small'
+  },
+  "fogo-solutions": {
+    id: "fogo-solutions",
+    name: "FOGO Solutions",
+    logo: "/sponsors/fogo-solutions.webp",
+    website: "https://www.fogosolutions.com",
+    size: 'small',
   },
 };
 

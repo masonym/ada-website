@@ -310,6 +310,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "hui-huliau",
                     "infotek-consulting",
                     "css-energy",
+                    "fogo-solutions",
                 ],
             },
         ],
