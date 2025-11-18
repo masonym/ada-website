@@ -691,7 +691,31 @@ export function sponsorTemplate({
     
     <!-- VIP Networking Reception Host -->
     
-    ${!sponsorshipTitle.includes('small business sponsor') ? `
+    ${sponsorshipTitle.includes('without exhibit space') ? `
+    <div class="highlight">
+    <h2>${sponsorshipTitle.replace(/\b(vip)\b/gi, m => m.toUpperCase()).replace(/\b\w/g, l => l.toUpperCase())} Benefits</h2>
+    
+    <p><strong>Sponsorship Recognition:</strong> As a Small Business Sponsor, your company will receive prominent recognition throughout the event. We're proud to showcase your support and partnership.</p>
+    
+    <p><strong>Logo Branding:</strong> Your company logo will be featured on:</p>
+    <ul>
+      <li>Conference pop-up banners</li>
+      <li>Event website</li>
+      <li>Digital agenda and printed program</li>
+      <li>Conference marketing emails</li>
+    </ul>
+    
+    <p><strong>Recognition & Visibility:</strong> You will receive photographs of your participation for your marketing materials.</p>
+    
+    <p><strong>VIP Attendee Passes:</strong> Your registration includes (${attendeePasses}) VIP Attendee Passes with access to all event sessions and the VIP Networking Reception.</p>
+    
+    <p><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
+    
+    <h4 style="margin-top: 20px; margin-bottom: 2px;">Next Steps</h4>
+    <p>Please reach out to our team at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> to coordinate your sponsorship benefits, including finalizing your branding assets.</p>
+    
+    </div>
+    ` : `
     <div class="highlight">
     <h2>${sponsorshipTitle.replace(/\b(vip)\b/gi, m => m.toUpperCase()).replace(/\b\w/g, l => l.toUpperCase())} Benefits</h2>
 
@@ -701,11 +725,11 @@ export function sponsorTemplate({
 
     <!-- Speaking Opportunity -->
     ${speakingTime ? `
-      <p><strong>Speaking Opportunity: </strong>You will be given ${speakingTime} during the General Session. This may be a standalone presentation or part of a panel. Please provide your speaker’s name, bio (any length), high-resolution photo, and session topic for approval and scheduling.</p>
+      <p><strong>Speaking Opportunity: </strong>You will be given ${speakingTime} during the General Session. This may be a standalone presentation or part of a panel. Please provide your speaker's name, bio (any length), high-resolution photo, and session topic for approval and scheduling.</p>
     ` : ''}
 
     ${sponsorshipTitle.includes('platinum') ? `
-      <p><strong>Lanyard & Name Badge Branding:</strong> As the exclusive Lanyard and Name Badge Sponsor, you will have your company’s branding prominently displayed. Please arrange for the delivery of lanyards and coordinate branding specifications. </p>
+      <p><strong>Lanyard & Name Badge Branding:</strong> As the exclusive Lanyard and Name Badge Sponsor, you will have your company's branding prominently displayed. Please arrange for the delivery of lanyards and coordinate branding specifications. </p>
     ` : ''}
 
     <!-- Matchmaking Table Host -->
@@ -725,7 +749,7 @@ export function sponsorTemplate({
     ${getBenefitMsg(sponsorshipTitle)}
 
     </div>
-    ` : ''}
+    `}
     ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'sponsor')}
     ${sponsorshipTitle.includes('without exhibit space') ? '' : generateExhibitorInstructionsHtml(exhibitorInstructions, true)}
 
