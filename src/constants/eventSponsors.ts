@@ -277,7 +277,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         tiers: [
             {
                 id: "bronze-sponsor",
-                name: "Bronze Sponsor",
+                name: "Bronze Sponsors",
                 style: "bg-amber-700 text-slate-900",
                 sponsorIds: [
                     "trust-consulting-services",
