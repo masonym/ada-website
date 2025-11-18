@@ -115,6 +115,11 @@ export interface EventLink {
     hrefOverride?: string;
 }
 
+export interface EventBadge {
+    text: string;
+    color: 'green' | 'blue' | 'red' | 'yellow';
+}
+
 export interface Event {
     id: number;
     title: string;
@@ -187,4 +192,6 @@ export interface Event {
     eventPageNotice?: string;
     /** Optional variant for the event page notice banner: 'warning' (yellow), 'info' (blue), 'error' (red) */
     eventPageNoticeVariant?: 'warning' | 'info' | 'error';
+    /** Optional badge to display on the event card */
+    badge?: EventBadge;
 }
