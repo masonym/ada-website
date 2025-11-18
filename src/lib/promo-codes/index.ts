@@ -110,6 +110,27 @@ export const PROMO_CODES: PromoCode[] = [
     description: 'NSIC10 - 10% off eligible tickets for event (excludes additional passes)',
     isActive: true,
     autoApply: false
+  },
+  {
+    code: 'BLACKFRIDAY',
+    discountPercentage: 15,
+    eligibleTicketTypes: [
+      'attendee-pass',
+      'vip-attendee-pass',
+      'exhibit',
+      'platinum-sponsor',
+      'gold-sponsor',
+      'silver-sponsor',
+      'bronze-sponsor',
+      'vip-networking-reception-sponsor',
+      'networking-luncheon-sponsor',
+      'small-business-sponsor',
+      'small-business-sponsor-without-exhibit-space'
+    ],
+    eligibleEventIds: [5, 6], // 2026DTAPC and 2026NMCPC
+    expirationDate: new Date('2025-12-02T05:00:00Z'), // Dec 2, 2025 12:00 AM EST in UTC
+    description: 'BLACKFRIDAY - 15% off eligible passes and sponsorships for 2026 Defense Technology & Aerospace and Navy & Marine Corps conferences',
+    isActive: true
   }
 ];
 
