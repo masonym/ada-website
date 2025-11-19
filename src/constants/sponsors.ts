@@ -889,7 +889,7 @@ Omega Technical Services is an award-winning nuclear and high-reliability operat
     id: "alpha-elite",
     name: "Alpha + Elite, LLC",
     logo: "/sponsors/alpha-elite",
-    website: "https://elitecnd.com/"
+    website: "https://elitecnd.com/",
     size: 'small',
   },
 };
