@@ -897,7 +897,7 @@ Omega Technical Services is an award-winning nuclear and high-reliability operat
     name: "Path Robotics",
     logo: "/sponsors/path-robotics.webp",
     website: "https://www.path-robotics.com/",
-    size: 'small",
+    size: 'small',
   },
 };
 
