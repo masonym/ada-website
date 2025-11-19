@@ -273,7 +273,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
         ]
     },
     {
-        id: 5, // DTAPC 2025
+        id: 5, // DTAPC 2026
         tiers: [
             {
                 id: "bronze-sponsor",

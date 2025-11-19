@@ -885,6 +885,13 @@ Omega Technical Services is an award-winning nuclear and high-reliability operat
     website: "https://www.fogosolutions.com",
     size: 'small',
   },
+  "alpha-elite": {
+    id: "alpha-elite",
+    name: "Alpha + Elite, LLC",
+    logo: "/sponsors/alpha-elite",
+    website: "https://elitecnd.com/"
+    size: 'small',
+  },
 };
 
 // Helper function to get a sponsor by ID
