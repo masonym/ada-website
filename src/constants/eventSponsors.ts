@@ -294,6 +294,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "isi-defense",
                     "infotek-consulting",
                     "alpha-elite",
+                    "kdm",
                 ],
             },
             {
@@ -326,7 +327,6 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "american-diving-and-marine-supply",
                     "infotek-consulting",
                     "flx-solutions",
-                    "kdm",
                 ],
             },
             {
