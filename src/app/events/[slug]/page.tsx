@@ -20,6 +20,7 @@ import EventTestimonials from '@/app/components/EventTestimonials';
 import EventHighlights from '@/app/components/EventHighlights';
 import { HIGHLIGHTS } from '@/constants/highlights';
 import EventNoticeBanner from '@/app/components/EventNoticeBanner';
+import EventBadgeNotice from '@/app/components/EventBadgeNotice';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -130,6 +131,9 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             {/* Event notice banner (e.g., postponement, shutdown) - client-side time check */}
             <EventNoticeBanner event={event} />
+
+            {/* Badge notice for special announcements like "New Dates!" */}
+            {event.badge && <EventBadgeNotice badge={event.badge} eventDate={event.date} />}
 
             {/* Related/Linked events section (e.g., previous year's recap) */}
             <RelatedEventLinks event={event} />
