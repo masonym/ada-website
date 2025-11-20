@@ -916,7 +916,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     timeEnd: "2026-03-05T18:30:00Z",
     badge: {
       text: "New Dates!",
-      color: "green"
+      color: "red"
     },
     description: "Join us at the 2026 Defense Technology & Aerospace Procurement Conference in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
     eventText: (
@@ -1057,32 +1057,32 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     //         `
     //       },
     //     ],
-//     registrationClosedTime: "2025-10-15T13:00:00Z", // 9am ET on October 15, 2025
-//     registrationClosedNotice: `
-// The 2026 Defense Technology & Aerospace Procurement Conference has been rescheduled to <b>March 4-5, 2026</b> at the Renaissance Austin Hotel in Austin, Texas.
-// <br/>
-// <br/>
-// All current registrations will remain valid for the rescheduled event. If you are unable to attend on the new dates, please contact us at <a class="text-blue-600 hover:underline" href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or <a href="tel:+17714741077">(771) 474-1077</a> and we will assist you with transferring the credit for this event to another American Defense Alliance conference in 2026.
-// <br/>
-// <br/>
-// Please note that you need to contact the hotel directly to update your sleeping room reservation to the new dates. A new room block has been established for March 4-5, 2026, and details are included in your registration confirmation.
-// <br/>
-// <br/>
-// We appreciate your patience and understanding during the rescheduling process. Our team remains committed to delivering a valuable, high-quality experience, and we look forward to gathering with you in Austin in March 2026.
-// `,
-//     eventPageNotice: `<h2><b>Event Rescheduled - New Dates Confirmed</b></h2><br/>
-// The 2026 Defense Technology & Aerospace Procurement Conference has been rescheduled to <b>March 4-5, 2026</b> at the Renaissance Austin Hotel in Austin, Texas.
-// <br/>
-// <br/>
-// All current registrations will remain valid for the rescheduled event. If you are unable to attend on the new dates, please contact us at <a class="text-blue-600 hover:underline" href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or <a href="tel:+17714741077">(771) 474-1077</a> and we will assist you with transferring the credit for this event to another American Defense Alliance conference in 2026.
-// <br/>
-// <br/>
-// Please note that you need to contact the hotel directly to update your sleeping room reservation to the new dates. A new room block has been established for March 4-5, 2026, and details are included in your registration confirmation.
-// <br/>
-// <br/>
-// We appreciate your patience and understanding during the rescheduling process. Our team remains committed to delivering a valuable, high-quality experience, and we look forward to gathering with you in Austin in March 2026.
-//                               `,
-//     eventPageNoticeVariant: 'warning',
+    //     registrationClosedTime: "2025-10-15T13:00:00Z", // 9am ET on October 15, 2025
+    //     registrationClosedNotice: `
+    // The 2026 Defense Technology & Aerospace Procurement Conference has been rescheduled to <b>March 4-5, 2026</b> at the Renaissance Austin Hotel in Austin, Texas.
+    // <br/>
+    // <br/>
+    // All current registrations will remain valid for the rescheduled event. If you are unable to attend on the new dates, please contact us at <a class="text-blue-600 hover:underline" href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or <a href="tel:+17714741077">(771) 474-1077</a> and we will assist you with transferring the credit for this event to another American Defense Alliance conference in 2026.
+    // <br/>
+    // <br/>
+    // Please note that you need to contact the hotel directly to update your sleeping room reservation to the new dates. A new room block has been established for March 4-5, 2026, and details are included in your registration confirmation.
+    // <br/>
+    // <br/>
+    // We appreciate your patience and understanding during the rescheduling process. Our team remains committed to delivering a valuable, high-quality experience, and we look forward to gathering with you in Austin in March 2026.
+    // `,
+    //     eventPageNotice: `<h2><b>Event Rescheduled - New Dates Confirmed</b></h2><br/>
+    // The 2026 Defense Technology & Aerospace Procurement Conference has been rescheduled to <b>March 4-5, 2026</b> at the Renaissance Austin Hotel in Austin, Texas.
+    // <br/>
+    // <br/>
+    // All current registrations will remain valid for the rescheduled event. If you are unable to attend on the new dates, please contact us at <a class="text-blue-600 hover:underline" href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or <a href="tel:+17714741077">(771) 474-1077</a> and we will assist you with transferring the credit for this event to another American Defense Alliance conference in 2026.
+    // <br/>
+    // <br/>
+    // Please note that you need to contact the hotel directly to update your sleeping room reservation to the new dates. A new room block has been established for March 4-5, 2026, and details are included in your registration confirmation.
+    // <br/>
+    // <br/>
+    // We appreciate your patience and understanding during the rescheduling process. Our team remains committed to delivering a valuable, high-quality experience, and we look forward to gathering with you in Austin in March 2026.
+    //                               `,
+    //     eventPageNoticeVariant: 'warning',
   },
   {
     id: 6,

@@ -21,7 +21,7 @@ const getBadgeStyles = (color: EventBadge['color']) => {
     case 'blue':
       return 'bg-blue-500 text-white';
     case 'red':
-      return 'bg-red-500 text-white';
+      return 'bg-red-999 text-white';
     case 'yellow':
       return 'bg-yellow-400 text-slate-900';
     default:
