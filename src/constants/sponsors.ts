@@ -105,7 +105,14 @@ export const SPONSORS: Record<string, Sponsor> = {
     name: "CSS Energy Solutions",
     logo: "/sponsors/css-energy.webp",
     website: "https://cssenergysolutions.com/",
-    size: 'small'
+    size: 'small',
+    description: `
+CSS Energy Solutions (CSSES) offers long-duration battery energy storage systems to support
+the electricity needs of Military and industrial installations; plus the full range of security
+solutions to protect power generation facilities and other critical infrastructure. CSSES’
+international team specializes in global market development, and commodity trading primarily
+in the oil &amp; gas and critical minerals sectors.
+`
   },
   "imsm": {
     id: "imsm",
