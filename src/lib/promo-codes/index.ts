@@ -149,7 +149,7 @@ export const PROMO_CODES: PromoCode[] = [
       'small-business-sponsor-without-exhibit-space'
     ],
     eligibleEventIds: [5, 6], // 2026DTAPC and 2026NMCPC
-    expirationDate: new Date('2025-12-02T05:00:00Z'), // Dec 2, 2025 12:00 AM EST in UTC
+    expirationDate: new Date('2035-12-02T05:00:00Z'), // Dec 2, 2025 12:00 AM EST in UTC
     description: 'KDM10 - 10% off eligible passes and sponsorships for 2026 Defense Technology & Aerospace and Navy & Marine Corps conferences',
     isActive: true
   },
