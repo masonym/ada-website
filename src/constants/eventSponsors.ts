@@ -342,6 +342,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "infotek-consulting",
                     "neousys-technology",
                     "flx-solutions",
+                    "path-robotics",
                 ],
             }
         ]
