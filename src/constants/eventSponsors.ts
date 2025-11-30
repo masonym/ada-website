@@ -343,6 +343,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                     "neousys-technology",
                     "flx-solutions",
                     "path-robotics",
+                    "sca-group",
                 ],
             }
         ]

@@ -906,6 +906,13 @@ Omega Technical Services is an award-winning nuclear and high-reliability operat
     website: "https://www.path-robotics.com/",
     size: 'small',
   },
+  "sca-group": {
+    id: "sca-group",
+    name: "SCA Group",
+    logo: "/sponsors/sca-group.webp",
+    website: "https://www.scagroup.net/",
+    size: 'small',
+  }
 };
 
 // Helper function to get a sponsor by ID
