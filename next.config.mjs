@@ -17,6 +17,11 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'cdn.americandefensealliance.org',
                 port: '',
+            },
+            {
+                protocol: 'https',
+                hostname: 'nc4xlou0.cdn.sanity.io',
+                port: '',
             }
         ],
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840, 4096],
