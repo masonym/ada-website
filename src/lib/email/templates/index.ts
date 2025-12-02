@@ -274,8 +274,9 @@ export function generateExhibitorInstructionsHtml(
 
 // Base template that all emails will use
 export function baseEmailTemplate(content: string, eventImage: string): string {
-  // Use server env for email templates (server-side only)
-  const env = getServerEnv();
+  // Use server env for server-side, client env for client-side
+  const isServer = typeof window === 'undefined';
+  const env = isServer ? getServerEnv() : getClientEnv();
 
   return `
     <!DOCTYPE html>

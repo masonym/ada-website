@@ -15,7 +15,7 @@ export function getClientEnv(): ClientEnvType {
     STRIPE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '',
     SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || '',
     // Add fallbacks for server-side variables that might be accessed from client components
-    MY_EMAIL: process.env.NEXT_PUBLIC_MY_EMAIL || 'chayil@americandefensealliance.org',
+    MY_EMAIL: process.env.NEXT_PUBLIC_MY_EMAIL || 'events@americandefensealliance.org',
     // Add other NEXT_PUBLIC_ variables as needed
   };
 }
