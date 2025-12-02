@@ -101,7 +101,7 @@ export function generateAttendeeDetailsHtml(attendees: AttendeeDetails[]): strin
     </div>
   `;
 }
-type Tier = 'platinum' | 'gold' | 'silver' | 'bronze' | 'vip networking reception' | 'networking luncheon';
+type Tier = 'platinum' | 'gold' | 'silver' | 'bronze' | 'vip networking reception' | 'networking luncheon' | 'small business';
 
 const benefitMap: Record<Tier, string[]> = {
   platinum: [
@@ -134,6 +134,10 @@ const benefitMap: Record<Tier, string[]> = {
     'finalizing branding assets',
     'reserving your matchmaking session(s)',
   ],
+  'small business': [
+    'finalizing branding assets',
+    'reserving your matchmaking session(s)',
+  ]
 };
 
 function getBenefitMsg(title: string): string {
@@ -699,7 +703,6 @@ export function sponsorTemplate({
     
     <p><strong>Logo Branding:</strong> Your company logo will be featured on:</p>
     <ul>
-      <li>Conference pop-up banners</li>
       <li>Event website</li>
       <li>Digital agenda and printed program</li>
       <li>Conference marketing emails</li>
