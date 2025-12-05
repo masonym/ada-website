@@ -7,14 +7,14 @@ import { VipNetworkingReception } from '@/types/events';
 // Mock data for the email templates
 const mockData = {
   firstName: 'John',
-  eventName: '2025 Navy Marine Corps Procurement Conference',
+  eventName: '2026 Navy Marine Corps Procurement Conference',
   eventDate: 'July 29-30, 2025',
   eventLocation: '235 E Main St, Norfolk, Virginia 23510',
   venueName: 'Norfolk Waterside Marriott',
-  eventUrl: 'https://americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference',
+  eventUrl: 'https://americandefensealliance.org/events/2026-navy-marine-corps-procurement-conference',
   orderId: 'pi_1234567890',
-  hotelInfo: 'https://americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference/about/venue-and-lodging',
-  eventImage: '/2025NMCPC_wide.webp',
+  hotelInfo: 'https://americandefensealliance.org/events/2026-navy-marine-corps-procurement-conference/about/venue-and-lodging',
+  eventImage: '/2026NMCPC_wide.webp',
   vipPerks: [
     'Priority seating',
     'Access to VIP reception',
@@ -42,7 +42,7 @@ matchmakingSessions: {
   // TODO: is this passed in normally? idk
   attendeePasses: 4,
   exhibitorType: 'Standard Exhibitor Booth',
-  exhibitorInstructions: '/events/2025NMCPC/2025%20Navy%20&%20Marine%20Corps%20Procurement%20Conference%20-%20Exhibitor%20Instructions.pdf',
+  exhibitorInstructions: '/events/2026DTAPC/2026%20Defense%20Technology%20%26%20Aerospace%20Procurement%20Conference%20-%20Exhibitor%20Instructions.pdf',
     vipReception: {
       title: "VIP Networking Reception",
       date: "July 29, 2025",
@@ -125,6 +125,11 @@ const templateFunctions = {
   'Gov/Mil Pass': (data: any) => govMilPassTemplate(data),
 };
 
+const mockDataWithUrls = {
+  ...mockData,
+  vipNetworkingReceptionUrl: `${mockData.eventUrl}/about/vip-networking-reception`,
+};
+
 const sponsorLevels = [
   'Small Business Sponsor',
   'Small Business Sponsor without Exhibit Space',
@@ -180,12 +185,12 @@ export default function EmailPreviewPage() {
           srcDoc={templateFunctions[selectedTemplate](
             // Only update sponsorshipLevel when selectedTemplate is 'Sponsor'
             selectedTemplate === 'Sponsor' ? {
-              ...mockData,
+              ...mockDataWithUrls,
               sponsorshipLevel: selectedSponsorLevel,
               orderSummaryHtml,
               attendeeDetailsHtml,
             } : {
-              ...mockData,
+              ...mockDataWithUrls,
               orderSummaryHtml,
               attendeeDetailsHtml,
             }

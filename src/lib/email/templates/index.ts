@@ -103,60 +103,260 @@ export function generateAttendeeDetailsHtml(attendees: AttendeeDetails[]): strin
 }
 type Tier = 'platinum' | 'gold' | 'silver' | 'bronze' | 'vip networking reception' | 'networking luncheon' | 'small business';
 
-const benefitMap: Record<Tier, string[]> = {
-  platinum: [
-    'scheduling your speaking opportunity',
-    'finalizing branding assets',
-    'reserving your matchmaking session(s)',
-    'coordinating your spotlight email',
-  ],
-  gold: [
-    'scheduling your speaking opportunity',
-    'finalizing branding assets',
-    'reserving your matchmaking session(s)',
-    'coordinating your spotlight email',
-  ],
-  silver: [
-    'scheduling your speaking opportunity',
-    'finalizing branding assets',
-    'reserving your matchmaking session(s)',
-  ],
-  bronze: [
-    'scheduling your speaking opportunity',
-    'finalizing branding assets',
-    'reserving your matchmaking session(s)',
-  ],
-  'vip networking reception': [
-    'finalizing branding assets',
-    'reserving your matchmaking session(s)',
-  ],
-  'networking luncheon': [
-    'finalizing branding assets',
-    'reserving your matchmaking session(s)',
-  ],
-  'small business': [
-    'finalizing branding assets',
-    'reserving your matchmaking session(s)',
-  ]
+interface SponsorshipConfig {
+  hasMatchmakingTable: boolean;
+  hasSpeakingOpportunity: boolean;
+  speakingTime: string;
+  hasSponsorSpotlight: boolean;
+  hasLanyardBranding: boolean;
+  benefits: string[];
+}
+
+const sponsorshipConfig: Record<Tier, SponsorshipConfig> = {
+  platinum: {
+    hasMatchmakingTable: true,
+    hasSpeakingOpportunity: true,
+    speakingTime: '20-minutes',
+    hasSponsorSpotlight: true,
+    hasLanyardBranding: true,
+    benefits: [
+      'scheduling your speaking opportunity',
+      'finalizing branding assets',
+      'reserving your matchmaking session(s)',
+      'coordinating your spotlight email',
+    ]
+  },
+  gold: {
+    hasMatchmakingTable: true,
+    hasSpeakingOpportunity: true,
+    speakingTime: '15-minutes',
+    hasSponsorSpotlight: true,
+    hasLanyardBranding: false,
+    benefits: [
+      'scheduling your speaking opportunity',
+      'finalizing branding assets',
+      'reserving your matchmaking session(s)',
+      'coordinating your spotlight email',
+    ]
+  },
+  silver: {
+    hasMatchmakingTable: true,
+    hasSpeakingOpportunity: true,
+    speakingTime: '10-minutes',
+    hasSponsorSpotlight: false,
+    hasLanyardBranding: false,
+    benefits: [
+      'scheduling your speaking opportunity',
+      'finalizing branding assets',
+      'reserving your matchmaking session(s)',
+    ]
+  },
+  bronze: {
+    hasMatchmakingTable: true,
+    hasSpeakingOpportunity: true,
+    speakingTime: '5-minutes',
+    hasSponsorSpotlight: false,
+    hasLanyardBranding: false,
+    benefits: [
+      'scheduling your speaking opportunity',
+      'finalizing branding assets',
+      'reserving your matchmaking session(s)',
+    ]
+  },
+  'vip networking reception': {
+    hasMatchmakingTable: true,
+    hasSpeakingOpportunity: false,
+    speakingTime: '',
+    hasSponsorSpotlight: false,
+    hasLanyardBranding: false,
+    benefits: [
+      'finalizing branding assets',
+      'reserving your matchmaking session(s)',
+    ]
+  },
+  'networking luncheon': {
+    hasMatchmakingTable: true,
+    hasSpeakingOpportunity: true,
+    speakingTime: '5-minutes',
+    hasSponsorSpotlight: false,
+    hasLanyardBranding: false,
+    benefits: [
+      'finalizing branding assets',
+      'reserving your matchmaking session(s)',
+    ]
+  },
+  'small business': {
+    hasMatchmakingTable: false,
+    hasSpeakingOpportunity: false,
+    speakingTime: '',
+    hasSponsorSpotlight: false,
+    hasLanyardBranding: false,
+    benefits: [
+      'finalizing branding assets',
+    ]
+  }
 };
 
 function getBenefitMsg(title: string): string {
   const contact = `Please reach out to our team at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> to coordinate your benefits, including `;
 
-  const matchedTier = (Object.keys(benefitMap) as Tier[]).find(t =>
+  const matchedTier = (Object.keys(sponsorshipConfig) as Tier[]).find(t =>
     title.toLowerCase().includes(t)
   );
 
   if (!matchedTier) return '';
 
-  const benefits = benefitMap[matchedTier];
+  const benefits = sponsorshipConfig[matchedTier].benefits;
   const list =
     benefits.length > 1
       ? `${benefits.slice(0, -1).join(', ')}, and ${benefits[benefits.length - 1]}`
       : benefits[0];
 
-
   return `<p>${contact}${list}.</p>`;
+}
+
+function getSponsorshipConfig(title: string): SponsorshipConfig | null {
+  const matchedTier = (Object.keys(sponsorshipConfig) as Tier[]).find(t =>
+    title.toLowerCase().includes(t)
+  );
+  return matchedTier ? sponsorshipConfig[matchedTier] : null;
+}
+
+function generateExhibitorBenefitsHtml(exhibitorType: string): string {
+  return `
+    <div class="highlight">
+      <h2>Table-Top Exhibit Space Benefits</h2>
+      
+      <p><strong>Exhibitor Recognition:</strong> As an Exhibitor, your company will receive prominent recognition throughout the event. We're proud to showcase your support and partnership.</p>
+      
+      <p><strong>Table-Top Exhibit Space Benefits:</strong></p>
+      <ul>
+        <li>8'x10' Table-Top Exhibit Space in Exhibit Hall/Foyer</li>
+        <li>6' Tablecloth Table & Chairs</li>
+        <li>Logo Branding on Event Website, Digital Agenda and Printed Program, Conference Marketing Emails</li>
+        <li>Recognition & Visibility: Photographs of your participation for your marketing materials</li>
+        <li>VIP Attendee Passes: Your registration includes (1) VIP Attendee Pass with access to all event sessions and the VIP Networking Reception</li>
+      </ul>
+      
+      <p><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
+      
+      <h4 style="margin-top: 20px; margin-bottom: 2px;">Next Steps</h4>
+      <p>Please reach out to our team at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> to coordinate your sponsorship benefits, including finalizing your branding assets.</p>
+    </div>
+  `;
+}
+
+function generateBenefitsHtml(sponsorshipLevel: string, attendeePasses: number, matchmakingSessions?: MatchmakingSession): string {
+  const config = getSponsorshipConfig(sponsorshipLevel);
+  if (!config) return '';
+
+  const sponsorshipTitle = sponsorshipLevel.toLowerCase();
+  const formattedTitle = sponsorshipTitle.replace(/\b(vip)\b/gi, m => m.toUpperCase()).replace(/\b\w/g, l => l.toUpperCase());
+
+  let benefitsHtml = `
+    <div class="highlight">
+    <h2>${formattedTitle} Benefits</h2>
+  `;
+
+  // VIP Networking Reception specific content
+  if (sponsorshipTitle.includes('vip networking reception')) {
+    benefitsHtml += `
+      <p><strong>Speaking Opportunity:</strong> You are the exclusive host of the VIP Networking Reception and are invited to provide welcoming remarks at the VIP Networking Reception. Please identify who will be providing welcoming remarks and provide a photo and bio for inclusion on our website.</p>
+    `;
+  }
+
+  // Speaking Opportunity
+  if (config.hasSpeakingOpportunity && config.speakingTime) {
+    benefitsHtml += `
+      <p><strong>Speaking Opportunity: </strong>You will be given ${config.speakingTime} during the General Session. This may be a standalone presentation or part of a panel. Please provide your speaker's name, bio (any length), high-resolution photo, and session topic for approval and scheduling.</p>
+    `;
+  }
+
+  // Lanyard & Name Badge Branding
+  if (config.hasLanyardBranding) {
+    benefitsHtml += `
+      <p><strong>Lanyard & Name Badge Branding:</strong> As the exclusive Lanyard and Name Badge Sponsor, you will have your company's branding prominently displayed. Please arrange for the delivery of lanyards and coordinate branding specifications. </p>
+    `;
+  }
+
+  // Matchmaking Table Host (only for specific tiers)
+  if (config.hasMatchmakingTable && matchmakingSessions?.sessions) {
+    const sessionList = matchmakingSessions.sessions
+      .filter(session => session?.date && session?.sessionTime)
+      .map(session => `<li>${session.date} from ${session.sessionTime}</li>`)
+      .join('');
+    
+    if (sessionList) {
+      benefitsHtml += `
+        <p><strong>Matchmaking Table Host:</strong> You are invited to host a Matchmaking Table during the scheduled sessions. Please provide the name of your representative and a brief company description. </p>
+        <ul>
+          ${sessionList}
+        </ul>
+      `;
+    }
+  }
+  
+    // Add pop-up banner for top sponsors
+    if (sponsorshipTitle.includes('platinum') || sponsorshipTitle.includes('gold') || sponsorshipTitle.includes('silver')) {
+      benefitsHtml += `
+        <p><strong>Pop-up Banner:</strong> Your company will receive a pop-up banner for additional visibility at the event.</p>
+      `;
+    }
+
+  // Sponsor Spotlight Email
+  if (config.hasSponsorSpotlight) {
+    benefitsHtml += `
+      <p><strong>Sponsor Spotlight Email:</strong> Your company will be featured in a pre-conference promotional email sent to all registered attendees. Please submit a company description and capabilities statement.</p>
+    `;
+  }
+
+  // Common benefits for all sponsors
+  if (sponsorshipTitle.includes('without exhibit space')) {
+    benefitsHtml += `
+      <p><strong>Sponsorship Recognition:</strong> As a Small Business Sponsor, your company will receive prominent recognition throughout the event. We're proud to showcase your support and partnership.</p>
+      
+      <p><strong>Logo Branding:</strong> Your company logo will be featured on:</p>
+      <ul>
+        <li>Event website</li>
+        <li>Digital agenda and printed program</li>
+        <li>Conference marketing emails</li>
+      </ul>
+      
+      <p><strong>Recognition & Visibility:</strong> You will receive photographs of your participation for your marketing materials.</p>
+      
+      <p><strong>VIP Attendee Passes:</strong> Your registration includes (${attendeePasses}) VIP Attendee Passes with access to all event sessions and the VIP Networking Reception.</p>
+      
+      <p><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
+    `;
+  } else {
+    // For sponsors with exhibit space
+    benefitsHtml += `
+      <p><strong>Exhibitor Recognition:</strong> As an Exhibitor, your company will receive prominent recognition throughout the event. We're proud to showcase your support and partnership.</p>
+      
+      <p><strong>Table-Top Exhibit Space Benefits:</strong></p>
+      <ul>
+        <li>8'x10' Table-Top Exhibit Space in Exhibit Hall/Foyer</li>
+        <li>6' Tablecloth Table & Chairs</li>
+        <li>Logo Branding on Event Website, Digital Agenda and Printed Program, Conference Marketing Emails</li>
+        <li>Recognition & Visibility: Photographs of your participation for your marketing materials</li>
+        <li>VIP Attendee Passes: Your registration includes (${attendeePasses}) VIP Attendee Passes with access to all event sessions and the VIP Networking Reception</li>
+      </ul>
+      
+    `;
+
+
+    benefitsHtml += `
+      <p><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
+    `;
+  }
+
+  benefitsHtml += `
+    <h4 style="margin-top: 20px; margin-bottom: 2px;">Next Steps</h4>
+    ${getBenefitMsg(sponsorshipTitle)}
+    </div>
+  `;
+
+  return benefitsHtml;
 }
 
 export function generateOrderSummaryHtml(summary: OrderSummary): string {
@@ -227,7 +427,8 @@ export function generateOrderSummaryHtml(summary: OrderSummary): string {
  */
 export function generateVipNetworkingReceptionHtml(
   vipNetworkingReception: VipNetworkingReception | undefined,
-  recipientType: 'exhibitor' | 'sponsor' | 'attendee' = 'attendee'
+  recipientType: 'exhibitor' | 'sponsor' | 'attendee' = 'attendee',
+  vipNetworkingReceptionUrl?: string
 ): string {
   if (!vipNetworkingReception) return '';
 
@@ -245,6 +446,7 @@ export function generateVipNetworkingReceptionHtml(
       <p><strong>Who's Invited:</strong> Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.</p>
       <p><strong>Location:</strong> ${vipNetworkingReception.locationName}, ${vipNetworkingReception.locationAddress}</p>
       <p><strong>Date:</strong> ${vipNetworkingReception.date} from ${vipNetworkingReception.timeStart} to ${vipNetworkingReception.timeEnd}</p>
+      ${vipNetworkingReceptionUrl ? `<p><a href="${vipNetworkingReceptionUrl}">View VIP Networking Reception Details</a></p>` : ''}
       ${vipNetworkingReception.additionalInfo ? `<p>${vipNetworkingReception.additionalInfo}</p>` : ''}
     </div>
   `;
@@ -513,6 +715,7 @@ export function vipAttendeePassTemplate({
   hotelInfo,
   vipNetworkingReception,
   attendeeDetailsHtml,
+  vipNetworkingReceptionUrl,
 }: {
   firstName: string;
   eventName: string;
@@ -526,6 +729,7 @@ export function vipAttendeePassTemplate({
   hotelInfo: string;
   vipNetworkingReception?: VipNetworkingReception;
   attendeeDetailsHtml?: string;
+  vipNetworkingReceptionUrl?: string;
 }): string {
   const content = `
     <p><strong>Dear ${firstName},</strong></p>
@@ -547,7 +751,7 @@ export function vipAttendeePassTemplate({
 
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
 
-    ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'attendee')}
+    ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'attendee', vipNetworkingReceptionUrl)}
 
     ${orderSummaryHtml || ''}
     ${attendeeDetailsHtml || ''}
@@ -572,6 +776,7 @@ export function exhibitorTemplate({
   hotelInfo,
   vipNetworkingReception,
   attendeeDetailsHtml,
+  vipNetworkingReceptionUrl,
 }: {
   firstName: string;
   eventName: string;
@@ -587,6 +792,7 @@ export function exhibitorTemplate({
   hotelInfo?: string;
   vipNetworkingReception?: VipNetworkingReception;
   attendeeDetailsHtml?: string;
+  vipNetworkingReceptionUrl?: string;
 }): string {
   const content = `
     <p><strong>Dear ${firstName},</strong></p>
@@ -610,7 +816,9 @@ export function exhibitorTemplate({
 
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
 
-    ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'exhibitor')}
+    ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'exhibitor', vipNetworkingReceptionUrl)}
+
+    ${generateExhibitorBenefitsHtml(exhibitorType)}
 
     ${generateExhibitorInstructionsHtml(exhibitorInstructions)}
 
@@ -639,6 +847,7 @@ export function sponsorTemplate({
   vipNetworkingReception,
   matchmakingSessions,
   attendeeDetailsHtml,
+  vipNetworkingReceptionUrl,
 }: {
   firstName: string;
   eventName: string;
@@ -656,20 +865,8 @@ export function sponsorTemplate({
   vipNetworkingReception?: VipNetworkingReception;
   matchmakingSessions: MatchmakingSession | undefined;
   attendeeDetailsHtml?: string;
+  vipNetworkingReceptionUrl?: string;
 }): string {
-  const sponsorshipTitle = sponsorshipLevel.toLowerCase();
-
-  const getSpeakingTime = () => {
-    if (sponsorshipTitle.includes('platinum')) return '20-minutes';
-    if (sponsorshipTitle.includes('gold')) return '15-minutes';
-    if (sponsorshipTitle.includes('silver')) return '10-minutes';
-    if (sponsorshipTitle.includes('bronze')) return '5-minutes';
-    if (sponsorshipTitle.includes('networking luncheon')) return '5-minutes';
-    return '';
-  };
-
-  const speakingTime = getSpeakingTime();
-
   const content = `
     <p><strong>Dear ${firstName},</strong></p>
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
@@ -682,7 +879,6 @@ export function sponsorTemplate({
     <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]}` : 'to this event'}!</p>
     <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
 
-
     <div class="highlight">
       <h2>Event Details</h2>
       <p><strong>Event:</strong> ${eventName}</p>
@@ -693,69 +889,10 @@ export function sponsorTemplate({
 
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
 
+    ${generateBenefitsHtml(sponsorshipLevel, attendeePasses, matchmakingSessions)}
     
-    <!-- VIP Networking Reception Host -->
-    
-    ${sponsorshipTitle.includes('without exhibit space') ? `
-    <div class="highlight">
-    <h2>${sponsorshipTitle.replace(/\b(vip)\b/gi, m => m.toUpperCase()).replace(/\b\w/g, l => l.toUpperCase())} Benefits</h2>
-    
-    <p><strong>Sponsorship Recognition:</strong> As a Small Business Sponsor, your company will receive prominent recognition throughout the event. We're proud to showcase your support and partnership.</p>
-    
-    <p><strong>Logo Branding:</strong> Your company logo will be featured on:</p>
-    <ul>
-      <li>Event website</li>
-      <li>Digital agenda and printed program</li>
-      <li>Conference marketing emails</li>
-    </ul>
-    
-    <p><strong>Recognition & Visibility:</strong> You will receive photographs of your participation for your marketing materials.</p>
-    
-    <p><strong>VIP Attendee Passes:</strong> Your registration includes (${attendeePasses}) VIP Attendee Passes with access to all event sessions and the VIP Networking Reception.</p>
-    
-    <p><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
-    
-    <h4 style="margin-top: 20px; margin-bottom: 2px;">Next Steps</h4>
-    <p>Please reach out to our team at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> to coordinate your sponsorship benefits, including finalizing your branding assets.</p>
-    
-    </div>
-    ` : `
-    <div class="highlight">
-    <h2>${sponsorshipTitle.replace(/\b(vip)\b/gi, m => m.toUpperCase()).replace(/\b\w/g, l => l.toUpperCase())} Benefits</h2>
-
-    ${sponsorshipTitle.includes('vip networking reception') ? `
-      <p><strong>Speaking Opportunity:</strong> You are the exclusive host of the VIP Networking Reception and are invited to provide welcoming remarks at the VIP Networking Reception. Please identify who will be providing welcoming remarks and provide a photo and bio for inclusion on our website.</p>
-    ` : ''}
-
-    <!-- Speaking Opportunity -->
-    ${speakingTime ? `
-      <p><strong>Speaking Opportunity: </strong>You will be given ${speakingTime} during the General Session. This may be a standalone presentation or part of a panel. Please provide your speaker's name, bio (any length), high-resolution photo, and session topic for approval and scheduling.</p>
-    ` : ''}
-
-    ${sponsorshipTitle.includes('platinum') ? `
-      <p><strong>Lanyard & Name Badge Branding:</strong> As the exclusive Lanyard and Name Badge Sponsor, you will have your company's branding prominently displayed. Please arrange for the delivery of lanyards and coordinate branding specifications. </p>
-    ` : ''}
-
-    <!-- Matchmaking Table Host -->
-      <p><strong>Matchmaking Table Host:</strong> You are invited to host a Matchmaking Table during the scheduled sessions. Please provide the name of your representative and a brief company description. </p>
-      <!-- Date 1 -->
-      <ul>
-      <li>${matchmakingSessions?.sessions[0].date} from ${matchmakingSessions?.sessions[0].sessionTime}</li>
-      <!-- Date 2 -->
-        <li>${matchmakingSessions?.sessions[1].date} from ${matchmakingSessions?.sessions[1].sessionTime}</li>
-      </ul>
-    
-
-    ${sponsorshipTitle.includes('gold') || sponsorshipTitle.includes('platinum') ? `
-      <p><strong>Sponsor Spotlight Email:</strong> Your company will be featured in a pre-conference promotional email sent to all registered attendees. Please submit a company description and capabilities statement.</p>
-    ` : ''}
-    <h4 style="margin-top: 20px; margin-bottom: 2px;">Next Steps</h4>
-    ${getBenefitMsg(sponsorshipTitle)}
-
-    </div>
-    `}
-    ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'sponsor')}
-    ${sponsorshipTitle.includes('without exhibit space') ? '' : generateExhibitorInstructionsHtml(exhibitorInstructions, true)}
+    ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'sponsor', vipNetworkingReceptionUrl)}
+    ${sponsorshipLevel.toLowerCase().includes('without exhibit space') ? '' : generateExhibitorInstructionsHtml(exhibitorInstructions, true)}
 
     ${orderSummaryHtml || ''}
     ${attendeeDetailsHtml || ''}
