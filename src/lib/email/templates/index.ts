@@ -227,16 +227,17 @@ function generateExhibitorBenefitsHtml(exhibitorType: string): string {
     <div class="highlight">
       <h2>Table-Top Exhibit Space Benefits</h2>
       
-      <p><strong>Exhibitor Recognition:</strong> As an Exhibitor, your company will receive prominent recognition throughout the event. We're proud to showcase your support and partnership.</p>
-      
-      <p><strong>Table-Top Exhibit Space Benefits:</strong></p>
+      <p><strong>Table-Top Exhibit Space:</strong></p>
       <ul>
         <li>8'x10' Table-Top Exhibit Space in Exhibit Hall/Foyer</li>
         <li>6' Tablecloth Table & Chairs</li>
-        <li>Logo Branding on Event Website, Digital Agenda and Printed Program, Conference Marketing Emails</li>
-        <li>Recognition & Visibility: Photographs of your participation for your marketing materials</li>
-        <li>VIP Attendee Passes: Your registration includes (1) VIP Attendee Pass with access to all event sessions and the VIP Networking Reception</li>
       </ul>
+      
+      <p><strong>Logo Branding:</strong> Event Website, Digital Agenda and Printed Program, Conference Marketing Emails</p>
+      
+      <p><strong>Recognition & Visibility:</strong> Photographs of your participation for your marketing materials.</p>
+      
+      <p><strong>VIP Attendee Passes:</strong> Your registration includes (1) VIP Attendee Pass with access to all event sessions and the VIP Networking Reception. Additional Passes can be purchased for $395 each.</p>
       
       <p><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
       
@@ -313,39 +314,31 @@ function generateBenefitsHtml(sponsorshipLevel: string, attendeePasses: number, 
   // Common benefits for all sponsors
   if (sponsorshipTitle.includes('without exhibit space')) {
     benefitsHtml += `
-      <p><strong>Sponsorship Recognition:</strong> As a Small Business Sponsor, your company will receive prominent recognition throughout the event. We're proud to showcase your support and partnership.</p>
+      <p><strong>Small Business Sponsorship Recognition:</strong> As a Small Business Sponsor, your company will receive prominent recognition throughout the event. We're proud to showcase your support and partnership.</p>
       
-      <p><strong>Logo Branding:</strong> Your company logo will be featured on:</p>
-      <ul>
-        <li>Event website</li>
-        <li>Digital agenda and printed program</li>
-        <li>Conference marketing emails</li>
-      </ul>
+      <p><strong>Logo Branding:</strong> Event Website, Digital Agenda and Printed Program, Conference Marketing Emails</p>
       
-      <p><strong>Recognition & Visibility:</strong> You will receive photographs of your participation for your marketing materials.</p>
+      <p><strong>Recognition & Visibility:</strong> Photographs of your participation for your marketing materials.</p>
       
-      <p><strong>VIP Attendee Passes:</strong> Your registration includes (${attendeePasses}) VIP Attendee Passes with access to all event sessions and the VIP Networking Reception.</p>
+      <p><strong>VIP Attendee Passes:</strong> Your registration includes (${attendeePasses}) VIP Attendee Pass${attendeePasses > 1 ? 'es' : ''} with access to all event sessions and the VIP Networking Reception. Additional Passes can be purchased for $395 each.</p>
       
       <p><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
     `;
   } else {
     // For sponsors with exhibit space
     benefitsHtml += `
-      <p><strong>Exhibitor Recognition:</strong> As an Exhibitor, your company will receive prominent recognition throughout the event. We're proud to showcase your support and partnership.</p>
-      
-      <p><strong>Table-Top Exhibit Space Benefits:</strong></p>
+      <p><strong>Table-Top Exhibit Space:</strong></p>
       <ul>
         <li>8'x10' Table-Top Exhibit Space in Exhibit Hall/Foyer</li>
         <li>6' Tablecloth Table & Chairs</li>
-        <li>Logo Branding on Event Website, Digital Agenda and Printed Program, Conference Marketing Emails</li>
-        <li>Recognition & Visibility: Photographs of your participation for your marketing materials</li>
-        <li>VIP Attendee Passes: Your registration includes (${attendeePasses}) VIP Attendee Passes with access to all event sessions and the VIP Networking Reception</li>
       </ul>
       
-    `;
-
-
-    benefitsHtml += `
+      <p><strong>Logo Branding:</strong> Event Website, Digital Agenda and Printed Program, Conference Marketing Emails</p>
+      
+      <p><strong>Recognition & Visibility:</strong> Photographs of your participation for your marketing materials.</p>
+      
+      <p><strong>VIP Attendee Passes:</strong> Your registration includes (${attendeePasses}) VIP Attendee Pass${attendeePasses > 1 ? 'es' : ''} with access to all event sessions and the VIP Networking Reception. Additional Passes can be purchased for $395 each.</p>
+      
       <p><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
     `;
   }
