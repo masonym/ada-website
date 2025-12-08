@@ -34,7 +34,7 @@ const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) =
         filteredTiers.map(async (tier) => {
             const sponsors = await getEventTierSponsors(event.id, tier.id);
             const sortedSponsors = sponsors
-                .filter(sponsor => sponsor !== undefined)
+                .filter(sponsor => sponsor !== undefined && sponsor.logo)
                 .sort((a, b) => a.name.localeCompare(b.name));
 
             return {
