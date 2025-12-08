@@ -2,6 +2,7 @@ import { EVENTS } from '@/constants/events';
 import { notFound } from 'next/navigation';
 import React from 'react'
 import ExhibitorOptions from '@/app/components/ExhibitorOptions';
+import SponsorLogos from '@/app/components/SponsorLogos';
 
 
 
@@ -22,7 +23,9 @@ const page = ({ params }: { params: { slug: string } }) => {
 
             <ExhibitorOptions
                 event={event}
-            ></ExhibitorOptions>
+            />
+            
+            <SponsorLogos event={event} showTiers={["Exhibitors", "Exhibitor Spotlight"]} />
         </>
     )
 }

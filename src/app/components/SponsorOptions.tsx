@@ -9,7 +9,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Button from './Button'
 import SponsorProspectus from './SponsorProspectus'
-import SponsorLogos from './SponsorLogos'
 import ExhibitInstructionsButton from './ExhibitInstructionsButton'
 import RegistrationModal from '@/components/RegistrationModal'
 import { getSponsorshipsForEvent } from '@/lib/registration-adapters'
@@ -127,8 +126,6 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                             {event.sponsorshipInfo?.customContactText}
                         </p>
                     )}
-
-                    <SponsorLogos event={event} showTiers={['Sponsor', 'Partner']} />
 
                     <div className="mt-4 text-center flex flex-col items-center">
                         <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Place at this Groundbreaking Event!</p>
