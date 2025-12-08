@@ -76,6 +76,9 @@ export function getServerEnv() {
     DYNAMODB_TABLE_NAME: getRequiredEnv('DYNAMODB_TABLE_NAME', 'DynamoDB Table Name'),
     PERMANENT_REGISTRATIONS_TABLE_NAME: getRequiredEnv('PERMANENT_REGISTRATIONS_TABLE_NAME', 'Permanent Registrations Table Name'),
     REGISTRATION_CONTACT_EMAIL_ADDRESS: getRequiredEnv('REGISTRATION_CONTACT_EMAIL_ADDRESS', 'Registration Contact Email Address'),
+    
+    // Sanity CMS
+    SANITY_WRITE_TOKEN: process.env.SANITY_WRITE_TOKEN || '',
   };
 }
 

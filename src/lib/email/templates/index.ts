@@ -101,7 +101,7 @@ export function generateAttendeeDetailsHtml(attendees: AttendeeDetails[]): strin
     </div>
   `;
 }
-type Tier = 'platinum' | 'gold' | 'silver' | 'bronze' | 'vip networking reception' | 'networking luncheon' | 'small business';
+type Tier = 'platinum' | 'gold' | 'silver' | 'bronze' | 'vip networking reception' | 'networking luncheon' | 'small business' | 'coffee station';
 
 interface SponsorshipConfig {
   hasMatchmakingTable: boolean;
@@ -178,6 +178,17 @@ const sponsorshipConfig: Record<Tier, SponsorshipConfig> = {
     hasMatchmakingTable: true,
     hasSpeakingOpportunity: true,
     speakingTime: '5-minutes',
+    hasSponsorSpotlight: false,
+    hasLanyardBranding: false,
+    benefits: [
+      'finalizing branding assets',
+      'reserving your matchmaking session(s)',
+    ]
+  },
+  'coffee station': {
+    hasMatchmakingTable: false,
+    hasSpeakingOpportunity: false,
+    speakingTime: '',
     hasSponsorSpotlight: false,
     hasLanyardBranding: false,
     benefits: [
