@@ -149,10 +149,52 @@ export const PROMO_CODES: PromoCode[] = [
       'small-business-sponsor-without-exhibit-space'
     ],
     eligibleEventIds: [5, 6], // 2026DTAPC and 2026NMCPC
-    expirationDate: new Date('2035-12-02T05:00:00Z'), // Dec 2, 2025 12:00 AM EST in UTC
+    expirationDate: new Date('2035-12-02T05:00:00Z'), // Dec 2, 2035 12:00 AM EST in UTC
     description: 'KDM10 - 10% off eligible passes and sponsorships for 2026 Defense Technology & Aerospace and Navy & Marine Corps conferences',
     isActive: true
   },
+  {
+    code: 'TECH10',
+    discountPercentage: 10,
+    eligibleTicketTypes: [
+      'attendee-pass',
+      'vip-attendee-pass',
+      'exhibit',
+      'platinum-sponsor',
+      'gold-sponsor',
+      'silver-sponsor',
+      'bronze-sponsor',
+      'vip-networking-reception-sponsor',
+      'networking-luncheon-sponsor',
+      'small-business-sponsor',
+      'small-business-sponsor-without-exhibit-space'
+    ],
+    eligibleEventIds: [5], // 2026DTAPC
+    expirationDate: new Date('2026-12-02T05:00:00Z'), // Dec 2, 2026 12:00 AM EST in UTC
+    description: 'TECH10 - 10% off eligible passes and sponsorships for 2026 Defense Technology & Aerospace conference',
+    isActive: true
+  },
+  {
+    code: 'PMB25',
+    discountPercentage: 25,
+    eligibleTicketTypes: [
+      'attendee-pass',
+      'vip-attendee-pass',
+      'exhibit',
+      'platinum-sponsor',
+      'gold-sponsor',
+      'silver-sponsor',
+      'bronze-sponsor',
+      'vip-networking-reception-sponsor',
+      'networking-luncheon-sponsor',
+      'small-business-sponsor',
+      'small-business-sponsor-without-exhibit-space'
+    ],
+    eligibleEventIds: [6], // 2026NMCPC
+    expirationDate: new Date('2026-12-02T05:00:00Z'), // Dec 2, 2026 12:00 AM EST in UTC
+    description: 'PMB25 - 25% off eligible passes and sponsorships for 2026 Navy & Marine Corps conference',
+    isActive: true
+  }
 ];
 
 // Function to validate promo code for a specific event
