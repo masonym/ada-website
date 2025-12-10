@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Event } from '@/types/events';
 import { client, urlFor, SanitySponsor, SanityEventSponsor, getEventSponsors, getEventTierSponsors } from '@/lib/sanity';
+import { unstable_noStore as noStore } from 'next/cache';
 
 type SponsorProps = {
     event: Event;
@@ -10,7 +11,36 @@ type SponsorProps = {
     titleOverride?: string;
 };
 
+// tier display order: platinum > gold > silver > bronze > vip > coffee/networking > small > exhibitor > partner
+const TIER_ORDER = [
+    'platinum',
+    'diamond',
+    'gold',
+    'silver',
+    'bronze',
+    'vip',
+    'coffee',
+    'networking',
+    'luncheon',
+    'small',
+    'exhibitor',
+    'partner',
+];
+
+const getTierPriority = (tierName: string): number => {
+    const name = tierName.toLowerCase();
+    for (let i = 0; i < TIER_ORDER.length; i++) {
+        if (name.includes(TIER_ORDER[i])) {
+            return i;
+        }
+    }
+    return TIER_ORDER.length; // unknown tiers go last
+};
+
 const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) => {
+    // opt out of static caching so we get fresh data on each request
+    noStore();
+    
     const eventSponsors = await getEventSponsors(event.id);
 
     if (!eventSponsors || eventSponsors.tiers.length === 0) {
@@ -29,9 +59,14 @@ const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) =
         return null;
     }
 
-    // Process tiers and load sponsor data
+    // sort tiers by priority order
+    const sortedTiers = [...filteredTiers].sort((a, b) => 
+        getTierPriority(a.name) - getTierPriority(b.name)
+    );
+
+    // process tiers and load sponsor data
     const processedTiers = await Promise.all(
-        filteredTiers.map(async (tier) => {
+        sortedTiers.map(async (tier) => {
             const sponsors = await getEventTierSponsors(event.id, tier.id);
             const sortedSponsors = sponsors
                 .filter(sponsor => sponsor !== undefined && sponsor.logo)
