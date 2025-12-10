@@ -2,8 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Event } from '@/types/events';
-import { client, urlFor, SanitySponsor, SanityEventSponsor, getEventSponsors, getEventTierSponsors } from '@/lib/sanity';
-import { unstable_noStore as noStore } from 'next/cache';
+import { urlFor, getEventSponsors, getEventTierSponsors } from '@/lib/sanity';
 
 type SponsorProps = {
     event: Event;
@@ -38,9 +37,6 @@ const getTierPriority = (tierName: string): number => {
 };
 
 const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) => {
-    // opt out of static caching so we get fresh data on each request
-    noStore();
-    
     const eventSponsors = await getEventSponsors(event.id);
 
     if (!eventSponsors || eventSponsors.tiers.length === 0) {

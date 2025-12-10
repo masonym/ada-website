@@ -3,9 +3,12 @@ import { createImageUrlBuilder } from '@sanity/image-url'
 export const client = createClient({
   projectId: 'nc4xlou0',
   dataset: 'production',
-  useCdn: false, // disable cdn to get fresh data
+  useCdn: true, // use cdn for performance, revalidation handles freshness
   apiVersion: '2024-11-30',
 })
+
+// revalidate sponsor data every 5 minutes (300 seconds)
+const REVALIDATE_SECONDS = 500
 
 const builder = createImageUrlBuilder(client)
 
@@ -74,8 +77,8 @@ export async function getAllSponsors(): Promise<Record<string, SanitySponsor>> {
 }
 
 export async function getEventSponsors(eventId: number): Promise<SanityEventSponsor | null> {
-  return await client.fetch<SanityEventSponsor | null>(`
-    *[_type == "eventSponsor" && eventId == $eventId][0] {
+  return await client.fetch<SanityEventSponsor | null>(
+    `*[_type == "eventSponsor" && eventId == $eventId][0] {
       _id,
       eventId,
       title,
@@ -91,8 +94,10 @@ export async function getEventSponsors(eventId: number): Promise<SanityEventSpon
           _ref
         }
       }
-    }
-  `, { eventId })
+    }`,
+    { eventId },
+    { next: { revalidate: REVALIDATE_SECONDS } }
+  )
 }
 
 export async function getEventTierSponsors(eventId: number, tierId: string): Promise<SanitySponsor[]> {
@@ -102,8 +107,8 @@ export async function getEventTierSponsors(eventId: number, tierId: string): Pro
   const tier = event.tiers.find(t => t.id === tierId)
   if (!tier) return []
   
-  return await client.fetch<SanitySponsor[]>(`
-    *[_type == "sponsor" && _id in $sponsorIds] {
+  return await client.fetch<SanitySponsor[]>(
+    `*[_type == "sponsor" && _id in $sponsorIds] {
       _id,
       name,
       slug,
@@ -114,6 +119,8 @@ export async function getEventTierSponsors(eventId: number, tierId: string): Pro
       height,
       priority,
       size
-    }
-  `, { sponsorIds: tier.sponsors.map(s => s._ref) })
+    }`,
+    { sponsorIds: tier.sponsors.map(s => s._ref) },
+    { next: { revalidate: REVALIDATE_SECONDS } }
+  )
 }
