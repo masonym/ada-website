@@ -60,10 +60,10 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword }: SpeakerProps) =
             <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Speaker Spotlight</h1>
             {/* TODO: Remove this stupid hack after March 2026 event */}
             {event.id === 5 && (
-                <p className="text-l font-bold text-center mb-8 text-slate-600">We are in the process of reconfirming speakers for the new conference dates on March 4-5, 2026.</p>
+                <p className="text-l font-bold text-center mb-8 text-slate-600">We are in the process of reconfirming Government and Military Speakers.</p>
             )}
             {isEventFuture && (
-                <p className="text-l font-bold text-center mb-8 text-slate-600">More speaker information will be added as we get closer to the event date, please check back later for updates.</p>
+                <p className="text-l font-bold text-center mb-8 text-slate-600">More speaker information is being added. Please check regularly for updates.</p>
             )}
             <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-4">
                 {speakers
