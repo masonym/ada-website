@@ -1552,7 +1552,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"marcos-cervantes"
 	],
 	"6": [
-		"teressa-bebout",
+		"terressa-bebout",
 		"brian-liesveld",
 		"charles-sills",
 		"don-mcginnis",
