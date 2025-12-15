@@ -1411,7 +1411,23 @@ Professor Diehl has had engagements Instructing at NATO's Defense Against Terror
 	
 	<br/>
 	Juan Pablo is a CPA holder and a proud graduate of the University of Notre Dame. He currently resides in Henrico, Virginia with his wife Cecilia and sons Luca and Teodoro.`,
-  }};
+  },
+  "marcos-cervantes": {
+	"image": "marcos-cervantes.webp",
+	"name": "Marcos Cervantes",
+	"position": "Founder & CEO of Q-Branch",
+	"company": "Q-Branch",
+	"bio": `
+	Marcos Cervantes, Founder & CEO of Q-Branch, is an accomplished Army Officer with 23 years of experience specializing in technology development efforts. Having excelled in leading cutting-edge projects during his military career, Marc possesses deep expertise in government research and development (R&D) procurement.
+<br/>
+<br/>
+As the Managing Partner of Copperstone Venture Firm, he leverages this knowledge to identify and invest in promising startups, particularly those with a focus on innovation. Marc's strategic vision and understanding of government contracts and procurement processes allow him to guide these startups in securing lucrative contracts and establishing a strong market presence.
+<br/>
+<br/>
+His ability to bridge the gap between private sector innovators and government agencies has positioned him as a trusted and influential figure in the technology and defense communities. Marc's diverse skill set, passion for innovation, and extensive experience contribute to driving technological advancements, enhancing national security, and fostering economic growth.
+	`
+  }
+};
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 	"1": [
@@ -1524,6 +1540,22 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"brad-williamson",
 		"juan-pablo-segura",
 		// "brian-wilson",
+	],
+	"5": [
+		"joel-coulter",
+		"andrew-gardner",
+		"don-mcginnis",
+		"brian-liesveld",
+		"brad-williamson",
+		"gavin-brown",
+		"nicholas-antonio-rocha",
+		"marcos-cervantes"
+	],
+	"6": [
+		"teressa-bebout",
+		"brian-liesveld",
+		"charles-sills",
+		"don-mcginnis",
 	]
 };
 
