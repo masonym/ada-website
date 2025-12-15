@@ -62,7 +62,7 @@ In the military, Colonel Cancian spent over three decades in the U.S. Marine Cor
 	"brian-liesveld": {
 		"image": "brian-liesveld.webp",
 		"name": "Brian Liesveld",
-		"position": "Chief Executive Officer",
+		"position": "CEO",
 		"company": "DEFENSEWERX",
 		"bio": `Brian Liesveld currently serves as the Chief Executive Officer (CEO) for DEFENSEWERX, Inc.  In his capacity as CEO, Brian oversees operations and management of the DWX innovation hubs as well as executing Board of Director’s strategic vision.<br><br>Prior to his role as Chief Executive Officer, Brian served as the Vice President for the Cyber Innovation Center in Bossier City, LA.  In this role, Brian oversaw the operations supporting the Air Force Global Strike Command as well as Cyber Curriculum delivered to over 3 million students across the United States.<br><br>Brian’s previous roles include the Associate Director of the Defense and Security Research Institute at the University of Arizona as well as multiple roles within the Department of Defense.  Most notably, Brian spearheaded the creation of the DoDs first University Affiliated Research Center (UARC) to be established in more than 20 years. `
 	},
@@ -781,7 +781,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	"andrew-gardner": {
 		"image": "andrew-gardner.webp",
 		"name": "Andrew Gardner",
-		"position": "Chief Executive Officer",
+		"position": "CEO",
 		"company": "Crux Defense and Partner, NADWC Combat Capability Factory",
 		"bio": `Andrew Gardner is CEO of Crux Defense, a partner with the National All-Domain Warfighting Center's Combat Capabilities Factory.  The purpose of the Combat Capabilities Factory is to Integrate, Fund and Field Warfighting Capabilities through Experiment-Driven Exercises.  Leveraging these innovations, Crux is able to help companies cross the DoD's innovation valley of death and ensure that the best capabilities get into the hands of the warfighter.`,
 	}
@@ -1415,7 +1415,7 @@ Professor Diehl has had engagements Instructing at NATO's Defense Against Terror
   "marcos-cervantes": {
 	"image": "marcos-cervantes.webp",
 	"name": "Marcos Cervantes",
-	"position": "Founder & CEO of Q-Branch",
+	"position": "Founder & CEO",
 	"company": "Q-Branch",
 	"bio": `
 	Marcos Cervantes, Founder & CEO of Q-Branch, is an accomplished Army Officer with 23 years of experience specializing in technology development efforts. Having excelled in leading cutting-edge projects during his military career, Marc possesses deep expertise in government research and development (R&D) procurement.
