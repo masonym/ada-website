@@ -1543,6 +1543,7 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 	],
 	"5": [
 		"joel-coulter",
+		"charles-sills",
 		"andrew-gardner",
 		"don-mcginnis",
 		"brian-liesveld",
