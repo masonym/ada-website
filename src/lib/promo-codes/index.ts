@@ -194,6 +194,27 @@ export const PROMO_CODES: PromoCode[] = [
     expirationDate: new Date('2026-12-02T05:00:00Z'), // Dec 2, 2026 12:00 AM EST in UTC
     description: 'PMB25 - 25% off eligible passes and sponsorships for 2026 Navy & Marine Corps conference',
     isActive: false
+  },
+  {
+    code: 'CS25',
+    discountPercentage: 25,
+    eligibleTicketTypes: [
+      'attendee-pass',
+      'vip-attendee-pass',
+      'exhibit',
+      'platinum-sponsor',
+      'gold-sponsor',
+      'silver-sponsor',
+      'bronze-sponsor',
+      'vip-networking-reception-sponsor',
+      'networking-luncheon-sponsor',
+      'small-business-sponsor',
+      'small-business-sponsor-without-exhibit-space'
+    ],
+    eligibleEventIds: [6], // 2026NMCPC
+    expirationDate: new Date('2026-12-02T05:00:00Z'), // Dec 2, 2026 12:00 AM EST in UTC
+    description: 'CS25 - 25% off eligible passes and sponsorships for 2026 Navy & Marine Corps conference',
+    isActive: false
   }
 ];
 
