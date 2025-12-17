@@ -1,21 +1,23 @@
 "use client";
 
 import { useState, FormEvent, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const returnUrl = searchParams.get("returnUrl") || "/admin";
 
   useEffect(() => {
     // Check if already authenticated
     const isAuthenticated = localStorage.getItem("admin_auth");
     if (isAuthenticated === "true") {
-      router.push("/admin");
+      router.push(returnUrl);
     }
-  }, [router]);
+  }, [router, returnUrl]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -37,8 +39,8 @@ export default function LoginPage() {
         // Store authentication in localStorage
         localStorage.setItem("admin_auth", "true");
         
-        // Redirect to admin page
-        router.push("/admin");
+        // Redirect to original page or admin dashboard
+        router.push(returnUrl);
       } else {
         setError("Invalid password");
       }

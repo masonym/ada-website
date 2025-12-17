@@ -234,6 +234,14 @@ export default function AdminPage() {
           <p className="text-gray-600">Manage photo galleries and event recaps with captions and sections</p>
         </Link>
 
+        <Link
+          href="/admin/sponsors"
+          className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
+        >
+          <h2 className="text-xl font-semibold mb-2">Sponsor Management</h2>
+          <p className="text-gray-600">Add sponsors, manage tiers, and replace logos</p>
+        </Link>
+
         <div className="p-4 bg-white shadow-md rounded-lg">
           <h2 className="text-xl font-semibold mb-2">Upload Presentations</h2>
           <p className="text-gray-600">Upload PDF presentations for events</p>
