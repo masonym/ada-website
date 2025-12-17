@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Upload, Plus, Check, AlertCircle, Building2, Link as LinkIcon, Layers } from "lucide-react";
+import { Upload, Plus, Check, AlertCircle, Building2, Link as LinkIcon, Layers, RefreshCw } from "lucide-react";
 
 type EventWithTiers = {
   _id: string;
@@ -34,7 +34,7 @@ export default function SponsorAdminPage() {
   const [selectedTierIds, setSelectedTierIds] = useState<string[]>([]);
 
   // existing sponsor form
-  const [mode, setMode] = useState<"new" | "existing" | "tier">("new");
+  const [mode, setMode] = useState<"new" | "existing" | "tier" | "replace-logo">("new");
   const [selectedExistingSponsorId, setSelectedExistingSponsorId] = useState<string>("");
 
   // new tier form
@@ -42,6 +42,11 @@ export default function SponsorAdminPage() {
   const [newTierId, setNewTierId] = useState("");
   const [newTierName, setNewTierName] = useState("");
   const [newTierStyle, setNewTierStyle] = useState("");
+
+  // replace logo form
+  const [replaceSponsorId, setReplaceSponsorId] = useState<string>("");
+  const [replaceLogo, setReplaceLogo] = useState<File | null>(null);
+  const [replaceLogoPreview, setReplaceLogoPreview] = useState<string | null>(null);
 
   useEffect(() => {
     fetchData();
@@ -69,6 +74,55 @@ export default function SponsorAdminPage() {
         setLogoPreview(reader.result as string);
       };
       reader.readAsDataURL(file);
+    }
+  }
+
+  function handleReplaceLogoChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) {
+      setReplaceLogo(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setReplaceLogoPreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  async function handleSubmitReplaceLogo(e: React.FormEvent) {
+    e.preventDefault();
+    if (!replaceSponsorId || !replaceLogo) {
+      setMessage({ type: "error", text: "Please select a sponsor and upload a new logo" });
+      return;
+    }
+
+    setSubmitting(true);
+    setMessage(null);
+
+    try {
+      const formData = new FormData();
+      formData.append("sponsorId", replaceSponsorId);
+      formData.append("logo", replaceLogo);
+
+      const res = await fetch("/api/admin/sponsors/update-logo", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setMessage({ type: "success", text: data.message });
+        setReplaceSponsorId("");
+        setReplaceLogo(null);
+        setReplaceLogoPreview(null);
+      } else {
+        setMessage({ type: "error", text: data.error });
+      }
+    } catch (error) {
+      setMessage({ type: "error", text: "Failed to update logo" });
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -259,6 +313,17 @@ export default function SponsorAdminPage() {
           >
             <Layers className="inline-block w-4 h-4 mr-1" />
             New Tier
+          </button>
+          <button
+            onClick={() => setMode("replace-logo")}
+            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              mode === "replace-logo"
+                ? "bg-blue-600 text-white"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
+          >
+            <RefreshCw className="inline-block w-4 h-4 mr-1" />
+            Replace Logo
           </button>
         </div>
 
@@ -594,6 +659,71 @@ export default function SponsorAdminPage() {
               </button>
             </form>
           )}
+
+          {mode === "replace-logo" && (
+            <form onSubmit={handleSubmitReplaceLogo} className="space-y-6">
+              {/* sponsor selection */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Select Sponsor *
+                </label>
+                <select
+                  value={replaceSponsorId}
+                  onChange={(e) => setReplaceSponsorId(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  required
+                >
+                  <option value="">Select a sponsor...</option>
+                  {existingSponsors.map((sponsor) => (
+                    <option key={sponsor._id} value={sponsor._id}>
+                      {sponsor.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* new logo upload */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  New Logo *
+                </label>
+                <div className="flex items-start gap-4">
+                  <label className="flex-1 cursor-pointer">
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
+                      <Upload className="w-8 h-8 mx-auto text-gray-400 mb-2" />
+                      <p className="text-sm text-gray-600">
+                        {replaceLogo ? replaceLogo.name : "Click to upload new logo"}
+                      </p>
+                      <p className="text-xs text-gray-400 mt-1">PNG, JPG, SVG, WebP</p>
+                    </div>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleReplaceLogoChange}
+                      className="hidden"
+                    />
+                  </label>
+                  {replaceLogoPreview && (
+                    <div className="w-32 h-24 border rounded-lg overflow-hidden bg-gray-200 flex items-center justify-center">
+                      <img
+                        src={replaceLogoPreview}
+                        alt="Preview"
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={submitting}
+                className="w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                {submitting ? "Updating..." : "Replace Logo"}
+              </button>
+            </form>
+          )}
         </div>
 
         {/* quick reference */}
@@ -602,6 +732,7 @@ export default function SponsorAdminPage() {
           <ul className="text-sm text-blue-800 space-y-1">
             <li>Select multiple tiers to add a sponsor to both "Small Business" and "Exhibitors" at once</li>
             <li>Use "Existing Sponsor" mode to add a sponsor that's already in the system to a new event</li>
+            <li>Use "Replace Logo" mode to update a sponsor's logo without changing other details</li>
             <li>Changes appear on the website within a few minutes (CDN cache)</li>
           </ul>
         </div>

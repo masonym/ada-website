@@ -129,6 +129,19 @@ export async function getAllSponsorsAdmin() {
   `)
 }
 
+// update a sponsor's logo
+export async function updateSponsorLogo(sponsorId: string, imageAssetId: string) {
+  return adminClient
+    .patch(sponsorId)
+    .set({
+      logo: {
+        _type: 'image',
+        asset: { _type: 'reference', _ref: imageAssetId }
+      }
+    })
+    .commit()
+}
+
 // add a new tier to an event
 export async function addTierToEvent(eventId: number, tier: { id: string; name: string; style?: string }) {
   const eventSponsor = await adminClient.fetch<{ _id: string } | null>(`
