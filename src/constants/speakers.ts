@@ -269,17 +269,11 @@ Thad has lived in the Space Coast for more than fifty years. He resides in Rockl
 	"gavin-brown": {
 		"image": "gavin-brown.webp",
 		"name": "Gavin Brown",
-		"position": "CEO",
+		"position": "Founder and Chairman",
 		"company": "Dynamic Predictive Engineering",
-		"bio": `As Executive Director of the Michigan Aerospace Manufacturers Association (MAMA), Gavin Brown is committed to establishing Michigan as a leader in the commercialization of near-Earth space and as a source for highly qualified suppliers to the Defense, Commercial, General Aviation, and UAV aerospace manufacturing sectors.
+		"bio": `Dynamic Predictive Engineering (DPE) is a tight collaboration of uniquely trained Quantum computer scientists, physicists, and expert graph-theory mathematicians, laser-focused on ushering in enterprise software for Quantum computer hardware developers. Gavin and his team are working tirelessly on moving the industry toward the ultimate solution: a scalable Quantum AI hardware/software eco-system.
 <br/><br/>
-Gavin is recognized as the driving force for promoting aerospace and defense companies active in Michigan. With more than 25 years of aerospace experience, Gavin founded MAMA in 2007.
-<br/><br/>
-MAMA is a membership association providing the global aerospace industry with state-of-the-art technology, multiple manufacturing disciplines and extensive manufacturing capabilities. MAMA is focused on growing Michigan’s Aerospace industry through synergy with the engineering and manufacturing competencies of the automotive industry.
-<br/><br/>
-Gavin has been instrumental in organizing and promoting the Michigan Launch Initiative (MLI), a public-private partnership that provides a collaborative platform for academia, industry, and governmental agencies to access near-earth space.
-<br/><br/>
-The MLI will provide vertical and horizontal rocket launch capability as well as a control center for post-launch operations. The MLI leverages Michigan’s unique advantages for polar orbit satellite launches: location, infrastructure, skilled workforce, economy and advanced manufacturing capability.`
+With more than 25 years of aerospace experience, Gavin is recognized as the driving force for promoting aerospace and defense companies active in Michigan. He founded Michigan Aerospace Manufacturers Association (MAMA) in 2007. Later he was instrumental in organizing and promoting the Michigan Launch Initiative (MLI), a public-private partnership that provides a collaborative platform for academia, industry, and governmental agencies to access near-earth space.`
 	},
 	"frank-a-dibello": {
 		"image": "frank-dibello.webp",
@@ -1329,13 +1323,13 @@ His background includes extensive work at Penn State as a Technical Project Mana
 Professor Diehl has had engagements Instructing at NATO's Defense Against Terrorism course in Oberammergau (NSO), building a Table Top Exercise (TTX) for NATO SOFCOM during the SOF Roles in Counter-Terrorism in Crisis Response Seminar at NATO’s Center of Excellence Defence Against Terrorism in Türkiye, and various speaking engagements with industry partners.
 		`
 	}
-,
-  "dr-steven-wills": {
-    "image": "steven-wills.webp",
-    "name": "Dr. Steven Wills",
-    "position": "Navalist, Center for Maritime Strategy",
-    "company": "Navy League of the United States",
-    "bio": `Dr. Steven Wills currently serves as a Navalist for the Center for Maritime Strategy at the Navy League of the United States. He is an expert in U.S. Navy strategy and policy and U.S. Navy surface warfare programs and platforms.
+	,
+	"dr-steven-wills": {
+		"image": "steven-wills.webp",
+		"name": "Dr. Steven Wills",
+		"position": "Navalist, Center for Maritime Strategy",
+		"company": "Navy League of the United States",
+		"bio": `Dr. Steven Wills currently serves as a Navalist for the Center for Maritime Strategy at the Navy League of the United States. He is an expert in U.S. Navy strategy and policy and U.S. Navy surface warfare programs and platforms.
 	<br/>
 	
 	<br/>
@@ -1352,14 +1346,14 @@ Professor Diehl has had engagements Instructing at NATO's Defense Against Terror
 	
 	<br/>
 	Dr. Wills holds a master’s in National Security Studies from the U.S. Naval War College and a bachelor’s in History from Miami University in Oxford, Ohio.`,
-  },
+	},
 
-  "brad-williamson": {
-    "image": "brad-williamson.webp",
-    "name": "Brad Williamson, Rear Admiral, USN (Ret.)",
-    "position": "President & CEO",
-    "company": "Perrarus Solutions, Inc.",
-    "bio": `Rear Admiral (Ret.) Brad Williamson is a 1985 graduate of the United States Naval Academy.  He received a Master of Science in National Security Strategy from the National War College in 2001 and completed Executive Education at Harvard’s John F. Kennedy School and University of Virginia’s Darden School.
+	"brad-williamson": {
+		"image": "brad-williamson.webp",
+		"name": "Brad Williamson, Rear Admiral, USN (Ret.)",
+		"position": "President & CEO",
+		"company": "Perrarus Solutions, Inc.",
+		"bio": `Rear Admiral (Ret.) Brad Williamson is a 1985 graduate of the United States Naval Academy.  He received a Master of Science in National Security Strategy from the National War College in 2001 and completed Executive Education at Harvard’s John F. Kennedy School and University of Virginia’s Darden School.
 	<br/>
 	
 	<br/>
@@ -1382,19 +1376,19 @@ Professor Diehl has had engagements Instructing at NATO's Defense Against Terror
 	In 2023, Governor Youngkin appointed Brad to serve on the Board of Trustees for the Virginia Veterans Services Foundation where he now serves as the Chair.  He is also a Board Member for the Center for American Studies at Christopher Newport University, a Board Member for Versability Resources, a company that provides careers for special needs personnel, and a Board Member for the Tidewater Area Service Contractors (TASC).
 	<br/>
 	`,
-  },
-  "brian-wilson": {
-    "image": "brian-wilson.webp",
-    "name": "Brian Wilson",
-    "position": "Director of Strategic Solutions",
-    "company": "MAG Aerospace",
-  },
-  "juan-pablo-segura": {
-    "image": "juan-pablo-segura.webp",
-    "name": "Juan Pablo Segura",
-    "position": "Secretary of Commerce and Trade",
-    "company": "Commonwealth of Virginia",
-    "bio": `Juan Pablo Segura is the Secretary of Commerce and Trade for the Commonwealth of Virginia.  He oversees 13 agencies with 1,300 team members and a $3B budget.  Juan Pablo leads economic growth through a variety of initiatives and agencies to generate an environment that makes Virginia the best place to start, grow, or relocate a business.  Agencies include the Virginia Economic Development Partnership, the Virginia Innovation Partnership Corporation, Virginia Housing, Virginia Energy, Activation Capital, Small Business Finance Authority, and Virginia Tourism. 
+	},
+	"brian-wilson": {
+		"image": "brian-wilson.webp",
+		"name": "Brian Wilson",
+		"position": "Director of Strategic Solutions",
+		"company": "MAG Aerospace",
+	},
+	"juan-pablo-segura": {
+		"image": "juan-pablo-segura.webp",
+		"name": "Juan Pablo Segura",
+		"position": "Secretary of Commerce and Trade",
+		"company": "Commonwealth of Virginia",
+		"bio": `Juan Pablo Segura is the Secretary of Commerce and Trade for the Commonwealth of Virginia.  He oversees 13 agencies with 1,300 team members and a $3B budget.  Juan Pablo leads economic growth through a variety of initiatives and agencies to generate an environment that makes Virginia the best place to start, grow, or relocate a business.  Agencies include the Virginia Economic Development Partnership, the Virginia Innovation Partnership Corporation, Virginia Housing, Virginia Energy, Activation Capital, Small Business Finance Authority, and Virginia Tourism. 
 	<br/>
 	
 	<br/>
@@ -1411,13 +1405,13 @@ Professor Diehl has had engagements Instructing at NATO's Defense Against Terror
 	
 	<br/>
 	Juan Pablo is a CPA holder and a proud graduate of the University of Notre Dame. He currently resides in Henrico, Virginia with his wife Cecilia and sons Luca and Teodoro.`,
-  },
-  "marcos-cervantes": {
-	"image": "marcos-cervantes.webp",
-	"name": "Marcos Cervantes",
-	"position": "Founder & CEO",
-	"company": "Q-Branch",
-	"bio": `
+	},
+	"marcos-cervantes": {
+		"image": "marcos-cervantes.webp",
+		"name": "Marcos Cervantes",
+		"position": "Founder & CEO",
+		"company": "Q-Branch",
+		"bio": `
 	Marcos Cervantes, Founder & CEO of Q-Branch, is an accomplished Army Officer with 23 years of experience specializing in technology development efforts. Having excelled in leading cutting-edge projects during his military career, Marc possesses deep expertise in government research and development (R&D) procurement.
 <br/>
 <br/>
@@ -1426,7 +1420,7 @@ As the Managing Partner of Copperstone Venture Firm, he leverages this knowledge
 <br/>
 His ability to bridge the gap between private sector innovators and government agencies has positioned him as a trusted and influential figure in the technology and defense communities. Marc's diverse skill set, passion for innovation, and extensive experience contribute to driving technological advancements, enhancing national security, and fostering economic growth.
 	`
-  }
+	}
 };
 
 export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
