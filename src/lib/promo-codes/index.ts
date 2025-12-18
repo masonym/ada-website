@@ -234,7 +234,7 @@ export const PROMO_CODES: PromoCode[] = [
     ],
     eligibleEventIds: [5], // 2026NMCPC
     expirationDate: new Date('2026-12-02T05:00:00Z'), // Dec 2, 2026 12:00 AM EST in UTC
-    description: 'CSS25 - 25% off eligible passes and sponsorships for 2026 Navy & Marine Corps conference',
+    description: 'CISEVE15 - 15% off eligible passes and sponsorships for 2026 Defense Technology conference',
     isActive: true
   },
   {
@@ -255,9 +255,8 @@ export const PROMO_CODES: PromoCode[] = [
     ],
     eligibleEventIds: [5, 6], // 2026NMCPC
     expirationDate: new Date('2026-12-02T05:00:00Z'), // Dec 2, 2026 12:00 AM EST in UTC
-    description: 'CSS25 - 25% off eligible passes and sponsorships for 2026 Navy & Marine Corps conference',
+    description: 'CISEVE20 - 20% off eligible passes and sponsorships for 2025 Defense Technology & 2026 Navy & Marine Corps conference',
     isActive: true
->>>>>>> main
   }
 ];
 
