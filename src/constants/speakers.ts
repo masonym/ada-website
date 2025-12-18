@@ -1546,12 +1546,12 @@ export const EVENT_SPEAKERS: { [key: number]: EventSpeakerEntry[] } = {
 		"nicholas-antonio-rocha",
 		"marcos-cervantes"
 	],
-	"6": [
-		"terressa-bebout",
-		"brian-liesveld",
-		"charles-sills",
-		"don-mcginnis",
-	]
+	// "6": [
+	// 	"terressa-bebout",
+	// 	"brian-liesveld",
+	// 	"charles-sills",
+	// 	"don-mcginnis",
+	// ]
 };
 
 type EventSpeakerEntry = string | { id: string; label?: string };
