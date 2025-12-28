@@ -257,6 +257,27 @@ export const PROMO_CODES: PromoCode[] = [
     expirationDate: new Date('2026-12-02T05:00:00Z'), // Dec 2, 2026 12:00 AM EST in UTC
     description: 'CISEVE20 - 20% off eligible passes and sponsorships for 2025 Defense Technology & 2026 Navy & Marine Corps conference',
     isActive: true
+  },
+  {
+    code: 'ADA15',
+    discountPercentage: 15,
+    eligibleTicketTypes: [
+      'attendee-pass',
+      'vip-attendee-pass',
+      'exhibit',
+      'platinum-sponsor',
+      'gold-sponsor',
+      'silver-sponsor',
+      'bronze-sponsor',
+      'vip-networking-reception-sponsor',
+      'networking-luncheon-sponsor',
+      'small-business-sponsor',
+      'small-business-sponsor-without-exhibit-space'
+    ],
+    eligibleEventIds: [5, 6], // 2026NMCPC
+    expirationDate: new Date('2027-12-02T05:00:00Z'), // Dec 2, 2027 12:00 AM EST in UTC
+    description: 'ADA15',
+    isActive: true
   }
 ];
 
