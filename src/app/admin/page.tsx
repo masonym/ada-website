@@ -235,6 +235,14 @@ export default function AdminPage() {
         </Link>
 
         <Link
+          href="/admin/promo-codes"
+          className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
+        >
+          <h2 className="text-xl font-semibold mb-2">Promo Codes</h2>
+          <p className="text-gray-600">View all promo codes categorized by event</p>
+        </Link>
+
+        <Link
           href="/admin/sponsors"
           className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
         >
