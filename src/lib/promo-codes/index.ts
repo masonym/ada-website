@@ -40,7 +40,7 @@ export const PROMO_CODES: PromoCode[] = [
       'small-business-sponsor-without-exhibit-space'
     ],
     eligibleEventIds: [4, 5, 6], // Valid for both 2025NMCPC and 2025DTAPC and 2026NMCPC
-    expirationDate: new Date('2025-12-31'),
+    expirationDate: new Date('2026-12-31'),
     description: 'ADA20 - 20% off eligible passes and sponsorships for Navy & Marine Corps and Defense Technology conferences',
     isActive: true
   },
