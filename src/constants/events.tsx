@@ -931,22 +931,19 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           Topical Coverage:
         </p>
         <ul className="list-inside">
-          <li>DoD Integration of Commercial Space Assets/Technologies</li>
-          <li>Space Force Support Functions Across Domains/COCOMS</li>
-          <li>Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)</li>
-          <li>Unmanned Platforms Across Services – Prototype & Testing Contracts</li>
-          <li>Golden Dome Financing for Missile Defense Integration & Component Teams</li>
-          <li>Defense Industrial Base Expansion – Ordnance, Missiles, Drones, etc.</li>
-          <li>Expansion of AI Throughout Defense Sectors</li>
-          <li>Race to Exploit Quantum Technology</li>
-          <li>Accelerating Innovative Tech Contracting – DEFENSEWERX & DIU</li>
-          <li>Critical Defense Infrastructure Cyber Protection</li>
-          <li>Cybersecurity & CMMC Update</li>
-          <li>Military Base-Community Partnerships Promoting Local Build Contracts</li>
-          <li>New Defense Department Acquisition Initiatives/Guidelines</li>
-          <li>How to do Business with the Primes – Subcontracting & Teaming</li>
-          <li>Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's</li>
-          <li>Mentor-Protégé Programs as Business Accelerators for Smalls & Primes</li>
+<li>Integration of Commercial Space Assets/Technologies</li>
+<li>Space Force Support Functions Across Domains/COCOMS</li>
+<li>Increased Launch Activity Driving Spaceport Infrastructure</li>
+<li>Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)</li>
+<li>Unmanned Platforms/’Collaborative Combat Aircraft’ – Prototype & Testing Contracts</li>
+<li>Indo-Pacific AOR – Dispersed Airfield & Logistics Hub Reconstruction/Expansion</li>
+<li>Golden Dome – Competition for Space-Based Missile Tracking/Interception Solutions</li>
+<li>Defense Industrial Base Acceleration – Ordnance, Missiles, Drones, etc.</li>
+<li>Expediting Additive Manufacturing at the Warfighter Edge</li>
+<li>Expansion/Application of AI Throughout Defense Sectors</li>
+<li>Race to Exploit Quantum Technology</li>
+<li>Facilitating Innovative Tech Contracting – DEFENSEWERX & DIU</li>
+<li>Critical Defense Infrastructure Cyber Protection</li>
         </ul>
       </div>
     ),
