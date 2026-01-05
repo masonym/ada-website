@@ -1,10 +1,11 @@
 'use client'
 
-import { useState } from 'react'
-import { Download, Copy, Eye } from 'lucide-react'
+import { useState, useRef } from 'react'
+import { Download, Copy, Eye, Upload } from 'lucide-react'
 
 const EventLaunchForm = () => {
   const [showPreview, setShowPreview] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const [formData, setFormData] = useState({
     // Event Overview
@@ -211,10 +212,44 @@ const EventLaunchForm = () => {
     URL.revokeObjectURL(url)
   }
 
+  const handleImportJSON = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      try {
+        const json = JSON.parse(e.target?.result as string)
+        
+        // Validate the JSON structure (basic validation)
+        if (json && typeof json === 'object') {
+          // Merge with default form data to ensure all fields exist
+          const mergedData = {
+            ...formData,
+            ...json
+          }
+          setFormData(mergedData)
+          alert('Form data imported successfully!')
+        } else {
+          alert('Invalid JSON format')
+        }
+      } catch (error) {
+        alert('Error parsing JSON file. Please ensure it\'s a valid export from this form.')
+        console.error('Import error:', error)
+      }
+    }
+    reader.readAsText(file)
+    
+    // Reset the file input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
+  }
+
   const renderPreview = () => {
     return (
       <div className="p-6 bg-white min-h-screen">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h1 className="text-3xl font-bold mb-6">Event Launch Preview</h1>
           <pre className="bg-white p-6 rounded-lg shadow overflow-auto">
             {JSON.stringify(formData, null, 2)}
@@ -226,7 +261,7 @@ const EventLaunchForm = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-4xl mx-auto p-6">
+      <div className="max-w-6xl mx-auto p-6">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold">Event Launch Form</h1>
           <div className="flex gap-2">
@@ -251,6 +286,20 @@ const EventLaunchForm = () => {
               <Download className="w-4 h-4" />
               Download JSON
             </button>
+            <button
+              onClick={() => fileInputRef.current?.click()}
+              className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
+            >
+              <Upload className="w-4 h-4" />
+              Import JSON
+            </button>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".json"
+              onChange={handleImportJSON}
+              className="hidden"
+            />
           </div>
         </div>
 
