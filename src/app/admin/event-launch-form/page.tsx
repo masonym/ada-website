@@ -1,12 +1,13 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { Download, Copy, Eye, Upload, Info } from 'lucide-react'
+import Link from 'next/link';
 
 // Tooltip component
 const Tooltip = ({ content, children }: { content: React.ReactNode; children: React.ReactNode }) => {
   const [isVisible, setIsVisible] = useState(false)
-  
+
   return (
     <div className="relative inline-block">
       <div
@@ -18,7 +19,7 @@ const Tooltip = ({ content, children }: { content: React.ReactNode; children: Re
         <Info className="w-4 h-4 text-gray-400 cursor-help" />
       </div>
       {isVisible && (
-        <div className="absolute z-10 w-80 p-3 mt-1 text-sm bg-gray-800 text-white rounded-lg shadow-lg">
+        <div className="absolute z-10 w-80 p-3 mt-1 text-sm bg-gray-800 text-white rounded-lg shadow-lg whitespace-pre-wrap">
           <div className="absolute -top-1 left-4 w-2 h-2 bg-gray-800 transform rotate-45"></div>
           {content}
         </div>
@@ -44,7 +45,7 @@ const EventLaunchForm = () => {
     password: '',
     shortDescription: '',
     detailedOverview: '',
-    
+
     // Featured Topics (Optional)
     featuredTopicsTitle: '',
     featuredTopicsSubtitle: '',
@@ -58,7 +59,7 @@ const EventLaunchForm = () => {
         ]
       }
     ],
-    
+
     // Topical Coverage
     topics: [
       { tagline: '', description: '' },
@@ -68,15 +69,15 @@ const EventLaunchForm = () => {
       { tagline: '', description: '' },
       { tagline: '', description: '' }
     ],
-    
+
     // Event Relationships
     relatedEvent: '',
     relatedEventId: '',
-    
+
     // Audience
     targetAudience: '',
     whatToExpect: '',
-    
+
     // Testimonials
     useTestimonialsFromAnotherEvent: false,
     eventToBorrowFrom: '',
@@ -90,7 +91,7 @@ const EventLaunchForm = () => {
         videoIdOrUrl: ''
       }
     ],
-    
+
     // Venue
     venueName: '',
     streetAddress: '',
@@ -101,7 +102,7 @@ const EventLaunchForm = () => {
     venuePhotoUploaded: false,
     heroEventImageUploaded: false,
     directionsNeeded: '',
-    
+
     // Parking
     parkingOptions: [
       {
@@ -112,7 +113,7 @@ const EventLaunchForm = () => {
     ],
     parkingBoxText: '',
     parkingBoxImagePlaceholder: '',
-    
+
     // Hotel
     groupRateAvailable: false,
     hotelName: '',
@@ -123,7 +124,7 @@ const EventLaunchForm = () => {
     cutOffDate: '',
     reservationLink: '',
     hotelPhotoUploaded: false,
-    
+
     // Special Events
     vipNetworkingReception: false,
     vipDate: '',
@@ -136,7 +137,7 @@ const EventLaunchForm = () => {
     matchmakingSessionDuration: '',
     matchmakingSlotsPerHost: '',
     matchmakingSessionTimes: '',
-    
+
     // Registration Types
     registrationTypes: [
       {
@@ -149,14 +150,14 @@ const EventLaunchForm = () => {
         buttonText: ''
       }
     ],
-    
+
     // Government/Military Registration
     govMilTitle: '',
     govMilType: 'complimentary',
     govMilPrice: '',
     govMilPerks: ['', '', ''],
     govMilAvailabilityInfo: '',
-    
+
     // Add-ons
     addOns: [
       {
@@ -167,7 +168,7 @@ const EventLaunchForm = () => {
         accessCode: ''
       }
     ],
-    
+
     // Registration Notes
     registrationNotes: '',
     sponsorshipNotes: '',
@@ -185,7 +186,7 @@ const EventLaunchForm = () => {
   const handleNestedChange = (section: string, field: string, value: any) => {
     setFormData(prev => {
       const sectionValue = prev[section as keyof typeof prev]
-      
+
       // Only spread if the section value is an object (not array)
       if (sectionValue && typeof sectionValue === 'object' && !Array.isArray(sectionValue)) {
         return {
@@ -199,7 +200,7 @@ const EventLaunchForm = () => {
         // Handle array updates differently if needed
         return {
           ...prev,
-          [section]: sectionValue.map((item, index) => 
+          [section]: sectionValue.map((item, index) =>
             index === parseInt(field) ? value : item
           )
         }
@@ -244,7 +245,7 @@ const EventLaunchForm = () => {
     reader.onload = (e) => {
       try {
         const json = JSON.parse(e.target?.result as string)
-        
+
         // Validate the JSON structure (basic validation)
         if (json && typeof json === 'object') {
           // Merge with default form data to ensure all fields exist
@@ -263,7 +264,7 @@ const EventLaunchForm = () => {
       }
     }
     reader.readAsText(file)
-    
+
     // Reset the file input
     if (fileInputRef.current) {
       fileInputRef.current.value = ''
@@ -334,10 +335,11 @@ const EventLaunchForm = () => {
             {/* Event Overview */}
             <section className="bg-gray-2 p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-4">📋 Event Overview</h2>
-              
+
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                  <Tooltip content="Internal name for this event launch project. Used for tracking purposes.">
+                  <Tooltip content={`Internal name for this event launch project.
+Used for tracking purposes.`}>
                     <label className="block text-sm font-medium mb-1">Event Name</label>
                   </Tooltip>
                   <input
@@ -348,7 +350,8 @@ const EventLaunchForm = () => {
                   />
                 </div>
                 <div>
-                  <Tooltip content="The target date when this event should go live. Used for planning and coordination.">
+                  <Tooltip content={`The target date when this event should go live.
+Used for planning and coordination.`}>
                     <label className="block text-sm font-medium mb-1">Target Launch Date</label>
                   </Tooltip>
                   <input
@@ -362,9 +365,8 @@ const EventLaunchForm = () => {
 
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                  <Tooltip content="The official title that will be displayed on the website and marketing materials.
-                    
-                    Example: '2026 Navy & Marine Corps Procurement Conference'">
+                  <Tooltip content={`The official title that will be displayed on the website and marketing materials.
+Example: 2026 Navy & Marine Corps Procurement Conference`}>
                     <label className="block text-sm font-medium mb-1">Event Title</label>
                   </Tooltip>
                   <input
@@ -375,9 +377,9 @@ const EventLaunchForm = () => {
                   />
                 </div>
                 <div>
-                  <Tooltip content="A short acronym or shorthand for the event. Used in URLs, file names, and references.
-                    
-                    Example: '2026NMCPC' for '2026 Navy & Marine Corps Procurement Conference'">
+                  <Tooltip content={`A short acronym or shorthand for the event.
+Used in URLs, file names, and references.
+Example: 2026NMCPC for 2026 Navy & Marine Corps Procurement Conference`}>
                     <label className="block text-sm font-medium mb-1">Event Shorthand/Acronym</label>
                   </Tooltip>
                   <input
@@ -392,9 +394,9 @@ const EventLaunchForm = () => {
 
               <div className="grid grid-cols-3 gap-4 mb-4">
                 <div>
-                  <Tooltip content="The date format shown to users on the website. Can be more descriptive than the actual dates.
-                    
-                    Example: 'March 11-12, 2025'">
+                  <Tooltip content={`The date format shown to users on the website.
+Can be more descriptive than the actual dates.
+Example: March 11-12, 2025`}>
                     <label className="block text-sm font-medium mb-1">Display Date</label>
                   </Tooltip>
                   <input
@@ -439,7 +441,12 @@ const EventLaunchForm = () => {
               </div>
 
               <div className="mb-4">
-                <Tooltip content="Password used for accessing presentation slides">
+                <Tooltip content={`This password is used to protect access to presentations/slides after the event on the Agenda page.
+
+Attendees receive the password via email after the event ends.
+
+Example: Try accessing the presentations or speakers page for any past event.
+You will be prompted for this password.`}>
                   <label className="block text-sm font-medium mb-1">Event Password</label>
                 </Tooltip>
                 <input
@@ -451,9 +458,14 @@ const EventLaunchForm = () => {
               </div>
 
               <div className="mb-4">
-                <Tooltip content="Brief 1-2 sentence description for event listings, emails, and social media posts.
-                  
-                  Example: 'Join us for the premier defense procurement conference in Norfolk, Virginia, featuring key decision-makers from the Navy and Marine Corps.'">
+                <Tooltip content={`This description is used for:
+1. Event cards in the Upcoming Events component on the homepage
+2. SEO meta description in search results
+3. Social media previews when sharing on LinkedIn/Facebook
+
+Example: The event cards on the homepage.
+
+Keep it concise and compelling for best results.`}>
                   <label className="block text-sm font-medium mb-1">Short Description</label>
                 </Tooltip>
                 <textarea
@@ -461,12 +473,21 @@ const EventLaunchForm = () => {
                   onChange={(e) => handleInputChange('shortDescription', e.target.value)}
                   rows={2}
                   className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Brief description for event listings"
+                  placeholder="Brief description for search results, social media, and event cards"
                 />
               </div>
 
               <div>
-                <Tooltip content="This section is typically made up of the short description + topical coverage taglines + what to expect text. If the \'Event Overview\' section should be different than the Short Description above, please include that text here.">
+                <Tooltip content={`This contains the main event description for the About Event page.
+This content appears in two places:
+                
+1. Main event page header
+2. About Event page under 'Event Overview' section
+Example: View any event page.
+The 'Event Overview' section is this content. It is typically composed of the Short Description + Topical Coverage + What To Expect.
+
+If you do not have any changes to make for the above format of Short Description + Topical Coverage + What To Expect, you can leave this field blank.
+`}>
                   <label className="block text-sm font-medium mb-1">Detailed Overview</label>
                 </Tooltip>
                 <textarea
@@ -474,7 +495,23 @@ const EventLaunchForm = () => {
                   onChange={(e) => handleInputChange('detailedOverview', e.target.value)}
                   rows={4}
                   className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Full event description including purpose, target audience, and key topics"
+                  placeholder="Main event description for the Event Overview section"
+                />
+              </div>
+
+              <div className="mt-4">
+                <Tooltip content={`This text displays as a paragraph below the What to Expect heading. It will also be used in the Event Overview section.
+                  
+Example: View any event page.
+The paragraph under What to Expect heading.`}>
+                  <label className="block text-sm font-medium mb-1">What to Expect</label>
+                </Tooltip>
+                <textarea
+                  value={formData.whatToExpect}
+                  onChange={(e) => handleInputChange('whatToExpect', e.target.value)}
+                  rows={3}
+                  className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="General description of what attendees can expect"
                 />
               </div>
             </section>
@@ -482,15 +519,21 @@ const EventLaunchForm = () => {
             {/* Event Content & Features */}
             <section className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-4">🎯 Event Content & Features</h2>
-              
+
               <div className="mb-6">
                 <h3 className="text-lg font-medium mb-3">Topical Coverage</h3>
-                
+
                 <div className="space-y-3">
-                  <Tooltip content="List the main topics that will be covered at the event. Each topic has a tagline (title) and description.
+                  <Tooltip content={`These topics appear in the Topical Coverage section on the About the Event page, as well as the Event Overview section on the main event page.
+Each topic has a tagline (title) and description.
                     
-                    Example Tagline: 'Acquisition Forecasts – NAVSEA, NAVAIR, NAVSUP'
-                    Example Description: 'Detailed forecasts from the Navy\'s major buying commands will help suppliers anticipate contract requirements'">
+Example: View any event page, as well as that event's "About the Event" page.
+
+See the list of topics with taglines and descriptions.
+
+Topic descriptions are not required, but should be included eventually.
+                    
+Also used in structured data for SEO.`}>
                     <label className="block text-sm font-medium mb-2">Topics</label>
                   </Tooltip>
                   {formData.topics.map((topic, index) => (
@@ -541,7 +584,7 @@ const EventLaunchForm = () => {
                       </div>
                     </div>
                   ))}
-                  
+
                   <button
                     type="button"
                     onClick={() => {
@@ -558,9 +601,14 @@ const EventLaunchForm = () => {
               <div className="mb-6">
                 <h3 className="text-lg font-medium mb-3">Featured Topics (Optional)</h3>
                 <p className="text-sm text-gray-600 mb-3">Note: This section is only used for certain events and can be left blank if not needed.</p>
-                <div className="grid grid-cols-2 gap-4 mb-3">
+                <p className="text-sm text-gray-600 mb-3">For an example: view the 2025 SDPC featured contracting commands section on the About Event page.</p>
+                <div className="grid grid-cols-2 gap-4 mb-3 mt-2">
                   <div>
-                    <label className="block text-sm font-medium mb-1">Featured Topics Title</label>
+                    <Tooltip content={`The main title for the featured topics section.
+                      
+Example: Featured Contracting Commands`}>
+                      <label className="block text-sm font-medium mb-1">Featured Topics Title</label>
+                    </Tooltip>
                     <input
                       type="text"
                       value={formData.featuredTopicsTitle}
@@ -569,7 +617,11 @@ const EventLaunchForm = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-1">Featured Topics Subtitle</label>
+                    <Tooltip content={`The subtitle that appears below the featured topics title.
+                      
+Example: These insights highlight key regional defense assets`}>
+                      <label className="block text-sm font-medium mb-1">Featured Topics Subtitle</label>
+                    </Tooltip>
                     <input
                       type="text"
                       value={formData.featuredTopicsSubtitle}
@@ -581,38 +633,16 @@ const EventLaunchForm = () => {
               </div>
 
               <div className="mb-6">
-                <h3 className="text-lg font-medium mb-3">Audience Expectations</h3>
-                <div className="mb-4">
-                  <label className="block text-sm font-medium mb-1">Target Audience</label>
-                  <input
-                    type="text"
-                    value={formData.targetAudience}
-                    onChange={(e) => handleInputChange('targetAudience', e.target.value)}
-                    className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="e.g., Small Business, Prime Contractors, Government"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">What to Expect Section</label>
-                  <textarea
-                    value={formData.whatToExpect}
-                    onChange={(e) => handleInputChange('whatToExpect', e.target.value)}
-                    rows={3}
-                    className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Bullet points of what attendees will gain"
-                  />
-                </div>
-              </div>
-
-              <div className="mb-6">
                 <h3 className="text-lg font-medium mb-3">Event Relationships</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Tooltip content="The name of the related event to link back to (usually the previous year's event). This will populate the event testimonials at the bottom of the page.
+                    <Tooltip content={`The name of the related event to link back to.
+Usually the previous year's event.
+This will populate the event testimonials at the bottom of the page.
                       
-                      Example: '2025 Navy & Marine Corps Procurement Conference'
+Example: 2025 Navy & Marine Corps Procurement Conference
                       
-                      This section is not required.">
+This section is not required.`}>
                       <label className="block text-sm font-medium mb-1">Related Event</label>
                     </Tooltip>
                     <input
@@ -624,9 +654,10 @@ const EventLaunchForm = () => {
                     />
                   </div>
                   <div>
-                    <Tooltip content="The numeric ID of the related event in the database. Used for programmatic links.
+                    <Tooltip content={`The numeric ID of the related event in the database.
+Used for programmatic links.
                       
-                      You do not need to enter this field.">
+You do not need to enter this field.`}>
                       <label className="block text-sm font-medium mb-1">Related Event ID</label>
                     </Tooltip>
                     <input
@@ -653,12 +684,13 @@ const EventLaunchForm = () => {
                     />
                     <label htmlFor="useTestimonials" className="text-sm font-medium">Use testimonials from another event</label>
                   </div>
-                  
+
                   {formData.useTestimonialsFromAnotherEvent && (
                     <div className="ml-6">
-                      <Tooltip content="Enter the event name or ID to borrow testimonials from. The testimonials section will show quotes from this event instead of the current one.
+                      <Tooltip content={`Enter the event name or ID to borrow testimonials from.
+The testimonials section will show quotes from this event instead of the current one.
                         
-                        Example: '2025 Navy & Marine Corps Procurement Conference' or '5'">
+Example: 2025 Navy & Marine Corps Procurement Conference or 5`}>
                         <label className="block text-sm font-medium mb-1">Event to borrow from</label>
                       </Tooltip>
                       <input
@@ -677,7 +709,7 @@ const EventLaunchForm = () => {
             {/* Venue & Location */}
             <section className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-4">📍 Venue & Location</h2>
-              
+
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">Venue Name</label>
@@ -730,10 +762,11 @@ const EventLaunchForm = () => {
               </div>
 
               <div className="mb-4">
-                <Tooltip content="The Google Maps Place ID for the event location. This is used to display the location on the event page.
+                <Tooltip content={`The Google Maps Place ID for the event location.
+This is used to display the location on the event page.
                   
-                  You do not need to enter this field.">
-                <label className="block text-sm font-medium mb-1">Google Maps Place ID</label>
+You do not need to enter this field.`}>
+                  <label className="block text-sm font-medium mb-1">Google Maps Place ID</label>
                 </Tooltip>
                 <input
                   type="text"
@@ -744,12 +777,12 @@ const EventLaunchForm = () => {
               </div>
 
               <div className="mb-4">
-                <Tooltip content="The directions needed from the hotel to the venue. 
+                <Tooltip content={`The directions needed from the hotel to the venue.
                   
-                  For an example: view the 2025NMCPC directions section.
+For an example: view the 2025NMCPC directions section.
 
-                  You do not need to enter this field at time of event launch.">
-                <label className="block text-sm font-medium mb-1">Directions Needed</label>
+You do not need to enter this field at time of event launch.`}>
+                  <label className="block text-sm font-medium mb-1">Directions Needed</label>
                 </Tooltip>
                 <textarea
                   value={formData.directionsNeeded}
@@ -787,7 +820,7 @@ const EventLaunchForm = () => {
             {/* Registration Types */}
             <section className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-4">💳 Registration Types</h2>
-              
+
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-2">Attendee Registration</label>
                 <textarea
@@ -798,7 +831,7 @@ const EventLaunchForm = () => {
                   placeholder="Note if any differences from previous. If any early bird discounts are to be applied, add them here as well as the expiring date."
                 />
               </div>
-              
+
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-2">Sponsorship Opportunities</label>
                 <textarea
@@ -809,7 +842,7 @@ const EventLaunchForm = () => {
                   placeholder="Note if any differences from previous. If any early bird discounts are to be applied, add them here as well as the expiring date."
                 />
               </div>
-              
+
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-2">Exhibitor Opportunities</label>
                 <textarea
@@ -820,7 +853,7 @@ const EventLaunchForm = () => {
                   placeholder="Note if any differences from previous. If any early bird discounts are to be applied, add them here as well as the expiring date."
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium mb-2">Frequently Asked Questions</label>
                 <textarea
@@ -836,7 +869,7 @@ const EventLaunchForm = () => {
             {/* Special Events */}
             <section className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-4">🎉 Special Events</h2>
-              
+
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
                   <input
@@ -848,7 +881,7 @@ const EventLaunchForm = () => {
                   />
                   <label htmlFor="vipReception" className="text-sm font-medium">VIP Networking Reception</label>
                 </div>
-                
+
                 {formData.vipNetworkingReception && (
                   <div className="ml-6 space-y-3">
                     <div className="grid grid-cols-3 gap-4">
@@ -902,7 +935,7 @@ const EventLaunchForm = () => {
                   />
                   <label htmlFor="matchmaking" className="text-sm font-medium">Matchmaking Sessions</label>
                 </div>
-                
+
                 {formData.matchmakingSessions && (
                   <div className="ml-6 space-y-3">
                     <div className="grid grid-cols-2 gap-4">
