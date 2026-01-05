@@ -250,6 +250,14 @@ export default function AdminPage() {
           <p className="text-gray-600">Add sponsors, manage tiers, and replace logos</p>
         </Link>
 
+        <Link
+         href="/admin/event-launch-form"
+         className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
+        >
+          <h2 className="text-xl font-semibold mb-2">Event Launch Form</h2>
+          <p className="text-gray-600">Input Event Details for Event Template</p>
+        </Link>
+
         <div className="p-4 bg-white shadow-md rounded-lg">
           <h2 className="text-xl font-semibold mb-2">Upload Presentations</h2>
           <p className="text-gray-600">Upload PDF presentations for events</p>
