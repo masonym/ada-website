@@ -336,7 +336,7 @@ const EventLaunchForm = () => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Short Description (1-2 sentences)</label>
+                <label className="block text-sm font-medium mb-1">Short Description</label>
                 <textarea
                   value={formData.shortDescription}
                   onChange={(e) => handleInputChange('shortDescription', e.target.value)}
