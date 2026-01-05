@@ -20,9 +20,33 @@ const EventLaunchForm = () => {
     shortDescription: '',
     detailedOverview: '',
     
-    // Featured Topics
+    // Featured Topics (Optional)
     featuredTopicsTitle: '',
     featuredTopicsSubtitle: '',
+    featuredTopics: [
+      {
+        title: '',
+        subItems: [
+          { title: '', description: '' },
+          { title: '', description: '' },
+          { title: '', description: '' }
+        ]
+      }
+    ],
+    
+    // Topical Coverage
+    topics: [
+      { tagline: '', description: '' },
+      { tagline: '', description: '' },
+      { tagline: '', description: '' },
+      { tagline: '', description: '' },
+      { tagline: '', description: '' },
+      { tagline: '', description: '' }
+    ],
+    
+    // Event Relationships
+    relatedEvent: '',
+    relatedEventId: '',
     
     // Audience
     targetAudience: '',
@@ -355,6 +379,182 @@ const EventLaunchForm = () => {
                   className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Full event description including purpose, target audience, and key topics"
                 />
+              </div>
+            </section>
+
+            {/* Event Content & Features */}
+            <section className="bg-white p-6 rounded-lg shadow">
+              <h2 className="text-xl font-semibold mb-4">🎯 Event Content & Features</h2>
+              
+              <div className="mb-6">
+                <h3 className="text-lg font-medium mb-3">Topical Coverage</h3>
+                
+                <div className="space-y-3">
+                  <label className="block text-sm font-medium mb-2">Topics</label>
+                  {formData.topics.map((topic, index) => (
+                    <div key={index} className="border rounded p-3">
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <label className="block text-xs font-medium mb-1">Topic {index + 1} Tagline</label>
+                          <input
+                            type="text"
+                            value={topic.tagline}
+                            onChange={(e) => {
+                              const updated = [...formData.topics]
+                              updated[index] = { ...topic, tagline: e.target.value }
+                              handleInputChange('topics', updated)
+                            }}
+                            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Topic tagline"
+                          />
+                        </div>
+                        <div className="flex gap-2">
+                          <div className="flex-1">
+                            <label className="block text-xs font-medium mb-1">Description</label>
+                            <input
+                              type="text"
+                              value={topic.description}
+                              onChange={(e) => {
+                                const updated = [...formData.topics]
+                                updated[index] = { ...topic, description: e.target.value }
+                                handleInputChange('topics', updated)
+                              }}
+                              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              placeholder="Topic description"
+                            />
+                          </div>
+                          {formData.topics.length > 1 && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const updated = formData.topics.filter((_, i) => i !== index)
+                                handleInputChange('topics', updated)
+                              }}
+                              className="mt-6 px-3 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                            >
+                              Remove
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const updated = [...formData.topics, { tagline: '', description: '' }]
+                      handleInputChange('topics', updated)
+                    }}
+                    className="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  >
+                    Add Topic
+                  </button>
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="text-lg font-medium mb-3">Featured Topics (Optional)</h3>
+                <p className="text-sm text-gray-600 mb-3">Note: This section is only used for certain events and can be left blank if not needed.</p>
+                <div className="grid grid-cols-2 gap-4 mb-3">
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Featured Topics Title</label>
+                    <input
+                      type="text"
+                      value={formData.featuredTopicsTitle}
+                      onChange={(e) => handleInputChange('featuredTopicsTitle', e.target.value)}
+                      className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Featured Topics Subtitle</label>
+                    <input
+                      type="text"
+                      value={formData.featuredTopicsSubtitle}
+                      onChange={(e) => handleInputChange('featuredTopicsSubtitle', e.target.value)}
+                      className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="text-lg font-medium mb-3">Audience Expectations</h3>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium mb-1">Target Audience</label>
+                  <input
+                    type="text"
+                    value={formData.targetAudience}
+                    onChange={(e) => handleInputChange('targetAudience', e.target.value)}
+                    className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="e.g., Small Business, Prime Contractors, Government"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">What to Expect Section</label>
+                  <textarea
+                    value={formData.whatToExpect}
+                    onChange={(e) => handleInputChange('whatToExpect', e.target.value)}
+                    rows={3}
+                    className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Bullet points of what attendees will gain"
+                  />
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="text-lg font-medium mb-3">Event Relationships</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Related Event</label>
+                    <input
+                      type="text"
+                      value={formData.relatedEvent}
+                      onChange={(e) => handleInputChange('relatedEvent', e.target.value)}
+                      className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Event name to link back to"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Related Event ID</label>
+                    <input
+                      type="text"
+                      value={formData.relatedEventId}
+                      onChange={(e) => handleInputChange('relatedEventId', e.target.value)}
+                      className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Numeric ID for database linking"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-medium mb-3">Testimonials</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      id="useTestimonials"
+                      checked={formData.useTestimonialsFromAnotherEvent}
+                      onChange={(e) => handleInputChange('useTestimonialsFromAnotherEvent', e.target.checked)}
+                      className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
+                    />
+                    <label htmlFor="useTestimonials" className="text-sm font-medium">Use testimonials from another event</label>
+                  </div>
+                  
+                  {formData.useTestimonialsFromAnotherEvent && (
+                    <div className="ml-6">
+                      <label className="block text-sm font-medium mb-1">Event to borrow from</label>
+                      <input
+                        type="text"
+                        value={formData.eventToBorrowFrom}
+                        onChange={(e) => handleInputChange('eventToBorrowFrom', e.target.value)}
+                        className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Event name or ID"
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
             </section>
 

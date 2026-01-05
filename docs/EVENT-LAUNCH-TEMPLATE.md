@@ -30,13 +30,20 @@
 ## 🎯 Event Content & Features
 
 ### Topical Coverage
-List main topics/themes to be covered:
-1. 
-2. 
-3. 
-4. 
-5.
-(add any as necessary) 
+**Topics:**
+1. **Tagline:** [Topic tagline]
+   - **Description:** [Topic description]
+2. **Tagline:** [Topic tagline]
+   - **Description:** [Topic description]
+3. **Tagline:** [Topic tagline]
+   - **Description:** [Topic description]
+4. **Tagline:** [Topic tagline]
+   - **Description:** [Topic description]
+5. **Tagline:** [Topic tagline]
+   - **Description:** [Topic description]
+6. **Tagline:** [Topic tagline]
+   - **Description:** [Topic description]
+(add more as needed)
 
 ### Featured Topics (Optional)
 **Featured Topics Title:** 
@@ -56,9 +63,13 @@ List main topics/themes to be covered:
 **What to Expect Section:**
 [Bullet points of what attendees will gain]
 
+### Event Relationships
+**Related Event:** [Event name to link back to]
+**Related Event ID:** [Numeric ID for database linking]
+
 ### Testimonials
 **Use testimonials from another event:** [ ] Yes [ ] No
-**Event to borrow from:** 
+**Event to borrow from:** [Event name or ID]
 
 **New Testimonials:**
 1. **Name:** 
@@ -66,7 +77,7 @@ List main topics/themes to be covered:
    - **Company:** 
    - **Quote:** 
    - **Type:** [ ] Video [ ] Text [ ] Image
-   - **Video ID/Image URL:** 
+   - **Video ID/Image:** 
 
 ---
 
