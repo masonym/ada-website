@@ -1,7 +1,31 @@
 'use client'
 
 import { useState, useRef } from 'react'
-import { Download, Copy, Eye, Upload } from 'lucide-react'
+import { Download, Copy, Eye, Upload, Info } from 'lucide-react'
+
+// Tooltip component
+const Tooltip = ({ content, children }: { content: React.ReactNode; children: React.ReactNode }) => {
+  const [isVisible, setIsVisible] = useState(false)
+  
+  return (
+    <div className="relative inline-block">
+      <div
+        onMouseEnter={() => setIsVisible(true)}
+        onMouseLeave={() => setIsVisible(false)}
+        className="inline-flex items-center gap-1"
+      >
+        {children}
+        <Info className="w-4 h-4 text-gray-400 cursor-help" />
+      </div>
+      {isVisible && (
+        <div className="absolute z-10 w-80 p-3 mt-1 text-sm bg-gray-800 text-white rounded-lg shadow-lg">
+          <div className="absolute -top-1 left-4 w-2 h-2 bg-gray-800 transform rotate-45"></div>
+          {content}
+        </div>
+      )}
+    </div>
+  )
+}
 
 const EventLaunchForm = () => {
   const [showPreview, setShowPreview] = useState(false)
@@ -313,7 +337,9 @@ const EventLaunchForm = () => {
               
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Event Name</label>
+                  <Tooltip content="Internal name for this event launch project. Used for tracking purposes.">
+                    <label className="block text-sm font-medium mb-1">Event Name</label>
+                  </Tooltip>
                   <input
                     type="text"
                     value={formData.eventName}
@@ -322,7 +348,9 @@ const EventLaunchForm = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Target Launch Date</label>
+                  <Tooltip content="The target date when this event should go live. Used for planning and coordination.">
+                    <label className="block text-sm font-medium mb-1">Target Launch Date</label>
+                  </Tooltip>
                   <input
                     type="date"
                     value={formData.targetLaunchDate}
@@ -334,7 +362,11 @@ const EventLaunchForm = () => {
 
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Event Title</label>
+                  <Tooltip content="The official title that will be displayed on the website and marketing materials.
+                    
+                    Example: '2026 Navy & Marine Corps Procurement Conference'">
+                    <label className="block text-sm font-medium mb-1">Event Title</label>
+                  </Tooltip>
                   <input
                     type="text"
                     value={formData.eventTitle}
@@ -343,7 +375,11 @@ const EventLaunchForm = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Event Shorthand/Acronym</label>
+                  <Tooltip content="A short acronym or shorthand for the event. Used in URLs, file names, and references.
+                    
+                    Example: '2026NMCPC' for '2026 Navy & Marine Corps Procurement Conference'">
+                    <label className="block text-sm font-medium mb-1">Event Shorthand/Acronym</label>
+                  </Tooltip>
                   <input
                     type="text"
                     value={formData.eventShorthand}
@@ -356,7 +392,11 @@ const EventLaunchForm = () => {
 
               <div className="grid grid-cols-3 gap-4 mb-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Display Date</label>
+                  <Tooltip content="The date format shown to users on the website. Can be more descriptive than the actual dates.
+                    
+                    Example: 'March 11-12, 2025'">
+                    <label className="block text-sm font-medium mb-1">Display Date</label>
+                  </Tooltip>
                   <input
                     type="text"
                     value={formData.displayDate}
@@ -399,7 +439,9 @@ const EventLaunchForm = () => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Event Password</label>
+                <Tooltip content="Password used for accessing presentation slides">
+                  <label className="block text-sm font-medium mb-1">Event Password</label>
+                </Tooltip>
                 <input
                   type="password"
                   value={formData.password}
@@ -409,7 +451,11 @@ const EventLaunchForm = () => {
               </div>
 
               <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Short Description</label>
+                <Tooltip content="Brief 1-2 sentence description for event listings, emails, and social media posts.
+                  
+                  Example: 'Join us for the premier defense procurement conference in Norfolk, Virginia, featuring key decision-makers from the Navy and Marine Corps.'">
+                  <label className="block text-sm font-medium mb-1">Short Description</label>
+                </Tooltip>
                 <textarea
                   value={formData.shortDescription}
                   onChange={(e) => handleInputChange('shortDescription', e.target.value)}
@@ -420,7 +466,9 @@ const EventLaunchForm = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Detailed Overview</label>
+                <Tooltip content="This section is typically made up of the short description + topical coverage taglines + what to expect text. If the \'Event Overview\' section should be different than the Short Description above, please include that text here.">
+                  <label className="block text-sm font-medium mb-1">Detailed Overview</label>
+                </Tooltip>
                 <textarea
                   value={formData.detailedOverview}
                   onChange={(e) => handleInputChange('detailedOverview', e.target.value)}
@@ -439,7 +487,12 @@ const EventLaunchForm = () => {
                 <h3 className="text-lg font-medium mb-3">Topical Coverage</h3>
                 
                 <div className="space-y-3">
-                  <label className="block text-sm font-medium mb-2">Topics</label>
+                  <Tooltip content="List the main topics that will be covered at the event. Each topic has a tagline (title) and description.
+                    
+                    Example Tagline: 'Acquisition Forecasts – NAVSEA, NAVAIR, NAVSUP'
+                    Example Description: 'Detailed forecasts from the Navy\'s major buying commands will help suppliers anticipate contract requirements'">
+                    <label className="block text-sm font-medium mb-2">Topics</label>
+                  </Tooltip>
                   {formData.topics.map((topic, index) => (
                     <div key={index} className="border rounded p-3">
                       <div className="grid grid-cols-2 gap-3">
@@ -555,7 +608,13 @@ const EventLaunchForm = () => {
                 <h3 className="text-lg font-medium mb-3">Event Relationships</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium mb-1">Related Event</label>
+                    <Tooltip content="The name of the related event to link back to (usually the previous year's event). This will populate the event testimonials at the bottom of the page.
+                      
+                      Example: '2025 Navy & Marine Corps Procurement Conference'
+                      
+                      This section is not required.">
+                      <label className="block text-sm font-medium mb-1">Related Event</label>
+                    </Tooltip>
                     <input
                       type="text"
                       value={formData.relatedEvent}
@@ -565,7 +624,11 @@ const EventLaunchForm = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-1">Related Event ID</label>
+                    <Tooltip content="The numeric ID of the related event in the database. Used for programmatic links.
+                      
+                      You do not need to enter this field.">
+                      <label className="block text-sm font-medium mb-1">Related Event ID</label>
+                    </Tooltip>
                     <input
                       type="text"
                       value={formData.relatedEventId}
@@ -593,7 +656,11 @@ const EventLaunchForm = () => {
                   
                   {formData.useTestimonialsFromAnotherEvent && (
                     <div className="ml-6">
-                      <label className="block text-sm font-medium mb-1">Event to borrow from</label>
+                      <Tooltip content="Enter the event name or ID to borrow testimonials from. The testimonials section will show quotes from this event instead of the current one.
+                        
+                        Example: '2025 Navy & Marine Corps Procurement Conference' or '5'">
+                        <label className="block text-sm font-medium mb-1">Event to borrow from</label>
+                      </Tooltip>
                       <input
                         type="text"
                         value={formData.eventToBorrowFrom}
@@ -663,7 +730,11 @@ const EventLaunchForm = () => {
               </div>
 
               <div className="mb-4">
+                <Tooltip content="The Google Maps Place ID for the event location. This is used to display the location on the event page.
+                  
+                  You do not need to enter this field.">
                 <label className="block text-sm font-medium mb-1">Google Maps Place ID</label>
+                </Tooltip>
                 <input
                   type="text"
                   value={formData.googleMapsPlaceId}
@@ -673,7 +744,13 @@ const EventLaunchForm = () => {
               </div>
 
               <div className="mb-4">
+                <Tooltip content="The directions needed from the hotel to the venue. 
+                  
+                  For an example: view the 2025NMCPC directions section.
+
+                  You do not need to enter this field at time of event launch.">
                 <label className="block text-sm font-medium mb-1">Directions Needed</label>
+                </Tooltip>
                 <textarea
                   value={formData.directionsNeeded}
                   onChange={(e) => handleInputChange('directionsNeeded', e.target.value)}
