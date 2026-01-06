@@ -931,19 +931,26 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           Topical Coverage:
         </p>
         <ul className="list-inside">
-<li>Integration of Commercial Space Assets/Technologies</li>
+<li>Integration of Commercial Space Assets/Technologies </li>
 <li>Space Force Support Functions Across Domains/COCOMS</li>
 <li>Increased Launch Activity Driving Spaceport Infrastructure</li>
-<li>Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)</li>
+<li> Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)</li>
 <li>Unmanned Platforms/’Collaborative Combat Aircraft’ – Prototype & Testing Contracts</li>
 <li>Indo-Pacific AOR – Dispersed Airfield & Logistics Hub Reconstruction/Expansion</li>
 <li>Golden Dome – Competition for Space-Based Missile Tracking/Interception Solutions</li>
-<li>Defense Industrial Base Acceleration – Ordnance, Missiles, Drones, etc.</li>
+<li>Defense Industrial Base Acceleration – Ordnance, Missiles, Drones, etc. </li>
 <li>Expediting Additive Manufacturing at the Warfighter Edge</li>
 <li>Expansion/Application of AI Throughout Defense Sectors</li>
 <li>Race to Exploit Quantum Technology</li>
 <li>Facilitating Innovative Tech Contracting – DEFENSEWERX & DIU</li>
 <li>Critical Defense Infrastructure Cyber Protection</li>
+<li>Cybersecurity & CMMC Update</li>
+<li>AFCEC & USACE Project Priorities</li>
+<li>Military Base-Community Partnerships Promoting Local Build Contracts</li>
+<li>New Defense Department Acquisition Initiatives/Guidelines</li>
+<li>How to do Business with the Primes – Subcontracting & Teaming</li>
+<li>Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's</li>
+<li>Mentor-Protégé Programs as Business Accelerators for Smalls & Primes</li>
         </ul>
       </div>
     ),
@@ -979,16 +986,23 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
 { "tagline": "Integration of Commercial Space Assets/Technologies", "description": "" },
 { "tagline": "Space Force Support Functions Across Domains/COCOMS", "description": "" },
 { "tagline": "Increased Launch Activity Driving Spaceport Infrastructure", "description": "" },
-{ "tagline": "Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)", "description": "" },
+{ "tagline": " Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)", "description": "" },
 { "tagline": "Unmanned Platforms/’Collaborative Combat Aircraft’ – Prototype & Testing Contracts", "description": "" },
 { "tagline": "Indo-Pacific AOR – Dispersed Airfield & Logistics Hub Reconstruction/Expansion", "description": "" },
 { "tagline": "Golden Dome – Competition for Space-Based Missile Tracking/Interception Solutions", "description": "" },
-{ "tagline": "Defense Industrial Base Acceleration – Ordnance, Missiles, Drones, etc.", "description": "" },
+{ "tagline": "Defense Industrial Base Acceleration – Ordnance, Missiles, Drones, etc. ", "description": "" },
 { "tagline": "Expediting Additive Manufacturing at the Warfighter Edge", "description": "" },
 { "tagline": "Expansion/Application of AI Throughout Defense Sectors", "description": "" },
 { "tagline": "Race to Exploit Quantum Technology", "description": "" },
 { "tagline": "Facilitating Innovative Tech Contracting – DEFENSEWERX & DIU", "description": "" },
 { "tagline": "Critical Defense Infrastructure Cyber Protection", "description": "" },
+{ "tagline": "Cybersecurity & CMMC Update", "description": "" },
+{ "tagline": "AFCEC & USACE Project Priorities", "description": "" },
+{ "tagline": "Military Base-Community Partnerships Promoting Local Build Contracts", "description": "" },
+{ "tagline": "New Defense Department Acquisition Initiatives/Guidelines", "description": "" },
+{ "tagline": "How to do Business with the Primes – Subcontracting & Teaming", "description": "" },
+{ "tagline": "Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's", "description": "" },
+{ "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "" },
     ],
     image: "2025DTAPC_wide.webp",
     slug: "2026-defense-technology-aerospace-procurement-conference",
