@@ -299,7 +299,50 @@ export const PROMO_CODES: PromoCode[] = [
     expirationDate: new Date('2027-12-02T05:00:00Z'), // Dec 2, 2027 12:00 AM EST in UTC
     description: 'CET10',
     isActive: true
-  }
+  },
+
+  {
+    code: 'AEBC10',
+    discountPercentage: 10,
+    eligibleTicketTypes: [
+      'attendee-pass',
+      'vip-attendee-pass',
+      'exhibit',
+      'platinum-sponsor',
+      'gold-sponsor',
+      'silver-sponsor',
+      'bronze-sponsor',
+      'vip-networking-reception-sponsor',
+      'networking-luncheon-sponsor',
+      'small-business-sponsor',
+      'small-business-sponsor-without-exhibit-space'
+    ],
+    eligibleEventIds: [5,6],
+    expirationDate: new Date('2027-12-31T05:00:00Z'), // Dec 31, 2027 12:00 AM EST in UTC
+    description: 'AEBC10',
+    isActive: true
+  },
+  {
+    code: 'PMP10',
+    discountPercentage: 10,
+    eligibleTicketTypes: [
+      'attendee-pass',
+      'vip-attendee-pass',
+      'exhibit',
+      'platinum-sponsor',
+      'gold-sponsor',
+      'silver-sponsor',
+      'bronze-sponsor',
+      'vip-networking-reception-sponsor',
+      'networking-luncheon-sponsor',
+      'small-business-sponsor',
+      'small-business-sponsor-without-exhibit-space'
+    ],
+    eligibleEventIds: [5,6],
+    expirationDate: new Date('2027-12-31T05:00:00Z'), // Dec 31, 2027 12:00 AM EST in UTC
+    description: 'PMP10',
+    isActive: true
+  },
 ];
 
 // Function to validate promo code for a specific event
