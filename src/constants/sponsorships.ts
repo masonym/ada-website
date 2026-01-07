@@ -741,7 +741,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     formatted: [
                         { content: "Matchmaking Host Invitation", bold: true },
                         { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                        { content: "March 4: 4:30 PM - 5:30 PM", indent: 2 },
+                        { content: "March 4: 4:30 PM - 6:00 PM", indent: 2 },
                         { content: "March 5: 12:30 PM - 1:30 PM", indent: 2 }
                     ]
                 }
@@ -798,7 +798,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Matchmaking Host Invitation", bold: true },
                             { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                            { content: "March 4: 4:30 PM - 5:30 PM", indent: 2 },
+                            { content: "March 4: 4:30 PM - 6:00 PM", indent: 2 },
                             { content: "March 5: 12:30 PM - 1:30 PM", indent: 2 }
                         ]
                     }
@@ -853,7 +853,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Matchmaking Host Invitation", bold: true },
                             { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                            { content: "March 4: 4:30 PM - 5:30 PM", indent: 2 },
+                            { content: "March 4: 4:30 PM - 6:00 PM", indent: 2 },
                             { content: "March 5: 12:30 PM - 1:30 PM", indent: 2 }
                         ]
                     }
@@ -908,7 +908,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Matchmaking Host Invitation", bold: true },
                             { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                            { content: "March 4: 4:30 PM - 5:30 PM", indent: 2 },
+                            { content: "March 4: 4:30 PM - 6:00 PM", indent: 2 },
                             { content: "March 5: 12:30 PM - 1:30 PM", indent: 2 }
                         ]
                     }
@@ -964,7 +964,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                         formatted: [
                             { content: "Matchmaking Host Invitation", bold: true },
                             { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
-                            { content: "March 4: 4:30 PM - 5:30 PM", indent: 2 },
+                            { content: "March 4: 4:30 PM - 6:00 PM", indent: 2 },
                             { content: "March 5: 12:30 PM - 1:30 PM", indent: 2 }
                         ]
                     },
