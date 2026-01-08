@@ -46,6 +46,7 @@ export const EVENT_MATCHMAKING_SPONSORS: Record<string, MatchmakingSponsorsData>
   "2026-navy-marine-corps-procurement-conference": {
     sponsorIds: [
       "navair",
+      "us-gsa",
     ],
     title: "Companies Participating in Matchmaking Sessions",
     description: "Stay tuned for additional companies to be added as we get closer to the event date!"
