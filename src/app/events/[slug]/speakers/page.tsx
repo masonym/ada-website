@@ -3,6 +3,9 @@ import { notFound } from 'next/navigation';
 import { getEventSpeakersPublic } from '@/lib/sanity';
 import SpeakersPageClient from './SpeakersPageClient';
 
+// revalidate every 60 seconds - no redeploy needed for speaker updates
+export const revalidate = 60;
+
 export default async function SpeakersPage({ params }: { params: { slug: string } }) {
     const event = EVENTS.find((e) => e.slug === params.slug);
 

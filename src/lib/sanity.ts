@@ -7,6 +7,15 @@ export const client = createClient({
   apiVersion: '2024-11-30',
 })
 
+// non-CDN client for real-time data (promo codes, etc.)
+// changes are reflected immediately without needing to redeploy
+export const realtimeClient = createClient({
+  projectId: 'nc4xlou0',
+  dataset: 'production',
+  useCdn: false, // bypass CDN for immediate updates
+  apiVersion: '2024-11-30',
+})
+
 // revalidate sponsor data every 5 minutes (300 seconds)
 const REVALIDATE_SECONDS = 500
 
@@ -210,6 +219,11 @@ export async function getEventMatchmakingSponsors(eventSlug: string): Promise<{
       })
       .filter((s: any): s is NonNullable<typeof s> => s !== null)
 
+    // if sanity returned data but no sponsors could be resolved, fall back to legacy
+    if (sponsorsWithNotes.length === 0) {
+      return getLegacyMatchmakingData(eventSlug)
+    }
+
     return {
       sponsors: sponsorsWithNotes,
       title: rawData.title,
@@ -388,12 +402,13 @@ export type PromoCodePublic = {
 }
 
 // validate a promo code for a specific event (public-facing)
+// uses realtimeClient to bypass CDN cache - changes reflect immediately
 export async function validatePromoCodeFromSanity(
   code: string,
   eventId: number
 ): Promise<{ valid: boolean; reason?: string; promoDetails?: PromoCodePublic }> {
   try {
-    const promoCode = await client.fetch<PromoCodePublic | null>(`
+    const promoCode = await realtimeClient.fetch<PromoCodePublic | null>(`
       *[_type == "promoCode" && code == $code && isActive == true][0] {
         _id,
         code,
@@ -429,10 +444,11 @@ export async function validatePromoCodeFromSanity(
 }
 
 // get active promo codes for an event (public-facing)
+// uses realtimeClient to bypass CDN cache - changes reflect immediately
 export async function getActivePromoCodesForEventFromSanity(eventId: number): Promise<PromoCodePublic[]> {
   try {
     const now = new Date().toISOString()
-    return client.fetch<PromoCodePublic[]>(`
+    return realtimeClient.fetch<PromoCodePublic[]>(`
       *[_type == "promoCode" && isActive == true && $eventId in eligibleEventIds && expirationDate > $now] | order(code asc) {
         _id,
         code,
@@ -452,10 +468,11 @@ export async function getActivePromoCodesForEventFromSanity(eventId: number): Pr
 }
 
 // get auto-apply promo codes for an event (public-facing)
+// uses realtimeClient to bypass CDN cache - changes reflect immediately
 export async function getAutoApplyPromoCodesFromSanity(eventId: number): Promise<PromoCodePublic[]> {
   try {
     const now = new Date().toISOString()
-    return client.fetch<PromoCodePublic[]>(`
+    return realtimeClient.fetch<PromoCodePublic[]>(`
       *[_type == "promoCode" && isActive == true && autoApply == true && $eventId in eligibleEventIds && expirationDate > $now] | order(discountPercentage desc) {
         _id,
         code,
