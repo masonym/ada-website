@@ -8,6 +8,16 @@ import 'react-modal-video/css/modal-video.css';
 import { getCdnPath } from '@/utils/image';
 import { SPEAKERS, Speaker as SpeakerData } from '@/constants/speakers';
 import { slugify } from '@/utils/slugify';
+import { EventSpeakerPublic } from '@/lib/sanity';
+
+// helper to get sanity image URL
+function getSanityImageUrl(ref: string) {
+  return `https://cdn.sanity.io/images/nc4xlou0/production/${ref
+    .replace("image-", "")
+    .replace("-webp", ".webp")
+    .replace("-jpg", ".jpg")
+    .replace("-png", ".png")}`;
+}
 
 type Speaker = {
   name?: string; // Optional when using speakerId
@@ -59,20 +69,37 @@ type ScheduleAtAGlanceProps = {
   isAuthenticated: boolean;
   onRequestPassword: () => void;
   event: Event;
+  sanitySpeakers?: EventSpeakerPublic[] | null;
 };
 
 const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
   schedule,
   isAuthenticated,
   onRequestPassword,
-  event
+  event,
+  sanitySpeakers
 }) => {
   const [selectedDay, setSelectedDay] = useState(0);
   const [isVideoOpen, setVideoOpen] = useState(false);
   const [currentVideoId, setCurrentVideoId] = useState<string | null>(null);
   const [currentStartTime, setCurrentStartTime] = useState<number | undefined>(undefined);
   const [isSpeakerModalOpen, setSpeakerModalOpen] = useState(false);
-  const [selectedSpeaker, setSelectedSpeaker] = useState<SpeakerData | null>(null);
+  const [selectedSpeaker, setSelectedSpeaker] = useState<{
+    name: string;
+    position: string;
+    company: string;
+    bio: string;
+    image?: string;
+    sanityImage?: { asset: { _ref: string } };
+  } | null>(null);
+
+  // build sanity speaker lookup map
+  const sanitySpeakerMap = new Map<string, EventSpeakerPublic>();
+  if (sanitySpeakers) {
+    sanitySpeakers.forEach(s => {
+      if (s.speakerSlug) sanitySpeakerMap.set(s.speakerSlug, s);
+    });
+  }
 
   const handleMediaClick = (
     type: 'video' | 'presentation',
@@ -96,9 +123,32 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
 
   const handleSpeakerClick = (speaker: Speaker) => {
     const resolvedSpeaker = resolveSpeaker(speaker);
-    // Only open modal if we have speaker data with bio
-    if (resolvedSpeaker.speakerId && SPEAKERS[resolvedSpeaker.speakerId]) {
-      setSelectedSpeaker(SPEAKERS[resolvedSpeaker.speakerId]);
+    if (!resolvedSpeaker.speakerId) return;
+
+    // try sanity first
+    const sanitySpeaker = sanitySpeakerMap.get(resolvedSpeaker.speakerId);
+    if (sanitySpeaker) {
+      setSelectedSpeaker({
+        name: sanitySpeaker.speakerName,
+        position: sanitySpeaker.speakerPosition || '',
+        company: sanitySpeaker.speakerCompany || '',
+        bio: sanitySpeaker.speakerBio || '',
+        sanityImage: sanitySpeaker.speakerImage,
+      });
+      setSpeakerModalOpen(true);
+      return;
+    }
+
+    // fall back to legacy
+    if (SPEAKERS[resolvedSpeaker.speakerId]) {
+      const legacy = SPEAKERS[resolvedSpeaker.speakerId];
+      setSelectedSpeaker({
+        name: legacy.name,
+        position: legacy.position,
+        company: legacy.company,
+        bio: legacy.bio || '',
+        image: legacy.image,
+      });
       setSpeakerModalOpen(true);
     }
   };
@@ -300,11 +350,14 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                 <div className="flex-shrink-0">
                   <div className="w-48 h-48 mx-auto md:mx-0">
                     <Image
-                      src={getCdnPath(`speakers/${selectedSpeaker.image}`)}
+                      src={selectedSpeaker.sanityImage?.asset?._ref
+                        ? getSanityImageUrl(selectedSpeaker.sanityImage.asset._ref)
+                        : getCdnPath(`speakers/${selectedSpeaker.image}`)}
                       alt={selectedSpeaker.name}
                       width={192}
                       height={192}
                       className="rounded-lg object-cover w-full h-full"
+                      unoptimized={!!selectedSpeaker.sanityImage}
                     />
                   </div>
                 </div>
