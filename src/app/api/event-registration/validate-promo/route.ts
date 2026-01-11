@@ -1,8 +1,10 @@
 import { NextResponse } from 'next/server';
 import { validatePromoCode, isEligibleForPromoDiscount } from '@/lib/promo-codes';
+import { validatePromoCodeFromSanity } from '@/lib/sanity';
 
-// In-memory cache for promo codes (in a real app, use a database or cache like Redis)
-const promoCodeCache = new Map<string, { valid: boolean; promoDetails?: any }>();
+// In-memory cache for promo codes
+const promoCodeCache = new Map<string, { valid: boolean; promoDetails?: any; timestamp: number }>();
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
 export async function POST(request: Request) {
   try {
@@ -22,16 +24,19 @@ export async function POST(request: Request) {
       );
     }
 
+    const eventIdNum = typeof eventId === 'string' ? parseInt(eventId) : eventId;
+
     // Create cache key that includes event ID for event-specific validation
-    const cacheKey = `${promoCode}-${eventId}`;
+    const cacheKey = `${promoCode.toUpperCase()}-${eventId}`;
     
-    // Check cache first
+    // Check cache first (with TTL)
     const cachedPromo = promoCodeCache.get(cacheKey);
-    if (cachedPromo) {
+    if (cachedPromo && (Date.now() - cachedPromo.timestamp) < CACHE_TTL) {
       if (cachedPromo.valid && cachedPromo.promoDetails) {
         // Check if the cached promo is expired
         const now = new Date();
-        if (now > cachedPromo.promoDetails.expirationDate) {
+        const expDate = new Date(cachedPromo.promoDetails.expirationDate);
+        if (now > expDate) {
           promoCodeCache.delete(cacheKey);
           return NextResponse.json({
             valid: false,
@@ -48,8 +53,31 @@ export async function POST(request: Request) {
       }
     }
 
-    // Validate the promo code for this specific event
-    const validationResult = validatePromoCode(promoCode, eventId);
+    // Try Sanity first, then fall back to legacy
+    let validationResult = await validatePromoCodeFromSanity(promoCode, eventIdNum);
+    
+    // If not found in Sanity, try legacy promo codes
+    if (!validationResult.valid && validationResult.reason === 'invalid') {
+      const legacyResult = validatePromoCode(promoCode, eventId);
+      if (legacyResult.valid && legacyResult.promoDetails) {
+        validationResult = {
+          valid: true,
+          promoDetails: {
+            _id: 'legacy',
+            code: legacyResult.promoDetails.code,
+            discountPercentage: legacyResult.promoDetails.discountPercentage,
+            eligibleTicketTypes: legacyResult.promoDetails.eligibleTicketTypes,
+            eligibleEventIds: legacyResult.promoDetails.eligibleEventIds.map(id => typeof id === 'string' ? parseInt(id) : id),
+            expirationDate: legacyResult.promoDetails.expirationDate.toISOString(),
+            description: legacyResult.promoDetails.description,
+            isActive: legacyResult.promoDetails.isActive,
+            autoApply: legacyResult.promoDetails.autoApply || false,
+          }
+        };
+      } else if (!legacyResult.valid) {
+        validationResult = { valid: false, reason: legacyResult.reason };
+      }
+    }
     
     if (!validationResult.valid) {
       let errorMessage = 'Invalid promo code';
@@ -87,10 +115,11 @@ export async function POST(request: Request) {
       }
     }
     
-    // Cache the promo code validation for 1 hour (with event-specific key)
+    // Cache the promo code validation (with event-specific key)
     promoCodeCache.set(cacheKey, {
       valid: true,
-      promoDetails
+      promoDetails,
+      timestamp: Date.now()
     });
     
     return NextResponse.json({

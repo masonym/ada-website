@@ -370,3 +370,106 @@ export async function getSpeakerBySlug(slug: string): Promise<SanitySpeakerPubli
     return null
   }
 }
+
+// ============================================
+// PROMO CODE VALIDATION (PUBLIC)
+// ============================================
+
+export type PromoCodePublic = {
+  _id: string
+  code: string
+  discountPercentage: number
+  eligibleTicketTypes: string[]
+  eligibleEventIds: number[]
+  expirationDate: string
+  description?: string
+  isActive: boolean
+  autoApply: boolean
+}
+
+// validate a promo code for a specific event (public-facing)
+export async function validatePromoCodeFromSanity(
+  code: string,
+  eventId: number
+): Promise<{ valid: boolean; reason?: string; promoDetails?: PromoCodePublic }> {
+  try {
+    const promoCode = await client.fetch<PromoCodePublic | null>(`
+      *[_type == "promoCode" && code == $code && isActive == true][0] {
+        _id,
+        code,
+        discountPercentage,
+        eligibleTicketTypes,
+        eligibleEventIds,
+        expirationDate,
+        description,
+        isActive,
+        autoApply
+      }
+    `, { code: code.toUpperCase() })
+
+    if (!promoCode) {
+      return { valid: false, reason: 'invalid' }
+    }
+
+    // check expiration
+    if (new Date() > new Date(promoCode.expirationDate)) {
+      return { valid: false, reason: 'expired' }
+    }
+
+    // check if valid for this event
+    if (!promoCode.eligibleEventIds.includes(eventId)) {
+      return { valid: false, reason: 'not_valid_for_event' }
+    }
+
+    return { valid: true, promoDetails: promoCode }
+  } catch (error) {
+    console.error('Error validating promo code:', error)
+    return { valid: false, reason: 'error' }
+  }
+}
+
+// get active promo codes for an event (public-facing)
+export async function getActivePromoCodesForEventFromSanity(eventId: number): Promise<PromoCodePublic[]> {
+  try {
+    const now = new Date().toISOString()
+    return client.fetch<PromoCodePublic[]>(`
+      *[_type == "promoCode" && isActive == true && $eventId in eligibleEventIds && expirationDate > $now] | order(code asc) {
+        _id,
+        code,
+        discountPercentage,
+        eligibleTicketTypes,
+        eligibleEventIds,
+        expirationDate,
+        description,
+        isActive,
+        autoApply
+      }
+    `, { eventId, now })
+  } catch (error) {
+    console.error('Error fetching promo codes:', error)
+    return []
+  }
+}
+
+// get auto-apply promo codes for an event (public-facing)
+export async function getAutoApplyPromoCodesFromSanity(eventId: number): Promise<PromoCodePublic[]> {
+  try {
+    const now = new Date().toISOString()
+    return client.fetch<PromoCodePublic[]>(`
+      *[_type == "promoCode" && isActive == true && autoApply == true && $eventId in eligibleEventIds && expirationDate > $now] | order(discountPercentage desc) {
+        _id,
+        code,
+        discountPercentage,
+        eligibleTicketTypes,
+        eligibleEventIds,
+        expirationDate,
+        description,
+        isActive,
+        autoApply
+      }
+    `, { eventId, now })
+  } catch (error) {
+    console.error('Error fetching auto-apply promo codes:', error)
+    return []
+  }
+}

@@ -647,3 +647,124 @@ export async function updateEventSpeaker(
   
   return patch.commit()
 }
+
+// ============================================
+// PROMO CODE MANAGEMENT
+// ============================================
+
+export type SanityPromoCode = {
+  _id: string
+  code: string
+  discountPercentage: number
+  eligibleTicketTypes: string[]
+  eligibleEventIds: number[]
+  expirationDate: string
+  description?: string
+  isActive: boolean
+  autoApply: boolean
+}
+
+export type CreatePromoCodeInput = {
+  code: string
+  discountPercentage: number
+  eligibleTicketTypes: string[]
+  eligibleEventIds: number[]
+  expirationDate: string
+  description?: string
+  isActive?: boolean
+  autoApply?: boolean
+}
+
+// get all promo codes
+export async function getAllPromoCodes(): Promise<SanityPromoCode[]> {
+  return adminClient.fetch<SanityPromoCode[]>(`
+    *[_type == "promoCode"] | order(code asc) {
+      _id,
+      code,
+      discountPercentage,
+      eligibleTicketTypes,
+      eligibleEventIds,
+      expirationDate,
+      description,
+      isActive,
+      autoApply
+    }
+  `)
+}
+
+// get promo codes for a specific event
+export async function getPromoCodesForEvent(eventId: number): Promise<SanityPromoCode[]> {
+  return adminClient.fetch<SanityPromoCode[]>(`
+    *[_type == "promoCode" && $eventId in eligibleEventIds] | order(code asc) {
+      _id,
+      code,
+      discountPercentage,
+      eligibleTicketTypes,
+      eligibleEventIds,
+      expirationDate,
+      description,
+      isActive,
+      autoApply
+    }
+  `, { eventId })
+}
+
+// create a new promo code
+export async function createPromoCode(input: CreatePromoCodeInput): Promise<SanityPromoCode> {
+  return adminClient.create({
+    _type: 'promoCode',
+    code: input.code.toUpperCase(),
+    discountPercentage: input.discountPercentage,
+    eligibleTicketTypes: input.eligibleTicketTypes,
+    eligibleEventIds: input.eligibleEventIds,
+    expirationDate: input.expirationDate,
+    description: input.description || '',
+    isActive: input.isActive ?? true,
+    autoApply: input.autoApply ?? false,
+  })
+}
+
+// update a promo code
+export async function updatePromoCode(
+  promoCodeId: string,
+  updates: Partial<Omit<CreatePromoCodeInput, 'code'>>
+): Promise<SanityPromoCode> {
+  const patch = adminClient.patch(promoCodeId)
+  
+  if (updates.discountPercentage !== undefined) {
+    patch.set({ discountPercentage: updates.discountPercentage })
+  }
+  if (updates.eligibleTicketTypes !== undefined) {
+    patch.set({ eligibleTicketTypes: updates.eligibleTicketTypes })
+  }
+  if (updates.eligibleEventIds !== undefined) {
+    patch.set({ eligibleEventIds: updates.eligibleEventIds })
+  }
+  if (updates.expirationDate !== undefined) {
+    patch.set({ expirationDate: updates.expirationDate })
+  }
+  if (updates.description !== undefined) {
+    patch.set({ description: updates.description })
+  }
+  if (updates.isActive !== undefined) {
+    patch.set({ isActive: updates.isActive })
+  }
+  if (updates.autoApply !== undefined) {
+    patch.set({ autoApply: updates.autoApply })
+  }
+  
+  return patch.commit()
+}
+
+// toggle promo code active status
+export async function togglePromoCodeActive(promoCodeId: string, isActive: boolean) {
+  return adminClient
+    .patch(promoCodeId)
+    .set({ isActive })
+    .commit()
+}
+
+// delete a promo code
+export async function deletePromoCode(promoCodeId: string) {
+  return adminClient.delete(promoCodeId)
+}

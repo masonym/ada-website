@@ -19,7 +19,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import StripePaymentForm, { StripePaymentFormRef } from './StripePaymentForm';
 import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { EVENT_SPONSORS } from '@/constants/eventSponsors';
-import { validatePromoCode, isEligibleForPromoDiscount, getAutoApplyPromoCodesForEvent, type PromoCode } from '@/lib/promo-codes';
+import { isEligibleForPromoDiscount, type PromoCode } from '@/lib/promo-codes';
 import { getEnv } from '@/lib/env';
 
 interface EventWithContact extends Omit<Event, 'id'> {
@@ -434,48 +434,21 @@ const RegistrationModal = ({
       return; // Don't auto-apply if modal is closed, promo already applied, or user has entered a code
     }
 
-    let codeToApply: string | null = null;
-
-    // Priority 1: URL parameter promo code
-    if (initialPromoCode) {
-      codeToApply = initialPromoCode.trim().toUpperCase();
-    } else {
-      // Priority 2: Event-based auto-apply promo codes
-      const autoApplyCodes = getAutoApplyPromoCodesForEvent(event.id);
-      if (autoApplyCodes.length > 0) {
-        // Use the first auto-apply code found
-        codeToApply = autoApplyCodes[0].code;
-      }
-    }
-
-    if (!codeToApply) {
-      return; // No promo code to auto-apply
-    }
-
-    // Set the promo code in the input field
-    setPromoCode(codeToApply);
-
-    // Automatically apply the promo code
-    const autoApplyPromoCode = async () => {
+    const applyPromoCode = async (codeToApply: string) => {
+      setPromoCode(codeToApply);
       setPromoCodeError(null);
       setApplyingPromoCode(true);
 
       try {
         const response = await fetch('/api/event-registration/validate-promo', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            promoCode: codeToApply,
-            eventId: event.id,
-          }),
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ promoCode: codeToApply, eventId: event.id }),
         });
 
         const result = await response.json();
 
         if (result.valid) {
-          // Always accept valid promo codes - the discount logic will handle eligibility per ticket
           setPromoCodeValid(true);
           setPromoCodeError(null);
           setActivePromoCode({
@@ -502,8 +475,26 @@ const RegistrationModal = ({
       setApplyingPromoCode(false);
     };
 
-    // Apply the promo code automatically
-    autoApplyPromoCode();
+    const fetchAndApplyPromoCode = async () => {
+      // Priority 1: URL parameter promo code
+      if (initialPromoCode) {
+        applyPromoCode(initialPromoCode.trim().toUpperCase());
+        return;
+      }
+
+      // Priority 2: Fetch auto-apply codes from API (Sanity with legacy fallback)
+      try {
+        const response = await fetch(`/api/event-registration/auto-apply-promo?eventId=${event.id}`);
+        const data = await response.json();
+        if (data.codes && data.codes.length > 0) {
+          applyPromoCode(data.codes[0].code);
+        }
+      } catch (error) {
+        console.error('Error fetching auto-apply promo codes:', error);
+      }
+    };
+
+    fetchAndApplyPromoCode();
   }, [isOpen, initialPromoCode, promoCodeValid, activePromoCode, promoCode, event.id]);
 
   // Code validation function for add-ons that require special codes
