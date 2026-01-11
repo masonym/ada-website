@@ -142,6 +142,51 @@ export async function updateSponsorLogo(sponsorId: string, imageAssetId: string)
     .commit()
 }
 
+// update sponsor details (name, website, description)
+export async function updateSponsorDetails(
+  sponsorId: string, 
+  details: { name?: string; website?: string; description?: string }
+) {
+  const patch = adminClient.patch(sponsorId)
+  
+  if (details.name !== undefined) {
+    patch.set({ name: details.name })
+    // also update slug if name changes
+    const slug = details.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '')
+    patch.set({ slug: { _type: 'slug', current: slug } })
+  }
+  if (details.website !== undefined) {
+    patch.set({ website: details.website || undefined })
+  }
+  if (details.description !== undefined) {
+    patch.set({ description: details.description || undefined })
+  }
+  
+  return patch.commit()
+}
+
+// get a single sponsor's full details for editing
+export async function getSponsorDetails(sponsorId: string) {
+  return adminClient.fetch<{
+    _id: string
+    name: string
+    slug: { current: string }
+    website?: string
+    description?: string
+  } | null>(`
+    *[_type == "sponsor" && _id == $sponsorId][0] {
+      _id,
+      name,
+      slug,
+      website,
+      description
+    }
+  `, { sponsorId })
+}
+
 // add a new tier to an event
 export async function addTierToEvent(eventId: number, tier: { id: string; name: string; style?: string }) {
   const eventSponsor = await adminClient.fetch<{ _id: string } | null>(`
@@ -164,4 +209,127 @@ export async function addTierToEvent(eventId: number, tier: { id: string; name: 
     .commit()
 
   return { success: true }
+}
+
+// matchmaking sponsors admin functions
+
+export type MatchmakingSponsorEntry = {
+  _key: string
+  sponsor: { _type: 'reference'; _ref: string }
+  note?: string
+}
+
+export type EventMatchmakingSponsorsDoc = {
+  _id: string
+  eventSlug: string
+  title?: string
+  description?: string
+  sponsors: MatchmakingSponsorEntry[]
+}
+
+// get all matchmaking sponsor documents
+export async function getAllMatchmakingSponsors() {
+  return adminClient.fetch<EventMatchmakingSponsorsDoc[]>(`
+    *[_type == "eventMatchmakingSponsors"] | order(eventSlug asc) {
+      _id,
+      eventSlug,
+      title,
+      description,
+      sponsors[] {
+        _key,
+        sponsor { _type, _ref },
+        note
+      }
+    }
+  `)
+}
+
+// get matchmaking sponsors for a specific event
+export async function getMatchmakingSponsorsForEvent(eventSlug: string) {
+  return adminClient.fetch<EventMatchmakingSponsorsDoc | null>(`
+    *[_type == "eventMatchmakingSponsors" && eventSlug == $eventSlug][0] {
+      _id,
+      eventSlug,
+      title,
+      description,
+      sponsors[] {
+        _key,
+        sponsor { _type, _ref },
+        note
+      }
+    }
+  `, { eventSlug })
+}
+
+// create a new matchmaking sponsors document for an event
+export async function createMatchmakingSponsorsDoc(input: {
+  eventSlug: string
+  title?: string
+  description?: string
+}) {
+  return adminClient.create({
+    _type: 'eventMatchmakingSponsors',
+    eventSlug: input.eventSlug,
+    title: input.title || 'Companies Participating in Matchmaking Sessions',
+    description: input.description || '',
+    sponsors: []
+  })
+}
+
+// update matchmaking sponsors document metadata
+export async function updateMatchmakingSponsorsMetadata(
+  docId: string,
+  input: { title?: string; description?: string }
+) {
+  return adminClient
+    .patch(docId)
+    .set({
+      title: input.title,
+      description: input.description
+    })
+    .commit()
+}
+
+// add a sponsor to matchmaking
+export async function addSponsorToMatchmaking(
+  docId: string,
+  sponsorId: string,
+  note?: string
+) {
+  return adminClient
+    .patch(docId)
+    .insert('after', 'sponsors[-1]', [{
+      _key: `${sponsorId}-${Date.now()}`,
+      sponsor: { _type: 'reference', _ref: sponsorId },
+      note: note || undefined
+    }])
+    .commit()
+}
+
+// update a sponsor's note in matchmaking
+export async function updateMatchmakingSponsorNote(
+  docId: string,
+  sponsorKey: string,
+  note: string
+) {
+  return adminClient
+    .patch(docId)
+    .set({ [`sponsors[_key=="${sponsorKey}"].note`]: note || undefined })
+    .commit()
+}
+
+// remove a sponsor from matchmaking
+export async function removeSponsorFromMatchmaking(
+  docId: string,
+  sponsorKey: string
+) {
+  return adminClient
+    .patch(docId)
+    .unset([`sponsors[_key=="${sponsorKey}"]`])
+    .commit()
+}
+
+// delete entire matchmaking sponsors document
+export async function deleteMatchmakingSponsorsDoc(docId: string) {
+  return adminClient.delete(docId)
 }

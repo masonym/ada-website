@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Upload, Plus, Check, AlertCircle, Building2, Link as LinkIcon, Layers, RefreshCw } from "lucide-react";
+import { Upload, Plus, Check, AlertCircle, Building2, Link as LinkIcon, Layers, RefreshCw, Edit2 } from "lucide-react";
 
 type EventWithTiers = {
   _id: string;
@@ -34,8 +34,15 @@ export default function SponsorAdminPage() {
   const [selectedTierIds, setSelectedTierIds] = useState<string[]>([]);
 
   // existing sponsor form
-  const [mode, setMode] = useState<"new" | "existing" | "tier" | "replace-logo">("new");
+  const [mode, setMode] = useState<"new" | "existing" | "tier" | "replace-logo" | "edit">("new");
   const [selectedExistingSponsorId, setSelectedExistingSponsorId] = useState<string>("");
+
+  // edit sponsor form
+  const [editSponsorId, setEditSponsorId] = useState<string>("");
+  const [editName, setEditName] = useState("");
+  const [editWebsite, setEditWebsite] = useState("");
+  const [editDescription, setEditDescription] = useState("");
+  const [loadingDetails, setLoadingDetails] = useState(false);
 
   // new tier form
   const [newTierEventId, setNewTierEventId] = useState<number | null>(null);
@@ -132,6 +139,70 @@ export default function SponsorAdminPage() {
         ? prev.filter((id) => id !== tierId)
         : [...prev, tierId]
     );
+  }
+
+  async function handleEditSponsorSelect(sponsorId: string) {
+    setEditSponsorId(sponsorId);
+    if (!sponsorId) {
+      setEditName("");
+      setEditWebsite("");
+      setEditDescription("");
+      return;
+    }
+
+    setLoadingDetails(true);
+    try {
+      const res = await fetch(`/api/admin/sponsors/update-details?sponsorId=${sponsorId}`);
+      const data = await res.json();
+      if (res.ok && data.sponsor) {
+        setEditName(data.sponsor.name || "");
+        setEditWebsite(data.sponsor.website || "");
+        setEditDescription(data.sponsor.description || "");
+      } else {
+        setMessage({ type: "error", text: data.error || "Failed to load sponsor details" });
+      }
+    } catch (error) {
+      setMessage({ type: "error", text: "Failed to load sponsor details" });
+    } finally {
+      setLoadingDetails(false);
+    }
+  }
+
+  async function handleSubmitEdit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!editSponsorId) {
+      setMessage({ type: "error", text: "Please select a sponsor" });
+      return;
+    }
+
+    setSubmitting(true);
+    setMessage(null);
+
+    try {
+      const res = await fetch("/api/admin/sponsors/update-details", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sponsorId: editSponsorId,
+          name: editName,
+          website: editWebsite,
+          description: editDescription,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setMessage({ type: "success", text: data.message });
+        fetchData(); // refresh sponsor list in case name changed
+      } else {
+        setMessage({ type: "error", text: data.error });
+      }
+    } catch (error) {
+      setMessage({ type: "error", text: "Failed to update sponsor" });
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   async function handleSubmitNew(e: React.FormEvent) {
@@ -324,6 +395,17 @@ export default function SponsorAdminPage() {
           >
             <RefreshCw className="inline-block w-4 h-4 mr-1" />
             Replace Logo
+          </button>
+          <button
+            onClick={() => setMode("edit")}
+            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              mode === "edit"
+                ? "bg-blue-600 text-white"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
+          >
+            <Edit2 className="inline-block w-4 h-4 mr-1" />
+            Edit Sponsor
           </button>
         </div>
 
@@ -724,6 +806,97 @@ export default function SponsorAdminPage() {
               </button>
             </form>
           )}
+
+          {mode === "edit" && (
+            <form onSubmit={handleSubmitEdit} className="space-y-6">
+              {/* sponsor selection */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Select Sponsor *
+                </label>
+                <select
+                  value={editSponsorId}
+                  onChange={(e) => handleEditSponsorSelect(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  required
+                >
+                  <option value="">Select a sponsor...</option>
+                  {existingSponsors.map((sponsor) => (
+                    <option key={sponsor._id} value={sponsor._id}>
+                      {sponsor.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {loadingDetails && (
+                <div className="text-center py-4">
+                  <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
+                  <p className="text-sm text-gray-500 mt-2">Loading sponsor details...</p>
+                </div>
+              )}
+
+              {editSponsorId && !loadingDetails && (
+                <>
+                  {/* name */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Company Name
+                    </label>
+                    <input
+                      type="text"
+                      value={editName}
+                      onChange={(e) => setEditName(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="Acme Defense Corp"
+                    />
+                  </div>
+
+                  {/* website */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Website
+                    </label>
+                    <div className="relative">
+                      <LinkIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                      <input
+                        type="url"
+                        value={editWebsite}
+                        onChange={(e) => setEditWebsite(e.target.value)}
+                        className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="https://example.com"
+                      />
+                    </div>
+                  </div>
+
+                  {/* description */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Description (HTML supported)
+                    </label>
+                    <textarea
+                      value={editDescription}
+                      onChange={(e) => setEditDescription(e.target.value)}
+                      rows={6}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-sm"
+                      placeholder="<b>Bold text</b>, <a href='...'>links</a>, etc."
+                    />
+                    <p className="text-xs text-gray-400 mt-1">
+                      You can use HTML tags like &lt;b&gt;, &lt;a href=&quot;...&quot;&gt;, &lt;br/&gt;
+                    </p>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  >
+                    {submitting ? "Saving..." : "Save Changes"}
+                  </button>
+                </>
+              )}
+            </form>
+          )}
         </div>
 
         {/* quick reference */}
@@ -733,6 +906,7 @@ export default function SponsorAdminPage() {
             <li>Select multiple tiers to add a sponsor to both "Small Business" and "Exhibitors" at once</li>
             <li>Use "Existing Sponsor" mode to add a sponsor that's already in the system to a new event</li>
             <li>Use "Replace Logo" mode to update a sponsor's logo without changing other details</li>
+            <li>Use "Edit Sponsor" mode to update name, website, or HTML description</li>
             <li>Changes appear on the website within a few minutes (CDN cache)</li>
           </ul>
         </div>

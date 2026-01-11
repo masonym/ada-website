@@ -1,3 +1,8 @@
+/**
+ * Legacy matchmaking sponsors data. New data should be added via Sanity CMS.
+ * This file is used as a fallback when Sanity has no data for an event.
+ */
+
 import { SPONSORS, Sponsor } from './sponsors';
 
 /**

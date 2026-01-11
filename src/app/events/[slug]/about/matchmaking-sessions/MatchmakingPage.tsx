@@ -1,14 +1,89 @@
 "use client";
 
 import React from 'react';
-import { Users, Clock, CheckCircle, UserPlus, Building2, Briefcase, GraduationCap } from 'lucide-react';
+import { Users, Clock, CheckCircle, UserPlus, Building2, Briefcase, GraduationCap, ExternalLink } from 'lucide-react';
 import { RiGovernmentLine } from "react-icons/ri";
 import Link from 'next/link';
+import Image from 'next/image';
 import { EVENTS } from '@/constants/events';
 import { notFound, useParams } from 'next/navigation';
-import MatchmakingSponsors from '@/components/MatchmakingSponsors';
+import { MatchmakingSponsorWithNote, SanitySponsor, urlFor } from '@/lib/sanity';
 
-const MatchmakingPage = () => {
+type MatchmakingData = {
+  sponsors: MatchmakingSponsorWithNote[];
+  title?: string;
+  description?: string;
+} | null;
+
+interface MatchmakingPageProps {
+  matchmakingData: MatchmakingData;
+}
+
+// helper to get logo URL - handles both Sanity images and legacy file paths
+const getLogoUrl = (logo: SanitySponsor['logo']): string => {
+  // legacy data stores the path directly in asset._ref
+  if (logo?.asset?._ref && logo.asset._ref.startsWith('/')) {
+    return logo.asset._ref
+  }
+  // sanity image - use urlFor
+  try {
+    return urlFor(logo).url()
+  } catch {
+    return '/placeholder-logo.png'
+  }
+}
+
+const MatchmakingSponsorCard: React.FC<{ sponsor: SanitySponsor; note?: string }> = ({ sponsor, note }) => {
+  return (
+    <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col sm:flex-row items-center sm:items-start gap-6">
+      <div className="flex-shrink-0 w-40 h-40 relative flex items-center justify-center">
+        <Image
+          src={getLogoUrl(sponsor.logo)}
+          alt={`${sponsor.name} logo`}
+          width={160}
+          height={160}
+          className="object-contain max-h-40"
+          style={{ maxWidth: '100%', height: 'auto' }}
+          priority={sponsor.priority}
+          unoptimized={true}
+        />
+      </div>
+      <div className="flex-grow">
+        <div className="flex items-start justify-between mb-2">
+          <h3 className="text-xl font-semibold text-navy-800">{sponsor.name}</h3>
+          {sponsor.website && (
+            <Link 
+              href={sponsor.website} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:text-blue-700 flex items-center text-sm"
+            >
+              <span className="mr-1">Visit Website</span>
+              <ExternalLink size={14} />
+            </Link>
+          )}
+        </div>
+        {sponsor.description ? (
+          <div 
+            className="text-slate-600"
+            dangerouslySetInnerHTML={{ __html: sponsor.description }}
+          />
+        ) : (
+          <p className="text-slate-600 italic">
+            This company will be participating in matchmaking sessions. Visit their website to learn more.
+          </p>
+        )}
+        {note && (
+          <p className="text-slate-600 italic mt-4">
+            {note}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const MatchmakingPage = ({ matchmakingData }: MatchmakingPageProps) => {
   const { slug } = useParams();
   const event = EVENTS.find(e => e.slug === slug);
 
@@ -189,7 +264,23 @@ const MatchmakingPage = () => {
       </div>
 
       {/* Matchmaking Sponsors Section */}
-      <MatchmakingSponsors eventSlug={slug as string} />
+      {matchmakingData && matchmakingData.sponsors.length > 0 && (
+        <div className="mt-16">
+          <h2 className="text-4xl font-bold text-slate-900 mb-6 text-center">
+            {matchmakingData.title || "Companies Participating in Matchmaking Sessions"}
+          </h2>
+          {matchmakingData.description && (
+            <p className="text-lg text-slate-600 max-w-4xl mx-auto text-center mb-4">
+              <span dangerouslySetInnerHTML={{ __html: matchmakingData.description }} />
+            </p>
+          )}
+          <div className="space-y-6">
+            {matchmakingData.sponsors.map((item) => (
+              <MatchmakingSponsorCard key={item.sponsor._id} sponsor={item.sponsor} note={item.note} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

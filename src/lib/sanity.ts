@@ -124,3 +124,142 @@ export async function getEventTierSponsors(eventId: number, tierId: string): Pro
     { next: { revalidate: REVALIDATE_SECONDS } }
   )
 }
+
+// matchmaking sponsors types
+export type SanityMatchmakingSponsorEntry = {
+  sponsor: {
+    _type: 'reference'
+    _ref: string
+  }
+  note?: string
+}
+
+export type SanityEventMatchmakingSponsors = {
+  _id: string
+  eventSlug: string
+  title?: string
+  description?: string
+  sponsors: SanityMatchmakingSponsorEntry[]
+}
+
+export type MatchmakingSponsorWithNote = {
+  sponsor: SanitySponsor
+  note?: string
+}
+
+// legacy fallback imports
+import { 
+  EVENT_MATCHMAKING_SPONSORS, 
+  getEventMatchmakingSponsors as getLegacyMatchmakingSponsors,
+  getEventMatchmakingMetadata as getLegacyMatchmakingMetadata
+} from '@/constants/matchmaking-sponsors'
+
+export async function getEventMatchmakingSponsors(eventSlug: string): Promise<{
+  sponsors: MatchmakingSponsorWithNote[]
+  title?: string
+  description?: string
+} | null> {
+  try {
+    const rawData = await client.fetch(
+      `*[_type == "eventMatchmakingSponsors" && eventSlug == $eventSlug][0]`,
+      { eventSlug }
+    )
+
+    if (!rawData || !rawData.sponsors || rawData.sponsors.length === 0) {
+      // fallback to legacy data if sanity has no data
+      return getLegacyMatchmakingData(eventSlug)
+    }
+
+    // extract sponsor refs - handle both possible structures
+    const sponsorIds = rawData.sponsors.map((s: any) => {
+      // could be s.sponsor._ref or s._ref depending on schema
+      if (s.sponsor && s.sponsor._ref) return s.sponsor._ref
+      if (s._ref) return s._ref
+      return null
+    }).filter(Boolean)
+    const sponsorsData = await client.fetch<SanitySponsor[]>(
+      `*[_type == "sponsor" && _id in $sponsorIds] {
+        _id,
+        name,
+        slug,
+        logo,
+        website,
+        description,
+        width,
+        height,
+        priority,
+        size
+      }`,
+      { sponsorIds }
+    )
+
+    // create a map for quick lookup
+    const sponsorMap = new Map(sponsorsData.map(s => [s._id, s]))
+
+    // preserve order from rawData.sponsors and include notes
+    const sponsorsWithNotes: MatchmakingSponsorWithNote[] = rawData.sponsors
+      .map((entry: any) => {
+        // handle both possible structures
+        const sponsorRef = entry.sponsor?._ref || entry._ref
+        const sponsor = sponsorMap.get(sponsorRef)
+        if (!sponsor) return null
+        return {
+          sponsor,
+          note: entry.note
+        }
+      })
+      .filter((s: any): s is NonNullable<typeof s> => s !== null)
+
+    return {
+      sponsors: sponsorsWithNotes,
+      title: rawData.title,
+      description: rawData.description
+    }
+  } catch (error) {
+    console.error('Error fetching matchmaking sponsors:', error)
+    // fallback to legacy data on error
+    return getLegacyMatchmakingData(eventSlug)
+  }
+}
+
+// helper to convert legacy data format to sanity format
+function getLegacyMatchmakingData(eventSlug: string): {
+  sponsors: MatchmakingSponsorWithNote[]
+  title?: string
+  description?: string
+} | null {
+  const legacySponsors = getLegacyMatchmakingSponsors(eventSlug)
+  const legacyMetadata = getLegacyMatchmakingMetadata(eventSlug)
+  
+  if (legacySponsors.length === 0) {
+    return null
+  }
+
+  // convert legacy Sponsor type to SanitySponsor-like format
+  const sponsors: MatchmakingSponsorWithNote[] = legacySponsors.map(item => ({
+    sponsor: {
+      _id: item.sponsor.id,
+      name: item.sponsor.name,
+      slug: { current: item.sponsor.id },
+      logo: {
+        asset: {
+          _ref: item.sponsor.logo, // this is a path, urlFor won't work but we handle it in the component
+          _type: 'reference'
+        }
+      },
+      website: item.sponsor.website,
+      description: item.sponsor.description,
+      width: item.sponsor.width,
+      height: item.sponsor.height,
+      priority: item.sponsor.priority,
+      size: item.sponsor.size
+    } as SanitySponsor,
+    note: item.note
+  }))
+
+  return {
+    sponsors,
+    title: legacyMetadata.title,
+    description: legacyMetadata.description
+  }
+}

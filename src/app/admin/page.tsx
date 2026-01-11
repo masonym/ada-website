@@ -251,6 +251,14 @@ export default function AdminPage() {
         </Link>
 
         <Link
+          href="/admin/matchmaking-sponsors"
+          className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
+        >
+          <h2 className="text-xl font-semibold mb-2">Matchmaking Sponsors</h2>
+          <p className="text-gray-600">Manage sponsors participating in matchmaking sessions</p>
+        </Link>
+
+        <Link
          href="/admin/event-launch-form"
          className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
         >
