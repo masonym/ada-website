@@ -104,6 +104,7 @@ export default function SpeakerAdminPage() {
   const [addIsKeynote, setAddIsKeynote] = useState(false);
   const [addKeynoteHeader, setAddKeynoteHeader] = useState("");
   const [addLabel, setAddLabel] = useState("");
+  const [addIsHidden, setAddIsHidden] = useState(false);
 
   useEffect(() => {
     fetchSpeakers();
@@ -181,6 +182,7 @@ export default function SpeakerAdminPage() {
           isKeynote: addIsKeynote,
           keynoteHeaderText: addKeynoteHeader,
           label: addLabel,
+          isVisible: !addIsHidden,
         }),
       });
       if (res.ok) {
@@ -190,6 +192,7 @@ export default function SpeakerAdminPage() {
         setAddIsKeynote(false);
         setAddKeynoteHeader("");
         setAddLabel("");
+        setAddIsHidden(false);
         setMessage({ type: "success", text: "Speaker added to event" });
       }
     } catch (error) {
@@ -797,6 +800,17 @@ export default function SpeakerAdminPage() {
                         placeholder="e.g., Pre-Recorded Address"
                         className="w-full px-3 py-2 border border-gray-300 rounded-md"
                       />
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="checkbox"
+                        id="addIsHidden"
+                        checked={addIsHidden}
+                        onChange={(e) => setAddIsHidden(e.target.checked)}
+                        className="rounded"
+                      />
+                      <label htmlFor="addIsHidden" className="text-sm">Hidden (only visible on staging)</label>
                     </div>
 
                     <div className="flex gap-3 pt-2">

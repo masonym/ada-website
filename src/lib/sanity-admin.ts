@@ -580,6 +580,7 @@ export async function addSpeakerToEvent(
     keynoteHeaderText?: string
     label?: string
     sortOrder?: number
+    isVisible?: boolean
   }
 ) {
   const key = `speaker-${Date.now()}`
@@ -589,7 +590,7 @@ export async function addSpeakerToEvent(
       _type: 'eventSpeakerEntry',
       _key: key,
       speaker: { _type: 'reference', _ref: speakerId },
-      isVisible: true,
+      isVisible: options?.isVisible !== undefined ? options.isVisible : true,
       isKeynote: options?.isKeynote || false,
       keynoteHeaderText: options?.keynoteHeaderText || '',
       label: options?.label || '',

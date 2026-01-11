@@ -51,11 +51,11 @@ export async function POST(request: NextRequest) {
     }
 
     if (action === 'add-speaker') {
-      const { docId, speakerId, isKeynote, keynoteHeaderText, label, sortOrder } = body
+      const { docId, speakerId, isKeynote, keynoteHeaderText, label, sortOrder, isVisible } = body
       if (!docId || !speakerId) {
         return NextResponse.json({ error: 'docId and speakerId required' }, { status: 400 })
       }
-      await addSpeakerToEvent(docId, speakerId, { isKeynote, keynoteHeaderText, label, sortOrder })
+      await addSpeakerToEvent(docId, speakerId, { isKeynote, keynoteHeaderText, label, sortOrder, isVisible })
       return NextResponse.json({ success: true, message: 'Speaker added to event' })
     }
 
