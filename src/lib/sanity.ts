@@ -292,6 +292,12 @@ export type EventSpeakerPublic = {
   sortOrder: number
 }
 
+// check if we're on staging site (show hidden speakers)
+function isStaging(): boolean {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || ''
+  return siteUrl.includes('staging.')
+}
+
 // get speakers for an event (public-facing)
 export async function getEventSpeakersPublic(eventId: number): Promise<{
   speakers: EventSpeakerPublic[]
@@ -322,15 +328,19 @@ export async function getEventSpeakersPublic(eventId: number): Promise<{
       return null
     }
 
-    // filter visible speakers
-    const visibleSpeakers = result.speakers.filter((s: EventSpeakerPublic) => s.isVisible)
+    // on staging, show all speakers regardless of visibility
+    // on production, only show visible speakers
+    const showAll = isStaging()
+    const filteredSpeakers = showAll 
+      ? result.speakers 
+      : result.speakers.filter((s: EventSpeakerPublic) => s.isVisible)
 
     // separate keynotes and regular speakers
-    const keynoteSpeakers = visibleSpeakers
+    const keynoteSpeakers = filteredSpeakers
       .filter((s: EventSpeakerPublic) => s.isKeynote)
       .sort((a: EventSpeakerPublic, b: EventSpeakerPublic) => a.sortOrder - b.sortOrder)
 
-    const speakers = visibleSpeakers
+    const speakers = filteredSpeakers
       .filter((s: EventSpeakerPublic) => !s.isKeynote)
       .sort((a: EventSpeakerPublic, b: EventSpeakerPublic) => a.speakerName.localeCompare(b.speakerName))
 
