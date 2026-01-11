@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { EVENTS } from '@/constants/events';
 import { notFound, useParams } from 'next/navigation';
 import { MatchmakingSponsorWithNote, SanitySponsor, urlFor } from '@/lib/sanity';
+import { getCdnPath } from '@/utils/image';
 
 type MatchmakingData = {
   sponsors: MatchmakingSponsorWithNote[];
@@ -23,7 +24,7 @@ interface MatchmakingPageProps {
 const getLogoUrl = (logo: SanitySponsor['logo']): string => {
   // legacy data stores the path directly in asset._ref
   if (logo?.asset?._ref && logo.asset._ref.startsWith('/')) {
-    return logo.asset._ref
+    return getCdnPath(logo.asset._ref)
   }
   // sanity image - use urlFor
   try {
