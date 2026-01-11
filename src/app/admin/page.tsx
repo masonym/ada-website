@@ -4,10 +4,75 @@ import { useState, useRef, FormEvent, ChangeEvent, useEffect } from "react";
 import { EVENTS } from "@/constants/events";
 import { Event } from "@/types/events";
 import Link from "next/link";
+import { 
+  Users, 
+  Mic2, 
+  Image, 
+  Tag, 
+  Handshake, 
+  FileUp, 
+  Rocket,
+  Building2,
+  ChevronRight,
+  Upload
+} from "lucide-react";
 
-// Maximum file size (10MB)
-const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB in bytes
+const MAX_FILE_SIZE = 25 * 1024 * 1024;
 const WEBHOOK_URL = process.env.DISCORD_ADMIN_WEBHOOK_URL;
+
+type AdminCard = {
+  title: string;
+  description: string;
+  href: string;
+  icon: React.ReactNode;
+  category: "content" | "events" | "tools";
+};
+
+const adminCards: AdminCard[] = [
+  {
+    title: "Speaker Management",
+    description: "Add, edit, and manage event speakers and keynotes",
+    href: "/admin/speakers",
+    icon: <Mic2 className="w-6 h-6" />,
+    category: "content",
+  },
+  {
+    title: "Sponsor Management",
+    description: "Add sponsors, manage tiers, and replace logos",
+    href: "/admin/sponsors",
+    icon: <Building2 className="w-6 h-6" />,
+    category: "content",
+  },
+  {
+    title: "Matchmaking Sponsors",
+    description: "Manage sponsors for matchmaking sessions",
+    href: "/admin/matchmaking-sponsors",
+    icon: <Handshake className="w-6 h-6" />,
+    category: "content",
+  },
+  {
+    title: "Event Recaps",
+    description: "Manage photo galleries and event recaps",
+    href: "/admin/event-recaps",
+    icon: <Image className="w-6 h-6" />,
+    category: "events",
+  },
+  {
+    title: "Promo Codes",
+    description: "View and manage promo codes by event",
+    href: "/admin/promo-codes",
+    icon: <Tag className="w-6 h-6" />,
+    category: "events",
+  },
+  {
+    title: "Event Launch Form",
+    description: "Generate event templates and configurations",
+    href: "/admin/event-launch-form",
+    icon: <Rocket className="w-6 h-6" />,
+    category: "tools",
+  },
+];
+
 export default function AdminPage() {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -221,67 +286,112 @@ export default function AdminPage() {
     }
   };
 
+  const contentCards = adminCards.filter(c => c.category === "content");
+  const eventCards = adminCards.filter(c => c.category === "events");
+  const toolCards = adminCards.filter(c => c.category === "tools");
+
   return (
-    <div className="container mx-auto px-4 py-8 max-w-3xl">
-      <h1 className="text-2xl font-bold mb-6">Admin Dashboard</h1>
-
-      <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Link
-          href="/admin/event-recaps"
-          className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
-        >
-          <h2 className="text-xl font-semibold mb-2">Event Recaps Management</h2>
-          <p className="text-gray-600">Manage photo galleries and event recaps with captions and sections</p>
-        </Link>
-
-        <Link
-          href="/admin/promo-codes"
-          className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
-        >
-          <h2 className="text-xl font-semibold mb-2">Promo Codes</h2>
-          <p className="text-gray-600">View all promo codes categorized by event</p>
-        </Link>
-
-        <Link
-          href="/admin/sponsors"
-          className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
-        >
-          <h2 className="text-xl font-semibold mb-2">Sponsor Management</h2>
-          <p className="text-gray-600">Add sponsors, manage tiers, and replace logos</p>
-        </Link>
-
-        <Link
-          href="/admin/matchmaking-sponsors"
-          className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
-        >
-          <h2 className="text-xl font-semibold mb-2">Matchmaking Sponsors</h2>
-          <p className="text-gray-600">Manage sponsors participating in matchmaking sessions</p>
-        </Link>
-
-        <Link
-          href="/admin/speakers"
-          className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
-        >
-          <h2 className="text-xl font-semibold mb-2">Speaker Management</h2>
-          <p className="text-gray-600">Add, edit, and manage event speakers</p>
-        </Link>
-
-        <Link
-         href="/admin/event-launch-form"
-         className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
-        >
-          <h2 className="text-xl font-semibold mb-2">Event Launch Form</h2>
-          <p className="text-gray-600">Input Event Details for Event Template</p>
-        </Link>
-
-        <div className="p-4 bg-white shadow-md rounded-lg">
-          <h2 className="text-xl font-semibold mb-2">Upload Presentations</h2>
-          <p className="text-gray-600">Upload PDF presentations for events</p>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-navy-800 text-white">
+        <div className="max-w-6xl mx-auto px-6 py-8">
+          <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+          <p className="text-gray-300 mt-2">Manage content, events, and site configuration</p>
         </div>
       </div>
 
-      <div className="bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-xl font-semibold mb-4">Upload Presentations</h2>
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        {/* Content Management Section */}
+        <section className="mb-10">
+          <h2 className="text-lg font-semibold text-gray-500 uppercase tracking-wide mb-4">Content Management</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {contentCards.map((card) => (
+              <Link
+                key={card.href}
+                href={card.href}
+                className="group bg-white rounded-xl border border-gray-200 p-5 hover:border-blue-500 hover:shadow-lg transition-all duration-200"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-blue-50 text-blue-600 rounded-lg group-hover:bg-blue-100 transition-colors">
+                    {card.icon}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">{card.title}</h3>
+                      <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all" />
+                    </div>
+                    <p className="text-sm text-gray-500 mt-1">{card.description}</p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Event Tools Section */}
+        <section className="mb-10">
+          <h2 className="text-lg font-semibold text-gray-500 uppercase tracking-wide mb-4">Event Tools</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {eventCards.map((card) => (
+              <Link
+                key={card.href}
+                href={card.href}
+                className="group bg-white rounded-xl border border-gray-200 p-5 hover:border-green-500 hover:shadow-lg transition-all duration-200"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-green-100 text-green-600 rounded-lg group-hover:bg-green-100 transition-colors">
+                    {card.icon}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-semibold text-gray-900 group-hover:text-green-600 transition-colors">{card.title}</h3>
+                      <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-green-500 group-hover:translate-x-1 transition-all" />
+                    </div>
+                    <p className="text-sm text-gray-500 mt-1">{card.description}</p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+            {toolCards.map((card) => (
+              <Link
+                key={card.href}
+                href={card.href}
+                className="group bg-white rounded-xl border border-gray-200 p-5 hover:border-purple-500 hover:shadow-lg transition-all duration-200"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-purple-50 text-purple-600 rounded-lg group-hover:bg-purple-100 transition-colors">
+                    {card.icon}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-semibold text-gray-900 group-hover:text-purple-600 transition-colors">{card.title}</h3>
+                      <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-purple-500 group-hover:translate-x-1 transition-all" />
+                    </div>
+                    <p className="text-sm text-gray-500 mt-1">{card.description}</p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Upload Section */}
+        <section>
+          <h2 className="text-lg font-semibold text-gray-500 uppercase tracking-wide mb-4">Quick Actions</h2>
+          <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+            <div className="p-6 border-b border-gray-100">
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-orange-100 text-orange-600 rounded-lg">
+                  <Upload className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">Upload Presentations</h3>
+                  <p className="text-sm text-gray-500">Upload PDF presentations for event attendees</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6">
 
         {s3ConfigStatus === "error" && (
           <div className="mb-6 p-4 bg-red-50 text-red-700 rounded-md">
@@ -378,11 +488,14 @@ export default function AdminPage() {
           </div>
 
           {selectedEvent && (
-            <div className="mt-6 text-sm text-gray-600">
-              <p>File will be uploaded to: <code>/events/{selectedEvent.eventShorthand}/presentations/</code></p>
+            <div className="mt-6 text-sm text-gray-500 text-center">
+              <p>File will be uploaded to: <code className="bg-gray-100 px-2 py-1 rounded">/events/{selectedEvent.eventShorthand}/presentations/</code></p>
             </div>
           )}
-        </form>
+              </form>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
