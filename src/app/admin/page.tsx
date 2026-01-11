@@ -259,6 +259,14 @@ export default function AdminPage() {
         </Link>
 
         <Link
+          href="/admin/speakers"
+          className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
+        >
+          <h2 className="text-xl font-semibold mb-2">Speaker Management</h2>
+          <p className="text-gray-600">Add, edit, and manage event speakers</p>
+        </Link>
+
+        <Link
          href="/admin/event-launch-form"
          className="block p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow"
         >

@@ -263,3 +263,100 @@ function getLegacyMatchmakingData(eventSlug: string): {
     description: legacyMetadata.description
   }
 }
+
+// speaker types and functions
+
+export type SanitySpeakerPublic = {
+  _id: string
+  name: string
+  slug: { current: string }
+  image?: { asset: { _ref: string } }
+  position?: string
+  company?: string
+  bio?: string
+}
+
+export type EventSpeakerPublic = {
+  _key: string
+  speakerId: string
+  speakerName: string
+  speakerSlug: string
+  speakerCompany?: string
+  speakerPosition?: string
+  speakerImage?: { asset: { _ref: string } }
+  speakerBio?: string
+  isVisible: boolean
+  isKeynote: boolean
+  keynoteHeaderText?: string
+  label?: string
+  sortOrder: number
+}
+
+// get speakers for an event (public-facing)
+export async function getEventSpeakersPublic(eventId: number): Promise<{
+  speakers: EventSpeakerPublic[]
+  keynoteSpeakers: EventSpeakerPublic[]
+} | null> {
+  try {
+    const result = await client.fetch(`
+      *[_type == "eventSpeakers" && eventId == $eventId][0] {
+        speakers[] {
+          _key,
+          "speakerId": speaker->_id,
+          "speakerName": speaker->name,
+          "speakerSlug": speaker->slug.current,
+          "speakerCompany": speaker->company,
+          "speakerPosition": speaker->position,
+          "speakerImage": speaker->image,
+          "speakerBio": speaker->bio,
+          isVisible,
+          isKeynote,
+          keynoteHeaderText,
+          label,
+          sortOrder
+        }
+      }
+    `, { eventId })
+
+    if (!result || !result.speakers) {
+      return null
+    }
+
+    // filter visible speakers
+    const visibleSpeakers = result.speakers.filter((s: EventSpeakerPublic) => s.isVisible)
+
+    // separate keynotes and regular speakers
+    const keynoteSpeakers = visibleSpeakers
+      .filter((s: EventSpeakerPublic) => s.isKeynote)
+      .sort((a: EventSpeakerPublic, b: EventSpeakerPublic) => a.sortOrder - b.sortOrder)
+
+    const speakers = visibleSpeakers
+      .filter((s: EventSpeakerPublic) => !s.isKeynote)
+      .sort((a: EventSpeakerPublic, b: EventSpeakerPublic) => a.speakerName.localeCompare(b.speakerName))
+
+    return { speakers, keynoteSpeakers }
+  } catch (error) {
+    console.error('Error fetching event speakers:', error)
+    return null
+  }
+}
+
+// get a single speaker by slug (for speaker detail pages if needed)
+export async function getSpeakerBySlug(slug: string): Promise<SanitySpeakerPublic | null> {
+  try {
+    return client.fetch(`
+      *[_type == "speaker" && slug.current == $slug][0] {
+        _id,
+        name,
+        slug,
+        image,
+        position,
+        company,
+        bio
+      }
+    `, { slug })
+  } catch (error) {
+    console.error('Error fetching speaker:', error)
+    return null
+  }
+}
