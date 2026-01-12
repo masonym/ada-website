@@ -41,7 +41,7 @@ Mike has a daughter in college and a baby boy. He is married to Dr. Julia Neshei
 		"name": "Mark Cancian",
 		"position": "Senior Adviser, International Security Program",
 		"company": "Center for Strategic & International Studies",
-		"bio": `Mark Cancian (Colonel, USMCR, ret.) is a Senior Adviser with the CSIS International Security Program. He joined CSIS in April 2015 from the Office of Management and Budget, where he spent more than seven years as Chief of the Force Structure and Investment Division, working on issues such as Department of Defense budget strategy, war funding, and procurement programs, as well as nuclear weapons development and nonproliferation activities in the Department of Energy. Previously, he worked on force structure and acquisition issues in the Office of the Secretary of Defense and ran research and executive programs at Harvard University’s Kennedy School of Government.
+		"bio": `Mark Cancian (Colonel, USMCR, ret.) is a Senior Adviser with the CSIS International Security Program. He joined CSIS in April 2015 from the Office of Management and Budget, where he spent more than seven years as Chief of the Force Structure and Investment Division, working on issues such as Department of War budget strategy, war funding, and procurement programs, as well as nuclear weapons development and nonproliferation activities in the Department of Energy. Previously, he worked on force structure and acquisition issues in the Office of the Secretary of Defense and ran research and executive programs at Harvard University’s Kennedy School of Government.
 <br/><br/>
 In the military, Colonel Cancian spent over three decades in the U.S. Marine Corps, active and reserve, serving as an infantry, artillery, and civil affairs officer and on overseas tours in Vietnam, Desert Storm, and Iraq (twice). Since 2000, he has been an adjunct faculty member at the Johns Hopkins School of Advanced International Studies, where he teaches a course on the connection between policy and analysis. A prolific author, he has published over 40 articles on military operations, acquisition, budgets, and strategy and received numerous writing awards. He graduated with high honors (magna cum laude) from Harvard College and with highest honors (Baker scholar) from Harvard Business School.`
 	},
@@ -64,7 +64,7 @@ In the military, Colonel Cancian spent over three decades in the U.S. Marine Cor
 		"name": "Brian Liesveld",
 		"position": "CEO",
 		"company": "DEFENSEWERX",
-		"bio": `Brian Liesveld currently serves as the Chief Executive Officer (CEO) for DEFENSEWERX, Inc.  In his capacity as CEO, Brian oversees operations and management of the DWX innovation hubs as well as executing Board of Director’s strategic vision.<br><br>Prior to his role as Chief Executive Officer, Brian served as the Vice President for the Cyber Innovation Center in Bossier City, LA.  In this role, Brian oversaw the operations supporting the Air Force Global Strike Command as well as Cyber Curriculum delivered to over 3 million students across the United States.<br><br>Brian’s previous roles include the Associate Director of the Defense and Security Research Institute at the University of Arizona as well as multiple roles within the Department of Defense.  Most notably, Brian spearheaded the creation of the DoDs first University Affiliated Research Center (UARC) to be established in more than 20 years. `
+		"bio": `Brian Liesveld currently serves as the Chief Executive Officer (CEO) for DEFENSEWERX, Inc.  In his capacity as CEO, Brian oversees operations and management of the DWX innovation hubs as well as executing Board of Director’s strategic vision.<br><br>Prior to his role as Chief Executive Officer, Brian served as the Vice President for the Cyber Innovation Center in Bossier City, LA.  In this role, Brian oversaw the operations supporting the Air Force Global Strike Command as well as Cyber Curriculum delivered to over 3 million students across the United States.<br><br>Brian’s previous roles include the Associate Director of the Defense and Security Research Institute at the University of Arizona as well as multiple roles within the Department of War.  Most notably, Brian spearheaded the creation of the DoW’s first University Affiliated Research Center (UARC) to be established in more than 20 years. `,
 	},
 	"charles-sills": {
 		"image": "charles-sills.webp",
@@ -92,10 +92,10 @@ From June 2009 until January 2016, Ms. Washington assumed the duties as the Team
 		"image": "kimberly-buhler.webp",
 		"name": "Kimberly Buehler",
 		"position": "Director, Office of Small Business Programs",
-		"company": "United States Army, Department of Defense",
+		"company": "United States Army, Department of War",
 		"bio": `Ms. Kimberly D. Buehler was appointed to the Senior Executive Service in August 2019. She currently serves as the Director for the Army Office of Small Business Programs, where she provides executive leadership for all aspects of the Army's small business mission, including advocacy and outreach for all small business programs, development and dissemination of policies and procedures for execution of small business functions, and oversight for the execution of the small business program at the Army’s contracting activities--equating to more than $20 billion dollars of annual spending.
 <br/><br/>
-Ms. Buehler represents the Secretary of the Army at congressional committee and subcommittee hearings on small business matters, and leads strategic inter-agency communication with the Small Business Administration, the Office of Federal Procurement Policy, the Minority Business Development Agency (Department of Commerce), and other agencies and presidential commissions.`
+Ms. Buehler represents the Secretary of the Army at congressional committee and subcommittee hearings on small business matters, and leads strategic inter-agency communication with the Small Business Administration, the Office of Federal Procurement Policy, the Minority Business Development Agency (Department of Commerce), and other agencies and presidential commissions. He is a member of the U.S. Chamber of Commerce's Small Business Council, and the Executive Committee of the Veterans Entrepreneurship Task Force (VET-Force).`,
 	},
 	"david-canada": {
 		"image": "david-canada.webp",
@@ -103,7 +103,7 @@ Ms. Buehler represents the Secretary of the Army at congressional committee and 
 		"position": "Director, Strategic Sourcing & Partnerships",
 		"company": "Boeing Defense Space & Security, The Boeing Company",
 		"bio": `
-David Canada is Director of Strategic Sourcing & Partnerships for Boeing Defense Space & Security (BDS). Named to this role in 2023, he has primary responsibility for building stronger relationships with the small business offices at the DoD and NASA as well as with the respective representatives of the branches of services. The goal is to provide opportunities for small business, service-disabled veteran-owned small business, HUBZone small business, small disadvantaged business, and women-owned small business as defined by the Small Business Administration and/or other entities designated or defined by applicable law. David is also responsible for supply chain strategy, which includes country segmentation for campaigns, offset obligations, supplier risk assessment reporting on geopolitical, labor, natural disaster & raw materials and market enablement.
+David Canada is Director of Strategic Sourcing & Partnerships for Boeing Defense Space & Security (BDS). Named to this role in 2023, he has primary responsibility for building stronger relationships with the small business offices at the DoW and NASA as well as with the respective representatives of the branches of services. The goal is to provide opportunities for small business, service-disabled veteran-owned small business, HUBZone small business, small disadvantaged business, and women-owned small business as defined by the Small Business Administration and/or other entities designated or defined by applicable law. David is also responsible for supply chain strategy, which includes country segmentation for campaigns, offset obligations, supplier risk assessment reporting on geopolitical, labor, natural disaster & raw materials and market enablement.
 <br/><br/>
 David joined The Boeing Company in 2007 as an Industrial Engineer on the V-22 Osprey line. He implemented new project management tools that resulted in automated workforce planning and improved the schedule planning efficiency. David grew, taking on new challenges and roles across Boeing.
 <br/><br/>
@@ -111,23 +111,20 @@ As IT Procurement Manager, he managed 18 procurement agents, 30 suppliers, and m
 <br/><br/>
 He continued his career as the Senior Manager, Mergers & Acquisitions Integration Strategy, where he led mergers and acquisitions estimated at $2.5 billion, and also managed critical cybersecurity issues and systems tied to subsidiary integration. Canada also has served as the Director of Business Operations for Boeing Global Services (BGS) where is he responsible for business transformation and improve operational efficiency.
 <br/><br/>
-David earned a Bachelor’s Degree in Mechanical Engineering from Howard University, and a Master’s Degree in Business Administration and a Certification in Project Management.
-<br/><br/>
-Giving back is a part of who David is. He serves on the board of the following non-profit organizations: DC CAP, BeOrg, Black Alliance of Colleges & Employers (BACE), Step Afrika and Wearable Tech Ventures. David is also very passionate about STEM education and increasing the number of minorities in technology fields. He serves as an active corporate representative for the Black Engineer of the Year Awards as well as the Execution Sponsor for the National Society of Black Engineers.
-`
+David earned a Bachelor’s Degree in Mechanical Engineering from Howard University, and a Master’s Degree in Business Administration and a Certification in Project Management.`,
 	},
 	"patricia-waddell": {
 		"image": "patricia-waddell.webp",
 		"name": "Patricia Waddell",
 		"position": "Director, Office of IT Services, Information Technology Category (ITC), Federal Acquisition Service (FAS)",
 		"company": "U.S. General Services Administration",
-		"bio": `Ms. Patricia Waddell is the Director, Office of IT Services, Information Technology Category (ITC), Federal Acquisition Service (FAS). The Federal Acquisition Service provides buying platforms and acquisition services to Federal, DoD, State and Local governments for a broad range of items from office supplies to motor vehicles to information technology and telecommunications products and services. 
+		"bio": `Ms. Patricia Waddell is the Director, Office of IT Services, Information Technology Category (ITC), Federal Acquisition Service (FAS). The Federal Acquisition Service provides buying platforms and acquisition services to Federal, DoW, State and Local governments for a broad range of items from office supplies to motor vehicles to information technology and telecommunications products and services. 
 <br/><br/>
 Ms. Waddell is responsible for a portfolio of contracts that offer government agencies a diverse set of IT services valued at nearly $25 billion annually. Some of these offerings include Alliant 2, 8(a) STARS III, VETS 2, Multiple Award Schedule Special Item Numbers (SINs) for IT Professional Services, Training Courses, Electronic Commerce, Health IT Services, and Automated Contact Center Solutions. Her team is also working on the launch of Polaris, GSA’s next-generation small business GWAC and Alliant 3.
 <br/><br/>
 Before leading IT Services Patricia served as the Director for the IT Business and Operations Division, managing business operations, budget, and financial management. She previously led the Office of IT Business Programs for GSA’s largest Multiple Award Schedule, MAS 70. As Deputy Director of that program, she managed a major acquisition and business program with more than 5,000 contracts and $16.5 billion dollars in annual sales. During her tenure, she established the business development and marketing strategies that set a strategic direction for the program that led to an increase in business outcomes. 
 <br/><br/>
-Patricia received her Master of Arts in Public Administration (MPA) from Bowie State University, Bowie MD, and Bachelor of Science (BS) in Adult Education and Nutrition from Cornell University, Ithaca NY. Patricia is a Certified Federal Internal Coach and trained at the Treasury Executive Institute. \n`
+Patricia received her Master of Arts in Public Administration (MPA) from Bowie State University, Bowie MD, and Bachelor of Science (BS) in Adult Education and Nutrition from Cornell University, Ithaca NY. Patricia is a Certified Federal Internal Coach and trained at the Treasury Executive Institute.`,
 	},
 	"dr-iryna-andrukh": {
 		"image": "iryna-andrukh.webp",
@@ -138,14 +135,14 @@ Patricia received her Master of Arts in Public Administration (MPA) from Bowie S
 <br/><br/>
 Throughout her career, Dr. Andrukh has been involved in high-stakes negotiations that have saved countless lives. Notably, she played a key role in the Minsk and Normandy Format talks, offering strategic psychological insights to Ukrainian leaders and negotiating the exchange of prisoners of war during the Donbas conflict. Her work has been recognized internationally, particularly for her efforts in Afghanistan, where she orchestrated the evacuation of Fatema Hosseini, a journalist targeted by the Taliban. This mission, along with her subsequent efforts to evacuate nearly 800 children during the 2022 Russian invasion of Ukraine, has earned her international acclaim and several awards, including the silver medal “For courage while performing special assignments.”            
 <br/><br/>
-Dr. Andrukh’s contributions extend beyond the battlefield. Following her retirement from the military due to medical reasons, she continued her work in international negotiation and conflict resolution as a civilian. She has collaborated with the United Nations and Red Cross in refugee crises and served as a volunteer at the Polish border during the early days of the 2022 war in Ukraine. Her work in these areas, coupled with her academic achievements and media recognition—including a documentary that won a gold award at the New York Film Festival—solidifies her reputation as a leading figure in conflict resolution and humanitarian efforts on the global stage.`
+Dr. Andrukh’s contributions extend beyond the battlefield. Following her retirement from the military due to medical reasons, she continued her work in international negotiation and conflict resolution as a civilian. She has collaborated with the United Nations and Red Cross in refugee crises and served as a volunteer at the Polish border during the early days of the 2022 war in Ukraine. Her work in these areas, coupled with her academic achievements and media recognition—including a documentary that won a gold award at the New York Film Festival—solidifies her reputation as a leading figure in conflict resolution and humanitarian efforts on the global stage.`,
 	},
 	"amir-bagherpour-phd": {
 		"image": "amir-bagherpour.webp",
 		"name": "Amir Bagherpour, PhD",
 		"position": "Managing Director, AI Services and Advanced Analytics",
 		"company": "Accenture Federal Services",
-		"bio": `Amir Bagherpour, Ph.D., is a Managing Director and the Analytics & Visualization Lead for Data & AI at Accenture Federal Services. He spearheads the development of advanced analytics platforms and methodologies to help organizations make more informed decisions. At Accenture, he has held various leadership roles, including head of Data & AI for Strategy & Consulting, Public Safety Lead for Data & AI, and Technical Project Lead for Applied Intelligence programs. Before joining Accenture, Dr. Bagherpour co-founded a startup focused on developing predictive analytics software. His industry experience encompasses both commercial and federal sectors. Dr. Bagherpour previously served as the Chief of the Advanced Analytics Team at the Bureau of Conflict & Stabilization Operations and subsequently as the Director of Data Analytics in the Office of the Secretary of State. Earlier in his career, he worked as an application engineer at NSK Corporation, designing bearings and motion control components for automation processes. Dr. Bagherpour holds a Ph.D. in Political Science with a specialization in Quantitative Methods from Claremont Graduate University, an MBA from the University of California Irvine, and a Bachelor of Science in Management Studies and Systems Engineering from West Point. He has published in prestigious academic journals and publications such as Foreign Affairs and Scientific American. Dr. Bagherpour is an Adjunct Senior Fellow at the Federation of American Scientists (FAS), where he focuses on the study of disinformation, conflict, and emerging technologies. He is also a senior fellow at TransResearch Consortium (TRC), an academic consortium focused on the data driven study of global power transitions. A veteran, he served honorably as an armor officer in the U.S. Army. `
+		"bio": `Amir Bagherpour, Ph.D., is a Managing Director and the Analytics & Visualization Lead for Data & AI at Accenture Federal Services. He spearheads the development of advanced analytics platforms and methodologies to help organizations make more informed decisions. At Accenture, he has held various leadership roles, including head of Data & AI for Strategy & Consulting, Public Safety Lead for Data & AI, and Technical Project Lead for Applied Intelligence programs. Before joining Accenture, Dr. Bagherpour co-founded a startup focused on developing predictive analytics software. His industry experience encompasses both commercial and federal sectors. Dr. Bagherpour previously served as the Chief of the Advanced Analytics Team at the Bureau of Conflict & Stabilization Operations and subsequently as the Director of Data Analytics in the Office of the Secretary of State. Earlier in his career, he worked as an application engineer at NSK Corporation, designing bearings and motion control components for automation processes. Dr. Bagherpour holds a Ph.D. in Political Science with a specialization in Quantitative Methods from Claremont Graduate University, an MBA from the University of California Irvine, and a Bachelor of Science in Management Studies and Systems Engineering from West Point. He has published in prestigious academic journals and publications such as Foreign Affairs and Scientific American. Dr. Bagherpour is an Adjunct Senior Fellow at the Federation of American Scientists (FAS), where he focuses on the study of disinformation, conflict, and emerging technologies. He is also a senior fellow at TransResearch Consortium (TRC), an academic consortium focused on the data driven study of global power transitions. A veteran, he served honorably as an armor officer in the U.S. Army.`,
 	},
 	"honorable-john-p-sean-coffey": {
 		"image": "john-coffey.webp",
@@ -160,21 +157,21 @@ A native of New York City, Mr. Coffey is the oldest of seven children born to Ir
 <br/><br/>
 After leaving active duty, Mr. Coffey continued to serve in the Navy Reserve for eighteenyears. Among other things, he flew anti-submarine missions in the North Atlantic andMediterranean, counter-narcotics missions in the Caribbean, and armed missions insupport of the blockade of the former Yugoslavia. Mr. Coffey was selected to serve ascommanding officer both of a reserve P-3C squadron (VP-92) and the reserve componentof the Enterprise carrier battle group staff (CCDG-12), and served as a staff officer in the Office of the Secretary of Defense (Reserve Affairs). Mr. Coffey retired at the rank ofCaptain in 2004.
 <br/><br/>
-Prior to returning to public service, Mr. Coffey served as the President of the Federal BarFoundation and on the boards of various non-profit organizations, including ThanksUSA,Common Cause New York, Georgetown Law’s Board of Visitors, and the Holocaust andHuman Rights Education Center. Mr. Coffey has been married for over thirty years toAnne Churchill, an actress whose credits include This is Spinal Tap. They have threegrown children. `,
+Prior to returning to public service, Mr. Coffey served as the President of the Federal BarFoundation and on the boards of various non-profit organizations, including ThanksUSA,Common Cause New York, Georgetown Law’s Board of Visitors, and the Holocaust andHuman Rights Education Center. Mr. Coffey has been married for over thirty years toAnne Churchill, an actress whose credits include This is Spinal Tap. They have threegrown children.`,
 	},
 	"bianca-henderson": {
 		"image": "bianca-henderson.webp",
 		"name": "Bianca Henderson",
 		"position": "Small Business Director",
 		"company": "NAVFAC HQ, Department of the Navy",
-		"bio": `Bianca Henderson serves as the Director for the Naval Facilities Engineering System Command (NAVFAC), Office of Small Business Programs (OSBP). Bianca leads 13 Small Business Professional’s across the NAVFAC enterprise with a small business spend that exceeded $5.6 billion dollars in FY-24. Bianca, has 28 years of Gov’t Contracting experience, and obtained DAWIA/FAC-C Level III Acquisition certifications. Bianca has worked for NAVFAC for 7 years and is passionate about advocating for small business utilization. She finds her job as a small business leader very meaningful and impactful. Bianca is also 11-year Marine Corps veteran.`
+		"bio": `Bianca Henderson serves as the Director for the Naval Facilities Engineering System Command (NAVFAC), Office of Small Business Programs (OSBP). Bianca leads 13 Small Business Professional’s across the NAVFAC enterprise with a small business spend that exceeded $5.6 billion dollars in FY-24. Bianca, has 28 years of Gov’t Contracting experience, and obtained DAWIA/FAC-C Level III Acquisition certifications. Bianca has worked for NAVFAC for 7 years and is passionate about advocating for small business utilization. She finds her job as a small business leader very meaningful and impactful. Bianca is also 11-year Marine Corps veteran.`,
 	},
 	"mark-correll": {
 		"image": "mark-correll.webp",
 		"name": "Mark Correll",
 		"position": "Vice President, Federal Strategy Director",
 		"company": "HDR, Inc.",
-		"bio": `Mark Correll is the Federal Strategy Director and Director ofAir Force programs for the full-service Architect-Engineer firmHDR, Inc. In his role at HDR he spearheads development ofstrategic action plans and ensures goals are translated intoactionable capture opportunities for future program directionsas well as engaging the Department of the Air Force in allaspects of client development. Prior to joining HDR in 2022,Mr. Correll was a member of the Senior Executive Service asDeputy Assistant Secretary of the Air Force for Environment,Safety, and Infrastructure, the Air Force Deputy Civil Engineeras well as serving on active duty in the Air Force for over 29years where he commanded squadron, group and wing levelsbefore retiring as a Colonel in 2010. He is a graduate of theU.S. Air Force Academy, earned his Master of Science inEngineering Management from the Air Force Institute ofTechnology, and is a licensed professional engineer in the State of Texas.`
+		"bio": `Mark Correll is the Federal Strategy Director and Director ofAir Force programs for the full-service Architect-Engineer firmHDR, Inc. In his role at HDR he spearheads development ofstrategic action plans and ensures goals are translated intoactionable capture opportunities for future program directionsas well as engaging the Department of the Air Force in allaspects of client development. Prior to joining HDR in 2022,Mr. Correll was a member of the Senior Executive Service asDeputy Assistant Secretary of the Air Force for Environment,Safety, and Infrastructure, the Air Force Deputy Civil Engineeras well as serving on active duty in the Air Force for over 29years where he commanded squadron, group and wing levelsbefore retiring as a Colonel in 2010. He is a graduate of theU.S. Air Force Academy, earned his Master of Science inEngineering Management from the Air Force Institute ofTechnology, and is a licensed professional engineer in the State of Texas.`,
 	},
 	"scott-kiser": {
 		"image": "scott-kiser.webp",
@@ -183,7 +180,7 @@ Prior to returning to public service, Mr. Coffey served as the President of the 
 		"company": "Office of the Secretary of the Air Force",
 		"bio": `Scott A. Kiser, a member of the Senior Executive Service, is the Director of Air Force Small Business Programs, located at the Pentagon, Arlington, Virginia. He is responsible for policy, advocacy, execution and advice pertaining to Small Business Programs and personnel throughout the Department for both Air Forces and Space Forces.
 <br/><br/>
-Mr. Kiser, a Manhattan, Kansas, native, was commissioned in the U.S. Air Force in 1985 and served 27 years on active duty. He garnered extensive experience in international, major weapons system, operational and logistical contracting. Throughout his career, he held other key positions, to include Senior Contracting Official as Chief of Contracting, Headquarters Air Combat Command; Director of Contracting, Oklahoma City Air Logistics Center; the Alternate Principal Assistant Responsible for Contracting and Chief, Contracts Policy, Headquarters, U.S. Army Intelligence and Security Command; the Director of Contracting, Air Force Life Cycle Management Center, Hanscom Air Force Base, Mass; and most recently as Associate Deputy Assistant Secretary for Contracting at Headquarters U.S. Air Force, the Pentagon, Arlington, Virginia. He aided the Deputy Assistant Secretary for Contracting in leading an 8,000 military and civilian contracting organization responsible for annually executing $70 billion for acquisition of major weapon systems, logistics, special access program, operational supplies and services and resourcing worldwide contingency operations. He served as the Air Force Head of the Contracting Authority and provided policy, guidance and oversight of Air Force Acquisition and Contracting Operations. Mr. Kiser retired from active duty as a colonel in August 2012 and entered Senior Executive Service in June 2014. `
+Mr. Kiser, a Manhattan, Kansas, native, was commissioned in the U.S. Air Force in 1985 and served 27 years on active duty. He garnered extensive experience in international, major weapons system, operational and logistical contracting. Throughout his career, he held other key positions, to include Senior Contracting Official as Chief of Contracting, Headquarters Air Combat Command; Director of Contracting, Oklahoma City Air Logistics Center; the Alternate Principal Assistant Responsible for Contracting and Chief, Contracts Policy, Headquarters, U.S. Army Intelligence and Security Command; the Director of Contracting, Air Force Life Cycle Management Center, Hanscom Air Force Base, Mass; and most recently as Associate Deputy Assistant Secretary for Contracting at Headquarters U.S. Air Force, the Pentagon, Arlington, Virginia. He aided the Deputy Assistant Secretary for Contracting in leading an 8,000 military and civilian contracting organization responsible for annually executing $70 billion for acquisition of major weapon systems, logistics, special access program, operational supplies and services and resourcing worldwide contingency operations. He served as the Air Force Head of the Contracting Authority and provided policy, guidance and oversight of Air Force Acquisition and Contracting Operations. Mr. Kiser retired from active duty as a colonel in August 2012 and entered Senior Executive Service in June 2014.`,
 	},
 	"dave-morrow": {
 		"image": "david-morrow.webp",
@@ -194,7 +191,7 @@ Mr. Kiser, a Manhattan, Kansas, native, was commissioned in the U.S. Air Force i
 <br/><br/>
 Previous assignments include Chief, Environmental &Munitions Design Center, program manager for Washington,D.C. area, Baltimore District program manager forEnvironmental Protection Agency, Base Operations Engineerfor a U.S. Army Reserve command, and industrial engineer at the Directorate of Public Works, FortMeade, MD.
 <br/><br/>
-Mr. Morrow holds a Bachelors of Science degree in Systems Engineering, University of Virginia,Charlottesville, Virginia, 1982.`
+Mr. Morrow holds a Bachelors of Science degree in Systems Engineering, University of Virginia,Charlottesville, Virginia, 1982.`,
 	},
 	"chad-brown": {
 		"image": "chad-brown.webp",
@@ -209,7 +206,7 @@ Prior to that, Brown served as the SLS Lead Flight Integration Engineer and SLS 
 <br/><br/>
 Brown began his career at Kennedy in 2004 and contributed to major NASA programs, including Launch Services, Constellation, and GSDO. From 2007 to 2010, he served as the Ares V Project Manager and Ares I Upper Stage Mechanical Project Manager for the Constellation Ground Operations Project in support of the agency’s Constellation Program.
 <br/><br/>
-From 2004 to 2007 he was a Structural Engineer for the Launch Services Program (LSP). In this position, he was responsible for insight and oversight of LSP flight hardware with primary responsibility for large composite flight structures.`
+From 2004 to 2007 he was a Structural Engineer for the Launch Services Program (LSP). In this position, he was responsible for insight and oversight of LSP flight hardware with primary responsibility for large composite flight structures.`,
 	},
 	"samuel-visner": {
 		"image": "samuel-visner.webp",
@@ -224,14 +221,14 @@ Visner joined MITRE from an executive position at ICF International, which advis
 <br/><br/>
 In addition, he served as Chief of Signals Intelligence Programs at the National Security Agency, where he was awarded the agency’s Exceptional Civilian Service Award in 2003. Visner has been a leader in public/private partnerships and collaborations, including the Intelligence and National Security Alliance, the Air Force Communications and Electronics Association, the Professional Services Council, and the National Academy of Science. Throughout his career, he has worked across multiple federal sponsors. He sits on the Army Science Board, and serves as an Adjunct Professor of cybersecurity at Georgetown University.
 <br/><br/>
-Visner holds a bachelor’s degree in international politics from Georgetown University’s School of Foreign Service. He earned a master’s degree in telecommunications from George Washington University.`
+Visner holds a bachelor’s degree in international politics from Georgetown University’s School of Foreign Service. He earned a master’s degree in telecommunications from George Washington University.`,
 	},
 	"walt-yates": {
 		"image": "walt-yates.webp",
 		"name": "Walt Yates, U.S. Marine Col (Ret.)",
 		"position": "Principal",
 		"company": "Walt Yates & Associates, LLC",
-		"bio": `Walt Yates & Associates provides knowledge based services in modeling & simulation for training systems, acquisition trade-space analysis, and risk management. Seventeen years of practice in design and application of simulation-based training, program development, and procurement planning for cost effective technology transition to Department of Defense users. Specific areas of expertise include cost avoidance estimation for new technology and cybersecurity policy compliance for the Risk Management Framework (RMF) and Cybersecurity Maturity Model Certification (CMMC).`
+		"bio": `Walt Yates & Associates provides knowledge based services in modeling & simulation for training systems, acquisition trade-space analysis, and risk management. Seventeen years of practice in design and application of simulation-based training, program development, and procurement planning for cost effective technology transition to Department of War users. Specific areas of expertise include cost avoidance estimation for new technology and cybersecurity policy compliance for the Risk Management Framework (RMF) and Cybersecurity Maturity Model Certification (CMMC).`,
 	},
 	"doug-morato": {
 		"image": "doug-morato.webp",
@@ -244,14 +241,14 @@ My area of knowledge spans through all phases of the SDLC, with active hands-on 
 </br></br>
 I have been able to collaborate with internal and external customers, ranging from Fortune 10 companies, government/Defense contractors, Big 4 accounting firms, multi-nationals as well as small and medium sized business. I was afforded the opportunity to work in the Healthcare, Financial Services, Tech Services and Consulting industries.
 </br></br>
-I have broad experience providing secure architecture recommendations aligned with the Information Security Policies and industry best practices, performing threat modeling, conducting vulnerability assessments, web application, mobile application and network penetration tests, secure/static coding analysis, application security assessments, automating and embedding security in SDLC, fostering Security in DevOps work streams.`
+I have broad experience providing secure architecture recommendations aligned with the Information Security Policies and industry best practices, performing threat modeling, conducting vulnerability assessments, web application, mobile application and network penetration tests, secure/static coding analysis, application security assessments, automating and embedding security in SDLC, fostering Security in DevOps work streams.`,
 	},
 	"jonathan-geotsch": {
 		"image": "jonathan-geotsch.webp",
 		"name": "Jonathan Geotsch",
 		"position": "CEO",
 		"company": "Anamo, Inc.",
-		"bio": `Anamo CDM, a patent-pending commercial-grade CDM Cybersecurity platform, has answered the call of CISA, the DHS, and other requests from the DoD Supply-Chain.<br/<br/>Harnessing the power of advanced ML and Generative AI, Anamo CDM is pushing toward the delivery of “Predictive Cybersecurity Threat Extrapolation.” How so? Anamo collects essential User, Group, Risk, Permission, Vulnerability, Software, History, and Forensic data and dynamically delivers that requested information in near Real-Time. Due to the platform service delivery, Anamo has captured broad interest from US- based enterprise businesses and many members/agencies across the US Aerospace and Defense supply chain. Subsequently, Anamo has enjoyed receiving invitations to visits at both the White House and the Pentagon.`
+		"bio": `Anamo CDM, a patent-pending commercial-grade CDM Cybersecurity platform, has answered the call of CISA, the DHS, and other requests from the DoW Supply-Chain.<br/<br/>Harnessing the power of advanced ML and Generative AI, Anamo CDM is pushing toward the delivery of “Predictive Cybersecurity Threat Extrapolation.” How so? Anamo collects essential User, Group, Risk, Permission, Vulnerability, Software, History, and Forensic data and dynamically delivers that requested information in near Real-Time. Due to the platform service delivery, Anamo has captured broad interest from US- based enterprise businesses and many members/agencies across the US Aerospace and Defense supply chain. Subsequently, Anamo has enjoyed receiving invitations to visits at both the White House and the Pentagon.`,
 	},
 	"thad-altman": {
 		"image": "thad-altman.webp",
@@ -264,7 +261,7 @@ Under Thad’s direction, The Astronauts Memorial Foundation has received Kenned
 <br/><br/>
 Alongside his role at AMF, Thad also serves as a Florida State Representative. He was elected to the Florida House of Representatives in 2016 and represents House District 32, which consists of parts of Brevard County including Indian Harbour Beach, Melbourne, Melbourne Village, Palm Shores, and Rockledge. He previously served in the Florida Senate from 2008-2016 and the Florida House of Representatives from 2003-2008. 
 <br/><br/>
-Thad has lived in the Space Coast for more than fifty years. He resides in Rockledge with his wife Mary Pat, and is the proud father of three children; McKenzie, Hunter, and Sullivan. He recently has become a grandfather to a baby girl, Amelia.`
+Thad has lived in the Space Coast for more than fifty years. He resides in Rockledge with his wife Mary Pat, and is the proud father of three children; McKenzie, Hunter, and Sullivan. He recently has become a grandfather to a baby girl, Amelia.`,
 	},
 	"gavin-brown": {
 		"image": "gavin-brown.webp",
@@ -273,7 +270,7 @@ Thad has lived in the Space Coast for more than fifty years. He resides in Rockl
 		"company": "Dynamic Predictive Engineering",
 		"bio": `Dynamic Predictive Engineering (DPE) is a tight collaboration of uniquely trained Quantum computer scientists, physicists, and expert graph-theory mathematicians, laser-focused on ushering in enterprise software for Quantum computer hardware developers. Gavin and his team are working tirelessly on moving the industry toward the ultimate solution: a scalable Quantum AI hardware/software eco-system.
 <br/><br/>
-With more than 25 years of aerospace experience, Gavin is recognized as the driving force for promoting aerospace and defense companies active in Michigan. He founded Michigan Aerospace Manufacturers Association (MAMA) in 2007. Later he was instrumental in organizing and promoting the Michigan Launch Initiative (MLI), a public-private partnership that provides a collaborative platform for academia, industry, and governmental agencies to access near-earth space.`
+With more than 25 years of aerospace experience, Gavin is recognized as the driving force for promoting aerospace and defense companies active in Michigan. He founded Michigan Aerospace Manufacturers Association (MAMA) in 2007. Later he was instrumental in organizing and promoting the Michigan Launch Initiative (MLI), a public-private partnership that provides a collaborative platform for academia, industry, and governmental agencies to access near-earth space.`,
 	},
 	"frank-a-dibello": {
 		"image": "frank-dibello.webp",
@@ -288,11 +285,11 @@ DiBello was responsible for strategic direction and management of the organizati
 <br/><br/>
 Mr. DiBello holds more than 50 years of direct aerospace and defense industry-related experience. He was a Partner at KPMG responsible for the Firm’s aerospace industry practice and was founder of their space industry practice.   Following this, he was a co-founder of the SpaceVest Family of Venture Capital Funds and Aerospace Capital Partners, an infrastructure investment fund focusing on aerospace, technology and telecommunications initiatives.  In 2003 he was selected as President/CEO of Florida’s Aerospace Finance Corporation, established by the Florida Legislature to assist financing the needs of new and established companies applying aerospace technologies to space, aviation and defense markets.
 <br/><br/>
-DiBello’s honors include receiving the Department of Defense Distinguished Service Award for Public Service, the highest award presented by the Secretary of Defense to a civilian and in 2020. He was inducted into the Space and Satellite Hall of Fame by the Society of Satellite Professionals and most recently in 2024, was named Venture Capital Leader of the Year by the Florida Venture Forum.
+DiBello’s honors include receiving the Department of War Distinguished Service Award for Public Service, the highest award presented by the Secretary of War to a civilian and in 2020. He was inducted into the Space and Satellite Hall of Fame by the Society of Satellite Professionals and most recently in 2024, was named Venture Capital Leader of the Year by the Florida Venture Forum.
 <br/><br/>
-He has served on a number of high-profile roles on advisory groups for NASA, the Department of Defense, and the Department of Transportation, and is a frequent industry advocate and speaker.
+He has served on a number of high-profile roles on advisory groups for NASA, the Department of War, and the Department of Transportation, and is a frequent industry advocate and speaker.
 <br/><br/>
-Mr. DiBello has taught at the Defense Systems Management College and International Space University. He received his Bachelor of Science degree in Mathematics from Villanova University and completed graduate study work at American University and George Washington University.`
+Mr. DiBello has taught at the Defense Systems Management College and International Space University. He received his Bachelor of Science degree in Mathematics from Villanova University and completed graduate study work at American University and George Washington University.`,
 	},
 	"matt-bocchino": {
 		"image": "matt-bocchino.webp",
@@ -301,7 +298,7 @@ Mr. DiBello has taught at the Defense Systems Management College and Internation
 		"company": "Cecil Airport and Spaceport, Jacksonville Aviation Authority",
 		"bio": `Mr. Bocchino has worked for JAA for nearly 12 years, most recently serving as Senior Properties Administrator, Business Development. He has a strong background in managing operational and facility contracts and experience in working with the community to promote local economy and business growth. While with JAA, Mr. Bocchino also served as Development & Marketing Specialist for Cecil Spaceport. He also worked for the City of Fort Lauderdale.
 <br/><br/>
-Mr. Bocchino earned his bachelor’s degree in History and a master’s degree in Business Administration from Jacksonville University. He is an Accredited Member (A.A.E.) of the American Association of Airport Executives (AAAE). He also holds a private pilot’s license.`
+Mr. Bocchino earned his bachelor’s degree in History and a master’s degree in Business Administration from Jacksonville University. He is an Accredited Member (A.A.E.) of the American Association of Airport Executives (AAAE). He also holds a private pilot’s license.`,
 	},
 	"edgar-campa-palafox": {
 		"image": "edgar-campa-palafox.webp",
@@ -318,7 +315,7 @@ Edgar is actively involved in several professional, civic, and community organiz
 <br/><br/>
 Edgar earned a Bachelor of Science degree in Business Administration with a double major in Business Economicsand Entrepreneurship from the University of Arizona. He also completed courses in business and economics atthe Universitat Pompeu Fabra in Barcelona, Spain.
 <br/><br/>
-Dedicated to lifelong learning, Edgar has earned several professional industry designations, including theCertified Economic Developer (CEcD) from IEDC, the Master Economic Development Practitioner (MEDP) fromthe Advanced Economic Development Leadership (AEDL) program —a collaboration among Clemson University,Texas Christian University, the University of Southern Mississippi, and the University of New Mexico— and aBusiness Incubation Management (BIM) certificate from the International Business Innovation Association (InBIA).`
+Dedicated to lifelong learning, Edgar has earned several professional industry designations, including theCertified Economic Developer (CEcD) from IEDC, the Master Economic Development Practitioner (MEDP) fromthe Advanced Economic Development Leadership (AEDL) program —a collaboration among Clemson University,Texas Christian University, the University of Southern Mississippi, and the University of New Mexico— and aBusiness Incubation Management (BIM) certificate from the International Business Innovation Association (InBIA).`,
 	},
 	"jimmy-moffitt": {
 		"image": "jimmy-moffitt.webp",
@@ -327,16 +324,16 @@ Dedicated to lifelong learning, Edgar has earned several professional industry d
 		"company": "Space Florida",
 		"bio": `Jimmy Moffitt is the Vice President of Spaceport Operations at Space Florida, the state’s aerospace finance, development, and operational authority for the state. Space Florida along with its experience, financial tools, and unbeatable location attract commercial business to develop and operate facilities within Florida’s spaceport system.
 <br/><br/>
-Jimmy is charged with management of Space Florida’s licensed spaceports, assets, and property at Kennedy Space Center and Cape Canaveral Space Force Station. Jimmy works closely with NASA and Space Launch Delta 45 leadership on the strategic planning & business development with commercial and government space entities ensuring growth and resiliency in the industry. Additionally, Jimmy manages the operations and maintenance of Space Florida facilities, with focus on compliance with NASA and DoD requirements for safe and successful Launch, Landing, and testing activities at the Launch and Landing Facility, Launch Complex 46, Launch Complex 20(N), & Camp Blanding Storage Facility.
+Jimmy is charged with management of Space Florida’s licensed spaceports, assets, and property at Kennedy Space Center and Cape Canaveral Space Force Station. Jimmy works closely with NASA and Space Launch Delta 45 leadership on the strategic planning & business development with commercial and government space entities ensuring growth and resiliency in the industry. Additionally, Jimmy manages the operations and maintenance of Space Florida facilities, with focus on compliance with NASA and DoW requirements for safe and successful Launch, Landing, and testing activities at the Launch and Landing Facility, Launch Complex 46, Launch Complex 20(N), & Camp Blanding Storage Facility.
 <br/><br/>
-Prior to Space Florida, Jimmy supported management of leases and development at the general aviation and International airports at Jacksonville Aviation Authority and was integral to the success of Cecil Spaceport’s Horizontal launch license and Spaceport development area at Cecil. Jimmy has always had a passion for aviation and management, which led him to pursue a Bachelor of Science in Aviation Management & Safety, and a master’s degree in Technical Management from Embry-Riddle Aeronautical University (ERAU).`
+Prior to Space Florida, Jimmy supported management of leases and development at the general aviation and International airports at Jacksonville Aviation Authority and was integral to the success of Cecil Spaceport’s Horizontal launch license and Spaceport development area at Cecil. Jimmy has always had a passion for aviation and management, which led him to pursue a Bachelor of Science in Aviation Management & Safety, and a master’s degree in Technical Management from Embry-Riddle Aeronautical University (ERAU).`,
 	},
 	"ashley-pilipiszyn": {
 		"image": "ashley-pilipiszyn.webp",
 		"name": "Ashley Pilipiszyn",
 		"position": "Founder/CEO",
 		"company": "Besxar Industries, Inc.",
-		"bio": `Ashley is an applied scientist-turned-space industrialist, deep tech angel investor, and certified pilot. Her mission is to help unlock the market potential of in-space manufacturing while also advancing U.S. aerospace and defense capabilities with AI. She’s an expert authority on AI applications — as an early employee and the first Technical Director to the CTO, she led OpenAI’s early research and commercial product releases including MuseNet, Jukebox, Rubik’s Cube, GPT-3, and DALL-E. She also created OpenAI’s developer ecosystem program where she helped launch a variety of partner applications and mentor startups powered by GPT-3. Previously, she oversaw the design, development, and launch of DOE-funded “Grid Resilience & Intelligence Platform” (GRIP) at SLAC National Accelerator Lab. GRIP leveraged AI to anticipate, absorb, and recover from grid events such as wildfires, ice storms, or cyberattacks. Now as an entrepreneur, she aims to revolutionize semiconductor manufacturing to help enable the rapid growth of AI infrastructure for the U.S. government and commercial partners alike.`
+		"bio": `Ashley is an applied scientist-turned-space industrialist, deep tech angel investor, and certified pilot. Her mission is to help unlock the market potential of in-space manufacturing while also advancing U.S. aerospace and defense capabilities with AI. She’s an expert authority on AI applications — as an early employee and the first Technical Director to the CTO, she led OpenAI’s early research and commercial product releases including MuseNet, Jukebox, Rubik’s Cube, GPT-3, and DALL-E. She also created OpenAI’s developer ecosystem program where she helped launch a variety of partner applications and mentor startups powered by GPT-3. Previously, she oversaw the design, development, and launch of DOE-funded “Grid Resilience & Intelligence Platform” (GRIP) at SLAC National Accelerator Lab. GRIP leveraged AI to anticipate, absorb, and recover from grid events such as wildfires, ice storms, or cyberattacks. Now as an entrepreneur, she aims to revolutionize semiconductor manufacturing to help enable the rapid growth of AI infrastructure for the U.S. government and commercial partners alike.`,
 	},
 	"gerald-norris": {
 		"image": "gerald-norris.webp",
@@ -351,7 +348,7 @@ Norris joined the NASA team in 2006 with the Stennis Office of Procurement, wher
 <br/><br/>
 Norris began his government career in the United States Air Force, where he served his country for over 21 years. 
 <br/><br/>
-He holds a Bachelor of Science in business administration from Park University in Parkville, Missouri.`
+He holds a Bachelor of Science in business administration from Park University in Parkville, Missouri.`,
 	},
 	"dave-robau": {
 		"image": "dave-robau.webp",
@@ -372,7 +369,7 @@ Mr. Robau is the founder and CEO of National Energy, an energy engineering firm 
 <br/>
 <br/>
 Mr. Robau also serves as the founder and Executive Director of the Gulf Coast Energy Network. He leads a network of scientist, engineers, architects, and planners from the various Gulf Coast states to expand the renewable energy market and promote energy conservation. The Network extends from southeast Texas to Tampa, Florida and represents over 9,000 energy and sustainability professionals.
-`
+`,
 	},
 	"darlene-coen": {
 		"image": "darlene-coen.webp",
@@ -476,7 +473,7 @@ Mr. Nicol became the Deputy Program Director in January 2023 and continues to le
 		"name": "Sherrie Cordi",
 		"position": "Deputy, Office of Small Business Programs",
 		"company": "U.S. Army Corps of Engineers, Memphis District",
-		"bio": `Sherrie Cordi is the Small Business Program Manager for the U.S. Army Corps of Engineers, Memphis District. She oversees a $70M Small Business Program, ensuring compliance with federal procurement regulations while maximizing opportunities for small businesses in government contracting. A Navy veteran, Sherrie brings 9 years of combined honorable military service and government experience to the position.`,
+		"bio": `Sherrie Cordi is the Small Business Program Manager for the U.S. Army Corps of Engineers, MemphisNAVAIR OSBP strives to be the premier Department of War Small Business Office advocating for the Best Solutions for the Warfighter, while promoting NAVAIR's Strategic imperatives, through maximizing opportunities for small business participation. government contracting. A Navy veteran, Sherrie brings 9 years of combined honorable military service and government experience to the position.`,
 	},
 	"oscar-frazier": {
 		"image": "oscar-frazier.webp",
@@ -550,7 +547,7 @@ He holds a Ph.D. in Public Policy and Administration from Virginia Commonwealth 
 		"name": "David Fraley",
 		"position": "Chief Technology Officer",
 		"company": "Secure IT Service Management, Inc.",
-		"bio": `David Fraley, is Secure IT Service Management, Inc.’s (SecureITSM) Chief Technology Officer, where he plays a pivotal role in guiding clients through their journey toward achieving CMMC compliance. With a wealth of industry and technology knowledge, David delivers operational IT solutions that not only meet but exceed security and compliance requirements, all while minimizing associated costs. His expertise and common sense allows him to work closely with industry leaders, Government executives, and DoD contractors ensuring long-term technology strategies are aligned with CMMC and NIST requirements.
+		"bio": `David Fraley, is Secure IT Service Management, Inc.’s (SecureITSM) Chief Technology Officer, where he plays a pivotal role in guiding clients through their journey toward achieving CMMC compliance. With a wealth of industry and technology knowledge, David delivers operational IT solutions that not only meet but exceed security and compliance requirements, all while minimizing associated costs. His expertise and common sense allows him to work closely with industry leaders, Government executives, and DoW contractors ensuring long-term technology strategies are aligned with CMMC and NIST requirements.
 <br/>
 
 <br/>
@@ -565,7 +562,7 @@ David is deeply passionate about cultivating high-performance, collaborative cul
 		"name": "Tim Didjurgis",
 		"position": "Chief Operating Officer",
 		"company": "Modtech Solutions LLC",
-		"bio": `Tim Didjurgis is the Chief Operating Officer at Modtech Solutions, LLC, a trusted technology integrator specializing in unified communications, audio-visual design and integration, telecommunications cabling, electronic security and surveillance, and the construction of secure facilities. With a focus on delivering mission-critical technology solutions for the Department of Defense and other high-security clients, Tim leads a multidisciplinary team across project management, engineering, sales, logistics, and finance, delivering solutions from the Pacific region to the continental United States. His focus is on refining operational efficiency, driving continuous improvement, strengthening the company’s reputation as a trusted industry partner, and ultimately ensuring that defense customers receive solutions without doubt, delay, or disruption.
+		"bio": `Tim Didjurgis is the Chief Operating Officer at Modtech Solutions, LLC, a trusted technology integrator specializing in unified communications, audio-visual design and integration, telecommunications cabling, electronic security and surveillance, and the construction of secure facilities. With a focus on delivering mission-critical technology solutions for the Department of War and other high-security clients, Tim leads a multidisciplinary team across project management, engineering, sales, logistics, and finance, delivering solutions from the Pacific region to the continental United States. His focus is on refining operational efficiency, driving continuous improvement, strengthening the company’s reputation as a trusted industry partner, and ultimately ensuring that defense customers receive solutions without doubt, delay, or disruption.
 <br/>
 
 <br/>
@@ -613,7 +610,7 @@ He also partners with defense contractors to develop predictive decision-making 
 <br/>
 
 <br/>
-Prior to the DASA (E&S), Mr. Cockrell was the Deputy to the Garrison Commander at Fort Moore, GA, the Army’s largest training installation, with three remote locations in GA, AL, and FL. He led the efforts to deliver over 700 installation services, at the Army’s standard, to over 125,000 Soldiers, Families, Civilians, and retirees with a diverse team of over 2,300 Soldiers, Civilians, and contractors and an annual budget of over $450M. During his tenure Fort Moore transitioned into one of the leading installations across the Department of Defense in fielding Electric Vehicles, increasing Energy Resilience, and Installation Modernization.
+Prior to the DASA (E&S), Mr. Cockrell was the Deputy to the Garrison Commander at Fort Moore, GA, the Army’s largest training installation, with three remote locations in GA, AL, and FL. He led the efforts to deliver over 700 installation services, at the Army’s standard, to over 125,000 Soldiers, Families, Civilians, and retirees with a diverse team of over 2,300 Soldiers, Civilians, and contractors and an annual budget of over $450M. During his tenure Fort Moore transitioned into one of the leading installations across the Department of War in fielding Electric Vehicles, increasing Energy Resilience, and Installation Modernization.
 <br/>
 
 <br/>
@@ -675,7 +672,7 @@ Erin enjoys spending time with her husband and three sons traveling, hiking, and
 		"name": "Brent D. Sadler",
 		"position": "Senior Research Fellow, Naval Warfare and Advanced Technology Center for National Defense",
 		"company": "The Heritage Foundation",
-		"bio": `Brent Sadler joined Heritage Foundation after a 26 year Navy career with numerous operational tours on nuclear powered submarines, personal staffs of senior Defense Department leaders, and as a military diplomat in Asia. As a Senior Research Fellow, Brent’s focus is on maritime security and the technologies shaping our future maritime forces, especially the Navy.
+		"bio": `Brent Sadler joined Heritage Foundation after a 26 year Navy career with numerous operational tours on nuclear powered submarines, personal staffs of senior War Department leaders, and as a military diplomat in Asia. As a Senior Research Fellow, Brent’s focus is on maritime security and the technologies shaping our future maritime forces, especially the Navy.
 <br/>
 
 <br/>
@@ -683,7 +680,7 @@ Brent is a 1994 graduate with honors of the United States Naval Academy with a d
 <br/>
 
 <br/>
-In 2011, he established the Navy Asia Pacific Advisory Group (NAPAG), providing regionally informed advice directly to Chief of Naval Operations’ (CNO). He again served on the CNO’s personal staff in 2015-2016, playing a key role in developing the Defense Department’s Third Offset.   
+In 2011, he established the Navy Asia Pacific Advisory Group (NAPAG), providing regionally informed advice directly to Chief of Naval Operations’ (CNO). He again served on the CNO's personal staff in 2015-2016, playing a key role in developing the War Department's Third Offset.   
 <br/>
 
 <br/>
@@ -702,20 +699,20 @@ His final Navy assignment was China Branch of Navy Staff at the Pentagon. `,
 		"image": "wesley-jefferies.webp",
 		"name": "Wesley J. Jefferies",
 		"position": "Industry Liaison, OUSD (A&S) Office of Industrial Base Policy, Industrial Base Analysis and Sustainment (IBAS) Program, Innovation Capability and Modernization (ICAM) Office",
-		"company": "U.S. Department of Defense",
-		"bio": `Wesley Jefferies is the Industry Liaison for the Industrial Base Analysis and Sustainment Program (IBAS) in the U.S. Department of Defense’s Office of Industrial Base Policy. In this role, he is responsible for coordinating engagement with present and potential industry partners with the IBAS program.
+		"company": "U.S. Department of War",
+		"bio": `Wesley Jefferies is the Industry Liaison for the Industrial Base Analysis and Sustainment Program (IBAS) in the U.S. Department of War's Office of Industrial Base Policy. In this role, he is responsible for coordinating engagement with present and potential industry partners with the IBAS program.
 	<br/>
 	
 	<br/>
-	He is also an Innovation Analyst with ANSER, a non-profit research institute that provides services to the U.S. Department of Defense and other federal clients. Before that, Mr. Jefferies researched the development and proliferation of drone technology with the International Security Program at New America, a think tank based in Washington, D.C. He received his M.A. in International Security from Georgetown University’s Walsh School of Foreign Service and B.A. in Political Science from Arizona State University.`,
+	He is also an Innovation Analyst with ANSER, a non-profit research institute that provides services to the U.S. Department of War and other federal clients. Before that, Mr. Jefferies researched the development and proliferation of drone technology with the International Security Program at New America, a think tank based in Washington, D.C. He received his M.A. in International Security from Georgetown University's Walsh School of Foreign Service and B.A. in Political Science from Arizona State University.`,
 	}
 	,
 	"kareem-sykes": {
 		"image": "kareem-sykes.webp",
 		"name": "Kareem A. Sykes",
 		"position": "Director, Industry and Engagement, Project Spectrum",
-		"company": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of Defense",
-		"bio": `Kareem A. Sykes currently serves as Program Manager for Project Spectrum, a U.S. Department of Defense (DoD) recognized cybersecurity awareness initiative that offer resources, training and tools toward increasing cybersecurity awareness and hygiene for small businesses in particular. Mr. Sykes provides strategic leadership for a dynamic team of cybersecurity and outreach professionals whose collective aim centers around providing the educational resources and tools small businesses and institutions need to develop, implement, and maintain cybersecurity compliance. He oversees and directs the daily execution of multiple projects within the large-scale program and assures that the initiative adheres to government regulatory guidance. Mr. Sykes also manages contractual requirements to assure that Project Spectrum meets the cost, schedule, and performance goals required by the DoD Office of Small Business Programs (OSBP).
+		"company": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of War",
+		"bio": `Kareem A. Sykes currently serves as Program Manager for Project Spectrum, a U.S. Department of War (DoW) recognized cybersecurity awareness initiative that offer resources, training and tools toward increasing cybersecurity awareness and hygiene for small businesses in particular. Mr. Sykes provides strategic leadership for a dynamic team of cybersecurity and outreach professionals whose collective aim centers around providing the educational resources and tools small businesses and institutions need to develop, implement, and maintain cybersecurity compliance. He oversees and directs the daily execution of multiple projects within the large-scale program and assures that the initiative adheres to government regulatory guidance. Mr. Sykes also manages contractual requirements to assure that Project Spectrum meets the cost, schedule, and performance goals required by the DoW Office of Small Business Programs (OSBP).
 	<br/>
 	
 	<br/>
@@ -769,7 +766,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 		"name": "Cliff Holbeck",
 		"position": "Sr. Business Development Manager",
 		"company": "Honeywell International",
-		"bio": `Cliff Holbeck is a seasoned professional serving as an energy services business development consultant for Honeywell International.  Cliff has 40 years’ experience in technology innovation related to Information and Operational Technology.  He has worked for several of the industries leading providers of energy engineering and serves as a coordinator of large energy conservation and resiliency projects.  Cliff is well versed in government contracting having worked with the DOD, VA, and GSA.  He is an advocate for Small Businesses with the ability to develop trust, gain consensus, and drive collaboration.   He is an excellent communicator and contributes to industry conferences and forums as a moderator and speaker.`,
+		"bio": `Cliff Holbeck is a seasoned professional serving as an energy services business development consultant for Honeywell International.  Cliff has 40 years’ experience in technology innovation related to Information and Operational Technology.  He has worked for several of the industries leading providers of energy engineering and serves as a coordinator of large energy conservation and resiliency projects.  Cliff is well versed in government contracting having worked with the DoW, VA, and GSA.  He is an advocate for Small Businesses with the ability to develop trust, gain consensus, and drive collaboration.   He is an excellent communicator and contributes to industry conferences and forums as a moderator and speaker.`,
 	}
 	,
 	"andrew-gardner": {
@@ -777,7 +774,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 		"name": "Andrew Gardner",
 		"position": "CEO",
 		"company": "Crux Defense and Partner, NADWC Combat Capability Factory",
-		"bio": `Andrew Gardner is CEO of Crux Defense, a partner with the National All-Domain Warfighting Center's Combat Capabilities Factory.  The purpose of the Combat Capabilities Factory is to Integrate, Fund and Field Warfighting Capabilities through Experiment-Driven Exercises.  Leveraging these innovations, Crux is able to help companies cross the DoD's innovation valley of death and ensure that the best capabilities get into the hands of the warfighter.`,
+		"bio": `Andrew Gardner is CEO of Crux Defense, a partner with the National All-Domain Warfighting Center's Combat Capabilities Factory.  The purpose of the Combat Capabilities Factory is to Integrate, Fund and Field Warfighting Capabilities through Experiment-Driven Exercises.  Leveraging these innovations, Crux is able to help companies cross the DoW's innovation valley of death and ensure that the best capabilities get into the hands of the warfighter.`,
 	}
 	,
 	"timothy-r-inman": {
@@ -841,7 +838,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	<br/>
 	
 	<br/>
-	Previously, she served as a Senior Procurement Analyst Deputy for the Assistant Secretary of the Navy (Acquisition and Procurement) (DASN (AP)). In this capacity, she was the NAVSEA/NAVWAR Action Officer responsible for contractual oversight of portfolios that include the nation’s most complex shipbuilding, weapons systems and IT procurement programs, as well as the Navy’s web-based services acquisition marketplace, SeaPort. She has also supported Naval Supply Systems Command (NAVSUP) as a Contracting Officer and the Africa Command Grants Officer supporting Naval Health Research Center DOD HIV Prevention Program and President's Emergency Plan for AIDS Relief. Ms. Bebout started her career serving the Marines at Cherry Point, NC. She spent her first 15 years in logistics at the facility currently now known as FRC East.   
+	Previously, she served as a Senior Procurement Analyst Deputy for the Assistant Secretary of the Navy (Acquisition and Procurement) (DASN (AP)). In this capacity, she was the NAVSEA/NAVWAR Action Officer responsible for contractual oversight of portfolios that include the nation’s most complex shipbuilding, weapons systems and IT procurement programs, as well as the Navy’s web-based services acquisition marketplace, SeaPort. She has also supported Naval Supply Systems Command (NAVSUP) as a Contracting Officer and the Africa Command Grants Officer supporting Naval Health Research Center DoW HIV Prevention Program and President's Emergency Plan for AIDS Relief. Ms. Bebout started her career serving the Marines at Cherry Point, NC. She spent her first 15 years in logistics at the facility currently now known as FRC East.   
 	<br/>
 	
 	<br/>
@@ -872,7 +869,7 @@ Dr. Neal Dunn represents the 2nd Congressional District of Florida, which includ
 	<br/>
 	
 	<br/>
-	Kurt is recognized for his leadership in the Digital Supply Chain Network™, where he drives innovation and efficiency across numerous global projects for the Department of Defense and the defense industry. His commitment to advancing defense solutions has made him a pivotal figure in transforming supply chain operations to meet the dynamic needs of modern defense strategies.`,
+	Kurt is recognized for his leadership in the Digital Supply Chain Network™, where he drives innovation and efficiency across numerous global projects for the Department of War and the defense industry. His commitment to advancing defense solutions has made him a pivotal figure in transforming supply chain operations to meet the dynamic needs of modern defense strategies.`,
 	}
 	,
 	"joel-lundy": {
@@ -959,7 +956,7 @@ In under two years, Don and the PMB Machine Works team have secured major contra
 	<br/>
 	
 	<br/>
-	Under Katina’s leadership, HII was awarded Veteran Small Business Advocate of the Year and has earned the National Veteran Small Business Coalition’s Champion Award for the past two consecutive years; NNS earned the Minority Business Enterprise (MBE) Input Committee Development Award for advancing the growth and development of MBEs, and NNS annually exceeds DoD’s small business subcontracting goals.
+	Under Katina's leadership, HII was awarded Veteran Small Business Advocate of the Year and has earned the National Veteran Small Business Coalition's Champion Award for the past two consecutive years; NNS earned the Minority Business Enterprise (MBE) Input Committee Development Award for advancing the growth and development of MBEs, and NNS annually exceeds DoW's small business subcontracting goals.
 	<br/>
 	
 	<br/>
@@ -1001,7 +998,7 @@ In under two years, Don and the PMB Machine Works team have secured major contra
 	<br/>
 	
 	<br/>
-	Recently, the GDIT Small Business team received the National 8a Council and HUBZone Contractor’s National Council Large Business of the Year Award for their innovative approach to promoting small business utilization. Dr. Card serves on the Contracts Leadership Team at GDIT and as the chair of the Supplier Diversity Committee which is comprised of representatives from all General Dynamics individual business units. She has been a guest presenter at several events including those hosted by the Capital Business Development Association, the DoD Mid-Atlantic Regional Council, and the Virginia APEX Accelerator. Dr. Card is a longtime member of NCMA, holding both the CPCM and CFCM certifications and is also certified by the Alliance of Supplier Diversity Professionals. 
+	Recently, the GDIT Small Business team received the National 8a Council and HUBZone Contractor’s National Council Large Business of the Year Award for their innovative approach to promoting small business utilization. Dr. Card serves on the Contracts Leadership Team at GDIT and as the chair of the Supplier Diversity Committee which is comprised of representatives from all General Dynamics individual business units. She has been a guest presenter at several events including those hosted by the Capital Business Development Association, the DoW Mid-Atlantic Regional Council, and the Virginia APEX Accelerator. Dr. Card is a longtime member of NCMA, holding both the CPCM and CFCM certifications and is also certified by the Alliance of Supplier Diversity Professionals. 
 	<br/>
 	`,
 	}
@@ -1105,12 +1102,13 @@ Prior to federal service, Mr. Miller managed commercial property in the Washingt
 		"position": "Strategic Growth Officer",
 		"company": "Neptune SHIELD Tech Hub",
 		"bio": `
-	Serial Entrepreneur that has worked to launch-deploy wearable, mobile and tactical edge computing data pod Small Business innovations addressing DoD, Energy and Port-Maritime clients, Security-Resilience and Counter-Terrorism Drone, Cyber, and Early Warning Crisis Information Sharing solutions including dual use multimodal logistics operations.  Formed strategic private-public partnerships to strengthen customers risk management-continuity capacities in response to adversaries growing Irregular Warfare capabilities targeting Defense-Critical Infrastructures .   Since 2016 engaged by Sheila Thompson, Thompson and Gray to advance her Joint DoD Global Financial Enterprise System (GFEBS) and Honeycomb Security Systems data pod investments forming strategic alliances with Innovation Hubs, DoD-Academic National Security Collaboration Centers, and Civ-Mil HADR Programs including DoD’s Tides and National Guard State Partnership Programs.  Prior to this he was IBM’s Outreach Chair for their Mid-Atlantic Group Systems Innovation Committee (MAGIC) and then OSD’s Joint Human Interoperability Enterprise Committee (HIE).  During this time, he worked with  JFCOM’s Multi-Agency Joint Intelligence Integration Center (MAJIIC) and Navy RMAC-DJC2 Prepositioned Maritime Awareness Programs.
+	Serial Entrepreneur that has worked to launch-deploy wearable, mobile and tactical edge computing data pod Small Business innovations addressing DoW, Energy and Port-Maritime clients, Security-Resilience and Counter-Terrorism Drone, Cyber, and Early Warning Crisis Information Sharing solutions including dual use multimodal logistics operations.  Formed strategic private-public partnerships to strengthen customers risk management-continuity capacities in response to adversaries growing Irregular Warfare capabilities targeting Defense-Critical Infrastructures .   Since 2016 engaged by Sheila Thompson, Thompson and Gray to advance her Joint DoW Global Financial Enterprise System (GFEBS) and Honeycomb Security Systems data pod investments forming strategic alliances with Innovation Hubs, DoW-Academic National Security Collaboration Centers, and Civ-Mil HADR Programs including DoW's Tides and National Guard State Partnership Programs.  Prior to this he was IBM’s Outreach Chair for their Mid-Atlantic Group Systems Innovation Committee (MAGIC) and then OSD’s Joint Human Interoperability Enterprise Committee (HIE).  During this time, he worked with  JFCOM’s Multi-Agency Joint Intelligence Integration Center (MAJIIC) and Navy RMAC-DJC2 Prepositioned Maritime Awareness Programs.
 <br/><br/>
-While engaged with Bob Darling Turning Point Crisis Management and Tim Carty with EMP Shield, he supported XCORP team’s Quantico Cyber Hub launch and growth comprising the American Cyber League, STEM cyber, drone and AI camps, and Quantico Cyber Hub evolving their Network and Critical Infrastructure Labs and forming Cyber Hub alliances.  This was built upon engaging with disruptive tech startups including WebIQ, Xybernaut’ s Xyberlink, E-SIM, EchoStorm’s adlib and Convene, and KSI Video cloud enabled FMV ISR enterprise.
+While engaged with Bob Darling Turning Point Crisis Management and Tim Carty with EMP Shield, he supported XCORP team’s Quantico Cyber Hub launch and growth comprising the American Cyber League, STEM cyber, drone and AI camps, and Quantico Cyber Hub evolving their Network and Critical Infrastructure Labs and forming Cyber Hub alliances.  This was built upon engaging with disruptive tech startups including WebIQ, Xybernaut’ s Xyberlink, E-SIM, EchoStorm’s adlib and Convene, and KSI Video cloud enabled FMV ISR enterprise.
 <br/><br/>
-Currently Joel serves as Strategic Growth Officer for Neptune Shield Tech Hub, growing their Small Business innovation instructional and and lab capacities and alliances with Virginia’s Mid Atlantic Aviation Partnership, International Mid-Atlantic Tech Bridge Naval-X, Maryland Technology Advancement Center, Virginia Innovation Partnership Corp. and NATO Maritime Innovation Hub.  He has previously served on the Boards of AUVSI, CRDF Global, and First Robotics and is now supporting America’s INCITS National Standards BCI-AI Committee building upon America’s Joint Common Alert Protocol EDXL, Stanag Drone FMV ISR Joint Common Operations Picture (JCOP)  and the Army’s Joint Robotic Acquisition Command and Control (RAC2) program.
+Currently Joel serves as Strategic Growth Officer for Neptune Shield Tech Hub, growing their Small Business innovation instructional and and lab capacities and alliances with Virginia’s Mid Atlantic Aviation Partnership, International Mid-Atlantic Tech Bridge Naval-X, Maryland Technology Advancement Center, Virginia Innovation Partnership Corp. and NATO Maritime Innovation Hub.  He has previously served on the Boards of AUVSI, CRDF Global, and First Robotics and is now supporting America’s INCITS National Standards BCI-AI Committee building upon America’s Joint Common Alert Protocol EDXL, Stanag Drone FMV ISR Joint Common Operations Picture (JCOP)  and the Army’s Joint Robotic Acquisition Command and Control (RAC2) program.
 	`,
+	}
 	},
 	"nicholas-antonio-rocha": {
 		"image": "nicholas-antonio-rocha.webp",
@@ -1145,7 +1143,7 @@ In private sector capacity, for The Lafayette Group, he serves as a manager for 
 <br/><br/>
 Mr. Hoffmann is also the President and CEO of Virginia-based Cyber Intelligent Partners LLC, which received two outstanding leader awards in Las Vegas, NV at the Education and CXO 2.0 Conferences in 2023 and 2024 for cyber and digital transformation solutions. He has been a cyber panelist at other events, most recently for the Homeland Security Conference at Christopher Newport News University and for the fourth Danube Institute - Heritage Foundation Geopolitical Summit in Budapest, Hungary.
 <br/><br/>
-In 2021, Mr. Hoffmann returned from the United Kingdom where he designed cyber threat intelligence analysis, counterintelligence, and targeting capabilities for the U.S. European Command. He is the former Regional Cyber Lead for a U.S. defense program that advised foreign partner cyber command elements, Presidential staff/council members, interagency, and Ministry of Defense groups on incident response, cyber intelligence fusion, workforce development, protection of critical infrastructure, crisis planning, and security operations center infrastructure. Mr. Hoffmann continues this capacity building as a part-time instructor for the DoD Cyber Workforce Development course.
+In 2021, Mr. Hoffmann returned from the United Kingdom where he designed cyber threat intelligence analysis, counterintelligence, and targeting capabilities for the U.S. European Command. He is the former Regional Cyber Lead for a U.S. defense program that advised foreign partner cyber command elements, Presidential staff/council members, interagency, and Ministry of Defense groups on incident response, cyber intelligence fusion, workforce development, protection of critical infrastructure, crisis planning, and security operations center infrastructure. Mr. Hoffmann continues this capacity building as a part-time instructor for the DoW Cyber Workforce Development course.
 <br/><br/>
 In 2017, he was awarded by the Office of the Director of National Intelligence for managing a four-year technology modernization initiative that advanced data analytics and open-source techniques through new innovations such as Artificial Intelligence (AI). He was a contributing author for two National Intelligence Council annual cyber threat assessments and a representative on the CTI Integration Center Cybercrime working group. For the U.S. government from 2008-2015, Mr. Hoffmann led missions and activities across air, space, and cyberspace in Europe, the Pacific, and Middle East with successful operations reported in the President's Daily Brief. He was a contributor for corporate proposals valued over $15 billion and other requests for information, including a White House Office of Science & Technology alternative GPS/6G project.
 <br/><br/>
@@ -1162,7 +1160,7 @@ Mr. Hoffmann completed work on an Advisory Board for the Virginia Department of 
 		"bio": `
 Dan Hudson is a Senior Technology Director in the Mission Technologies division of Huntington Ingalls Industries (HII). He has more than 20 years of experience and is an expert in applying human factors and reliability engineering, data science and advanced analytics, model-based engineering, and digital transformation across multiple industries and domains, including healthcare and public health, national security and defense, cybersecurity and intelligence, reliability and safety of engineered systems, and risk management.
 <br/><br/>
-Before joining HII in 2022, Hudson served in a variety of data science and AI leadership roles in the private sector supporting the Department of Defense, Department of Veterans Affairs, and the Intelligence Community. He also served for more than 20 years in the Federal Government, including service as an enlisted Marine, as a Navy Diver and Submarine Warfare Officer, and finally as a Reliability Engineer and Risk Analyst for the U.S. Nuclear Regulatory Commission.
+Before joining HII in 2022, Hudson served in a variety of data science and AI leadership roles in the private sector supporting the Department of War, Department of Veterans Affairs, and the Intelligence Community. He also served for more than 20 years in the Federal Government, including service as an enlisted Marine, as a Navy Diver and Submarine Warfare Officer, and finally as a Reliability Engineer and Risk Analyst for the U.S. Nuclear Regulatory Commission.
 <br/><br/>
 Hudson earned a Bachelor of Science with Distinction degree in Aerospace Engineering from the U.S. Naval Academy, a Master of Science degree in Predictive Analytics from the University of Maryland, and a Doctor of Philosophy degree in Decision Science from the Johns Hopkins University. He also holds several professional certifications in data science, AI, and cloud technologies.
 <br/><br/>
@@ -1177,7 +1175,7 @@ HII is an all-domain defense and technologies partner, recognized worldwide as A
 		"bio": `
 	Vic Mercado joined IBM in May 2023 as its Leader for Navy and Marine Corps Strategic Growth.
 	<br/><br/>
-	He is a former Assistant Secretary of Defense for Strategy, Plans, and Capabilities (ASD SPC), where he advised the Secretary of Defense and the Under Secretary of Defense for Policy on national security and defense strategy; the forces, contingency plans, and associated posture necessary to implement the defense strategy; nuclear deterrence and missile defense policy; and security cooperation plans and policies. Mercado ensured that Department program and budget decisions support and advance senior DoD leaders' strategic direction, especially as articulated in defense planning guidance.
+	He is a former Assistant Secretary of Defense for Strategy, Plans, and Capabilities (ASD SPC), where he advised the Secretary of Defense and the Under Secretary of Defense for Policy on national security and defense strategy; the forces, contingency plans, and associated posture necessary to implement the defense strategy; nuclear deterrence and missile defense policy; and security cooperation plans and policies. Mercado ensured that Department program and budget decisions support and advance senior DoW leaders' strategic direction, especially as articulated in defense planning guidance.
 	<br/><br/>
 	As ASD SPC, Mr. Mercado also chaired NATO’s High Level Group responsible for reviewing and providing recommendations regarding NATO’s nuclear policy, planning and force posture to ensure the safety, security and effectiveness of NATO’s nuclear deterrent.
 	<br/><br/>
@@ -1215,7 +1213,7 @@ HII is an all-domain defense and technologies partner, recognized worldwide as A
 		"position": "Fellow, Center for Maritime Strategy",
 		"company": "Navy League of the United States",
 		"bio": `
-	Hunter Stires is the Founder and CEO of The Maritime Strategy Group.  He most recently served in government as the Maritime Strategist to the 78th Secretary of the Navy, completing his term in June 2025.  He is one of the principal architects of Secretary Del Toro's Maritime Statecraft strategy to rebuild America's comprehensive maritime power, both commercial and naval.  Additionally, Mr. Stires serves as the Project Director of the U.S. Naval Institute’s Maritime Counterinsurgency Project, a Fellow with the U.S. Naval War College’s John B. Hattendorf Center for Maritime Historical Research, and a Non-Resident Fellow with the Navy League’s Center for Maritime Strategy.  A graduate of Columbia University, Mr. Stires previously served in the Office of the Undersecretary of Defense for Policy and several positions on the Navy Staff, including OPNAV N96 Surface Warfare Directorate, OPNAV N95 Expeditionary Warfare Directorate, and OPNAV N522 Navy Irregular Warfare Group.
+	Hunter Stires is the Founder and CEO of The Maritime Strategy Group.  He most recently served in government as the Maritime Strategist to the 78th Secretary of the Navy, completing his term in June 2025.  He is one of the principal architects of Secretary Del Toro's Maritime Statecraft strategy to rebuild America's comprehensive maritime power, both commercial and naval.  Additionally, Mr. Stires serves as the Project Director of the U.S. Naval Institute’s Maritime Counterinsurgency Project, a Fellow with the U.S. Naval War College’s John B. Hattendorf Center for Maritime Historical Research, and a Non-Resident Fellow with the Navy League’s Center for Maritime Strategy.  A graduate of Columbia University, Mr. Stires previously served in the Office of the Undersecretary of War for Policy and several positions on the Navy Staff, including OPNAV N96 Surface Warfare Directorate, OPNAV N95 Expeditionary Warfare Directorate, and OPNAV N522 Navy Irregular Warfare Group.
 <br/><br/>
 Mr. Stires has been recognized twice with the U.S. Naval Institute’s General Prize.  His article in the Summer 2019 issue of the Naval War College Review, “‘They Were Playing Chicken:’ The U.S. Asiatic Fleet’s Gray-Zone Deterrence Campaign against Japan, 1937-40,” was selected for inclusion in the monograph Deterrence.  Mr. Stires’ published work has been cited in a wide range of outlets, including Voice of America, Radio Free Asia, War on the Rocks, 19FortyFive, the Liberty Times, Rappler, and the South China Morning Post —as well as the Chinese language edition of the Global Times.
 	`
@@ -1369,7 +1367,7 @@ Professor Diehl has had engagements Instructing at NATO's Defense Against Terror
 	<br/>
 	
 	<br/>
-	Brad founded Mission, Vision, Strategy, Execution, and Analysis (MVSEA) as a Strategic Planning and Business Development consultancy to assist companies in developing constructs and processes, and to examine opportunities for growth.  The company delivered success for multiple clients focused on the Government/DoD engineering, technology, and innovation sectors.  In August of 2023, this led Perrarus Solutions, Inc. to acquire MVSEA, LLC and Brad assumed duties as the President and CEO at Perrarus.
+	Brad founded Mission, Vision, Strategy, Execution, and Analysis (MVSEA) as a Strategic Planning and Business Development consultancy to assist companies in developing constructs and processes, and to examine opportunities for growth.  The company delivered success for multiple clients focused on the Government/DoW engineering, technology, and innovation sectors.  In August of 2023, this led Perrarus Solutions, Inc. to acquire MVSEA, LLC and Brad assumed duties as the President and CEO at Perrarus.
 	<br/>
 	
 	<br/>

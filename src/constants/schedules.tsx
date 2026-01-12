@@ -66,7 +66,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "10:45 AM",
-                        title: "Defense Department Keynote Address",
+                        title: "Department of War Keynote Address",
                         location: "National Press Club Ballroom",
                         speakers: [{
                             name: "Honorable John P. (\"Sean\") Coffey",
@@ -78,13 +78,13 @@ export const SCHEDULES = [
                     },
                     {
                         time: "11:20 AM",
-                        title: "Defense Dept. Small Business Programs",
+                        title: "War Dept. Small Business Programs",
                         location: "National Press Club Ballroom",
                         speakers: [
                             {
                                 name: "Kimberly Diane Buehler",
                                 title: "Director, Office of Small Business Programs (OSBP)",
-                                affiliation: "U.S. Army, Department of Defense",
+                                affiliation: "U.S. Army, Department of War",
                                 photo: "kimberly-buhler.webp",
                                 presentation: "2025 Defense Industry Forecast - Kimberly Diane Buehler.pdf",
                                 videoId: "Ib6OrnbElyM"
@@ -153,7 +153,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "2:30 PM",
-                        title: "Defense Department 'Innovation Hubs' — Champions for Innovative Small Business",
+                        title: "Department of War 'Innovation Hubs' — Champions for Innovative Small Business",
                         location: "National Press Club Ballroom",
                         speakers: [{
                             name: "Brian Liesveld",
@@ -309,7 +309,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "8:45 AM",
-                        "title": "Defense Department 'Innovation Hubs' – Champions for Innovative Small Business",
+                        "title": "Department of War 'Innovation Hubs' – Champions for Innovative Small Business",
                         "speakers": [
                             {
                                 "name": "Teresa Harrington, DBA, MBA, PCM",
@@ -404,7 +404,7 @@ export const SCHEDULES = [
                             {
                                 "name": "Kareem A. Sykes",
                                 "title": "Program Manager, Project Spectrum",
-                                "affiliation": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of Defense",
+                                "affiliation": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of War",
                                 "photo": "kareem-sykes.webp",
                                 "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Kareem_A._Sykes.pdf",
                                 "videoId": "mWIgkwu0-GI",
@@ -429,7 +429,7 @@ export const SCHEDULES = [
                             {
                                 "name": "Kareem A. Sykes",
                                 "title": "Program Manager, Project Spectrum",
-                                "affiliation": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of Defense",
+                                "affiliation": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of War",
                                 "photo": "kareem-sykes.webp"
                             },
                             //{
@@ -640,7 +640,7 @@ export const SCHEDULES = [
                             {
                                 "name": "Wesley J. Jefferies",
                                 "title": "Industry Liaison, OUSD (A&S) Office of Industrial Base Policy, Industrial Base Analysis and Sustainment (IBAS) Program, Innovation Capability and Modernization (ICAM) Office",
-                                "affiliation": "U.S. Department of Defense",
+                                "affiliation": "U.S. Department of War",
                                 "photo": "wesley-jefferies.webp",
                                 "videoId": "mqxg3IjE7CM",
                             }

@@ -10,23 +10,23 @@ export const EVENTS: Event[] = [
     date: "November 14, 2024",
     timeStart: "2024-11-14T13:00:00Z",
     timeEnd: "2024-11-15T00:30:00Z",
-    description: "The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities — covering Defense Dept. and Combat Command mission priorities — Army, Navy, Air Force, Marine Corps, Space Force and Coast Guard — focused on all major sectors from advanced IT, AI and Cyber, all-domain command & control, and weapons system development & sustainment, to logistics & transport, facility management, Military base building design & construction, energy resiliency and environmental remediation, to new Government-Private Sector collaborations in critical infrastructure security, U.S. manufacturing base revitalization, ship building and shipyard modernization, Space defense and other major initiatives.",
+    description: "The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities — covering War Dept. and Combat Command mission priorities — Army, Navy, Air Force, Marine Corps, Space Force and Coast Guard — focused on all major sectors from advanced IT, AI and Cyber, all-domain command & control, and weapons system development & sustainment, to logistics & transport, facility management, Military base building design & construction, energy resiliency and environmental remediation, to new Government-Private Sector collaborations in critical infrastructure security, U.S. manufacturing base revitalization, ship building and shipyard modernization, Space defense and other major initiatives.",
     eventText: (
       <div className="max-container font-light">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities – covering Defense Dept. mission priorities focused on advanced IT, AI and Cyber, to weapons system development & sustainment, to forward logistics, facility support, Military base construction, shipyard modernization, Space defense and other major buying programs.
+          The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities – covering War Dept. mission priorities focused on advanced IT, AI and Cyber, to weapons system development & sustainment, to forward logistics, facility support, Military base construction, shipyard modernization, Space defense and other major buying programs.
         </p>
         <p className="mb-4">
-          Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers, and Small Business Program Directors from across the Defense Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors.
+          Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers, and Small Business Program Directors from across the War Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors.
         </p>
       </div>
     ),
     topicalCoverage: [
-      { tagline: "", description: "Defense Department, Service, and Combat Command Acquisition Priorities", },
-      { tagline: "", description: "DoD Small Business Contracting Programs", },
+      { tagline: "", description: "War Department, Service, and Combat Command Acquisition Priorities", },
+      { tagline: "", description: "DoW Small Business Contracting Programs", },
       { tagline: "", description: "Prime Defense Contractors - Subcontracting & Teaming", },
       { tagline: "", description: "Accelerated Contracting Opportunities for Innovative Technology Solutions (DARPA, DIU, DEFENSEWERX)", },
       { tagline: "", description: "GWAC's (Government-Wide Acquisition Contracts) and Their Small Business Tracks", },
@@ -224,7 +224,7 @@ export const EVENTS: Event[] = [
       </div>
     ),
     topicalCoverage: [
-      { tagline: "Defense Acquisition Priorities", description: "Understand the Latest Acquisition Strategies from the Department of Defense, Service Components, and Combat Commands" },
+      { tagline: "Defense Acquisition Priorities", description: "Understand the Latest Acquisition Strategies from the Department of War, Service Components, and Combat Commands" },
       // { tagline: "Small Business Contracting Programs", description: "Learn about Initiatives that Support Small Businesses in Defense Contracting" },
       { tagline: "Subcontracting and Teaming Opportunities", description: " Connect with Prime Defense Contractors to Explore Collaborative Ventures" },
       { tagline: "Innovative Technology Solutions", description: " Discover Accelerated Contracting Opportunities through DARPA, DIU, and DEFENSEWERX" },
@@ -499,7 +499,7 @@ invaluable connections that can shape the future of your business.
           <br /><br />
         </p>
         <p className="mb-4 leading-9">
-          We invite you to connect with the pioneers and visionaries who are leading this new era of Department of Defense and Commercial Space Industrialization. Meet the experts and program Managers eager to collaborate with those who recognize the vast potential in this rapidly expanding sector. Seize this opportunity to be at the forefront of this exciting frontier!
+          We invite you to connect with the pioneers and visionaries who are leading this new era of Department of War and Commercial Space Industrialization. Meet the experts and program Managers eager to collaborate with those who recognize the vast potential in this rapidly expanding sector. Seize this opportunity to be at the forefront of this exciting frontier!
         </p>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           Conference Topics Spotlight
@@ -965,14 +965,14 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       </div>
     ),
     // topicalCoverage: [
-    //       { "tagline": "DoD Integration of Commercial Space Assets/Technologies", "description": "The Department of Defense is increasingly partnering with commercial space companies to integrate advanced satellite, launch, and communications technologies into military operations, boosting resilience and rapid response capabilities." },
+    //       { "tagline": "DoW Integration of Commercial Space Assets/Technologies", "description": "The Department of War is increasingly partnering with commercial space companies to integrate advanced satellite, launch, and communications technologies into military operations, boosting resilience and rapid response capabilities." },
     //       { "tagline": "Space Force Support Functions Across Domains/COCOMS", "description": "The U.S. Space Force is expanding its role in supporting Combatant Commands (COCOMs) and joint operations by delivering space-based intelligence, navigation, and communication services across all warfighting domains." },
     //       { "tagline": "Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)", "description": "Next-generation air platforms ranging from stealth fighters and electronic warfare (EW) aircraft to refueling and airlift systems are redefining air dominance and joint force interoperability across multiple mission sets." },
-    //       { "tagline": "Unmanned Platforms Across Services – Prototype & Testing Contracts", "description": "The DoD continues to invest in unmanned aerial, ground, and maritime systems, awarding prototype and test contracts that advance autonomous capabilities and support ISR, logistics, and combat operations." },
-    //       { "tagline": "Golden Dome Financing for Missile Defense Integration & Component Teams", "description": "Through \"Golden Dome\" funding strategies, the DoD is accelerating development and integration of missile defense systems and supporting component teams focused on layered defense against advanced threats." },
-    //       { "tagline": "Defense Industrial Base Expansion – Ordnance, Missiles, Drones, etc.", "description": "The DoD is scaling up production capacity across the defense industrial base, with a focus on critical systems like munitions, precision missiles, and unmanned platforms to meet rising demand and strategic stockpile needs." },
+    //       { "tagline": "Unmanned Platforms Across Services – Prototype & Testing Contracts", "description": "The DoW continues to invest in unmanned aerial, ground, and maritime systems, awarding prototype and test contracts that advance autonomous capabilities and support ISR, logistics, and combat operations." },
+    //       { "tagline": "Golden Dome Financing for Missile Defense Integration & Component Teams", "description": "Through \"Golden Dome\" funding strategies, the DoW is accelerating development and integration of missile defense systems and supporting component teams focused on layered defense against advanced threats." },
+    //       { "tagline": "Defense Industrial Base Expansion – Ordnance, Missiles, Drones, etc.", "description": "The DoW is scaling up production capacity across the defense industrial base, with a focus on critical systems like munitions, precision missiles, and unmanned platforms to meet rising demand and strategic stockpile needs." },
     //       { "tagline": "Expansion of AI Throughout Defense Sectors", "description": "Artificial Intelligence is being deployed across warfighting, logistics, and cyber missions, enhancing decision-making, threat detection, and operational efficiency in real time." },
-    //       { "tagline": "Race to Exploit Quantum Technology", "description": "The DoD is investing in quantum sensing, secure communications, and computing technologies to gain a strategic edge in battlefield awareness, encryption, and data processing." },
+    //       { "tagline": "Race to Exploit Quantum Technology", "description": "The DoW is investing in quantum sensing, secure communications, and computing technologies to gain a strategic edge in battlefield awareness, encryption, and data processing." },
     //       { "tagline": "Accelerating Innovative Tech Contracting – DEFENSEWERX & DIU", "description": "Organizations like DEFENSEWERX and the Defense Innovation Unit (DIU) are streamlining pathways for non-traditional vendors to deliver cutting-edge tech solutions." },
     //       { "tagline": "Critical Defense Infrastructure Cyber Protection", "description": "New initiatives are hardening military infrastructure bases, defense contractors, and logistics networks against cyberattacks, with a focus on resilience, continuity, and active threat response." },
     //       { "tagline": "Cybersecurity & CMMC Update", "description": "The evolving Cybersecurity Maturity Model Certification (CMMC) requirements are reshaping how contractors handle sensitive data, with updates guiding compliance and audit readiness across the supply chain." },

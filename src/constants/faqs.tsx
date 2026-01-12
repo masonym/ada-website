@@ -6,7 +6,7 @@ export const FAQs = [
         faqs: [
             {
                 question: "What is the 2025 Defense Industry Forecast?",
-                answer: "The conference will provide actionable business intelligence on upcoming acquisition opportunities across the Department of Defense. It covers key areas such as advanced IT, AI, cyber, weapons systems development and sustainment, logistics, military base construction, shipyard modernization, and space defense. Attendees will hear directly from Program Managers, Contracting Officers, Small Business Program Directors, and leaders from various military branches and prime defense contractors about the latest purchasing opportunities.",
+                answer: "The conference will provide actionable business intelligence on upcoming acquisition opportunities across the Department of War. It covers key areas such as advanced IT, AI, cyber, weapons systems development and sustainment, logistics, military base construction, shipyard modernization, and space defense. Attendees will hear directly from Program Managers, Contracting Officers, Small Business Program Directors, and leaders from various military branches and prime defense contractors about the latest purchasing opportunities.",
             },
             {
                 question: "When and where will the event take place?",

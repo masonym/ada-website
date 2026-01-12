@@ -101,11 +101,11 @@ const MatchmakingPage = ({ matchmakingData }: MatchmakingPageProps) => {
 
   const participants = [
     {
-      title: "Department of Defense Officials",
+      title: "Department of War Officials",
       description: (
         <>
           <p className="mb-2">
-            <b>DoD Representatives and Agencies:</b> Military Agencies and Defense-Related Government bodies often participate in these Matchmaking Sessions to find qualified suppliers for various defense needs. This can include everything from Technology and Equipment to services like Logistics, Maintenance, Etc...
+            <b>DoW Representatives and Agencies:</b> Military Agencies and War-Related Government bodies often participate in these Matchmaking Sessions to find qualified suppliers for various defense needs. This can include everything from Technology and Equipment to services like Logistics, Maintenance, Etc...
           </p>
         </>
       ),
@@ -127,9 +127,9 @@ const MatchmakingPage = ({ matchmakingData }: MatchmakingPageProps) => {
       description: (
         <>
           <p className="mb-2">
-            <b>Prime Contractors:</b> Large companies that work directly with the U.S. Department of Defense (DoD) and other Government Agencies to supply products or services. These companies can use Matchmaking Sessions to identify new Subcontractors, Suppliers, or Specialized Partners for their Defense Contracts.
+            <b>Prime Contractors:</b> Large companies that work directly with the U.S. Department of War (DoW) and other Government Agencies to supply products or services. These companies can use Matchmaking Sessions to identify new Subcontractors, Suppliers, or Specialized Partners for their Defense Contracts.
             <br /><br />
-            <b>Large Defense Contractors:</b> Major companies in the Defense Sector have extensive contracts with the Department of Defense (DoD) and other Government Agencies, providing a wide range of products and services. These Large Defense Contractors often seek specialized Subcontractors, Innovative Technologies, and Solutions to enhance their Capabilities and meet specific Defense Requirements.
+            <b>Large Defense Contractors:</b> Major companies in the Defense Sector have extensive contracts with the Department of War (DoW) and other Government Agencies, providing a wide range of products and services. These Large Defense Contractors often seek specialized Subcontractors, Innovative Technologies, and Solutions to enhance their Capabilities and meet specific Defense Requirements.
             <br /><br />
             <b>Tier 1 and Tier 2 Suppliers:</b> Companies that play a significant role in the Defense Supply Chain and are looking to identify new partners or expand their network within the industry. They often seek niche technologies or capabilities that smaller companies may offer.
           </p>
@@ -162,7 +162,7 @@ const MatchmakingPage = ({ matchmakingData }: MatchmakingPageProps) => {
           Matchmaking Sessions
         </h1>
         <p className="text-lg text-slate-600 max-w-[92rem] mx-auto">
-          The <b>{event.title}</b> will offer a special opportunity for attendees to engage in One-on-One appointments with representatives and subject matter experts from the Department of Defense (DoD), Government Agencies, and Prime Contractors.
+          The <b>{event.title}</b> will offer a special opportunity for attendees to engage in One-on-One appointments with representatives and subject matter experts from the Department of War (DoW), Government Agencies, and Prime Contractors.
         </p>
         <div className="text-lg mt-4 mx-auto max-w-7xl text-slate-600">
           <p className="text-xl">
