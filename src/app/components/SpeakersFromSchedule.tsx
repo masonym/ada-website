@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { SCHEDULES } from '@/constants/schedules';
 import { EVENTS } from '@/constants/events';
-import { SPEAKERS, Speaker as SpeakerData } from '@/constants/speakers';
 import { slugify } from '@/utils/slugify';
 import { getCdnPath } from '@/utils/image';
 import { EventSpeakerPublic } from '@/lib/sanity';
@@ -34,21 +33,23 @@ interface ScheduleSpeaker {
   sponsorStyle?: string;
   affiliation?: string;
   photo?: string;
+  sanityImage?: { asset: { _ref: string } };
   presentation?: string;
   videoId?: string;
   videoStartTime?: number;
   speakerId?: string;
 }
 
-const resolveSpeaker = (speaker: ScheduleSpeaker): ScheduleSpeaker => {
-  if (speaker.speakerId && SPEAKERS[speaker.speakerId]) {
-    const s = SPEAKERS[speaker.speakerId];
+const resolveSpeaker = (speaker: ScheduleSpeaker, sanitySpeakerMap: Map<string, EventSpeakerPublic>): ScheduleSpeaker => {
+  if (speaker.speakerId && sanitySpeakerMap.has(speaker.speakerId)) {
+    const s = sanitySpeakerMap.get(speaker.speakerId)!;
     return {
       ...speaker,
-      name: s.name,
-      title: s.position,
-      affiliation: s.company,
-      photo: s.image,
+      name: s.speakerName,
+      title: s.speakerPosition,
+      affiliation: s.speakerCompany,
+      photo: undefined, // Sanity uses sanityImage
+      sanityImage: s.speakerImage,
     };
   }
   return speaker;
@@ -75,7 +76,7 @@ const SpeakersFromSchedule: React.FC<Props> = ({ eventId, title, subtitle, maxSp
       if (!('speakers' in item) || !item.speakers) continue;
       const sessionAnchor = `session-${slugify(item.time)}-${slugify(item.title)}`;
       for (const sp of item.speakers as ScheduleSpeaker[]) {
-        const resolved = resolveSpeaker(sp);
+        const resolved = resolveSpeaker(sp, sanitySpeakerMap);
         const key = sp.speakerId || `${resolved.name || ''}-${resolved.title || ''}-${resolved.affiliation || ''}`;
         if (!key) continue;
         if (!speakerMap.has(key)) {
@@ -102,7 +103,7 @@ const SpeakersFromSchedule: React.FC<Props> = ({ eventId, title, subtitle, maxSp
 
   const openModal = (sp: ScheduleSpeaker) => {
     if (sp.speakerId) {
-      // try sanity first
+      // get speaker from sanity
       const sanitySpeaker = sanitySpeakerMap.get(sp.speakerId);
       if (sanitySpeaker) {
         setSelectedSpeaker({
@@ -111,19 +112,6 @@ const SpeakersFromSchedule: React.FC<Props> = ({ eventId, title, subtitle, maxSp
           company: sanitySpeaker.speakerCompany || '',
           bio: sanitySpeaker.speakerBio || '',
           sanityImage: sanitySpeaker.speakerImage,
-        });
-        setIsModalOpen(true);
-        return;
-      }
-      // fall back to legacy
-      if (SPEAKERS[sp.speakerId]) {
-        const legacy = SPEAKERS[sp.speakerId];
-        setSelectedSpeaker({
-          name: legacy.name,
-          position: legacy.position,
-          company: legacy.company,
-          bio: legacy.bio || '',
-          image: legacy.image,
         });
         setIsModalOpen(true);
       }
@@ -135,12 +123,11 @@ const SpeakersFromSchedule: React.FC<Props> = ({ eventId, title, subtitle, maxSp
     setSelectedSpeaker(null);
   };
 
-  // check if speaker has bio (from sanity or legacy)
+  // check if speaker has bio
   const hasBio = (sp: ScheduleSpeaker) => {
     if (sp.speakerId) {
       const sanitySpeaker = sanitySpeakerMap.get(sp.speakerId);
       if (sanitySpeaker?.speakerBio) return true;
-      if (SPEAKERS[sp.speakerId]?.bio) return true;
     }
     return false;
   };
@@ -156,7 +143,16 @@ const SpeakersFromSchedule: React.FC<Props> = ({ eventId, title, subtitle, maxSp
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8">
           {speakers.map(({ speaker, sessionAnchor }, idx) => (
             <div key={idx} className="bg-gray-50 rounded-lg shadow-sm p-4 flex flex-col items-center">
-              {speaker.photo && (
+              {speaker.sanityImage?.asset?._ref ? (
+                <Image
+                  src={getSanityImageUrl(speaker.sanityImage.asset._ref)}
+                  alt={speaker.name || 'Speaker'}
+                  width={160}
+                  height={160}
+                  className="rounded-full mb-4 object-cover"
+                  unoptimized={true}
+                />
+              ) : speaker.photo && (
                 <Image
                   src={getCdnPath(`speakers/${speaker.photo}`)}
                   alt={speaker.name || 'Speaker'}

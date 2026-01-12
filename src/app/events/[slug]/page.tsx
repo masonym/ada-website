@@ -21,6 +21,7 @@ import EventHighlights from '@/app/components/EventHighlights';
 import { HIGHLIGHTS } from '@/constants/highlights';
 import EventNoticeBanner from '@/app/components/EventNoticeBanner';
 import EventBadgeNotice from '@/app/components/EventBadgeNotice';
+import { getEventSpeakersPublic } from '@/lib/sanity';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -65,12 +66,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function EventPage({ params }: { params: { slug: string } }) {
+export default async function EventPage({ params }: { params: { slug: string } }) {
   const event = EVENTS.find((e) => e.slug === params.slug);
 
   if (!event) {
     notFound();
   }
+
+  // Fetch speakers
+  const speakerData = await getEventSpeakersPublic(event.id);
+  const sanityKeynoteSpeakers = speakerData?.keynoteSpeakers || [];
 
   const now = new Date().getTime();
   const targetTime = new Date(event.timeStart).getTime();
@@ -148,7 +153,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
               {event.eventText}
             </div>
 
-            {event.features?.showKeynoteSpeaker && <KeynoteSpeaker eventId={event.id} eventShorthand={event.eventShorthand} showExpandedBio={false} />}
+            {event.features?.showKeynoteSpeaker && <KeynoteSpeaker eventId={event.id} eventShorthand={event.eventShorthand} showExpandedBio={false} sanityKeynoteSpeakers={sanityKeynoteSpeakers} />}
 
 
             <SpecialFeatures event={event} />

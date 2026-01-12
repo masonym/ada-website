@@ -2,31 +2,16 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { SPEAKERS } from '@/constants/speakers';
 import { EVENTS } from '@/constants/events';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { getCdnPath } from '@/utils/image';
 import { EventSpeakerPublic } from '@/lib/sanity';
 
-type KeynoteSpeakerData = {
-  id: string;
-  image?: string;
-  sanityImage?: { asset: { _ref: string } };
-  name: string;
-  position: string;
-  company: string;
-  bio: string;
-  keynote?: {
-    isKeynote: boolean;
-    headerText?: string;
-  };
-};
-
 type KeynoteSpeakerProps = {
   eventId: number;
   eventShorthand: string;
   showExpandedBio?: boolean;
-  sanityKeynoteSpeakers?: EventSpeakerPublic[] | null;
+  sanityKeynoteSpeakers: EventSpeakerPublic[];
 };
 
 // helper to get sanity image URL
@@ -50,42 +35,19 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
   const bioRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const collapsedRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
-  // use sanity data if available, otherwise fall back to legacy
-  const useSanity = sanityKeynoteSpeakers && sanityKeynoteSpeakers.length > 0;
-
-  // Get legacy keynote speaker configuration
-  const event = EVENTS.find(e => e.id === eventId);
-  const keynoteConfig = event?.features?.keynoteSpeakers || [];
-  
-  // Map keynote speaker IDs to actual speaker data (legacy)
-  const legacyKeynoteSpeakers = keynoteConfig.map(config => {
-    const speaker = SPEAKERS[config.speakerId];
-    if (!speaker) return null;
-    return {
-      ...speaker,
-      id: config.speakerId,
-      keynote: {
-        isKeynote: true,
-        headerText: config.headerText
-      }
-    };
-  }).filter(Boolean) as KeynoteSpeakerData[];
-
   // normalize to common format
-  const keynoteSpeakers: KeynoteSpeakerData[] = useSanity
-    ? sanityKeynoteSpeakers.map(s => ({
-        id: s.speakerId,
-        name: s.speakerName,
-        sanityImage: s.speakerImage,
-        position: s.speakerPosition || '',
-        company: s.speakerCompany || '',
-        bio: s.speakerBio || '',
-        keynote: {
-          isKeynote: true,
-          headerText: s.keynoteHeaderText || 'Keynote Speaker'
-        }
-      }))
-    : legacyKeynoteSpeakers;
+  const keynoteSpeakers = sanityKeynoteSpeakers.map(s => ({
+    id: s.speakerId,
+    name: s.speakerName,
+    sanityImage: s.speakerImage,
+    position: s.speakerPosition || '',
+    company: s.speakerCompany || '',
+    bio: s.speakerBio || '',
+    keynote: {
+      isKeynote: true,
+      headerText: s.keynoteHeaderText || 'Keynote Speaker'
+    }
+  }));
 
   useEffect(() => {
     if (!keynoteSpeakers) return;
@@ -136,7 +98,7 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
                   <Image
                     src={speaker.sanityImage?.asset?._ref 
                       ? getSanityImageUrl(speaker.sanityImage.asset._ref)
-                      : getCdnPath(`speakers/${speaker.image}`)}
+                      : ''}
                     alt={speaker.name}
                     fill
                     className="rounded-full relative z-10 border-4 border-white shadow-lg object-cover"

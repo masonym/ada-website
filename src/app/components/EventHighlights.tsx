@@ -4,13 +4,14 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { HIGHLIGHTS, findScheduleItem, HighlightItem } from '@/constants/highlights';
 import { EVENTS } from '@/constants/events';
-import { SPEAKERS } from '@/constants/speakers';
 import { getCdnPath } from '@/utils/image';
+import { EventSpeakerPublic } from '@/lib/sanity';
 
 type Props = {
   sourceEventId: number;
   title?: string;
   subtitle?: string;
+  sanitySpeakers?: EventSpeakerPublic[] | null;
 };
 
 type ScheduleSpeaker = {
@@ -18,30 +19,31 @@ type ScheduleSpeaker = {
   title?: string;
   affiliation?: string;
   photo?: string;
+  sanityImage?: { asset: { _ref: string } };
   speakerId?: string;
 };
 
-const resolveSpeaker = (sp: ScheduleSpeaker): ScheduleSpeaker => {
-  if (sp.speakerId && SPEAKERS[sp.speakerId]) {
-    const s = SPEAKERS[sp.speakerId];
-    return {
-      ...sp,
-      name: s.name,
-      title: s.position,
-      affiliation: s.company,
-      photo: s.image,
-    };
-  }
+const resolveSpeaker = (sp: ScheduleSpeaker, sanitySpeakerMap: Map<string, EventSpeakerPublic>): ScheduleSpeaker => {
+  // For past events, we don't have Sanity data, so return speaker as-is
+  // The schedule data should already have the speaker names populated
   return sp;
 };
 
-const EventHighlights: React.FC<Props> = ({ sourceEventId, title, subtitle }) => {
+const EventHighlights: React.FC<Props> = ({ sourceEventId, title, subtitle, sanitySpeakers }) => {
   const items: HighlightItem[] = HIGHLIGHTS[sourceEventId] || [];
   const sourceEvent = EVENTS.find((e) => e.id === sourceEventId);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState<string>('');
   const [modalSpeakers, setModalSpeakers] = useState<ScheduleSpeaker[]>([]);
+
+  // build sanity speaker map
+  const sanitySpeakerMap = new Map<string, EventSpeakerPublic>();
+  if (sanitySpeakers) {
+    sanitySpeakers.forEach(s => {
+      if (s.speakerSlug) sanitySpeakerMap.set(s.speakerSlug, s);
+    });
+  }
 
   if (!sourceEvent || items.length === 0) return null;
 
@@ -51,7 +53,7 @@ const EventHighlights: React.FC<Props> = ({ sourceEventId, title, subtitle }) =>
       : undefined;
     const matched = findScheduleItem(sourceEventId, h.sessionTime, h.sessionTitle, dayArg);
     const speakers = matched && 'speakers' in matched.item && matched.item.speakers
-      ? (matched.item.speakers as ScheduleSpeaker[]).map(resolveSpeaker)
+      ? (matched.item.speakers as ScheduleSpeaker[]).map(sp => resolveSpeaker(sp, sanitySpeakerMap))
       : [];
     setModalSpeakers(speakers);
     setModalTitle(h.sessionTitle || 'Session');

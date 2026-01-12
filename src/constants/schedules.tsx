@@ -1,8 +1,6 @@
-import { SPEAKERS } from './speakers';
-
 // Extended speaker type for schedule-specific data
 export type ScheduleSpeaker = {
-    speakerId: string; // Reference to SPEAKERS object
+    speakerId: string; // Reference to speaker slug
     presentation?: string;
     videoId?: string;
     videoStartTime?: number;

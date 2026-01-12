@@ -1,4 +1,3 @@
-import { getSpeakersForEvent } from '@/constants/speakers';
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import KeynoteSpeaker from './KeynoteSpeaker';
@@ -10,8 +9,8 @@ type SpeakerProps = {
     event: Event;
     isAuthenticated: boolean;
     onRequestPassword: () => void;
-    sanitySpeakers?: EventSpeakerPublic[] | null;
-    sanityKeynoteSpeakers?: EventSpeakerPublic[] | null;
+    sanitySpeakers: EventSpeakerPublic[] | null;
+    sanityKeynoteSpeakers: EventSpeakerPublic[] | null;
 };
 
 // helper to get sanity image URL
@@ -24,9 +23,6 @@ function getSanityImageUrl(ref: string) {
 }
 
 const Speakers = ({ event, isAuthenticated, onRequestPassword, sanitySpeakers, sanityKeynoteSpeakers }: SpeakerProps) => {
-    // use sanity data if available, otherwise fall back to legacy
-    const legacySpeakers = getSpeakersForEvent(event.id);
-    const useSanity = sanitySpeakers && sanitySpeakers.length > 0;
     
     const [expandedBios, setExpandedBios] = useState<boolean[]>([]);
     const bioRefs = useRef<Array<HTMLDivElement | null>>([]);
@@ -132,32 +128,22 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword, sanitySpeakers, s
     };
 
     // normalize speakers to common format
-    const normalizedSpeakers = useSanity
-        ? sanitySpeakers.map(s => ({
-            id: s.speakerId,
-            name: s.speakerName,
-            sanityImage: s.speakerImage,
-            position: s.speakerPosition,
-            company: s.speakerCompany,
-            bio: s.speakerBio,
-            label: s.label,
-        }))
-        : legacySpeakers.map(s => ({
-            id: s.id,
-            name: s.name,
-            image: s.image,
-            position: s.position,
-            company: s.company,
-            bio: s.bio,
-            label: s.label,
-        }));
+    const normalizedSpeakers = (sanitySpeakers || []).map(s => ({
+        id: s.speakerId,
+        name: s.speakerName,
+        sanityImage: s.speakerImage,
+        position: s.speakerPosition,
+        company: s.speakerCompany,
+        bio: s.speakerBio,
+        label: s.label,
+    }));
 
     return (
         <div className="max-container flex flex-col items-center">
             <KeynoteSpeaker 
                 eventId={event.id} 
                 eventShorthand={event.eventShorthand} 
-                sanityKeynoteSpeakers={sanityKeynoteSpeakers}
+                sanityKeynoteSpeakers={sanityKeynoteSpeakers || []}
             />
             {event.id === 5 ? (
                 <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Industry Speaker Spotlight</h1>
