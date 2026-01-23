@@ -26,6 +26,13 @@ export type AddSponsorToEventInput = {
   tierIds: string[] // can add to multiple tiers at once
 }
 
+ export type RemoveSponsorFromEventInput = {
+   sponsorId: string
+   eventId: number
+   tierIds?: string[]
+   removeFromAllTiers?: boolean
+ }
+
 // create a sponsor document
 export async function createSponsor(input: CreateSponsorInput, imageAssetId: string) {
   const slug = input.name
@@ -98,6 +105,57 @@ export async function addSponsorToEventTiers(input: AddSponsorToEventInput) {
 
   return { success: true }
 }
+
+ // remove sponsor from event tiers
+ export async function removeSponsorFromEventTiers(input: RemoveSponsorFromEventInput) {
+   const eventSponsor = await adminClient.fetch<{ _id: string; tiers: Array<{ id: string; sponsors: Array<{ _ref: string }> }> } | null>(`
+     *[_type == "eventSponsor" && eventId == $eventId][0] {
+       _id,
+       tiers[] {
+         id,
+         sponsors[] {
+           _ref
+         }
+       }
+     }
+   `, { eventId: input.eventId })
+
+   if (!eventSponsor) {
+     throw new Error(`No event sponsor document found for event ${input.eventId}`)
+   }
+
+   const tierIdsToRemoveFrom = input.removeFromAllTiers
+     ? eventSponsor.tiers.map(t => t.id)
+     : (input.tierIds || [])
+
+   if (tierIdsToRemoveFrom.length === 0) {
+     throw new Error('At least one tier is required')
+   }
+
+   let removedCount = 0
+
+   for (const tierId of tierIdsToRemoveFrom) {
+     const tierIndex = eventSponsor.tiers.findIndex(t => t.id === tierId)
+     if (tierIndex === -1) {
+       console.warn(`Tier ${tierId} not found in event ${input.eventId}`)
+       continue
+     }
+
+     const existingSponsors = eventSponsor.tiers[tierIndex].sponsors || []
+     if (!existingSponsors.some(s => s._ref === input.sponsorId)) {
+       continue
+     }
+
+     await adminClient
+       .patch(eventSponsor._id)
+       .unset([`tiers[${tierIndex}].sponsors[_ref=="${input.sponsorId}"]`])
+       .commit()
+
+     removedCount += 1
+   }
+
+   return { success: true, removedFromTiers: removedCount }
+ }
 
 // get all events with their tiers for the form dropdown
 export async function getEventsWithTiers() {
