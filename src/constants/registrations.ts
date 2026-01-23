@@ -414,4 +414,76 @@ export const REGISTRATION_TYPES = [
             },
         ],
     },
+
+    {
+        id: 7,
+        registrations: [
+            {
+                id: "attendee-pass",
+                title: "Attendee Pass",
+                headerImage: "attendee-pass.webp",
+                perks: [
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) Attendee Pass", bold: true },
+                            { content: "Access to General Sessions", indent: 1 },
+                            { content: "Access to Exhibit Area", indent: 1 },
+                            { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                            { content: "Breakfast & Buffet Lunch", indent: 1 },
+                            { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                        ]
+                    }
+                ],
+                buttonText: "Register Now",
+                price: 545,
+                earlyBirdPrice: 495,
+                earlyBirdDeadline: "2026-07-01T03:59:59Z", // June 30, 2026 11:59 PM ET
+                type: "paid",
+            },
+
+            {
+                id: "vip-attendee-pass",
+                title: "VIP Attendee Pass",
+                headerImage: "vip-attendee-pass.webp",
+                perks: [
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                            { content: "Access to General Sessions", indent: 1 },
+                            { content: "Access to Exhibit Area", indent: 1 },
+                            { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                            { content: "Breakfast & Buffet Lunch", indent: 1 },
+                            { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                            { content: "Access to VIP Networking Reception", bold: true },
+                        ]
+                    }
+                ],
+                buttonText: "Register Now",
+                price: 645,
+                earlyBirdPrice: 595,
+                earlyBirdDeadline: "2026-07-01T03:59:59Z", // June 30, 2026 11:59 PM ET
+                type: "paid",
+            },
+
+            {
+                id: "govt-official-military-pass",
+                title: "Government Official & Military Pass",
+                headerImage: "gov-pass.webp",
+                perks: [
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) Attendee Pass", bold: true },
+                            { content: "Access to General Sessions", indent: 1 },
+                            { content: "Access to Exhibit Area", indent: 1 },
+                            { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                            { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                        ]
+                    }
+                ],
+                buttonText: "Register Now",
+                type: "complimentary",
+                price: "Complimentary",
+            },
+        ],
+    },
 ];

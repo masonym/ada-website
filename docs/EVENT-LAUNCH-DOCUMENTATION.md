@@ -239,31 +239,6 @@ In `src/constants/exhibitors.ts`:
   }
 }
 ```
-
-## Speaker Management
-
-### Speaker Database
-In `src/constants/speakers.ts`:
-
-```typescript
-{
-  "speaker-id": {
-    image: string,                 // Photo filename
-    name: string,                  // Full name with title
-    position: string,              // Job title
-    company: string,               // Organization
-    bio?: string,                  // HTML-formatted biography
-  }
-}
-```
-
-### Speaker Best Practices
-1. Use consistent image naming (kebab-case)
-2. Include full titles and credentials
-3. Write bios in HTML with `<br/><br/>` for paragraphs
-4. Keep speaker IDs unique and descriptive
-5. Store all speaker photos in `/public/speakers/`
-
 ## Schedule Creation
 
 ### Event Schedule
