@@ -39,14 +39,14 @@ export const EVENTS: Event[] = [
       { tagline: "", description: "Special Preferential Contracting/Set-Aside Opportunities for Small Disadvantaged Businesses, 8(a) Certified Companies, Woman-Owned Small Businesses, Veteran and Service-Disabled Veteran Owned Small Businesses, HUBZone Firms, and Native American, Alaska Native, and Native Hawaiian Companies", },
     ],
     testimonials: [
-      {
-        type: 'video',
-        quote: "\"I'm here because it allows me to be able to share proven stories as a small business where we have been able to win contracts through our SBIR and our OT, but more importantly to learn more about what upcoming opportunities there are and meet with senior leaders\"",
-        name: "Aimee Zick",
-        title: "Business Development Executive",
-        affiliation: "Improve Group",
-        videoId: "H3Be6-OY_ug"
-      },
+      // {
+      //   type: 'video',
+      //   quote: "\"I'm here because it allows me to be able to share proven stories as a small business where we have been able to win contracts through our SBIR and our OT, but more importantly to learn more about what upcoming opportunities there are and meet with senior leaders\"",
+      //   name: "Aimee Zick",
+      //   title: "Business Development Executive",
+      //   affiliation: "Improve Group",
+      //   videoId: "H3Be6-OY_ug"
+      // },
       {
         type: 'video',
         quote: "\"The American Defense Alliance is a body for us that is extremely valuable because it covers that whole forest, from two dudes in a garage to some pretty large and impressive companies.\" ",
