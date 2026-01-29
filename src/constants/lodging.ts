@@ -186,6 +186,7 @@ export const LODGING_INFO: LodgingInfo[] = [
     <b>Additional availability</b>: 2 days pre- and post event<br />
     <b>Group Rate Cut Off</b>: July 12, 2026<br />
     <br />
+    <div class="mb-4 bg-gray-100 p-4 rounded-xl">
     <b>Amenity Fee Covers:</b><br />
     • Wireless in room high speed internet (5Mbps)<br />
     • Unlimited Lavazza in-room coffee<br />
@@ -197,6 +198,7 @@ export const LODGING_INFO: LodgingInfo[] = [
     • Pool Towel Services<br />
     • 24 Hour Fitness Center access<br />
     • Santa Fe Trail access via Hotel Polaris Trailhead
+    </div>
     `
   },
 ];
