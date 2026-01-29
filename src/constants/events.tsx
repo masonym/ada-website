@@ -1455,6 +1455,15 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         },
       ],
     },
+    parkingInfo: [
+      {
+        title: "",
+        description: `<b>Self-Parking:</b> Complimentary to all conference attendees in hotel parking lot
+        <br />
+        <br />
+        <b>Valet:</b> $35.00 Per Day
+        `,
+      },
+    ],
   },
-
 ];

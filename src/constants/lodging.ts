@@ -185,8 +185,6 @@ export const LODGING_INFO: LodgingInfo[] = [
     <b>Group Rate for Sleeping Rooms</b>: $209.00 plus taxes and $15 amenity fee (reduced from $25)<br />
     <b>Additional availability</b>: 2 days pre- and post event<br />
     <b>Group Rate Cut Off</b>: July 12, 2026<br />
-    <b>Self Parking</b>: Complimentary to all conference attendees in hotel parking lot<br />
-    <b>Valet Parking</b>: $35<br />
     <br />
     <b>Amenity Fee Covers:</b><br />
     • Wireless in room high speed internet (5Mbps)<br />
