@@ -83,7 +83,7 @@ Venue: TBD in Atlanta, Georgia
             },
             {
                 question: "Is there a cost to attend the event?",
-                answer: "Yes, there is a registration fee to attend the event. Please refer to the registration page for detailed pricing information and any available discounts. Government Official and Military attendance is complimentary.",
+                answer: "Yes, there is a registration fee to attend the event. Please refer to the registration page for detailed pricing information and any available discounts. Government Official and Active-Duty Military attendance is complimentary.",
             },
             {
                 question: "Will there be networking opportunities?",
@@ -141,7 +141,7 @@ Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
             },
             {
                 question: "Is there a cost to attend the event?",
-                answer: "Yes, there is a registration fee to attend the event. Please refer to the registration page for detailed pricing information and any available discounts. Government Official and Military attendance is complimentary.",
+                answer: "Yes, there is a registration fee to attend the event. Please refer to the registration page for detailed pricing information and any available discounts. Government Official and Active-Duty Military attendance is complimentary.",
             },
             {
                 question: "Will there be networking opportunities?",
@@ -214,7 +214,7 @@ Venue: Renaissance Austin Hotel, 9721 Arboretum Blvd, Austin, Texas 78759
             },
             {
                 question: "Is there a cost to attend the event?",
-                answer: "Yes, there is a registration fee to attend the event. Please refer to the registration page for detailed pricing information and any available discounts. Government Official and Military attendance is complimentary.",
+                answer: "Yes, there is a registration fee to attend the event. Please refer to the registration page for detailed pricing information and any available discounts. Government Official and Active-Duty Military attendance is complimentary.",
             },
             {
                 question: "Will there be networking opportunities?",
@@ -287,7 +287,7 @@ Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
             },
             {
                 question: "Is there a cost to attend the event?",
-                answer: "Yes, there is a registration fee to attend the event. Please refer to the registration page for detailed pricing information and any available discounts. Government Official and Military attendance is complimentary.",
+                answer: "Yes, there is a registration fee to attend the event. Please refer to the registration page for detailed pricing information and any available discounts. Government Official and Active-Duty Military attendance is complimentary.",
             },
             {
                 question: "Will there be networking opportunities?",
@@ -346,7 +346,7 @@ Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
             {
                 question: "When and where will the event take place?",
                 answer: `Date: August 4 - 5, 2026<br>
-Time: August 4, 2026: 7:30 AM - 4:30 PM and August 5, 2026: 7:30 AM - 2:30 PM<br>
+Time: August 4, 2026: 7:30 AM - 6:30 PM and August 5, 2026: 7:30 AM - 1:30 PM<br>
 Venue: Hotel Polaris by U.S. Air Force Academy, 8989 North Gate Boulevard, Colorado Springs, Colorado 80921
 `,
             },
@@ -360,7 +360,7 @@ Venue: Hotel Polaris by U.S. Air Force Academy, 8989 North Gate Boulevard, Color
             },
             {
                 question: "Is there a cost to attend the event?",
-                answer: "Yes, there is a registration fee to attend the event. Please refer to the registration page for detailed pricing information and any available discounts. Government Official and Military attendance is complimentary.",
+                answer: "Yes, there is a registration fee to attend the event. Please refer to the registration page for detailed pricing information and any available discounts. Government Official and Active-Duty Military attendance is complimentary.",
             },
             {
                 question: "Will there be networking opportunities?",
