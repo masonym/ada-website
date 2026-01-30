@@ -1362,9 +1362,6 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         <p className="mb-4 leading-relaxed">
           Join us for the <b>2026 Air Force &amp; Space Force Procurement Conference</b> on August 4-5, 2026 in Colorado Springs, home to the Air Force Academy, U.S. Space Command, NORAD, NORTHCOM, and Peterson and Shriever Space Force Bases. Speakers and panelists from the Pentagon – Air Force and Space Force commands and contracting offices, Military bases and installations – and Prime Defense Contractors – will provide updates on the latest requirements, programs and initiatives driving procurement and purchasing opportunities.
         </p>
-        <p className="mb-4 leading-relaxed">
-          The conference will provide Defense Industrial Base contractors with actionable business intelligence covering Air Force &amp; Space Force commands, bases and installations, and the latest programs and initiatives – focused on acquisition requirements and upcoming contract opportunities.
-        </p>
         <p className="font-bold text-xl text-center font-gotham">
           Topical Coverage:
         </p>
