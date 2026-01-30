@@ -467,7 +467,7 @@ export const REGISTRATION_TYPES = [
 
             {
                 id: "govt-official-military-pass",
-                title: "Government Official & Military Pass",
+                title: "Government Official & Active-Duty Military Pass",
                 headerImage: "gov-pass.webp",
                 perks: [
                     {

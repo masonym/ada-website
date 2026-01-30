@@ -60,7 +60,7 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
         onClick={handleCardClick}
       >
         {/* Image container */}
-        <div className="relative w-full h-40">
+        <div className="relative w-full aspect-[2/1]">
           <Image
             src={getCdnPath(`events/${event.eventShorthand}/registration-cards/${item.headerImage}`)}
             alt={item.title}
