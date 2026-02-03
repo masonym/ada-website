@@ -69,6 +69,7 @@
     "zod": "^3.25.67"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.1",
     "@types/date-fns": "^2.6.3",
     "@types/googlemaps": "^3.43.3",
     "@types/node": "^20.17.12",

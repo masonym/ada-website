@@ -171,7 +171,7 @@ export const LODGING_INFO: LodgingInfo[] = [
         phone: "(719) 886-1100",
         image: "/hotels/hotel-polaris-exterior.webp",
         link: {
-          href: "https://www.reservationdesk.com/hotel/692a757/hotel-polaris-colorado-springs-colorado/",
+          href: "https://www.thehotelpolaris.com/",
           label: "Hotel Polaris by U.S. Air Force Academy"
         },
       },
@@ -185,6 +185,9 @@ export const LODGING_INFO: LodgingInfo[] = [
     <b>Group Rate for Sleeping Rooms</b>: $209.00 plus taxes and $15 amenity fee (reduced from $25)<br />
     <b>Additional availability</b>: 2 days pre- and post event<br />
     <b>Group Rate Cut Off</b>: July 12, 2026<br />
+    <br/> 
+    <b>Reservation Link Coming Soon</b>
+    <br />
     <br />
     <div class="mb-4 bg-gray-100 p-4 rounded-xl">
     <b>Amenity Fee Covers:</b><br />

@@ -1782,7 +1782,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 title: "VIP Networking Reception Sponsorship",
                 cost: 3500,
                 requiresAttendeeInfo: true,
-                slotsPerEvent: 1,
+                slotsPerEvent: 2,
                 sponsorPasses: 2,
                 perks: [
                     {
@@ -1882,10 +1882,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             {
                 id: "small-business-sponsor",
                 title: "Small Business Sponsorship",
-                cost: 1750,
+                cost: 1850,
                 earlyBirdPrice: 1500,
                 earlyBirdDeadline: "2026-07-01T03:59:59Z", // June 30, 2026 11:59 PM ET
-                slotsPerEvent: 20,
+                slotsPerEvent: 10,
                 requiresAttendeeInfo: true,
                 sponsorPasses: 2,
                 perks: [
@@ -1924,7 +1924,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 title: "Small Business Sponsorship without Exhibit Space",
                 cost: 1250,
                 requiresAttendeeInfo: true,
-                slotsPerEvent: 20,
+                slotsPerEvent: 10,
                 sponsorPasses: 2,
                 perks: [
                     {

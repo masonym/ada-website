@@ -416,7 +416,7 @@ export const REGISTRATION_TYPES = [
     },
 
     {
-        id: 7,
+        id: 7, // 2026afsfpc
         registrations: [
             {
                 id: "attendee-pass",
@@ -435,9 +435,10 @@ export const REGISTRATION_TYPES = [
                     }
                 ],
                 buttonText: "Register Now",
-                price: 545,
+                price: 595,
                 earlyBirdPrice: 495,
-                earlyBirdDeadline: "2026-07-01T03:59:59Z", // June 30, 2026 11:59 PM ET
+                earlyBirdDeadline: "2026-04-01T03:59:59Z", // March 31st, 2026 11:59 PM ET
+                // earlyBirdDeadline: "2026-07-01T03:59:59Z", // June 30, 2026 11:59 PM ET
                 type: "paid",
             },
 
@@ -459,9 +460,10 @@ export const REGISTRATION_TYPES = [
                     }
                 ],
                 buttonText: "Register Now",
-                price: 645,
+                price: 695,
                 earlyBirdPrice: 595,
-                earlyBirdDeadline: "2026-07-01T03:59:59Z", // June 30, 2026 11:59 PM ET
+                earlyBirdDeadline: "2026-04-01T03:59:59Z", // March 31st, 2026 11:59 PM ET
+                // earlyBirdDeadline: "2026-07-01T03:59:59Z", // June 30, 2026 11:59 PM ET
                 type: "paid",
             },
 
