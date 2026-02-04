@@ -159,4 +159,49 @@ export const LODGING_INFO: LodgingInfo[] = [
     </a>
     `
   },
+  {
+    eventId: 7, // 2026AFSFPC
+    hotels: [
+      {
+        name: "Hotel Polaris by U.S. Air Force Academy",
+        address: "8989 North Gate Boulevard",
+        city: "Colorado Springs",
+        state: "CO",
+        zip: "80921",
+        phone: "(719) 886-1100",
+        image: "/hotels/hotel-polaris-exterior.webp",
+        link: {
+          href: "https://www.thehotelpolaris.com/",
+          label: "Hotel Polaris by U.S. Air Force Academy"
+        },
+      },
+    ],
+    note: `
+    <b>Venue</b>: Hotel Polaris by U.S. Air Force Academy<br />
+    <b>Address</b>: 8989 North Gate Boulevard, Colorado Springs, CO 80921<br />
+    <b>NOTE</b>: Hotel is located outside of the base security gates, no special access is required<br />
+    <b>Event Location</b>: Generations Ballroom<br />
+    <b>Dates</b>: Aug 4-5, 2026<br />
+    <b>Group Rate for Sleeping Rooms</b>: $209.00 plus taxes and $15 amenity fee (reduced from $25)<br />
+    <b>Additional availability</b>: 2 days pre- and post event<br />
+    <b>Group Rate Cut Off</b>: July 12, 2026<br />
+    <br/> 
+    <b>Reservation Link Coming Soon</b>
+    <br />
+    <br />
+    <div class="mb-4 bg-gray-100 p-4 rounded-xl">
+    <b>Amenity Fee Covers:</b><br />
+    • Wireless in room high speed internet (5Mbps)<br />
+    • Unlimited Lavazza in-room coffee<br />
+    • Unlimited filtered water at property wide refilling stations<br />
+    • Sporting equipment & games (ping pong, pool, cornhole, bocce ball, and more)<br />
+    • 10% off Ascend Spa Services<br />
+    • 10% off all Grab 'n Go food and beverage (excludes alcohol)<br />
+    • 10% off Flight Simulator Experiences<br />
+    • Pool Towel Services<br />
+    • 24 Hour Fitness Center access<br />
+    • Santa Fe Trail access via Hotel Polaris Trailhead
+    </div>
+    `
+  },
 ];
