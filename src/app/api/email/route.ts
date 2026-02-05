@@ -6,20 +6,39 @@ export async function POST(request: NextRequest) {
   try {
     const { email, name, message } = await request.json();
 
+    console.log('Email API called with:', { email, name, messageLength: message?.length });
+
     // Input validation
     if (!email || !name || !message) {
+      console.error('Missing required fields:', { hasEmail: !!email, hasName: !!name, hasMessage: !!message });
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
     if (!isValidEmail(email)) {
+      console.error('Invalid email format:', email);
       return NextResponse.json({ error: 'Invalid email format' }, { status: 400 });
+    }
+
+    // Check environment variables
+    const myEmail = process.env.MY_EMAIL;
+    const myPassword = process.env.MY_PASSWORD;
+    
+    console.log('Environment check:', {
+      hasMyEmail: !!myEmail,
+      hasMyPassword: !!myPassword,
+      emailPrefix: myEmail ? myEmail.substring(0, 3) + '***' : null
+    });
+
+    if (!myEmail || !myPassword) {
+      console.error('Missing email environment variables');
+      return NextResponse.json({ error: 'Email service not configured' }, { status: 500 });
     }
 
     const transport = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.MY_EMAIL,
-        pass: process.env.MY_PASSWORD,
+        user: myEmail,
+        pass: myPassword,
       },
     });
 
