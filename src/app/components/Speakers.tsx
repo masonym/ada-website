@@ -145,11 +145,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword, sanitySpeakers, s
                 eventShorthand={event.eventShorthand} 
                 sanityKeynoteSpeakers={sanityKeynoteSpeakers || []}
             />
-            {event.id === 5 ? (
-                <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Industry Speaker Spotlight</h1>
-            ) : (
-                <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Speaker Spotlight</h1>
-            )}
+            <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Speaker Spotlight</h1>
             {isEventFuture && (
                 <p className="text-l font-bold text-center mb-8 text-slate-600">More speaker information is being added. Please check regularly for updates.</p>
             )}
