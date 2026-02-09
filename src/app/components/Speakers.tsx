@@ -150,10 +150,6 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword, sanitySpeakers, s
             ) : (
                 <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Speaker Spotlight</h1>
             )}
-            {/* TODO: Remove this stupid hack after March 2026 event */}
-            {event.id === 5 && (
-                <p className="text-l font-bold text-center mb-8 text-slate-600">We are in the process of reconfirming Government and Military Speakers.</p>
-            )}
             {isEventFuture && (
                 <p className="text-l font-bold text-center mb-8 text-slate-600">More speaker information is being added. Please check regularly for updates.</p>
             )}
