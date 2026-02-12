@@ -4,7 +4,9 @@ import {
   uploadImage, 
   addSponsorToEventTiers, 
   getEventsWithTiers,
-  getAllSponsorsAdmin 
+  getAllSponsorsAdmin,
+  getAllMatchmakingSponsors,
+  addSponsorToMatchmaking
 } from '@/lib/sanity-admin'
 import { EVENTS } from '@/constants/events'
 
@@ -17,9 +19,10 @@ const EVENT_NAMES: Record<number, string> = EVENTS.reduce((acc, event) => {
 // get events and tiers for the form
 export async function GET() {
   try {
-    const [events, sponsors] = await Promise.all([
+    const [events, sponsors, matchmakingDocs] = await Promise.all([
       getEventsWithTiers(),
-      getAllSponsorsAdmin()
+      getAllSponsorsAdmin(),
+      getAllMatchmakingSponsors()
     ])
     
     // deduplicate by eventId (keep first occurrence) and enrich with actual names
@@ -34,15 +37,25 @@ export async function GET() {
         ...event,
         eventName: EVENT_NAMES[event.eventId] || event.title || `Event ${event.eventId}`
       }))
+
+    // enrich matchmaking docs with event names from slugs
+    const enrichedMatchmaking = (matchmakingDocs || []).map(doc => {
+      const event = EVENTS.find(e => e.slug === doc.eventSlug)
+      return {
+        _id: doc._id,
+        eventSlug: doc.eventSlug,
+        eventName: event?.title || doc.eventSlug
+      }
+    })
     
-    return NextResponse.json({ events: enrichedEvents, sponsors })
+    return NextResponse.json({ events: enrichedEvents, sponsors, matchmakingDocs: enrichedMatchmaking })
   } catch (error) {
     console.error('Error fetching data:', error)
     return NextResponse.json({ error: 'Failed to fetch data' }, { status: 500 })
   }
 }
 
-// create sponsor and add to event tiers in one step
+// create sponsor and optionally add to event tiers and/or matchmaking
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData()
@@ -51,8 +64,10 @@ export async function POST(request: NextRequest) {
     const website = formData.get('website') as string | null
     const description = formData.get('description') as string | null
     const logo = formData.get('logo') as File | null
-    const eventId = formData.get('eventId') as string
+    const eventId = formData.get('eventId') as string | null
     const tierIds = formData.getAll('tierIds') as string[]
+    const matchmakingDocId = formData.get('matchmakingDocId') as string | null
+    const matchmakingNote = formData.get('matchmakingNote') as string | null
 
     if (!name) {
       return NextResponse.json({ error: 'Name is required' }, { status: 400 })
@@ -62,12 +77,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Logo is required' }, { status: 400 })
     }
 
-    if (!eventId) {
-      return NextResponse.json({ error: 'Event is required' }, { status: 400 })
-    }
-
-    if (tierIds.length === 0) {
-      return NextResponse.json({ error: 'At least one tier is required' }, { status: 400 })
+    // if event is provided, tiers are required
+    if (eventId && tierIds.length === 0) {
+      return NextResponse.json({ error: 'At least one tier is required when adding to an event' }, { status: 400 })
     }
 
     // upload the logo
@@ -80,17 +92,28 @@ export async function POST(request: NextRequest) {
       imageAsset._id
     )
 
-    // add to event tiers
-    await addSponsorToEventTiers({
-      sponsorId: sponsor._id,
-      eventId: parseInt(eventId),
-      tierIds
-    })
+    const actions: string[] = [`Created "${name}"`]
+
+    // optionally add to event tiers
+    if (eventId && tierIds.length > 0) {
+      await addSponsorToEventTiers({
+        sponsorId: sponsor._id,
+        eventId: parseInt(eventId),
+        tierIds
+      })
+      actions.push(`added to ${tierIds.length} tier(s)`)
+    }
+
+    // optionally add to matchmaking
+    if (matchmakingDocId) {
+      await addSponsorToMatchmaking(matchmakingDocId, sponsor._id, matchmakingNote || undefined)
+      actions.push('added to matchmaking')
+    }
 
     return NextResponse.json({ 
       success: true, 
       sponsor: { _id: sponsor._id, name: sponsor.name },
-      message: `Created "${name}" and added to ${tierIds.length} tier(s)`
+      message: actions.join(' and ')
     })
   } catch (error) {
     console.error('Error creating sponsor:', error)

@@ -17,9 +17,16 @@ type ExistingSponsor = {
   slug: { current: string };
 };
 
+type MatchmakingDoc = {
+  _id: string;
+  eventSlug: string;
+  eventName: string;
+};
+
 export default function SponsorAdminPage() {
   const [events, setEvents] = useState<EventWithTiers[]>([]);
   const [existingSponsors, setExistingSponsors] = useState<ExistingSponsor[]>([]);
+  const [matchmakingDocs, setMatchmakingDocs] = useState<MatchmakingDoc[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
@@ -55,6 +62,10 @@ export default function SponsorAdminPage() {
   const [replaceLogo, setReplaceLogo] = useState<File | null>(null);
   const [replaceLogoPreview, setReplaceLogoPreview] = useState<string | null>(null);
 
+  // matchmaking options (for new sponsor form)
+  const [selectedMatchmakingDocId, setSelectedMatchmakingDocId] = useState<string>("");
+  const [matchmakingNote, setMatchmakingNote] = useState("");
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -65,6 +76,7 @@ export default function SponsorAdminPage() {
       const data = await res.json();
       setEvents(data.events || []);
       setExistingSponsors(data.sponsors || []);
+      setMatchmakingDocs(data.matchmakingDocs || []);
     } catch (error) {
       console.error("Failed to fetch data:", error);
     } finally {
@@ -207,8 +219,14 @@ export default function SponsorAdminPage() {
 
   async function handleSubmitNew(e: React.FormEvent) {
     e.preventDefault();
-    if (!name || !logo || !selectedEventId || selectedTierIds.length === 0) {
-      setMessage({ type: "error", text: "Please fill in all required fields" });
+    if (!name || !logo) {
+      setMessage({ type: "error", text: "Please provide a name and logo" });
+      return;
+    }
+
+    // if event is selected, tiers are required
+    if (selectedEventId && selectedTierIds.length === 0) {
+      setMessage({ type: "error", text: "Please select at least one tier for the event" });
       return;
     }
 
@@ -221,8 +239,14 @@ export default function SponsorAdminPage() {
       if (website) formData.append("website", website);
       if (description) formData.append("description", description);
       formData.append("logo", logo);
-      formData.append("eventId", selectedEventId.toString());
-      selectedTierIds.forEach((id) => formData.append("tierIds", id));
+      if (selectedEventId) {
+        formData.append("eventId", selectedEventId.toString());
+        selectedTierIds.forEach((id) => formData.append("tierIds", id));
+      }
+      if (selectedMatchmakingDocId) {
+        formData.append("matchmakingDocId", selectedMatchmakingDocId);
+        if (matchmakingNote) formData.append("matchmakingNote", matchmakingNote);
+      }
 
       const res = await fetch("/api/admin/sponsors", {
         method: "POST",
@@ -240,6 +264,8 @@ export default function SponsorAdminPage() {
         setLogo(null);
         setLogoPreview(null);
         setSelectedTierIds([]);
+        setSelectedMatchmakingDocId("");
+        setMatchmakingNote("");
         // refresh sponsors list
         fetchData();
       } else {
@@ -509,54 +535,95 @@ export default function SponsorAdminPage() {
                 </div>
               </div>
 
-              {/* event selection */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Event *
-                </label>
-                <select
-                  value={selectedEventId || ""}
-                  onChange={(e) => {
-                    setSelectedEventId(e.target.value ? parseInt(e.target.value) : null);
-                    setSelectedTierIds([]);
-                  }}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  required
-                >
-                  <option value="">Select an event...</option>
-                  {events.map((event) => (
-                    <option key={event._id} value={event.eventId}>
-                      {event.eventName}
-                    </option>
-                  ))}
-                </select>
+              {/* event selection (optional) */}
+              <div className="border border-gray-200 rounded-lg p-4 space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Event <span className="text-gray-400 font-normal">(optional)</span>
+                  </label>
+                  <select
+                    value={selectedEventId || ""}
+                    onChange={(e) => {
+                      setSelectedEventId(e.target.value ? parseInt(e.target.value) : null);
+                      setSelectedTierIds([]);
+                    }}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  >
+                    <option value="">No event (create sponsor only)</option>
+                    {events.map((event) => (
+                      <option key={event._id} value={event.eventId}>
+                        {event.eventName}
+                      </option>
+                    ))}
+                  </select>
+                  <p className="text-xs text-gray-400 mt-1">Leave blank to create the sponsor without adding to an event</p>
+                </div>
+
+                {/* tier selection */}
+                {selectedEvent && (
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Tiers * <span className="text-gray-400 font-normal">(select multiple)</span>
+                    </label>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                      {selectedEvent.tiers.map((tier) => (
+                        <button
+                          key={tier.id}
+                          type="button"
+                          onClick={() => handleTierToggle(tier.id)}
+                          className={`px-3 py-2 rounded-md text-sm font-medium border transition-colors ${
+                            selectedTierIds.includes(tier.id)
+                              ? "bg-blue-600 text-white border-blue-600"
+                              : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"
+                          }`}
+                        >
+                          {selectedTierIds.includes(tier.id) && (
+                            <Check className="inline-block w-4 h-4 mr-1" />
+                          )}
+                          {tier.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
 
-              {/* tier selection */}
-              {selectedEvent && (
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Tiers * <span className="text-gray-400 font-normal">(select multiple)</span>
-                  </label>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                    {selectedEvent.tiers.map((tier) => (
-                      <button
-                        key={tier.id}
-                        type="button"
-                        onClick={() => handleTierToggle(tier.id)}
-                        className={`px-3 py-2 rounded-md text-sm font-medium border transition-colors ${
-                          selectedTierIds.includes(tier.id)
-                            ? "bg-blue-600 text-white border-blue-600"
-                            : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"
-                        }`}
-                      >
-                        {selectedTierIds.includes(tier.id) && (
-                          <Check className="inline-block w-4 h-4 mr-1" />
-                        )}
-                        {tier.name}
-                      </button>
-                    ))}
+              {/* matchmaking selection (optional) */}
+              {matchmakingDocs.length > 0 && (
+                <div className="border border-gray-200 rounded-lg p-4 space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Matchmaking Event <span className="text-gray-400 font-normal">(optional)</span>
+                    </label>
+                    <select
+                      value={selectedMatchmakingDocId}
+                      onChange={(e) => setSelectedMatchmakingDocId(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    >
+                      <option value="">No matchmaking</option>
+                      {matchmakingDocs.map((doc) => (
+                        <option key={doc._id} value={doc._id}>
+                          {doc.eventName}
+                        </option>
+                      ))}
+                    </select>
+                    <p className="text-xs text-gray-400 mt-1">Add this sponsor to matchmaking sessions for an event</p>
                   </div>
+
+                  {selectedMatchmakingDocId && (
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Matchmaking Note <span className="text-gray-400 font-normal">(optional)</span>
+                      </label>
+                      <input
+                        type="text"
+                        value={matchmakingNote}
+                        onChange={(e) => setMatchmakingNote(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="e.g. Available for 1-on-1 meetings"
+                      />
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -565,7 +632,15 @@ export default function SponsorAdminPage() {
                 disabled={submitting}
                 className="w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
-                {submitting ? "Creating..." : "Create Sponsor & Add to Event"}
+                {submitting
+                  ? "Creating..."
+                  : selectedEventId && selectedMatchmakingDocId
+                    ? "Create Sponsor, Add to Event & Matchmaking"
+                    : selectedEventId
+                      ? "Create Sponsor & Add to Event"
+                      : selectedMatchmakingDocId
+                        ? "Create Sponsor & Add to Matchmaking"
+                        : "Create Sponsor"}
               </button>
             </form>
           )}
@@ -903,6 +978,8 @@ export default function SponsorAdminPage() {
         <div className="mt-8 bg-blue-50 rounded-lg p-4">
           <h3 className="font-medium text-blue-900 mb-2">Quick Tips</h3>
           <ul className="text-sm text-blue-800 space-y-1">
+            <li>New sponsors can be created without adding to an event — just leave the event dropdown blank</li>
+            <li>You can optionally add a new sponsor to matchmaking for an event (even without a regular tier)</li>
             <li>Select multiple tiers to add a sponsor to both "Small Business" and "Exhibitors" at once</li>
             <li>Use "Existing Sponsor" mode to add a sponsor that's already in the system to a new event</li>
             <li>Use "Replace Logo" mode to update a sponsor's logo without changing other details</li>
