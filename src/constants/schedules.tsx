@@ -1416,7 +1416,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "8:30 AM",
-                        title: "American Defense Alliance – Conference Launch",
+                        title: "Conference Launch – American Defense Alliance",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
@@ -1431,7 +1431,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "9:00 AM",
-                        title: "DEPARTMENT OF THE AIR FORCE KEYNOTE ADDRESS",
+                        title: "KEYNOTE ADDRESS – UNITED STATES AIR FORCE",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
@@ -1446,17 +1446,17 @@ export const SCHEDULES = [
                     },
                     {
                         time: "10:50 AM",
-                        title: "AEROSPACE DEFENSE INDUSTRY KEYNOTE ADDRESS",
+                        title: "Industry Insight",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "11:15 AM",
+                        time: "11:00 AM",
                         title: "Major Space Force Programs Driving Contracts",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "12:00 PM",
-                        title: "AIR FORCE CYBER COMMAND KEYNOTE ADDRESS",
+                        time: "11:50 AM",
+                        title: "KEYNOTE ADDRESS – DEFENSE INDUSTRIAL BASE POLICY & PRIORITIES",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
@@ -1476,17 +1476,17 @@ export const SCHEDULES = [
                     },
                     {
                         time: "2:15 PM",
-                        title: "Air Force/Space Force Small Business Programs",
+                        title: "Air Force & Space Force Small Business Programs",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
                         time: "3:00 PM",
-                        title: "Expediting Additive Manufacturing on the Warfighter Edge",
+                        title: "Expediting Additive Manufacture at the Warfighter Edge",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
                         time: "3:45 PM",
-                        title: "Quantum Innovation and Golden Dome",
+                        title: "Golden Dome Contracting Opportunities",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
@@ -1532,47 +1532,47 @@ export const SCHEDULES = [
                     },
                     {
                         time: "8:35 AM",
-                        title: "ARMY T2 COM (TRAINING AND TRANSFORMATION COMMAND) KEYNOTE ADDRESS",
+                        title: "KEYNOTE ADDRESS – ARMY T2 COM (TRANSFORMATION AND TRAINING COMMAND)",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "9:00 AM",
+                        time: "9:05 AM",
                         title: "How to do Business with the Primes",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "9:45 AM",
+                        time: "9:50 AM",
                         title: "Industry Insight",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "9:55 AM",
-                        title: "DEFENSEWERX & DIU – Accelerating Innovative Tech Solutions",
-                        location: "Rio Grande Hall, Plaza Lower Level",
-                    },
-                    {
-                        time: "10:25 AM",
-                        title: "Industry Insight",
+                        time: "10:00 AM",
+                        title: "CONGRESSIONAL KEYNOTE ADDRESS",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
                         time: "10:30 AM",
-                        title: "Networking Break with Exhibitors",
+                        title: "DEFENSEWERX & DIU – Accelerating Innovative Tech Solutions",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
                         time: "11:00 AM",
-                        title: "AFCEC & USACE Project Priorities (Air Force Civil Engineer Center & Army Corps of Engineers)",
+                        title: "Networking Break with Exhibitors",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
-                        time: "11:30 AM",
+                        time: "11:15 AM",
+                        title: "Industry Insight",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "11:20 AM",
+                        title: "Project Priorities – AFCEC & USACE (Air Force Civil Engineer Center & Army Corps of Engineers)",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "11:50 AM",
                         title: "Military Base-Community Partnerships Promoting Local Build Contracts",
-                        location: "Rio Grande Hall, Plaza Lower Level",
-                    },
-                    {
-                        time: "12:00 PM",
-                        title: "CONGRESSIONAL KEYNOTE ADDRESS",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
