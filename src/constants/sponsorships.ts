@@ -973,7 +973,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 showRemaining: false,
             },
             {
-                id: "networking-luncheon-sponsor",
+                id: "coffee-station-sponsor",
                 title: "Coffee Station Sponsorship",
                 cost: 2500,
                 slotsPerEvent: 1,
