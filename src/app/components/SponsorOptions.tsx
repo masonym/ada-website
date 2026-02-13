@@ -2,6 +2,7 @@
 
 import { SPONSORSHIP_TYPES } from '@/constants/sponsorships'
 import React, { useState } from 'react'
+import { useEventSponsorCounts } from '@/hooks/useEventSponsorCounts'
 import { Event } from '@/types/events'
 import { notFound } from 'next/navigation'
 import SponsorshipCard from './SponsorshipCard'
@@ -22,6 +23,7 @@ export type SponsorProps = {
 const SponsorOptions = ({ event }: SponsorProps) => {
     const currentEvent = SPONSORSHIP_TYPES.find((e) => e.id === event.id);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const { getSponsorCount } = useEventSponsorCounts(event.id);
 
     if (!currentEvent) {
         notFound();
@@ -97,7 +99,7 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                     {currentEvent.primeSponsor && (
                         <div className="mb-8 w-full">
                             <div className="flex justify-center">
-                                <SponsorshipCard item={currentEvent.primeSponsor} event={event} />
+                                <SponsorshipCard item={currentEvent.primeSponsor} event={event} getSponsorCount={getSponsorCount} />
                             </div>
                         </div>
                     )}
@@ -108,7 +110,7 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                             .filter((item) => item.showOnSponsorshipPage !== false)
                             .map((item, index) => (
                                 <div key={index} className="flex justify-center">
-                                    <SponsorshipCard item={item} event={event} />
+                                    <SponsorshipCard item={item} event={event} getSponsorCount={getSponsorCount} />
                                 </div>
                             ))}
                     </div>

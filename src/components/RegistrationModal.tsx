@@ -18,7 +18,7 @@ import type { AttendeeInfo as EventAttendeeInfo, AttendeeInfo as EventRegAttende
 import { Elements } from '@stripe/react-stripe-js';
 import StripePaymentForm, { StripePaymentFormRef } from './StripePaymentForm';
 import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
-import { EVENT_SPONSORS } from '@/constants/eventSponsors';
+import { useEventSponsorCounts } from '@/hooks/useEventSponsorCounts';
 import { isEligibleForPromoDiscount, type PromoCode } from '@/lib/promo-codes';
 import { getEnv } from '@/lib/env';
 
@@ -85,63 +85,32 @@ const initialModalAttendeeInfo: ModalAttendeeInfo = {
 };
 
 // Helper function to check if a sponsorship item is sold out
-const isSoldOut = (item: AdapterModalRegistrationType, eventSponsors: any, eventId: string | number): boolean => {
-  // If it's not a sponsorship or doesn't have slotsPerEvent defined, it's not sold out
+const isSoldOut = (item: AdapterModalRegistrationType, getSponsorCount: (tierId: string) => number): boolean => {
   if (item.category !== 'sponsorship' && item.category !== 'exhibit' || !item.id || !item.quantityAvailable) {
     return false;
   }
 
-  // Find how many slots are available for this sponsorship
   const slotsAvailable = item.quantityAvailable;
+  const slotsTaken = getSponsorCount(item.id);
 
-  // Count how many slots are taken by checking eventSponsors
-  let slotsTaken = 0;
-  const eventSponsorList = eventSponsors.find((es: any) => es.id === eventId);
-
-  if (eventSponsorList) {
-    // Check all tiers to find sponsors with this sponsorship id
-    Object.values(eventSponsorList.tiers || {}).forEach((tier: any) => {
-      // need to match tier.id with item.id, then if match, count length of sponsorIds
-      if (tier.id === item.id) {
-        slotsTaken += tier.sponsorIds.length;
-      }
-    });
-  }
-
-  // Item is sold out if all slots are taken
   return slotsTaken >= slotsAvailable;
 };
 
 // Helper function to get the number of remaining slots for an item
-const getRemainingSlots = (item: AdapterModalRegistrationType, eventSponsors: any, eventId: string | number): number | null => {
-  // If it's not a sponsorship or exhibit, or doesn't have quantityAvailable defined, return null
+const getRemainingSlots = (item: AdapterModalRegistrationType, getSponsorCount: (tierId: string) => number): number | null => {
   if ((item.category !== 'sponsorship' && item.category !== 'exhibit') || !item.id || !item.quantityAvailable) {
     return null;
   }
 
-  // Find how many slots are available for this item
   const slotsAvailable = item.quantityAvailable;
+  const slotsTaken = getSponsorCount(item.id);
 
-  // Count how many slots are taken by checking eventSponsors
-  let slotsTaken = 0;
-  const eventSponsorList = eventSponsors.find((es: any) => es.id === eventId);
-
-  if (eventSponsorList) {
-    // Check all tiers to find sponsors with this sponsorship id
-    Object.values(eventSponsorList.tiers || {}).forEach((tier: any) => {
-      if (tier.id === item.id) {
-        slotsTaken = tier.sponsorIds.length;
-      }
-    });
-  }
-
-  // Return the number of remaining slots
   return slotsAvailable - slotsTaken;
 };
 
 // Helper function to determine if remaining slots should be shown
-const shouldShowRemaining = (item: AdapterModalRegistrationType, eventSponsors: any, eventId: string | number): boolean => {
-  const remainingSlots = getRemainingSlots(item, eventSponsors, eventId);
+const shouldShowRemaining = (item: AdapterModalRegistrationType, getSponsorCount: (tierId: string) => number): boolean => {
+  const remainingSlots = getRemainingSlots(item, getSponsorCount);
   return remainingSlots !== null && remainingSlots > 0 && remainingSlots < 10;
 };
 
@@ -188,6 +157,9 @@ const RegistrationModal = ({
   const [showCloseConfirmation, setShowCloseConfirmation] = useState(false);
   // Check if registration is closed for this event
   const registrationClosed = useMemo(() => isRegistrationClosed(event), [event]);
+
+  // Fetch sponsor counts from Sanity for sold-out checks
+  const { getSponsorCount } = useEventSponsorCounts(event.id);
 
   // Get registrations, sponsorships, and exhibitors directly using the event ID
   const allRegistrations = useMemo<AdapterModalRegistrationType[]>(() => getRegistrationsForEvent(event.id), [event.id]);
@@ -2206,7 +2178,7 @@ const RegistrationModal = ({
                           </span>
                           <button
                             onClick={() => handleIncrement(reg.id, reg.type)}
-                            disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isTicketExpired(reg) || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
+                            disabled={isSoldOut(reg, getSponsorCount) || isTicketExpired(reg) || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
                             className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                           >
                             +
@@ -2220,7 +2192,7 @@ const RegistrationModal = ({
 
                   {/* Show exhibitors when activeCategory is 'exhibit' */}
                   {activeCategory === 'exhibit' && exhibitors.filter(reg => reg.isActive).map(reg => {
-                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id);
+                    const itemIsSoldOut = isSoldOut(reg, getSponsorCount);
                     const isSaleEnded = isTicketExpired(reg);
                     return (
                       <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut || isSaleEnded ? 'opacity-75 bg-gray-200' : ''}`}>
@@ -2235,9 +2207,9 @@ const RegistrationModal = ({
                             <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
                               SALE ENDED
                             </span>
-                          ) : shouldShowRemaining(reg, EVENT_SPONSORS, event.id) ? (
+                          ) : shouldShowRemaining(reg, getSponsorCount) ? (
                             <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                              {getRemainingSlots(reg, EVENT_SPONSORS, event.id)} remaining
+                              {getRemainingSlots(reg, getSponsorCount)} remaining
                             </span>
                           ) : null}
                         </div>
@@ -2262,7 +2234,7 @@ const RegistrationModal = ({
                           </span>
                           <button
                             onClick={() => handleIncrement(reg.id, reg.type)}
-                            disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isSaleEnded || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
+                            disabled={isSoldOut(reg, getSponsorCount) || isSaleEnded || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
                             className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                           >
                             +
@@ -2275,7 +2247,7 @@ const RegistrationModal = ({
 
                   {/* Show sponsorships when activeCategory is 'sponsorship' */}
                   {activeCategory === 'sponsorship' && sponsorships.filter(reg => reg.isActive).map(reg => {
-                    const itemIsSoldOut = isSoldOut(reg, EVENT_SPONSORS, event.id);
+                    const itemIsSoldOut = isSoldOut(reg, getSponsorCount);
                     const isSaleEnded = isTicketExpired(reg);
                     console.log('Sponsorship registration:', reg);
                     return (
@@ -2295,9 +2267,9 @@ const RegistrationModal = ({
                               <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                 SALE ENDED
                               </span>
-                            ) : shouldShowRemaining(reg, EVENT_SPONSORS, event.id) && reg.showRemaining ? (
+                            ) : shouldShowRemaining(reg, getSponsorCount) && reg.showRemaining ? (
                               <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                {getRemainingSlots(reg, EVENT_SPONSORS, event.id)} remaining
+                                {getRemainingSlots(reg, getSponsorCount)} remaining
                               </span>
                             ) : null}
                           </div>
@@ -2324,7 +2296,7 @@ const RegistrationModal = ({
                           </span>
                           <button
                             onClick={() => handleIncrement(reg.id, reg.type)}
-                            disabled={isSoldOut(reg, EVENT_SPONSORS, event.id) || isSaleEnded || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
+                            disabled={isSoldOut(reg, getSponsorCount) || isSaleEnded || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
                             className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                           >
                             +

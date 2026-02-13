@@ -1,7 +1,6 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import { Event } from '@/types/events';
-import { getEventSponsors } from '@/constants/eventSponsors';
 import { Sponsorship } from '@/types/sponsorships';
 import FormattedPerk from '@/components/FormattedPerk';
 import { getPriceDisplay } from '@/lib/price-formatting';
@@ -10,17 +9,19 @@ type SponsorProp = {
     item: Sponsorship;
     event: Event;
     eyebrow?: string;
+    getSponsorCount?: (tierId: string) => number;
 };
 
-const SponsorshipCard = ({ item, event, eyebrow }: SponsorProp) => {
+const SponsorshipCard = ({ item, event, eyebrow, getSponsorCount }: SponsorProp) => {
     const eventDateTime = new Date(`${event.date}T${event.timeStart}`);
     const hasEventEnded = eventDateTime < new Date();
-    const eventSponsorsData = getEventSponsors(event.id);
     const showRemainingFlag = !!item.showRemaining;
     let remainingCount: number | undefined;
-    if (item.slotsPerEvent !== undefined && eventSponsorsData) {
-        const tierObj = eventSponsorsData.tiers.find(t => t.id === item.id || t.id === item.id + "-without-exhibit-space");
-        const used = tierObj?.sponsorIds.length ?? 0;
+    if (item.slotsPerEvent !== undefined && getSponsorCount) {
+        const used = Math.max(
+            getSponsorCount(item.id),
+            getSponsorCount(item.id + '-without-exhibit-space')
+        );
         remainingCount = item.slotsPerEvent - used;
     }
 

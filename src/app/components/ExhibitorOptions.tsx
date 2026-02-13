@@ -2,6 +2,7 @@
 
 import { EXHIBITOR_TYPES } from '@/constants/exhibitors';
 import React, { useState } from 'react';
+import { useEventSponsorCounts } from '@/hooks/useEventSponsorCounts';
 import { Event } from '@/types/events';
 import { notFound } from 'next/navigation';
 import ExhibitorCard from './ExhibitorCard';
@@ -20,6 +21,7 @@ export type ExhibitorProps = {
 const ExhibitorOptions = ({ event }: ExhibitorProps) => {
     const currentEvent = EXHIBITOR_TYPES.find((e) => e.id === event.id);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const { getSponsorCount } = useEventSponsorCounts(event.id);
 
     if (!currentEvent) {
         notFound();
@@ -72,6 +74,7 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                         key={index}
                         item={item}
                         event={event}
+                        getSponsorCount={getSponsorCount}
                     />
                 ))}
                 <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-6xl mx-auto mb-6">
