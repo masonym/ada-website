@@ -976,7 +976,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 id: "networking-luncheon-sponsor",
                 title: "Coffee Station Sponsorship",
                 cost: 2500,
-                slotsPerEvent: 2,
+                slotsPerEvent: 1,
                 sponsorPasses: 2,
                 perks: [
                     {
@@ -1839,7 +1839,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 id: "networking-luncheon-sponsor",
                 title: "Coffee Station Sponsorship",
                 cost: 2500,
-                slotsPerEvent: 1,
+                slotsPerEvent: 2,
                 sponsorPasses: 2,
                 perks: [
                     {
