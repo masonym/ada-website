@@ -1377,7 +1377,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
             <li>Space Force Expanded Launch and Ground Support Infrastructure Needs</li>
             <li>Contracting Opportunities with Local/Western State Military Installations/Commands – from Base Operations Support to Construction/ Renovation to IT/Network Upgrades</li>
             <li>Update Info on Government and Dept. of War Accelerated Contracting Mechanisms – from GWACs to OTAs to Mentor-Protégé Partnerships</li>
-            <li>Opportunities for innovative Small Businesses to Meet, Team and Subcontract with the Prime Defense Contractors</li>
+            <li>Opportunities for Innovative Small Businesses to Meet, Team and Subcontract with the Prime Defense Contractors</li>
           </ul>
         </div>
       </div>
@@ -1424,7 +1424,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         description: "",
       },
       {
-        tagline: "Opportunities for innovative Small Businesses to Meet, Team and Subcontract with the Prime Defense Contractors",
+        tagline: "Opportunities for Innovative Small Businesses to Meet, Team and Subcontract with the Prime Defense Contractors",
         description: "",
       },
     ],
