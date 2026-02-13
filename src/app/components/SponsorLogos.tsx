@@ -21,6 +21,7 @@ const TIER_ORDER = [
     'coffee',
     'networking',
     'luncheon',
+    'beverage',
     'small',
     'exhibitor',
     'partner',
@@ -128,7 +129,7 @@ const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) =
 
     // List of sponsor tiers that should display descriptions
     const tiersWithDescriptions = [
-        'gold-sponsor', 'silver-sponsor', 'bronze-sponsor', 'platinum-sponsor', 'diamond-sponsor', 'premier', 'vip-networking-reception-sponsor', 'coffee-station-sponsor', 'networking-luncheon'
+        'gold-sponsor', 'silver-sponsor', 'bronze-sponsor', 'platinum-sponsor', 'diamond-sponsor', 'premier', 'vip-networking-reception-sponsor', 'coffee-station-sponsor', 'networking-luncheon', 'beverage-station-sponsor'
     ];
 
     return (
