@@ -111,17 +111,10 @@ export const LODGING_INFO: LodgingInfo[] = [
 <b>Rate Available</b>: March 2–7, 2026<br />
 <b>Booking Deadline</b>: February 17, 2026<br />
 <br/>
-<a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1762453906826&key=GRP&app=resvlink&_branch_match_id=1509893008548409044&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXTywo0MtNLCrKzC8p0UvOz9UvSi3OyczLtgdK2ALZZSCOWmaKraG5mZGJqbGlgZmFkZladmqlrXtQgFpdUWpaKlB3Xnp8UlF%2BeXFqka1zRlF%2BbioAeCFZtWAAAAA%3D" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">
-  Book your group rate for 2026 Defense Technology & Aerospace Procurement Conference
-</a>
-<br/>
 <br/>
 <b>Update: </b> The Group Rate is sold out and no longer available. For a list of nearby hotels, please see the document below.<br/>
 <br/>
 <b>Overflow Hotel Directory</b>: <a href="/locations/austin_hotels.pdf" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">Download PDF</a>
-<br/>
-<br/>
-<b>Subject Line:</b> "Request to Add Reservation at Group Rate" 2026 Defense Technology & Aerospace Procurement Conference
 <br/>
 <br/>
 <p class="font-bold">Parking:</p>
