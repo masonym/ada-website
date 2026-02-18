@@ -114,7 +114,7 @@ export const LODGING_INFO: LodgingInfo[] = [
 <br/>
 <b>Update: </b> The Group Rate is sold out and no longer available. For a list of nearby hotels, please see the document below.<br/>
 <br/>
-<b>Overflow Hotel Directory</b>: <a href="/locations/austin_hotels.pdf" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">Download PDF</a>
+<b>Overflow Hotel Directory</b>: <a href="https://cdn.americandefensealliance.org/locations/austin_hotels.pdf" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">Download PDF</a>
 <br/>
 <br/>
 <p class="font-bold">Parking:</p>

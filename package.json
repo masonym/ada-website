@@ -46,6 +46,7 @@
     "formik": "^2.4.6",
     "google-spreadsheet": "^4.1.4",
     "googleapis": "^149.0.0",
+    "html2canvas": "^1.4.1",
     "lucide-react": "^0.435.0",
     "mime-types": "^2.1.35",
     "next": "14.2.6",
