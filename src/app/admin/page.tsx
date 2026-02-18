@@ -72,13 +72,13 @@ const adminCards: AdminCard[] = [
     icon: <Rocket className="w-6 h-6" />,
     category: "tools",
   },
-  {
-    title: "Banner Generator",
-    description: "Generate sponsor banners for retractable pop-up displays",
-    href: "/admin/banner-generator",
-    icon: <Printer className="w-6 h-6" />,
-    category: "tools",
-  },
+  // {
+  //   title: "Banner Generator",
+  //   description: "Generate sponsor banners for retractable pop-up displays",
+  //   href: "/admin/banner-generator",
+  //   icon: <Printer className="w-6 h-6" />,
+  //   category: "tools",
+  // },
 ];
 
 export default function AdminPage() {

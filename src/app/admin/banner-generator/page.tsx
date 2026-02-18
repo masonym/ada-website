@@ -86,6 +86,9 @@ export default function BannerGeneratorPage() {
   const [showDescriptions, setShowDescriptions] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState("#ffffff");
   const [eventImageScale, setEventImageScale] = useState(80); // percentage
+  const [tierLabelSize, setTierLabelSize] = useState(12); // font size in px at preview scale
+  const [sponsorVerticalOffset, setSponsorVerticalOffset] = useState(0); // pixels offset
+  const [eventImageMarginBottom, setEventImageMarginBottom] = useState(20); // pixels
 
   const bannerRef = useRef<HTMLDivElement>(null);
 
@@ -172,7 +175,7 @@ export default function BannerGeneratorPage() {
   const getGridClass = (sponsorCount: number) => {
     if (sponsorCount === 1) return "grid-cols-1";
     if (sponsorCount === 2) return "grid-cols-2";
-    if (sponsorCount === 3) return "grid-cols-3";
+    if (sponsorCount === 4) return "grid-cols-2";
     if (sponsorCount <= 6) return "grid-cols-3";
     if (sponsorCount <= 9) return "grid-cols-3";
     return "grid-cols-4";
@@ -336,6 +339,51 @@ export default function BannerGeneratorPage() {
                 />
               </div>
 
+              {/* event image bottom margin */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Event Image Bottom Margin: {eventImageMarginBottom}px
+                </label>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={eventImageMarginBottom}
+                  onChange={(e) => setEventImageMarginBottom(parseInt(e.target.value))}
+                  className="w-full"
+                />
+              </div>
+
+              {/* tier label size */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Tier Label Size: {tierLabelSize}px
+                </label>
+                <input
+                  type="range"
+                  min="6"
+                  max="24"
+                  value={tierLabelSize}
+                  onChange={(e) => setTierLabelSize(parseInt(e.target.value))}
+                  className="w-full"
+                />
+              </div>
+
+              {/* sponsor vertical offset */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Sponsors Vertical Offset: {sponsorVerticalOffset}px
+                </label>
+                <input
+                  type="range"
+                  min="-200"
+                  max="200"
+                  value={sponsorVerticalOffset}
+                  onChange={(e) => setSponsorVerticalOffset(parseInt(e.target.value))}
+                  className="w-full"
+                />
+              </div>
+
               {/* header/footer size */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -487,13 +535,21 @@ export default function BannerGeneratorPage() {
                 >
                   {/* event image */}
                   {eventImagePath && (
-                    <div className="flex justify-center py-4" style={{ paddingTop: 20, paddingBottom: 20 }}>
+                    <div 
+                      style={{ 
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'flex-start',
+                        paddingTop: 0, 
+                        paddingBottom: eventImageMarginBottom,
+                        width: '100%',
+                      }}
+                    >
                       <img
                         src={eventImagePath}
                         alt="Event"
                         style={{
-                          maxWidth: `${eventImageScale}%`,
-                          maxHeight: 120,
+                          width: `${eventImageScale}%`,
                           objectFit: "contain",
                         }}
                         crossOrigin="anonymous"
@@ -502,16 +558,34 @@ export default function BannerGeneratorPage() {
                   )}
 
                   {/* sponsors */}
-                  <div className="flex-1 overflow-hidden px-4">
+                  <div 
+                    style={{
+                      flex: 1,
+                      overflow: 'hidden',
+                      paddingLeft: 16,
+                      paddingRight: 16,
+                      marginTop: sponsorVerticalOffset,
+                    }}
+                  >
                     {selectedTiers.map((tier) => (
-                      <div key={tier.id} className="mb-6">
+                      <div key={tier.id} style={{ marginBottom: 24 }}>
                         {/* tier label */}
-                        <div className="flex justify-center mb-3">
+                        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 12 }}>
                           <span
-                            className={`px-4 py-1 text-xs font-bold rounded-full ${
-                              tier.style || getDefaultTierStyle(tier.name)
-                            }`}
-                            style={{ fontSize: 10 }}
+                            className={tier.style || getDefaultTierStyle(tier.name)}
+                            style={{ 
+                              fontSize: tierLabelSize,
+                              fontWeight: 'bold',
+                              borderRadius: 9999,
+                              paddingLeft: 16,
+                              paddingRight: 16,
+                              paddingTop: Math.round(tierLabelSize * 0.4),
+                              paddingBottom: Math.round(tierLabelSize * 0.4),
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              lineHeight: 1.2,
+                            }}
                           >
                             {tier.name}
                           </span>
@@ -526,14 +600,13 @@ export default function BannerGeneratorPage() {
                             return (
                               <div key={sponsor._id} className="flex flex-col items-center">
                                 <img
-                                  src={sponsor.logoUrl}
+                                  src={`/api/admin/banner-generator/proxy-image?url=${encodeURIComponent(sponsor.logoUrl)}`}
                                   alt={sponsor.name}
                                   style={{
                                     width: logoSize.width,
                                     height: logoSize.height,
                                     objectFit: "contain",
                                   }}
-                                  crossOrigin="anonymous"
                                 />
                                 {showDescriptions && sponsor.description && (
                                   <p
