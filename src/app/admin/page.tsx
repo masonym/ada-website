@@ -14,7 +14,8 @@ import {
   Rocket,
   Building2,
   ChevronRight,
-  Upload
+  Upload,
+  Printer
 } from "lucide-react";
 
 const MAX_FILE_SIZE = 25 * 1024 * 1024;
@@ -69,6 +70,13 @@ const adminCards: AdminCard[] = [
     description: "Generate event templates and configurations",
     href: "/admin/event-launch-form",
     icon: <Rocket className="w-6 h-6" />,
+    category: "tools",
+  },
+  {
+    title: "Banner Generator",
+    description: "Generate sponsor banners for retractable pop-up displays",
+    href: "/admin/banner-generator",
+    icon: <Printer className="w-6 h-6" />,
     category: "tools",
   },
 ];

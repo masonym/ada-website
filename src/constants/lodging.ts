@@ -111,7 +111,6 @@ export const LODGING_INFO: LodgingInfo[] = [
 <b>Rate Available</b>: March 2–7, 2026<br />
 <b>Booking Deadline</b>: February 17, 2026<br />
 <br/>
-<br/>
 <b>Update: </b> The Group Rate is sold out and no longer available. For a list of nearby hotels, please see the document below.<br/>
 <br/>
 <b>Overflow Hotel Directory</b>: <a href="https://cdn.americandefensealliance.org/locations/austin_hotels.pdf" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">Download PDF</a>
