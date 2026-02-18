@@ -116,11 +116,11 @@ export const LODGING_INFO: LodgingInfo[] = [
 </a>
 <br/>
 <br/>
-<b>To Book Extra Nights at the Group Rate, please email 
-  <a href="mailto:kaitlin.cahill@renaissancehotels.com" class="text-blue-600 hover:underline text-nowrap">
-    kaitlin.cahill@renaissancehotels.com
-  </a>
-</b><br/>
+<b>Update: </b> The Group Rate is sold out and no longer available. For a list of nearby hotels, please see the document below.<br/>
+<br/>
+<b>Overflow Hotel Directory</b>: <a href="/locations/austin_hotels.pdf" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">Download PDF</a>
+<br/>
+<br/>
 <b>Subject Line:</b> "Request to Add Reservation at Group Rate" 2026 Defense Technology & Aerospace Procurement Conference
 <br/>
 <br/>
