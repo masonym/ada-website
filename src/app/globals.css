@@ -4,6 +4,11 @@
 
 @import "tailwindcss/utilities";
 
+/* Fix html2canvas rendering - prevent Tailwind's img display:block from causing line breaks */
+img {
+  display: inline-block !important;
+}
+
 @import "yet-another-react-lightbox/styles.css";
 @import "yet-another-react-lightbox/plugins/thumbnails.css";
 

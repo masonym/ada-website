@@ -171,14 +171,14 @@ export default function BannerGeneratorPage() {
   const previewWidth = BANNER_WIDTH_INCHES * DPI * PREVIEW_SCALE;
   const previewHeight = BANNER_HEIGHT_INCHES * DPI * PREVIEW_SCALE;
 
-  // get grid layout based on sponsor count
-  const getGridClass = (sponsorCount: number) => {
-    if (sponsorCount === 1) return "grid-cols-1";
-    if (sponsorCount === 2) return "grid-cols-2";
-    if (sponsorCount === 4) return "grid-cols-2";
-    if (sponsorCount <= 6) return "grid-cols-3";
-    if (sponsorCount <= 9) return "grid-cols-3";
-    return "grid-cols-4";
+  // get grid columns based on sponsor count
+  const getGridColumns = (sponsorCount: number) => {
+    if (sponsorCount === 1) return 1;
+    if (sponsorCount === 2) return 2;
+    if (sponsorCount === 4) return 2;
+    if (sponsorCount <= 6) return 3;
+    if (sponsorCount <= 9) return 3;
+    return 4;
   };
 
   // get logo size based on tier
@@ -570,21 +570,18 @@ export default function BannerGeneratorPage() {
                     {selectedTiers.map((tier) => (
                       <div key={tier.id} style={{ marginBottom: 24 }}>
                         {/* tier label */}
-                        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 12 }}>
+                        <div style={{ textAlign: 'center', marginBottom: 12, marginTop: 12 }}>
                           <span
                             className={tier.style || getDefaultTierStyle(tier.name)}
                             style={{ 
                               fontSize: tierLabelSize,
                               fontWeight: 'bold',
                               borderRadius: 9999,
-                              paddingLeft: 16,
-                              paddingRight: 16,
-                              paddingTop: Math.round(tierLabelSize * 0.4),
-                              paddingBottom: Math.round(tierLabelSize * 0.4),
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              lineHeight: 1.2,
+                              paddingLeft: 64,
+                              paddingRight: 64,
+                              paddingTop: tierLabelSize * 0.2,
+                              paddingBottom: tierLabelSize * 0.2,
+                              display: 'inline-block',
                             }}
                           >
                             {tier.name}
@@ -593,25 +590,47 @@ export default function BannerGeneratorPage() {
 
                         {/* sponsor logos */}
                         <div
-                          className={`grid ${getGridClass(tier.sponsors.length)} gap-3 justify-items-center`}
+                          style={{
+                            display: 'grid',
+                            gridTemplateColumns: `repeat(${getGridColumns(tier.sponsors.length)}, 1fr)`,
+                            gap: 12,
+                            justifyItems: 'center',
+                            alignItems: 'center',
+                          }}
                         >
                           {tier.sponsors.map((sponsor) => {
                             const logoSize = getLogoSize(tier.name, tier.sponsors.length);
                             return (
-                              <div key={sponsor._id} className="flex flex-col items-center">
+                              <div 
+                                key={sponsor._id} 
+                                style={{
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  alignItems: 'center',
+                                }}
+                              >
                                 <img
                                   src={`/api/admin/banner-generator/proxy-image?url=${encodeURIComponent(sponsor.logoUrl)}`}
                                   alt={sponsor.name}
                                   style={{
-                                    width: logoSize.width,
-                                    height: logoSize.height,
-                                    objectFit: "contain",
+                                    maxWidth: logoSize.width * 1.1,
+                                    maxHeight: logoSize.height * 1.1,
+                                    width: 'auto',
+                                    height: 'auto',
+                                    objectFit: 'contain',
                                   }}
                                 />
                                 {showDescriptions && sponsor.description && (
                                   <p
-                                    className="text-center text-gray-600 mt-1 px-2"
-                                    style={{ fontSize: 6, maxWidth: logoSize.width + 40 }}
+                                    style={{ 
+                                      fontSize: 6, 
+                                      maxWidth: logoSize.width + 40,
+                                      textAlign: 'center',
+                                      color: '#4b5563',
+                                      marginTop: 4,
+                                      paddingLeft: 8,
+                                      paddingRight: 8,
+                                    }}
                                   >
                                     {sponsor.description.slice(0, 150)}
                                     {sponsor.description.length > 150 ? "..." : ""}
