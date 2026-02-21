@@ -89,6 +89,7 @@ export default function BannerGeneratorPage() {
   const [tierLabelSize, setTierLabelSize] = useState(12); // font size in px at preview scale
   const [sponsorVerticalOffset, setSponsorVerticalOffset] = useState(0); // pixels offset
   const [eventImageMarginBottom, setEventImageMarginBottom] = useState(20); // pixels
+  const [tierSizeMultipliers, setTierSizeMultipliers] = useState<Record<string, number>>({}); // per-tier size multipliers
 
   const bannerRef = useRef<HTMLDivElement>(null);
 
@@ -174,7 +175,7 @@ export default function BannerGeneratorPage() {
   // get grid columns based on sponsor count
   const getGridColumns = (sponsorCount: number) => {
     if (sponsorCount === 1) return 1;
-    if (sponsorCount === 2) return 2;
+    if (sponsorCount === 2) return 1;
     if (sponsorCount === 4) return 2;
     if (sponsorCount <= 6) return 3;
     if (sponsorCount <= 9) return 3;
@@ -182,7 +183,7 @@ export default function BannerGeneratorPage() {
   };
 
   // get logo size based on tier
-  const getLogoSize = (tierName: string, sponsorCount: number) => {
+  const getLogoSize = (tierName: string, tierId: string, sponsorCount: number) => {
     const name = tierName.toLowerCase();
     // base size in pixels at preview scale
     let baseWidth = 120;
@@ -207,6 +208,11 @@ export default function BannerGeneratorPage() {
       baseWidth *= 0.8;
       baseHeight *= 0.8;
     }
+
+    // apply per-tier multiplier if set
+    const multiplier = tierSizeMultipliers[tierId] || 1.0;
+    baseWidth *= multiplier;
+    baseHeight *= multiplier;
 
     return { width: baseWidth, height: baseHeight };
   };
@@ -288,21 +294,42 @@ export default function BannerGeneratorPage() {
                     {selectedEvent.tiers
                       .sort((a, b) => getTierPriority(a.name) - getTierPriority(b.name))
                       .map((tier) => (
-                        <label
-                          key={tier.id}
-                          className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-1 rounded"
-                        >
-                          <input
-                            type="checkbox"
-                            checked={selectedTierIds.includes(tier.id)}
-                            onChange={() => handleTierToggle(tier.id)}
-                            className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                          />
-                          <span className="text-sm text-gray-700">{tier.name}</span>
-                          <span className="text-xs text-gray-400">
-                            ({tier.sponsors.length})
-                          </span>
-                        </label>
+                        <div key={tier.id} className="space-y-1">
+                          <label className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-1 rounded">
+                            <input
+                              type="checkbox"
+                              checked={selectedTierIds.includes(tier.id)}
+                              onChange={() => handleTierToggle(tier.id)}
+                              className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                            />
+                            <span className="text-sm text-gray-700">{tier.name}</span>
+                            <span className="text-xs text-gray-400">
+                              ({tier.sponsors.length})
+                            </span>
+                          </label>
+                          {selectedTierIds.includes(tier.id) && (
+                            <div className="ml-6 flex items-center gap-2">
+                              <label className="text-xs text-gray-600 whitespace-nowrap">
+                                Size: {Math.round((tierSizeMultipliers[tier.id] || 1.0) * 100)}%
+                              </label>
+                              <input
+                                type="range"
+                                min="50"
+                                max="150"
+                                step="5"
+                                value={(tierSizeMultipliers[tier.id] || 1.0) * 100}
+                                onChange={(e) => {
+                                  const newValue = parseInt(e.target.value) / 100;
+                                  setTierSizeMultipliers(prev => ({
+                                    ...prev,
+                                    [tier.id]: newValue
+                                  }));
+                                }}
+                                className="flex-1 h-1"
+                              />
+                            </div>
+                          )}
+                        </div>
                       ))}
                   </div>
                 </div>
@@ -599,7 +626,7 @@ export default function BannerGeneratorPage() {
                           }}
                         >
                           {tier.sponsors.map((sponsor) => {
-                            const logoSize = getLogoSize(tier.name, tier.sponsors.length);
+                            const logoSize = getLogoSize(tier.name, tier.id, tier.sponsors.length);
                             return (
                               <div 
                                 key={sponsor._id} 
@@ -614,7 +641,7 @@ export default function BannerGeneratorPage() {
                                   alt={sponsor.name}
                                   style={{
                                     maxWidth: logoSize.width * 1.1,
-                                    maxHeight: logoSize.height * 1.1,
+                                    maxHeight: logoSize.height * 1.5,
                                     width: 'auto',
                                     height: 'auto',
                                     objectFit: 'contain',
