@@ -392,6 +392,45 @@ export async function removeSponsorFromMatchmaking(
     .commit()
 }
 
+export async function reorderMatchmakingSponsors(
+  docId: string,
+  orderedSponsorKeys: string[]
+) {
+  const doc = await adminClient.fetch<{ _id: string; sponsors: MatchmakingSponsorEntry[] } | null>(`
+    *[_type == "eventMatchmakingSponsors" && _id == $docId][0] {
+      _id,
+      sponsors[] {
+        _key,
+        sponsor { _type, _ref },
+        note
+      }
+    }
+  `, { docId })
+
+  if (!doc) {
+    throw new Error('Matchmaking sponsors document not found')
+  }
+
+  const existing = doc.sponsors || []
+  if (orderedSponsorKeys.length !== existing.length) {
+    throw new Error('Invalid reorder payload: length mismatch')
+  }
+
+  const existingByKey = new Map(existing.map(e => [e._key, e]))
+  const reordered: MatchmakingSponsorEntry[] = orderedSponsorKeys.map((k) => {
+    const entry = existingByKey.get(k)
+    if (!entry) {
+      throw new Error('Invalid reorder payload: unknown sponsor key')
+    }
+    return entry
+  })
+
+  return adminClient
+    .patch(docId)
+    .set({ sponsors: reordered })
+    .commit()
+}
+
 // delete entire matchmaking sponsors document
 export async function deleteMatchmakingSponsorsDoc(docId: string) {
   return adminClient.delete(docId)

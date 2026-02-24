@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Plus, Check, AlertCircle, Trash2, Edit2, Users, X, Save } from "lucide-react";
+import { Plus, Check, AlertCircle, Trash2, Edit2, Users, X, Save, GripVertical } from "lucide-react";
 
 type Sponsor = {
   _id: string;
@@ -39,6 +39,10 @@ export default function MatchmakingSponsorsAdminPage() {
   // selected event for viewing/editing
   const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
 
+  const [localSponsorEntries, setLocalSponsorEntries] = useState<MatchmakingSponsorEntry[]>([]);
+  const [draggingSponsorKey, setDraggingSponsorKey] = useState<string | null>(null);
+  const [hasOrderChanges, setHasOrderChanges] = useState(false);
+
   // create new doc form
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [newEventSlug, setNewEventSlug] = useState("");
@@ -63,6 +67,13 @@ export default function MatchmakingSponsorsAdminPage() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const selected = matchmakingDocs.find((d) => d._id === selectedDocId);
+    setLocalSponsorEntries(selected?.sponsors || []);
+    setHasOrderChanges(false);
+    setDraggingSponsorKey(null);
+  }, [selectedDocId, matchmakingDocs]);
+
   async function fetchData() {
     try {
       const res = await fetch("/api/admin/matchmaking-sponsors");
@@ -76,6 +87,54 @@ export default function MatchmakingSponsorsAdminPage() {
     } finally {
       setLoading(false);
     }
+  }
+
+  async function handleSaveSponsorOrder() {
+    if (!selectedDocId) return;
+
+    setSubmitting(true);
+    setMessage(null);
+
+    try {
+      const res = await fetch("/api/admin/matchmaking-sponsors", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "reorder-sponsors",
+          docId: selectedDocId,
+          orderedSponsorKeys: localSponsorEntries.map((e) => e._key),
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setMessage({ type: "success", text: data.message });
+        setHasOrderChanges(false);
+        fetchData();
+      } else {
+        setMessage({ type: "error", text: data.error });
+      }
+    } catch (error) {
+      setMessage({ type: "error", text: "Failed to save sponsor order" });
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  function moveLocalSponsor(dragKey: string, overKey: string) {
+    if (dragKey === overKey) return;
+    setLocalSponsorEntries((prev) => {
+      const fromIndex = prev.findIndex((e) => e._key === dragKey);
+      const toIndex = prev.findIndex((e) => e._key === overKey);
+      if (fromIndex === -1 || toIndex === -1) return prev;
+
+      const next = [...prev];
+      const [moved] = next.splice(fromIndex, 1);
+      next.splice(toIndex, 0, moved);
+      return next;
+    });
+    setHasOrderChanges(true);
   }
 
   async function handleCreateDoc(e: React.FormEvent) {
@@ -545,13 +604,24 @@ export default function MatchmakingSponsorsAdminPage() {
                 <div className="border-t pt-4">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-medium">Sponsors ({selectedDoc.sponsors?.length || 0})</h3>
-                    <button
-                      onClick={() => setShowAddSponsor(true)}
-                      className="flex items-center gap-1 px-3 py-1 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700"
-                    >
-                      <Plus className="w-4 h-4" />
-                      Add Sponsor
-                    </button>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={handleSaveSponsorOrder}
+                        disabled={submitting || !hasOrderChanges}
+                        className="flex items-center gap-1 px-3 py-1 text-sm bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 disabled:opacity-50"
+                        title="Save sponsor ordering"
+                      >
+                        <Save className="w-4 h-4" />
+                        Save Order
+                      </button>
+                      <button
+                        onClick={() => setShowAddSponsor(true)}
+                        className="flex items-center gap-1 px-3 py-1 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                      >
+                        <Plus className="w-4 h-4" />
+                        Add Sponsor
+                      </button>
+                    </div>
                   </div>
 
                   {showAddSponsor && (
@@ -615,13 +685,35 @@ export default function MatchmakingSponsorsAdminPage() {
                     <p className="text-gray-500 text-sm">No sponsors added yet.</p>
                   ) : (
                     <div className="space-y-2">
-                      {selectedDoc.sponsors.map((entry, index) => (
+                      {localSponsorEntries.map((entry, index) => (
                         <div
                           key={entry._key}
-                          className="flex items-center justify-between p-3 bg-gray-10 rounded-md"
+                          draggable
+                          onDragStart={(e) => {
+                            e.dataTransfer.setData("text/plain", entry._key);
+                            e.dataTransfer.effectAllowed = "move";
+                            setDraggingSponsorKey(entry._key);
+                          }}
+                          onDragEnd={() => setDraggingSponsorKey(null)}
+                          onDragOver={(e) => {
+                            e.preventDefault();
+                            e.dataTransfer.dropEffect = "move";
+                          }}
+                          onDrop={(e) => {
+                            e.preventDefault();
+                            const dragKey = e.dataTransfer.getData("text/plain");
+                            if (dragKey) moveLocalSponsor(dragKey, entry._key);
+                            setDraggingSponsorKey(null);
+                          }}
+                          className={`flex items-center justify-between p-3 bg-gray-10 rounded-md ${
+                            draggingSponsorKey === entry._key ? "opacity-70" : ""
+                          }`}
                         >
                           <div className="flex-1">
                             <div className="flex items-center gap-2">
+                              <span className="text-gray-400 cursor-grab" title="Drag to reorder">
+                                <GripVertical className="w-4 h-4" />
+                              </span>
                               <span className="text-xs text-gray-400 w-6">{index + 1}.</span>
                               <span className="font-medium">{getSponsorName(entry.sponsor._ref)}</span>
                             </div>

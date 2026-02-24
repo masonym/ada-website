@@ -7,6 +7,7 @@ import {
   addSponsorToMatchmaking,
   updateMatchmakingSponsorNote,
   removeSponsorFromMatchmaking,
+  reorderMatchmakingSponsors,
   deleteMatchmakingSponsorsDoc
 } from '@/lib/sanity-admin'
 import { EVENTS } from '@/constants/events'
@@ -98,6 +99,18 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ 
           success: true, 
           message: 'Removed sponsor from matchmaking'
+        })
+      }
+
+      case 'reorder-sponsors': {
+        const { docId, orderedSponsorKeys } = body
+        if (!docId || !Array.isArray(orderedSponsorKeys)) {
+          return NextResponse.json({ error: 'Document ID and orderedSponsorKeys are required' }, { status: 400 })
+        }
+        await reorderMatchmakingSponsors(docId, orderedSponsorKeys)
+        return NextResponse.json({
+          success: true,
+          message: 'Reordered sponsors'
         })
       }
 
