@@ -149,7 +149,7 @@ export default async function EventPage({ params }: { params: { slug: string } }
 
 
 
-            <div className="flex flex-col leading-relaxed text-slate-600 text-center text-lg px-4 sm:px-6 lg:px-8 max-w-[95vw] mx-auto">
+            <div className="flex flex-col leading-relaxed text-slate-600 text-center text-lg px-4 sm:px-6 lg:px-8 max-w-[95vw] mx-auto mb-4">
               {event.eventText}
             </div>
 
