@@ -1417,98 +1417,227 @@ export const SCHEDULES = [
                     {
                         time: "8:30 AM",
                         title: "Conference Launch – American Defense Alliance",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "charles-sills",
+                            sponsor: "Conference Moderator",
+                            sponsorStyle: "bg-red-999"
+                        }],
                     },
                     {
                         time: "8:35 AM",
-                        title: "Welcoming Remarks – State of Texas",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        title: "Welcoming Remarks – National Security Innovation Council",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "drew-scheberle"
+                        }],
                     },
                     {
-                        time: "8:50 AM",
-                        title: "Welcoming Remarks – National Security Innovation Council",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        time: "8:45 AM",
+                        title: "Welcoming Remarks – State of Texas",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        // speakers: [{
+                        //     name: "Paul Norwood",
+                        //     title: "Director, Texas Military Preparedness Commission"
+                        // }],
                     },
                     {
                         time: "9:00 AM",
                         title: "KEYNOTE ADDRESS – UNITED STATES AIR FORCE",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        // speakers: [{
+                        //     name: "Lieutenant General Jason Armagost",
+                        //     title: "Deputy Commander, Air Force Global Strike Command, and Deputy Commander, Air Forces Strategic-Air, U.S. Strategic Command"
+                        // }],
                     },
                     {
                         time: "9:30 AM",
+                        title: "DEFENSEWERX – Accelerating Innovative Tech Solutions",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "brian-liesveld"
+                        }],
+                    },
+                    {
+                        time: "10:00 AM",
                         title: "Major Air Force Programs Driving Contracts",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        // speakers: [
+                        //     {
+                        //         name: "Major Claire Randolph",
+                        //         title: "AFCENT Chief of Weapons and Tactics, U. S. Air Force"
+                        //     },
+                        //     {
+                        //         name: "Jerome F. McBrearty",
+                        //         title: "Vice President, B-2 Program Manager, Aeronuatics Systems Strike, Northrop Grumman"
+                        //     }
+                        // ],
                     },
                     {
-                        time: "10:20 AM",
-                        title: "Networking Break with Exhibitors",
-                        location: "Rio Grande Hall, Plaza Lower Level",
-                    },
-                    {
-                        time: "10:50 AM",
+                        time: "10:35 AM",
                         title: "Industry Insight",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "don-mcginnis",
+                            sponsor: "Bronze Sponsor",
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                        }],
                     },
                     {
-                        time: "11:00 AM",
+                        time: "10:45 AM",
+                        title: "Networking Break with Exhibitors",
+                        location: "Rio Hall A, Plaza Lower Level",
+                    },
+                    {
+                        time: "11:10 AM",
+                        title: "Industry Insight",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "vincent-grosso",
+                            sponsor: "Coffee Station Sponsor",
+                            sponsorStyle: "bg-sky-300 text-slate-900"
+                        }],
+                    },
+                    {
+                        time: "11:15 AM",
                         title: "Major Space Force Programs Driving Contracts",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            // {
+                            //     name: "Major Julius 'Juice' Williams",
+                            //     title: "Chief, Strategic Engagements, Space Acquisition and Integration, U.S. Space Force"
+                            // },
+                            // {
+                            //     name: "Merrick B. Garb",
+                            //     title: "Branch Chief for Commercial, Civil, and Interagency Partnerships, Global Partnerships Directorate, Headquarters, U.S. Space Force"
+                            // },
+                            // {
+                            //     name: "Ben Nicholson",
+                            //     title: "Chief Business Officer, Ursa Major"
+                            // },
+                            {
+                                speakerId: "captain-md-doc-rana"
+                            },
+                            {
+                                speakerId: "aimee-zick"
+                            }
+                        ],
                     },
                     {
                         time: "11:50 AM",
-                        title: "KEYNOTE ADDRESS – DEFENSE INDUSTRIAL BASE POLICY & PRIORITIES",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        title: "KEYNOTE ADDRESS – FUTURE AIR FORCE ORDER OF BATTLE",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "dr-david-g-jester-smith"
+                        }],
                     },
                     {
-                        time: "12:20 PM",
+                        time: "12:25 PM",
                         title: "Cybersecurity/CMMC Update Panel",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            // {
+                            //     speakerId: "kareem-sykes",
+                            //     sponsor: "MODERATOR",
+                            //     sponsorStyle: "bg-sky-300 text-slate-900"
+                            // },
+                            // {
+                            //     name: "Lucian Niemeyer",
+                            //     title: "CEO, The Niemeyer Group, CEO, Building Cyber Security, and Former Assistant Secretary of Defense for Energy, Installations and Environment"
+                            // }
+                        ],
                     },
                     {
                         time: "1:00 PM",
                         title: "Networking Lunch with Exhibitors",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall A, Plaza Lower Level",
                     },
                     {
                         time: "2:00 PM",
                         title: "Industry Insight",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "clay-womack",
+                            sponsor: "Silver Sponsor",
+                            sponsorStyle: "bg-[#C0C0C0] text-slate-900"
+                        }],
                     },
                     {
-                        time: "2:15 PM",
+                        time: "2:10 PM",
+                        title: "KEYNOTE ADDRESS: DEPARTMENT OF THE AIR FORCE SMALL BUSINESS PROGRAMS",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "scott-kiser"
+                        }],
+                    },
+                    {
+                        time: "2:40 PM",
                         title: "Air Force & Space Force Small Business Programs",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "trish-martinelli",
+                                sponsor: "Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900"
+                            },
+                            {
+                                speakerId: "david-sikora"
+                            },
+                            {
+                                speakerId: "albert-garza"
+                            }
+                        ],
                     },
                     {
-                        time: "3:00 PM",
+                        time: "3:25 PM",
+                        title: "Industry Insight",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "tim-trapuzzano",
+                            sponsor: "Bronze Sponsor",
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                        }],
+                    },
+                    {
+                        time: "3:35 PM",
                         title: "Expediting Additive Manufacture at the Warfighter Edge",
-                        location: "Rio Grande Hall, Plaza Lower Level",
-                    },
-                    {
-                        time: "3:45 PM",
-                        title: "Golden Dome Contracting Opportunities",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "andrew-gardner",
+                                sponsor: "Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900"
+                            },
+                            {
+                                speakerId: "rob-graziano"
+                            },
+                            {
+                                speakerId: "madison-jones"
+                            },
+                            {
+                                speakerId: "aaron-williamson-pmp"
+                            }
+                        ],
                     },
                     {
                         time: "4:30 PM",
                         title: "Day One Closing Remarks",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "charles-sills",
+                            sponsor: "Conference Moderator",
+                            sponsorStyle: "bg-red-999"
+                        }],
                     },
                     {
                         time: "4:30 – 6:00 PM",
                         title: "Networking with Exhibitors",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall A, Plaza Lower Level",
                     },
                     {
                         time: "4:30 – 6:00 PM",
                         title: "Matchmaking Session I",
-                        location: "Rio Grande Hall, Plaza Lower Level",
-                    },
-                    {
-                        time: "6:30 – 8:30 PM",
-                        title: "VIP Networking Reception",
-                        location: "Rio Grande Hall, Plaza Lower Level",
-                        description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
+                        location: "Sabine Meeting Room, Plaza Lower Level",
                     },
                 ],
             },
@@ -1528,67 +1657,169 @@ export const SCHEDULES = [
                     {
                         time: "8:30 AM",
                         title: "Welcome Back Remarks",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "charles-sills",
+                            sponsor: "Conference Moderator",
+                            sponsorStyle: "bg-red-999"
+                        }],
                     },
                     {
                         time: "8:35 AM",
-                        title: "KEYNOTE ADDRESS – ARMY T2 COM (TRANSFORMATION AND TRAINING COMMAND)",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        title: "ARMY TRANSFORMATION AND TRAINING COMMAND – SMALL BUSINESS PROGRAMS",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        // speakers: [{
+                        //     name: "TBD"
+                        // }],
                     },
                     {
                         time: "9:05 AM",
-                        title: "How to do Business with the Primes",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        title: "Golden Dome Contracting Opportunities – Update",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "gavin-brown",
+                                sponsor: "Moderator"
+                            },
+                            {
+                                name: "Irina S. Litchfield",
+                                title: "Chair, Quantum Standards & Integration Institute"
+                            },
+                            {
+                                name: "Justyn Horner",
+                                title: "Founder and CEO of I/ONX High Compute Processing (HPC)"
+                            },
+                            // {
+                            //     name: "Brian S. FitzPatrick",
+                            //     title: "CSM, Business Development Executive, IBM"
+                            // }
+                        ],
                     },
                     {
-                        time: "9:50 AM",
-                        title: "Industry Insight",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        time: "9:45 AM",
+                        title: "Fireside Chat: Quantum's Critical Role in Defense",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "gavin-brown"
+                            },
+                            {
+                                speakerId: "justin-litchfield-phd"
+                            }
+                        ],
                     },
                     {
                         time: "10:00 AM",
-                        title: "CONGRESSIONAL KEYNOTE ADDRESS",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        title: "Industry Insight",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "marie-mcclain",
+                            sponsor: "Silver Sponsor",
+                            sponsorStyle: "bg-[#C0C0C0] text-slate-900"
+                        }],
                     },
                     {
-                        time: "10:30 AM",
-                        title: "DEFENSEWERX & DIU – Accelerating Innovative Tech Solutions",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        time: "10:10 AM",
+                        title: "Base-Community Partnerships Promoting Local Build Contracts",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "david-leinberger"
+                            },
+                            {
+                                speakerId: "paul-holland"
+                            }
+                        ],
                     },
                     {
-                        time: "11:00 AM",
+                        time: "10:45 AM",
+                        title: "Industry Insight",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "dr-bruce-j-sumlin",
+                            sponsor: "Bronze Sponsor",
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                        }],
+                    },
+                    {
+                        time: "10:55 AM",
                         title: "Networking Break with Exhibitors",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall A, Plaza Lower Level",
+                    },
+                    {
+                        time: "11:10 AM",
+                        title: "Industry Insight",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "joe-bonilla",
+                            sponsor: "Bronze Sponsor",
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                        }],
                     },
                     {
                         time: "11:15 AM",
-                        title: "Industry Insight",
-                        location: "Rio Grande Hall, Plaza Lower Level",
-                    },
-                    {
-                        time: "11:20 AM",
-                        title: "Project Priorities – AFCEC & USACE (Air Force Civil Engineer Center & Army Corps of Engineers)",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        title: "How To Do Business With the Primes",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "trish-martinelli",
+                                sponsor: "Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900"
+                            },
+                            // {
+                            //     speakerId: "david-canada"
+                            // },
+                            // {
+                            //     name: "Melissa Hobbs-Hendrickson",
+                            //     title: "Director, Business Development, Integrated Defense Solutions, BAE Systems"
+                            // },
+                            // {
+                            //     speakerId: "stacey-r-washington"
+                            // },
+                            // {
+                            //     speakerId: "robyn-card"
+                            // }
+                        ],
                     },
                     {
                         time: "11:50 AM",
-                        title: "Military Base-Community Partnerships Promoting Local Build Contracts",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        title: "Red Tape to Revenue: How Startups Navigate Government Buying",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "marcos-cervantes",
+                                sponsor: "Moderator"
+                            },
+                            {
+                                speakerId: "brandon-schreiner"
+                            },
+                            {
+                                speakerId: "victor-montellano"
+                            },
+                            {
+                                speakerId: "glenn-banton"
+                            }
+                        ],
                     },
                     {
                         time: "12:30 PM",
                         title: "Closing Remarks",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "charles-sills",
+                            sponsor: "Conference Moderator",
+                            sponsorStyle: "bg-red-999"
+                        }],
                     },
                     {
                         time: "12:30 PM – 1:30 PM",
                         title: "Networking with Exhibitors",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Rio Hall A, Plaza Lower Level",
                     },
                     {
                         time: "12:30 PM - 1:30 PM",
                         title: "Matchmaking Session II",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Sabine Meeting Room, Plaza Lower Level",
                     },
                 ],
             }
