@@ -3,16 +3,39 @@
 import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Font, PDFDownloadLink, PDFViewer, Image, BlobProvider } from '@react-pdf/renderer';
 import { Event } from '@/types/events';
-import { getCdnPath } from '@/utils/image';
 import { EventSpeakerPublic } from '@/lib/sanity';
 
-// helper to get sanity image URL for PDF (same as Schedule.tsx)
-function getSanityImageUrl(ref: string) {
-  return `https://cdn.sanity.io/images/nc4xlou0/production/${ref
-    .replace("image-", "")
-    .replace("-webp", ".webp")
-    .replace("-jpg", ".jpg")
-    .replace("-png", ".png")}`;
+// helper to get sanity image URL for PDF
+function getSanityImageUrl(ref: string, opts?: { width?: number; height?: number }) {
+  // Sanity refs look like: "image-<assetId>-<dimensions>-<format>"
+  const refWithoutPrefix = ref.replace('image-', '');
+  const parts = refWithoutPrefix.split('-');
+  if (parts.length < 3) return null;
+
+  const format = parts.pop();
+  const dimensions = parts.pop();
+  const assetId = parts.join('-');
+
+  const baseUrl = `https://cdn.sanity.io/images/nc4xlou0/production/${assetId}-${dimensions}.${format}`;
+
+  const width = opts?.width ?? 96;
+  const height = opts?.height ?? 96;
+
+  // force a PDF-friendly format and explicit sizing to leverage CDN caching
+  return `${baseUrl}?w=${width}&h=${height}&fit=crop&fm=png&q=80`;
+}
+
+function getAbsoluteUrl(path: string) {
+  if (typeof window !== 'undefined') {
+    return new URL(path, window.location.origin).href;
+  }
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://americandefensealliance.org';
+  return new URL(path, siteUrl).href;
+}
+
+function getProxiedImageUrl(remoteUrl: string) {
+  return getAbsoluteUrl(`/api/proxy-image?url=${encodeURIComponent(remoteUrl)}`);
 }
 
 // Define schedule types locally since they may not be directly exported from the project
@@ -30,19 +53,22 @@ type Speaker = {
   speakerId?: string;
 };
 
-// helper function to resolve speaker data from sanity
+// helper function to resolve speaker data from sanity (same as Schedule.tsx)
 const resolveSpeaker = (speaker: Speaker, sanitySpeakerMap?: Map<string, EventSpeakerPublic>): Speaker => {
   if (speaker.speakerId && sanitySpeakerMap?.has(speaker.speakerId)) {
     const speakerData = sanitySpeakerMap.get(speaker.speakerId)!;
     return {
+      // Start with schedule-specific data
       ...speaker,
+      // Override with resolved speaker data
       name: speakerData.speakerName,
       title: speakerData.speakerPosition,
       affiliation: speakerData.speakerCompany,
-      photo: undefined,
+      photo: undefined, // Sanity uses sanityImage
       sanityImage: speakerData.speakerImage,
     };
   }
+  // Return original speaker data if no speakerId or speaker not found
   return speaker;
 };
 
@@ -313,22 +339,12 @@ const SchedulePDF = ({
         {showSpeakers && item.speakers && item.speakers.length > 0 && (
           <View style={styles.speakersContainer}>
             {item.speakers.map((speaker, speakerIndex) => {
-              // Get PNG image URL for PDF compatibility
+              // Get speaker image for PDF
               const speakerData = resolveSpeaker(speaker, sanitySpeakerMap);
-              const getPDFImageUrl = (photo?: string, sanityImage?: { asset: { _ref: string } }) => {
-                // prefer sanity image if available - these work best in PDF
-                if (sanityImage?.asset?._ref) {
-                  const sanityUrl = getSanityImageUrl(sanityImage.asset._ref);
-                  // request as jpg for better PDF compatibility
-                  return sanityUrl.includes('?') ? sanityUrl : `${sanityUrl}?fm=jpg&w=96&h=96&fit=crop`;
-                }
-                
-                // for legacy photos, skip images in PDF as WebP isn't supported
-                // and PNG versions may not exist
-                return null;
-              };
-
-              const imageSrc = getPDFImageUrl(speakerData.photo, speakerData.sanityImage);
+              const sanityUrl = speakerData.sanityImage?.asset?._ref
+                ? getSanityImageUrl(speakerData.sanityImage.asset._ref, { width: 96, height: 96 })
+                : null;
+              const imageSrc = sanityUrl ? getProxiedImageUrl(sanityUrl) : null;
               
               return (
                 <View key={speakerIndex} style={styles.speaker}>
@@ -337,7 +353,7 @@ const SchedulePDF = ({
                       <Image
                         src={imageSrc}
                         style={styles.speakerImage}
-                        cache={false}
+                        cache={true}
                       />
                     </View>
                   )}
@@ -376,7 +392,7 @@ const SchedulePDF = ({
   // LETTER size: 612 x 792 points
   // Use a very conservative estimate - better to have fewer items per column than overflow
   const MAX_ITEMS_PER_COLUMN = 12; // simple count-based approach as backup
-  const CONTENT_HEIGHT = 520; // conservative fixed height in points
+  const CONTENT_HEIGHT = 750; // conservative fixed height in points
 
   const estimateItemHeight = (item: ScheduleItem) => {
     // very conservative fixed estimates
