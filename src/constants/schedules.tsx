@@ -1460,7 +1460,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "10:00 AM",
-                        title: "KEYNOTE ADDRESS – AIR FORCE ORDER OF BATTLE",
+                        title: "KEYNOTE ADDRESS: IMPROVING AIR FORCE ACQUISITIONS",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
                             speakerId: "dr-david-g-jester-smith"
@@ -1597,7 +1597,7 @@ export const SCHEDULES = [
                         ],
                     },
                     {
-                        time: "4:30 PM",
+                        time: "4:00 PM",
                         title: "Day One Closing Remarks",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
@@ -1607,7 +1607,7 @@ export const SCHEDULES = [
                         }],
                     },
                     {
-                        time: "4:30 PM – 6:00 PM",
+                        time: "4:00 PM – 6:00 PM",
                         title: "Networking with Exhibitors",
                         location: "Rio Hall A, Plaza Lower Level",
                     },
@@ -1615,6 +1615,12 @@ export const SCHEDULES = [
                         time: "4:30 PM – 6:00 PM",
                         title: "Matchmaking Session I",
                         location: "Sabine Meeting Room, Plaza Lower Level",
+                    },
+                    {
+                        time: "6:30 PM – 8:30 PM",
+                        title: "VIP Networking Reception",
+                        description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
+                        location: "Rio Hall A, Plaza Lower Level",
                     },
                 ],
             },
@@ -1643,7 +1649,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "8:35 AM",
-                        title: "Base-Community Partnerships Promoting Local Build Contracts",
+                        title: "Military Base-Community Partnerships Promoting Local Build Contracts",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
@@ -1656,7 +1662,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "9:15 AM",
-                        title: "Golden Dome Contracting Opportunities – Update",
+                        title: "Quantum Technologies for Defense Acquisition",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
@@ -1674,7 +1680,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "9:50 AM",
-                        title: "Fireside Chat: Quantum's Critical Role in Defense",
+                        title: "Fireside Chat: Quantum Computing & Autonomous Military Systems",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
