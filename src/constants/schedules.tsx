@@ -1512,7 +1512,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "12:25 PM",
-                        title: "Cybersecurity/CMMC Update – Project Spectrum",
+                        title: "Cybersecurity/CMMC Update –   Project Spectrum",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {

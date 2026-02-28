@@ -497,6 +497,10 @@ const SchedulePDF = ({
               <Text style={{ fontSize: 12 }}>Presented by <Text style={{ fontWeight: 'bold' }}>American Defense Alliance</Text> • americandefensealliance.org</Text>
             </View>
 
+            <View style={styles.footer}>
+              <Text style={{ fontSize: 10 }}>Renaissance Austin Hotel, Austin, Texas</Text>
+            </View>
+
             <Text style={styles.dayHeader}>
               {new Date(day.date).toLocaleDateString('en-US', {
                 weekday: 'long',
