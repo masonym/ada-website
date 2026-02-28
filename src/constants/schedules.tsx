@@ -1442,7 +1442,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "9:15 AM",
-                        title: "KEYNOTE ADDRESS: DEPARTMENT OF THE AIR FORCE",
+                        title: "DEPARTMENT OF THE AIR FORCE KEYNOTE ADDRESS",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
                             speakerId: "scott-kiser"
@@ -1459,12 +1459,15 @@ export const SCHEDULES = [
                         }],
                     },
                     {
-                        time: "10:45 AM",
-                        title: "Networking Break with Exhibitors",
-                        location: "Rio Hall A, Plaza Lower Level",
+                        time: "10:00 AM",
+                        title: "KEYNOTE ADDRESS – AIR FORCE ORDER OF BATTLE",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "dr-david-g-jester-smith"
+                        }],
                     },
                     {
-                        time: "11:10 AM",
+                        time: "10:35 AM",
                         title: "Industry Insight",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
@@ -1474,38 +1477,30 @@ export const SCHEDULES = [
                         }],
                     },
                     {
-                        time: "10:00 AM",
-                        title: "KEYNOTE ADDRESS – FUTURE AIR FORCE ORDER OF BATTLE",
-                        location: "Rio Hall B, Plaza Lower Level",
-                        speakers: [{
-                            speakerId: "dr-david-g-jester-smith"
-                        }],
-                    },
-                    {
                         time: "10:45 AM",
                         title: "Networking Break with Exhibitors",
                         location: "Rio Hall A, Plaza Lower Level",
                     },
                     {
                         time: "11:15 AM",
-                        title: "Industry Insight",
-                        location: "Rio Hall B, Plaza Lower Level",
-                    },
-                    {
-                        time: "11:20 AM",
                         title: "The Space Force Front Door Program – Connecting With Industry",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "victor-vigliotti",
+                            speakerId: "victor-vigliotti"
                         }],
                     },
                     {
-                        time: "11:55 AM",
-                        title: "Space Force Requirements Driving Contracts",
+                        time: "11:45 AM",
+                        title: "Fireside Chat: Space Force Challenges Driving Contracts",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
-                                speakerId: "victor-vigliotti",
+                                speakerId: "charles-sills",
+                                sponsor: "Moderator",
+                                sponsorStyle: "bg-sky-300"
+                            },
+                            {
+                                speakerId: "major-marc-green",
                             },
                             {
                                 speakerId: "captain-md-doc-rana"
@@ -1516,9 +1511,17 @@ export const SCHEDULES = [
                         ],
                     },
                     {
-                        time: "12:30 PM",
-                        title: "Air Force Requirements Driving Contracts",
+                        time: "12:25 PM",
+                        title: "Cybersecurity/CMMC Update – Project Spectrum",
                         location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "kareem-a-sykes"
+                            },
+                            {
+                                speakerId: "nelinia-nel-varenus",
+                            }
+                        ],
                     },
                     {
                         time: "1:00 PM",
@@ -1542,7 +1545,7 @@ export const SCHEDULES = [
                         speakers: [
                             {
                                 speakerId: "trish-martinelli",
-                                sponsor: "MODERATOR",
+                                sponsor: "Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900"
                             },
                             {
@@ -1564,13 +1567,12 @@ export const SCHEDULES = [
                         }],
                     },
                     {
-                        time: "3:10 PM",
+                        time: "3:05 PM",
                         title: "Expediting Additive Manufacture at the Warfighter Edge",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
-                                name: "Richard 'Ric' Slater",
-                                title: "Technical Consultant, Encountering Innovation, Kansas Small Business Development Center",
+                                speakerId: "richard-ric-slater",
                                 sponsor: "Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900"
                             },
@@ -1581,7 +1583,7 @@ export const SCHEDULES = [
                                 speakerId: "andrew-gardner"
                             },
                             {
-                            speakerId: "bijo-mathew"
+                                speakerId: "bijo-mathew"
                             },
                             {
                                 speakerId: "madison-jones"
@@ -1590,16 +1592,8 @@ export const SCHEDULES = [
                                 speakerId: "aaron-williamson-pmp"
                             },
                             {
-                            speakerId: "scott-gray"
+                                speakerId: "scott-gray"
                             }
-                        ],
-                    },
-                    {
-                        time: "4:00 PM",
-                        title: "Cybersecurity/CMMC Update",
-                        location: "Rio Hall B, Plaza Lower Level",
-                        speakers: [
-                        {speakerId: "nelinia-nel-varenus"}
                         ],
                     },
                     {
@@ -1649,58 +1643,6 @@ export const SCHEDULES = [
                     },
                     {
                         time: "8:35 AM",
-                        title: "ARMY TRANSFORMATION AND TRAINING COMMAND – SMALL BUSINESS PROGRAMS",
-                        location: "Rio Hall B, Plaza Lower Level",
-                        // speakers: [{
-                        //     name: "TBD"
-                        // }],
-                    },
-                    {
-                        time: "9:05 AM",
-                        title: "Golden Dome Contracting Opportunities – Update",
-                        location: "Rio Hall B, Plaza Lower Level",
-                        speakers: [
-                            {
-                                speakerId: "gavin-brown",
-                                sponsor: "Moderator"
-                            },
-                            {
-                            speakerId: "irina-s-litchfield"
-                            },
-                            {
-                            speakerId: "justyn-hornor"
-                            },
-                            // {
-                            //     name: "Brian S. FitzPatrick",
-                            //     title: "CSM, Business Development Executive, IBM"
-                            // }
-                        ],
-                    },
-                    {
-                        time: "9:40 AM",
-                        title: "Fireside Chat: Quantum's Critical Role in Defense",
-                        location: "Rio Hall B, Plaza Lower Level",
-                        speakers: [
-                            {
-                                speakerId: "gavin-brown"
-                            },
-                            {
-                                speakerId: "justin-litchfield-phd"
-                            }
-                        ],
-                    },
-                    {
-                        time: "9:55 AM",
-                        title: "Industry Insight",
-                        location: "Rio Hall B, Plaza Lower Level",
-                        speakers: [{
-                            speakerId: "marie-mcclain",
-                            sponsor: "Silver Sponsor",
-                            sponsorStyle: "bg-[#C0C0C0] text-slate-900"
-                        }],
-                    },
-                    {
-                        time: "10:10 AM",
                         title: "Base-Community Partnerships Promoting Local Build Contracts",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
@@ -1713,6 +1655,55 @@ export const SCHEDULES = [
                         ],
                     },
                     {
+                        time: "9:15 AM",
+                        title: "Golden Dome Contracting Opportunities – Update",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "gavin-brown",
+                                sponsor: "Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900"
+                            },
+                            {
+                                speakerId: "irina-s-litchfield"
+                            },
+                            {
+                                speakerId: "justyn-hornor"
+                            }
+                        ],
+                    },
+                    {
+                        time: "9:50 AM",
+                        title: "Fireside Chat: Quantum's Critical Role in Defense",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "gavin-brown"
+                            },
+                            {
+                                speakerId: "justin-litchfield-phd"
+                            }
+                        ],
+                    },
+                    {
+                        time: "10:05 AM",
+                        title: "Industry Insight",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "marie-mcclain",
+                            sponsor: "Silver Sponsor",
+                            sponsorStyle: "bg-[#C0C0C0] text-slate-900"
+                        }],
+                    },
+                    {
+                        time: "10:20 AM",
+                        title: "Warfare & Technology in 2040 and Beyond",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "captain-md-doc-rana"
+                        }],
+                    },
+                    {
                         time: "10:40 AM",
                         title: "Industry Insight",
                         location: "Rio Hall B, Plaza Lower Level",
@@ -1723,12 +1714,12 @@ export const SCHEDULES = [
                         }],
                     },
                     {
-                        time: "10:50 AM",
+                        time: "10:45 AM",
                         title: "Networking Break with Exhibitors",
                         location: "Rio Hall A, Plaza Lower Level",
                     },
                     {
-                        time: "11:05 AM",
+                        time: "11:15 AM",
                         title: "Industry Insight",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
@@ -1738,13 +1729,13 @@ export const SCHEDULES = [
                         }],
                     },
                     {
-                        time: "11:10 AM",
+                        time: "11:20 AM",
                         title: "Red Tape to Revenue: How Startups Navigate Government Buying",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
                                 speakerId: "marcos-cervantes",
-                                sponsor: "Moderator",
+                                sponsor: "MODERATOR",
                                 sponsorStyle: "bg-sky-300 text-slate-900"
                             },
                             {
@@ -1759,14 +1750,17 @@ export const SCHEDULES = [
                         ],
                     },
                     {
-                        time: "11:50 AM",
-                        title: "How To Do Business With the Primes",
+                        time: "12:05 PM",
+                        title: "Final Thoughts: Navigating the Defense Contracting Shoals",
                         location: "Rio Hall B, Plaza Lower Level",
-                        speakers: [{
-                            speakerId: "trish-martinelli",
-                            sponsor: "Moderator",
-                            sponsorStyle: "bg-sky-300 text-slate-900"
-                        }],
+                        speakers: [
+                            {
+                            speakerId: "ricardo-monroy",
+                            },
+                            {
+                                speakerId: "trish-martinelli"
+                            }
+                        ],
                     },
                     {
                         time: "12:30 PM",
