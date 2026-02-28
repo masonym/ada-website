@@ -4,19 +4,46 @@ import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Font, PDFDownloadLink, PDFViewer, Image, BlobProvider } from '@react-pdf/renderer';
 import { Event } from '@/types/events';
 import { getCdnPath } from '@/utils/image';
-import { resolveSpeaker } from '@/app/components/Schedule';
+import { EventSpeakerPublic } from '@/lib/sanity';
+
+// helper to get sanity image URL for PDF (same as Schedule.tsx)
+function getSanityImageUrl(ref: string) {
+  return `https://cdn.sanity.io/images/nc4xlou0/production/${ref
+    .replace("image-", "")
+    .replace("-webp", ".webp")
+    .replace("-jpg", ".jpg")
+    .replace("-png", ".png")}`;
+}
 
 // Define schedule types locally since they may not be directly exported from the project
 type Speaker = {
-  name: string;
+  name?: string;
   title?: string;
   sponsor?: string;
   sponsorStyle?: string;
   affiliation?: string;
   photo?: string;
+  sanityImage?: { asset: { _ref: string } };
   presentation?: string;
   videoId?: string;
   videoStartTime?: number;
+  speakerId?: string;
+};
+
+// helper function to resolve speaker data from sanity
+const resolveSpeaker = (speaker: Speaker, sanitySpeakerMap?: Map<string, EventSpeakerPublic>): Speaker => {
+  if (speaker.speakerId && sanitySpeakerMap?.has(speaker.speakerId)) {
+    const speakerData = sanitySpeakerMap.get(speaker.speakerId)!;
+    return {
+      ...speaker,
+      name: speakerData.speakerName,
+      title: speakerData.speakerPosition,
+      affiliation: speakerData.speakerCompany,
+      photo: undefined,
+      sanityImage: speakerData.speakerImage,
+    };
+  }
+  return speaker;
 };
 
 type ScheduleItem = {
@@ -247,7 +274,8 @@ const SchedulePDF = ({
   customTitle = '', 
   customSubtitle = '',
   selectedDays = [],
-  twoColumnLayout = true
+  twoColumnLayout = true,
+  sanitySpeakers
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -257,7 +285,15 @@ const SchedulePDF = ({
   customSubtitle?: string;
   selectedDays?: string[];
   twoColumnLayout?: boolean;
+  sanitySpeakers?: EventSpeakerPublic[] | null;
 }) => {
+  // Build sanity speaker lookup map
+  const sanitySpeakerMap = new Map<string, EventSpeakerPublic>();
+  if (sanitySpeakers) {
+    sanitySpeakers.forEach(s => {
+      if (s.speakerSlug) sanitySpeakerMap.set(s.speakerSlug, s);
+    });
+  }
   // Filter schedule based on selected days
   const filteredSchedule = selectedDays.length > 0 
     ? schedule.filter(day => selectedDays.includes(day.date)) 
@@ -278,25 +314,21 @@ const SchedulePDF = ({
           <View style={styles.speakersContainer}>
             {item.speakers.map((speaker, speakerIndex) => {
               // Get PNG image URL for PDF compatibility
-              const speakerData = resolveSpeaker(speaker);
-              const getPDFImageUrl = (photo: string) => {
-                if (!photo) return null;
-                
-                // Convert WebP filename to PNG for PDF rendering
-                const pngFilename = photo.replace('.webp', '.png');
-                
-                // Use local PNG images from public/speakers/png/ directory
-                const pngPath = `/speakers/png/${pngFilename}`;
-                
-                // Return absolute URL for PDF rendering
-                if (typeof window !== 'undefined') {
-                  return new URL(pngPath, window.location.origin).href;
+              const speakerData = resolveSpeaker(speaker, sanitySpeakerMap);
+              const getPDFImageUrl = (photo?: string, sanityImage?: { asset: { _ref: string } }) => {
+                // prefer sanity image if available - these work best in PDF
+                if (sanityImage?.asset?._ref) {
+                  const sanityUrl = getSanityImageUrl(sanityImage.asset._ref);
+                  // request as jpg for better PDF compatibility
+                  return sanityUrl.includes('?') ? sanityUrl : `${sanityUrl}?fm=jpg&w=96&h=96&fit=crop`;
                 }
-                // Fallback for server-side rendering
-                return `https://americandefensealliance.org${pngPath}`;
+                
+                // for legacy photos, skip images in PDF as WebP isn't supported
+                // and PNG versions may not exist
+                return null;
               };
 
-              const imageSrc = speakerData.photo ? getPDFImageUrl(speakerData.photo) : null;
+              const imageSrc = getPDFImageUrl(speakerData.photo, speakerData.sanityImage);
               
               return (
                 <View key={speakerIndex} style={styles.speaker}>
@@ -305,6 +337,7 @@ const SchedulePDF = ({
                       <Image
                         src={imageSrc}
                         style={styles.speakerImage}
+                        cache={false}
                       />
                     </View>
                   )}
@@ -340,39 +373,31 @@ const SchedulePDF = ({
 
 
   // --- Newspaper-Style Column Pagination Logic ---
+  // LETTER size: 612 x 792 points
+  // Use a very conservative estimate - better to have fewer items per column than overflow
+  const MAX_ITEMS_PER_COLUMN = 12; // simple count-based approach as backup
+  const CONTENT_HEIGHT = 520; // conservative fixed height in points
 
-  const A4_HEIGHT = 750;
-  const PAGE_MARGIN_TOP = 30;
-  const PAGE_MARGIN_BOTTOM = 40; // Space for footer
-  const HEADER_HEIGHT = 60;
-  const DAY_HEADER_HEIGHT = 30;
-  const CONTENT_HEIGHT = A4_HEIGHT - PAGE_MARGIN_TOP - PAGE_MARGIN_BOTTOM - HEADER_HEIGHT - DAY_HEADER_HEIGHT;
-
-  const estimateLineHeight = (text: string, width: number, fontSize: number) => {
-    const charsPerLine = width / (fontSize * 0.6);
-    return Math.ceil(text.length / charsPerLine);
-  };
-
-  const estimateItemHeight = (item: ScheduleItem, prevItem?: ScheduleItem) => {
-    let height = 0; // Base for padding/margin
-
-    const contentWidth = 400; // Estimated width of content column in points
-
-    height += estimateLineHeight(item.title, contentWidth, 10) * 12;
+  const estimateItemHeight = (item: ScheduleItem) => {
+    // very conservative fixed estimates
+    let height = 25; // base height for time + title
+    
+    // add for description
     if (item.description) {
-      height += estimateLineHeight(item.description, contentWidth, 9) * 11;
+      height += 20;
     }
-    if (showLocations && item.location && item.location !== prevItem?.location) {
-      height += 10;
+    
+    // add for location
+    if (showLocations && item.location) {
+      height += 12;
     }
+    
+    // add for speakers - this is where most height comes from
     if (showSpeakers && item.speakers && item.speakers.length > 0) {
-      item.speakers.forEach(speakerId => {
-        const speaker = resolveSpeaker(speakerId);
-        height += 20; // Approx height for speaker photo + text
-        if (speaker.title) height += 8;
-        if (speaker.affiliation) height += 8;
-      });
+      // each speaker takes significant space
+      height += item.speakers.length * 45;
     }
+    
     return height;
   };
 
@@ -391,27 +416,28 @@ const SchedulePDF = ({
       let currentRightHeight = 0;
       let currentColumn: 'left' | 'right' = 'left';
 
-      day.items.forEach((item, index) => {
-        const prevItem = day.items[index - 1];
-        const itemHeight = estimateItemHeight(item, prevItem);
+      day.items.forEach((item) => {
+        const itemHeight = estimateItemHeight(item);
 
-        if (currentColumn === 'left') {
-          if (currentLeftHeight + itemHeight > CONTENT_HEIGHT) {
-            currentColumn = 'right'; // Switch to right column
-          }
+        // simple logic: fill left first, then right, then new page
+        const leftFull = currentLeftHeight + itemHeight > CONTENT_HEIGHT || currentPage.left.length >= MAX_ITEMS_PER_COLUMN;
+        const rightFull = currentRightHeight + itemHeight > CONTENT_HEIGHT || currentPage.right.length >= MAX_ITEMS_PER_COLUMN;
+
+        if (currentColumn === 'left' && leftFull) {
+          // switch to right column
+          currentColumn = 'right';
         }
 
-        if (currentColumn === 'right') {
-          if (currentRightHeight + itemHeight > CONTENT_HEIGHT) {
-            // Page is full, start a new one
-            pages.push(currentPage);
-            currentPage = { left: [], right: [] };
-            currentLeftHeight = 0;
-            currentRightHeight = 0;
-            currentColumn = 'left';
-          }
+        if (currentColumn === 'right' && rightFull) {
+          // both columns full, start new page
+          pages.push(currentPage);
+          currentPage = { left: [], right: [] };
+          currentLeftHeight = 0;
+          currentRightHeight = 0;
+          currentColumn = 'left';
         }
 
+        // add item to current column
         if (currentColumn === 'left') {
           currentPage.left.push(item);
           currentLeftHeight += itemHeight;
@@ -489,6 +515,7 @@ export const PDFDownloadButton = ({
   customSubtitle,
   selectedDays,
   twoColumnLayout,
+  sanitySpeakers,
   fileName = 'schedule.pdf'
 }: {
   schedule: ScheduleDay[];
@@ -499,6 +526,7 @@ export const PDFDownloadButton = ({
   customSubtitle: string;
   selectedDays: string[];
   twoColumnLayout: boolean;
+  sanitySpeakers?: EventSpeakerPublic[] | null;
   fileName?: string;
 }) => (
   <PDFDownloadLink 
@@ -512,6 +540,7 @@ export const PDFDownloadButton = ({
         customSubtitle={customSubtitle}
         selectedDays={selectedDays}
         twoColumnLayout={twoColumnLayout}
+        sanitySpeakers={sanitySpeakers}
       />
     } 
     fileName={fileName}
@@ -531,6 +560,7 @@ export const PDFPreview = ({
   customSubtitle,
   selectedDays,
   twoColumnLayout,
+  sanitySpeakers,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -540,6 +570,7 @@ export const PDFPreview = ({
   customSubtitle: string;
   selectedDays: string[];
   twoColumnLayout: boolean;
+  sanitySpeakers?: EventSpeakerPublic[] | null;
 }) => (
   <div className="w-full h-screen">
     <PDFViewer width="100%" height="100%" style={{ border: 'none' }}>
@@ -552,6 +583,7 @@ export const PDFPreview = ({
         customSubtitle={customSubtitle}
         selectedDays={selectedDays}
         twoColumnLayout={twoColumnLayout}
+        sanitySpeakers={sanitySpeakers}
       />
     </PDFViewer>
   </div>
@@ -567,6 +599,7 @@ export const PDFPreviewButton = ({
   customSubtitle,
   selectedDays,
   twoColumnLayout,
+  sanitySpeakers,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -576,6 +609,7 @@ export const PDFPreviewButton = ({
   customSubtitle: string;
   selectedDays: string[];
   twoColumnLayout: boolean;
+  sanitySpeakers?: EventSpeakerPublic[] | null;
 }) => (
   <BlobProvider document={
     <SchedulePDF 
@@ -587,6 +621,7 @@ export const PDFPreviewButton = ({
       customSubtitle={customSubtitle}
       selectedDays={selectedDays}
       twoColumnLayout={twoColumnLayout}
+      sanitySpeakers={sanitySpeakers}
     />
   }>
     {({ blob, url, loading, error }) => {

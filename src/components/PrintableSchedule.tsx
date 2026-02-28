@@ -1,29 +1,56 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { SCHEDULES } from '@/constants/schedules';
 import { EVENTS } from '@/constants/events';
 import { Event } from '@/types/events';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import Image from 'next/image';
 import { getCdnPath } from '@/utils/image';
-import { PDFDownloadButton, PDFPreview, PDFPreviewButton } from './SchedulePDF';
+import { PDFDownloadButton, PDFPreviewButton } from './SchedulePDF';
+import { EventSpeakerPublic } from '@/lib/sanity';
+
+// helper to get sanity image URL
+function getSanityImageUrl(ref: string) {
+  return `https://cdn.sanity.io/images/nc4xlou0/production/${ref
+    .replace("image-", "")
+    .replace("-webp", ".webp")
+    .replace("-jpg", ".jpg")
+    .replace("-png", ".png")}`;
+}
 
 interface PrintableScheduleProps {
   eventId: number;
+  sanitySpeakers?: EventSpeakerPublic[] | null;
 }
 
 // Define types for schedule items
 type Speaker = {
-  name: string;
+  name?: string;
   title?: string;
   sponsor?: string;
   sponsorStyle?: string;
   affiliation?: string;
   photo?: string;
+  sanityImage?: { asset: { _ref: string } };
   presentation?: string;
   videoId?: string;
   videoStartTime?: number;
+  speakerId?: string;
+};
+
+// helper function to resolve speaker data from sanity
+const resolveSpeaker = (speaker: Speaker, sanitySpeakerMap: Map<string, EventSpeakerPublic>): Speaker => {
+  if (speaker.speakerId && sanitySpeakerMap.has(speaker.speakerId)) {
+    const speakerData = sanitySpeakerMap.get(speaker.speakerId)!;
+    return {
+      ...speaker,
+      name: speakerData.speakerName,
+      title: speakerData.speakerPosition,
+      affiliation: speakerData.speakerCompany,
+      photo: undefined,
+      sanityImage: speakerData.speakerImage,
+    };
+  }
+  return speaker;
 };
 
 type ScheduleItem = {
@@ -41,14 +68,20 @@ type ScheduleDay = {
   items: ScheduleItem[];
 };
 
-const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
-  const router = useRouter();
-
+const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySpeakers }) => {
   // Find the schedule for the given event ID
   const schedule = SCHEDULES.find(s => s.id === eventId)?.schedule as ScheduleDay[] | undefined;
 
   // Find the event details
   const event = EVENTS.find(e => e.id === eventId) as Event | undefined;
+
+  // Build sanity speaker lookup map
+  const sanitySpeakerMap = new Map<string, EventSpeakerPublic>();
+  if (sanitySpeakers) {
+    sanitySpeakers.forEach(s => {
+      if (s.speakerSlug) sanitySpeakerMap.set(s.speakerSlug, s);
+    });
+  }
 
   // State for customization options
   const [showSpeakers, setShowSpeakers] = useState<boolean>(true);
@@ -103,26 +136,40 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
             }
             {showSpeakers && item.speakers && item.speakers.length > 0 && (
               <div className="speakers mt-2">
-                {item.speakers.map((speaker, index) => (
-                  <div key={index} className="speaker mb-1 flex items-start gap-3">
-                    {showSpeakers && speaker.photo && (
-                      <div className="flex-shrink-0">
-                        <Image
-                          src={getCdnPath(`speakers/${speaker.photo}`)}
-                          alt={speaker.name}
-                          width={48}
-                          height={48}
-                          className="rounded-full"
-                        />
+                {item.speakers.map((speaker, index) => {
+                  const resolvedSpeaker = resolveSpeaker(speaker, sanitySpeakerMap);
+                  return (
+                    <div key={index} className="speaker mb-1 flex items-start gap-3">
+                      {showSpeakers && (resolvedSpeaker.sanityImage?.asset?._ref || resolvedSpeaker.photo) && (
+                        <div className="flex-shrink-0">
+                          {resolvedSpeaker.sanityImage?.asset?._ref ? (
+                            <Image
+                              src={getSanityImageUrl(resolvedSpeaker.sanityImage.asset._ref)}
+                              alt={resolvedSpeaker.name || 'Speaker'}
+                              width={48}
+                              height={48}
+                              className="rounded-full"
+                              unoptimized={true}
+                            />
+                          ) : resolvedSpeaker.photo && (
+                            <Image
+                              src={getCdnPath(`speakers/${resolvedSpeaker.photo}`)}
+                              alt={resolvedSpeaker.name || 'Speaker'}
+                              width={48}
+                              height={48}
+                              className="rounded-full"
+                            />
+                          )}
+                        </div>
+                      )}
+                      <div className="text-balance">
+                        <div className="font-semibold text-md">{resolvedSpeaker.name} {resolvedSpeaker.sponsor != "Pre-Recorded Address" && <span className={`w-fit text-nowrap rounded-lg md:mx-1 text-xs px-2 py-1 ${resolvedSpeaker.sponsorStyle}`}>{resolvedSpeaker.sponsor}</span>}</div>
+                        {resolvedSpeaker.title && <div className="speaker-title text-xs my-0.5">{resolvedSpeaker.title}</div>}
+                        {resolvedSpeaker.affiliation && <div className="speaker-affiliation font-bold text-xs my-0.5">{resolvedSpeaker.affiliation}</div>}
                       </div>
-                    )}
-                    <div className="text-balance">
-                      <div className="font-semibold text-md">{speaker.name} {speaker.sponsor != "Pre-Recorded Address" && <span className={`w-fit text-nowrap rounded-lg md:mx-1 text-xs px-2 py-1 ${speaker.sponsorStyle}`}>{speaker.sponsor}</span>}</div>
-                      {speaker.title && <div className="speaker-title text-xs my-0.5">{speaker.title}</div>}
-                      {speaker.affiliation && <div className="speaker-affiliation font-bold text-xs my-0.5">{speaker.affiliation}</div>}
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
             {item.description && <div className="description text-sm mt-2">{item.description}</div>}
@@ -312,6 +359,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
                 customSubtitle={customSubtitle}
                 selectedDays={selectedDays}
                 twoColumnLayout={twoColumnLayout}
+                sanitySpeakers={sanitySpeakers}
               />
               
               {/* PDF Download Button */}
@@ -324,6 +372,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId }) => {
                 customSubtitle={customSubtitle}
                 selectedDays={selectedDays}
                 twoColumnLayout={twoColumnLayout}
+                sanitySpeakers={sanitySpeakers}
                 fileName={`${event.title.toLowerCase().replace(/\s+/g, '-')}-schedule.pdf`}
               />
             </div>
