@@ -1607,12 +1607,12 @@ export const SCHEDULES = [
                         }],
                     },
                     {
-                        time: "4:30 – 6:00 PM",
+                        time: "4:30 PM – 6:00 PM",
                         title: "Networking with Exhibitors",
                         location: "Rio Hall A, Plaza Lower Level",
                     },
                     {
-                        time: "4:30 – 6:00 PM",
+                        time: "4:30 PM – 6:00 PM",
                         title: "Matchmaking Session I",
                         location: "Sabine Meeting Room, Plaza Lower Level",
                     },
@@ -1735,7 +1735,7 @@ export const SCHEDULES = [
                         speakers: [
                             {
                                 speakerId: "marcos-cervantes",
-                                sponsor: "MODERATOR",
+                                sponsor: "Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900"
                             },
                             {

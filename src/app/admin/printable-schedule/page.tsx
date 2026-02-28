@@ -39,7 +39,6 @@ export default function PrintableSchedulePage() {
       try {
         const res = await fetch(`/api/event-speakers-public?eventId=${selectedEventId}`);
         const data = await res.json();
-
         if (data.speakers && data.speakers.length > 0) {
           setSanitySpeakers(data.speakers);
         } else {

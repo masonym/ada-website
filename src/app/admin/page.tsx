@@ -73,9 +73,9 @@ const adminCards: AdminCard[] = [
     category: "tools",
   },
   // {
-  //   title: "Banner Generator",
-  //   description: "Generate sponsor banners for retractable pop-up displays",
-  //   href: "/admin/banner-generator",
+  //   title: "Printable Schedule",
+  //   description: "Generate printable PDF schedules for events",
+  //   href: "/admin/printable-schedule",
   //   icon: <Printer className="w-6 h-6" />,
   //   category: "tools",
   // },
