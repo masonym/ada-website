@@ -88,11 +88,12 @@ type ScheduleDay = {
 };
 
 // Register fonts (we can add Gotham font files if available)
-// Font.register({
-//   family: 'Gotham',
-//   src: '/fonts/Gotham-Bold.ttf',
-//   fontWeight: 'bold',
-// });
+Font.register({
+  family: 'Gotham',
+  src: '/fonts/Gotham-Bold.otf',
+  fontStyle: 'normal',
+  fontWeight: 'bold',
+});
 
 // Create styles
 const styles = StyleSheet.create({
@@ -255,30 +256,36 @@ Font.registerHyphenationCallback((word) => {
 const convertSponsorStyleToPDF = (sponsorStyle?: string) => {
   if (!sponsorStyle) {
     return {
-      backgroundColor: '#dc2626', // Default red
+      backgroundColor: '#FF3131', // Default red
       color: '#fff'
     };
   }
 
-  let backgroundColor = '#dc2626'; // Default red
+  let backgroundColor = '#FF3131'; // Default red
   let color = '#fff'; // Default white text
 
   // Parse background colors
+  const bgHexMatch = sponsorStyle.match(/bg-\[#([0-9a-fA-F]{3,8})\]/);
+  if (bgHexMatch) {
+    backgroundColor = `#${bgHexMatch[1]}`;
+  }
+
   if (sponsorStyle.includes('bg-red-999')) {
-    backgroundColor = '#dc2626'; // Red
+    backgroundColor = '#FF3131'; // Red
   } else if (sponsorStyle.includes('bg-sky-300')) {
     backgroundColor = '#7dd3fc'; // Sky blue
   } else if (sponsorStyle.includes('bg-gray-300')) {
     backgroundColor = '#d1d5db'; // Gray
-  } else if (sponsorStyle.includes('bg-[#ffaf00]')) {
-    backgroundColor = '#ffaf00'; // Gold/Yellow
-  } else if (sponsorStyle.includes('bg-[#CD7F32]')) {
-    backgroundColor = '#CD7F32'; // Bronze
   } else if (sponsorStyle.includes('bg-navy-800')) {
-    backgroundColor = '#000080'; // Dark slate
+    backgroundColor = '#1B212B';
   }
 
   // Parse text colors
+  const textHexMatch = sponsorStyle.match(/text-\[#([0-9a-fA-F]{3,8})\]/);
+  if (textHexMatch) {
+    color = `#${textHexMatch[1]}`;
+  }
+
   if (sponsorStyle.includes('text-slate-900')) {
     color = '#0f172a'; // Dark slate
   } else if (sponsorStyle.includes('text-white')) {
@@ -292,12 +299,12 @@ const convertSponsorStyleToPDF = (sponsorStyle?: string) => {
 };
 
 // Schedule PDF Document Component
-const SchedulePDF = ({ 
-  schedule, 
-  event, 
-  showSpeakers = true, 
-  showLocations = true, 
-  customTitle = '', 
+const SchedulePDF = ({
+  schedule,
+  event,
+  showSpeakers = true,
+  showLocations = true,
+  customTitle = '',
   customSubtitle = '',
   selectedDays = [],
   twoColumnLayout = true,
@@ -321,8 +328,8 @@ const SchedulePDF = ({
     });
   }
   // Filter schedule based on selected days
-  const filteredSchedule = selectedDays.length > 0 
-    ? schedule.filter(day => selectedDays.includes(day.date)) 
+  const filteredSchedule = selectedDays.length > 0
+    ? schedule.filter(day => selectedDays.includes(day.date))
     : schedule;
 
   // Render a single schedule item
@@ -345,7 +352,7 @@ const SchedulePDF = ({
                 ? getSanityImageUrl(speakerData.sanityImage.asset._ref, { width: 96, height: 96 })
                 : null;
               const imageSrc = sanityUrl ? getProxiedImageUrl(sanityUrl) : null;
-              
+
               return (
                 <View key={speakerIndex} style={styles.speaker}>
                   {imageSrc && (
@@ -397,23 +404,23 @@ const SchedulePDF = ({
   const estimateItemHeight = (item: ScheduleItem) => {
     // very conservative fixed estimates
     let height = 25; // base height for time + title
-    
+
     // add for description
     if (item.description) {
       height += 20;
     }
-    
+
     // add for location
     if (showLocations && item.location) {
       height += 12;
     }
-    
+
     // add for speakers - this is where most height comes from
     if (showSpeakers && item.speakers && item.speakers.length > 0) {
       // each speaker takes significant space
       height += item.speakers.length * 45;
     }
-    
+
     return height;
   };
 
@@ -482,12 +489,12 @@ const SchedulePDF = ({
           <Page key={`${day.date}-${pageIndex}`} size="LETTER" style={styles.page}>
             <View style={styles.header}>
               <Text style={styles.title}>{customTitle || `${event.title} Schedule`}</Text>
-              {(customSubtitle || event.date) && (
+              {/* {(customSubtitle || event.date) && (
                 <Text style={styles.subtitle}>{customSubtitle || event.date}</Text>
-              )}
+              )} */}
             </View>
             <View style={styles.footer}>
-              <Text>Presented by American Defense Alliance • americandefensealliance.org</Text>
+              <Text style={{ fontSize: 12 }}>Presented by <Text style={{ fontWeight: 'bold' }}>American Defense Alliance</Text> • americandefensealliance.org</Text>
             </View>
 
             <Text style={styles.dayHeader}>
@@ -522,9 +529,9 @@ const SchedulePDF = ({
 };
 
 // PDF Download Button
-export const PDFDownloadButton = ({ 
-  schedule, 
-  event, 
+export const PDFDownloadButton = ({
+  schedule,
+  event,
   showSpeakers,
   showLocations,
   customTitle,
@@ -545,11 +552,11 @@ export const PDFDownloadButton = ({
   sanitySpeakers?: EventSpeakerPublic[] | null;
   fileName?: string;
 }) => (
-  <PDFDownloadLink 
+  <PDFDownloadLink
     document={
-      <SchedulePDF 
-        schedule={schedule} 
-        event={event} 
+      <SchedulePDF
+        schedule={schedule}
+        event={event}
         showSpeakers={showSpeakers}
         showLocations={showLocations}
         customTitle={customTitle}
@@ -558,7 +565,7 @@ export const PDFDownloadButton = ({
         twoColumnLayout={twoColumnLayout}
         sanitySpeakers={sanitySpeakers}
       />
-    } 
+    }
     fileName={fileName}
     className="inline-block px-4 py-2 text-sm text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
   >
@@ -567,9 +574,9 @@ export const PDFDownloadButton = ({
 );
 
 // PDF Preview (for development/testing)
-export const PDFPreview = ({ 
-  schedule, 
-  event, 
+export const PDFPreview = ({
+  schedule,
+  event,
   showSpeakers,
   showLocations,
   customTitle,
@@ -590,9 +597,9 @@ export const PDFPreview = ({
 }) => (
   <div className="w-full h-screen">
     <PDFViewer width="100%" height="100%" style={{ border: 'none' }}>
-      <SchedulePDF 
-        schedule={schedule} 
-        event={event} 
+      <SchedulePDF
+        schedule={schedule}
+        event={event}
         showSpeakers={showSpeakers}
         showLocations={showLocations}
         customTitle={customTitle}
@@ -606,9 +613,9 @@ export const PDFPreview = ({
 );
 
 // PDF Preview Button (opens in new tab)
-export const PDFPreviewButton = ({ 
-  schedule, 
-  event, 
+export const PDFPreviewButton = ({
+  schedule,
+  event,
   showSpeakers,
   showLocations,
   customTitle,
@@ -628,9 +635,9 @@ export const PDFPreviewButton = ({
   sanitySpeakers?: EventSpeakerPublic[] | null;
 }) => (
   <BlobProvider document={
-    <SchedulePDF 
-      schedule={schedule} 
-      event={event} 
+    <SchedulePDF
+      schedule={schedule}
+      event={event}
       showSpeakers={showSpeakers}
       showLocations={showLocations}
       customTitle={customTitle}
