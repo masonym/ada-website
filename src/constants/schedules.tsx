@@ -1426,7 +1426,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "8:35 AM",
-                        title: "Welcoming Remarks – National Security Innovation Council",
+                        title: "Welcoming Remarks – National Security Innovation Council (NSIC)",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
                             speakerId: "drew-scheberle"
