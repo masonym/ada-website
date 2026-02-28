@@ -41,7 +41,7 @@ export interface AdditionalPassType {
     headerImage?: string;
     buttonText?: string;
     maxQuantityPerOrder?: number;
-    perks?: Array<string | {formatted: FormattedPerk[]}>;
+    perks?: Array<string | { formatted: FormattedPerk[] }>;
 }
 
 // Define the structure for exhibitor types by event
@@ -117,15 +117,17 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
             buttonText: 'Add',
             maxQuantityPerOrder: 10,
             perks: [
-                { formatted: [
-                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-                    { content: "Access to General Sessions", indent: 1 },
-                    { content: "Access to Exhibit Area", indent: 1 },
-                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Breakfast & Buffet Lunch", indent: 1 },
-                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                    { content: "Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM", bold: true },
-                ]},
+                {
+                    formatted: [
+                        { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                        { content: "Access to General Sessions", indent: 1 },
+                        { content: "Access to Exhibit Area", indent: 1 },
+                        { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                        { content: "Breakfast & Buffet Lunch", indent: 1 },
+                        { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                        { content: "Access to VIP Networking Reception on July 29, 2025 from 6:00 PM - 8:00 PM", bold: true },
+                    ]
+                },
             ],
         },
         exhibitors: [
@@ -146,23 +148,31 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                 showRemaining: true,
                 saleEndTime: "2025-07-29T08:00:00Z",
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-                        { content: "Additional Exhibitor Passes can be purchased for $395 each below.", indent: 1 },
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Marketing Emails & Printed Program", indent: 1 },
-                    ]},
-                    { formatted: [
-                        { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "8'x10' Table-Top Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 1 },
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Photographs of your Participation", indent: 1 },
-                    ]},
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                            { content: "Additional Exhibitor Passes can be purchased for $395 each below.", indent: 1 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Marketing Emails & Printed Program", indent: 1 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "8'x10' Table-Top Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 1 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Photographs of your Participation", indent: 1 },
+                        ]
+                    },
                 ],
                 colour: "#3FB4E6",
                 shownOnRegistrationPage: true,
@@ -180,15 +190,17 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
             buttonText: 'Add',
             maxQuantityPerOrder: 10,
             perks: [
-                { formatted: [
-                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-                    { content: "Access to General Sessions", indent: 1 },
-                    { content: "Access to Exhibit Area", indent: 1 },
-                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Breakfast & Buffet Lunch", indent: 1 },
-                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                    { content: "Access to VIP Networking Reception on November 5, 2025 from 6:00 PM - 8:00 PM", bold: true },
-                ]},
+                {
+                    formatted: [
+                        { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                        { content: "Access to General Sessions", indent: 1 },
+                        { content: "Access to Exhibit Area", indent: 1 },
+                        { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                        { content: "Breakfast & Buffet Lunch", indent: 1 },
+                        { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                        { content: "Access to VIP Networking Reception on March 4, 2026 from 6:30 PM - 8:30 PM", bold: true },
+                    ]
+                },
             ],
         },
         exhibitors: [
@@ -197,7 +209,7 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                 title: "Table-Top Exhibit Space",
                 cost: 1500,
                 earlyBirdPrice: 1250,
-                earlyBirdDeadline: "2025-09-01T04:00:00Z",
+                earlyBirdDeadline: "2026-01-01T04:00:00Z",
                 headerImage: "exhibit-table-pass.webp",
                 buttonText: "Register Now",
                 description: "Table-Top Exhibit Space for your organization",
@@ -206,26 +218,34 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                 maxQuantityPerOrder: 1,
                 isGovtFreeEligible: false,
                 slotsPerEvent: 50,
-                showRemaining: true,
+                showRemaining: false,
                 perks: [
-                    { formatted: [
-                        { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-                        { content: "Additional Exhibitor Passes can be purchased for $395 each below.", indent: 1 },
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Marketing Emails & Printed Program", indent: 1 },
-                        { content: "Event Website", indent: 1 },
-                    ]},
-                    { formatted: [
-                        { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "8'x10' Table-Top Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 1 },
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Photographs of your Participation", indent: 1 },
-                    ]},
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                            { content: "Additional Exhibitor Passes can be purchased for $395 each below.", indent: 1 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Marketing Emails & Printed Program", indent: 1 },
+                            { content: "Event Website", indent: 1 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "8'x10' Table-Top Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 1 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Photographs of your Participation", indent: 1 },
+                        ]
+                    },
                 ],
                 colour: "#3FB4E6",
                 shownOnRegistrationPage: true,
@@ -243,24 +263,26 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
             buttonText: 'Add',
             maxQuantityPerOrder: 10,
             perks: [
-                { formatted: [
-                    { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-                    { content: "Access to General Sessions", indent: 1 },
-                    { content: "Access to Exhibit Area", indent: 1 },
-                    { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                    { content: "Breakfast & Buffet Lunch", indent: 1 },
-                    { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-                    { content: "Access to VIP Networking Reception", bold: true },
-                ]},
+                {
+                    formatted: [
+                        { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                        { content: "Access to General Sessions", indent: 1 },
+                        { content: "Access to Exhibit Area", indent: 1 },
+                        { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                        { content: "Breakfast & Buffet Lunch", indent: 1 },
+                        { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                        { content: "Access to VIP Networking Reception", bold: true },
+                    ]
+                },
             ],
         },
         exhibitors: [
             {
                 id: "exhibit",
                 title: "Table-Top Exhibit Space",
-                cost: 1500,
-                earlyBirdPrice: 1250,
-                earlyBirdDeadline: "2026-01-01T04:00:00Z", // midnight ET on January 1st
+                cost: 1700,
+                earlyBirdPrice: 1500,
+                earlyBirdDeadline: "2026-05-01T07:59:59Z", // May 1, 2026
                 headerImage: "exhibit-table-pass.webp",
                 buttonText: "Register Now",
                 description: "Table-Top Exhibit Space for your organization",
@@ -269,26 +291,105 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                 maxQuantityPerOrder: 1,
                 isGovtFreeEligible: false,
                 slotsPerEvent: 65,
-                showRemaining: true,
+                showRemaining: false,
                 perks: [
-                    { formatted: [
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                            { content: "Additional Exhibitor Passes can be purchased for $395 each below.", indent: 1 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Marketing Emails & Printed Program", indent: 1 },
+                            { content: "Event Website", indent: 1 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "8'x10' Table-Top Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 1 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Photographs of your Participation", indent: 1 },
+                        ]
+                    },
+                ],
+                colour: "#3FB4E6",
+                shownOnRegistrationPage: true,
+            },
+        ]
+    },
+    {
+        id: 7,
+        additionalPass: {
+            name: 'Additional Exhibitor Attendee Pass',
+            title: 'Additional Exhibitor Attendee Pass',
+            description: 'For registered Exhibitors. Purchase additional Exhibitor passes for your team at a discounted rate. A valid order ID from a previous Exhibitor or Sponsor registration is required.',
+            price: 395,
+            headerImage: 'vip.webp',
+            buttonText: 'Add',
+            maxQuantityPerOrder: 10,
+            perks: [
+                {
+                    formatted: [
                         { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-                        { content: "Additional Exhibitor Passes can be purchased for $395 each below.", indent: 1 },
-                    ]},
-                    { formatted: [
-                        { content: "Logo Branding: Conference Materials", bold: true },
-                        { content: "Marketing Emails & Printed Program", indent: 1 },
-                        { content: "Event Website", indent: 1 },
-                    ]},
-                    { formatted: [
-                        { content: "Table-Top Exhibit Space", bold: true },
-                        { content: "8'x10' Table-Top Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
-                        { content: "6' Tablecloth Table & Chairs", indent: 1 },
-                    ]},
-                    { formatted: [
-                        { content: "Recognition/Visibility", bold: true },
-                        { content: "Photographs of your Participation", indent: 1 },
-                    ]},
+                        { content: "Access to General Sessions", indent: 1 },
+                        { content: "Access to Exhibit Area", indent: 1 },
+                        { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+                        { content: "Breakfast & Buffet Lunch", indent: 1 },
+                        { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+                    ]
+                },
+            ],
+        },
+        exhibitors: [
+            {
+                id: "exhibit",
+                title: "Table-Top Exhibit Space",
+                cost: 1700,
+                earlyBirdPrice: 1350,
+                earlyBirdDeadline: "2026-04-01T03:59:59Z", // March 31st, 2026 11:59 PM ET
+                headerImage: "exhibit-table-pass.webp",
+                buttonText: "Register Now",
+                description: "Table-Top Exhibit Space for your organization",
+                isActive: true,
+                requiresAttendeeInfo: true,
+                maxQuantityPerOrder: 1,
+                isGovtFreeEligible: false,
+                showRemaining: false,
+                perks: [
+                    {
+                        formatted: [
+                            { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+                            { content: "Additional Exhibitor Passes can be purchased for $395 each below.", indent: 1 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Marketing Emails & Printed Program", indent: 1 },
+                            { content: "Event Website", indent: 1 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "8'x10' Table-Top Exhibit Space in Exhibit Hall/Foyer", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 1 },
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Photographs of your Participation", indent: 1 },
+                        ]
+                    },
                 ],
                 colour: "#3FB4E6",
                 shownOnRegistrationPage: true,

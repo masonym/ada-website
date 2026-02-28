@@ -15,6 +15,13 @@ import FooterEventText from '@/app/components/FooterEventText';
 import { EventSaleBanner } from '@/app/components/EventSaleBanner';
 import SponsorAdvert from '@/app/components/SponsorAdvert';
 import { getCdnPath } from '@/utils/image';
+import RelatedEventLinks from '@/app/components/RelatedEventLinks';
+import EventTestimonials from '@/app/components/EventTestimonials';
+import EventHighlights from '@/app/components/EventHighlights';
+import { HIGHLIGHTS } from '@/constants/highlights';
+import EventNoticeBanner from '@/app/components/EventNoticeBanner';
+import EventBadgeNotice from '@/app/components/EventBadgeNotice';
+import { getEventSpeakersPublic } from '@/lib/sanity';
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -59,12 +66,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function EventPage({ params }: { params: { slug: string } }) {
+export default async function EventPage({ params }: { params: { slug: string } }) {
   const event = EVENTS.find((e) => e.slug === params.slug);
 
   if (!event) {
     notFound();
   }
+
+  // Fetch speakers
+  const speakerData = await getEventSpeakersPublic(event.id);
+  const sanityKeynoteSpeakers = speakerData?.keynoteSpeakers || [];
 
   const now = new Date().getTime();
   const targetTime = new Date(event.timeStart).getTime();
@@ -121,7 +132,16 @@ export default function EventPage({ params }: { params: { slug: string } }) {
             // className="w-full sm:w-auto"
             /> */}
 
-            <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} backgroundColor={event.countdownColour} />
+            {event.id != 5 && <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} backgroundColor={event.countdownColour} />}
+
+            {/* Event notice banner (e.g., postponement, shutdown) - client-side time check */}
+            <EventNoticeBanner event={event} />
+
+            {/* Badge notice for special announcements like "New Dates!" */}
+            {event.badge && <EventBadgeNotice badge={event.badge} eventDate={event.date} />}
+
+            {/* Related/Linked events section (e.g., previous year's recap) */}
+            <RelatedEventLinks event={event} />
 
             {event.sales && event.sales.length > 0 && (
               <EventSaleBanner sales={event.sales} />
@@ -129,14 +149,15 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
 
 
-            <div className="flex flex-col leading-relaxed text-slate-600 text-center text-lg px-4 sm:px-6 lg:px-8 max-w-[95vw] mx-auto">
+            <div className="flex flex-col leading-relaxed text-slate-600 text-center text-lg px-4 sm:px-6 lg:px-8 max-w-[95vw] mx-auto mb-4">
               {event.eventText}
             </div>
 
-            {event.features?.showKeynoteSpeaker && <KeynoteSpeaker eventId={event.id} eventShorthand={event.eventShorthand} showExpandedBio={false} />}
+            {event.features?.showKeynoteSpeaker && <KeynoteSpeaker eventId={event.id} eventShorthand={event.eventShorthand} showExpandedBio={false} sanityKeynoteSpeakers={sanityKeynoteSpeakers} />}
 
 
             <SpecialFeatures event={event} />
+
 
             <RegistrationOptions event={event} />
 
@@ -145,6 +166,62 @@ export default function EventPage({ params }: { params: { slug: string } }) {
 
             <SponsorLogos event={event} />
 
+
+            {/* Testimonials section: only render when borrowing from explicit or older related event */}
+            {(() => {
+              let sourceEvent = null as typeof event | null;
+              // 1) Explicit mapping takes precedence
+              if (event.testimonialsFromEventId) {
+                const explicit = EVENTS.find(e => e.id === event.testimonialsFromEventId) || null;
+                if (explicit && (explicit.testimonials?.length ?? 0) > 0) {
+                  sourceEvent = explicit;
+                }
+              }
+              // 2) Else fallback to older related event with testimonials
+              if (!sourceEvent && event.relatedEventId) {
+                const related = EVENTS.find(e => e.id === event.relatedEventId) || null;
+                if (related) {
+                  const relatedEnd = new Date(related.timeEnd || related.timeStart).getTime();
+                  const currentStart = new Date(event.timeStart).getTime();
+                  const isOlder = relatedEnd < currentStart;
+                  if (isOlder && (related.testimonials?.length ?? 0) > 0) {
+                    sourceEvent = related;
+                  }
+                }
+              }
+              if (!sourceEvent) return null; // Do not show for current event by default
+              if (sourceEvent.id === event.id) return null; // Extra guard: only show when borrowing from another event
+              const testimonials = sourceEvent.testimonials || [];
+              if (testimonials.length === 0) return null;
+              return (
+                <div className="w-full">
+                  <EventTestimonials
+                    title={`What attendees said about the <br/>${sourceEvent.title}`}
+                    showTitle={true}
+                    testimonials={testimonials}
+                  />
+                </div>
+              );
+            })()}
+
+            {(() => {
+              if (!event.relatedEventId) return null;
+              const related = EVENTS.find(e => e.id === event.relatedEventId);
+              if (!related) return null;
+              // Only show if the related event is older than the current event
+              const relatedEnd = new Date(related.timeEnd || related.timeStart).getTime();
+              const currentStart = new Date(event.timeStart).getTime();
+              const isOlder = relatedEnd < currentStart;
+              const hasHighlights = Array.isArray(HIGHLIGHTS[related.id]) && HIGHLIGHTS[related.id].length > 0;
+              if (!isOlder || !hasHighlights) return null;
+              return (
+                <EventHighlights
+                  sourceEventId={related.id}
+                  title={`${related.title} Highlights`}
+                  subtitle={`Watch standout moments from the ${related.title}`}
+                />
+              );
+            })()}
 
             <div className="mt-0 text-center flex flex-col items-center">
               <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Place at this Groundbreaking Event!</p>
@@ -155,6 +232,7 @@ export default function EventPage({ params }: { params: { slug: string } }) {
                 className="max-w-sm sm:max-w-xs"
               />
             </div>
+
 
             <FooterEventText event={event} />
           </div>

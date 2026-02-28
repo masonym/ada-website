@@ -105,24 +105,95 @@ export const LODGING_INFO: LodgingInfo[] = [
       },
     ],
     note: `
-    <b>Event Room</b>: Rio Grande Hall, Plaza Lower Level<br />
-    <b>Group Block Name</b>: 2025 Defense Technology & Aerospace Procurement Conference<br />
-    <b>Group Rate</b>: $244 Plus Tax<br />
-    <b>Rate Available</b>: November 3-8, 2025<br />
-    <b>Booking Deadline</b>: October 21, 2025<br />
+<b>Event Room</b>: Rio Grande Hall, Plaza Lower Level<br />
+<b>Group Block Name</b>: 2026 Defense Technology & Aerospace Procurement Conference<br />
+<b>Group Rate</b>: Standard King $244 Plus Tax / Standard Queen Queen $269 Plus Tax<br />
+<b>Rate Available</b>: March 2–7, 2026<br />
+<b>Booking Deadline</b>: February 17, 2026<br />
+<br/>
+<b>Update: </b> The Group Rate is sold out and no longer available. For a list of nearby hotels, please see the document below.<br/>
+<br/>
+<b>Overflow Hotel Directory</b>: <a href="https://cdn.americandefensealliance.org/locations/austin_hotels.pdf" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">Download PDF</a>
+<br/>
+<br/>
+<p class="font-bold">Parking:</p>
+<ul class="list-inside">
+  <li>Self-Parking Fee of $11.50 for Overnight Hotel Guests</li>
+  <li>Complimentary for Meeting Attendees up to 8 Hours</li>
+</ul>
+`
+  },
+  {
+    eventId: 6, // 2026NMCPC
+    hotels: [
+      {
+        name: "Norfolk Waterside Marriott",
+        address: "235 E Main St",
+        city: "Norfolk",
+        state: "Virginia",
+        zip: "23510",
+        phone: "(757) 627-4200",
+        image: "/hotels/norfolk-waterside-marriott.webp",
+        link: {
+          href: "https://www.marriott.com/en-us/hotels/orfws-norfolk-waterside-marriott/overview/",
+          label: "Norfolk Waterside Marriott"
+        },
+      },
+    ],
+    note: `
+    <b>Group Block Name</b>: Navy & Marine Corps Procurement Conference<br />
+    <b>Group Rate</b>: Standard Room: $159.00 + Tax | Waterview Room: $179.00 + Tax<br />
+    <b>Rate Available</b>: May 26-31, 2026<br />
+    <b>Group Rate Cut-off Date</b>: May 11, 2026<br />
     <br/>
-    <!-- <a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1753131167945&key=GRP&app=resvlink" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">Reservation Link</a> -->
-    <p>Reservation Link Coming Soon</p>
-    <br/>
-    <b>To Book Extra Nights at the Group Rate, please email <a href="mailto:kaitlin.cahill@renaissancehotels.com" class="text-blue-600 hover:underline text-nowrap">kaitlin.cahill@renaissancehotels.com</a></b>
-    <b>Subject Line: "Request to Add Reservation at Group Rate" 2025 Defense Technology & Aerospace Procurement Conference</b>
-    <br/>
-    <br/>
-    <p class="font-bold"> Parking: </p>
-    <ul class="list-inside">
-      <li>Self-Parking Fee of $11.50 for Overnight Hotel Guests</li>
-      <li>Complimentary for Meeting Attendees up to 8 Hours</li>
-    </ul>
-  `
-  }
+    <a href="https://www.marriott.com/event-reservations/reservation-link.mi?guestreslink2=true&id=1760457928560&key=GRP&dtt=true" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">
+      Book your group rate for 2026 Navy & Marine Corps Procurement Conference
+    </a>
+    `
+  },
+  {
+    eventId: 7, // 2026AFSFPC
+    hotels: [
+      {
+        name: "Hotel Polaris by U.S. Air Force Academy",
+        address: "8989 North Gate Boulevard",
+        city: "Colorado Springs",
+        state: "CO",
+        zip: "80921",
+        phone: "(719) 886-1100",
+        image: "/hotels/hotel-polaris-exterior.webp",
+        link: {
+          href: "https://www.thehotelpolaris.com/",
+          label: "Hotel Polaris by U.S. Air Force Academy"
+        },
+      },
+    ],
+    note: `
+    <b>Venue</b>: Hotel Polaris by U.S. Air Force Academy<br />
+    <b>Address</b>: 8989 North Gate Boulevard, Colorado Springs, CO 80921<br />
+    <b>NOTE</b>: Hotel is located outside of the base security gates, no special access is required<br />
+    <b>Event Location</b>: Generations Ballroom<br />
+    <b>Dates</b>: Aug 4-5, 2026<br />
+    <b>Group Rate for Sleeping Rooms</b>: $209.00 plus taxes and $15 amenity fee (reduced from $25)<br />
+    <b>Additional availability</b>: 2 days pre- and post event<br />
+    <b>Group Rate Cut Off</b>: July 12, 2026<br />
+    <br/> 
+    <b>Reservation Link Coming Soon</b>
+    <br />
+    <br />
+    <div class="mb-4 bg-gray-100 p-4 rounded-xl">
+    <b>Amenity Fee Covers:</b><br />
+    • Wireless in room high speed internet (5Mbps)<br />
+    • Unlimited Lavazza in-room coffee<br />
+    • Unlimited filtered water at property wide refilling stations<br />
+    • Sporting equipment & games (ping pong, pool, cornhole, bocce ball, and more)<br />
+    • 10% off Ascend Spa Services<br />
+    • 10% off all Grab 'n Go food and beverage (excludes alcohol)<br />
+    • 10% off Flight Simulator Experiences<br />
+    • Pool Towel Services<br />
+    • 24 Hour Fitness Center access<br />
+    • Santa Fe Trail access via Hotel Polaris Trailhead
+    </div>
+    `
+  },
 ];

@@ -2,13 +2,13 @@
 
 import { EXHIBITOR_TYPES } from '@/constants/exhibitors';
 import React, { useState } from 'react';
+import { useEventSponsorCounts } from '@/hooks/useEventSponsorCounts';
 import { Event } from '@/types/events';
 import { notFound } from 'next/navigation';
 import ExhibitorCard from './ExhibitorCard';
 import Link from 'next/link';
 import Button from './Button';
 import SponsorProspectus from './SponsorProspectus';
-import SponsorLogos from './SponsorLogos';
 import ExhibitInstructionsButton from './ExhibitInstructionsButton';
 import RegistrationModal from '@/components/RegistrationModal';
 import { getExhibitorsForEvent } from '@/lib/registration-adapters';
@@ -21,6 +21,7 @@ export type ExhibitorProps = {
 const ExhibitorOptions = ({ event }: ExhibitorProps) => {
     const currentEvent = EXHIBITOR_TYPES.find((e) => e.id === event.id);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const { getSponsorCount } = useEventSponsorCounts(event.id);
 
     if (!currentEvent) {
         notFound();
@@ -73,6 +74,7 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                         key={index}
                         item={item}
                         event={event}
+                        getSponsorCount={getSponsorCount}
                     />
                 ))}
                 <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-6xl mx-auto mb-6">
@@ -81,8 +83,6 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                 <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mb-6">
                     Explore our discounted Exhibitor Opportunities available when you Register for Multiple Events. For more information and to secure your sponsorship, contact:  <a href="mailto:marketing@americandefensealliance.org" className='underline'>marketing@americandefensealliance.org</a>
                 </p>
-
-                <SponsorLogos event={event} showTiers={["Exhibitors"]}/>
 
                 <div className="mt-4 text-center flex flex-col items-center">
                     <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Place at this Groundbreaking Event!</p>

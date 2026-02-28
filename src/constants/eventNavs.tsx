@@ -38,7 +38,7 @@ export const EVENT_NAVS = [
           { label: 'Event Recap', path: 'event-recap' },
         ],
       },
-      { label: 'Event Venue & Lodging', path: 'venue-and-lodging' },
+      { label: 'Venue & Lodging', path: 'venue-and-lodging' },
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {
@@ -86,7 +86,7 @@ export const EVENT_NAVS = [
           { label: 'Event Recap', path: 'event-recap' },
         ],
       },
-      { label: 'Event Venue & Lodging', path: '/venue-and-lodging' },
+      { label: 'Venue & Lodging', path: '/venue-and-lodging' },
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {
@@ -112,7 +112,7 @@ export const EVENT_NAVS = [
           { label: 'Event Recap', path: 'event-recap' },
         ],
       },
-      { label: 'Event Venue & Lodging', path: '/venue-and-lodging' },
+      { label: 'Venue & Lodging', path: '/venue-and-lodging' },
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {
@@ -128,6 +128,45 @@ export const EVENT_NAVS = [
     eventId: 6, // 2026NMCPC
     items: [
       { label: 'Event Overview', path: '/' },
+      {
+        label: 'About',
+        subItems: [
+          { label: 'About the Event', path: 'about-the-event' },
+          { label: 'Matchmaking Sessions', path: 'matchmaking-sessions' },
+          { label: "VIP Networking Reception", path: 'vip-networking-reception' },
+          { label: 'FAQs', path: 'faqs' },
+          { label: 'Event Recap', path: 'event-recap' },
+        ],
+      },
+      { label: 'Venue & Lodging', path: '/venue-and-lodging' },
+      { label: 'Agenda', path: 'agenda' },
+      { label: 'Speakers', path: 'speakers' },
+      {
+        label: 'Sponsors & Exhibitors',
+        subItems: [
+          { label: "Sponsorship Opportunities", path: 'sponsorship-opportunities' },
+          { label: "Exhibitor Opportunities", path: 'exhibitor-opportunities' },
+        ],
+      },
+    ],
+  },
+  {
+    eventId: 7, // 2026AFSFPC
+    items: [
+      { label: 'Event Overview', path: '/' },
+      {
+        label: 'About',
+        subItems: [
+          { label: 'About the Event', path: 'about-the-event' },
+          { label: 'Matchmaking Sessions', path: 'matchmaking-sessions' },
+          { label: "VIP Networking Reception", path: 'vip-networking-reception' },
+          { label: 'FAQs', path: 'faqs' },
+          { label: 'Event Recap', path: 'event-recap' },
+        ],
+      },
+      { label: 'Venue & Lodging', path: '/venue-and-lodging' },
+      { label: 'Agenda', path: 'agenda' },
+      { label: 'Speakers', path: 'speakers' },
       {
         label: 'Sponsors & Exhibitors',
         subItems: [

@@ -1,10 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getEventSponsors } from '@/constants/eventSponsors';
-import { getSponsor, SPONSOR_SIZES, Sponsor, SponsorSize } from '@/constants/sponsors';
 import { Event } from '@/types/events';
-import { getCdnPath } from '@/utils/image';
+import { urlFor, getEventSponsors, getEventTierSponsors } from '@/lib/sanity';
 
 type SponsorProps = {
     event: Event;
@@ -12,8 +10,35 @@ type SponsorProps = {
     titleOverride?: string;
 };
 
-const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
-    const eventSponsors = getEventSponsors(event.id);
+// tier display order: platinum > gold > silver > bronze > vip > coffee/networking > small > exhibitor > partner
+const TIER_ORDER = [
+    'platinum',
+    'diamond',
+    'gold',
+    'silver',
+    'bronze',
+    'vip',
+    'coffee',
+    'networking',
+    'luncheon',
+    'beverage',
+    'small',
+    'exhibitor',
+    'partner',
+];
+
+const getTierPriority = (tierName: string): number => {
+    const name = tierName.toLowerCase();
+    for (let i = 0; i < TIER_ORDER.length; i++) {
+        if (name.includes(TIER_ORDER[i])) {
+            return i;
+        }
+    }
+    return TIER_ORDER.length; // unknown tiers go last
+};
+
+const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) => {
+    const eventSponsors = await getEventSponsors(event.id);
 
     if (!eventSponsors || eventSponsors.tiers.length === 0) {
         return null;
@@ -31,18 +56,25 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
         return null;
     }
 
-    // Process tiers and load sponsor data
-    const processedTiers = filteredTiers.map(tier => {
-        const sponsors = tier.sponsorIds
-            .map(id => getSponsor(id))
-            .filter(sponsor => sponsor !== undefined)
-            .sort((a, b) => a!.name.localeCompare(b!.name));
+    // sort tiers by priority order
+    const sortedTiers = [...filteredTiers].sort((a, b) => 
+        getTierPriority(a.name) - getTierPriority(b.name)
+    );
 
-        return {
-            ...tier,
-            sponsors
-        };
-    });
+    // process tiers and load sponsor data
+    const processedTiers = await Promise.all(
+        sortedTiers.map(async (tier) => {
+            const sponsors = await getEventTierSponsors(event.id, tier.id);
+            const sortedSponsors = sponsors
+                .filter(sponsor => sponsor !== undefined && sponsor.logo)
+                .sort((a, b) => a.name.localeCompare(b.name));
+
+            return {
+                ...tier,
+                sponsors: sortedSponsors,
+            };
+        })
+    );
 
     const getDefaultTierStyle = (tierName: string) => {
         if (tierName.toLowerCase().includes('small')) return 'bg-sb-100 text-slate-900';
@@ -73,28 +105,31 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
         return gridClass;
     };
 
-    const getSponsorImageSize = (sponsor: Sponsor) => {
-        // If sponsor has a standard size, use those dimensions
-        if (sponsor.size && Object.keys(SPONSOR_SIZES).includes(sponsor.size)) {
-            const sizeConfig = SPONSOR_SIZES[sponsor.size as SponsorSize];
-            return {
-                width: sizeConfig.maxWidth,
-                height: sizeConfig.maxHeight
-            };
+    const getTierImageSize = (tierName: string) => {
+        const name = tierName.toLowerCase();
+        // Main sponsor tiers get larger logos
+        if (name.includes('platinum') || name.includes('diamond')) {
+            return { width: 450, height: 250 };
         }
-
-        // Otherwise, use custom dimensions
-        return {
-            width: sponsor.width || 300,
-            height: 200 // Default height
-        };
+        if (name.includes('gold')) {
+            return { width: 400, height: 200 };
+        }
+        if (name.includes('silver') || name.includes('bronze')) {
+            return { width: 350, height: 175 };
+        }
+        // Small business, exhibitors, etc. get smaller logos
+        if (name.includes('small') || name.includes('exhibit') || name.includes('business')) {
+            return { width: 250, height: 150 };
+        }
+        // Default for other tiers (networking, etc.)
+        return { width: 250, height: 150 };
     };
 
 
 
     // List of sponsor tiers that should display descriptions
     const tiersWithDescriptions = [
-        'gold-sponsor', 'silver-sponsor', 'bronze-sponsor', 'platinum-sponsor', 'diamond-sponsor', 'premier', 'vip-networking-reception-sponsor'
+        'gold-sponsor', 'silver-sponsor', 'bronze-sponsor', 'platinum-sponsor', 'diamond-sponsor', 'premier', 'vip-networking-reception-sponsor', 'coffee-station-sponsor', 'networking-luncheon', 'beverage-station-sponsor'
     ];
 
     return (
@@ -139,7 +174,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                             {tier.sponsors.map((sponsor, sponsorIndex) => {
 
                                 const allSponsorsHaveDescriptions = tier.sponsors.every(s => !!s.description);
-                                const imageSize = getSponsorImageSize(sponsor);
+                                const imageSize = getTierImageSize(tier.name);
                                 const isTopTier = tier.topTier;
 
                                 return (
@@ -163,7 +198,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                                 className="w-full flex justify-center items-center hover:opacity-80 transition-opacity"
                                             >
                                                 <Image
-                                                    src={getCdnPath(sponsor.logo)}
+                                                    src={urlFor(sponsor.logo).url()}
                                                     alt={`${sponsor.name} Logo`}
                                                     width={imageSize.width}
                                                     height={imageSize.height}
@@ -175,7 +210,7 @@ const SponsorLogos = ({ event, showTiers, titleOverride }: SponsorProps) => {
                                             </Link>
                                         ) : (
                                             <Image
-                                                src={getCdnPath(sponsor.logo)}
+                                                src={urlFor(sponsor.logo).url()}
                                                 alt={`${sponsor.name} Logo`}
                                                 width={imageSize.width}
                                                 height={imageSize.height}

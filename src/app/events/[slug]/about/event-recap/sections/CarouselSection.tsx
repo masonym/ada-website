@@ -3,11 +3,14 @@
 import React, { useState } from 'react';
 import { RecapSection } from '@/types/eventRecap';
 import { getCdnPath } from '@/utils/image';
+import { naturalSort } from '@/utils/naturalSort';
+import { getOriginalImagePath, getOriginalExtension } from '@/utils/originalImage';
 import Image from 'next/image';
 import Lightbox from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Captions from "yet-another-react-lightbox/plugins/captions";
+import Download from "yet-another-react-lightbox/plugins/download";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/plugins/captions.css";
@@ -26,6 +29,12 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ section }) => {
     dragFree: true
   });
 
+  // Natural sort function to handle filenames with numbers
+
+
+  // Sort images naturally by filename
+  const sortedImages = [...section.images].sort((a, b) => naturalSort(a.src, b.src));
+
   const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
   const scrollNext = () => emblaApi && emblaApi.scrollNext();
 
@@ -37,15 +46,21 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ section }) => {
     setCurrentImage(null);
   };
 
-  // Create slides for lightbox with captions
-  const slides = section.images.map(img => ({
-    src: getCdnPath(img.src),
-    alt: img.alt,
-    title: img.caption,
-    description: img.people?.length
-      ? `Featuring: ${img.people.join(', ')}`
-      : undefined
-  }));
+  // Create slides for lightbox with captions and download URLs
+  const slides = sortedImages.map(img => {
+    const originalExtension = getOriginalExtension(img.src);
+    const downloadUrl = getOriginalImagePath(img.src, originalExtension);
+    
+    return {
+      src: getCdnPath(img.src),
+      alt: img.alt,
+      title: img.caption,
+      description: img.people?.length
+        ? `Featuring: ${img.people.join(', ')}`
+        : undefined,
+      download: downloadUrl
+    };
+  });
 
   return (
     <div className="mb-16">
@@ -55,13 +70,13 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ section }) => {
       <div className="relative">
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex">
-            {section.images.map((image, index) => {
+            {sortedImages.map((image, index) => {
               // Calculate aspect ratio for consistent heights
               const aspectRatio = image.width / image.height;
               const imageHeight = 300; // Base height for all images
               const imageWidth = imageHeight * aspectRatio;
 
-              const minSize = 500; // minimum width/height
+              const minSize = 100; // minimum width/height
               const scaleFactor = Math.max(1 / 10, minSize / image.width, minSize / image.height);
 
               const scaledWidth = Math.round(image.width * scaleFactor);
@@ -74,32 +89,30 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ section }) => {
                   style={{ width: `${imageWidth}px` }}
                 >
                   <div
-                    className="relative overflow-hidden rounded-lg group cursor-pointer h-full"
+                    className="relative overflow-hidden rounded-lg group cursor-pointer"
                     onClick={() => handleClick(index)}
                   >
-                    <div className="relative" style={{ height: `${imageHeight}px` }}>
+                    <div className="relative">
 
-                      <Image
+                      <img
                         src={getCdnPath(image.src)}
                         alt={image.alt}
-                        width={scaledWidth}
-                        height={scaledHeight}
                         className="object-contain"
                         sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                         loading={index < 4 ? "eager" : "lazy"}
-                      />;
+                      />
                     </div>
 
-                    {image.caption || image.people && (
-                      <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-2 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                        <p className="text-sm">{image.caption}</p>
-                        {image.people && image.people.length > 0 && (
-                          <p className="text-xs mt-1 text-gray-300">
-                            Featuring: {image.people.join(', ')}
-                          </p>
-                        )}
-                      </div>
-                    )}
+                    <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-2 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      {image.caption && (
+                        <p className="text-sm mt-1">{image.caption}</p>
+                      )}
+                      {image.people && image.people.length > 0 && (
+                        <p className="text-xs mt-1 text-gray-300">
+                          Featuring: {image.people.join(', ')}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
               );
@@ -131,7 +144,7 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ section }) => {
           close={closeLightbox}
           index={currentImage}
           slides={slides}
-          plugins={[Thumbnails, Zoom, Captions]}
+          plugins={[Thumbnails, Zoom, Captions, Download]}
           carousel={{
             finite: false,
           }}

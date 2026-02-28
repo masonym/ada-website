@@ -74,6 +74,7 @@ const VIPReceptionSection: React.FC<{ vipNetworkingReception: VipNetworkingRecep
                     </div>
                   </div>
 
+                  { vipNetworkingReception.locationName && (
                   <div className="flex flex-row items-start justify-center">
                     <div className="text-center">
                       <div className="flex flex-row items-center justify-center mb-2">
@@ -95,12 +96,15 @@ const VIPReceptionSection: React.FC<{ vipNetworkingReception: VipNetworkingRecep
                       </div>
                     </div>
                   </div>
+                  )}
                 </>
               )}
             </div>
-            <div className={`${vipNetworkingReception.locationPhoto ? "mt-4 hidden lg:flex mx-auto items-end justify-center" : ""}`}>
-              <img className="rounded-lg" src={getCdnPath(vipNetworkingReception.locationPhoto || "")} alt="VIP Reception Location" />
-            </div>
+            {vipNetworkingReception.locationPhoto && (
+              <div className="mt-4 hidden lg:flex mx-auto items-end justify-center">
+                <img className="rounded-lg" src={getCdnPath(vipNetworkingReception.locationPhoto || "")} alt="VIP Reception Location" />
+              </div>
+            )}
           </div>
 
           {vipNetworkingReception.eventPlaceId && vipNetworkingReception.placeId && (

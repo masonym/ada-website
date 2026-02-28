@@ -71,7 +71,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="border border-gray-700" />
-        <p className="regular-14 w-full text-center text-gray-30">&copy; 2024 American Defense Alliance | All Rights Reserved</p>
+        <p className="regular-14 w-full text-center text-gray-30">&copy; {new Date().getFullYear()} American Defense Alliance | All Rights Reserved</p>
       </div>
 
     </footer>

@@ -84,7 +84,7 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/pmb-machine-works.webp",
     website: "https://pmbmachineworks.com/",
     size: 'medium',
-    description: "PMB Machine Works is the specialty machining division of Pioneer Motor Bearing Company that incorporates the vast machining experience of the legacy 100+ year old business, which has proudly served the DOD since the 1950s. PMB has provided high quality machined parts and engineering services to the U.S. Navy for multiple Navy vessels including nuclear submarines. PMB has also served the Department of Energy’s nuclear laboratories, as well as performed work for the Army Corps of Engineers on multiple hydro and gas turbine power generation facilities. Our history of high reliability, superior quality and getting it right the first time is what we are known for. PMB Machine Works’ legacy unit is the exclusive bearing licensee of GE Vernova and the senior bearing licensee of Siemens Energy. Furthermore, they have served the majority of electrical utilities in the USA and are sought after throughout the world for their turn-key engineering and manufacturing expertise.",
+    description: "PMB Machine Works is the specialty machining division of Pioneer Motor Bearing Company that incorporates the vast machining experience of the legacy 100+ year old business, which has proudly served the DoW since the 1950s. PMB has provided high quality machined parts and engineering services to the U.S. Navy for multiple Navy vessels including nuclear submarines. PMB has also served the Department of Energy’s nuclear laboratories, as well as performed work for the Army Corps of Engineers on multiple hydro and gas turbine power generation facilities. Our history of high reliability, superior quality and getting it right the first time is what we are known for. PMB Machine Works’ legacy unit is the exclusive bearing licensee of GE Vernova and the senior bearing licensee of Siemens Energy. Furthermore, they have served the majority of electrical utilities in the USA and are sought after throughout the world for their turn-key engineering and manufacturing expertise.",
   },
   "redstone": {
     id: "redstone",
@@ -105,7 +105,14 @@ export const SPONSORS: Record<string, Sponsor> = {
     name: "CSS Energy Solutions",
     logo: "/sponsors/css-energy.webp",
     website: "https://cssenergysolutions.com/",
-    size: 'small'
+    size: 'small',
+    description: `
+CSS Energy Solutions (CSSES) offers long-duration battery energy storage systems to support
+the electricity needs of Military and industrial installations; plus the full range of security
+solutions to protect power generation facilities and other critical infrastructure. CSSES’
+international team specializes in global market development, and commodity trading primarily
+in the oil &amp; gas and critical minerals sectors.
+`
   },
   "imsm": {
     id: "imsm",
@@ -656,7 +663,8 @@ export const SPONSORS: Record<string, Sponsor> = {
     name: "Trust Consulting Services",
     logo: "/sponsors/trust-consulting-services.webp",
     website: "https://www.trustconsultingservices.com/",
-    size: 'small'
+    size: 'small',
+    description: "Trust Consulting Services (TRUST) is a selfless organization founded to give professional services covering multiple disciplines. Our services are built to assist our clients in achieving the desired impacts for their operations. TRUST offers a wide range of services, including acquisition management, program management, financial management, and facilities management, as well as IT systems and networking. These services come with complete security and satisfaction, which we aim to improve and maintain in the upcoming years. We are committed to serving you better.",
   },
   "pc-campana": {
     id: "pc-campana",
@@ -685,7 +693,7 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/bae-systems.webp",
     website: "https://www.baesystems.com/",
     size: 'small',
-    description: "BAE Systems and its partners develop, engineer, manufacture and support products and systems to deliver military capability, protect national security and keep critical information and infrastructure secure. Our products and services include radar, satellite & marine services, sensors, electronic warfare and systems engineering to the Department of Defense, NASA and civilian agencies supporting security initiatives.",
+    description: "BAE Systems and its partners develop, engineer, manufacture and support products and systems to deliver military capability, protect national security and keep critical information and infrastructure secure. Our products and services include radar, satellite & marine services, sensors, electronic warfare and systems engineering to the Department of War, NASA and civilian agencies supporting security initiatives.",
   },
   "marmc": {
     id: "marmc",
@@ -701,7 +709,7 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/navair.webp",
     website: "https://www.navair.navy.mil/",
     size: 'small',
-    description: "Naval Air Systems Command (NAVAIR) Office of Small Business (OSBP) focuses on providing the Warfighter with creative solutions, brought to them through small businesses, that are fully aligned with NAVAIR’s Strategic Imperatives. NAVAIR OSBP strives to be the premier Department of Defense Small Business Office advocating for the Best Solutions for the Warfighter, while promoting NAVAIR’s Strategic imperatives, through maximizing opportunities for small business participation. NAVAIR delivers integrated air warfare capabilities to enable the fleet to compete, deter and win – tonight, tomorrow and in the future. Providing the Nation's warfighters with air warfare capabilities to fight and win in every domain is NAVAIR’s unequivocal focus. Our dedication and commitment to deliver advanced, integrated capabilities has a single objective – equipping our warfighters for victory."
+    description: "Naval Air Systems Command (NAVAIR) Office of Small Business (OSBP) focuses on providing the Warfighter with creative solutions, brought to them through small businesses, that are fully aligned with NAVAIR’s Strategic Imperatives. NAVAIR OSBP strives to be the premier Department of War Small Business Office advocating for the Best Solutions for the Warfighter, while promoting NAVAIR’s Strategic imperatives, through maximizing opportunities for small business participation. NAVAIR delivers integrated air warfare capabilities to enable the fleet to compete, deter and win – tonight, tomorrow and in the future. Providing the Nation's warfighters with air warfare capabilities to fight and win in every domain is NAVAIR’s unequivocal focus. Our dedication and commitment to deliver advanced, integrated capabilities has a single objective – equipping our warfighters for victory."
   },
   "general-dynamics-information-technology": {
     id: "general-dynamics-information-technology",
@@ -810,6 +818,100 @@ export const SPONSORS: Record<string, Sponsor> = {
     logo: "/sponsors/finley-asphalt-concrete.webp",
     website: "https://www.finleyasphalt.com/",
     size: 'small'
+  },
+  "magna-bsp": {
+    id: "magna-bsp",
+    name: "Magna BSP",
+    logo: "/sponsors/magna-bsp.webp",
+    website: "https://www.magnabsp.com/",
+    size: 'small'
+  },
+  "omega-technical-services": {
+    id: "omega-technical-services",
+    name: "Omega Technical Services",
+    logo: "/sponsors/omega-technical-services.webp",
+    website: "https://omegatechserv.com/",
+    size: 'small',
+    description: `
+Omega Technical Services is an award-winning nuclear and high-reliability operations support firm. Since its inception in 1995, Omega has operated as a Service-Disabled Veteran-Owned Small Business (SDVOSB) that is the recognized leader in critical infrastructure lifecycle management across the DOE and NNSA. Throughout its 30 years, Omega has worked to support national labs across the United States, completing over 1000 contracts. We ensure the mission success of our national security clients through products aligned to our core capabilities: work integration & management; startup, readiness & commissioning; nuclear safety & operations; and program & project support.
+    `
+  },
+  "hui-huliau": {
+    id: "hui-huliau",
+    name: "Hui Huliau",
+    logo: "/sponsors/hui-huliau.webp",
+    website: "https://huihuliau.com/",
+    size: 'small'
+  },
+  "new-pig": {
+    id: "new-pig",
+    name: "New Pig",
+    logo: "/sponsors/new-pig.webp",
+    website: "https://www.newpig.com/",
+    size: 'small'
+  },
+  "sierra-peaks": {
+    id: "sierra-peaks",
+    name: "Sierra Peaks Corporation",
+    logo: "/sponsors/sierra-peaks.webp",
+    website: "https://www.sierra-peaks.com/",
+    size: 'small'
+  },
+  "american-diving-and-marine-supply": {
+    id: "american-diving-and-marine-supply",
+    name: "American Diving & Marine Supply",
+    logo: "/sponsors/american-diving-and-marine-supply.webp",
+    website: "https://www.americandivingsupply.com/",
+    size: 'small'
+  },
+  "infotek-consulting": {
+    id: "infotek-consulting",
+    name: "Infotek Consulting LLC",
+    logo: "/sponsors/infotek-consulting.webp",
+    website: "https://www.infotekconsulting.net/",
+    size: 'small'
+  },
+  "flx-solutions": {
+    id: "flx-solutions",
+    name: "FLX Solutions",
+    logo: "/sponsors/flx-solutions.webp",
+    website: "https://flxsolutions.com/",
+    size: 'small'
+  },
+  "neousys-technology": {
+    id: "neousys-technology",
+    name: "Neousys Technology America, Inc.",
+    logo: "/sponsors/neousys-technology.webp",
+    website: "https://www.neousys-tech.com/",
+    size: 'small'
+  },
+  "fogo-solutions": {
+    id: "fogo-solutions",
+    name: "FOGO Solutions",
+    logo: "/sponsors/fogo-solutions.webp",
+    website: "https://www.fogosolutions.com",
+    size: 'small',
+  },
+  "alpha-elite": {
+    id: "alpha-elite",
+    name: "Alpha + Elite, LLC",
+    logo: "/sponsors/alpha-elite.webp",
+    website: "https://elitecnd.com/",
+    size: 'small',
+  },
+  "path-robotics": {
+    id: "path-robotics",
+    name: "Path Robotics",
+    logo: "/sponsors/path-robotics.webp",
+    website: "https://www.path-robotics.com/",
+    size: 'small',
+  },
+  "sca-group": {
+    id: "sca-group",
+    name: "SCA Group",
+    logo: "/sponsors/sca-group.webp",
+    website: "https://www.scagroup.net/",
+    size: 'small',
   }
 };
 

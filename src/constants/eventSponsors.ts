@@ -271,7 +271,84 @@ export const EVENT_SPONSORS: EventSponsors[] = [
                 ]
             }
         ]
+    },
+    {
+        id: 5, // DTAPC 2026
+        tiers: [
+            {
+                id: "bronze-sponsor",
+                name: "Bronze Sponsors",
+                style: "bg-amber-700 text-slate-900",
+                sponsorIds: [
+                    "trust-consulting-services",
+                    "omega-technical-services",
+                    "pmb-machine-works",
+                    "css-energy",
+                ],
+            },
+            {
+                id: "small-business-sponsor",
+                name: "Small Business Sponsors",
+                style: "bg-sb-100 text-slate-900",
+                sponsorIds: [
+                    "isi-defense",
+                    "infotek-consulting",
+                    "alpha-elite",
+                    "kdm",
+                ],
+            },
+            {
+                id: "exhibit",
+                name: "Exhibitor Spotlight",
+                style: "bg-navy-800 text-white",
+                sponsorIds: [
+                    "trust-consulting-services",
+                    "imsm",
+                    "isi-defense",
+                    "magna-bsp",
+                    "omega-technical-services",
+                    "pmb-machine-works",
+                    "hui-huliau",
+                    "infotek-consulting",
+                    "css-energy",
+                    "fogo-solutions",
+                ],
+            },
+        ],
+    },
+    {
+        id: 6, // NMCPC 2026
+        tiers: [
+            {
+                id: "small-business-sponsor",
+                name: "Small Business Sponsors",
+                style: "bg-sb-100 text-slate-900",
+                sponsorIds: [
+                    "american-diving-and-marine-supply",
+                    "infotek-consulting",
+                    "flx-solutions",
+                ],
+            },
+            {
+                id: "exhibit",
+                name: "Exhibitor Spotlight",
+                style: "bg-navy-800 text-white",
+                sponsorIds: [
+                    "melrose",
+                    "new-pig",
+                    "sierra-peaks",
+                    "american-diving-and-marine-supply",
+                    "virginia-apex",
+                    "infotek-consulting",
+                    "neousys-technology",
+                    "flx-solutions",
+                    "path-robotics",
+                    "sca-group",
+                ],
+            }
+        ]
     }
+
 ];
 
 // Helper function to find event sponsors by event ID

@@ -17,7 +17,7 @@ interface FormattedPerkType {
  * - object with formatted: Structured content with bold/indent properties for FormattedPerk
  * - object with tagline/description: Legacy format used in sponsorships
  */
-type PerkType = string | { 
+type PerkType = string | {
   formatted?: FormattedPerkType[];
   tagline?: string;
   description?: string;
@@ -27,11 +27,14 @@ export interface SponsorshipType {
   id: string;
   title: string;
   cost: number | string;
+  earlyBirdPrice?: number | string;
+  earlyBirdDeadline?: string;
   saleEndTime?: string;
   perks?: PerkType[];
   colour?: string;
   sponsorPasses?: number; // Number of attendee passes included with this sponsorship
   slotsPerEvent?: number;
+  showRemaining?: boolean; // Flag to show remaining slots on the registration page
 };
 
 type PrimeSponsorType = SponsorshipType;
@@ -47,7 +50,7 @@ export interface AdapterModalRegistrationType extends ModalRegistrationType {
   isActive: boolean;
   requiresAttendeeInfo: boolean;
   isGovtFreeEligible: boolean;
-  perks?: (string | {formatted: FormattedPerkType[]})[];
+  perks?: (string | { formatted: FormattedPerkType[] })[];
   availabilityInfo?: string;
   type: 'paid' | 'free' | 'complimentary' | 'sponsor';
   title: string;
@@ -68,6 +71,7 @@ export interface AdapterModalRegistrationType extends ModalRegistrationType {
   sponsorPasses?: number; // Number of attendee passes included with this sponsorship
   shownOnRegistrationPage?: boolean;
   saleEndTime?: string;
+  showRemaining?: boolean;
 };
 
 /**
@@ -106,6 +110,7 @@ export function getRegistrationsForEvent(eventId: number | string): AdapterModal
     codeValidationMessage: reg.codeValidationMessage,
     shownOnRegistrationPage: reg.shownOnRegistrationPage,
     saleEndTime: reg.saleEndTime,
+    showRemaining: reg.showRemaining ?? true,
   }));
 }
 
@@ -144,7 +149,7 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
         return perk.tagline || '';
       }
     }).filter(Boolean) : [];
-    
+
     // Get sponsorPasses from the explicit field or default to 0
     const sponsorPasses = sponsor.sponsorPasses || 0;
 
@@ -154,7 +159,9 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
       title: sponsor.title,
       description: `${sponsor.title} Sponsorship Package`,
       price: sponsor.cost,
-      saleEndTime: sponsor.saleEndTime, 
+      earlyBirdPrice: sponsor.earlyBirdPrice,
+      earlyBirdDeadline: sponsor.earlyBirdDeadline,
+      saleEndTime: sponsor.saleEndTime,
       isActive: true,
       requiresAttendeeInfo: true,
       isGovtFreeEligible: false,
@@ -163,17 +170,18 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
       buttonText: 'Select',
       perks: processedPerks,
       category: 'sponsorship',
-      quantityAvailable: sponsor.slotsPerEvent || 1, // Default to 1 if slotsPerEvent is not provided
+      quantityAvailable: sponsor.slotsPerEvent || 10, // Default to 10 if slotsPerEvent is not provided
       maxQuantityPerOrder: 1,
       sponsorPasses: sponsorPasses || 0, // Include sponsorPasses in the returned object
       colour: 'colour' in sponsor ? sponsor.colour : undefined,
+      showRemaining: sponsor.showRemaining ?? true, // Default to true if not specified
     };
   });
 
   // If there are any sponsorships, look for event-specific additional pass or use default
   if (adaptedSponsors.length > 0) {
     const eventSpecificAdditionalPass: SponsorAdditionalPassType | undefined = eventData.additionalPass;
-    
+
     if (eventSpecificAdditionalPass) {
       // Use the event-specific additional pass
       adaptedSponsors.push({
@@ -211,19 +219,21 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
         requiresValidation: true,
         maxQuantityPerOrder: 10,
         perks: [
-          { formatted: [
-                { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-                { content: "Access to General Sessions", indent: 1 },
-                { content: "Access to Exhibit Area", indent: 1 },
-                { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                { content: "Breakfast & Buffet Lunch", indent: 1 },
-                { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-          ]},
+          {
+            formatted: [
+              { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+              { content: "Access to General Sessions", indent: 1 },
+              { content: "Access to Exhibit Area", indent: 1 },
+              { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+              { content: "Breakfast & Buffet Lunch", indent: 1 },
+              { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+            ]
+          },
         ],
       });
     }
   }
-  
+
   return adaptedSponsors;
 }
 
@@ -276,7 +286,7 @@ export function getExhibitorsForEvent(eventId: number | string): AdapterModalReg
       buttonLink: exhibitor.buttonLink,
       perks: processedPerks,
       category: 'exhibit',
-      quantityAvailable: exhibitor.slotsPerEvent || 1,
+      quantityAvailable: exhibitor.slotsPerEvent || 10,
       maxQuantityPerOrder: exhibitor.maxQuantityPerOrder || 1,
       colour: exhibitor.colour,
       shownOnRegistrationPage: exhibitor.shownOnRegistrationPage || true,
@@ -286,7 +296,7 @@ export function getExhibitorsForEvent(eventId: number | string): AdapterModalReg
   // If there are any exhibitor options, look for event-specific additional pass or use default
   if (adaptedExhibitors.length > 0) {
     const eventSpecificAdditionalPass: ExhibitorAdditionalPassType | undefined = eventData.additionalPass;
-    
+
     if (eventSpecificAdditionalPass) {
       // Use the event-specific additional pass
       adaptedExhibitors.push({
@@ -325,14 +335,16 @@ export function getExhibitorsForEvent(eventId: number | string): AdapterModalReg
         requiresValidation: true,
         maxQuantityPerOrder: 10,
         perks: [
-          { formatted: [
-                { content: "Event Access: (1) VIP Attendee Pass", bold: true },
-                { content: "Access to General Sessions", indent: 1 },
-                { content: "Access to Exhibit Area", indent: 1 },
-                { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-                { content: "Breakfast & Buffet Lunch", indent: 1 },
-                { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
-          ]},
+          {
+            formatted: [
+              { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+              { content: "Access to General Sessions", indent: 1 },
+              { content: "Access to Exhibit Area", indent: 1 },
+              { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+              { content: "Breakfast & Buffet Lunch", indent: 1 },
+              { content: "Post-Event Access to Photos, Videos, and Speaker Presentation Slides", indent: 1 },
+            ]
+          },
         ],
         shownOnRegistrationPage: false,
       });

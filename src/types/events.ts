@@ -60,12 +60,20 @@ export interface FeaturedTopicDetail {
 }
 
 export interface EventTestimonial {
-    type: 'video' | 'text';
+    type: 'video' | 'text' | 'image';
+    /** Short quote or blurb to display in the card */
     quote: string;
     name: string;
     title: string;
     affiliation: string;
+    /** YouTube video ID for video testimonials */
     videoId?: string;
+    /** Image URL for image-based testimonials */
+    imageUrl?: string;
+    /** Alt text for the testimonial image */
+    imageAlt?: string;
+    /** Optional full transcript text to show in an expandable section */
+    fullTranscript?: string;
 }
 export interface VIPReceptionProps {
         title: string;
@@ -94,6 +102,24 @@ export interface EventFeatures {
     // add stuff here later. these are flags to hide or show certain components in our dynamic route page
 }
 
+export interface EventLink {
+    /** The slug of the target event to link to (e.g., "2025-southeast-defense-procurement-conference") */
+    targetSlug: string;
+    /** Optional custom label for the link CTA (defaults based on intent/target) */
+    label?: string;
+    /** The purpose of the link (recap = /about/event-recap, speakers = /speakers, sponsor = /sponsor, event = root, custom = use hrefOverride) */
+    intent?: 'recap' | 'speakers' | 'sponsor' | 'event' | 'custom';
+    /** Relationship to the current event */
+    relation?: 'previous' | 'next' | 'related';
+    /** Optional override for href to support fully custom paths */
+    hrefOverride?: string;
+}
+
+export interface EventBadge {
+    text: string;
+    color: 'green' | 'blue' | 'red' | 'yellow';
+}
+
 export interface Event {
     id: number;
     title: string;
@@ -113,6 +139,10 @@ export interface Event {
     locationAddress: string;
     venueName?: string;
     testimonials?: EventTestimonial[];
+    /** If set, pull testimonials from another event's id instead of this event */
+    testimonialsFromEventId?: number;
+    /** If set, indicates a related event to use for derived sections (e.g., highlights sourced from a prior year) */
+    relatedEventId?: number;
     eventShorthand: string;
     registerLink?: string;
     password?: string;
@@ -152,4 +182,16 @@ export interface Event {
     vipNetworkingReception?: VipNetworkingReception;
     shown?: boolean; // Controls whether this event should be displayed in event listings
     features?: EventFeatures;
+    /** Optional related/linked events (e.g., link to previous year's recap) */
+    links?: EventLink[];
+    /** Optional custom time when registration should close (ISO timestamp). Overrides default closing logic. */
+    registrationClosedTime?: string;
+    /** Optional custom notice to display when registration is closed (supports HTML) */
+    registrationClosedNotice?: string;
+    /** Optional notice banner to display on the event page itself (supports HTML) */
+    eventPageNotice?: string;
+    /** Optional variant for the event page notice banner: 'warning' (yellow), 'info' (blue), 'error' (red) */
+    eventPageNoticeVariant?: 'warning' | 'info' | 'error';
+    /** Optional badge to display on the event card */
+    badge?: EventBadge;
 }

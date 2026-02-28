@@ -104,6 +104,7 @@ const UpcomingEvents = ({
               description={event.description}
               image={event.image}
               link={`/events/${event.slug}`}
+              badge={event.badge}
             />
             <div className="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 rounded-lg flex items-center justify-center">
               <Link href={`/events/${event.slug}`} className="w-full h-full flex items-center justify-center">

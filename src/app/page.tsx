@@ -9,6 +9,7 @@ import FAQSection from './components/FAQSection';
 import ContactUs from './components/ContactUs';
 import MailingListSubscription from './components/MailingListSubscription';
 import ListsPage from './components/ListsPage';
+import EventHighlights from './components/EventHighlights';
 
 const HomePage = () => {
   return (
@@ -17,7 +18,12 @@ const HomePage = () => {
       <UpcomingEvents />
       <MissionStatement />
       <FocusAreas />
-      <Testimonials />
+      <Testimonials eventIds={[1, 4]} types={['video', 'image']} showDefaultVideos={false} />
+      <EventHighlights
+        sourceEventId={4}
+        title="2025 Navy & Marine Corps Procurement Conference Highlights"
+        subtitle="Watch standout moments from the 2025 Navy & Marine Corps Procurement Conference"
+      />
       <MailingListSubscription />
       {/* <LatestNews /> */}
       <FAQSection />

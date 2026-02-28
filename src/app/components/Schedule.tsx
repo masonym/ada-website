@@ -6,9 +6,19 @@ import { Event } from '@/types/events';
 import ModalVideo from 'react-modal-video';
 import 'react-modal-video/css/modal-video.css';
 import { getCdnPath } from '@/utils/image';
+import { slugify } from '@/utils/slugify';
+import { EventSpeakerPublic } from '@/lib/sanity';
 import Link from 'next/link';
 import { Printer } from 'lucide-react';
-import { SPEAKERS, Speaker as SpeakerData } from '@/constants/speakers';
+
+// helper to get sanity image URL
+function getSanityImageUrl(ref: string) {
+  return `https://cdn.sanity.io/images/nc4xlou0/production/${ref
+    .replace("image-", "")
+    .replace("-webp", ".webp")
+    .replace("-jpg", ".jpg")
+    .replace("-png", ".png")}`;
+}
 
 type Speaker = {
   name?: string; // Optional when using speakerId
@@ -17,6 +27,7 @@ type Speaker = {
   sponsorStyle?: string;
   affiliation?: string;
   photo?: string;
+  sanityImage?: { asset: { _ref: string } };
   presentation?: string;
   videoId?: string;      // YouTube video ID only
   videoStartTime?: number; // Optional start time in seconds
@@ -25,17 +36,18 @@ type Speaker = {
 };
 
 // Helper function to resolve speaker data
-export const resolveSpeaker = (speaker: Speaker): Speaker => {
-  if (speaker.speakerId && SPEAKERS[speaker.speakerId]) {
-    const speakerData = SPEAKERS[speaker.speakerId];
+const resolveSpeaker = (speaker: Speaker, sanitySpeakerMap: Map<string, EventSpeakerPublic>): Speaker => {
+  if (speaker.speakerId && sanitySpeakerMap.has(speaker.speakerId)) {
+    const speakerData = sanitySpeakerMap.get(speaker.speakerId)!;
     return {
       // Start with schedule-specific data
       ...speaker,
       // Override with resolved speaker data
-      name: speakerData.name,
-      title: speakerData.position,
-      affiliation: speakerData.company,
-      photo: speakerData.image,
+      name: speakerData.speakerName,
+      title: speakerData.speakerPosition,
+      affiliation: speakerData.speakerCompany,
+      photo: undefined, // Sanity uses sanityImage
+      sanityImage: speakerData.speakerImage,
     };
   }
   // Return original speaker data if no speakerId or speaker not found
@@ -60,20 +72,37 @@ type ScheduleAtAGlanceProps = {
   isAuthenticated: boolean;
   onRequestPassword: () => void;
   event: Event;
+  sanitySpeakers?: EventSpeakerPublic[] | null;
 };
 
 const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
   schedule,
   isAuthenticated,
   onRequestPassword,
-  event
+  event,
+  sanitySpeakers
 }) => {
   const [selectedDay, setSelectedDay] = useState(0);
   const [isVideoOpen, setVideoOpen] = useState(false);
   const [currentVideoId, setCurrentVideoId] = useState<string | null>(null);
   const [currentStartTime, setCurrentStartTime] = useState<number | undefined>(undefined);
   const [isSpeakerModalOpen, setSpeakerModalOpen] = useState(false);
-  const [selectedSpeaker, setSelectedSpeaker] = useState<SpeakerData | null>(null);
+  const [selectedSpeaker, setSelectedSpeaker] = useState<{
+    name: string;
+    position: string;
+    company: string;
+    bio: string;
+    image?: string;
+    sanityImage?: { asset: { _ref: string } };
+  } | null>(null);
+
+  // build sanity speaker lookup map
+  const sanitySpeakerMap = new Map<string, EventSpeakerPublic>();
+  if (sanitySpeakers) {
+    sanitySpeakers.forEach(s => {
+      if (s.speakerSlug) sanitySpeakerMap.set(s.speakerSlug, s);
+    });
+  }
 
   const handleMediaClick = (
     type: 'video' | 'presentation',
@@ -96,10 +125,20 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
   };
 
   const handleSpeakerClick = (speaker: Speaker) => {
-    const resolvedSpeaker = resolveSpeaker(speaker);
-    // Only open modal if we have speaker data with bio
-    if (resolvedSpeaker.speakerId && SPEAKERS[resolvedSpeaker.speakerId]) {
-      setSelectedSpeaker(SPEAKERS[resolvedSpeaker.speakerId]);
+    const resolvedSpeaker = resolveSpeaker(speaker, sanitySpeakerMap);
+    if (!resolvedSpeaker.speakerId) return;
+
+    // get speaker from sanity
+    const sanitySpeaker = sanitySpeakerMap.get(resolvedSpeaker.speakerId);
+    if (sanitySpeaker) {
+      setSelectedSpeaker({
+        name: sanitySpeaker.speakerName,
+        position: sanitySpeaker.speakerPosition || '',
+        company: sanitySpeaker.speakerCompany || '',
+        bio: sanitySpeaker.speakerBio || '',
+        image: undefined,
+        sanityImage: sanitySpeaker.speakerImage,
+      });
       setSpeakerModalOpen(true);
     }
   };
@@ -112,7 +151,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
   // if day 0 has only 1 item, select day 1
   // also manage local storage to remember the selected day
   useEffect(() => {
-    if (selectedDay == 0 && schedule[0].items.length === 1) {
+    if (selectedDay == 0 && schedule[0].items.length < 3) {
       setSelectedDay(1);
     }
   }, []);
@@ -172,6 +211,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
           {schedule[selectedDay].items.map((item, itemIndex, array) => (
             <div
               key={itemIndex}
+              id={`session-${slugify(item.time)}-${slugify(item.title)}`}
               className={`flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center min-h-[120px] ${itemIndex !== array.length - 1 ? 'mb-8 pb-8 border-b border-gray-200' : ''
                 }`}
             >
@@ -198,7 +238,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                 {item.speakers && item.speakers.length > 0 && (
                   <div className="space-y-4 mt-3">
                     {item.speakers.map((speaker, speakerIndex) => {
-                      const resolvedSpeaker = resolveSpeaker(speaker);
+                      const resolvedSpeaker = resolveSpeaker(speaker, sanitySpeakerMap);
                       return (
                         <div key={speakerIndex} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                           <div 
@@ -213,7 +253,16 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                               }
                             }}
                           >
-                            {resolvedSpeaker.photo && (
+                            {resolvedSpeaker.sanityImage?.asset?._ref ? (
+                              <Image
+                                src={getSanityImageUrl(resolvedSpeaker.sanityImage.asset._ref)}
+                                alt={resolvedSpeaker.name || 'Speaker'}
+                                width={48}
+                                height={48}
+                                className="rounded-full mr-4"
+                                unoptimized={true}
+                              />
+                            ) : resolvedSpeaker.photo && (
                               <Image
                                 src={getCdnPath(`speakers/${resolvedSpeaker.photo}`)}
                                 alt={resolvedSpeaker.name || 'Speaker'}
@@ -231,7 +280,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                               </div>
                               {resolvedSpeaker.title && <div className="text-sm text-gray-600" dangerouslySetInnerHTML={{ __html: resolvedSpeaker.title }}></div>}
                               {resolvedSpeaker.affiliation && <div className="text-sm text-gray-600">{resolvedSpeaker.affiliation}</div>}
-                              {resolvedSpeaker.speakerId && SPEAKERS[resolvedSpeaker.speakerId]?.bio && (
+                              {resolvedSpeaker.speakerId && sanitySpeakerMap.has(resolvedSpeaker.speakerId) && (
                                 <div className="text-xs text-blue-600 mt-1">Click to view bio</div>
                               )}
                             </div>
@@ -314,11 +363,14 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                 <div className="flex-shrink-0">
                   <div className="w-48 h-48 mx-auto md:mx-0">
                     <Image
-                      src={getCdnPath(`speakers/${selectedSpeaker.image}`)}
+                      src={selectedSpeaker.sanityImage?.asset?._ref
+                        ? getSanityImageUrl(selectedSpeaker.sanityImage.asset._ref)
+                        : getCdnPath(`speakers/${selectedSpeaker.image}`)}
                       alt={selectedSpeaker.name}
                       width={192}
                       height={192}
                       className="rounded-lg object-cover w-full h-full"
+                      unoptimized={!!selectedSpeaker.sanityImage}
                     />
                   </div>
                 </div>

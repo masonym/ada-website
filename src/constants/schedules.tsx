@@ -1,13 +1,11 @@
-import { SPEAKERS } from './speakers';
-
 // Extended speaker type for schedule-specific data
 export type ScheduleSpeaker = {
-  speakerId: string; // Reference to SPEAKERS object
-  presentation?: string;
-  videoId?: string;
-  videoStartTime?: number;
-  sponsor?: string;
-  sponsorStyle?: string;
+    speakerId: string; // Reference to speaker slug
+    presentation?: string;
+    videoId?: string;
+    videoStartTime?: number;
+    sponsor?: string;
+    sponsorStyle?: string;
 };
 
 export const SCHEDULES = [
@@ -66,7 +64,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "10:45 AM",
-                        title: "Defense Department Keynote Address",
+                        title: "Department of War Keynote Address",
                         location: "National Press Club Ballroom",
                         speakers: [{
                             name: "Honorable John P. (\"Sean\") Coffey",
@@ -78,13 +76,13 @@ export const SCHEDULES = [
                     },
                     {
                         time: "11:20 AM",
-                        title: "Defense Dept. Small Business Programs",
+                        title: "War Dept. Small Business Programs",
                         location: "National Press Club Ballroom",
                         speakers: [
                             {
                                 name: "Kimberly Diane Buehler",
                                 title: "Director, Office of Small Business Programs (OSBP)",
-                                affiliation: "U.S. Army, Department of Defense",
+                                affiliation: "U.S. Army, Department of War",
                                 photo: "kimberly-buhler.webp",
                                 presentation: "2025 Defense Industry Forecast - Kimberly Diane Buehler.pdf",
                                 videoId: "Ib6OrnbElyM"
@@ -153,7 +151,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "2:30 PM",
-                        title: "Defense Department 'Innovation Hubs' — Champions for Innovative Small Business",
+                        title: "Department of War 'Innovation Hubs' — Champions for Innovative Small Business",
                         location: "National Press Club Ballroom",
                         speakers: [{
                             name: "Brian Liesveld",
@@ -309,7 +307,7 @@ export const SCHEDULES = [
                     },
                     {
                         "time": "8:45 AM",
-                        "title": "Defense Department 'Innovation Hubs' – Champions for Innovative Small Business",
+                        "title": "Department of War 'Innovation Hubs' – Champions for Innovative Small Business",
                         "speakers": [
                             {
                                 "name": "Teresa Harrington, DBA, MBA, PCM",
@@ -404,7 +402,7 @@ export const SCHEDULES = [
                             {
                                 "name": "Kareem A. Sykes",
                                 "title": "Program Manager, Project Spectrum",
-                                "affiliation": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of Defense",
+                                "affiliation": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of War",
                                 "photo": "kareem-sykes.webp",
                                 "presentation": "2025_Southeast_Defense_Procurement_Conference_-_Kareem_A._Sykes.pdf",
                                 "videoId": "mWIgkwu0-GI",
@@ -429,7 +427,7 @@ export const SCHEDULES = [
                             {
                                 "name": "Kareem A. Sykes",
                                 "title": "Program Manager, Project Spectrum",
-                                "affiliation": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of Defense",
+                                "affiliation": "Office of Small and Disadvantaged Business Utilization (OSDBU), U.S. Department of War",
                                 "photo": "kareem-sykes.webp"
                             },
                             //{
@@ -640,7 +638,7 @@ export const SCHEDULES = [
                             {
                                 "name": "Wesley J. Jefferies",
                                 "title": "Industry Liaison, OUSD (A&S) Office of Industrial Base Policy, Industrial Base Analysis and Sustainment (IBAS) Program, Innovation Capability and Modernization (ICAM) Office",
-                                "affiliation": "U.S. Department of Defense",
+                                "affiliation": "U.S. Department of War",
                                 "photo": "wesley-jefferies.webp",
                                 "videoId": "mqxg3IjE7CM",
                             }
@@ -954,8 +952,9 @@ export const SCHEDULES = [
                                 speakerId: "charles-sills",
                                 sponsor: "Conference Moderator",
                                 sponsorStyle: "bg-red-999",
+                                videoId: "EjKLqEr3L1g",
                             }
-                        ]
+                        ],
                     },
                     {
                         time: "8:40 AM",
@@ -965,6 +964,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "jared-chalk",
                                 presentation: "2025 NMCPC - Jared Chalk.pdf",
+                                videoId: "3speJ7hMJAc",
                             }
                         ]
                     },
@@ -977,6 +977,7 @@ export const SCHEDULES = [
                                 speakerId: "representative-rob-wittman",
                                 sponsor: "Pre-Recorded Address",
                                 sponsorStyle: "bg-gray-300 text-slate-900",
+                                videoId: "mbYrRbD1KSA",
                             }
                         ]
                     },
@@ -988,6 +989,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "brad-williamson",
                                 presentation: "2025 NMCPC - Brad Williamson.pdf",
+                                videoId: "ImB2hGsx_oU",
                             }
                         ]
                     },
@@ -1000,15 +1002,22 @@ export const SCHEDULES = [
                                 speakerId: "roger-camp",
                                 sponsor: "Platinum Sponsor and Panel Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "MNJjd_9ubzc",
                             },
                             {
                                 speakerId: "vice-admiral-richard-w-hunt",
+                                videoId: "MNJjd_9ubzc",
+                                videoStartTime: 510,
                             },
                             {
                                 speakerId: "victorino-mercado",
+                                videoId: "MNJjd_9ubzc",
+                                videoStartTime: 1612,
                             },
                             {
-                                speakerId: "dr-steven-wills"
+                                speakerId: "dr-steven-wills",
+                                videoId: "MNJjd_9ubzc",
+                                videoStartTime: 2656,
                             }
                         ]
                     },
@@ -1025,6 +1034,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "brian-liesveld",
                                 presentation: "2025 NMCPC - Brian Liesveld.pdf",
+                                videoId: "s7kVlPzMzik",
                             },
                         ]
                     },
@@ -1037,6 +1047,7 @@ export const SCHEDULES = [
                                 speakerId: "erica-h-plath",
                                 sponsor: "Keynote Speaker and Panel Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "otYHekZPggc",
                             },
                             {
                                 speakerId: "philip-hart-cullom"
@@ -1063,7 +1074,8 @@ export const SCHEDULES = [
                                 speakerId: "kurt-garrett",
                                 presentation: "2025 NMCPC - Kurt Garrett.pdf",
                                 sponsor: "Gold Sponsor",
-                                sponsorStyle: "bg-[#ffaf00] text-slate-900"
+                                sponsorStyle: "bg-[#ffaf00] text-slate-900",
+                                videoId: "5c7bBNkcNoI",
                             }
                         ]
                     },
@@ -1080,6 +1092,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "daniel-hudson",
                                 presentation: "2025 NMCPC - Daniel Hudson.pdf",
+                                videoId: "LCi4UVSe6dE",
                             },
                             // {
                             //     speakerId: "amir-bagherpour-phd",
@@ -1092,7 +1105,8 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "christopher-m-haar"
+                                speakerId: "christopher-m-haar",
+                                videoId: "oZmzKG98wUM",
                             }
                         ]
                     },
@@ -1105,7 +1119,8 @@ export const SCHEDULES = [
                                 speakerId: "don-mcginnis",
                                 presentation: "2025 NMCPC - Don McGinnis.pdf",
                                 sponsor: "Bronze Sponsor",
-                                sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                                sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                                videoId: "aQQLSTFVviY",
                             }
                         ]
                     },
@@ -1117,10 +1132,13 @@ export const SCHEDULES = [
                             {
                                 speakerId: "dave-leinberger",
                                 presentation: "2025 NMCPC - Dave Leinberger & Brian W. Miller.pdf",
+                                videoId: "vD0WP5Fl90Q",
                             },
                             {
                                 speakerId: "brian-w-miller",
                                 presentation: "2025 NMCPC - Dave Leinberger & Brian W. Miller.pdf",
+                                videoId: "vD0WP5Fl90Q",
+                                videoStartTime: 743,
                             }
                         ]
                     },
@@ -1133,19 +1151,26 @@ export const SCHEDULES = [
                                 speakerId: "charles-sills",
                                 sponsor: "Panel Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "l-tNmi6QGzs",
                             },
                             {
                                 speakerId: "terressa-bebout",
                                 presentation: "2025 NMCPC - Terressa Bebout.pdf",
+                                videoId: "l-tNmi6QGzs",
                             },
                             {
                                 speakerId: "stacey-l-cooper",
                             },
                             {
-                                speakerId: "tiffany-l-trotter"
+                                speakerId: "tiffany-l-trotter",
+                                videoId: "l-tNmi6QGzs",
+                                videoStartTime: 463,
+                                presentation: "2025 NMCPC - Tiffany L. Trotter.pdf",
                             },
                             {
-                                speakerId: "rosetta-rodwell"
+                                speakerId: "rosetta-rodwell",
+                                videoId: "l-tNmi6QGzs",
+                                videoStartTime: 1512,
                             }
                         ]
                     },
@@ -1201,6 +1226,7 @@ export const SCHEDULES = [
                                 speakerId: "charles-sills",
                                 sponsor: "Conference Moderator",
                                 sponsorStyle: "bg-red-999",
+                                videoId: "iAWl0CLOuuU",
                             }
                         ]
                     },
@@ -1228,6 +1254,7 @@ export const SCHEDULES = [
                                 speakerId: "diane-dempsey",
                                 sponsor: "Panel Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "CqG04ajCSKw",
                             },
                             {
                                 speakerId: "katina-adams"
@@ -1253,6 +1280,7 @@ export const SCHEDULES = [
                                 sponsor: "Gold Sponsor",
                                 sponsorStyle: "bg-[#ffaf00] text-slate-900",
                                 presentation: "2025 NMCPC - Paul Wichert.pdf",
+                                videoId: "Vgs4lLmbw4w",
                             }
                         ]
                     },
@@ -1279,6 +1307,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "aimee-zick",
                                 presentation: "2025 NMCPC - Aimee Zick.pdf",
+                                videoId: "mmjSe3KgnWA",
                             }
                         ]
                     },
@@ -1291,19 +1320,28 @@ export const SCHEDULES = [
                                 speakerId: "charles-sills",
                                 sponsor: "Panel Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "3BfHzlaZSvQ",
                             },
                             {
                                 speakerId: "joel-coulter",
                                 presentation: "2025 NMCPC - Joel Coulter.pdf",
+                                videoId: "3BfHzlaZSvQ",
+                                videoStartTime: 76,
                             },
                             {
                                 speakerId: "nicholas-antonio-rocha",
+                                videoId: "3BfHzlaZSvQ",
+                                videoStartTime: 671,
                             },
                             {
                                 speakerId: "jeffrey-hoffman",
+                                videoId: "3BfHzlaZSvQ",
+                                videoStartTime: 325,
                             },
                             {
-                                speakerId: "nicholas-diehl"
+                                speakerId: "nicholas-diehl",
+                                videoId: "3BfHzlaZSvQ",
+                                videoStartTime: 927,
                             }
                         ]
                     },
@@ -1315,6 +1353,7 @@ export const SCHEDULES = [
                             {
                                 speakerId: "andrew-gardner",
                                 presentation: "2025 NMCPC - Andrew Gardner.pdf",
+                                videoId: "PnQG794FqFo",
                             },
                         ]
                     },
@@ -1348,7 +1387,7 @@ export const SCHEDULES = [
         id: 5,
         schedule: [
             {
-                date: "November 4, 2025",
+                date: "March 3, 2026",
                 items: [
                     {
                         time: "3:00 PM - 6:00 PM",
@@ -1358,104 +1397,508 @@ export const SCHEDULES = [
                 ],
             },
             {
-                date: "November 5, 2025",
+                date: "March 4, 2026",
                 items: [
                     {
-                        time: "7:30 AM - 8:30 AM",
+                        time: "7:30 AM",
                         title: "On-Site Attendee Registration & Check-in",
                         location: "Rio Grande Hall Pre-Function",
                     },
                     {
-                        time: "7:30 AM - 8:30 AM",
+                        time: "7:30 AM – 8:30 AM",
                         title: "Networking Breakfast with Exhibitors",
                         location: "Rio Grande Hall, Plaza Lower Level",
                     },
                     {
+                        time: "7:30 AM – 8:30 AM",
+                        title: "Matchmaking Sign-up",
+                        location: "Rio Grande Hall Pre-Function",
+                    },
+                    {
+                        time: "8:30 AM",
+                        title: "Conference Launch – American Defense Alliance",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "charles-sills",
+                            sponsor: "Conference Moderator",
+                            sponsorStyle: "bg-red-999"
+                        }],
+                    },
+                    {
+                        time: "8:35 AM",
+                        title: "Welcoming Remarks – National Security Innovation Council",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "drew-scheberle"
+                        }],
+                    },
+                    {
+                        time: "8:45 AM",
+                        title: "DEFENSEWERX – Accelerating Innovative Tech Solutions",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "brian-liesveld"
+                        }],
+                    },
+                    {
+                        time: "9:15 AM",
+                        title: "DEPARTMENT OF THE AIR FORCE KEYNOTE ADDRESS",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "scott-kiser"
+                        }],
+                    },
+                    {
+                        time: "9:50 AM",
+                        title: "Industry Insight",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "don-mcginnis",
+                            sponsor: "Bronze Sponsor",
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                        }],
+                    },
+                    {
+                        time: "10:00 AM",
+                        title: "KEYNOTE ADDRESS – AIR FORCE ORDER OF BATTLE",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "dr-david-g-jester-smith"
+                        }],
+                    },
+                    {
+                        time: "10:35 AM",
+                        title: "Industry Insight",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "vincent-grosso",
+                            sponsor: "Coffee Station Sponsor",
+                            sponsorStyle: "bg-sky-300 text-slate-900"
+                        }],
+                    },
+                    {
+                        time: "10:45 AM",
+                        title: "Networking Break with Exhibitors",
+                        location: "Rio Hall A, Plaza Lower Level",
+                    },
+                    {
+                        time: "11:15 AM",
+                        title: "The Space Force Front Door Program – Connecting With Industry",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "victor-vigliotti"
+                        }],
+                    },
+                    {
+                        time: "11:45 AM",
+                        title: "Fireside Chat: Space Force Challenges Driving Contracts",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "charles-sills",
+                                sponsor: "Moderator",
+                                sponsorStyle: "bg-sky-300"
+                            },
+                            {
+                                speakerId: "major-marc-green",
+                            },
+                            {
+                                speakerId: "captain-md-doc-rana"
+                            },
+                            {
+                                speakerId: "aimee-zick"
+                            }
+                        ],
+                    },
+                    {
+                        time: "12:25 PM",
+                        title: "Cybersecurity/CMMC Update – Project Spectrum",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "kareem-a-sykes"
+                            },
+                            {
+                                speakerId: "nelinia-nel-varenus",
+                            }
+                        ],
+                    },
+                    {
+                        time: "1:00 PM",
+                        title: "Networking Lunch with Exhibitors",
+                        location: "Rio Hall A, Plaza Lower Level",
+                    },
+                    {
+                        time: "2:00 PM",
+                        title: "Industry Insight",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "clay-womack",
+                            sponsor: "Silver Sponsor",
+                            sponsorStyle: "bg-[#C0C0C0] text-slate-900"
+                        }],
+                    },
+                    {
+                        time: "2:15 PM",
+                        title: "Air Force/Space Force Small Business Programs",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "trish-martinelli",
+                                sponsor: "Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900"
+                            },
+                            {
+                                speakerId: "david-sikora"
+                            },
+                            {
+                                speakerId: "albert-garza"
+                            }
+                        ],
+                    },
+                    {
+                        time: "3:00 PM",
+                        title: "Industry Insight",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "tim-trapuzzano",
+                            sponsor: "Bronze Sponsor",
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                        }],
+                    },
+                    {
+                        time: "3:05 PM",
+                        title: "Expediting Additive Manufacture at the Warfighter Edge",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "richard-ric-slater",
+                                sponsor: "Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900"
+                            },
+                            {
+                                speakerId: "rob-graziano"
+                            },
+                            {
+                                speakerId: "andrew-gardner"
+                            },
+                            {
+                                speakerId: "bijo-mathew"
+                            },
+                            {
+                                speakerId: "madison-jones"
+                            },
+                            {
+                                speakerId: "aaron-williamson-pmp"
+                            },
+                            {
+                                speakerId: "scott-gray"
+                            }
+                        ],
+                    },
+                    {
+                        time: "4:30 PM",
+                        title: "Day One Closing Remarks",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "charles-sills",
+                            sponsor: "Conference Moderator",
+                            sponsorStyle: "bg-red-999"
+                        }],
+                    },
+                    {
+                        time: "4:30 – 6:00 PM",
+                        title: "Networking with Exhibitors",
+                        location: "Rio Hall A, Plaza Lower Level",
+                    },
+                    {
+                        time: "4:30 – 6:00 PM",
+                        title: "Matchmaking Session I",
+                        location: "Sabine Meeting Room, Plaza Lower Level",
+                    },
+                ],
+            },
+            {
+                date: "March 5, 2026",
+                items: [
+                    {
+                        time: "7:30 AM – 8:30 AM",
+                        title: "Networking Breakfast with Exhibitors",
+                        location: "Rio Grande Hall, Plaza Lower Level",
+                    },
+                    {
+                        time: "7:30 AM – 8:30 AM",
+                        title: "Matchmaking Sign-up",
+                        location: "Rio Grande Hall Pre-Function",
+                    },
+                    {
+                        time: "8:30 AM",
+                        title: "Welcome Back Remarks",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "charles-sills",
+                            sponsor: "Conference Moderator",
+                            sponsorStyle: "bg-red-999"
+                        }],
+                    },
+                    {
+                        time: "8:35 AM",
+                        title: "Base-Community Partnerships Promoting Local Build Contracts",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "david-leinberger"
+                            },
+                            {
+                                speakerId: "paul-holland"
+                            }
+                        ],
+                    },
+                    {
+                        time: "9:15 AM",
+                        title: "Golden Dome Contracting Opportunities – Update",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "gavin-brown",
+                                sponsor: "Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900"
+                            },
+                            {
+                                speakerId: "irina-s-litchfield"
+                            },
+                            {
+                                speakerId: "justyn-hornor"
+                            }
+                        ],
+                    },
+                    {
+                        time: "9:50 AM",
+                        title: "Fireside Chat: Quantum's Critical Role in Defense",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "gavin-brown"
+                            },
+                            {
+                                speakerId: "justin-litchfield-phd"
+                            }
+                        ],
+                    },
+                    {
+                        time: "10:05 AM",
+                        title: "Industry Insight",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "marie-mcclain",
+                            sponsor: "Silver Sponsor",
+                            sponsorStyle: "bg-[#C0C0C0] text-slate-900"
+                        }],
+                    },
+                    {
+                        time: "10:20 AM",
+                        title: "Warfare & Technology in 2040 and Beyond",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "captain-md-doc-rana"
+                        }],
+                    },
+                    {
+                        time: "10:40 AM",
+                        title: "Industry Insight",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "dr-bruce-j-sumlin",
+                            sponsor: "Bronze Sponsor",
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                        }],
+                    },
+                    {
+                        time: "10:45 AM",
+                        title: "Networking Break with Exhibitors",
+                        location: "Rio Hall A, Plaza Lower Level",
+                    },
+                    {
+                        time: "11:15 AM",
+                        title: "Industry Insight",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "joe-bonilla",
+                            sponsor: "Bronze Sponsor",
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                        }],
+                    },
+                    {
+                        time: "11:20 AM",
+                        title: "Red Tape to Revenue: How Startups Navigate Government Buying",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                                speakerId: "marcos-cervantes",
+                                sponsor: "MODERATOR",
+                                sponsorStyle: "bg-sky-300 text-slate-900"
+                            },
+                            {
+                                speakerId: "major-brandon-schreiner"
+                            },
+                            {
+                                speakerId: "major-victor-montellano"
+                            },
+                            {
+                                speakerId: "glenn-banton"
+                            }
+                        ],
+                    },
+                    {
+                        time: "12:05 PM",
+                        title: "Final Thoughts: Navigating the Defense Contracting Shoals",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                            {
+                            speakerId: "ricardo-monroy",
+                            },
+                            {
+                                speakerId: "trish-martinelli"
+                            }
+                        ],
+                    },
+                    {
+                        time: "12:30 PM",
+                        title: "Closing Remarks",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "charles-sills",
+                            sponsor: "Conference Moderator",
+                            sponsorStyle: "bg-red-999"
+                        }],
+                    },
+                    {
+                        time: "12:30 PM – 1:30 PM",
+                        title: "Networking with Exhibitors",
+                        location: "Rio Hall A, Plaza Lower Level",
+                    },
+                    {
+                        time: "12:30 PM - 1:30 PM",
+                        title: "Matchmaking Session II",
+                        location: "Sabine Meeting Room, Plaza Lower Level",
+                    },
+                ],
+            }
+
+        ]
+    },
+    {
+        id: 6,
+        schedule: [
+            {
+                date: "May 27, 2026",
+                items: [
+                    {
+                        time: "3:00 PM - 6:00 PM",
+                        title: "Exhibitor Set-up",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                    },
+                ],
+            },
+            {
+                date: "May 28, 2026",
+                items: [
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "On-Site Attendee Registration & Check-in",
+                        location: "Norfolk Ballroom Pre-Function, Ground Level",
+                    },
+                    {
+                        time: "7:30 AM - 8:30 AM",
+                        title: "Networking Breakfast with Exhibitors",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                    },
+                    {
                         time: "7:30 AM - 8:30 AM",
                         title: "Matchmaking Session I Sign-up",
-                        location: "Rio Grande Hall Pre-Function",
+                        location: "Norfolk Ballroom Pre-Function, Ground Level",
                     },
                     {
                         time: "8:30 AM - 10:00 AM",
                         title: "General Sessions",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                     },
                     {
                         time: "10:00 AM - 10:15 AM",
                         title: "Networking Break with Exhibitors",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
                         time: "10:15 AM - 12:30 PM",
                         title: "General Sessions",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                     },
                     {
                         time: "12:30 PM - 1:30 PM",
                         title: "Networking Lunch with Exhibitors",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
                         time: "1:30 PM - 3:00 PM",
                         title: "General Sessions",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                     },
                     {
                         time: "3:00 PM - 3:15 PM",
                         title: "Networking Break with Exhibitors",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
                         time: "3:15 PM - 4:30 PM",
                         title: "General Sessions",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                     },
                     {
-                        time: "4:30 PM - 5:30 PM",
+                        time: "4:30 PM - 6:00 PM",
                         title: "Matchmaking Session I",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Franklin-Yorktown Meeting Room, 2nd Floor",
                     },
                     {
-                        time: "5:30 PM - 7:30 PM",
+                        time: "6:30 PM - 8:30 PM",
                         title: "VIP Networking Reception",
-                        location: "Rio Grande Hall, Plaza Lower Level",
                         description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
+                        location: "The Harbor Club, 333 Waterside Drive, Suite 200, Norfolk VA 23510",
                     },
 
                 ],
             },
             {
-                date: "November 6, 2025",
+                date: "May 29, 2026",
                 items: [
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Networking Breakfast with Exhibitors",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
                         time: "7:30 AM - 8:30 AM",
                         title: "Matchmaking Session II Sign-up",
-                        location: "Rio Grande Hall Pre-Function",
+                        location: "Norfolk Ballroom Pre-Function, Ground Level",
                     },
                     {
                         time: "8:30 AM - 10:30 AM",
                         title: "General Sessions",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                     },
                     {
                         time: "10:30 AM - 10:45 AM",
                         title: "Networking Break with Exhibitors",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
                         time: "10:45 AM - 12:30 PM",
                         title: "General Sessions",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Norfolk Ballroom (V-VI), Ground Level",
                     },
                     {
                         time: "12:30 PM - 1:30 PM",
                         title: "Matchmaking Session II",
-                        location: "Rio Grande Hall, Plaza Lower Level",
+                        location: "Franklin-Yorktown Meeting Room, 2nd Floor",
                     },
                 ],
             }

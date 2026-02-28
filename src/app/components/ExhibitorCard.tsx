@@ -1,26 +1,34 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import { Event } from '@/types/events';
-import { getEventSponsors } from '@/constants/eventSponsors';
 import { ExhibitorType } from '@/constants/exhibitors';
 import FormattedPerk from '@/components/FormattedPerk';
+import { getPriceDisplay } from '@/lib/price-formatting';
 
 type ExhibitorProp = {
     item: ExhibitorType;
     event: Event;
+    getSponsorCount?: (tierId: string) => number;
 };
 
-const ExhibitorCard = ({ item, event }: ExhibitorProp) => {
+const ExhibitorCard = ({ item, event, getSponsorCount }: ExhibitorProp) => {
     const eventDateTime = new Date(`${event.date}T${event.timeStart}`);
     const hasEventEnded = eventDateTime < new Date();
-    const eventSponsorsData = getEventSponsors(event.id);
     const showRemainingFlag = !!item.showRemaining;
     let remainingCount: number | undefined;
-    if (item.slotsPerEvent !== undefined && eventSponsorsData) {
-        const tierObj = eventSponsorsData.tiers.find(t => t.id === item.id);
-        const used = tierObj?.sponsorIds.length ?? 0;
+    if (item.slotsPerEvent !== undefined && getSponsorCount) {
+        const used = getSponsorCount(item.id);
         remainingCount = item.slotsPerEvent - used;
     }
+
+    // Use shared price display logic to support early bird formatting
+    const priceInfo = getPriceDisplay({
+        price: item.cost,
+        earlyBirdPrice: item.earlyBirdPrice,
+        earlyBirdDeadline: item.earlyBirdDeadline,
+        type: 'paid',
+    });
+
     return (
         <div className="w-full max-w-5xl mx-auto mb-6 rounded-lg border border-gray-200 bg-white shadow-md relative">
             {showRemainingFlag && remainingCount !== undefined && remainingCount > 0 && !hasEventEnded && (
@@ -45,7 +53,19 @@ const ExhibitorCard = ({ item, event }: ExhibitorProp) => {
                         </p>
                     )}
                 </div>
-                <span className="text-xl font-bold text-white">${item.cost.toLocaleString()}</span>
+                <div className="text-right">
+                    <div className="flex items-center gap-2">
+                        <span className="text-xl font-bold text-white">{priceInfo.displayPrice}</span>
+                        {priceInfo.originalPrice && (
+                            <span className="line-through text-white/80 text-base">{priceInfo.originalPrice}</span>
+                        )}
+                        {priceInfo.isEarlyBird && (
+                            <span className="ml-1 text-[10px] font-semibold bg-white/20 text-white px-2 py-0.5 rounded-full uppercase tracking-wide">
+                                Early Bird
+                            </span>
+                        )}
+                    </div>
+                </div>
             </div>
             <div className="p-6">
                 <ul className="space-y-4">

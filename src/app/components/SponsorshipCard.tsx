@@ -1,26 +1,37 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import { Event } from '@/types/events';
-import { getEventSponsors } from '@/constants/eventSponsors';
 import { Sponsorship } from '@/types/sponsorships';
 import FormattedPerk from '@/components/FormattedPerk';
+import { getPriceDisplay } from '@/lib/price-formatting';
 
 type SponsorProp = {
     item: Sponsorship;
     event: Event;
+    eyebrow?: string;
+    getSponsorCount?: (tierId: string) => number;
 };
 
-const SponsorshipCard = ({ item, event }: SponsorProp) => {
+const SponsorshipCard = ({ item, event, eyebrow, getSponsorCount }: SponsorProp) => {
     const eventDateTime = new Date(`${event.date}T${event.timeStart}`);
     const hasEventEnded = eventDateTime < new Date();
-    const eventSponsorsData = getEventSponsors(event.id);
     const showRemainingFlag = !!item.showRemaining;
     let remainingCount: number | undefined;
-    if (item.slotsPerEvent !== undefined && eventSponsorsData) {
-        const tierObj = eventSponsorsData.tiers.find(t => t.id === item.id || t.id === item.id + "-without-exhibit-space"); 
-        const used = tierObj?.sponsorIds.length ?? 0;
+    if (item.slotsPerEvent !== undefined && getSponsorCount) {
+        const used = Math.max(
+            getSponsorCount(item.id),
+            getSponsorCount(item.id + '-without-exhibit-space')
+        );
         remainingCount = item.slotsPerEvent - used;
     }
+
+    // Use shared price display logic to support early bird formatting
+    const priceInfo = getPriceDisplay({
+        price: item.cost,
+        earlyBirdPrice: item.earlyBirdPrice,
+        earlyBirdDeadline: item.earlyBirdDeadline,
+        type: 'paid',
+    });
 
     return (
         <div className="w-full h-full max-w-7xl mx-auto mb-6 rounded-lg border border-gray-200 bg-white shadow-md relative">
@@ -40,13 +51,35 @@ const SponsorshipCard = ({ item, event }: SponsorProp) => {
             >
                 <div>
                     <h4 className="text-[1rem] font-bold text-white">{item.title}</h4>
+                    {eyebrow && (
+                        <span className="inline-block mb-1 px-2 py-0.5 rounded-full bg-white/20 text-white text-[16px] font-semibold tracking-wide uppercase">
+                            {eyebrow}
+                        </span>
+                    )}
                     {item.slotsPerEvent !== undefined && (
                         <p className="text-sm font-medium text-white">
                             {item.slotsPerEvent} available per event
                         </p>
                     )}
                 </div>
-                <span className="text-xl font-bold text-white">${item.cost.toLocaleString()}</span>
+                <div className="text-right">
+                    <div className="flex items-center gap-2">
+                        <span className="text-xl font-bold text-white">{priceInfo.displayPrice}</span>
+                        {priceInfo.originalPrice && (
+                            <span className="line-through text-white/80 text-base">{priceInfo.originalPrice}</span>
+                        )}
+                        {priceInfo.isEarlyBird && (
+                            <span className="ml-1 text-center text-[10px] font-semibold bg-white/20 text-white px-2 py-0.5 rounded-full uppercase tracking-wide">
+                                Early Bird
+                            </span>
+                        )}
+                    </div>
+                    {priceInfo.deadlineInfo && (
+                        <div className="text-[10px] text-center text-balance text-white/90 mt-1">
+                            {priceInfo.deadlineInfo}
+                        </div>
+                    )}
+                </div>
             </div>
             <div className="p-6">
                 <ul className="space-y-4">
@@ -59,18 +92,18 @@ const SponsorshipCard = ({ item, event }: SponsorProp) => {
                                 </li>
                             );
                         }
-                        
+
                         // Handle formatted perks using FormattedPerk component
                         if (perk.formatted && perk.formatted.length > 0) {
                             // Convert formatted perks to the string format expected by FormattedPerk
                             const formattedContent = perk.formatted.map((formattedItem) => {
                                 const prefix = formattedItem.indent ? '  '.repeat(formattedItem.indent) : '';
-                                const content = formattedItem.bold ? 
-                                    `<b>${formattedItem.content}</b>` : 
+                                const content = formattedItem.bold ?
+                                    `<b>${formattedItem.content}</b>` :
                                     formattedItem.content;
                                 return `${prefix}${content}`;
                             }).join('\n');
-                            
+
                             return (
                                 <li key={index} className="flex items-start">
                                     <div className="flex-1">
@@ -79,7 +112,7 @@ const SponsorshipCard = ({ item, event }: SponsorProp) => {
                                 </li>
                             );
                         }
-                        
+
                         // Legacy format with tagline and description
                         return (
                             <li key={index} className="flex items-start">

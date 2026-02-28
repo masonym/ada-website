@@ -4,10 +4,14 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { RecapSection } from '@/types/eventRecap';
 import { getCdnPath } from '@/utils/image';
+import { getOriginalImagePath, getOriginalExtension } from '@/utils/originalImage';
+import { usePagination } from '@/hooks/usePagination';
+import Pagination from '@/components/Pagination';
 import Lightbox from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Captions from "yet-another-react-lightbox/plugins/captions";
+import Download from "yet-another-react-lightbox/plugins/download";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/plugins/captions.css";
@@ -19,23 +23,44 @@ interface GridSectionProps {
 const GridSection: React.FC<GridSectionProps> = ({ section }) => {
   const [currentImage, setCurrentImage] = useState<number | null>(null);
 
+  // Pagination settings - adjust based on section size
+  const photosPerPage = section.images.length > 50 ? 24 : section.images.length > 20 ? 16 : section.images.length;
+  const shouldPaginate = section.images.length > 20;
+
+  // Use pagination hook if needed
+  const pagination = usePagination({
+    items: section.images,
+    itemsPerPage: photosPerPage,
+    initialPage: 1
+  });
+
+  const displayImages = shouldPaginate ? pagination.currentItems : section.images;
+
   const handleClick = (index: number) => {
-    setCurrentImage(index);
+    // Adjust index for pagination - need to account for current page offset
+    const actualIndex = shouldPaginate ? (pagination.currentPage - 1) * photosPerPage + index : index;
+    setCurrentImage(actualIndex);
   };
 
   const closeLightbox = () => {
     setCurrentImage(null);
   };
 
-  // Create slides for lightbox with captions
-  const slides = section.images.map(img => ({
-    src: getCdnPath(img.src),
-    alt: img.alt,
-    title: img.caption,
-    description: img.people?.length
-      ? `Featuring: ${img.people.join(', ')}`
-      : undefined
-  }));
+  // Create slides for lightbox with captions and download URLs
+  const slides = section.images.map(img => {
+    const originalExtension = getOriginalExtension(img.src);
+    const downloadUrl = getOriginalImagePath(img.src, originalExtension);
+    
+    return {
+      src: getCdnPath(img.src),
+      alt: img.alt,
+      title: img.caption,
+      description: img.people?.length
+        ? `Featuring: ${img.people.join(', ')}`
+        : undefined,
+      download: downloadUrl
+    };
+  });
 
   return (
     <div className="mb-16">
@@ -43,7 +68,7 @@ const GridSection: React.FC<GridSectionProps> = ({ section }) => {
       {section.description && <div className="mb-6">{section.description}</div>}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {section.images.map((image, index) => {
+        {displayImages.map((image, index) => {
           const minSize = 500; // minimum width/height
           const scaleFactor = Math.max(1 / 10, minSize / image.width, minSize / image.height);
 
@@ -89,13 +114,27 @@ const GridSection: React.FC<GridSectionProps> = ({ section }) => {
         })}
       </div>
 
+      {/* Pagination controls */}
+      {shouldPaginate && (
+        <div className="mt-8">
+          <Pagination
+            currentPage={pagination.currentPage}
+            totalPages={pagination.totalPages}
+            totalItems={pagination.totalItems}
+            itemsPerPage={photosPerPage}
+            onPageChange={pagination.goToPage}
+            className="justify-center"
+          />
+        </div>
+      )}
+
       {currentImage !== null && (
         <Lightbox
           open={true}
           close={closeLightbox}
           index={currentImage}
           slides={slides}
-          plugins={[Thumbnails, Zoom, Captions]}
+          plugins={[Thumbnails, Zoom, Captions, Download]}
           carousel={{
             finite: false,
           }}

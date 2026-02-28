@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import Link from 'next/link';
 
 export default function AdminLayout({
   children,
@@ -20,9 +21,10 @@ export default function AdminLayout({
       setIsAuthenticated(auth === "true");
       setIsLoading(false);
 
-      // If not authenticated and not on login page, redirect to login
+      // If not authenticated and not on login page, redirect to login with return URL
       if (auth !== "true" && pathname !== "/admin/login") {
-        router.push("/admin/login");
+        const returnUrl = encodeURIComponent(pathname);
+        router.push(`/admin/login?returnUrl=${returnUrl}`);
       }
     };
 
@@ -54,7 +56,7 @@ export default function AdminLayout({
       <div className="min-h-screen">
         {isAuthenticated && pathname !== "/admin/login" && (
           <div className="bg-white shadow-sm p-4 flex justify-between items-center">
-            <h1 className="text-xl font-semibold">Admin Dashboard</h1>
+            <h1 className="text-xl font-semibold"><Link href='/admin'>Admin Dashboard</Link></h1>
             <button
               onClick={handleLogout}
               className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-md text-sm font-medium transition-colors"

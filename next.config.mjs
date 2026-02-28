@@ -17,6 +17,11 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'cdn.americandefensealliance.org',
                 port: '',
+            },
+            {
+                protocol: 'https',
+                hostname: 'nc4xlou0.cdn.sanity.io',
+                port: '',
             }
         ],
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840, 4096],
@@ -27,6 +32,15 @@ const nextConfig = {
         AWS_S3_BUCKET_NAME: process.env.AWS_BUCKET_NAME,
         AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
         AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
+    },
+    async redirects() {
+        return [
+            {
+                source: '/events/2025-defense-technology-aerospace-procurement-conference/:path*',
+                destination: '/events/2026-defense-technology-aerospace-procurement-conference/:path*',
+                permanent: true,
+            },
+        ];
     },
 };
 

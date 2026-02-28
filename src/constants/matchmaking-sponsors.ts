@@ -1,3 +1,8 @@
+/**
+ * Legacy matchmaking sponsors data. New data should be added via Sanity CMS.
+ * This file is used as a fallback when Sanity has no data for an event.
+ */
+
 import { SPONSORS, Sponsor } from './sponsors';
 
 /**
@@ -43,6 +48,14 @@ export const EVENT_MATCHMAKING_SPONSORS: Record<string, MatchmakingSponsorsData>
     title: "Companies Participating in Matchmaking Sessions",
     description: "These industry leaders will be available for one-on-one matchmaking sessions during the event."
   },
+  "2026-navy-marine-corps-procurement-conference": {
+    sponsorIds: [
+      "navair",
+      "us-gsa",
+    ],
+    title: "Companies Participating in Matchmaking Sessions",
+    description: "Stay tuned for additional companies to be added as we get closer to the event date!"
+  },
 };
 
 /**
@@ -73,7 +86,7 @@ export const getEventMatchmakingSponsors = (eventSlug: string): MatchmakingSpons
 export const getEventMatchmakingMetadata = (eventSlug: string): { title?: string; description?: string } => {
   const eventData = EVENT_MATCHMAKING_SPONSORS[eventSlug];
   if (!eventData) return {};
-  
+
   return {
     title: eventData.title,
     description: eventData.description

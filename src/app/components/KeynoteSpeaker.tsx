@@ -2,31 +2,28 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { getSpeakersForEvent, SPEAKERS } from '@/constants/speakers';
 import { EVENTS } from '@/constants/events';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { getCdnPath } from '@/utils/image';
-
-type KeynoteSpeaker = {
-  id: string;
-  image: string;
-  name: string;
-  position: string;
-  company: string;
-  bio: string;
-  keynote?: {
-    isKeynote: boolean;
-    headerText?: string;
-  };
-};
+import { EventSpeakerPublic } from '@/lib/sanity';
 
 type KeynoteSpeakerProps = {
   eventId: number;
   eventShorthand: string;
   showExpandedBio?: boolean;
+  sanityKeynoteSpeakers: EventSpeakerPublic[];
 };
 
-const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand, showExpandedBio = true }) => {
+// helper to get sanity image URL
+function getSanityImageUrl(ref: string) {
+  return `https://cdn.sanity.io/images/nc4xlou0/production/${ref
+    .replace("image-", "")
+    .replace("-webp", ".webp")
+    .replace("-jpg", ".jpg")
+    .replace("-png", ".png")}`;
+}
+
+const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand, showExpandedBio = true, sanityKeynoteSpeakers }) => {
   const [expandedStates, setExpandedStates] = useState<{ [key: string]: boolean }>({});
   const [heightStates, setHeightStates] = useState<{
     [key: string]: {
@@ -38,23 +35,19 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
   const bioRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const collapsedRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
-  // Get the event and its keynote speaker configuration
-  const event = EVENTS.find(e => e.id === eventId);
-  const keynoteConfig = event?.features?.keynoteSpeakers || [];
-  
-  // Map keynote speaker IDs to actual speaker data
-  const keynoteSpeakers = keynoteConfig.map(config => {
-    const speaker = SPEAKERS[config.speakerId];
-    if (!speaker) return null;
-    return {
-      ...speaker,
-      id: config.speakerId,
-      keynote: {
-        isKeynote: true,
-        headerText: config.headerText
-      }
-    };
-  }).filter(Boolean) as (typeof SPEAKERS[string] & { id: string; keynote: { isKeynote: boolean; headerText: string } })[];
+  // normalize to common format
+  const keynoteSpeakers = sanityKeynoteSpeakers.map(s => ({
+    id: s.speakerId,
+    name: s.speakerName,
+    sanityImage: s.speakerImage,
+    position: s.speakerPosition || '',
+    company: s.speakerCompany || '',
+    bio: s.speakerBio || '',
+    keynote: {
+      isKeynote: true,
+      headerText: s.keynoteHeaderText || 'Keynote Speaker'
+    }
+  }));
 
   useEffect(() => {
     if (!keynoteSpeakers) return;
@@ -103,10 +96,13 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
                 <div className="relative w-48 h-48 mb-6">
                   <div className="absolute inset-0 bg-gradient-to-br from-lightBlue-400 to-blue-600 rounded-full opacity-75 blur-md"></div>
                   <Image
-                    src={getCdnPath(`speakers/${speaker.image}`)}
+                    src={speaker.sanityImage?.asset?._ref 
+                      ? getSanityImageUrl(speaker.sanityImage.asset._ref)
+                      : ''}
                     alt={speaker.name}
                     fill
                     className="rounded-full relative z-10 border-4 border-white shadow-lg object-cover"
+                    unoptimized={!!speaker.sanityImage}
                   />
                 </div>
                 <div className="text-center">

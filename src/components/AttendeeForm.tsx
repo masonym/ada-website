@@ -91,9 +91,9 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
   const sbaOptions = [
     '8(a) Small Business',
     'HUBZone Small Business',
-    'Service-Disabled Veteran-owned Small Business (SDVOSB)',
-    'Veteran-owned Small Business (VOSB)',
-    'Women-owned Small Business (WOSB)',
+    'Service-Disabled Veteran-Owned Small Business (SDVOSB)',
+    'Veteran-Owned Small Business (VOSB)',
+    'Women-Owned Small Business (WOSB)',
     'Other',
   ];
 

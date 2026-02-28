@@ -323,6 +323,7 @@ export async function sendRegistrationConfirmationEmail({
           vipNetworkingReception,
           matchmakingSessions: event.matchmakingSessions || undefined,
           exhibitorInstructions: exhibitorInstructions || '',
+          vipNetworkingReceptionUrl: `${eventUrl}/about/vip-networking-reception`,
         }),
         attachments: emailAttachments,
       });
@@ -346,6 +347,7 @@ export async function sendRegistrationConfirmationEmail({
           attendeeDetailsHtml,
           hotelInfo,
           vipNetworkingReception,
+          vipNetworkingReceptionUrl: `${eventUrl}/about/vip-networking-reception`,
         }),
         attachments: emailAttachments,
       });
@@ -387,6 +389,7 @@ export async function sendRegistrationConfirmationEmail({
           attendeeDetailsHtml,
           hotelInfo,
           vipNetworkingReception,
+          vipNetworkingReceptionUrl: `${eventUrl}/about/vip-networking-reception`,
         }),
         attachments: emailAttachments,
       });

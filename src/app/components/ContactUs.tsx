@@ -64,7 +64,7 @@ const ContactUs: React.FC = () => {
                 type="text"
                 id="name"
                 {...register('name', { required: true })}
-                className="w-full px-3 py-2 bg-navy-700 border border-navy-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-navy-700 border border-navy-600 rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="John Doe"
               />
             </div>
@@ -77,7 +77,7 @@ const ContactUs: React.FC = () => {
                 type="email"
                 id="email"
                 {...register('email', { required: true })}
-                className="w-full px-3 py-2 bg-navy-700 border border-navy-600 rounded-md text-navy-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-navy-700 border border-navy-600 rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="john@example.com"
               />
             </div>
@@ -90,7 +90,7 @@ const ContactUs: React.FC = () => {
                 id="message"
                 rows={4}
                 {...register('message', { required: true })}
-                className="w-full px-3 py-2 bg-navy-700 border border-navy-600 rounded-md text-navy-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-navy-700 border border-navy-600 rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Your message here..."
               ></textarea>
             </div>
