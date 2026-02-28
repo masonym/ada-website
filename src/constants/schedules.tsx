@@ -1434,24 +1434,6 @@ export const SCHEDULES = [
                     },
                     {
                         time: "8:45 AM",
-                        title: "Welcoming Remarks – State of Texas",
-                        location: "Rio Hall B, Plaza Lower Level",
-                        // speakers: [{
-                        //     name: "Paul Norwood",
-                        //     title: "Director, Texas Military Preparedness Commission"
-                        // }],
-                    },
-                    {
-                        time: "9:00 AM",
-                        title: "KEYNOTE ADDRESS – UNITED STATES AIR FORCE",
-                        location: "Rio Hall B, Plaza Lower Level",
-                        // speakers: [{
-                        //     name: "Lieutenant General Jason Armagost",
-                        //     title: "Deputy Commander, Air Force Global Strike Command, and Deputy Commander, Air Forces Strategic-Air, U.S. Strategic Command"
-                        // }],
-                    },
-                    {
-                        time: "9:30 AM",
                         title: "DEFENSEWERX – Accelerating Innovative Tech Solutions",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
@@ -1459,22 +1441,15 @@ export const SCHEDULES = [
                         }],
                     },
                     {
-                        time: "10:00 AM",
-                        title: "Major Air Force Programs Driving Contracts",
+                        time: "9:15 AM",
+                        title: "KEYNOTE ADDRESS: DEPARTMENT OF THE AIR FORCE",
                         location: "Rio Hall B, Plaza Lower Level",
-                        // speakers: [
-                        //     {
-                        //         name: "Major Claire Randolph",
-                        //         title: "AFCENT Chief of Weapons and Tactics, U. S. Air Force"
-                        //     },
-                        //     {
-                        //         name: "Jerome F. McBrearty",
-                        //         title: "Vice President, B-2 Program Manager, Aeronuatics Systems Strike, Northrop Grumman"
-                        //     }
-                        // ],
+                        speakers: [{
+                            speakerId: "scott-kiser"
+                        }],
                     },
                     {
-                        time: "10:35 AM",
+                        time: "9:50 AM",
                         title: "Industry Insight",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
@@ -1499,22 +1474,39 @@ export const SCHEDULES = [
                         }],
                     },
                     {
+                        time: "10:00 AM",
+                        title: "KEYNOTE ADDRESS – FUTURE AIR FORCE ORDER OF BATTLE",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "dr-david-g-jester-smith"
+                        }],
+                    },
+                    {
+                        time: "10:45 AM",
+                        title: "Networking Break with Exhibitors",
+                        location: "Rio Hall A, Plaza Lower Level",
+                    },
+                    {
                         time: "11:15 AM",
-                        title: "Major Space Force Programs Driving Contracts",
+                        title: "Industry Insight",
+                        location: "Rio Hall B, Plaza Lower Level",
+                    },
+                    {
+                        time: "11:20 AM",
+                        title: "The Space Force Front Door Program – Connecting With Industry",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "victor-vigliotti",
+                        }],
+                    },
+                    {
+                        time: "11:55 AM",
+                        title: "Space Force Requirements Driving Contracts",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
-                            // {
-                            //     name: "Major Julius 'Juice' Williams",
-                            //     title: "Chief, Strategic Engagements, Space Acquisition and Integration, U.S. Space Force"
-                            // },
-                            // {
-                            //     name: "Merrick B. Garb",
-                            //     title: "Branch Chief for Commercial, Civil, and Interagency Partnerships, Global Partnerships Directorate, Headquarters, U.S. Space Force"
-                            // },
-                            // {
-                            //     name: "Ben Nicholson",
-                            //     title: "Chief Business Officer, Ursa Major"
-                            // },
+                            {
+                                speakerId: "victor-vigliotti",
+                            },
                             {
                                 speakerId: "captain-md-doc-rana"
                             },
@@ -1524,28 +1516,9 @@ export const SCHEDULES = [
                         ],
                     },
                     {
-                        time: "11:50 AM",
-                        title: "KEYNOTE ADDRESS – FUTURE AIR FORCE ORDER OF BATTLE",
+                        time: "12:30 PM",
+                        title: "Air Force Requirements Driving Contracts",
                         location: "Rio Hall B, Plaza Lower Level",
-                        speakers: [{
-                            speakerId: "dr-david-g-jester-smith"
-                        }],
-                    },
-                    {
-                        time: "12:25 PM",
-                        title: "Cybersecurity/CMMC Update Panel",
-                        location: "Rio Hall B, Plaza Lower Level",
-                        speakers: [
-                            // {
-                            //     speakerId: "kareem-sykes",
-                            //     sponsor: "MODERATOR",
-                            //     sponsorStyle: "bg-sky-300 text-slate-900"
-                            // },
-                            // {
-                            //     name: "Lucian Niemeyer",
-                            //     title: "CEO, The Niemeyer Group, CEO, Building Cyber Security, and Former Assistant Secretary of Defense for Energy, Installations and Environment"
-                            // }
-                        ],
                     },
                     {
                         time: "1:00 PM",
@@ -1563,21 +1536,13 @@ export const SCHEDULES = [
                         }],
                     },
                     {
-                        time: "2:10 PM",
-                        title: "KEYNOTE ADDRESS: DEPARTMENT OF THE AIR FORCE SMALL BUSINESS PROGRAMS",
-                        location: "Rio Hall B, Plaza Lower Level",
-                        speakers: [{
-                            speakerId: "scott-kiser"
-                        }],
-                    },
-                    {
-                        time: "2:40 PM",
-                        title: "Air Force & Space Force Small Business Programs",
+                        time: "2:15 PM",
+                        title: "Air Force/Space Force Small Business Programs",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
                                 speakerId: "trish-martinelli",
-                                sponsor: "Moderator",
+                                sponsor: "MODERATOR",
                                 sponsorStyle: "bg-sky-300 text-slate-900"
                             },
                             {
@@ -1589,7 +1554,7 @@ export const SCHEDULES = [
                         ],
                     },
                     {
-                        time: "3:25 PM",
+                        time: "3:00 PM",
                         title: "Industry Insight",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
@@ -1599,12 +1564,13 @@ export const SCHEDULES = [
                         }],
                     },
                     {
-                        time: "3:35 PM",
+                        time: "3:10 PM",
                         title: "Expediting Additive Manufacture at the Warfighter Edge",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
-                                speakerId: "andrew-gardner",
+                                name: "Richard 'Ric' Slater",
+                                title: "Technical Consultant, Encountering Innovation, Kansas Small Business Development Center",
                                 sponsor: "Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900"
                             },
@@ -1612,11 +1578,28 @@ export const SCHEDULES = [
                                 speakerId: "rob-graziano"
                             },
                             {
+                                speakerId: "andrew-gardner"
+                            },
+                            {
+                            speakerId: "bijo-mathew"
+                            },
+                            {
                                 speakerId: "madison-jones"
                             },
                             {
                                 speakerId: "aaron-williamson-pmp"
+                            },
+                            {
+                            speakerId: "scott-gray"
                             }
+                        ],
+                    },
+                    {
+                        time: "4:00 PM",
+                        title: "Cybersecurity/CMMC Update",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [
+                        {speakerId: "nelinia-nel-varenus"}
                         ],
                     },
                     {
@@ -1682,12 +1665,10 @@ export const SCHEDULES = [
                                 sponsor: "Moderator"
                             },
                             {
-                                name: "Irina S. Litchfield",
-                                title: "Chair, Quantum Standards & Integration Institute"
+                            speakerId: "irina-s-litchfield"
                             },
                             {
-                                name: "Justyn Horner",
-                                title: "Founder and CEO of I/ONX High Compute Processing (HPC)"
+                            speakerId: "justyn-hornor"
                             },
                             // {
                             //     name: "Brian S. FitzPatrick",
@@ -1696,7 +1677,7 @@ export const SCHEDULES = [
                         ],
                     },
                     {
-                        time: "9:45 AM",
+                        time: "9:40 AM",
                         title: "Fireside Chat: Quantum's Critical Role in Defense",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
@@ -1709,7 +1690,7 @@ export const SCHEDULES = [
                         ],
                     },
                     {
-                        time: "10:00 AM",
+                        time: "9:55 AM",
                         title: "Industry Insight",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
@@ -1732,7 +1713,7 @@ export const SCHEDULES = [
                         ],
                     },
                     {
-                        time: "10:45 AM",
+                        time: "10:40 AM",
                         title: "Industry Insight",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
@@ -1742,12 +1723,12 @@ export const SCHEDULES = [
                         }],
                     },
                     {
-                        time: "10:55 AM",
+                        time: "10:50 AM",
                         title: "Networking Break with Exhibitors",
                         location: "Rio Hall A, Plaza Lower Level",
                     },
                     {
-                        time: "11:10 AM",
+                        time: "11:05 AM",
                         title: "Industry Insight",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
@@ -1757,49 +1738,35 @@ export const SCHEDULES = [
                         }],
                     },
                     {
-                        time: "11:15 AM",
-                        title: "How To Do Business With the Primes",
-                        location: "Rio Hall B, Plaza Lower Level",
-                        speakers: [
-                            {
-                                speakerId: "trish-martinelli",
-                                sponsor: "Moderator",
-                                sponsorStyle: "bg-sky-300 text-slate-900"
-                            },
-                            // {
-                            //     speakerId: "david-canada"
-                            // },
-                            // {
-                            //     name: "Melissa Hobbs-Hendrickson",
-                            //     title: "Director, Business Development, Integrated Defense Solutions, BAE Systems"
-                            // },
-                            // {
-                            //     speakerId: "stacey-r-washington"
-                            // },
-                            // {
-                            //     speakerId: "robyn-card"
-                            // }
-                        ],
-                    },
-                    {
-                        time: "11:50 AM",
+                        time: "11:10 AM",
                         title: "Red Tape to Revenue: How Startups Navigate Government Buying",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
                                 speakerId: "marcos-cervantes",
-                                sponsor: "Moderator"
+                                sponsor: "Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900"
                             },
                             {
-                                speakerId: "brandon-schreiner"
+                                speakerId: "major-brandon-schreiner"
                             },
                             {
-                                speakerId: "victor-montellano"
+                                speakerId: "major-victor-montellano"
                             },
                             {
                                 speakerId: "glenn-banton"
                             }
                         ],
+                    },
+                    {
+                        time: "11:50 AM",
+                        title: "How To Do Business With the Primes",
+                        location: "Rio Hall B, Plaza Lower Level",
+                        speakers: [{
+                            speakerId: "trish-martinelli",
+                            sponsor: "Moderator",
+                            sponsorStyle: "bg-sky-300 text-slate-900"
+                        }],
                     },
                     {
                         time: "12:30 PM",
