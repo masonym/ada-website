@@ -1,11 +1,11 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { SCHEDULES } from '@/constants/schedules';
 import { EVENTS } from '@/constants/events';
 import { Event } from '@/types/events';
 import Image from 'next/image';
 import { getCdnPath } from '@/utils/image';
-import { PDFDownloadButton, PDFPreviewButton } from './SchedulePDF';
+import { PDFDownloadButton, PDFPreviewButton, SponsorTierForPDF } from './SchedulePDF';
 import { EventSpeakerPublic } from '@/lib/sanity';
 
 // helper to get sanity image URL
@@ -91,6 +91,118 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
   const [customTitle, setCustomTitle] = useState<string>('');
   const [customSubtitle, setCustomSubtitle] = useState<string>('');
   const [twoColumnLayout, setTwoColumnLayout] = useState<boolean>(true);
+  const [selectedSponsorTierIds, setSelectedSponsorTierIds] = useState<string[]>([]);
+  const [showSponsorsInPDF, setShowSponsorsInPDF] = useState<boolean>(false);
+  const [sponsorLoading, setSponsorLoading] = useState<boolean>(false);
+  const [fetchedTiers, setFetchedTiers] = useState<{ id: string; name: string; style?: string; sponsors: { _id: string; name: string; logoUrl: string }[] }[]>([]);
+  const [tierSizeMultipliers, setTierSizeMultipliers] = useState<Record<string, number>>({});
+  const [fullPageTierIds, setFullPageTierIds] = useState<string[]>([]);
+  const [fullPageFooterImage, setFullPageFooterImage] = useState<string | undefined>(undefined);
+
+  // fetch sponsor tiers from sanity via the banner-generator API
+  const fetchSponsorTiers = useCallback(async () => {
+    setSponsorLoading(true);
+    try {
+      const res = await fetch('/api/admin/banner-generator');
+      const data = await res.json();
+      const eventData = (data.events || []).find((e: any) => e.eventId === eventId);
+      if (eventData?.tiers) {
+        // Debug: log full tier data
+        eventData.tiers.forEach((tier: any) => {
+          console.log(`Tier "${tier.name}" (${tier.id}):`, {
+            totalFromAPI: tier.sponsors.length,
+            sponsors: tier.sponsors.map((s: any) => ({
+              name: s.name,
+              hasLogo: !!s.logoUrl,
+              logoUrl: s.logoUrl?.substring(0, 50) + '...',
+            })),
+          });
+        });
+        setFetchedTiers(eventData.tiers);
+      }
+    } catch (err) {
+      console.error('Failed to fetch sponsor tiers:', err);
+    } finally {
+      setSponsorLoading(false);
+    }
+  }, [eventId]);
+
+  useEffect(() => {
+    if (showSponsorsInPDF && fetchedTiers.length === 0) {
+      fetchSponsorTiers();
+    }
+  }, [showSponsorsInPDF, fetchedTiers.length, fetchSponsorTiers]);
+
+  // tier display order (same as BannerGeneratorPage)
+  const TIER_ORDER = [
+    'platinum', 'diamond', 'gold', 'silver', 'bronze', 'vip',
+    'coffee', 'networking', 'luncheon', 'beverage', 'small', 'exhibitor', 'partner',
+  ];
+  const getTierPriority = (tierName: string): number => {
+    const name = tierName.toLowerCase();
+    for (let i = 0; i < TIER_ORDER.length; i++) {
+      if (name.includes(TIER_ORDER[i])) return i;
+    }
+    return TIER_ORDER.length;
+  };
+
+  const availableTiers = [...fetchedTiers].sort(
+    (a, b) => getTierPriority(a.name) - getTierPriority(b.name)
+  );
+
+  // build proxied PNG URL for react-pdf compatibility
+  const buildPdfLogoUrl = (sanityUrl: string) => {
+    // append fm=png to force PNG format from Sanity CDN
+    const pngUrl = sanityUrl.includes('?')
+      ? `${sanityUrl}&fm=png&w=200&h=120&fit=max&q=80`
+      : `${sanityUrl}?fm=png&w=200&h=120&fit=max&q=80`;
+    const origin = typeof window !== 'undefined' ? window.location.origin : '';
+    return `${origin}/api/proxy-image?url=${encodeURIComponent(pngUrl)}`;
+  };
+
+  const resolvedSponsorTiers: SponsorTierForPDF[] = showSponsorsInPDF
+    ? availableTiers
+        .filter(tier => selectedSponsorTierIds.includes(tier.id))
+        .map(tier => {
+          // Debug: check for sponsors without logos
+          const sponsorsWithoutLogos = tier.sponsors.filter(s => !s.logoUrl || s.logoUrl.trim() === '');
+          if (sponsorsWithoutLogos.length > 0) {
+            console.warn(`Tier "${tier.name}" has ${sponsorsWithoutLogos.length} sponsors without logos:`, sponsorsWithoutLogos.map(s => s.name));
+          }
+          
+          const sponsorsWithLogos = tier.sponsors
+            .filter(s => s.logoUrl && s.logoUrl.trim() !== ''); // Filter out sponsors without logos
+          
+          console.log(`Tier "${tier.name}" final count:`, {
+            original: tier.sponsors.length,
+            withoutLogos: sponsorsWithoutLogos.length,
+            withLogos: sponsorsWithLogos.length,
+            finalForPDF: sponsorsWithLogos.length,
+          });
+          
+          return {
+            id: tier.id,
+            name: tier.name,
+            style: tier.style,
+            sizeMultiplier: tierSizeMultipliers[tier.id] || 1.0,
+            fullPage: fullPageTierIds.includes(tier.id),
+            sponsors: sponsorsWithLogos.map(s => ({
+              id: s._id,
+              name: s.name,
+              logoUrl: buildPdfLogoUrl(s.logoUrl),
+            })),
+          };
+        })
+        .filter(tier => tier.sponsors.length > 0)
+    : [];
+
+  const toggleSponsorTier = (tierId: string) => {
+    setSelectedSponsorTierIds(prev =>
+      prev.includes(tierId)
+        ? prev.filter(id => id !== tierId)
+        : [...prev, tierId]
+    );
+  };
 
   if (!schedule || !event) {
     return <div className="p-4 text-red-500 font-semibold">Schedule not found</div>;
@@ -138,6 +250,9 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
               <div className="speakers mt-2">
                 {item.speakers.map((speaker, index) => {
                   const resolvedSpeaker = resolveSpeaker(speaker, sanitySpeakerMap);
+                  const isDiscussant =
+                    resolvedSpeaker.speakerId === 'nelinia-nel-varenus' &&
+                    item.time === '12:25 PM';
                   return (
                     <div key={index} className="speaker mb-1 flex items-start gap-3">
                       {showSpeakers && (resolvedSpeaker.sanityImage?.asset?._ref || resolvedSpeaker.photo) && (
@@ -162,8 +277,22 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                           )}
                         </div>
                       )}
-                      <div className="text-balance">
-                        <div className="font-semibold text-md">{resolvedSpeaker.name} {resolvedSpeaker.sponsor != "Pre-Recorded Address" && <span className={`w-fit text-nowrap rounded-lg md:mx-1 text-xs px-2 py-1 ${resolvedSpeaker.sponsorStyle}`}>{resolvedSpeaker.sponsor}</span>}</div>
+                      <div className="text-balance space-y-1">
+                        <div className="font-semibold text-md flex flex-wrap items-center gap-2">
+                          <span className="inline-flex flex-wrap items-baseline gap-2">
+                            {isDiscussant && (
+                              <span className="font-normal underline underline-offset-4 text-sm text-navy-800">
+                                Discussant:
+                              </span>
+                            )}
+                            <span>{resolvedSpeaker.name}</span>
+                          </span>
+                          {resolvedSpeaker.sponsor && resolvedSpeaker.sponsor !== "Pre-Recorded Address" && (
+                            <span className={`w-fit text-nowrap rounded-lg md:mx-1 text-xs px-2 py-1 ${resolvedSpeaker.sponsorStyle}`}>
+                              {resolvedSpeaker.sponsor}
+                            </span>
+                          )}
+                        </div>
                         {resolvedSpeaker.title && <div className="speaker-title text-xs my-0.5">{resolvedSpeaker.title}</div>}
                         {resolvedSpeaker.affiliation && <div className="speaker-affiliation font-bold text-xs my-0.5">{resolvedSpeaker.affiliation}</div>}
                       </div>
@@ -339,6 +468,141 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
             ))}
           </div>
 
+          {/* Sponsor tiers for PDF */}
+          <div className="control-section">
+            <h3>Sponsor Logos in PDF</h3>
+            <div className="form-control">
+              <label className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={showSponsorsInPDF}
+                  onChange={(e) => {
+                    setShowSponsorsInPDF(e.target.checked);
+                    if (!e.target.checked) setSelectedSponsorTierIds([]);
+                  }}
+                  className="mr-2"
+                />
+                Show sponsor logos after schedule
+              </label>
+            </div>
+            {showSponsorsInPDF && sponsorLoading && (
+              <p className="text-xs text-gray-500 mt-1">Loading sponsor tiers...</p>
+            )}
+            {showSponsorsInPDF && !sponsorLoading && availableTiers.length > 0 && (
+              <div className="mt-2 space-y-1 max-h-48 overflow-y-auto border border-gray-200 rounded-md p-2">
+                <div className="flex gap-2 mb-1">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedSponsorTierIds(availableTiers.map(t => t.id))}
+                    className="text-xs text-blue-600 hover:text-blue-800"
+                  >
+                    Select All
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedSponsorTierIds([])}
+                    className="text-xs text-gray-500 hover:text-gray-700"
+                  >
+                    Clear
+                  </button>
+                </div>
+                {availableTiers.map((tier) => (
+                  <div key={tier.id} className="space-y-1">
+                    <label className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-1 rounded">
+                      <input
+                        type="checkbox"
+                        checked={selectedSponsorTierIds.includes(tier.id)}
+                        onChange={() => toggleSponsorTier(tier.id)}
+                        className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                      />
+                      <span className="text-sm text-gray-700">{tier.name}</span>
+                      <span className="text-xs text-gray-400">({tier.sponsors.length})</span>
+                    </label>
+                    {selectedSponsorTierIds.includes(tier.id) && (
+                      <div className="ml-6 space-y-1">
+                        <div className="flex items-center gap-2">
+                          <label className="text-xs text-gray-600 whitespace-nowrap">
+                            Size: {Math.round((tierSizeMultipliers[tier.id] || 1.0) * 100)}%
+                          </label>
+                          <input
+                            type="range"
+                            min="50"
+                            max="200"
+                            step="5"
+                            value={(tierSizeMultipliers[tier.id] || 1.0) * 100}
+                            onChange={(e) => {
+                              const newValue = parseInt(e.target.value) / 100;
+                              setTierSizeMultipliers(prev => ({
+                                ...prev,
+                                [tier.id]: newValue,
+                              }));
+                            }}
+                            className="flex-1 h-1"
+                          />
+                        </div>
+                        <label className="flex items-center gap-1.5 cursor-pointer">
+                          <input
+                            type="checkbox"
+                            checked={fullPageTierIds.includes(tier.id)}
+                            onChange={() => {
+                              setFullPageTierIds(prev =>
+                                prev.includes(tier.id)
+                                  ? prev.filter(id => id !== tier.id)
+                                  : [...prev, tier.id]
+                              );
+                            }}
+                            className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                          />
+                          <span className="text-xs text-gray-600">Separate page (full width)</span>
+                        </label>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+            {showSponsorsInPDF && !sponsorLoading && availableTiers.length === 0 && (
+              <p className="text-xs text-gray-500 mt-1">No sponsor tiers found for this event.</p>
+            )}
+            {showSponsorsInPDF && selectedSponsorTierIds.length > 0 && (
+              <p className="text-xs text-gray-500 mt-1">
+                Logos will fill remaining space after each day in the PDF.
+              </p>
+            )}
+            {showSponsorsInPDF && fullPageTierIds.length > 0 && (
+              <div className="mt-3 border-t border-gray-200 pt-2">
+                <label className="text-sm font-medium text-gray-700">Footer image for full-page sponsors</label>
+                <input
+                  type="file"
+                  accept="image/png,image/jpeg,image/jpg"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      const reader = new FileReader();
+                      reader.onload = (ev) => {
+                        setFullPageFooterImage(ev.target?.result as string);
+                      };
+                      reader.readAsDataURL(file);
+                    }
+                  }}
+                  className="mt-1 block w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                />
+                {fullPageFooterImage && (
+                  <div className="mt-2 flex items-center gap-2">
+                    <img src={fullPageFooterImage} alt="Footer preview" className="h-10 object-contain border rounded" />
+                    <button
+                      type="button"
+                      onClick={() => setFullPageFooterImage(undefined)}
+                      className="text-xs text-red-500 hover:text-red-700"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
           {/* Print and PDF buttons */}
           <div className="control-section">
             <div className="flex flex-col sm:flex-row gap-3">
@@ -360,6 +624,8 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                 selectedDays={selectedDays}
                 twoColumnLayout={twoColumnLayout}
                 sanitySpeakers={sanitySpeakers}
+                sponsorTiers={resolvedSponsorTiers}
+                fullPageFooterImage={fullPageFooterImage}
               />
               
               {/* PDF Download Button */}
@@ -373,6 +639,8 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                 selectedDays={selectedDays}
                 twoColumnLayout={twoColumnLayout}
                 sanitySpeakers={sanitySpeakers}
+                sponsorTiers={resolvedSponsorTiers}
+                fullPageFooterImage={fullPageFooterImage}
                 fileName={`${event.title.toLowerCase().replace(/\s+/g, '-')}-schedule.pdf`}
               />
             </div>

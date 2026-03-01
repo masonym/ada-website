@@ -1506,13 +1506,13 @@ export const SCHEDULES = [
                                 speakerId: "captain-md-doc-rana"
                             },
                             {
-                                speakerId: "aimee-zick"
+                                speakerId: "aimee-z-zick"
                             }
                         ],
                     },
                     {
                         time: "12:25 PM",
-                        title: "Cybersecurity/CMMC Update –   Project Spectrum",
+                        title: "Cybersecurity/CMMC Update – \nProject Spectrum",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {

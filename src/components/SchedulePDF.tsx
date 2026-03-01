@@ -87,6 +87,95 @@ type ScheduleDay = {
   items: ScheduleItem[];
 };
 
+// sponsor types for PDF rendering
+export type SponsorForPDF = {
+  id: string;
+  name: string;
+  logoUrl: string;
+};
+
+export type SponsorTierForPDF = {
+  id: string;
+  name: string;
+  style?: string;
+  sponsors: SponsorForPDF[];
+  sizeMultiplier?: number;
+  fullPage?: boolean;
+};
+
+// tier display order (same as BannerGeneratorPage / SponsorLogos.tsx)
+const TIER_ORDER = [
+  'platinum',
+  'diamond',
+  'gold',
+  'silver',
+  'bronze',
+  'vip',
+  'coffee',
+  'networking',
+  'luncheon',
+  'beverage',
+  'small',
+  'exhibitor',
+  'partner',
+];
+
+const getTierPriority = (tierName: string): number => {
+  const name = tierName.toLowerCase();
+  for (let i = 0; i < TIER_ORDER.length; i++) {
+    if (name.includes(TIER_ORDER[i])) return i;
+  }
+  return TIER_ORDER.length;
+};
+
+// convert Tailwind tier style classes to PDF-compatible colors
+const convertTierStyleToPDF = (tierName: string, style?: string): { backgroundColor: string; color: string } => {
+  // if an explicit style string is provided, parse it
+  if (style) {
+    let bg = '#0047AB';
+    let fg = '#ffffff';
+
+    const bgHex = style.match(/bg-\[#([0-9a-fA-F]{3,8})\]/);
+    if (bgHex) bg = `#${bgHex[1]}`;
+
+    if (style.includes('bg-amber-400')) bg = '#fbbf24';
+    else if (style.includes('bg-amber-700')) bg = '#b45309';
+    else if (style.includes('bg-gray-300')) bg = '#d1d5db';
+    else if (style.includes('bg-sky-300')) bg = '#7dd3fc';
+    else if (style.includes('bg-sb-100') || style.includes('bg-[#3FB4E6]')) bg = '#3FB4E6';
+    else if (style.includes('bg-navy-800') || style.includes('bg-[#1B212B]')) bg = '#1B212B';
+    else if (style.includes('bg-purple-600')) bg = '#9333ea';
+    else if (style.includes('bg-blue-500')) bg = '#3b82f6';
+    else if (style.includes('bg-blue-600')) bg = '#2563eb';
+
+    if (style.includes('text-slate-900')) fg = '#0f172a';
+    else if (style.includes('text-white')) fg = '#ffffff';
+
+    const textHex = style.match(/text-\[#([0-9a-fA-F]{3,8})\]/);
+    if (textHex) fg = `#${textHex[1]}`;
+
+    return { backgroundColor: bg, color: fg };
+  }
+
+  // fallback: derive from tier name (same as getDefaultTierStyle in BannerGeneratorPage)
+  const name = tierName.toLowerCase();
+  if (name.includes('small')) return { backgroundColor: '#3FB4E6', color: '#0f172a' };
+  if (name.includes('gold')) return { backgroundColor: '#fbbf24', color: '#0f172a' };
+  if (name.includes('silver')) return { backgroundColor: '#d1d5db', color: '#0f172a' };
+  if (name.includes('bronze')) return { backgroundColor: '#b45309', color: '#ffffff' };
+  if (name.includes('premier')) return { backgroundColor: '#9333ea', color: '#ffffff' };
+  if (name.includes('platinum')) return { backgroundColor: '#7dd3fc', color: '#0f172a' };
+  if (name.includes('diamond')) return { backgroundColor: '#3b82f6', color: '#ffffff' };
+  if (name.includes('exhibitor')) return { backgroundColor: '#1B212B', color: '#ffffff' };
+  if (name.includes('coffee')) return { backgroundColor: '#0891b2', color: '#ffffff' };
+  if (name.includes('vip')) return { backgroundColor: '#7c3aed', color: '#ffffff' };
+  if (name.includes('networking')) return { backgroundColor: '#0891b2', color: '#ffffff' };
+  if (name.includes('luncheon')) return { backgroundColor: '#059669', color: '#ffffff' };
+  if (name.includes('beverage')) return { backgroundColor: '#0891b2', color: '#ffffff' };
+  if (name.includes('partner')) return { backgroundColor: '#1B212B', color: '#ffffff' };
+  return { backgroundColor: '#2563eb', color: '#ffffff' };
+};
+
 // Register fonts (we can add Gotham font files if available)
 Font.register({
   family: 'Gotham',
@@ -202,11 +291,22 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     color: '#666666',
     marginBottom: 1,
+    textWrap: 'balance',
+    maxWidth: '90%',
   },
   speakerAffiliation: {
     fontSize: 8,
     fontWeight: 'bold',
     color: '#0047AB',
+  },
+  discussantLabel: {
+    fontSize: 8,
+    textDecoration: 'underline',
+    textDecorationStyle: 'solid',
+    textDecorationColor: '#1B212B',
+    color: '#1B212B',
+    fontWeight: 'normal',
+    marginBottom: 1,
   },
   speakerSponsor: {
     fontSize: 8,
@@ -245,6 +345,38 @@ const styles = StyleSheet.create({
     // borderTopColor: '#CCCCCC',
     marginTop: 2,
     marginBottom: 2,
+  },
+  sponsorSection: {
+    marginTop: 8,
+    paddingTop: 4,
+  },
+  sponsorTierHeader: {
+    fontSize: 8,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    backgroundColor: '#58799c',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 2,
+    textAlign: 'center',
+    marginBottom: 6,
+    alignSelf: 'center',
+  },
+  sponsorLogoRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 6,
+  },
+  sponsorLogoContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 2,
+  },
+  sponsorLogo: {
+    objectFit: 'contain',
   },
 });
 
@@ -308,7 +440,9 @@ const SchedulePDF = ({
   customSubtitle = '',
   selectedDays = [],
   twoColumnLayout = true,
-  sanitySpeakers
+  sanitySpeakers,
+  sponsorTiers = [],
+  fullPageFooterImage,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -319,6 +453,8 @@ const SchedulePDF = ({
   selectedDays?: string[];
   twoColumnLayout?: boolean;
   sanitySpeakers?: EventSpeakerPublic[] | null;
+  sponsorTiers?: SponsorTierForPDF[];
+  fullPageFooterImage?: string;
 }) => {
   // Build sanity speaker lookup map
   const sanitySpeakerMap = new Map<string, EventSpeakerPublic>();
@@ -348,6 +484,9 @@ const SchedulePDF = ({
             {item.speakers.map((speaker, speakerIndex) => {
               // Get speaker image for PDF
               const speakerData = resolveSpeaker(speaker, sanitySpeakerMap);
+              const isDiscussant =
+                speakerData.speakerId === 'nelinia-nel-varenus' &&
+                item.time === '12:25 PM';
               const sanityUrl = speakerData.sanityImage?.asset?._ref
                 ? getSanityImageUrl(speakerData.sanityImage.asset._ref, { width: 96, height: 96 })
                 : null;
@@ -365,7 +504,14 @@ const SchedulePDF = ({
                     </View>
                   )}
                   <View style={styles.speakerInfo}>
-                    <Text style={styles.speakerName}>{speakerData.name}</Text>
+                    <Text style={styles.speakerName}>
+                      {isDiscussant && (
+                        <View>
+                          <Text style={styles.discussantLabel}>Discussant</Text><Text>: </Text>
+                        </View>
+                      )}
+                      {speakerData.name}
+                    </Text>
                     {speakerData.title && (
                       <Text style={styles.speakerTitle}>{speakerData.title}</Text>
                     )}
@@ -482,52 +628,186 @@ const SchedulePDF = ({
 
   const paginatedSchedule = paginateDays();
 
+  // render sponsor tiers into remaining space after a day's content.
+  // each tier is individually wrap={false} so react-pdf fits as many as possible
+  // without breaking a single tier across pages.
+  const renderSponsorSection = (dayDate: string) => {
+    // only render column (non-full-page) tiers inline
+    const columnTiers = sponsorTiers.filter(t => !t.fullPage);
+    if (columnTiers.length === 0) return null;
+
+    // sort tiers by canonical order
+    const sortedTiers = [...columnTiers].sort(
+      (a, b) => getTierPriority(a.name) - getTierPriority(b.name)
+    );
+
+    // scale logos based on sponsor count within a tier
+    const getLogoSize = (sponsorCount: number, multiplier: number = 1) => {
+      let w = 60;
+      let h = 36;
+      if (sponsorCount <= 2) { w = 90; h = 50; }
+      else if (sponsorCount <= 4) { w = 72; h = 42; }
+      else if (sponsorCount <= 8) { w = 60; h = 36; }
+      else { w = 48; h = 30; }
+      return { width: Math.round(w * multiplier), height: Math.round(h * multiplier) };
+    };
+
+    return (
+      <View style={styles.sponsorSection}>
+        {sortedTiers.map((tier) => {
+          const multiplier = tier.sizeMultiplier || 1;
+          const logoSize = getLogoSize(tier.sponsors.length, multiplier);
+          const pillStyle = convertTierStyleToPDF(tier.name, tier.style);
+          return (
+            <View key={`sponsor-tier-${dayDate}-${tier.id}`} style={{ marginBottom: 4 }} wrap={false}>
+              <View style={{ alignItems: 'center', marginBottom: 4 }}>
+                <Text style={[styles.sponsorTierHeader, {
+                  backgroundColor: pillStyle.backgroundColor,
+                  color: pillStyle.color,
+                }]}>{tier.name}</Text>
+              </View>
+              {tier.name.toLowerCase().includes('bronze') ? (
+                // Bronze sponsors: render in 2x2 grid
+                <View>
+                  {[...Array(Math.ceil(tier.sponsors.length / 2))].map((_, rowIndex) => (
+                    <View key={rowIndex} style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 6 }}>
+                      {tier.sponsors.slice(rowIndex * 2, rowIndex * 2 + 2).map((sponsor) => (
+                        <View key={sponsor.id} style={[styles.sponsorLogoContainer, { width: logoSize.width + 8, height: logoSize.height + 4, marginHorizontal: 4 }]}>
+                          <Image
+                            src={sponsor.logoUrl}
+                            style={[styles.sponsorLogo, { maxWidth: logoSize.width, maxHeight: logoSize.height }]}
+                            cache={true}
+                          />
+                        </View>
+                      ))}
+                    </View>
+                  ))}
+                </View>
+              ) : (
+                // Other tiers: use default flex layout
+                <View style={styles.sponsorLogoRow}>
+                  {tier.sponsors.map((sponsor) => (
+                    <View key={sponsor.id} style={[styles.sponsorLogoContainer, { width: logoSize.width + 8, height: logoSize.height + 4 }]}>
+                      <Image
+                        src={sponsor.logoUrl}
+                        style={[styles.sponsorLogo, { maxWidth: logoSize.width, maxHeight: logoSize.height }]}
+                        cache={true}
+                      />
+                    </View>
+                  ))}
+                </View>
+              )}
+            </View>
+          );
+        })}
+      </View>
+    );
+  };
+
   return (
     <Document>
       {paginatedSchedule.map(day =>
-        day.pages.map((page, pageIndex) => (
-          <Page key={`${day.date}-${pageIndex}`} size="LETTER" style={styles.page}>
+        day.pages.map((page, pageIndex) => {
+          const isLastPageOfDay = pageIndex === day.pages.length - 1;
+
+          return (
+            <Page key={`${day.date}-${pageIndex}`} size="LETTER" style={styles.page}>
+              <View style={styles.header}>
+                <Text style={styles.title}>{customTitle || `${event.title} Schedule`}</Text>
+                {/* {(customSubtitle || event.date) && (
+                  <Text style={styles.subtitle}>{customSubtitle || event.date}</Text>
+                )} */}
+              </View>
+              <View style={styles.footer}>
+                <Text style={{ fontSize: 12 }}>Presented by the <Text style={{ fontWeight: 'bold' }}>American Defense Alliance</Text> • www.americandefensealliance.org</Text>
+              </View>
+
+              <View style={styles.footer}>
+                <Text style={{ fontSize: 10 }}>Renaissance Austin Hotel, Austin, Texas</Text>
+              </View>
+
+              <Text style={styles.dayHeader}>
+                {new Date(day.date).toLocaleDateString('en-US', {
+                  weekday: 'long',
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </Text>
+
+
+              <View style={styles.columnsContainer}>
+                <View style={styles.column}>
+                  {page.left.map((item, index) => renderScheduleItem(item, index, page.left[index - 1]))}
+                </View>
+                <View style={styles.column}>
+                  {page.right.map((item, index) => {
+                    const prevItem = index === 0 ? page.left[page.left.length - 1] : page.right[index - 1];
+                    // The key index needs to be unique across the whole page.
+                    const keyIndex = page.left.length + index;
+                    return renderScheduleItem(item, keyIndex, prevItem);
+                  })}
+                  {isLastPageOfDay && sponsorTiers.filter(t => !t.fullPage).length > 0 && renderSponsorSection(day.date)}
+                </View>
+              </View>
+
+            </Page>
+          );
+        })
+      )}
+      {/* full-page sponsor tiers on dedicated pages */}
+      {sponsorTiers.filter(t => t.fullPage).length > 0 && (() => {
+        const fullPageTiers = [...sponsorTiers.filter(t => t.fullPage)].sort(
+          (a, b) => getTierPriority(a.name) - getTierPriority(b.name)
+        );
+        const getLogoSizeFP = (sponsorCount: number, multiplier: number = 1) => {
+          let w = 100; let h = 60;
+          if (sponsorCount <= 4) { w = 140; h = 80; }
+          else if (sponsorCount <= 8) { w = 120; h = 70; }
+          else if (sponsorCount <= 16) { w = 100; h = 60; }
+          else { w = 80; h = 50; }
+          return { width: Math.round(w * multiplier), height: Math.round(h * multiplier) };
+        };
+        return (
+          <Page size="LETTER" style={styles.page}>
             <View style={styles.header}>
               <Text style={styles.title}>{customTitle || `${event.title} Schedule`}</Text>
-              {/* {(customSubtitle || event.date) && (
-                <Text style={styles.subtitle}>{customSubtitle || event.date}</Text>
-              )} */}
             </View>
             <View style={styles.footer}>
-              <Text style={{ fontSize: 12 }}>Presented by <Text style={{ fontWeight: 'bold' }}>American Defense Alliance</Text> • americandefensealliance.org</Text>
+              <Text style={{ fontSize: 12 }}>Presented by the <Text style={{ fontWeight: 'bold' }}>American Defense Alliance</Text> • www.americandefensealliance.org</Text>
             </View>
-
             <View style={styles.footer}>
               <Text style={{ fontSize: 10 }}>Renaissance Austin Hotel, Austin, Texas</Text>
             </View>
-
-            <Text style={styles.dayHeader}>
-              {new Date(day.date).toLocaleDateString('en-US', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
+            <View style={{ marginTop: 12 }}>
+              {fullPageTiers.map((tier) => {
+                const multiplier = tier.sizeMultiplier || 1;
+                const logoSize = getLogoSizeFP(tier.sponsors.length, multiplier);
+                const pillStyle = convertTierStyleToPDF(tier.name, tier.style);
+                return (
+                  <View key={`fp-tier-${tier.id}`} style={{ marginBottom: 12 }} wrap={false}>
+                    <View style={{ alignItems: 'center', marginBottom: 8 }}>
+                      <Text style={[styles.sponsorTierHeader, { backgroundColor: pillStyle.backgroundColor, color: pillStyle.color, fontSize: 10, paddingHorizontal: 12, paddingVertical: 4 }]}>{tier.name}</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: 12 }}>
+                      {tier.sponsors.map((sponsor) => (
+                        <View key={sponsor.id} style={[styles.sponsorLogoContainer, { width: logoSize.width + 12, height: logoSize.height + 8 }]}>
+                          <Image src={sponsor.logoUrl} style={[styles.sponsorLogo, { maxWidth: logoSize.width, maxHeight: logoSize.height }]} cache={true} />
+                        </View>
+                      ))}
+                    </View>
+                  </View>
+                );
               })}
-            </Text>
-
-
-            <View style={styles.columnsContainer}>
-              <View style={styles.column}>
-                {page.left.map((item, index) => renderScheduleItem(item, index, page.left[index - 1]))}
-              </View>
-              <View style={styles.column}>
-                {page.right.map((item, index) => {
-                  const prevItem = index === 0 ? page.left[page.left.length - 1] : page.right[index - 1];
-                  // The key index needs to be unique across the whole page.
-                  const keyIndex = page.left.length + index;
-                  return renderScheduleItem(item, keyIndex, prevItem);
-                })}
-              </View>
             </View>
-
+            {fullPageFooterImage && (
+              <View style={{ alignItems: 'center', marginTop: 'auto', paddingTop: 12 }}>
+                <Image src={fullPageFooterImage} style={{ maxWidth: 500, maxHeight: 210, objectFit: 'contain' }} cache={true} />
+              </View>
+            )}
           </Page>
-        ))
-      )}
+        );
+      })()}
     </Document>
   );
 };
@@ -543,6 +823,8 @@ export const PDFDownloadButton = ({
   selectedDays,
   twoColumnLayout,
   sanitySpeakers,
+  sponsorTiers,
+  fullPageFooterImage,
   fileName = 'schedule.pdf'
 }: {
   schedule: ScheduleDay[];
@@ -554,6 +836,8 @@ export const PDFDownloadButton = ({
   selectedDays: string[];
   twoColumnLayout: boolean;
   sanitySpeakers?: EventSpeakerPublic[] | null;
+  sponsorTiers?: SponsorTierForPDF[];
+  fullPageFooterImage?: string;
   fileName?: string;
 }) => (
   <PDFDownloadLink
@@ -568,6 +852,8 @@ export const PDFDownloadButton = ({
         selectedDays={selectedDays}
         twoColumnLayout={twoColumnLayout}
         sanitySpeakers={sanitySpeakers}
+        sponsorTiers={sponsorTiers}
+        fullPageFooterImage={fullPageFooterImage}
       />
     }
     fileName={fileName}
@@ -588,6 +874,8 @@ export const PDFPreview = ({
   selectedDays,
   twoColumnLayout,
   sanitySpeakers,
+  sponsorTiers,
+  fullPageFooterImage,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -598,6 +886,8 @@ export const PDFPreview = ({
   selectedDays: string[];
   twoColumnLayout: boolean;
   sanitySpeakers?: EventSpeakerPublic[] | null;
+  sponsorTiers?: SponsorTierForPDF[];
+  fullPageFooterImage?: string;
 }) => (
   <div className="w-full h-screen">
     <PDFViewer width="100%" height="100%" style={{ border: 'none' }}>
@@ -611,6 +901,8 @@ export const PDFPreview = ({
         selectedDays={selectedDays}
         twoColumnLayout={twoColumnLayout}
         sanitySpeakers={sanitySpeakers}
+        sponsorTiers={sponsorTiers}
+        fullPageFooterImage={fullPageFooterImage}
       />
     </PDFViewer>
   </div>
@@ -627,6 +919,8 @@ export const PDFPreviewButton = ({
   selectedDays,
   twoColumnLayout,
   sanitySpeakers,
+  sponsorTiers,
+  fullPageFooterImage,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -637,6 +931,8 @@ export const PDFPreviewButton = ({
   selectedDays: string[];
   twoColumnLayout: boolean;
   sanitySpeakers?: EventSpeakerPublic[] | null;
+  sponsorTiers?: SponsorTierForPDF[];
+  fullPageFooterImage?: string;
 }) => (
   <BlobProvider document={
     <SchedulePDF
@@ -649,6 +945,8 @@ export const PDFPreviewButton = ({
       selectedDays={selectedDays}
       twoColumnLayout={twoColumnLayout}
       sanitySpeakers={sanitySpeakers}
+      sponsorTiers={sponsorTiers}
+      fullPageFooterImage={fullPageFooterImage}
     />
   }>
     {({ blob, url, loading, error }) => {

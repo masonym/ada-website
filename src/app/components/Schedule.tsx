@@ -239,6 +239,9 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                   <div className="space-y-4 mt-3">
                     {item.speakers.map((speaker, speakerIndex) => {
                       const resolvedSpeaker = resolveSpeaker(speaker, sanitySpeakerMap);
+                      const isDiscussant =
+                        resolvedSpeaker.speakerId === 'nelinia-nel-varenus' &&
+                        item.time === '12:25 PM';
                       return (
                         <div key={speakerIndex} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                           <div 
@@ -272,11 +275,22 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                               />
                             )}
                             <div>
-                              <div className="font-semibold text-lg md:block flex flex-col">
-                                {resolvedSpeaker.name} 
-                                <span className={`w-fit rounded-lg md:mx-1 text-sm px-2 py-1 ${resolvedSpeaker.sponsorStyle}`}>
-                                  {resolvedSpeaker.sponsor}
-                                </span>
+                              <div className="font-semibold text-lg md:block flex flex-col gap-1">
+                                <div className="flex flex-wrap items-center gap-2">
+                                  <span className="inline-flex flex-wrap items-baseline gap-2">
+                                    {isDiscussant && (
+                                      <span className="font-normal underline underline-offset-4 text-base text-navy-800">
+                                        Discussant:
+                                      </span>
+                                    )}
+                                    <span>{resolvedSpeaker.name}</span>
+                                  </span>
+                                  {resolvedSpeaker.sponsor && (
+                                    <span className={`w-fit rounded-lg md:mx-1 text-sm px-2 py-1 ${resolvedSpeaker.sponsorStyle}`}>
+                                      {resolvedSpeaker.sponsor}
+                                    </span>
+                                  )}
+                                </div>
                               </div>
                               {resolvedSpeaker.title && <div className="text-sm text-gray-600" dangerouslySetInnerHTML={{ __html: resolvedSpeaker.title }}></div>}
                               {resolvedSpeaker.affiliation && <div className="text-sm text-gray-600">{resolvedSpeaker.affiliation}</div>}
