@@ -1506,7 +1506,7 @@ export const SCHEDULES = [
                                 speakerId: "captain-md-doc-rana"
                             },
                             {
-                                speakerId: "aimee-zick"
+                                speakerId: "aimee-z-zick"
                             }
                         ],
                     },
