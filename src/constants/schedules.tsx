@@ -1674,6 +1674,9 @@ export const SCHEDULES = [
                                 speakerId: "irina-s-litchfield"
                             },
                             {
+                                speakerId: "steven-gibson"
+                            },
+                            {
                                 speakerId: "justyn-hornor"
                             }
                         ],
