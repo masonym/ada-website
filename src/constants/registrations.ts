@@ -294,6 +294,7 @@ export const REGISTRATION_TYPES = [
                 earlyBirdPrice: 545,
                 earlyBirdDeadline: "2026-02-03T04:00:00Z", // midnight ET on February 3rd
                 type: "paid",
+                saleEndTime: "2026-03-04T16:00:00Z",
             },
 
             {
@@ -318,6 +319,7 @@ export const REGISTRATION_TYPES = [
                 earlyBirdPrice: 645,
                 earlyBirdDeadline: "2026-02-03T04:00:00Z", // midnight ET on February 3rd
                 type: "paid",
+                saleEndTime: "2026-03-04T16:00:00Z",
             },
             {
                 id: "govt-official-military-pass",
@@ -338,6 +340,7 @@ export const REGISTRATION_TYPES = [
                 type: "complimentary",
                 price: "Complimentary",
                 // availabilityInfo: "Limited availability."
+                saleEndTime: "2026-03-04T16:00:00Z",
             },
         ],
     },
