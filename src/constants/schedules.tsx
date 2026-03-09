@@ -1712,11 +1712,13 @@ export const SCHEDULES = [
                             {
                                 speakerId: "david-leinberger",
                                 videoId: "UC7XnCJtcN4",
+                                presentation: "2026_DTAPC_-_David_Leinberger.pdf",
                             },
                             {
                                 speakerId: "paul-holland",
                                 videoId: "UC7XnCJtcN4",
                                 videoStartTime: 783,
+                                presentation: "2026_DTAPC_-_Paul_Holland.pdf",
                             }
                         ],
                     },
@@ -1774,6 +1776,7 @@ export const SCHEDULES = [
                             sponsor: "Silver Sponsor",
                             sponsorStyle: "bg-[#C0C0C0] text-slate-900",
                             videoId: "Ri_w-zhcvrg",
+                            presentation: "2026_DTAPC_-_Marie_McClain.pdf",
                         }],
                     },
                     {
@@ -1783,6 +1786,7 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "captain-md-doc-rana",
                             videoId: "qDYjbcMtJy4",
+                            presentation: "2026_DTAPC_-_Captain_MD__Doc__Rana_2.pdf",
                         }],
                     },
                     {
@@ -1794,6 +1798,7 @@ export const SCHEDULES = [
                             sponsor: "Bronze Sponsor",
                             sponsorStyle: "bg-[#CD7F32] text-slate-900",
                             videoId: "XyaFofOto0E",
+                            presentation: "2026_DTAPC_-_Dr._Bruce_J._Sumlin.pdf",
                         }],
                     },
                     {
@@ -1810,6 +1815,7 @@ export const SCHEDULES = [
                             sponsor: "Bronze Sponsor",
                             sponsorStyle: "bg-[#CD7F32] text-slate-900",
                             videoId: "CaM25z98x7A",
+                            presentation: "2026_DTAPC_-_Joe_Bonilla.pdf",
                         }],
                     },
                     {
