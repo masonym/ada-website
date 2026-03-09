@@ -1510,23 +1510,23 @@ export const SCHEDULES = [
                                 speakerId: "charles-sills",
                                 sponsor: "Moderator",
                                 sponsorStyle: "bg-sky-300",
-                                videoId: "4b8UZ4uQChM",
+                                videoId: "LVQb7BejST0",
                                 videoStartTime: 0
                             },
                             {
                                 speakerId: "major-marc-green",
-                                videoId: "4b8UZ4uQChM",
+                                videoId: "LVQb7BejST0",
                                 videoStartTime: 1650,
                             },
                             {
                                 speakerId: "captain-md-doc-rana",
-                                videoId: "4b8UZ4uQChM",
+                                videoId: "LVQb7BejST0",
                                 videoStartTime: 190,
                                 presentation: "2026_DTAPC_-_Captain_MD__Doc__Rana.pdf",
                             },
                             {
                                 speakerId: "aimee-z-zick",
-                                videoId: "4b8UZ4uQChM",
+                                videoId: "LVQb7BejST0",
                                 videoStartTime: 985,
                                 presentation: "2026_DTAPC_-_Aimee__Z__Zick.pdf",
                             }
@@ -1659,7 +1659,6 @@ export const SCHEDULES = [
                             speakerId: "charles-sills",
                             sponsor: "Conference Moderator",
                             sponsorStyle: "bg-red-999",
-                            videoId: "J5RojW-rAEk",
                         }],
                     },
                     {
@@ -1700,7 +1699,8 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "charles-sills",
                             sponsor: "Conference Moderator",
-                            sponsorStyle: "bg-red-999"
+                            sponsorStyle: "bg-red-999",
+                            videoId: "J5RojW-rAEk",
                         }],
                     },
                     {
