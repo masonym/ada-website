@@ -1429,7 +1429,8 @@ export const SCHEDULES = [
                         title: "Welcoming Remarks – National Security Innovation Council (NSIC)",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "drew-scheberle"
+                            speakerId: "drew-scheberle",
+                            videoId: "d5xzgH8ArDY",
                         }],
                     },
                     {
@@ -1437,7 +1438,9 @@ export const SCHEDULES = [
                         title: "DEFENSEWERX – Accelerating Innovative Tech Solutions",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "brian-liesveld"
+                            speakerId: "brian-liesveld",
+                            presentation: "2026_DTAPC_-_Brian_Liesveld.pdf",
+                            videoId: "aZ-ZlYzI12w",
                         }],
                     },
                     {
@@ -1445,7 +1448,9 @@ export const SCHEDULES = [
                         title: "DEPARTMENT OF THE AIR FORCE KEYNOTE ADDRESS",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "scott-kiser"
+                            speakerId: "scott-kiser",
+                            presentation: "2026_DTAPC_-_Scott_Kiser.pdf",
+                            videoId: "fvhYmfw3VjM",
                         }],
                     },
                     {
@@ -1455,7 +1460,9 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "don-mcginnis",
                             sponsor: "Bronze Sponsor",
-                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                            videoId: "6QujjBzNwio",
+                            presentation: "2026_DTAPC_-_Don_McGinnis.pdf",
                         }],
                     },
                     {
@@ -1463,7 +1470,9 @@ export const SCHEDULES = [
                         title: "KEYNOTE ADDRESS: IMPROVING AIR FORCE ACQUISITIONS",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "dr-david-g-jester-smith"
+                            speakerId: "dr-david-g-jester-smith",
+                            videoId: "k3VRYhF08O8",
+                            // presentation: ""
                         }],
                     },
                     {
@@ -1473,7 +1482,9 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "vincent-grosso",
                             sponsor: "Coffee Station Sponsor",
-                            sponsorStyle: "bg-sky-300 text-slate-900"
+                            sponsorStyle: "bg-sky-300 text-slate-900",
+                            videoId: "OBJE4KkSebQ",
+                            presentation: "2026_DTAPC_-_Vincent_Grosso.pdf",
                         }],
                     },
                     {
@@ -1486,7 +1497,8 @@ export const SCHEDULES = [
                         title: "The Space Force Front Door Program – Connecting With Industry",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "victor-vigliotti"
+                            speakerId: "victor-vigliotti",
+                            videoId: "O56z9pAsuBQ",
                         }],
                     },
                     {
@@ -1497,16 +1509,26 @@ export const SCHEDULES = [
                             {
                                 speakerId: "charles-sills",
                                 sponsor: "Moderator",
-                                sponsorStyle: "bg-sky-300"
+                                sponsorStyle: "bg-sky-300",
+                                videoId: "4b8UZ4uQChM",
+                                videoStartTime: 0
                             },
                             {
                                 speakerId: "major-marc-green",
+                                videoId: "4b8UZ4uQChM",
+                                videoStartTime: 1650,
                             },
                             {
-                                speakerId: "captain-md-doc-rana"
+                                speakerId: "captain-md-doc-rana",
+                                videoId: "4b8UZ4uQChM",
+                                videoStartTime: 190,
+                                presentation: "2026_DTAPC_-_Captain_MD__Doc__Rana.pdf",
                             },
                             {
-                                speakerId: "aimee-z-zick"
+                                speakerId: "aimee-z-zick",
+                                videoId: "4b8UZ4uQChM",
+                                videoStartTime: 985,
+                                presentation: "2026_DTAPC_-_Aimee__Z__Zick.pdf",
                             }
                         ],
                     },
@@ -1516,10 +1538,16 @@ export const SCHEDULES = [
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
-                                speakerId: "kareem-a-sykes"
+                                speakerId: "kareem-a-sykes",
+                                videoId: "5YYzZH_iXTU",
+                                videoStartTime: 0,
+                                presentation: "2026_DTAPC_-_Kareem_A._Sykes.pdf",
                             },
                             {
                                 speakerId: "nelinia-nel-varenus",
+                                videoId: "5YYzZH_iXTU",
+                                videoStartTime: 2001,
+                                presentation: "2026_DTAPC_-_Nelinia__Nel__Varenus.pdf",
                             }
                         ],
                     },
@@ -1535,7 +1563,9 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "clay-womack",
                             sponsor: "Silver Sponsor",
-                            sponsorStyle: "bg-[#C0C0C0] text-slate-900"
+                            sponsorStyle: "bg-[#C0C0C0] text-slate-900",
+                            videoId: "L8mo0GMIi8U",
+                            presentation: "2026_DTAPC_-_Clay_Womack.pdf"
                         }],
                     },
                     {
@@ -1546,13 +1576,18 @@ export const SCHEDULES = [
                             {
                                 speakerId: "trish-martinelli",
                                 sponsor: "Moderator",
-                                sponsorStyle: "bg-sky-300 text-slate-900"
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "Y8bZxQQJSCA",
                             },
                             {
-                                speakerId: "david-sikora"
+                                speakerId: "david-sikora",
+                                videoId: "Y8bZxQQJSCA",
+
                             },
                             {
-                                speakerId: "albert-garza"
+                                speakerId: "albert-garza",
+                                videoId: "Y8bZxQQJSCA",
+
                             }
                         ],
                     },
@@ -1563,7 +1598,9 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "tim-trapuzzano",
                             sponsor: "Bronze Sponsor",
-                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                            videoId: "TMKoSgaH_Qw",
+                            presentation: "2026_DTAPC_-_Dwight_Warnock.pdf"
                         }],
                     },
                     {
@@ -1574,25 +1611,43 @@ export const SCHEDULES = [
                             {
                                 speakerId: "richard-ric-slater",
                                 sponsor: "Moderator",
-                                sponsorStyle: "bg-sky-300 text-slate-900"
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "B5dPOQ8G4wo",
+                                videoStartTime: 2615,
                             },
                             {
-                                speakerId: "rob-graziano"
+                                speakerId: "rob-graziano",
+                                videoId: "B5dPOQ8G4wo",
+                                videoStartTime: 427,
+
                             },
                             {
-                                speakerId: "andrew-gardner"
+                                speakerId: "andrew-gardner",
+                                videoId: "B5dPOQ8G4wo",
+                                presentation: "2026_DTAPC_-_Andrew_Gardner.pdf",
                             },
                             {
-                                speakerId: "bijo-mathew"
+                                speakerId: "bijo-mathew",
+                                videoId: "B5dPOQ8G4wo",
+                                videoStartTime: 1973,
+
                             },
                             {
-                                speakerId: "madison-jones"
+                                speakerId: "madison-jones",
+                                videoId: "B5dPOQ8G4wo",
+                                videoStartTime: 910
                             },
                             {
-                                speakerId: "aaron-williamson-pmp"
+                                speakerId: "aaron-williamson-pmp",
+                                videoId: "B5dPOQ8G4wo",
+                                videoStartTime: 1310
+
                             },
                             {
-                                speakerId: "scott-gray"
+                                speakerId: "scott-gray",
+                                videoId: "B5dPOQ8G4wo",
+                                videoStartTime: 2226
+
                             }
                         ],
                     },
@@ -1603,7 +1658,8 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "charles-sills",
                             sponsor: "Conference Moderator",
-                            sponsorStyle: "bg-red-999"
+                            sponsorStyle: "bg-red-999",
+                            videoId: "J5RojW-rAEk",
                         }],
                     },
                     {
@@ -1653,10 +1709,13 @@ export const SCHEDULES = [
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
-                                speakerId: "david-leinberger"
+                                speakerId: "david-leinberger",
+                                videoId: "UC7XnCJtcN4",
                             },
                             {
-                                speakerId: "paul-holland"
+                                speakerId: "paul-holland",
+                                videoId: "UC7XnCJtcN4",
+                                videoStartTime: 783,
                             }
                         ],
                     },
@@ -1668,16 +1727,25 @@ export const SCHEDULES = [
                             {
                                 speakerId: "gavin-brown",
                                 sponsor: "Moderator",
-                                sponsorStyle: "bg-sky-300 text-slate-900"
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "GP9kBCAMyrw",
                             },
                             {
-                                speakerId: "irina-s-litchfield"
+                                speakerId: "irina-s-litchfield",
+                                videoId: "GP9kBCAMyrw",
+                                videoStartTime: 462,
+
                             },
                             {
-                                speakerId: "steven-gibson"
+                                speakerId: "steven-gibson",
+                                videoId: "GP9kBCAMyrw",
+                                videoStartTime: 559,
+
                             },
                             {
-                                speakerId: "justyn-hornor"
+                                speakerId: "justyn-hornor",
+                                videoId: "GP9kBCAMyrw",
+                                videoStartTime: 313,
                             }
                         ],
                     },
@@ -1687,10 +1755,12 @@ export const SCHEDULES = [
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
-                                speakerId: "gavin-brown"
+                                speakerId: "gavin-brown",
+                                videoId: "G5QIyGy-m_Q",
                             },
                             {
-                                speakerId: "justin-litchfield-phd"
+                                speakerId: "justin-litchfield-phd",
+                                videoId: "G5QIyGy-m_Q",
                             }
                         ],
                     },
@@ -1701,7 +1771,8 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "marie-mcclain",
                             sponsor: "Silver Sponsor",
-                            sponsorStyle: "bg-[#C0C0C0] text-slate-900"
+                            sponsorStyle: "bg-[#C0C0C0] text-slate-900",
+                            videoId: "Ri_w-zhcvrg",
                         }],
                     },
                     {
@@ -1709,7 +1780,8 @@ export const SCHEDULES = [
                         title: "Warfare & Technology in 2040 and Beyond",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "captain-md-doc-rana"
+                            speakerId: "captain-md-doc-rana",
+                            videoId: "qDYjbcMtJy4",
                         }],
                     },
                     {
@@ -1719,7 +1791,8 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "dr-bruce-j-sumlin",
                             sponsor: "Bronze Sponsor",
-                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                            videoId: "XyaFofOto0E",
                         }],
                     },
                     {
@@ -1734,7 +1807,8 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "joe-bonilla",
                             sponsor: "Bronze Sponsor",
-                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                            videoId: "CaM25z98x7A",
                         }],
                     },
                     {
@@ -1745,16 +1819,23 @@ export const SCHEDULES = [
                             {
                                 speakerId: "marcos-cervantes",
                                 sponsor: "Moderator",
-                                sponsorStyle: "bg-sky-300 text-slate-900"
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "v1M6Pr3Hbrk"
                             },
                             {
-                                speakerId: "major-brandon-schreiner"
+                                speakerId: "major-brandon-schreiner",
+                                videoId: "v1M6Pr3Hbrk"
+
                             },
                             {
-                                speakerId: "major-victor-montellano"
+                                speakerId: "major-victor-montellano",
+                                videoId: "v1M6Pr3Hbrk"
+
                             },
                             {
-                                speakerId: "glenn-banton"
+                                speakerId: "glenn-banton",
+                                videoId: "v1M6Pr3Hbrk"
+
                             }
                         ],
                     },
@@ -1764,10 +1845,13 @@ export const SCHEDULES = [
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
-                            speakerId: "ricardo-monroy",
+                                speakerId: "ricardo-monroy",
+                                videoId: "WymHHsDZm3E",
+                                videoStartTime: 195
                             },
                             {
-                                speakerId: "trish-martinelli"
+                                speakerId: "trish-martinelli",
+                                videoId: "WymHHsDZm3E",
                             }
                         ],
                     },
