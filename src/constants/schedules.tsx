@@ -1421,7 +1421,8 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "charles-sills",
                             sponsor: "Conference Moderator",
-                            sponsorStyle: "bg-red-999"
+                            sponsorStyle: "bg-red-999",
+                            videoId: "YUm-heZ04Dc",
                         }],
                     },
                     {
@@ -1852,6 +1853,11 @@ export const SCHEDULES = [
                             {
                                 speakerId: "trish-martinelli",
                                 videoId: "WymHHsDZm3E",
+                            },
+                            {
+                                speakerId: "phil-lowther",
+                                videoId: "WymHHsDZm3E",
+                                videoStartTime: 625,
                             }
                         ],
                     },
