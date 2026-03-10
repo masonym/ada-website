@@ -1088,6 +1088,20 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     // We appreciate your patience and understanding during the rescheduling process. Our team remains committed to delivering a valuable, high-quality experience, and we look forward to gathering with you in Austin in March 2026.
     //                               `,
     //     eventPageNoticeVariant: 'warning',
+    testimonials: [
+      {
+        type: 'image',
+        quote: `I wanted to extend my sincere thanks to the American Defense Alliance team for the opportunity to participate in the Defense Technology & Aerospace Procurement Conference in Austin. It was a truly well-organized event, and I appreciated the chance to contribute to the conversation around cybersecurity readiness for Defense Industrial Base contractors and the resources available through Project Spectrum.
+        <br/>
+        The conference brought together an outstanding mix of government leaders, primes, innovators, and small businesses, and it was a privilege to engage with so many members of the defense and aerospace ecosystem. Your team did an excellent job creating an environment where meaningful dialogue and collaboration could take place.`,
+        name: "Kareem A. Sykes",
+        title: "Project Spectrum, Industry & Engagement, Director",
+        affiliation: "Eccalon, LLC",
+        imageUrl: "/testimonials/kareem-sykes.webp",
+        imageAlt: "Kareem A. Sykes"
+      },
+
+    ]
   },
   {
     id: 6,
