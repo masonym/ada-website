@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import { EventMetricsConfig } from '@/constants/eventMetrics';
+import { getCdnPath } from '@/utils/image';
 
 interface ParsedCsv {
   headers: string[];
@@ -133,15 +134,40 @@ function toOrganizationTypeBreakdown(values: string[], total: number): MetricsBr
   });
 }
 
-export async function getEventMetricsData(config: EventMetricsConfig): Promise<EventMetricsData | null> {
-  const filePath = path.join(process.cwd(), 'public', config.csvPath);
+async function loadCsvFromCdn(csvPath: string): Promise<string | null> {
+  const cdnPath = getCdnPath(csvPath);
+  if (!cdnPath) return null;
 
-  let csvContent = '';
+  let csvUrl = cdnPath;
+  if (!csvUrl.startsWith('http')) {
+    const siteBase = process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_URL;
+    if (!siteBase) return null;
+    const normalizedBase = siteBase.startsWith('http') ? siteBase : `https://${siteBase}`;
+    csvUrl = new URL(csvUrl, normalizedBase).toString();
+  }
+
   try {
-    csvContent = await fs.readFile(filePath, 'utf8');
+    const response = await fetch(csvUrl, { cache: 'no-store' });
+    if (!response.ok) return null;
+    return await response.text();
   } catch {
     return null;
   }
+}
+
+async function loadCsvFromLocal(csvPath: string): Promise<string | null> {
+  const filePath = path.join(process.cwd(), 'public', csvPath);
+
+  try {
+    return await fs.readFile(filePath, 'utf8');
+  } catch {
+    return null;
+  }
+}
+
+export async function getEventMetricsData(config: EventMetricsConfig): Promise<EventMetricsData | null> {
+  const csvContent = (await loadCsvFromCdn(config.csvPath)) || (await loadCsvFromLocal(config.csvPath));
+  if (!csvContent) return null;
 
   const parsed = parseCsv(csvContent);
   if (parsed.headers.length === 0) return null;
