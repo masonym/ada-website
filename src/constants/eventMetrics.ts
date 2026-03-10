@@ -13,7 +13,7 @@ export const EVENT_METRICS_CONFIGS: EventMetricsConfig[] = [
   {
     eventId: 5,
     csvPath: 'events/2026DTAPC/registration-information.csv',
-    title: 'Event Metrics for the 2026 Defense Technology & Aerospace Procurement Conference',
+    title: 'Event Metrics',
     industryColumn: 'Industry',
     businessSizeColumn: 'Business Size',
     registrationTypeColumn: 'Registration Type',
