@@ -178,6 +178,7 @@ export default function PhotoMetadataManager() {
         <input
           type="file"
           multiple
+          {...({ webkitdirectory: "" } as any)}
           onChange={handleFileUpload}
           className="border rounded px-3 py-2"
         />

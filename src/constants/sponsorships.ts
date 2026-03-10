@@ -1347,7 +1347,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 title: "VIP Networking Reception Sponsorship",
                 cost: 3500,
                 requiresAttendeeInfo: true,
-                slotsPerEvent: 1,
+                slotsPerEvent: 2,
                 sponsorPasses: 2,
                 perks: [
                     {
