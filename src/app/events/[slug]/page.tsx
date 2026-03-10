@@ -158,7 +158,6 @@ export default async function EventPage({ params }: { params: { slug: string } }
 
             <SpecialFeatures event={event} />
 
-
             <RegistrationOptions event={event} />
 
             <SponsorAdvert event={event} />

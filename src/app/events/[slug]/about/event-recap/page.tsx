@@ -7,6 +7,9 @@ import EventTestimonials from '@/app/components/EventTestimonials';
 import { getEventRecap } from '@/lib/eventRecap';
 import { SectionRenderer } from './sections';
 import { SOCIALS } from '@/constants';
+import { getEventMetricsConfig } from '@/constants/eventMetrics';
+import { getEventMetricsData } from '@/lib/event-metrics';
+import EventMetricsSection from '@/app/components/EventMetricsSection';
 
 // Generate static params for all event slugs
 export async function generateStaticParams() {
@@ -31,6 +34,8 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
   const eventDate = new Date(event.timeStart);
   const currentDate = new Date();
   const eventHasOccurred = eventDate < currentDate;
+  const eventMetricsConfig = getEventMetricsConfig(event.id);
+  const eventMetrics = eventMetricsConfig ? await getEventMetricsData(eventMetricsConfig) : null;
 
   if (!eventHasOccurred) {
     return (
@@ -101,6 +106,9 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
       {event.testimonials && event.testimonials.length > 0 && (
         <EventTestimonials testimonials={event.testimonials} />
       )}
+
+      {eventMetrics && <EventMetricsSection metrics={eventMetrics} />}
+
 
       {/* Display custom introduction if available */}
       {recapData?.introduction && (
