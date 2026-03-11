@@ -79,6 +79,11 @@ export default function EventMetricsSection({ metrics }: EventMetricsSectionProp
           <div className="rounded-xl bg-white border border-gray-200 p-5">
             <h3 className="text-xl font-semibold text-slate-700 mb-4">Organization Type Breakdown</h3>
             <BreakdownList items={metrics.organizationTypeBreakdown} />
+
+            <div className="mt-6 pt-6 border-t border-gray-100">
+              <h4 className="text-lg font-semibold text-slate-700 mb-4">Role Breakdown</h4>
+              <BreakdownList items={metrics.roleBreakdown} />
+            </div>
           </div>
         </div>
       </div>

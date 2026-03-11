@@ -7,6 +7,7 @@ export interface EventMetricsConfig {
   oneOnOneAppointments?: number;
   industryColumn?: string;
   businessSizeColumn?: string;
+  roleColumn?: string;
   registrationTypeColumn?: string;
   organizationColumn?: string;
   excludedRegistrationTypes?: string[];
@@ -22,9 +23,10 @@ export const EVENT_METRICS_CONFIGS: EventMetricsConfig[] = [
     oneOnOneAppointments: 146,
     industryColumn: 'Industry',
     businessSizeColumn: 'Business Size',
-    registrationTypeColumn: 'Registration Type',
-    organizationColumn: 'Company/Organization Name',
-    excludedRegistrationTypes: ['Staff'],
+    roleColumn: 'Contact Title', // which column to use from the CSV for the role breakdown
+    registrationTypeColumn: 'Registration Type', // which column to use from the CSV for the registration type breakdown
+    organizationColumn: 'Company/Organization Name', // which column to use from the CSV for the organization breakdown
+    excludedRegistrationTypes: ['Staff'], // registration types to exclude from the breakdown
   },
 ];
 

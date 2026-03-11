@@ -24,6 +24,7 @@ export interface EventMetricsData {
   oneOnOneAppointments: number;
   industryBreakdown: MetricsBreakdownItem[];
   organizationTypeBreakdown: MetricsBreakdownItem[];
+  roleBreakdown: MetricsBreakdownItem[];
 }
 
 function parseCsv(content: string): ParsedCsv {
@@ -148,6 +149,93 @@ function toOrganizationTypeBreakdown(values: string[], total: number): MetricsBr
   return [governmentAndMilitary, ...otherTypes];
 }
 
+function toRoleCategory(value: string): string {
+  const normalized = value.toLowerCase();
+
+  if (
+    normalized.includes('officer') ||
+    normalized.includes('military') ||
+    normalized.includes('government') ||
+    normalized.includes('agent')
+  ) {
+    return 'Government & Military Roles';
+  }
+
+  if (
+    normalized.includes('ceo') ||
+    normalized.includes('chief') ||
+    normalized.includes('president') ||
+    normalized.includes('founder') ||
+    normalized.includes('partner') ||
+    normalized.includes('principal') ||
+    normalized.includes('chairman') ||
+    normalized.includes('executive') ||
+    normalized.includes('vp') ||
+    normalized.includes('vice president') ||
+    normalized.includes('cfo') ||
+    normalized.includes('coo') ||
+    normalized.includes('cto')
+  ) {
+    return 'Executive Leadership';
+  }
+
+  if (
+    normalized.includes('business development') ||
+    normalized.includes('capture') ||
+    normalized.includes('sales') ||
+    normalized.includes('account') ||
+    normalized.includes('marketing') ||
+    normalized.includes('client') ||
+    normalized.includes('partnership') ||
+    normalized.includes('growth')
+  ) {
+    return 'Business Development & Sales';
+  }
+
+  if (
+    normalized.includes('engineer') ||
+    normalized.includes('scientist') ||
+    normalized.includes('architect') ||
+    normalized.includes('developer') ||
+    normalized.includes('technical') ||
+    normalized.includes('analyst') ||
+    normalized.includes('technology')
+  ) {
+    return 'Technical & Engineering';
+  }
+
+  if (
+    normalized.includes('manager') ||
+    normalized.includes('director') ||
+    normalized.includes('lead') ||
+    normalized.includes('operations') ||
+    normalized.includes('program') ||
+    normalized.includes('project') ||
+    normalized.includes('coordinator') ||
+    normalized.includes('specialist') ||
+    normalized.includes('administrator') ||
+    normalized.includes('admin')
+  ) {
+    return 'Program & Operations';
+  }
+
+  return 'Other Roles';
+}
+
+function toRoleBreakdown(values: string[], total: number): MetricsBreakdownItem[] {
+  const map = new Map<string, number>();
+
+  values.forEach((value) => {
+    const normalized = normalize(value);
+    if (!normalized) return;
+
+    const roleCategory = toRoleCategory(normalized);
+    map.set(roleCategory, (map.get(roleCategory) || 0) + 1);
+  });
+
+  return toBreakdownItems(map, total);
+}
+
 async function loadCsvFromCdn(csvPath: string): Promise<string | null> {
   const cdnPath = getCdnPath(csvPath);
   if (!cdnPath) return null;
@@ -188,15 +276,17 @@ export async function getEventMetricsData(config: EventMetricsConfig): Promise<E
 
   const industryColumn = config.industryColumn || 'Industry';
   const businessSizeColumn = config.businessSizeColumn || 'Business Size';
+  const roleColumn = config.roleColumn || 'Contact Title';
   const registrationTypeColumn = config.registrationTypeColumn || 'Registration Type';
   const organizationColumn = config.organizationColumn || 'Company/Organization Name';
 
   const industryIndex = parsed.headers.indexOf(industryColumn);
   const businessSizeIndex = parsed.headers.indexOf(businessSizeColumn);
+  const roleIndex = parsed.headers.indexOf(roleColumn);
   const registrationTypeIndex = parsed.headers.indexOf(registrationTypeColumn);
   const organizationIndex = parsed.headers.indexOf(organizationColumn);
 
-  if (industryIndex < 0 || businessSizeIndex < 0 || registrationTypeIndex < 0 || organizationIndex < 0) {
+  if (industryIndex < 0 || businessSizeIndex < 0 || roleIndex < 0 || registrationTypeIndex < 0 || organizationIndex < 0) {
     return null;
   }
 
@@ -214,6 +304,7 @@ export async function getEventMetricsData(config: EventMetricsConfig): Promise<E
   const organizations = new Set<string>();
   const industries: string[] = [];
   const businessSizes: string[] = [];
+  const roles: string[] = [];
 
   filteredRows.forEach((row) => {
     const org = normalize(row[organizationIndex]);
@@ -224,6 +315,9 @@ export async function getEventMetricsData(config: EventMetricsConfig): Promise<E
 
     const businessSize = normalize(row[businessSizeIndex]);
     if (businessSize) businessSizes.push(businessSize);
+
+    const role = normalize(row[roleIndex]);
+    if (role) roles.push(role);
   });
 
   return {
@@ -236,5 +330,6 @@ export async function getEventMetricsData(config: EventMetricsConfig): Promise<E
     oneOnOneAppointments: config.oneOnOneAppointments || 0,
     industryBreakdown: toBreakdownItems(toBreakdownMap(industries), totalRegistrations),
     organizationTypeBreakdown: toOrganizationTypeBreakdown(businessSizes, totalRegistrations),
+    roleBreakdown: toRoleBreakdown(roles, totalRegistrations),
   };
 }
