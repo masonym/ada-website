@@ -11,8 +11,10 @@ function BreakdownList({ items }: { items: MetricsBreakdownItem[] }) {
       {items.map((item) => (
         <li key={item.label} className="rounded-md border border-gray-200 bg-white px-3 py-2 list-none">
           <div className="mb-2 flex items-start justify-between gap-3">
-            <span className="text-slate-700 leading-snug">{item.label}</span>
-            <span className="font-semibold text-navy-500 min-w-[4rem] text-right">{item.percentage}%</span>
+            <span className="text-slate-700 leading-snug max-w-[80%] break-words hyphens-auto">
+              {item.label}
+            </span>
+            <span className="font-semibold text-navy-500 max-w-[20%] text-right">{item.percentage}%</span>
           </div>
           <div className="h-2 w-full rounded-full bg-gray-100 overflow-hidden">
             <div
