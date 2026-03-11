@@ -1088,27 +1088,27 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     // We appreciate your patience and understanding during the rescheduling process. Our team remains committed to delivering a valuable, high-quality experience, and we look forward to gathering with you in Austin in March 2026.
     //                               `,
     //     eventPageNoticeVariant: 'warning',
-    testimonials: [
-      {
-        type: 'image',
-        quote: `I wanted to extend my sincere thanks to the American Defense Alliance team for the opportunity to participate in the Defense Technology & Aerospace Procurement Conference in Austin. It was a truly well-organized event, and I appreciated the chance to contribute to the conversation around cybersecurity readiness for Defense Industrial Base contractors and the resources available through Project Spectrum.
-        The conference brought together an outstanding mix of government leaders, primes, innovators, and small businesses, and it was a privilege to engage with so many members of the defense and aerospace ecosystem. Your team did an excellent job creating an environment where meaningful dialogue and collaboration could take place.`,
-        name: "Kareem A. Sykes",
-        title: "Project Spectrum, Industry & Engagement, Director",
-        affiliation: "Eccalon, LLC",
-        imageUrl: "/testimonials/kareem-sykes.webp",
-        imageAlt: "Kareem A. Sykes"
-      },
-      {
-        type: 'image',
-        quote: `I would like to thank the American Defense Alliance for the outstanding job organizing the conference. It was one of the most well-run events I’ve attended with great a audience and your leadership really showed. I truly appreciate all the effort you put into bringing everyone together. Thank you again for the opportunity and all your support. I look forward to the next one.`,
-        name: "Captain MD \"Doc\" Rana",
-        title: "Director, Human-AI Teaming Lab, Branch Chief, AI/Human Machine Teaming/Info Ops, and Deputy Chief, Information Dominance Division",
-        affiliation: "U.S. Space Systems Command",
-        imageUrl: "/testimonials/doc-rana.webp",
-        imageAlt: "Captain MD \"Doc\" Rana"
-      },
-    ]
+    // testimonials: [
+    //   {
+    //     type: 'image',
+    //     quote: `I wanted to extend my sincere thanks to the American Defense Alliance team for the opportunity to participate in the Defense Technology & Aerospace Procurement Conference in Austin. It was a truly well-organized event, and I appreciated the chance to contribute to the conversation around cybersecurity readiness for Defense Industrial Base contractors and the resources available through Project Spectrum.
+    //     The conference brought together an outstanding mix of government leaders, primes, innovators, and small businesses, and it was a privilege to engage with so many members of the defense and aerospace ecosystem. Your team did an excellent job creating an environment where meaningful dialogue and collaboration could take place.`,
+    //     name: "Kareem A. Sykes",
+    //     title: "Project Spectrum, Industry & Engagement, Director",
+    //     affiliation: "Eccalon, LLC",
+    //     imageUrl: "/testimonials/kareem-sykes.webp",
+    //     imageAlt: "Kareem A. Sykes"
+    //   },
+    //   {
+    //     type: 'image',
+    //     quote: `I would like to thank the American Defense Alliance for the outstanding job organizing the conference. It was one of the most well-run events I’ve attended with great a audience and your leadership really showed. I truly appreciate all the effort you put into bringing everyone together. Thank you again for the opportunity and all your support. I look forward to the next one.`,
+    //     name: "Captain MD \"Doc\" Rana",
+    //     title: "Director, Human-AI Teaming Lab, Branch Chief, AI/Human Machine Teaming/Info Ops, and Deputy Chief, Information Dominance Division",
+    //     affiliation: "U.S. Space Systems Command",
+    //     imageUrl: "/testimonials/doc-rana.webp",
+    //     imageAlt: "Captain MD \"Doc\" Rana"
+    //   },
+    // ]
   },
   {
     id: 6,
