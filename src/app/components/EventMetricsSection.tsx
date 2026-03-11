@@ -9,12 +9,31 @@ function BreakdownList({ items }: { items: MetricsBreakdownItem[] }) {
   return (
     <ul className="space-y-2">
       {items.map((item) => (
-        <li key={item.label} className="flex items-center justify-between rounded-md border border-gray-200 bg-white px-3 py-2">
-          <span className="text-slate-700 pr-4">{item.label}</span>
-          <span className="font-semibold text-navy-500 min-w-[25%] text-right">{item.count} ({item.percentage}%)</span>
+        <li key={item.label} className="rounded-md border border-gray-200 bg-white px-3 py-2 list-none">
+          <div className="mb-2 flex items-start justify-between gap-3">
+            <span className="text-slate-700 leading-snug">{item.label}</span>
+            <span className="font-semibold text-navy-500 min-w-[4rem] text-right">{item.percentage}%</span>
+          </div>
+          <div className="h-2 w-full rounded-full bg-gray-100 overflow-hidden">
+            <div
+              className="h-full rounded-full bg-sb-100"
+              style={{ width: `${Math.max(0, Math.min(item.percentage, 100))}%` }}
+            />
+          </div>
         </li>
       ))}
     </ul>
+  );
+}
+
+function StatCard({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="rounded-xl bg-white border border-gray-200 p-5 text-center h-full flex flex-col justify-between">
+      <p className="text-sm text-slate-500 uppercase tracking-wide min-h-[3rem] flex items-center justify-center leading-tight">
+        {label}
+      </p>
+      <p className="text-3xl font-bold text-navy-500 mt-2">{value}</p>
+    </div>
   );
 }
 
@@ -30,15 +49,12 @@ export default function EventMetricsSection({ metrics }: EventMetricsSectionProp
           {metrics.title}
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-          <div className="rounded-xl bg-white border border-gray-200 p-5 text-center">
-            <p className="text-sm text-slate-500 uppercase tracking-wide">Total Registrations</p>
-            <p className="text-3xl font-bold text-navy-500 mt-1">{metrics.totalRegistrations}</p>
-          </div>
-          <div className="rounded-xl bg-white border border-gray-200 p-5 text-center">
-            <p className="text-sm text-slate-500 uppercase tracking-wide">Unique Organizations</p>
-            <p className="text-3xl font-bold text-navy-500 mt-1">{metrics.uniqueOrganizations}</p>
-          </div>
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+          <StatCard label="Total Attendees" value={metrics.totalAttendees} />
+          <StatCard label="Speakers" value={metrics.speakerCount} />
+          <StatCard label="Matchmaking Hosts" value={metrics.matchmakingHosts} />
+          <StatCard label="One-on-One Appointments" value={metrics.oneOnOneAppointments} />
+          <StatCard label="Unique Organizations" value={metrics.uniqueOrganizations} />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

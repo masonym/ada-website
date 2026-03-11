@@ -16,8 +16,12 @@ export interface MetricsBreakdownItem {
 
 export interface EventMetricsData {
   title: string;
+  totalAttendees: number;
   totalRegistrations: number;
   uniqueOrganizations: number;
+  speakerCount: number;
+  matchmakingHosts: number;
+  oneOnOneAppointments: number;
   industryBreakdown: MetricsBreakdownItem[];
   organizationTypeBreakdown: MetricsBreakdownItem[];
 }
@@ -105,9 +109,9 @@ function toBreakdownItems(map: Map<string, number>, total: number): MetricsBreak
 function toOrganizationType(value: string): string | null {
   const normalized = value.toLowerCase();
 
-  if (normalized.includes('military')) return 'Military';
-  if (normalized.includes('government')) return 'Government';
-  if (normalized.includes('small')) return 'Small Business';
+  if (normalized.includes('military')) return 'Government Official & Military';
+  if (normalized.includes('government')) return 'Government Official & Military';
+  if (normalized.includes('small')) return 'Small Business & Innovative Startups';
   if (normalized.includes('medium')) return 'Medium Business';
   if (normalized.includes('large')) return 'Large Business';
 
@@ -115,7 +119,12 @@ function toOrganizationType(value: string): string | null {
 }
 
 function toOrganizationTypeBreakdown(values: string[], total: number): MetricsBreakdownItem[] {
-  const orderedLabels = ['Small Business', 'Medium Business', 'Large Business', 'Government', 'Military'];
+  const orderedLabels = [
+    'Government Official & Military',
+    'Small Business & Innovative Startups',
+    'Medium Business',
+    'Large Business',
+  ];
   const map = new Map<string, number>(orderedLabels.map((label) => [label, 0]));
 
   values.forEach((value) => {
@@ -124,7 +133,7 @@ function toOrganizationTypeBreakdown(values: string[], total: number): MetricsBr
     map.set(organizationType, (map.get(organizationType) || 0) + 1);
   });
 
-  return orderedLabels.map((label) => {
+  const items = orderedLabels.map((label) => {
     const count = map.get(label) || 0;
     return {
       label,
@@ -132,6 +141,11 @@ function toOrganizationTypeBreakdown(values: string[], total: number): MetricsBr
       percentage: total > 0 ? Math.round((count / total) * 1000) / 10 : 0,
     };
   });
+
+  const [governmentAndMilitary, ...otherTypes] = items;
+  otherTypes.sort((a, b) => a.percentage - b.percentage || a.label.localeCompare(b.label));
+
+  return [governmentAndMilitary, ...otherTypes];
 }
 
 async function loadCsvFromCdn(csvPath: string): Promise<string | null> {
@@ -195,6 +209,8 @@ export async function getEventMetricsData(config: EventMetricsConfig): Promise<E
   });
 
   const totalRegistrations = filteredRows.length;
+  const speakerCount = config.speakerCount || 0;
+  const totalAttendees = totalRegistrations + speakerCount;
   const organizations = new Set<string>();
   const industries: string[] = [];
   const businessSizes: string[] = [];
@@ -212,8 +228,12 @@ export async function getEventMetricsData(config: EventMetricsConfig): Promise<E
 
   return {
     title: config.title || 'Event Metrics',
+    totalAttendees,
     totalRegistrations,
     uniqueOrganizations: organizations.size,
+    speakerCount,
+    matchmakingHosts: config.matchmakingHosts || 0,
+    oneOnOneAppointments: config.oneOnOneAppointments || 0,
     industryBreakdown: toBreakdownItems(toBreakdownMap(industries), totalRegistrations),
     organizationTypeBreakdown: toOrganizationTypeBreakdown(businessSizes, totalRegistrations),
   };
