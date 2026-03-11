@@ -83,6 +83,31 @@ export default function EventMetricsSection({ metrics }: EventMetricsSectionProp
             <div className="mt-6 pt-6 border-t border-gray-100">
               <h4 className="text-lg font-semibold text-slate-700 mb-4">Role Breakdown</h4>
               <BreakdownList items={metrics.roleBreakdown} />
+
+              {metrics.roleBreakdownDebug && (
+                <details className="mt-4 rounded-md border border-gray-200 bg-gray-50 p-3">
+                  <summary className="cursor-pointer text-sm font-semibold text-navy-500">
+                    Debug: grouped source titles by role category
+                  </summary>
+                  <div className="mt-3 space-y-3">
+                    {metrics.roleBreakdownDebug.map((group) => (
+                    <div key={group.category} className="rounded-md border border-gray-200 bg-white p-3">
+                      <p className="text-sm font-semibold text-slate-700">
+                        {group.category} ({group.total} • {group.percentage}%)
+                      </p>
+                      <ul className="mt-2 space-y-1 max-h-48 overflow-y-auto pr-1">
+                        {group.titles.map((item) => (
+                          <li key={`${group.category}-${item.title}`} className="text-xs text-slate-600 flex justify-between gap-3">
+                            <span className="break-words">{item.title}</span>
+                            <span className="font-semibold text-navy-500">{item.count}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                  </div>
+                </details>
+              )}
             </div>
           </div>
         </div>
