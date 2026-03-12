@@ -1101,7 +1101,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     //   },
       {
         type: 'image',
-        quote: `I would like to thank the American Defense Alliance for the outstanding job organizing the conference. It was one of the most well-run events I’ve attended with a great audience and your leadership really showed. I truly appreciate all the effort you put into bringing everyone together. Thank you again for the opportunity and all your support. I look forward to the next one.`,
+        quote: `Thank you for organizing such an excellent event. It was one of the most well-run programs I have attended, and your leadership was evident in both the quality of the audience and the seamless execution. I truly appreciate the effort your team put into bringing everyone together. Space Systems Command top leadership highly values collaborations like this. Areas particularly relevant fo follow-up include companies specializing in AI-enabled decision support, cyber resilience, and advanced data analytics for mission operations. I look forward to staying engaged and I will keep an eye out for your upcoming event in Colorado Springs.`,
         name: "Captain MD \"Doc\" Rana",
         title: "Director, Human-AI Teaming Lab, Branch Chief, AI/Human Machine Teaming/Info Ops, and Deputy Chief, Information Dominance Division",
         affiliation: "U.S. Space Systems Command",
