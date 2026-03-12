@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Upload, Plus, Check, AlertCircle, Building2, Link as LinkIcon, Layers, RefreshCw, Edit2 } from "lucide-react";
+import { Upload, Plus, Check, AlertCircle, Building2, Link as LinkIcon, Layers, RefreshCw, Edit2, Trash2 } from "lucide-react";
 
 type EventWithTiers = {
   _id: string;
@@ -41,8 +41,9 @@ export default function SponsorAdminPage() {
   const [selectedTierIds, setSelectedTierIds] = useState<string[]>([]);
 
   // existing sponsor form
-  const [mode, setMode] = useState<"new" | "existing" | "tier" | "replace-logo" | "edit">("new");
+  const [mode, setMode] = useState<"new" | "existing" | "remove" | "tier" | "replace-logo" | "edit">("new");
   const [selectedExistingSponsorId, setSelectedExistingSponsorId] = useState<string>("");
+  const [removeFromAllTiers, setRemoveFromAllTiers] = useState(false);
 
   // edit sponsor form
   const [editSponsorId, setEditSponsorId] = useState<string>("");
@@ -315,6 +316,45 @@ export default function SponsorAdminPage() {
     }
   }
 
+  async function handleSubmitRemove(e: React.FormEvent) {
+    e.preventDefault();
+    if (!selectedExistingSponsorId || !selectedEventId || (!removeFromAllTiers && selectedTierIds.length === 0)) {
+      setMessage({ type: "error", text: "Please select a sponsor, event, and at least one tier" });
+      return;
+    }
+
+    setSubmitting(true);
+    setMessage(null);
+
+    try {
+      const res = await fetch("/api/admin/sponsors/remove", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sponsorId: selectedExistingSponsorId,
+          eventId: selectedEventId,
+          tierIds: removeFromAllTiers ? undefined : selectedTierIds,
+          removeFromAllTiers,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setMessage({ type: "success", text: data.message });
+        setSelectedExistingSponsorId("");
+        setSelectedTierIds([]);
+        setRemoveFromAllTiers(false);
+      } else {
+        setMessage({ type: "error", text: data.error });
+      }
+    } catch (error) {
+      setMessage({ type: "error", text: "Failed to remove sponsor" });
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   const selectedEvent = events.find((e) => e.eventId === selectedEventId);
 
   async function handleSubmitTier(e: React.FormEvent) {
@@ -410,6 +450,17 @@ export default function SponsorAdminPage() {
           >
             <Layers className="inline-block w-4 h-4 mr-1" />
             New Tier
+          </button>
+          <button
+            onClick={() => setMode("remove")}
+            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              mode === "remove"
+                ? "bg-blue-600 text-white"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
+          >
+            <Trash2 className="inline-block w-4 h-4 mr-1" />
+            Remove From Event
           </button>
           <button
             onClick={() => setMode("replace-logo")}
@@ -817,6 +868,107 @@ export default function SponsorAdminPage() {
             </form>
           )}
 
+          {mode === "remove" && (
+            <form onSubmit={handleSubmitRemove} className="space-y-6">
+              <div className="rounded-lg border border-red-200 bg-red-50 p-4">
+                <p className="text-sm text-red-800">
+                  Remove a sponsor from one or more event tiers without deleting the sponsor record itself.
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Select Sponsor *
+                </label>
+                <select
+                  value={selectedExistingSponsorId}
+                  onChange={(e) => setSelectedExistingSponsorId(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  required
+                >
+                  <option value="">Select a sponsor...</option>
+                  {existingSponsors.map((sponsor) => (
+                    <option key={sponsor._id} value={sponsor._id}>
+                      {sponsor.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Event *
+                </label>
+                <select
+                  value={selectedEventId || ""}
+                  onChange={(e) => {
+                    setSelectedEventId(e.target.value ? parseInt(e.target.value) : null);
+                    setSelectedTierIds([]);
+                    setRemoveFromAllTiers(false);
+                  }}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  required
+                >
+                  <option value="">Select an event...</option>
+                  {events.map((event) => (
+                    <option key={event._id} value={event.eventId}>
+                      {event.eventName}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {selectedEvent && (
+                <div className="space-y-4">
+                  <label className="inline-flex items-center gap-2 text-sm text-gray-700">
+                    <input
+                      type="checkbox"
+                      checked={removeFromAllTiers}
+                      onChange={(e) => setRemoveFromAllTiers(e.target.checked)}
+                      className="h-4 w-4"
+                    />
+                    Remove from all tiers for this event
+                  </label>
+
+                  {!removeFromAllTiers && (
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Tiers * <span className="text-gray-400 font-normal">(select multiple)</span>
+                      </label>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                        {selectedEvent.tiers.map((tier) => (
+                          <button
+                            key={tier.id}
+                            type="button"
+                            onClick={() => handleTierToggle(tier.id)}
+                            className={`px-3 py-2 rounded-md text-sm font-medium border transition-colors ${
+                              selectedTierIds.includes(tier.id)
+                                ? "bg-red-999 text-white border-red-999"
+                                : "bg-white text-gray-700 border-gray-300 hover:border-red-300"
+                            }`}
+                          >
+                            {selectedTierIds.includes(tier.id) && (
+                              <Check className="inline-block w-4 h-4 mr-1" />
+                            )}
+                            {tier.name}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={submitting}
+                className="w-full py-3 px-4 bg-red-999 text-white font-medium rounded-md hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                {submitting ? "Removing..." : "Remove Sponsor From Event"}
+              </button>
+            </form>
+          )}
+
           {mode === "replace-logo" && (
             <form onSubmit={handleSubmitReplaceLogo} className="space-y-6">
               {/* sponsor selection */}
@@ -977,11 +1129,12 @@ export default function SponsorAdminPage() {
         {/* quick reference */}
         <div className="mt-8 bg-blue-50 rounded-lg p-4">
           <h3 className="font-medium text-blue-900 mb-2">Quick Tips</h3>
-          <ul className="text-sm text-blue-800 space-y-1">
+          <ul className="text-sm text-blue-800 space-y-1 pl-4">
             <li>New sponsors can be created without adding to an event — just leave the event dropdown blank</li>
             <li>You can optionally add a new sponsor to matchmaking for an event (even without a regular tier)</li>
             <li>Select multiple tiers to add a sponsor to both "Small Business" and "Exhibitors" at once</li>
             <li>Use "Existing Sponsor" mode to add a sponsor that's already in the system to a new event</li>
+            <li>Use "Remove From Event" to unlink a sponsor or exhibitor tier from an event</li>
             <li>Use "Replace Logo" mode to update a sponsor's logo without changing other details</li>
             <li>Use "Edit Sponsor" mode to update name, website, or HTML description</li>
             <li>Changes appear on the website within a few minutes (CDN cache)</li>
