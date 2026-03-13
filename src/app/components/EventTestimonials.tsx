@@ -17,7 +17,7 @@ const EventTestimonials = ({ testimonials = [], title, showTitle = true }: Event
     const [expanded, setExpanded] = useState<Record<number, boolean>>({});
     const testimonialCount = testimonials.length;
     const gridClassName = testimonialCount === 4
-        ? "grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto"
+        ? "grid grid-cols-1 md:grid-cols-1 gap-6 sm:gap-8 max-w-5xl mx-auto"
         : "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8";
 
     const toggleExpanded = (idx: number) => {
