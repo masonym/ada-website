@@ -1108,6 +1108,24 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         imageUrl: "/testimonials/doc-rana.webp",
         imageAlt: "Captain MD \"Doc\" Rana"
       },
+      {
+        type: 'image',
+        quote: "Congrats to Charles Sills and his team for a tremendous Defense Technology & Aerospace Procurement Conference last week in Austin.  Thank you, Charles, for investing in Austin.  Shout-out to our colleagues at IBM for the initial connection.  There was high quality content on drones, quantum, procurement at Air Force and Space Force.  And lots of local flavor from quite a few of our Austin military commands, companies & organizations.  Let's hope for a 2nd Annual event!",
+        name: "Drew Scheberle",
+        title: "Co-Founder & Director",
+        affiliation: "National Security Innovation Council",
+        imageUrl: "/testimonials/drew-scheberle.webp",
+        imageAlt: "Drew Scheberle"
+      },
+      {
+        type: 'image',
+        quote: `I wanted to personally thank you for inviting me to your conference. I truly had a wonderful time and was able to make several valuable connections. A few highlights from the event include: Representatives from the Air Force, Army, Space Force, and EPA requesting a technical briefing next week. I also connected with a military supplier who is exploring the possibility of purchasing a 3D printing machine and/or potentially engaging us to build test barracks, SCIF facilities, and other structures at their 7-mile desert testing range. DEFENSEWERX encouraged us to apply to their innovation hubs for defense collaboration opportunities. Mojave Air and Space Port expressed interest in having us build aircraft hangars, and the Space Systems Command “Front Door” Program invited us to join the Space Force COMSO platform for future opportunities. The University of Texas at San Antonio also expressed interest in exploring collaboration on research and funding opportunities. There were many more great conversations beyond these. I truly appreciate the opportunity to participate and look forward to staying connected.`,
+        name: "Dr. Reynaldo A. Santana",
+        title: "President",
+        affiliation: "Contour Crafting Corporation",
+        imageUrl: "/testimonials/reynaldo-santana.webp",
+        imageAlt: "Dr. Reynaldo A. Santana"
+      },
     ]
   },
   {
