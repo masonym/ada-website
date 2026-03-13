@@ -1089,16 +1089,16 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     //                               `,
     //     eventPageNoticeVariant: 'warning',
     testimonials: [
-    //   {
-    //     type: 'image',
-    //     quote: `I wanted to extend my sincere thanks to the American Defense Alliance team for the opportunity to participate in the Defense Technology & Aerospace Procurement Conference in Austin. It was a truly well-organized event, and I appreciated the chance to contribute to the conversation around cybersecurity readiness for Defense Industrial Base contractors and the resources available through Project Spectrum.
-    //     The conference brought together an outstanding mix of government leaders, primes, innovators, and small businesses, and it was a privilege to engage with so many members of the defense and aerospace ecosystem. Your team did an excellent job creating an environment where meaningful dialogue and collaboration could take place.`,
-    //     name: "Kareem A. Sykes",
-    //     title: "Project Spectrum, Industry & Engagement, Director",
-    //     affiliation: "Eccalon, LLC",
-    //     imageUrl: "/testimonials/kareem-sykes.webp",
-    //     imageAlt: "Kareem A. Sykes"
-    //   },
+      {
+        type: 'image',
+        quote: `I wanted to extend my sincere thanks to the American Defense Alliance team for the opportunity to participate in the Defense Technology & Aerospace Procurement Conference in Austin. It was a truly well-organized event, and I appreciated the chance to contribute to the conversation around cybersecurity readiness for Defense Industrial Base contractors and the resources available through Project Spectrum.
+        The conference brought together an outstanding mix of government leaders, primes, innovators, and small businesses, and it was a privilege to engage with so many members of the defense and aerospace ecosystem. Your team did an excellent job creating an environment where meaningful dialogue and collaboration could take place.`,
+        name: "Kareem A. Sykes",
+        title: "Project Spectrum, Industry & Engagement, Director",
+        affiliation: "Eccalon, LLC",
+        imageUrl: "/testimonials/kareem-sykes.webp",
+        imageAlt: "Kareem A. Sykes"
+      },
       {
         type: 'image',
         quote: `Thank you for organizing such an excellent event. It was one of the most well-run programs I have attended, and your leadership was evident in both the quality of the audience and the seamless execution. I truly appreciate the effort your team put into bringing everyone together. Space Systems Command top leadership highly values collaborations like this. Areas particularly relevant fo follow-up include companies specializing in AI-enabled decision support, cyber resilience, and advanced data analytics for mission operations. I look forward to staying engaged and I will keep an eye out for your upcoming event in Colorado Springs.`,
