@@ -1280,7 +1280,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     ],
     matchmakingSessions: {
       signUpTime: "7:30 AM",
-      signUpDate: "May 28, 2025",
+      signUpDate: "May 28, 2026",
       sessionDurationMinutes: 8,
       slotsPerHost: 10,
       sessions: [
@@ -1296,9 +1296,9 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     },
     vipNetworkingReception: {
       title: "VIP Networking Reception",
-      date: "May 28, 2025",
-      timeStart: "6:00 PM",
-      timeEnd: "8:00 PM",
+      date: "May 28, 2026",
+      timeStart: "6:30 PM",
+      timeEnd: "8:30 PM",
       description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
       additionalInfo: "Join us at The Harbor Club featuring a cash bar, one complimentary drink ticket, and a selection of hors d’oeuvres.",
       additionalInfo2: "The Norfolk Waterside Marriott is connected to the Harbor Club via a Parking Garage. From the Marriott’s 2nd Floor, next to the escalators, enter doors to the Parking Garage. Follow the garage’s pedestrian bridge to the Waterside District building. Entry for Harbor Club is on the 2nd Floor of the building.",
