@@ -1909,57 +1909,47 @@ export const SCHEDULES = [
                 date: "May 28, 2026",
                 items: [
                     {
-                        time: "7:30 AM - 8:30 AM",
+                        time: "8:00 AM - 9:00 AM",
                         title: "On-Site Attendee Registration & Check-in",
                         location: "Norfolk Ballroom Pre-Function, Ground Level",
                     },
                     {
-                        time: "7:30 AM - 8:30 AM",
-                        title: "Networking Breakfast with Exhibitors",
+                        time: "8:00 AM - 9:00 AM",
+                        title: "Morning Coffee with Exhibitors",
                         location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
-                        time: "7:30 AM - 8:30 AM",
+                        time: "8:00 AM - 9:00 AM",
                         title: "Matchmaking Session I Sign-up",
                         location: "Norfolk Ballroom Pre-Function, Ground Level",
                     },
                     {
-                        time: "8:30 AM - 10:00 AM",
+                        time: "9:00 AM - 11:00 AM",
                         title: "General Sessions",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                     },
                     {
-                        time: "10:00 AM - 10:15 AM",
+                        time: "11:00 AM - 11:30 AM",
                         title: "Networking Break with Exhibitors",
                         location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
-                        time: "10:15 AM - 12:30 PM",
+                        time: "11:30 AM - 1:00 PM",
                         title: "General Sessions",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                     },
                     {
-                        time: "12:30 PM - 1:30 PM",
+                        time: "1:00 PM - 2:00 PM",
                         title: "Networking Lunch with Exhibitors",
                         location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
-                        time: "1:30 PM - 3:00 PM",
+                        time: "2:00 PM - 4:30 PM",
                         title: "General Sessions",
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                     },
                     {
-                        time: "3:00 PM - 3:15 PM",
-                        title: "Networking Break with Exhibitors",
-                        location: "Norfolk Ballroom (I-IV), Ground Level",
-                    },
-                    {
-                        time: "3:15 PM - 4:30 PM",
-                        title: "General Sessions",
-                        location: "Norfolk Ballroom (V-VI), Ground Level",
-                    },
-                    {
-                        time: "4:30 PM - 6:00 PM",
+                        time: "4:45 PM - 6:00 PM",
                         title: "Matchmaking Session I",
                         location: "Franklin-Yorktown Meeting Room, 2nd Floor",
                     },
@@ -1976,12 +1966,12 @@ export const SCHEDULES = [
                 date: "May 29, 2026",
                 items: [
                     {
-                        time: "7:30 AM - 8:30 AM",
+                        time: "8:00 AM - 9:00 AM",
                         title: "Networking Breakfast with Exhibitors",
                         location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
-                        time: "7:30 AM - 8:30 AM",
+                        time: "8:00 AM - 9:00 AM",
                         title: "Matchmaking Session II Sign-up",
                         location: "Norfolk Ballroom Pre-Function, Ground Level",
                     },
