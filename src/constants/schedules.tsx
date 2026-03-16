@@ -1967,7 +1967,7 @@ export const SCHEDULES = [
                 items: [
                     {
                         time: "8:00 AM - 9:00 AM",
-                        title: "Networking Breakfast with Exhibitors",
+                        title: "Morning Coffee with Exhibitors",
                         location: "Norfolk Ballroom (I-IV), Ground Level",
                     },
                     {
