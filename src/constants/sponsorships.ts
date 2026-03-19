@@ -930,7 +930,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     },
                     {
                         formatted: [
-                            { content: "Exclusive Host of the VIP Networking Reception", bold: true },
+                            { content: "Host of the VIP Networking Reception", bold: true },
                             { content: "Provide Welcoming Remarks at the Reception Opening", indent: 1 },
                             { content: "Branding on Reception Tables", indent: 1 },
                         ]
@@ -1367,10 +1367,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     },
                     {
                         formatted: [
-                            { content: "Exclusive Host of the VIP Networking Reception", bold: true },
-                            { content: "Provide Welcoming Remarks at the VIP Networking Reception", indent: 1 },
+                            { content: "Host of the VIP Networking Reception", bold: true },
+                            { content: "Provide Remarks at the VIP Networking Reception", indent: 1 },
                             { content: "Logo Placement at VIP Networking Reception", indent: 1 },
-                            { content: "Table Tents on VIP Networking Reception Tables", indent: 2 }
                         ]
                     },
                     {
@@ -1799,10 +1798,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     },
                     {
                         formatted: [
-                            { content: "Exclusive Host of the VIP Networking Reception", bold: true },
-                            { content: "Provide Welcoming Remarks at the VIP Networking Reception", indent: 1 },
+                            { content: "Host of the VIP Networking Reception", bold: true },
+                            { content: "Provide Remarks at the VIP Networking Reception", indent: 1 },
                             { content: "Logo Placement at VIP Networking Reception", indent: 1 },
-                            { content: "Table Tents on VIP Networking Reception Tables", indent: 2 }
                         ]
                     },
                     {
