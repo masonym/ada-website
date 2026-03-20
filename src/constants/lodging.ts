@@ -179,7 +179,7 @@ export const LODGING_INFO: LodgingInfo[] = [
     <b>Group Rate Cut Off</b>: July 13, 2026<br />
     <br/>
     <a href="https://be.synxis.com/?Hotel=43597&Chain=25042&config=Group&arrive=2026-08-03&depart=2026-08-05&adult=1&child=0&group=7666607" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">
-      Book the room
+      Book your group rate for the 2026 Air Force & Space Force Procurement Conference
     </a>
     <br />
     <br />
