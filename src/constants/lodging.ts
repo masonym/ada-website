@@ -169,16 +169,21 @@ export const LODGING_INFO: LodgingInfo[] = [
       },
     ],
     note: `
-    <b>Venue</b>: Hotel Polaris by U.S. Air Force Academy<br />
-    <b>Address</b>: 8989 North Gate Boulevard, Colorado Springs, CO 80921<br />
     <b>NOTE</b>: Hotel is located outside of the base security gates, no special access is required<br />
     <b>Event Location</b>: Generations Ballroom<br />
     <b>Dates</b>: Aug 4-5, 2026<br />
-    <b>Group Rate for Sleeping Rooms</b>: $209.00 plus taxes and $15 amenity fee (reduced from $25)<br />
-    <b>Additional availability</b>: 2 days pre- and post event<br />
-    <b>Group Rate Cut Off</b>: July 12, 2026<br />
-    <br/> 
-    <b>Reservation Link Coming Soon</b>
+    <b>Group Name</b>: Air Force & Space Force Procurement<br />
+    <b>Group Rate</b>: $209.00 ($239.00 including Fees) + Tax<br />
+    <b>Group Rate Available</b>: August 2, 2026 - August 6, 2026<br />
+    <b>Group Reservation Code (Booking Over Phone)</b>: 7666607<br />
+    <b>Group Rate Cut Off</b>: July 13, 2026<br />
+    <br/>
+    <a href="https://be.synxis.com/?Hotel=43597&Chain=25042&config=Group&arrive=2026-08-03&depart=2026-08-05&adult=1&child=0&group=7666607" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">
+      Book the room
+    </a>
+    <br />
+    <br />
+    <b>NOTE</b>: If you need to stay outside of the Official Group Dates (August 2 - August 5), Please call the Reservation Team at (833) 311-5581, or Email the Group Rooms Coordinator, Cissy Schat-Wilk at cissy.schat-wilk@thehotelpolaris.com. Group Rate honored 2 days before & after Group Dates based on hotel availability
     <br />
     <br />
     <div class="mb-4 bg-gray-100 p-4 rounded-xl">
