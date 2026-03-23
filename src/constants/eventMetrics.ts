@@ -15,6 +15,20 @@ export interface EventMetricsConfig {
 
 export const EVENT_METRICS_CONFIGS: EventMetricsConfig[] = [
   {
+    eventId: 4,
+    csvPath: 'events/2025NMCPC/registration-information.csv',
+    title: 'Event Metrics',
+    speakerCount: 38,
+    matchmakingHosts: 13,
+    oneOnOneAppointments: 216,
+    industryColumn: 'Industry',
+    businessSizeColumn: 'Business Size',
+    roleColumn: 'Contact Title', // which column to use from the CSV for the role breakdown
+    registrationTypeColumn: 'Registration Type', // which column to use from the CSV for the registration type breakdown
+    organizationColumn: 'Company/Organization Name', // which column to use from the CSV for the organization breakdown
+    excludedRegistrationTypes: ['Staff'], // registration types to exclude from the breakdown
+  },
+  {
     eventId: 5,
     csvPath: 'events/2026DTAPC/registration-information.csv',
     title: 'Event Metrics',
