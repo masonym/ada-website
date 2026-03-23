@@ -1343,6 +1343,59 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 showRemaining: false
             },
             {
+                id: "cybersecurity-cmmc-sponsor",
+                title: "Cybersecurity/CMMC Sponsorship",
+                cost: 8500,
+                requiresAttendeeInfo: true,
+                sponsorPasses: 4,
+                perks: [
+                    {
+                        formatted: [
+                            { content: "Event Access: (4) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Workshop Opportunity", bold: true },
+                            { content: "Exclusive CMMC Workshop after General Session on Day 1", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on Day 2", indent: 1 }
+                        ]
+                    }
+                ],
+                colour: "#3FB4E6",
+                showRemaining: false
+            },
+            {
                 id: "vip-networking-reception-sponsor",
                 title: "VIP Networking Reception Sponsorship",
                 cost: 3500,
@@ -1771,6 +1824,59 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     }
                 ],
                 colour: "#CD7F32",
+                showRemaining: false
+            },
+            {
+                id: "cybersecurity-cmmc-sponsor",
+                title: "Cybersecurity/CMMC Sponsorship",
+                cost: 8500,
+                requiresAttendeeInfo: true,
+                sponsorPasses: 4,
+                perks: [
+                    {
+                        formatted: [
+                            { content: "Event Access: (4) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Workshop Opportunity", bold: true },
+                            { content: "Exclusive CMMC Workshop after General Session on Day 1", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on Day 2", indent: 1 }
+                        ]
+                    }
+                ],
+                colour: "#3FB4E6",
                 showRemaining: false
             },
             {
