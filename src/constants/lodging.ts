@@ -12,10 +12,30 @@ type Hotel = {
   };
 };
 
-type LodgingInfo = {
+type LodgingResourceImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+type LodgingResourceLink = {
+  href: string;
+  label: string;
+};
+
+export type LodgingResource = {
+  title: string;
+  description?: string;
+  images?: LodgingResourceImage[];
+  link?: LodgingResourceLink;
+};
+
+export type LodgingInfo = {
   eventId: number;
   hotels: Hotel[];
   note?: string;
+  resources?: LodgingResource[];
 };
 
 
@@ -85,7 +105,27 @@ export const LODGING_INFO: LodgingInfo[] = [
     <b>Group Rate</b>: Standard Room: $159.00 + Tax | Waterview Room: $179.00 + Tax<br />
     <b>Rate Available</b>: July 27-31, 2025<br />
     <b>Group Rate Cut-off Date</b>: <s>July 14, 2025</s> Extended to July 18, 2025 (More Rooms Added)<br />
-    <a href='https://www.marriott.com/event-reservations/reservation-link.mi?guestreslink2=true&id=1740589200251&key=GRP' target='_blank' rel='noopener noreferrer' class='underline hover:text-accent text-blue-500'>Reservation Link</a>`
+    <a href='https://www.marriott.com/event-reservations/reservation-link.mi?guestreslink2=true&id=1740589200251&key=GRP' target='_blank' rel='noopener noreferrer' class='underline hover:text-accent text-blue-500'>Reservation Link</a>`,
+    resources: [
+      {
+        title: "Norfolk Dining Guide",
+        description: "Explore the local dining scene with this guide provided by Visit Norfolk.",
+        images: [
+          {
+            src: "/events/2025NMCPC/norfolk-dining-guide-1.webp",
+            alt: "Norfolk Dining Guide Page 1",
+            width: 790,
+            height: 1024,
+          },
+          {
+            src: "/events/2025NMCPC/norfolk-dining-guide-2.webp",
+            alt: "Norfolk Dining Guide Page 2",
+            width: 790,
+            height: 1024,
+          },
+        ],
+      },
+    ]
   },
   {
     eventId: 5, // 2025DTAPC
@@ -149,7 +189,44 @@ export const LODGING_INFO: LodgingInfo[] = [
     <a href="https://www.marriott.com/event-reservations/reservation-link.mi?guestreslink2=true&id=1760457928560&key=GRP&dtt=true" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">
       Book your group rate for 2026 Navy & Marine Corps Procurement Conference
     </a>
-    `
+    `,
+    resources: [
+      {
+        title: "Norfolk Dining Guide",
+        description: "Explore the local dining scene with this guide provided by Visit Norfolk.",
+        images: [
+          {
+            src: "/events/2025NMCPC/norfolk-dining-guide-1.webp",
+            alt: "Norfolk Dining Guide Page 1",
+            width: 790,
+            height: 1024,
+          },
+          {
+            src: "/events/2025NMCPC/norfolk-dining-guide-2.webp",
+            alt: "Norfolk Dining Guide Page 2",
+            width: 790,
+            height: 1024,
+          },
+        ],
+      },
+      {
+        title: "Show Your Badge Discount Program at Norfolk Restaurants",
+        images: [
+          {
+            src: "/events/2026NMCPC/show-your-badge-discount-program-1.webp",
+            alt: "Show Your Badge Discount Program at Norfolk Restaurants",
+            width: 790,
+            height: 1024,
+          },
+          {
+            src: "/events/2026NMCPC/show-your-badge-discount-program-2.webp",
+            alt: "Show Your Badge Discount Program at Norfolk Restaurants",
+            width: 790,
+            height: 1024,
+          },
+        ],
+      },
+    ]
   },
   {
     eventId: 7, // 2026AFSFPC
