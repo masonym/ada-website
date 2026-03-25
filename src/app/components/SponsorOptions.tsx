@@ -39,6 +39,10 @@ const SponsorOptions = ({ event }: SponsorProps) => {
 
     const sponsorOptions = getSponsorshipsForEvent(event.id);
 
+    const visibleSponsorships = currentEvent.sponsorships.filter(
+        (item) => item.showOnSponsorshipPage !== false
+    );
+
     const defaultExhibitorText = (
         <>
             The configuration of Exhibitor Areas varies by event and may encompass locations such as
@@ -106,10 +110,16 @@ const SponsorOptions = ({ event }: SponsorProps) => {
 
                     {/* this prop isn't required, so we want to only filter ones out that are EXPLICITLY FALSE */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-                        {currentEvent.sponsorships
-                            .filter((item) => item.showOnSponsorshipPage !== false)
+                        {visibleSponsorships
                             .map((item, index) => (
-                                <div key={index} className="flex justify-center">
+                                <div
+                                    key={index}
+                                    className={`flex justify-center ${
+                                        visibleSponsorships.length % 3 === 1 && index === visibleSponsorships.length - 1
+                                            ? 'md:col-span-3'
+                                            : ''
+                                    }`}
+                                >
                                     <SponsorshipCard item={item} event={event} getSponsorCount={getSponsorCount} />
                                 </div>
                             ))}
