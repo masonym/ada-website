@@ -246,8 +246,9 @@ export const LODGING_INFO: LodgingInfo[] = [
       },
     ],
     note: `
-    <b>NOTE</b>: Hotel is located outside of the base security gates, no special access is required<br />
     <b>Event Location</b>: Generations Ballroom<br />
+    <br />
+    <b>NOTE</b>: Hotel is located outside of the base security gates, no special access is required<br />
     <b>Dates</b>: Aug 4-5, 2026<br />
     <b>Group Name</b>: Air Force & Space Force Procurement<br />
     <b>Group Rate</b>: $209.00 ($239.00 including Fees) + Tax<br />
@@ -264,17 +265,23 @@ export const LODGING_INFO: LodgingInfo[] = [
     <br />
     <br />
     <div class="mb-4 bg-gray-100 p-4 rounded-xl">
+    <b>Additional Information:</b><br />
+    • $15 Amenity Fee will be Added to your Room (Reduced from $25 for our Group)<br />
+    • Complimentary Wi-Fi in Meeting Space for the Group<br />
+    • Hotel Polaris and its Lovie's Market, Bars and Restaurants Operate as a Cashless Property<br />
+    <br />
     <b>Amenity Fee Covers:</b><br />
-    • Wireless in room high speed internet (5Mbps)<br />
-    • Unlimited Lavazza in-room coffee<br />
-    • Unlimited filtered water at property wide refilling stations<br />
-    • Sporting equipment & games (ping pong, pool, cornhole, bocce ball, and more)<br />
+    • Wireless In-Room High Speed Internet (5Mbps)<br />
+    • Unlimited Lavazza In-Room Coffee<br />
+    • Unlimited Filtered Water at Property Wide Refilling Stations<br />
+    • Sporting Equipment & Games (Ping Pong, Pool, Cornhole, Bocce Ball, and More)<br />
     • 10% off Ascend Spa Services<br />
-    • 10% off all Grab 'n Go food and beverage (excludes alcohol)<br />
+    • 10% off all Grab 'n Go Food and Beverage (Excludes Alcohol)<br />
     • 10% off Flight Simulator Experiences<br />
     • Pool Towel Services<br />
-    • 24 Hour Fitness Center access<br />
-    • Santa Fe Trail access via Hotel Polaris Trailhead
+    • 24 Hour Fitness Center Access<br />
+    • Heated Outdoor Swimming Pool (Open All Year Long)<br />
+    • Santa Fe Trail access via Hotel Polaris Trailhead<br />
     </div>
     `
   },
