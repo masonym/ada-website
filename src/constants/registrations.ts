@@ -440,7 +440,7 @@ export const REGISTRATION_TYPES = [
                 buttonText: "Register Now",
                 price: 595,
                 earlyBirdPrice: 495,
-                earlyBirdDeadline: "2026-04-01T03:59:59Z", // March 31st, 2026 11:59 PM ET
+                earlyBirdDeadline: "2026-05-01T07:59:59Z", // May 1, 2026
                 // earlyBirdDeadline: "2026-07-01T03:59:59Z", // June 30, 2026 11:59 PM ET
                 type: "paid",
             },
@@ -465,7 +465,7 @@ export const REGISTRATION_TYPES = [
                 buttonText: "Register Now",
                 price: 695,
                 earlyBirdPrice: 595,
-                earlyBirdDeadline: "2026-04-01T03:59:59Z", // March 31st, 2026 11:59 PM ET
+                earlyBirdDeadline: "2026-05-01T07:59:59Z", // May 1, 2026
                 // earlyBirdDeadline: "2026-07-01T03:59:59Z", // June 30, 2026 11:59 PM ET
                 type: "paid",
             },
