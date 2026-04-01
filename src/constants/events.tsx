@@ -1286,7 +1286,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       sessions: [
         {
           date: "May 28",
-          sessionTime: "4:30 PM - 6:00 PM",
+          sessionTime: "4:45 PM - 6:00 PM",
         },
         {
           date: "May 29",
