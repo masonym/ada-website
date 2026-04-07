@@ -35,6 +35,7 @@ export interface SponsorshipType {
   sponsorPasses?: number; // Number of attendee passes included with this sponsorship
   slotsPerEvent?: number;
   showRemaining?: boolean; // Flag to show remaining slots on the registration page
+  isSoldOut?: boolean; // manual set of sold out flag
 };
 
 type PrimeSponsorType = SponsorshipType;
@@ -72,6 +73,7 @@ export interface AdapterModalRegistrationType extends ModalRegistrationType {
   shownOnRegistrationPage?: boolean;
   saleEndTime?: string;
   showRemaining?: boolean;
+  isSoldOut?: boolean;
 };
 
 /**
@@ -175,6 +177,7 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
       sponsorPasses: sponsorPasses || 0, // Include sponsorPasses in the returned object
       colour: 'colour' in sponsor ? sponsor.colour : undefined,
       showRemaining: sponsor.showRemaining ?? true, // Default to true if not specified
+      isSoldOut: sponsor.isSoldOut ?? false,
     };
   });
 

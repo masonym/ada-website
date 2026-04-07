@@ -93,6 +93,10 @@ const isSoldOut = (item: AdapterModalRegistrationType, getSponsorCount: (tierId:
   const slotsAvailable = item.quantityAvailable;
   const slotsTaken = getSponsorCount(item.id);
 
+  if (item.isSoldOut) {
+    return item.isSoldOut
+  }
+
   return slotsTaken >= slotsAvailable;
 };
 
@@ -1977,7 +1981,7 @@ const RegistrationModal = ({
             {/* Body */}
             <div className="relative p-6 flex-auto">
               {event.registrationClosedNotice ? (
-                <div 
+                <div
                   className="my-4 text-slate-700 text-lg leading-relaxed"
                   dangerouslySetInnerHTML={{ __html: event.registrationClosedNotice }}
                 />

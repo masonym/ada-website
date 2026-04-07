@@ -20,6 +20,7 @@ export interface Sponsorship {
     slotsPerEvent?: number;
     showOnSponsorshipPage?: boolean;
     showRemaining?: boolean;
+    isSoldOut?: boolean;
     headerImage?: string;
     buttonText?: string;
     buttonLink?: string;
@@ -45,7 +46,7 @@ export interface AdditionalPassType {
     headerImage?: string;
     buttonText?: string;
     maxQuantityPerOrder?: number;
-    perks?: Array<string | {formatted: FormattedPerk[]}>;
+    perks?: Array<string | { formatted: FormattedPerk[] }>;
 }
 
 // Define the structure for sponsorship tiers by event
