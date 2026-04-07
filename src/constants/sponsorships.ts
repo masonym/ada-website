@@ -1403,6 +1403,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 requiresAttendeeInfo: true,
                 slotsPerEvent: 2,
                 sponsorPasses: 2,
+                isSoldOut: true,
                 perks: [
                     {
                         formatted: [
