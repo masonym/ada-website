@@ -146,6 +146,9 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword, sanitySpeakers, s
                 sanityKeynoteSpeakers={sanityKeynoteSpeakers || []}
             />
             <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Speaker Spotlight</h1>
+            {event.id === 6 && (
+                <p className="text-l font-bold text-center mb-8 text-slate-600">Additional Speakers in process of agency approval.</p>
+            )}
             {isEventFuture && (
                 <p className="text-l font-bold text-center mb-8 text-slate-600">More speaker information is being added. Please check regularly for updates.</p>
             )}
