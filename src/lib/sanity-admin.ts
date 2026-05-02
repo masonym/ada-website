@@ -826,31 +826,33 @@ export async function updatePromoCode(
   promoCodeId: string,
   updates: Partial<Omit<CreatePromoCodeInput, 'code'>>
 ): Promise<SanityPromoCode> {
-  const patch = adminClient.patch(promoCodeId)
-  
+  // Build a single set object with all fields to update
+  // Multiple .set() calls overwrite each other — must use a single .set() call
+  const fieldsToSet: Record<string, any> = {}
+
   if (updates.discountPercentage !== undefined) {
-    patch.set({ discountPercentage: updates.discountPercentage })
+    fieldsToSet.discountPercentage = updates.discountPercentage
   }
   if (updates.eligibleTicketTypes !== undefined) {
-    patch.set({ eligibleTicketTypes: updates.eligibleTicketTypes })
+    fieldsToSet.eligibleTicketTypes = updates.eligibleTicketTypes
   }
   if (updates.eligibleEventIds !== undefined) {
-    patch.set({ eligibleEventIds: updates.eligibleEventIds })
+    fieldsToSet.eligibleEventIds = updates.eligibleEventIds
   }
   if (updates.expirationDate !== undefined) {
-    patch.set({ expirationDate: updates.expirationDate })
+    fieldsToSet.expirationDate = updates.expirationDate
   }
   if (updates.description !== undefined) {
-    patch.set({ description: updates.description })
+    fieldsToSet.description = updates.description
   }
   if (updates.isActive !== undefined) {
-    patch.set({ isActive: updates.isActive })
+    fieldsToSet.isActive = updates.isActive
   }
   if (updates.autoApply !== undefined) {
-    patch.set({ autoApply: updates.autoApply })
+    fieldsToSet.autoApply = updates.autoApply
   }
-  
-  return patch.commit()
+
+  return adminClient.patch(promoCodeId).set(fieldsToSet).commit()
 }
 
 // toggle promo code active status

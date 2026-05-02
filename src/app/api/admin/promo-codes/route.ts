@@ -56,7 +56,9 @@ export async function POST(request: NextRequest) {
       if (!promoCodeId) {
         return NextResponse.json({ error: 'promoCodeId required' }, { status: 400 })
       }
+      console.log('[admin/promo-codes] Updating promo code:', promoCodeId, 'with:', JSON.stringify(updates))
       const promoCode = await updatePromoCode(promoCodeId, updates)
+      console.log('[admin/promo-codes] Update result:', JSON.stringify({ code: promoCode.code, eligibleEventIds: promoCode.eligibleEventIds }))
       return NextResponse.json({ success: true, promoCode })
     }
 

@@ -9,11 +9,13 @@ export const client = createClient({
 
 // non-CDN client for real-time data (promo codes, etc.)
 // changes are reflected immediately without needing to redeploy
+// uses API token to ensure access to all document types
 export const realtimeClient = createClient({
   projectId: 'nc4xlou0',
   dataset: 'production',
   useCdn: false, // bypass CDN for immediate updates
   apiVersion: '2024-11-30',
+  token: process.env.SANITY_API_TOKEN,
 })
 
 // revalidate sponsor data every 5 minutes (300 seconds)
@@ -423,16 +425,29 @@ export async function validatePromoCodeFromSanity(
     `, { code: code.toUpperCase() })
 
     if (!promoCode) {
+      console.log('[validatePromoCodeFromSanity] No promo code found in Sanity for code:', code.toUpperCase())
       return { valid: false, reason: 'invalid' }
     }
+
+    console.log('[validatePromoCodeFromSanity] Found promo code:', JSON.stringify({
+      code: promoCode.code,
+      eligibleEventIds: promoCode.eligibleEventIds,
+      eligibleEventIdTypes: promoCode.eligibleEventIds.map((id: any) => typeof id),
+      requestedEventId: eventId,
+      requestedEventIdType: typeof eventId,
+    }))
 
     // check expiration
     if (new Date() > new Date(promoCode.expirationDate)) {
       return { valid: false, reason: 'expired' }
     }
 
-    // check if valid for this event
-    if (!promoCode.eligibleEventIds.includes(eventId)) {
+    // check if valid for this event (coerce to numbers to handle Sanity returning strings)
+    const eventIdNum = typeof eventId === 'string' ? parseInt(eventId as string) : eventId;
+    const hasEvent = promoCode.eligibleEventIds.some(
+      (id: number | string) => (typeof id === 'string' ? parseInt(id) : id) === eventIdNum
+    );
+    if (!hasEvent) {
       return { valid: false, reason: 'not_valid_for_event' }
     }
 

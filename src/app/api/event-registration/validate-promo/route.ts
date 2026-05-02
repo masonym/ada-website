@@ -55,9 +55,10 @@ export async function POST(request: Request) {
 
     // Try Sanity first, then fall back to legacy
     let validationResult = await validatePromoCodeFromSanity(promoCode, eventIdNum);
+    console.log('[validate-promo] Sanity result:', JSON.stringify(validationResult));
     
-    // If not found in Sanity, try legacy promo codes
-    if (!validationResult.valid && validationResult.reason === 'invalid') {
+    // If not found in Sanity (or Sanity errored), try legacy promo codes
+    if (!validationResult.valid && (validationResult.reason === 'invalid' || validationResult.reason === 'error')) {
       const legacyResult = validatePromoCode(promoCode, eventId);
       if (legacyResult.valid && legacyResult.promoDetails) {
         validationResult = {
