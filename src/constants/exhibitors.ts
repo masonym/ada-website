@@ -353,7 +353,7 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                 id: "exhibit",
                 title: "Table-Top Exhibit Space",
                 cost: 1700,
-                earlyBirdPrice: 1350,
+                earlyBirdPrice: 1500,
                 earlyBirdDeadline: "2026-06-30T07:59:59Z", // May 1, 2026
                 headerImage: "exhibit-table-pass.webp",
                 buttonText: "Register Now",
