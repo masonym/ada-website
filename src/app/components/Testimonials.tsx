@@ -26,7 +26,9 @@ interface TestimonialsProps {
 const Testimonials = ({ eventIds, showEvents = true, showDefaultVideos = true, types }: TestimonialsProps) => {
     const eventsWithAnyTestimonials = EVENTS.filter(e => (e.testimonials || []).length > 0);
     const selectedEvents = (eventIds && eventIds.length > 0)
-        ? eventsWithAnyTestimonials.filter(e => eventIds.includes(e.id))
+        ? eventsWithAnyTestimonials
+            .filter(e => eventIds.includes(e.id))
+            .sort((a, b) => eventIds.indexOf(a.id) - eventIds.indexOf(b.id))
         : eventsWithAnyTestimonials;
 
     const testimonials: Testimonial[] = [
