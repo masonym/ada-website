@@ -2019,7 +2019,7 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (I – IV), Ground Floor",
                     },
                     {
-                        time: "4:45 PM – 5:30 PM",
+                        time: "4:45 PM – 6:00 PM",
                         title: "Matchmaking Session I",
                         location: "Franklin-Yorktown Meeting Room, 2nd Floor",
                     },

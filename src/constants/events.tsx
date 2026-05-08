@@ -1279,7 +1279,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       },
     ],
     matchmakingSessions: {
-      signUpTime: "7:30 AM",
+      signUpTime: "8:00 AM",
       signUpDate: "May 28, 2026",
       sessionDurationMinutes: 8,
       slotsPerHost: 10,
