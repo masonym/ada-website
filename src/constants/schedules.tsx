@@ -2100,4 +2100,161 @@ export const SCHEDULES = [
         ]
     },
 
+    {
+        id: 7,
+        schedule: [
+            {
+                date: "August 4, 2026",
+                items: [
+                    {
+                        time: "8:00 AM",
+                        title: "On-Site Attendee Registration & Check-in",
+                    },
+                    {
+                        time: "8:00 AM – 9:00 AM",
+                        title: "Networking Breakfast with Exhibitors",
+                    },
+                    {
+                        time: "8:00 – 9:00 AM",
+                        title: "Matchmaking Sign-up",
+                    },
+                    {
+                        time: "9:00 AM",
+                        title: "Conference Launch – American Defense Alliance",
+                    },
+                    {
+                        time: "9:35 AM",
+                        title: "Welcoming Remarks – State of Colorado",
+                    },
+                    {
+                        time: "9:45 AM",
+                        title: "DEPARTMENT OF THE AIR FORCE KEYNOTE ADDRESS",
+                    },
+                    {
+                        time: "10:15 AM",
+                        title: "Fireside Chat: Air Force Challenges & Plans Driving Contracts",
+                    },
+                    {
+                        time: "11:00 AM",
+                        title: "KEYNOTE ADDRESS: AIR FORCE ACQUISITIONS UPDATE",
+                    },
+                    {
+                        time: "11:30 AM",
+                        title: "Industry Insight",
+                    },
+                    {
+                        time: "11:35 AM",
+                        title: "Networking Break with Exhibitors",
+                    },
+                    {
+                        time: "12:00 PM",
+                        title: "Industry Insight",
+                    },
+                    {
+                        time: "12:05 PM",
+                        title: "Fireside Chat: Space Force Challenges & Plans Driving Contracts",
+                    },
+                    {
+                        time: "12:45 PM",
+                        title: "Cybersecurity/CMMC Update",
+                    },
+                    {
+                        time: "1:00 PM",
+                        title: "Networking Lunch with Exhibitors",
+                    },
+                    {
+                        time: "2:00 PM",
+                        title: "Industry Insight",
+                    },
+                    {
+                        time: "2:05 PM",
+                        title: "New Paradigm Aerospace Technologies – Latest Developments Brief",
+                        description: "[Unmanned Platforms/Collaborative Combatant Aircraft (CCA), Drones/Counter-drones, AI & Quantum in Defense, Autonomous Systems/Robotics, etc.]",
+                    },
+                    {
+                        time: "2:50 PM",
+                        title: "Industry Insight",
+                    },
+                    {
+                        time: "2:55 PM",
+                        title: "Local & Western State Bases & Installations – Construction & Base Operations Support (BOS) Opportunities",
+                    },
+                    {
+                        time: "3:40 PM",
+                        title: "Air Force & Space Force Small Business Programs",
+                    },
+                    {
+                        time: "4:30 PM",
+                        title: "Day One Closing Remarks",
+                    },
+                    {
+                        time: "4:30 – 6:00 PM",
+                        title: "Networking with Exhibitors",
+                    },
+                    {
+                        time: "4:45 – 6:00 PM",
+                        title: "Matchmaking Session I",
+                    },
+                    {
+                        time: "6:30 – 8:30 PM",
+                        title: "VIP Networking Reception",
+                        description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
+                    },
+                ],
+            },
+            {
+                date: "August 5, 2026",
+                items: [
+                    {
+                        time: "8:00 AM – 9:00 AM",
+                        title: "Networking Breakfast with Exhibitors",
+                    },
+                    {
+                        time: "8:00 AM – 9:00 AM",
+                        title: "Matchmaking Sign-up",
+                    },
+                    {
+                        time: "9:00 AM",
+                        title: "Welcome Back Remarks",
+                    },
+                    {
+                        time: "9:05 AM",
+                        title: "Military Base-Community Partnerships Promoting Local Build Contracts",
+                    },
+                    {
+                        time: "9:35 AM",
+                        title: "How To Do Business With The Aerospace Primes",
+                    },
+                    {
+                        time: "10:20 AM",
+                        title: "CONGRESSIONAL KEYNOTE ADDRESS",
+                    },
+                    {
+                        time: "10:40 AM",
+                        title: "Industry Insight",
+                    },
+                    {
+                        time: "10:45 AM",
+                        title: "Networking Break with Exhibitors",
+                    },
+                    {
+                        time: "11:15 AM",
+                        title: "Update – Golden Dome/Missile Defense Contracting",
+                    },
+                    {
+                        time: "11:50 AM",
+                        title: "Investment Opportunities in Defense Industrial Base Manufacturing",
+                    },
+                    {
+                        time: "12:30 PM",
+                        title: "Closing Remarks",
+                    },
+                    {
+                        time: "12:30 PM – 1:30 PM",
+                        title: "Matchmaking Session II",
+                    },
+                ],
+            },
+        ]
+    },
 ];
