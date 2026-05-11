@@ -2169,7 +2169,6 @@ export const SCHEDULES = [
                     {
                         time: "2:05 PM",
                         title: "New Paradigm Aerospace Technologies – Latest Developments Brief",
-                        description: "[Unmanned Platforms/Collaborative Combatant Aircraft (CCA), Drones/Counter-drones, AI & Quantum in Defense, Autonomous Systems/Robotics, etc.]",
                     },
                     {
                         time: "2:50 PM",
