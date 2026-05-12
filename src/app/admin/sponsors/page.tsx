@@ -58,6 +58,16 @@ export default function SponsorAdminPage() {
   const [newTierName, setNewTierName] = useState("");
   const [newTierStyle, setNewTierStyle] = useState("");
 
+  const TIER_STYLE_PRESETS = [
+    { label: "Gold", classes: "bg-amber-400 text-slate-900" },
+    { label: "Silver", classes: "bg-gray-300 text-slate-900" },
+    { label: "Bronze", classes: "bg-amber-700 text-slate-900" },
+    { label: "Platinum", classes: "bg-sky-300 text-slate-900" },
+    { label: "CMMC", classes: "bg-blue-600 text-slate-900" },
+    { label: "Small Business", classes: "bg-sb-100 text-slate-900" },
+    { label: "Exhibitors", classes: "bg-navy-800 text-white" },
+  ];
+
   // replace logo form
   const [replaceSponsorId, setReplaceSponsorId] = useState<string>("");
   const [replaceLogo, setReplaceLogo] = useState<File | null>(null);
@@ -833,29 +843,55 @@ export default function SponsorAdminPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Style Classes (optional)
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Style Classes <span className="text-gray-400 font-normal">(optional)</span>
                 </label>
+
+                {/* preset picker */}
+                <div className="mb-3">
+                  <p className="text-xs text-gray-500 mb-2">Click a preset or type custom classes below</p>
+                  <div className="flex flex-wrap gap-2">
+                    {TIER_STYLE_PRESETS.map((preset) => (
+                      <button
+                        key={preset.label}
+                        type="button"
+                        onClick={() => setNewTierStyle(preset.classes)}
+                        className={`px-3 py-1.5 rounded-full text-xs font-semibold border-2 transition-all ${
+                          newTierStyle === preset.classes
+                            ? "ring-2 ring-offset-1 ring-blue-500 border-transparent"
+                            : "border-transparent hover:border-gray-300"
+                        } ${preset.classes}`}
+                      >
+                        {preset.label}
+                      </button>
+                    ))}
+                    {newTierStyle && !TIER_STYLE_PRESETS.some((p) => p.classes === newTierStyle) && (
+                      <span className={`px-3 py-1.5 rounded-full text-xs font-semibold border-2 border-blue-500 ring-2 ring-offset-1 ring-blue-500 ${newTierStyle}`}>
+                        Custom
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* manual input */}
                 <input
                   type="text"
                   value={newTierStyle}
                   onChange={(e) => setNewTierStyle(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-sm"
                   placeholder="bg-sb-100 text-slate-900"
                 />
-                <p className="text-xs text-gray-400 mt-1">Tailwind classes for tier badge styling</p>
-              </div>
+                <p className="text-xs text-gray-400 mt-1">Tailwind classes applied to the tier badge</p>
 
-              <div className="bg-gray-200 rounded-lg p-4">
-                <h4 className="text-sm font-medium text-gray-700 mb-2">Common Tier Styles</h4>
-                <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div><code className="bg-amber-400 text-slate-900 px-1 rounded">bg-amber-400 text-slate-900</code> Gold</div>
-                  <div><code className="bg-gray-300 text-slate-900 px-1 rounded">bg-gray-300 text-slate-900</code> Silver</div>
-                  <div><code className="bg-amber-700 text-slate-900 px-1 rounded">bg-amber-700 text-slate-900</code> Bronze</div>
-                  <div><code className="bg-sky-300 text-slate-900 px-1 rounded">bg-sky-300 text-slate-900</code> Platinum</div>
-                  <div><code className="bg-sb-100 text-slate-900 px-1 rounded">bg-sb-100 text-slate-900</code> Small Business</div>
-                  <div><code className="bg-navy-800 text-white px-1 rounded">bg-navy-800 text-white</code> Exhibitors</div>
-                </div>
+                {/* live preview */}
+                {newTierStyle && (
+                  <div className="mt-3 flex items-center gap-3">
+                    <span className="text-xs text-gray-500">Preview:</span>
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${newTierStyle}`}>
+                      {newTierName || "Tier Name"}
+                    </span>
+                  </div>
+                )}
               </div>
 
               <button
