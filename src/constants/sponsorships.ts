@@ -1879,7 +1879,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     }
                 ],
                 colour: "#3FB4E6",
-                showRemaining: false
+                showRemaining: false,
+                slotsPerEvent: 1,
             },
             {
                 id: "vip-networking-reception-sponsor",
