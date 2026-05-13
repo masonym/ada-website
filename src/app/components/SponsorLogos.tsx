@@ -17,6 +17,7 @@ const TIER_ORDER = [
     'gold',
     'silver',
     'bronze',
+    'cmmc',
     'vip',
     'coffee',
     'networking',
