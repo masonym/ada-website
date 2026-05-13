@@ -285,6 +285,7 @@ function getLegacyMatchmakingData(eventSlug: string): {
 export type SanitySpeakerPublic = {
   _id: string
   name: string
+  sortName?: string
   slug: { current: string }
   image?: { asset: { _ref: string } }
   position?: string
@@ -296,6 +297,7 @@ export type EventSpeakerPublic = {
   _key: string
   speakerId: string
   speakerName: string
+  speakerSortName?: string
   speakerSlug: string
   speakerCompany?: string
   speakerPosition?: string
@@ -326,6 +328,7 @@ export async function getEventSpeakersPublic(eventId: number): Promise<{
           _key,
           "speakerId": speaker->_id,
           "speakerName": speaker->name,
+          "speakerSortName": speaker->sortName,
           "speakerSlug": speaker->slug.current,
           "speakerCompany": speaker->company,
           "speakerPosition": speaker->position,
@@ -358,7 +361,9 @@ export async function getEventSpeakersPublic(eventId: number): Promise<{
 
     const speakers = filteredSpeakers
       .filter((s: EventSpeakerPublic) => !s.isKeynote)
-      .sort((a: EventSpeakerPublic, b: EventSpeakerPublic) => a.speakerName.localeCompare(b.speakerName))
+      .sort((a: EventSpeakerPublic, b: EventSpeakerPublic) =>
+        (a.speakerSortName || a.speakerName).localeCompare(b.speakerSortName || b.speakerName)
+      )
 
     return { speakers, keynoteSpeakers }
   } catch (error) {

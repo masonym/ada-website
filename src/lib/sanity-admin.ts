@@ -441,6 +441,7 @@ export async function deleteMatchmakingSponsorsDoc(docId: string) {
 export type SanitySpeaker = {
   _id: string
   name: string
+  sortName?: string
   slug: { current: string }
   image?: {
     asset: {
@@ -458,9 +459,10 @@ export type SanitySpeaker = {
 // get all speakers
 export async function getAllSpeakers(): Promise<SanitySpeaker[]> {
   return adminClient.fetch<SanitySpeaker[]>(`
-    *[_type == "speaker"] | order(priority desc, name asc) {
+    *[_type == "speaker"] | order(priority desc, coalesce(sortName, name) asc) {
       _id,
       name,
+      sortName,
       slug,
       image,
       position,
@@ -492,6 +494,7 @@ export async function getSpeakerById(speakerId: string): Promise<SanitySpeaker |
 // create a new speaker
 export async function createSpeaker(data: {
   name: string
+  sortName?: string
   position?: string
   company?: string
   bio?: string
@@ -507,6 +510,7 @@ export async function createSpeaker(data: {
   const doc: any = {
     _type: 'speaker',
     name: data.name,
+    sortName: data.sortName || '',
     slug: { _type: 'slug', current: slug },
     position: data.position || '',
     company: data.company || '',
@@ -530,6 +534,7 @@ export async function updateSpeakerDetails(
   speakerId: string,
   details: {
     name?: string
+    sortName?: string
     position?: string
     company?: string
     bio?: string
@@ -549,6 +554,9 @@ export async function updateSpeakerDetails(
   }
   if (details.position !== undefined) {
     patch.set({ position: details.position })
+  }
+  if (details.sortName !== undefined) {
+    patch.set({ sortName: details.sortName })
   }
   if (details.company !== undefined) {
     patch.set({ company: details.company })
@@ -618,6 +626,7 @@ export type EventSpeakerWithDetails = {
   _key: string
   speakerId: string
   speakerName: string
+  speakerSortName?: string
   speakerCompany?: string
   speakerPosition?: string
   speakerImage?: { asset: { _ref: string } }
@@ -644,6 +653,7 @@ export async function getEventSpeakers(eventId: number): Promise<{
         _key,
         "speakerId": speaker->_id,
         "speakerName": speaker->name,
+        "speakerSortName": speaker->sortName,
         "speakerCompany": speaker->company,
         "speakerPosition": speaker->position,
         "speakerImage": speaker->image,

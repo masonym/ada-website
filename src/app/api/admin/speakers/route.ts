@@ -44,6 +44,7 @@ export async function POST(request: NextRequest) {
 
       if (action === 'create') {
         const name = formData.get('name') as string
+        const sortName = formData.get('sortName') as string
         const position = formData.get('position') as string
         const company = formData.get('company') as string
         const bio = formData.get('bio') as string
@@ -63,6 +64,7 @@ export async function POST(request: NextRequest) {
 
         const speaker = await createSpeaker({
           name,
+          sortName,
           position,
           company,
           bio,
@@ -101,13 +103,13 @@ export async function POST(request: NextRequest) {
     const { action } = body
 
     if (action === 'update') {
-      const { speakerId, name, position, company, bio, priority } = body
+      const { speakerId, name, sortName, position, company, bio, priority } = body
 
       if (!speakerId) {
         return NextResponse.json({ error: 'Speaker ID is required' }, { status: 400 })
       }
 
-      await updateSpeakerDetails(speakerId, { name, position, company, bio, priority })
+      await updateSpeakerDetails(speakerId, { name, sortName, position, company, bio, priority })
 
       return NextResponse.json({
         success: true,

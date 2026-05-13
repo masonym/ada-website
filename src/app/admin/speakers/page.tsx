@@ -36,6 +36,7 @@ const SELECTED_EVENT_STORAGE_KEY = "adminSpeakersSelectedEventId";
 type Speaker = {
   _id: string;
   name: string;
+  sortName?: string;
   slug: { current: string };
   image?: {
     asset: {
@@ -53,6 +54,7 @@ type EventSpeaker = {
   _key: string;
   speakerId: string;
   speakerName: string;
+  speakerSortName?: string;
   speakerCompany?: string;
   speakerPosition?: string;
   speakerImage?: { asset: { _ref: string } };
@@ -88,6 +90,7 @@ export default function SpeakerAdminPage() {
 
   // form fields
   const [name, setName] = useState("");
+  const [sortName, setSortName] = useState("");
   const [position, setPosition] = useState("");
   const [company, setCompany] = useState("");
   const [bio, setBio] = useState("");
@@ -299,6 +302,7 @@ export default function SpeakerAdminPage() {
 
   function resetForm() {
     setName("");
+    setSortName("");
     setPosition("");
     setCompany("");
     setBio("");
@@ -321,6 +325,7 @@ export default function SpeakerAdminPage() {
   function startEdit(speaker: Speaker) {
     setEditingSpeaker(speaker);
     setName(speaker.name);
+    setSortName(speaker.sortName || "");
     setPosition(speaker.position || "");
     setCompany(speaker.company || "");
     setBio(speaker.bio || "");
@@ -344,6 +349,7 @@ export default function SpeakerAdminPage() {
       const formData = new FormData();
       formData.append("action", "create");
       formData.append("name", name);
+      formData.append("sortName", sortName);
       formData.append("position", position);
       formData.append("company", company);
       formData.append("bio", bio);
@@ -388,6 +394,7 @@ export default function SpeakerAdminPage() {
           action: "update",
           speakerId: editingSpeaker._id,
           name,
+          sortName,
           position,
           company,
           bio,
@@ -696,7 +703,9 @@ export default function SpeakerAdminPage() {
                   <div className="grid gap-2">
                     {eventSpeakersDoc.speakers
                       .filter((s) => !s.isKeynote)
-                      .sort((a, b) => a.speakerName.localeCompare(b.speakerName))
+                      .sort((a, b) =>
+                        (a.speakerSortName || a.speakerName).localeCompare(b.speakerSortName || b.speakerName)
+                      )
                       .map((speaker) => (
                         <div
                           key={speaker._key}
@@ -1066,6 +1075,9 @@ export default function SpeakerAdminPage() {
                       {speaker.company && (
                         <p className="text-sm text-gray-500 truncate">{speaker.company}</p>
                       )}
+                      {speaker.sortName && (
+                        <p className="text-xs text-gray-400 truncate">Sort: {speaker.sortName}</p>
+                      )}
                     </div>
                   </div>
                   <div className="mt-4 flex gap-2">
@@ -1146,6 +1158,18 @@ export default function SpeakerAdminPage() {
                       placeholder="John Smith"
                       required
                     />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Sort Name</label>
+                    <input
+                      type="text"
+                      value={sortName}
+                      onChange={(e) => setSortName(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                      placeholder="Smith, John"
+                    />
+                    <p className="text-xs text-gray-400 mt-1">Optional. Use for compound last names, e.g. Van Doe, John.</p>
                   </div>
 
                   <div>
