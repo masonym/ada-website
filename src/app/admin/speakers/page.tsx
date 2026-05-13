@@ -28,7 +28,10 @@ const EVENTS = [
   { id: 4, slug: "2025-navy-marine-corps-procurement-conference", name: "2025 Navy & Marine Corps Procurement Conference" },
   { id: 5, slug: "2026-defense-technology-aerospace-procurement-conference", name: "2026 Defense Technology & Aerospace Procurement Conference" },
   { id: 6, slug: "2026-navy-marine-corps-procurement-conference", name: "2026 Navy & Marine Corps Procurement Conference" },
+  { id: 7, slug: "2026-air-force-space-force-procurement-conference", name: "2026 Air Force & Space Force Procurement Conference" },
 ];
+
+const SELECTED_EVENT_STORAGE_KEY = "adminSpeakersSelectedEventId";
 
 type Speaker = {
   _id: string;
@@ -94,6 +97,7 @@ export default function SpeakerAdminPage() {
 
   // event speakers state
   const [selectedEventId, setSelectedEventId] = useState<number>(5);
+  const [hasLoadedSelectedEvent, setHasLoadedSelectedEvent] = useState(false);
   const [eventSpeakersDoc, setEventSpeakersDoc] = useState<EventSpeakersDoc | null>(null);
   const [loadingEventSpeakers, setLoadingEventSpeakers] = useState(false);
   const [showAddSpeakerModal, setShowAddSpeakerModal] = useState(false);
@@ -111,10 +115,27 @@ export default function SpeakerAdminPage() {
   }, []);
 
   useEffect(() => {
-    if (activeTab === "events" && selectedEventId) {
+    const storedEventId = window.localStorage.getItem(SELECTED_EVENT_STORAGE_KEY);
+    const parsedEventId = storedEventId ? parseInt(storedEventId, 10) : NaN;
+
+    if (EVENTS.some((event) => event.id === parsedEventId)) {
+      setSelectedEventId(parsedEventId);
+    }
+
+    setHasLoadedSelectedEvent(true);
+  }, []);
+
+  useEffect(() => {
+    if (hasLoadedSelectedEvent) {
+      window.localStorage.setItem(SELECTED_EVENT_STORAGE_KEY, selectedEventId.toString());
+    }
+  }, [hasLoadedSelectedEvent, selectedEventId]);
+
+  useEffect(() => {
+    if (activeTab === "events" && selectedEventId && hasLoadedSelectedEvent) {
       fetchEventSpeakers(selectedEventId);
     }
-  }, [activeTab, selectedEventId]);
+  }, [activeTab, selectedEventId, hasLoadedSelectedEvent]);
 
   async function fetchSpeakers() {
     try {
