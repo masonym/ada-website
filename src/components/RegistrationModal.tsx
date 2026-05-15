@@ -2064,7 +2064,7 @@ const RegistrationModal = ({
           </div>
         </div>
       )}
-      <div className="relative mx-auto p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white overflow-y-auto h-fit max-h-[100vh] sm:max-h-[90vh]">
+      <div className="relative mx-auto p-5 border w-full max-w-2xl shadow-lg rounded-md bg-white overflow-hidden h-fit max-h-[100vh] sm:max-h-[90vh] flex flex-col">
         {attendeeCountStep ? renderAttendeeCountStep() : showConfirmationView && confirmationData ? (
           // Confirmation View
           <div className="text-center">
@@ -2112,7 +2112,7 @@ const RegistrationModal = ({
 
             {!isCheckout ? (
               // Ticket Selection View
-              <div className="flex flex-col h-fit">
+              <div className="flex flex-col min-h-0 flex-1">
                 {/* Category tabs */}
                 <div className="flex border-b mb-4 flex-col sm:flex-row text-sm sm:text-base">
                   <button
@@ -2144,7 +2144,7 @@ const RegistrationModal = ({
                   )}
                 </div>
 
-                <div className="flex-grow overflow-y-auto">
+                <div className="flex-grow overflow-y-auto min-h-0">
                   {/* Show tickets when activeCategory is 'ticket' */}
                   {activeCategory === 'ticket' && allRegistrations.filter(reg => reg.isActive).map(reg => {
                     const ticketIsExpired = isTicketExpired(reg);
@@ -2312,7 +2312,7 @@ const RegistrationModal = ({
                   })}
                 </div>
                 {/* Total and checkout button at bottom of modal */}
-                <div className="mt-auto border-t pt-4 bg-white">
+                <div className="mt-auto border-t pt-4 bg-white shrink-0">
                   {/* Summary of selected items */}
                   <div className="mb-3">
                     <h4 className="text-lg font-medium mb-2">Registration Summary</h4>
@@ -2423,7 +2423,7 @@ const RegistrationModal = ({
               </div>
             ) : (
               // Checkout Steps View (Billing, Attendee Info, Payment, Confirmation)
-              <div>
+              <div className="overflow-y-auto min-h-0">
                 {renderStepContent()}
                 {apiError && <p className="text-red-500 text-sm mt-2">{apiError}</p>}
                 {Object.keys(formErrors).length > 0 && (
