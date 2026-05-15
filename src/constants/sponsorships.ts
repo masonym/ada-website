@@ -1180,7 +1180,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 title: "Gold Sponsorship",
                 cost: 10000,
                 requiresAttendeeInfo: true,
-                // slotsPerEvent: 2,
+                slotsPerEvent: 2,
                 sponsorPasses: 4,
                 perks: [
                     {
