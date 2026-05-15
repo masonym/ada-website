@@ -18,8 +18,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function EventRecapPage({ params }: { params: { slug: string } }) {
-  const event = EVENTS.find((e) => e.slug === params.slug);
+export default async function EventRecapPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const event = EVENTS.find((e) => e.slug === slug);
 
   if (!event) {
     notFound();
@@ -67,7 +68,7 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
             Access Presentation Materials and Recordings
           </p>
           <Link
-            href={`/events/${params.slug}/agenda`}
+            href={`/events/${slug}/agenda`}
             className="inline-block bg-white text-navy-800 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
           >
             View Agenda
@@ -149,7 +150,7 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
             In the meantime, you can view the agenda and presentation materials.
           </p>
           <Link
-            href={`/events/${params.slug}/agenda`}
+            href={`/events/${slug}/agenda`}
             className="inline-block bg-navy-800 text-white px-6 py-2 rounded-lg font-semibold hover:bg-navy-700 transition-colors"
           >
             View Agenda

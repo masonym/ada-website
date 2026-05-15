@@ -11,8 +11,9 @@ import Map from '../about/venue/Map';
 import Link from 'next/link';
 import LodgingSection from '@/app/components/LodgingSection';
 
-export default function VenueAndLodgingPage({ params }: { params: { slug: string } }) {
-    const event = EVENTS.find((e) => e.slug === params.slug);
+export default function VenueAndLodgingPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = React.use(params);
+    const event = EVENTS.find((e) => e.slug === slug);
 
     if (!event) {
         notFound();
