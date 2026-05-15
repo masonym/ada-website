@@ -1117,6 +1117,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             title: "Platinum Sponsorship",
             cost: 15000,
             // slotsPerEvent: 1,
+            isSoldOut: true,
             sponsorPasses: 5,
             requiresAttendeeInfo: true,
             perks: [
