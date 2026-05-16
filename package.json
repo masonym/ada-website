@@ -15,7 +15,10 @@
     "sync-event-assets": "powershell -Command \"if (-not $env:npm_config_event) { Write-Error 'Usage: npm run sync-event-assets --event=2026DTAPC'; exit 1 }; $event = $env:npm_config_event; $source = './public/events/' + $event; if (-not (Test-Path $source)) { Write-Error ('Event folder not found: ' + $source); exit 1 }; aws s3 sync $source ('s3://americandefensealliance/events/' + $event) --cache-control 'public, max-age=0, must-revalidate' --profile ada; aws cloudfront create-invalidation --distribution-id E15R7SXII9T1VC --paths ('/events/' + $event + '/*') --profile ada\"",
     "sync-event-csv": "powershell -Command \"if (-not $env:npm_config_event) { Write-Error 'Usage: npm run sync-event-csv --event=2026DTAPC'; exit 1 }; $event = $env:npm_config_event; $file = './public/events/' + $event + '/registration-information.csv'; if (-not (Test-Path $file)) { Write-Error ('CSV not found: ' + $file); exit 1 }; aws s3 cp $file ('s3://americandefensealliance/events/' + $event + '/registration-information.csv') --cache-control 'public, max-age=0, must-revalidate' --profile ada; aws cloudfront create-invalidation --distribution-id E15R7SXII9T1VC --paths ('/events/' + $event + '/registration-information.csv') --profile ada\"",
     "create-event": "node scripts/createEvent.js",
-    "import-speakers": "node scripts/speaker-update.js"
+    "import-speakers": "node scripts/speaker-update.js",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "cf:deploy:staging": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.835.0",
@@ -72,6 +75,7 @@
     "zod": "^3.25.67"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.19.10",
     "@playwright/test": "^1.58.1",
     "@types/date-fns": "^2.6.3",
     "@types/googlemaps": "^3.43.3",
@@ -85,6 +89,7 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.92.0"
   }
 }
