@@ -297,7 +297,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                   </div>
                 )}
 
-                {item.description && <div className="text-sm mt-2 text-gray-700">{item.description}</div>}
+                {item.description && <div className="text-sm mt-2 text-gray-700" dangerouslySetInnerHTML={{ __html: item.description }}></div>}
               </div>
 
               {item.sponsorLogo && (
