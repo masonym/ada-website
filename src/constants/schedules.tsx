@@ -2027,7 +2027,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "1:00 PM",
-                        title: "Networking Lunch with Exhibitors – & Topic Tables",
+                        title: "Networking Lunch with Exhibitors",
                         location: "Norfolk Ballroom (I – IV), Ground Floor",
                     },
                     {
