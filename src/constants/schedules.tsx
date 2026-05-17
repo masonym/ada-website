@@ -2088,11 +2088,18 @@ export const SCHEDULES = [
                     },
                     {
                         time: "3:15 PM",
-                        title: "SPECIAL PRESENTATION – WHERE COMPANIES OVERSPEND ON CMMC TRAINING",
+                        title: "WHERE COMPANIES OVERSPEND ON CMMC TRAINING",
+                        description: `Many organizations unintentionally expand their CMMC compliance boundary far beyond what is required—driving up cost, complexity, and operational burden without improving security or audit outcomes.
+<br>
+<br>
+In this 30‑minute workshop, Jeri Prophet, CEO of IntellecTechs, shares practical, assessor‑informed insight on how to accurately define CMMC scope based on where Controlled Unclassified Information (CUI) actually resides, flows, and is accessed. Drawing on real‑world readiness and assessment experience, the session clarifies the difference between being prepared and being audit‑ready, and why misalignment between daily operations and documented controls is one of the most common causes of assessment issues.
+<br>
+<br>
+Attendees will leave with a clear understanding of how scoping decisions directly impact tool selection, evidence requirements, audit complexity, and total cost—along with concrete examples of right‑sized versus over‑engineered environments that meet CMMC requirements without excess spend.`,
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                         speakers: [{
                             speakerId: "jeri-prophet",
-                            sponsor: "CMMC Sponsor",
+                            sponsor: "Cybersecurity/CMMC Sponsor",
                             sponsorStyle: "bg-blue-500 text-black-700",
                             
                         }],
@@ -2119,12 +2126,12 @@ export const SCHEDULES = [
                     },
                     {
                         time: "4:30 PM",
-                        title: "SPECIAL PRESENTATION – HOW TO LEVERAGE OTA's (OTHER TRANSACTION AUTHORITIES)",
+                        title: "HOW TO LEVERAGE OTA's (OTHER TRANSACTION AUTHORITIES)",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                     },
                     {
                         time: "5:00 PM",
-                        title: "SPECIAL PRESENTATION – WINNING SBIR PHASE III's",
+                        title: "WINNING SBIR PHASE III's",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                     },
                     {
