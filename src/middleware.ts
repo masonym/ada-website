@@ -3,12 +3,13 @@ import { NextRequest, NextResponse } from 'next/server'
 export function middleware(request: NextRequest) {
   const url = request.nextUrl
   const userAgent = request.headers.get('user-agent') || ''
+  const ip = request.headers.get('cf-connecting-ip') || request.headers.get('x-forwarded-for') || ''
   
   // Log suspicious activity for investigation
   if (isBot(userAgent)) {
     console.log('Bot detected:', {
       userAgent,
-      ip: request.ip,
+      ip,
       path: url.pathname,
       timestamp: new Date().toISOString()
     })

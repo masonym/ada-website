@@ -2,18 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import ScrollToTop from "./components/ScrollToTop";
 import { GoogleAnalytics } from '@next/third-parties/google'
 import Head from "next/head";
 import Script from "next/script";
-import dynamic from 'next/dynamic';
+import StripeProvider from '@/components/StripeProvider';
 
-// Dynamically import the StripeProvider to avoid SSR issues
-const StripeProvider = dynamic(
-  () => import('@/components/StripeProvider'),
-  { ssr: false }
-);
 
 
 export const metadata: Metadata = {
@@ -97,7 +91,6 @@ export default function RootLayout({
           </main>
           <Footer />
           <GoogleAnalytics gaId="G-166BFD7CN0" />
-          <SpeedInsights />
         </StripeProvider>
       </body>
     </html>

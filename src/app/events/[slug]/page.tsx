@@ -30,11 +30,12 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const event = EVENTS.find(event => event.slug === params.slug)
+  const { slug } = await params;
+  const event = EVENTS.find(event => event.slug === slug)
 
   if (!event) {
     return {
@@ -66,8 +67,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function EventPage({ params }: { params: { slug: string } }) {
-  const event = EVENTS.find((e) => e.slug === params.slug);
+export default async function EventPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const event = EVENTS.find((e) => e.slug === slug);
 
   if (!event) {
     notFound();
