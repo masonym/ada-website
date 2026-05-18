@@ -63,6 +63,7 @@ export async function POST(request: NextRequest) {
     const name = formData.get('name') as string
     const website = formData.get('website') as string | null
     const description = formData.get('description') as string | null
+    const matchmakingDescription = formData.get('matchmakingDescription') as string | null
     const logo = formData.get('logo') as File | null
     const eventId = formData.get('eventId') as string | null
     const tierIds = formData.getAll('tierIds') as string[]
@@ -88,7 +89,7 @@ export async function POST(request: NextRequest) {
 
     // create the sponsor
     const sponsor = await createSponsor(
-      { name, website: website || undefined, description: description || undefined },
+      { name, website: website || undefined, description: description || undefined, matchmakingDescription: matchmakingDescription || undefined },
       imageAsset._id
     )
 

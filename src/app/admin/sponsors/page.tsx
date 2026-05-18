@@ -50,6 +50,7 @@ export default function SponsorAdminPage() {
   const [editName, setEditName] = useState("");
   const [editWebsite, setEditWebsite] = useState("");
   const [editDescription, setEditDescription] = useState("");
+  const [editMatchmakingDescription, setEditMatchmakingDescription] = useState("");
   const [loadingDetails, setLoadingDetails] = useState(false);
 
   // new tier form
@@ -76,6 +77,7 @@ export default function SponsorAdminPage() {
   // matchmaking options (for new sponsor form)
   const [selectedMatchmakingDocId, setSelectedMatchmakingDocId] = useState<string>("");
   const [matchmakingNote, setMatchmakingNote] = useState("");
+  const [matchmakingDescription, setMatchmakingDescription] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -170,6 +172,7 @@ export default function SponsorAdminPage() {
       setEditName("");
       setEditWebsite("");
       setEditDescription("");
+      setEditMatchmakingDescription("");
       return;
     }
 
@@ -181,6 +184,7 @@ export default function SponsorAdminPage() {
         setEditName(data.sponsor.name || "");
         setEditWebsite(data.sponsor.website || "");
         setEditDescription(data.sponsor.description || "");
+        setEditMatchmakingDescription(data.sponsor.matchmakingDescription || "");
       } else {
         setMessage({ type: "error", text: data.error || "Failed to load sponsor details" });
       }
@@ -210,6 +214,7 @@ export default function SponsorAdminPage() {
           name: editName,
           website: editWebsite,
           description: editDescription,
+          matchmakingDescription: editMatchmakingDescription,
         }),
       });
 
@@ -249,6 +254,7 @@ export default function SponsorAdminPage() {
       formData.append("name", name);
       if (website) formData.append("website", website);
       if (description) formData.append("description", description);
+      if (matchmakingDescription) formData.append("matchmakingDescription", matchmakingDescription);
       formData.append("logo", logo);
       if (selectedEventId) {
         formData.append("eventId", selectedEventId.toString());
@@ -272,6 +278,7 @@ export default function SponsorAdminPage() {
         setName("");
         setWebsite("");
         setDescription("");
+        setMatchmakingDescription("");
         setLogo(null);
         setLogoPreview(null);
         setSelectedTierIds([]);
@@ -672,18 +679,33 @@ export default function SponsorAdminPage() {
                   </div>
 
                   {selectedMatchmakingDocId && (
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Matchmaking Note <span className="text-gray-400 font-normal">(optional)</span>
-                      </label>
-                      <input
-                        type="text"
-                        value={matchmakingNote}
-                        onChange={(e) => setMatchmakingNote(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="e.g. Available for 1-on-1 meetings"
-                      />
-                    </div>
+                    <>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Matchmaking Note <span className="text-gray-400 font-normal">(optional)</span>
+                        </label>
+                        <input
+                          type="text"
+                          value={matchmakingNote}
+                          onChange={(e) => setMatchmakingNote(e.target.value)}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                          placeholder="e.g. Available for 1-on-1 meetings"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Matchmaking Description <span className="text-gray-400 font-normal">(optional)</span>
+                        </label>
+                        <textarea
+                          value={matchmakingDescription}
+                          onChange={(e) => setMatchmakingDescription(e.target.value)}
+                          rows={3}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                          placeholder="Description shown in matchmaking instead of the regular sponsor description"
+                        />
+                        <p className="text-xs text-gray-400 mt-1">Overrides the regular description for matchmaking only</p>
+                      </div>
+                    </>
                   )}
                 </div>
               )}
@@ -1146,6 +1168,23 @@ export default function SponsorAdminPage() {
                     />
                     <p className="text-xs text-gray-400 mt-1">
                       You can use HTML tags like &lt;b&gt;, &lt;a href=&quot;...&quot;&gt;, &lt;br/&gt;
+                    </p>
+                  </div>
+
+                  {/* matchmaking description */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Matchmaking Description <span className="text-gray-400 font-normal">(optional)</span>
+                    </label>
+                    <textarea
+                      value={editMatchmakingDescription}
+                      onChange={(e) => setEditMatchmakingDescription(e.target.value)}
+                      rows={4}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-sm"
+                      placeholder="If set, shown in matchmaking instead of the regular description"
+                    />
+                    <p className="text-xs text-gray-400 mt-1">
+                      Overrides the regular description for matchmaking only. Leave blank to use the regular description.
                     </p>
                   </div>
 

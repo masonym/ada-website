@@ -18,6 +18,7 @@ export type CreateSponsorInput = {
   name: string
   website?: string
   description?: string
+  matchmakingDescription?: string
 }
 
 export type AddSponsorToEventInput = {
@@ -50,6 +51,7 @@ export async function createSponsor(input: CreateSponsorInput, imageAssetId: str
     },
     website: input.website || undefined,
     description: input.description || undefined,
+    matchmakingDescription: input.matchmakingDescription || undefined,
   })
 }
 
@@ -208,7 +210,7 @@ export async function updateSponsorLogo(sponsorId: string, imageAssetId: string)
 // update sponsor details (name, website, description)
 export async function updateSponsorDetails(
   sponsorId: string, 
-  details: { name?: string; website?: string; description?: string }
+  details: { name?: string; website?: string; description?: string; matchmakingDescription?: string }
 ) {
   const patch = adminClient.patch(sponsorId)
   
@@ -227,6 +229,9 @@ export async function updateSponsorDetails(
   if (details.description !== undefined) {
     patch.set({ description: details.description || undefined })
   }
+  if (details.matchmakingDescription !== undefined) {
+    patch.set({ matchmakingDescription: details.matchmakingDescription || undefined })
+  }
   
   return patch.commit()
 }
@@ -239,13 +244,15 @@ export async function getSponsorDetails(sponsorId: string) {
     slug: { current: string }
     website?: string
     description?: string
+    matchmakingDescription?: string
   } | null>(`
     *[_type == "sponsor" && _id == $sponsorId][0] {
       _id,
       name,
       slug,
       website,
-      description
+      description,
+      matchmakingDescription
     }
   `, { sponsorId })
 }

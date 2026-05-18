@@ -64,10 +64,10 @@ const MatchmakingSponsorCard: React.FC<{ sponsor: SanitySponsor; note?: string }
             </Link>
           )}
         </div>
-        {sponsor.description ? (
+        {(sponsor.matchmakingDescription || sponsor.description) ? (
           <div 
             className="text-slate-600"
-            dangerouslySetInnerHTML={{ __html: sponsor.description }}
+            dangerouslySetInnerHTML={{ __html: sponsor.matchmakingDescription || sponsor.description! }}
           />
         ) : (
           <p className="text-slate-600 italic">

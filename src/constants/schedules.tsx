@@ -2088,7 +2088,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "3:15 PM",
-                        title: "Scoping Smart: Where Companies Overspend on CMMC,
+                        title: "Scoping Smart: Where Companies Overspend on CMMC",
                         description: `Many organizations unintentionally expand their CMMC compliance boundary far beyond what is required—driving up cost, complexity, and operational burden without improving security or audit outcomes.
 <br>
 <br>

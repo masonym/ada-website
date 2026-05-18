@@ -40,6 +40,7 @@ export type SanitySponsor = {
   }
   website?: string
   description?: string
+  matchmakingDescription?: string
   width?: number
   height?: number
   priority?: boolean
@@ -196,6 +197,7 @@ export async function getEventMatchmakingSponsors(eventSlug: string): Promise<{
         logo,
         website,
         description,
+        matchmakingDescription,
         width,
         height,
         priority,
