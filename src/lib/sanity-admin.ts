@@ -466,7 +466,7 @@ export type SanitySpeaker = {
 // get all speakers
 export async function getAllSpeakers(): Promise<SanitySpeaker[]> {
   return adminClient.fetch<SanitySpeaker[]>(`
-    *[_type == "speaker"] | order(priority desc, coalesce(sortName, name) asc) {
+    *[_type == "speaker"] | order(priority desc, select(defined(sortName) && sortName != '' => sortName, name) asc) {
       _id,
       name,
       sortName,
@@ -517,13 +517,16 @@ export async function createSpeaker(data: {
   const doc: any = {
     _type: 'speaker',
     name: data.name,
-    sortName: data.sortName || '',
     slug: { _type: 'slug', current: slug },
     position: data.position || '',
     company: data.company || '',
     bio: data.bio || '',
     isVisible: data.isVisible !== false,
     priority: data.priority || 0,
+  }
+
+  if (data.sortName) {
+    doc.sortName = data.sortName
   }
 
   if (data.imageAssetId) {
