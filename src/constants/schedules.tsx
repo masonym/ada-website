@@ -2152,7 +2152,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "5:00 PM",
-                        title: "SPECIAL PRESENTATION: WINNING SBIR PHASE III's",
+                        title: "SPECIAL PRESENTATION: Phase III SBIR: Contracting Authority, Workflow, and Practice",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                         speakers: [
                             {
