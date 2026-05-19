@@ -90,6 +90,8 @@ export default function BannerGeneratorPage() {
   const [sponsorVerticalOffset, setSponsorVerticalOffset] = useState(0); // pixels offset
   const [eventImageMarginBottom, setEventImageMarginBottom] = useState(20); // pixels
   const [tierSizeMultipliers, setTierSizeMultipliers] = useState<Record<string, number>>({}); // per-tier size multipliers
+  const [descriptionFontSize, setDescriptionFontSize] = useState(6); // px at preview scale
+  const [descriptionMaxWidth, setDescriptionMaxWidth] = useState(120); // px at preview scale
 
   const bannerRef = useRef<HTMLDivElement>(null);
 
@@ -498,6 +500,40 @@ export default function BannerGeneratorPage() {
                 </label>
               </div>
 
+              {/* description font size + width */}
+              {showDescriptions && (
+                <div className="space-y-3">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Description Font Size: {descriptionFontSize}px
+                    </label>
+                    <input
+                      type="range"
+                      min="4"
+                      max="20"
+                      step="1"
+                      value={descriptionFontSize}
+                      onChange={(e) => setDescriptionFontSize(parseInt(e.target.value))}
+                      className="w-full"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Description Width: {descriptionMaxWidth}px
+                    </label>
+                    <input
+                      type="range"
+                      min="40"
+                      max={Math.round(previewWidth - 32)}
+                      step="4"
+                      value={descriptionMaxWidth}
+                      onChange={(e) => setDescriptionMaxWidth(parseInt(e.target.value))}
+                      className="w-full"
+                    />
+                  </div>
+                </div>
+              )}
+
               {/* download button */}
               <button
                 onClick={handleDownload}
@@ -585,10 +621,10 @@ export default function BannerGeneratorPage() {
                   )}
 
                   {/* sponsors */}
-                  <div 
+                  <div
                     style={{
                       flex: 1,
-                      overflow: 'hidden',
+                      overflow: 'visible',
                       paddingLeft: 16,
                       paddingRight: 16,
                       marginTop: sponsorVerticalOffset,
@@ -649,9 +685,9 @@ export default function BannerGeneratorPage() {
                                 />
                                 {showDescriptions && sponsor.description && (
                                   <p
-                                    style={{ 
-                                      fontSize: 6, 
-                                      maxWidth: logoSize.width + 40,
+                                    style={{
+                                      fontSize: descriptionFontSize,
+                                      width: descriptionMaxWidth,
                                       textAlign: 'center',
                                       color: '#4b5563',
                                       marginTop: 4,
@@ -659,8 +695,7 @@ export default function BannerGeneratorPage() {
                                       paddingRight: 8,
                                     }}
                                   >
-                                    {sponsor.description.slice(0, 150)}
-                                    {sponsor.description.length > 150 ? "..." : ""}
+                                    {sponsor.description}
                                   </p>
                                 )}
                               </div>
