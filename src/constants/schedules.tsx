@@ -2285,8 +2285,27 @@ export const SCHEDULES = [
                         title: "Military Base-Community Partnerships Promoting Local Build Contracts",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                         speakers: [
+                            {
+                                speakerId: "david-leinberger",
+                            },
+                            // {
+                            //     speakerId: "brian-w-miller",
+                            // },
+                            // {
+                            //     speakerId: "ryan-w-catlett",
+                            // },
+                        ],
+                    },
+                    {
+                        time: "11:55 AM",
+                        title: "Operations Brief: The Atlantic Fleet and Supreme Allied Commander NATO/Transformation Directorate",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
                             // {
                             //     speakerId: "david-leinberger",
+                            // },
+                            // {
+                            //     speakerId: "brian-w-miller",
                             // },
                             // {
                             //     speakerId: "ryan-w-catlett",
