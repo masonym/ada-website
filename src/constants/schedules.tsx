@@ -1998,9 +1998,9 @@ export const SCHEDULES = [
                         time: "11:35 AM",
                         title: "Keynote Address: Using AI In Shipbuilding and Fleet Sustainment",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
-                        // speakers: [{
-                        //     speakerId: "daniel-hudson",
-                        // }],
+                        speakers: [{
+                            speakerId: "daniel-hudson",
+                        }],
                     },
                     {
                         time: "12:05 PM",
@@ -2016,9 +2016,9 @@ export const SCHEDULES = [
                             // {
                             //     speakerId: "captain-rick-tyler",
                             // },
-                            {
-                                speakerId: "daniel-hudson",
-                            },
+                            // {
+                            //     speakerId: "daniel-hudson",
+                            // },
                             // {
                             //     speakerId: "ben-van-buskirk",
                             // },
