@@ -2140,21 +2140,25 @@ export const SCHEDULES = [
                     },
                     {
                         time: "4:30 PM",
-                        title: "HOW TO LEVERAGE OTA's (OTHER TRANSACTION AUTHORITIES)",
+                        title: "SPECIAL PRESENTATION: HOW TO LEVERAGE OTA's (OTHER TRANSACTION AUTHORITIES)",
                         speakers: [
                             {
                                 speakerId: "harry-aderton",
+                                sponsor: "Gold Sponsor",
+                                sponsorStyle: "bg-[#ffaf00] text-slate-900",
                             },
                         ],
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                     },
                     {
                         time: "5:00 PM",
-                        title: "WINNING SBIR PHASE III's",
+                        title: "SPECIAL PRESENTATION: WINNING SBIR PHASE III's",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                         speakers: [
                             {
                                 speakerId: "ted-dennis",
+                                sponsor: "Gold Sponsor",
+                                sponsorStyle: "bg-[#ffaf00] text-slate-900",
                             },
                         ],
                     },
