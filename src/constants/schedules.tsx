@@ -1998,9 +1998,9 @@ export const SCHEDULES = [
                         time: "11:35 AM",
                         title: "Keynote Address: Using AI In Shipbuilding and Fleet Sustainment",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
-                        speakers: [{
-                            speakerId: "daniel-hudson",
-                        }],
+                        // speakers: [{
+                        //     speakerId: "daniel-hudson",
+                        // }],
                     },
                     {
                         time: "12:05 PM",
@@ -2103,13 +2103,13 @@ export const SCHEDULES = [
                     {
                         time: "3:15 PM",
                         title: "Scoping Smart: Where Companies Overspend on CMMC",
-                        description: `Many organizations unintentionally expand their CMMC compliance boundary far beyond what is required—driving up cost, complexity, and operational burden without improving security or audit outcomes.
-<br>
-<br>
-In this 30‑minute workshop, Jeri Prophet, CEO of IntellecTechs, shares practical, assessor‑informed insight on how to accurately define CMMC scope based on where Controlled Unclassified Information (CUI) actually resides, flows, and is accessed. Drawing on real‑world readiness and assessment experience, the session clarifies the difference between being prepared and being audit‑ready, and why misalignment between daily operations and documented controls is one of the most common causes of assessment issues.
-<br>
-<br>
-Attendees will leave with a clear understanding of how scoping decisions directly impact tool selection, evidence requirements, audit complexity, and total cost—along with concrete examples of right‑sized versus over‑engineered environments that meet CMMC requirements without excess spend.`,
+                        // description: `Many organizations unintentionally expand their CMMC compliance boundary far beyond what is required—driving up cost, complexity, and operational burden without improving security or audit outcomes.
+// <br>
+// <br>
+// In this 30‑minute workshop, Jeri Prophet, CEO of IntellecTechs, shares practical, assessor‑informed insight on how to accurately define CMMC scope based on where Controlled Unclassified Information (CUI) actually resides, flows, and is accessed. Drawing on real‑world readiness and assessment experience, the session clarifies the difference between being prepared and being audit‑ready, and why misalignment between daily operations and documented controls is one of the most common causes of assessment issues.
+// <br>
+// <br>
+// Attendees will leave with a clear understanding of how scoping decisions directly impact tool selection, evidence requirements, audit complexity, and total cost—along with concrete examples of right‑sized versus over‑engineered environments that meet CMMC requirements without excess spend.`,
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                         speakers: [{
                             speakerId: "jeri-prophet",
@@ -2285,9 +2285,9 @@ Attendees will leave with a clear understanding of how scoping decisions directl
                         title: "Military Base-Community Partnerships Promoting Local Build Contracts",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                         speakers: [
-                            {
-                                speakerId: "david-leinberger",
-                            },
+                            // {
+                            //     speakerId: "david-leinberger",
+                            // },
                             // {
                             //     speakerId: "ryan-w-catlett",
                             // },
