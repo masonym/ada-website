@@ -2062,7 +2062,7 @@ export const SCHEDULES = [
                     },
                     {
                         time: "2:30 PM",
-                        title: "Opportunity Zone Incentivized Naval Shipyard & Manufacturing Projects",
+                        title: "Public-Private Partnerships to Build Naval Shipyard & Manufacturing Capacity",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                         speakers: [
                             {
