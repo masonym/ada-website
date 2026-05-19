@@ -2166,7 +2166,7 @@ Attendees will leave with a clear understanding of how scoping decisions directl
                     {
                         time: "4:45 – 5:30 PM",
                         title: "Matchmaking Session I",
-                        location: "Franklin-Yorktown Meeting Room, 2nd Floor",
+                        location: "Hampton Ballroom, 3rd floor",
                     },
                     {
                         time: "6:30 – 8:30 PM",
@@ -2306,7 +2306,7 @@ Attendees will leave with a clear understanding of how scoping decisions directl
                     {
                         time: "12:30 PM - 1:30 PM",
                         title: "Matchmaking Session II",
-                        location: "Franklin-Yorktown Meeting Room, 2nd Floor",
+                        location: "Hampton Ballroom, 3rd floor",
                     },
                 ],
             }
