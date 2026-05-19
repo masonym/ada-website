@@ -914,6 +914,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     date: "March 4-5, 2026",
     timeStart: "2026-03-04T11:30:00Z",
     timeEnd: "2026-03-05T18:30:00Z",
+    registrationClosedTime: "2026-03-05T18:30:00Z",
     description: "Join us at the 2026 Defense Technology & Aerospace Procurement Conference in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
     eventText: (
       <div className="max-container font-light">
@@ -927,26 +928,26 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           Topical Coverage:
         </p>
         <ul className="list-inside">
-<li>Integration of Commercial Space Assets/Technologies </li>
-<li>Space Force Support Functions Across Domains/COCOMS</li>
-<li>Increased Launch Activity Driving Spaceport Infrastructure</li>
-<li> Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)</li>
-<li>Unmanned Platforms/’Collaborative Combat Aircraft’ – Prototype & Testing Contracts</li>
-<li>Indo-Pacific AOR – Dispersed Airfield & Logistics Hub Reconstruction/Expansion</li>
-<li>Golden Dome – Competition for Space-Based Missile Tracking/Interception Solutions</li>
-<li>Defense Industrial Base Acceleration – Ordnance, Missiles, Drones, etc. </li>
-<li>Expediting Additive Manufacturing at the Warfighter Edge</li>
-<li>Expansion/Application of AI Throughout Defense Sectors</li>
-<li>Race to Exploit Quantum Technology</li>
-<li>Facilitating Innovative Tech Contracting – DEFENSEWERX & DIU</li>
-<li>Critical Defense Infrastructure Cyber Protection</li>
-<li>Cybersecurity & CMMC Update</li>
-<li>AFCEC & USACE Project Priorities</li>
-<li>Military Base-Community Partnerships Promoting Local Build Contracts</li>
-<li>New Defense Department Acquisition Initiatives/Guidelines</li>
-<li>How to do Business with the Primes – Subcontracting & Teaming</li>
-<li>Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's</li>
-<li>Mentor-Protégé Programs as Business Accelerators for Smalls & Primes</li>
+          <li>Integration of Commercial Space Assets/Technologies </li>
+          <li>Space Force Support Functions Across Domains/COCOMS</li>
+          <li>Increased Launch Activity Driving Spaceport Infrastructure</li>
+          <li> Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)</li>
+          <li>Unmanned Platforms/’Collaborative Combat Aircraft’ – Prototype & Testing Contracts</li>
+          <li>Indo-Pacific AOR – Dispersed Airfield & Logistics Hub Reconstruction/Expansion</li>
+          <li>Golden Dome – Competition for Space-Based Missile Tracking/Interception Solutions</li>
+          <li>Defense Industrial Base Acceleration – Ordnance, Missiles, Drones, etc. </li>
+          <li>Expediting Additive Manufacturing at the Warfighter Edge</li>
+          <li>Expansion/Application of AI Throughout Defense Sectors</li>
+          <li>Race to Exploit Quantum Technology</li>
+          <li>Facilitating Innovative Tech Contracting – DEFENSEWERX & DIU</li>
+          <li>Critical Defense Infrastructure Cyber Protection</li>
+          <li>Cybersecurity & CMMC Update</li>
+          <li>AFCEC & USACE Project Priorities</li>
+          <li>Military Base-Community Partnerships Promoting Local Build Contracts</li>
+          <li>New Defense Department Acquisition Initiatives/Guidelines</li>
+          <li>How to do Business with the Primes – Subcontracting & Teaming</li>
+          <li>Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's</li>
+          <li>Mentor-Protégé Programs as Business Accelerators for Smalls & Primes</li>
         </ul>
       </div>
     ),
@@ -979,26 +980,26 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     //       { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "These programs pair small businesses with experienced primes to share resources, improve competitiveness, and accelerate growth in defense contracting through structured mentorship." }
     // ],
     topicalCoverage: [
-{ "tagline": "Integration of Commercial Space Assets/Technologies", "description": "" },
-{ "tagline": "Space Force Support Functions Across Domains/COCOMS", "description": "" },
-{ "tagline": "Increased Launch Activity Driving Spaceport Infrastructure", "description": "" },
-{ "tagline": " Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)", "description": "" },
-{ "tagline": "Unmanned Platforms/’Collaborative Combat Aircraft’ – Prototype & Testing Contracts", "description": "" },
-{ "tagline": "Indo-Pacific AOR – Dispersed Airfield & Logistics Hub Reconstruction/Expansion", "description": "" },
-{ "tagline": "Golden Dome – Competition for Space-Based Missile Tracking/Interception Solutions", "description": "" },
-{ "tagline": "Defense Industrial Base Acceleration – Ordnance, Missiles, Drones, etc. ", "description": "" },
-{ "tagline": "Expediting Additive Manufacturing at the Warfighter Edge", "description": "" },
-{ "tagline": "Expansion/Application of AI Throughout Defense Sectors", "description": "" },
-{ "tagline": "Race to Exploit Quantum Technology", "description": "" },
-{ "tagline": "Facilitating Innovative Tech Contracting – DEFENSEWERX & DIU", "description": "" },
-{ "tagline": "Critical Defense Infrastructure Cyber Protection", "description": "" },
-{ "tagline": "Cybersecurity & CMMC Update", "description": "" },
-{ "tagline": "AFCEC & USACE Project Priorities", "description": "" },
-{ "tagline": "Military Base-Community Partnerships Promoting Local Build Contracts", "description": "" },
-{ "tagline": "New Defense Department Acquisition Initiatives/Guidelines", "description": "" },
-{ "tagline": "How to do Business with the Primes – Subcontracting & Teaming", "description": "" },
-{ "tagline": "Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's", "description": "" },
-{ "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "" },
+      { "tagline": "Integration of Commercial Space Assets/Technologies", "description": "" },
+      { "tagline": "Space Force Support Functions Across Domains/COCOMS", "description": "" },
+      { "tagline": "Increased Launch Activity Driving Spaceport Infrastructure", "description": "" },
+      { "tagline": " Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)", "description": "" },
+      { "tagline": "Unmanned Platforms/’Collaborative Combat Aircraft’ – Prototype & Testing Contracts", "description": "" },
+      { "tagline": "Indo-Pacific AOR – Dispersed Airfield & Logistics Hub Reconstruction/Expansion", "description": "" },
+      { "tagline": "Golden Dome – Competition for Space-Based Missile Tracking/Interception Solutions", "description": "" },
+      { "tagline": "Defense Industrial Base Acceleration – Ordnance, Missiles, Drones, etc. ", "description": "" },
+      { "tagline": "Expediting Additive Manufacturing at the Warfighter Edge", "description": "" },
+      { "tagline": "Expansion/Application of AI Throughout Defense Sectors", "description": "" },
+      { "tagline": "Race to Exploit Quantum Technology", "description": "" },
+      { "tagline": "Facilitating Innovative Tech Contracting – DEFENSEWERX & DIU", "description": "" },
+      { "tagline": "Critical Defense Infrastructure Cyber Protection", "description": "" },
+      { "tagline": "Cybersecurity & CMMC Update", "description": "" },
+      { "tagline": "AFCEC & USACE Project Priorities", "description": "" },
+      { "tagline": "Military Base-Community Partnerships Promoting Local Build Contracts", "description": "" },
+      { "tagline": "New Defense Department Acquisition Initiatives/Guidelines", "description": "" },
+      { "tagline": "How to do Business with the Primes – Subcontracting & Teaming", "description": "" },
+      { "tagline": "Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's", "description": "" },
+      { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "" },
     ],
     image: "2025DTAPC_wide.webp",
     slug: "2026-defense-technology-aerospace-procurement-conference",
@@ -1087,6 +1088,45 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     // We appreciate your patience and understanding during the rescheduling process. Our team remains committed to delivering a valuable, high-quality experience, and we look forward to gathering with you in Austin in March 2026.
     //                               `,
     //     eventPageNoticeVariant: 'warning',
+    testimonials: [
+      {
+        type: 'image',
+        quote: `I want to extend my sincere thanks to you and the American Defense Alliance team for the opportunity to participate in the Defense Technology & Aerospace Procurement Conference in Austin. It was a truly well-organized event, and I appreciated the chance to contribute to the conversation around cybersecurity readiness for Defense Industrial Base contractors and the resources available through Project Spectrum. The conference brought together an outstanding mix of government leaders, primes, innovators, and small businesses, and it was a privilege to engage with so many members of the defense and aerospace ecosystem. Your team did an excellent job creating an environment where meaningful dialogue and collaboration could take place. Thanks again for the invitation and the warm hospitality. I look forward to continuing to support ADA’s important work and to future opportunities to collaborate.
+`,
+        name: "Kareem A. Sykes",
+        title: "Director, Industry & Engagement",
+        affiliation: "Eccalon",
+        imageUrl: "/testimonials/kareem-sykes.webp",
+        imageAlt: "Kareem A. Sykes"
+      },
+      {
+        type: 'image',
+        quote: `Thank you for organizing such an excellent event. It was one of the most well-run programs I have attended, and your leadership was evident in both the quality of the audience and the seamless execution. I truly appreciate the effort your team put into bringing everyone together. Space Systems Command top leadership highly values collaborations like this. Areas particularly relevant fo follow-up include companies specializing in AI-enabled decision support, cyber resilience, and advanced data analytics for mission operations. I look forward to staying engaged and I will keep an eye out for your upcoming event in Colorado Springs.`,
+        name: "Captain MD \"Doc\" Rana",
+        title: "Director, Human-AI Teaming Lab, Branch Chief, AI/Human Machine Teaming/Info Ops, and Deputy Chief, Information Dominance Division",
+        affiliation: "U.S. Space Systems Command",
+        imageUrl: "/testimonials/doc-rana.webp",
+        imageAlt: "Captain MD \"Doc\" Rana"
+      },
+      {
+        type: 'image',
+        quote: "Congrats to Charles Sills and his team for a tremendous Defense Technology & Aerospace Procurement Conference last week in Austin.  Thank you, Charles, for investing in Austin.  Shout-out to our colleagues at IBM for the initial connection.  There was high quality content on drones, quantum, procurement at Air Force and Space Force.  And lots of local flavor from quite a few of our Austin military commands, companies & organizations.  Let's hope for a 2nd Annual event!",
+        name: "Drew Scheberle",
+        title: "Co-Founder & Director",
+        affiliation: "National Security Innovation Council",
+        imageUrl: "/testimonials/drew-scheberle.webp",
+        imageAlt: "Drew Scheberle"
+      },
+      {
+        type: 'image',
+        quote: `I wanted to personally thank you for inviting me to your conference. I truly had a wonderful time and was able to make several valuable connections. A few highlights from the event include: Representatives from the Air Force, Army, Space Force, and EPA requesting a technical briefing next week. I also connected with a military supplier who is exploring the possibility of purchasing a 3D printing machine and/or potentially engaging us to build test barracks, SCIF facilities, and other structures at their 7-mile desert testing range. DEFENSEWERX encouraged us to apply to their innovation hubs for defense collaboration opportunities. Mojave Air and Space Port expressed interest in having us build aircraft hangars, and the Space Systems Command “Front Door” Program invited us to join the Space Force COMSO platform for future opportunities. The University of Texas at San Antonio also expressed interest in exploring collaboration on research and funding opportunities. There were many more great conversations beyond these. I truly appreciate the opportunity to participate and look forward to staying connected.`,
+        name: "Dr. Reynaldo A. Santana",
+        title: "President",
+        affiliation: "Contour Crafting Corporation",
+        imageUrl: "/testimonials/reynaldo-santana.webp",
+        imageAlt: "Dr. Reynaldo A. Santana"
+      },
+    ]
   },
   {
     id: 6,
@@ -1239,14 +1279,14 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       },
     ],
     matchmakingSessions: {
-      signUpTime: "7:30 AM",
-      signUpDate: "May 28, 2025",
+      signUpTime: "8:00 AM",
+      signUpDate: "May 28, 2026",
       sessionDurationMinutes: 8,
       slotsPerHost: 10,
       sessions: [
         {
           date: "May 28",
-          sessionTime: "4:30 PM - 5:30 PM",
+          sessionTime: "4:45 PM - 6:00 PM",
         },
         {
           date: "May 29",
@@ -1256,9 +1296,9 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     },
     vipNetworkingReception: {
       title: "VIP Networking Reception",
-      date: "May 28, 2025",
-      timeStart: "6:00 PM",
-      timeEnd: "8:00 PM",
+      date: "May 28, 2026",
+      timeStart: "6:30 PM",
+      timeEnd: "8:30 PM",
       description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
       additionalInfo: "Join us at The Harbor Club featuring a cash bar, one complimentary drink ticket, and a selection of hors d’oeuvres.",
       additionalInfo2: "The Norfolk Waterside Marriott is connected to the Harbor Club via a Parking Garage. From the Marriott’s 2nd Floor, next to the escalators, enter doors to the Parking Garage. Follow the garage’s pedestrian bridge to the Waterside District building. Entry for Harbor Club is on the 2nd Floor of the building.",
@@ -1353,14 +1393,14 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     date: "August 4-5, 2026",
     timeStart: "2026-08-04T11:30:00Z",
     timeEnd: "2026-08-05T18:30:00Z",
-    description: "Join us for the 2026 Air Force & Space Force Procurement Conference on August 4-5, 2026 in Colorado Springs, home to the Air Force Academy, U.S. Space Command, NORAD, NORTHCOM, and Peterson and Shriever Space Force Bases.  Speakers and panelists from the Pentagon – Air Force and Space Force commands and contracting offices, Military bases and installations – and Prime Defense Contractors – will provide updates on the latest requirements, programs and initiatives driving procurement and purchasing opportunities.",
+    description: "Join us for the 2026 Air Force & Space Force Procurement Conference on August 4-5, 2026 in Colorado Springs, home to the Air Force Academy, U.S. Space Command, NORAD, NORTHCOM, and Peterson and Schriever Space Force Bases.  Speakers and panelists from the Pentagon – Air Force and Space Force commands and contracting offices, Military bases and installations – and Prime Defense Contractors – will provide updates on the latest requirements, programs and initiatives driving procurement and purchasing opportunities.",
     eventText: (
       <div className="max-container font-light">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          Join us for the <b>2026 Air Force &amp; Space Force Procurement Conference</b> on August 4-5, 2026 in Colorado Springs, home to the Air Force Academy, U.S. Space Command, NORAD, NORTHCOM, and Peterson and Shriever Space Force Bases. Speakers and panelists from the Pentagon – Air Force and Space Force commands and contracting offices, Military bases and installations – and Prime Defense Contractors – will provide updates on the latest requirements, programs and initiatives driving procurement and purchasing opportunities.
+          Join us for the <b>2026 Air Force &amp; Space Force Procurement Conference</b> on August 4-5, 2026 in Colorado Springs, home to the Air Force Academy, U.S. Space Command, NORAD, NORTHCOM, and Peterson and Schriever Space Force Bases. Speakers and panelists from the Pentagon – Air Force and Space Force commands and contracting offices, Military bases and installations – and Prime Defense Contractors – will provide updates on the latest requirements, programs and initiatives driving procurement and purchasing opportunities.
         </p>
         <p className="font-bold text-xl text-center font-gotham">
           Topical Coverage:
@@ -1444,7 +1484,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       sessions: [
         {
           date: "August 4",
-          sessionTime: "4:30 PM - 6:00 PM",
+          sessionTime: "4:45 PM - 6:00 PM",
         },
         {
           date: "August 5",
@@ -1466,8 +1506,8 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       title: "VIP Networking Reception",
       description: "The VIP Networking Reception at the end of the day on August 4 is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
       date: "August 4, 2026",
-      timeStart: "6:00 PM",
-      timeEnd: "8:00 PM",
+      timeStart: "6:30 PM",
+      timeEnd: "8:30 PM",
     },
   },
 ];

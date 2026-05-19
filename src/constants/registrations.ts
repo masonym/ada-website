@@ -294,6 +294,7 @@ export const REGISTRATION_TYPES = [
                 earlyBirdPrice: 545,
                 earlyBirdDeadline: "2026-02-03T04:00:00Z", // midnight ET on February 3rd
                 type: "paid",
+                saleEndTime: "2026-03-04T16:00:00Z",
             },
 
             {
@@ -318,6 +319,7 @@ export const REGISTRATION_TYPES = [
                 earlyBirdPrice: 645,
                 earlyBirdDeadline: "2026-02-03T04:00:00Z", // midnight ET on February 3rd
                 type: "paid",
+                saleEndTime: "2026-03-04T16:00:00Z",
             },
             {
                 id: "govt-official-military-pass",
@@ -338,6 +340,7 @@ export const REGISTRATION_TYPES = [
                 type: "complimentary",
                 price: "Complimentary",
                 // availabilityInfo: "Limited availability."
+                saleEndTime: "2026-03-04T16:00:00Z",
             },
         ],
     },
@@ -436,9 +439,9 @@ export const REGISTRATION_TYPES = [
                 ],
                 buttonText: "Register Now",
                 price: 595,
-                earlyBirdPrice: 495,
-                earlyBirdDeadline: "2026-04-01T03:59:59Z", // March 31st, 2026 11:59 PM ET
-                // earlyBirdDeadline: "2026-07-01T03:59:59Z", // June 30, 2026 11:59 PM ET
+                earlyBirdPrice: 545,
+                // earlyBirdDeadline: "2026-05-01T07:59:59Z", // May 1, 2026
+                earlyBirdDeadline: "2026-07-01T03:59:59Z", // June 30, 2026 11:59 PM ET
                 type: "paid",
             },
 
@@ -461,9 +464,9 @@ export const REGISTRATION_TYPES = [
                 ],
                 buttonText: "Register Now",
                 price: 695,
-                earlyBirdPrice: 595,
-                earlyBirdDeadline: "2026-04-01T03:59:59Z", // March 31st, 2026 11:59 PM ET
-                // earlyBirdDeadline: "2026-07-01T03:59:59Z", // June 30, 2026 11:59 PM ET
+                earlyBirdPrice: 645,
+                // earlyBirdDeadline: "2026-05-01T07:59:59Z", // May 1, 2026
+                earlyBirdDeadline: "2026-07-01T03:59:59Z", // June 30, 2026 11:59 PM ET
                 type: "paid",
             },
 

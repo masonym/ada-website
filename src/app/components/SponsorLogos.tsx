@@ -17,6 +17,7 @@ const TIER_ORDER = [
     'gold',
     'silver',
     'bronze',
+    'cmmc',
     'vip',
     'coffee',
     'networking',
@@ -129,7 +130,7 @@ const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) =
 
     // List of sponsor tiers that should display descriptions
     const tiersWithDescriptions = [
-        'gold-sponsor', 'silver-sponsor', 'bronze-sponsor', 'platinum-sponsor', 'diamond-sponsor', 'premier', 'vip-networking-reception-sponsor', 'coffee-station-sponsor', 'networking-luncheon', 'beverage-station-sponsor'
+        'gold-sponsor', 'silver-sponsor', 'bronze-sponsor', 'platinum-sponsor', 'diamond-sponsor', 'premier', 'vip-networking-reception-sponsor', 'coffee-station-sponsor', 'networking-luncheon', 'beverage-station-sponsor', 'cybersecurity-cmmc-sponsor'
     ];
 
     return (
@@ -174,7 +175,9 @@ const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) =
                             {tier.sponsors.map((sponsor, sponsorIndex) => {
 
                                 const allSponsorsHaveDescriptions = tier.sponsors.every(s => !!s.description);
-                                const imageSize = getTierImageSize(tier.name);
+                                const imageSize = (sponsor.width && sponsor.height)
+                                    ? { width: sponsor.width, height: sponsor.height }
+                                    : getTierImageSize(tier.name);
                                 const isTopTier = tier.topTier;
 
                                 return (

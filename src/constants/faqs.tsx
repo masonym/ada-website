@@ -272,7 +272,7 @@ Venue: Renaissance Austin Hotel, 9721 Arboretum Blvd, Austin, Texas 78759
             {
                 question: "When and where will the event take place?",
                 answer: `Date: May 28 - 29, 2026<br>
-Time: May 28, 2026: 7:30 AM - 5:30 PM and May 29, 2026: 7:30 AM - 1:30 PM<br>
+Time: May 28, 2026: 8:00 AM - 6:00 PM and May 29, 2026: 8:00 AM - 1:30 PM<br>
 Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
 `,
             },
@@ -291,7 +291,7 @@ Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
             },
             {
                 question: "Will there be networking opportunities?",
-                answer: "Yes, the conference will include designated Networking Breaks as well as a Networking Luncheon, allowing attendees to connect with Industry Peers, Policymakers, and other Professionals. A special VIP Networking Reception will take place from 6:00 PM - 8:00 PM on May 28, 2026 for Speakers, Sponsors, Exhibitors and VIP Attendees.",
+                answer: "Yes, the conference will include designated Networking Breaks as well as a Networking Luncheon, allowing attendees to connect with Industry Peers, Policymakers, and other Professionals. A special VIP Networking Reception will take place from 6:30 PM - 8:30 PM on May 28, 2026 for Speakers, Sponsors, Exhibitors and VIP Attendees.",
             },
             {
                 question: "What is the agenda for the event?",
@@ -346,7 +346,7 @@ Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
             {
                 question: "When and where will the event take place?",
                 answer: `Date: August 4 - 5, 2026<br>
-Time: August 4, 2026: 7:30 AM - 6:30 PM and August 5, 2026: 7:30 AM - 1:30 PM<br>
+Time: August 4, 2026: 8:00 AM - 6:00 PM and August 5, 2026: 8:00 AM - 1:30 PM<br>
 Venue: Hotel Polaris by U.S. Air Force Academy, 8989 North Gate Boulevard, Colorado Springs, Colorado 80921
 `,
             },

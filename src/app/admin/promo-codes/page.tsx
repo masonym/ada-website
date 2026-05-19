@@ -40,11 +40,12 @@ const TICKET_TYPES = [
   { id: 'silver-sponsor', label: 'Silver Sponsor' },
   { id: 'bronze-sponsor', label: 'Bronze Sponsor' },
   { id: 'vip-networking-reception-sponsor', label: 'VIP Networking Reception Sponsor' },
-  { id: 'networking-luncheon-sponsor', label: 'Networking Luncheon Sponsor' },
+  { id: 'networking-luncheon-sponsor', label: 'Coffee/Networking Luncheon Sponsor' },
   { id: 'small-business-sponsor', label: 'Small Business Sponsor' },
   { id: 'small-business-sponsor-without-exhibit-space', label: 'Small Business Sponsor (No Exhibit)' },
   { id: 'additional-exhibitor-attendee-pass', label: 'Additional Exhibitor Attendee Pass' },
   { id: 'additional-sponsor-attendee-pass', label: 'Additional Sponsor Attendee Pass' },
+  { id: 'cybersecurity-cmmc-sponsor', label: 'Cybersecurity/CMMC Sponsorship' },
 ];
 
 const getEventName = (eventId: number): string => {

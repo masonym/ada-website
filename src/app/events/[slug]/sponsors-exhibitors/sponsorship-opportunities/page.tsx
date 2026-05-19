@@ -6,8 +6,9 @@ import React from 'react'
 
 
 
-const page = ({ params }: { params: { slug: string } }) => {
-    const event = EVENTS.find((e) => e.slug === params.slug);
+const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
+    const { slug } = await params;
+    const event = EVENTS.find((e) => e.slug === slug);
 
     if (!event) {
         notFound();

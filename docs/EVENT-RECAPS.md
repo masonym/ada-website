@@ -1,119 +1,170 @@
-# Event Recaps System
+# Event Recaps Runbook (Future Events)
 
-This document explains the enhanced event recap system that allows for structured photo galleries with captions, people tags, and different layout sections.
+Use this as the checklist for launching a new recap page after an event.
 
-## Overview
+---
 
-The event recap system provides a flexible way to display event photos with rich metadata:
+## 1) How recap pages are generated
 
-- **Captions**: Add descriptive text to each image
-- **People Tags**: Identify individuals in photos
-- **Custom Sections**: Group photos into meaningful categories (speakers, exhibitors, etc.)
-- **Multiple Layouts**: Choose from different display layouts for each section
+Route:
 
-## Data Structure
+- `/events/[slug]/about/event-recap`
 
-Event recaps are defined in `src/constants/eventRecaps.tsx` using the following structure:
+Main page logic:
 
-```typescript
-interface EventRecap {
-  eventShorthand: string; // Matches event.eventShorthand
-  title?: string; // Optional custom title
-  introduction?: ReactNode; // Optional introduction text
-  sections: RecapSection[];
-}
+- `src/app/events/[slug]/about/event-recap/page.tsx`
 
-interface RecapSection {
-  id: string; // Unique identifier for the section
-  title: string;
-  description?: ReactNode;
-  layout: 'grid' | 'masonry' | 'carousel' | 'featured';
-  images: RecapImage[];
-}
+Recap data source order:
 
-interface RecapImage {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-  caption?: string;
-  featured?: boolean;
-  people?: string[]; // Names of people in the image
-  tags?: string[]; // For filtering/categorizing
-}
+1. **Hybrid auto-build** from S3 photos + optional metadata file
+2. **Fallback** to manual constants in `src/constants/eventRecaps.tsx` when needed
+
+---
+
+## 2) Required inputs for a new recap
+
+### A. Event must exist
+
+Ensure event is defined in:
+
+- `src/constants/events.tsx`
+
+with a valid `eventShorthand` (example: `2026DTAPC`).
+
+### B. Photos in event folder
+
+Expected S3/public structure:
+
+```text
+public/events/<EVENT_SHORTHAND>/photos/
+  <section-a>/
+    1.webp
+    2.webp
+  <section-b>/
+    1.webp
 ```
 
-## Available Layouts
+Notes:
 
-The system supports four different layout types:
+- section folder names become section IDs in the recap builder
+- avoid using a folder named `originals` (it is intentionally ignored)
+- webp is preferred
 
-1. **Featured** (`featured`): A prominent grid layout for highlighted images
-2. **Grid** (`grid`): A standard responsive grid layout
-3. **Masonry** (`masonry`): A Pinterest-style layout with varying heights
-4. **Carousel** (`carousel`): A horizontal scrolling carousel
+### C. Optional metadata file
 
-## How to Add a New Event Recap
+Path:
 
-1. Upload photos to the S3 bucket at `events/[eventShorthand]/photos/`
-2. Add a new entry to the `EVENT_RECAPS` array in `src/constants/eventRecaps.tsx`
-3. Define sections and add images with appropriate metadata
+- `public/events/<EVENT_SHORTHAND>/metadata.json`
 
-Example:
+Use metadata when you need:
 
-```tsx
+- custom section titles/descriptions
+- custom layout per section (`grid`, `masonry`, `carousel`, `featured`)
+- per-image alt text/captions/tags/featured flags
+- social share message/hashtag
+- photo credit block
+
+You can use the admin helper at:
+
+- `/admin/photo-metadata`
+
+to generate a starter metadata file.
+
+---
+
+## 3) Optional: recap metrics block (industry/org type)
+
+If you want the “Event Metrics” card on recap pages:
+
+1. Place CSV at:
+   - `public/events/<EVENT_SHORTHAND>/registration-information.csv`
+2. Add config entry in:
+   - `src/constants/eventMetrics.ts`
+
+Minimum config example:
+
+```ts
 {
-  eventShorthand: 'ada-2023',
-  introduction: (
-    <p className="text-lg mb-4">
-      The American Defense Alliance 2023 brought together industry leaders and experts.
-    </p>
-  ),
-  sections: [
-    {
-      id: 'featured',
-      title: 'Event Highlights',
-      layout: 'featured',
-      images: [
-        {
-          src: 'events/ada-2023/photos/highlight-1.webp',
-          alt: 'Keynote speaker addressing the audience',
-          width: 1280,
-          height: 960,
-          caption: 'General James Smith delivering the keynote address',
-          featured: true,
-          people: ['General James Smith']
-        },
-        // More images...
-      ]
-    },
-    // More sections...
-  ]
+  eventId: 5,
+  csvPath: 'events/2026DTAPC/registration-information.csv',
+  title: 'Event Metrics',
+  industryColumn: 'Industry',
+  businessSizeColumn: 'Business Size',
+  registrationTypeColumn: 'Registration Type',
+  organizationColumn: 'Company/Organization Name',
+  excludedRegistrationTypes: ['Staff'],
 }
 ```
 
-## Admin Interface
+Current recap metrics output includes:
 
-An admin interface is available at `/admin/event-recaps` to help manage event recaps. This page shows:
+- industry breakdown (count + %)
+- organization type breakdown buckets: small, medium, large, government, military
 
-1. Events with configured recaps
-2. Events that need recaps to be configured
-3. Links to view the recaps on the live site
+---
 
-## Migration Utility
+## 4) Upload/sync to S3 + CloudFront
 
-A utility function is available to help migrate from the old system:
+See full guide:
 
-```typescript
-import { generateBasicRecap } from '@/utils/recapUtils';
+- `docs/S3-CLOUDFRONT-SYNC.md`
 
-// Generate a basic recap structure from existing S3 images
-const basicRecap = await generateBasicRecap(event);
+Most-used commands:
+
+```bash
+# upload one event's CSV only
+npm run sync-event-csv --event=2026DTAPC
+
+# upload one event's entire folder (photos + metadata + csv)
+npm run sync-event-assets --event=2026DTAPC
 ```
 
-## Best Practices
+---
 
-1. **Image Optimization**: All images should be in WebP format for optimal performance
-2. **Meaningful Captions**: Write descriptive captions that provide context
-3. **Consistent Sections**: Use similar section structures across events
-4. **Responsive Testing**: Test all layouts on different screen sizes
-5. **Accessibility**: Provide meaningful alt text for all images
+## 5) Verification checklist
+
+After upload:
+
+1. Open `/events/<slug>/about/event-recap`
+2. Confirm:
+   - page is visible (event date has passed)
+   - sections render in expected order/layout
+   - captions/alt text/social block render correctly
+   - photo credits render (if enabled)
+   - metrics card appears (if configured)
+3. Spot-check mobile layout
+
+---
+
+## 6) Troubleshooting
+
+### “Photos Coming Soon” appears
+
+- path mismatch in event shorthand or photo folder
+- assets not uploaded yet
+- CloudFront cache not invalidated yet
+
+### Section names look odd
+
+- folder names are being used directly
+- add `metadata.json` to define cleaner section titles
+
+### Metrics card not showing
+
+- missing `eventId` entry in `src/constants/eventMetrics.ts`
+- CSV not uploaded to expected path
+- CSV headers do not match configured column names
+
+### Event recap route not available yet
+
+- recap is hidden for events in the future (date gate on recap page)
+
+---
+
+## 7) Recommended cadence after each event
+
+1. Upload photos into section folders
+2. Generate metadata JSON draft and refine titles/captions
+3. Upload event assets + invalidate CloudFront
+4. Add/validate metrics CSV + config
+5. QA desktop/mobile and publish

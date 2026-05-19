@@ -12,15 +12,16 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const event = EVENTS.find((e) => e.slug === params.slug);
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const event = EVENTS.find((e) => e.slug === slug);
 
   if (!event) {
     notFound();
   }
 
   // fetch matchmaking sponsors on the server
-  const matchmakingData = await getEventMatchmakingSponsors(params.slug);
+  const matchmakingData = await getEventMatchmakingSponsors(slug);
 
   return <MatchmakingPage matchmakingData={matchmakingData} />;
 }

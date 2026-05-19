@@ -7,6 +7,9 @@ import EventTestimonials from '@/app/components/EventTestimonials';
 import { getEventRecap } from '@/lib/eventRecap';
 import { SectionRenderer } from './sections';
 import { SOCIALS } from '@/constants';
+import { getEventMetricsConfig } from '@/constants/eventMetrics';
+import { getEventMetricsData } from '@/lib/event-metrics';
+import EventMetricsSection from '@/app/components/EventMetricsSection';
 
 // Generate static params for all event slugs
 export async function generateStaticParams() {
@@ -15,8 +18,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function EventRecapPage({ params }: { params: { slug: string } }) {
-  const event = EVENTS.find((e) => e.slug === params.slug);
+export default async function EventRecapPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const event = EVENTS.find((e) => e.slug === slug);
 
   if (!event) {
     notFound();
@@ -31,6 +35,8 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
   const eventDate = new Date(event.timeStart);
   const currentDate = new Date();
   const eventHasOccurred = eventDate < currentDate;
+  const eventMetricsConfig = getEventMetricsConfig(event.id);
+  const eventMetrics = eventMetricsConfig ? await getEventMetricsData(eventMetricsConfig) : null;
 
   if (!eventHasOccurred) {
     return (
@@ -46,7 +52,7 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
   return (
     <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
       <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">
-        Photo Highlights of the <br />{event.title}
+        Event Recap of the {event.title}
       </h1>
 
       {!hasImages && <div className="text-center py-12">
@@ -62,7 +68,7 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
             Access Presentation Materials and Recordings
           </p>
           <Link
-            href={`/events/${params.slug}/agenda`}
+            href={`/events/${slug}/agenda`}
             className="inline-block bg-white text-navy-800 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
           >
             View Agenda
@@ -101,6 +107,9 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
       {event.testimonials && event.testimonials.length > 0 && (
         <EventTestimonials testimonials={event.testimonials} />
       )}
+
+      {eventMetrics && <EventMetricsSection metrics={eventMetrics} />}
+
 
       {/* Display custom introduction if available */}
       {recapData?.introduction && (
@@ -141,7 +150,7 @@ export default async function EventRecapPage({ params }: { params: { slug: strin
             In the meantime, you can view the agenda and presentation materials.
           </p>
           <Link
-            href={`/events/${params.slug}/agenda`}
+            href={`/events/${slug}/agenda`}
             className="inline-block bg-navy-800 text-white px-6 py-2 rounded-lg font-semibold hover:bg-navy-700 transition-colors"
           >
             View Agenda

@@ -28,7 +28,7 @@ export const SCHEDULES = [
                             name: "Charles F. Sills",
                             title: "President & CEO",
                             affiliation: "American Defense Alliance",
-                            photo: "charles-sills.webp"
+                            photo: "charles-f-sills.webp"
                         }],
                     },
                     {
@@ -235,7 +235,7 @@ export const SCHEDULES = [
                             name: "Charles F. Sills",
                             title: "President & CEO",
                             affiliation: "American Defense Alliance",
-                            photo: "charles-sills.webp"
+                            photo: "charles-f-sills.webp"
                         }],
                     },
                     {
@@ -283,7 +283,7 @@ export const SCHEDULES = [
                                 "name": "Charles F. Sills",
                                 "title": "President & CEO",
                                 "affiliation": "American Defense Alliance",
-                                "photo": "charles-sills.webp",
+                                "photo": "charles-f-sills.webp",
                                 "sponsor": "Conference Moderator",
                                 "sponsorStyle": "bg-red-999",
                                 "videoId": "M1FmtrcHE5s",
@@ -533,7 +533,7 @@ export const SCHEDULES = [
                                 "name": "Charles F. Sills",
                                 "title": "President & CEO",
                                 "affiliation": "American Defense Alliance",
-                                "photo": "charles-sills.webp"
+                                "photo": "charles-f-sills.webp"
                             }
                         ],
 
@@ -568,7 +568,7 @@ export const SCHEDULES = [
                                 "name": "Charles F. Sills",
                                 "title": "President & CEO",
                                 "affiliation": "American Defense Alliance",
-                                "photo": "charles-sills.webp",
+                                "photo": "charles-f-sills.webp",
                                 "sponsor": "Conference Moderator",
                                 "sponsorStyle": "bg-red-999",
                             }
@@ -696,7 +696,7 @@ export const SCHEDULES = [
                                 "name": "Charles F. Sills",
                                 "affiliation": "American Defense Alliance",
                                 "title": "President & CEO",
-                                "photo": "charles-sills.webp",
+                                "photo": "charles-f-sills.webp",
                                 "videoId": "IWx9CDnE7pg",
                             },
                             {
@@ -810,7 +810,7 @@ export const SCHEDULES = [
                                 "name": "Charles F. Sills",
                                 "affiliation": "American Defense Alliance",
                                 "title": "President & CEO",
-                                "photo": "charles-sills.webp"
+                                "photo": "charles-f-sills.webp"
                             }
                         ],
 
@@ -949,7 +949,7 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "charles-sills",
+                                speakerId: "charles-f-sills",
                                 sponsor: "Conference Moderator",
                                 sponsorStyle: "bg-red-999",
                                 videoId: "EjKLqEr3L1g",
@@ -1148,7 +1148,7 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "charles-sills",
+                                speakerId: "charles-f-sills",
                                 sponsor: "Panel Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900",
                                 videoId: "l-tNmi6QGzs",
@@ -1180,7 +1180,7 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "charles-sills",
+                                speakerId: "charles-f-sills",
                                 sponsor: "Conference Moderator",
                                 sponsorStyle: "bg-red-999",
                             }
@@ -1223,7 +1223,7 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "charles-sills",
+                                speakerId: "charles-f-sills",
                                 sponsor: "Conference Moderator",
                                 sponsorStyle: "bg-red-999",
                                 videoId: "iAWl0CLOuuU",
@@ -1317,7 +1317,7 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "charles-sills",
+                                speakerId: "charles-f-sills",
                                 sponsor: "Panel Moderator",
                                 sponsorStyle: "bg-sky-300 text-slate-900",
                                 videoId: "3BfHzlaZSvQ",
@@ -1363,7 +1363,7 @@ export const SCHEDULES = [
                         location: "Norfolk Ballroom (V-VI), Ground Level",
                         speakers: [
                             {
-                                speakerId: "charles-sills",
+                                speakerId: "charles-f-sills",
                                 sponsor: "Conference Moderator",
                                 sponsorStyle: "bg-red-999",
                             }
@@ -1419,9 +1419,10 @@ export const SCHEDULES = [
                         title: "Conference Launch – American Defense Alliance",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "charles-sills",
+                            speakerId: "charles-f-sills",
                             sponsor: "Conference Moderator",
-                            sponsorStyle: "bg-red-999"
+                            sponsorStyle: "bg-red-999",
+                            videoId: "YUm-heZ04Dc",
                         }],
                     },
                     {
@@ -1429,7 +1430,8 @@ export const SCHEDULES = [
                         title: "Welcoming Remarks – National Security Innovation Council (NSIC)",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "drew-scheberle"
+                            speakerId: "drew-scheberle",
+                            videoId: "d5xzgH8ArDY",
                         }],
                     },
                     {
@@ -1437,7 +1439,9 @@ export const SCHEDULES = [
                         title: "DEFENSEWERX – Accelerating Innovative Tech Solutions",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "brian-liesveld"
+                            speakerId: "brian-liesveld",
+                            presentation: "2026_DTAPC_-_Brian_Liesveld.pdf",
+                            videoId: "aZ-ZlYzI12w",
                         }],
                     },
                     {
@@ -1445,7 +1449,9 @@ export const SCHEDULES = [
                         title: "DEPARTMENT OF THE AIR FORCE KEYNOTE ADDRESS",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "scott-kiser"
+                            speakerId: "scott-kiser",
+                            presentation: "2026_DTAPC_-_Scott_Kiser.pdf",
+                            videoId: "fvhYmfw3VjM",
                         }],
                     },
                     {
@@ -1455,7 +1461,9 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "don-mcginnis",
                             sponsor: "Bronze Sponsor",
-                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                            videoId: "6QujjBzNwio",
+                            presentation: "2026_DTAPC_-_Don_McGinnis.pdf",
                         }],
                     },
                     {
@@ -1463,7 +1471,9 @@ export const SCHEDULES = [
                         title: "KEYNOTE ADDRESS: IMPROVING AIR FORCE ACQUISITIONS",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "dr-david-g-jester-smith"
+                            speakerId: "dr-david-g-jester-smith",
+                            videoId: "k3VRYhF08O8",
+                            // presentation: ""
                         }],
                     },
                     {
@@ -1473,7 +1483,9 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "vincent-grosso",
                             sponsor: "Coffee Station Sponsor",
-                            sponsorStyle: "bg-sky-300 text-slate-900"
+                            sponsorStyle: "bg-sky-300 text-slate-900",
+                            videoId: "OBJE4KkSebQ",
+                            presentation: "2026_DTAPC_-_Vincent_Grosso.pdf",
                         }],
                     },
                     {
@@ -1486,7 +1498,8 @@ export const SCHEDULES = [
                         title: "The Space Force Front Door Program – Connecting With Industry",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "victor-vigliotti"
+                            speakerId: "victor-vigliotti",
+                            videoId: "O56z9pAsuBQ",
                         }],
                     },
                     {
@@ -1495,18 +1508,28 @@ export const SCHEDULES = [
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
-                                speakerId: "charles-sills",
+                                speakerId: "charles-f-sills",
                                 sponsor: "Moderator",
-                                sponsorStyle: "bg-sky-300"
+                                sponsorStyle: "bg-sky-300",
+                                videoId: "LVQb7BejST0",
+                                videoStartTime: 0
                             },
                             {
                                 speakerId: "major-marc-green",
+                                videoId: "LVQb7BejST0",
+                                videoStartTime: 1650,
                             },
                             {
-                                speakerId: "captain-md-doc-rana"
+                                speakerId: "captain-md-doc-rana",
+                                videoId: "LVQb7BejST0",
+                                videoStartTime: 190,
+                                presentation: "2026_DTAPC_-_Captain_MD__Doc__Rana.pdf",
                             },
                             {
-                                speakerId: "aimee-z-zick"
+                                speakerId: "aimee-z-zick",
+                                videoId: "LVQb7BejST0",
+                                videoStartTime: 985,
+                                presentation: "2026_DTAPC_-_Aimee__Z__Zick.pdf",
                             }
                         ],
                     },
@@ -1516,10 +1539,16 @@ export const SCHEDULES = [
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
-                                speakerId: "kareem-a-sykes"
+                                speakerId: "kareem-a-sykes",
+                                videoId: "5YYzZH_iXTU",
+                                videoStartTime: 0,
+                                presentation: "2026_DTAPC_-_Kareem_A._Sykes.pdf",
                             },
                             {
                                 speakerId: "nelinia-nel-varenus",
+                                videoId: "5YYzZH_iXTU",
+                                videoStartTime: 2001,
+                                presentation: "2026_DTAPC_-_Nelinia__Nel__Varenus.pdf",
                             }
                         ],
                     },
@@ -1535,7 +1564,9 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "clay-womack",
                             sponsor: "Silver Sponsor",
-                            sponsorStyle: "bg-[#C0C0C0] text-slate-900"
+                            sponsorStyle: "bg-[#C0C0C0] text-slate-900",
+                            videoId: "L8mo0GMIi8U",
+                            presentation: "2026_DTAPC_-_Clay_Womack.pdf"
                         }],
                     },
                     {
@@ -1546,13 +1577,18 @@ export const SCHEDULES = [
                             {
                                 speakerId: "trish-martinelli",
                                 sponsor: "Moderator",
-                                sponsorStyle: "bg-sky-300 text-slate-900"
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "Y8bZxQQJSCA",
                             },
                             {
-                                speakerId: "david-sikora"
+                                speakerId: "david-sikora",
+                                videoId: "Y8bZxQQJSCA",
+
                             },
                             {
-                                speakerId: "albert-garza"
+                                speakerId: "albert-garza",
+                                videoId: "Y8bZxQQJSCA",
+
                             }
                         ],
                     },
@@ -1563,7 +1599,9 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "tim-trapuzzano",
                             sponsor: "Bronze Sponsor",
-                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                            videoId: "TMKoSgaH_Qw",
+                            presentation: "2026_DTAPC_-_Dwight_Warnock.pdf"
                         }],
                     },
                     {
@@ -1574,25 +1612,43 @@ export const SCHEDULES = [
                             {
                                 speakerId: "richard-ric-slater",
                                 sponsor: "Moderator",
-                                sponsorStyle: "bg-sky-300 text-slate-900"
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "B5dPOQ8G4wo",
+                                videoStartTime: 2615,
                             },
                             {
-                                speakerId: "rob-graziano"
+                                speakerId: "rob-graziano",
+                                videoId: "B5dPOQ8G4wo",
+                                videoStartTime: 427,
+
                             },
                             {
-                                speakerId: "andrew-gardner"
+                                speakerId: "andrew-gardner",
+                                videoId: "B5dPOQ8G4wo",
+                                presentation: "2026_DTAPC_-_Andrew_Gardner.pdf",
                             },
                             {
-                                speakerId: "bijo-mathew"
+                                speakerId: "bijo-mathew",
+                                videoId: "B5dPOQ8G4wo",
+                                videoStartTime: 1973,
+
                             },
                             {
-                                speakerId: "madison-jones"
+                                speakerId: "madison-jones",
+                                videoId: "B5dPOQ8G4wo",
+                                videoStartTime: 910
                             },
                             {
-                                speakerId: "aaron-williamson-pmp"
+                                speakerId: "aaron-williamson-pmp",
+                                videoId: "B5dPOQ8G4wo",
+                                videoStartTime: 1310
+
                             },
                             {
-                                speakerId: "scott-gray"
+                                speakerId: "scott-gray",
+                                videoId: "B5dPOQ8G4wo",
+                                videoStartTime: 2226
+
                             }
                         ],
                     },
@@ -1601,9 +1657,9 @@ export const SCHEDULES = [
                         title: "Day One Closing Remarks",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "charles-sills",
+                            speakerId: "charles-f-sills",
                             sponsor: "Conference Moderator",
-                            sponsorStyle: "bg-red-999"
+                            sponsorStyle: "bg-red-999",
                         }],
                     },
                     {
@@ -1642,9 +1698,10 @@ export const SCHEDULES = [
                         title: "Welcome Back Remarks",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "charles-sills",
+                            speakerId: "charles-f-sills",
                             sponsor: "Conference Moderator",
-                            sponsorStyle: "bg-red-999"
+                            sponsorStyle: "bg-red-999",
+                            videoId: "J5RojW-rAEk",
                         }],
                     },
                     {
@@ -1653,10 +1710,15 @@ export const SCHEDULES = [
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
-                                speakerId: "david-leinberger"
+                                speakerId: "david-leinberger",
+                                videoId: "UC7XnCJtcN4",
+                                presentation: "2026_DTAPC_-_David_Leinberger.pdf",
                             },
                             {
-                                speakerId: "paul-holland"
+                                speakerId: "paul-holland",
+                                videoId: "UC7XnCJtcN4",
+                                videoStartTime: 783,
+                                presentation: "2026_DTAPC_-_Paul_Holland.pdf",
                             }
                         ],
                     },
@@ -1668,13 +1730,25 @@ export const SCHEDULES = [
                             {
                                 speakerId: "gavin-brown",
                                 sponsor: "Moderator",
-                                sponsorStyle: "bg-sky-300 text-slate-900"
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "GP9kBCAMyrw",
                             },
                             {
-                                speakerId: "irina-s-litchfield"
+                                speakerId: "irina-s-litchfield",
+                                videoId: "GP9kBCAMyrw",
+                                videoStartTime: 462,
+
                             },
                             {
-                                speakerId: "justyn-hornor"
+                                speakerId: "steven-gibson",
+                                videoId: "GP9kBCAMyrw",
+                                videoStartTime: 559,
+
+                            },
+                            {
+                                speakerId: "justyn-hornor",
+                                videoId: "GP9kBCAMyrw",
+                                videoStartTime: 313,
                             }
                         ],
                     },
@@ -1684,10 +1758,12 @@ export const SCHEDULES = [
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
-                                speakerId: "gavin-brown"
+                                speakerId: "gavin-brown",
+                                videoId: "G5QIyGy-m_Q",
                             },
                             {
-                                speakerId: "justin-litchfield-phd"
+                                speakerId: "justin-litchfield-phd",
+                                videoId: "G5QIyGy-m_Q",
                             }
                         ],
                     },
@@ -1698,7 +1774,9 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "marie-mcclain",
                             sponsor: "Silver Sponsor",
-                            sponsorStyle: "bg-[#C0C0C0] text-slate-900"
+                            sponsorStyle: "bg-[#C0C0C0] text-slate-900",
+                            videoId: "Ri_w-zhcvrg",
+                            presentation: "2026_DTAPC_-_Marie_McClain.pdf",
                         }],
                     },
                     {
@@ -1706,7 +1784,9 @@ export const SCHEDULES = [
                         title: "Warfare & Technology in 2040 and Beyond",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "captain-md-doc-rana"
+                            speakerId: "captain-md-doc-rana",
+                            videoId: "qDYjbcMtJy4",
+                            presentation: "2026_DTAPC_-_Captain_MD__Doc__Rana_2.pdf",
                         }],
                     },
                     {
@@ -1716,7 +1796,9 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "dr-bruce-j-sumlin",
                             sponsor: "Bronze Sponsor",
-                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                            videoId: "XyaFofOto0E",
+                            presentation: "2026_DTAPC_-_Dr._Bruce_J._Sumlin.pdf",
                         }],
                     },
                     {
@@ -1731,7 +1813,9 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "joe-bonilla",
                             sponsor: "Bronze Sponsor",
-                            sponsorStyle: "bg-[#CD7F32] text-slate-900"
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                            videoId: "CaM25z98x7A",
+                            presentation: "2026_DTAPC_-_Joe_Bonilla.pdf",
                         }],
                     },
                     {
@@ -1742,16 +1826,23 @@ export const SCHEDULES = [
                             {
                                 speakerId: "marcos-cervantes",
                                 sponsor: "Moderator",
-                                sponsorStyle: "bg-sky-300 text-slate-900"
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                                videoId: "v1M6Pr3Hbrk"
                             },
                             {
-                                speakerId: "major-brandon-schreiner"
+                                speakerId: "major-brandon-schreiner",
+                                videoId: "v1M6Pr3Hbrk"
+
                             },
                             {
-                                speakerId: "major-victor-montellano"
+                                speakerId: "major-victor-montellano",
+                                videoId: "v1M6Pr3Hbrk"
+
                             },
                             {
-                                speakerId: "glenn-banton"
+                                speakerId: "glenn-banton",
+                                videoId: "v1M6Pr3Hbrk"
+
                             }
                         ],
                     },
@@ -1761,10 +1852,18 @@ export const SCHEDULES = [
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [
                             {
-                            speakerId: "ricardo-monroy",
+                                speakerId: "ricardo-monroy",
+                                videoId: "WymHHsDZm3E",
+                                videoStartTime: 195
                             },
                             {
-                                speakerId: "trish-martinelli"
+                                speakerId: "trish-martinelli",
+                                videoId: "WymHHsDZm3E",
+                            },
+                            {
+                                speakerId: "phil-lowther",
+                                videoId: "WymHHsDZm3E",
+                                videoStartTime: 625,
                             }
                         ],
                     },
@@ -1773,7 +1872,7 @@ export const SCHEDULES = [
                         title: "Closing Remarks",
                         location: "Rio Hall B, Plaza Lower Level",
                         speakers: [{
-                            speakerId: "charles-sills",
+                            speakerId: "charles-f-sills",
                             sponsor: "Conference Moderator",
                             sponsorStyle: "bg-red-999"
                         }],
@@ -1810,101 +1909,439 @@ export const SCHEDULES = [
                 date: "May 28, 2026",
                 items: [
                     {
-                        time: "7:30 AM - 8:30 AM",
+                        time: "8:00 AM",
                         title: "On-Site Attendee Registration & Check-in",
-                        location: "Norfolk Ballroom Pre-Function, Ground Level",
+                        location: "Norfolk Ballroom Pre-Function, Ground Floor",
                     },
                     {
-                        time: "7:30 AM - 8:30 AM",
-                        title: "Networking Breakfast with Exhibitors",
-                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                        time: "8:00 AM – 9:00 AM",
+                        title: "Morning Coffee with Exhibitors",
+                        location: "Norfolk Ballroom (I – IV), Ground Floor",
                     },
                     {
-                        time: "7:30 AM - 8:30 AM",
-                        title: "Matchmaking Session I Sign-up",
-                        location: "Norfolk Ballroom Pre-Function, Ground Level",
+                        time: "8:00 AM – 9:00 AM",
+                        title: "Matchmaking I Sign-up",
+                        location: "Norfolk Ballroom Pre-Function, Ground Floor",
                     },
                     {
-                        time: "8:30 AM - 10:00 AM",
-                        title: "General Sessions",
-                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        time: "9:00 AM",
+                        title: "American Defense Alliance – Conference Launch",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [{
+                            speakerId: "charles-f-sills",
+                            sponsor: "Conference Moderator",
+                            sponsorStyle: "bg-red-999",
+                        }],
                     },
                     {
-                        time: "10:00 AM - 10:15 AM",
+                        time: "9:05 AM",
+                        title: "Welcoming Remarks – State of Virginia and Hampton Roads Alliance",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [{
+                            speakerId: "jared-chalk",
+                        }],
+                    },
+                    {
+                        time: "9:15 AM",
+                        title: "CONGRESSIONAL KEYNOTE ADDRESS",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                            {
+                                speakerId: "representative-rob-wittman",
+                            }
+                        ],
+                    },
+                    {
+                        time: "9:30 AM",
+                        title: "Keynote Address: Revival of the American Maritime Industry and U.S. Shipbuilding Plans & Projects",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [{
+                            speakerId: "hunter-stires",
+                        }],
+                    },
+                    {
+                        time: "10:00 AM",
+                        title: "The U.S. Navy Shipbuilding Imperative – Challenges & Opportunities",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                            // {
+                            // speakerId: "francesco-greco",
+                        // }
+                        ],
+                    },
+                    {
+                        time: "10:40 AM",
+                        title: "Industry Insight",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                    },
+                    {
+                        time: "10:45 AM",
+                        title: "DEFENSE INDUSTRIAL BASE OR DEPARTMENT OF THE NAVY KEYNOTE ADDRESS",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                        // {
+                        //     speakerId: "honorable-michael-cadenazzi",
+                        // }
+                        ],
+                    },
+                    {
+                        time: "11:15 AM",
                         title: "Networking Break with Exhibitors",
-                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                        location: "Norfolk Ballroom (I – IV), Ground Floor",
                     },
                     {
-                        time: "10:15 AM - 12:30 PM",
-                        title: "General Sessions",
-                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        time: "11:30 AM",
+                        title: "Industry Insight",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
                     },
                     {
-                        time: "12:30 PM - 1:30 PM",
+                        time: "11:35 AM",
+                        title: "Keynote Address: Using AI In Shipbuilding and Fleet Sustainment",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [{
+                            speakerId: "daniel-hudson",
+                        }],
+                    },
+                    {
+                        time: "12:05 PM",
+                        title: "Fleet Readiness Panel – Critical Requirements & Priorities – Maintenance & Repair Tempo and Contested Logistics",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                            // {
+                            //     speakerId: "jim-juster",
+                            // },
+                            // {
+                            //     speakerId: "captain-edward-b-miller-iv",
+                            // },
+                            // {
+                            //     speakerId: "captain-rick-tyler",
+                            // },
+                            // {
+                            //     speakerId: "daniel-hudson",
+                            // },
+                            // {
+                            //     speakerId: "ben-van-buskirk",
+                            // },
+                            // {
+                            //     speakerId: "mark-h-lokay",
+                            // },
+                            // {
+                            //     speakerId: "philip-hart-cullom",
+                            // },
+                        ],
+                    },
+                    {
+                        time: "1:00 PM",
                         title: "Networking Lunch with Exhibitors",
-                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                        location: "Norfolk Ballroom (I – IV), Ground Floor",
                     },
                     {
-                        time: "1:30 PM - 3:00 PM",
-                        title: "General Sessions",
-                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        time: "2:00 PM",
+                        title: "Fireside Chat: Department of War Small Business Programs Update",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                            {
+                                speakerId: "charles-f-sills",
+                                sponsor: "Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                            },
+                            {
+                                speakerId: "khalil-mack",
+                            },
+                        ],
                     },
                     {
-                        time: "3:00 PM - 3:15 PM",
-                        title: "Networking Break with Exhibitors",
-                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                        time: "2:25 PM",
+                        title: "Industry Insight",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [{
+                            speakerId: "don-mcginnis",
+                            sponsor: "Bronze Sponsor",
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                        }],
                     },
                     {
-                        time: "3:15 PM - 4:30 PM",
-                        title: "General Sessions",
-                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        time: "2:30 PM",
+                        title: "Public-Private Partnerships to Build Naval Shipyard & Manufacturing Capacity",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                            {
+                                speakerId: "jon-glass",
+                                sponsor: "Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                            },
+                            {
+                                speakerId: "ryan-daniels",
+                            },
+                            {
+                                speakerId: "alfred-puchala",
+                            },
+                            {
+                                speakerId: "ben-van-buskirk",
+                            },
+                            // {
+                            //     speakerId: "rear-admiral-mike-manazir",
+                            // },
+                            // {
+                            //     speakerId: "al-puchala",
+                            // },
+                            // {
+                            //     speakerId: "ryan-daniels",
+                            // },
+                        ],
                     },
                     {
-                        time: "4:30 PM - 6:00 PM",
+                        time: "3:10 PM",
+                        title: "Industry Insight",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [{
+                            speakerId: "dr-bruce-j-sumlin",
+                            sponsor: "Bronze Sponsor",
+                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                        }],
+                    },
+                    {
+                        time: "3:15 PM",
+                        title: "Scoping Smart: Where Companies Overspend on CMMC",
+                        // description: `Many organizations unintentionally expand their CMMC compliance boundary far beyond what is required—driving up cost, complexity, and operational burden without improving security or audit outcomes.
+// <br>
+// <br>
+// In this 30‑minute workshop, Jeri Prophet, CEO of IntellecTechs, shares practical, assessor‑informed insight on how to accurately define CMMC scope based on where Controlled Unclassified Information (CUI) actually resides, flows, and is accessed. Drawing on real‑world readiness and assessment experience, the session clarifies the difference between being prepared and being audit‑ready, and why misalignment between daily operations and documented controls is one of the most common causes of assessment issues.
+// <br>
+// <br>
+// Attendees will leave with a clear understanding of how scoping decisions directly impact tool selection, evidence requirements, audit complexity, and total cost—along with concrete examples of right‑sized versus over‑engineered environments that meet CMMC requirements without excess spend.`,
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [{
+                            speakerId: "jeri-prophet",
+                            sponsor: "Cybersecurity/CMMC Sponsor",
+                            sponsorStyle: "bg-blue-500 text-black-700",
+                            
+                        }],
+                    },
+                    {
+                        time: "3:50 PM",
+                        title: "New Technologies, New Platforms, New Opportunities II – Navy 'High-Low' Order of Battle & the Advent of Unmanned Platforms",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                            // {
+                            // speakerId: "andrea-bell-miller",
+                        // }
+                        ],
+                    },
+                    {
+                        time: "4:30 PM",
+                        title: "Day One Closing Remarks",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [{
+                            speakerId: "charles-f-sills",
+                            sponsor: "Conference Moderator",
+                            sponsorStyle: "bg-red-999",
+                        }],
+                    },
+                    {
+                        time: "4:30 PM",
+                        title: "SPECIAL PRESENTATION: HOW TO LEVERAGE OTA's (OTHER TRANSACTION AUTHORITIES)",
+                        speakers: [
+                            {
+                                speakerId: "harry-aderton",
+                                sponsor: "Gold Sponsor",
+                                sponsorStyle: "bg-[#ffaf00] text-slate-900",
+                            },
+                        ],
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                    },
+                    {
+                        time: "5:00 PM",
+                        title: "SPECIAL PRESENTATION: Phase III SBIR: Contracting Authority, Workflow, and Practice",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                            {
+                                speakerId: "ted-dennis",
+                                sponsor: "Gold Sponsor",
+                                sponsorStyle: "bg-[#ffaf00] text-slate-900",
+                            },
+                        ],
+                    },
+                    {
+                        time: "4:30 – 5:30 PM",
+                        title: "Networking with Exhibitors",
+                        location: "Norfolk Ballroom (I – IV), Ground Floor",
+                    },
+                    {
+                        time: "4:45 – 5:30 PM",
                         title: "Matchmaking Session I",
-                        location: "Franklin-Yorktown Meeting Room, 2nd Floor",
+                        location: "Hampton Ballroom, 3rd floor",
                     },
                     {
-                        time: "6:30 PM - 8:30 PM",
+                        time: "6:30 – 8:30 PM",
                         title: "VIP Networking Reception",
                         description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
                         location: "The Harbor Club, 333 Waterside Drive, Suite 200, Norfolk VA 23510",
+                        speakers: [
+                            {
+                                speakerId: "michelle-hilger",
+                                sponsor: "VIP Networking Reception Sponsor",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                            },
+                            {
+                                speakerId: "tim-novy",
+                                sponsor: "VIP Networking Reception Sponsor",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                            },
+                        ],
                     },
-
                 ],
             },
             {
                 date: "May 29, 2026",
                 items: [
                     {
-                        time: "7:30 AM - 8:30 AM",
-                        title: "Networking Breakfast with Exhibitors",
-                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                        time: "8:00 AM – 9:00 AM",
+                        title: "Morning Coffee with Exhibitors",
+                        location: "Norfolk Ballroom (I – IV), Ground Floor",
                     },
                     {
-                        time: "7:30 AM - 8:30 AM",
-                        title: "Matchmaking Session II Sign-up",
-                        location: "Norfolk Ballroom Pre-Function, Ground Level",
+                        time: "8:00 AM – 9:00 AM",
+                        title: "Matchmaking II Sign-up",
+                        location: "Norfolk Ballroom Pre-Function, Ground Floor",
                     },
                     {
-                        time: "8:30 AM - 10:30 AM",
-                        title: "General Sessions",
-                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        time: "9:00 AM",
+                        title: "Welcome Back Remarks",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [{
+                            speakerId: "charles-f-sills",
+                            sponsor: "Conference Moderator",
+                            sponsorStyle: "bg-red-999",
+                        }],
                     },
                     {
-                        time: "10:30 AM - 10:45 AM",
-                        title: "Networking Break with Exhibitors",
-                        location: "Norfolk Ballroom (I-IV), Ground Level",
+                        time: "9:05 AM",
+                        title: "Navy & Marine Corps Small Business Programs Panel",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                            {
+                                speakerId: "trish-martinelli",
+                                sponsor: "Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                            },
+                            {
+                                speakerId: "khalil-mack",
+                            },
+                            // {
+                            //     speakerId: "andrew-magliochetti",
+                            // },
+                            {
+                                speakerId: "p-anne-bannister",
+                            },
+                            {
+                                speakerId: "terressa-bebout",
+                            },
+                            // {
+                            //     speakerId: "daniele-kurze",
+                            // },
+                            {
+                                speakerId: "sean-murphy",
+                            },
+                            {
+                                speakerId: "jerome-a-greene",
+                            },
+                        ],
                     },
                     {
-                        time: "10:45 AM - 12:30 PM",
-                        title: "General Sessions",
-                        location: "Norfolk Ballroom (V-VI), Ground Level",
+                        time: "10:00 AM",
+                        title: "Industry Insight",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                    },
+                    {
+                        time: "10:05 AM",
+                        title: "UNITED STATES MARINE CORPS KEYNOTE ADDRESS",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                            // {
+                            //     speakerId: "james-b-balocki",
+                            // },
+                            // {
+                            //     speakerId: "dr-vlasta-zekulic",
+                            // },
+                        ],
+                    },
+                    {
+                        time: "10:35 AM",
+                        title: "Connecting the Primes and the Subs",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                            {
+                                speakerId: "ben-van-buskirk",
+                                sponsor: "Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                            },
+                            // {
+                            //     speakerId: "jennifer-hanley",
+                            // },
+                            // {
+                            //     speakerId: "john-schwenk",
+                            // },
+                            {
+                                speakerId: "katina-adams",
+                            },
+                            // {
+                            //     speakerId: "mark-h-lokay",
+                            // },
+                            // {
+                            //     speakerId: "stacey-r-washington",
+                            // },
+                            // {
+                            //     speakerId: "robyn-card",
+                            // },
+                        ],
+                    },
+                    {
+                        time: "11:20 AM",
+                        title: "Military Base-Community Partnerships Promoting Local Build Contracts",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                            {
+                                speakerId: "david-leinberger",
+                            },
+                            // {
+                            //     speakerId: "brian-w-miller",
+                            // },
+                            // {
+                            //     speakerId: "ryan-w-catlett",
+                            // },
+                        ],
+                    },
+                    {
+                        time: "11:55 AM",
+                        title: "Operations Brief: The Atlantic Fleet and Supreme Allied Commander NATO/Transformation Directorate",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                            // {
+                            //     speakerId: "david-leinberger",
+                            // },
+                            // {
+                            //     speakerId: "brian-w-miller",
+                            // },
+                            // {
+                            //     speakerId: "ryan-w-catlett",
+                            // },
+                        ],
+                    },
+                    {
+                        time: "12:30 PM",
+                        title: "Closing Remarks",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [{
+                            speakerId: "charles-f-sills",
+                            sponsor: "Conference Moderator",
+                            sponsorStyle: "bg-red-999",
+                        }],
                     },
                     {
                         time: "12:30 PM - 1:30 PM",
                         title: "Matchmaking Session II",
-                        location: "Franklin-Yorktown Meeting Room, 2nd Floor",
+                        location: "Hampton Ballroom, 3rd floor",
                     },
                 ],
             }
@@ -1912,4 +2349,160 @@ export const SCHEDULES = [
         ]
     },
 
+    {
+        id: 7,
+        schedule: [
+            {
+                date: "August 4, 2026",
+                items: [
+                    {
+                        time: "8:00 AM",
+                        title: "On-Site Attendee Registration & Check-in",
+                    },
+                    {
+                        time: "8:00 AM – 9:00 AM",
+                        title: "Networking Breakfast with Exhibitors",
+                    },
+                    {
+                        time: "8:00 – 9:00 AM",
+                        title: "Matchmaking Sign-up",
+                    },
+                    {
+                        time: "9:00 AM",
+                        title: "Conference Launch – American Defense Alliance",
+                    },
+                    {
+                        time: "9:35 AM",
+                        title: "Welcoming Remarks – State of Colorado",
+                    },
+                    {
+                        time: "9:45 AM",
+                        title: "DEPARTMENT OF THE AIR FORCE KEYNOTE ADDRESS",
+                    },
+                    {
+                        time: "10:15 AM",
+                        title: "Fireside Chat: Air Force Challenges & Plans Driving Contracts",
+                    },
+                    {
+                        time: "11:00 AM",
+                        title: "KEYNOTE ADDRESS: AIR FORCE ACQUISITIONS UPDATE",
+                    },
+                    {
+                        time: "11:30 AM",
+                        title: "Industry Insight",
+                    },
+                    {
+                        time: "11:35 AM",
+                        title: "Networking Break with Exhibitors",
+                    },
+                    {
+                        time: "12:00 PM",
+                        title: "Industry Insight",
+                    },
+                    {
+                        time: "12:05 PM",
+                        title: "Fireside Chat: Space Force Challenges & Plans Driving Contracts",
+                    },
+                    {
+                        time: "12:45 PM",
+                        title: "Cybersecurity/CMMC Update",
+                    },
+                    {
+                        time: "1:00 PM",
+                        title: "Networking Lunch with Exhibitors",
+                    },
+                    {
+                        time: "2:00 PM",
+                        title: "Industry Insight",
+                    },
+                    {
+                        time: "2:05 PM",
+                        title: "New Paradigm Aerospace Technologies – Latest Developments Brief",
+                    },
+                    {
+                        time: "2:50 PM",
+                        title: "Industry Insight",
+                    },
+                    {
+                        time: "2:55 PM",
+                        title: "Local & Western State Bases & Installations – Construction & Base Operations Support (BOS) Opportunities",
+                    },
+                    {
+                        time: "3:40 PM",
+                        title: "Air Force & Space Force Small Business Programs",
+                    },
+                    {
+                        time: "4:30 PM",
+                        title: "Day One Closing Remarks",
+                    },
+                    {
+                        time: "4:30 – 6:00 PM",
+                        title: "Networking with Exhibitors",
+                    },
+                    {
+                        time: "4:45 – 6:00 PM",
+                        title: "Matchmaking Session I",
+                    },
+                    {
+                        time: "6:30 – 8:30 PM",
+                        title: "VIP Networking Reception",
+                        description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
+                    },
+                ],
+            },
+            {
+                date: "August 5, 2026",
+                items: [
+                    {
+                        time: "8:00 AM – 9:00 AM",
+                        title: "Networking Breakfast with Exhibitors",
+                    },
+                    {
+                        time: "8:00 AM – 9:00 AM",
+                        title: "Matchmaking Sign-up",
+                    },
+                    {
+                        time: "9:00 AM",
+                        title: "Welcome Back Remarks",
+                    },
+                    {
+                        time: "9:05 AM",
+                        title: "Military Base-Community Partnerships Promoting Local Build Contracts",
+                    },
+                    {
+                        time: "9:35 AM",
+                        title: "How To Do Business With The Aerospace Primes",
+                    },
+                    {
+                        time: "10:20 AM",
+                        title: "CONGRESSIONAL KEYNOTE ADDRESS",
+                    },
+                    {
+                        time: "10:40 AM",
+                        title: "Industry Insight",
+                    },
+                    {
+                        time: "10:45 AM",
+                        title: "Networking Break with Exhibitors",
+                    },
+                    {
+                        time: "11:15 AM",
+                        title: "Update – Golden Dome/Missile Defense Contracting",
+                    },
+                    {
+                        time: "11:50 AM",
+                        title: "Investment Opportunities in Defense Industrial Base Manufacturing",
+                    },
+                    {
+                        time: "12:30 PM",
+                        title: "Closing Remarks",
+                    },
+                    {
+                        time: "12:30 PM – 1:30 PM",
+                        title: "Matchmaking Session II",
+                    },
+                ],
+            },
+        ]
+    },
 ];

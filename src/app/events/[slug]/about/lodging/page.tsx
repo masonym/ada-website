@@ -6,8 +6,9 @@ import { MapPin, Phone } from 'lucide-react';
 import { LODGING_INFO } from '@/constants/lodging';
 import { getCdnPath } from '@/utils/image';
 
-export default function LodgingPage({ params }: { params: { slug: string } }) {
-  const event = EVENTS.find((e) => e.slug === params.slug);
+export default async function LodgingPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const event = EVENTS.find((e) => e.slug === slug);
   
   if (!event) {
     notFound();

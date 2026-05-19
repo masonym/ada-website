@@ -60,6 +60,9 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword, sanitySpeakers, s
         return nameParts[nameParts.length - 1];
     };
 
+    const getSpeakerSortName = (speaker: { name: string; sortName?: string }) =>
+        speaker.sortName || getLastName(speaker.name);
+
 
     const isEventFuture = event.timeStart
         ? new Date(new Date(event.timeStart).getTime() - 0.5 * 24 * 60 * 60 * 1000) > new Date()
@@ -131,6 +134,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword, sanitySpeakers, s
     const normalizedSpeakers = (sanitySpeakers || []).map(s => ({
         id: s.speakerId,
         name: s.speakerName,
+        sortName: s.speakerSortName,
         sanityImage: s.speakerImage,
         position: s.speakerPosition,
         company: s.speakerCompany,
@@ -146,12 +150,15 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword, sanitySpeakers, s
                 sanityKeynoteSpeakers={sanityKeynoteSpeakers || []}
             />
             <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Speaker Spotlight</h1>
+            {event.id === 6 && (
+                <p className="text-l font-bold text-center mb-8 text-slate-600">Additional Speakers in process of agency approval.</p>
+            )}
             {isEventFuture && (
                 <p className="text-l font-bold text-center mb-8 text-slate-600">More speaker information is being added. Please check regularly for updates.</p>
             )}
             <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-4">
                 {normalizedSpeakers
-                    .sort((a, b) => getLastName(a.name).localeCompare(getLastName(b.name)))
+                    .sort((a, b) => getSpeakerSortName(a).localeCompare(getSpeakerSortName(b)))
                     .map((speaker, index) => renderSpeakerCard(speaker, index))}
             </div>
         </div>

@@ -173,7 +173,7 @@ async function handleChargeRefunded(charge: Stripe.Charge) {
 
 export async function POST(request: Request) {
   const env = getServerEnv();
-  const signature = headers().get('stripe-signature');
+  const signature = (await headers()).get('stripe-signature');
 
   if (!signature) {
     console.error('No Stripe signature found in request headers.');

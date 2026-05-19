@@ -7,8 +7,9 @@ import AgendaPageClient from './AgendaPageClient';
 // revalidate every 60 seconds - no redeploy needed for speaker updates
 export const revalidate = 60;
 
-export default async function AgendaPage({ params }: { params: { slug: string } }) {
-  const event = EVENTS.find((e) => e.slug === params.slug);
+export default async function AgendaPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const event = EVENTS.find((e) => e.slug === slug);
 
   if (!event) {
     notFound();

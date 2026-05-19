@@ -930,7 +930,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     },
                     {
                         formatted: [
-                            { content: "Exclusive Host of the VIP Networking Reception", bold: true },
+                            { content: "Host of the VIP Networking Reception", bold: true },
                             { content: "Provide Welcoming Remarks at the Reception Opening", indent: 1 },
                             { content: "Branding on Reception Tables", indent: 1 },
                         ]
@@ -1117,6 +1117,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             title: "Platinum Sponsorship",
             cost: 15000,
             // slotsPerEvent: 1,
+            isSoldOut: true,
             sponsorPasses: 5,
             requiresAttendeeInfo: true,
             perks: [
@@ -1179,7 +1180,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 title: "Gold Sponsorship",
                 cost: 10000,
                 requiresAttendeeInfo: true,
-                // slotsPerEvent: 2,
+                slotsPerEvent: 2,
                 sponsorPasses: 4,
                 perks: [
                     {
@@ -1291,8 +1292,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 title: "Bronze Sponsorship",
                 cost: 4000,
                 requiresAttendeeInfo: true,
-                // slotsPerEvent: 3,
+                slotsPerEvent: 5,
                 sponsorPasses: 2,
+                isSoldOut: false,
                 perks: [
                     {
                         formatted: [
@@ -1343,12 +1345,67 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 showRemaining: false
             },
             {
+                id: "cybersecurity-cmmc-sponsor",
+                title: "Cybersecurity/CMMC Sponsorship",
+                cost: 8500,
+                requiresAttendeeInfo: true,
+                sponsorPasses: 4,
+                slotsPerEvent: 1,
+                perks: [
+                    {
+                        formatted: [
+                            { content: "Event Access: (4) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Workshop Opportunity", bold: true },
+                            { content: "Exclusive CMMC Workshop after General Session on Day 1", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on Day 2", indent: 1 }
+                        ]
+                    }
+                ],
+                colour: "#3FB4E6",
+                showRemaining: false
+            },
+            {
                 id: "vip-networking-reception-sponsor",
                 title: "VIP Networking Reception Sponsorship",
                 cost: 3500,
                 requiresAttendeeInfo: true,
-                slotsPerEvent: 1,
+                slotsPerEvent: 2,
                 sponsorPasses: 2,
+                isSoldOut: true,
                 perks: [
                     {
                         formatted: [
@@ -1367,10 +1424,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     },
                     {
                         formatted: [
-                            { content: "Exclusive Host of the VIP Networking Reception", bold: true },
-                            { content: "Provide Welcoming Remarks at the VIP Networking Reception", indent: 1 },
+                            { content: "Host of the VIP Networking Reception", bold: true },
+                            { content: "Provide Remarks at the VIP Networking Reception", indent: 1 },
                             { content: "Logo Placement at VIP Networking Reception", indent: 1 },
-                            { content: "Table Tents on VIP Networking Reception Tables", indent: 2 }
                         ]
                     },
                     {
@@ -1775,6 +1831,60 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 showRemaining: false
             },
             {
+                id: "cybersecurity-cmmc-sponsor",
+                title: "Cybersecurity/CMMC Sponsorship",
+                cost: 8500,
+                requiresAttendeeInfo: true,
+                sponsorPasses: 4,
+                perks: [
+                    {
+                        formatted: [
+                            { content: "Event Access: (4) VIP Attendee Passes", bold: true },
+                            { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Logo Branding: Conference Materials", bold: true },
+                            { content: "Conference Pop-up Banners", indent: 1 },
+                            { content: "Event Website", indent: 1 },
+                            { content: "Digital Agenda & Printed Program", indent: 1 },
+                            { content: "Conference Marketing Emails", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Workshop Opportunity", bold: true },
+                            { content: "Exclusive CMMC Workshop after General Session on Day 1", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Recognition/Visibility", bold: true },
+                            { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+                            { content: "Social Media Recognition", indent: 1 },
+                            { content: "Photographs & Videos of your Participation", indent: 1 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Table-Top Exhibit Space", bold: true },
+                            { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+                            { content: "6' Tablecloth Table & Chairs", indent: 2 }
+                        ]
+                    },
+                    {
+                        formatted: [
+                            { content: "Matchmaking Host Invitation", bold: true },
+                            { content: "Opportunity to Host a Matchmaking Table on Day 2", indent: 1 }
+                        ]
+                    }
+                ],
+                colour: "#3FB4E6",
+                showRemaining: false,
+                slotsPerEvent: 1,
+            },
+            {
                 id: "vip-networking-reception-sponsor",
                 title: "VIP Networking Reception Sponsorship",
                 cost: 3500,
@@ -1799,10 +1909,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     },
                     {
                         formatted: [
-                            { content: "Exclusive Host of the VIP Networking Reception", bold: true },
-                            { content: "Provide Welcoming Remarks at the VIP Networking Reception", indent: 1 },
+                            { content: "Host of the VIP Networking Reception", bold: true },
+                            { content: "Provide Remarks at the VIP Networking Reception", indent: 1 },
                             { content: "Logo Placement at VIP Networking Reception", indent: 1 },
-                            { content: "Table Tents on VIP Networking Reception Tables", indent: 2 }
                         ]
                     },
                     {
@@ -1880,9 +1989,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 id: "small-business-sponsor",
                 title: "Small Business Sponsorship",
                 cost: 1850,
-                earlyBirdPrice: 1500,
-                earlyBirdDeadline: "2026-04-01T03:59:59Z", // March 31st, 2026 11:59 PM ET
-                slotsPerEvent: 10,
+                earlyBirdPrice: 1750,
+                earlyBirdDeadline: "2026-06-30T07:59:59Z", // May 1, 2026
+                slotsPerEvent: 20,
                 requiresAttendeeInfo: true,
                 sponsorPasses: 2,
                 perks: [

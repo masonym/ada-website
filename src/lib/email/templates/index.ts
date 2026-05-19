@@ -4,21 +4,21 @@ import { getClientEnv } from '../../client-env';
 import { getCdnPath } from '@/utils/image';
 
 function getMonthFromDate(dateString: string): string {
-    if (!dateString) return '';
-    // Handles ranges like "October 28-29, 2024" or single dates "October 28, 2024"
-    const month = dateString.split(' ')[0];
-    // Basic check if it's a month name
-    if (['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].includes(month)) {
-        return month;
-    }
-    // Fallback for date formats like YYYY-MM-DD
-    try {
-        const date = new Date(dateString);
-        if (isNaN(date.getTime())) return '';
-        return date.toLocaleString('default', { month: 'long' });
-    } catch (e) {
-        return '';
-    }
+  if (!dateString) return '';
+  // Handles ranges like "October 28-29, 2024" or single dates "October 28, 2024"
+  const month = dateString.split(' ')[0];
+  // Basic check if it's a month name
+  if (['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].includes(month)) {
+    return month;
+  }
+  // Fallback for date formats like YYYY-MM-DD
+  try {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return '';
+    return date.toLocaleString('default', { month: 'long' });
+  } catch (e) {
+    return '';
+  }
 }
 
 export interface OrderSummaryItem {
@@ -250,7 +250,7 @@ function generateExhibitorBenefitsHtml(exhibitorType: string): string {
       
       <p><strong>VIP Attendee Passes:</strong> Your registration includes (1) VIP Attendee Pass with access to all event sessions and the VIP Networking Reception. Additional Passes can be purchased for $395 each.</p>
       
-      <p><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
+      <p style="color: red;"><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
       
       <h4 style="margin-top: 20px; margin-bottom: 2px;">Next Steps</h4>
       <p>Please reach out to our team at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> to coordinate your sponsorship benefits, including finalizing your branding assets.</p>
@@ -297,7 +297,7 @@ function generateBenefitsHtml(sponsorshipLevel: string, attendeePasses: number, 
       .filter(session => session?.date && session?.sessionTime)
       .map(session => `<li>${session.date} from ${session.sessionTime}</li>`)
       .join('');
-    
+
     if (sessionList) {
       benefitsHtml += `
         <p><strong>Matchmaking Table Host:</strong> You are invited to host a Matchmaking Table during the scheduled sessions. Please provide the name of your representative and a brief company description. </p>
@@ -307,13 +307,13 @@ function generateBenefitsHtml(sponsorshipLevel: string, attendeePasses: number, 
       `;
     }
   }
-  
-    // Add pop-up banner for top sponsors
-    if (sponsorshipTitle.includes('platinum') || sponsorshipTitle.includes('gold') || sponsorshipTitle.includes('silver')) {
-      benefitsHtml += `
+
+  // Add pop-up banner for top sponsors
+  if (sponsorshipTitle.includes('platinum') || sponsorshipTitle.includes('gold') || sponsorshipTitle.includes('silver')) {
+    benefitsHtml += `
         <p><strong>Pop-up Banner:</strong> Your company will receive a pop-up banner for additional visibility at the event.</p>
       `;
-    }
+  }
 
   // Sponsor Spotlight Email
   if (config.hasSponsorSpotlight) {
@@ -333,7 +333,7 @@ function generateBenefitsHtml(sponsorshipLevel: string, attendeePasses: number, 
       
       <p><strong>VIP Attendee Passes:</strong> Your registration includes (${attendeePasses}) VIP Attendee Pass${attendeePasses > 1 ? 'es' : ''} with access to all event sessions and the VIP Networking Reception. Additional Passes can be purchased for $395 each.</p>
       
-      <p><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
+      <p style="color: red;"><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
     `;
   } else {
     // For sponsors with exhibit space
@@ -350,7 +350,7 @@ function generateBenefitsHtml(sponsorshipLevel: string, attendeePasses: number, 
       
       <p><strong>VIP Attendee Passes:</strong> Your registration includes (${attendeePasses}) VIP Attendee Pass${attendeePasses > 1 ? 'es' : ''} with access to all event sessions and the VIP Networking Reception. Additional Passes can be purchased for $395 each.</p>
       
-      <p><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
+      <p style="color: red;"><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
     `;
   }
 
@@ -388,15 +388,15 @@ export function generateOrderSummaryHtml(summary: OrderSummary): string {
         </thead>
         <tbody>
           ${summary.items
-            .map(
-              (item) => `
+      .map(
+        (item) => `
             <tr>
               <td>${item.quantity}x ${item.name}</td>
               <td class="text-right">${formatCurrency(item.price * item.quantity)}</td>
             </tr>
           `
-            )
-            .join('')}
+      )
+      .join('')}
         </tbody>
         <tfoot>
           <tr>
@@ -406,16 +406,15 @@ export function generateOrderSummaryHtml(summary: OrderSummary): string {
             <td class="text-right"><strong>Subtotal</strong></td>
             <td class="text-right"><strong>${formatCurrency(summary.subtotal)}</strong></td>
           </tr>
-          ${
-            summary.discount > 0
-              ? `
+          ${summary.discount > 0
+      ? `
             <tr>
               <td class="text-right"><strong>Discount</strong></td>
               <td class="text-right"><strong>-${formatCurrency(summary.discount)}</strong></td>
             </tr>
           `
-              : ''
-          }
+      : ''
+    }
           <tr>
             <td class="text-right"><strong>Total Paid</strong></td>
             <td class="text-right"><strong>${formatCurrency(summary.total)}</strong></td>
@@ -437,7 +436,7 @@ export function generateVipNetworkingReceptionHtml(
   if (!vipNetworkingReception) return '';
 
   let introText = '';
-  
+
   // if (recipientType === 'exhibitor') {
   //   introText = 'As an exhibitor, you and your guests are invited to our exclusive VIP Networking Reception.';
   // } else if (recipientType === 'sponsor') {
@@ -464,7 +463,7 @@ export function generateExhibitorInstructionsHtml(
   isFullSection: boolean = true
 ): string {
   if (!exhibitorInstructions) return '';
-  
+
   if (isFullSection) {
     return `
       <div class="highlight">
@@ -701,7 +700,7 @@ export function attendeePassTemplate({
     ${orderSummaryHtml || ''}
     ${attendeeDetailsHtml || ''}
   `;
-  
+
   return baseEmailTemplate(content, eventImage);
 }
 
@@ -760,7 +759,7 @@ export function vipAttendeePassTemplate({
     ${orderSummaryHtml || ''}
     ${attendeeDetailsHtml || ''}
   `;
-  
+
   return baseEmailTemplate(content, eventImage);
 }
 
@@ -803,7 +802,7 @@ export function exhibitorTemplate({
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
 
     <p>If you wish to purchase additional attendee passes, you can do so using the $395 registration Additional Exhibitor Attendee Pass option on our website.</p>
-    <p><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
+    <p style="color: red;"><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
     
     <p>Feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077</span> if you have any questions or need to make any changes to your registration.</p>
     <p>Please note, all registrations are final. We are unable to offer refunds for this event. You can request an Event Credit up to one week from the event date. If you are unable to attend and would like to send a replacement attendee, please let us know at your earliest convenience. All event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
@@ -829,7 +828,7 @@ export function exhibitorTemplate({
     ${orderSummaryHtml || ''}
     ${attendeeDetailsHtml || ''}
   `;
-  
+
   return baseEmailTemplate(content, eventImage);
 }
 
@@ -876,7 +875,7 @@ export function sponsorTemplate({
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
 
     <p>You may register additional attendees not included in the (${attendeePasses}) complimentary VIP Attendee Passes for $395 each using the Additional Sponsorship Attendee Pass option on our website.</p>
-    <p><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
+    <p style="color: red;"><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
     
     <p>Feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077</span> if you have any questions or need to make any changes to your registration.</p>
     <p>Please note, all registrations are final. We are unable to offer refunds for this event. You can request an Event Credit up to one week from the event date. If you are unable to attend and would like to send a replacement attendee, please let us know at your earliest convenience. All event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
@@ -901,7 +900,7 @@ export function sponsorTemplate({
     ${orderSummaryHtml || ''}
     ${attendeeDetailsHtml || ''}
   `;
-  
+
   return baseEmailTemplate(content, eventImage);
 }
 
@@ -953,6 +952,6 @@ export function govMilPassTemplate({
     ${orderSummaryHtml || ''}
     ${attendeeDetailsHtml || ''}
   `;
-  
+
   return baseEmailTemplate(content, eventImage);
 }

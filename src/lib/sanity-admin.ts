@@ -18,6 +18,7 @@ export type CreateSponsorInput = {
   name: string
   website?: string
   description?: string
+  matchmakingDescription?: string
 }
 
 export type AddSponsorToEventInput = {
@@ -50,6 +51,7 @@ export async function createSponsor(input: CreateSponsorInput, imageAssetId: str
     },
     website: input.website || undefined,
     description: input.description || undefined,
+    matchmakingDescription: input.matchmakingDescription || undefined,
   })
 }
 
@@ -208,7 +210,7 @@ export async function updateSponsorLogo(sponsorId: string, imageAssetId: string)
 // update sponsor details (name, website, description)
 export async function updateSponsorDetails(
   sponsorId: string, 
-  details: { name?: string; website?: string; description?: string }
+  details: { name?: string; website?: string; description?: string; matchmakingDescription?: string }
 ) {
   const patch = adminClient.patch(sponsorId)
   
@@ -227,6 +229,9 @@ export async function updateSponsorDetails(
   if (details.description !== undefined) {
     patch.set({ description: details.description || undefined })
   }
+  if (details.matchmakingDescription !== undefined) {
+    patch.set({ matchmakingDescription: details.matchmakingDescription || undefined })
+  }
   
   return patch.commit()
 }
@@ -239,13 +244,15 @@ export async function getSponsorDetails(sponsorId: string) {
     slug: { current: string }
     website?: string
     description?: string
+    matchmakingDescription?: string
   } | null>(`
     *[_type == "sponsor" && _id == $sponsorId][0] {
       _id,
       name,
       slug,
       website,
-      description
+      description,
+      matchmakingDescription
     }
   `, { sponsorId })
 }
@@ -441,6 +448,7 @@ export async function deleteMatchmakingSponsorsDoc(docId: string) {
 export type SanitySpeaker = {
   _id: string
   name: string
+  sortName?: string
   slug: { current: string }
   image?: {
     asset: {
@@ -458,9 +466,10 @@ export type SanitySpeaker = {
 // get all speakers
 export async function getAllSpeakers(): Promise<SanitySpeaker[]> {
   return adminClient.fetch<SanitySpeaker[]>(`
-    *[_type == "speaker"] | order(priority desc, name asc) {
+    *[_type == "speaker"] | order(priority desc, select(defined(sortName) && sortName != '' => sortName, name) asc) {
       _id,
       name,
+      sortName,
       slug,
       image,
       position,
@@ -492,6 +501,7 @@ export async function getSpeakerById(speakerId: string): Promise<SanitySpeaker |
 // create a new speaker
 export async function createSpeaker(data: {
   name: string
+  sortName?: string
   position?: string
   company?: string
   bio?: string
@@ -515,6 +525,10 @@ export async function createSpeaker(data: {
     priority: data.priority || 0,
   }
 
+  if (data.sortName) {
+    doc.sortName = data.sortName
+  }
+
   if (data.imageAssetId) {
     doc.image = {
       _type: 'image',
@@ -530,6 +544,7 @@ export async function updateSpeakerDetails(
   speakerId: string,
   details: {
     name?: string
+    sortName?: string
     position?: string
     company?: string
     bio?: string
@@ -549,6 +564,9 @@ export async function updateSpeakerDetails(
   }
   if (details.position !== undefined) {
     patch.set({ position: details.position })
+  }
+  if (details.sortName !== undefined) {
+    patch.set({ sortName: details.sortName })
   }
   if (details.company !== undefined) {
     patch.set({ company: details.company })
@@ -618,6 +636,7 @@ export type EventSpeakerWithDetails = {
   _key: string
   speakerId: string
   speakerName: string
+  speakerSortName?: string
   speakerCompany?: string
   speakerPosition?: string
   speakerImage?: { asset: { _ref: string } }
@@ -644,6 +663,7 @@ export async function getEventSpeakers(eventId: number): Promise<{
         _key,
         "speakerId": speaker->_id,
         "speakerName": speaker->name,
+        "speakerSortName": speaker->sortName,
         "speakerCompany": speaker->company,
         "speakerPosition": speaker->position,
         "speakerImage": speaker->image,
@@ -826,31 +846,33 @@ export async function updatePromoCode(
   promoCodeId: string,
   updates: Partial<Omit<CreatePromoCodeInput, 'code'>>
 ): Promise<SanityPromoCode> {
-  const patch = adminClient.patch(promoCodeId)
-  
+  // Build a single set object with all fields to update
+  // Multiple .set() calls overwrite each other — must use a single .set() call
+  const fieldsToSet: Record<string, any> = {}
+
   if (updates.discountPercentage !== undefined) {
-    patch.set({ discountPercentage: updates.discountPercentage })
+    fieldsToSet.discountPercentage = updates.discountPercentage
   }
   if (updates.eligibleTicketTypes !== undefined) {
-    patch.set({ eligibleTicketTypes: updates.eligibleTicketTypes })
+    fieldsToSet.eligibleTicketTypes = updates.eligibleTicketTypes
   }
   if (updates.eligibleEventIds !== undefined) {
-    patch.set({ eligibleEventIds: updates.eligibleEventIds })
+    fieldsToSet.eligibleEventIds = updates.eligibleEventIds
   }
   if (updates.expirationDate !== undefined) {
-    patch.set({ expirationDate: updates.expirationDate })
+    fieldsToSet.expirationDate = updates.expirationDate
   }
   if (updates.description !== undefined) {
-    patch.set({ description: updates.description })
+    fieldsToSet.description = updates.description
   }
   if (updates.isActive !== undefined) {
-    patch.set({ isActive: updates.isActive })
+    fieldsToSet.isActive = updates.isActive
   }
   if (updates.autoApply !== undefined) {
-    patch.set({ autoApply: updates.autoApply })
+    fieldsToSet.autoApply = updates.autoApply
   }
-  
-  return patch.commit()
+
+  return adminClient.patch(promoCodeId).set(fieldsToSet).commit()
 }
 
 // toggle promo code active status

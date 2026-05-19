@@ -28,11 +28,15 @@ const EVENTS = [
   { id: 4, slug: "2025-navy-marine-corps-procurement-conference", name: "2025 Navy & Marine Corps Procurement Conference" },
   { id: 5, slug: "2026-defense-technology-aerospace-procurement-conference", name: "2026 Defense Technology & Aerospace Procurement Conference" },
   { id: 6, slug: "2026-navy-marine-corps-procurement-conference", name: "2026 Navy & Marine Corps Procurement Conference" },
+  { id: 7, slug: "2026-air-force-space-force-procurement-conference", name: "2026 Air Force & Space Force Procurement Conference" },
 ];
+
+const SELECTED_EVENT_STORAGE_KEY = "adminSpeakersSelectedEventId";
 
 type Speaker = {
   _id: string;
   name: string;
+  sortName?: string;
   slug: { current: string };
   image?: {
     asset: {
@@ -50,6 +54,7 @@ type EventSpeaker = {
   _key: string;
   speakerId: string;
   speakerName: string;
+  speakerSortName?: string;
   speakerCompany?: string;
   speakerPosition?: string;
   speakerImage?: { asset: { _ref: string } };
@@ -85,6 +90,7 @@ export default function SpeakerAdminPage() {
 
   // form fields
   const [name, setName] = useState("");
+  const [sortName, setSortName] = useState("");
   const [position, setPosition] = useState("");
   const [company, setCompany] = useState("");
   const [bio, setBio] = useState("");
@@ -94,6 +100,7 @@ export default function SpeakerAdminPage() {
 
   // event speakers state
   const [selectedEventId, setSelectedEventId] = useState<number>(5);
+  const [hasLoadedSelectedEvent, setHasLoadedSelectedEvent] = useState(false);
   const [eventSpeakersDoc, setEventSpeakersDoc] = useState<EventSpeakersDoc | null>(null);
   const [loadingEventSpeakers, setLoadingEventSpeakers] = useState(false);
   const [showAddSpeakerModal, setShowAddSpeakerModal] = useState(false);
@@ -111,10 +118,27 @@ export default function SpeakerAdminPage() {
   }, []);
 
   useEffect(() => {
-    if (activeTab === "events" && selectedEventId) {
+    const storedEventId = window.localStorage.getItem(SELECTED_EVENT_STORAGE_KEY);
+    const parsedEventId = storedEventId ? parseInt(storedEventId, 10) : NaN;
+
+    if (EVENTS.some((event) => event.id === parsedEventId)) {
+      setSelectedEventId(parsedEventId);
+    }
+
+    setHasLoadedSelectedEvent(true);
+  }, []);
+
+  useEffect(() => {
+    if (hasLoadedSelectedEvent) {
+      window.localStorage.setItem(SELECTED_EVENT_STORAGE_KEY, selectedEventId.toString());
+    }
+  }, [hasLoadedSelectedEvent, selectedEventId]);
+
+  useEffect(() => {
+    if (activeTab === "events" && selectedEventId && hasLoadedSelectedEvent) {
       fetchEventSpeakers(selectedEventId);
     }
-  }, [activeTab, selectedEventId]);
+  }, [activeTab, selectedEventId, hasLoadedSelectedEvent]);
 
   async function fetchSpeakers() {
     try {
@@ -278,6 +302,7 @@ export default function SpeakerAdminPage() {
 
   function resetForm() {
     setName("");
+    setSortName("");
     setPosition("");
     setCompany("");
     setBio("");
@@ -300,6 +325,7 @@ export default function SpeakerAdminPage() {
   function startEdit(speaker: Speaker) {
     setEditingSpeaker(speaker);
     setName(speaker.name);
+    setSortName(speaker.sortName || "");
     setPosition(speaker.position || "");
     setCompany(speaker.company || "");
     setBio(speaker.bio || "");
@@ -323,6 +349,7 @@ export default function SpeakerAdminPage() {
       const formData = new FormData();
       formData.append("action", "create");
       formData.append("name", name);
+      formData.append("sortName", sortName);
       formData.append("position", position);
       formData.append("company", company);
       formData.append("bio", bio);
@@ -367,6 +394,7 @@ export default function SpeakerAdminPage() {
           action: "update",
           speakerId: editingSpeaker._id,
           name,
+          sortName,
           position,
           company,
           bio,
@@ -635,6 +663,7 @@ export default function SpeakerAdminPage() {
                               <div className="flex-1">
                                 <div className="font-semibold">{speaker.speakerName}</div>
                                 <div className="text-sm text-yellow-700">{speaker.keynoteHeaderText}</div>
+                                <div className="text-xs text-gray-400 font-mono">{speakers.find((s) => s._id === speaker.speakerId)?.slug?.current}</div>
                                 {speaker.label && (
                                   <span className="text-xs bg-gray-200 px-2 py-0.5 rounded">{speaker.label}</span>
                                 )}
@@ -675,7 +704,9 @@ export default function SpeakerAdminPage() {
                   <div className="grid gap-2">
                     {eventSpeakersDoc.speakers
                       .filter((s) => !s.isKeynote)
-                      .sort((a, b) => a.speakerName.localeCompare(b.speakerName))
+                      .sort((a, b) =>
+                        (a.speakerSortName || a.speakerName).localeCompare(b.speakerSortName || b.speakerName)
+                      )
                       .map((speaker) => (
                         <div
                           key={speaker._key}
@@ -702,6 +733,7 @@ export default function SpeakerAdminPage() {
                             <div className="text-sm text-gray-500 truncate">
                               {speaker.speakerPosition} {speaker.speakerCompany && `• ${speaker.speakerCompany}`}
                             </div>
+                            <div className="text-xs text-gray-400 font-mono truncate">{speakers.find((s) => s._id === speaker.speakerId)?.slug?.current}</div>
                             {speaker.label && (
                               <span className="text-xs bg-gray-100 px-2 py-0.5 rounded">{speaker.label}</span>
                             )}
@@ -1045,6 +1077,9 @@ export default function SpeakerAdminPage() {
                       {speaker.company && (
                         <p className="text-sm text-gray-500 truncate">{speaker.company}</p>
                       )}
+                      {speaker.sortName && (
+                        <p className="text-xs text-gray-400 truncate">Sort: {speaker.sortName}</p>
+                      )}
                     </div>
                   </div>
                   <div className="mt-4 flex gap-2">
@@ -1125,6 +1160,18 @@ export default function SpeakerAdminPage() {
                       placeholder="John Smith"
                       required
                     />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Sort Name</label>
+                    <input
+                      type="text"
+                      value={sortName}
+                      onChange={(e) => setSortName(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                      placeholder="Smith, John"
+                    />
+                    <p className="text-xs text-gray-400 mt-1">Optional. Use for compound last names, e.g. Van Doe, John.</p>
                   </div>
 
                   <div>

@@ -12,10 +12,30 @@ type Hotel = {
   };
 };
 
-type LodgingInfo = {
+type LodgingResourceImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+type LodgingResourceLink = {
+  href: string;
+  label: string;
+};
+
+export type LodgingResource = {
+  title: string;
+  description?: string;
+  images?: LodgingResourceImage[];
+  link?: LodgingResourceLink;
+};
+
+export type LodgingInfo = {
   eventId: number;
   hotels: Hotel[];
   note?: string;
+  resources?: LodgingResource[];
 };
 
 
@@ -85,7 +105,27 @@ export const LODGING_INFO: LodgingInfo[] = [
     <b>Group Rate</b>: Standard Room: $159.00 + Tax | Waterview Room: $179.00 + Tax<br />
     <b>Rate Available</b>: July 27-31, 2025<br />
     <b>Group Rate Cut-off Date</b>: <s>July 14, 2025</s> Extended to July 18, 2025 (More Rooms Added)<br />
-    <a href='https://www.marriott.com/event-reservations/reservation-link.mi?guestreslink2=true&id=1740589200251&key=GRP' target='_blank' rel='noopener noreferrer' class='underline hover:text-accent text-blue-500'>Reservation Link</a>`
+    <a href='https://www.marriott.com/event-reservations/reservation-link.mi?guestreslink2=true&id=1740589200251&key=GRP' target='_blank' rel='noopener noreferrer' class='underline hover:text-accent text-blue-500'>Reservation Link</a>`,
+    resources: [
+      {
+        title: "Norfolk Dining Guide",
+        description: "Explore the local dining scene with this guide provided by Visit Norfolk.",
+        images: [
+          {
+            src: "/events/2025NMCPC/norfolk-dining-guide-1.webp",
+            alt: "Norfolk Dining Guide Page 1",
+            width: 790,
+            height: 1024,
+          },
+          {
+            src: "/events/2025NMCPC/norfolk-dining-guide-2.webp",
+            alt: "Norfolk Dining Guide Page 2",
+            width: 790,
+            height: 1024,
+          },
+        ],
+      },
+    ]
   },
   {
     eventId: 5, // 2025DTAPC
@@ -144,12 +184,49 @@ export const LODGING_INFO: LodgingInfo[] = [
     <b>Group Block Name</b>: Navy & Marine Corps Procurement Conference<br />
     <b>Group Rate</b>: Standard Room: $159.00 + Tax | Waterview Room: $179.00 + Tax<br />
     <b>Rate Available</b>: May 26-31, 2026<br />
-    <b>Group Rate Cut-off Date</b>: May 11, 2026<br />
+    <b>Group Rate Cut-off Date</b>: May 20, 2026<br />
     <br/>
     <a href="https://www.marriott.com/event-reservations/reservation-link.mi?guestreslink2=true&id=1760457928560&key=GRP&dtt=true" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">
       Book your group rate for 2026 Navy & Marine Corps Procurement Conference
     </a>
-    `
+    `,
+    resources: [
+      {
+        title: "Norfolk Dining Guide",
+        description: "Explore the local dining scene with this guide provided by Visit Norfolk.",
+        images: [
+          {
+            src: "/events/2025NMCPC/norfolk-dining-guide-1.webp",
+            alt: "Norfolk Dining Guide Page 1",
+            width: 790,
+            height: 1024,
+          },
+          {
+            src: "/events/2025NMCPC/norfolk-dining-guide-2.webp",
+            alt: "Norfolk Dining Guide Page 2",
+            width: 790,
+            height: 1024,
+          },
+        ],
+      },
+      {
+        title: "Show Your Badge Discount Program at Norfolk Restaurants",
+        images: [
+          {
+            src: "/events/2026NMCPC/show-your-badge-discount-program-1.webp",
+            alt: "Show Your Badge Discount Program at Norfolk Restaurants",
+            width: 790,
+            height: 1024,
+          },
+          {
+            src: "/events/2026NMCPC/show-your-badge-discount-program-2.webp",
+            alt: "Show Your Badge Discount Program at Norfolk Restaurants",
+            width: 790,
+            height: 1024,
+          },
+        ],
+      },
+    ]
   },
   {
     eventId: 7, // 2026AFSFPC
@@ -169,30 +246,42 @@ export const LODGING_INFO: LodgingInfo[] = [
       },
     ],
     note: `
-    <b>Venue</b>: Hotel Polaris by U.S. Air Force Academy<br />
-    <b>Address</b>: 8989 North Gate Boulevard, Colorado Springs, CO 80921<br />
-    <b>NOTE</b>: Hotel is located outside of the base security gates, no special access is required<br />
     <b>Event Location</b>: Generations Ballroom<br />
+    <br />
+    <b>NOTE</b>: Hotel is located outside of the base security gates, no special access is required<br />
     <b>Dates</b>: Aug 4-5, 2026<br />
-    <b>Group Rate for Sleeping Rooms</b>: $209.00 plus taxes and $15 amenity fee (reduced from $25)<br />
-    <b>Additional availability</b>: 2 days pre- and post event<br />
-    <b>Group Rate Cut Off</b>: July 12, 2026<br />
-    <br/> 
-    <b>Reservation Link Coming Soon</b>
+    <b>Group Name</b>: Air Force & Space Force Procurement<br />
+    <b>Group Rate</b>: $209.00 ($239.00 including Fees) + Tax<br />
+    <b>Group Rate Available</b>: August 2, 2026 - August 6, 2026<br />
+    <b>Group Reservation Code (Booking Over Phone)</b>: 7666607<br />
+    <b>Group Rate Cut Off</b>: July 13, 2026<br />
+    <br/>
+    <a href="https://be.synxis.com/?Hotel=43597&Chain=25042&config=Group&arrive=2026-08-03&depart=2026-08-05&adult=1&child=0&group=7666607" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">
+      Book your group rate for the 2026 Air Force & Space Force Procurement Conference
+    </a>
+    <br />
+    <br />
+    <b>NOTE</b>: If you need to stay outside of the Official Group Dates (August 2 - August 5), Please call the Reservation Team at (833) 311-5581, or Email the Group Rooms Coordinator, Cissy Schat-Wilk at cissy.schat-wilk@thehotelpolaris.com. Group Rate honored 2 days before & after Group Dates based on hotel availability
     <br />
     <br />
     <div class="mb-4 bg-gray-100 p-4 rounded-xl">
+    <b>Additional Information:</b><br />
+    • $15 Amenity Fee will be Added to your Room (Reduced from $25 for our Group)<br />
+    • Complimentary Wi-Fi in Meeting Space for the Group<br />
+    • Hotel Polaris and its Lovie's Market, Bars and Restaurants Operate as a Cashless Property<br />
+    <br />
     <b>Amenity Fee Covers:</b><br />
-    • Wireless in room high speed internet (5Mbps)<br />
-    • Unlimited Lavazza in-room coffee<br />
-    • Unlimited filtered water at property wide refilling stations<br />
-    • Sporting equipment & games (ping pong, pool, cornhole, bocce ball, and more)<br />
+    • Wireless In-Room High Speed Internet (5Mbps)<br />
+    • Unlimited Lavazza In-Room Coffee<br />
+    • Unlimited Filtered Water at Property Wide Refilling Stations<br />
+    • Sporting Equipment & Games (Ping Pong, Pool, Cornhole, Bocce Ball, and More)<br />
     • 10% off Ascend Spa Services<br />
-    • 10% off all Grab 'n Go food and beverage (excludes alcohol)<br />
+    • 10% off all Grab 'n Go Food and Beverage (Excludes Alcohol)<br />
     • 10% off Flight Simulator Experiences<br />
     • Pool Towel Services<br />
-    • 24 Hour Fitness Center access<br />
-    • Santa Fe Trail access via Hotel Polaris Trailhead
+    • 24 Hour Fitness Center Access<br />
+    • Heated Outdoor Swimming Pool (Open All Year Long)<br />
+    • Santa Fe Trail access via Hotel Polaris Trailhead<br />
     </div>
     `
   },

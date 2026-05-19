@@ -121,7 +121,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
     "Human Resources",
     "Installation Energy",
     "Intelligence",
-    "IT Technology/Data Mgmt.",
+    "IT/Technology/Data Mgmt.",
     "Legal Services",
     "Logistics/Asset Mgmt.",
     "Maintenance/Repair/Sustainability",

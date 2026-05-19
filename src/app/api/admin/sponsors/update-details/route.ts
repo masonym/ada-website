@@ -28,13 +28,13 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { sponsorId, name, website, description } = body
+    const { sponsorId, name, website, description, matchmakingDescription } = body
 
     if (!sponsorId) {
       return NextResponse.json({ error: 'Sponsor ID is required' }, { status: 400 })
     }
 
-    await updateSponsorDetails(sponsorId, { name, website, description })
+    await updateSponsorDetails(sponsorId, { name, website, description, matchmakingDescription })
 
     return NextResponse.json({ 
       success: true, 
