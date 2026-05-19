@@ -663,6 +663,7 @@ export default function SpeakerAdminPage() {
                               <div className="flex-1">
                                 <div className="font-semibold">{speaker.speakerName}</div>
                                 <div className="text-sm text-yellow-700">{speaker.keynoteHeaderText}</div>
+                                <div className="text-xs text-gray-400 font-mono">{speakers.find((s) => s._id === speaker.speakerId)?.slug?.current}</div>
                                 {speaker.label && (
                                   <span className="text-xs bg-gray-200 px-2 py-0.5 rounded">{speaker.label}</span>
                                 )}
@@ -732,6 +733,7 @@ export default function SpeakerAdminPage() {
                             <div className="text-sm text-gray-500 truncate">
                               {speaker.speakerPosition} {speaker.speakerCompany && `• ${speaker.speakerCompany}`}
                             </div>
+                            <div className="text-xs text-gray-400 font-mono truncate">{speakers.find((s) => s._id === speaker.speakerId)?.slug?.current}</div>
                             {speaker.label && (
                               <span className="text-xs bg-gray-100 px-2 py-0.5 rounded">{speaker.label}</span>
                             )}
