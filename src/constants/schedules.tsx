@@ -2177,6 +2177,18 @@ export const SCHEDULES = [
                         title: "VIP Networking Reception",
                         description: "Invitation Only: VIP Attendees, Exhibitors, Sponsors, Speakers, and invited guests",
                         location: "The Harbor Club, 333 Waterside Drive, Suite 200, Norfolk VA 23510",
+                        speakers: [
+                            {
+                                speakerId: "michelle-hilger",
+                                sponsor: "VIP Networking Reception Sponsor",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                            },
+                            {
+                                speakerId: "tim-novy",
+                                sponsor: "VIP Networking Reception Sponsor",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                            },
+                        ],
                     },
                 ],
             },
