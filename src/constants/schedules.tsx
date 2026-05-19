@@ -1945,6 +1945,11 @@ export const SCHEDULES = [
                         time: "9:15 AM",
                         title: "CONGRESSIONAL KEYNOTE ADDRESS",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                            {
+                                speakerId: "representative-rob-wittman",
+                            }
+                        ],
                     },
                     {
                         time: "9:30 AM",
@@ -2014,9 +2019,9 @@ export const SCHEDULES = [
                             {
                                 speakerId: "daniel-hudson",
                             },
-                            {
-                                speakerId: "ben-van-buskirk",
-                            },
+                            // {
+                            //     speakerId: "ben-van-buskirk",
+                            // },
                             // {
                             //     speakerId: "mark-h-lokay",
                             // },
@@ -2060,11 +2065,20 @@ export const SCHEDULES = [
                         title: "Opportunity Zone Incentivized Naval Shipyard & Manufacturing Projects",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                         speakers: [
-                            // {
-                            //     speakerId: "jon-glass",
-                            //     sponsor: "Moderator",
-                            //     sponsorStyle: "bg-sky-300 text-slate-900",
-                            // },
+                            {
+                                speakerId: "jon-glass",
+                                sponsor: "Moderator",
+                                sponsorStyle: "bg-sky-300 text-slate-900",
+                            },
+                            {
+                                speakerId: "ryan-daniels",
+                            },
+                            {
+                                speakerId: "alfred-puchala",
+                            },
+                            {
+                                speakerId: "ben-van-buskirk",
+                            },
                             // {
                             //     speakerId: "rear-admiral-mike-manazir",
                             // },
@@ -2127,12 +2141,22 @@ Attendees will leave with a clear understanding of how scoping decisions directl
                     {
                         time: "4:30 PM",
                         title: "HOW TO LEVERAGE OTA's (OTHER TRANSACTION AUTHORITIES)",
+                        speakers: [
+                            {
+                                speakerId: "harry-aderton",
+                            },
+                        ],
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                     },
                     {
                         time: "5:00 PM",
                         title: "WINNING SBIR PHASE III's",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                            {
+                                speakerId: "ted-dennis",
+                            },
+                        ],
                     },
                     {
                         time: "4:30 – 5:30 PM",
@@ -2177,16 +2201,6 @@ Attendees will leave with a clear understanding of how scoping decisions directl
                     },
                     {
                         time: "9:05 AM",
-                        title: "Welcoming Remarks – Hampton University; White House HBCU Initiative",
-                        location: "Norfolk Ballroom (V – VI), Ground Floor",
-                        speakers: [
-                            // {
-                            // speakerId: "kelly-mitchell",
-                        // }
-                        ],
-                    },
-                    {
-                        time: "9:15 AM",
                         title: "Navy & Marine Corps Small Business Programs Panel",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                         speakers: [
@@ -2219,12 +2233,12 @@ Attendees will leave with a clear understanding of how scoping decisions directl
                         ],
                     },
                     {
-                        time: "10:10 AM",
+                        time: "10:00 AM",
                         title: "Industry Insight",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                     },
                     {
-                        time: "10:15 AM",
+                        time: "10:05 AM",
                         title: "UNITED STATES MARINE CORPS KEYNOTE ADDRESS",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                         speakers: [
@@ -2237,25 +2251,7 @@ Attendees will leave with a clear understanding of how scoping decisions directl
                         ],
                     },
                     {
-                        time: "10:45 AM",
-                        title: "Networking Break with Exhibitors",
-                        location: "Norfolk Ballroom (I – IV), Ground Floor",
-                    },
-                    {
-                        time: "11:00 AM",
-                        title: "Military Base-Community Partnerships Promoting Local Build Contracts",
-                        location: "Norfolk Ballroom (V – VI), Ground Floor",
-                        speakers: [
-                            {
-                                speakerId: "david-leinberger",
-                            },
-                            // {
-                            //     speakerId: "ryan-w-catlett",
-                            // },
-                        ],
-                    },
-                    {
-                        time: "11:30 AM",
+                        time: "10:35 AM",
                         title: "Connecting the Primes and the Subs",
                         location: "Norfolk Ballroom (V – VI), Ground Floor",
                         speakers: [
@@ -2281,6 +2277,19 @@ Attendees will leave with a clear understanding of how scoping decisions directl
                             // },
                             // {
                             //     speakerId: "robyn-card",
+                            // },
+                        ],
+                    },
+                    {
+                        time: "11:20 AM",
+                        title: "Military Base-Community Partnerships Promoting Local Build Contracts",
+                        location: "Norfolk Ballroom (V – VI), Ground Floor",
+                        speakers: [
+                            {
+                                speakerId: "david-leinberger",
+                            },
+                            // {
+                            //     speakerId: "ryan-w-catlett",
                             // },
                         ],
                     },
