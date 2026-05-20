@@ -99,6 +99,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
 
   const industries = [
     "Accounting & Financial Services",
+    "Aerospace/Aviation",
     "Additive Manufacture",
     "AI & Machine Learning",
     "Architecture/Design",
