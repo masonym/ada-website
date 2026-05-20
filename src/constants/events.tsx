@@ -1288,11 +1288,11 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         },
         {
           label: "Date/Time",
-          value: "Sign up for May 28 appointments will take place on May 28 from 8am to 9am.",
+          value: "Sign up for May 28 appointments will take place on May 28 from 8:00 AM to 9:00 AM.",
         },
         {
           label: "Date/Time",
-          value: "Sign up for May 29 appointments will take place on May 29 from 8am to 9am.",
+          value: "Sign up for May 29 appointments will take place on May 29 from 8:00 AM to 9:00 AM.",
         },
         {
           label: "Location",
