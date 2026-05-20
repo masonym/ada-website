@@ -226,6 +226,11 @@ const MatchmakingPage = ({ matchmakingData }: MatchmakingPageProps) => {
                   </>
                 )}
               </p>
+              {event.matchmakingSessions?.sessions?.[0]?.location && (
+                <p className="text-gray-200 mt-2">
+                  <span className="font-semibold text-white">Location:</span> {event.matchmakingSessions.sessions[0].location}
+                </p>
+              )}
             </div>
           </div>
           <div className="flex items-start gap-4">

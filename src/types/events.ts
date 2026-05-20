@@ -13,6 +13,7 @@ export interface MatchmakingSession {
     sessions: Array<{
         sessionTime: string;
         date: string;
+        location?: string;
     }>;
 }
 
