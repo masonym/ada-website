@@ -4,6 +4,10 @@ import { RegistrationType } from "./event-registration/registration";
 export interface MatchmakingSession {
     signUpTime: string;
     signUpDate: string;
+    signUpDetails?: Array<{
+        label: string;
+        value: string;
+    }>;
     sessionDurationMinutes: number;
     slotsPerHost: number;
     sessions: Array<{

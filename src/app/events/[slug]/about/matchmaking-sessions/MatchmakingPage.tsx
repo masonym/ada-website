@@ -187,9 +187,19 @@ const MatchmakingPage = ({ matchmakingData }: MatchmakingPageProps) => {
             <UserPlus className="w-6 h-6 mt-1 flex-shrink-0" />
             <div>
               <h3 className="font-semibold mb-2">Matchmaking Sign-ups</h3>
-              <p className="text-gray-200">
-                Sign-ups for the Matchmaking Sessions will begin at {event.matchmakingSessions?.signUpTime} on {event.matchmakingSessions?.signUpDate} and will be on a first-come, first-served basis.
-              </p>
+              {event.matchmakingSessions?.signUpDetails ? (
+                <div className="space-y-2 text-gray-200">
+                  {event.matchmakingSessions.signUpDetails.map((detail, index) => (
+                    <p key={index}>
+                      <span className="font-semibold text-white">{detail.label}:</span> {detail.value}
+                    </p>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-gray-200">
+                  Sign-ups for the Matchmaking Sessions will begin at {event.matchmakingSessions?.signUpTime} on {event.matchmakingSessions?.signUpDate} and will be on a first-come, first-served basis.
+                </p>
+              )}
             </div>
           </div>
           <div className="flex items-start gap-4">

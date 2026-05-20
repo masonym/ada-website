@@ -1281,6 +1281,28 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     matchmakingSessions: {
       signUpTime: "8:00 AM",
       signUpDate: "May 28, 2026",
+      signUpDetails: [
+        {
+          label: "Sign Up",
+          value: "Sign Up is onsite only, on a first-come, first-served basis.",
+        },
+        {
+          label: "Date/Time",
+          value: "Sign up for May 28 appointments will take place on May 28 from 8am to 9am.",
+        },
+        {
+          label: "Date/Time",
+          value: "Sign up for May 29 appointments will take place on May 29 from 8am to 9am.",
+        },
+        {
+          label: "Location",
+          value: "Norfolk Ballroom Pre-Function.",
+        },
+        {
+          label: "Number of appointments",
+          value: "Limit 3 appointments per attendee.",
+        },
+      ],
       sessionDurationMinutes: 8,
       slotsPerHost: 10,
       sessions: [
