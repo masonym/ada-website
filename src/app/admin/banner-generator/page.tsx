@@ -537,7 +537,7 @@ export default function BannerGeneratorPage() {
               {/* download button */}
               <button
                 onClick={handleDownload}
-                disabled={generating || selectedTierIds.length === 0}
+                // disabled={generating || selectedTierIds.length === 0}
                 className="w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
               >
                 {generating ? (
@@ -705,13 +705,13 @@ export default function BannerGeneratorPage() {
                       </div>
                     ))}
 
-                    {selectedTierIds.length === 0 && (
+                    {/* {selectedTierIds.length === 0 && (
                       <div className="flex items-center justify-center h-full text-gray-400">
                         <p className="text-center" style={{ fontSize: 12 }}>
                           Select an event and tiers<br />to preview sponsors
                         </p>
                       </div>
-                    )}
+                    )} */}
                   </div>
                 </div>
 

@@ -312,6 +312,40 @@ export type EventSpeakerPublic = {
   sortOrder: number
 }
 
+export type ScheduleSpeakerPublic = {
+  speakerId?: string
+  name?: string
+  title?: string
+  affiliation?: string
+  photo?: string
+  presentation?: string
+  videoId?: string
+  videoStartTime?: number
+  sponsor?: string
+  sponsorStyle?: string
+}
+
+export type ScheduleItemPublic = {
+  time: string
+  title: string
+  location?: string
+  duration?: string
+  description?: string
+  sponsorLogo?: string
+  speakers?: ScheduleSpeakerPublic[]
+}
+
+export type EventSchedulePublic = {
+  _id: string
+  eventId: number
+  eventSlug: string
+  days: Array<{
+    _key: string
+    date: string
+    items: ScheduleItemPublic[]
+  }>
+}
+
 // check if we're on staging site (show hidden speakers)
 function isStaging(): boolean {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || ''
@@ -390,6 +424,45 @@ export async function getSpeakerBySlug(slug: string): Promise<SanitySpeakerPubli
     `, { slug })
   } catch (error) {
     console.error('Error fetching speaker:', error)
+    return null
+  }
+}
+
+export async function getEventSchedulePublic(eventId: number): Promise<EventSchedulePublic | null> {
+  try {
+    return client.fetch<EventSchedulePublic | null>(`
+      *[_type == "eventSchedule" && eventId == $eventId][0] {
+        _id,
+        eventId,
+        eventSlug,
+        "days": coalesce(days[] {
+          _key,
+          date,
+          "items": coalesce(items[] {
+            time,
+            title,
+            location,
+            duration,
+            description,
+            sponsorLogo,
+            "speakers": coalesce(speakers[] {
+              "speakerId": speaker->slug.current,
+              name,
+              title,
+              affiliation,
+              photo,
+              presentation,
+              videoId,
+              videoStartTime,
+              sponsor,
+              sponsorStyle
+            }, [])
+          }, [])
+        }, [])
+      }
+    `, { eventId }, { next: { revalidate: 60 } })
+  } catch (error) {
+    console.error('Error fetching event schedule:', error)
     return null
   }
 }
