@@ -15,7 +15,8 @@ import {
   Building2,
   ChevronRight,
   Upload,
-  Printer
+  Printer,
+  Calendar
 } from "lucide-react";
 
 const MAX_FILE_SIZE = 25 * 1024 * 1024;
@@ -64,6 +65,13 @@ const adminCards: AdminCard[] = [
     href: "/admin/promo-codes",
     icon: <Tag className="w-6 h-6" />,
     category: "events",
+  },
+  {
+    title: "Schedule Management",
+    description: "Create and edit event agendas",
+    href: "/admin/schedules",
+    icon: <Calendar className="w-6 h-6" />,
+    category: "content",
   },
   {
     title: "Event Launch Form",
