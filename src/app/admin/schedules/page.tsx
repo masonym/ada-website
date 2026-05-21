@@ -248,7 +248,7 @@ export default function ScheduleAdminPage() {
         <div className="flex flex-col gap-4 rounded-xl bg-white p-6 shadow-sm md:flex-row md:items-center md:justify-between">
           <div>
             <h1 className="text-3xl font-bold text-navy-800">Schedule Admin</h1>
-            <p className="mt-1 text-gray-600">Create and edit Sanity-powered event agendas.</p>
+            <p className="mt-1 text-gray-600">Create and edit event agendas.</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             <select
