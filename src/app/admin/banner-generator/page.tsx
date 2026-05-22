@@ -83,13 +83,14 @@ export default function BannerGeneratorPage() {
   const [footerHeight, setFooterHeight] = useState(2); // inches
   const [bleedColor, setBleedColor] = useState("#23395d"); // navy-100
   const [eventImagePath, setEventImagePath] = useState("");
-  const [showDescriptions, setShowDescriptions] = useState(false);
+  const [tierShowDescriptions, setTierShowDescriptions] = useState<Record<string, boolean>>({});
   const [backgroundColor, setBackgroundColor] = useState("#ffffff");
   const [eventImageScale, setEventImageScale] = useState(80); // percentage
   const [tierLabelSize, setTierLabelSize] = useState(12); // font size in px at preview scale
   const [sponsorVerticalOffset, setSponsorVerticalOffset] = useState(0); // pixels offset
   const [eventImageMarginBottom, setEventImageMarginBottom] = useState(20); // pixels
   const [tierSizeMultipliers, setTierSizeMultipliers] = useState<Record<string, number>>({}); // per-tier size multipliers
+  const [tierGridColumns, setTierGridColumns] = useState<Record<string, 3 | 4>>({}); // per-tier column count
   const [descriptionFontSize, setDescriptionFontSize] = useState(6); // px at preview scale
   const [descriptionMaxWidth, setDescriptionMaxWidth] = useState(120); // px at preview scale
 
@@ -310,25 +311,46 @@ export default function BannerGeneratorPage() {
                             </span>
                           </label>
                           {selectedTierIds.includes(tier.id) && (
-                            <div className="ml-6 flex items-center gap-2">
-                              <label className="text-xs text-gray-600 whitespace-nowrap">
-                                Size: {Math.round((tierSizeMultipliers[tier.id] || 1.0) * 100)}%
-                              </label>
-                              <input
-                                type="range"
-                                min="50"
-                                max="150"
-                                step="5"
-                                value={(tierSizeMultipliers[tier.id] || 1.0) * 100}
-                                onChange={(e) => {
-                                  const newValue = parseInt(e.target.value) / 100;
-                                  setTierSizeMultipliers(prev => ({
-                                    ...prev,
-                                    [tier.id]: newValue
-                                  }));
-                                }}
-                                className="flex-1 h-1"
-                              />
+                            <div className="ml-6 space-y-2">
+                              <div className="flex items-center gap-2">
+                                <label className="text-xs text-gray-600 whitespace-nowrap">
+                                  Size: {Math.round((tierSizeMultipliers[tier.id] || 1.0) * 100)}%
+                                </label>
+                                <input
+                                  type="range"
+                                  min="50"
+                                  max="150"
+                                  step="5"
+                                  value={(tierSizeMultipliers[tier.id] || 1.0) * 100}
+                                  onChange={(e) => {
+                                    const newValue = parseInt(e.target.value) / 100;
+                                    setTierSizeMultipliers(prev => ({
+                                      ...prev,
+                                      [tier.id]: newValue
+                                    }));
+                                  }}
+                                  className="flex-1 h-1"
+                                />
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <label className="text-xs text-gray-600 whitespace-nowrap">Columns:</label>
+                                <div className="flex gap-1">
+                                  <button
+                                    type="button"
+                                    onClick={() => setTierGridColumns(prev => ({ ...prev, [tier.id]: 3 }))}
+                                    className={`text-xs px-2 py-0.5 rounded ${(tierGridColumns[tier.id] || 4) === 3 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+                                  >
+                                    3
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => setTierGridColumns(prev => ({ ...prev, [tier.id]: 4 }))}
+                                    className={`text-xs px-2 py-0.5 rounded ${(tierGridColumns[tier.id] || 4) === 4 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+                                  >
+                                    4
+                                  </button>
+                                </div>
+                              </div>
                             </div>
                           )}
                         </div>
@@ -487,21 +509,35 @@ export default function BannerGeneratorPage() {
                 </div>
               </div>
 
-              {/* show descriptions toggle */}
-              <div>
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={showDescriptions}
-                    onChange={(e) => setShowDescriptions(e.target.checked)}
-                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                  />
-                  <span className="text-sm text-gray-700">Show sponsor descriptions</span>
-                </label>
-              </div>
+              {/* description controls per tier */}
+              {selectedTierIds.length > 0 && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Show Descriptions by Tier
+                  </label>
+                  <div className="space-y-1 max-h-48 overflow-y-auto border border-gray-200 rounded-md p-2">
+                    {selectedTiers.map((tier) => (
+                      <label key={tier.id} className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-1 rounded">
+                        <input
+                          type="checkbox"
+                          checked={tierShowDescriptions[tier.id] || false}
+                          onChange={(e) => {
+                            setTierShowDescriptions(prev => ({
+                              ...prev,
+                              [tier.id]: e.target.checked
+                            }));
+                          }}
+                          className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                        />
+                        <span className="text-sm text-gray-700">{tier.name}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* description font size + width */}
-              {showDescriptions && (
+              {selectedTierIds.some(id => tierShowDescriptions[id]) && (
                 <div className="space-y-3">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -654,36 +690,47 @@ export default function BannerGeneratorPage() {
                         {/* sponsor logos */}
                         <div
                           style={{
-                            display: 'grid',
-                            gridTemplateColumns: `repeat(${getGridColumns(tier.sponsors.length)}, 1fr)`,
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            justifyContent: 'center',
                             gap: 12,
-                            justifyItems: 'center',
-                            alignItems: 'center',
                           }}
                         >
                           {tier.sponsors.map((sponsor) => {
                             const logoSize = getLogoSize(tier.name, tier.id, tier.sponsors.length);
                             return (
-                              <div 
-                                key={sponsor._id} 
+                              <div
+                                key={sponsor._id}
                                 style={{
                                   display: 'flex',
                                   flexDirection: 'column',
                                   alignItems: 'center',
+                                  flex: `0 0 calc(${100 / (tierGridColumns[tier.id] || 4)}% - 12px)`,
+                                  maxWidth: `calc(${100 / (tierGridColumns[tier.id] || 4)}% - 12px)`,
                                 }}
                               >
-                                <img
-                                  src={`/api/admin/banner-generator/proxy-image?url=${encodeURIComponent(sponsor.logoUrl)}`}
-                                  alt={sponsor.name}
+                                <div
                                   style={{
-                                    maxWidth: logoSize.width * 1.1,
-                                    maxHeight: logoSize.height * 1.5,
-                                    width: 'auto',
-                                    height: 'auto',
-                                    objectFit: 'contain',
+                                    width: logoSize.width * 1.1,
+                                    height: logoSize.height * 1.5,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
                                   }}
-                                />
-                                {showDescriptions && sponsor.description && (
+                                >
+                                  <img
+                                    src={`/api/admin/banner-generator/proxy-image?url=${encodeURIComponent(sponsor.logoUrl)}`}
+                                    alt={sponsor.name}
+                                    style={{
+                                      maxWidth: '100%',
+                                      maxHeight: '100%',
+                                      width: 'auto',
+                                      height: 'auto',
+                                      objectFit: 'contain',
+                                    }}
+                                  />
+                                </div>
+                                {tierShowDescriptions[tier.id] && sponsor.description && (
                                   <p
                                     style={{
                                       fontSize: descriptionFontSize,

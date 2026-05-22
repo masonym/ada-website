@@ -368,6 +368,7 @@ export const REGISTRATION_TYPES = [
                 earlyBirdPrice: 545,
                 earlyBirdDeadline: "2026-05-01T07:59:59Z", // May 1, 2026
                 type: "paid",
+                saleEndTime: "2026-05-29T22:00:00Z",
             },
 
             {
@@ -392,6 +393,7 @@ export const REGISTRATION_TYPES = [
                 earlyBirdPrice: 645,
                 earlyBirdDeadline: "2026-05-01T07:59:59Z", // May 1, 2026
                 type: "paid",
+                saleEndTime: "2026-05-29T22:00:00Z",
             },
 
 
