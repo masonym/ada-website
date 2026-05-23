@@ -417,6 +417,24 @@ export const REGISTRATION_TYPES = [
                 price: "Complimentary",
                 // availabilityInfo: "Limited availability."
             },
+            {
+                id: "reception-add-on",
+                title: "VIP Networking Reception Add-On",
+                description: "Exclusive add-on pass. Requires special access code to register.",
+                price: 100,
+                headerImage: "vip-reception.webp",
+                buttonText: "Add to Cart",
+                type: "paid",
+                requiresCode: true,
+                validationCode: "RECEPTION2026",
+                maxQuantityPerOrder: 5,
+                saleEndTime: "2026-05-29T22:00:00.000Z",
+                perks: [
+                    "Access to VIP Networking Reception on May 28, 2026 from 6:30 PM - 8:30 PM"
+                ],
+                availabilityInfo: "Access code required."
+
+            }
         ],
     },
 

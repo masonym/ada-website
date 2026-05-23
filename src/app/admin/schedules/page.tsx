@@ -102,6 +102,19 @@ const emptySpeaker = (): ScheduleSpeaker => ({
   sponsorStyle: "",
 });
 
+const BADGE_PRESETS = [
+  { label: "Conference Moderator", text: "Conference Moderator", style: "bg-red-999" },
+  { label: "Panel Moderator", text: "Panel Moderator", style: "bg-sky-300 text-slate-900" },
+  { label: "Moderator", text: "Moderator", style: "bg-sky-300 text-slate-900" },
+  { label: "Keynote Speaker", text: "Keynote Speaker", style: "bg-sky-300 text-slate-900" },
+  { label: "Platinum Sponsor", text: "Platinum Sponsor", style: "bg-sky-300 text-slate-900" },
+  { label: "Gold Sponsor", text: "Gold Sponsor", style: "bg-[#ffaf00] text-slate-900" },
+  { label: "Silver Sponsor", text: "Silver Sponsor", style: "bg-[#C0C0C0] text-slate-900" },
+  { label: "Bronze Sponsor", text: "Bronze Sponsor", style: "bg-[#CD7F32] text-slate-900" },
+  { label: "Small Business Sponsor", text: "Small Business Sponsor", style: "bg-sb-100 text-slate-900" },
+  { label: "Pre-Recorded Address", text: "Pre-Recorded Address", style: "bg-gray-300 text-slate-900" },
+];
+
 // ─── Speaker row inside a session ────────────────────────────────────────────
 
 function SpeakerRow({
@@ -160,6 +173,13 @@ function SpeakerRow({
             </p>
           )}
         </div>
+
+        {/* Badge indicator (collapsed) */}
+        {speaker.sponsor && (
+          <span className={`hidden sm:inline-flex flex-shrink-0 items-center rounded px-1.5 py-0.5 text-xs font-medium ${speaker.sponsorStyle || "bg-gray-200 text-gray-700"}`}>
+            {speaker.sponsor}
+          </span>
+        )}
 
         {/* Controls */}
         <div className="flex items-center gap-1">
@@ -231,18 +251,58 @@ function SpeakerRow({
               type="number"
               className="rounded-md border border-gray-300 px-3 py-1.5 text-sm"
             />
-            <input
-              value={speaker.sponsor || ""}
-              onChange={(e) => onChange({ sponsor: e.target.value })}
-              placeholder="Badge text"
-              className="rounded-md border border-gray-300 px-3 py-1.5 text-sm"
-            />
-            <input
-              value={speaker.sponsorStyle || ""}
-              onChange={(e) => onChange({ sponsorStyle: e.target.value })}
-              placeholder="Badge Tailwind classes"
-              className="rounded-md border border-gray-300 px-3 py-1.5 text-sm sm:col-span-2"
-            />
+            {/* Badge editor */}
+            <div className="sm:col-span-2 rounded-md border border-gray-200 bg-gray-50 p-2.5 space-y-2">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-xs font-medium text-gray-500">Speaker Badge</span>
+                {speaker.sponsor ? (
+                  <span className={`inline-flex items-center rounded px-2 py-0.5 text-xs font-medium ${speaker.sponsorStyle || "bg-gray-200 text-gray-700"}`}>
+                    {speaker.sponsor}
+                  </span>
+                ) : (
+                  <span className="text-xs italic text-gray-400">None</span>
+                )}
+              </div>
+              <div className="flex items-center gap-2">
+                <select
+                  value={BADGE_PRESETS.find((p) => p.text === speaker.sponsor)?.text || ""}
+                  onChange={(e) => {
+                    const preset = BADGE_PRESETS.find((p) => p.text === e.target.value);
+                    if (preset) onChange({ sponsor: preset.text, sponsorStyle: preset.style });
+                  }}
+                  className="flex-1 rounded-md border border-gray-300 bg-white px-2 py-1.5 text-sm text-gray-700"
+                >
+                  <option value="">— Apply preset —</option>
+                  {BADGE_PRESETS.map((p) => (
+                    <option key={p.text} value={p.text}>{p.label}</option>
+                  ))}
+                </select>
+                {speaker.sponsor && (
+                  <button
+                    type="button"
+                    onClick={() => onChange({ sponsor: "", sponsorStyle: "" })}
+                    className="rounded p-1 text-gray-400 hover:text-red-500"
+                    title="Clear badge"
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                )}
+              </div>
+              <div className="grid gap-2 sm:grid-cols-2">
+                <input
+                  value={speaker.sponsor || ""}
+                  onChange={(e) => onChange({ sponsor: e.target.value })}
+                  placeholder="Custom badge text"
+                  className="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm"
+                />
+                <input
+                  value={speaker.sponsorStyle || ""}
+                  onChange={(e) => onChange({ sponsorStyle: e.target.value })}
+                  placeholder="Custom Tailwind classes"
+                  className="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm"
+                />
+              </div>
+            </div>
           </div>
         </div>
       )}
