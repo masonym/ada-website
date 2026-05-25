@@ -113,6 +113,7 @@ const BADGE_PRESETS = [
   { label: "Bronze Sponsor", text: "Bronze Sponsor", style: "bg-[#CD7F32] text-slate-900" },
   { label: "Small Business Sponsor", text: "Small Business Sponsor", style: "bg-sb-100 text-slate-900" },
   { label: "Pre-Recorded Address", text: "Pre-Recorded Address", style: "bg-gray-300 text-slate-900" },
+  { label: "Yellow BG", text: "", style: "bg-yellow-300 text-slate-900" },
 ];
 
 // ─── Speaker row inside a session ────────────────────────────────────────────
