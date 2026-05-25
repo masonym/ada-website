@@ -87,6 +87,29 @@ type ScheduleDay = {
   items: ScheduleItem[];
 };
 
+// Layout customization options passed from the controls panel
+export type PDFLayoutOptions = {
+  pagePadding: number;
+  itemSpacing: number;
+  titleFontSize: number;
+  timeFontSize: number;
+  speakerNameFontSize: number;
+  speakerDetailFontSize: number;
+  speakerImageSize: number;
+  showSpeakerImages: boolean;
+};
+
+export const DEFAULT_PDF_LAYOUT: PDFLayoutOptions = {
+  pagePadding: 10,
+  itemSpacing: 4,
+  titleFontSize: 10,
+  timeFontSize: 9,
+  speakerNameFontSize: 8,
+  speakerDetailFontSize: 8,
+  speakerImageSize: 24,
+  showSpeakerImages: true,
+};
+
 // sponsor types for PDF rendering
 export type SponsorForPDF = {
   id: string;
@@ -443,6 +466,7 @@ const SchedulePDF = ({
   sanitySpeakers,
   sponsorTiers = [],
   fullPageFooterImage,
+  layoutOptions = DEFAULT_PDF_LAYOUT,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -455,7 +479,10 @@ const SchedulePDF = ({
   sanitySpeakers?: EventSpeakerPublic[] | null;
   sponsorTiers?: SponsorTierForPDF[];
   fullPageFooterImage?: string;
+  layoutOptions?: PDFLayoutOptions;
 }) => {
+  const lo = { ...DEFAULT_PDF_LAYOUT, ...layoutOptions };
+
   // Build sanity speaker lookup map - keyed by both slug and _id to handle
   // schedule items from the public GROQ (speakerId = slug.current)
   // or the admin GROQ (speakerId = Sanity _id)
@@ -473,15 +500,15 @@ const SchedulePDF = ({
 
   // Render a single schedule item
   const renderScheduleItem = (item: ScheduleItem, index: number, prevItem?: ScheduleItem) => (
-    <View style={styles.scheduleItem} key={`${item.time}-${item.title}-${index}`} wrap={false}>
+    <View style={[styles.scheduleItem, { marginTop: lo.itemSpacing }]} key={`${item.time}-${item.title}-${index}`} wrap={false}>
       <View style={styles.timeColumn}>
-        <Text style={styles.time}>{item.time}</Text>
+        <Text style={[styles.time, { fontSize: lo.timeFontSize }]}>{item.time}</Text>
       </View>
       <View style={styles.contentColumn}>
-        <Text style={styles.itemTitle}>{item.title}</Text>
-        {item.description && (
-          <Text style={styles.description}>{item.description}</Text>
-        )}
+        <Text style={[styles.itemTitle, { fontSize: lo.titleFontSize }]}>{item.title}</Text>
+        {/* {item.description && (
+          <Text style={[styles.description, { fontSize: lo.speakerDetailFontSize }]}>{item.description}</Text>
+        )} */}
         {showSpeakers && item.speakers && item.speakers.length > 0 && (
           <View style={styles.speakersContainer}>
             {item.speakers.map((speaker, speakerIndex) => {
@@ -490,24 +517,25 @@ const SchedulePDF = ({
               const isDiscussant =
                 speakerData.speakerId === 'nelinia-nel-varenus' &&
                 item.time === '12:25 PM';
-              const sanityUrl = speakerData.sanityImage?.asset?._ref
+              const sanityUrl = lo.showSpeakerImages && speakerData.sanityImage?.asset?._ref
                 ? getSanityImageUrl(speakerData.sanityImage.asset._ref, { width: 96, height: 96 })
                 : null;
               const imageSrc = sanityUrl ? getProxiedImageUrl(sanityUrl) : null;
+              const imgSize = lo.speakerImageSize;
 
               return (
                 <View key={speakerIndex} style={styles.speaker}>
                   {imageSrc && (
-                    <View style={styles.speakerImageContainer}>
+                    <View style={[styles.speakerImageContainer]}>
                       <Image
                         src={imageSrc}
-                        style={styles.speakerImage}
+                        style={[styles.speakerImage, { width: imgSize, height: imgSize, borderRadius: imgSize / 2 }]}
                         cache={true}
                       />
                     </View>
                   )}
                   <View style={styles.speakerInfo}>
-                    <Text style={styles.speakerName}>
+                    <Text style={[styles.speakerName, { fontSize: lo.speakerNameFontSize }]}>
                       {isDiscussant && (
                         <View>
                           <Text style={styles.discussantLabel}>Discussant</Text><Text>: </Text>
@@ -516,15 +544,16 @@ const SchedulePDF = ({
                       {speakerData.name}
                     </Text>
                     {speakerData.title && (
-                      <Text style={styles.speakerTitle}>{speakerData.title}</Text>
+                      <Text style={[styles.speakerTitle, { fontSize: lo.speakerDetailFontSize }]}>{speakerData.title}</Text>
                     )}
                     {speakerData.affiliation && (
-                      <Text style={styles.speakerAffiliation}>{speakerData.affiliation}</Text>
+                      <Text style={[styles.speakerAffiliation, { fontSize: lo.speakerDetailFontSize }]}>{speakerData.affiliation}</Text>
                     )}
                     {speakerData.sponsor && (
                       <Text style={{
                         ...styles.speakerSponsor,
-                        ...convertSponsorStyleToPDF(speakerData.sponsorStyle)
+                        ...convertSponsorStyleToPDF(speakerData.sponsorStyle),
+                        fontSize: lo.speakerDetailFontSize,
                       }}>{speakerData.sponsor}</Text>
                     )}
                   </View>
@@ -555,9 +584,9 @@ const SchedulePDF = ({
     let height = 25; // base height for time + title
 
     // add for description
-    if (item.description) {
-      height += 20;
-    }
+    // if (item.description) {
+    //   height += 20;
+    // }
 
     // add for location
     if (showLocations && item.location) {
@@ -714,7 +743,7 @@ const SchedulePDF = ({
           const isLastPageOfDay = pageIndex === day.pages.length - 1;
 
           return (
-            <Page key={`${day.date}-${pageIndex}`} size="LETTER" style={styles.page}>
+            <Page key={`${day.date}-${pageIndex}`} size="LETTER" style={[styles.page, { padding: lo.pagePadding }]}>
               <View style={styles.header}>
                 <Text style={styles.title}>{customTitle || `${event.title} Schedule`}</Text>
                 {/* {(customSubtitle || event.date) && (
@@ -726,7 +755,7 @@ const SchedulePDF = ({
               </View>
 
               <View style={styles.footer}>
-                <Text style={{ fontSize: 10 }}>Renaissance Austin Hotel, Austin, Texas</Text>
+                <Text style={{ fontSize: 10 }}>Norfolk Waterside Marriott, Norfolk, Virginia</Text>
               </View>
 
               <Text style={styles.dayHeader}>
@@ -828,6 +857,7 @@ export const PDFDownloadButton = ({
   sanitySpeakers,
   sponsorTiers,
   fullPageFooterImage,
+  layoutOptions,
   fileName = 'schedule.pdf'
 }: {
   schedule: ScheduleDay[];
@@ -841,6 +871,7 @@ export const PDFDownloadButton = ({
   sanitySpeakers?: EventSpeakerPublic[] | null;
   sponsorTiers?: SponsorTierForPDF[];
   fullPageFooterImage?: string;
+  layoutOptions?: PDFLayoutOptions;
   fileName?: string;
 }) => (
   <PDFDownloadLink
@@ -857,6 +888,7 @@ export const PDFDownloadButton = ({
         sanitySpeakers={sanitySpeakers}
         sponsorTiers={sponsorTiers}
         fullPageFooterImage={fullPageFooterImage}
+        layoutOptions={layoutOptions}
       />
     }
     fileName={fileName}
@@ -879,6 +911,7 @@ export const PDFPreview = ({
   sanitySpeakers,
   sponsorTiers,
   fullPageFooterImage,
+  layoutOptions,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -891,6 +924,7 @@ export const PDFPreview = ({
   sanitySpeakers?: EventSpeakerPublic[] | null;
   sponsorTiers?: SponsorTierForPDF[];
   fullPageFooterImage?: string;
+  layoutOptions?: PDFLayoutOptions;
 }) => (
   <div className="w-full h-screen">
     <PDFViewer width="100%" height="100%" style={{ border: 'none' }}>
@@ -906,6 +940,7 @@ export const PDFPreview = ({
         sanitySpeakers={sanitySpeakers}
         sponsorTiers={sponsorTiers}
         fullPageFooterImage={fullPageFooterImage}
+        layoutOptions={layoutOptions}
       />
     </PDFViewer>
   </div>
@@ -924,6 +959,7 @@ export const PDFPreviewButton = ({
   sanitySpeakers,
   sponsorTiers,
   fullPageFooterImage,
+  layoutOptions,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -936,6 +972,7 @@ export const PDFPreviewButton = ({
   sanitySpeakers?: EventSpeakerPublic[] | null;
   sponsorTiers?: SponsorTierForPDF[];
   fullPageFooterImage?: string;
+  layoutOptions?: PDFLayoutOptions;
 }) => (
   <BlobProvider document={
     <SchedulePDF
@@ -950,6 +987,7 @@ export const PDFPreviewButton = ({
       sanitySpeakers={sanitySpeakers}
       sponsorTiers={sponsorTiers}
       fullPageFooterImage={fullPageFooterImage}
+      layoutOptions={layoutOptions}
     />
   }>
     {({ blob, url, loading, error }) => {

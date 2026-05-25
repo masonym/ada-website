@@ -5,7 +5,7 @@ import { EVENTS } from '@/constants/events';
 import { Event } from '@/types/events';
 import Image from 'next/image';
 import { getCdnPath } from '@/utils/image';
-import { PDFDownloadButton, PDFPreviewButton, SponsorTierForPDF } from './SchedulePDF';
+import { PDFDownloadButton, PDFPreviewButton, SponsorTierForPDF, PDFLayoutOptions, DEFAULT_PDF_LAYOUT } from './SchedulePDF';
 import { EventSpeakerPublic } from '@/lib/sanity';
 
 // helper to get sanity image URL
@@ -102,6 +102,11 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
   const [tierSizeMultipliers, setTierSizeMultipliers] = useState<Record<string, number>>({});
   const [fullPageTierIds, setFullPageTierIds] = useState<string[]>([]);
   const [fullPageFooterImage, setFullPageFooterImage] = useState<string | undefined>(undefined);
+  const [pdfLayout, setPdfLayout] = useState<PDFLayoutOptions>({ ...DEFAULT_PDF_LAYOUT });
+
+  const updateLayout = (key: keyof PDFLayoutOptions, value: number | boolean) => {
+    setPdfLayout(prev => ({ ...prev, [key]: value }));
+  };
 
   // fetch sponsor tiers from sanity via the banner-generator API
   const fetchSponsorTiers = useCallback(async () => {
@@ -607,6 +612,56 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
             )}
           </div>
 
+          {/* PDF Layout sliders */}
+          <div className="control-section">
+            <h3>PDF Layout</h3>
+            <div className="space-y-3">
+              {([
+                { key: 'pagePadding',         label: 'Page Padding',          min: 4,  max: 30, step: 1 },
+                { key: 'itemSpacing',         label: 'Item Spacing',          min: 0,  max: 16, step: 1 },
+                { key: 'titleFontSize',       label: 'Title Font Size',       min: 6,  max: 16, step: 0.5 },
+                { key: 'timeFontSize',        label: 'Time Font Size',        min: 5,  max: 14, step: 0.5 },
+                { key: 'speakerNameFontSize', label: 'Speaker Name Size',     min: 5,  max: 14, step: 0.5 },
+                { key: 'speakerDetailFontSize','label': 'Speaker Detail Size', min: 5,  max: 14, step: 0.5 },
+                { key: 'speakerImageSize',    label: 'Speaker Image Size',    min: 0,  max: 48, step: 2 },
+              ] as { key: keyof PDFLayoutOptions; label: string; min: number; max: number; step: number }[]).map(({ key, label, min, max, step }) => (
+                <div key={key} className="form-control">
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="text-xs text-gray-600">{label}</label>
+                    <span className="text-xs font-mono text-gray-500 w-8 text-right">{pdfLayout[key]}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={min}
+                    max={max}
+                    step={step}
+                    value={pdfLayout[key] as number}
+                    onChange={(e) => updateLayout(key, parseFloat(e.target.value))}
+                    className="w-full h-1 accent-sb-100"
+                  />
+                </div>
+              ))}
+              <div className="form-control">
+                <label className="flex items-center gap-2 text-xs text-gray-600">
+                  <input
+                    type="checkbox"
+                    checked={pdfLayout.showSpeakerImages}
+                    onChange={(e) => updateLayout('showSpeakerImages', e.target.checked)}
+                    className="rounded"
+                  />
+                  Show speaker images in PDF
+                </label>
+              </div>
+              <button
+                type="button"
+                onClick={() => setPdfLayout({ ...DEFAULT_PDF_LAYOUT })}
+                className="text-xs text-gray-500 hover:text-gray-700 underline"
+              >
+                Reset to defaults
+              </button>
+            </div>
+          </div>
+
           {/* Print and PDF buttons */}
           <div className="control-section">
             <div className="flex flex-col sm:flex-row gap-3">
@@ -630,6 +685,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                 sanitySpeakers={sanitySpeakers}
                 sponsorTiers={resolvedSponsorTiers}
                 fullPageFooterImage={fullPageFooterImage}
+                layoutOptions={pdfLayout}
               />
               
               {/* PDF Download Button */}
@@ -645,6 +701,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                 sanitySpeakers={sanitySpeakers}
                 sponsorTiers={resolvedSponsorTiers}
                 fullPageFooterImage={fullPageFooterImage}
+                layoutOptions={pdfLayout}
                 fileName={`${event.title.toLowerCase().replace(/\s+/g, '-')}-schedule.pdf`}
               />
             </div>
