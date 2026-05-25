@@ -20,6 +20,7 @@ function getSanityImageUrl(ref: string) {
 interface PrintableScheduleProps {
   eventId: number;
   sanitySpeakers?: EventSpeakerPublic[] | null;
+  schedule?: ScheduleDay[];
 }
 
 // Define types for schedule items
@@ -68,18 +69,21 @@ type ScheduleDay = {
   items: ScheduleItem[];
 };
 
-const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySpeakers }) => {
-  // Find the schedule for the given event ID
-  const schedule = SCHEDULES.find(s => s.id === eventId)?.schedule as ScheduleDay[] | undefined;
+const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySpeakers, schedule: scheduleProp }) => {
+  // Use passed-in schedule (Sanity), falling back to legacy constant
+  const schedule = (scheduleProp ?? SCHEDULES.find(s => s.id === eventId)?.schedule) as ScheduleDay[] | undefined;
 
   // Find the event details
   const event = EVENTS.find(e => e.id === eventId) as Event | undefined;
 
-  // Build sanity speaker lookup map
+  // Build sanity speaker lookup map - keyed by both slug and _id to handle
+  // schedule items coming from the public GROQ (speakerId = slug.current)
+  // or the admin GROQ (speakerId = Sanity _id)
   const sanitySpeakerMap = new Map<string, EventSpeakerPublic>();
   if (sanitySpeakers) {
     sanitySpeakers.forEach(s => {
       if (s.speakerSlug) sanitySpeakerMap.set(s.speakerSlug, s);
+      if (s.speakerId) sanitySpeakerMap.set(s.speakerId, s);
     });
   }
 

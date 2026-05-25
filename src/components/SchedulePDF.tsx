@@ -456,11 +456,14 @@ const SchedulePDF = ({
   sponsorTiers?: SponsorTierForPDF[];
   fullPageFooterImage?: string;
 }) => {
-  // Build sanity speaker lookup map
+  // Build sanity speaker lookup map - keyed by both slug and _id to handle
+  // schedule items from the public GROQ (speakerId = slug.current)
+  // or the admin GROQ (speakerId = Sanity _id)
   const sanitySpeakerMap = new Map<string, EventSpeakerPublic>();
   if (sanitySpeakers) {
     sanitySpeakers.forEach(s => {
       if (s.speakerSlug) sanitySpeakerMap.set(s.speakerSlug, s);
+      if (s.speakerId) sanitySpeakerMap.set(s.speakerId, s);
     });
   }
   // Filter schedule based on selected days

@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import { EVENTS } from '@/constants/events';
 import { SCHEDULES } from '@/constants/schedules';
 import { EventSpeakerPublic } from '@/lib/sanity';
+import type { AdminScheduleDay } from '@/lib/sanity-admin';
 
 const PrintableSchedule = dynamic(() => import('@/components/PrintableSchedule'), {
   ssr: false,
@@ -20,39 +21,55 @@ const PrintableSchedule = dynamic(() => import('@/components/PrintableSchedule')
 export default function PrintableSchedulePage() {
   const [selectedEventId, setSelectedEventId] = useState<number | null>(null);
   const [sanitySpeakers, setSanitySpeakers] = useState<EventSpeakerPublic[] | null>(null);
+  const [sanitySchedule, setSanitySchedule] = useState<AdminScheduleDay[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const eventsWithSchedules = EVENTS.filter((event) => SCHEDULES.some((s) => s.id === event.id));
+  const eventsWithSchedules = EVENTS;
 
   const selectedEvent = selectedEventId ? EVENTS.find((e) => e.id === selectedEventId) : null;
 
-  const selectedSchedule = selectedEventId ? SCHEDULES.find((s) => s.id === selectedEventId)?.schedule : null;
+  const legacySchedule = selectedEventId ? SCHEDULES.find((s) => s.id === selectedEventId)?.schedule : null;
+  const resolvedSchedule = sanitySchedule ?? legacySchedule ?? null;
 
   useEffect(() => {
     if (!selectedEventId) {
       setSanitySpeakers(null);
+      setSanitySchedule(null);
       return;
     }
 
-    const fetchSpeakers = async () => {
+    const fetchData = async () => {
       setIsLoading(true);
       try {
-        const res = await fetch(`/api/event-speakers-public?eventId=${selectedEventId}`);
-        const data = await res.json();
-        if (data.speakers && data.speakers.length > 0) {
-          setSanitySpeakers(data.speakers);
+        const [speakersRes, scheduleRes] = await Promise.all([
+          fetch(`/api/event-speakers-public?eventId=${selectedEventId}`),
+          fetch(`/api/admin/event-schedules?eventId=${selectedEventId}`),
+        ]);
+
+        const speakersData = await speakersRes.json();
+        if (speakersData.speakers && speakersData.speakers.length > 0) {
+          setSanitySpeakers(speakersData.speakers);
         } else {
           setSanitySpeakers(null);
         }
+
+        const scheduleData = await scheduleRes.json();
+        const days = scheduleData.eventSchedule?.days;
+        if (days && days.length > 0) {
+          setSanitySchedule(days);
+        } else {
+          setSanitySchedule(null);
+        }
       } catch (error) {
-        console.error('Error fetching speakers:', error);
+        console.error('Error fetching event data:', error);
         setSanitySpeakers(null);
+        setSanitySchedule(null);
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchSpeakers();
+    fetchData();
   }, [selectedEventId]);
 
   return (
@@ -94,7 +111,8 @@ export default function PrintableSchedulePage() {
                 <strong>Date:</strong> {selectedEvent.date}
               </p>
               <p className="text-sm text-gray-600">
-                <strong>Schedule Days:</strong> {selectedSchedule?.length || 0}
+                <strong>Schedule Days:</strong> {resolvedSchedule?.length || 0}{' '}
+                {sanitySchedule ? '(Sanity)' : legacySchedule ? '(legacy)' : ''}
               </p>
               <p className="text-sm text-gray-600">
                 <strong>Speakers from Sanity:</strong>{' '}
@@ -104,8 +122,8 @@ export default function PrintableSchedulePage() {
           )}
         </div>
 
-        {selectedEvent && selectedSchedule && !isLoading ? (
-          <PrintableSchedule eventId={selectedEvent.id} sanitySpeakers={sanitySpeakers} />
+        {selectedEvent && resolvedSchedule && !isLoading ? (
+          <PrintableSchedule eventId={selectedEvent.id} sanitySpeakers={sanitySpeakers} schedule={resolvedSchedule} />
         ) : selectedEventId && isLoading ? (
           <div className="bg-white rounded-lg shadow-md p-12 text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-navy-800 mx-auto"></div>
