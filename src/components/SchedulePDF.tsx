@@ -100,11 +100,11 @@ export type PDFLayoutOptions = {
 };
 
 export const DEFAULT_PDF_LAYOUT: PDFLayoutOptions = {
-  pagePadding: 10,
-  itemSpacing: 4,
-  titleFontSize: 10,
-  timeFontSize: 9,
-  speakerNameFontSize: 8,
+  pagePadding: 8,
+  itemSpacing: 2,
+  titleFontSize: 10.5,
+  timeFontSize: 9.5,
+  speakerNameFontSize: 8.5,
   speakerDetailFontSize: 8,
   speakerImageSize: 24,
   showSpeakerImages: true,
@@ -170,6 +170,7 @@ const convertTierStyleToPDF = (tierName: string, style?: string): { backgroundCo
     else if (style.includes('bg-purple-600')) bg = '#9333ea';
     else if (style.includes('bg-blue-500')) bg = '#3b82f6';
     else if (style.includes('bg-blue-600')) bg = '#2563eb';
+    else if (style.includes('bg-yellow-300')) bg = '#fde047';
 
     if (style.includes('text-slate-900')) fg = '#0f172a';
     else if (style.includes('text-white')) fg = '#ffffff';
@@ -189,9 +190,10 @@ const convertTierStyleToPDF = (tierName: string, style?: string): { backgroundCo
   if (name.includes('premier')) return { backgroundColor: '#9333ea', color: '#ffffff' };
   if (name.includes('platinum')) return { backgroundColor: '#7dd3fc', color: '#0f172a' };
   if (name.includes('diamond')) return { backgroundColor: '#3b82f6', color: '#ffffff' };
+  if (name.includes('cmmc')) return { backgroundColor: '#fde047', color: '#0f172a' };
   if (name.includes('exhibitor')) return { backgroundColor: '#1B212B', color: '#ffffff' };
   if (name.includes('coffee')) return { backgroundColor: '#0891b2', color: '#ffffff' };
-  if (name.includes('vip')) return { backgroundColor: '#7c3aed', color: '#ffffff' };
+  if (name.includes('vip')) return { backgroundColor: '#7dd3fc', color: '#ffffff' };
   if (name.includes('networking')) return { backgroundColor: '#0891b2', color: '#ffffff' };
   if (name.includes('luncheon')) return { backgroundColor: '#059669', color: '#ffffff' };
   if (name.includes('beverage')) return { backgroundColor: '#0891b2', color: '#ffffff' };
@@ -467,6 +469,7 @@ const SchedulePDF = ({
   sponsorTiers = [],
   fullPageFooterImage,
   layoutOptions = DEFAULT_PDF_LAYOUT,
+  showConferenceModerator = false,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -480,6 +483,7 @@ const SchedulePDF = ({
   sponsorTiers?: SponsorTierForPDF[];
   fullPageFooterImage?: string;
   layoutOptions?: PDFLayoutOptions;
+  showConferenceModerator?: boolean;
 }) => {
   const lo = { ...DEFAULT_PDF_LAYOUT, ...layoutOptions };
 
@@ -596,7 +600,7 @@ const SchedulePDF = ({
     // add for speakers - this is where most height comes from
     if (showSpeakers && item.speakers && item.speakers.length > 0) {
       // each speaker takes significant space
-      height += item.speakers.length * 45;
+      height += item.speakers.length * 46;
     }
 
     return height;
@@ -736,11 +740,16 @@ const SchedulePDF = ({
     );
   };
 
+  // Calculate global page index for tracking page 1
+  let globalPageIndex = 0;
+
   return (
     <Document>
       {paginatedSchedule.map(day =>
         day.pages.map((page, pageIndex) => {
           const isLastPageOfDay = pageIndex === day.pages.length - 1;
+          const isPageOne = globalPageIndex === 0;
+          globalPageIndex++;
 
           return (
             <Page key={`${day.date}-${pageIndex}`} size="LETTER" style={[styles.page, { padding: lo.pagePadding }]}>
@@ -757,6 +766,11 @@ const SchedulePDF = ({
               <View style={styles.footer}>
                 <Text style={{ fontSize: 10 }}>Norfolk Waterside Marriott, Norfolk, Virginia</Text>
               </View>
+              {isPageOne && showConferenceModerator && (
+                <Text style={{ textAlign: 'center', fontSize: 10, marginBottom: 4 }}>
+                  <Text style={{ fontWeight: 'bold' }}>Conference Moderator:</Text> Charles F. Sills, President & CEO, American Defense Alliance
+                </Text>
+              )}
 
               <Text style={styles.dayHeader}>
                 {new Date(day.date).toLocaleDateString('en-US', {
@@ -766,7 +780,6 @@ const SchedulePDF = ({
                   day: 'numeric'
                 })}
               </Text>
-
 
               <View style={styles.columnsContainer}>
                 <View style={styles.column}>
@@ -809,7 +822,7 @@ const SchedulePDF = ({
               <Text style={{ fontSize: 12 }}>Presented by the <Text style={{ fontWeight: 'bold' }}>American Defense Alliance</Text> • www.americandefensealliance.org</Text>
             </View>
             <View style={styles.footer}>
-              <Text style={{ fontSize: 10 }}>Renaissance Austin Hotel, Austin, Texas</Text>
+              <Text style={{ fontSize: 10 }}>Norfolk Waterside Marriott, Norfolk, Virginia</Text>
             </View>
             <View style={{ marginTop: 12 }}>
               {fullPageTiers.map((tier) => {
@@ -858,7 +871,8 @@ export const PDFDownloadButton = ({
   sponsorTiers,
   fullPageFooterImage,
   layoutOptions,
-  fileName = 'schedule.pdf'
+  fileName = 'schedule.pdf',
+  showConferenceModerator = false,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -873,6 +887,7 @@ export const PDFDownloadButton = ({
   fullPageFooterImage?: string;
   layoutOptions?: PDFLayoutOptions;
   fileName?: string;
+  showConferenceModerator?: boolean;
 }) => (
   <PDFDownloadLink
     document={
@@ -889,6 +904,7 @@ export const PDFDownloadButton = ({
         sponsorTiers={sponsorTiers}
         fullPageFooterImage={fullPageFooterImage}
         layoutOptions={layoutOptions}
+        showConferenceModerator={showConferenceModerator}
       />
     }
     fileName={fileName}
@@ -912,6 +928,7 @@ export const PDFPreview = ({
   sponsorTiers,
   fullPageFooterImage,
   layoutOptions,
+  showConferenceModerator = false,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -925,6 +942,7 @@ export const PDFPreview = ({
   sponsorTiers?: SponsorTierForPDF[];
   fullPageFooterImage?: string;
   layoutOptions?: PDFLayoutOptions;
+  showConferenceModerator?: boolean;
 }) => (
   <div className="w-full h-screen">
     <PDFViewer width="100%" height="100%" style={{ border: 'none' }}>
@@ -941,6 +959,7 @@ export const PDFPreview = ({
         sponsorTiers={sponsorTiers}
         fullPageFooterImage={fullPageFooterImage}
         layoutOptions={layoutOptions}
+        showConferenceModerator={showConferenceModerator}
       />
     </PDFViewer>
   </div>
@@ -960,6 +979,7 @@ export const PDFPreviewButton = ({
   sponsorTiers,
   fullPageFooterImage,
   layoutOptions,
+  showConferenceModerator = false,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -973,6 +993,7 @@ export const PDFPreviewButton = ({
   sponsorTiers?: SponsorTierForPDF[];
   fullPageFooterImage?: string;
   layoutOptions?: PDFLayoutOptions;
+  showConferenceModerator?: boolean;
 }) => (
   <BlobProvider document={
     <SchedulePDF
@@ -988,6 +1009,7 @@ export const PDFPreviewButton = ({
       sponsorTiers={sponsorTiers}
       fullPageFooterImage={fullPageFooterImage}
       layoutOptions={layoutOptions}
+      showConferenceModerator={showConferenceModerator}
     />
   }>
     {({ blob, url, loading, error }) => {

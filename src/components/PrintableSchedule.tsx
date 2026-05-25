@@ -95,6 +95,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
   const [customTitle, setCustomTitle] = useState<string>('');
   const [customSubtitle, setCustomSubtitle] = useState<string>('');
   const [twoColumnLayout, setTwoColumnLayout] = useState<boolean>(true);
+  const [showConferenceModerator, setShowConferenceModerator] = useState<boolean>(false);
   const [selectedSponsorTierIds, setSelectedSponsorTierIds] = useState<string[]>([]);
   const [showSponsorsInPDF, setShowSponsorsInPDF] = useState<boolean>(false);
   const [sponsorLoading, setSponsorLoading] = useState<boolean>(false);
@@ -441,6 +442,17 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                 Two-Column Layout
               </label>
             </div>
+            <div className="form-control">
+              <label className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={showConferenceModerator}
+                  onChange={(e) => setShowConferenceModerator(e.target.checked)}
+                  className="mr-2"
+                />
+                Show Conference Moderator (Day 1)
+              </label>
+            </div>
             {/* ~~This doesn't work for now~~
             <div className="form-control">
               <label htmlFor="font-size">Font Size Adjustment:</label>
@@ -686,6 +698,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                 sponsorTiers={resolvedSponsorTiers}
                 fullPageFooterImage={fullPageFooterImage}
                 layoutOptions={pdfLayout}
+                showConferenceModerator={showConferenceModerator}
               />
               
               {/* PDF Download Button */}
@@ -703,6 +716,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                 fullPageFooterImage={fullPageFooterImage}
                 layoutOptions={pdfLayout}
                 fileName={`${event.title.toLowerCase().replace(/\s+/g, '-')}-schedule.pdf`}
+                showConferenceModerator={showConferenceModerator}
               />
             </div>
           </div>
@@ -754,7 +768,13 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                       <div>{event.locationAddress}</div>
                     </div>
                   </div>
-                  {/*               
+                  {/* Conference moderator on page 1 only, below location */}
+                  {dayIndex === 0 && showConferenceModerator && (
+                    <div className="conference-moderator-page-1 text-center py-2 mb-2">
+                      <span className="font-bold">Conference Moderator:</span> Charles F. Sills, President & CEO, American Defense Alliance
+                    </div>
+                  )}
+                  {/*
                   <div className="day-header-container no-page-break">
                     <h2 className="day-header">{day.date}</h2>
                   </div>
@@ -795,6 +815,12 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                       <div>{event.locationAddress}</div>
                     </div>
                   </div>
+                  {/* Conference moderator on page 1 only, below location */}
+                  {dayIndex === 0 && showConferenceModerator && (
+                    <div className="conference-moderator-page-1 text-center py-2 mb-2">
+                      <span className="font-bold">Conference Moderator:</span> Charles F. Sills, President & CEO, American Defense Alliance
+                    </div>
+                  )}
 
                   <div className="day-header-container no-page-break">
                     <h2 className="day-header">{day.date}</h2>
