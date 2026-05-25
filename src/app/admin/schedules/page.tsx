@@ -121,15 +121,21 @@ const BADGE_PRESETS = [
 function SpeakerRow({
   speaker,
   speakerIndex,
+  totalSpeakers,
   allSpeakers,
   onChange,
   onRemove,
+  onMoveUp,
+  onMoveDown,
 }: {
   speaker: ScheduleSpeaker;
   speakerIndex: number;
+  totalSpeakers: number;
   allSpeakers: Speaker[];
   onChange: (updates: Partial<ScheduleSpeaker>) => void;
   onRemove: () => void;
+  onMoveUp: () => void;
+  onMoveDown: () => void;
 }) {
   const [expanded, setExpanded] = useState(false);
   const linked = allSpeakers.find((s) => s._id === speaker.speakerId);
@@ -184,6 +190,24 @@ function SpeakerRow({
 
         {/* Controls */}
         <div className="flex items-center gap-1">
+          <button
+            type="button"
+            onClick={onMoveUp}
+            disabled={speakerIndex === 0}
+            className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-700 disabled:opacity-25"
+            title="Move up"
+          >
+            <ArrowUp size={14} />
+          </button>
+          <button
+            type="button"
+            onClick={onMoveDown}
+            disabled={speakerIndex === totalSpeakers - 1}
+            className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-700 disabled:opacity-25"
+            title="Move down"
+          >
+            <ArrowDown size={14} />
+          </button>
           <button
             type="button"
             onClick={() => setExpanded((v) => !v)}
@@ -326,6 +350,8 @@ function SessionCard({
   onAddSpeaker,
   onUpdateSpeaker,
   onRemoveSpeaker,
+  onMoveSpeakerUp,
+  onMoveSpeakerDown,
 }: {
   item: ScheduleItem;
   itemIndex: number;
@@ -339,6 +365,8 @@ function SessionCard({
   onAddSpeaker: () => void;
   onUpdateSpeaker: (speakerIndex: number, updates: Partial<ScheduleSpeaker>) => void;
   onRemoveSpeaker: (speakerIndex: number) => void;
+  onMoveSpeakerUp: (speakerIndex: number) => void;
+  onMoveSpeakerDown: (speakerIndex: number) => void;
 }) {
   const [expanded, setExpanded] = useState(false);
   const speakerCount = item.speakers?.length ?? 0;
@@ -529,9 +557,12 @@ function SessionCard({
                   key={speaker._key || speakerIndex}
                   speaker={speaker}
                   speakerIndex={speakerIndex}
+                  totalSpeakers={item.speakers?.length ?? 0}
                   allSpeakers={allSpeakers}
                   onChange={(updates) => onUpdateSpeaker(speakerIndex, updates)}
                   onRemove={() => onRemoveSpeaker(speakerIndex)}
+                  onMoveUp={() => onMoveSpeakerUp(speakerIndex)}
+                  onMoveDown={() => onMoveSpeakerDown(speakerIndex)}
                 />
               ))}
             </div>
@@ -766,6 +797,29 @@ export default function ScheduleAdminPage() {
     });
   }
 
+  function moveSpeaker(dayIndex: number, itemIndex: number, speakerIndex: number, direction: "up" | "down") {
+    setSchedule((cur) => {
+      if (!cur) return cur;
+      const speakers = [...(cur.days[dayIndex].items[itemIndex].speakers || [])];
+      const targetIndex = direction === "up" ? speakerIndex - 1 : speakerIndex + 1;
+      if (targetIndex < 0 || targetIndex >= speakers.length) return cur;
+      [speakers[speakerIndex], speakers[targetIndex]] = [speakers[targetIndex], speakers[speakerIndex]];
+      return {
+        ...cur,
+        days: cur.days.map((d, i) =>
+          i === dayIndex
+            ? {
+                ...d,
+                items: d.items.map((it, ii) =>
+                  ii === itemIndex ? { ...it, speakers } : it
+                ),
+              }
+            : d
+        ),
+      };
+    });
+  }
+
   // ── Render ──────────────────────────────────────────────────────────────────
 
   return (
@@ -901,6 +955,8 @@ export default function ScheduleAdminPage() {
                                 onAddSpeaker={() => addSpeaker(dayIndex, itemIndex)}
                                 onUpdateSpeaker={(si, updates) => updateSpeaker(dayIndex, itemIndex, si, updates)}
                                 onRemoveSpeaker={(si) => removeSpeaker(dayIndex, itemIndex, si)}
+                                onMoveSpeakerUp={(si) => moveSpeaker(dayIndex, itemIndex, si, "up")}
+                                onMoveSpeakerDown={(si) => moveSpeaker(dayIndex, itemIndex, si, "down")}
                               />
                               <InsertSessionButton onClick={() => insertItem(dayIndex, itemIndex)} />
                             </div>
