@@ -765,6 +765,123 @@ export async function updateEventSpeaker(
   return patch.commit()
 }
 
+export type AdminScheduleSpeaker = {
+  _key?: string
+  speakerId?: string
+  name?: string
+  title?: string
+  affiliation?: string
+  photo?: string
+  presentation?: string
+  videoId?: string
+  videoStartTime?: number
+  sponsor?: string
+  sponsorStyle?: string
+}
+
+export type AdminScheduleItem = {
+  _key?: string
+  time: string
+  title: string
+  location?: string
+  duration?: string
+  description?: string
+  sponsorLogo?: string
+  speakers?: AdminScheduleSpeaker[]
+}
+
+export type AdminScheduleDay = {
+  _key?: string
+  date: string
+  items: AdminScheduleItem[]
+}
+
+export type AdminEventSchedule = {
+  _id: string
+  eventId: number
+  eventSlug: string
+  days: AdminScheduleDay[]
+}
+
+export async function getEventSchedule(eventId: number): Promise<AdminEventSchedule | null> {
+  return adminClient.fetch<AdminEventSchedule | null>(`
+    *[_type == "eventSchedule" && eventId == $eventId][0] {
+      _id,
+      eventId,
+      eventSlug,
+      "days": coalesce(days[] {
+        _key,
+        date,
+        "items": coalesce(items[] {
+          _key,
+          time,
+          title,
+          location,
+          duration,
+          description,
+          sponsorLogo,
+          "speakers": coalesce(speakers[] {
+            _key,
+            "speakerId": speaker->_id,
+            name,
+            title,
+            affiliation,
+            photo,
+            presentation,
+            videoId,
+            videoStartTime,
+            sponsor,
+            sponsorStyle
+          }, [])
+        }, [])
+      }, [])
+    }
+  `, { eventId })
+}
+
+export async function createEventScheduleDoc(eventId: number, eventSlug: string) {
+  return adminClient.create({
+    _type: 'eventSchedule',
+    eventId,
+    eventSlug,
+    days: [],
+  })
+}
+
+export async function saveEventSchedule(scheduleId: string, days: AdminScheduleDay[]) {
+  const normalizedDays = days.map((day, dayIndex) => ({
+    _type: 'scheduleDay',
+    _key: day._key || `day-${Date.now()}-${dayIndex}`,
+    date: day.date,
+    items: (day.items || []).map((item, itemIndex) => ({
+      _type: 'scheduleItem',
+      _key: item._key || `item-${Date.now()}-${dayIndex}-${itemIndex}`,
+      time: item.time,
+      title: item.title,
+      location: item.location || '',
+      duration: item.duration || '',
+      description: item.description || '',
+      sponsorLogo: item.sponsorLogo || '',
+      speakers: (item.speakers || []).map((speaker, speakerIndex) => ({
+        _type: 'scheduleSpeaker',
+        _key: speaker._key || `schedule-speaker-${Date.now()}-${dayIndex}-${itemIndex}-${speakerIndex}`,
+        ...(speaker.speakerId ? { speaker: { _type: 'reference', _ref: speaker.speakerId } } : {}),
+        name: speaker.name || '',
+        title: speaker.title || '',
+        affiliation: speaker.affiliation || '',
+        photo: speaker.photo || '',
+        presentation: speaker.presentation || '',
+        videoId: speaker.videoId || '',
+        videoStartTime: speaker.videoStartTime ?? undefined,
+        sponsor: speaker.sponsor || '',
+        sponsorStyle: speaker.sponsorStyle || '',
+      })),
+    })),
+  }))
+
+  return adminClient.patch(scheduleId).set({ days: normalizedDays }).commit()
+}
+
 // ============================================
 // PROMO CODE MANAGEMENT
 // ============================================
