@@ -760,11 +760,11 @@ const SchedulePDF = ({
                 )} */}
               </View>
               <View style={styles.footer}>
-                <Text style={{ fontSize: 12 }}>Presented by the <Text style={{ fontWeight: 'bold' }}>American Defense Alliance</Text> • www.americandefensealliance.org</Text>
+                <Text style={{ fontSize: 12 }}>Presented by the <Text style={{ fontWeight: 'bold' }}>American Defense Alliance</Text> • <Text style={{ color: 'blue', textDecoration: 'underline' }}>www.americandefensealliance.org</Text></Text>
               </View>
 
               <View style={styles.footer}>
-                <Text style={{ fontSize: 10 }}>Norfolk Waterside Marriott, Norfolk, Virginia</Text>
+                <Text style={{ fontSize: 10, marginBottom: 2 }}>Norfolk Waterside Marriott, Norfolk, Virginia</Text>
               </View>
               {isPageOne && showConferenceModerator && (
                 <Text style={{ textAlign: 'center', fontSize: 10, marginBottom: 4 }}>
@@ -834,13 +834,29 @@ const SchedulePDF = ({
                     <View style={{ alignItems: 'center', marginBottom: 8 }}>
                       <Text style={[styles.sponsorTierHeader, { backgroundColor: pillStyle.backgroundColor, color: pillStyle.color, fontSize: 10, paddingHorizontal: 12, paddingVertical: 4 }]}>{tier.name}</Text>
                     </View>
-                    <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: 12 }}>
-                      {tier.sponsors.map((sponsor) => (
-                        <View key={sponsor.id} style={[styles.sponsorLogoContainer, { width: logoSize.width + 12, height: logoSize.height + 8 }]}>
-                          <Image src={sponsor.logoUrl} style={[styles.sponsorLogo, { maxWidth: logoSize.width, maxHeight: logoSize.height }]} cache={true} />
-                        </View>
-                      ))}
-                    </View>
+                    {tier.name.toLowerCase().includes('bronze') ? (
+                      // Bronze sponsors: render in 2-per-row grid
+                      <View>
+                        {[...Array(Math.ceil(tier.sponsors.length / 2))].map((_, rowIndex) => (
+                          <View key={rowIndex} style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 6 }}>
+                            {tier.sponsors.slice(rowIndex * 2, rowIndex * 2 + 2).map((sponsor) => (
+                              <View key={sponsor.id} style={[styles.sponsorLogoContainer, { width: logoSize.width + 8, height: logoSize.height + 4, marginHorizontal: 4 }]}>
+                                <Image src={sponsor.logoUrl} style={[styles.sponsorLogo, { maxWidth: logoSize.width, maxHeight: logoSize.height }]} cache={true} />
+                              </View>
+                            ))}
+                          </View>
+                        ))}
+                      </View>
+                    ) : (
+                      // Other tiers: use default flex layout
+                      <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: 12 }}>
+                        {tier.sponsors.map((sponsor) => (
+                          <View key={sponsor.id} style={[styles.sponsorLogoContainer, { width: logoSize.width + 12, height: logoSize.height + 8 }]}>
+                            <Image src={sponsor.logoUrl} style={[styles.sponsorLogo, { maxWidth: logoSize.width, maxHeight: logoSize.height }]} cache={true} />
+                          </View>
+                        ))}
+                      </View>
+                    )}
                   </View>
                 );
               })}
