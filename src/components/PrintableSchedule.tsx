@@ -44,10 +44,11 @@ const resolveSpeaker = (speaker: Speaker, sanitySpeakerMap: Map<string, EventSpe
     const speakerData = sanitySpeakerMap.get(speaker.speakerId)!;
     return {
       ...speaker,
-      name: speakerData.speakerName,
-      title: speakerData.speakerPosition,
-      affiliation: speakerData.speakerCompany,
-      photo: undefined,
+      // Use manual overrides if they exist, otherwise fall back to Sanity data
+      name: speaker.name?.trim() ? speaker.name : speakerData.speakerName,
+      title: speaker.title?.trim() ? speaker.title : speakerData.speakerPosition,
+      affiliation: speaker.affiliation?.trim() ? speaker.affiliation : speakerData.speakerCompany,
+      photo: undefined, // Sanity uses sanityImage
       sanityImage: speakerData.speakerImage,
     };
   }
@@ -102,6 +103,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
   const [fetchedTiers, setFetchedTiers] = useState<{ id: string; name: string; style?: string; sponsors: { _id: string; name: string; logoUrl: string }[] }[]>([]);
   const [tierSizeMultipliers, setTierSizeMultipliers] = useState<Record<string, number>>({});
   const [fullPageTierIds, setFullPageTierIds] = useState<string[]>([]);
+  const [midPageTierIds, setMidPageTierIds] = useState<string[]>([]);
   const [fullPageFooterImage, setFullPageFooterImage] = useState<string | undefined>(undefined);
   const [pdfLayout, setPdfLayout] = useState<PDFLayoutOptions>({ ...DEFAULT_PDF_LAYOUT });
 
@@ -196,6 +198,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
             style: tier.style,
             sizeMultiplier: tierSizeMultipliers[tier.id] || 1.0,
             fullPage: fullPageTierIds.includes(tier.id),
+            midPage: midPageTierIds.includes(tier.id),
             sponsors: sponsorsWithLogos.map(s => ({
               id: s._id,
               name: s.name,
@@ -575,6 +578,21 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                             className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                           />
                           <span className="text-xs text-gray-600">Separate page (full width)</span>
+                        </label>
+                        <label className="flex items-center gap-1.5 cursor-pointer">
+                          <input
+                            type="checkbox"
+                            checked={midPageTierIds.includes(tier.id)}
+                            onChange={() => {
+                              setMidPageTierIds(prev =>
+                                prev.includes(tier.id)
+                                  ? prev.filter(id => id !== tier.id)
+                                  : [...prev, tier.id]
+                              );
+                            }}
+                            className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                          />
+                          <span className="text-xs text-gray-600">Show mid-day (between pages)</span>
                         </label>
                       </div>
                     )}

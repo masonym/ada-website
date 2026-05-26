@@ -58,12 +58,11 @@ const resolveSpeaker = (speaker: Speaker, sanitySpeakerMap?: Map<string, EventSp
   if (speaker.speakerId && sanitySpeakerMap?.has(speaker.speakerId)) {
     const speakerData = sanitySpeakerMap.get(speaker.speakerId)!;
     return {
-      // Start with schedule-specific data
       ...speaker,
-      // Override with resolved speaker data
-      name: speakerData.speakerName,
-      title: speakerData.speakerPosition,
-      affiliation: speakerData.speakerCompany,
+      // Use manual overrides if they exist, otherwise fall back to Sanity data
+      name: speaker.name?.trim() ? speaker.name : speakerData.speakerName,
+      title: speaker.title?.trim() ? speaker.title : speakerData.speakerPosition,
+      affiliation: speaker.affiliation?.trim() ? speaker.affiliation : speakerData.speakerCompany,
       photo: undefined, // Sanity uses sanityImage
       sanityImage: speakerData.speakerImage,
     };
@@ -124,6 +123,7 @@ export type SponsorTierForPDF = {
   sponsors: SponsorForPDF[];
   sizeMultiplier?: number;
   fullPage?: boolean;
+  midPage?: boolean;
 };
 
 // tier display order (same as BannerGeneratorPage / SponsorLogos.tsx)
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 4,
-    color: '#58799c',
+    color: 'hsl(240, 100%, 40%)',
   },
   subtitle: {
     fontSize: 12,
@@ -581,7 +581,8 @@ const SchedulePDF = ({
   // LETTER size: 612 x 792 points
   // Use a very conservative estimate - better to have fewer items per column than overflow
   const MAX_ITEMS_PER_COLUMN = 12; // simple count-based approach as backup
-  const CONTENT_HEIGHT = 750; // conservative fixed height in points
+  const CONTENT_HEIGHT = 740; // page height in points minus header/footer overhead
+
 
   const estimateItemHeight = (item: ScheduleItem) => {
     // very conservative fixed estimates
@@ -667,9 +668,12 @@ const SchedulePDF = ({
   // render sponsor tiers into remaining space after a day's content.
   // each tier is individually wrap={false} so react-pdf fits as many as possible
   // without breaking a single tier across pages.
-  const renderSponsorSection = (dayDate: string) => {
+  // midPageOnly=true renders only midPage tiers; false renders end-of-day tiers (not midPage, not fullPage)
+  const renderSponsorSection = (dayDate: string, midPageOnly: boolean = false) => {
     // only render column (non-full-page) tiers inline
-    const columnTiers = sponsorTiers.filter(t => !t.fullPage);
+    const columnTiers = midPageOnly
+      ? sponsorTiers.filter(t => !t.fullPage && t.midPage)
+      : sponsorTiers.filter(t => !t.fullPage && !t.midPage);
     if (columnTiers.length === 0) return null;
 
     // sort tiers by canonical order
@@ -688,42 +692,24 @@ const SchedulePDF = ({
       return { width: Math.round(w * multiplier), height: Math.round(h * multiplier) };
     };
 
-    return (
-      <View style={styles.sponsorSection}>
-        {sortedTiers.map((tier) => {
-          const multiplier = tier.sizeMultiplier || 1;
-          const logoSize = getLogoSize(tier.sponsors.length, multiplier);
-          const pillStyle = convertTierStyleToPDF(tier.name, tier.style);
-          return (
-            <View key={`sponsor-tier-${dayDate}-${tier.id}`} style={{ marginBottom: 4 }} wrap={false}>
-              <View style={{ alignItems: 'center', marginBottom: 4 }}>
-                <Text style={[styles.sponsorTierHeader, {
-                  backgroundColor: pillStyle.backgroundColor,
-                  color: pillStyle.color,
-                }]}>{tier.name}</Text>
-              </View>
-              {tier.name.toLowerCase().includes('bronze') ? (
-                // Bronze sponsors: render in 2x2 grid
-                <View>
-                  {[...Array(Math.ceil(tier.sponsors.length / 2))].map((_, rowIndex) => (
-                    <View key={rowIndex} style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 6 }}>
-                      {tier.sponsors.slice(rowIndex * 2, rowIndex * 2 + 2).map((sponsor) => (
-                        <View key={sponsor.id} style={[styles.sponsorLogoContainer, { width: logoSize.width + 8, height: logoSize.height + 4, marginHorizontal: 4 }]}>
-                          <Image
-                            src={sponsor.logoUrl}
-                            style={[styles.sponsorLogo, { maxWidth: logoSize.width, maxHeight: logoSize.height }]}
-                            cache={true}
-                          />
-                        </View>
-                      ))}
-                    </View>
-                  ))}
-                </View>
-              ) : (
-                // Other tiers: use default flex layout
-                <View style={styles.sponsorLogoRow}>
-                  {tier.sponsors.map((sponsor) => (
-                    <View key={sponsor.id} style={[styles.sponsorLogoContainer, { width: logoSize.width + 8, height: logoSize.height + 4 }]}>
+    const renderTierBlock = (tier: typeof sortedTiers[0], dayDate: string, flex?: boolean) => {
+      const multiplier = tier.sizeMultiplier || 1;
+      const logoSize = getLogoSize(tier.sponsors.length, multiplier);
+      const pillStyle = convertTierStyleToPDF(tier.name, tier.style);
+      return (
+        <View key={`sponsor-tier-${dayDate}-${tier.id}`} style={[{ marginBottom: 2 }, flex ? { flex: 1 } : {}]} wrap={false}>
+          <View style={{ alignItems: 'center', marginBottom: 4 }}>
+            <Text style={[styles.sponsorTierHeader, {
+              backgroundColor: pillStyle.backgroundColor,
+              color: pillStyle.color,
+            }]}>{tier.name}</Text>
+          </View>
+          {tier.name.toLowerCase().includes('bronze') ? (
+            <View>
+              {[...Array(Math.ceil(tier.sponsors.length / 2))].map((_, rowIndex) => (
+                <View key={rowIndex} style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 6 }}>
+                  {tier.sponsors.slice(rowIndex * 2, rowIndex * 2 + 2).map((sponsor) => (
+                    <View key={sponsor.id} style={[styles.sponsorLogoContainer, { width: logoSize.width + 4, height: logoSize.height + 0, marginHorizontal: 3 }]}>
                       <Image
                         src={sponsor.logoUrl}
                         style={[styles.sponsorLogo, { maxWidth: logoSize.width, maxHeight: logoSize.height }]}
@@ -732,10 +718,42 @@ const SchedulePDF = ({
                     </View>
                   ))}
                 </View>
-              )}
+              ))}
             </View>
-          );
-        })}
+          ) : (
+            <View style={flex
+              ? { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: 16 }
+              : styles.sponsorLogoRow
+            }>
+              {tier.sponsors.map((sponsor) => (
+                <View key={sponsor.id} style={flex
+                  ? { alignItems: 'center', justifyContent: 'center', padding: 1 }
+                  : [styles.sponsorLogoContainer, { width: logoSize.width + 4, height: logoSize.height + 0 }]
+                }>
+                  <Image
+                    src={sponsor.logoUrl}
+                    style={[styles.sponsorLogo, { maxWidth: logoSize.width, maxHeight: logoSize.height }]}
+                    cache={true}
+                  />
+                </View>
+              ))}
+            </View>
+          )}
+        </View>
+      );
+    };
+
+    return (
+      <View style={styles.sponsorSection}>
+        {midPageOnly ? (
+          // Mid-page: all tiers side-by-side in a single row
+          <View style={{ flexDirection: 'row', alignItems: 'flex-start' }} wrap={false}>
+            {sortedTiers.map((tier) => renderTierBlock(tier, dayDate, true))}
+          </View>
+        ) : (
+          // End-of-day: tiers stacked vertically (existing behaviour)
+          sortedTiers.map((tier) => renderTierBlock(tier, dayDate, false))
+        )}
       </View>
     );
   };
@@ -792,9 +810,10 @@ const SchedulePDF = ({
                     const keyIndex = page.left.length + index;
                     return renderScheduleItem(item, keyIndex, prevItem);
                   })}
-                  {isLastPageOfDay && sponsorTiers.filter(t => !t.fullPage).length > 0 && renderSponsorSection(day.date)}
                 </View>
               </View>
+              {!isLastPageOfDay && sponsorTiers.filter(t => !t.fullPage && t.midPage).length > 0 && renderSponsorSection(day.date, true)}
+              {isLastPageOfDay && sponsorTiers.filter(t => !t.fullPage && !t.midPage).length > 0 && renderSponsorSection(day.date, false)}
 
             </Page>
           );
@@ -819,7 +838,7 @@ const SchedulePDF = ({
               <Text style={styles.title}>{customTitle || `${event.title} Schedule`}</Text>
             </View>
             <View style={styles.footer}>
-              <Text style={{ fontSize: 12 }}>Presented by the <Text style={{ fontWeight: 'bold' }}>American Defense Alliance</Text> • www.americandefensealliance.org</Text>
+                <Text style={{ fontSize: 12 }}>Presented by the <Text style={{ fontWeight: 'bold' }}>American Defense Alliance</Text> • <Text style={{ color: 'blue', textDecoration: 'underline' }}>www.americandefensealliance.org</Text></Text>
             </View>
             <View style={styles.footer}>
               <Text style={{ fontSize: 10 }}>Norfolk Waterside Marriott, Norfolk, Virginia</Text>
@@ -840,7 +859,7 @@ const SchedulePDF = ({
                         {[...Array(Math.ceil(tier.sponsors.length / 2))].map((_, rowIndex) => (
                           <View key={rowIndex} style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 6 }}>
                             {tier.sponsors.slice(rowIndex * 2, rowIndex * 2 + 2).map((sponsor) => (
-                              <View key={sponsor.id} style={[styles.sponsorLogoContainer, { width: logoSize.width + 8, height: logoSize.height + 4, marginHorizontal: 4 }]}>
+                              <View key={sponsor.id} style={[styles.sponsorLogoContainer, { width: logoSize.width + 8, height: logoSize.height + 0, marginHorizontal: 4 }]}>
                                 <Image src={sponsor.logoUrl} style={[styles.sponsorLogo, { maxWidth: logoSize.width, maxHeight: logoSize.height }]} cache={true} />
                               </View>
                             ))}
@@ -851,7 +870,7 @@ const SchedulePDF = ({
                       // Other tiers: use default flex layout
                       <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: 12 }}>
                         {tier.sponsors.map((sponsor) => (
-                          <View key={sponsor.id} style={[styles.sponsorLogoContainer, { width: logoSize.width + 12, height: logoSize.height + 8 }]}>
+                          <View key={sponsor.id} style={[styles.sponsorLogoContainer, { width: logoSize.width + 12, height: logoSize.height + 0 }]}>
                             <Image src={sponsor.logoUrl} style={[styles.sponsorLogo, { maxWidth: logoSize.width, maxHeight: logoSize.height }]} cache={true} />
                           </View>
                         ))}
