@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import * as yup from 'yup';
 import FormattedPerk from './FormattedPerk';
-import { X, CreditCard, Ticket, Package, Award, AlertTriangle, Landmark } from 'lucide-react';
+import { X, CreditCard, Ticket, Package, Award, AlertTriangle, Landmark, ChevronDown, ChevronUp } from 'lucide-react';
 import { getPriceDisplay } from '@/lib/price-formatting';
 import PriceDisplay from './PriceDisplay';
 import { Event } from '@/types/events';
@@ -174,6 +174,9 @@ const RegistrationModal = ({
   // State for active category tab
   const [activeCategory, setActiveCategory] = useState<'ticket' | 'exhibit' | 'sponsorship'>(initialActiveTab || 'ticket');
 
+  // Track which registration items are expanded/collapsed across all categories
+  const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({});
+
   const [ticketQuantities, setTicketQuantities] = useState<Record<string, number>>({});
   const [isCheckout, setIsCheckout] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
@@ -317,6 +320,19 @@ const RegistrationModal = ({
           setClientSecret(null);
           setPendingConfirmationData(null);
         }
+
+        // Initialize collapse state for all registration items - auto-collapse sold out or ended items
+        const initialExpandedState: Record<string, boolean> = {};
+
+        // Process all registration types
+        const allItems = [...allRegistrations, ...exhibitors, ...sponsorships];
+        allItems.forEach((reg) => {
+          const itemIsSoldOut = isSoldOut(reg, getSponsorCount);
+          const isSaleEnded = isTicketExpired(reg);
+          // Expand by default unless sold out or ended
+          initialExpandedState[reg.id] = !itemIsSoldOut && !isSaleEnded;
+        });
+        setExpandedItems(initialExpandedState);
       }
     } else {
       // When modal is closed, just reset payment-related states
@@ -329,7 +345,7 @@ const RegistrationModal = ({
     // Update refs last to track state for next render
     prevIsOpenRef.current = isOpen;
     prevShowConfirmationRef.current = showConfirmationView;
-  }, [isOpen, showConfirmationView, paymentSuccessful]);
+  }, [isOpen, showConfirmationView, paymentSuccessful, allRegistrations, exhibitors, sponsorships, getSponsorCount]);
 
   const hasEligibleTicketInCart = () => {
     const eligibleInCart = [...exhibitors, ...sponsorships].some(reg => {
@@ -2148,19 +2164,29 @@ const RegistrationModal = ({
                   {/* Show tickets when activeCategory is 'ticket' */}
                   {activeCategory === 'ticket' && allRegistrations.filter(reg => reg.isActive).map(reg => {
                     const ticketIsExpired = isTicketExpired(reg);
+                    const isExpanded = expandedItems[reg.id] ?? true;
                     return (
                       <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${ticketIsExpired ? 'opacity-75 bg-gray-200' : ''}`}>
-                        <div className="flex items-center">
-                          <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} <span className="hidden sm:inline text-gray-500">-</span></h4>
-                          <PriceDisplay registration={reg} />
-                          {ticketIsExpired && (
-                            <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-200 text-red-800">
-                              SOLD OUT
-                            </span>
-                          )}
+                        <div className="flex justify-between items-start">
+                          <div className="flex items-center flex-wrap gap-2">
+                            <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
+                            <PriceDisplay registration={reg} />
+                            {ticketIsExpired && (
+                              <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                                SOLD OUT
+                              </span>
+                            )}
+                          </div>
+                          <button
+                            onClick={() => setExpandedItems(prev => ({ ...prev, [reg.id]: !isExpanded }))}
+                            className="ml-2 p-1 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded transition-colors"
+                            aria-label={isExpanded ? 'Collapse details' : 'Expand details'}
+                          >
+                            {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                          </button>
                         </div>
-                        {reg.perks && reg.perks.length > 0 && (
-                          <ul className="list-none text-sm text-gray-500 mb-2">
+                        {isExpanded && reg.perks && reg.perks.length > 0 && (
+                          <ul className="list-none text-sm text-gray-500 mb-2 mt-2">
                             {reg.perks.map((perk, index) => (
                               <li key={index} className="py-0.5">
                                 <FormattedPerk content={perk} />
@@ -2168,28 +2194,30 @@ const RegistrationModal = ({
                             ))}
                           </ul>
                         )}
-                        {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
-                        <div className="flex items-center">
-                          <button
-                            onClick={() => handleDecrement(reg.id, reg.type)}
-                            disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
-                            className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                          >
-                            -
-                          </button>
-                          <span className="px-4 py-1 border-t border-b text-center w-12">
-                            {ticketQuantities[reg.id] || 0}
-                          </span>
-                          <button
-                            onClick={() => handleIncrement(reg.id, reg.type)}
-                            disabled={isSoldOut(reg, getSponsorCount) || isTicketExpired(reg) || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
-                            className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                          >
-                            +
-                          </button>
-                        </div>
-                        {renderValidationUI(reg)}
-                        {renderCodeValidationUI(reg)}
+                        {isExpanded && reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
+                        {isExpanded && (
+                          <div className="flex items-center mt-2">
+                            <button
+                              onClick={() => handleDecrement(reg.id, reg.type)}
+                              disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
+                              className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                            >
+                              -
+                            </button>
+                            <span className="px-4 py-1 border-t border-b text-center w-12">
+                              {ticketQuantities[reg.id] || 0}
+                            </span>
+                            <button
+                              onClick={() => handleIncrement(reg.id, reg.type)}
+                              disabled={isSoldOut(reg, getSponsorCount) || isTicketExpired(reg) || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
+                              className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                            >
+                              +
+                            </button>
+                          </div>
+                        )}
+                        {isExpanded && renderValidationUI(reg)}
+                        {isExpanded && renderCodeValidationUI(reg)}
                       </div>
                     )
                   })}
@@ -2198,53 +2226,65 @@ const RegistrationModal = ({
                   {activeCategory === 'exhibit' && exhibitors.filter(reg => reg.isActive).map(reg => {
                     const itemIsSoldOut = isSoldOut(reg, getSponsorCount);
                     const isSaleEnded = isTicketExpired(reg);
+                    const isExpanded = expandedItems[reg.id] ?? true;
                     return (
                       <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut || isSaleEnded ? 'opacity-75 bg-gray-200' : ''}`}>
-                        <div className="flex items-center">
-                          <h4 className="text-lg font-medium text-gray-800 mr-2">{reg.name} <span className="hidden sm:inline text-gray-500">-</span></h4>
-                          <PriceDisplay registration={reg} />
-                          {itemIsSoldOut ? (
-                            <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-200 text-red-800">
-                              SOLD OUT
-                            </span>
-                          ) : isSaleEnded ? (
-                            <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                              SALE ENDED
-                            </span>
-                          ) : shouldShowRemaining(reg, getSponsorCount) ? (
-                            <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                              {getRemainingSlots(reg, getSponsorCount)} remaining
-                            </span>
-                          ) : null}
+                        <div className="flex justify-between items-start">
+                          <div className="flex items-center flex-wrap gap-2">
+                            <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
+                            <PriceDisplay registration={reg} />
+                            {itemIsSoldOut ? (
+                              <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                                SOLD OUT
+                              </span>
+                            ) : isSaleEnded ? (
+                              <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                SALE ENDED
+                              </span>
+                            ) : shouldShowRemaining(reg, getSponsorCount) ? (
+                              <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                {getRemainingSlots(reg, getSponsorCount)} remaining
+                              </span>
+                            ) : null}
+                          </div>
+                          <button
+                            onClick={() => setExpandedItems(prev => ({ ...prev, [reg.id]: !isExpanded }))}
+                            className="ml-2 p-1 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded transition-colors"
+                            aria-label={isExpanded ? 'Collapse details' : 'Expand details'}
+                          >
+                            {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                          </button>
                         </div>
-                        {reg.perks && reg.perks.length > 0 && (
-                          <ul className="list-none text-sm text-gray-500 mb-2">
+                        {isExpanded && reg.perks && reg.perks.length > 0 && (
+                          <ul className="list-none text-sm text-gray-500 mb-2 mt-2">
                             {reg.perks.map((perk, index) => <li key={index} className="py-0.5">
                               <FormattedPerk content={perk} />
                             </li>)}
                           </ul>
                         )}
-                        {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
-                        <div className="flex items-center">
-                          <button
-                            onClick={() => handleDecrement(reg.id, reg.type)}
-                            disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
-                            className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                          >
-                            -
-                          </button>
-                          <span className="px-4 py-1 border-t border-b text-center w-12">
-                            {ticketQuantities[reg.id] || 0}
-                          </span>
-                          <button
-                            onClick={() => handleIncrement(reg.id, reg.type)}
-                            disabled={isSoldOut(reg, getSponsorCount) || isSaleEnded || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
-                            className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                          >
-                            +
-                          </button>
-                        </div>
-                        {renderValidationUI(reg)}
+                        {isExpanded && reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
+                        {isExpanded && (
+                          <div className="flex items-center mt-2">
+                            <button
+                              onClick={() => handleDecrement(reg.id, reg.type)}
+                              disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
+                              className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                            >
+                              -
+                            </button>
+                            <span className="px-4 py-1 border-t border-b text-center w-12">
+                              {ticketQuantities[reg.id] || 0}
+                            </span>
+                            <button
+                              onClick={() => handleIncrement(reg.id, reg.type)}
+                              disabled={isSoldOut(reg, getSponsorCount) || isSaleEnded || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
+                              className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                            >
+                              +
+                            </button>
+                          </div>
+                        )}
+                        {isExpanded && renderValidationUI(reg)}
                       </div>
                     )
                   })}
@@ -2253,60 +2293,69 @@ const RegistrationModal = ({
                   {activeCategory === 'sponsorship' && sponsorships.filter(reg => reg.isActive).map(reg => {
                     const itemIsSoldOut = isSoldOut(reg, getSponsorCount);
                     const isSaleEnded = isTicketExpired(reg);
+                    const isExpanded = expandedItems[reg.id] ?? true;
                     console.log('Sponsorship registration:', reg);
                     return (
                       <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut || isSaleEnded ? 'opacity-75 bg-gray-200' : ''}`}>
                         <div className="flex justify-between items-start">
-                          <div className="flex items-center">
-                            <h4 className="text-lg font-medium text-gray-800 mr-2">
-                              {reg.name} <span className="hidden sm:inline text-gray-500">-</span>
+                          <div className="flex items-center flex-wrap gap-2">
+                            <h4 className="text-lg font-medium text-gray-800">
+                              {reg.name}
                             </h4>
                             <PriceDisplay registration={reg} />
 
                             {itemIsSoldOut ? (
-                              <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                              <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
                                 SOLD OUT
                               </span>
                             ) : isSaleEnded ? (
-                              <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                              <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                 SALE ENDED
                               </span>
                             ) : shouldShowRemaining(reg, getSponsorCount) && reg.showRemaining ? (
-                              <span className="text-center inline-flex items-center px-2 py-1 ml-2 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                              <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                 {getRemainingSlots(reg, getSponsorCount)} remaining
                               </span>
                             ) : null}
                           </div>
-
+                          <button
+                            onClick={() => setExpandedItems(prev => ({ ...prev, [reg.id]: !isExpanded }))}
+                            className="ml-2 p-1 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded transition-colors"
+                            aria-label={isExpanded ? 'Collapse details' : 'Expand details'}
+                          >
+                            {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                          </button>
                         </div>
-                        {reg.perks && reg.perks.length > 0 && (
-                          <ul className="list-none text-sm text-gray-500 mb-2">
+                        {isExpanded && reg.perks && reg.perks.length > 0 && (
+                          <ul className="list-none text-sm text-gray-500 mb-2 mt-2">
                             {reg.perks.map((perk, index) => <li key={index} className="py-0.5">
                               <FormattedPerk content={perk} />
                             </li>)}
                           </ul>
                         )}
-                        {reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
-                        <div className="flex items-center">
-                          <button
-                            onClick={() => handleDecrement(reg.id, reg.type)}
-                            disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
-                            className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                          >
-                            -
-                          </button>
-                          <span className="px-4 py-1 border-t border-b text-center w-12">
-                            {ticketQuantities[reg.id] || 0}
-                          </span>
-                          <button
-                            onClick={() => handleIncrement(reg.id, reg.type)}
-                            disabled={isSoldOut(reg, getSponsorCount) || isSaleEnded || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
-                            className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                          >
-                            +
-                          </button>
-                        </div>
-                        {renderValidationUI(reg)}
+                        {isExpanded && reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
+                        {isExpanded && (
+                          <div className="flex items-center mt-2">
+                            <button
+                              onClick={() => handleDecrement(reg.id, reg.type)}
+                              disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
+                              className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                            >
+                              -
+                            </button>
+                            <span className="px-4 py-1 border-t border-b text-center w-12">
+                              {ticketQuantities[reg.id] || 0}
+                            </span>
+                            <button
+                              onClick={() => handleIncrement(reg.id, reg.type)}
+                              disabled={isSoldOut(reg, getSponsorCount) || isSaleEnded || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
+                              className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+                            >
+                              +
+                            </button>
+                          </div>
+                        )}
+                        {isExpanded && renderValidationUI(reg)}
                       </div>
                     )
                   })}
