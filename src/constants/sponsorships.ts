@@ -1285,7 +1285,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     }
                 ],
                 colour: "#C0C0C0",
-                showRemaining: false
+                showRemaining: false,
+                saleEndTime: "2026-05-26T19:00:00Z",
             },
             {
                 id: "bronze-sponsor",
@@ -1342,7 +1343,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     }
                 ],
                 colour: "#CD7F32",
-                showRemaining: false
+                showRemaining: false,
+                saleEndTime: "2026-05-26T19:00:00Z",
             },
             {
                 id: "cybersecurity-cmmc-sponsor",
@@ -1499,6 +1501,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 ],
                 colour: "#3FB4E6",
                 showRemaining: false,
+                saleEndTime: "2026-05-26T19:00:00Z",
             },
             {
                 id: "small-business-sponsor",
@@ -1539,6 +1542,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                     },
                 ],
                 showRemaining: false,
+                saleEndTime: "2026-05-26T19:00:00Z",
             },
             {
                 id: "small-business-sponsor-without-exhibit-space",
@@ -1571,6 +1575,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 ],
                 showRemaining: false,
                 showOnSponsorshipPage: false,
+                saleEndTime: "2026-05-26T19:00:00Z",
             },
         ],
     },
