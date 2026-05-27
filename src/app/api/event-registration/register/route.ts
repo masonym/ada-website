@@ -242,6 +242,8 @@ export async function POST(request: Request) {
         pendingRegistrationId,
         // Store eligible ticket types if promo code has restrictions
         eligibleTicketTypes: promoCodeDetails?.eligibleTicketTypes ? JSON.stringify(promoCodeDetails.eligibleTicketTypes) : '',
+        // Store order validation information for tracking
+        orderValidations: validatedData.orderValidations ? JSON.stringify(validatedData.orderValidations) : '',
       },
     });
 

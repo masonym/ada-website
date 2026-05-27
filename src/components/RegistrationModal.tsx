@@ -198,6 +198,7 @@ const RegistrationModal = ({
   type ValidationState = 'idle' | 'validating' | 'valid' | 'invalid';
   const [validationStatus, setValidationStatus] = useState<Record<string, ValidationState>>({});
   const [validationError, setValidationError] = useState<Record<string, string | null>>({});
+  const [validatedOrderInfo, setValidatedOrderInfo] = useState<Record<string, any>>({});
 
   // For code validation (add-ons that require special codes)
   const [codeInput, setCodeInput] = useState<Record<string, string>>({});
@@ -551,6 +552,11 @@ const RegistrationModal = ({
         setValidationStatus(prev => ({ ...prev, [ticketId]: 'valid' }));
         // Mark this ticket as manually validated to prevent automatic invalidation
         setManuallyValidatedTickets(prev => ({ ...prev, [ticketId]: true }));
+        
+        // Store the validated order information for tracking
+        if (result.validatedOrder) {
+          setValidatedOrderInfo(prev => ({ ...prev, [ticketId]: result.validatedOrder }));
+        }
       } else {
         setValidationStatus(prev => ({ ...prev, [ticketId]: 'invalid' }));
         setValidationError(prev => ({ ...prev, [ticketId]: result.message || 'Invalid or expired Order ID.' }));
@@ -678,6 +684,7 @@ const RegistrationModal = ({
     setValidationError({});
     setOrderIdInput({});
     setManuallyValidatedTickets({});
+    setValidatedOrderInfo({});
 
     // Reset code validation state
     setCodeValidationStatus({});
@@ -1460,6 +1467,20 @@ const RegistrationModal = ({
       tickets: ticketsForValidation,
       agreeToTerms: agreedToTerms,
       paymentMethod: determinedPaymentMethod,
+      // Add order ID validation tracking
+      orderValidations: Object.entries(validatedOrderInfo).map(([ticketId, validatedOrder]) => {
+        const ticket = allRegistrations.find(t => t.id === ticketId) || 
+                      sponsorships.find(t => t.id === ticketId) || 
+                      exhibitors.find(t => t.id === ticketId);
+        return {
+          ticketId,
+          ticketName: ticket?.name || ticketId,
+          validatedOrderId: validatedOrder.orderId,
+          validatedOrderCompany: validatedOrder.company,
+          validatedOrderEmail: validatedOrder.email,
+          validatedOrderCreatedAt: validatedOrder.createdAt
+        };
+      }),
       // ticketQuantities might not be needed directly if 'tickets' array is comprehensive for validation
       // but can be kept if the schema expects it separately for some reason.
       // For now, let's assume the schema can infer quantities from the tickets array or doesn't need it explicitly here.

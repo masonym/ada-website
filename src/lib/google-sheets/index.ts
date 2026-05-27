@@ -247,6 +247,12 @@ export async function logRegistration(
             }
           }
           
+          // Find validation information for this ticket
+          const validationInfo = registrationData.orderValidations?.find(v => v.ticketId === ticket.ticketId);
+          const validationText = validationInfo 
+            ? `Validated against: ${validationInfo.validatedOrderCompany} (${validationInfo.validatedOrderId})`
+            : '';
+
           const row = [
             attendee.company || '',
             attendee.jobTitle || '',
@@ -264,6 +270,7 @@ export async function logRegistration(
             attendee.industry || '',
             attendee.sponsorInterest || '',
             attendee.speakingInterest || '',
+            validationText, // Add validation information
           ];
           rowsToAppend.push(row);
         }
@@ -297,6 +304,12 @@ export async function logRegistration(
             }
           }
           
+          // Find validation information for this ticket
+          const validationInfo = registrationData.orderValidations?.find(v => v.ticketId === ticket.ticketId);
+          const validationText = validationInfo 
+            ? `Validated against: ${validationInfo.validatedOrderCompany} (${validationInfo.validatedOrderId})`
+            : '';
+
           const row = [
             '', '', '', '', '', '',
             commonData.registrationTimestamp,
@@ -304,6 +317,7 @@ export async function logRegistration(
             Math.max((amountToLog * 0.971) - 0.3, 0),
             commonData.totalAmountPaid, // Total order amount
             '', '', '', '', '', '',
+            validationText, // Add validation information
           ];
           rowsToAppend.push(row);
         }

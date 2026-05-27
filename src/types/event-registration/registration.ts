@@ -34,6 +34,24 @@ export interface RegistrationFormData {
   // Payment
   paymentMethod: 'creditCard' | 'free';
   promoCode?: string;
+
+  // Order ID Validation Tracking
+  orderValidations?: OrderValidation[];
+}
+
+export interface OrderValidation {
+  ticketId: string;
+  ticketName: string;
+  validatedOrderId: string;
+  validatedOrderCompany: string;
+  validatedOrderEmail: string;
+  validatedOrderCreatedAt: string;
+}
+
+// Interface for registration data as stored in DynamoDB (includes additional fields)
+export interface StoredRegistrationData extends RegistrationFormData {
+  id: string;
+  createdAt: string;
 }
 
 export interface TicketSelection {

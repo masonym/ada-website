@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getConfirmedRegistration } from '@/lib/aws/dynamodb';
 import { EXHIBITOR_TYPES } from '@/constants/exhibitors';
 import { SPONSORSHIP_TYPES } from '@/constants/sponsorships';
+import { StoredRegistrationData } from '@/types/event-registration/registration';
 
 // Master key for order validation - falls back to a default if not set
 const MASTER_ORDER_KEY = process.env.MASTER_ORDER_KEY || 'ADA-VALIDATION-KEY';
@@ -37,7 +38,7 @@ export async function POST(request: Request) {
     }
 
     console.log('Validating order:', { orderId, eventId });
-    const registration = await getConfirmedRegistration(orderId.trim());
+    const registration = await getConfirmedRegistration(orderId.trim()) as StoredRegistrationData;
 
     if (!registration) {
       return NextResponse.json({ isValid: false, message: 'Order not found.' }, { status: 404 });
@@ -59,7 +60,18 @@ export async function POST(request: Request) {
     console.log('Is Eligible:', isEligible);
 
     if (isEligible) {
-      return NextResponse.json({ isValid: true });
+      // Return company information for tracking purposes
+      return NextResponse.json({ 
+        isValid: true,
+        validatedOrder: {
+          orderId: registration.id,
+          company: registration.company,
+          email: registration.email,
+          eventId: registration.eventId,
+          createdAt: registration.createdAt,
+          tickets: registration.tickets
+        }
+      });
     } else {
       return NextResponse.json({ isValid: false, message: 'This order does not contain an eligible Exhibitor or Sponsor pass.' });
     }
