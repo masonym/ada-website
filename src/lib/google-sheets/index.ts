@@ -271,6 +271,7 @@ export async function logRegistration(
             attendee.sponsorInterest || '',
             attendee.speakingInterest || '',
             validationText, // Add validation information
+            commonData.promoCode || '', // Add promo code
           ];
           rowsToAppend.push(row);
         }
@@ -318,6 +319,7 @@ export async function logRegistration(
             commonData.totalAmountPaid, // Total order amount
             '', '', '', '', '', '',
             validationText, // Add validation information
+            commonData.promoCode || '', // Add promo code
           ];
           rowsToAppend.push(row);
         }
