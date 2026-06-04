@@ -31,6 +31,13 @@ type Speaker = {
   image?: { asset: { _ref: string } };
 };
 
+type Presentation = {
+  key: string;
+  fileName: string;
+  lastModified: string | null;
+  size: number;
+};
+
 type ScheduleSpeaker = {
   _key?: string;
   speakerId?: string;
@@ -123,6 +130,7 @@ function SpeakerRow({
   speakerIndex,
   totalSpeakers,
   allSpeakers,
+  presentations,
   onChange,
   onRemove,
   onMoveUp,
@@ -132,6 +140,7 @@ function SpeakerRow({
   speakerIndex: number;
   totalSpeakers: number;
   allSpeakers: Speaker[];
+  presentations: Presentation[];
   onChange: (updates: Partial<ScheduleSpeaker>) => void;
   onRemove: () => void;
   onMoveUp: () => void;
@@ -257,12 +266,21 @@ function SpeakerRow({
               placeholder="Legacy photo filename"
               className="rounded-md border border-gray-300 px-3 py-1.5 text-sm"
             />
-            <input
+            <select
               value={speaker.presentation || ""}
               onChange={(e) => onChange({ presentation: e.target.value })}
-              placeholder="Presentation filename"
-              className="rounded-md border border-gray-300 px-3 py-1.5 text-sm"
-            />
+              className="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-900"
+            >
+              <option value="">No presentation slides</option>
+              {speaker.presentation && !presentations.some((presentation) => presentation.fileName === speaker.presentation) && (
+                <option value={speaker.presentation}>{speaker.presentation} (not found in uploads)</option>
+              )}
+              {presentations.map((presentation) => (
+                <option key={presentation.key} value={presentation.fileName}>
+                  {presentation.fileName}
+                </option>
+              ))}
+            </select>
             <input
               value={speaker.videoId || ""}
               onChange={(e) => onChange({ videoId: e.target.value })}
@@ -343,6 +361,7 @@ function SessionCard({
   dayIndex,
   totalItems,
   allSpeakers,
+  presentations,
   onUpdate,
   onRemove,
   onMoveUp,
@@ -358,6 +377,7 @@ function SessionCard({
   dayIndex: number;
   totalItems: number;
   allSpeakers: Speaker[];
+  presentations: Presentation[];
   onUpdate: (updates: Partial<ScheduleItem>) => void;
   onRemove: () => void;
   onMoveUp: () => void;
@@ -559,6 +579,7 @@ function SessionCard({
                   speakerIndex={speakerIndex}
                   totalSpeakers={item.speakers?.length ?? 0}
                   allSpeakers={allSpeakers}
+                  presentations={presentations}
                   onChange={(updates) => onUpdateSpeaker(speakerIndex, updates)}
                   onRemove={() => onRemoveSpeaker(speakerIndex)}
                   onMoveUp={() => onMoveSpeakerUp(speakerIndex)}
@@ -610,6 +631,7 @@ export default function ScheduleAdminPage() {
   const [schedule, setSchedule] = useState<EventSchedule | null>(null);
   const [savedSchedule, setSavedSchedule] = useState<EventSchedule | null>(null);
   const [speakers, setSpeakers] = useState<Speaker[]>([]);
+  const [presentations, setPresentations] = useState<Presentation[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
@@ -636,6 +658,7 @@ export default function ScheduleAdminPage() {
     if (hasLoadedSelectedEvent) {
       window.localStorage.setItem(SELECTED_EVENT_STORAGE_KEY, selectedEventId.toString());
       fetchSchedule(selectedEventId);
+      fetchPresentations(selectedEventId);
     }
   }, [hasLoadedSelectedEvent, selectedEventId]);
 
@@ -669,6 +692,17 @@ export default function ScheduleAdminPage() {
       showMessage("error", "Failed to load schedule");
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function fetchPresentations(eventId: number) {
+    try {
+      const res = await fetch(`/api/admin/presentations?eventId=${eventId}`);
+      const data = await res.json();
+      setPresentations(data.presentations || []);
+    } catch (error) {
+      console.error("Error fetching presentations:", error);
+      setPresentations([]);
     }
   }
 
@@ -948,6 +982,7 @@ export default function ScheduleAdminPage() {
                                 dayIndex={dayIndex}
                                 totalItems={day.items.length}
                                 allSpeakers={speakers}
+                                presentations={presentations}
                                 onUpdate={(updates) => updateItem(dayIndex, itemIndex, updates)}
                                 onRemove={() => removeItem(dayIndex, itemIndex)}
                                 onMoveUp={() => moveItem(dayIndex, itemIndex, "up")}
