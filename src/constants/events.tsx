@@ -1132,7 +1132,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     id: 6,
     shown: true,
     eventShorthand: "2026NMCPC",
-    password: "2026NMCPCADA",
+    password: "2026ADANORFOLK",
     title: "2026 Navy & Marine Corps Procurement Conference",
     date: "May 28-29, 2026",
     timeStart: "2026-05-28T11:30:00Z",
