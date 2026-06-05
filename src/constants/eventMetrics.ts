@@ -4,7 +4,7 @@ export interface EventMetricsConfig {
   title?: string;
   speakerCount?: number;
   matchmakingHosts?: number;
-  oneOnOneAppointments?: number;
+  oneOnOneAppointments?: number | string;
   industryColumn?: string;
   businessSizeColumn?: string;
   roleColumn?: string;
