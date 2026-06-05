@@ -49,7 +49,7 @@ const RecapSponsorGrid = async ({ event }: RecapSponsorGridProps) => {
             </div>
 
             <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
+                <div className="flex flex-wrap justify-center gap-4">
                     {allSponsors.map((sponsor) => {
                         const logo = (
                             <Image
@@ -65,7 +65,7 @@ const RecapSponsorGrid = async ({ event }: RecapSponsorGridProps) => {
                         return (
                             <div
                                 key={sponsor._id}
-                                className="flex items-center justify-center p-2 hover:scale-105 transition-transform duration-200"
+                                className="flex items-center justify-center p-2 hover:scale-105 transition-transform duration-200 w-[calc(33%-1rem)] sm:w-[calc(25%-1rem)] md:w-[calc(16.66%-1rem)] lg:w-[calc(12.5%-1rem)]"
                                 title={sponsor.name}
                             >
                                 {sponsor.website ? (
