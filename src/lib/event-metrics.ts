@@ -33,7 +33,7 @@ export interface EventMetricsData {
   uniqueOrganizations: number;
   speakerCount: number;
   matchmakingHosts: number;
-  oneOnOneAppointments: number;
+  oneOnOneAppointments: number | string;
   industryBreakdown: MetricsBreakdownItem[];
   organizationTypeBreakdown: MetricsBreakdownItem[];
   roleBreakdown: MetricsBreakdownItem[];
