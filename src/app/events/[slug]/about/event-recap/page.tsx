@@ -10,6 +10,7 @@ import { SOCIALS } from '@/constants';
 import { getEventMetricsConfig } from '@/constants/eventMetrics';
 import { getEventMetricsData } from '@/lib/event-metrics';
 import EventMetricsSection from '@/app/components/EventMetricsSection';
+import RecapSponsorGrid from '@/app/components/RecapSponsorGrid';
 
 // Generate static params for all event slugs
 export async function generateStaticParams() {
@@ -123,6 +124,8 @@ export default async function EventRecapPage({ params }: { params: Promise<{ slu
         <SectionRenderer key={section.id} section={section} />
       ))}
 
+
+      <RecapSponsorGrid event={event} />
 
       {/* Photo Credits Section */}
       {recapData?.metadata?.photoCredits?.enabled && (
