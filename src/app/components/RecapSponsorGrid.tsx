@@ -38,11 +38,8 @@ const RecapSponsorGrid = async ({ event }: RecapSponsorGridProps) => {
     return (
         <div className="w-full max-w-7xl mx-auto mt-12 px-4">
             <div className="relative mb-8">
-                <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-gray-300"></div>
-                </div>
                 <div className="relative flex justify-center">
-                    <h2 className="bg-white px-6 py-2 text-2xl md:text-3xl font-bold text-center text-slate-700">
+                    <h2 className="bg-sb-100 rounded-full px-6 py-2 text-2xl md:text-3xl font-bold text-center text-slate-700">
                         Thank You to Our Sponsors &amp; Exhibitors
                     </h2>
                 </div>
