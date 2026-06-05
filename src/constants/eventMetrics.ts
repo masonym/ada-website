@@ -48,7 +48,7 @@ export const EVENT_METRICS_CONFIGS: EventMetricsConfig[] = [
     title: 'Event Metrics',
     speakerCount: 38,
     matchmakingHosts: 14,
-    oneOnOneAppointments: "~",
+    oneOnOneAppointments: 156,
     industryColumn: 'Industry',
     businessSizeColumn: 'Business Size',
     roleColumn: 'Contact Title', // which column to use from the CSV for the role breakdown
