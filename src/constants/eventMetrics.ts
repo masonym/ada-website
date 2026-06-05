@@ -47,7 +47,7 @@ export const EVENT_METRICS_CONFIGS: EventMetricsConfig[] = [
     csvPath: 'events/2026NMCPC/registration-information.csv',
     title: 'Event Metrics',
     speakerCount: 38,
-    matchmakingHosts: 13,
+    matchmakingHosts: 14,
     oneOnOneAppointments: "~",
     industryColumn: 'Industry',
     businessSizeColumn: 'Business Size',
