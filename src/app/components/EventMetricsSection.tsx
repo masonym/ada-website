@@ -28,7 +28,7 @@ function BreakdownList({ items }: { items: MetricsBreakdownItem[] }) {
   );
 }
 
-function StatCard({ label, value }: { label: string; value: number }) {
+function StatCard({ label, value }: { label: string; value: number | string }) {
   return (
     <div className="rounded-xl bg-white border border-gray-200 p-5 text-center h-full flex flex-col justify-between">
       <p className="text-sm text-slate-500 uppercase tracking-wide min-h-[3rem] flex items-center justify-center leading-tight">
