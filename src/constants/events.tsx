@@ -1509,10 +1509,34 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         {
           date: "August 4",
           sessionTime: "4:45 PM - 6:00 PM",
+          location: "Santa Fe",
         },
         {
           date: "August 5",
           sessionTime: "12:30 PM - 1:30 PM",
+          location: "Santa Fe",
+        },
+      ],
+      signUpDetails: [
+        {
+          label: "Sign Up",
+          value: "Sign Up is onsite only, on a first-come, first-served basis.",
+        },
+        {
+          label: "Date/Time",
+          value: "Sign up for August 4 appointments will take place on August 4 from 8:00 AM to 9:00 AM.",
+        },
+        {
+          label: "Date/Time",
+          value: "Sign up for August 5 appointments will take place on August 5 from 8:00 AM to 9:00 AM.",
+        },
+        {
+          label: "Location",
+          value: "Generations Ballroom Pre-Function",
+        },
+        {
+          label: "Number of appointments",
+          value: "Limit 3 appointments per attendee.",
         },
       ],
     },
