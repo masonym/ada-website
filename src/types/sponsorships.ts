@@ -17,6 +17,7 @@ export interface Sponsorship {
     cost: number;
     perks: Array<Perk>;
     colour?: string;
+    textColour?: string;
     slotsPerEvent?: number;
     showOnSponsorshipPage?: boolean;
     showRemaining?: boolean;

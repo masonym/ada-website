@@ -46,25 +46,25 @@ const SponsorshipCard = ({ item, event, eyebrow, getSponsorCount }: SponsorProp)
                 </div>
             )}
             <div
-                className={`flex items-center gap-4 rounded-t-lg justify-between p-4 ${item.colour || 'bg-navy-800'}`}
+                className={`flex items-center gap-4 rounded-t-lg justify-between p-4 ${item.colour || 'bg-navy-800'} ${item.textColour || 'text-white'} font-bold`}
                 style={item.colour ? { backgroundColor: item.colour } : undefined}
             >
                 <div>
-                    <h4 className="text-[1rem] font-bold text-white">{item.title}</h4>
+                    <h4 className={`text-[1rem] font-bold `}>{item.title}</h4>
                     {eyebrow && (
                         <span className="inline-block mb-1 px-2 py-0.5 rounded-full bg-white/20 text-white text-[16px] font-semibold tracking-wide uppercase">
                             {eyebrow}
                         </span>
                     )}
                     {item.slotsPerEvent !== undefined && (
-                        <p className="text-sm font-medium text-white">
+                        <p className="text-sm font-medium">
                             {item.slotsPerEvent} available per event
                         </p>
                     )}
                 </div>
                 <div className="text-right">
                     <div className="flex items-center gap-2">
-                        <span className="text-xl font-bold text-white">{priceInfo.displayPrice}</span>
+                        <span className="text-xl font-bold">{priceInfo.displayPrice}</span>
                         {priceInfo.originalPrice && (
                             <span className="line-through text-white/80 text-base">{priceInfo.originalPrice}</span>
                         )}
