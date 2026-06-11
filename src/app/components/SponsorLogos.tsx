@@ -77,6 +77,12 @@ const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) =
         })
     );
 
+    const tiersWithSponsors = processedTiers.filter(tier => tier.sponsors.length > 0);
+
+    if (tiersWithSponsors.length === 0) {
+        return null;
+    }
+
     const getDefaultTierStyle = (tierName: string) => {
         if (tierName.toLowerCase().includes('small')) return 'bg-sb-100 text-slate-900';
         if (tierName.toLowerCase().includes('gold')) return 'bg-amber-400 text-slate-900';
@@ -161,7 +167,7 @@ const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) =
                 </p>
             )}
 
-            {processedTiers.map((tier, tierIndex) => {
+            {tiersWithSponsors.map((tier, tierIndex) => {
                 const tierStyleProps = getTierStyleProps(tier.style, tier.name);
 
                 return (
