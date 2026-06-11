@@ -126,6 +126,16 @@ const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) =
         return { width: 250, height: 150 };
     };
 
+    const getTierStyleProps = (tierStyle: string | undefined, tierName: string) => {
+        const style = tierStyle || getDefaultTierStyle(tierName);
+        const backgroundColor = style.match(/bg-\[(#[0-9a-fA-F]{3,8})\]/)?.[1];
+
+        return {
+            className: backgroundColor ? style.replace(/bg-\[#[0-9a-fA-F]{3,8}\]/, '').trim() : style,
+            style: backgroundColor ? { backgroundColor } : undefined,
+        };
+    };
+
 
 
     // List of sponsor tiers that should display descriptions
@@ -151,55 +161,73 @@ const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) =
                 </p>
             )}
 
-            {processedTiers.map((tier, tierIndex) => (
-                <div key={tierIndex} className="mb-6 md:mb-8 last:mb-8">
-                    <div className="relative mb-6 md:mb-8">
-                        <div className="absolute inset-0 flex items-center">
-                            <div className="w-full border-t border-gray-300"></div>
+            {processedTiers.map((tier, tierIndex) => {
+                const tierStyleProps = getTierStyleProps(tier.style, tier.name);
+
+                return (
+                    <div key={tierIndex} className="mb-6 md:mb-8 last:mb-8">
+                        <div className="relative mb-6 md:mb-8">
+                            <div className="absolute inset-0 flex items-center">
+                                <div className="w-full border-t border-gray-300"></div>
+                            </div>
+                            <div className="relative flex justify-center">
+                                <span
+                                    className={`px-4 md:px-6 py-2 text-lg md:text-xl lg:text-2xl font-bold rounded-full ${tierStyleProps.className}`}
+                                    style={tierStyleProps.style}
+                                >
+                                    {tier.name}
+                                </span>
+                            </div>
                         </div>
-                        <div className="relative flex justify-center">
-                            <span className={`px-4 md:px-6 py-2 text-lg md:text-xl lg:text-2xl font-bold rounded-full ${tier.style || getDefaultTierStyle(tier.name)}`}>
-                                {tier.name}
-                            </span>
-                        </div>
-                    </div>
 
-                    {tier.description && (
-                        <p className="text-center text-slate-600 mb-4 md:mb-6 max-w-2xl mx-auto px-4 text-sm md:text-base">
-                            {tier.description}
-                        </p>
-                    )}
+                        {tier.description && (
+                            <p className="text-center text-slate-600 mb-4 md:mb-6 max-w-2xl mx-auto px-4 text-sm md:text-base">
+                                {tier.description}
+                            </p>
+                        )}
 
-                    <div className="bg-white p-4 md:p-8 rounded-lg shadow-md">
-                        <div className={getTierGridClass(tier.id, tier.sponsors.length)}>
-                            {tier.sponsors.map((sponsor, sponsorIndex) => {
+                        <div className="bg-white p-4 md:p-8 rounded-lg shadow-md">
+                            <div className={getTierGridClass(tier.id, tier.sponsors.length)}>
+                                {tier.sponsors.map((sponsor, sponsorIndex) => {
 
-                                const allSponsorsHaveDescriptions = tier.sponsors.every(s => !!s.description);
-                                const imageSize = (sponsor.width && sponsor.height)
-                                    ? { width: sponsor.width, height: sponsor.height }
-                                    : getTierImageSize(tier.name);
-                                const isTopTier = tier.topTier;
+                                    const allSponsorsHaveDescriptions = tier.sponsors.every(s => !!s.description);
+                                    const imageSize = (sponsor.width && sponsor.height)
+                                        ? { width: sponsor.width, height: sponsor.height }
+                                        : getTierImageSize(tier.name);
+                                    const isTopTier = tier.topTier;
 
-                                return (
-                                    <div
-                                        key={sponsorIndex}
-                                        className={`flex flex-col items-center justify-center p-4 transition-transform hover:scale-105 duration-300 ${isTopTier
-                                            ? 'relative p-6 rounded-xl  '
-                                            : ''
-                                            }`}
-                                    >
-                                        {isTopTier && (
-                                            <div className="w-fit text-nowrap absolute -top-1 md:-top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-slate-900 px-4 py-1 rounded-full text-sm font-semibold ">
-                                                ★ Featured Sponsor
-                                            </div>
-                                        )}
-                                        {sponsor.website ? (
-                                            <Link
-                                                href={sponsor.website}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="w-full flex justify-center items-center hover:opacity-80 transition-opacity"
-                                            >
+                                    return (
+                                        <div
+                                            key={sponsorIndex}
+                                            className={`flex flex-col items-center justify-center p-4 transition-transform hover:scale-105 duration-300 ${isTopTier
+                                                ? 'relative p-6 rounded-xl  '
+                                                : ''
+                                                }`}
+                                        >
+                                            {isTopTier && (
+                                                <div className="w-fit text-nowrap absolute -top-1 md:-top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-slate-900 px-4 py-1 rounded-full text-sm font-semibold ">
+                                                    ★ Featured Sponsor
+                                                </div>
+                                            )}
+                                            {sponsor.website ? (
+                                                <Link
+                                                    href={sponsor.website}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="w-full flex justify-center items-center hover:opacity-80 transition-opacity"
+                                                >
+                                                    <Image
+                                                        src={urlFor(sponsor.logo).url()}
+                                                        alt={`${sponsor.name} Logo`}
+                                                        width={imageSize.width}
+                                                        height={imageSize.height}
+                                                        priority={sponsor.priority || isTopTier}
+                                                        unoptimized={true}
+                                                        sizes={`(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px`}
+                                                        className={`object-contain max-w-full max-h-full `}
+                                                    />
+                                                </Link>
+                                            ) : (
                                                 <Image
                                                     src={urlFor(sponsor.logo).url()}
                                                     alt={`${sponsor.name} Logo`}
@@ -208,33 +236,22 @@ const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) =
                                                     priority={sponsor.priority || isTopTier}
                                                     unoptimized={true}
                                                     sizes={`(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px`}
-                                                    className={`object-contain max-w-full max-h-full `}
+                                                    className={`object-contain max-w-full max-h-full ${isTopTier ? 'drop-shadow-md' : ''}`}
                                                 />
-                                            </Link>
-                                        ) : (
-                                            <Image
-                                                src={urlFor(sponsor.logo).url()}
-                                                alt={`${sponsor.name} Logo`}
-                                                width={imageSize.width}
-                                                height={imageSize.height}
-                                                priority={sponsor.priority || isTopTier}
-                                                unoptimized={true}
-                                                sizes={`(max-width: 640px) 280px, (max-width: 1024px) 400px, 720px`}
-                                                className={`object-contain max-w-full max-h-full ${isTopTier ? 'drop-shadow-md' : ''}`}
-                                            />
-                                        )}
-                                        {tiersWithDescriptions.includes(tier.id) && sponsor.description && (
-                                            <div className="text-lg mt-4 text-center text-pretty text-slate-600">
-                                                <span dangerouslySetInnerHTML={{ __html: sponsor.description }}></span>
-                                            </div>
-                                        )}
-                                    </div>
-                                );
-                            })}
+                                            )}
+                                            {tiersWithDescriptions.includes(tier.id) && sponsor.description && (
+                                                <div className="text-lg mt-4 text-center text-pretty text-slate-600">
+                                                    <span dangerouslySetInnerHTML={{ __html: sponsor.description }}></span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                );
+            })}
         </div>
     );
 };

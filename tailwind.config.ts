@@ -73,6 +73,9 @@ module.exports = {
     require('@tailwindcss/typography')
   ],
   safelist: [
+    {
+      pattern: /^(bg|text)-(slate|amber|gray|purple|sky|blue|navy|sb)-(100|200|300|400|500|600|700|800|900)$/,
+    },
     'text-navy-100',
     'text-navy-200',
     'text-navy-300',
