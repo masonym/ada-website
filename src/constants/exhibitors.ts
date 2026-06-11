@@ -350,7 +350,7 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
         },
         exhibitors: [
             {
-                id: "exhibit",
+                id: "exhibitors",
                 title: "Table-Top Exhibit Space",
                 cost: 1700,
                 earlyBirdPrice: 1500,
@@ -362,6 +362,7 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                 requiresAttendeeInfo: true,
                 maxQuantityPerOrder: 1,
                 isGovtFreeEligible: false,
+                slotsPerEvent: 60,
                 showRemaining: false,
                 perks: [
                     {

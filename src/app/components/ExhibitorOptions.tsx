@@ -16,9 +16,10 @@ import EventFloorPlan from './EventFloorPlan';
 
 export type ExhibitorProps = {
     event: Event;
+    exhibitorTierStyles?: Record<string, string>;
 };
 
-const ExhibitorOptions = ({ event }: ExhibitorProps) => {
+const ExhibitorOptions = ({ event, exhibitorTierStyles }: ExhibitorProps) => {
     const currentEvent = EXHIBITOR_TYPES.find((e) => e.id === event.id);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { getSponsorCount } = useEventSponsorCounts(event.id);
@@ -36,6 +37,10 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
     };
     
     const exhibitorOptions = getExhibitorsForEvent(event.id);
+    const exhibitorsWithCmsStyles = currentEvent.exhibitors.map((item) => ({
+        ...item,
+        colour: exhibitorTierStyles?.[item.id] || item.colour,
+    }));
 
     return (
         <div className="max-container mx-auto pb-8 pt-0 px-4 flex flex-col items-center">
@@ -69,7 +74,7 @@ const ExhibitorOptions = ({ event }: ExhibitorProps) => {
                         floorPlanImage={`/events/${event.eventShorthand}/event-floorplan.webp`}
                     />
                 )}
-                {currentEvent.exhibitors.map((item, index) => (
+                {exhibitorsWithCmsStyles.map((item, index) => (
                     <ExhibitorCard
                         key={index}
                         item={item}

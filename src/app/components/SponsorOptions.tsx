@@ -17,10 +17,11 @@ import EventFloorPlan from './EventFloorPlan';
 
 export type SponsorProps = {
     event: Event;
+    sponsorTierStyles?: Record<string, string>;
 }
 
 
-const SponsorOptions = ({ event }: SponsorProps) => {
+const SponsorOptions = ({ event, sponsorTierStyles }: SponsorProps) => {
     const currentEvent = SPONSORSHIP_TYPES.find((e) => e.id === event.id);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { getSponsorCount } = useEventSponsorCounts(event.id);
@@ -42,6 +43,16 @@ const SponsorOptions = ({ event }: SponsorProps) => {
     const visibleSponsorships = currentEvent.sponsorships.filter(
         (item) => item.showOnSponsorshipPage !== false
     );
+    const primeSponsor = currentEvent.primeSponsor
+        ? {
+            ...currentEvent.primeSponsor,
+            colour: sponsorTierStyles?.[currentEvent.primeSponsor.id] || currentEvent.primeSponsor.colour,
+        }
+        : undefined;
+    const sponsorshipsWithCmsStyles = visibleSponsorships.map((item) => ({
+        ...item,
+        colour: sponsorTierStyles?.[item.id] || item.colour,
+    }));
 
     const defaultExhibitorText = (
         <>
@@ -100,17 +111,17 @@ const SponsorOptions = ({ event }: SponsorProps) => {
                             floorPlanImage={`/events/${event.eventShorthand}/event-floorplan.webp`}
                         />
                     )}
-                    {currentEvent.primeSponsor && (
+                    {primeSponsor && (
                         <div className="mb-8 w-full">
                             <div className="flex justify-center">
-                                <SponsorshipCard item={currentEvent.primeSponsor} event={event} getSponsorCount={getSponsorCount} />
+                                <SponsorshipCard item={primeSponsor} event={event} getSponsorCount={getSponsorCount} />
                             </div>
                         </div>
                     )}
 
                     {/* this prop isn't required, so we want to only filter ones out that are EXPLICITLY FALSE */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-                        {visibleSponsorships
+                        {sponsorshipsWithCmsStyles
                             .map((item, index) => (
                                 <div
                                     key={index}

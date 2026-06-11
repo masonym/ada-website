@@ -32,6 +32,12 @@ const SponsorshipCard = ({ item, event, eyebrow, getSponsorCount }: SponsorProp)
         earlyBirdDeadline: item.earlyBirdDeadline,
         type: 'paid',
     });
+    const backgroundColor = item.colour?.match(/^#[0-9a-fA-F]{3,8}$/)?.[0] || item.colour?.match(/bg-\[(#[0-9a-fA-F]{3,8})\]/)?.[1];
+    const colourClassName = item.colour
+        ? backgroundColor
+            ? item.colour.replace(/bg-\[#[0-9a-fA-F]{3,8}\]/, '').trim()
+            : item.colour
+        : 'bg-navy-800';
 
     return (
         <div className="w-full h-full max-w-7xl mx-auto mb-6 rounded-lg border border-gray-200 bg-white shadow-md relative">
@@ -46,8 +52,8 @@ const SponsorshipCard = ({ item, event, eyebrow, getSponsorCount }: SponsorProp)
                 </div>
             )}
             <div
-                className={`flex items-center gap-4 rounded-t-lg justify-between p-4 ${item.colour || 'bg-navy-800'} ${item.textColour || 'text-white'} font-bold`}
-                style={item.colour ? { backgroundColor: item.colour } : undefined}
+                className={`flex items-center gap-4 rounded-t-lg justify-between p-4 ${colourClassName} ${item.textColour || 'text-white'} font-bold`}
+                style={backgroundColor ? { backgroundColor } : undefined}
             >
                 <div>
                     <h4 className={`text-[1rem] font-bold `}>{item.title}</h4>
