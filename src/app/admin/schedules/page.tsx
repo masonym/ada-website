@@ -784,6 +784,17 @@ export default function ScheduleAdminPage() {
     setSchedule((cur) => cur ? { ...cur, days: cur.days.filter((_, i) => i !== dayIndex) } : cur);
   }
 
+  function moveDay(dayIndex: number, direction: "up" | "down") {
+    setSchedule((cur) => {
+      if (!cur) return cur;
+      const days = [...cur.days];
+      const targetIndex = direction === "up" ? dayIndex - 1 : dayIndex + 1;
+      if (targetIndex < 0 || targetIndex >= days.length) return cur;
+      [days[dayIndex], days[targetIndex]] = [days[targetIndex], days[dayIndex]];
+      return { ...cur, days };
+    });
+  }
+
   function insertItem(dayIndex: number, afterIndex: number) {
     setSchedule((cur) => {
       if (!cur) return cur;
@@ -950,6 +961,24 @@ export default function ScheduleAdminPage() {
                     <span className="flex-shrink-0 text-xs text-gray-400">
                       {day.items.length} session{day.items.length !== 1 ? "s" : ""}
                     </span>
+                    <div className="flex flex-shrink-0 items-center gap-1">
+                      <button
+                        onClick={() => moveDay(dayIndex, "up")}
+                        disabled={dayIndex === 0}
+                        className="rounded p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-700 disabled:opacity-25"
+                        title="Move day up"
+                      >
+                        <ArrowUp size={16} />
+                      </button>
+                      <button
+                        onClick={() => moveDay(dayIndex, "down")}
+                        disabled={dayIndex === schedule.days.length - 1}
+                        className="rounded p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-700 disabled:opacity-25"
+                        title="Move day down"
+                      >
+                        <ArrowDown size={16} />
+                      </button>
+                    </div>
                     <button
                       onClick={() => { if (window.confirm(`Delete day "${day.date || 'Untitled day'}" and all its sessions?`)) removeDay(dayIndex); }}
                       className="rounded p-1.5 text-red-400 hover:bg-red-50 hover:text-red-600"
