@@ -154,7 +154,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword, sanitySpeakers, s
                 <p className="text-l font-bold text-center mb-8 text-slate-600">Additional Speakers in process of agency approval.</p>
             )}
             {isEventFuture && (
-                <p className="text-l font-bold text-center mb-8 text-slate-600">More speaker information is being added. Please check regularly for updates.</p>
+                <p className="text-l font-bold text-center mb-8 text-slate-600">Speaker information is being added. Please check regularly for updates.</p>
             )}
             <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-4">
                 {normalizedSpeakers

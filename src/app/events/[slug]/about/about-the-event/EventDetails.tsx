@@ -89,7 +89,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({
 
         {/* Key Insights Section */}
         <div className="w-full">
-          <h2 className="text-3xl font-semibold mb-6 text-slate-700">Key Insights</h2>
+          <h2 className="text-3xl font-semibold mb-6 text-slate-700">Key Topics</h2>
           <div className="flex flex-wrap justify-center gap-6">
             {topicalCoverage.map((topic, index) => (
               <div
