@@ -1506,7 +1506,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     slug: "2026-air-force-space-force-procurement-conference",
     locationImage: "locations/temp_venue.webp",
     locationAddress: "8989 North Gate Boulevard, Colorado Springs, Colorado 80921",
-    venueName: "Hotel Polaris by U.S. Air Force Academy ",
+    venueName: "Hotel Polaris at the U.S. Air Force Academy ",
     placeID: "ChIJPYwbhlNNE4cRiOsTMJkeI0o",
     password: "ADA2026AFSFPC",
     eventShorthand: "2026AFSFPC",
