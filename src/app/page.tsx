@@ -18,7 +18,7 @@ const HomePage = () => {
       <UpcomingEvents />
       <MissionStatement />
       <FocusAreas />
-      <Testimonials eventIds={[5, 4, 1]} types={['video', 'image']} showDefaultVideos={false} />
+      <Testimonials eventIds={[6, 5, 4, 1]} types={['video', 'image']} showDefaultVideos={false} />
       <EventHighlights
         sourceEventId={4}
         title="2025 Navy & Marine Corps Procurement Conference Highlights"
