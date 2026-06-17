@@ -1408,6 +1408,28 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         `
       },
     ],
+    testimonials: [
+      {
+        type: 'video',
+        name: "RADM (Ret.) Chip Rock",
+        title: "Hampton Roads Alliance & former Commander",
+        affiliation: "Navy Region Mid-Atlantic",
+        videoId: "yYvUntqzUY0"
+      },
+      {
+        type: 'video',
+        name: "Michelle Hilger",
+        title: "Founder & President",
+        affiliation: "Mongoose Power Solutions",
+        videoId: "0uCCCVG3TxQ"
+      },
+      {
+        type: 'video',
+        name: "Bruno Pesanti & Alan Watson",
+        affiliation: "CGI Federal",
+        videoId: "UHkB7KOEGkY"
+      },
+    ],
   },
 
   {
