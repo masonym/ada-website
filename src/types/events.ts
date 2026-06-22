@@ -69,7 +69,7 @@ export interface EventTestimonial {
     /** Short quote or blurb to display in the card */
     quote?: string;
     name: string;
-    title: string;
+    title?: string;
     affiliation: string;
     /** YouTube video ID for video testimonials */
     videoId?: string;
