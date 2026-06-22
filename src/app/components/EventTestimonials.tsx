@@ -95,7 +95,7 @@ const EventTestimonials = ({ testimonials = [], title, showTitle = true }: Event
                                     </div>
                                 ) : (
                                     <>
-                                        <p className="text-gray-700 mb-3 italic" dangerouslySetInnerHTML={{ __html: testimonial.quote }}></p>
+                                    { testimonial.quote && <p className="text-gray-700 mb-3 italic" dangerouslySetInnerHTML={{ __html: testimonial.quote }}></p> }
                                         {testimonial.fullTranscript && (
                                             <div className="mb-3">
                                                 {!expanded[index] ? (
