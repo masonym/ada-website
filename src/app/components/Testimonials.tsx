@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 interface Testimonial {
     type: 'video' | 'text';
-    quote: string;
+    quote?: string;
     name: string;
     title: string;
     affiliation: string;
@@ -80,7 +80,7 @@ const Testimonials = ({ eventIds, showEvents = true, showDefaultVideos = true, t
                                     </div>
                                 )}
                                 <div className="p-6">
-                                    <p className="text-gray-600 mb-4">{testimonial.quote}</p>
+                                {testimonial.quote && <p className="text-gray-600 mb-4">{testimonial.quote}</p>}
                                     <p className="font-semibold">- {testimonial.name}</p>
                                     <p className="text-gray-500 text-sm">{testimonial.title} at {testimonial.affiliation}</p>
                                 </div>
