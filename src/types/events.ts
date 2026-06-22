@@ -67,7 +67,7 @@ export interface FeaturedTopicDetail {
 export interface EventTestimonial {
     type: 'video' | 'text' | 'image';
     /** Short quote or blurb to display in the card */
-    quote: string;
+    quote?: string;
     name: string;
     title: string;
     affiliation: string;
