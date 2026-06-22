@@ -63,7 +63,7 @@ const EventTestimonials = ({ testimonials = [], title, showTitle = true }: Event
                                             />
                                         </div>
                                         <div className="flex-1 min-w-0">
-                                            <p className="text-gray-700 mb-3 italic" dangerouslySetInnerHTML={{ __html: testimonial.quote }}></p>
+                                        { testimonial.quote && <p className="text-gray-700 mb-3 italic" dangerouslySetInnerHTML={{ __html: testimonial.quote }}></p>}
                                             {testimonial.fullTranscript && (
                                                 <div className="mb-3">
                                                     {!expanded[index] ? (
