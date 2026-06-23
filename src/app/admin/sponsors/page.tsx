@@ -8,7 +8,7 @@ type EventWithTiers = {
   eventId: number;
   title: string;
   eventName: string;
-  tiers: Array<{ id: string; name: string }>;
+  tiers: Array<{ _key: string; id: string; name: string; style?: string }>;
 };
 
 type ExistingSponsor = {
@@ -41,7 +41,7 @@ export default function SponsorAdminPage() {
   const [selectedTierIds, setSelectedTierIds] = useState<string[]>([]);
 
   // existing sponsor form
-  const [mode, setMode] = useState<"new" | "existing" | "remove" | "tier" | "replace-logo" | "edit">("new");
+  const [mode, setMode] = useState<"new" | "existing" | "remove" | "tier" | "edit-tier" | "replace-logo" | "edit">("new");
   const [selectedExistingSponsorId, setSelectedExistingSponsorId] = useState<string>("");
   const [removeFromAllTiers, setRemoveFromAllTiers] = useState(false);
 
@@ -58,6 +58,13 @@ export default function SponsorAdminPage() {
   const [newTierId, setNewTierId] = useState("");
   const [newTierName, setNewTierName] = useState("");
   const [newTierStyle, setNewTierStyle] = useState("");
+
+  // edit tier form
+  const [editTierEventId, setEditTierEventId] = useState<number | null>(null);
+  const [editTierKey, setEditTierKey] = useState("");
+  const [editTierId, setEditTierId] = useState("");
+  const [editTierName, setEditTierName] = useState("");
+  const [editTierStyle, setEditTierStyle] = useState("");
 
   const TIER_STYLE_PRESETS = [
     { label: "Gold", classes: "bg-amber-400 text-slate-900" },
@@ -415,6 +422,55 @@ export default function SponsorAdminPage() {
     }
   }
 
+  const editTierEvent = events.find((e) => e.eventId === editTierEventId);
+
+  function handleEditTierSelect(tierKey: string) {
+    setEditTierKey(tierKey);
+    const tier = editTierEvent?.tiers.find((t) => t._key === tierKey);
+    setEditTierId(tier?.id || "");
+    setEditTierName(tier?.name || "");
+    setEditTierStyle(tier?.style || "");
+  }
+
+  async function handleSubmitEditTier(e: React.FormEvent) {
+    e.preventDefault();
+    if (!editTierEventId || !editTierKey || !editTierId || !editTierName) {
+      setMessage({ type: "error", text: "Please select a tier and fill in all required fields" });
+      return;
+    }
+
+    setSubmitting(true);
+    setMessage(null);
+
+    try {
+      const res = await fetch("/api/admin/sponsors/tiers", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          eventId: editTierEventId,
+          tierKey: editTierKey,
+          tierId: editTierId,
+          tierName: editTierName,
+          tierStyle: editTierStyle,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setMessage({ type: "success", text: data.message });
+        // refresh to get updated tier values
+        fetchData();
+      } else {
+        setMessage({ type: "error", text: data.error });
+      }
+    } catch (error) {
+      setMessage({ type: "error", text: "Failed to update tier" });
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -467,6 +523,17 @@ export default function SponsorAdminPage() {
           >
             <Layers className="inline-block w-4 h-4 mr-1" />
             New Tier
+          </button>
+          <button
+            onClick={() => setMode("edit-tier")}
+            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              mode === "edit-tier"
+                ? "bg-blue-600 text-white"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
+          >
+            <Edit2 className="inline-block w-4 h-4 mr-1" />
+            Edit Tier
           </button>
           <button
             onClick={() => setMode("remove")}
@@ -926,6 +993,159 @@ export default function SponsorAdminPage() {
             </form>
           )}
 
+          {mode === "edit-tier" && (
+            <form onSubmit={handleSubmitEditTier} className="space-y-6">
+              {/* event selection */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Event *
+                </label>
+                <select
+                  value={editTierEventId || ""}
+                  onChange={(e) => {
+                    setEditTierEventId(e.target.value ? parseInt(e.target.value) : null);
+                    setEditTierKey("");
+                    setEditTierId("");
+                    setEditTierName("");
+                    setEditTierStyle("");
+                  }}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  required
+                >
+                  <option value="">Select an event...</option>
+                  {events.map((event) => (
+                    <option key={event._id} value={event.eventId}>
+                      {event.eventName}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* tier selection */}
+              {editTierEvent && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Tier to Edit *
+                  </label>
+                  <select
+                    value={editTierKey}
+                    onChange={(e) => handleEditTierSelect(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    required
+                  >
+                    <option value="">Select a tier...</option>
+                    {editTierEvent.tiers.map((tier) => (
+                      <option key={tier._key} value={tier._key}>
+                        {tier.name} ({tier.id})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+
+              {editTierKey && (
+                <>
+                  <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
+                    <p className="text-sm text-amber-800">
+                      Editing a tier updates it across the whole event. Changing the <strong>Tier ID</strong> can affect special layout/styling that is keyed to specific IDs — only change it if you know what you&apos;re doing. Sponsors already in this tier stay attached.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Tier ID *
+                      </label>
+                      <input
+                        type="text"
+                        value={editTierId}
+                        onChange={(e) => setEditTierId(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="small-business-sponsor"
+                        required
+                      />
+                      <p className="text-xs text-gray-400 mt-1">Lowercase with dashes, e.g., &quot;small-business-sponsor&quot;</p>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Tier Name *
+                      </label>
+                      <input
+                        type="text"
+                        value={editTierName}
+                        onChange={(e) => setEditTierName(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Small Business Sponsors"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Style Classes <span className="text-gray-400 font-normal">(optional)</span>
+                    </label>
+
+                    {/* preset picker */}
+                    <div className="mb-3">
+                      <p className="text-xs text-gray-500 mb-2">Click a preset or type custom classes below</p>
+                      <div className="flex flex-wrap gap-2">
+                        {TIER_STYLE_PRESETS.map((preset) => (
+                          <button
+                            key={preset.label}
+                            type="button"
+                            onClick={() => setEditTierStyle(preset.classes)}
+                            className={`px-3 py-1.5 rounded-full text-xs font-semibold border-2 transition-all ${
+                              editTierStyle === preset.classes
+                                ? "ring-2 ring-offset-1 ring-blue-500 border-transparent"
+                                : "border-transparent hover:border-gray-300"
+                            } ${preset.classes}`}
+                          >
+                            {preset.label}
+                          </button>
+                        ))}
+                        {editTierStyle && !TIER_STYLE_PRESETS.some((p) => p.classes === editTierStyle) && (
+                          <span className={`px-3 py-1.5 rounded-full text-xs font-semibold border-2 border-blue-500 ring-2 ring-offset-1 ring-blue-500 ${editTierStyle}`}>
+                            Custom
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* manual input */}
+                    <input
+                      type="text"
+                      value={editTierStyle}
+                      onChange={(e) => setEditTierStyle(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-sm"
+                      placeholder="bg-sb-100 text-slate-900"
+                    />
+                    <p className="text-xs text-gray-400 mt-1">Tailwind classes applied to the tier badge. Leave blank for no special styling.</p>
+
+                    {/* live preview */}
+                    {editTierStyle && (
+                      <div className="mt-3 flex items-center gap-3">
+                        <span className="text-xs text-gray-500">Preview:</span>
+                        <span className={`px-3 py-1 rounded-full text-xs font-semibold ${editTierStyle}`}>
+                          {editTierName || "Tier Name"}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  >
+                    {submitting ? "Saving..." : "Save Tier Changes"}
+                  </button>
+                </>
+              )}
+            </form>
+          )}
+
           {mode === "remove" && (
             <form onSubmit={handleSubmitRemove} className="space-y-6">
               <div className="rounded-lg border border-red-200 bg-red-50 p-4">
@@ -1212,6 +1432,7 @@ export default function SponsorAdminPage() {
             <li>Use "Remove From Event" to unlink a sponsor or exhibitor tier from an event</li>
             <li>Use "Replace Logo" mode to update a sponsor's logo without changing other details</li>
             <li>Use "Edit Sponsor" mode to update name, website, or HTML description</li>
+            <li>Use "Edit Tier" mode to rename a tier or change its badge colour/style</li>
             <li>Changes appear on the website within a few minutes (CDN cache)</li>
           </ul>
         </div>

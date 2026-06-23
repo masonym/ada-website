@@ -165,15 +165,17 @@ export async function getEventsWithTiers() {
     _id: string
     eventId: number
     title: string
-    tiers: Array<{ id: string; name: string }>
+    tiers: Array<{ _key: string; id: string; name: string; style?: string }>
   }>>(`
     *[_type == "eventSponsor"] | order(eventId desc) {
       _id,
       eventId,
       title,
       tiers[] {
+        _key,
         id,
-        name
+        name,
+        style
       }
     }
   `)
@@ -276,6 +278,37 @@ export async function addTierToEvent(eventId: number, tier: { id: string; name: 
       style: tier.style || '',
       sponsors: []
     }])
+    .commit()
+
+  return { success: true }
+}
+
+// update an existing tier on an event (by its array _key)
+export async function updateEventTier(
+  eventId: number,
+  tierKey: string,
+  updates: { id?: string; name?: string; style?: string }
+) {
+  const eventSponsor = await adminClient.fetch<{ _id: string } | null>(`
+    *[_type == "eventSponsor" && eventId == $eventId][0] { _id }
+  `, { eventId })
+
+  if (!eventSponsor) {
+    throw new Error(`No event sponsor document found for event ${eventId}`)
+  }
+
+  const setOps: Record<string, string> = {}
+  if (updates.id !== undefined) setOps[`tiers[_key=="${tierKey}"].id`] = updates.id
+  if (updates.name !== undefined) setOps[`tiers[_key=="${tierKey}"].name`] = updates.name
+  if (updates.style !== undefined) setOps[`tiers[_key=="${tierKey}"].style`] = updates.style
+
+  if (Object.keys(setOps).length === 0) {
+    return { success: true }
+  }
+
+  await adminClient
+    .patch(eventSponsor._id)
+    .set(setOps)
     .commit()
 
   return { success: true }
