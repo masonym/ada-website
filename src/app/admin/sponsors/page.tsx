@@ -70,8 +70,9 @@ export default function SponsorAdminPage() {
     { label: "Gold", classes: "bg-amber-400 text-slate-900" },
     { label: "Silver", classes: "bg-gray-300 text-slate-900" },
     { label: "Bronze", classes: "bg-amber-700 text-slate-900" },
-    { label: "Platinum", classes: "bg-sky-300 text-slate-900" },
-    { label: "CMMC", classes: "bg-blue-600 text-slate-900" },
+    { label: "Platinum", classes: "bg-blue-600 text-slate-900" },
+    { label: "Coffee Station Sponsor", classes: "bg-orange-950 text-white" },
+    { label: "CMMC", classes: "bg-yellow-300 text-slate-900" },
     { label: "Small Business", classes: "bg-sb-100 text-slate-900" },
     { label: "Exhibitors", classes: "bg-navy-800 text-white" },
   ];
