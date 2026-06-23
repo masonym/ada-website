@@ -17,7 +17,7 @@ export const EVENT_NAVS = [
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {
-        label: 'Sponsors & Exhibitors',
+        label: 'Sponsorships & Exhibits',
         subItems: [
           { label: "Sponsorship Opportunities", path: 'sponsorship-opportunities' },
           { label: "Exhibitor Opportunities", path: 'exhibitor-opportunities' },
@@ -42,7 +42,7 @@ export const EVENT_NAVS = [
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {
-        label: 'Sponsors & Exhibitors',
+        label: 'Sponsorships & Exhibits',
         subItems: [
           { label: "Sponsorship Opportunities", path: 'sponsorship-opportunities' },
           { label: "Exhibitor Opportunities", path: 'exhibitor-opportunities' },
@@ -64,7 +64,7 @@ export const EVENT_NAVS = [
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {
-        label: 'Sponsors & Exhibitors',
+        label: 'Sponsorships & Exhibits',
         subItems: [
           { label: "Sponsor Prospectus", path: 'sponsorship-opportunities' },
           // { label: "Exhibitor Opportunities", path: 'exhibitor-opportunities' },
@@ -90,7 +90,7 @@ export const EVENT_NAVS = [
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {
-        label: 'Sponsors & Exhibitors',
+        label: 'Sponsorships & Exhibits',
         subItems: [
           { label: "Sponsorship Opportunities", path: 'sponsorship-opportunities' },
           { label: "Exhibitor Opportunities", path: 'exhibitor-opportunities' },
@@ -116,7 +116,7 @@ export const EVENT_NAVS = [
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {
-        label: 'Sponsors & Exhibitors',
+        label: 'Sponsorships & Exhibits',
         subItems: [
           { label: "Sponsorship Opportunities", path: 'sponsorship-opportunities' },
           { label: "Exhibitor Opportunities", path: 'exhibitor-opportunities' },
@@ -142,7 +142,7 @@ export const EVENT_NAVS = [
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {
-        label: 'Sponsors & Exhibitors',
+        label: 'Sponsorships & Exhibits',
         subItems: [
           { label: "Sponsorship Opportunities", path: 'sponsorship-opportunities' },
           { label: "Exhibitor Opportunities", path: 'exhibitor-opportunities' },
@@ -168,7 +168,7 @@ export const EVENT_NAVS = [
       { label: 'Agenda', path: 'agenda' },
       { label: 'Speakers', path: 'speakers' },
       {
-        label: 'Sponsors & Exhibitors',
+        label: 'Sponsorships & Exhibits',
         subItems: [
           { label: "Sponsorship Opportunities", path: 'sponsorship-opportunities' },
           { label: "Exhibitor Opportunities", path: 'exhibitor-opportunities' },
