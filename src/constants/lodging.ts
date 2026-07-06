@@ -232,7 +232,7 @@ export const LODGING_INFO: LodgingInfo[] = [
     eventId: 7, // 2026AFSFPC
     hotels: [
       {
-        name: "Hotel Polaris by U.S. Air Force Academy",
+        name: "Hotel Polaris at the U.S. Air Force Academy",
         address: "8989 North Gate Boulevard",
         city: "Colorado Springs",
         state: "CO",
@@ -241,7 +241,7 @@ export const LODGING_INFO: LodgingInfo[] = [
         image: "/hotels/hotel-polaris-exterior.webp",
         link: {
           href: "https://www.thehotelpolaris.com/",
-          label: "Hotel Polaris by U.S. Air Force Academy"
+          label: "Hotel Polaris at the U.S. Air Force Academy"
         },
       },
     ],
@@ -261,7 +261,7 @@ export const LODGING_INFO: LodgingInfo[] = [
     </a>
     <br />
     <br />
-    <b>NOTE</b>: If you need to stay outside of the Official Group Dates (August 2 - August 5), Please call the Reservation Team at (833) 311-5581, or Email the Group Rooms Coordinator, Cissy Schat-Wilk at cissy.schat-wilk@thehotelpolaris.com. Group Rate honored 2 days before & after Group Dates based on hotel availability
+    <b>NOTE</b>: If you need further assistance with your reservation email the Group Rooms Coordinator, Cissy Schat-Wilk at <a href="mailto:cissy.schat-wilk@thehotelpolaris.com" class="underline hover:text-accent text-blue-500">cissy.schat-wilk@thehotelpolaris.com</a>. Group Rate honored 2 days before & after Group Dates based on hotel availability.
     <br />
     <br />
     <div class="mb-4 bg-gray-100 p-4 rounded-xl">
