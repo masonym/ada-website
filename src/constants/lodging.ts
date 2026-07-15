@@ -38,7 +38,6 @@ export type LodgingInfo = {
   resources?: LodgingResource[];
 };
 
-
 export const LODGING_INFO: LodgingInfo[] = [
   {
     eventId: 2, // 2025SDPC
@@ -53,11 +52,11 @@ export const LODGING_INFO: LodgingInfo[] = [
         image: "/hotels/hilton-atlanta.webp",
         link: {
           href: "https://www.hilton.com/en/hotels/atlahhh-hilton-atlanta/",
-          label: "Hilton Atlanta"
+          label: "Hilton Atlanta",
         },
       },
     ],
-    note: "Group Name: Southeast Defense Procurement Conference<br />Group Rate: $219.00 USD + Tax<br />Rate Available: March 9-13, 2025 (From 2 Days Before and 2 Days After the Event Dates Based on Hotel's Availability)<br />Group Rate Cut-off Date: March 3, 2025 or Until Group Block is Sold Out<br /><a href='https://book.passkey.com/go/sedefenseprocurementconf' target='_blank' rel='noopener noreferrer' class=' underline hover:text-accent text-blue-500'>Reservation Link</a>"
+    note: "Group Name: Southeast Defense Procurement Conference<br />Group Rate: $219.00 USD + Tax<br />Rate Available: March 9-13, 2025 (From 2 Days Before and 2 Days After the Event Dates Based on Hotel's Availability)<br />Group Rate Cut-off Date: March 3, 2025 or Until Group Block is Sold Out<br /><a href='https://book.passkey.com/go/sedefenseprocurementconf' target='_blank' rel='noopener noreferrer' class=' underline hover:text-accent text-blue-500'>Reservation Link</a>",
   },
   {
     eventId: 3, // 2025DTIOS
@@ -69,7 +68,7 @@ export const LODGING_INFO: LodgingInfo[] = [
         state: "Florida",
         zip: "32920",
         phone: "(321) 784-0021",
-        image: "/hotels/hampton-inn.webp"
+        image: "/hotels/hampton-inn.webp",
       },
       {
         name: "Courtyard by Marriott Titusville – Kennedy Space Center",
@@ -78,10 +77,10 @@ export const LODGING_INFO: LodgingInfo[] = [
         state: "FL",
         zip: "",
         phone: "(321) 966-9200",
-        image: "/hotels/courtyard-marriott.webp"
-      }
+        image: "/hotels/courtyard-marriott.webp",
+      },
     ],
-    note: "PLEASE NOTE THERE IS NO ROOM BLOCK FOR THIS EVENT."
+    note: "PLEASE NOTE THERE IS NO ROOM BLOCK FOR THIS EVENT.",
   },
   {
     eventId: 4, // 2025NMCPC
@@ -96,7 +95,7 @@ export const LODGING_INFO: LodgingInfo[] = [
         image: "/hotels/norfolk-waterside-marriott.webp",
         link: {
           href: "https://www.marriott.com/en-us/hotels/orfws-norfolk-waterside-marriott/overview/",
-          label: "Norfolk Waterside Marriott"
+          label: "Norfolk Waterside Marriott",
         },
       },
     ],
@@ -109,7 +108,8 @@ export const LODGING_INFO: LodgingInfo[] = [
     resources: [
       {
         title: "Norfolk Dining Guide",
-        description: "Explore the local dining scene with this guide provided by Visit Norfolk.",
+        description:
+          "Explore the local dining scene with this guide provided by Visit Norfolk.",
         images: [
           {
             src: "/events/2025NMCPC/norfolk-dining-guide-1.webp",
@@ -125,7 +125,7 @@ export const LODGING_INFO: LodgingInfo[] = [
           },
         ],
       },
-    ]
+    ],
   },
   {
     eventId: 5, // 2025DTAPC
@@ -140,7 +140,7 @@ export const LODGING_INFO: LodgingInfo[] = [
         image: "/hotels/renaissance-austin.webp",
         link: {
           href: "https://www.marriott.com/en-us/hotels/aussh-renaissance-austin-hotel/overview/",
-          label: "Renaissance Austin Hotel"
+          label: "Renaissance Austin Hotel",
         },
       },
     ],
@@ -161,7 +161,7 @@ export const LODGING_INFO: LodgingInfo[] = [
   <li>Self-Parking Fee of $11.50 for Overnight Hotel Guests</li>
   <li>Complimentary for Meeting Attendees up to 8 Hours</li>
 </ul>
-`
+`,
   },
   {
     eventId: 6, // 2026NMCPC
@@ -176,7 +176,7 @@ export const LODGING_INFO: LodgingInfo[] = [
         image: "/hotels/norfolk-waterside-marriott.webp",
         link: {
           href: "https://www.marriott.com/en-us/hotels/orfws-norfolk-waterside-marriott/overview/",
-          label: "Norfolk Waterside Marriott"
+          label: "Norfolk Waterside Marriott",
         },
       },
     ],
@@ -193,7 +193,8 @@ export const LODGING_INFO: LodgingInfo[] = [
     resources: [
       {
         title: "Norfolk Dining Guide",
-        description: "Explore the local dining scene with this guide provided by Visit Norfolk.",
+        description:
+          "Explore the local dining scene with this guide provided by Visit Norfolk.",
         images: [
           {
             src: "/events/2025NMCPC/norfolk-dining-guide-1.webp",
@@ -226,7 +227,7 @@ export const LODGING_INFO: LodgingInfo[] = [
           },
         ],
       },
-    ]
+    ],
   },
   {
     eventId: 7, // 2026AFSFPC
@@ -241,7 +242,7 @@ export const LODGING_INFO: LodgingInfo[] = [
         image: "/hotels/hotel-polaris-exterior.webp",
         link: {
           href: "https://www.thehotelpolaris.com/",
-          label: "Hotel Polaris at the U.S. Air Force Academy"
+          label: "Hotel Polaris at the U.S. Air Force Academy",
         },
       },
     ],
@@ -255,14 +256,9 @@ export const LODGING_INFO: LodgingInfo[] = [
     <b>Group Rate Available</b>: August 2, 2026 - August 6, 2026<br />
     <b>Group Reservation Code (Booking Over Phone)</b>: 7666607<br />
     <b>Group Rate Cut Off</b>: July 13, 2026<br />
-    <br/>
-    <a href="https://be.synxis.com/?Hotel=43597&Chain=25042&config=Group&arrive=2026-08-03&depart=2026-08-05&adult=1&child=0&group=7666607" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent text-blue-500">
-      Book your group rate for the 2026 Air Force & Space Force Procurement Conference
-    </a>
     <br />
     <br />
-    <b>NOTE</b>: If you need further assistance with your reservation email the Group Rooms Coordinator, Cissy Schat-Wilk at <a href="mailto:cissy.schat-wilk@thehotelpolaris.com" class="underline hover:text-accent text-blue-500">cissy.schat-wilk@thehotelpolaris.com</a>. Group Rate honored 2 days before & after Group Dates based on hotel availability.
-    <br />
+    <b>NOTE</b>: The deadline for the group block has passed and is no longer available for online booking. For further assistance with your reservation send an email request to the Group Rooms Coordinator, Cissy Schat-Wilk at <a href="mailto:cissy.schat-wilk@thehotelpolaris.com" class="underline hover:text-accent text-blue-500">cissy.schat-wilk@thehotelpolaris.com</a>. The hotel will make every reasonable attempt to honor the Group Rate.    <br />
     <br />
     <div class="mb-4 bg-gray-100 p-4 rounded-xl">
     <b>Additional Information:</b><br />
@@ -283,6 +279,6 @@ export const LODGING_INFO: LodgingInfo[] = [
     • Heated Outdoor Swimming Pool (Open All Year Long)<br />
     • Santa Fe Trail access via Hotel Polaris Trailhead<br />
     </div>
-    `
+    `,
   },
 ];
