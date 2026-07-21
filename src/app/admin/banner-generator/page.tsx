@@ -91,6 +91,8 @@ export default function BannerGeneratorPage() {
   const [eventImageMarginBottom, setEventImageMarginBottom] = useState(20); // pixels
   const [tierSizeMultipliers, setTierSizeMultipliers] = useState<Record<string, number>>({}); // per-tier size multipliers
   const [tierGridColumns, setTierGridColumns] = useState<Record<string, 3 | 4>>({}); // per-tier column count
+  const [tierLabelGap, setTierLabelGap] = useState<Record<string, number>>({}); // per-tier gap between tier label and logos
+  const [tierDescGap, setTierDescGap] = useState<Record<string, number>>({}); // per-tier gap between logo and description
   const [descriptionFontSize, setDescriptionFontSize] = useState(6); // px at preview scale
   const [descriptionMaxWidth, setDescriptionMaxWidth] = useState(120); // px at preview scale
 
@@ -351,6 +353,46 @@ export default function BannerGeneratorPage() {
                                   </button>
                                 </div>
                               </div>
+                              <div className="flex items-center gap-2">
+                                <label className="text-xs text-gray-600 whitespace-nowrap">
+                                  Label Gap: {tierLabelGap[tier.id] ?? 12}px
+                                </label>
+                                <input
+                                  type="range"
+                                  min="0"
+                                  max="60"
+                                  step="1"
+                                  value={tierLabelGap[tier.id] ?? 12}
+                                  onChange={(e) => {
+                                    const newValue = parseInt(e.target.value);
+                                    setTierLabelGap(prev => ({
+                                      ...prev,
+                                      [tier.id]: newValue
+                                    }));
+                                  }}
+                                  className="flex-1 h-1"
+                                />
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <label className="text-xs text-gray-600 whitespace-nowrap">
+                                  Desc Gap: {tierDescGap[tier.id] ?? 4}px
+                                </label>
+                                <input
+                                  type="range"
+                                  min="0"
+                                  max="40"
+                                  step="1"
+                                  value={tierDescGap[tier.id] ?? 4}
+                                  onChange={(e) => {
+                                    const newValue = parseInt(e.target.value);
+                                    setTierDescGap(prev => ({
+                                      ...prev,
+                                      [tier.id]: newValue
+                                    }));
+                                  }}
+                                  className="flex-1 h-1"
+                                />
+                              </div>
                             </div>
                           )}
                         </div>
@@ -414,8 +456,9 @@ export default function BannerGeneratorPage() {
                   type="range"
                   min="6"
                   max="24"
+                  step="0.5"
                   value={tierLabelSize}
-                  onChange={(e) => setTierLabelSize(parseInt(e.target.value))}
+                  onChange={(e) => setTierLabelSize(parseFloat(e.target.value))}
                   className="w-full"
                 />
               </div>
@@ -547,9 +590,9 @@ export default function BannerGeneratorPage() {
                       type="range"
                       min="4"
                       max="20"
-                      step="1"
+                      step="0.5"
                       value={descriptionFontSize}
-                      onChange={(e) => setDescriptionFontSize(parseInt(e.target.value))}
+                      onChange={(e) => setDescriptionFontSize(parseFloat(e.target.value))}
                       className="w-full"
                     />
                   </div>
@@ -669,7 +712,7 @@ export default function BannerGeneratorPage() {
                     {selectedTiers.map((tier) => (
                       <div key={tier.id} style={{ marginBottom: 24 }}>
                         {/* tier label */}
-                        <div style={{ textAlign: 'center', marginBottom: 12, marginTop: 12 }}>
+                        <div style={{ textAlign: 'center', marginBottom: tierLabelGap[tier.id] ?? 12, marginTop: 12 }}>
                           <span
                             className={tier.style || getDefaultTierStyle(tier.name)}
                             style={{ 
@@ -709,27 +752,17 @@ export default function BannerGeneratorPage() {
                                   maxWidth: `calc(${100 / (tierGridColumns[tier.id] || 4)}% - 12px)`,
                                 }}
                               >
-                                <div
+                                <img
+                                  src={`/api/admin/banner-generator/proxy-image?url=${encodeURIComponent(sponsor.logoUrl)}`}
+                                  alt={sponsor.name}
                                   style={{
-                                    width: logoSize.width * 1.1,
-                                    height: logoSize.height * 1.5,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
+                                    maxWidth: logoSize.width * 1.1,
+                                    maxHeight: logoSize.height * 1.5,
+                                    width: 'auto',
+                                    height: 'auto',
+                                    objectFit: 'contain',
                                   }}
-                                >
-                                  <img
-                                    src={`/api/admin/banner-generator/proxy-image?url=${encodeURIComponent(sponsor.logoUrl)}`}
-                                    alt={sponsor.name}
-                                    style={{
-                                      maxWidth: '100%',
-                                      maxHeight: '100%',
-                                      width: 'auto',
-                                      height: 'auto',
-                                      objectFit: 'contain',
-                                    }}
-                                  />
-                                </div>
+                                />
                                 {tierShowDescriptions[tier.id] && sponsor.description && (
                                   <p
                                     style={{
@@ -737,7 +770,7 @@ export default function BannerGeneratorPage() {
                                       width: descriptionMaxWidth,
                                       textAlign: 'center',
                                       color: '#4b5563',
-                                      marginTop: 4,
+                                      marginTop: tierDescGap[tier.id] ?? 4,
                                       paddingLeft: 8,
                                       paddingRight: 8,
                                     }}
