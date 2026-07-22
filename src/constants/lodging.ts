@@ -247,6 +247,20 @@ export const LODGING_INFO: LodgingInfo[] = [
       },
     ],
     note: `
+    <div class="mb-4 bg-gray-100 p-4 rounded-xl">
+    <b>Update:</b> At this time Hotel Polaris has no sleeping rooms availability. Below are some alternative options. Note: we do not have room block rates at these hotels.<br />
+    <br />
+    <b>Staybridge Suites Colorado Springs North</b><br />
+    Tel: <a href="tel:+18772388889" class="underline hover:text-accent text-blue-500">+1 877-238-8889</a><br />
+    <br />
+    <b>Home2 Suites by Hilton Colorado Springs South</b><br />
+    1235 Tenderfoot Hill Rd, Colorado Springs, Colorado, 80906, USA<br />
+    Tel: <a href="tel:+17192263440" class="underline hover:text-accent text-blue-500">+1 719-226-3440</a><br />
+    <br />
+    <b>Colorado Springs Marriott</b><br />
+    5580 Tech Center Drive, Colorado Springs, Colorado, 80919, USA<br />
+    Tel: <a href="tel:+17192601800" class="underline hover:text-accent text-blue-500">+1 719-260-1800</a><br />
+    </div>
     <b>Event Location</b>: Generations Ballroom<br />
     <br />
     <b>NOTE</b>: Hotel is located outside of the base security gates, no special access is required<br />
