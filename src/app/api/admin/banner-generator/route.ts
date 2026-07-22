@@ -57,6 +57,7 @@ export async function GET() {
         eventId: es.eventId,
         eventName,
         title: es.title,
+        vipReception: eventInfo?.vipNetworkingReception || null,
         tiers: (es.tiers || []).map((tier: any) => ({
           id: tier.id,
           name: tier.name,
@@ -69,7 +70,20 @@ export async function GET() {
       };
     });
 
-    return NextResponse.json({ events });
+    // include events that have a VIP reception but no sponsor doc, so the
+    // VIP-reception banner mode can still be generated for them
+    const eventIdsWithSponsors = new Set(events.map((e: any) => e.eventId));
+    const vipOnlyEvents = EVENTS.filter(
+      (e) => e.vipNetworkingReception && !eventIdsWithSponsors.has(e.id)
+    ).map((e) => ({
+      eventId: e.id,
+      eventName: e.title,
+      title: undefined,
+      vipReception: e.vipNetworkingReception,
+      tiers: [],
+    }));
+
+    return NextResponse.json({ events: [...events, ...vipOnlyEvents] });
   } catch (error) {
     console.error("Failed to fetch banner data:", error);
     return NextResponse.json(

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Download, RefreshCw, Eye, Settings, Image as ImageIcon } from "lucide-react";
+import { Download, RefreshCw, Eye, Settings, Image as ImageIcon, CalendarDays, MapPin } from "lucide-react";
 import html2canvas from "html2canvas";
 
 type SponsorData = {
@@ -19,12 +19,29 @@ type TierData = {
   sponsors: SponsorData[];
 };
 
+type VipReception = {
+  title: string;
+  description: string;
+  date: string;
+  timeStart: string;
+  timeEnd: string;
+  additionalInfo?: string;
+  additionalInfo2?: string;
+  locationName?: string;
+  locationAddress?: string;
+  locationRoom?: string;
+  website?: string;
+};
+
 type EventWithSponsors = {
   eventId: number;
   eventName: string;
   title?: string;
+  vipReception?: VipReception | null;
   tiers: TierData[];
 };
+
+type BannerMode = "sponsors" | "vip";
 
 // tier display order (same as SponsorLogos.tsx)
 const TIER_ORDER = [
@@ -96,6 +113,21 @@ export default function BannerGeneratorPage() {
   const [descriptionFontSize, setDescriptionFontSize] = useState(6); // px at preview scale
   const [descriptionMaxWidth, setDescriptionMaxWidth] = useState(120); // px at preview scale
 
+  // VIP reception mode state
+  const [mode, setMode] = useState<BannerMode>("sponsors");
+  const [mapImagePath, setMapImagePath] = useState("");
+  const [mapImageScale, setMapImageScale] = useState(70); // percentage
+  const [vipTitleSize, setVipTitleSize] = useState(18); // px at preview scale
+  const [vipHeadingSize, setVipHeadingSize] = useState(15); // px at preview scale
+  const [vipDetailSize, setVipDetailSize] = useState(8); // px at preview scale
+  const [vipBodySize, setVipBodySize] = useState(7); // px at preview scale
+  const [vipSponsorScale, setVipSponsorScale] = useState(100); // percentage
+  const [vipShowSponsorDescriptions, setVipShowSponsorDescriptions] = useState(true);
+  // editable text overrides (pre-filled from the reception data on event select)
+  const [vipDescription, setVipDescription] = useState("");
+  const [vipAdditionalInfo, setVipAdditionalInfo] = useState("");
+  const [vipAdditionalInfo2, setVipAdditionalInfo2] = useState("");
+
   const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -121,6 +153,33 @@ export default function BannerGeneratorPage() {
         .filter((t) => selectedTierIds.includes(t.id))
         .sort((a, b) => getTierPriority(a.name) - getTierPriority(b.name))
     : [];
+
+  const vipReception = selectedEvent?.vipReception || null;
+
+  // reception sponsors are auto-detected from any tier whose name/id mentions "reception"
+  const receptionSponsors = selectedEvent
+    ? selectedEvent.tiers
+        .filter((t) => /reception/i.test(t.name) || /reception/i.test(t.id))
+        .flatMap((t) => t.sponsors)
+    : [];
+
+  // pre-fill the editable text fields whenever the selected reception changes
+  useEffect(() => {
+    setVipDescription(vipReception?.description || "");
+    setVipAdditionalInfo(vipReception?.additionalInfo || "");
+    setVipAdditionalInfo2(vipReception?.additionalInfo2 || "");
+  }, [selectedEventId, vipReception?.description, vipReception?.additionalInfo, vipReception?.additionalInfo2]);
+
+  // events available for the current mode
+  const availableEvents =
+    mode === "vip" ? events.filter((e) => e.vipReception) : events.filter((e) => e.tiers.length > 0);
+
+  const vipWeekday = vipReception?.date
+    ? (() => {
+        const d = new Date(vipReception.date);
+        return isNaN(d.getTime()) ? "" : d.toLocaleDateString("en-US", { weekday: "long" });
+      })()
+    : "";
 
   function handleTierToggle(tierId: string) {
     setSelectedTierIds((prev) =>
@@ -249,6 +308,29 @@ export default function BannerGeneratorPage() {
                 Configuration
               </div>
 
+              {/* mode toggle */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Banner Type
+                </label>
+                <div className="flex gap-1 p-1 bg-gray-100 rounded-md">
+                  <button
+                    type="button"
+                    onClick={() => setMode("sponsors")}
+                    className={`flex-1 text-sm py-1.5 rounded ${mode === "sponsors" ? "bg-white shadow-sm font-medium text-gray-900" : "text-gray-500 hover:text-gray-700"}`}
+                  >
+                    Sponsor Banner
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setMode("vip")}
+                    className={`flex-1 text-sm py-1.5 rounded ${mode === "vip" ? "bg-white shadow-sm font-medium text-gray-900" : "text-gray-500 hover:text-gray-700"}`}
+                  >
+                    VIP Reception
+                  </button>
+                </div>
+              </div>
+
               {/* event selection */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -263,7 +345,7 @@ export default function BannerGeneratorPage() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="">Select an event...</option>
-                  {events.map((event) => (
+                  {availableEvents.map((event) => (
                     <option key={event.eventId} value={event.eventId}>
                       {event.eventName}
                     </option>
@@ -272,7 +354,7 @@ export default function BannerGeneratorPage() {
               </div>
 
               {/* tier selection */}
-              {selectedEvent && (
+              {mode === "sponsors" && selectedEvent && (
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <label className="block text-sm font-medium text-gray-700">
@@ -432,51 +514,221 @@ export default function BannerGeneratorPage() {
                 />
               </div>
 
-              {/* event image bottom margin */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Event Image Bottom Margin: {eventImageMarginBottom}px
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={eventImageMarginBottom}
-                  onChange={(e) => setEventImageMarginBottom(parseInt(e.target.value))}
-                  className="w-full"
-                />
-              </div>
+              {mode === "sponsors" && (
+                <>
+                  {/* event image bottom margin */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Event Image Bottom Margin: {eventImageMarginBottom}px
+                    </label>
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value={eventImageMarginBottom}
+                      onChange={(e) => setEventImageMarginBottom(parseInt(e.target.value))}
+                      className="w-full"
+                    />
+                  </div>
 
-              {/* tier label size */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Tier Label Size: {tierLabelSize}px
-                </label>
-                <input
-                  type="range"
-                  min="6"
-                  max="24"
-                  step="0.5"
-                  value={tierLabelSize}
-                  onChange={(e) => setTierLabelSize(parseFloat(e.target.value))}
-                  className="w-full"
-                />
-              </div>
+                  {/* tier label size */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Tier Label Size: {tierLabelSize}px
+                    </label>
+                    <input
+                      type="range"
+                      min="6"
+                      max="24"
+                      step="0.5"
+                      value={tierLabelSize}
+                      onChange={(e) => setTierLabelSize(parseFloat(e.target.value))}
+                      className="w-full"
+                    />
+                  </div>
 
-              {/* sponsor vertical offset */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Sponsors Vertical Offset: {sponsorVerticalOffset}px
-                </label>
-                <input
-                  type="range"
-                  min="-200"
-                  max="200"
-                  value={sponsorVerticalOffset}
-                  onChange={(e) => setSponsorVerticalOffset(parseInt(e.target.value))}
-                  className="w-full"
-                />
-              </div>
+                  {/* sponsor vertical offset */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Sponsors Vertical Offset: {sponsorVerticalOffset}px
+                    </label>
+                    <input
+                      type="range"
+                      min="-200"
+                      max="200"
+                      value={sponsorVerticalOffset}
+                      onChange={(e) => setSponsorVerticalOffset(parseInt(e.target.value))}
+                      className="w-full"
+                    />
+                  </div>
+                </>
+              )}
+
+              {/* VIP reception controls */}
+              {mode === "vip" && (
+                <>
+                  {/* map image */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <ImageIcon className="w-4 h-4 inline mr-1" />
+                      Map Image Path
+                    </label>
+                    <input
+                      type="text"
+                      value={mapImagePath}
+                      onChange={(e) => setMapImagePath(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                      placeholder="/locations/harbor_club_map.webp"
+                    />
+                    <p className="text-xs text-gray-400 mt-1">Optional screenshot of the walking-directions map</p>
+                  </div>
+
+                  {/* map scale */}
+                  {mapImagePath && (
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Map Scale: {mapImageScale}%
+                      </label>
+                      <input
+                        type="range"
+                        min="20"
+                        max="100"
+                        value={mapImageScale}
+                        onChange={(e) => setMapImageScale(parseInt(e.target.value))}
+                        className="w-full"
+                      />
+                    </div>
+                  )}
+
+                  {/* vip font sizes */}
+                  <div className="space-y-3">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Title Size: {vipTitleSize}px
+                      </label>
+                      <input
+                        type="range"
+                        min="10"
+                        max="30"
+                        step="0.5"
+                        value={vipTitleSize}
+                        onChange={(e) => setVipTitleSize(parseFloat(e.target.value))}
+                        className="w-full"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Heading Size: {vipHeadingSize}px
+                      </label>
+                      <input
+                        type="range"
+                        min="8"
+                        max="26"
+                        step="0.5"
+                        value={vipHeadingSize}
+                        onChange={(e) => setVipHeadingSize(parseFloat(e.target.value))}
+                        className="w-full"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Detail Size: {vipDetailSize}px
+                      </label>
+                      <input
+                        type="range"
+                        min="5"
+                        max="16"
+                        step="0.5"
+                        value={vipDetailSize}
+                        onChange={(e) => setVipDetailSize(parseFloat(e.target.value))}
+                        className="w-full"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Body Text Size: {vipBodySize}px
+                      </label>
+                      <input
+                        type="range"
+                        min="4"
+                        max="14"
+                        step="0.5"
+                        value={vipBodySize}
+                        onChange={(e) => setVipBodySize(parseFloat(e.target.value))}
+                        className="w-full"
+                      />
+                    </div>
+                  </div>
+
+                  {/* editable text */}
+                  <div className="space-y-3">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Description
+                      </label>
+                      <textarea
+                        value={vipDescription}
+                        onChange={(e) => setVipDescription(e.target.value)}
+                        rows={2}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Additional Info
+                      </label>
+                      <textarea
+                        value={vipAdditionalInfo}
+                        onChange={(e) => setVipAdditionalInfo(e.target.value)}
+                        rows={2}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Additional Info 2
+                      </label>
+                      <textarea
+                        value={vipAdditionalInfo2}
+                        onChange={(e) => setVipAdditionalInfo2(e.target.value)}
+                        rows={3}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                      />
+                    </div>
+                  </div>
+
+                  {/* sponsor controls */}
+                  {receptionSponsors.length > 0 && (
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Sponsor Logo Scale: {vipSponsorScale}%
+                        </label>
+                        <input
+                          type="range"
+                          min="40"
+                          max="200"
+                          value={vipSponsorScale}
+                          onChange={(e) => setVipSponsorScale(parseInt(e.target.value))}
+                          className="w-full"
+                        />
+                      </div>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={vipShowSponsorDescriptions}
+                          onChange={(e) => setVipShowSponsorDescriptions(e.target.checked)}
+                          className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                        />
+                        <span className="text-sm text-gray-700">Show sponsor descriptions</span>
+                      </label>
+                      <p className="text-xs text-gray-400">
+                        {receptionSponsors.length} reception sponsor{receptionSponsors.length === 1 ? "" : "s"} detected
+                      </p>
+                    </div>
+                  )}
+                </>
+              )}
 
               {/* header/footer size */}
               <div className="grid grid-cols-2 gap-4">
@@ -553,7 +805,7 @@ export default function BannerGeneratorPage() {
               </div>
 
               {/* description controls per tier */}
-              {selectedTierIds.length > 0 && (
+              {mode === "sponsors" && selectedTierIds.length > 0 && (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Show Descriptions by Tier
@@ -580,7 +832,7 @@ export default function BannerGeneratorPage() {
               )}
 
               {/* description font size + width */}
-              {selectedTierIds.some(id => tierShowDescriptions[id]) && (
+              {mode === "sponsors" && selectedTierIds.some(id => tierShowDescriptions[id]) && (
                 <div className="space-y-3">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -675,9 +927,11 @@ export default function BannerGeneratorPage() {
                     height: previewHeight - (headerHeight + footerHeight) * DPI * PREVIEW_SCALE,
                   }}
                 >
+                  {mode === "sponsors" && (
+                  <>
                   {/* event image */}
                   {eventImagePath && (
-                    <div 
+                    <div
                       style={{ 
                         display: 'flex',
                         justifyContent: 'center',
@@ -752,17 +1006,43 @@ export default function BannerGeneratorPage() {
                                   maxWidth: `calc(${100 / (tierGridColumns[tier.id] || 4)}% - 12px)`,
                                 }}
                               >
-                                <img
-                                  src={`/api/admin/banner-generator/proxy-image?url=${encodeURIComponent(sponsor.logoUrl)}`}
-                                  alt={sponsor.name}
-                                  style={{
-                                    maxWidth: logoSize.width * 1.1,
-                                    maxHeight: logoSize.height * 1.5,
-                                    width: 'auto',
-                                    height: 'auto',
-                                    objectFit: 'contain',
-                                  }}
-                                />
+                                {tier.sponsors.length > 1 ? (
+                                  // grid: fixed box normalizes every logo to a uniform footprint
+                                  <div
+                                    style={{
+                                      width: logoSize.width * 1.1,
+                                      height: logoSize.height * 1.5,
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                    }}
+                                  >
+                                    <img
+                                      src={`/api/admin/banner-generator/proxy-image?url=${encodeURIComponent(sponsor.logoUrl)}`}
+                                      alt={sponsor.name}
+                                      style={{
+                                        maxWidth: '100%',
+                                        maxHeight: '100%',
+                                        width: 'auto',
+                                        height: 'auto',
+                                        objectFit: 'contain',
+                                      }}
+                                    />
+                                  </div>
+                                ) : (
+                                  // single logo: shrink-wrap so there's no dead space above/below
+                                  <img
+                                    src={`/api/admin/banner-generator/proxy-image?url=${encodeURIComponent(sponsor.logoUrl)}`}
+                                    alt={sponsor.name}
+                                    style={{
+                                      maxWidth: logoSize.width * 1.1,
+                                      maxHeight: logoSize.height * 1.5,
+                                      width: 'auto',
+                                      height: 'auto',
+                                      objectFit: 'contain',
+                                    }}
+                                  />
+                                )}
                                 {tierShowDescriptions[tier.id] && sponsor.description && (
                                   <p
                                     style={{
@@ -793,6 +1073,147 @@ export default function BannerGeneratorPage() {
                       </div>
                     )} */}
                   </div>
+                  </>
+                  )}
+
+                  {/* VIP reception layout */}
+                  {mode === "vip" && vipReception && (
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        height: '100%',
+                        overflow: 'hidden',
+                        paddingLeft: 16,
+                        paddingRight: 16,
+                        color: '#0f172a',
+                      }}
+                    >
+                      {/* event banner image */}
+                      {eventImagePath && (
+                        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                          <img
+                            src={eventImagePath}
+                            alt="Event"
+                            style={{ width: `${eventImageScale}%`, objectFit: 'contain' }}
+                            crossOrigin="anonymous"
+                          />
+                        </div>
+                      )}
+
+                      {/* title pill */}
+                      <div style={{ textAlign: 'center', marginTop: 14, marginBottom: 10 }}>
+                        <span
+                          style={{
+                            display: 'inline-block',
+                            backgroundColor: '#bae6fd',
+                            color: '#0f172a',
+                            fontWeight: 'bold',
+                            fontSize: vipTitleSize,
+                            borderRadius: 14,
+                            paddingLeft: 22,
+                            paddingRight: 22,
+                            paddingTop: 6,
+                            paddingBottom: 6,
+                          }}
+                        >
+                          {vipReception.title}
+                        </span>
+                      </div>
+
+                      {/* location & directions heading */}
+                      <h3 style={{ textAlign: 'center', fontWeight: 'bold', fontSize: vipHeadingSize, marginBottom: 10 }}>
+                        Location &amp; Directions
+                      </h3>
+
+                      {/* date/time + location columns */}
+                      <div style={{ display: 'flex', justifyContent: 'center', gap: 28, marginBottom: 10 }}>
+                        <div style={{ textAlign: 'center', maxWidth: '45%' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, marginBottom: 3 }}>
+                            <CalendarDays style={{ width: vipDetailSize + 2, height: vipDetailSize + 2, color: '#2563eb' }} />
+                            <span style={{ fontWeight: 600, fontSize: vipDetailSize }}>Date and Time</span>
+                          </div>
+                          {vipWeekday && <div style={{ fontWeight: 'bold', fontSize: vipDetailSize }}>{vipWeekday}</div>}
+                          <div style={{ fontSize: vipDetailSize }}>{vipReception.date}</div>
+                          <div style={{ fontSize: vipDetailSize }}>{vipReception.timeStart} - {vipReception.timeEnd}</div>
+                        </div>
+                        {vipReception.locationName && (
+                          <div style={{ textAlign: 'center', maxWidth: '45%' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, marginBottom: 3 }}>
+                              <MapPin style={{ width: vipDetailSize + 2, height: vipDetailSize + 2, color: '#2563eb' }} />
+                              <span style={{ fontWeight: 600, fontSize: vipDetailSize }}>Location</span>
+                            </div>
+                            <div style={{ fontWeight: 'bold', fontSize: vipDetailSize }} dangerouslySetInnerHTML={{ __html: vipReception.locationName }} />
+                            {vipReception.locationAddress && (
+                              <div style={{ fontSize: vipDetailSize }} dangerouslySetInnerHTML={{ __html: vipReception.locationAddress }} />
+                            )}
+                            {vipReception.locationRoom && (
+                              <div style={{ fontSize: vipDetailSize, fontWeight: 600 }}>Room: {vipReception.locationRoom}</div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* description paragraphs */}
+                      <div style={{ textAlign: 'center', color: '#4b5563', fontSize: vipBodySize, lineHeight: 1.4 }}>
+                        {vipDescription && <p style={{ marginBottom: 5 }} dangerouslySetInnerHTML={{ __html: vipDescription }} />}
+                        {vipAdditionalInfo && <p style={{ marginBottom: 5 }} dangerouslySetInnerHTML={{ __html: vipAdditionalInfo }} />}
+                        {vipAdditionalInfo2 && <p>{vipAdditionalInfo2}</p>}
+                      </div>
+
+                      {/* map image */}
+                      {mapImagePath && (
+                        <div style={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: 10 }}>
+                          <img
+                            src={mapImagePath}
+                            alt="Directions map"
+                            style={{ width: `${mapImageScale}%`, objectFit: 'contain', borderRadius: 6 }}
+                            crossOrigin="anonymous"
+                          />
+                        </div>
+                      )}
+
+                      {/* reception sponsors */}
+                      {receptionSponsors.length > 0 && (
+                        <div style={{ marginTop: 14 }}>
+                          <h3 style={{ textAlign: 'center', fontWeight: 'bold', fontSize: vipHeadingSize, marginBottom: 10, lineHeight: 1.2 }}>
+                            Thank You to our Reception Sponsors
+                          </h3>
+                          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
+                            {receptionSponsors.map((sponsor) => (
+                              <div key={sponsor._id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+                                <img
+                                  src={`/api/admin/banner-generator/proxy-image?url=${encodeURIComponent(sponsor.logoUrl)}`}
+                                  alt={sponsor.name}
+                                  style={{
+                                    maxWidth: `${vipSponsorScale}%`,
+                                    maxHeight: 1.1 * vipSponsorScale,
+                                    width: 'auto',
+                                    height: 'auto',
+                                    objectFit: 'contain',
+                                  }}
+                                />
+                                {vipShowSponsorDescriptions && sponsor.description && (
+                                  <p
+                                    style={{
+                                      fontSize: vipBodySize,
+                                      maxWidth: '85%',
+                                      textAlign: 'center',
+                                      color: '#4b5563',
+                                      marginTop: 4,
+                                      lineHeight: 1.4,
+                                    }}
+                                  >
+                                    {sponsor.description}
+                                  </p>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {/* footer bleed */}
