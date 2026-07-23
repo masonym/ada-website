@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import * as yup from 'yup';
 import FormattedPerk from './FormattedPerk';
-import { X, CreditCard, Ticket, Package, Award, AlertTriangle, Landmark, ChevronDown, ChevronUp } from 'lucide-react';
+import { X, CreditCard, Ticket, Package, Award, AlertTriangle, Landmark, ChevronDown, ChevronUp, PlusCircle } from 'lucide-react';
 import { getPriceDisplay } from '@/lib/price-formatting';
 import PriceDisplay from './PriceDisplay';
 import { Event } from '@/types/events';
@@ -60,7 +60,7 @@ interface RegistrationModalProps {
   onClose: () => void;
   selectedRegistration: AdapterModalRegistrationType | null; // Allow null for register button
   event: EventWithContact;
-  initialActiveTab?: 'ticket' | 'exhibit' | 'sponsorship'; // Optional tab to open initially
+  initialActiveTab?: 'ticket' | 'exhibit' | 'sponsorship' | 'addon'; // Optional tab to open initially
   initialPromoCode?: string; // Optional promo code to auto-apply from URL
 }
 
@@ -170,9 +170,14 @@ const RegistrationModal = ({
   const sponsorships = useMemo<AdapterModalRegistrationType[]>(() => getSponsorshipsForEvent(event.id), [event.id]);
   const exhibitors = useMemo<AdapterModalRegistrationType[]>(() => getExhibitorsForEvent(event.id), [event.id]);
 
+  // Display-only split of `allRegistrations`. `allRegistrations` itself stays intact so
+  // quantity init, checkout, attendee collection and order processing are unaffected.
+  const generalRegistrations = useMemo(() => allRegistrations.filter(reg => !reg.isAddOn), [allRegistrations]);
+  const addOns = useMemo(() => allRegistrations.filter(reg => reg.isAddOn), [allRegistrations]);
+
   // We'll use the original sponsorships list without sorting
   // State for active category tab
-  const [activeCategory, setActiveCategory] = useState<'ticket' | 'exhibit' | 'sponsorship'>(initialActiveTab || 'ticket');
+  const [activeCategory, setActiveCategory] = useState<'ticket' | 'exhibit' | 'sponsorship' | 'addon'>(initialActiveTab || 'ticket');
 
   // Track which registration items are expanded/collapsed across all categories
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({});
@@ -668,6 +673,68 @@ const RegistrationModal = ({
     );
   };
 
+  // Shared card renderer for the "General Admission" and "Add-ons" tabs — both are
+  // backed by `allRegistrations`, so they present identically.
+  const renderTicketCard = (reg: AdapterModalRegistrationType) => {
+    const ticketIsExpired = isTicketExpired(reg);
+    const isExpanded = expandedItems[reg.id] ?? true;
+    return (
+      <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${ticketIsExpired ? 'opacity-75 bg-gray-200' : ''}`}>
+        <div className="flex justify-between items-start">
+          <div className="flex items-center flex-wrap gap-2">
+            <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
+            <PriceDisplay registration={reg} />
+            {ticketIsExpired && (
+              <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                SOLD OUT
+              </span>
+            )}
+          </div>
+          <button
+            onClick={() => setExpandedItems(prev => ({ ...prev, [reg.id]: !isExpanded }))}
+            className="ml-2 p-1 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded transition-colors"
+            aria-label={isExpanded ? 'Collapse details' : 'Expand details'}
+          >
+            {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+          </button>
+        </div>
+        {isExpanded && reg.perks && reg.perks.length > 0 && (
+          <ul className="list-none text-sm text-gray-500 mb-2 mt-2">
+            {reg.perks.map((perk, index) => (
+              <li key={index} className="py-0.5">
+                <FormattedPerk content={perk} />
+              </li>
+            ))}
+          </ul>
+        )}
+        {isExpanded && reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
+        {isExpanded && (
+          <div className="flex items-center mt-2">
+            <button
+              onClick={() => handleDecrement(reg.id, reg.type)}
+              disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
+              className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+            >
+              -
+            </button>
+            <span className="px-4 py-1 border-t border-b text-center w-12">
+              {ticketQuantities[reg.id] || 0}
+            </span>
+            <button
+              onClick={() => handleIncrement(reg.id, reg.type)}
+              disabled={isSoldOut(reg, getSponsorCount) || isTicketExpired(reg) || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
+              className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+            >
+              +
+            </button>
+          </div>
+        )}
+        {isExpanded && renderValidationUI(reg)}
+        {isExpanded && renderCodeValidationUI(reg)}
+      </div>
+    );
+  };
+
   // Helper to reset attendee info for a given ticket ID
   const resetAttendeesForTicket = (ticketId: string, count: number): ModalAttendeeInfo[] => {
     return Array(count).fill(null).map(() => ({ ...initialModalAttendeeInfo }));
@@ -858,6 +925,14 @@ const RegistrationModal = ({
         // so we don't need to manipulate them here.
       }
     } else {
+      // Line items that collect no attendee details (e.g. a printed-program
+      // advertisement) must not accrue attendee records — otherwise a blank
+      // attendee is submitted with the order.
+      const selectedItem = [...allRegistrations, ...exhibitors].find(r => r.id === id);
+      if (selectedItem && selectedItem.requiresAttendeeInfo === false) {
+        return;
+      }
+
       // For regular tickets, update attendees as before
       const newAttendees: Record<string, ModalAttendeeInfo[]> = { ...attendeesByTicket };
       newAttendees[id] = Array(newQuantity).fill(null).map((_, i): ModalAttendeeInfo => {
@@ -2179,69 +2254,23 @@ const RegistrationModal = ({
                       <span>Sponsorships</span>
                     </button>
                   )}
+                  {addOns.length > 0 && (
+                    <button
+                      onClick={() => setActiveCategory('addon')}
+                      className={`flex items-center px-4 py-2 ${activeCategory === 'addon' ? 'border-l-2 sm:border-b-2 sm:border-l-0 border-indigo-600 text-indigo-600' : 'text-gray-500'}`}
+                    >
+                      <PlusCircle size={16} className="mr-2" />
+                      <span>Add-ons</span>
+                    </button>
+                  )}
                 </div>
 
                 <div className="flex-grow overflow-y-auto min-h-0">
                   {/* Show tickets when activeCategory is 'ticket' */}
-                  {activeCategory === 'ticket' && allRegistrations.filter(reg => reg.isActive).map(reg => {
-                    const ticketIsExpired = isTicketExpired(reg);
-                    const isExpanded = expandedItems[reg.id] ?? true;
-                    return (
-                      <div key={reg.id} className={`mb-4 p-4 border rounded-lg shadow-sm ${ticketIsExpired ? 'opacity-75 bg-gray-200' : ''}`}>
-                        <div className="flex justify-between items-start">
-                          <div className="flex items-center flex-wrap gap-2">
-                            <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
-                            <PriceDisplay registration={reg} />
-                            {ticketIsExpired && (
-                              <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
-                                SOLD OUT
-                              </span>
-                            )}
-                          </div>
-                          <button
-                            onClick={() => setExpandedItems(prev => ({ ...prev, [reg.id]: !isExpanded }))}
-                            className="ml-2 p-1 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded transition-colors"
-                            aria-label={isExpanded ? 'Collapse details' : 'Expand details'}
-                          >
-                            {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                          </button>
-                        </div>
-                        {isExpanded && reg.perks && reg.perks.length > 0 && (
-                          <ul className="list-none text-sm text-gray-500 mb-2 mt-2">
-                            {reg.perks.map((perk, index) => (
-                              <li key={index} className="py-0.5">
-                                <FormattedPerk content={perk} />
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                        {isExpanded && reg.availabilityInfo && <p className="text-xs text-gray-500 italic mb-3">{reg.availabilityInfo}</p>}
-                        {isExpanded && (
-                          <div className="flex items-center mt-2">
-                            <button
-                              onClick={() => handleDecrement(reg.id, reg.type)}
-                              disabled={(ticketQuantities[reg.id] || 0) === 0 || isLoading}
-                              className="px-3 py-1 border rounded-l-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                            >
-                              -
-                            </button>
-                            <span className="px-4 py-1 border-t border-b text-center w-12">
-                              {ticketQuantities[reg.id] || 0}
-                            </span>
-                            <button
-                              onClick={() => handleIncrement(reg.id, reg.type)}
-                              disabled={isSoldOut(reg, getSponsorCount) || isTicketExpired(reg) || isLoading || ticketQuantities[reg.id] >= reg.maxQuantityPerOrder}
-                              className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-                            >
-                              +
-                            </button>
-                          </div>
-                        )}
-                        {isExpanded && renderValidationUI(reg)}
-                        {isExpanded && renderCodeValidationUI(reg)}
-                      </div>
-                    )
-                  })}
+                  {activeCategory === 'ticket' && generalRegistrations.filter(reg => reg.isActive).map(reg => renderTicketCard(reg))}
+
+                  {/* Show add-ons when activeCategory is 'addon' */}
+                  {activeCategory === 'addon' && addOns.filter(reg => reg.isActive).map(reg => renderTicketCard(reg))}
 
                   {/* Show exhibitors when activeCategory is 'exhibit' */}
                   {activeCategory === 'exhibit' && exhibitors.filter(reg => reg.isActive).map(reg => {
