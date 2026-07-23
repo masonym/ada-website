@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Event } from '@/types/events';
 import { urlFor, getEventSponsors, getEventTierSponsors } from '@/lib/sanity';
+import { getDefaultTierStyle, getTierStyleProps } from '@/lib/sponsor-tier-styles';
 
 type SponsorProps = {
     event: Event;
@@ -83,17 +84,6 @@ const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) =
         return null;
     }
 
-    const getDefaultTierStyle = (tierName: string) => {
-        if (tierName.toLowerCase().includes('small')) return 'bg-sb-100 text-slate-900';
-        if (tierName.toLowerCase().includes('gold')) return 'bg-amber-400 text-slate-900';
-        if (tierName.toLowerCase().includes('silver')) return 'bg-gray-300 text-slate-900';
-        if (tierName.toLowerCase().includes('bronze')) return 'bg-amber-700 text-white';
-        if (tierName.toLowerCase().includes('premier')) return 'bg-purple-600 text-white';
-        if (tierName.toLowerCase().includes('platinum')) return 'bg-sky-300 text-slate-900';
-        if (tierName.toLowerCase().includes('diamond')) return 'bg-blue-500 text-white';
-        return 'bg-blue-600 text-white';
-    };
-
     const getTierGridClass = (tierId: string, sponsorCount: number) => {
         // Base grid class
         let gridClass = 'grid ';
@@ -132,18 +122,6 @@ const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) =
         return { width: 250, height: 150 };
     };
 
-    const getTierStyleProps = (tierStyle: string | undefined, tierName: string) => {
-        const style = tierStyle || getDefaultTierStyle(tierName);
-        const backgroundColor = style.match(/bg-\[(#[0-9a-fA-F]{3,8})\]/)?.[1];
-
-        return {
-            className: backgroundColor ? style.replace(/bg-\[#[0-9a-fA-F]{3,8}\]/, '').trim() : style,
-            style: backgroundColor ? { backgroundColor } : undefined,
-        };
-    };
-
-
-
     // List of sponsor tiers that should display descriptions
     const tiersWithDescriptions = [
         'gold-sponsor', 'silver-sponsor', 'bronze-sponsor', 'platinum-sponsor', 'diamond-sponsor', 'premier', 'vip-networking-reception-sponsor', 'coffee-station-sponsor', 'networking-luncheon', 'beverage-station-sponsor', 'cybersecurity-cmmc-sponsor'
@@ -168,7 +146,7 @@ const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) =
             )}
 
             {tiersWithSponsors.map((tier, tierIndex) => {
-                const tierStyleProps = getTierStyleProps(tier.style, tier.name);
+                const tierStyleProps = getTierStyleProps(tier.style, getDefaultTierStyle(tier.name));
 
                 return (
                     <div key={tierIndex} className="mb-6 md:mb-8 last:mb-8">
@@ -178,7 +156,7 @@ const SponsorLogos = async ({ event, showTiers, titleOverride }: SponsorProps) =
                             </div>
                             <div className="relative flex justify-center">
                                 <span
-                                    className={`px-4 md:px-6 py-2 text-lg md:text-xl lg:text-2xl font-bold rounded-full ${tierStyleProps.className}`}
+                                    className={`px-4 md:px-6 py-2 text-lg md:text-xl lg:text-2xl font-bold rounded-full ${tierStyleProps.className} ${tierStyleProps.hasTextColour ? '' : 'text-white'}`}
                                     style={tierStyleProps.style}
                                 >
                                     {tier.name}

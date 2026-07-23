@@ -13,6 +13,7 @@ import SponsorProspectus from './SponsorProspectus'
 import ExhibitInstructionsButton from './ExhibitInstructionsButton'
 import RegistrationModal from '@/components/RegistrationModal'
 import { getSponsorshipsForEvent } from '@/lib/registration-adapters'
+import { findTierStyle } from '@/lib/sponsor-tier-styles'
 import EventFloorPlan from './EventFloorPlan';
 
 export type SponsorProps = {
@@ -46,12 +47,12 @@ const SponsorOptions = ({ event, sponsorTierStyles }: SponsorProps) => {
     const primeSponsor = currentEvent.primeSponsor
         ? {
             ...currentEvent.primeSponsor,
-            colour: sponsorTierStyles?.[currentEvent.primeSponsor.id] || currentEvent.primeSponsor.colour,
+            colour: findTierStyle(sponsorTierStyles, currentEvent.primeSponsor.id) || currentEvent.primeSponsor.colour,
         }
         : undefined;
     const sponsorshipsWithCmsStyles = visibleSponsorships.map((item) => ({
         ...item,
-        colour: sponsorTierStyles?.[item.id] || item.colour,
+        colour: findTierStyle(sponsorTierStyles, item.id) || item.colour,
     }));
 
     const defaultExhibitorText = (

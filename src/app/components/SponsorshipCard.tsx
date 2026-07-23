@@ -4,6 +4,7 @@ import { Event } from '@/types/events';
 import { Sponsorship } from '@/types/sponsorships';
 import FormattedPerk from '@/components/FormattedPerk';
 import { getPriceDisplay } from '@/lib/price-formatting';
+import { getTierStyleProps } from '@/lib/sponsor-tier-styles';
 
 type SponsorProp = {
     item: Sponsorship;
@@ -32,12 +33,9 @@ const SponsorshipCard = ({ item, event, eyebrow, getSponsorCount }: SponsorProp)
         earlyBirdDeadline: item.earlyBirdDeadline,
         type: 'paid',
     });
-    const backgroundColor = item.colour?.match(/^#[0-9a-fA-F]{3,8}$/)?.[0] || item.colour?.match(/bg-\[(#[0-9a-fA-F]{3,8})\]/)?.[1];
-    const colourClassName = item.colour
-        ? backgroundColor
-            ? item.colour.replace(/bg-\[#[0-9a-fA-F]{3,8}\]/, '').trim()
-            : item.colour
-        : 'bg-navy-800';
+    const tierStyle = getTierStyleProps(item.colour, 'bg-navy-800');
+    // an explicit textColour wins, then any text- class carried by the colour itself
+    const textColourClassName = item.textColour || (tierStyle.hasTextColour ? '' : 'text-white');
 
     return (
         <div className="w-full h-full max-w-7xl mx-auto mb-6 rounded-lg border border-gray-200 bg-white shadow-md relative">
@@ -52,8 +50,8 @@ const SponsorshipCard = ({ item, event, eyebrow, getSponsorCount }: SponsorProp)
                 </div>
             )}
             <div
-                className={`flex items-center gap-4 rounded-t-lg justify-between p-4 ${colourClassName} ${item.textColour || 'text-white'} font-bold`}
-                style={backgroundColor ? { backgroundColor } : undefined}
+                className={`flex items-center gap-4 rounded-t-lg justify-between p-4 ${tierStyle.className} ${textColourClassName} font-bold`}
+                style={tierStyle.style}
             >
                 <div>
                     <h4 className={`text-[1rem] font-bold `}>{item.title}</h4>
