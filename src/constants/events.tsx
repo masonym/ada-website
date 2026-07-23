@@ -10,33 +10,86 @@ export const EVENTS: Event[] = [
     date: "November 14, 2024",
     timeStart: "2024-11-14T13:00:00Z",
     timeEnd: "2024-11-15T00:30:00Z",
-    description: "The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities — covering War Dept. and Combat Command mission priorities — Army, Navy, Air Force, Marine Corps, Space Force and Coast Guard — focused on all major sectors from advanced IT, AI and Cyber, all-domain command & control, and weapons system development & sustainment, to logistics & transport, facility management, Military base building design & construction, energy resiliency and environmental remediation, to new Government-Private Sector collaborations in critical infrastructure security, U.S. manufacturing base revitalization, ship building and shipyard modernization, Space defense and other major initiatives.",
+    description:
+      "The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities — covering War Dept. and Combat Command mission priorities — Army, Navy, Air Force, Marine Corps, Space Force and Coast Guard — focused on all major sectors from advanced IT, AI and Cyber, all-domain command & control, and weapons system development & sustainment, to logistics & transport, facility management, Military base building design & construction, energy resiliency and environmental remediation, to new Government-Private Sector collaborations in critical infrastructure security, U.S. manufacturing base revitalization, ship building and shipyard modernization, Space defense and other major initiatives.",
     eventText: (
       <div className="max-container font-light">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          The 2025 Defense Industry Forecast will provide actionable business intelligence on upcoming acquisition opportunities – covering War Dept. mission priorities focused on advanced IT, AI and Cyber, to weapons system development & sustainment, to forward logistics, facility support, Military base construction, shipyard modernization, Space defense and other major buying programs.
+          The 2025 Defense Industry Forecast will provide actionable business
+          intelligence on upcoming acquisition opportunities – covering War
+          Dept. mission priorities focused on advanced IT, AI and Cyber, to
+          weapons system development & sustainment, to forward logistics,
+          facility support, Military base construction, shipyard modernization,
+          Space defense and other major buying programs.
         </p>
         <p className="mb-4">
-          Conference attendees will have the chance to hear about the latest purchasing opportunities from Program Managers, Contracting Officers, and Small Business Program Directors from across the War Dept., and from Army, Navy, Air Force, Marine Corps and Space Force commands and installations – and from Prime Defense Contractors.
+          Conference attendees will have the chance to hear about the latest
+          purchasing opportunities from Program Managers, Contracting Officers,
+          and Small Business Program Directors from across the War Dept., and
+          from Army, Navy, Air Force, Marine Corps and Space Force commands and
+          installations – and from Prime Defense Contractors.
         </p>
       </div>
     ),
     topicalCoverage: [
-      { tagline: "", description: "War Department, Service, and Combat Command Acquisition Priorities", },
-      { tagline: "", description: "DoW Small Business Contracting Programs", },
-      { tagline: "", description: "Prime Defense Contractors - Subcontracting & Teaming", },
-      { tagline: "", description: "Accelerated Contracting Opportunities for Innovative Technology Solutions (DARPA, DIU, DEFENSEWERX)", },
-      { tagline: "", description: "GWAC's (Government-Wide Acquisition Contracts) and Their Small Business Tracks", },
-      { tagline: "", description: "Mentor-Protégé Programs as Business Accelerators for Smalls and Primes", },
-      { tagline: "", description: "Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC) Projects Coming Down the Pike", },
-      { tagline: "", description: "Military Base-Community Partnerships Driving Construction and Facility Support Contracts", },
-      { tagline: "", description: "Indo-Pacific Deployment/Logistics Challenges and New Contracting Initiatives", },
-      { tagline: "", description: "The Race to Develop AI, Advanced Computing and Machine Learning for Defense", },
-      { tagline: "", description: "Cybersecurity Compliance Mandates and CMMC Training Options", },
-      { tagline: "", description: "Special Preferential Contracting/Set-Aside Opportunities for Small Disadvantaged Businesses, 8(a) Certified Companies, Woman-Owned Small Businesses, Veteran and Service-Disabled Veteran Owned Small Businesses, HUBZone Firms, and Native American, Alaska Native, and Native Hawaiian Companies", },
+      {
+        tagline: "",
+        description:
+          "War Department, Service, and Combat Command Acquisition Priorities",
+      },
+      { tagline: "", description: "DoW Small Business Contracting Programs" },
+      {
+        tagline: "",
+        description: "Prime Defense Contractors - Subcontracting & Teaming",
+      },
+      {
+        tagline: "",
+        description:
+          "Accelerated Contracting Opportunities for Innovative Technology Solutions (DARPA, DIU, DEFENSEWERX)",
+      },
+      {
+        tagline: "",
+        description:
+          "GWAC's (Government-Wide Acquisition Contracts) and Their Small Business Tracks",
+      },
+      {
+        tagline: "",
+        description:
+          "Mentor-Protégé Programs as Business Accelerators for Smalls and Primes",
+      },
+      {
+        tagline: "",
+        description:
+          "Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC) Projects Coming Down the Pike",
+      },
+      {
+        tagline: "",
+        description:
+          "Military Base-Community Partnerships Driving Construction and Facility Support Contracts",
+      },
+      {
+        tagline: "",
+        description:
+          "Indo-Pacific Deployment/Logistics Challenges and New Contracting Initiatives",
+      },
+      {
+        tagline: "",
+        description:
+          "The Race to Develop AI, Advanced Computing and Machine Learning for Defense",
+      },
+      {
+        tagline: "",
+        description:
+          "Cybersecurity Compliance Mandates and CMMC Training Options",
+      },
+      {
+        tagline: "",
+        description:
+          "Special Preferential Contracting/Set-Aside Opportunities for Small Disadvantaged Businesses, 8(a) Certified Companies, Woman-Owned Small Businesses, Veteran and Service-Disabled Veteran Owned Small Businesses, HUBZone Firms, and Native American, Alaska Native, and Native Hawaiian Companies",
+      },
     ],
     testimonials: [
       // {
@@ -48,21 +101,23 @@ export const EVENTS: Event[] = [
       //   videoId: "H3Be6-OY_ug"
       // },
       {
-        type: 'video',
-        quote: "\"The American Defense Alliance is a body for us that is extremely valuable because it covers that whole forest, from two dudes in a garage to some pretty large and impressive companies.\" ",
+        type: "video",
+        quote:
+          '"The American Defense Alliance is a body for us that is extremely valuable because it covers that whole forest, from two dudes in a garage to some pretty large and impressive companies." ',
         name: "His Royal Highness, Brigadier General Prince Joachim, Prince of Denmark",
         title: "Danish Military Industry Attaché",
         affiliation: "Royal Embassy of Denmark",
-        videoId: "LNC5iQfEEEc"
+        videoId: "LNC5iQfEEEc",
       },
       {
-        type: 'video',
-        quote: "\"The American Defense Alliance puts on fantastic events, and they really connect Small Businesses to a lot of really great opportunities out there.\"",
+        type: "video",
+        quote:
+          '"The American Defense Alliance puts on fantastic events, and they really connect Small Businesses to a lot of really great opportunities out there."',
         name: "Brian Liesveld",
         title: "Chief Executive Officer",
         affiliation: "DEFENSEWERX",
-        videoId: "kqyAAe4RHNA"
-      }
+        videoId: "kqyAAe4RHNA",
+      },
     ],
     image: "/2025_DefenseIndustryForecast.webp",
     slug: "2025-defense-industry-forecast",
@@ -77,7 +132,7 @@ export const EVENTS: Event[] = [
                       <li>Follow New York Ave. all the way to 14th St. and turn left (South).</li>
                       <li>The National Press Building is at the corner of 14th and F St. next to the J.W. Marriott Hotel.</li>
                     </ol>
-        `
+        `,
       },
       {
         title: "Traveling by Metro",
@@ -90,7 +145,7 @@ export const EVENTS: Event[] = [
                         <li>Turn left and walk downhill to the National Press Building lobby.</li>
                         <li>Enter and take the elevators to the 13th Floor.</li>
                     </ol>
-        `
+        `,
       },
       {
         title: "Traveling from Virginia",
@@ -118,12 +173,20 @@ export const EVENTS: Event[] = [
                       <li>Right on F St.</li>
                       <li>The National Press Building is at the corner of 14th and F St. next to the J.W. Marriott Hotel</li>
                     </ol>
-        `
+        `,
       },
     ],
     images: [
-      { id: "main", src: "/events/2025-defense-industry-forecast/main.jpeg", alt: "Main event image" },
-      { id: "location", src: "/events/2025-defense-industry-forecast/location.jpeg", alt: "Event location" },
+      {
+        id: "main",
+        src: "/events/2025-defense-industry-forecast/main.jpeg",
+        alt: "Main event image",
+      },
+      {
+        id: "location",
+        src: "/events/2025-defense-industry-forecast/location.jpeg",
+        alt: "Event location",
+      },
       // { id: "recap", src: "/events/2025-defense-industry-forecast/recap-placeholder.webp", alt: "Event recap placeholder" },
       // Add more images as needed
     ],
@@ -132,8 +195,9 @@ export const EVENTS: Event[] = [
         title: "For Guaranteed Parking Reservations",
         description: `We recommend booking convenient and affordable parking in advance through SpotHero, the nation's leading parking reservations app.`,
         link: {
-          linkText: "To reserve your parking spot, visit the The National Press Club SpotHero Parking Page",
-          href: 'https://spothero.app.link/ts1p2NqSe1?kind=destination&id=45809&$3p=a_hasoffers&$affiliate_json=http%3A%2F%2Ftracking.spothero.com%2Faff_c%3Foffer_id%3D1%26aff_id%3D1065%26file_id%3D28%26source%3Dthenationalpressclub%26aff_sub2%3Dparkingpage%26format%3Djson'
+          linkText:
+            "To reserve your parking spot, visit the The National Press Club SpotHero Parking Page",
+          href: "https://spothero.app.link/ts1p2NqSe1?kind=destination&id=45809&$3p=a_hasoffers&$affiliate_json=http%3A%2F%2Ftracking.spothero.com%2Faff_c%3Foffer_id%3D1%26aff_id%3D1065%26file_id%3D28%26source%3Dthenationalpressclub%26aff_sub2%3Dparkingpage%26format%3Djson",
         },
       },
       {
@@ -149,15 +213,14 @@ export const EVENTS: Event[] = [
       keynoteSpeakers: [
         {
           speakerId: "michael-waltz",
-          headerText: "Congressional Keynote Speaker"
+          headerText: "Congressional Keynote Speaker",
         },
         {
           speakerId: "honorable-john-p-sean-coffey",
-          headerText: "Defense Department Keynote Speaker"
-        }
-      ]
-    }
-
+          headerText: "Defense Department Keynote Speaker",
+        },
+      ],
+    },
   },
   {
     id: 2,
@@ -166,44 +229,84 @@ export const EVENTS: Event[] = [
     date: "March 11-12, 2025",
     timeStart: "2025-03-11T11:30:00Z", // 2025, march 11, at 7:30am EST
     timeEnd: "2025-03-12T16:30:00Z", // 2025, march 12, at 12:30pm EST
-    description: "Join us for the 2025 Southeast Defense Procurement Conference on March 11-12, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
+    description:
+      "Join us for the 2025 Southeast Defense Procurement Conference on March 11-12, 2025 in Atlanta, Georgia — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.",
     eventText: (
       <div className="max-w-[92rem] font-light text-balance">
-        <div className="p-4 border-black border-4 bg-white w-fit text-xl md:text-5xl text-red-500 font-bold mx-auto rounded-lg mb-4 flex items-center"><span className="mr-2"><CircleAlert size={48} color="#c53434" /></span>Event Registration is Now Closed<span className="ml-2"><CircleAlert size={48} color="#c53434" /></span></div>
+        <div className="p-4 border-black border-4 bg-white w-fit text-xl md:text-5xl text-red-500 font-bold mx-auto rounded-lg mb-4 flex items-center">
+          <span className="mr-2">
+            <CircleAlert size={48} color="#c53434" />
+          </span>
+          Event Registration is Now Closed
+          <span className="ml-2">
+            <CircleAlert size={48} color="#c53434" />
+          </span>
+        </div>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
         <p className="mb-0 leading-9">
-          Join us for the <b>2025 Southeast Defense Procurement Conference</b> on March 11-12, 2025 in Atlanta, Georgia, home to the U.S. Army Corps of Engineers South Atlantic Division — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.
-          <br /><br />
+          Join us for the <b>2025 Southeast Defense Procurement Conference</b>{" "}
+          on March 11-12, 2025 in Atlanta, Georgia, home to the U.S. Army Corps
+          of Engineers South Atlantic Division — a pivotal event designed to
+          empower businesses with crucial insights into Defense Procurement
+          across the Southeastern United States, from North Carolina to
+          Mississippi. This event is open to Defense Contractors nationwide,
+          with a special focus on those interested in expanding their business
+          opportunities in the Southeast by doing business with the various
+          contracting commands. It will spotlight current and future purchasing
+          requirements and contracting opportunities that can empower your
+          business to new levels of success.
+          <br />
+          <br />
         </p>
         <p className="font-bold text-xl text-center font-gotham">
           Featured Contracting Commands:
         </p>
         <div className="">
           <ul className="list-inside">
-            <li>Multiple Air Force Bases in Florida, Georgia & throughout the Southeast</li>
-            <li>Marine Corps Bases in North & South Carolina and the Blount Island Logistic Support Facility</li>
+            <li>
+              Multiple Air Force Bases in Florida, Georgia & throughout the
+              Southeast
+            </li>
+            <li>
+              Marine Corps Bases in North & South Carolina and the Blount Island
+              Logistic Support Facility
+            </li>
             <li>Ft. Liberty, Army Anniston Depot and Red Stone Arsenal</li>
-            <li>Army Corps of Engineers District Headquarters in Mobile, Savannah, Charleston, Jacksonville & Wilmington</li>
+            <li>
+              Army Corps of Engineers District Headquarters in Mobile, Savannah,
+              Charleston, Jacksonville & Wilmington
+            </li>
             <li>NAVFAC Field Offices & Public Works Dept.'s</li>
-            <li>King's Bay Naval Sub Base, and Naval Air Stations in Pensacola, Jacksonville & Key West</li>
-            <li>Major Contracting Commands including CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, & SPACECENT</li>
+            <li>
+              King's Bay Naval Sub Base, and Naval Air Stations in Pensacola,
+              Jacksonville & Key West
+            </li>
+            <li>
+              Major Contracting Commands including CENTCOM, SOUTHCOM, AFSOC,
+              SOCSOUTH, & SPACECENT
+            </li>
           </ul>
         </div>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
         <p className="max-w-6xl mx-auto text-center">
-          The <b>2025 Southeast Defense Procurement Conference</b> is the premier event to
-          explore the latest contracting opportunities across a wide range of industries.
-          From <b>Aerospace and Aviation</b> to <b>Military Base Construction, Facility Support,
-            Shipbuilding, Expeditionary Logistics, AI and Energy Resilience</b>, you'll connect
-          with top companies driving military innovation. Attendees will gain access to key
-          decision-makers, including Program Managers, Contracting Officers, and Small
-          Business Program Directors from the Army, Navy, Air Force, Marine Corps, and Space
-          Force Commands, and top Prime Defense Contractors. This is your chance to forge
-          invaluable connections that can shape the future of your business.
+          The <b>2025 Southeast Defense Procurement Conference</b> is the
+          premier event to explore the latest contracting opportunities across a
+          wide range of industries. From <b>Aerospace and Aviation</b> to{" "}
+          <b>
+            Military Base Construction, Facility Support, Shipbuilding,
+            Expeditionary Logistics, AI and Energy Resilience
+          </b>
+          , you'll connect with top companies driving military innovation.
+          Attendees will gain access to key decision-makers, including Program
+          Managers, Contracting Officers, and Small Business Program Directors
+          from the Army, Navy, Air Force, Marine Corps, and Space Force
+          Commands, and top Prime Defense Contractors. This is your chance to
+          forge invaluable connections that can shape the future of your
+          business.
         </p>
         {/* <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           Why Attend?
@@ -219,23 +322,61 @@ export const EVENTS: Event[] = [
           Event Overview
         </h2>
         <p className="mb-0 leading-9">
-          Join us for the <b>2025 Southeast Defense Procurement Conference</b> on March 11-12, 2025 in Atlanta, Georgia, home to the U.S. Army Corps of Engineers South Atlantic Division — a pivotal event designed to empower businesses with crucial insights into Defense Procurement across the Southeastern United States, from North Carolina to Mississippi. This event is open to Defense Contractors nationwide, with a special focus on those interested in expanding their business opportunities in the Southeast by doing business with the various contracting commands. It will spotlight current and future purchasing requirements and contracting opportunities that can empower your business to new levels of success.
+          Join us for the <b>2025 Southeast Defense Procurement Conference</b>{" "}
+          on March 11-12, 2025 in Atlanta, Georgia, home to the U.S. Army Corps
+          of Engineers South Atlantic Division — a pivotal event designed to
+          empower businesses with crucial insights into Defense Procurement
+          across the Southeastern United States, from North Carolina to
+          Mississippi. This event is open to Defense Contractors nationwide,
+          with a special focus on those interested in expanding their business
+          opportunities in the Southeast by doing business with the various
+          contracting commands. It will spotlight current and future purchasing
+          requirements and contracting opportunities that can empower your
+          business to new levels of success.
         </p>
       </div>
     ),
     topicalCoverage: [
-      { tagline: "Defense Acquisition Priorities", description: "Understand the Latest Acquisition Strategies from the Department of War, Service Components, and Combat Commands" },
+      {
+        tagline: "Defense Acquisition Priorities",
+        description:
+          "Understand the Latest Acquisition Strategies from the Department of War, Service Components, and Combat Commands",
+      },
       // { tagline: "Small Business Contracting Programs", description: "Learn about Initiatives that Support Small Businesses in Defense Contracting" },
-      { tagline: "Subcontracting and Teaming Opportunities", description: " Connect with Prime Defense Contractors to Explore Collaborative Ventures" },
-      { tagline: "Innovative Technology Solutions", description: " Discover Accelerated Contracting Opportunities through DARPA, DIU, and DEFENSEWERX" },
+      {
+        tagline: "Subcontracting and Teaming Opportunities",
+        description:
+          " Connect with Prime Defense Contractors to Explore Collaborative Ventures",
+      },
+      {
+        tagline: "Innovative Technology Solutions",
+        description:
+          " Discover Accelerated Contracting Opportunities through DARPA, DIU, and DEFENSEWERX",
+      },
       // { tagline: "Government-Wide Acquisition Contracts (GWACs)", description: " Navigate the Intricacies of GWACs and their Small Business Tracks" },
       // { tagline: "Mentor-Protégé Programs", description: " Explore Programs Designed to Accelerate the Growth of Small Businesses through Strategic Partnerships" },
-      { tagline: "Upcoming Projects", description: "Get Insights into Future Projects from the Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC)" },
-      { tagline: "Military Base-Community Partnerships", description: " Learn how these Partnerships are Driving Construction and Facility Support Contracts" },
-      { tagline: "Cybersecurity Compliance", description: "Understand the Mandates and Training Options Available for Compliance with CMMC" },
+      {
+        tagline: "Upcoming Projects",
+        description:
+          "Get Insights into Future Projects from the Army Corps of Engineers (USACE) and Naval Facilities Engineering Systems Command (NAVFAC)",
+      },
+      {
+        tagline: "Military Base-Community Partnerships",
+        description:
+          " Learn how these Partnerships are Driving Construction and Facility Support Contracts",
+      },
+      {
+        tagline: "Cybersecurity Compliance",
+        description:
+          "Understand the Mandates and Training Options Available for Compliance with CMMC",
+      },
       // { tagline: "Support for Small & Medium Contractors", description: "Gain Access to Resources from the Defense Contract Audit Agency" },
       // { tagline: "Special Contracting Opportunities", description: " Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms" },
-      { tagline: "Small Business Contracting Opportunities", description: "Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms. Explore Programs Designed to Accelerate the Growth of Small Businesses through Strategic Partnerships. Navigate the Intricacies of GWACs and their Small Business Tracks." }
+      {
+        tagline: "Small Business Contracting Opportunities",
+        description:
+          "Explore Set-Aside Opportunities for Small Disadvantaged Businesses, including 8(a) Certified, Woman-Owned, Veteran-Owned, and HUBZone firms. Explore Programs Designed to Accelerate the Growth of Small Businesses through Strategic Partnerships. Navigate the Intricacies of GWACs and their Small Business Tracks.",
+      },
     ],
     expectations: [
       {
@@ -243,26 +384,31 @@ export const EVENTS: Event[] = [
         expectations: [
           {
             title: "Business Opportunities and Tailored Growth Sessions",
-            description: "Participate in Sessions designed to Accelerate your Business Growth, whether you are New to the Federal Market or a Seasoned Contractor looking to Expand your Reach"
+            description:
+              "Participate in Sessions designed to Accelerate your Business Growth, whether you are New to the Federal Market or a Seasoned Contractor looking to Expand your Reach",
           },
           {
             title: "Direct Access to Decision-Makers",
-            description: "Forge Connections with Federal Procurement Decision-Makers, Contracting Officers, and Small Business Liaison Officers, who can Drive your Business Forward"
+            description:
+              "Forge Connections with Federal Procurement Decision-Makers, Contracting Officers, and Small Business Liaison Officers, who can Drive your Business Forward",
           },
           {
             title: "Networking with Experienced Small Businesses",
-            description: "Learn from and Collaborate with other Small Businesses that have successfully navigated the Federal Market, Sharing Insights and Strategies for Growth"
+            description:
+              "Learn from and Collaborate with other Small Businesses that have successfully navigated the Federal Market, Sharing Insights and Strategies for Growth",
           },
           {
             title: "One-on-One Matchmaking Sessions",
-            description: "Gain Exclusive, Personalized Sessions with Key Government Agencies and Major Corporations to Expand your Network and Grow your Business"
+            description:
+              "Gain Exclusive, Personalized Sessions with Key Government Agencies and Major Corporations to Expand your Network and Grow your Business",
           },
           {
             title: "Subcontracting Opportunities",
-            description: "Engage with Large Businesses to Explore Strategic Subcontracting Opportunities, Boosting your Past Performance and Helping you scale your Success"
+            description:
+              "Engage with Large Businesses to Explore Strategic Subcontracting Opportunities, Boosting your Past Performance and Helping you scale your Success",
           },
-        ]
-      }
+        ],
+      },
     ],
     expectationsText: `
     The <b>2025 Southeast Defense Procurement Conference</b> is the premier event to
@@ -329,127 +475,153 @@ invaluable connections that can shape the future of your business.
     password: "SDPC2025ADA",
 
     featuredTopicsTitle: "Featured Contracting Commands",
-    featuredTopicsSubtitle: "These insights highlight key regional defense assets and contracting opportunities in the Southeast, emphasizing the need for contractors to tailor their solutions to support the military's evolving Infrastructure, Operational Readiness, and Technological Advancements.",
+    featuredTopicsSubtitle:
+      "These insights highlight key regional defense assets and contracting opportunities in the Southeast, emphasizing the need for contractors to tailor their solutions to support the military's evolving Infrastructure, Operational Readiness, and Technological Advancements.",
     featuredTopics: [
       {
-        title: "Strategic Importance of Air Force Bases in Florida, Georgia, and the Southeast",
+        title:
+          "Strategic Importance of Air Force Bases in Florida, Georgia, and the Southeast",
         subItems: [
           {
             title: "Diverse Capabilities",
-            description: "Air Force Bases in the Southeast, such as Tyndall AFB, Eglin AFB, and Dobbins ARB, are vital hubs for Air Combat, Training, Missile Testing, and Space Operations."
+            description:
+              "Air Force Bases in the Southeast, such as Tyndall AFB, Eglin AFB, and Dobbins ARB, are vital hubs for Air Combat, Training, Missile Testing, and Space Operations.",
           },
           {
             title: "Modernization and Resilience",
-            description: "Tyndall AFB's recovery from Hurricane Michael highlights the Region's commitment to Resilience and Infrastructure upgrades, creating major opportunities for Construction, Engineering and Technology Solutions."
+            description:
+              "Tyndall AFB's recovery from Hurricane Michael highlights the Region's commitment to Resilience and Infrastructure upgrades, creating major opportunities for Construction, Engineering and Technology Solutions.",
           },
           {
             title: "Future of Combat and Space Operations",
-            description: "With a focus on expanding Space, Cyber, and Electronic Warfare capabilities at bases like Hickam and Patrick AFB, the Region is driving demand for Cutting-edge Technology, Cyber Defense, and Satellite Communications."
-          }
-        ]
+            description:
+              "With a focus on expanding Space, Cyber, and Electronic Warfare capabilities at bases like Hickam and Patrick AFB, the Region is driving demand for Cutting-edge Technology, Cyber Defense, and Satellite Communications.",
+          },
+        ],
       },
       {
         title: "Marine Corps Bases and Blount Island Logistic Support Facility",
         subItems: [
           {
             title: "Strategic Mobilization",
-            description: "Camp Lejeune and Parris Island in North and South Carolina are critical to the Marine Corps' Readiness, Training, and Rapid Deployment Capabilities."
+            description:
+              "Camp Lejeune and Parris Island in North and South Carolina are critical to the Marine Corps' Readiness, Training, and Rapid Deployment Capabilities.",
           },
           {
             title: "Logistics Infrastructure",
-            description: "The Blount Island Logistics Support Facility in Jacksonville, Florida, plays a key role in supporting Navy and Marine Corps Logistics through Warehousing, Transportation, and Supply Chain Management."
+            description:
+              "The Blount Island Logistics Support Facility in Jacksonville, Florida, plays a key role in supporting Navy and Marine Corps Logistics through Warehousing, Transportation, and Supply Chain Management.",
           },
           {
             title: "Enhanced Joint Operations",
-            description: "Located near key Navy and Air Force assets in the Southeast, these Marine Corps bases strengthen inter-service Operations and Procurement partnerships."
-          }
-        ]
+            description:
+              "Located near key Navy and Air Force assets in the Southeast, these Marine Corps bases strengthen inter-service Operations and Procurement partnerships.",
+          },
+        ],
       },
       {
         title: "Ft. Liberty, Army Anniston Depot, and Redstone Arsenal",
         subItems: [
           {
             title: "Fort Liberty",
-            description: "A key hub for Army Space Operations Forces, Fort Liberty's expanding mission offers opportunities in Specialized Training, Advanced Systems, and Equipment Support."
+            description:
+              "A key hub for Army Space Operations Forces, Fort Liberty's expanding mission offers opportunities in Specialized Training, Advanced Systems, and Equipment Support.",
           },
           {
             title: "Anniston Army Depot",
-            description: "Vital for Military Vehicle Repair and Maintenance, the depot is embracing innovation for Modernization, creating opportunities in Defense Manufacturing, Automation, and Maintenance Services."
+            description:
+              "Vital for Military Vehicle Repair and Maintenance, the depot is embracing innovation for Modernization, creating opportunities in Defense Manufacturing, Automation, and Maintenance Services.",
           },
           {
             title: "Redstone Arsenal",
-            description: "In Huntsville, Alabama, Redstone Arsenal is a leading center for Missile Defense, Aviation, and Cybersecurity Research. The presence of NASA and AMCOM drives demand for Advanced Defense Technologies and R&D Contracting."
-          }
-        ]
+            description:
+              "In Huntsville, Alabama, Redstone Arsenal is a leading center for Missile Defense, Aviation, and Cybersecurity Research. The presence of NASA and AMCOM drives demand for Advanced Defense Technologies and R&D Contracting.",
+          },
+        ],
       },
       {
-        title: "Army Corps of Engineers Districts (Mobile, Savannah, Charleston, Jacksonville, Wilmington)",
+        title:
+          "Army Corps of Engineers Districts (Mobile, Savannah, Charleston, Jacksonville, Wilmington)",
         subItems: [
           {
             title: "Infrastructure & Modernization",
-            description: "These Districts drive large-scale projects in Water Resources, Flood Control, and Military Facility upgrades."
+            description:
+              "These Districts drive large-scale projects in Water Resources, Flood Control, and Military Facility upgrades.",
           },
           {
             title: "Resiliency Focus",
-            description: "Focusing on Climate Adaptation and Resilient Infrastructure, the Districts seek firms with expertise in Construction, Energy Efficiency, and Disaster Recovery."
+            description:
+              "Focusing on Climate Adaptation and Resilient Infrastructure, the Districts seek firms with expertise in Construction, Energy Efficiency, and Disaster Recovery.",
           },
           {
             title: "Regional Development",
-            description: "The growing need for Port and Base Facility upgrades in Wilmington, Charleston, and Savannah creates unique opportunities in Infrastructure Development and Defense Logistics."
-          }
-        ]
+            description:
+              "The growing need for Port and Base Facility upgrades in Wilmington, Charleston, and Savannah creates unique opportunities in Infrastructure Development and Defense Logistics.",
+          },
+        ],
       },
       {
         title: "NAVFAC Field Offices & Public Works Departments",
         subItems: [
           {
             title: "Base Infrastructure and Sustainment",
-            description: "NAVFAC Field Officers are essential in maintaining and enhancing Base Infrastructure across the Southeast, covering Construction, Maintenance, Repairs, and Utility upgrades at Navy Installations.",
+            description:
+              "NAVFAC Field Officers are essential in maintaining and enhancing Base Infrastructure across the Southeast, covering Construction, Maintenance, Repairs, and Utility upgrades at Navy Installations.",
           },
           {
             title: "Energy and Sustainability Initatives",
-            description: "With a growing emphasis on Sustainable Construction and Renewable Energy, NAVFAC offers opportunities for contractors in Green Technology, Energy-Efficient Systems, and Power Solutions."
+            description:
+              "With a growing emphasis on Sustainable Construction and Renewable Energy, NAVFAC offers opportunities for contractors in Green Technology, Energy-Efficient Systems, and Power Solutions.",
           },
           {
             title: "Real Property and Facility Management",
-            description: "As public works departments focus on Facility Lifecycle Management, there are abundant opportunities for firms specializing in Construction, Asset Management, and Infrastructure Upgrades.",
+            description:
+              "As public works departments focus on Facility Lifecycle Management, there are abundant opportunities for firms specializing in Construction, Asset Management, and Infrastructure Upgrades.",
           },
-        ]
+        ],
       },
       {
-        title: "King’s Bay Naval Submarine Base & Naval Air Stations (Pensacola, Jacksonville, Key West)",
+        title:
+          "King’s Bay Naval Submarine Base & Naval Air Stations (Pensacola, Jacksonville, Key West)",
         subItems: [
           {
             title: "Submarine Operations & Technology",
-            description: "King's Bay Naval Submarine Base supports Nuclear-powered Submarine Operations, creating procurement opportunities in Nuclear Technology, Logistics, Security Systems, and Specialized Defense Tech.",
+            description:
+              "King's Bay Naval Submarine Base supports Nuclear-powered Submarine Operations, creating procurement opportunities in Nuclear Technology, Logistics, Security Systems, and Specialized Defense Tech.",
           },
           {
             title: "Naval Aviation",
-            description: "Naval Air Stations like Pensacola, Jacksonville, and Key West are crucial for Training and Fleet Readiness, offering opportunities in Aviation Systems, Training Equipment, Simulation Technologies, and Maintenance Services.",
+            description:
+              "Naval Air Stations like Pensacola, Jacksonville, and Key West are crucial for Training and Fleet Readiness, offering opportunities in Aviation Systems, Training Equipment, Simulation Technologies, and Maintenance Services.",
           },
           {
             title: "Integration and Joint Training",
-            description: "These bases play a key role in Joint Training Exercises, driving demand for solutions that enhance Interoperability, Cybersecurity, and Logistics.",
+            description:
+              "These bases play a key role in Joint Training Exercises, driving demand for solutions that enhance Interoperability, Cybersecurity, and Logistics.",
           },
-        ]
+        ],
       },
       {
-        title: "Key Contracting Commands (CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, SPACECENT)",
+        title:
+          "Key Contracting Commands (CENTCOM, SOUTHCOM, AFSOC, SOCSOUTH, SPACECENT)",
         subItems: [
           {
             title: "Global & Regional Operation",
-            description: "CENTCOM and SOUTHCOM influence operations in the Southeast U.S., with growing procurement needs in Logistics, Cybersecurity, and Intelligence, driven by U.S. interests in the Caribbean and Latin America. This creates demand for Security, Infrastructure, and Technology Solutions.",
+            description:
+              "CENTCOM and SOUTHCOM influence operations in the Southeast U.S., with growing procurement needs in Logistics, Cybersecurity, and Intelligence, driven by U.S. interests in the Caribbean and Latin America. This creates demand for Security, Infrastructure, and Technology Solutions.",
           },
           {
             title: "Special Operations & Space Missions",
-            description: "AFSOC, SOCSOUTH, and SPACECENT focus on Specialized Readiness and Technology. Companies with expertise in Advanced Communications, Space Technologies, and Special Operations Equipment will be prime candidates for contracts."
+            description:
+              "AFSOC, SOCSOUTH, and SPACECENT focus on Specialized Readiness and Technology. Companies with expertise in Advanced Communications, Space Technologies, and Special Operations Equipment will be prime candidates for contracts.",
           },
           {
             title: "Innovation & Tech Solutions",
-            description: "With SPACECENT and SOCSOUTH advancing Space and Cyber Technologies, there's a rising need for cutting-edge solutions in Satellite communications, Cybersecurity, Data Analytics, and Space-based Defense Systems."
-          }
-        ]
-      }
+            description:
+              "With SPACECENT and SOCSOUTH advancing Space and Cyber Technologies, there's a rising need for cutting-edge solutions in Satellite communications, Cybersecurity, Data Analytics, and Space-based Defense Systems.",
+          },
+        ],
+      },
     ],
     matchmakingSessions: {
       signUpDate: "March 11, 2025",
@@ -460,8 +632,8 @@ invaluable connections that can shape the future of your business.
         {
           date: "March 11",
           sessionTime: "4:00 PM - 5:30 PM",
-        }
-      ]
+        },
+      ],
     },
     features: {
       showKeynoteSpeaker: true,
@@ -477,9 +649,9 @@ invaluable connections that can shape the future of your business.
         {
           speakerId: "brandon-cockrell",
           headerText: "United States Army Keynote Speaker",
-        }
-      ]
-    }
+        },
+      ],
+    },
   },
   {
     id: 3,
@@ -488,31 +660,72 @@ invaluable connections that can shape the future of your business.
     date: "December 8-9, 2024",
     timeStart: "2024-12-09T15:00:00Z",
     timeEnd: "2024-12-09T22:30:00Z",
-    description: "The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems.",
+    description:
+      "The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the INDUSTRIALIZATION of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for space companies, including advanced mass production systems, innovative propellant solutions for launches and orbital positioning, cutting-edge industry analytics, and next-generation satellite communication systems.",
     eventText: (
       <div className="max-container font-light">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Industrializing Space
         </h2>
         <p className="mb-0 leading-9">
-          The commercialization of space has taken root, but now we stand on the brink of a groundbreaking evolution: the <b><i>INDUSTRIALIZATION</i></b> of space. Are you ready to be part of this transformative phase? This shift opens up a wealth of opportunities for Space Sector Companies, including Advanced Mass Production Systems, Innovative Propellant Solutions for Launches and Orbital Positioning, Cutting-edge Industry Analytics, and Next-generation Satellite Communication Systems.
-          <br /><br />
+          The commercialization of space has taken root, but now we stand on the
+          brink of a groundbreaking evolution: the{" "}
+          <b>
+            <i>INDUSTRIALIZATION</i>
+          </b>{" "}
+          of space. Are you ready to be part of this transformative phase? This
+          shift opens up a wealth of opportunities for Space Sector Companies,
+          including Advanced Mass Production Systems, Innovative Propellant
+          Solutions for Launches and Orbital Positioning, Cutting-edge Industry
+          Analytics, and Next-generation Satellite Communication Systems.
+          <br />
+          <br />
         </p>
         <p className="mb-4 leading-9">
-          We invite you to connect with the pioneers and visionaries who are leading this new era of Department of War and Commercial Space Industrialization. Meet the experts and program Managers eager to collaborate with those who recognize the vast potential in this rapidly expanding sector. Seize this opportunity to be at the forefront of this exciting frontier!
+          We invite you to connect with the pioneers and visionaries who are
+          leading this new era of Department of War and Commercial Space
+          Industrialization. Meet the experts and program Managers eager to
+          collaborate with those who recognize the vast potential in this
+          rapidly expanding sector. Seize this opportunity to be at the
+          forefront of this exciting frontier!
         </p>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           Conference Topics Spotlight
         </h2>
         <ul className="list-inside">
-          <li>How Rapidly Evolving New Technologies and Geopolitical Rivalries are Moving the Space Sector into a New Phase</li>
-          <li>NASA and Space Force – Engaging the Innovative Commercial Players – New Outreach Initiatives and Programs</li>
-          <li>Funding Space Industrialization – Capital Sourcing for New Space Technologies and the Supporting Terrestrial Infrastructure</li>
-          <li>Spaceport Launch Infrastructure and Ground Support Requirements</li>
-          <li>U.S. Space Defense – Challenges and Imperatives – Space as the Likely First Battleground in any Future Major Conflict, and how Space Force Guardians are Being Integrated into our Worldwide Combat Commands</li>
-          <li>Quantum and AI Driving New Frontiers in Space – and the Clear and Present Dangers to U.S. Space Assets and Operations</li>
-          <li>Space Supply Chain Challenges – Cybersecurity Imperatives – and How to Ensure Availability of Essential Space Asset Components</li>
-          <li>New Developments in Fabrication of Space Equipment, at On-Orbit Maintenance/Repair</li>
+          <li>
+            How Rapidly Evolving New Technologies and Geopolitical Rivalries are
+            Moving the Space Sector into a New Phase
+          </li>
+          <li>
+            NASA and Space Force – Engaging the Innovative Commercial Players –
+            New Outreach Initiatives and Programs
+          </li>
+          <li>
+            Funding Space Industrialization – Capital Sourcing for New Space
+            Technologies and the Supporting Terrestrial Infrastructure
+          </li>
+          <li>
+            Spaceport Launch Infrastructure and Ground Support Requirements
+          </li>
+          <li>
+            U.S. Space Defense – Challenges and Imperatives – Space as the
+            Likely First Battleground in any Future Major Conflict, and how
+            Space Force Guardians are Being Integrated into our Worldwide Combat
+            Commands
+          </li>
+          <li>
+            Quantum and AI Driving New Frontiers in Space – and the Clear and
+            Present Dangers to U.S. Space Assets and Operations
+          </li>
+          <li>
+            Space Supply Chain Challenges – Cybersecurity Imperatives – and How
+            to Ensure Availability of Essential Space Asset Components
+          </li>
+          <li>
+            New Developments in Fabrication of Space Equipment, at On-Orbit
+            Maintenance/Repair
+          </li>
         </ul>
       </div>
     ),
@@ -534,7 +747,7 @@ invaluable connections that can shape the future of your business.
         <li>Turn left/west onto Space Commerce Way and go approximately 1.5 miles/2.4 km</li>
         <li>Kennedy Space Center Visitor Complex is located on the right</li>
       </ol>
-    `
+    `,
       },
       {
         title: "From Orlando (SR 50)",
@@ -546,7 +759,7 @@ invaluable connections that can shape the future of your business.
         <li>Turn right onto Space Commerce Way and go approximately 1.2 miles/2 km</li>
         <li>Kennedy Space Center Visitor Complex is located on the left</li>
       </ol>
-    `
+    `,
       },
       {
         title: "From Orlando (SR 528)",
@@ -559,7 +772,7 @@ invaluable connections that can shape the future of your business.
         <li>Turn right onto Space Commerce Way and go approximately 1.2 miles/2 km</li>
         <li>Kennedy Space Center Visitor Complex is located on the left</li>
       </ol>
-    `
+    `,
       },
       {
         title: "From Daytona Beach (I-95)",
@@ -572,7 +785,7 @@ invaluable connections that can shape the future of your business.
         <li>Turn right onto Space Commerce Way and go approximately 1.2 miles/2 km</li>
         <li>Kennedy Space Center Visitor Complex is located on the left</li>
       </ol>
-    `
+    `,
       },
       {
         title: "From Miami (I-95)",
@@ -585,8 +798,8 @@ invaluable connections that can shape the future of your business.
         <li>Turn right onto Space Commerce Way and go approximately 1.2 miles/2 km</li>
         <li>Kennedy Space Center Visitor Complex is located on the left</li>
       </ol>
-    `
-      }
+    `,
+      },
     ],
     images: [],
     parkingInfo: [
@@ -595,20 +808,20 @@ invaluable connections that can shape the future of your business.
         description: `The Kennedy Space Center Visitor Complex Parking Lot accommodates Motorcycles, Automobiles, and Oversized Vehicles such as RVs. Parking fees are collected at the entrance to the lot. Parking is accessible 30 minutes before complex opening.
         <br/><br/>
         You must enter the KSCVC through the "Crawler" entrance on Space Commerce Way. The entrance is a newer entrance, if you attempt to enter through the security gate off of SR405, you will be asked to turn around.
-        `
+        `,
       },
       {
         title: "Accessible Parking",
-        description: `Parking for Visitors with Disabilities is available in Lot 2 with Valid Parking Permit.`
+        description: `Parking for Visitors with Disabilities is available in Lot 2 with Valid Parking Permit.`,
       },
       {
         title: "Rideshare & Taxi Information",
-        description: `Rideshare and Taxi Drop-offs and Pick-ups in Lot 4 are permitted with Proof of Fare.`
+        description: `Rideshare and Taxi Drop-offs and Pick-ups in Lot 4 are permitted with Proof of Fare.`,
       },
       {
         title: "GPS Information",
-        description: `For GPS navigation, use coordinates 28°30'56.0"N and 80°40'54"W or search for "Kennedy Space Center Visitor Complex". Important: Do not use "Kennedy Space Center" as this will direct you to an incorrect location.`
-      }
+        description: `For GPS navigation, use coordinates 28°30'56.0"N and 80°40'54"W or search for "Kennedy Space Center Visitor Complex". Important: Do not use "Kennedy Space Center" as this will direct you to an incorrect location.`,
+      },
     ],
     placeID: "ChIJY0BfjTOu4IgRxNjxFMIAkQ0",
     registerLink: "https://www.industrializing.space/shop/",
@@ -616,14 +829,16 @@ invaluable connections that can shape the future of your business.
     contactInfo: {
       contactText: "General Inquiries",
       contactEmail: "info@industralizing.space",
-      contactEmail2: "lana@americandefensealliance.org"
+      contactEmail2: "lana@americandefensealliance.org",
     },
     sponsorshipInfo: {
       customContactText: (
         <div className="flex flex-col items-center space-y-4 bg-white rounded-lg shadow-lg p-8">
           <h3 className="text-3xl font-bold">Contact Information</h3>
           <div className="text-center">
-            <p className="text-xl font-bold">Lana Corrigan, Meetings & Events Executive</p>
+            <p className="text-xl font-bold">
+              Lana Corrigan, Meetings & Events Executive
+            </p>
             {/* <p className="text-lg text-gray-200 italic mb-4">Meetings & Events Executive</p> */}
           </div>
 
@@ -644,17 +859,21 @@ invaluable connections that can shape the future of your business.
             </div>
           </div>
         </div>
-      )
+      ),
     },
     customFooterText: (
       <div>
-        <p>The Industrializing Space Conference is a Program of the Michigan Aerospace Manufacturing Association, a 501(c)(6) Organization in Partnership with American Defense Alliance and The Astronaut Memorial Foundation.
+        <p>
+          The Industrializing Space Conference is a Program of the Michigan
+          Aerospace Manufacturing Association, a 501(c)(6) Organization in
+          Partnership with American Defense Alliance and The Astronaut Memorial
+          Foundation.
         </p>
       </div>
     ),
     parkingBox: {
       text: "To access the KSC Visitor Complex, present the Parking Placard provided below. This will serve as your entry into the KSCVC parking for the event. Park in Lot 4 and please present this parking pass at the parking plaza. It may be presented digitally or it may be printed.\n\nImportant: Each attendee must present a yellow admission ticket at the turnstiles. You will have (1) ticket for each day of the event.\n• Travel Through Turnstiles and Around the Curved Path\n• The Rocket Garden will be on your Left\n• To the CSE: Walk through the Rocket Garden through the Gateway Building Beyond the White Fence (to the left of the Gateway) will be The Center for Space Education\n• Turn Right to Follow the Path to the Front Entrance of The Center for Space Education",
-      imagePlaceholder: "/events/2025DTIOS/parking_placard.webp"
+      imagePlaceholder: "/events/2025DTIOS/parking_placard.webp",
     },
   },
   {
@@ -664,13 +883,13 @@ invaluable connections that can shape the future of your business.
     title: "2025 Navy & Marine Corps Procurement Conference",
     sales: [
       {
-        id: 'memorial-day-2025',
-        title: 'Special Memorial Day Sale',
-        description: 'Get 15% off your registration with promo code',
-        promoCode: 'MEMORIAL15',
-        validUntil: '2025-05-27T17:59:59-04:00',
-        isActive: true
-      }
+        id: "memorial-day-2025",
+        title: "Special Memorial Day Sale",
+        description: "Get 15% off your registration with promo code",
+        promoCode: "MEMORIAL15",
+        validUntil: "2025-05-27T17:59:59-04:00",
+        isActive: true,
+      },
     ],
     date: "July 29-30, 2025",
     timeStart: "2025-07-29T11:30:00Z",
@@ -682,7 +901,14 @@ invaluable connections that can shape the future of your business.
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          Join us for the <b>2025 Navy & Marine Corps Procurement Conference</b> on July 29-30, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
+          Join us for the <b>2025 Navy & Marine Corps Procurement Conference</b>{" "}
+          on July 29-30, 2025 in Norfolk, Virginia, home to Naval Station
+          Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage
+          directly with decision-makers from the Pentagon, Navy and Marine Corps
+          Bases and Commands, and leading Prime Defense Contractors. Don't miss
+          your chance to network with Industry Leaders and Government Experts
+          and gain critical information into current procurement needs and
+          upcoming contracting opportunities by registering to attend.
         </p>
         <p className="font-bold text-xl text-center font-gotham">
           Topical Coverage:
@@ -690,20 +916,44 @@ invaluable connections that can shape the future of your business.
         <div className="">
           <ul className="list-inside">
             <li>Navy's Critical Maintenance & Repair and Shipbuilding Needs</li>
-            <li>SIOP - Shipyard Infrastructure Optimization Plan - Driving $ Billions in Construction & Facility Support Contracts</li>
-            <li>New Navy & Marine Corps Littoral Warfighting Requirements & Contracts</li>
+            <li>
+              SIOP - Shipyard Infrastructure Optimization Plan - Driving $
+              Billions in Construction & Facility Support Contracts
+            </li>
+            <li>
+              New Navy & Marine Corps Littoral Warfighting Requirements &
+              Contracts
+            </li>
             <li>New Navy & Marine Corps Technology Initiatives</li>
             <li>Upcoming Projects - NAVFAC, MARCORSYSCOM, and USACE</li>
-            <li>Military Base-Community Partnerships Promoting Local Build Contracts</li>
-            <li>Indo-Pacific ‘Pivot’ – Deployment & Logistics Challenges Driving Major New Acquisitions</li>
+            <li>
+              Military Base-Community Partnerships Promoting Local Build
+              Contracts
+            </li>
+            <li>
+              Indo-Pacific ‘Pivot’ – Deployment & Logistics Challenges Driving
+              Major New Acquisitions
+            </li>
             <li>Contracts Supporting U.S. Leadership in AI</li>
-            <li>The Surge in Autonomous/Unmanned Systems Development & Deployment</li>
+            <li>
+              The Surge in Autonomous/Unmanned Systems Development & Deployment
+            </li>
             <li>Base & Installation Physical Security Upgrades</li>
             <li>Major Command IT & Cyber Protection Contracts</li>
-            <li>Prime Defense Contractors - Subcontracting & Teaming Opportunities</li>
-            <li>Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)</li>
-            <li>How to Access GWAC's (Government-Wide Acquisition Contracts)</li>
-            <li>Mentor-Protégé Programs as Business Accelerators for Smalls & Primes</li>
+            <li>
+              Prime Defense Contractors - Subcontracting & Teaming Opportunities
+            </li>
+            <li>
+              Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU,
+              DEFENSEWERX)
+            </li>
+            <li>
+              How to Access GWAC's (Government-Wide Acquisition Contracts)
+            </li>
+            <li>
+              Mentor-Protégé Programs as Business Accelerators for Smalls &
+              Primes
+            </li>
             <li>Cybersecurity Compliance Mandates and CMMC Training Options</li>
           </ul>
         </div>
@@ -711,7 +961,15 @@ invaluable connections that can shape the future of your business.
           What to Expect
         </h2>
         <p className="max-w-6xl mx-auto text-center">
-          The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
+          The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow
+          you to meet Program Managers, Contracting Officers, and Small Business
+          Program Directors from key Navy and Marine Corps Bases & Commands.
+          You’ll also engage with leading Prime Defense Contractors actively
+          seeking new partners and Subcontractors. Whether you're looking to
+          forge strategic alliances, expand your network, or secure new business
+          opportunities, this event is your gateway to success in the Defense
+          industry. Don’t miss your chance to be part of this high-impact
+          networking experience!
         </p>
       </div>
     ),
@@ -721,33 +979,120 @@ invaluable connections that can shape the future of your business.
           Event Overview
         </h2>
         <p className="mb-0 leading-9">
-          Join us for the <b>2025 Navy & Marine Corps Procurement Conference</b> on July 29-30, 2025 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.
+          Join us for the <b>2025 Navy & Marine Corps Procurement Conference</b>{" "}
+          on July 29-30, 2025 in Norfolk, Virginia, home to Naval Station
+          Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage
+          directly with decision-makers from the Pentagon, Navy and Marine Corps
+          Bases and Commands, and leading Prime Defense Contractors. Don't miss
+          your chance to network with Industry Leaders and Government Experts
+          and gain critical information into current procurement needs and
+          upcoming contracting opportunities by registering to attend.
         </p>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
         <p className="max-w-6xl mx-auto text-center">
-          The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
+          The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow
+          you to meet Program Managers, Contracting Officers, and Small Business
+          Program Directors from key Navy and Marine Corps Bases & Commands.
+          You’ll also engage with leading Prime Defense Contractors actively
+          seeking new partners and Subcontractors. Whether you're looking to
+          forge strategic alliances, expand your network, or secure new business
+          opportunities, this event is your gateway to success in the Defense
+          industry. Don’t miss your chance to be part of this high-impact
+          networking experience!
         </p>
       </div>
     ),
     topicalCoverage: [
-      { "tagline": "Navy's Critical Maintenance & Repair and Shipbuilding Needs", "description": "Navy's urgent need for maintenance, repair, and new shipbuilding to ensure operational readiness and technological superiority" },
-      { "tagline": "SIOP - Shipyard Infrastructure Optimization Plan - Driving $ Billions in Construction & Facility Support Contracts", "description": "Massive investments under the SIOP to upgrade facilities and boost Navy shipbuilding and repair capabilities" },
-      { "tagline": "New Navy & Marine Corps Littoral Warfighting Requirements & Contracts", "description": "New operational needs and contracts focused on enhancing littoral (coastal) warfare capabilities for the Navy and Marine Corps" },
-      { "tagline": "New Navy & Marine Corps Technology Initiatives", "description": "Cutting-edge technology advancements being pursued by the Navy and Marine Corps to modernize operations and capabilities" },
-      { "tagline": "Upcoming Projects - NAVFAC, MARCORSYSCOM, and USACE", "description": "Upcoming infrastructure and development projects led by NAVFAC, MARCORSYSCOM, and USACE, with a focus on military needs" },
-      { "tagline": "Military Base-Community Partnerships Promoting Local Build Contracts", "description": "How partnerships between military bases and local communities are generating construction contracts for regional infrastructure development" },
-      { "tagline": "Indo-Pacific ‘Pivot’ – Deployment & Logistics Challenges Driving Major New Acquisitions", "description": "Strategic 'Indo-Pacific Pivot,' emphasizing the logistical and deployment challenges that are shaping new defense acquisitions" },
-      { "tagline": "Contracts Supporting U.S. Leadership in AI", "description": "Defense contracts aimed at advancing U.S. leadership in artificial intelligence technologies for military applications" },
-      { "tagline": "The Surge in Autonomous/Unmanned Systems Development & Deployment", "description": "Rapid development and deployment of autonomous and unmanned systems in the military, with a focus on new contracts" },
-      { "tagline": "Base & Installation Physical Security Upgrades", "description": "Initiatives and contracts aimed at upgrading physical security systems at military bases and installations to ensure safety and resilience" },
-      { "tagline": "Major Command IT & Cyber Protection Contracts", "description": "Contracts focused on enhancing IT and cybersecurity protections for major military commands against growing cyber threats" },
-      { "tagline": "Prime Defense Contractors - Subcontracting & Teaming Opportunities", "description": "Subcontracting and teaming opportunities for small and medium-sized businesses to work with prime defense contractors on large-scale projects" },
-      { "tagline": "Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)", "description": "Fast-tracked contracting vehicles like DARPA, DIU, and DEFENSEWERX are enabling the acquisition of cutting-edge defense technologies" },
-      { "tagline": "How to Access GWAC's (Government-Wide Acquisition Contracts)", "description": "How contractors can navigate and access Government-Wide Acquisition Contracts (GWAC's) for defense and federal opportunities" },
-      { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "How Mentor-Protégé programs help accelerate business growth for small businesses by pairing them with larger prime contractors" },
-      { "tagline": "Cybersecurity Compliance Mandates and CMMC Training Options", "description": "New cybersecurity compliance requirements under CMMC and training resources available for contractors to meet these standards" },
+      {
+        tagline: "Navy's Critical Maintenance & Repair and Shipbuilding Needs",
+        description:
+          "Navy's urgent need for maintenance, repair, and new shipbuilding to ensure operational readiness and technological superiority",
+      },
+      {
+        tagline:
+          "SIOP - Shipyard Infrastructure Optimization Plan - Driving $ Billions in Construction & Facility Support Contracts",
+        description:
+          "Massive investments under the SIOP to upgrade facilities and boost Navy shipbuilding and repair capabilities",
+      },
+      {
+        tagline:
+          "New Navy & Marine Corps Littoral Warfighting Requirements & Contracts",
+        description:
+          "New operational needs and contracts focused on enhancing littoral (coastal) warfare capabilities for the Navy and Marine Corps",
+      },
+      {
+        tagline: "New Navy & Marine Corps Technology Initiatives",
+        description:
+          "Cutting-edge technology advancements being pursued by the Navy and Marine Corps to modernize operations and capabilities",
+      },
+      {
+        tagline: "Upcoming Projects - NAVFAC, MARCORSYSCOM, and USACE",
+        description:
+          "Upcoming infrastructure and development projects led by NAVFAC, MARCORSYSCOM, and USACE, with a focus on military needs",
+      },
+      {
+        tagline:
+          "Military Base-Community Partnerships Promoting Local Build Contracts",
+        description:
+          "How partnerships between military bases and local communities are generating construction contracts for regional infrastructure development",
+      },
+      {
+        tagline:
+          "Indo-Pacific ‘Pivot’ – Deployment & Logistics Challenges Driving Major New Acquisitions",
+        description:
+          "Strategic 'Indo-Pacific Pivot,' emphasizing the logistical and deployment challenges that are shaping new defense acquisitions",
+      },
+      {
+        tagline: "Contracts Supporting U.S. Leadership in AI",
+        description:
+          "Defense contracts aimed at advancing U.S. leadership in artificial intelligence technologies for military applications",
+      },
+      {
+        tagline:
+          "The Surge in Autonomous/Unmanned Systems Development & Deployment",
+        description:
+          "Rapid development and deployment of autonomous and unmanned systems in the military, with a focus on new contracts",
+      },
+      {
+        tagline: "Base & Installation Physical Security Upgrades",
+        description:
+          "Initiatives and contracts aimed at upgrading physical security systems at military bases and installations to ensure safety and resilience",
+      },
+      {
+        tagline: "Major Command IT & Cyber Protection Contracts",
+        description:
+          "Contracts focused on enhancing IT and cybersecurity protections for major military commands against growing cyber threats",
+      },
+      {
+        tagline:
+          "Prime Defense Contractors - Subcontracting & Teaming Opportunities",
+        description:
+          "Subcontracting and teaming opportunities for small and medium-sized businesses to work with prime defense contractors on large-scale projects",
+      },
+      {
+        tagline:
+          "Accelerated Contracting Vehicles for Innovative Tech (DARPA, DIU, DEFENSEWERX)",
+        description:
+          "Fast-tracked contracting vehicles like DARPA, DIU, and DEFENSEWERX are enabling the acquisition of cutting-edge defense technologies",
+      },
+      {
+        tagline: "How to Access GWAC's (Government-Wide Acquisition Contracts)",
+        description:
+          "How contractors can navigate and access Government-Wide Acquisition Contracts (GWAC's) for defense and federal opportunities",
+      },
+      {
+        tagline:
+          "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes",
+        description:
+          "How Mentor-Protégé programs help accelerate business growth for small businesses by pairing them with larger prime contractors",
+      },
+      {
+        tagline: "Cybersecurity Compliance Mandates and CMMC Training Options",
+        description:
+          "New cybersecurity compliance requirements under CMMC and training resources available for contractors to meet these standards",
+      },
     ],
     image: "2025NMCPC_wide.webp",
     slug: "2025-navy-marine-corps-procurement-conference",
@@ -770,15 +1115,14 @@ invaluable connections that can shape the future of your business.
           date: "July 30",
           sessionTime: "12:30 PM - 1:30 PM",
         },
-      ]
+      ],
     },
     countdownColour: "#1C2D3D",
     expectationsText: `The <b>2025 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!`,
     parkingInfo: [
       {
         title: ``,
-        description:
-          `
+        description: `
         <b>Self-Parking</b>: Available in the City of Norfolk owned and operated Public Parking Garage. Norfolk City rates apply: $1.50/hour up to $13.00 per 24 hours.
         <br/>
         <div class="pl-6">
@@ -793,12 +1137,11 @@ invaluable connections that can shape the future of your business.
         <br/>
         <br/>
 A discounted parking rate of $22.00/Car/Night is offered with in and out privileges. To receive the discounted rate, the parking ticket must be validated at the hotel front desk. Once validated, you will receive a QR code to your email that you will use to enter and exit the garage. A printed copy will also be provided by the front desk. Parking Fee charges will automatically be charged to your guest room.`,
-
       },
       {
         title: "",
-        description: `<b>Valet Parking</b>: $33.00/Night`
-      }
+        description: `<b>Valet Parking</b>: $33.00/Night`,
+      },
     ],
     directions: [
       {
@@ -809,7 +1152,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
             <li>Take a right at second light onto Atlantic Street. Go down one block, take a left onto Main Street.</li>
             <li>The Marriott Hotel is immediately on the left.</li>
           </ul>
-          `
+          `,
       },
       {
         title: "SOUTH",
@@ -822,7 +1165,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           <li>Go down one block, take a left onto Main Street.</li>
           <li>The Marriott Hotel is immediately on the left.</li>
         </ul>
-        `
+        `,
       },
       {
         title: "EAST",
@@ -833,7 +1176,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           <li>Go down one Block, take a left onto Main Street.</li>
           <li>The Marriott Hotel is immediately on the left.</li>
         </ul>
-        `
+        `,
       },
       {
         title: "WEST",
@@ -844,7 +1187,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           <li>Go down one block, take a left onto Main Street.</li>
           <li>The Marriott Hotel is immediately on the left.</li>
         </ul>
-        `
+        `,
       },
     ],
     vipNetworkingReception: {
@@ -852,9 +1195,12 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       date: "July 29, 2025",
       timeStart: "6:00 PM",
       timeEnd: "8:00 PM",
-      description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
-      additionalInfo: "Join us at The Harbor Club featuring a cash bar, one complimentary drink ticket, and a selection of hors d’oeuvres.",
-      additionalInfo2: "The Norfolk Waterside Marriott is connected to the Harbor Club via a Parking Garage. From the Marriott’s 2nd Floor, next to the escalators, enter doors to the Parking Garage. Follow the garage’s pedestrian bridge to the Waterside District building. Entry for Harbor Club is on the 2nd Floor of the building.",
+      description:
+        "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
+      additionalInfo:
+        "Join us at The Harbor Club featuring a cash bar, one complimentary drink ticket, and a selection of hors d’oeuvres.",
+      additionalInfo2:
+        "The Norfolk Waterside Marriott is connected to the Harbor Club via a Parking Garage. From the Marriott’s 2nd Floor, next to the escalators, enter doors to the Parking Garage. Follow the garage’s pedestrian bridge to the Waterside District building. Entry for Harbor Club is on the 2nd Floor of the building.",
       locationName: "The Harbor Club",
       locationAddress: "333 Waterside Dr Suite 200, Norfolk, VA 23510, USA",
       placeId: "ChIJI8LspwuYuokR79KzVtIGqlY", // Google Maps Place ID for the reception venue
@@ -874,37 +1220,40 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         {
           speakerId: "christopher-m-haar",
           headerText: "U.S. Marine Corps Keynote Speaker",
-        }
-      ]
+        },
+      ],
     },
     testimonials: [
       {
-        type: 'image',
-        quote: "We're here at the 2025 Navy and Marine Corps Procurement Conference in Norfolk, connecting with businesses of all sizes in the national defense space. It's been a great opportunity to connect with new Prime partners, to build relationships, explore future partnerships, and gain valuable industry insights. We've discovered key resources around compliance and collaboration that will help us grow and enreach our opportunities as a business. Thanks to the organizers for this incredible experience, and we will be at future events",
+        type: "image",
+        quote:
+          "We're here at the 2025 Navy and Marine Corps Procurement Conference in Norfolk, connecting with businesses of all sizes in the national defense space. It's been a great opportunity to connect with new Prime partners, to build relationships, explore future partnerships, and gain valuable industry insights. We've discovered key resources around compliance and collaboration that will help us grow and enreach our opportunities as a business. Thanks to the organizers for this incredible experience, and we will be at future events",
         name: "Rashad Gray",
         title: "Business Program Development Officer",
         affiliation: "Mechanical Rubber",
         imageUrl: "/testimonials/rashad-gray.webp",
-        imageAlt: "Rashad Gray"
+        imageAlt: "Rashad Gray",
       },
       {
-        type: 'image',
-        quote: "A big shout-out to the American Defense Alliance! Great conference in Norfolk, VA that was well put-together, provided outstanding networking, and the food was amazing! As a relative newcomer to government contracting we felt very welcomed.",
+        type: "image",
+        quote:
+          "A big shout-out to the American Defense Alliance! Great conference in Norfolk, VA that was well put-together, provided outstanding networking, and the food was amazing! As a relative newcomer to government contracting we felt very welcomed.",
         name: "Bradney Napier",
         title: "CEO",
         affiliation: "Napier Industries",
         imageUrl: "/testimonials/bradney-napier.webp",
-        imageAlt: "Bradney Napier"
+        imageAlt: "Bradney Napier",
       },
       {
-        type: 'image',
-        quote: "A wonderful organization [American Defense Alliance] and an outstanding venue to meet like-minded professionals in the industry promoting investment in the defense sector, and hear directly from the military and government leaders about upcoming procurement opportunities in the Navy.",
+        type: "image",
+        quote:
+          "A wonderful organization [American Defense Alliance] and an outstanding venue to meet like-minded professionals in the industry promoting investment in the defense sector, and hear directly from the military and government leaders about upcoming procurement opportunities in the Navy.",
         name: "Bruce Sumlin",
         title: "Founder & CEO",
         affiliation: "CSS Energy Solutions",
         imageUrl: "/testimonials/bruce-sumlin.webp",
-        imageAlt: "Bruce Sumlin"
-      }
+        imageAlt: "Bruce Sumlin",
+      },
     ],
   },
   {
@@ -915,14 +1264,32 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     timeStart: "2026-03-04T11:30:00Z",
     timeEnd: "2026-03-05T18:30:00Z",
     registrationClosedTime: "2026-03-05T18:30:00Z",
-    description: "Join us at the 2026 Defense Technology & Aerospace Procurement Conference in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
+    description:
+      "Join us at the 2026 Defense Technology & Aerospace Procurement Conference in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.",
     eventText: (
       <div className="max-container font-light">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          Join us at the <b>2026 Defense Technology & Aerospace Procurement Conference</b> in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.
+          Join us at the{" "}
+          <b>2026 Defense Technology & Aerospace Procurement Conference</b> in
+          Austin, TX which has become a major hub for Military and Defense
+          technology innovation. The conference will equip Defense Industrial
+          Base contractors with actionable intelligence on the latest product
+          and service requirements across sectors—including IT, AI, quantum
+          technologies, cybersecurity qualification, next-generation aircraft
+          and satellites, C6ISR, precision fires, simulation and training,
+          military base security, assured logistics, and forward energy supply.
+          It will spotlight multi-billion-dollar acquisition programs, from the
+          Golden Dome initiative to advanced unmanned platforms and
+          next-generation aerial systems. Speakers/panelists will cover the
+          current purchasing priorities of Army, Air Force and Space Force
+          commands, bases and installations, and report on the status of Federal
+          contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs –
+          while providing specific opportunities for innovative Small and
+          Mid-size Businesses to team and subcontract with the Prime Defense
+          Contractors.
         </p>
         <p className="font-bold text-xl text-center font-gotham">
           Topical Coverage:
@@ -931,11 +1298,27 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           <li>Integration of Commercial Space Assets/Technologies </li>
           <li>Space Force Support Functions Across Domains/COCOMS</li>
           <li>Increased Launch Activity Driving Spaceport Infrastructure</li>
-          <li> Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)</li>
-          <li>Unmanned Platforms/’Collaborative Combat Aircraft’ – Prototype & Testing Contracts</li>
-          <li>Indo-Pacific AOR – Dispersed Airfield & Logistics Hub Reconstruction/Expansion</li>
-          <li>Golden Dome – Competition for Space-Based Missile Tracking/Interception Solutions</li>
-          <li>Defense Industrial Base Acceleration – Ordnance, Missiles, Drones, etc. </li>
+          <li>
+            {" "}
+            Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground
+            Support/Refueling/Airlift)
+          </li>
+          <li>
+            Unmanned Platforms/’Collaborative Combat Aircraft’ – Prototype &
+            Testing Contracts
+          </li>
+          <li>
+            Indo-Pacific AOR – Dispersed Airfield & Logistics Hub
+            Reconstruction/Expansion
+          </li>
+          <li>
+            Golden Dome – Competition for Space-Based Missile
+            Tracking/Interception Solutions
+          </li>
+          <li>
+            Defense Industrial Base Acceleration – Ordnance, Missiles, Drones,
+            etc.{" "}
+          </li>
           <li>Expediting Additive Manufacturing at the Warfighter Edge</li>
           <li>Expansion/Application of AI Throughout Defense Sectors</li>
           <li>Race to Exploit Quantum Technology</li>
@@ -943,11 +1326,18 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           <li>Critical Defense Infrastructure Cyber Protection</li>
           <li>Cybersecurity & CMMC Update</li>
           <li>AFCEC & USACE Project Priorities</li>
-          <li>Military Base-Community Partnerships Promoting Local Build Contracts</li>
+          <li>
+            Military Base-Community Partnerships Promoting Local Build Contracts
+          </li>
           <li>New Defense Department Acquisition Initiatives/Guidelines</li>
           <li>How to do Business with the Primes – Subcontracting & Teaming</li>
-          <li>Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's</li>
-          <li>Mentor-Protégé Programs as Business Accelerators for Smalls & Primes</li>
+          <li>
+            Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's &
+            OTA's
+          </li>
+          <li>
+            Mentor-Protégé Programs as Business Accelerators for Smalls & Primes
+          </li>
         </ul>
       </div>
     ),
@@ -957,7 +1347,24 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          Join us at the <b>2026 Defense Technology & Aerospace Procurement Conference</b> in Austin, TX which has become a major hub for Military and Defense technology innovation. The conference will equip Defense Industrial Base contractors with actionable intelligence on the latest product and service requirements across sectors—including IT, AI, quantum technologies, cybersecurity qualification, next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, military base security, assured logistics, and forward energy supply. It will spotlight multi-billion-dollar acquisition programs, from the Golden Dome initiative to advanced unmanned platforms and next-generation aerial systems. Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.
+          Join us at the{" "}
+          <b>2026 Defense Technology & Aerospace Procurement Conference</b> in
+          Austin, TX which has become a major hub for Military and Defense
+          technology innovation. The conference will equip Defense Industrial
+          Base contractors with actionable intelligence on the latest product
+          and service requirements across sectors—including IT, AI, quantum
+          technologies, cybersecurity qualification, next-generation aircraft
+          and satellites, C6ISR, precision fires, simulation and training,
+          military base security, assured logistics, and forward energy supply.
+          It will spotlight multi-billion-dollar acquisition programs, from the
+          Golden Dome initiative to advanced unmanned platforms and
+          next-generation aerial systems. Speakers/panelists will cover the
+          current purchasing priorities of Army, Air Force and Space Force
+          commands, bases and installations, and report on the status of Federal
+          contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs –
+          while providing specific opportunities for innovative Small and
+          Mid-size Businesses to team and subcontract with the Prime Defense
+          Contractors.
         </p>
       </div>
     ),
@@ -980,26 +1387,86 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     //       { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "These programs pair small businesses with experienced primes to share resources, improve competitiveness, and accelerate growth in defense contracting through structured mentorship." }
     // ],
     topicalCoverage: [
-      { "tagline": "Integration of Commercial Space Assets/Technologies", "description": "" },
-      { "tagline": "Space Force Support Functions Across Domains/COCOMS", "description": "" },
-      { "tagline": "Increased Launch Activity Driving Spaceport Infrastructure", "description": "" },
-      { "tagline": " Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)", "description": "" },
-      { "tagline": "Unmanned Platforms/’Collaborative Combat Aircraft’ – Prototype & Testing Contracts", "description": "" },
-      { "tagline": "Indo-Pacific AOR – Dispersed Airfield & Logistics Hub Reconstruction/Expansion", "description": "" },
-      { "tagline": "Golden Dome – Competition for Space-Based Missile Tracking/Interception Solutions", "description": "" },
-      { "tagline": "Defense Industrial Base Acceleration – Ordnance, Missiles, Drones, etc. ", "description": "" },
-      { "tagline": "Expediting Additive Manufacturing at the Warfighter Edge", "description": "" },
-      { "tagline": "Expansion/Application of AI Throughout Defense Sectors", "description": "" },
-      { "tagline": "Race to Exploit Quantum Technology", "description": "" },
-      { "tagline": "Facilitating Innovative Tech Contracting – DEFENSEWERX & DIU", "description": "" },
-      { "tagline": "Critical Defense Infrastructure Cyber Protection", "description": "" },
-      { "tagline": "Cybersecurity & CMMC Update", "description": "" },
-      { "tagline": "AFCEC & USACE Project Priorities", "description": "" },
-      { "tagline": "Military Base-Community Partnerships Promoting Local Build Contracts", "description": "" },
-      { "tagline": "New Defense Department Acquisition Initiatives/Guidelines", "description": "" },
-      { "tagline": "How to do Business with the Primes – Subcontracting & Teaming", "description": "" },
-      { "tagline": "Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's", "description": "" },
-      { "tagline": "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes", "description": "" },
+      {
+        tagline: "Integration of Commercial Space Assets/Technologies",
+        description: "",
+      },
+      {
+        tagline: "Space Force Support Functions Across Domains/COCOMS",
+        description: "",
+      },
+      {
+        tagline: "Increased Launch Activity Driving Spaceport Infrastructure",
+        description: "",
+      },
+      {
+        tagline:
+          " Air Dominance/Next-Gen Aircraft (Fighters/EW/Surveillance/Ground Support/Refueling/Airlift)",
+        description: "",
+      },
+      {
+        tagline:
+          "Unmanned Platforms/’Collaborative Combat Aircraft’ – Prototype & Testing Contracts",
+        description: "",
+      },
+      {
+        tagline:
+          "Indo-Pacific AOR – Dispersed Airfield & Logistics Hub Reconstruction/Expansion",
+        description: "",
+      },
+      {
+        tagline:
+          "Golden Dome – Competition for Space-Based Missile Tracking/Interception Solutions",
+        description: "",
+      },
+      {
+        tagline:
+          "Defense Industrial Base Acceleration – Ordnance, Missiles, Drones, etc. ",
+        description: "",
+      },
+      {
+        tagline: "Expediting Additive Manufacturing at the Warfighter Edge",
+        description: "",
+      },
+      {
+        tagline: "Expansion/Application of AI Throughout Defense Sectors",
+        description: "",
+      },
+      { tagline: "Race to Exploit Quantum Technology", description: "" },
+      {
+        tagline: "Facilitating Innovative Tech Contracting – DEFENSEWERX & DIU",
+        description: "",
+      },
+      {
+        tagline: "Critical Defense Infrastructure Cyber Protection",
+        description: "",
+      },
+      { tagline: "Cybersecurity & CMMC Update", description: "" },
+      { tagline: "AFCEC & USACE Project Priorities", description: "" },
+      {
+        tagline:
+          "Military Base-Community Partnerships Promoting Local Build Contracts",
+        description: "",
+      },
+      {
+        tagline: "New Defense Department Acquisition Initiatives/Guidelines",
+        description: "",
+      },
+      {
+        tagline:
+          "How to do Business with the Primes – Subcontracting & Teaming",
+        description: "",
+      },
+      {
+        tagline:
+          "Accessing Government-Wide Acquisition Contracts (GWAC's), SBIR's & OTA's",
+        description: "",
+      },
+      {
+        tagline:
+          "Mentor-Protégé Programs as Business Accelerators for Smalls & Primes",
+        description: "",
+      },
     ],
     image: "2025DTAPC_wide.webp",
     slug: "2026-defense-technology-aerospace-procurement-conference",
@@ -1023,13 +1490,12 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           date: "March 5",
           sessionTime: "12:30 PM - 1:30 PM",
         },
-      ]
+      ],
     },
     expectationsText: `Austin, Texas has become a major hub for Military and Defense technology innovation.  Accordingly, the <b>2026 Defense Technology & Aerospace Procurement Conference</b> will provide Defense Industrial Base contractors with actionable business intelligence covering the latest requirements for products and services across all sectors from IT, AI and Quantum, to cybersecurity qualification, to next-generation aircraft and satellites, C6ISR, precision fires, simulation and training, to military base security, assured logistics and forward energy supply – with spotlights on multi-Billion-dollar acquisition programs from the Golden Dome initiative to next-generation aircraft and satellites, and the development of advanced unmanned platforms (‘loyal wingmen’ to drones).  Speakers/panelists will cover the current purchasing priorities of Army, Air Force and Space Force commands, bases and installations, and report on the status of Federal contracting mechanisms from GWACs to OTAs to Mentor-Protégé programs – while providing specific opportunities for innovative Small and Mid-size Businesses to team and subcontract with the Prime Defense Contractors.`,
     features: {
       showKeynoteSpeaker: true,
-      keynoteSpeakers: [
-      ]
+      keynoteSpeakers: [],
     },
     vipNetworkingReception: {
       title: "VIP Networking Reception",
@@ -1048,7 +1514,8 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       eventPlaceId: "ChIJL_jXUoLMRIYRdMJC6h3clUU",
       locationPhoto: "/hotels/renaissance-austin.webp",
       locationPhone: "(512) 681-6000",
-      website: "https://www.marriott.com/en-us/hotels/aussh-renaissance-austin-hotel/overview/",
+      website:
+        "https://www.marriott.com/en-us/hotels/aussh-renaissance-austin-hotel/overview/",
     } as VipNetworkingReception,
     //     parkingInfo: [
     //  {
@@ -1090,43 +1557,45 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     //     eventPageNoticeVariant: 'warning',
     testimonials: [
       {
-        type: 'image',
+        type: "image",
         quote: `I want to extend my sincere thanks to you and the American Defense Alliance team for the opportunity to participate in the Defense Technology & Aerospace Procurement Conference in Austin. It was a truly well-organized event, and I appreciated the chance to contribute to the conversation around cybersecurity readiness for Defense Industrial Base contractors and the resources available through Project Spectrum. The conference brought together an outstanding mix of government leaders, primes, innovators, and small businesses, and it was a privilege to engage with so many members of the defense and aerospace ecosystem. Your team did an excellent job creating an environment where meaningful dialogue and collaboration could take place. Thanks again for the invitation and the warm hospitality. I look forward to continuing to support ADA’s important work and to future opportunities to collaborate.
 `,
         name: "Kareem A. Sykes",
         title: "Director, Industry & Engagement",
         affiliation: "Eccalon",
         imageUrl: "/testimonials/kareem-sykes.webp",
-        imageAlt: "Kareem A. Sykes"
+        imageAlt: "Kareem A. Sykes",
       },
       {
-        type: 'image',
+        type: "image",
         quote: `Thank you for organizing such an excellent event. It was one of the most well-run programs I have attended, and your leadership was evident in both the quality of the audience and the seamless execution. I truly appreciate the effort your team put into bringing everyone together. Space Systems Command top leadership highly values collaborations like this. Areas particularly relevant fo follow-up include companies specializing in AI-enabled decision support, cyber resilience, and advanced data analytics for mission operations. I look forward to staying engaged and I will keep an eye out for your upcoming event in Colorado Springs.`,
-        name: "Captain MD \"Doc\" Rana",
-        title: "Director, Human-AI Teaming Lab, Branch Chief, AI/Human Machine Teaming/Info Ops, and Deputy Chief, Information Dominance Division",
+        name: 'Captain MD "Doc" Rana',
+        title:
+          "Director, Human-AI Teaming Lab, Branch Chief, AI/Human Machine Teaming/Info Ops, and Deputy Chief, Information Dominance Division",
         affiliation: "U.S. Space Systems Command",
         imageUrl: "/testimonials/doc-rana.webp",
-        imageAlt: "Captain MD \"Doc\" Rana"
+        imageAlt: 'Captain MD "Doc" Rana',
       },
       {
-        type: 'image',
-        quote: "Congrats to Charles Sills and his team for a tremendous Defense Technology & Aerospace Procurement Conference last week in Austin.  Thank you, Charles, for investing in Austin.  Shout-out to our colleagues at IBM for the initial connection.  There was high quality content on drones, quantum, procurement at Air Force and Space Force.  And lots of local flavor from quite a few of our Austin military commands, companies & organizations.  Let's hope for a 2nd Annual event!",
+        type: "image",
+        quote:
+          "Congrats to Charles Sills and his team for a tremendous Defense Technology & Aerospace Procurement Conference last week in Austin.  Thank you, Charles, for investing in Austin.  Shout-out to our colleagues at IBM for the initial connection.  There was high quality content on drones, quantum, procurement at Air Force and Space Force.  And lots of local flavor from quite a few of our Austin military commands, companies & organizations.  Let's hope for a 2nd Annual event!",
         name: "Drew Scheberle",
         title: "Co-Founder & Director",
         affiliation: "National Security Innovation Council",
         imageUrl: "/testimonials/drew-scheberle.webp",
-        imageAlt: "Drew Scheberle"
+        imageAlt: "Drew Scheberle",
       },
       {
-        type: 'image',
+        type: "image",
         quote: `I wanted to personally thank you for inviting me to your conference. I truly had a wonderful time and was able to make several valuable connections. A few highlights from the event include: Representatives from the Air Force, Army, Space Force, and EPA requesting a technical briefing next week. I also connected with a military supplier who is exploring the possibility of purchasing a 3D printing machine and/or potentially engaging us to build test barracks, SCIF facilities, and other structures at their 7-mile desert testing range. DEFENSEWERX encouraged us to apply to their innovation hubs for defense collaboration opportunities. Mojave Air and Space Port expressed interest in having us build aircraft hangars, and the Space Systems Command “Front Door” Program invited us to join the Space Force COMSO platform for future opportunities. The University of Texas at San Antonio also expressed interest in exploring collaboration on research and funding opportunities. There were many more great conversations beyond these. I truly appreciate the opportunity to participate and look forward to staying connected.`,
         name: "Dr. Reynaldo A. Santana",
         title: "President",
         affiliation: "Contour Crafting Corporation",
         imageUrl: "/testimonials/reynaldo-santana.webp",
-        imageAlt: "Dr. Reynaldo A. Santana"
+        imageAlt: "Dr. Reynaldo A. Santana",
       },
-    ]
+    ],
   },
   {
     id: 6,
@@ -1146,7 +1615,14 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          Join us for the <b>2026 Navy & Marine Corps Procurement Conference</b> on May 28-29, 2026 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is a premier opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Defense Industry Leaders and Government Program Managers and Contracting Officers, and gain critical information on current Defense spending plans and procurement priorities.
+          Join us for the <b>2026 Navy & Marine Corps Procurement Conference</b>{" "}
+          on May 28-29, 2026 in Norfolk, Virginia, home to Naval Station Norfolk
+          and Norfolk Naval Shipyard. This is a premier opportunity to engage
+          directly with decision-makers from the Pentagon, Navy and Marine Corps
+          Commands, and leading Prime Defense Contractors. Don't miss your
+          chance to network with Defense Industry Leaders and Government Program
+          Managers and Contracting Officers, and gain critical information on
+          current Defense spending plans and procurement priorities.
         </p>
         <p className="font-bold text-xl text-center font-gotham">
           Topical Coverage:
@@ -1154,28 +1630,79 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         <div className="">
           <ul className="list-inside">
             <li>Updated Navy & Marine Corps Purchasing Priorities</li>
-            <li>Enhancing Fleet Readiness – the Navy's Critical Maintenance & Repair and Shipbuilding Needs</li>
-            <li>SIOP – How the Shipyard Infrastructure Optimization Plan is Driving $ Billions in Construction & Facility Support Contracts</li>
-            <li>Reviving U.S. Military Bases in the Pacific Islands – Opportunities with NAVFAC and the Army Corps for Airfield & Supply Hub Reconstruction/Modernization</li>
-            <li>Marine Corps Dispersed Forces and Littoral Warfighting Requirements</li>
-            <li>New Technology Initiatives and Programs – from AI and Quantum to Software Powering Missile Defense and Counter-Drone Systems</li>
-            <li>Major Projects from Alaska to Guam & Saipan – NAVFAC, USACE and MARCORSYSCOM</li>
-            <li>Acquisition Forecasts – NAVSEA, NAVAIR, NAVSUP, NAVWAR, Military Sealift Command</li>
+            <li>
+              Enhancing Fleet Readiness – the Navy's Critical Maintenance &
+              Repair and Shipbuilding Needs
+            </li>
+            <li>
+              SIOP – How the Shipyard Infrastructure Optimization Plan is
+              Driving $ Billions in Construction & Facility Support Contracts
+            </li>
+            <li>
+              Reviving U.S. Military Bases in the Pacific Islands –
+              Opportunities with NAVFAC and the Army Corps for Airfield & Supply
+              Hub Reconstruction/Modernization
+            </li>
+            <li>
+              Marine Corps Dispersed Forces and Littoral Warfighting
+              Requirements
+            </li>
+            <li>
+              New Technology Initiatives and Programs – from AI and Quantum to
+              Software Powering Missile Defense and Counter-Drone Systems
+            </li>
+            <li>
+              Major Projects from Alaska to Guam & Saipan – NAVFAC, USACE and
+              MARCORSYSCOM
+            </li>
+            <li>
+              Acquisition Forecasts – NAVSEA, NAVAIR, NAVSUP, NAVWAR, Military
+              Sealift Command
+            </li>
             <li>Navy Role in ‘Golden Dome’ Procurement</li>
-            <li>CYBER/CMMC Update and Critical Infrastructure/Ports & Harbors Protection</li>
-            <li>Military Base-Adjacent Community Partnerships Promoting Local Build Contracts</li>
-            <li>Briefing on the Administration’s Changes in Federal & Defense Contracting Rules (FAR/DFAR Update)</li>
-            <li>Prime Defense Contractors – Current and Upcoming Subcontracting & Teaming Opportunities for Small & Medium-size Suppliers</li>
-            <li>Special Contracting Vehicles Promoting Accelerated/Non-Compete Contracts for Innovative Tech (DARPA, DIU, DEFENSEWERX)</li>
-            <li>How to Access GWAC's (Multi-year Government-Wide Acquisition Contracts) – and Major Navy GWAC’s Coming Down the Pipeline</li>
-            <li>Defense Dept. and SBA Mentor-Protégé Programs – Super Business Accelerators for Both Smalls & Primes</li>
+            <li>
+              CYBER/CMMC Update and Critical Infrastructure/Ports & Harbors
+              Protection
+            </li>
+            <li>
+              Military Base-Adjacent Community Partnerships Promoting Local
+              Build Contracts
+            </li>
+            <li>
+              Briefing on the Administration’s Changes in Federal & Defense
+              Contracting Rules (FAR/DFAR Update)
+            </li>
+            <li>
+              Prime Defense Contractors – Current and Upcoming Subcontracting &
+              Teaming Opportunities for Small & Medium-size Suppliers
+            </li>
+            <li>
+              Special Contracting Vehicles Promoting Accelerated/Non-Compete
+              Contracts for Innovative Tech (DARPA, DIU, DEFENSEWERX)
+            </li>
+            <li>
+              How to Access GWAC's (Multi-year Government-Wide Acquisition
+              Contracts) – and Major Navy GWAC’s Coming Down the Pipeline
+            </li>
+            <li>
+              Defense Dept. and SBA Mentor-Protégé Programs – Super Business
+              Accelerators for Both Smalls & Primes
+            </li>
           </ul>
         </div>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
         <p className="max-w-6xl mx-auto text-center">
-          The <b>2026 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
+          The <b>2026 Navy & Marine Corps Procurement Conference</b> will allow
+          you to meet Program Managers, Contracting Officers, and Small Business
+          Program Directors from key Navy and Marine Corps Bases & Commands.
+          You’ll also engage with leading Prime Defense Contractors actively
+          seeking new partners and Subcontractors. Whether you're looking to
+          forge strategic alliances, expand your network, or secure new business
+          opportunities, this event is your gateway to success in the Defense
+          industry. Don’t miss your chance to be part of this high-impact
+          networking experience!
         </p>
       </div>
     ),
@@ -1185,81 +1712,126 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           Event Overview
         </h2>
         <p className="mb-0 leading-9">
-          Join us for the <b>2026 Navy & Marine Corps Procurement Conference</b> on May 28-29, 2026 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is a premier opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Defense Industry Leaders and Government Program Managers and Contracting Officers, and gain critical information on current Defense spending plans and procurement priorities.
+          Join us for the <b>2026 Navy & Marine Corps Procurement Conference</b>{" "}
+          on May 28-29, 2026 in Norfolk, Virginia, home to Naval Station Norfolk
+          and Norfolk Naval Shipyard. This is a premier opportunity to engage
+          directly with decision-makers from the Pentagon, Navy and Marine Corps
+          Commands, and leading Prime Defense Contractors. Don't miss your
+          chance to network with Defense Industry Leaders and Government Program
+          Managers and Contracting Officers, and gain critical information on
+          current Defense spending plans and procurement priorities.
         </p>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
         <p className="max-w-6xl mx-auto text-center">
-          The <b>2026 Navy & Marine Corps Procurement Conference</b> will allow you to meet Program Managers, Contracting Officers, and Small Business Program Directors from key Navy and Marine Corps Bases & Commands. You’ll also engage with leading Prime Defense Contractors actively seeking new partners and Subcontractors. Whether you're looking to forge strategic alliances, expand your network, or secure new business opportunities, this event is your gateway to success in the Defense industry. Don’t miss your chance to be part of this high-impact networking experience!
+          The <b>2026 Navy & Marine Corps Procurement Conference</b> will allow
+          you to meet Program Managers, Contracting Officers, and Small Business
+          Program Directors from key Navy and Marine Corps Bases & Commands.
+          You’ll also engage with leading Prime Defense Contractors actively
+          seeking new partners and Subcontractors. Whether you're looking to
+          forge strategic alliances, expand your network, or secure new business
+          opportunities, this event is your gateway to success in the Defense
+          industry. Don’t miss your chance to be part of this high-impact
+          networking experience!
         </p>
       </div>
     ),
     topicalCoverage: [
       {
         tagline: "Updated Navy & Marine Corps Purchasing Priorities",
-        description: "Acquisition leaders will outline the latest spending priorities, giving industry a clear direction on where procurement dollars are flowing and how companies can align to meet Navy & Marine Corps operational goals"
+        description:
+          "Acquisition leaders will outline the latest spending priorities, giving industry a clear direction on where procurement dollars are flowing and how companies can align to meet Navy & Marine Corps operational goals",
       },
       {
-        tagline: "Enhancing Fleet Readiness – the Navy’s Critical Maintenance & Repair and Shipbuilding Needs",
-        description: "With aging vessels and an ambitious modernization schedule, the Navy’s push for improved maintenance cycles, repair efficiencies, and shipbuilding capacity will present major contract opportunities across the industrial base"
+        tagline:
+          "Enhancing Fleet Readiness – the Navy’s Critical Maintenance & Repair and Shipbuilding Needs",
+        description:
+          "With aging vessels and an ambitious modernization schedule, the Navy’s push for improved maintenance cycles, repair efficiencies, and shipbuilding capacity will present major contract opportunities across the industrial base",
       },
       {
-        tagline: "SIOP – How the Shipyard Infrastructure Optimization Plan is Driving $ Billions in Construction & Facility Support Contracts",
-        description: "Learn how SIOP’s multibillion-dollar shipyard modernization program is shaping construction, facilities support, and infrastructure contracts for decades to come"
+        tagline:
+          "SIOP – How the Shipyard Infrastructure Optimization Plan is Driving $ Billions in Construction & Facility Support Contracts",
+        description:
+          "Learn how SIOP’s multibillion-dollar shipyard modernization program is shaping construction, facilities support, and infrastructure contracts for decades to come",
       },
       {
-        tagline: "Reviving U.S. Military Bases in the Pacific Islands – Opportunities with NAVFAC and the Army Corps for Airfield & Supply Hub Reconstruction/Modernization",
-        description: "As great-power competition intensifies, rebuilding Pacific bases has become critical, creating contracting opportunities in airfield restoration, logistics hubs, and modernization projects led by NAVFAC and USACE."
+        tagline:
+          "Reviving U.S. Military Bases in the Pacific Islands – Opportunities with NAVFAC and the Army Corps for Airfield & Supply Hub Reconstruction/Modernization",
+        description:
+          "As great-power competition intensifies, rebuilding Pacific bases has become critical, creating contracting opportunities in airfield restoration, logistics hubs, and modernization projects led by NAVFAC and USACE.",
       },
       {
-        tagline: "Marine Corps Dispersed Forces and Littoral Warfighting Requirements",
-        description: "The Marine Corps is restructuring for distributed operations in contested littorals, driving demand for new platforms, mobility solutions, and supply chain resilience technologies"
+        tagline:
+          "Marine Corps Dispersed Forces and Littoral Warfighting Requirements",
+        description:
+          "The Marine Corps is restructuring for distributed operations in contested littorals, driving demand for new platforms, mobility solutions, and supply chain resilience technologies",
       },
       {
-        tagline: "New Technology Initiatives and Programs – from AI and Quantum to Software Powering Missile Defense and Counter-Drone Systems",
-        description: "Cutting-edge programs in AI, quantum, advanced software, and counter-drone technologies will be highlighted as the services seek to harness innovation for integrated defense systems"
+        tagline:
+          "New Technology Initiatives and Programs – from AI and Quantum to Software Powering Missile Defense and Counter-Drone Systems",
+        description:
+          "Cutting-edge programs in AI, quantum, advanced software, and counter-drone technologies will be highlighted as the services seek to harness innovation for integrated defense systems",
       },
       {
-        tagline: "Major Projects from Alaska to Guam & Saipan – NAVFAC, USACE, and MARCORSYSCOM",
-        description: "Procurement officials will discuss large-scale projects spanning the Indo-Pacific and Alaska, from infrastructure and facilities contracts to Marine Corps Systems Command modernization initiatives"
+        tagline:
+          "Major Projects from Alaska to Guam & Saipan – NAVFAC, USACE, and MARCORSYSCOM",
+        description:
+          "Procurement officials will discuss large-scale projects spanning the Indo-Pacific and Alaska, from infrastructure and facilities contracts to Marine Corps Systems Command modernization initiatives",
       },
       {
-        tagline: "Acquisition Forecasts – NAVSEA, NAVAIR, NAVSUP, NAVWAR, and Military Sealift Command",
-        description: "Detailed forecasts from the Navy’s major buying commands will help suppliers anticipate contract requirements and position for upcoming solicitations"
+        tagline:
+          "Acquisition Forecasts – NAVSEA, NAVAIR, NAVSUP, NAVWAR, and Military Sealift Command",
+        description:
+          "Detailed forecasts from the Navy’s major buying commands will help suppliers anticipate contract requirements and position for upcoming solicitations",
       },
       {
         tagline: "Navy Role in ‘Golden Dome’ Procurement",
-        description: "Learn how the Navy is playing a central role in funding and managing procurement related to the ‘Golden Dome’ initiative, with implications for contractors across multiple technology areas"
+        description:
+          "Learn how the Navy is playing a central role in funding and managing procurement related to the ‘Golden Dome’ initiative, with implications for contractors across multiple technology areas",
       },
       {
-        tagline: "Cyber/CMMC Update and Critical Infrastructure/Ports & Harbors Protection",
-        description: "Experts will provide the latest on cyber compliance, including CMMC requirements, while also addressing Navy initiatives to secure critical infrastructure, ports, and harbor facilities"
+        tagline:
+          "Cyber/CMMC Update and Critical Infrastructure/Ports & Harbors Protection",
+        description:
+          "Experts will provide the latest on cyber compliance, including CMMC requirements, while also addressing Navy initiatives to secure critical infrastructure, ports, and harbor facilities",
       },
       {
-        tagline: "Military Base-Adjacent Community Partnerships Promoting Local Build Contracts",
-        description: "Learn how base-community partnerships are creating direct opportunities for local contractors to support Navy & Marine Corps infrastructure needs"
+        tagline:
+          "Military Base-Adjacent Community Partnerships Promoting Local Build Contracts",
+        description:
+          "Learn how base-community partnerships are creating direct opportunities for local contractors to support Navy & Marine Corps infrastructure needs",
       },
       {
-        tagline: "Briefing on the Administration’s Changes in Federal & Defense Contracting Rules (FAR/DFAR Update)",
-        description: "Receive an essential update on new FAR/DFAR rules, compliance expectations, and the Administration’s latest shifts in federal procurement policy"
+        tagline:
+          "Briefing on the Administration’s Changes in Federal & Defense Contracting Rules (FAR/DFAR Update)",
+        description:
+          "Receive an essential update on new FAR/DFAR rules, compliance expectations, and the Administration’s latest shifts in federal procurement policy",
       },
       {
-        tagline: "Prime Defense Contractors – Current and Upcoming Subcontracting & Teaming Opportunities for Small & Medium-size Suppliers",
-        description: "Major defense primes will share their subcontracting needs and teaming strategies, opening pathways for Small & Medium-size businesses to join high-value programs"
+        tagline:
+          "Prime Defense Contractors – Current and Upcoming Subcontracting & Teaming Opportunities for Small & Medium-size Suppliers",
+        description:
+          "Major defense primes will share their subcontracting needs and teaming strategies, opening pathways for Small & Medium-size businesses to join high-value programs",
       },
       {
-        tagline: "Special Contracting Vehicles Promoting Accelerated/Non-Compete Contracts for Innovative Tech (DARPA, DIU, DEFENSEWERX)",
-        description: "Innovative contracting pathways will be explored, including how DARPA, DIU, and DEFENSEWERX are streamlining acquisition to rapidly deliver breakthrough technologies to the fleet"
+        tagline:
+          "Special Contracting Vehicles Promoting Accelerated/Non-Compete Contracts for Innovative Tech (DARPA, DIU, DEFENSEWERX)",
+        description:
+          "Innovative contracting pathways will be explored, including how DARPA, DIU, and DEFENSEWERX are streamlining acquisition to rapidly deliver breakthrough technologies to the fleet",
       },
       {
-        tagline: "How to Access GWAC's (Multi-year Government-Wide Acquisition Contracts) – and Major Navy GWAC’s Coming Down the Pipeline",
-        description: "Procurement experts will explain how to compete for and leverage GWACs, with a focus on upcoming Navy-specific contracts that will shape long-term industry opportunities"
+        tagline:
+          "How to Access GWAC's (Multi-year Government-Wide Acquisition Contracts) – and Major Navy GWAC’s Coming Down the Pipeline",
+        description:
+          "Procurement experts will explain how to compete for and leverage GWACs, with a focus on upcoming Navy-specific contracts that will shape long-term industry opportunities",
       },
       {
-        tagline: "Defense Dept. and SBA Mentor-Protégé Programs – Super Business Accelerators for Both Smalls & Primes",
-        description: "Learn how the Mentor-Protégé program acts as a business accelerator, strengthening relationships between primes and small businesses while driving innovation and contract performance"
-      }
+        tagline:
+          "Defense Dept. and SBA Mentor-Protégé Programs – Super Business Accelerators for Both Smalls & Primes",
+        description:
+          "Learn how the Mentor-Protégé program acts as a business accelerator, strengthening relationships between primes and small businesses while driving innovation and contract performance",
+      },
     ],
     image: "2026NMCPC_wide.webp",
     slug: "2026-navy-marine-corps-procurement-conference",
@@ -1274,8 +1846,10 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         targetSlug: "2025-navy-marine-corps-procurement-conference",
         intent: "event",
         relation: "previous",
-        label: "View the Event Recap from the 2025 Navy & Marine Corps Procurement Conference",
-        hrefOverride: "/events/2025-navy-marine-corps-procurement-conference/about/event-recap"
+        label:
+          "View the Event Recap from the 2025 Navy & Marine Corps Procurement Conference",
+        hrefOverride:
+          "/events/2025-navy-marine-corps-procurement-conference/about/event-recap",
       },
     ],
     matchmakingSessions: {
@@ -1288,11 +1862,13 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         },
         {
           label: "Date/Time",
-          value: "Sign up for May 28 appointments will take place on May 28 from 8:00 AM to 9:00 AM.",
+          value:
+            "Sign up for May 28 appointments will take place on May 28 from 8:00 AM to 9:00 AM.",
         },
         {
           label: "Date/Time",
-          value: "Sign up for May 29 appointments will take place on May 29 from 8:00 AM to 9:00 AM.",
+          value:
+            "Sign up for May 29 appointments will take place on May 29 from 8:00 AM to 9:00 AM.",
         },
         {
           label: "Location",
@@ -1323,9 +1899,12 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       date: "May 28, 2026",
       timeStart: "6:30 PM",
       timeEnd: "8:30 PM",
-      description: "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
-      additionalInfo: "Join us at The Harbor Club featuring a cash bar, one complimentary drink ticket, and a selection of hors d’oeuvres.",
-      additionalInfo2: "The Norfolk Waterside Marriott is connected to the Harbor Club via a Parking Garage. From the Marriott’s 2nd Floor, next to the escalators, enter doors to the Parking Garage. Follow the garage’s pedestrian bridge to the Waterside District building. Entry for Harbor Club is on the 2nd Floor of the building.",
+      description:
+        "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
+      additionalInfo:
+        "Join us at The Harbor Club featuring a cash bar, one complimentary drink ticket, and a selection of hors d’oeuvres.",
+      additionalInfo2:
+        "The Norfolk Waterside Marriott is connected to the Harbor Club via a Parking Garage. From the Marriott’s 2nd Floor, next to the escalators, enter doors to the Parking Garage. Follow the garage’s pedestrian bridge to the Waterside District building. Entry for Harbor Club is on the 2nd Floor of the building.",
       locationName: "The Harbor Club",
       locationAddress: "333 Waterside Dr Suite 200, Norfolk, VA 23510, USA",
       placeId: "ChIJI8LspwuYuokR79KzVtIGqlY", // Google Maps Place ID for the reception venue
@@ -1338,8 +1917,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     parkingInfo: [
       {
         title: ``,
-        description:
-          `
+        description: `
         <b>Self-Parking</b>: Available in the City of Norfolk owned and operated Public Parking Garage. Norfolk City rates apply: $1.50/hour up to $13.00 per 24 hours.
         <br/>
         <div class="pl-6">
@@ -1354,12 +1932,11 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         <br/>
         <br/>
 A discounted parking rate of $22.00/Car/Night is offered with in and out privileges. To receive the discounted rate, the parking ticket must be validated at the hotel front desk. Once validated, you will receive a QR code to your email that you will use to enter and exit the garage. A printed copy will also be provided by the front desk. Parking Fee charges will automatically be charged to your guest room.`,
-
       },
       {
         title: "",
-        description: `<b>Valet Parking</b>: $33.00/Night`
-      }
+        description: `<b>Valet Parking</b>: $33.00/Night`,
+      },
     ],
     directions: [
       {
@@ -1370,7 +1947,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
             <li>Take a right at second light onto Atlantic Street. Go down one block, take a left onto Main Street.</li>
             <li>The Marriott Hotel is immediately on the left.</li>
           </ul>
-          `
+          `,
       },
       {
         title: "SOUTH",
@@ -1383,7 +1960,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           <li>Go down one block, take a left onto Main Street.</li>
           <li>The Marriott Hotel is immediately on the left.</li>
         </ul>
-        `
+        `,
       },
       {
         title: "EAST",
@@ -1394,7 +1971,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           <li>Go down one Block, take a left onto Main Street.</li>
           <li>The Marriott Hotel is immediately on the left.</li>
         </ul>
-        `
+        `,
       },
       {
         title: "WEST",
@@ -1405,29 +1982,29 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           <li>Go down one block, take a left onto Main Street.</li>
           <li>The Marriott Hotel is immediately on the left.</li>
         </ul>
-        `
+        `,
       },
     ],
     testimonials: [
       {
-        type: 'video',
+        type: "video",
         name: "RADM (Ret.) Chip Rock",
         title: "Hampton Roads Alliance & former Commander",
         affiliation: "Navy Region Mid-Atlantic",
-        videoId: "yYvUntqzUY0"
+        videoId: "yYvUntqzUY0",
       },
       {
-        type: 'video',
+        type: "video",
         name: "Michelle Hilger",
         title: "Founder & President",
         affiliation: "Mongoose Power Solutions",
-        videoId: "0uCCCVG3TxQ"
+        videoId: "0uCCCVG3TxQ",
       },
       {
-        type: 'video',
+        type: "video",
         name: "Bruno Pesanti & Alan Watson",
         affiliation: "CGI Federal",
-        videoId: "UHkB7KOEGkY"
+        videoId: "UHkB7KOEGkY",
       },
     ],
   },
@@ -1439,31 +2016,75 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     date: "August 4-5, 2026",
     timeStart: "2026-08-04T11:30:00Z",
     timeEnd: "2026-08-05T18:30:00Z",
-    description: "Join us for the 2026 Air Force & Space Force Procurement Conference on August 4-5, 2026 in Colorado Springs, home to the Air Force Academy, U.S. Space Command, NORAD, NORTHCOM, and Peterson and Schriever Space Force Bases.  Speakers and panelists from the Pentagon – Air Force and Space Force commands and contracting offices, Military bases and installations – and Prime Defense Contractors – will provide updates on the latest requirements, programs and initiatives driving procurement and purchasing opportunities.",
+    description:
+      "Join us for the 2026 Air Force & Space Force Procurement Conference on August 4-5, 2026 in Colorado Springs, home to the Air Force Academy, U.S. Space Command, NORAD, NORTHCOM, and Peterson and Schriever Space Force Bases.  Speakers and panelists from the Pentagon – Air Force and Space Force commands and contracting offices, Military bases and installations – and Prime Defense Contractors – will provide updates on the latest requirements, programs and initiatives driving procurement and purchasing opportunities.",
     eventText: (
       <div className="max-container font-light">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          Join us for the <b>2026 Air Force &amp; Space Force Procurement Conference</b> on August 4-5, 2026 in Colorado Springs, home to the Air Force Academy, U.S. Space Command, NORAD, NORTHCOM, and Peterson and Schriever Space Force Bases. Speakers and panelists from the Pentagon – Air Force and Space Force commands and contracting offices, Military bases and installations – and Prime Defense Contractors – will provide updates on the latest requirements, programs and initiatives driving procurement and purchasing opportunities.
+          Join us for the{" "}
+          <b>2026 Air Force &amp; Space Force Procurement Conference</b> on
+          August 4-5, 2026 in Colorado Springs, home to the Air Force Academy,
+          U.S. Space Command, NORAD, NORTHCOM, and Peterson and Schriever Space
+          Force Bases. Speakers and panelists from the Pentagon – Air Force and
+          Space Force commands and contracting offices, Military bases and
+          installations – and Prime Defense Contractors – will provide updates
+          on the latest requirements, programs and initiatives driving
+          procurement and purchasing opportunities.
         </p>
         <p className="font-bold text-xl text-center font-gotham">
           Topical Coverage:
         </p>
         <div className="">
           <ul className="list-inside">
-            <li>Evolving USAF ‘Order of Battle’ and New Technology & Manufacturing Opportunities</li>
-            <li>Next Generation Aircraft from Fighters & Strategic Bombers to Airlift, Air-to-Ground, EW, AWACS, ASW & Other Mission Support Variants</li>
-            <li>Unmanned Platform Design, Propulsion, Weaponry & Navigation/Communications Requirements (CCA – Collaborative Combat Aircraft or ‘Loyal Wingman’)</li>
-            <li>Extensive Bid Openings/Competition Generated by Space Force/Satellite Role in Golden Dome Missile Tracking/Interception</li>
-            <li>Air Force C5ISR and Kill Chain Simulation & Training Programs</li>
-            <li>Airfield & Logistics Hub Reconstruction Across the Pacific/INDOPACOM Area of Responsibility</li>
-            <li>Cybersecurity Imperatives Throughout the Air Force/Space Force Domains</li>
-            <li>Space Force Expanded Launch and Ground Support Infrastructure Needs</li>
-            <li>Contracting Opportunities with Local/Western State Military Installations/Commands – from Base Operations Support to Construction/ Renovation to IT/Network Upgrades</li>
-            <li>Update Info on Government and Dept. of War Accelerated Contracting Mechanisms – from GWACs to OTAs to Mentor-Protégé Partnerships</li>
-            <li>Opportunities for Innovative Small Businesses to Meet, Team and Subcontract with the Prime Defense Contractors</li>
+            <li>
+              Evolving USAF ‘Order of Battle’ and New Technology & Manufacturing
+              Opportunities
+            </li>
+            <li>
+              Next Generation Aircraft from Fighters & Strategic Bombers to
+              Airlift, Air-to-Ground, EW, AWACS, ASW & Other Mission Support
+              Variants
+            </li>
+            <li>
+              Unmanned Platform Design, Propulsion, Weaponry &
+              Navigation/Communications Requirements (CCA – Collaborative Combat
+              Aircraft or ‘Loyal Wingman’)
+            </li>
+            <li>
+              Extensive Bid Openings/Competition Generated by Space
+              Force/Satellite Role in Golden Dome Missile Tracking/Interception
+            </li>
+            <li>
+              Air Force C5ISR and Kill Chain Simulation & Training Programs
+            </li>
+            <li>
+              Airfield & Logistics Hub Reconstruction Across the
+              Pacific/INDOPACOM Area of Responsibility
+            </li>
+            <li>
+              Cybersecurity Imperatives Throughout the Air Force/Space Force
+              Domains
+            </li>
+            <li>
+              Space Force Expanded Launch and Ground Support Infrastructure
+              Needs
+            </li>
+            <li>
+              Contracting Opportunities with Local/Western State Military
+              Installations/Commands – from Base Operations Support to
+              Construction/ Renovation to IT/Network Upgrades
+            </li>
+            <li>
+              Update Info on Government and Dept. of War Accelerated Contracting
+              Mechanisms – from GWACs to OTAs to Mentor-Protégé Partnerships
+            </li>
+            <li>
+              Opportunities for Innovative Small Businesses to Meet, Team and
+              Subcontract with the Prime Defense Contractors
+            </li>
           </ul>
         </div>
       </div>
@@ -1474,60 +2095,80 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          Join us for the <b>2026 Air Force &amp; Space Force Procurement Conference</b> on August 4-5, 2026 in Colorado Springs, home to the Air Force Academy, U.S. Space Command, NORAD, NORTHCOM, and Peterson and Schriever Space Force Bases. Speakers and panelists from the Pentagon – Air Force and Space Force commands and contracting offices, Military bases and installations – and Prime Defense Contractors – will provide updates on the latest requirements, programs and initiatives driving procurement and purchasing opportunities.
+          Join us for the{" "}
+          <b>2026 Air Force &amp; Space Force Procurement Conference</b> on
+          August 4-5, 2026 in Colorado Springs, home to the Air Force Academy,
+          U.S. Space Command, NORAD, NORTHCOM, and Peterson and Schriever Space
+          Force Bases. Speakers and panelists from the Pentagon – Air Force and
+          Space Force commands and contracting offices, Military bases and
+          installations – and Prime Defense Contractors – will provide updates
+          on the latest requirements, programs and initiatives driving
+          procurement and purchasing opportunities.
         </p>
       </div>
     ),
     topicalCoverage: [
       {
-        tagline: "Evolving USAF ‘Order of Battle’ and New Technology & Manufacturing Opportunities",
+        tagline:
+          "Evolving USAF ‘Order of Battle’ and New Technology & Manufacturing Opportunities",
         description: "",
       },
       {
-        tagline: "Next Generation Aircraft from Fighters & Strategic Bombers to Airlift, Air-to-Ground, EW, AWACS, ASW & Other Mission Support Variants",
+        tagline:
+          "Next Generation Aircraft from Fighters & Strategic Bombers to Airlift, Air-to-Ground, EW, AWACS, ASW & Other Mission Support Variants",
         description: "",
       },
       {
-        tagline: "Unmanned Platform Design, Propulsion, Weaponry & Navigation/Communications Requirements (CCA – Collaborative Combat Aircraft or ‘Loyal Wingman’)",
+        tagline:
+          "Unmanned Platform Design, Propulsion, Weaponry & Navigation/Communications Requirements (CCA – Collaborative Combat Aircraft or ‘Loyal Wingman’)",
         description: "",
       },
       {
-        tagline: "Extensive Bid Openings/Competition Generated by Space Force/Satellite Role in Golden Dome Missile Tracking/Interception",
+        tagline:
+          "Extensive Bid Openings/Competition Generated by Space Force/Satellite Role in Golden Dome Missile Tracking/Interception",
         description: "",
       },
       {
-        tagline: "Air Force C5ISR and Kill Chain Simulation & Training Programs",
+        tagline:
+          "Air Force C5ISR and Kill Chain Simulation & Training Programs",
         description: "",
       },
       {
-        tagline: "Airfield & Logistics Hub Reconstruction Across the Pacific/INDOPACOM Area of Responsibility",
+        tagline:
+          "Airfield & Logistics Hub Reconstruction Across the Pacific/INDOPACOM Area of Responsibility",
         description: "",
       },
       {
-        tagline: "Cybersecurity Imperatives Throughout the Air Force/Space Force Domains",
+        tagline:
+          "Cybersecurity Imperatives Throughout the Air Force/Space Force Domains",
         description: "",
       },
       {
-        tagline: "Space Force Expanded Launch and Ground Support Infrastructure Needs",
+        tagline:
+          "Space Force Expanded Launch and Ground Support Infrastructure Needs",
         description: "",
       },
       {
-        tagline: "Contracting Opportunities with Local/Western State Military Installations/Commands – from Base Operations Support to Construction/ Renovation to IT/Network Upgrades",
+        tagline:
+          "Contracting Opportunities with Local/Western State Military Installations/Commands – from Base Operations Support to Construction/ Renovation to IT/Network Upgrades",
         description: "",
       },
       {
-        tagline: "Update Info on Government and Dept. of War Accelerated Contracting Mechanisms – from GWACs to OTAs to Mentor-Protégé Partnerships",
+        tagline:
+          "Update Info on Government and Dept. of War Accelerated Contracting Mechanisms – from GWACs to OTAs to Mentor-Protégé Partnerships",
         description: "",
       },
       {
-        tagline: "Opportunities for Innovative Small Businesses to Meet, Team and Subcontract with the Prime Defense Contractors",
+        tagline:
+          "Opportunities for Innovative Small Businesses to Meet, Team and Subcontract with the Prime Defense Contractors",
         description: "",
       },
     ],
     image: "2026AFSFPC_wide.webp",
     slug: "2026-air-force-space-force-procurement-conference",
     locationImage: "locations/temp_venue.webp",
-    locationAddress: "8989 North Gate Boulevard, Colorado Springs, Colorado 80921",
+    locationAddress:
+      "8989 North Gate Boulevard, Colorado Springs, Colorado 80921",
     venueName: "Hotel Polaris at the U.S. Air Force Academy ",
     placeID: "ChIJPYwbhlNNE4cRiOsTMJkeI0o",
     password: "ADA2026AFSFPC",
@@ -1556,11 +2197,13 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         },
         {
           label: "Date/Time",
-          value: "Sign up for August 4 appointments will take place on August 4 from 8:00 AM to 9:00 AM.",
+          value:
+            "Sign up for August 4 appointments will take place on August 4 from 8:00 AM to 9:00 AM.",
         },
         {
           label: "Date/Time",
-          value: "Sign up for August 5 appointments will take place on August 5 from 8:00 AM to 9:00 AM.",
+          value:
+            "Sign up for August 5 appointments will take place on August 5 from 8:00 AM to 9:00 AM.",
         },
         {
           label: "Location",
@@ -1584,10 +2227,379 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     ],
     vipNetworkingReception: {
       title: "VIP Networking Reception",
-      description: "The VIP Networking Reception at the end of the day on August 4 is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
+      description:
+        "The VIP Networking Reception at the end of the day on August 4 is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
       date: "August 4, 2026",
       timeStart: "6:30 PM",
       timeEnd: "8:30 PM",
     },
+  },
+
+  {
+    id: 8,
+    shown: true,
+    eventShorthand: "2027NMCPC",
+    password: "2027NAVYMARINECORPS",
+    title: "2027 Navy & Marine Corps Procurement Conference",
+    // June 21 is exhibitor set-up day; general sessions run June 22-23
+    date: "June 22-23, 2027",
+    timeStart: "2027-06-22T11:30:00Z",
+    timeEnd: "2027-06-23T17:30:00Z",
+    testimonialsFromEventId: 4,
+    relatedEventId: 6,
+    description: `Join us for the 2027 Navy & Marine Corps Procurement Conference on June 22-23, 2027 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.`,
+    eventText: (
+      <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Event Overview
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Join us for the <b>2027 Navy & Marine Corps Procurement Conference</b>{" "}
+          on June 22-23, 2027 in Norfolk, Virginia, home to Naval Station
+          Norfolk and Norfolk Naval Shipyard. This is a premier opportunity to
+          engage directly with decision-makers from the Pentagon, Navy and
+          Marine Corps Commands, and leading Prime Defense Contractors. Don't
+          miss your chance to network with Defense Industry Leaders and
+          Government Program Managers and Contracting Officers, and gain
+          critical information on current Defense spending plans and procurement
+          priorities.
+        </p>
+        <p className="font-bold text-xl text-center font-gotham">
+          Topical Coverage:
+        </p>
+        <div className="">
+          <ul className="list-inside">
+            <li>Updated Navy & Marine Corps Purchasing Priorities</li>
+            <li>
+              Enhancing Fleet Readiness – the Navy's Critical Maintenance &
+              Repair and Shipbuilding Needs
+            </li>
+            <li>
+              SIOP – How the Shipyard Infrastructure Optimization Plan is
+              Driving $ Billions in Construction & Facility Support Contracts
+            </li>
+            <li>
+              Reviving U.S. Military Bases in the Pacific Islands –
+              Opportunities with NAVFAC and the Army Corps for Airfield & Supply
+              Hub Reconstruction/Modernization
+            </li>
+            <li>
+              Marine Corps Dispersed Forces and Littoral Warfighting
+              Requirements
+            </li>
+            <li>
+              New Technology Initiatives and Programs – from AI and Quantum to
+              Software Powering Missile Defense and Counter-Drone Systems
+            </li>
+            <li>
+              Major Projects from Alaska to Guam & Saipan – NAVFAC, USACE and
+              MARCORSYSCOM
+            </li>
+            <li>
+              Acquisition Forecasts – NAVSEA, NAVAIR, NAVSUP, NAVWAR, Military
+              Sealift Command
+            </li>
+            <li>
+              CYBER/CMMC Update and Critical Infrastructure/Ports & Harbors
+              Protection
+            </li>
+            <li>
+              Military Base-Adjacent Community Partnerships Promoting Local
+              Build Contracts
+            </li>
+            <li>
+              Briefing on the Administration’s Changes in Federal & Defense
+              Contracting Rules (FAR/DFAR Update)
+            </li>
+            <li>
+              Prime Defense Contractors – Current and Upcoming Subcontracting &
+              Teaming Opportunities for Small & Medium-size Suppliers
+            </li>
+            <li>
+              Special Contracting Vehicles Promoting Accelerated/Non-Compete
+              Contracts for Innovative Tech (DARPA, DIU, DEFENSEWERX)
+            </li>
+            <li>
+              How to Access GWAC's (Multi-year Government-Wide Acquisition
+              Contracts) – and Major Navy GWAC’s Coming Down the Pipeline
+            </li>
+            <li>
+              Defense Dept. and SBA Mentor-Protégé Programs – Super Business
+              Accelerators for Both Smalls & Primes
+            </li>
+          </ul>
+        </div>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+          What to Expect
+        </h2>
+        <p className="max-w-6xl mx-auto text-center">
+          The <b>2027 Navy & Marine Corps Procurement Conference</b> will allow
+          you to meet Program Managers, Contracting Officers, and Small Business
+          Program Directors from key Navy and Marine Corps Bases & Commands.
+          You’ll also engage with leading Prime Defense Contractors actively
+          seeking new partners and Subcontractors. Whether you're looking to
+          forge strategic alliances, expand your network, or secure new business
+          opportunities, this event is your gateway to success in the Defense
+          industry. Don’t miss your chance to be part of this high-impact
+          networking experience!
+        </p>
+      </div>
+    ),
+    aboutEventText: (
+      <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Event Overview
+        </h2>
+        <p className="mb-0 leading-9">
+          Join us for the <b>2027 Navy & Marine Corps Procurement Conference</b>{" "}
+          on June 22-23, 2027 in Norfolk, Virginia, home to Naval Station
+          Norfolk and Norfolk Naval Shipyard. This is a premier opportunity to
+          engage directly with decision-makers from the Pentagon, Navy and
+          Marine Corps Commands, and leading Prime Defense Contractors. Don't
+          miss your chance to network with Defense Industry Leaders and
+          Government Program Managers and Contracting Officers, and gain
+          critical information on current Defense spending plans and procurement
+          priorities.
+        </p>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
+          What to Expect
+        </h2>
+        <p className="max-w-6xl mx-auto text-center">
+          The <b>2027 Navy & Marine Corps Procurement Conference</b> will allow
+          you to meet Program Managers, Contracting Officers, and Small Business
+          Program Directors from key Navy and Marine Corps Bases & Commands.
+          You’ll also engage with leading Prime Defense Contractors actively
+          seeking new partners and Subcontractors. Whether you're looking to
+          forge strategic alliances, expand your network, or secure new business
+          opportunities, this event is your gateway to success in the Defense
+          industry. Don’t miss your chance to be part of this high-impact
+          networking experience!
+        </p>
+      </div>
+    ),
+    topicalCoverage: [
+      {
+        tagline: "Updated Navy & Marine Corps Purchasing Priorities",
+        description:
+          "Acquisition leaders will outline the latest spending priorities, giving industry a clear direction on where procurement dollars are flowing and how companies can align to meet Navy & Marine Corps operational goals",
+      },
+      {
+        tagline:
+          "Enhancing Fleet Readiness – the Navy’s Critical Maintenance & Repair and Shipbuilding Needs",
+        description:
+          "With aging vessels and an ambitious modernization schedule, the Navy’s push for improved maintenance cycles, repair efficiencies, and shipbuilding capacity will present major contract opportunities across the industrial base",
+      },
+      {
+        tagline:
+          "SIOP – How the Shipyard Infrastructure Optimization Plan is Driving $ Billions in Construction & Facility Support Contracts",
+        description:
+          "Learn how SIOP’s multibillion-dollar shipyard modernization program is shaping construction, facilities support, and infrastructure contracts for decades to come",
+      },
+      {
+        tagline:
+          "Reviving U.S. Military Bases in the Pacific Islands – Opportunities with NAVFAC and the Army Corps for Airfield & Supply Hub Reconstruction/Modernization",
+        description:
+          "As great-power competition intensifies, rebuilding Pacific bases has become critical, creating contracting opportunities in airfield restoration, logistics hubs, and modernization projects led by NAVFAC and USACE.",
+      },
+      {
+        tagline:
+          "Marine Corps Dispersed Forces and Littoral Warfighting Requirements",
+        description:
+          "The Marine Corps is restructuring for distributed operations in contested littorals, driving demand for new platforms, mobility solutions, and supply chain resilience technologies",
+      },
+      {
+        tagline:
+          "New Technology Initiatives and Programs – from AI and Quantum to Software Powering Missile Defense and Counter-Drone Systems",
+        description:
+          "Cutting-edge programs in AI, quantum, advanced software, and counter-drone technologies will be highlighted as the services seek to harness innovation for integrated defense systems",
+      },
+      {
+        tagline:
+          "Major Projects from Alaska to Guam & Saipan – NAVFAC, USACE, and MARCORSYSCOM",
+        description:
+          "Procurement officials will discuss large-scale projects spanning the Indo-Pacific and Alaska, from infrastructure and facilities contracts to Marine Corps Systems Command modernization initiatives",
+      },
+      {
+        tagline:
+          "Acquisition Forecasts – NAVSEA, NAVAIR, NAVSUP, NAVWAR, and Military Sealift Command",
+        description:
+          "Detailed forecasts from the Navy’s major buying commands will help suppliers anticipate contract requirements and position for upcoming solicitations",
+      },
+      {
+        tagline:
+          "Cyber/CMMC Update and Critical Infrastructure/Ports & Harbors Protection",
+        description:
+          "Experts will provide the latest on cyber compliance, including CMMC requirements, while also addressing Navy initiatives to secure critical infrastructure, ports, and harbor facilities",
+      },
+      {
+        tagline:
+          "Military Base-Adjacent Community Partnerships Promoting Local Build Contracts",
+        description:
+          "Learn how base-community partnerships are creating direct opportunities for local contractors to support Navy & Marine Corps infrastructure needs",
+      },
+      {
+        tagline:
+          "Briefing on the Administration’s Changes in Federal & Defense Contracting Rules (FAR/DFAR Update)",
+        description:
+          "Receive an essential update on new FAR/DFAR rules, compliance expectations, and the Administration’s latest shifts in federal procurement policy",
+      },
+      {
+        tagline:
+          "Prime Defense Contractors – Current and Upcoming Subcontracting & Teaming Opportunities for Small & Medium-size Suppliers",
+        description:
+          "Major defense primes will share their subcontracting needs and teaming strategies, opening pathways for Small & Medium-size businesses to join high-value programs",
+      },
+      {
+        tagline:
+          "Special Contracting Vehicles Promoting Accelerated/Non-Compete Contracts for Innovative Tech (DARPA, DIU, DEFENSEWERX)",
+        description:
+          "Innovative contracting pathways will be explored, including how DARPA, DIU, and DEFENSEWERX are streamlining acquisition to rapidly deliver breakthrough technologies to the fleet",
+      },
+      {
+        tagline:
+          "How to Access GWAC's (Multi-year Government-Wide Acquisition Contracts) – and Major Navy GWAC’s Coming Down the Pipeline",
+        description:
+          "Procurement experts will explain how to compete for and leverage GWACs, with a focus on upcoming Navy-specific contracts that will shape long-term industry opportunities",
+      },
+      {
+        tagline:
+          "Defense Dept. and SBA Mentor-Protégé Programs – Super Business Accelerators for Both Smalls & Primes",
+        description:
+          "Learn how the Mentor-Protégé program acts as a business accelerator, strengthening relationships between primes and small businesses while driving innovation and contract performance",
+      },
+    ],
+    image: "2027NMCPC_wide.webp",
+    slug: "2027-navy-marine-corps-procurement-conference",
+    locationImage: "locations/temp_venue.webp",
+    locationAddress: `235 E Main St, Norfolk, Virginia 23510`,
+    venueName: "Norfolk Waterside Marriott",
+    placeID: "ChIJBdD-jwuYuokRyjyu_hU0jUg",
+
+    countdownColour: "#1C2D3D",
+    links: [
+      {
+        targetSlug: "2026-navy-marine-corps-procurement-conference",
+        intent: "event",
+        relation: "previous",
+        label:
+          "View the Event Recap from the 2026 Navy & Marine Corps Procurement Conference",
+        hrefOverride:
+          "/events/2026-navy-marine-corps-procurement-conference/about/event-recap",
+      },
+    ],
+    matchmakingSessions: {
+      signUpTime: "8:00 AM",
+      signUpDate: "June 22, 2027",
+      signUpDetails: [
+        {
+          label: "Sign Up",
+          value: "Sign Up is onsite only, on a first-come, first-served basis.",
+        },
+        {
+          label: "Date/Time",
+          value:
+            "Sign up for June 22 appointments will take place on June 22 from 8:00 AM to 9:00 AM.",
+        },
+        {
+          label: "Date/Time",
+          value:
+            "Sign up for June 23 appointments will take place on June 23 from 8:00 AM to 9:00 AM.",
+        },
+        {
+          label: "Location",
+          value: "Norfolk Ballroom Pre-Function.",
+        },
+        {
+          label: "Number of appointments",
+          value: "Limit 3 appointments per attendee.",
+        },
+      ],
+      sessionDurationMinutes: 8,
+      slotsPerHost: 10,
+      sessions: [
+        {
+          date: "June 22",
+          sessionTime: "4:45 PM - 6:00 PM",
+          location: "Hampton Ballroom, 3rd Floor",
+        },
+        {
+          date: "June 23",
+          sessionTime: "12:30 PM - 1:30 PM",
+          location: "Hampton Ballroom, 3rd Floor",
+        },
+      ],
+    },
+    // vipNetworkingReception intentionally omitted — employer asked to leave the page blank for now
+    parkingInfo: [
+      {
+        title: ``,
+        description: `
+        <b>Self-Parking</b>: Available in the City of Norfolk owned and operated Public Parking Garage. Norfolk City rates apply: $1.50/hour up to $13.00 per 24 hours.
+        <br/>
+        <div class="pl-6">
+          <p><span class="font-bold">Main Street Garage:</span> Located across from the hotel. A covered pedestrian bridge connects to the hotel on the 3rd Floor, where the conference takes place.</p>
+          <p><span class="font-bold">Waterside Street Garage:</span> Located at the back of the hotel. A ramp entrance connects the garage to the hotel on the 2nd floor.</p>
+        </div>
+        `,
+      },
+      {
+        title: "Overnight Guests",
+        description: `Please park at the Main Street Garage if you plan to exit the garage multiple times during your stay or if you would like to apply charges to your guest room.
+        <br/>
+        <br/>
+A discounted parking rate of $22.00/Car/Night is offered with in and out privileges. To receive the discounted rate, the parking ticket must be validated at the hotel front desk. Once validated, you will receive a QR code to your email that you will use to enter and exit the garage. A printed copy will also be provided by the front desk. Parking Fee charges will automatically be charged to your guest room.`,
+      },
+      {
+        title: "",
+        description: `<b>Valet Parking</b>: $33.00/Night`,
+      },
+    ],
+    directions: [
+      {
+        title: "NORTH",
+        description: `
+          <ul class="list-decimal pl-4">
+            <li>Take Highway 13 South to 64 East, to 264 West. Follow the Waterside Drive Exit.</li>
+            <li>Take a right at second light onto Atlantic Street. Go down one block, take a left onto Main Street.</li>
+            <li>The Marriott Hotel is immediately on the left.</li>
+          </ul>
+          `,
+      },
+      {
+        title: "SOUTH",
+        description: `
+        <ul class="list-decimal pl-4">
+          <li>Take 95 North to the Emporia Exit.</li>
+          <li>Go East on Highway 58 to 64 East (approximately 2 1/2 hours), to 264 West.</li>
+          <li>Follow the Waterside Drive Exit.</li>
+          <li>Take a right at second light onto Atlantic Street.</li>
+          <li>Go down one block, take a left onto Main Street.</li>
+          <li>The Marriott Hotel is immediately on the left.</li>
+        </ul>
+        `,
+      },
+      {
+        title: "EAST",
+        description: `
+        <ul class="list-decimal pl-4">
+          <li>44 West to 264 West. Follow the Waterside Drive Exit.</li>
+          <li>Take a right at second light onto Atlantic Street.</li>
+          <li>Go down one Block, take a left onto Main Street.</li>
+          <li>The Marriott Hotel is immediately on the left.</li>
+        </ul>
+        `,
+      },
+      {
+        title: "WEST",
+        description: `
+        <ul class="list-decimal pl-4">
+          <li>64 East to 264 West. Follow the Waterside Drive Exit.</li>
+          <li>Take a right at second light onto Atlantic Street.</li>
+          <li>Go down one block, take a left onto Main Street.</li>
+          <li>The Marriott Hotel is immediately on the left.</li>
+        </ul>
+        `,
+      },
+    ],
   },
 ];

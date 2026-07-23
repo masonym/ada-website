@@ -580,4 +580,131 @@ export const REGISTRATION_TYPES = [
       },
     ],
   },
+
+  {
+    id: 8, // 2027NMCPC
+    registrations: [
+      {
+        id: "attendee-pass",
+        title: "Attendee Pass",
+        headerImage: "attendee-pass.webp",
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (1) Attendee Pass", bold: true },
+              { content: "Access to General Sessions", indent: 1 },
+              { content: "Access to Exhibit Area", indent: 1 },
+              { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+              { content: "Breakfast & Buffet Lunch", indent: 1 },
+              {
+                content:
+                  "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
+                indent: 1,
+              },
+            ],
+          },
+        ],
+        buttonText: "Register Now",
+        price: 595,
+        earlyBirdPrice: 495,
+        earlyBirdDeadline: "2026-11-01T03:59:59Z", // October 31, 2026 11:59 PM ET
+        type: "paid",
+        saleEndTime: "2027-06-23T22:00:00Z",
+      },
+
+      {
+        id: "vip-attendee-pass",
+        title: "VIP Attendee Pass",
+        headerImage: "vip-attendee-pass.webp",
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+              { content: "Access to General Sessions", indent: 1 },
+              { content: "Access to Exhibit Area", indent: 1 },
+              { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+              { content: "Breakfast & Buffet Lunch", indent: 1 },
+              {
+                content:
+                  "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
+                indent: 1,
+              },
+              { content: "Access to VIP Networking Reception", bold: true },
+            ],
+          },
+        ],
+        buttonText: "Register Now",
+        price: 695,
+        earlyBirdPrice: 595,
+        earlyBirdDeadline: "2026-11-01T03:59:59Z", // October 31, 2026 11:59 PM ET
+        type: "paid",
+        saleEndTime: "2027-06-23T22:00:00Z",
+      },
+
+      {
+        id: "govt-official-military-pass",
+        title: "Government Official & Active-Duty Military Pass",
+        headerImage: "gov-pass.webp",
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (1) Attendee Pass", bold: true },
+              { content: "Access to General Sessions", indent: 1 },
+              { content: "Access to Exhibit Area", indent: 1 },
+              { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+              {
+                content:
+                  "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
+                indent: 1,
+              },
+            ],
+          },
+        ],
+        buttonText: "Register Now",
+        type: "complimentary",
+        price: "Complimentary",
+      },
+      {
+        id: "half-page-advertisement",
+        title: "Half-Page Advertisement in Printed Program",
+        description:
+          "Half-page advertisement placement in the printed conference program.",
+        headerImage: "attendee-pass.webp", // TODO: dedicated header image needed
+        buttonText: "Add to Cart",
+        type: "paid",
+        price: 500,
+        maxQuantityPerOrder: 1,
+        // Shown under the modal's "Add-ons" tab, not on the registration page.
+        isAddOn: true,
+        // Not a pass — no attendee details are collected for this line item.
+        requiresAttendeeInfo: false,
+        saleEndTime: "2027-06-23T22:00:00Z", // TODO: should be the program print deadline, not the event date
+        perks: [
+          {
+            formatted: [
+              { content: "4.75\" x 7.5\" Color Advertisement in Printed Program", bold: true },
+            ],
+          },
+        ],
+      },
+      {
+        id: "reception-add-on",
+        title: "VIP Networking Reception Add-On",
+        description:
+          "Exclusive add-on pass. Requires special access code to register.",
+        price: 100,
+        headerImage: "vip-reception.webp",
+        buttonText: "Add to Cart",
+        type: "paid",
+        requiresCode: true,
+        validationCode: "RECEPTION2027",
+        maxQuantityPerOrder: 5,
+        saleEndTime: "2027-06-23T22:00:00.000Z",
+        perks: [
+          "Access to VIP Networking Reception on June 22, 2027 from 6:30 PM - 8:30 PM",
+        ],
+        availabilityInfo: "Access code required.",
+      },
+    ],
+  },
 ];
