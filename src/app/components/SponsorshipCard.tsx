@@ -39,6 +39,13 @@ const SponsorshipCard = ({ item, event, eyebrow, getSponsorCount }: SponsorProp)
             : item.colour
         : 'bg-navy-800';
 
+    // Titles of the form "Prefix: Name" (e.g. "Major Panel Sponsorship: ...")
+    // render the prefix and name on separate lines.
+    const colonIndex = item.title.indexOf(': ');
+    const titleNode = colonIndex !== -1
+        ? (<>{item.title.slice(0, colonIndex + 1)}<br />{item.title.slice(colonIndex + 2)}</>)
+        : item.title;
+
     return (
         <div className="w-full h-full max-w-7xl mx-auto mb-6 rounded-lg border border-gray-200 bg-white shadow-md relative">
             {showRemainingFlag && remainingCount !== undefined && remainingCount > 0 && !hasEventEnded && (
@@ -56,7 +63,7 @@ const SponsorshipCard = ({ item, event, eyebrow, getSponsorCount }: SponsorProp)
                 style={backgroundColor ? { backgroundColor } : undefined}
             >
                 <div>
-                    <h4 className={`text-[1rem] font-bold `}>{item.title}</h4>
+                    <h4 className={`text-[1rem] font-bold `}>{titleNode}</h4>
                     {eyebrow && (
                         <span className="inline-block mb-1 px-2 py-0.5 rounded-full bg-white/20 text-white text-[16px] font-semibold tracking-wide uppercase">
                             {eyebrow}
