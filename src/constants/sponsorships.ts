@@ -3600,6 +3600,230 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         showRemaining: false,
       },
       {
+        id: "major-panel-sponsor-navy-shipbuilding-fleet-readiness",
+        title: "Major Panel Sponsorship: Navy Shipbuilding & Fleet Readiness",
+        cost: 4000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              { content: "Moderate the Panel on Navy Shipbuilding & Fleet Readiness", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              { content: "Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
+              { content: "Social Media Recognition", indent: 1 },
+              { content: "Photographs & Videos of your Participation", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Table-Top Exhibit Space", bold: true },
+              { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+              { content: "6' Tablecloth Table & Chairs", indent: 2 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Matchmaking Host Invitation", bold: true },
+              { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+            ],
+          },
+        ],
+        colour: "#3FB4E6",
+        showRemaining: false,
+        sponsorshipGroup: "Major Panel Sponsorships",
+      },
+      {
+        id: "major-panel-sponsor-how-to-do-business-with-the-primes",
+        title: "Major Panel Sponsorship: How to do Business with the Primes",
+        cost: 4000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              { content: "Moderate the Panel on How to do Business with the Primes", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              { content: "Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
+              { content: "Social Media Recognition", indent: 1 },
+              { content: "Photographs & Videos of your Participation", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Table-Top Exhibit Space", bold: true },
+              { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+              { content: "6' Tablecloth Table & Chairs", indent: 2 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Matchmaking Host Invitation", bold: true },
+              { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+            ],
+          },
+        ],
+        colour: "#3FB4E6",
+        showRemaining: false,
+        sponsorshipGroup: "Major Panel Sponsorships",
+      },
+      {
+        id: "major-panel-sponsor-advanced-battlespace-technologies",
+        title: "Major Panel Sponsorship: Advanced Battlespace Technologies",
+        cost: 4000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              { content: "Moderate the Panel on Advanced Battlespace Technologies", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              { content: "Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
+              { content: "Social Media Recognition", indent: 1 },
+              { content: "Photographs & Videos of your Participation", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Table-Top Exhibit Space", bold: true },
+              { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+              { content: "6' Tablecloth Table & Chairs", indent: 2 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Matchmaking Host Invitation", bold: true },
+              { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+            ],
+          },
+        ],
+        colour: "#3FB4E6",
+        showRemaining: false,
+        sponsorshipGroup: "Major Panel Sponsorships",
+      },
+      {
+        id: "major-panel-sponsor-military-base-construction-energy",
+        title: "Major Panel Sponsorship: Military Base Construction & Energy",
+        cost: 4000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              { content: "Moderate the Panel on Military Base Construction & Energy", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              { content: "Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
+              { content: "Social Media Recognition", indent: 1 },
+              { content: "Photographs & Videos of your Participation", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Table-Top Exhibit Space", bold: true },
+              { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+              { content: "6' Tablecloth Table & Chairs", indent: 2 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Matchmaking Host Invitation", bold: true },
+              { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+            ],
+          },
+        ],
+        colour: "#3FB4E6",
+        showRemaining: false,
+        sponsorshipGroup: "Major Panel Sponsorships",
+      },
+      {
         id: "small-business-sponsor-without-exhibit-space",
         title: "Small Business Sponsorship without Exhibit Space",
         cost: 1250,
