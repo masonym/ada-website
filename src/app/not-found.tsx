@@ -1,18 +1,18 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { getCdnPath } from '@/utils/image';
+import Link from "next/link";
+import Image from "next/image";
+import { getCdnPath } from "@/utils/image";
 
 export const metadata = {
-  title: 'Page Not Found | American Defense Alliance',
+  title: "Page Not Found | American Defense Alliance",
   description:
     "The page you're looking for couldn't be found. Explore upcoming events, past conferences, and resources from the American Defense Alliance.",
 };
 
 const QUICK_LINKS = [
-  { href: '/events', label: 'Upcoming Events' },
-  { href: '/events/past-events', label: 'Past Events' },
-  { href: '/about', label: 'About Us' },
-  { href: '/contact-us', label: 'Contact Us' },
+  { href: "/events", label: "Upcoming Events" },
+  { href: "/events/past-events", label: "Past Events" },
+  { href: "/about", label: "About Us" },
+  { href: "/contact-us", label: "Contact Us" },
 ];
 
 export default function NotFound() {
@@ -21,7 +21,7 @@ export default function NotFound() {
       {/* Background image with navy gradient overlay — matches the homepage hero */}
       <div className="absolute inset-0">
         <Image
-          src={getCdnPath('ADA_collage.webp')}
+          src={getCdnPath("ADA_collage.webp")}
           alt=""
           fill
           priority
@@ -48,8 +48,8 @@ export default function NotFound() {
           This page is off course.
         </p>
         <p className="mx-auto mb-10 max-w-xl text-base text-gray-10 sm:text-lg">
-          The page you&apos;re looking for may have been moved, renamed, or is no
-          longer available. Let&apos;s get you back on mission.
+          The page you&apos;re looking for may have been moved, renamed, or is
+          no longer available.
         </p>
 
         {/* Primary actions */}
