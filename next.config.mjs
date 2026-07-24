@@ -48,6 +48,11 @@ const nextConfig = {
         destination: "/events/:slug/sponsorships-exhibits/:path*",
         permanent: true,
       },
+      {
+        source: "/events/:slug/sponsors-exhibitors/:path*",
+        destination: "/events/:slug/sponsorships-exhibits/:path*",
+        permanent: true,
+      },
     ];
   },
 };
