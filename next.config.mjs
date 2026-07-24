@@ -40,6 +40,11 @@ const nextConfig = {
                 destination: '/events/2026-defense-technology-aerospace-procurement-conference/:path*',
                 permanent: true,
             },
+            {
+                source: '/events/:slug/sponsors-exhibitors/sponsorship-opportunities',
+                destination: '/events/:slug/sponsorships-exhibits',
+                permanent: true,
+            },
         ];
     },
 };
