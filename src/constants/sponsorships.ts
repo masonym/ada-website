@@ -2459,7 +2459,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           ],
         },
       ],
-      colour: "bg-sky-300",
+      colour: "bg-blue-600",
+      textColour: "text-white",
       showRemaining: false,
     },
 
@@ -2694,7 +2695,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             ],
           },
         ],
-        colour: "#CD7F32",
+        colour: "bg-amber-700",
+        textColour: "text-slate-900",
         showRemaining: false,
       },
       {
@@ -2848,7 +2850,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             ],
           },
         ],
-        colour: "#3FB4E6",
+        colour: "bg-green-800",
+        textColour: "text-white",
         showRemaining: false,
       },
       {
@@ -2899,7 +2902,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             ],
           },
         ],
-        colour: "#3FB4E6",
+        colour: "bg-orange-950",
+        textColour: "text-white",
         showRemaining: false,
       },
       {
@@ -2944,6 +2948,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             ],
           },
         ],
+        colour: "bg-sb-100",
+        textColour: "text-slate-900",
         showRemaining: false,
       },
       {
