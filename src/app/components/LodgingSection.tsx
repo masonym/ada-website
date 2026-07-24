@@ -84,14 +84,13 @@ export default function LodgingSection({
                     </Link>
                   </div>
                 )}
-                <p className="mt-8 text-left text-gray-600">
-                  {/* If any of the address/state/city/zip are blank, don't display lodging note*/}
-                  {hotel.city || hotel.state || hotel.zip ? (
-                    <div className="flex flex-col">
-                      {lodging.note && <span dangerouslySetInnerHTML={{ __html: lodging.note }}></span>}
-                    </div>
-                  ) : null}
-                </p>
+                {/* If any of the address/state/city/zip are blank, don't display lodging note*/}
+                {(hotel.city || hotel.state || hotel.zip) && lodging.note && (
+                  <div
+                    className="mt-8 flex flex-col text-left text-gray-600"
+                    dangerouslySetInnerHTML={{ __html: lodging.note }}
+                  ></div>
+                )}
               </div>
             </div>
           </div>
