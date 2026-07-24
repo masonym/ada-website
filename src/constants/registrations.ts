@@ -669,8 +669,6 @@ export const REGISTRATION_TYPES = [
         title: "Half-Page Advertisement in Printed Program",
         description:
           "Half-page advertisement placement in the printed conference program.",
-        headerImage: "attendee-pass.webp", // TODO: dedicated header image needed
-        buttonText: "Add to Cart",
         type: "paid",
         price: 500,
         maxQuantityPerOrder: 1,
@@ -682,7 +680,10 @@ export const REGISTRATION_TYPES = [
         perks: [
           {
             formatted: [
-              { content: "4.75\" x 7.5\" Color Advertisement in Printed Program", bold: true },
+              {
+                content: '4.75" x 7.5" Color Advertisement in Printed Program',
+                bold: true,
+              },
             ],
           },
         ],
@@ -699,6 +700,7 @@ export const REGISTRATION_TYPES = [
         requiresCode: true,
         validationCode: "RECEPTION2027",
         maxQuantityPerOrder: 5,
+        isAddOn: true,
         saleEndTime: "2027-06-23T22:00:00.000Z",
         perks: [
           "Access to VIP Networking Reception on June 22, 2027 from 6:30 PM - 8:30 PM",
