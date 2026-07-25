@@ -3125,7 +3125,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         title: "Gold Sponsorship",
         cost: 10000,
         requiresAttendeeInfo: true,
-        slotsPerEvent: 2,
+        // slotsPerEvent: 2,
         sponsorPasses: 4,
         perks: [
           {
@@ -3209,7 +3209,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         title: "Silver Sponsorship",
         cost: 5000,
         requiresAttendeeInfo: true,
-        slotsPerEvent: 3,
+        // slotsPerEvent: 3,
         sponsorPasses: 3,
         perks: [
           {
@@ -3285,7 +3285,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         title: "Bronze Sponsorship",
         cost: 3000,
         requiresAttendeeInfo: true,
-        slotsPerEvent: 5,
+        // slotsPerEvent: 5,
         sponsorPasses: 2,
         // Speaking Opportunity removed for 2027
         perks: [
@@ -3610,7 +3610,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-              { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $395 each",
+                indent: 1,
+              },
             ],
           },
           {
@@ -3625,29 +3629,51 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Speaking Opportunity", bold: true },
-              { content: "Moderate the Panel on Navy Shipbuilding & Fleet Readiness", indent: 1 },
+              {
+                content:
+                  "Moderate the Panel on Navy Shipbuilding & Fleet Readiness",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
               { content: "Recognition/Visibility", bold: true },
-              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-              { content: "Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
+              {
+                content:
+                  "Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                indent: 1,
+              },
               { content: "Social Media Recognition", indent: 1 },
-              { content: "Photographs & Videos of your Participation", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
               { content: "Table-Top Exhibit Space", bold: true },
-              { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+              {
+                content: "Priority Placement for your 8’x10’ Exhibit Space",
+                indent: 1,
+              },
               { content: "6' Tablecloth Table & Chairs", indent: 2 },
             ],
           },
           {
             formatted: [
               { content: "Matchmaking Host Invitation", bold: true },
-              { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+              {
+                content:
+                  "Opportunity to Host a Matchmaking Table on either or both days",
+                indent: 1,
+              },
             ],
           },
         ],
@@ -3666,7 +3692,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-              { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $395 each",
+                indent: 1,
+              },
             ],
           },
           {
@@ -3681,29 +3711,51 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Speaking Opportunity", bold: true },
-              { content: "Moderate the Panel on How to do Business with the Primes", indent: 1 },
+              {
+                content:
+                  "Moderate the Panel on How to do Business with the Primes",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
               { content: "Recognition/Visibility", bold: true },
-              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-              { content: "Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
+              {
+                content:
+                  "Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                indent: 1,
+              },
               { content: "Social Media Recognition", indent: 1 },
-              { content: "Photographs & Videos of your Participation", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
               { content: "Table-Top Exhibit Space", bold: true },
-              { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+              {
+                content: "Priority Placement for your 8’x10’ Exhibit Space",
+                indent: 1,
+              },
               { content: "6' Tablecloth Table & Chairs", indent: 2 },
             ],
           },
           {
             formatted: [
               { content: "Matchmaking Host Invitation", bold: true },
-              { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+              {
+                content:
+                  "Opportunity to Host a Matchmaking Table on either or both days",
+                indent: 1,
+              },
             ],
           },
         ],
@@ -3722,7 +3774,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-              { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $395 each",
+                indent: 1,
+              },
             ],
           },
           {
@@ -3737,29 +3793,51 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Speaking Opportunity", bold: true },
-              { content: "Moderate the Panel on Advanced Battlespace Technologies", indent: 1 },
+              {
+                content:
+                  "Moderate the Panel on Advanced Battlespace Technologies",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
               { content: "Recognition/Visibility", bold: true },
-              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-              { content: "Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
+              {
+                content:
+                  "Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                indent: 1,
+              },
               { content: "Social Media Recognition", indent: 1 },
-              { content: "Photographs & Videos of your Participation", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
               { content: "Table-Top Exhibit Space", bold: true },
-              { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+              {
+                content: "Priority Placement for your 8’x10’ Exhibit Space",
+                indent: 1,
+              },
               { content: "6' Tablecloth Table & Chairs", indent: 2 },
             ],
           },
           {
             formatted: [
               { content: "Matchmaking Host Invitation", bold: true },
-              { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+              {
+                content:
+                  "Opportunity to Host a Matchmaking Table on either or both days",
+                indent: 1,
+              },
             ],
           },
         ],
@@ -3778,7 +3856,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-              { content: "Additional Sponsor Passes can be purchased for $395 each", indent: 1 },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $395 each",
+                indent: 1,
+              },
             ],
           },
           {
@@ -3793,29 +3875,51 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Speaking Opportunity", bold: true },
-              { content: "Moderate the Panel on Military Base Construction & Energy", indent: 1 },
+              {
+                content:
+                  "Moderate the Panel on Military Base Construction & Energy",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
               { content: "Recognition/Visibility", bold: true },
-              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
-              { content: "Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
+              {
+                content:
+                  "Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                indent: 1,
+              },
               { content: "Social Media Recognition", indent: 1 },
-              { content: "Photographs & Videos of your Participation", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
               { content: "Table-Top Exhibit Space", bold: true },
-              { content: "Priority Placement for your 8’x10’ Exhibit Space", indent: 1 },
+              {
+                content: "Priority Placement for your 8’x10’ Exhibit Space",
+                indent: 1,
+              },
               { content: "6' Tablecloth Table & Chairs", indent: 2 },
             ],
           },
           {
             formatted: [
               { content: "Matchmaking Host Invitation", bold: true },
-              { content: "Opportunity to Host a Matchmaking Table on either or both days", indent: 1 },
+              {
+                content:
+                  "Opportunity to Host a Matchmaking Table on either or both days",
+                indent: 1,
+              },
             ],
           },
         ],

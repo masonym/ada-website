@@ -682,10 +682,12 @@ export const REGISTRATION_TYPES = [
             formatted: [
               {
                 content: '4.75" x 7.5" Color Advertisement in Printed Program',
-                bold: true,
+                bold: false,
               },
             ],
           },
+          "Please Note: This advertisement does <b>NOT</b> include event access. Event access must be purchased separately for anyone attending the event.",
+          "Please email your print-ready advertisement to events@americandefensealliance.org by the artwork submission deadline. Accepted file formats include high-resolution PDF (preferred), AI, or EPS.",
         ],
       },
       {
