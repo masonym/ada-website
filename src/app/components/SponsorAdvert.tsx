@@ -51,11 +51,11 @@ export default function SponsorAdvert({ event }: { event: Event }) {
           </p>
         </div>
         <a
-          href={`mailto:${event.contactInfo?.contactEmail || "marketing@americandefensealliance.org"}`}
+          href={`mailto:${event.contactInfo?.contactEmail || "events@americandefensealliance.org"}`}
           className="text-blue-600 hover:text-blue-800 transition-colors duration-300 font-medium break-words text-sm md:text-base"
         >
           {event.contactInfo?.contactEmail ||
-            "marketing@americandefensealliance.org"}
+            "events@americandefensealliance.org"}
         </a>
       </div>
     </div>

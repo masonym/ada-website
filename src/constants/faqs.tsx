@@ -137,7 +137,7 @@ Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
             },
             {
                 question: "How can I register for the event?",
-                answer: `You can register for the event online through the <a href="https://www.americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference?register=true" target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot to receive the cheapest rates and Table-Top Exhibit Spaces tend to sell out fast! Sponsorship Options are also available without Table-Top Exhibit Spaces. <br/> For more information regarding Sponsorship Opportunities, contact us at <a href="mailto:marketing@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">marketing@americandefensealliance.org</a>`,
+                answer: `You can register for the event online through the <a href="https://www.americandefensealliance.org/events/2025-navy-marine-corps-procurement-conference?register=true" target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot to receive the cheapest rates and Table-Top Exhibit Spaces tend to sell out fast! Sponsorship Options are also available without Table-Top Exhibit Spaces. <br/> For more information regarding Sponsorship Opportunities, contact us at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a>`,
             },
             {
                 question: "Is there a cost to attend the event?",
@@ -177,7 +177,7 @@ Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
             },
             {
                 question: "Who should I contact if I have concerns about a suspicious email offering attendee data?",
-                answer: `Please forward the suspicious email to us at <a href="mailto:marketing@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">marketing@americandefensealliance.org</a> so we can investigate and take appropriate action.`
+                answer: `Please forward the suspicious email to us at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a> so we can investigate and take appropriate action.`
             },
             {
                 question: "How can I verify if a communication is officially from the American Defense Alliance?",
@@ -210,7 +210,7 @@ Venue: Renaissance Austin Hotel, 9721 Arboretum Blvd, Austin, Texas 78759
             },
             {
                 question: "How can I register for the event?",
-                answer: `You can register for the event online through the <a href="https://www.americandefensealliance.org/events/2025-defense-technology-aerospace-procurement-conference?register=true" target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot to receive the cheapest rates and Table-Top Exhibit Spaces tend to sell out fast! Sponsorship Options are also available without Table-Top Exhibit Spaces. <br/> For more information regarding Sponsorship Opportunities, contact us at <a href="mailto:marketing@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">marketing@americandefensealliance.org</a>`,
+                answer: `You can register for the event online through the <a href="https://www.americandefensealliance.org/events/2025-defense-technology-aerospace-procurement-conference?register=true" target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot to receive the cheapest rates and Table-Top Exhibit Spaces tend to sell out fast! Sponsorship Options are also available without Table-Top Exhibit Spaces. <br/> For more information regarding Sponsorship Opportunities, contact us at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a>`,
             },
             {
                 question: "Is there a cost to attend the event?",
@@ -250,7 +250,7 @@ Venue: Renaissance Austin Hotel, 9721 Arboretum Blvd, Austin, Texas 78759
             },
             {
                 question: "Who should I contact if I have concerns about a suspicious email offering attendee data?",
-                answer: `Please forward the suspicious email to us at <a href="mailto:marketing@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">marketing@americandefensealliance.org</a> so we can investigate and take appropriate action.`
+                answer: `Please forward the suspicious email to us at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a> so we can investigate and take appropriate action.`
             },
             {
                 question: "How can I verify if a communication is officially from the American Defense Alliance?",
@@ -283,7 +283,7 @@ Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
             },
             {
                 question: "How can I register for the event?",
-                answer: `You can register for the event online through the <a href="https://www.americandefensealliance.org/events/2026-navy-marine-corps-procurement-conference?register=true" target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot to receive the cheapest rates and Table-Top Exhibit Spaces tend to sell out fast! Sponsorship Options are also available without Table-Top Exhibit Spaces. <br/> For more information regarding Sponsorship Opportunities, contact us at <a href="mailto:marketing@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">marketing@americandefensealliance.org</a>`,
+                answer: `You can register for the event online through the <a href="https://www.americandefensealliance.org/events/2026-navy-marine-corps-procurement-conference?register=true" target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot to receive the cheapest rates and Table-Top Exhibit Spaces tend to sell out fast! Sponsorship Options are also available without Table-Top Exhibit Spaces. <br/> For more information regarding Sponsorship Opportunities, contact us at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a>`,
             },
             {
                 question: "Is there a cost to attend the event?",
@@ -323,7 +323,7 @@ Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
             },
             {
                 question: "Who should I contact if I have concerns about a suspicious email offering attendee data?",
-                answer: `Please forward the suspicious email to us at <a href="mailto:marketing@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">marketing@americandefensealliance.org</a> so we can investigate and take appropriate action.`
+                answer: `Please forward the suspicious email to us at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a> so we can investigate and take appropriate action.`
             },
             {
                 question: "How can I verify if a communication is officially from the American Defense Alliance?",
@@ -356,7 +356,7 @@ Venue: Hotel Polaris at the U.S. Air Force Academy, 8989 North Gate Boulevard, C
             },
             {
                 question: "How can I register for the event?",
-                answer: `You can register for the event online through the <a href="https://www.americandefensealliance.org/events/2026-air-force-space-force-procurement-conference?register=true" target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot to receive the cheapest rates and Table-Top Exhibit Spaces tend to sell out fast! Sponsorship Options are also available without Table-Top Exhibit Spaces. <br/> For more information regarding Sponsorship Opportunities, contact us at <a href="mailto:marketing@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">marketing@americandefensealliance.org</a>`,
+                answer: `You can register for the event online through the <a href="https://www.americandefensealliance.org/events/2026-air-force-space-force-procurement-conference?register=true" target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot to receive the cheapest rates and Table-Top Exhibit Spaces tend to sell out fast! Sponsorship Options are also available without Table-Top Exhibit Spaces. <br/> For more information regarding Sponsorship Opportunities, contact us at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a>`,
             },
             {
                 question: "Is there a cost to attend the event?",
@@ -396,7 +396,7 @@ Venue: Hotel Polaris at the U.S. Air Force Academy, 8989 North Gate Boulevard, C
             },
             {
                 question: "Who should I contact if I have concerns about a suspicious email offering attendee data?",
-                answer: `Please forward the suspicious email to us at <a href="mailto:marketing@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">marketing@americandefensealliance.org</a> so we can investigate and take appropriate action.`
+                answer: `Please forward the suspicious email to us at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a> so we can investigate and take appropriate action.`
             },
             {
                 question: "How can I verify if a communication is officially from the American Defense Alliance?",
@@ -429,7 +429,7 @@ Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
             },
             {
                 question: "How can I register for the event?",
-                answer: `You can register for the event online through the <a href="https://www.americandefensealliance.org/events/2027-navy-marine-corps-procurement-conference?register=true" target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot to receive the cheapest rates and Table-Top Exhibit Spaces tend to sell out fast! Sponsorship Options are also available without Table-Top Exhibit Spaces. <br/> For more information regarding Sponsorship Opportunities, contact us at <a href="mailto:marketing@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">marketing@americandefensealliance.org</a>`,
+                answer: `You can register for the event online through the <a href="https://www.americandefensealliance.org/events/2027-navy-marine-corps-procurement-conference?register=true" target="_blank" class="text-blue-600 hover:underline text-nowrap">official event website</a>. Early registration is encouraged to secure your spot to receive the cheapest rates and Table-Top Exhibit Spaces tend to sell out fast! Sponsorship Options are also available without Table-Top Exhibit Spaces. <br/> For more information regarding Sponsorship Opportunities, contact us at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a>`,
             },
             {
                 question: "Is there a cost to attend the event?",
@@ -469,7 +469,7 @@ Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
             },
             {
                 question: "Who should I contact if I have concerns about a suspicious email offering attendee data?",
-                answer: `Please forward the suspicious email to us at <a href="mailto:marketing@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">marketing@americandefensealliance.org</a> so we can investigate and take appropriate action.`
+                answer: `Please forward the suspicious email to us at <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org</a> so we can investigate and take appropriate action.`
             },
             {
                 question: "How can I verify if a communication is officially from the American Defense Alliance?",

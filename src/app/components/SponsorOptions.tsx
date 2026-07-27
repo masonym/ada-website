@@ -96,10 +96,10 @@ const SponsorOptions = ({ event, sponsorTierStyles }: SponsorProps) => {
       available without an Exhibit Space at a reduced rate. For more information
       and to secure your sponsorship, contact:{" "}
       <a
-        href="mailto:marketing@americandefensealliance.org"
+        href="mailto:events@americandefensealliance.org"
         className="underline break-words"
       >
-        marketing@americandefensealliance.org
+        events@americandefensealliance.org
       </a>
     </>
   );

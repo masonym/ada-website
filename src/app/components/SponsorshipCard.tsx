@@ -109,11 +109,13 @@ const SponsorshipCard = ({
               </span>
             )}
           </div>
+          {/* DEADLINE INFO
           {priceInfo.deadlineInfo && (
             <div className="text-[10px] text-center text-balance mt-1">
               {priceInfo.deadlineInfo}
             </div>
           )}
+          */}
         </div>
       </div>
       <div className="p-6">
