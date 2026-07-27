@@ -2271,7 +2271,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           <ul className="list-inside">
             <li>
               Briefings on the Primary Challenges Facing Navy & Marine Corps
-              Commands – and how Those are Shaping Their Contracting/Purchasing
+              Commands – and How Those are Shaping Their Contracting/Purchasing
               Priorities
             </li>
             <li>

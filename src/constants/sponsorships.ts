@@ -3345,7 +3345,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           },
         ],
         colour: "bg-amber-700",
-        textColour: "text-slate-900",
+        textColour: "text-white",
         showRemaining: false,
       },
       {
@@ -3641,12 +3641,12 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Recognition/Visibility", bold: true },
               {
                 content:
-                  "Recognition during General Session & Networking Breaks",
+                  "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise",
                 indent: 1,
               },
               {
                 content:
-                  "Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                  "Recognition during General Session & Networking Breaks",
                 indent: 1,
               },
               { content: "Social Media Recognition", indent: 1 },
@@ -3723,12 +3723,12 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Recognition/Visibility", bold: true },
               {
                 content:
-                  "Recognition during General Session & Networking Breaks",
+                  "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise",
                 indent: 1,
               },
               {
                 content:
-                  "Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                  "Recognition during General Session & Networking Breaks",
                 indent: 1,
               },
               { content: "Social Media Recognition", indent: 1 },
@@ -3805,12 +3805,12 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Recognition/Visibility", bold: true },
               {
                 content:
-                  "Recognition during General Session & Networking Breaks",
+                  "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise",
                 indent: 1,
               },
               {
                 content:
-                  "Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                  "Recognition during General Session & Networking Breaks",
                 indent: 1,
               },
               { content: "Social Media Recognition", indent: 1 },
@@ -3887,12 +3887,12 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Recognition/Visibility", bold: true },
               {
                 content:
-                  "Recognition during General Session & Networking Breaks",
+                  "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise",
                 indent: 1,
               },
               {
                 content:
-                  "Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                  "Recognition during General Session & Networking Breaks",
                 indent: 1,
               },
               { content: "Social Media Recognition", indent: 1 },

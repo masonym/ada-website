@@ -184,8 +184,8 @@ const SponsorOptions = ({ event, sponsorTierStyles }: SponsorProps) => {
                 {groupName}
               </h2>
               <p className="text-[18px] font-gotham text-slate-600 text-center mb-6 max-w-4xl mx-auto">
-                Each panel has a single sponsor who moderates the discussion
-                during the General Session.
+                Each panel has a single Sponsor which may contribute the
+                Moderator for the panel discussion during the General Session.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full items-start">
                 {groupedSponsorships[groupName].map((item, index) => (
