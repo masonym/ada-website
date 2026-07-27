@@ -2,11 +2,15 @@
  * Helper utilities for formatting and managing registration prices
  */
 
+import { PriceTier } from '@/types/registration';
+import { resolveEarlyBird } from './pricing-tiers';
+
 // More flexible type for price formatting that works with various registration types
 export interface PriceFormattingRegistration {
   price: number | string;
   earlyBirdPrice?: number | string;
   earlyBirdDeadline?: string;
+  priceTiers?: PriceTier[];
   type: string;
 }
 
@@ -76,11 +80,12 @@ export function formatPrice(price: number): string {
  * @returns Price display information
  */
 export function getPriceDisplay(registration: PriceFormattingRegistration): PriceDisplay {
-  // Check for early bird pricing
+  // Check for early bird pricing, collapsing any tier ladder to the live tier
   const now = new Date();
-  const hasEarlyBird = !!(registration.earlyBirdPrice && registration.earlyBirdDeadline);
-  const earlyBirdActive = hasEarlyBird && registration.earlyBirdDeadline ? now < new Date(registration.earlyBirdDeadline) : false;
-  
+  const { earlyBirdPrice, earlyBirdDeadline } = resolveEarlyBird(registration, now);
+  const hasEarlyBird = !!(earlyBirdPrice && earlyBirdDeadline);
+  const earlyBirdActive = hasEarlyBird && earlyBirdDeadline ? now < new Date(earlyBirdDeadline) : false;
+
   // Process different price types
   let displayPrice = '';
   let originalPrice: string | undefined;
@@ -97,17 +102,17 @@ export function getPriceDisplay(registration: PriceFormattingRegistration): Pric
   } 
   // Handle early bird pricing
   else if (earlyBirdActive) {
-    const earlyBirdNumeric = normalizePrice(registration.earlyBirdPrice);
+    const earlyBirdNumeric = normalizePrice(earlyBirdPrice);
     const regularNumeric = normalizePrice(registration.price);
-    
+
     displayPrice = formatPrice(earlyBirdNumeric);
     originalPrice = formatPrice(regularNumeric);
     priceClasses = 'text-green-600';
     priceLabel = 'Early Bird';
     numericValue = earlyBirdNumeric;
-    
-    if (registration.earlyBirdDeadline) {
-      const deadline = new Date(registration.earlyBirdDeadline);
+
+    if (earlyBirdDeadline) {
+      const deadline = new Date(earlyBirdDeadline);
       deadlineInfo = `Early bird pricing ends ${deadline.toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',

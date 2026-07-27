@@ -16,6 +16,7 @@ import {
   PlusCircle,
 } from "lucide-react";
 import { getPriceDisplay } from "@/lib/price-formatting";
+import { resolveEarlyBird } from "@/lib/pricing-tiers";
 import PriceDisplay from "./PriceDisplay";
 import { Event } from "@/types/events";
 import { BillingInformation } from "./BillingInformation";
@@ -1005,12 +1006,12 @@ const RegistrationModal = ({
   const getEffectivePrice = (
     registration: AdapterModalRegistrationType,
   ): number => {
+    const { earlyBirdPrice, earlyBirdDeadline } = resolveEarlyBird(registration);
     const isEarlyBird =
-      registration.earlyBirdDeadline &&
-      new Date() < new Date(registration.earlyBirdDeadline);
+      earlyBirdDeadline && new Date() < new Date(earlyBirdDeadline);
     const displayPrice =
-      isEarlyBird && registration.earlyBirdPrice !== undefined
-        ? registration.earlyBirdPrice
+      isEarlyBird && earlyBirdPrice !== undefined
+        ? earlyBirdPrice
         : registration.price;
     // Convert displayPrice to number if it's a string
     const numericPrice =
@@ -1036,11 +1037,12 @@ const RegistrationModal = ({
     }
 
     // Calculate original price (early bird or regular, but without promo discount)
+    const { earlyBirdPrice, earlyBirdDeadline } = resolveEarlyBird(reg);
     const isEarlyBird =
-      reg.earlyBirdDeadline && new Date() < new Date(reg.earlyBirdDeadline);
+      earlyBirdDeadline && new Date() < new Date(earlyBirdDeadline);
     const originalPrice =
-      isEarlyBird && reg.earlyBirdPrice !== undefined
-        ? reg.earlyBirdPrice
+      isEarlyBird && earlyBirdPrice !== undefined
+        ? earlyBirdPrice
         : reg.price;
     const originalPriceNum =
       typeof originalPrice === "number"
@@ -1613,14 +1615,15 @@ const RegistrationModal = ({
         }
 
         // Check if early bird pricing applies
+        const { earlyBirdPrice, earlyBirdDeadline } = resolveEarlyBird(reg);
         const isEarlyBird =
-          reg.earlyBirdPrice &&
-          reg.earlyBirdDeadline &&
-          new Date() < new Date(reg.earlyBirdDeadline);
+          earlyBirdPrice &&
+          earlyBirdDeadline &&
+          new Date() < new Date(earlyBirdDeadline);
         // Use early bird price if available and date is valid, otherwise use regular price
         const ticketPrice =
-          isEarlyBird && reg.earlyBirdPrice !== undefined
-            ? reg.earlyBirdPrice
+          isEarlyBird && earlyBirdPrice !== undefined
+            ? earlyBirdPrice
             : reg.price;
 
         // Handle string or number price values

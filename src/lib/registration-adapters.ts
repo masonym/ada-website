@@ -1,7 +1,7 @@
 import { REGISTRATION_TYPES } from '@/constants/registrations';
 import { SPONSORSHIP_TYPES } from '@/constants/sponsorships';
 import { EXHIBITOR_TYPES, ExhibitorType, AdditionalPassType as ExhibitorAdditionalPassType } from '@/constants/exhibitors';
-import { ModalRegistrationType } from '@/types/registration';
+import { ModalRegistrationType, PriceTier } from '@/types/registration';
 import { AdditionalPassType as SponsorAdditionalPassType } from '@/types/sponsorships';
 
 // Define types based on the structure of the constants files
@@ -48,6 +48,7 @@ export interface AdapterModalRegistrationType extends ModalRegistrationType {
   price: number | string;
   earlyBirdPrice?: number | string;
   earlyBirdDeadline?: string;
+  priceTiers?: PriceTier[];
   isActive: boolean;
   requiresAttendeeInfo: boolean;
   isGovtFreeEligible: boolean;
@@ -100,6 +101,9 @@ export function getRegistrationsForEvent(eventId: number | string): AdapterModal
     price: reg.price,
     earlyBirdPrice: reg.earlyBirdPrice,
     earlyBirdDeadline: reg.earlyBirdDeadline,
+    // Passed through unresolved: event pages are statically generated, so the
+    // live tier has to be picked at render time, not at build time.
+    priceTiers: reg.priceTiers,
     isActive: reg.isActive ?? true,
     requiresAttendeeInfo: reg.requiresAttendeeInfo ?? true,
     isGovtFreeEligible: reg.isGovtFreeEligible ?? false,

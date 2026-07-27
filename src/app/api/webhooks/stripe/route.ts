@@ -8,6 +8,7 @@ import { headers } from 'next/headers';
 import { RegistrationFormData } from '@/types/event-registration/registration';
 import { EVENTS } from '@/constants/events';
 import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
+import { resolveEarlyBird } from '@/lib/pricing-tiers';
 import { getPendingRegistration, saveConfirmedRegistration, getConfirmedRegistration } from '@/lib/aws/dynamodb';
 
 async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent) {
@@ -106,15 +107,19 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
       items: registrationData.tickets.map(ticket => {
         const regType = allRegistrationTypes.find(rt => rt.id === ticket.ticketId);
         
-        // Check if early bird pricing should apply
+        // Check if early bird pricing should apply. Tiers are resolved as of the
+        // order date rather than now, so an order placed just before a tier
+        // rolled over is still receipted at the price it was charged.
         let itemPrice = Number(regType?.price) || 0;
-        if (regType?.earlyBirdPrice && regType?.earlyBirdDeadline) {
-          const orderDate = new Date(paymentIntent.created * 1000);
-          const earlyBirdDeadline = new Date(regType.earlyBirdDeadline);
-          
+        const orderDate = new Date(paymentIntent.created * 1000);
+        const { earlyBirdPrice, earlyBirdDeadline } = resolveEarlyBird(
+          regType ?? {},
+          orderDate
+        );
+        if (earlyBirdPrice && earlyBirdDeadline) {
           // Use early bird price if order date is before the deadline
-          if (orderDate < earlyBirdDeadline) {
-            itemPrice = Number(regType.earlyBirdPrice);
+          if (orderDate < new Date(earlyBirdDeadline)) {
+            itemPrice = Number(earlyBirdPrice);
           }
         }
 

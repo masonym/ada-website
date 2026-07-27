@@ -605,9 +605,13 @@ export const REGISTRATION_TYPES = [
           },
         ],
         buttonText: "Register Now",
-        price: 595,
-        earlyBirdPrice: 495,
-        earlyBirdDeadline: "2026-11-01T03:59:59Z", // October 31, 2026 11:59 PM ET
+        price: 595, // final price from May 1, 2027 until the event
+        priceTiers: [
+          { price: 395, endDate: "2026-10-01T03:59:59Z" }, // ends September 30, 2026 11:59 PM ET
+          { price: 445, endDate: "2027-01-01T04:59:59Z" }, // ends December 31, 2026 11:59 PM ET
+          { price: 495, endDate: "2027-03-01T04:59:59Z" }, // ends February 28, 2027 11:59 PM ET
+          { price: 545, endDate: "2027-05-01T03:59:59Z" }, // ends April 30, 2027 11:59 PM ET
+        ],
         type: "paid",
         saleEndTime: "2027-06-23T22:00:00Z",
       },
@@ -634,9 +638,13 @@ export const REGISTRATION_TYPES = [
           },
         ],
         buttonText: "Register Now",
-        price: 695,
-        earlyBirdPrice: 595,
-        earlyBirdDeadline: "2026-11-01T03:59:59Z", // October 31, 2026 11:59 PM ET
+        price: 695, // final price from May 1, 2027 until the event
+        priceTiers: [
+          { price: 495, endDate: "2026-10-01T03:59:59Z" }, // ends September 30, 2026 11:59 PM ET
+          { price: 545, endDate: "2027-01-01T04:59:59Z" }, // ends December 31, 2026 11:59 PM ET
+          { price: 595, endDate: "2027-03-01T04:59:59Z" }, // ends February 28, 2027 11:59 PM ET
+          { price: 645, endDate: "2027-05-01T03:59:59Z" }, // ends April 30, 2027 11:59 PM ET
+        ],
         type: "paid",
         saleEndTime: "2027-06-23T22:00:00Z",
       },

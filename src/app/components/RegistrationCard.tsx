@@ -7,6 +7,7 @@ import RegistrationModal from '@/components/RegistrationModal';
 import { getCdnPath } from '@/utils/image';
 import PriceDisplay from '@/components/PriceDisplay';
 import { AdapterModalRegistrationType } from '@/lib/registration-adapters';
+import { resolveEarlyBird } from '@/lib/pricing-tiers';
 import { Event } from '@/types/events';
 import FormattedPerk from '@/components/FormattedPerk';
 
@@ -24,15 +25,16 @@ const RegistrationCard = ({ item, event }: RegistrationProp) => {
   const isFree = item.type === 'free';
   const isSponsor = item.type === 'sponsor';
   const isSoldOut = item.availabilityInfo === 'SOLD OUT';
-  const isEarlyBird = isPaid && item.earlyBirdDeadline && new Date() < new Date(item.earlyBirdDeadline);
+  const { earlyBirdPrice, earlyBirdDeadline } = resolveEarlyBird(item);
+  const isEarlyBird = isPaid && earlyBirdDeadline && new Date() < new Date(earlyBirdDeadline);
 
   const currentPrice = isPaid
-    ? (isEarlyBird && item.earlyBirdPrice ? item.earlyBirdPrice : item.price)
+    ? (isEarlyBird && earlyBirdPrice ? earlyBirdPrice : item.price)
     : isFree
       ? 'Complimentary'
       : '';
-  const deadlineDate = isPaid && item.earlyBirdDeadline
-    ? new Date(item.earlyBirdDeadline).toLocaleDateString('en-US', {
+  const deadlineDate = isPaid && earlyBirdDeadline
+    ? new Date(earlyBirdDeadline).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
