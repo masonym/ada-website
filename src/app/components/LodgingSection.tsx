@@ -87,7 +87,7 @@ export default function LodgingSection({
                 {/* If any of the address/state/city/zip are blank, don't display lodging note*/}
                 {(hotel.city || hotel.state || hotel.zip) && lodging.note && (
                   <div
-                    className="mt-8 flex flex-col text-left text-gray-600"
+                    className="mt-8 text-left text-gray-600"
                     dangerouslySetInnerHTML={{ __html: lodging.note }}
                   ></div>
                 )}
