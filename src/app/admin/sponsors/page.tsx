@@ -1,7 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Upload, Plus, Check, AlertCircle, Building2, Link as LinkIcon, Layers, RefreshCw, Edit2, Trash2 } from "lucide-react";
+import {
+  Upload,
+  Plus,
+  Check,
+  AlertCircle,
+  Building2,
+  Link as LinkIcon,
+  Layers,
+  RefreshCw,
+  Edit2,
+  Trash2,
+} from "lucide-react";
 
 type EventWithTiers = {
   _id: string;
@@ -25,11 +36,16 @@ type MatchmakingDoc = {
 
 export default function SponsorAdminPage() {
   const [events, setEvents] = useState<EventWithTiers[]>([]);
-  const [existingSponsors, setExistingSponsors] = useState<ExistingSponsor[]>([]);
+  const [existingSponsors, setExistingSponsors] = useState<ExistingSponsor[]>(
+    [],
+  );
   const [matchmakingDocs, setMatchmakingDocs] = useState<MatchmakingDoc[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
-  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [message, setMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
 
   // new sponsor form
   const [name, setName] = useState("");
@@ -41,8 +57,17 @@ export default function SponsorAdminPage() {
   const [selectedTierIds, setSelectedTierIds] = useState<string[]>([]);
 
   // existing sponsor form
-  const [mode, setMode] = useState<"new" | "existing" | "remove" | "tier" | "edit-tier" | "replace-logo" | "edit">("new");
-  const [selectedExistingSponsorId, setSelectedExistingSponsorId] = useState<string>("");
+  const [mode, setMode] = useState<
+    | "new"
+    | "existing"
+    | "remove"
+    | "tier"
+    | "edit-tier"
+    | "replace-logo"
+    | "edit"
+  >("new");
+  const [selectedExistingSponsorId, setSelectedExistingSponsorId] =
+    useState<string>("");
   const [removeFromAllTiers, setRemoveFromAllTiers] = useState(false);
 
   // edit sponsor form
@@ -50,7 +75,8 @@ export default function SponsorAdminPage() {
   const [editName, setEditName] = useState("");
   const [editWebsite, setEditWebsite] = useState("");
   const [editDescription, setEditDescription] = useState("");
-  const [editMatchmakingDescription, setEditMatchmakingDescription] = useState("");
+  const [editMatchmakingDescription, setEditMatchmakingDescription] =
+    useState("");
   const [loadingDetails, setLoadingDetails] = useState(false);
 
   // new tier form
@@ -69,7 +95,7 @@ export default function SponsorAdminPage() {
   const TIER_STYLE_PRESETS = [
     { label: "Gold", classes: "bg-amber-400 text-slate-900" },
     { label: "Silver", classes: "bg-gray-300 text-slate-900" },
-    { label: "Bronze", classes: "bg-amber-700 text-slate-900" },
+    { label: "Bronze", classes: "bg-amber-700 text-white" },
     { label: "Platinum", classes: "bg-blue-600 text-slate-900" },
     { label: "Coffee Station Sponsor", classes: "bg-[#966919] text-white" },
     { label: "Major Panel Sponsor", classes: "bg-[#F33A6A] text-white" },
@@ -81,10 +107,13 @@ export default function SponsorAdminPage() {
   // replace logo form
   const [replaceSponsorId, setReplaceSponsorId] = useState<string>("");
   const [replaceLogo, setReplaceLogo] = useState<File | null>(null);
-  const [replaceLogoPreview, setReplaceLogoPreview] = useState<string | null>(null);
+  const [replaceLogoPreview, setReplaceLogoPreview] = useState<string | null>(
+    null,
+  );
 
   // matchmaking options (for new sponsor form)
-  const [selectedMatchmakingDocId, setSelectedMatchmakingDocId] = useState<string>("");
+  const [selectedMatchmakingDocId, setSelectedMatchmakingDocId] =
+    useState<string>("");
   const [matchmakingNote, setMatchmakingNote] = useState("");
   const [matchmakingDescription, setMatchmakingDescription] = useState("");
 
@@ -133,7 +162,10 @@ export default function SponsorAdminPage() {
   async function handleSubmitReplaceLogo(e: React.FormEvent) {
     e.preventDefault();
     if (!replaceSponsorId || !replaceLogo) {
-      setMessage({ type: "error", text: "Please select a sponsor and upload a new logo" });
+      setMessage({
+        type: "error",
+        text: "Please select a sponsor and upload a new logo",
+      });
       return;
     }
 
@@ -171,7 +203,7 @@ export default function SponsorAdminPage() {
     setSelectedTierIds((prev) =>
       prev.includes(tierId)
         ? prev.filter((id) => id !== tierId)
-        : [...prev, tierId]
+        : [...prev, tierId],
     );
   }
 
@@ -187,15 +219,22 @@ export default function SponsorAdminPage() {
 
     setLoadingDetails(true);
     try {
-      const res = await fetch(`/api/admin/sponsors/update-details?sponsorId=${sponsorId}`);
+      const res = await fetch(
+        `/api/admin/sponsors/update-details?sponsorId=${sponsorId}`,
+      );
       const data = await res.json();
       if (res.ok && data.sponsor) {
         setEditName(data.sponsor.name || "");
         setEditWebsite(data.sponsor.website || "");
         setEditDescription(data.sponsor.description || "");
-        setEditMatchmakingDescription(data.sponsor.matchmakingDescription || "");
+        setEditMatchmakingDescription(
+          data.sponsor.matchmakingDescription || "",
+        );
       } else {
-        setMessage({ type: "error", text: data.error || "Failed to load sponsor details" });
+        setMessage({
+          type: "error",
+          text: data.error || "Failed to load sponsor details",
+        });
       }
     } catch (error) {
       setMessage({ type: "error", text: "Failed to load sponsor details" });
@@ -251,7 +290,10 @@ export default function SponsorAdminPage() {
 
     // if event is selected, tiers are required
     if (selectedEventId && selectedTierIds.length === 0) {
-      setMessage({ type: "error", text: "Please select at least one tier for the event" });
+      setMessage({
+        type: "error",
+        text: "Please select at least one tier for the event",
+      });
       return;
     }
 
@@ -263,7 +305,8 @@ export default function SponsorAdminPage() {
       formData.append("name", name);
       if (website) formData.append("website", website);
       if (description) formData.append("description", description);
-      if (matchmakingDescription) formData.append("matchmakingDescription", matchmakingDescription);
+      if (matchmakingDescription)
+        formData.append("matchmakingDescription", matchmakingDescription);
       formData.append("logo", logo);
       if (selectedEventId) {
         formData.append("eventId", selectedEventId.toString());
@@ -271,7 +314,8 @@ export default function SponsorAdminPage() {
       }
       if (selectedMatchmakingDocId) {
         formData.append("matchmakingDocId", selectedMatchmakingDocId);
-        if (matchmakingNote) formData.append("matchmakingNote", matchmakingNote);
+        if (matchmakingNote)
+          formData.append("matchmakingNote", matchmakingNote);
       }
 
       const res = await fetch("/api/admin/sponsors", {
@@ -307,8 +351,15 @@ export default function SponsorAdminPage() {
 
   async function handleSubmitExisting(e: React.FormEvent) {
     e.preventDefault();
-    if (!selectedExistingSponsorId || !selectedEventId || selectedTierIds.length === 0) {
-      setMessage({ type: "error", text: "Please select a sponsor, event, and at least one tier" });
+    if (
+      !selectedExistingSponsorId ||
+      !selectedEventId ||
+      selectedTierIds.length === 0
+    ) {
+      setMessage({
+        type: "error",
+        text: "Please select a sponsor, event, and at least one tier",
+      });
       return;
     }
 
@@ -344,8 +395,15 @@ export default function SponsorAdminPage() {
 
   async function handleSubmitRemove(e: React.FormEvent) {
     e.preventDefault();
-    if (!selectedExistingSponsorId || !selectedEventId || (!removeFromAllTiers && selectedTierIds.length === 0)) {
-      setMessage({ type: "error", text: "Please select a sponsor, event, and at least one tier" });
+    if (
+      !selectedExistingSponsorId ||
+      !selectedEventId ||
+      (!removeFromAllTiers && selectedTierIds.length === 0)
+    ) {
+      setMessage({
+        type: "error",
+        text: "Please select a sponsor, event, and at least one tier",
+      });
       return;
     }
 
@@ -437,7 +495,10 @@ export default function SponsorAdminPage() {
   async function handleSubmitEditTier(e: React.FormEvent) {
     e.preventDefault();
     if (!editTierEventId || !editTierKey || !editTierId || !editTierName) {
-      setMessage({ type: "error", text: "Please select a tier and fill in all required fields" });
+      setMessage({
+        type: "error",
+        text: "Please select a tier and fill in all required fields",
+      });
       return;
     }
 
@@ -485,7 +546,9 @@ export default function SponsorAdminPage() {
     <div className="min-h-screen py-8">
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Sponsor Management</h1>
+          <h1 className="text-3xl font-bold text-gray-900">
+            Sponsor Management
+          </h1>
           <p className="text-gray-600 mt-2">
             Add sponsors and assign them to event tiers in one step
           </p>
@@ -651,7 +714,9 @@ export default function SponsorAdminPage() {
                       <p className="text-sm text-gray-600">
                         {logo ? logo.name : "Click to upload logo"}
                       </p>
-                      <p className="text-xs text-gray-400 mt-1">PNG, JPG, SVG, WebP</p>
+                      <p className="text-xs text-gray-400 mt-1">
+                        PNG, JPG, SVG, WebP
+                      </p>
                     </div>
                     <input
                       type="file"
@@ -676,12 +741,17 @@ export default function SponsorAdminPage() {
               <div className="border border-gray-200 rounded-lg p-4 space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Event <span className="text-gray-400 font-normal">(optional)</span>
+                    Event{" "}
+                    <span className="text-gray-400 font-normal">
+                      (optional)
+                    </span>
                   </label>
                   <select
                     value={selectedEventId || ""}
                     onChange={(e) => {
-                      setSelectedEventId(e.target.value ? parseInt(e.target.value) : null);
+                      setSelectedEventId(
+                        e.target.value ? parseInt(e.target.value) : null,
+                      );
                       setSelectedTierIds([]);
                     }}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -693,14 +763,19 @@ export default function SponsorAdminPage() {
                       </option>
                     ))}
                   </select>
-                  <p className="text-xs text-gray-400 mt-1">Leave blank to create the sponsor without adding to an event</p>
+                  <p className="text-xs text-gray-400 mt-1">
+                    Leave blank to create the sponsor without adding to an event
+                  </p>
                 </div>
 
                 {/* tier selection */}
                 {selectedEvent && (
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Tiers * <span className="text-gray-400 font-normal">(select multiple)</span>
+                      Tiers *{" "}
+                      <span className="text-gray-400 font-normal">
+                        (select multiple)
+                      </span>
                     </label>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                       {selectedEvent.tiers.map((tier) => (
@@ -730,11 +805,16 @@ export default function SponsorAdminPage() {
                 <div className="border border-gray-200 rounded-lg p-4 space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Matchmaking Event <span className="text-gray-400 font-normal">(optional)</span>
+                      Matchmaking Event{" "}
+                      <span className="text-gray-400 font-normal">
+                        (optional)
+                      </span>
                     </label>
                     <select
                       value={selectedMatchmakingDocId}
-                      onChange={(e) => setSelectedMatchmakingDocId(e.target.value)}
+                      onChange={(e) =>
+                        setSelectedMatchmakingDocId(e.target.value)
+                      }
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     >
                       <option value="">No matchmaking</option>
@@ -744,14 +824,19 @@ export default function SponsorAdminPage() {
                         </option>
                       ))}
                     </select>
-                    <p className="text-xs text-gray-400 mt-1">Add this sponsor to matchmaking sessions for an event</p>
+                    <p className="text-xs text-gray-400 mt-1">
+                      Add this sponsor to matchmaking sessions for an event
+                    </p>
                   </div>
 
                   {selectedMatchmakingDocId && (
                     <>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Matchmaking Note <span className="text-gray-400 font-normal">(optional)</span>
+                          Matchmaking Note{" "}
+                          <span className="text-gray-400 font-normal">
+                            (optional)
+                          </span>
                         </label>
                         <input
                           type="text"
@@ -763,16 +848,23 @@ export default function SponsorAdminPage() {
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Matchmaking Description <span className="text-gray-400 font-normal">(optional)</span>
+                          Matchmaking Description{" "}
+                          <span className="text-gray-400 font-normal">
+                            (optional)
+                          </span>
                         </label>
                         <textarea
                           value={matchmakingDescription}
-                          onChange={(e) => setMatchmakingDescription(e.target.value)}
+                          onChange={(e) =>
+                            setMatchmakingDescription(e.target.value)
+                          }
                           rows={3}
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           placeholder="Description shown in matchmaking instead of the regular sponsor description"
                         />
-                        <p className="text-xs text-gray-400 mt-1">Overrides the regular description for matchmaking only</p>
+                        <p className="text-xs text-gray-400 mt-1">
+                          Overrides the regular description for matchmaking only
+                        </p>
                       </div>
                     </>
                   )}
@@ -827,7 +919,9 @@ export default function SponsorAdminPage() {
                 <select
                   value={selectedEventId || ""}
                   onChange={(e) => {
-                    setSelectedEventId(e.target.value ? parseInt(e.target.value) : null);
+                    setSelectedEventId(
+                      e.target.value ? parseInt(e.target.value) : null,
+                    );
                     setSelectedTierIds([]);
                   }}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -846,7 +940,10 @@ export default function SponsorAdminPage() {
               {selectedEvent && (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Tiers * <span className="text-gray-400 font-normal">(select multiple)</span>
+                    Tiers *{" "}
+                    <span className="text-gray-400 font-normal">
+                      (select multiple)
+                    </span>
                   </label>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                     {selectedEvent.tiers.map((tier) => (
@@ -889,7 +986,11 @@ export default function SponsorAdminPage() {
                 </label>
                 <select
                   value={newTierEventId || ""}
-                  onChange={(e) => setNewTierEventId(e.target.value ? parseInt(e.target.value) : null)}
+                  onChange={(e) =>
+                    setNewTierEventId(
+                      e.target.value ? parseInt(e.target.value) : null,
+                    )
+                  }
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   required
                 >
@@ -915,7 +1016,9 @@ export default function SponsorAdminPage() {
                     placeholder="small-business-sponsor"
                     required
                   />
-                  <p className="text-xs text-gray-400 mt-1">Lowercase with dashes, e.g., "small-business-sponsor"</p>
+                  <p className="text-xs text-gray-400 mt-1">
+                    Lowercase with dashes, e.g., "small-business-sponsor"
+                  </p>
                 </div>
 
                 <div>
@@ -935,12 +1038,15 @@ export default function SponsorAdminPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Style Classes <span className="text-gray-400 font-normal">(optional)</span>
+                  Style Classes{" "}
+                  <span className="text-gray-400 font-normal">(optional)</span>
                 </label>
 
                 {/* preset picker */}
                 <div className="mb-3">
-                  <p className="text-xs text-gray-500 mb-2">Click a preset or type custom classes below</p>
+                  <p className="text-xs text-gray-500 mb-2">
+                    Click a preset or type custom classes below
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {TIER_STYLE_PRESETS.map((preset) => (
                       <button
@@ -956,11 +1062,16 @@ export default function SponsorAdminPage() {
                         {preset.label}
                       </button>
                     ))}
-                    {newTierStyle && !TIER_STYLE_PRESETS.some((p) => p.classes === newTierStyle) && (
-                      <span className={`px-3 py-1.5 rounded-full text-xs font-semibold border-2 border-blue-500 ring-2 ring-offset-1 ring-blue-500 ${newTierStyle}`}>
-                        Custom
-                      </span>
-                    )}
+                    {newTierStyle &&
+                      !TIER_STYLE_PRESETS.some(
+                        (p) => p.classes === newTierStyle,
+                      ) && (
+                        <span
+                          className={`px-3 py-1.5 rounded-full text-xs font-semibold border-2 border-blue-500 ring-2 ring-offset-1 ring-blue-500 ${newTierStyle}`}
+                        >
+                          Custom
+                        </span>
+                      )}
                   </div>
                 </div>
 
@@ -972,13 +1083,17 @@ export default function SponsorAdminPage() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-sm"
                   placeholder="bg-sb-100 text-slate-900"
                 />
-                <p className="text-xs text-gray-400 mt-1">Tailwind classes applied to the tier badge</p>
+                <p className="text-xs text-gray-400 mt-1">
+                  Tailwind classes applied to the tier badge
+                </p>
 
                 {/* live preview */}
                 {newTierStyle && (
                   <div className="mt-3 flex items-center gap-3">
                     <span className="text-xs text-gray-500">Preview:</span>
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${newTierStyle}`}>
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-semibold ${newTierStyle}`}
+                    >
                       {newTierName || "Tier Name"}
                     </span>
                   </div>
@@ -1005,7 +1120,9 @@ export default function SponsorAdminPage() {
                 <select
                   value={editTierEventId || ""}
                   onChange={(e) => {
-                    setEditTierEventId(e.target.value ? parseInt(e.target.value) : null);
+                    setEditTierEventId(
+                      e.target.value ? parseInt(e.target.value) : null,
+                    );
                     setEditTierKey("");
                     setEditTierId("");
                     setEditTierName("");
@@ -1049,7 +1166,11 @@ export default function SponsorAdminPage() {
                 <>
                   <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
                     <p className="text-sm text-amber-800">
-                      Editing a tier updates it across the whole event. Changing the <strong>Tier ID</strong> can affect special layout/styling that is keyed to specific IDs — only change it if you know what you&apos;re doing. Sponsors already in this tier stay attached.
+                      Editing a tier updates it across the whole event. Changing
+                      the <strong>Tier ID</strong> can affect special
+                      layout/styling that is keyed to specific IDs — only change
+                      it if you know what you&apos;re doing. Sponsors already in
+                      this tier stay attached.
                     </p>
                   </div>
 
@@ -1066,7 +1187,10 @@ export default function SponsorAdminPage() {
                         placeholder="small-business-sponsor"
                         required
                       />
-                      <p className="text-xs text-gray-400 mt-1">Lowercase with dashes, e.g., &quot;small-business-sponsor&quot;</p>
+                      <p className="text-xs text-gray-400 mt-1">
+                        Lowercase with dashes, e.g.,
+                        &quot;small-business-sponsor&quot;
+                      </p>
                     </div>
 
                     <div>
@@ -1086,12 +1210,17 @@ export default function SponsorAdminPage() {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Style Classes <span className="text-gray-400 font-normal">(optional)</span>
+                      Style Classes{" "}
+                      <span className="text-gray-400 font-normal">
+                        (optional)
+                      </span>
                     </label>
 
                     {/* preset picker */}
                     <div className="mb-3">
-                      <p className="text-xs text-gray-500 mb-2">Click a preset or type custom classes below</p>
+                      <p className="text-xs text-gray-500 mb-2">
+                        Click a preset or type custom classes below
+                      </p>
                       <div className="flex flex-wrap gap-2">
                         {TIER_STYLE_PRESETS.map((preset) => (
                           <button
@@ -1107,11 +1236,16 @@ export default function SponsorAdminPage() {
                             {preset.label}
                           </button>
                         ))}
-                        {editTierStyle && !TIER_STYLE_PRESETS.some((p) => p.classes === editTierStyle) && (
-                          <span className={`px-3 py-1.5 rounded-full text-xs font-semibold border-2 border-blue-500 ring-2 ring-offset-1 ring-blue-500 ${editTierStyle}`}>
-                            Custom
-                          </span>
-                        )}
+                        {editTierStyle &&
+                          !TIER_STYLE_PRESETS.some(
+                            (p) => p.classes === editTierStyle,
+                          ) && (
+                            <span
+                              className={`px-3 py-1.5 rounded-full text-xs font-semibold border-2 border-blue-500 ring-2 ring-offset-1 ring-blue-500 ${editTierStyle}`}
+                            >
+                              Custom
+                            </span>
+                          )}
                       </div>
                     </div>
 
@@ -1123,13 +1257,18 @@ export default function SponsorAdminPage() {
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-sm"
                       placeholder="bg-sb-100 text-slate-900"
                     />
-                    <p className="text-xs text-gray-400 mt-1">Tailwind classes applied to the tier badge. Leave blank for no special styling.</p>
+                    <p className="text-xs text-gray-400 mt-1">
+                      Tailwind classes applied to the tier badge. Leave blank
+                      for no special styling.
+                    </p>
 
                     {/* live preview */}
                     {editTierStyle && (
                       <div className="mt-3 flex items-center gap-3">
                         <span className="text-xs text-gray-500">Preview:</span>
-                        <span className={`px-3 py-1 rounded-full text-xs font-semibold ${editTierStyle}`}>
+                        <span
+                          className={`px-3 py-1 rounded-full text-xs font-semibold ${editTierStyle}`}
+                        >
                           {editTierName || "Tier Name"}
                         </span>
                       </div>
@@ -1152,7 +1291,8 @@ export default function SponsorAdminPage() {
             <form onSubmit={handleSubmitRemove} className="space-y-6">
               <div className="rounded-lg border border-red-200 bg-red-50 p-4">
                 <p className="text-sm text-red-800">
-                  Remove a sponsor from one or more event tiers without deleting the sponsor record itself.
+                  Remove a sponsor from one or more event tiers without deleting
+                  the sponsor record itself.
                 </p>
               </div>
 
@@ -1182,7 +1322,9 @@ export default function SponsorAdminPage() {
                 <select
                   value={selectedEventId || ""}
                   onChange={(e) => {
-                    setSelectedEventId(e.target.value ? parseInt(e.target.value) : null);
+                    setSelectedEventId(
+                      e.target.value ? parseInt(e.target.value) : null,
+                    );
                     setSelectedTierIds([]);
                     setRemoveFromAllTiers(false);
                   }}
@@ -1213,7 +1355,10 @@ export default function SponsorAdminPage() {
                   {!removeFromAllTiers && (
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Tiers * <span className="text-gray-400 font-normal">(select multiple)</span>
+                        Tiers *{" "}
+                        <span className="text-gray-400 font-normal">
+                          (select multiple)
+                        </span>
                       </label>
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                         {selectedEvent.tiers.map((tier) => (
@@ -1281,9 +1426,13 @@ export default function SponsorAdminPage() {
                     <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
                       <Upload className="w-8 h-8 mx-auto text-gray-400 mb-2" />
                       <p className="text-sm text-gray-600">
-                        {replaceLogo ? replaceLogo.name : "Click to upload new logo"}
+                        {replaceLogo
+                          ? replaceLogo.name
+                          : "Click to upload new logo"}
                       </p>
-                      <p className="text-xs text-gray-400 mt-1">PNG, JPG, SVG, WebP</p>
+                      <p className="text-xs text-gray-400 mt-1">
+                        PNG, JPG, SVG, WebP
+                      </p>
                     </div>
                     <input
                       type="file"
@@ -1339,7 +1488,9 @@ export default function SponsorAdminPage() {
               {loadingDetails && (
                 <div className="text-center py-4">
                   <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
-                  <p className="text-sm text-gray-500 mt-2">Loading sponsor details...</p>
+                  <p className="text-sm text-gray-500 mt-2">
+                    Loading sponsor details...
+                  </p>
                 </div>
               )}
 
@@ -1389,24 +1540,31 @@ export default function SponsorAdminPage() {
                       placeholder="<b>Bold text</b>, <a href='...'>links</a>, etc."
                     />
                     <p className="text-xs text-gray-400 mt-1">
-                      You can use HTML tags like &lt;b&gt;, &lt;a href=&quot;...&quot;&gt;, &lt;br/&gt;
+                      You can use HTML tags like &lt;b&gt;, &lt;a
+                      href=&quot;...&quot;&gt;, &lt;br/&gt;
                     </p>
                   </div>
 
                   {/* matchmaking description */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Matchmaking Description <span className="text-gray-400 font-normal">(optional)</span>
+                      Matchmaking Description{" "}
+                      <span className="text-gray-400 font-normal">
+                        (optional)
+                      </span>
                     </label>
                     <textarea
                       value={editMatchmakingDescription}
-                      onChange={(e) => setEditMatchmakingDescription(e.target.value)}
+                      onChange={(e) =>
+                        setEditMatchmakingDescription(e.target.value)
+                      }
                       rows={4}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-sm"
                       placeholder="If set, shown in matchmaking instead of the regular description"
                     />
                     <p className="text-xs text-gray-400 mt-1">
-                      Overrides the regular description for matchmaking only. Leave blank to use the regular description.
+                      Overrides the regular description for matchmaking only.
+                      Leave blank to use the regular description.
                     </p>
                   </div>
 
@@ -1427,15 +1585,41 @@ export default function SponsorAdminPage() {
         <div className="mt-8 bg-blue-50 rounded-lg p-4">
           <h3 className="font-medium text-blue-900 mb-2">Quick Tips</h3>
           <ul className="text-sm text-blue-800 space-y-1 pl-4">
-            <li>New sponsors can be created without adding to an event — just leave the event dropdown blank</li>
-            <li>You can optionally add a new sponsor to matchmaking for an event (even without a regular tier)</li>
-            <li>Select multiple tiers to add a sponsor to both "Small Business" and "Exhibitors" at once</li>
-            <li>Use "Existing Sponsor" mode to add a sponsor that's already in the system to a new event</li>
-            <li>Use "Remove From Event" to unlink a sponsor or exhibitor tier from an event</li>
-            <li>Use "Replace Logo" mode to update a sponsor's logo without changing other details</li>
-            <li>Use "Edit Sponsor" mode to update name, website, or HTML description</li>
-            <li>Use "Edit Tier" mode to rename a tier or change its badge colour/style</li>
-            <li>Changes appear on the website within a few minutes (CDN cache)</li>
+            <li>
+              New sponsors can be created without adding to an event — just
+              leave the event dropdown blank
+            </li>
+            <li>
+              You can optionally add a new sponsor to matchmaking for an event
+              (even without a regular tier)
+            </li>
+            <li>
+              Select multiple tiers to add a sponsor to both "Small Business"
+              and "Exhibitors" at once
+            </li>
+            <li>
+              Use "Existing Sponsor" mode to add a sponsor that's already in the
+              system to a new event
+            </li>
+            <li>
+              Use "Remove From Event" to unlink a sponsor or exhibitor tier from
+              an event
+            </li>
+            <li>
+              Use "Replace Logo" mode to update a sponsor's logo without
+              changing other details
+            </li>
+            <li>
+              Use "Edit Sponsor" mode to update name, website, or HTML
+              description
+            </li>
+            <li>
+              Use "Edit Tier" mode to rename a tier or change its badge
+              colour/style
+            </li>
+            <li>
+              Changes appear on the website within a few minutes (CDN cache)
+            </li>
           </ul>
         </div>
       </div>
