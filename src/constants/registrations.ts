@@ -613,7 +613,7 @@ export const REGISTRATION_TYPES = [
           { price: 545, endDate: "2027-05-01T03:59:59Z" }, // ends April 30, 2027 11:59 PM ET
         ],
         type: "paid",
-        saleEndTime: "2027-06-23T22:00:00Z",
+        saleEndTime: "2027-06-24T22:00:00Z",
       },
 
       {
@@ -646,7 +646,7 @@ export const REGISTRATION_TYPES = [
           { price: 645, endDate: "2027-05-01T03:59:59Z" }, // ends April 30, 2027 11:59 PM ET
         ],
         type: "paid",
-        saleEndTime: "2027-06-23T22:00:00Z",
+        saleEndTime: "2027-06-24T22:00:00Z",
       },
 
       {
@@ -684,7 +684,7 @@ export const REGISTRATION_TYPES = [
         isAddOn: true,
         // Not a pass — no attendee details are collected for this line item.
         requiresAttendeeInfo: false,
-        saleEndTime: "2027-06-23T22:00:00Z", // TODO: should be the program print deadline, not the event date
+        saleEndTime: "2027-06-24T22:00:00Z", // TODO: should be the program print deadline, not the event date
         perks: [
           {
             formatted: [
@@ -711,9 +711,9 @@ export const REGISTRATION_TYPES = [
         validationCode: "RECEPTION2027",
         maxQuantityPerOrder: 5,
         isAddOn: true,
-        saleEndTime: "2027-06-23T22:00:00.000Z",
+        saleEndTime: "2027-06-24T22:00:00.000Z",
         perks: [
-          "Access to VIP Networking Reception on June 22, 2027 from 6:30 PM - 8:30 PM",
+          "Access to VIP Networking Reception on June 23, 2027 from 6:30 PM - 8:30 PM",
         ],
         availabilityInfo: "Access code required.",
       },

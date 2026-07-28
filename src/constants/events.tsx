@@ -2241,13 +2241,13 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     eventShorthand: "2027NMCPC",
     password: "2027NAVYMARINECORPS",
     title: "2027 Navy & Marine Corps Procurement Conference",
-    // June 21 is exhibitor set-up day; general sessions run June 22-23
-    date: "June 22-23, 2027",
-    timeStart: "2027-06-22T11:30:00Z",
-    timeEnd: "2027-06-23T17:30:00Z",
+    // June 22 is exhibitor set-up day; general sessions run June 23-24
+    date: "June 23-24, 2027",
+    timeStart: "2027-06-23T11:30:00Z",
+    timeEnd: "2027-06-24T17:30:00Z",
     testimonialsFromEventId: 6,
     relatedEventId: 6,
-    description: `Join us for the 2027 Navy & Marine Corps Procurement Conference on June 22-23, 2027 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.`,
+    description: `Join us for the 2027 Navy & Marine Corps Procurement Conference on June 23-24, 2027 in Norfolk, Virginia, home to Naval Station Norfolk and Norfolk Naval Shipyard. This is your opportunity to engage directly with decision-makers from the Pentagon, Navy and Marine Corps Bases and Commands, and leading Prime Defense Contractors. Don't miss your chance to network with Industry Leaders and Government Experts and gain critical information into current procurement needs and upcoming contracting opportunities by registering to attend.`,
     eventText: (
       <div className="max-container font-light">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
@@ -2255,7 +2255,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         </h2>
         <p className="mb-4 leading-relaxed">
           Join us for the <b>2027 Navy & Marine Corps Procurement Conference</b>{" "}
-          on June 22-23, 2027 in Norfolk, Virginia, home to Naval Station
+          on June 23-24, 2027 in Norfolk, Virginia, home to Naval Station
           Norfolk and Norfolk Naval Shipyard. This is a premier opportunity to
           engage directly with decision-makers from the Pentagon, Navy and
           Marine Corps Commands, and leading Prime Defense Contractors. Don't
@@ -2374,7 +2374,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         </h2>
         <p className="mb-0 leading-9">
           Join us for the <b>2027 Navy & Marine Corps Procurement Conference</b>{" "}
-          on June 22-23, 2027 in Norfolk, Virginia, home to Naval Station
+          on June 23-24, 2027 in Norfolk, Virginia, home to Naval Station
           Norfolk and Norfolk Naval Shipyard. This is a premier opportunity to
           engage directly with decision-makers from the Pentagon, Navy and
           Marine Corps Commands, and leading Prime Defense Contractors. Don't
@@ -2536,7 +2536,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     ],
     matchmakingSessions: {
       signUpTime: "8:00 AM",
-      signUpDate: "June 22, 2027",
+      signUpDate: "June 23, 2027",
       signUpDetails: [
         {
           label: "Sign Up",
@@ -2545,12 +2545,12 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         {
           label: "Date/Time",
           value:
-            "Sign up for June 22 appointments will take place on June 22 from 8:00 AM to 9:00 AM.",
+            "Sign up for June 23 appointments will take place on June 23 from 8:00 AM to 9:00 AM.",
         },
         {
           label: "Date/Time",
           value:
-            "Sign up for June 23 appointments will take place on June 23 from 8:00 AM to 9:00 AM.",
+            "Sign up for June 24 appointments will take place on June 24 from 8:00 AM to 9:00 AM.",
         },
         {
           label: "Location",
@@ -2565,12 +2565,12 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       slotsPerHost: 10,
       sessions: [
         {
-          date: "June 22",
+          date: "June 23",
           sessionTime: "4:45 PM - 6:00 PM",
           location: "Hampton Ballroom, 3rd Floor",
         },
         {
-          date: "June 23",
+          date: "June 24",
           sessionTime: "12:30 PM - 1:30 PM",
           location: "Hampton Ballroom, 3rd Floor",
         },

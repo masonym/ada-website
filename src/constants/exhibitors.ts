@@ -561,7 +561,7 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                 indent: 1,
               },
               { content: "6' Tablecloth Table & Chairs", indent: 1 },
-              { content: "Exhibitor Set-Up on June 21, 2027", indent: 1 },
+              { content: "Exhibitor Set-Up on June 22, 2027", indent: 1 },
             ],
           },
           {

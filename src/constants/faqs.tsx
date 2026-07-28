@@ -418,8 +418,8 @@ Venue: Hotel Polaris at the U.S. Air Force Academy, 8989 North Gate Boulevard, C
             },
             {
                 question: "When and where will the event take place?",
-                answer: `Date: June 22 - 23, 2027<br>
-Time: June 22, 2027: 8:00 AM - 6:00 PM and June 23, 2027: 8:00 AM - 1:30 PM<br>
+                answer: `Date: June 23 - 24, 2027<br>
+Time: June 23, 2027: 8:00 AM - 6:00 PM and June 24, 2027: 8:00 AM - 1:30 PM<br>
 Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
 `,
             },
