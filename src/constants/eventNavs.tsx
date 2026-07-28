@@ -176,4 +176,31 @@ export const EVENT_NAVS = [
       },
     ],
   },
+  {
+    eventId: 8, // 2027NMCPC
+    items: [
+      { label: 'Event Overview', path: '/' },
+      {
+        label: 'About',
+        subItems: [
+          { label: 'About the Event', path: 'about-the-event' },
+          { label: 'Matchmaking Sessions', path: 'matchmaking-sessions' },
+          // Page renders blank until vipNetworkingReception is added to the event
+          { label: "VIP Networking Reception", path: 'vip-networking-reception' },
+          { label: 'FAQs', path: 'faqs' },
+          { label: 'Event Recap', path: 'event-recap' },
+        ],
+      },
+      { label: 'Venue & Lodging', path: '/venue-and-lodging' },
+      { label: 'Agenda', path: 'agenda' },
+      { label: 'Speakers', path: 'speakers' },
+      {
+        label: 'Sponsorships & Exhibits',
+        subItems: [
+          { label: "Sponsorship Opportunities", path: 'sponsorship-opportunities' },
+          { label: "Exhibitor Opportunities", path: 'exhibitor-opportunities' },
+        ],
+      },
+    ],
+  },
 ];

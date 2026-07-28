@@ -89,6 +89,9 @@ module.exports = {
     'bg-[#ffaf00]',
     'bg-[#C0C0C0]',
     'bg-[#3FB4E6]',
-    'bg-[#CD7F32]'
+    'bg-[#CD7F32]',
+    'bg-[#966919]',
+    'bg-[#40E0D0]',
+    'bg-[#F33A6A]'
   ]
 };

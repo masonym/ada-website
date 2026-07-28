@@ -24,6 +24,13 @@ export async function sendEmail({
   from = 'events@americandefensealliance.org', // Default from address
   attachments = [], // Default to an empty array if not provided
 }: EmailParams) {
+  // Escape hatch for the test environment: lets the registration smoke tests run
+  // end-to-end (Stripe + Google Sheets) without mailing real inboxes.
+  if (process.env.DISABLE_OUTBOUND_EMAILS === 'true') {
+    console.log(`[email] DISABLE_OUTBOUND_EMAILS is set - skipping email "${subject}" to ${Array.isArray(to) ? to.join(', ') : to}`);
+    return { success: true, data: { id: 'suppressed-outbound-email' } as any };
+  }
+
   // Ensure RESEND_API_KEY is loaded
   if (!env.RESEND_API_KEY) {
     console.error('RESEND_API_KEY is not set. Email sending is disabled.');

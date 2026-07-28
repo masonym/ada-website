@@ -295,4 +295,69 @@ export const LODGING_INFO: LodgingInfo[] = [
     </div>
     `,
   },
+  {
+    eventId: 8, // 2027NMCPC
+    hotels: [
+      {
+        name: "Norfolk Waterside Marriott",
+        address: "235 E Main St",
+        city: "Norfolk",
+        state: "Virginia",
+        zip: "23510",
+        phone: "(757) 627-4200",
+        image: "/hotels/norfolk-waterside-marriott.webp",
+        link: {
+          href: "https://www.marriott.com/en-us/hotels/orfws-norfolk-waterside-marriott/overview/",
+          label: "Norfolk Waterside Marriott",
+        },
+      },
+    ],
+    // Rates carried over from 2026. TODO: the 2027 room block still needs to be
+    // negotiated — confirm rates, the availability window, the cut-off date, and
+    // replace the booking link below (the 2026 link is event-specific and will not work).
+    note: `
+    <b>Group Block Name</b>: Navy & Marine Corps Procurement Conference<br />
+    <b>Group Rate</b>: Standard Room: $159.00 + Tax | Waterview Room: $179.00 + Tax<br />
+    <b>Rate Available</b>: June 20-25, 2027<br />
+    <b>Group Rate Cut-off Date</b>: TBD<br />
+    `,
+    resources: [
+      {
+        title: "Norfolk Dining Guide",
+        description:
+          "Explore the local dining scene with this guide provided by Visit Norfolk.",
+        images: [
+          {
+            src: "/events/2025NMCPC/norfolk-dining-guide-1.webp",
+            alt: "Norfolk Dining Guide Page 1",
+            width: 790,
+            height: 1024,
+          },
+          {
+            src: "/events/2025NMCPC/norfolk-dining-guide-2.webp",
+            alt: "Norfolk Dining Guide Page 2",
+            width: 790,
+            height: 1024,
+          },
+        ],
+      },
+      {
+        title: "Show Your Badge Discount Program at Norfolk Restaurants",
+        images: [
+          {
+            src: "/events/2026NMCPC/show-your-badge-discount-program-1.webp",
+            alt: "Show Your Badge Discount Program at Norfolk Restaurants",
+            width: 790,
+            height: 1024,
+          },
+          {
+            src: "/events/2026NMCPC/show-your-badge-discount-program-2.webp",
+            alt: "Show Your Badge Discount Program at Norfolk Restaurants",
+            width: 790,
+            height: 1024,
+          },
+        ],
+      },
+    ],
+  },
 ];

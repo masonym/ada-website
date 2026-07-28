@@ -7,10 +7,10 @@ import { getPriceDisplay } from '@/lib/price-formatting';
 import { getTierStyleProps } from '@/lib/sponsor-tier-styles';
 
 type SponsorProp = {
-    item: Sponsorship;
-    event: Event;
-    eyebrow?: string;
-    getSponsorCount?: (tierId: string) => number;
+  item: Sponsorship;
+  event: Event;
+  eyebrow?: string;
+  getSponsorCount?: (tierId: string) => number;
 };
 
 const SponsorshipCard = ({ item, event, eyebrow, getSponsorCount }: SponsorProp) => {
@@ -134,6 +134,154 @@ const SponsorshipCard = ({ item, event, eyebrow, getSponsorCount }: SponsorProp)
             </div>
         </div>
     );
+    remainingCount = item.slotsPerEvent - used;
+  }
+
+  // Use shared price display logic to support early bird formatting
+  const priceInfo = getPriceDisplay({
+    price: item.cost,
+    earlyBirdPrice: item.earlyBirdPrice,
+    earlyBirdDeadline: item.earlyBirdDeadline,
+    type: "paid",
+  });
+  const backgroundColor =
+    item.colour?.match(/^#[0-9a-fA-F]{3,8}$/)?.[0] ||
+    item.colour?.match(/bg-\[(#[0-9a-fA-F]{3,8})\]/)?.[1];
+  const colourClassName = item.colour
+    ? backgroundColor
+      ? item.colour.replace(/bg-\[#[0-9a-fA-F]{3,8}\]/, "").trim()
+      : item.colour
+    : "bg-navy-800";
+
+  // Titles of the form "Prefix: Name" (e.g. "Major Panel Sponsorship: ...")
+  // render the prefix and name on separate lines.
+  const colonIndex = item.title.indexOf(": ");
+  const titleNode =
+    colonIndex !== -1 ? (
+      <>
+        {item.title.slice(0, colonIndex + 1)}
+        <br />
+        {item.title.slice(colonIndex + 2)}
+      </>
+    ) : (
+      item.title
+    );
+
+  return (
+    <div className="w-full h-full max-w-7xl mx-auto mb-6 rounded-lg border border-gray-200 bg-white shadow-md relative">
+      {showRemainingFlag &&
+        remainingCount !== undefined &&
+        remainingCount > 0 &&
+        !hasEventEnded && (
+          <div className="absolute -top-2 -right-4 overflow-visible z-1 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">
+            {remainingCount} remaining
+          </div>
+        )}
+      {showRemainingFlag &&
+        remainingCount !== undefined &&
+        remainingCount <= 0 &&
+        !hasEventEnded && (
+          <div className="absolute -top-2 -right-4 overflow-visible z-1 bg-gray-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">
+            Sold Out
+          </div>
+        )}
+      <div
+        className={`flex items-center gap-4 rounded-t-lg justify-between p-4 ${colourClassName} ${item.textColour || "text-white"} font-bold`}
+        style={backgroundColor ? { backgroundColor } : undefined}
+      >
+        <div>
+          <h4 className={`text-[1rem] font-bold `}>{titleNode}</h4>
+          {eyebrow && (
+            <span className="inline-block mb-1 px-2 py-0.5 rounded-full bg-white/20 text-white text-[16px] font-semibold tracking-wide uppercase">
+              {eyebrow}
+            </span>
+          )}
+          {item.slotsPerEvent !== undefined && (
+            <p className="text-sm font-medium">
+              {item.slotsPerEvent} available per event
+            </p>
+          )}
+        </div>
+        <div className="text-right">
+          <div className="flex items-center gap-2">
+            <span className="text-xl font-bold">{priceInfo.displayPrice}</span>
+            {priceInfo.originalPrice && (
+              <span className="line-through text-base">
+                {priceInfo.originalPrice}
+              </span>
+            )}
+            {priceInfo.isEarlyBird && (
+              <span className="ml-1 text-center text-[10px] font-semibold bg-white/20 px-2 py-0.5 rounded-full uppercase tracking-wide">
+                Early Bird
+              </span>
+            )}
+          </div>
+          {/* DEADLINE INFO
+          {priceInfo.deadlineInfo && (
+            <div className="text-[10px] text-center text-balance mt-1">
+              {priceInfo.deadlineInfo}
+            </div>
+          )}
+          */}
+        </div>
+      </div>
+      <div className="p-6">
+        <ul className="space-y-4">
+          {item.perks.map((perk, index) => {
+            // Handle string perks directly
+            if (typeof perk === "string") {
+              return (
+                <li key={index} className="flex items-start">
+                  <div>{perk}</div>
+                </li>
+              );
+            }
+
+            // Handle formatted perks using FormattedPerk component
+            if (perk.formatted && perk.formatted.length > 0) {
+              // Convert formatted perks to the string format expected by FormattedPerk
+              const formattedContent = perk.formatted
+                .map((formattedItem) => {
+                  const prefix = formattedItem.indent
+                    ? "  ".repeat(formattedItem.indent)
+                    : "";
+                  const content = formattedItem.bold
+                    ? `<b>${formattedItem.content}</b>`
+                    : formattedItem.content;
+                  return `${prefix}${content}`;
+                })
+                .join("\n");
+
+              return (
+                <li key={index} className="flex items-start">
+                  <div className="flex-1">
+                    <FormattedPerk content={formattedContent} />
+                  </div>
+                </li>
+              );
+            }
+
+            // Legacy format with tagline and description
+            return (
+              <li key={index} className="flex items-start">
+                <ChevronRight className="h-5 w-5 mr-2 text-navy-800 flex-shrink-0 mt-1" />
+                <div>
+                  {perk.tagline && (
+                    <span className="font-bold">{perk.tagline}: </span>
+                  )}
+                  {perk.description && (
+                    <span
+                      dangerouslySetInnerHTML={{ __html: perk.description }}
+                    ></span>
+                  )}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
 };
 
 export default SponsorshipCard;

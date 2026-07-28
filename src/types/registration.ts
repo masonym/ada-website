@@ -10,6 +10,18 @@ export interface EventData {
   requiresAttendeeInfo?: boolean;
 }
 
+/**
+ * One step on a ladder of escalating early-bird prices.
+ *
+ * `endDate` is an ISO timestamp for the moment the tier stops being offered —
+ * use midnight ET on the day after the advertised deadline so the deadline day
+ * itself is still included (e.g. "ends September 30" -> "2026-10-01T03:59:59Z").
+ */
+export interface PriceTier {
+  price: number;
+  endDate: string;
+}
+
 export interface ModalRegistrationType {
   id: string;
   name: string;
@@ -17,6 +29,13 @@ export interface ModalRegistrationType {
   price: number | string;
   earlyBirdPrice?: number | string;
   earlyBirdDeadline?: string;
+  /**
+   * Escalating early-bird prices, cheapest/earliest first. When present these
+   * take precedence over `earlyBirdPrice`/`earlyBirdDeadline`: the first tier
+   * that has not yet lapsed is the live price, and once every tier lapses the
+   * base `price` stands as the final price. See `resolveEarlyBird`.
+   */
+  priceTiers?: PriceTier[];
   isActive: boolean;
   requiresAttendeeInfo: boolean;
   isGovtFreeEligible: boolean;

@@ -19,7 +19,7 @@ const FAQ = () => {
         },
         {
             question: "How can I sponsor an event?",
-            answer: `For sponsorship details, please check out the Sponsorship Opportunities page of any of our <a href="/events"  class="text-blue-600 hover:underline text-nowrap">events</a>, or email <a href="mailto:marketing@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">marketing@americandefensealliance.org.</a>`
+            answer: `For sponsorship details, please check out the Sponsorship Opportunities page of any of our <a href="/events"  class="text-blue-600 hover:underline text-nowrap">events</a>, or email <a href="mailto:events@americandefensealliance.org" class="text-blue-600 hover:underline text-nowrap">events@americandefensealliance.org.</a>`
         },
     ];
 

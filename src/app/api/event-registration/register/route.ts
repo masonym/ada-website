@@ -9,6 +9,7 @@ import { AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { EVENTS } from '@/constants/events';
 import { isGovOrMilEmail } from '@/lib/event-registration/validation';
 import { REGISTRATION_TYPES } from '@/constants/registrations';
+import { resolveEarlyBird } from '@/lib/pricing-tiers';
 import { savePendingRegistration } from '@/lib/aws/dynamodb';
 
 // Helper function to calculate order total
@@ -107,12 +108,16 @@ export async function POST(request: Request) {
           ticketDef.type = 'sponsor';
         }
 
-        if ('earlyBirdPrice' in registrationType && typeof registrationType.earlyBirdPrice === 'number') {
-          ticketDef.earlyBirdPrice = registrationType.earlyBirdPrice;
+        // Collapses any escalating tier ladder to whichever tier is live right
+        // now; single-deadline registrations pass through unchanged.
+        const { earlyBirdPrice, earlyBirdDeadline } = resolveEarlyBird(registrationType);
+
+        if (typeof earlyBirdPrice === 'number') {
+          ticketDef.earlyBirdPrice = earlyBirdPrice;
         }
 
-        if ('earlyBirdDeadline' in registrationType && typeof registrationType.earlyBirdDeadline === 'string') {
-          ticketDef.earlyBirdDeadline = registrationType.earlyBirdDeadline;
+        if (typeof earlyBirdDeadline === 'string') {
+          ticketDef.earlyBirdDeadline = earlyBirdDeadline;
         }
 
         return ticketDef;

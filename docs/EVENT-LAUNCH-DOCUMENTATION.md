@@ -495,6 +495,9 @@ Ensure these are configured for payment processing:
 - [ ] Stripe products created (if using Stripe)
 
 ### Testing
+- [ ] Automated registration smoke tests pass — `TEST_EVENT_ID=<id> npm run test:registration`
+      (covers every ticket/exhibit/sponsorship type against Stripe test mode and the event's
+      Google Sheet, then cleans the rows up — see `tests/README.md`)
 - [ ] Event page loads correctly
 - [ ] Registration flow works
 - [ ] Payment processing functional

@@ -35,6 +35,12 @@ export interface Sponsorship {
     isGovtFreeEligible?: boolean;
     shownOnRegistrationPage?: boolean;
     sponsorPasses?: number; // Number of attendee passes included with this sponsorship
+    /**
+     * Optional grouping label. Sponsorships sharing a value are pulled out of the
+     * main grid and rendered together in their own titled section below it (e.g.
+     * a set of "Major Panel Sponsorships"). Ungrouped tiers render as before.
+     */
+    sponsorshipGroup?: string;
 }
 
 // Define the structure for additional passes

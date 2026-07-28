@@ -1,7 +1,7 @@
 import { REGISTRATION_TYPES } from '@/constants/registrations';
 import { SPONSORSHIP_TYPES } from '@/constants/sponsorships';
 import { EXHIBITOR_TYPES, ExhibitorType, AdditionalPassType as ExhibitorAdditionalPassType } from '@/constants/exhibitors';
-import { ModalRegistrationType } from '@/types/registration';
+import { ModalRegistrationType, PriceTier } from '@/types/registration';
 import { AdditionalPassType as SponsorAdditionalPassType } from '@/types/sponsorships';
 
 // Define types based on the structure of the constants files
@@ -48,6 +48,7 @@ export interface AdapterModalRegistrationType extends ModalRegistrationType {
   price: number | string;
   earlyBirdPrice?: number | string;
   earlyBirdDeadline?: string;
+  priceTiers?: PriceTier[];
   isActive: boolean;
   requiresAttendeeInfo: boolean;
   isGovtFreeEligible: boolean;
@@ -63,6 +64,13 @@ export interface AdapterModalRegistrationType extends ModalRegistrationType {
   quantityAvailable?: number;
   maxQuantityPerOrder: number;
   category: 'ticket' | 'exhibit' | 'sponsorship';
+  /**
+   * Marks a non-attendee purchase (e.g. a printed-program advertisement).
+   * Add-ons keep `category: 'ticket'` so checkout, emails and sheet logging treat
+   * them like any other line item — the flag only affects where they are shown:
+   * grouped under the modal's "Add-ons" tab and hidden from the registration page.
+   */
+  isAddOn?: boolean;
   requiresValidation?: boolean; // New flag for special validation
   requiresCode?: boolean; // Flag for code validation
   validationCode?: string; // The required code
@@ -93,6 +101,9 @@ export function getRegistrationsForEvent(eventId: number | string): AdapterModal
     price: reg.price,
     earlyBirdPrice: reg.earlyBirdPrice,
     earlyBirdDeadline: reg.earlyBirdDeadline,
+    // Passed through unresolved: event pages are statically generated, so the
+    // live tier has to be picked at render time, not at build time.
+    priceTiers: reg.priceTiers,
     isActive: reg.isActive ?? true,
     requiresAttendeeInfo: reg.requiresAttendeeInfo ?? true,
     isGovtFreeEligible: reg.isGovtFreeEligible ?? false,
@@ -107,6 +118,7 @@ export function getRegistrationsForEvent(eventId: number | string): AdapterModal
     quantityAvailable: reg.quantityAvailable,
     maxQuantityPerOrder: reg.maxQuantityPerOrder,
     category: 'ticket',
+    isAddOn: reg.isAddOn ?? false,
     requiresCode: reg.requiresCode,
     validationCode: reg.validationCode,
     codeValidationMessage: reg.codeValidationMessage,

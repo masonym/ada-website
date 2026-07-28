@@ -1,5 +1,5 @@
-import React from 'react';
-import { X, Copy } from 'lucide-react';
+import React from "react";
+import { X, Copy } from "lucide-react";
 
 interface AttendeeInfo {
   firstName: string;
@@ -12,8 +12,8 @@ interface AttendeeInfo {
   businessSize: string;
   sbaIdentification?: string; // Added for SBA identification
   industry: string;
-  sponsorInterest: 'Yes' | 'No' | '';
-  speakingInterest: 'Yes' | 'No' | '';
+  sponsorInterest: "Yes" | "No" | "";
+  speakingInterest: "Yes" | "No" | "";
 }
 
 interface AttendeeFormProps {
@@ -43,28 +43,30 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
   currentTicketId,
   formErrors = {},
   isComplimentaryTicket = false,
-  ticketType = ''
+  ticketType = "",
 }) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     const { name, value } = e.target;
     onChange(index, name, value);
 
     // If businessSize is changed and it's not 'Small Business', clear sbaIdentification
-    if (name === 'businessSize' && value !== 'Small Business') {
-      onChange(index, 'sbaIdentification', '');
+    if (name === "businessSize" && value !== "Small Business") {
+      onChange(index, "sbaIdentification", "");
     }
   };
 
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Extract the base field name from format: ticketId-fieldName-index
-    const nameParts = e.target.name.split('-');
+    const nameParts = e.target.name.split("-");
     // The field name will be either sponsorInterest or speakingInterest
     // We know these specific field names so we can identify them
-    let fieldName = '';
-    if (e.target.name.includes('sponsorInterest')) {
-      fieldName = 'sponsorInterest';
-    } else if (e.target.name.includes('speakingInterest')) {
-      fieldName = 'speakingInterest';
+    let fieldName = "";
+    if (e.target.name.includes("sponsorInterest")) {
+      fieldName = "sponsorInterest";
+    } else if (e.target.name.includes("speakingInterest")) {
+      fieldName = "speakingInterest";
     }
     onChange(index, fieldName, e.target.value);
   };
@@ -72,29 +74,29 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
   const handleCopyFromChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
     if (value) {
-      const [ticketId, sourceIndex] = value.split('|');
+      const [ticketId, sourceIndex] = value.split("|");
       const parsedIndex = parseInt(sourceIndex);
       if (!isNaN(parsedIndex)) {
         onCopyFrom(ticketId, parsedIndex);
       }
     }
-    e.target.value = ''; // Reset the select
+    e.target.value = ""; // Reset the select
   };
   const businessSizes = [
-    'Small Business',
-    'Medium-Sized Business',
-    'Large-Sized Business',
-    'Government Agency',
-    'Military Component'
+    "Small Business",
+    "Medium-Sized Business",
+    "Large-Sized Business",
+    "Government Agency",
+    "Military Component",
   ];
 
   const sbaOptions = [
-    '8(a) Small Business',
-    'HUBZone Small Business',
-    'Service-Disabled Veteran-Owned Small Business (SDVOSB)',
-    'Veteran-Owned Small Business (VOSB)',
-    'Women-Owned Small Business (WOSB)',
-    'Other',
+    "8(a) Small Business",
+    "HUBZone Small Business",
+    "Service-Disabled Veteran-Owned Small Business (SDVOSB)",
+    "Veteran-Owned Small Business (VOSB)",
+    "Women-Owned Small Business (WOSB)",
+    "Other",
   ];
 
   const industries = [
@@ -148,7 +150,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
     "Veterans Affairs",
     "Waste Management",
     "Weapon Systems/Components",
-  ]
+  ];
   return (
     <div className="border rounded-lg p-4 mb-4 relative">
       <div className="flex justify-between items-center mb-4">
@@ -156,14 +158,19 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
         {/* Calculate if there are any attendees to copy from across all ticket types */}
         {(() => {
           // Count all attendees across all ticket types
-          const availableAttendees = allAttendees.reduce((count, ticketGroup) => {
-            // For each ticket group, count attendees that aren't this one
-            const validAttendees = ticketGroup.attendees.filter((_, i) => {
-              // Skip self (current ticket + current index)
-              return !(ticketGroup.ticketId === currentTicketId && i === index);
-            }).length;
-            return count + validAttendees;
-          }, 0);
+          const availableAttendees = allAttendees.reduce(
+            (count, ticketGroup) => {
+              // For each ticket group, count attendees that aren't this one
+              const validAttendees = ticketGroup.attendees.filter((_, i) => {
+                // Skip self (current ticket + current index)
+                return !(
+                  ticketGroup.ticketId === currentTicketId && i === index
+                );
+              }).length;
+              return count + validAttendees;
+            },
+            0,
+          );
 
           // Only show copy option if there are attendees to copy from
           return availableAttendees > 0 ? (
@@ -175,25 +182,31 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                 value=""
               >
                 <option value="">Select attendee</option>
-                {allAttendees.map(ticketGroup => {
+                {allAttendees.map((ticketGroup) => {
                   // Skip the current attendee
-                  const isCurrentTicket = ticketGroup.ticketId === currentTicketId;
+                  const isCurrentTicket =
+                    ticketGroup.ticketId === currentTicketId;
                   const attendees = ticketGroup.attendees;
-                  
-                  // Create a group of options for each ticket type
-                  return attendees.map((_, i) => {
-                    // Skip self (current ticket + current index)
-                    if (isCurrentTicket && i === index) return null;
-                    
-                    // Use the state-compatible ticketId
-                    const stateCompatibleId = ticketGroup.ticketId;
 
-                    return (
-                      <option key={`${ticketGroup.ticketId}-${i}`} value={`${stateCompatibleId}|${i}`}>
-                        {ticketGroup.ticketName} - Attendee {i + 1}
-                      </option>
-                    );
-                  }).filter(Boolean);
+                  // Create a group of options for each ticket type
+                  return attendees
+                    .map((_, i) => {
+                      // Skip self (current ticket + current index)
+                      if (isCurrentTicket && i === index) return null;
+
+                      // Use the state-compatible ticketId
+                      const stateCompatibleId = ticketGroup.ticketId;
+
+                      return (
+                        <option
+                          key={`${ticketGroup.ticketId}-${i}`}
+                          value={`${stateCompatibleId}|${i}`}
+                        >
+                          {ticketGroup.ticketName} - Attendee {i + 1}
+                        </option>
+                      );
+                    })
+                    .filter(Boolean);
                 })}
               </select>
               <Copy className="w-4 h-4 text-gray-500" />
@@ -204,7 +217,9 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">First Name *</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            First Name *
+          </label>
           <input
             type="text"
             className="w-full border rounded px-3 py-2 text-sm"
@@ -216,7 +231,9 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Last Name *</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Last Name *
+          </label>
           <input
             type="text"
             className="w-full border rounded px-3 py-2 text-sm"
@@ -229,26 +246,50 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
         </div>
         <div className="md:col-span-2">
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Email * {currentTicketId.includes('govt') && <span className="text-xs text-indigo-600">(Government or military email required)</span>}
+            Email *{" "}
+            {currentTicketId.includes("govt") && (
+              <span className="text-xs text-indigo-600">
+                (Government or military email required)
+              </span>
+            )}
           </label>
           <input
             type="email"
-            className={`w-full border rounded px-3 py-2 text-sm ${formErrors[`tickets.${currentTicketId}.attendeeInfo.${index}.email`] ? 'border-red-500' : ''}`}
+            className={`w-full border rounded px-3 py-2 text-sm ${formErrors[`tickets.${currentTicketId}.attendeeInfo.${index}.email`] ? "border-red-500" : ""}`}
             name="email"
             value={attendee.email}
             onChange={handleChange}
             required
-            placeholder={currentTicketId.includes('govt') ? "Enter .gov or .mil email address" : "Enter email address"}
+            placeholder={
+              currentTicketId.includes("govt")
+                ? "Enter .gov or .mil email address"
+                : "Enter email address"
+            }
           />
-          {formErrors[`tickets.${currentTicketId}.attendeeInfo.${index}.email`] && (
-            <p className="text-red-500 text-xs mt-1">{formErrors[`tickets.${currentTicketId}.attendeeInfo.${index}.email`]}</p>
+          {formErrors[
+            `tickets.${currentTicketId}.attendeeInfo.${index}.email`
+          ] && (
+            <p className="text-red-500 text-xs mt-1">
+              {
+                formErrors[
+                  `tickets.${currentTicketId}.attendeeInfo.${index}.email`
+                ]
+              }
+            </p>
           )}
-          {currentTicketId.includes('govt') && !formErrors[`tickets.${currentTicketId}.attendeeInfo.${index}.email`] && (
-            <p className="text-gray-500 text-xs mt-1">Complimentary tickets require a .gov or .mil email address</p>
-          )}
+          {currentTicketId.includes("govt") &&
+            !formErrors[
+              `tickets.${currentTicketId}.attendeeInfo.${index}.email`
+            ] && (
+              <p className="text-gray-500 text-xs mt-1">
+                Complimentary tickets require a .gov or .mil email address
+              </p>
+            )}
         </div>
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Company *</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Company *
+          </label>
           <input
             type="text"
             className="w-full border rounded px-3 py-2 text-sm"
@@ -260,7 +301,9 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
           />
         </div>
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Job Title *</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Job Title *
+          </label>
           <input
             type="text"
             className="w-full border rounded px-3 py-2 text-sm"
@@ -272,7 +315,9 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Cell Phone *</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Cell Phone *
+          </label>
           <input
             type="tel"
             className="w-full border rounded px-3 py-2 text-sm"
@@ -284,7 +329,9 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Website *</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Website *
+          </label>
           <input
             type="url"
             className="w-full border rounded px-3 py-2 text-sm"
@@ -295,7 +342,9 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Business Size *</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Business Size *
+          </label>
           <select
             className="w-full border rounded px-3 py-2 text-sm"
             name="businessSize"
@@ -305,29 +354,37 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
           >
             <option value="">Select business size</option>
             {businessSizes.map((size) => (
-              <option key={size} value={size}>{size}</option>
+              <option key={size} value={size}>
+                {size}
+              </option>
             ))}
           </select>
         </div>
-        {attendee.businessSize === 'Small Business' && (
+        {attendee.businessSize === "Small Business" && (
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">SBA Identification</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              SBA Identification
+            </label>
             <select
               className="w-full border rounded px-3 py-2 text-sm"
               name="sbaIdentification"
-              value={attendee.sbaIdentification || ''}
+              value={attendee.sbaIdentification || ""}
               onChange={handleChange}
               required
             >
               <option value="">Select SBA identification</option>
               {sbaOptions.map((option) => (
-                <option key={option} value={option}>{option}</option>
+                <option key={option} value={option}>
+                  {option}
+                </option>
               ))}
             </select>
           </div>
         )}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Industry *</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Industry *
+          </label>
           <select
             className="w-full border rounded px-3 py-2 text-sm"
             name="industry"
@@ -337,12 +394,14 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
           >
             <option value="">Select industry</option>
             {industries.map((industry) => (
-              <option key={industry} value={industry}>{industry}</option>
+              <option key={industry} value={industry}>
+                {industry}
+              </option>
             ))}
           </select>
         </div>
         {/* Only show sponsorship interest for general admission tickets (not for sponsor/exhibit) */}
-        {ticketType !== 'sponsorship' && ticketType !== 'exhibit' && (
+        {ticketType !== "sponsorship" && ticketType !== "exhibit" && (
           <div className="md:col-span-2">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Are you interested in becoming a Sponsor or Exhibitor? *
@@ -355,11 +414,19 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                   className="form-radio"
                   name={`${currentTicketId}-sponsorInterest-${index}`}
                   value="Yes"
-                  checked={attendee.sponsorInterest === 'Yes'}
+                  checked={attendee.sponsorInterest === "Yes"}
                   onChange={handleRadioChange}
-                  required={attendee.sponsorInterest === ''}
+                  required={attendee.sponsorInterest === ""}
                 />
-                <span className="ml-2">Yes, please contact us at <a className="text-blue-500 hover:underline" href="mailto:marketing@americandefensealliance.org">marketing@americandefensealliance.org</a></span>
+                <span className="ml-2">
+                  Yes, please contact us at{" "}
+                  <a
+                    className="text-blue-500 hover:underline"
+                    href="mailto:events@americandefensealliance.org"
+                  >
+                    events@americandefensealliance.org
+                  </a>
+                </span>
               </label>
               <label className="inline-flex items-center text-sm">
                 <input
@@ -368,7 +435,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                   className="form-radio"
                   name={`${currentTicketId}-sponsorInterest-${index}`}
                   value="No"
-                  checked={attendee.sponsorInterest === 'No'}
+                  checked={attendee.sponsorInterest === "No"}
                   onChange={handleRadioChange}
                 />
                 <span className="ml-2">No</span>
@@ -377,7 +444,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
           </div>
         )}
         {/* Only show speaking interest for government/military tickets */}
-        {currentTicketId.includes('govt') && (
+        {currentTicketId.includes("govt") && (
           <div className="md:col-span-2">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Are you interested in a Speaking Opportunity? *
@@ -390,11 +457,19 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                   className="form-radio"
                   name={`${currentTicketId}-speakingInterest-${index}`}
                   value="Yes"
-                  checked={attendee.speakingInterest === 'Yes'}
+                  checked={attendee.speakingInterest === "Yes"}
                   onChange={handleRadioChange}
-                  required={attendee.speakingInterest === ''}
+                  required={attendee.speakingInterest === ""}
                 />
-                <span className="ml-2">Yes, please contact us at <a className="text-blue-500 hover:underline" href="mailto:marketing@americandefensealliance.org">info@americandefensealliance.org</a></span>
+                <span className="ml-2">
+                  Yes, please contact us at{" "}
+                  <a
+                    className="text-blue-500 hover:underline"
+                    href="mailto:events@americandefensealliance.org"
+                  >
+                    events@americandefensealliance.org
+                  </a>
+                </span>
               </label>
               <label className="inline-flex items-center text-sm">
                 <input
@@ -403,7 +478,7 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
                   className="form-radio"
                   name={`${currentTicketId}-speakingInterest-${index}`}
                   value="No"
-                  checked={attendee.speakingInterest === 'No'}
+                  checked={attendee.speakingInterest === "No"}
                   onChange={handleRadioChange}
                 />
                 <span className="ml-2">No</span>
@@ -415,4 +490,3 @@ export const AttendeeForm: React.FC<AttendeeFormProps> = ({
     </div>
   );
 };
-
