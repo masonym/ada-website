@@ -61,7 +61,9 @@ export const getTierStyleProps = (
  */
 export const getDefaultTierStyle = (tierName: string): string => {
     const name = tierName.toLowerCase();
-    if (name.includes('small')) return 'bg-sb-100 text-slate-900';
+    if (name.includes('small')) return 'bg-[#40E0D0] text-slate-900';
+    if (name.includes('coffee')) return 'bg-[#966919] text-white';
+    if (name.includes('panel')) return 'bg-[#F33A6A] text-white';
     if (name.includes('gold')) return 'bg-amber-400 text-slate-900';
     if (name.includes('silver')) return 'bg-gray-300 text-slate-900';
     if (name.includes('bronze')) return 'bg-amber-700 text-white';
