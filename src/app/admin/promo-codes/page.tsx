@@ -1,7 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { EVENTS } from "@/constants/events";
+import {
+  getTicketTypeOptionsForEvents,
+  TICKET_CATEGORY_LABELS,
+  TicketTypeCategory,
+} from "@/lib/promo-codes/ticket-types";
 import {
   Calendar,
   CheckCircle,
@@ -31,38 +36,14 @@ type SanityPromoCode = {
   autoApply: boolean;
 };
 
-const TICKET_TYPES = [
-  { id: "attendee-pass", label: "Attendee Pass" },
-  { id: "vip-attendee-pass", label: "VIP Attendee Pass" },
-  { id: "exhibit", label: "Exhibit" },
-  { id: "platinum-sponsor", label: "Platinum Sponsor" },
-  { id: "gold-sponsor", label: "Gold Sponsor" },
-  { id: "silver-sponsor", label: "Silver Sponsor" },
-  { id: "bronze-sponsor", label: "Bronze Sponsor" },
-  {
-    id: "vip-networking-reception-sponsor",
-    label: "VIP Networking Reception Sponsor",
-  },
-  { id: "coffee-station-sponsor", label: "Coffee/Networking Luncheon Sponsor" },
-  { id: "small-business-sponsor", label: "Small Business Sponsor" },
-  {
-    id: "small-business-sponsor-without-exhibit-space",
-    label: "Small Business Sponsor (No Exhibit)",
-  },
-  {
-    id: "additional-exhibitor-attendee-pass",
-    label: "Additional Exhibitor Attendee Pass",
-  },
-  {
-    id: "additional-sponsor-attendee-pass",
-    label: "Additional Sponsor Attendee Pass",
-  },
-  { id: "cybersecurity-cmmc-sponsor", label: "Cybersecurity/CMMC Sponsorship" },
-];
-
 const getEventName = (eventId: number): string => {
   const event = EVENTS.find((e) => e.id === eventId);
   return event ? event.title : `Event ID: ${eventId}`;
+};
+
+const getEventShorthand = (eventId: number): string => {
+  const event = EVENTS.find((e) => e.id === eventId);
+  return event?.eventShorthand || `#${eventId}`;
 };
 
 const isExpired = (expirationDate: string): boolean => {
@@ -112,9 +93,58 @@ export default function PromoCodesPage() {
   const [formIsActive, setFormIsActive] = useState(true);
   const [formAutoApply, setFormAutoApply] = useState(false);
 
+  // Ticket types are event-specific, so the options follow the selected events.
+  const ticketTypeOptions = useMemo(
+    () => getTicketTypeOptionsForEvents(formEventIds),
+    [formEventIds],
+  );
+
+  // Ids saved on an existing code that none of the selected events sell (renamed
+  // tiers, hand-entered ids). Kept selectable so editing never drops them.
+  const orphanedTicketTypes = useMemo(
+    () =>
+      formTicketTypes.filter(
+        (id) => !ticketTypeOptions.some((option) => option.id === id),
+      ),
+    [formTicketTypes, ticketTypeOptions],
+  );
+
+  const groupedTicketTypes = useMemo(() => {
+    const groups = new Map<TicketTypeCategory, typeof ticketTypeOptions>();
+    ticketTypeOptions.forEach((option) => {
+      const group = groups.get(option.category) || [];
+      group.push(option);
+      groups.set(option.category, group);
+    });
+    return [...groups.entries()];
+  }, [ticketTypeOptions]);
+
   useEffect(() => {
     fetchPromoCodes();
   }, []);
+
+  function toggleEventId(eventId: number, checked: boolean) {
+    const nextEventIds = checked
+      ? [...formEventIds, eventId]
+      : formEventIds.filter((id) => id !== eventId);
+    setFormEventIds(nextEventIds);
+
+    // When creating, keep the ticket types in step with the events: a new event
+    // brings its types in, a removed one takes its now-unsellable types out.
+    // When editing, the saved selection is left exactly as the admin set it.
+    if (editingPromo) return;
+    const nextOptionIds = getTicketTypeOptionsForEvents(nextEventIds).map(
+      (option) => option.id,
+    );
+    setFormTicketTypes(
+      checked
+        ? [
+            ...formTicketTypes,
+            ...nextOptionIds.filter((id) => !formTicketTypes.includes(id)),
+          ]
+        : formTicketTypes.filter((id) => nextOptionIds.includes(id)),
+    );
+  }
 
   async function fetchPromoCodes() {
     setLoading(true);
@@ -142,7 +172,6 @@ export default function PromoCodesPage() {
 
   function openCreateModal() {
     resetForm();
-    setFormTicketTypes(TICKET_TYPES.slice(0, 11).map((t) => t.id));
     const oneYear = new Date();
     oneYear.setFullYear(oneYear.getFullYear() + 1);
     setFormExpiration(oneYear.toISOString().slice(0, 16));
@@ -622,11 +651,7 @@ export default function PromoCodesPage() {
                         type="checkbox"
                         checked={formEventIds.includes(event.id)}
                         onChange={(e) =>
-                          e.target.checked
-                            ? setFormEventIds([...formEventIds, event.id])
-                            : setFormEventIds(
-                                formEventIds.filter((id) => id !== event.id),
-                              )
+                          toggleEventId(event.id, e.target.checked)
                         }
                         className="rounded"
                       />
@@ -639,43 +664,145 @@ export default function PromoCodesPage() {
                 <label className="block text-sm font-medium mb-2">
                   Ticket Types *
                 </label>
-                <div className="flex gap-2 mb-2">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setFormTicketTypes(TICKET_TYPES.map((t) => t.id))
-                    }
-                    className="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded"
-                  >
-                    All
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setFormTicketTypes([])}
-                    className="text-xs px-2 py-1 bg-gray-100 rounded"
-                  >
-                    Clear
-                  </button>
-                </div>
-                <div className="space-y-2 max-h-48 overflow-y-auto border rounded-lg p-3">
-                  {TICKET_TYPES.map((t) => (
-                    <label key={t.id} className="flex items-center gap-2">
-                      <input
-                        type="checkbox"
-                        checked={formTicketTypes.includes(t.id)}
-                        onChange={(e) =>
-                          e.target.checked
-                            ? setFormTicketTypes([...formTicketTypes, t.id])
-                            : setFormTicketTypes(
-                                formTicketTypes.filter((id) => id !== t.id),
-                              )
+                {formEventIds.length === 0 ? (
+                  <p className="text-sm text-gray-500 border rounded-lg p-3">
+                    Select at least one event to see its ticket types.
+                  </p>
+                ) : (
+                  <>
+                    <div className="flex gap-2 mb-2">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setFormTicketTypes([
+                            ...orphanedTicketTypes,
+                            ...ticketTypeOptions.map((option) => option.id),
+                          ])
                         }
-                        className="rounded"
-                      />
-                      <span className="text-sm">{t.label}</span>
-                    </label>
-                  ))}
-                </div>
+                        className="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded"
+                      >
+                        All
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setFormTicketTypes([])}
+                        className="text-xs px-2 py-1 bg-gray-100 rounded"
+                      >
+                        Clear
+                      </button>
+                      <span className="text-xs text-gray-500 self-center ml-auto">
+                        {formTicketTypes.length} selected
+                      </span>
+                    </div>
+                    <div className="space-y-4 max-h-64 overflow-y-auto border rounded-lg p-3">
+                      {groupedTicketTypes.map(([category, options]) => (
+                        <div key={category}>
+                          <div className="flex items-center justify-between mb-1">
+                            <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                              {TICKET_CATEGORY_LABELS[category]}
+                            </h4>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const ids = options.map((option) => option.id);
+                                const allSelected = ids.every((id) =>
+                                  formTicketTypes.includes(id),
+                                );
+                                setFormTicketTypes(
+                                  allSelected
+                                    ? formTicketTypes.filter(
+                                        (id) => !ids.includes(id),
+                                      )
+                                    : [
+                                        ...formTicketTypes,
+                                        ...ids.filter(
+                                          (id) => !formTicketTypes.includes(id),
+                                        ),
+                                      ],
+                                );
+                              }}
+                              className="text-xs text-blue-600 hover:underline"
+                            >
+                              Toggle group
+                            </button>
+                          </div>
+                          <div className="space-y-2">
+                            {options.map((option) => (
+                              <label
+                                key={option.id}
+                                className="flex items-start gap-2"
+                              >
+                                <input
+                                  type="checkbox"
+                                  checked={formTicketTypes.includes(option.id)}
+                                  onChange={(e) =>
+                                    e.target.checked
+                                      ? setFormTicketTypes([
+                                          ...formTicketTypes,
+                                          option.id,
+                                        ])
+                                      : setFormTicketTypes(
+                                          formTicketTypes.filter(
+                                            (id) => id !== option.id,
+                                          ),
+                                        )
+                                  }
+                                  className="rounded mt-1"
+                                />
+                                <span className="text-sm">
+                                  {option.label}
+                                  <span className="block text-xs text-gray-400 font-mono">
+                                    {option.id}
+                                    {option.eventIds.length <
+                                      formEventIds.length &&
+                                      ` · only ${option.eventIds
+                                        .map(getEventShorthand)
+                                        .join(", ")}`}
+                                  </span>
+                                </span>
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                      {orphanedTicketTypes.length > 0 && (
+                        <div>
+                          <h4 className="text-xs font-semibold uppercase tracking-wide text-amber-600 mb-1">
+                            Not sold by the selected events
+                          </h4>
+                          <div className="space-y-2">
+                            {orphanedTicketTypes.map((id) => (
+                              <label
+                                key={id}
+                                className="flex items-center gap-2"
+                              >
+                                <input
+                                  type="checkbox"
+                                  checked
+                                  onChange={() =>
+                                    setFormTicketTypes(
+                                      formTicketTypes.filter(
+                                        (ticketId) => ticketId !== id,
+                                      ),
+                                    )
+                                  }
+                                  className="rounded"
+                                />
+                                <span className="text-sm font-mono text-amber-700">
+                                  {id || "(blank)"}
+                                </span>
+                              </label>
+                            ))}
+                          </div>
+                          <p className="text-xs text-gray-500 mt-1">
+                            These have no matching ticket, so they will never
+                            discount anything. Uncheck to remove them.
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1">
