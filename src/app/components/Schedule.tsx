@@ -8,6 +8,8 @@ import 'react-modal-video/css/modal-video.css';
 import { getCdnPath } from '@/utils/image';
 import { slugify } from '@/utils/slugify';
 import { EventSpeakerPublic } from '@/lib/sanity';
+import Link from 'next/link';
+import { Printer } from 'lucide-react';
 
 // helper to get sanity image URL
 function getSanityImageUrl(ref: string) {
@@ -168,7 +170,21 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
         onClose={() => setVideoOpen(false)}
       />
 
-      <h1 className="text-[48px] font-gotham font-bold mb-4 text-slate-700 text-center">Event Agenda</h1>
+      <div className="relative mb-4">
+        <div className="flex justify-center items-center">
+          <h1 className="text-[48px] font-gotham font-bold text-slate-700">Event Agenda</h1>
+        </div>
+        <Link
+          href={`/print-schedule/${event.id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-2 bg-navy-800 text-white px-4 py-2 rounded-md hover:bg-navy-700 transition-colors"
+        >
+          <Printer size={16} />
+          <span>Printable Schedule</span>
+        </Link>
+      </div>
+
       {isEventFuture && (
         <p className="text-l font-bold text-center mb-8 text-slate-600">
           The Event Agenda is still pending, please check back later for more information! We appreciate your patience as updates are made!
@@ -223,6 +239,9 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                   <div className="space-y-4 mt-3">
                     {item.speakers.map((speaker, speakerIndex) => {
                       const resolvedSpeaker = resolveSpeaker(speaker, sanitySpeakerMap);
+                      const isDiscussant =
+                        resolvedSpeaker.speakerId === 'nelinia-nel-varenus' &&
+                        item.time === '12:25 PM';
                       return (
                         <div key={speakerIndex} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                           <div 
@@ -256,11 +275,22 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                               />
                             )}
                             <div>
-                              <div className="font-semibold text-lg md:block flex flex-col">
-                                {resolvedSpeaker.name} 
-                                <span className={`w-fit rounded-lg md:mx-1 text-sm px-2 py-1 ${resolvedSpeaker.sponsorStyle}`}>
-                                  {resolvedSpeaker.sponsor}
-                                </span>
+                              <div className="font-semibold text-lg md:block flex flex-col gap-1">
+                                <div className="flex flex-wrap items-center gap-2">
+                                  <span className="inline-flex flex-wrap items-baseline gap-2">
+                                    {isDiscussant && (
+                                      <span className="font-normal underline underline-offset-4 text-base text-navy-800">
+                                        Discussant:
+                                      </span>
+                                    )}
+                                    <span>{resolvedSpeaker.name}</span>
+                                  </span>
+                                  {resolvedSpeaker.sponsor && (
+                                    <span className={`w-fit rounded-lg md:mx-1 text-sm px-2 py-1 ${resolvedSpeaker.sponsorStyle}`}>
+                                      {resolvedSpeaker.sponsor}
+                                    </span>
+                                  )}
+                                </div>
                               </div>
                               {resolvedSpeaker.title && <div className="text-sm text-gray-600" dangerouslySetInnerHTML={{ __html: resolvedSpeaker.title }}></div>}
                               {resolvedSpeaker.affiliation && <div className="text-sm text-gray-600">{resolvedSpeaker.affiliation}</div>}

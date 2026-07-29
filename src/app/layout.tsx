@@ -9,7 +9,6 @@ import Script from "next/script";
 import StripeProvider from '@/components/StripeProvider';
 
 
-
 export const metadata: Metadata = {
   metadataBase: new URL('https://americandefensealliance.org/'),
   alternates: {
@@ -73,7 +72,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <link rel="canonical" href="https://www.americandefensealliance.org/" />
+        <link rel="canonical" href="/" />
         <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonData) }}

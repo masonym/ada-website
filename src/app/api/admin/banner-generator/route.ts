@@ -58,15 +58,30 @@ export async function GET() {
         eventName,
         title: es.title,
         vipReception: eventInfo?.vipNetworkingReception || null,
-        tiers: (es.tiers || []).map((tier: any) => ({
-          id: tier.id,
-          name: tier.name,
-          style: tier.style,
-          sponsors: (tier.sponsors || [])
-            .map((ref: any) => sponsorMap.get(ref._ref))
+        tiers: (es.tiers || []).map((tier: any) => {
+          const missingRefs: string[] = [];
+          const sponsors = (tier.sponsors || [])
+            .map((ref: any) => {
+              const sponsor = sponsorMap.get(ref._ref);
+              if (!sponsor) {
+                missingRefs.push(ref._ref);
+              }
+              return sponsor;
+            })
             .filter(Boolean)
-            .sort((a: any, b: any) => a.name.localeCompare(b.name)),
-        })),
+            .sort((a: any, b: any) => a.name.localeCompare(b.name));
+          
+          if (missingRefs.length > 0) {
+            console.warn(`Event ${es.eventId}, Tier "${tier.name}": ${missingRefs.length} sponsor references not found in sponsor collection:`, missingRefs);
+          }
+          
+          return {
+            id: tier.id,
+            name: tier.name,
+            style: tier.style,
+            sponsors,
+          };
+        }),
       };
     });
 
