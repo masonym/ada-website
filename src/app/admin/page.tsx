@@ -16,7 +16,8 @@ import {
   ChevronRight,
   Upload,
   Printer,
-  Calendar
+  Calendar,
+  Mail
 } from "lucide-react";
 
 const MAX_FILE_SIZE = 25 * 1024 * 1024;
@@ -72,6 +73,13 @@ const adminCards: AdminCard[] = [
     href: "/admin/schedules",
     icon: <Calendar className="w-6 h-6" />,
     category: "content",
+  },
+  {
+    title: "Resend Confirmation",
+    description: "Re-send a registration confirmation to a new contact",
+    href: "/admin/resend-confirmation",
+    icon: <Mail className="w-6 h-6" />,
+    category: "events",
   },
   {
     title: "Event Launch Form",

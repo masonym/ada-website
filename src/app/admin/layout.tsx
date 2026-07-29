@@ -31,9 +31,17 @@ export default function AdminLayout({
     checkAuth();
   }, [router, pathname]);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     // Clear authentication from localStorage
     localStorage.removeItem("admin_auth");
+
+    // Also end the server-side session cookie that admin API routes check
+    try {
+      await fetch("/api/admin-auth", { method: "DELETE" });
+    } catch (error) {
+      console.error("Failed to clear admin session cookie:", error);
+    }
+
     setIsAuthenticated(false);
     router.push("/admin/login");
   };
