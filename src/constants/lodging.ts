@@ -315,11 +315,14 @@ export const LODGING_INFO: LodgingInfo[] = [
     // Rates carried over from 2026. TODO: the 2027 room block still needs to be
     // negotiated — confirm rates, the availability window, the cut-off date, and
     // replace the booking link below (the 2026 link is event-specific and will not work).
+    // note: `
+    // <b>Group Block Name</b>: Navy & Marine Corps Procurement Conference<br />
+    // <b>Group Rate</b>: Standard Room: $159.00 + Tax | Waterview Room: $179.00 + Tax<br />
+    // <b>Rate Available</b>: June 20-25, 2027<br />
+    // <b>Group Rate Cut-off Date</b>: TBD<br />
+    // `,
     note: `
-    <b>Group Block Name</b>: Navy & Marine Corps Procurement Conference<br />
-    <b>Group Rate</b>: Standard Room: $159.00 + Tax | Waterview Room: $179.00 + Tax<br />
-    <b>Rate Available</b>: June 20-25, 2027<br />
-    <b>Group Rate Cut-off Date</b>: TBD<br />
+    <b>Room Block is Coming Soon.</b><br />
     `,
     resources: [
       {

@@ -2182,12 +2182,12 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         {
           date: "August 4",
           sessionTime: "4:45 PM - 6:00 PM",
-          location: "Santa Fe",
+          location: "Generations Ballroom A",
         },
         {
           date: "August 5",
           sessionTime: "12:30 PM - 1:30 PM",
-          location: "Santa Fe",
+          location: "Generations Ballroom A",
         },
       ],
       signUpDetails: [
