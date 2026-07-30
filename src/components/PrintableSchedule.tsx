@@ -5,8 +5,10 @@ import { EVENTS } from '@/constants/events';
 import { Event } from '@/types/events';
 import Image from 'next/image';
 import { getCdnPath } from '@/utils/image';
-import { PDFDownloadButton, PDFPreviewButton, SponsorTierForPDF, PDFLayoutOptions, DEFAULT_PDF_LAYOUT } from './SchedulePDF';
+import { PDFDownloadButton, PDFPreviewButton, SponsorTierForPDF, PDFLayoutOptions, DEFAULT_PDF_LAYOUT, ScheduleCalloutForPDF } from './SchedulePDF';
 import { EventSpeakerPublic } from '@/lib/sanity';
+import { generateQrDataUrl } from '@/utils/qr';
+import { buildCalloutFooter, buildCalloutHeading, findNextEvent, getEventRegistrationUrl } from '@/utils/event-callout';
 
 // helper to get sanity image URL
 function getSanityImageUrl(ref: string) {
@@ -107,9 +109,87 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
   const [fullPageFooterImage, setFullPageFooterImage] = useState<string | undefined>(undefined);
   const [pdfLayout, setPdfLayout] = useState<PDFLayoutOptions>({ ...DEFAULT_PDF_LAYOUT });
 
+  // "sign up for the next event" callout
+  const [showCallout, setShowCallout] = useState<boolean>(false);
+  const [calloutEventId, setCalloutEventId] = useState<number | null>(null);
+  const [calloutHeading, setCalloutHeading] = useState<string>('');
+  const [calloutFooter, setCalloutFooter] = useState<string>('');
+  const [calloutUrl, setCalloutUrl] = useState<string>('');
+  const [calloutBgColor, setCalloutBgColor] = useState<string>('#5B9BD5');
+  const [calloutTextColor, setCalloutTextColor] = useState<string>('#ffffff');
+  const [calloutQrSize, setCalloutQrSize] = useState<number>(130);
+  const [calloutLogo, setCalloutLogo] = useState<boolean>(true);
+  const [calloutPlacement, setCalloutPlacement] = useState<'auto' | 'largest-gap' | 'each-day'>('auto');
+  const [calloutColumn, setCalloutColumn] = useState<'auto' | 'left' | 'right'>('auto');
+  const [calloutQrDataUrl, setCalloutQrDataUrl] = useState<string | undefined>(undefined);
+  const [calloutQrError, setCalloutQrError] = useState<string | null>(null);
+
   const updateLayout = (key: keyof PDFLayoutOptions, value: number | boolean) => {
     setPdfLayout(prev => ({ ...prev, [key]: value }));
   };
+
+  // default the callout to whatever event comes next on the calendar
+  useEffect(() => {
+    const current = EVENTS.find(e => e.id === eventId);
+    setCalloutEventId(findNextEvent(current)?.id ?? null);
+  }, [eventId]);
+
+  const applyCalloutDefaults = useCallback((targetEventId: number | null) => {
+    const target = EVENTS.find(e => e.id === targetEventId) ?? null;
+    setCalloutHeading(buildCalloutHeading(target));
+    setCalloutFooter(buildCalloutFooter(target));
+    setCalloutUrl(getEventRegistrationUrl(target));
+  }, []);
+
+  // picking a different target event rewrites the copy; edits after that stick
+  useEffect(() => {
+    applyCalloutDefaults(calloutEventId);
+  }, [calloutEventId, applyCalloutDefaults]);
+
+  // regenerate the QR whenever the link (or logo option) changes
+  useEffect(() => {
+    if (!showCallout || !calloutUrl.trim()) {
+      setCalloutQrDataUrl(undefined);
+      setCalloutQrError(null);
+      return;
+    }
+
+    let cancelled = false;
+    const timer = setTimeout(async () => {
+      try {
+        const dataUrl = await generateQrDataUrl(calloutUrl.trim(), {
+          logoSrc: calloutLogo ? '/logo.webp' : undefined,
+        });
+        if (!cancelled) {
+          setCalloutQrDataUrl(dataUrl);
+          setCalloutQrError(null);
+        }
+      } catch (err) {
+        console.error('Failed to generate QR code:', err);
+        if (!cancelled) {
+          setCalloutQrDataUrl(undefined);
+          setCalloutQrError('Could not generate the QR code for this link.');
+        }
+      }
+    }, 300);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [showCallout, calloutUrl, calloutLogo]);
+
+  const resolvedCallout: ScheduleCalloutForPDF | null = showCallout
+    ? {
+        heading: calloutHeading,
+        footer: calloutFooter,
+        qrDataUrl: calloutQrDataUrl,
+        backgroundColor: calloutBgColor,
+        textColor: calloutTextColor,
+        qrSize: calloutQrSize,
+        placement: { mode: calloutPlacement, column: calloutColumn },
+      }
+    : null;
 
   // fetch sponsor tiers from sanity via the banner-generator API
   const fetchSponsorTiers = useCallback(async () => {
@@ -642,6 +722,186 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
             )}
           </div>
 
+          {/* Next-event callout */}
+          <div className="control-section">
+            <h3>Next Event Callout</h3>
+            <div className="form-control">
+              <label className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={showCallout}
+                  onChange={(e) => setShowCallout(e.target.checked)}
+                  className="mr-2"
+                />
+                Add sign-up callout with QR code
+              </label>
+            </div>
+
+            {showCallout && (
+              <div className="mt-2 space-y-3">
+                <div className="form-control">
+                  <label htmlFor="callout-event" className="text-xs text-gray-600">Promoted event</label>
+                  <select
+                    id="callout-event"
+                    value={calloutEventId ?? ''}
+                    onChange={(e) => setCalloutEventId(e.target.value ? Number(e.target.value) : null)}
+                    className="w-full p-2 border rounded text-sm"
+                  >
+                    <option value="">-- None (custom text) --</option>
+                    {EVENTS.filter(e => e.id !== eventId).map((e) => (
+                      <option key={e.id} value={e.id}>
+                        {e.title} ({e.date})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="form-control">
+                  <label htmlFor="callout-heading" className="text-xs text-gray-600">
+                    Heading (line breaks are kept)
+                  </label>
+                  <textarea
+                    id="callout-heading"
+                    value={calloutHeading}
+                    onChange={(e) => setCalloutHeading(e.target.value)}
+                    rows={4}
+                    className="w-full p-2 border rounded text-sm"
+                  />
+                </div>
+
+                <div className="form-control">
+                  <label htmlFor="callout-footer" className="text-xs text-gray-600">Footer (date / location)</label>
+                  <textarea
+                    id="callout-footer"
+                    value={calloutFooter}
+                    onChange={(e) => setCalloutFooter(e.target.value)}
+                    rows={2}
+                    className="w-full p-2 border rounded text-sm"
+                  />
+                </div>
+
+                <div className="form-control">
+                  <label htmlFor="callout-url" className="text-xs text-gray-600">QR code link</label>
+                  <input
+                    type="url"
+                    id="callout-url"
+                    value={calloutUrl}
+                    onChange={(e) => setCalloutUrl(e.target.value)}
+                    placeholder="https://www.americandefensealliance.org/events/..."
+                    className="w-full p-2 border rounded text-sm"
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => applyCalloutDefaults(calloutEventId)}
+                  className="text-xs text-gray-500 hover:text-gray-700 underline"
+                >
+                  Reset text and link to defaults
+                </button>
+
+                <div className="flex items-start gap-3">
+                  <div className="flex-1 space-y-2">
+                    <label className="flex items-center gap-2 text-xs text-gray-600">
+                      <input
+                        type="checkbox"
+                        checked={calloutLogo}
+                        onChange={(e) => setCalloutLogo(e.target.checked)}
+                        className="rounded"
+                      />
+                      ADA logo in QR centre
+                    </label>
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <label className="text-xs text-gray-600">QR Size</label>
+                        <span className="text-xs font-mono text-gray-500">{calloutQrSize}</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="80"
+                        max="180"
+                        step="5"
+                        value={calloutQrSize}
+                        onChange={(e) => setCalloutQrSize(parseInt(e.target.value))}
+                        className="w-full h-1 accent-sb-100"
+                      />
+                    </div>
+                  </div>
+                  <div className="w-20 flex-shrink-0">
+                    {calloutQrDataUrl ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img src={calloutQrDataUrl} alt="QR code preview" className="w-20 h-20 border rounded" />
+                    ) : (
+                      <div className="w-20 h-20 border rounded flex items-center justify-center text-[10px] text-gray-400 text-center px-1">
+                        {calloutUrl.trim() ? 'Generating…' : 'No link'}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {calloutQrError && (
+                  <p className="text-xs text-red-500">{calloutQrError}</p>
+                )}
+
+                <div className="flex gap-3">
+                  <div className="form-control flex-1">
+                    <label htmlFor="callout-bg" className="text-xs text-gray-600">Background</label>
+                    <input
+                      type="color"
+                      id="callout-bg"
+                      value={calloutBgColor}
+                      onChange={(e) => setCalloutBgColor(e.target.value)}
+                      className="w-full h-8 border rounded"
+                    />
+                  </div>
+                  <div className="form-control flex-1">
+                    <label htmlFor="callout-fg" className="text-xs text-gray-600">Text</label>
+                    <input
+                      type="color"
+                      id="callout-fg"
+                      value={calloutTextColor}
+                      onChange={(e) => setCalloutTextColor(e.target.value)}
+                      className="w-full h-8 border rounded"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-control">
+                  <label htmlFor="callout-placement" className="text-xs text-gray-600">Placement</label>
+                  <select
+                    id="callout-placement"
+                    value={calloutPlacement}
+                    onChange={(e) => setCalloutPlacement(e.target.value as typeof calloutPlacement)}
+                    className="w-full p-2 border rounded text-sm"
+                  >
+                    <option value="auto">Auto — end of the schedule</option>
+                    <option value="largest-gap">Largest empty space anywhere</option>
+                    <option value="each-day">Last page of every day</option>
+                  </select>
+                </div>
+
+                <div className="form-control">
+                  <label htmlFor="callout-column" className="text-xs text-gray-600">Column</label>
+                  <select
+                    id="callout-column"
+                    value={calloutColumn}
+                    onChange={(e) => setCalloutColumn(e.target.value as typeof calloutColumn)}
+                    className="w-full p-2 border rounded text-sm"
+                  >
+                    <option value="auto">Auto — emptiest column</option>
+                    <option value="left">Left column</option>
+                    <option value="right">Right column</option>
+                  </select>
+                </div>
+
+                <p className="text-xs text-gray-500">
+                  The callout fills leftover space at the bottom of a column. If nothing has room for it,
+                  it is added below the schedule on the final page.
+                </p>
+              </div>
+            )}
+          </div>
+
           {/* PDF Layout sliders */}
           <div className="control-section">
             <h3>PDF Layout</h3>
@@ -717,6 +977,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                 fullPageFooterImage={fullPageFooterImage}
                 layoutOptions={pdfLayout}
                 showConferenceModerator={showConferenceModerator}
+                callout={resolvedCallout}
               />
               
               {/* PDF Download Button */}
@@ -735,6 +996,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                 layoutOptions={pdfLayout}
                 fileName={`${event.title.toLowerCase().replace(/\s+/g, '-')}-schedule.pdf`}
                 showConferenceModerator={showConferenceModerator}
+                callout={resolvedCallout}
               />
             </div>
           </div>

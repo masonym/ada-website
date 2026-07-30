@@ -86,6 +86,14 @@ type ScheduleDay = {
   items: ScheduleItem[];
 };
 
+type PageColumns = {
+  left: ScheduleItem[];
+  right: ScheduleItem[];
+  /** estimated filled height of each column, used to find leftover space */
+  leftHeight: number;
+  rightHeight: number;
+};
+
 // Layout customization options passed from the controls panel
 export type PDFLayoutOptions = {
   pagePadding: number;
@@ -107,6 +115,26 @@ export const DEFAULT_PDF_LAYOUT: PDFLayoutOptions = {
   speakerDetailFontSize: 8,
   speakerImageSize: 24,
   showSpeakerImages: true,
+};
+
+// "sign up for the next event" promo box dropped into leftover column space
+export type ScheduleCalloutForPDF = {
+  heading: string;
+  footer?: string;
+  /** PNG data URL - generated browser-side so react-pdf can embed it */
+  qrDataUrl?: string;
+  backgroundColor?: string;
+  textColor?: string;
+  qrSize?: number;
+  placement?: {
+    /**
+     * auto        - end of the schedule, walking back until a column has room
+     * largest-gap - the emptiest column anywhere in the document
+     * each-day    - repeat on the final page of every day
+     */
+    mode: 'auto' | 'largest-gap' | 'each-day';
+    column: 'auto' | 'left' | 'right';
+  };
 };
 
 // sponsor types for PDF rendering
@@ -403,6 +431,31 @@ const styles = StyleSheet.create({
   sponsorLogo: {
     objectFit: 'contain',
   },
+  callout: {
+    borderRadius: 10,
+    paddingHorizontal: 8,
+    paddingVertical: 10,
+    marginTop: 10,
+    alignItems: 'center',
+  },
+  calloutHeading: {
+    fontSize: 11,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    lineHeight: 1.35,
+    marginBottom: 8,
+  },
+  calloutQrPlate: {
+    backgroundColor: '#ffffff',
+    padding: 5,
+  },
+  calloutFooter: {
+    fontSize: 11,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    lineHeight: 1.3,
+    marginTop: 8,
+  },
 });
 
 Font.registerHyphenationCallback((word) => {
@@ -470,6 +523,7 @@ const SchedulePDF = ({
   fullPageFooterImage,
   layoutOptions = DEFAULT_PDF_LAYOUT,
   showConferenceModerator = false,
+  callout,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -484,6 +538,7 @@ const SchedulePDF = ({
   fullPageFooterImage?: string;
   layoutOptions?: PDFLayoutOptions;
   showConferenceModerator?: boolean;
+  callout?: ScheduleCalloutForPDF | null;
 }) => {
   const lo = { ...DEFAULT_PDF_LAYOUT, ...layoutOptions };
 
@@ -608,26 +663,28 @@ const SchedulePDF = ({
   };
 
   const paginateDays = () => {
-    const paginatedData: { date: string; pages: { left: ScheduleItem[]; right: ScheduleItem[] }[] }[] = [];
+    const paginatedData: { date: string; pages: PageColumns[] }[] = [];
 
     filteredSchedule.forEach(day => {
       if (!twoColumnLayout) {
-        paginatedData.push({ date: day.date, pages: [{ left: day.items, right: [] }] });
+        const height = day.items.reduce((sum, item) => sum + estimateItemHeight(item), 0);
+        paginatedData.push({
+          date: day.date,
+          pages: [{ left: day.items, right: [], leftHeight: height, rightHeight: 0 }],
+        });
         return;
       }
 
-      const pages: { left: ScheduleItem[]; right: ScheduleItem[] }[] = [];
-      let currentPage: { left: ScheduleItem[]; right: ScheduleItem[] } = { left: [], right: [] };
-      let currentLeftHeight = 0;
-      let currentRightHeight = 0;
+      const pages: PageColumns[] = [];
+      let currentPage: PageColumns = { left: [], right: [], leftHeight: 0, rightHeight: 0 };
       let currentColumn: 'left' | 'right' = 'left';
 
       day.items.forEach((item) => {
         const itemHeight = estimateItemHeight(item);
 
         // simple logic: fill left first, then right, then new page
-        const leftFull = currentLeftHeight + itemHeight > CONTENT_HEIGHT || currentPage.left.length >= MAX_ITEMS_PER_COLUMN;
-        const rightFull = currentRightHeight + itemHeight > CONTENT_HEIGHT || currentPage.right.length >= MAX_ITEMS_PER_COLUMN;
+        const leftFull = currentPage.leftHeight + itemHeight > CONTENT_HEIGHT || currentPage.left.length >= MAX_ITEMS_PER_COLUMN;
+        const rightFull = currentPage.rightHeight + itemHeight > CONTENT_HEIGHT || currentPage.right.length >= MAX_ITEMS_PER_COLUMN;
 
         if (currentColumn === 'left' && leftFull) {
           // switch to right column
@@ -637,19 +694,17 @@ const SchedulePDF = ({
         if (currentColumn === 'right' && rightFull) {
           // both columns full, start new page
           pages.push(currentPage);
-          currentPage = { left: [], right: [] };
-          currentLeftHeight = 0;
-          currentRightHeight = 0;
+          currentPage = { left: [], right: [], leftHeight: 0, rightHeight: 0 };
           currentColumn = 'left';
         }
 
         // add item to current column
         if (currentColumn === 'left') {
           currentPage.left.push(item);
-          currentLeftHeight += itemHeight;
+          currentPage.leftHeight += itemHeight;
         } else {
           currentPage.right.push(item);
-          currentRightHeight += itemHeight;
+          currentPage.rightHeight += itemHeight;
         }
       });
 
@@ -664,6 +719,119 @@ const SchedulePDF = ({
   };
 
   const paginatedSchedule = paginateDays();
+
+  // --- Callout placement ---
+  // The callout drops into whichever column has the most leftover space, using
+  // the same height estimates that drive pagination.
+  const CALLOUT_QR_SIZE_DEFAULT = 130;
+
+  const estimateCalloutHeight = (c: ScheduleCalloutForPDF) => {
+    // a column is ~48% of the printable width, so ~40 bold 11pt chars per line
+    const CHARS_PER_LINE = 40;
+    const countLines = (text?: string) =>
+      (text ?? '')
+        .split('\n')
+        .reduce((lines, line) => lines + Math.max(1, Math.ceil(line.length / CHARS_PER_LINE)), 0);
+
+    const qrSize = c.qrSize ?? CALLOUT_QR_SIZE_DEFAULT;
+    const box = 30; // vertical padding + top margin
+    const heading = c.heading ? countLines(c.heading) * 15 + 8 : 0;
+    const qr = c.qrDataUrl ? qrSize + 10 : 0;
+    const footer = c.footer ? countLines(c.footer) * 16 + 8 : 0;
+
+    return box + heading + qr + footer;
+  };
+
+  // slots are keyed `${dayIndex}-${pageIndex}-${column}`
+  const calloutSlots = new Set<string>();
+
+  if (callout) {
+    const mode = callout.placement?.mode ?? 'auto';
+    const forcedColumn = callout.placement?.column ?? 'auto';
+    const calloutHeight = estimateCalloutHeight(callout);
+    const hasEndOfDaySponsors = sponsorTiers.some(t => !t.fullPage && !t.midPage);
+    // real column height on a LETTER page once the title block and day header
+    // are drawn - CONTENT_HEIGHT is a looser budget tuned for pagination only
+    const columnBudget = 792 - lo.pagePadding * 2 - 95;
+    // estimateItemHeight overshoots the real layout by ~5-15%; stay at the low
+    // end of that so the callout never spills onto a page of its own
+    const ESTIMATE_SLACK = 0.95;
+
+    type Candidate = { dayIndex: number; pageIndex: number; column: 'left' | 'right'; remaining: number; score: number };
+    const candidates: Candidate[] = [];
+    const columns = twoColumnLayout ? (['left', 'right'] as const) : (['left'] as const);
+
+    paginatedSchedule.forEach((day, dayIndex) => {
+      // only a day's final page has genuine leftover space - earlier pages are packed
+      const pageIndex = day.pages.length - 1;
+      const page = day.pages[pageIndex];
+      if (!page) return;
+
+      columns.forEach(column => {
+        if (forcedColumn !== 'auto' && forcedColumn !== column) return;
+
+        const height = column === 'left' ? page.leftHeight : page.rightHeight;
+        const otherHeight = column === 'left' ? page.rightHeight : page.leftHeight;
+        const remaining = columnBudget - height * ESTIMATE_SLACK;
+        if (remaining < calloutHeight) return;
+
+        // sponsor logos sit below both columns, so prefer a slot that doesn't
+        // make this column the tallest one and push them off the page
+        const clearsSponsors = !hasEndOfDaySponsors || height + calloutHeight <= otherHeight;
+
+        candidates.push({ dayIndex, pageIndex, column, remaining, score: remaining + (clearsSponsors ? 1000 : 0) });
+      });
+    });
+
+    // right column first on ties - it reads as the end of the page
+    const preferRight = (a: Candidate, b: Candidate) =>
+      a.column === b.column ? 0 : a.column === 'right' ? -1 : 1;
+
+    // 'largest-gap' hunts for the emptiest column anywhere; the others work
+    // backwards from the end of the schedule, which is where a sign-up
+    // prompt belongs, and only walk earlier when nothing there has room
+    const byGap = (a: Candidate, b: Candidate) =>
+      b.score - a.score || b.dayIndex - a.dayIndex || preferRight(a, b);
+    const byLatest = (a: Candidate, b: Candidate) =>
+      b.dayIndex - a.dayIndex || b.score - a.score || preferRight(a, b);
+
+    if (mode === 'each-day') {
+      // one callout per day, on that day's emptiest trailing column
+      paginatedSchedule.forEach((_, dayIndex) => {
+        const best = candidates.filter(c => c.dayIndex === dayIndex).sort(byGap)[0];
+        if (best) calloutSlots.add(`${best.dayIndex}-${best.pageIndex}-${best.column}`);
+      });
+    } else {
+      const best = [...candidates].sort(mode === 'largest-gap' ? byGap : byLatest)[0];
+      if (best) calloutSlots.add(`${best.dayIndex}-${best.pageIndex}-${best.column}`);
+    }
+  }
+
+  const renderCallout = (key: string) => {
+    if (!callout) return null;
+    const qrSize = callout.qrSize ?? CALLOUT_QR_SIZE_DEFAULT;
+    const textColor = callout.textColor || '#ffffff';
+
+    return (
+      <View
+        key={key}
+        style={[styles.callout, { backgroundColor: callout.backgroundColor || '#5B9BD5' }]}
+        wrap={false}
+      >
+        {callout.heading ? (
+          <Text style={[styles.calloutHeading, { color: textColor }]}>{callout.heading}</Text>
+        ) : null}
+        {callout.qrDataUrl ? (
+          <View style={styles.calloutQrPlate}>
+            <Image src={callout.qrDataUrl} style={{ width: qrSize, height: qrSize }} cache={true} />
+          </View>
+        ) : null}
+        {callout.footer ? (
+          <Text style={[styles.calloutFooter, { color: textColor }]}>{callout.footer}</Text>
+        ) : null}
+      </View>
+    );
+  };
 
   // render sponsor tiers into remaining space after a day's content.
   // each tier is individually wrap={false} so react-pdf fits as many as possible
@@ -763,7 +931,7 @@ const SchedulePDF = ({
 
   return (
     <Document>
-      {paginatedSchedule.map(day =>
+      {paginatedSchedule.map((day, dayIndex) =>
         day.pages.map((page, pageIndex) => {
           const isLastPageOfDay = pageIndex === day.pages.length - 1;
           const isPageOne = globalPageIndex === 0;
@@ -802,6 +970,8 @@ const SchedulePDF = ({
               <View style={styles.columnsContainer}>
                 <View style={styles.column}>
                   {page.left.map((item, index) => renderScheduleItem(item, index, page.left[index - 1]))}
+                  {calloutSlots.has(`${dayIndex}-${pageIndex}-left`) &&
+                    renderCallout(`callout-${dayIndex}-${pageIndex}-left`)}
                 </View>
                 <View style={styles.column}>
                   {page.right.map((item, index) => {
@@ -810,11 +980,19 @@ const SchedulePDF = ({
                     const keyIndex = page.left.length + index;
                     return renderScheduleItem(item, keyIndex, prevItem);
                   })}
+                  {calloutSlots.has(`${dayIndex}-${pageIndex}-right`) &&
+                    renderCallout(`callout-${dayIndex}-${pageIndex}-right`)}
                 </View>
               </View>
               {!isLastPageOfDay && sponsorTiers.filter(t => !t.fullPage && t.midPage).length > 0 && renderSponsorSection(day.date, true)}
               {isLastPageOfDay && sponsorTiers.filter(t => !t.fullPage && !t.midPage).length > 0 && renderSponsorSection(day.date, false)}
 
+              {/* nothing had room for it (single column, or every column full) - fall back to the end of the schedule */}
+              {callout && calloutSlots.size === 0 && isLastPageOfDay && dayIndex === paginatedSchedule.length - 1 && (
+                <View style={{ alignItems: 'center' }}>
+                  <View style={{ width: '48%' }}>{renderCallout('callout-fallback')}</View>
+                </View>
+              )}
             </Page>
           );
         })
@@ -908,6 +1086,7 @@ export const PDFDownloadButton = ({
   layoutOptions,
   fileName = 'schedule.pdf',
   showConferenceModerator = false,
+  callout,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -923,6 +1102,7 @@ export const PDFDownloadButton = ({
   layoutOptions?: PDFLayoutOptions;
   fileName?: string;
   showConferenceModerator?: boolean;
+  callout?: ScheduleCalloutForPDF | null;
 }) => (
   <PDFDownloadLink
     document={
@@ -940,6 +1120,7 @@ export const PDFDownloadButton = ({
         fullPageFooterImage={fullPageFooterImage}
         layoutOptions={layoutOptions}
         showConferenceModerator={showConferenceModerator}
+        callout={callout}
       />
     }
     fileName={fileName}
@@ -964,6 +1145,7 @@ export const PDFPreview = ({
   fullPageFooterImage,
   layoutOptions,
   showConferenceModerator = false,
+  callout,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -978,6 +1160,7 @@ export const PDFPreview = ({
   fullPageFooterImage?: string;
   layoutOptions?: PDFLayoutOptions;
   showConferenceModerator?: boolean;
+  callout?: ScheduleCalloutForPDF | null;
 }) => (
   <div className="w-full h-screen">
     <PDFViewer width="100%" height="100%" style={{ border: 'none' }}>
@@ -995,6 +1178,7 @@ export const PDFPreview = ({
         fullPageFooterImage={fullPageFooterImage}
         layoutOptions={layoutOptions}
         showConferenceModerator={showConferenceModerator}
+        callout={callout}
       />
     </PDFViewer>
   </div>
@@ -1015,6 +1199,7 @@ export const PDFPreviewButton = ({
   fullPageFooterImage,
   layoutOptions,
   showConferenceModerator = false,
+  callout,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -1029,6 +1214,7 @@ export const PDFPreviewButton = ({
   fullPageFooterImage?: string;
   layoutOptions?: PDFLayoutOptions;
   showConferenceModerator?: boolean;
+  callout?: ScheduleCalloutForPDF | null;
 }) => (
   <BlobProvider document={
     <SchedulePDF
@@ -1045,6 +1231,7 @@ export const PDFPreviewButton = ({
       fullPageFooterImage={fullPageFooterImage}
       layoutOptions={layoutOptions}
       showConferenceModerator={showConferenceModerator}
+      callout={callout}
     />
   }>
     {({ blob, url, loading, error }) => {
