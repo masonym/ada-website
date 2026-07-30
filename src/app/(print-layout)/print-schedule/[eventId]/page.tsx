@@ -6,13 +6,13 @@ import { getEventSpeakersPublic } from '@/lib/sanity';
 export const revalidate = 60;
 
 interface PrintSchedulePageProps {
-  params: {
+  params: Promise<{
     eventId: string;
-  };
+  }>;
 }
 
 export default async function PrintSchedulePage({ params }: PrintSchedulePageProps) {
-  const eventId = parseInt(params.eventId, 10);
+  const eventId = parseInt((await params).eventId, 10);
   
   // fetch speakers from sanity for bio lookups
   const speakerData = await getEventSpeakersPublic(eventId);
