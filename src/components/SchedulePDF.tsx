@@ -187,12 +187,28 @@ const TAILWIND_BG_HEX: Record<string, string> = {
   'bg-red-999': '#FF3131',
   'bg-amber-400': '#fbbf24',
   'bg-amber-700': '#b45309',
+  'bg-amber-800': '#92400e',
+  'bg-amber-900': '#78350f',
+  'bg-orange-800': '#9a3412',
+  'bg-orange-900': '#7c2d12',
+  'bg-orange-950': '#431407',
   'bg-yellow-300': '#fde047',
+  'bg-yellow-700': '#a16207',
+  'bg-green-700': '#15803d',
+  'bg-green-800': '#166534',
+  'bg-emerald-600': '#059669',
+  'bg-teal-500': '#14b8a6',
+  'bg-cyan-600': '#0891b2',
   'bg-gray-300': '#d1d5db',
+  'bg-gray-500': '#6b7280',
+  'bg-slate-700': '#334155',
   'bg-sky-300': '#7dd3fc',
   'bg-blue-500': '#3b82f6',
   'bg-blue-600': '#2563eb',
+  'bg-blue-800': '#1e40af',
+  'bg-indigo-600': '#4f46e5',
   'bg-purple-600': '#9333ea',
+  'bg-rose-600': '#e11d48',
   'bg-navy-800': '#1B212B',
   'bg-sb-100': '#3FB4E6',
 };
@@ -709,6 +725,80 @@ const SchedulePDF = ({
 
   const paginatedSchedule = paginateDays();
 
+  // --- Leftover column space ---
+  // Real column height on a LETTER page once the title block and day header are
+  // drawn. CONTENT_HEIGHT is a looser budget tuned for pagination only.
+  const columnBudget = 792 - lo.pagePadding * 2 - 95;
+  // estimateItemHeight overshoots the real layout by ~5-15%; stay at the low end
+  // of that so nothing we drop into a column spills onto a page of its own.
+  const ESTIMATE_SLACK = 0.95;
+  const PLACEMENT_COLUMNS = twoColumnLayout ? (['left', 'right'] as const) : (['left'] as const);
+
+  const columnFill = (page: PageColumns, column: 'left' | 'right') =>
+    (column === 'left' ? page.leftHeight : page.rightHeight) * ESTIMATE_SLACK;
+
+  // scale logos based on sponsor count within a tier
+  const getLogoSize = (sponsorCount: number, multiplier: number = 1) => {
+    let w = 60;
+    let h = 36;
+    if (sponsorCount <= 2) { w = 90; h = 50; }
+    else if (sponsorCount <= 4) { w = 72; h = 42; }
+    else if (sponsorCount <= 8) { w = 60; h = 36; }
+    else { w = 48; h = 30; }
+    return { width: Math.round(w * multiplier), height: Math.round(h * multiplier) };
+  };
+
+  // --- Sponsor section placement ---
+  // Tiers used to render underneath both columns, which only left them the space
+  // below the *taller* column - usually none, so they spilled onto a page of
+  // their own while a half-empty column sat next to them. They now claim the
+  // emptiest column on a day's last page, falling back to the old full-width
+  // block when neither column can take them.
+  const endOfDayTiers = sponsorTiers.filter(t => !t.fullPage && !t.midPage);
+
+  // a column is 48% of the printable width
+  const columnWidth = (612 - lo.pagePadding * 2) * 0.48;
+
+  const estimateSponsorSectionHeight = (tiers: SponsorTierForPDF[], width: number) =>
+    tiers.reduce((total, tier) => {
+      const { width: logoW, height: logoH } = getLogoSize(tier.sponsors.length, tier.sizeMultiplier || 1);
+      // bronze is forced to two per row; everything else wraps to fit
+      const perRow = tier.name.toLowerCase().includes('bronze')
+        ? 2
+        : Math.max(1, Math.floor(width / (logoW + 12)));
+      const rows = Math.ceil(tier.sponsors.length / perRow);
+      return total + 22 /* tier pill + margin */ + rows * (logoH + 8) + 6;
+    }, 12 /* section margin + padding */);
+
+  // the logos appear once for the whole document, not once per day
+  let sponsorSlot: string | null = null;
+  // slot key -> height already claimed there, so the callout doesn't double-book it
+  const claimedHeight = new Map<string, number>();
+
+  if (endOfDayTiers.length > 0 && twoColumnLayout) {
+    const sponsorHeight = estimateSponsorSectionHeight(endOfDayTiers, columnWidth);
+
+    // work backwards from the end of the schedule, so the logos land on the last
+    // page with room rather than the first
+    for (let dayIndex = paginatedSchedule.length - 1; dayIndex >= 0 && !sponsorSlot; dayIndex--) {
+      const day = paginatedSchedule[dayIndex];
+      const pageIndex = day.pages.length - 1;
+      const page = day.pages[pageIndex];
+      if (!page) continue;
+
+      const best = PLACEMENT_COLUMNS
+        .map(column => ({ column, remaining: columnBudget - columnFill(page, column) }))
+        .filter(c => c.remaining >= sponsorHeight)
+        // right column first on a tie - it reads as the end of the page
+        .sort((a, b) => b.remaining - a.remaining || (a.column === 'right' ? -1 : 1))[0];
+
+      if (best) {
+        sponsorSlot = `${dayIndex}-${pageIndex}-${best.column}`;
+        claimedHeight.set(sponsorSlot, sponsorHeight);
+      }
+    }
+  }
+
   // --- Callout placement ---
   // The callout drops into whichever column has the most leftover space, using
   // the same height estimates that drive pagination.
@@ -738,17 +828,9 @@ const SchedulePDF = ({
     const mode = callout.placement?.mode ?? 'auto';
     const forcedColumn = callout.placement?.column ?? 'auto';
     const calloutHeight = estimateCalloutHeight(callout);
-    const hasEndOfDaySponsors = sponsorTiers.some(t => !t.fullPage && !t.midPage);
-    // real column height on a LETTER page once the title block and day header
-    // are drawn - CONTENT_HEIGHT is a looser budget tuned for pagination only
-    const columnBudget = 792 - lo.pagePadding * 2 - 95;
-    // estimateItemHeight overshoots the real layout by ~5-15%; stay at the low
-    // end of that so the callout never spills onto a page of its own
-    const ESTIMATE_SLACK = 0.95;
 
     type Candidate = { dayIndex: number; pageIndex: number; column: 'left' | 'right'; remaining: number; score: number };
     const candidates: Candidate[] = [];
-    const columns = twoColumnLayout ? (['left', 'right'] as const) : (['left'] as const);
 
     paginatedSchedule.forEach((day, dayIndex) => {
       // only a day's final page has genuine leftover space - earlier pages are packed
@@ -756,19 +838,15 @@ const SchedulePDF = ({
       const page = day.pages[pageIndex];
       if (!page) return;
 
-      columns.forEach(column => {
+      PLACEMENT_COLUMNS.forEach(column => {
         if (forcedColumn !== 'auto' && forcedColumn !== column) return;
 
-        const height = column === 'left' ? page.leftHeight : page.rightHeight;
-        const otherHeight = column === 'left' ? page.rightHeight : page.leftHeight;
-        const remaining = columnBudget - height * ESTIMATE_SLACK;
+        const key = `${dayIndex}-${pageIndex}-${column}`;
+        // sponsors get first claim on a column; the callout takes what's left
+        const remaining = columnBudget - columnFill(page, column) - (claimedHeight.get(key) ?? 0);
         if (remaining < calloutHeight) return;
 
-        // sponsor logos sit below both columns, so prefer a slot that doesn't
-        // make this column the tallest one and push them off the page
-        const clearsSponsors = !hasEndOfDaySponsors || height + calloutHeight <= otherHeight;
-
-        candidates.push({ dayIndex, pageIndex, column, remaining, score: remaining + (clearsSponsors ? 1000 : 0) });
+        candidates.push({ dayIndex, pageIndex, column, remaining, score: remaining });
       });
     });
 
@@ -837,17 +915,6 @@ const SchedulePDF = ({
     const sortedTiers = [...columnTiers].sort(
       (a, b) => getTierPriority(a.name) - getTierPriority(b.name)
     );
-
-    // scale logos based on sponsor count within a tier
-    const getLogoSize = (sponsorCount: number, multiplier: number = 1) => {
-      let w = 60;
-      let h = 36;
-      if (sponsorCount <= 2) { w = 90; h = 50; }
-      else if (sponsorCount <= 4) { w = 72; h = 42; }
-      else if (sponsorCount <= 8) { w = 60; h = 36; }
-      else { w = 48; h = 30; }
-      return { width: Math.round(w * multiplier), height: Math.round(h * multiplier) };
-    };
 
     const renderTierBlock = (tier: typeof sortedTiers[0], dayDate: string, flex?: boolean) => {
       const multiplier = tier.sizeMultiplier || 1;
@@ -959,6 +1026,8 @@ const SchedulePDF = ({
               <View style={styles.columnsContainer}>
                 <View style={styles.column}>
                   {page.left.map((item, index) => renderScheduleItem(item, index, page.left[index - 1]))}
+                  {sponsorSlot === `${dayIndex}-${pageIndex}-left` &&
+                    renderSponsorSection(day.date, false)}
                   {calloutSlots.has(`${dayIndex}-${pageIndex}-left`) &&
                     renderCallout(`callout-${dayIndex}-${pageIndex}-left`)}
                 </View>
@@ -969,12 +1038,17 @@ const SchedulePDF = ({
                     const keyIndex = page.left.length + index;
                     return renderScheduleItem(item, keyIndex, prevItem);
                   })}
+                  {sponsorSlot === `${dayIndex}-${pageIndex}-right` &&
+                    renderSponsorSection(day.date, false)}
                   {calloutSlots.has(`${dayIndex}-${pageIndex}-right`) &&
                     renderCallout(`callout-${dayIndex}-${pageIndex}-right`)}
                 </View>
               </View>
               {!isLastPageOfDay && sponsorTiers.filter(t => !t.fullPage && t.midPage).length > 0 && renderSponsorSection(day.date, true)}
-              {isLastPageOfDay && sponsorTiers.filter(t => !t.fullPage && !t.midPage).length > 0 && renderSponsorSection(day.date, false)}
+              {/* no column anywhere had room - fall back to a full-width block at the end */}
+              {isLastPageOfDay && endOfDayTiers.length > 0 && !sponsorSlot &&
+                dayIndex === paginatedSchedule.length - 1 &&
+                renderSponsorSection(day.date, false)}
 
               {/* nothing had room for it (single column, or every column full) - fall back to the end of the schedule */}
               {callout && calloutSlots.size === 0 && isLastPageOfDay && dayIndex === paginatedSchedule.length - 1 && (
