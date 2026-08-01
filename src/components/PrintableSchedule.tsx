@@ -9,6 +9,9 @@ import { PDFDownloadButton, PDFPreviewButton, SponsorTierForPDF, PDFLayoutOption
 import { EventSpeakerPublic } from '@/lib/sanity';
 import { generateQrDataUrl } from '@/utils/qr';
 import { buildCalloutFooter, buildCalloutHeading, findNextEvent, getEventRegistrationUrl } from '@/utils/event-callout';
+import { describePage, paginateSchedule, SPONSOR_PAGE_KEY } from '@/lib/schedule-pdf-layout';
+
+type TierPlacement = NonNullable<SponsorTierForPDF['placement']>;
 
 // helper to get sanity image URL
 function getSanityImageUrl(ref: string) {
@@ -104,8 +107,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
   const [sponsorLoading, setSponsorLoading] = useState<boolean>(false);
   const [fetchedTiers, setFetchedTiers] = useState<{ id: string; name: string; style?: string; sponsors: { _id: string; name: string; logoUrl: string }[] }[]>([]);
   const [tierSizeMultipliers, setTierSizeMultipliers] = useState<Record<string, number>>({});
-  const [fullPageTierIds, setFullPageTierIds] = useState<string[]>([]);
-  const [midPageTierIds, setMidPageTierIds] = useState<string[]>([]);
+  const [tierPlacements, setTierPlacements] = useState<Record<string, TierPlacement>>({});
   const [fullPageFooterImage, setFullPageFooterImage] = useState<string | undefined>(undefined);
   const [pdfLayout, setPdfLayout] = useState<PDFLayoutOptions>({ ...DEFAULT_PDF_LAYOUT });
 
@@ -119,7 +121,11 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
   const [calloutTextColor, setCalloutTextColor] = useState<string>('#ffffff');
   const [calloutQrSize, setCalloutQrSize] = useState<number>(130);
   const [calloutLogo, setCalloutLogo] = useState<boolean>(true);
-  const [calloutPlacement, setCalloutPlacement] = useState<'auto' | 'largest-gap' | 'each-day'>('auto');
+  const [calloutPlacement, setCalloutPlacement] = useState<'auto' | 'largest-gap' | 'each-day' | 'page'>('auto');
+  // `${date}|${pageIndex}` identifying an exact page for the callout
+  const [calloutPageKey, setCalloutPageKey] = useState<string>('');
+  // '' = automatic; otherwise the date of the day whose last page takes the logos
+  const [sponsorDay, setSponsorDay] = useState<string>('');
   const [calloutColumn, setCalloutColumn] = useState<'auto' | 'left' | 'right'>('auto');
   const [calloutQrDataUrl, setCalloutQrDataUrl] = useState<string | undefined>(undefined);
   const [calloutQrError, setCalloutQrError] = useState<string | null>(null);
@@ -187,7 +193,13 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
         backgroundColor: calloutBgColor,
         textColor: calloutTextColor,
         qrSize: calloutQrSize,
-        placement: { mode: calloutPlacement, column: calloutColumn },
+        placement: {
+          mode: calloutPlacement,
+          column: calloutColumn,
+          page: calloutPageKey
+            ? { date: calloutPageKey.split('|')[0], pageIndex: Number(calloutPageKey.split('|')[1]) }
+            : undefined,
+        },
       }
     : null;
 
@@ -252,6 +264,10 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
     return `${origin}/api/proxy-image?url=${encodeURIComponent(pngUrl)}`;
   };
 
+  const fullPageTierIds = Object.entries(tierPlacements)
+    .filter(([, placement]) => placement === 'page')
+    .map(([id]) => id);
+
   const resolvedSponsorTiers: SponsorTierForPDF[] = showSponsorsInPDF
     ? availableTiers
         .filter(tier => selectedSponsorTierIds.includes(tier.id))
@@ -277,8 +293,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
             name: tier.name,
             style: tier.style,
             sizeMultiplier: tierSizeMultipliers[tier.id] || 1.0,
-            fullPage: fullPageTierIds.includes(tier.id),
-            midPage: midPageTierIds.includes(tier.id),
+            placement: tierPlacements[tier.id] || 'column',
             sponsors: sponsorsWithLogos.map(s => ({
               id: s._id,
               name: s.name,
@@ -325,6 +340,25 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
 
   // Filter schedule based on selected days
   const filteredSchedule = schedule.filter(day => selectedDays.includes(day.date));
+
+  // same pagination the PDF uses, so the placement dropdowns list real pages
+  const paginatedPreview = paginateSchedule(filteredSchedule, {
+    twoColumnLayout,
+    showSpeakers,
+    showLocations,
+  });
+  const pageOptions = [
+    ...paginatedPreview.flatMap(day =>
+      day.pages.map((_, pageIndex) => ({
+        key: `${day.date}|${pageIndex}`,
+        label: describePage(day.date, pageIndex, day.pages.length),
+      }))
+    ),
+    // the dedicated sponsor page only exists when a tier is sent to its own page
+    ...(fullPageTierIds.length > 0
+      ? [{ key: `${SPONSOR_PAGE_KEY}|0`, label: 'Sponsor page — above the logos' }]
+      : []),
+  ];
 
   // Render a single schedule item with location context
   const renderScheduleItem = (item: ScheduleItem, showSpeakers: boolean, showLocations: boolean, locationChanged: boolean = true) => {
@@ -644,36 +678,24 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                             className="flex-1 h-1"
                           />
                         </div>
-                        <label className="flex items-center gap-1.5 cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={fullPageTierIds.includes(tier.id)}
-                            onChange={() => {
-                              setFullPageTierIds(prev =>
-                                prev.includes(tier.id)
-                                  ? prev.filter(id => id !== tier.id)
-                                  : [...prev, tier.id]
-                              );
-                            }}
-                            className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                          />
-                          <span className="text-xs text-gray-600">Separate page (full width)</span>
-                        </label>
-                        <label className="flex items-center gap-1.5 cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={midPageTierIds.includes(tier.id)}
-                            onChange={() => {
-                              setMidPageTierIds(prev =>
-                                prev.includes(tier.id)
-                                  ? prev.filter(id => id !== tier.id)
-                                  : [...prev, tier.id]
-                              );
-                            }}
-                            className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                          />
-                          <span className="text-xs text-gray-600">Show mid-day (between pages)</span>
-                        </label>
+                        <div className="flex items-center gap-2">
+                          <label htmlFor={`tier-placement-${tier.id}`} className="text-xs text-gray-600 whitespace-nowrap">
+                            Where:
+                          </label>
+                          <select
+                            id={`tier-placement-${tier.id}`}
+                            value={tierPlacements[tier.id] || 'column'}
+                            onChange={(e) =>
+                              setTierPlacements(prev => ({ ...prev, [tier.id]: e.target.value as TierPlacement }))
+                            }
+                            className="flex-1 rounded border border-gray-300 px-1.5 py-1 text-xs"
+                          >
+                            <option value="column">In a column</option>
+                            <option value="band">Bottom of page (full width)</option>
+                            <option value="midday">Mid-day row (between pages)</option>
+                            <option value="page">Separate page (full width)</option>
+                          </select>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -684,9 +706,28 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
               <p className="text-xs text-gray-500 mt-1">No sponsor tiers found for this event.</p>
             )}
             {showSponsorsInPDF && selectedSponsorTierIds.length > 0 && (
-              <p className="text-xs text-gray-500 mt-1">
-                Logos will fill remaining space after each day in the PDF.
-              </p>
+              <div className="mt-3 border-t border-gray-200 pt-2 space-y-1">
+                <label htmlFor="sponsor-day" className="text-xs text-gray-600">
+                  Page for the in-column logo block
+                </label>
+                <select
+                  id="sponsor-day"
+                  value={sponsorDay}
+                  onChange={(e) => setSponsorDay(e.target.value)}
+                  className="w-full p-2 border rounded text-sm"
+                >
+                  <option value="">Auto — last page with room</option>
+                  {paginatedPreview.map((day) => (
+                    <option key={day.date} value={day.date}>
+                      {describePage(day.date, day.pages.length - 1, 1)} — last page
+                    </option>
+                  ))}
+                </select>
+                <p className="text-xs text-gray-500">
+                  Tiers marked &ldquo;Separate page&rdquo; are not part of this block — they get their
+                  own page at the end.
+                </p>
+              </div>
             )}
             {showSponsorsInPDF && fullPageTierIds.length > 0 && (
               <div className="mt-3 border-t border-gray-200 pt-2">
@@ -877,8 +918,30 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                     <option value="auto">Auto — end of the schedule</option>
                     <option value="largest-gap">Largest empty space anywhere</option>
                     <option value="each-day">Last page of every day</option>
+                    <option value="page">Specific page…</option>
                   </select>
                 </div>
+
+                {calloutPlacement === 'page' && (
+                  <div className="form-control">
+                    <label htmlFor="callout-page" className="text-xs text-gray-600">Page</label>
+                    <select
+                      id="callout-page"
+                      value={calloutPageKey}
+                      onChange={(e) => setCalloutPageKey(e.target.value)}
+                      className="w-full p-2 border rounded text-sm"
+                    >
+                      <option value="">-- Choose a page --</option>
+                      {pageOptions.map((p) => (
+                        <option key={p.key} value={p.key}>{p.label}</option>
+                      ))}
+                    </select>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Placed here even if the column is tight, so check the preview — if it
+                      overflows, the PDF pushes it to a page of its own.
+                    </p>
+                  </div>
+                )}
 
                 <div className="form-control">
                   <label htmlFor="callout-column" className="text-xs text-gray-600">Column</label>
@@ -978,6 +1041,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                 layoutOptions={pdfLayout}
                 showConferenceModerator={showConferenceModerator}
                 callout={resolvedCallout}
+                sponsorPlacement={sponsorDay ? { date: sponsorDay } : null}
               />
               
               {/* PDF Download Button */}
@@ -997,6 +1061,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                 fileName={`${event.title.toLowerCase().replace(/\s+/g, '-')}-schedule.pdf`}
                 showConferenceModerator={showConferenceModerator}
                 callout={resolvedCallout}
+                sponsorPlacement={sponsorDay ? { date: sponsorDay } : null}
               />
             </div>
           </div>

@@ -4,6 +4,7 @@ import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Font, PDFDownloadLink, PDFViewer, Image, BlobProvider } from '@react-pdf/renderer';
 import { Event } from '@/types/events';
 import { EventSpeakerPublic } from '@/lib/sanity';
+import { PageColumns, paginateSchedule, SPONSOR_PAGE_KEY } from '@/lib/schedule-pdf-layout';
 
 // helper to get sanity image URL for PDF
 function getSanityImageUrl(ref: string, opts?: { width?: number; height?: number }) {
@@ -86,14 +87,6 @@ type ScheduleDay = {
   items: ScheduleItem[];
 };
 
-type PageColumns = {
-  left: ScheduleItem[];
-  right: ScheduleItem[];
-  /** estimated filled height of each column, used to find leftover space */
-  leftHeight: number;
-  rightHeight: number;
-};
-
 // Layout customization options passed from the controls panel
 export type PDFLayoutOptions = {
   pagePadding: number;
@@ -131,9 +124,12 @@ export type ScheduleCalloutForPDF = {
      * auto        - end of the schedule, walking back until a column has room
      * largest-gap - the emptiest column anywhere in the document
      * each-day    - repeat on the final page of every day
+     * page        - exactly where `page` says, room permitting or not
      */
-    mode: 'auto' | 'largest-gap' | 'each-day';
+    mode: 'auto' | 'largest-gap' | 'each-day' | 'page';
     column: 'auto' | 'left' | 'right';
+    /** target for mode 'page': a day's date plus the page index within that day */
+    page?: { date: string; pageIndex: number };
   };
 };
 
@@ -150,9 +146,20 @@ export type SponsorTierForPDF = {
   style?: string;
   sponsors: SponsorForPDF[];
   sizeMultiplier?: number;
+  /**
+   * column - stacked inside the emptiest column (default)
+   * band   - full-width strip below both columns, to soak up bottom whitespace
+   * midday - side-by-side row on a page that isn't the day's last
+   * page   - its own full-width page at the end
+   */
+  placement?: 'column' | 'band' | 'midday' | 'page';
+  /** @deprecated superseded by `placement` */
   fullPage?: boolean;
   midPage?: boolean;
 };
+
+export const tierPlacement = (tier: SponsorTierForPDF): 'column' | 'band' | 'midday' | 'page' =>
+  tier.placement ?? (tier.fullPage ? 'page' : tier.midPage ? 'midday' : 'column');
 
 // tier display order (same as BannerGeneratorPage / SponsorLogos.tsx)
 const TIER_ORDER = [
@@ -529,6 +536,7 @@ const SchedulePDF = ({
   layoutOptions = DEFAULT_PDF_LAYOUT,
   showConferenceModerator = false,
   callout,
+  sponsorPlacement,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -544,6 +552,8 @@ const SchedulePDF = ({
   layoutOptions?: PDFLayoutOptions;
   showConferenceModerator?: boolean;
   callout?: ScheduleCalloutForPDF | null;
+  /** pin the in-column logo block to a day's last page; omit for automatic */
+  sponsorPlacement?: { date: string } | null;
 }) => {
   const lo = { ...DEFAULT_PDF_LAYOUT, ...layoutOptions };
 
@@ -637,93 +647,11 @@ const SchedulePDF = ({
 
 
 
-  // --- Newspaper-Style Column Pagination Logic ---
-  // LETTER size: 612 x 792 points
-  // Use a very conservative estimate - better to have fewer items per column than overflow
-  const MAX_ITEMS_PER_COLUMN = 12; // simple count-based approach as backup
-  const CONTENT_HEIGHT = 740; // page height in points minus header/footer overhead
-
-
-  const estimateItemHeight = (item: ScheduleItem) => {
-    // very conservative fixed estimates
-    let height = 25; // base height for time + title
-
-    // add for description
-    // if (item.description) {
-    //   height += 20;
-    // }
-
-    // add for location
-    if (showLocations && item.location) {
-      height += 12;
-    }
-
-    // add for speakers - this is where most height comes from
-    if (showSpeakers && item.speakers && item.speakers.length > 0) {
-      // each speaker takes significant space
-      height += item.speakers.length * 46;
-    }
-
-    return height;
-  };
-
-  const paginateDays = () => {
-    const paginatedData: { date: string; pages: PageColumns[] }[] = [];
-
-    filteredSchedule.forEach(day => {
-      if (!twoColumnLayout) {
-        const height = day.items.reduce((sum, item) => sum + estimateItemHeight(item), 0);
-        paginatedData.push({
-          date: day.date,
-          pages: [{ left: day.items, right: [], leftHeight: height, rightHeight: 0 }],
-        });
-        return;
-      }
-
-      const pages: PageColumns[] = [];
-      let currentPage: PageColumns = { left: [], right: [], leftHeight: 0, rightHeight: 0 };
-      let currentColumn: 'left' | 'right' = 'left';
-
-      day.items.forEach((item) => {
-        const itemHeight = estimateItemHeight(item);
-
-        // simple logic: fill left first, then right, then new page
-        const leftFull = currentPage.leftHeight + itemHeight > CONTENT_HEIGHT || currentPage.left.length >= MAX_ITEMS_PER_COLUMN;
-        const rightFull = currentPage.rightHeight + itemHeight > CONTENT_HEIGHT || currentPage.right.length >= MAX_ITEMS_PER_COLUMN;
-
-        if (currentColumn === 'left' && leftFull) {
-          // switch to right column
-          currentColumn = 'right';
-        }
-
-        if (currentColumn === 'right' && rightFull) {
-          // both columns full, start new page
-          pages.push(currentPage);
-          currentPage = { left: [], right: [], leftHeight: 0, rightHeight: 0 };
-          currentColumn = 'left';
-        }
-
-        // add item to current column
-        if (currentColumn === 'left') {
-          currentPage.left.push(item);
-          currentPage.leftHeight += itemHeight;
-        } else {
-          currentPage.right.push(item);
-          currentPage.rightHeight += itemHeight;
-        }
-      });
-
-      if (currentPage.left.length > 0 || currentPage.right.length > 0) {
-        pages.push(currentPage);
-      }
-
-      paginatedData.push({ date: day.date, pages });
-    });
-
-    return paginatedData;
-  };
-
-  const paginatedSchedule = paginateDays();
+  const paginatedSchedule = paginateSchedule<ScheduleItem>(filteredSchedule, {
+    twoColumnLayout,
+    showSpeakers,
+    showLocations,
+  });
 
   // --- Leftover column space ---
   // Real column height on a LETTER page once the title block and day header are
@@ -734,7 +662,7 @@ const SchedulePDF = ({
   const ESTIMATE_SLACK = 0.95;
   const PLACEMENT_COLUMNS = twoColumnLayout ? (['left', 'right'] as const) : (['left'] as const);
 
-  const columnFill = (page: PageColumns, column: 'left' | 'right') =>
+  const columnFill = (page: PageColumns<ScheduleItem>, column: 'left' | 'right') =>
     (column === 'left' ? page.leftHeight : page.rightHeight) * ESTIMATE_SLACK;
 
   // scale logos based on sponsor count within a tier
@@ -754,7 +682,8 @@ const SchedulePDF = ({
   // their own while a half-empty column sat next to them. They now claim the
   // emptiest column on a day's last page, falling back to the old full-width
   // block when neither column can take them.
-  const endOfDayTiers = sponsorTiers.filter(t => !t.fullPage && !t.midPage);
+  const endOfDayTiers = sponsorTiers.filter(t => tierPlacement(t) === 'column');
+  const bandTiers = sponsorTiers.filter(t => tierPlacement(t) === 'band');
 
   // a column is 48% of the printable width
   const columnWidth = (612 - lo.pagePadding * 2) * 0.48;
@@ -778,24 +707,76 @@ const SchedulePDF = ({
   if (endOfDayTiers.length > 0 && twoColumnLayout) {
     const sponsorHeight = estimateSponsorSectionHeight(endOfDayTiers, columnWidth);
 
-    // work backwards from the end of the schedule, so the logos land on the last
-    // page with room rather than the first
-    for (let dayIndex = paginatedSchedule.length - 1; dayIndex >= 0 && !sponsorSlot; dayIndex--) {
-      const day = paginatedSchedule[dayIndex];
-      const pageIndex = day.pages.length - 1;
-      const page = day.pages[pageIndex];
-      if (!page) continue;
-
-      const best = PLACEMENT_COLUMNS
+    const emptiestColumn = (page: PageColumns<ScheduleItem>, requireRoom: boolean) =>
+      PLACEMENT_COLUMNS
         .map(column => ({ column, remaining: columnBudget - columnFill(page, column) }))
-        .filter(c => c.remaining >= sponsorHeight)
+        .filter(c => !requireRoom || c.remaining >= sponsorHeight)
         // right column first on a tie - it reads as the end of the page
         .sort((a, b) => b.remaining - a.remaining || (a.column === 'right' ? -1 : 1))[0];
 
+    const pinnedDay = sponsorPlacement?.date
+      ? paginatedSchedule.findIndex(d => d.date === sponsorPlacement.date)
+      : -1;
+
+    if (pinnedDay >= 0) {
+      // an explicit choice wins even if the estimate says it is tight
+      const pageIndex = paginatedSchedule[pinnedDay].pages.length - 1;
+      const page = paginatedSchedule[pinnedDay].pages[pageIndex];
+      const best = page && emptiestColumn(page, false);
       if (best) {
-        sponsorSlot = `${dayIndex}-${pageIndex}-${best.column}`;
+        sponsorSlot = `${pinnedDay}-${pageIndex}-${best.column}`;
         claimedHeight.set(sponsorSlot, sponsorHeight);
       }
+    } else {
+      // work backwards from the end of the schedule, so the logos land on the
+      // last page with room rather than the first
+      for (let dayIndex = paginatedSchedule.length - 1; dayIndex >= 0 && !sponsorSlot; dayIndex--) {
+        const day = paginatedSchedule[dayIndex];
+        const pageIndex = day.pages.length - 1;
+        const page = day.pages[pageIndex];
+        if (!page) continue;
+
+        const best = emptiestColumn(page, true);
+        if (best) {
+          sponsorSlot = `${dayIndex}-${pageIndex}-${best.column}`;
+          claimedHeight.set(sponsorSlot, sponsorHeight);
+        }
+      }
+    }
+  }
+
+  // --- Band placement ---
+  // A band sits below both columns, so its room is what's left under the
+  // *taller* column. Fills the whitespace a short final page leaves behind.
+  let bandSlot: string | null = null;
+
+  if (bandTiers.length > 0) {
+    const bottomRoom = (dayIndex: number, pageIndex: number, page: PageColumns<ScheduleItem>) => {
+      // anything already dropped into a column counts against the strip below it
+      const fill = (column: 'left' | 'right') =>
+        columnFill(page, column) + (claimedHeight.get(`${dayIndex}-${pageIndex}-${column}`) ?? 0);
+      return columnBudget - Math.max(fill('left'), fill('right'));
+    };
+
+    const pinnedDay = sponsorPlacement?.date
+      ? paginatedSchedule.findIndex(d => d.date === sponsorPlacement.date)
+      : -1;
+
+    if (pinnedDay >= 0) {
+      bandSlot = `${pinnedDay}-${paginatedSchedule[pinnedDay].pages.length - 1}`;
+    } else {
+      // otherwise the page with the deepest empty strip
+      let best = -Infinity;
+      paginatedSchedule.forEach((day, dayIndex) => {
+        const pageIndex = day.pages.length - 1;
+        const page = day.pages[pageIndex];
+        if (!page) return;
+        const room = bottomRoom(dayIndex, pageIndex, page);
+        if (room > best) {
+          best = room;
+          bandSlot = `${dayIndex}-${pageIndex}`;
+        }
+      });
     }
   }
 
@@ -824,7 +805,34 @@ const SchedulePDF = ({
   // slots are keyed `${dayIndex}-${pageIndex}-${column}`
   const calloutSlots = new Set<string>();
 
-  if (callout) {
+  // targeting the dedicated sponsor page takes the callout out of column placement
+  const calloutOnSponsorPage =
+    !!callout &&
+    callout.placement?.mode === 'page' &&
+    callout.placement.page?.date === SPONSOR_PAGE_KEY;
+
+  if (calloutOnSponsorPage) {
+    // rendered with the full-page tiers further down
+  } else if (callout && callout.placement?.mode === 'page' && callout.placement.page) {
+    // explicit target: honour it whether or not the estimate says it fits
+    const { date, pageIndex } = callout.placement.page;
+    const dayIndex = paginatedSchedule.findIndex(d => d.date === date);
+    const page = dayIndex >= 0 ? paginatedSchedule[dayIndex].pages[pageIndex] : undefined;
+
+    if (page) {
+      const forcedColumn = callout.placement.column;
+      const column = forcedColumn !== 'auto'
+        ? forcedColumn
+        : PLACEMENT_COLUMNS
+            .map(c => ({
+              c,
+              remaining: columnBudget - columnFill(page, c) - (claimedHeight.get(`${dayIndex}-${pageIndex}-${c}`) ?? 0),
+            }))
+            .sort((a, b) => b.remaining - a.remaining || (a.c === 'right' ? -1 : 1))[0].c;
+
+      calloutSlots.add(`${dayIndex}-${pageIndex}-${column}`);
+    }
+  } else if (callout) {
     const mode = callout.placement?.mode ?? 'auto';
     const forcedColumn = callout.placement?.column ?? 'auto';
     const calloutHeight = estimateCalloutHeight(callout);
@@ -903,12 +911,9 @@ const SchedulePDF = ({
   // render sponsor tiers into remaining space after a day's content.
   // each tier is individually wrap={false} so react-pdf fits as many as possible
   // without breaking a single tier across pages.
-  // midPageOnly=true renders only midPage tiers; false renders end-of-day tiers (not midPage, not fullPage)
-  const renderSponsorSection = (dayDate: string, midPageOnly: boolean = false) => {
-    // only render column (non-full-page) tiers inline
-    const columnTiers = midPageOnly
-      ? sponsorTiers.filter(t => !t.fullPage && t.midPage)
-      : sponsorTiers.filter(t => !t.fullPage && !t.midPage);
+  // sideBySide lays tiers out in one row (mid-day); otherwise they stack
+  const renderSponsorSection = (dayDate: string, sideBySide: boolean, tiers: SponsorTierForPDF[]) => {
+    const columnTiers = tiers;
     if (columnTiers.length === 0) return null;
 
     // sort tiers by canonical order
@@ -969,7 +974,7 @@ const SchedulePDF = ({
 
     return (
       <View style={styles.sponsorSection}>
-        {midPageOnly ? (
+        {sideBySide ? (
           // Mid-page: all tiers side-by-side in a single row
           <View style={{ flexDirection: 'row', alignItems: 'flex-start' }} wrap={false}>
             {sortedTiers.map((tier) => renderTierBlock(tier, dayDate, true))}
@@ -1027,7 +1032,7 @@ const SchedulePDF = ({
                 <View style={styles.column}>
                   {page.left.map((item, index) => renderScheduleItem(item, index, page.left[index - 1]))}
                   {sponsorSlot === `${dayIndex}-${pageIndex}-left` &&
-                    renderSponsorSection(day.date, false)}
+                    renderSponsorSection(day.date, false, endOfDayTiers)}
                   {calloutSlots.has(`${dayIndex}-${pageIndex}-left`) &&
                     renderCallout(`callout-${dayIndex}-${pageIndex}-left`)}
                 </View>
@@ -1039,19 +1044,24 @@ const SchedulePDF = ({
                     return renderScheduleItem(item, keyIndex, prevItem);
                   })}
                   {sponsorSlot === `${dayIndex}-${pageIndex}-right` &&
-                    renderSponsorSection(day.date, false)}
+                    renderSponsorSection(day.date, false, endOfDayTiers)}
                   {calloutSlots.has(`${dayIndex}-${pageIndex}-right`) &&
                     renderCallout(`callout-${dayIndex}-${pageIndex}-right`)}
                 </View>
               </View>
-              {!isLastPageOfDay && sponsorTiers.filter(t => !t.fullPage && t.midPage).length > 0 && renderSponsorSection(day.date, true)}
+              {!isLastPageOfDay && sponsorTiers.some(t => tierPlacement(t) === 'midday') &&
+                renderSponsorSection(day.date, true, sponsorTiers.filter(t => tierPlacement(t) === 'midday'))}
+
+              {/* full-width strip under both columns, soaking up bottom whitespace */}
+              {bandSlot === `${dayIndex}-${pageIndex}` &&
+                renderSponsorSection(day.date, false, bandTiers)}
               {/* no column anywhere had room - fall back to a full-width block at the end */}
               {isLastPageOfDay && endOfDayTiers.length > 0 && !sponsorSlot &&
                 dayIndex === paginatedSchedule.length - 1 &&
-                renderSponsorSection(day.date, false)}
+                renderSponsorSection(day.date, false, endOfDayTiers)}
 
               {/* nothing had room for it (single column, or every column full) - fall back to the end of the schedule */}
-              {callout && calloutSlots.size === 0 && isLastPageOfDay && dayIndex === paginatedSchedule.length - 1 && (
+              {callout && !calloutOnSponsorPage && calloutSlots.size === 0 && isLastPageOfDay && dayIndex === paginatedSchedule.length - 1 && (
                 <View style={{ alignItems: 'center' }}>
                   <View style={{ width: '48%' }}>{renderCallout('callout-fallback')}</View>
                 </View>
@@ -1084,6 +1094,11 @@ const SchedulePDF = ({
             <View style={styles.footer}>
               <Text style={{ fontSize: 10 }}>Norfolk Waterside Marriott, Norfolk, Virginia</Text>
             </View>
+            {calloutOnSponsorPage && (
+              <View style={{ alignItems: 'center', marginTop: 10 }}>
+                <View style={{ width: '48%' }}>{renderCallout('callout-sponsor-page')}</View>
+              </View>
+            )}
             <View style={{ marginTop: 12 }}>
               {fullPageTiers.map((tier) => {
                 const multiplier = tier.sizeMultiplier || 1;
@@ -1150,6 +1165,7 @@ export const PDFDownloadButton = ({
   fileName = 'schedule.pdf',
   showConferenceModerator = false,
   callout,
+  sponsorPlacement,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -1166,6 +1182,7 @@ export const PDFDownloadButton = ({
   fileName?: string;
   showConferenceModerator?: boolean;
   callout?: ScheduleCalloutForPDF | null;
+  sponsorPlacement?: { date: string } | null;
 }) => (
   <PDFDownloadLink
     document={
@@ -1184,6 +1201,7 @@ export const PDFDownloadButton = ({
         layoutOptions={layoutOptions}
         showConferenceModerator={showConferenceModerator}
         callout={callout}
+        sponsorPlacement={sponsorPlacement}
       />
     }
     fileName={fileName}
@@ -1209,6 +1227,7 @@ export const PDFPreview = ({
   layoutOptions,
   showConferenceModerator = false,
   callout,
+  sponsorPlacement,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -1224,6 +1243,7 @@ export const PDFPreview = ({
   layoutOptions?: PDFLayoutOptions;
   showConferenceModerator?: boolean;
   callout?: ScheduleCalloutForPDF | null;
+  sponsorPlacement?: { date: string } | null;
 }) => (
   <div className="w-full h-screen">
     <PDFViewer width="100%" height="100%" style={{ border: 'none' }}>
@@ -1242,6 +1262,7 @@ export const PDFPreview = ({
         layoutOptions={layoutOptions}
         showConferenceModerator={showConferenceModerator}
         callout={callout}
+        sponsorPlacement={sponsorPlacement}
       />
     </PDFViewer>
   </div>
@@ -1263,6 +1284,7 @@ export const PDFPreviewButton = ({
   layoutOptions,
   showConferenceModerator = false,
   callout,
+  sponsorPlacement,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -1278,6 +1300,7 @@ export const PDFPreviewButton = ({
   layoutOptions?: PDFLayoutOptions;
   showConferenceModerator?: boolean;
   callout?: ScheduleCalloutForPDF | null;
+  sponsorPlacement?: { date: string } | null;
 }) => (
   <BlobProvider document={
     <SchedulePDF
@@ -1295,6 +1318,7 @@ export const PDFPreviewButton = ({
       layoutOptions={layoutOptions}
       showConferenceModerator={showConferenceModerator}
       callout={callout}
+      sponsorPlacement={sponsorPlacement}
     />
   }>
     {({ blob, url, loading, error }) => {
