@@ -179,39 +179,67 @@ const getTierPriority = (tierName: string): number => {
   return TIER_ORDER.length;
 };
 
+// react-pdf can't read Tailwind, so every class the CMS or the admin badge
+// presets can produce needs a hex here. Keep in sync with BADGE_PRESETS
+// (admin/schedules) and TIER_STYLE_PRESETS (admin/sponsors) - a class that is
+// missing falls back to the default colour, which reads as a styling bug.
+const TAILWIND_BG_HEX: Record<string, string> = {
+  'bg-red-999': '#FF3131',
+  'bg-amber-400': '#fbbf24',
+  'bg-amber-700': '#b45309',
+  'bg-yellow-300': '#fde047',
+  'bg-gray-300': '#d1d5db',
+  'bg-sky-300': '#7dd3fc',
+  'bg-blue-500': '#3b82f6',
+  'bg-blue-600': '#2563eb',
+  'bg-purple-600': '#9333ea',
+  'bg-navy-800': '#1B212B',
+  'bg-sb-100': '#3FB4E6',
+};
+
+const TAILWIND_TEXT_HEX: Record<string, string> = {
+  'text-slate-900': '#0f172a',
+  'text-white': '#ffffff',
+};
+
+/**
+ * Resolves an authored Tailwind colour string to PDF colours. Arbitrary values
+ * (bg-[#40E0D0]) win over named classes, the way Tailwind resolves them itself.
+ */
+const resolveStyleColours = (
+  style: string,
+  fallback: { backgroundColor: string; color: string }
+): { backgroundColor: string; color: string } => {
+  let { backgroundColor, color } = fallback;
+
+  const bgClass = Object.keys(TAILWIND_BG_HEX).find(cls => style.includes(cls));
+  if (bgClass) backgroundColor = TAILWIND_BG_HEX[bgClass];
+
+  const bgHex = style.match(/bg-\[(#[0-9a-fA-F]{3,8})\]/);
+  if (bgHex) backgroundColor = bgHex[1];
+
+  const textClass = Object.keys(TAILWIND_TEXT_HEX).find(cls => style.includes(cls));
+  if (textClass) color = TAILWIND_TEXT_HEX[textClass];
+
+  const textHex = style.match(/text-\[(#[0-9a-fA-F]{3,8})\]/);
+  if (textHex) color = textHex[1];
+
+  return { backgroundColor, color };
+};
+
 // convert Tailwind tier style classes to PDF-compatible colors
 const convertTierStyleToPDF = (tierName: string, style?: string): { backgroundColor: string; color: string } => {
   // if an explicit style string is provided, parse it
   if (style) {
-    let bg = '#0047AB';
-    let fg = '#ffffff';
-
-    const bgHex = style.match(/bg-\[#([0-9a-fA-F]{3,8})\]/);
-    if (bgHex) bg = `#${bgHex[1]}`;
-
-    if (style.includes('bg-amber-400')) bg = '#fbbf24';
-    else if (style.includes('bg-amber-700')) bg = '#b45309';
-    else if (style.includes('bg-gray-300')) bg = '#d1d5db';
-    else if (style.includes('bg-sky-300')) bg = '#7dd3fc';
-    else if (style.includes('bg-sb-100') || style.includes('bg-[#3FB4E6]')) bg = '#3FB4E6';
-    else if (style.includes('bg-navy-800') || style.includes('bg-[#1B212B]')) bg = '#1B212B';
-    else if (style.includes('bg-purple-600')) bg = '#9333ea';
-    else if (style.includes('bg-blue-500')) bg = '#3b82f6';
-    else if (style.includes('bg-blue-600')) bg = '#2563eb';
-    else if (style.includes('bg-yellow-300')) bg = '#fde047';
-
-    if (style.includes('text-slate-900')) fg = '#0f172a';
-    else if (style.includes('text-white')) fg = '#ffffff';
-
-    const textHex = style.match(/text-\[#([0-9a-fA-F]{3,8})\]/);
-    if (textHex) fg = `#${textHex[1]}`;
-
-    return { backgroundColor: bg, color: fg };
+    return resolveStyleColours(style, { backgroundColor: '#0047AB', color: '#ffffff' });
   }
 
-  // fallback: derive from tier name (same as getDefaultTierStyle in BannerGeneratorPage)
+  // fallback: derive from tier name. Mirrors getDefaultTierStyle in
+  // src/lib/sponsor-tier-styles.ts, plus the tiers only the PDF renders.
   const name = tierName.toLowerCase();
-  if (name.includes('small')) return { backgroundColor: '#3FB4E6', color: '#0f172a' };
+  if (name.includes('small')) return { backgroundColor: '#40E0D0', color: '#0f172a' };
+  if (name.includes('coffee')) return { backgroundColor: '#966919', color: '#ffffff' };
+  if (name.includes('panel')) return { backgroundColor: '#F33A6A', color: '#ffffff' };
   if (name.includes('gold')) return { backgroundColor: '#fbbf24', color: '#0f172a' };
   if (name.includes('silver')) return { backgroundColor: '#d1d5db', color: '#0f172a' };
   if (name.includes('bronze')) return { backgroundColor: '#b45309', color: '#ffffff' };
@@ -220,7 +248,6 @@ const convertTierStyleToPDF = (tierName: string, style?: string): { backgroundCo
   if (name.includes('diamond')) return { backgroundColor: '#3b82f6', color: '#ffffff' };
   if (name.includes('cmmc')) return { backgroundColor: '#fde047', color: '#0f172a' };
   if (name.includes('exhibitor')) return { backgroundColor: '#1B212B', color: '#ffffff' };
-  if (name.includes('coffee')) return { backgroundColor: '#0891b2', color: '#ffffff' };
   if (name.includes('vip')) return { backgroundColor: '#7dd3fc', color: '#ffffff' };
   if (name.includes('networking')) return { backgroundColor: '#0891b2', color: '#ffffff' };
   if (name.includes('luncheon')) return { backgroundColor: '#059669', color: '#ffffff' };
@@ -462,50 +489,12 @@ Font.registerHyphenationCallback((word) => {
   return [word];
 });
 
-// Function to convert Tailwind CSS classes to PDF styles
+// Speaker badge ("Gold Sponsor", "Moderator", ...) colours for the PDF
 const convertSponsorStyleToPDF = (sponsorStyle?: string) => {
-  if (!sponsorStyle) {
-    return {
-      backgroundColor: '#FF3131', // Default red
-      color: '#fff'
-    };
-  }
+  const fallback = { backgroundColor: '#FF3131', color: '#fff' };
+  if (!sponsorStyle) return fallback;
 
-  let backgroundColor = '#FF3131'; // Default red
-  let color = '#fff'; // Default white text
-
-  // Parse background colors
-  const bgHexMatch = sponsorStyle.match(/bg-\[#([0-9a-fA-F]{3,8})\]/);
-  if (bgHexMatch) {
-    backgroundColor = `#${bgHexMatch[1]}`;
-  }
-
-  if (sponsorStyle.includes('bg-red-999')) {
-    backgroundColor = '#FF3131'; // Red
-  } else if (sponsorStyle.includes('bg-sky-300')) {
-    backgroundColor = '#7dd3fc'; // Sky blue
-  } else if (sponsorStyle.includes('bg-gray-300')) {
-    backgroundColor = '#d1d5db'; // Gray
-  } else if (sponsorStyle.includes('bg-navy-800')) {
-    backgroundColor = '#1B212B';
-  }
-
-  // Parse text colors
-  const textHexMatch = sponsorStyle.match(/text-\[#([0-9a-fA-F]{3,8})\]/);
-  if (textHexMatch) {
-    color = `#${textHexMatch[1]}`;
-  }
-
-  if (sponsorStyle.includes('text-slate-900')) {
-    color = '#0f172a'; // Dark slate
-  } else if (sponsorStyle.includes('text-white')) {
-    color = '#fff'; // White
-  }
-
-  return {
-    backgroundColor,
-    color
-  };
+  return resolveStyleColours(sponsorStyle, fallback);
 };
 
 // Schedule PDF Document Component

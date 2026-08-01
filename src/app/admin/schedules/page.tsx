@@ -109,16 +109,22 @@ const emptySpeaker = (): ScheduleSpeaker => ({
   sponsorStyle: "",
 });
 
+// Sponsor badge colours track TIER_STYLE_PRESETS in the sponsors admin page,
+// so a speaker's badge matches the tier pill shown elsewhere on the site.
 const BADGE_PRESETS = [
   { label: "Conference Moderator", text: "Conference Moderator", style: "bg-red-999" },
   { label: "Panel Moderator", text: "Panel Moderator", style: "bg-sky-300 text-slate-900" },
   { label: "Moderator", text: "Moderator", style: "bg-sky-300 text-slate-900" },
   { label: "Keynote Speaker", text: "Keynote Speaker", style: "bg-sky-300 text-slate-900" },
-  { label: "Platinum Sponsor", text: "Platinum Sponsor", style: "bg-sky-300 text-slate-900" },
-  { label: "Gold Sponsor", text: "Gold Sponsor", style: "bg-[#ffaf00] text-slate-900" },
-  { label: "Silver Sponsor", text: "Silver Sponsor", style: "bg-[#C0C0C0] text-slate-900" },
-  { label: "Bronze Sponsor", text: "Bronze Sponsor", style: "bg-[#CD7F32] text-slate-900" },
-  { label: "Small Business Sponsor", text: "Small Business Sponsor", style: "bg-sb-100 text-slate-900" },
+  { label: "Platinum Sponsor", text: "Platinum Sponsor", style: "bg-blue-600 text-white" },
+  { label: "Gold Sponsor", text: "Gold Sponsor", style: "bg-amber-400 text-slate-900" },
+  { label: "Silver Sponsor", text: "Silver Sponsor", style: "bg-gray-300 text-slate-900" },
+  { label: "Bronze Sponsor", text: "Bronze Sponsor", style: "bg-amber-700 text-white" },
+  { label: "Small Business Sponsor", text: "Small Business Sponsor", style: "bg-[#40E0D0] text-slate-900" },
+  { label: "Coffee Station Sponsor", text: "Coffee Station Sponsor", style: "bg-[#966919] text-white" },
+  { label: "Major Panel Sponsor", text: "Major Panel Sponsor", style: "bg-[#F33A6A] text-white" },
+  { label: "CMMC Sponsor", text: "CMMC Sponsor", style: "bg-yellow-300 text-slate-900" },
+  { label: "Exhibitor", text: "Exhibitor", style: "bg-navy-800 text-white" },
   { label: "Pre-Recorded Address", text: "Pre-Recorded Address", style: "bg-gray-300 text-slate-900" },
   { label: "Yellow BG", text: "", style: "bg-yellow-300 text-slate-900" },
 ];

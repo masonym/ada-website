@@ -148,7 +148,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
             {
                 id: "bronze-sponsor",
                 name: "Bronze Sponsor",
-                style: "bg-amber-700 text-slate-900",
+                style: "bg-amber-700 text-white",
                 sponsorIds: [
                     "pmb-machine-works",
                 ],
@@ -278,7 +278,7 @@ export const EVENT_SPONSORS: EventSponsors[] = [
             {
                 id: "bronze-sponsor",
                 name: "Bronze Sponsors",
-                style: "bg-amber-700 text-slate-900",
+                style: "bg-amber-700 text-white",
                 sponsorIds: [
                     "trust-consulting-services",
                     "omega-technical-services",

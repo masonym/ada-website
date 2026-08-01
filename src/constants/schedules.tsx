@@ -1119,7 +1119,7 @@ export const SCHEDULES = [
                                 speakerId: "don-mcginnis",
                                 presentation: "2025 NMCPC - Don McGinnis.pdf",
                                 sponsor: "Bronze Sponsor",
-                                sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                                sponsorStyle: "bg-[#CD7F32] text-white",
                                 videoId: "aQQLSTFVviY",
                             }
                         ]
@@ -1461,7 +1461,7 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "don-mcginnis",
                             sponsor: "Bronze Sponsor",
-                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                            sponsorStyle: "bg-[#CD7F32] text-white",
                             videoId: "6QujjBzNwio",
                             presentation: "2026_DTAPC_-_Don_McGinnis.pdf",
                         }],
@@ -1599,7 +1599,7 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "tim-trapuzzano",
                             sponsor: "Bronze Sponsor",
-                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                            sponsorStyle: "bg-[#CD7F32] text-white",
                             videoId: "TMKoSgaH_Qw",
                             presentation: "2026_DTAPC_-_Dwight_Warnock.pdf"
                         }],
@@ -1796,7 +1796,7 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "dr-bruce-j-sumlin",
                             sponsor: "Bronze Sponsor",
-                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                            sponsorStyle: "bg-[#CD7F32] text-white",
                             videoId: "XyaFofOto0E",
                             presentation: "2026_DTAPC_-_Dr._Bruce_J._Sumlin.pdf",
                         }],
@@ -1813,7 +1813,7 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "joe-bonilla",
                             sponsor: "Bronze Sponsor",
-                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                            sponsorStyle: "bg-[#CD7F32] text-white",
                             videoId: "CaM25z98x7A",
                             presentation: "2026_DTAPC_-_Joe_Bonilla.pdf",
                         }],
@@ -2057,7 +2057,7 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "don-mcginnis",
                             sponsor: "Bronze Sponsor",
-                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                            sponsorStyle: "bg-[#CD7F32] text-white",
                         }],
                     },
                     {
@@ -2097,7 +2097,7 @@ export const SCHEDULES = [
                         speakers: [{
                             speakerId: "dr-bruce-j-sumlin",
                             sponsor: "Bronze Sponsor",
-                            sponsorStyle: "bg-[#CD7F32] text-slate-900",
+                            sponsorStyle: "bg-[#CD7F32] text-white",
                         }],
                     },
                     {
