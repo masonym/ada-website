@@ -665,6 +665,58 @@ const SchedulePDF = ({
   const columnFill = (page: PageColumns<ScheduleItem>, column: 'left' | 'right') =>
     (column === 'left' ? page.leftHeight : page.rightHeight) * ESTIMATE_SLACK;
 
+  /**
+   * Band tiers span the whole page, so sizing them by sponsor count wastes the
+   * width they were given. Pick the logo size that fills a row instead, then
+   * shrink if the resulting rows would outgrow the strip they live in.
+   */
+  const getBandLogoSize = (
+    sponsorCount: number,
+    multiplier: number,
+    availableWidth: number,
+    availableHeight: number
+  ) => {
+    const GAP = 10;
+    const MIN_WIDTH = 40;
+    const MAX_WIDTH = 150;
+    const ASPECT = 90 / 50; // matches the widest count-based size
+    const ROW_GAP = 8;
+
+    const arrangement = (rows: number) => {
+      const perRow = Math.ceil(sponsorCount / rows);
+      const width = Math.min(MAX_WIDTH, availableWidth / perRow - GAP);
+      const height = width / ASPECT;
+      return { perRow, rows, width, height, blockHeight: rows * (height + ROW_GAP) };
+    };
+
+    // fewer logos per row means bigger logos but more rows - take the biggest
+    // arrangement the strip can still hold, so leftover height gets used
+    let best: ReturnType<typeof arrangement> | null = null;
+    for (let rows = 1; rows <= sponsorCount; rows++) {
+      const candidate = arrangement(rows);
+      if (candidate.width < MIN_WIDTH) continue;
+      if (availableHeight > 0 && candidate.blockHeight > availableHeight) continue;
+      if (!best || candidate.width > best.width) best = candidate;
+    }
+
+    // nothing fit the strip: take the flattest arrangement and shrink into it
+    if (!best) {
+      const maxPerRow = Math.max(1, Math.floor(availableWidth / (MIN_WIDTH + GAP)));
+      best = arrangement(Math.max(1, Math.ceil(sponsorCount / maxPerRow)));
+      if (availableHeight > 0 && best.blockHeight > availableHeight) {
+        const scale = availableHeight / best.blockHeight;
+        best = { ...best, width: best.width * scale, height: best.height * scale };
+      }
+    }
+
+    return {
+      width: Math.max(1, Math.round(best.width * multiplier)),
+      height: Math.max(1, Math.round(best.height * multiplier)),
+      perRow: best.perRow,
+      blockHeight: best.blockHeight,
+    };
+  };
+
   // scale logos based on sponsor count within a tier
   const getLogoSize = (sponsorCount: number, multiplier: number = 1) => {
     let w = 60;
@@ -749,6 +801,7 @@ const SchedulePDF = ({
   // A band sits below both columns, so its room is what's left under the
   // *taller* column. Fills the whitespace a short final page leaves behind.
   let bandSlot: string | null = null;
+  let bandRoom = 0;
 
   if (bandTiers.length > 0) {
     const bottomRoom = (dayIndex: number, pageIndex: number, page: PageColumns<ScheduleItem>) => {
@@ -763,7 +816,12 @@ const SchedulePDF = ({
       : -1;
 
     if (pinnedDay >= 0) {
-      bandSlot = `${pinnedDay}-${paginatedSchedule[pinnedDay].pages.length - 1}`;
+      const pageIndex = paginatedSchedule[pinnedDay].pages.length - 1;
+      const page = paginatedSchedule[pinnedDay].pages[pageIndex];
+      if (page) {
+        bandSlot = `${pinnedDay}-${pageIndex}`;
+        bandRoom = bottomRoom(pinnedDay, pageIndex, page);
+      }
     } else {
       // otherwise the page with the deepest empty strip
       let best = -Infinity;
@@ -775,6 +833,7 @@ const SchedulePDF = ({
         if (room > best) {
           best = room;
           bandSlot = `${dayIndex}-${pageIndex}`;
+          bandRoom = room;
         }
       });
     }
@@ -912,7 +971,12 @@ const SchedulePDF = ({
   // each tier is individually wrap={false} so react-pdf fits as many as possible
   // without breaking a single tier across pages.
   // sideBySide lays tiers out in one row (mid-day); otherwise they stack
-  const renderSponsorSection = (dayDate: string, sideBySide: boolean, tiers: SponsorTierForPDF[]) => {
+  const renderSponsorSection = (
+    dayDate: string,
+    sideBySide: boolean,
+    tiers: SponsorTierForPDF[],
+    band?: { availableWidth: number; availableHeight: number }
+  ) => {
     const columnTiers = tiers;
     if (columnTiers.length === 0) return null;
 
@@ -921,10 +985,68 @@ const SchedulePDF = ({
       (a, b) => getTierPriority(a.name) - getTierPriority(b.name)
     );
 
+    // Share the strip out by sponsor count, but sequentially - a tier that
+    // needs less than its share hands the rest to the tiers after it.
+    const bandSizes = new Map<string, ReturnType<typeof getBandLogoSize>>();
+    if (band) {
+      let remainingHeight = Math.max(0, band.availableHeight - sortedTiers.length * 24 - 12);
+      let remainingSponsors = sortedTiers.reduce((n, t) => n + t.sponsors.length, 0) || 1;
+
+      sortedTiers.forEach(tier => {
+        const share = remainingHeight * (tier.sponsors.length / Math.max(1, remainingSponsors));
+        const size = getBandLogoSize(
+          tier.sponsors.length,
+          tier.sizeMultiplier || 1,
+          band.availableWidth,
+          share
+        );
+        bandSizes.set(tier.id, size);
+
+        const rows = Math.ceil(tier.sponsors.length / size.perRow);
+        remainingHeight = Math.max(0, remainingHeight - rows * (size.height + 8));
+        remainingSponsors -= tier.sponsors.length;
+      });
+    }
+
     const renderTierBlock = (tier: typeof sortedTiers[0], dayDate: string, flex?: boolean) => {
       const multiplier = tier.sizeMultiplier || 1;
-      const logoSize = getLogoSize(tier.sponsors.length, multiplier);
+      const bandSize = bandSizes.get(tier.id) ?? null;
+      const logoSize = bandSize ?? getLogoSize(tier.sponsors.length, multiplier);
       const pillStyle = convertTierStyleToPDF(tier.name, tier.style);
+
+      if (bandSize) {
+        // explicit balanced rows - the height estimate above assumes them
+        const rowCount = Math.ceil(tier.sponsors.length / bandSize.perRow);
+        return (
+          <View key={`sponsor-tier-${dayDate}-${tier.id}`} style={{ marginBottom: 4 }} wrap={false}>
+            <View style={{ alignItems: 'center', marginBottom: 4 }}>
+              <Text style={[styles.sponsorTierHeader, {
+                backgroundColor: pillStyle.backgroundColor,
+                color: pillStyle.color,
+              }]}>{tier.name}</Text>
+            </View>
+            {[...Array(rowCount)].map((_, rowIndex) => (
+              <View key={rowIndex} style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 6 }}>
+                {tier.sponsors
+                  .slice(rowIndex * bandSize.perRow, rowIndex * bandSize.perRow + bandSize.perRow)
+                  .map((sponsor) => (
+                    <View
+                      key={sponsor.id}
+                      style={[styles.sponsorLogoContainer, { width: bandSize.width + 10, height: bandSize.height }]}
+                    >
+                      <Image
+                        src={sponsor.logoUrl}
+                        style={[styles.sponsorLogo, { maxWidth: bandSize.width, maxHeight: bandSize.height }]}
+                        cache={true}
+                      />
+                    </View>
+                  ))}
+              </View>
+            ))}
+          </View>
+        );
+      }
+
       return (
         <View key={`sponsor-tier-${dayDate}-${tier.id}`} style={[{ marginBottom: 2 }, flex ? { flex: 1 } : {}]} wrap={false}>
           <View style={{ alignItems: 'center', marginBottom: 4 }}>
@@ -1054,7 +1176,10 @@ const SchedulePDF = ({
 
               {/* full-width strip under both columns, soaking up bottom whitespace */}
               {bandSlot === `${dayIndex}-${pageIndex}` &&
-                renderSponsorSection(day.date, false, bandTiers)}
+                renderSponsorSection(day.date, false, bandTiers, {
+                  availableWidth: 612 - lo.pagePadding * 2,
+                  availableHeight: bandRoom,
+                })}
               {/* no column anywhere had room - fall back to a full-width block at the end */}
               {isLastPageOfDay && endOfDayTiers.length > 0 && !sponsorSlot &&
                 dayIndex === paginatedSchedule.length - 1 &&
