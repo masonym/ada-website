@@ -5,7 +5,7 @@ import { EVENTS } from '@/constants/events';
 import { Event } from '@/types/events';
 import Image from 'next/image';
 import { getCdnPath } from '@/utils/image';
-import { PDFDownloadButton, PDFPreviewButton, SponsorTierForPDF, PDFLayoutOptions, DEFAULT_PDF_LAYOUT, ScheduleCalloutForPDF } from './SchedulePDF';
+import { PDFDownloadButton, PDFPreviewButton, SponsorTierForPDF, PDFLayoutOptions, DEFAULT_PDF_LAYOUT, ScheduleCalloutForPDF, buildLocationLine } from './SchedulePDF';
 import { EventSpeakerPublic } from '@/lib/sanity';
 import { generateQrDataUrl } from '@/utils/qr';
 import { buildCalloutFooter, buildCalloutHeading, findNextEvent, getEventRegistrationUrl } from '@/utils/event-callout';
@@ -100,6 +100,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
   const [selectedDays, setSelectedDays] = useState<string[]>(schedule?.map(day => day.date) || []);
   const [customTitle, setCustomTitle] = useState<string>('');
   const [customSubtitle, setCustomSubtitle] = useState<string>('');
+  const [customLocation, setCustomLocation] = useState<string>('');
   const [twoColumnLayout, setTwoColumnLayout] = useState<boolean>(true);
   const [showConferenceModerator, setShowConferenceModerator] = useState<boolean>(false);
   const [selectedSponsorTierIds, setSelectedSponsorTierIds] = useState<string[]>([]);
@@ -520,6 +521,20 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                 onChange={(e) => setCustomSubtitle(e.target.value)}
                 className="w-full p-2 border rounded"
               />
+            </div>
+            <div className="form-control">
+              <label htmlFor="custom-location">Location Line:</label>
+              <input
+                type="text"
+                id="custom-location"
+                value={customLocation}
+                onChange={(e) => setCustomLocation(e.target.value)}
+                placeholder={buildLocationLine(event)}
+                className="w-full p-2 border rounded"
+              />
+              <span className="text-sm text-gray-500">
+                Leave blank to use the event&rsquo;s venue and city
+              </span>
             </div>
           </div>
 
@@ -1042,6 +1057,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                 showConferenceModerator={showConferenceModerator}
                 callout={resolvedCallout}
                 sponsorPlacement={sponsorDay ? { date: sponsorDay } : null}
+                locationLine={customLocation}
               />
               
               {/* PDF Download Button */}
@@ -1062,6 +1078,7 @@ const PrintableSchedule: React.FC<PrintableScheduleProps> = ({ eventId, sanitySp
                 showConferenceModerator={showConferenceModerator}
                 callout={resolvedCallout}
                 sponsorPlacement={sponsorDay ? { date: sponsorDay } : null}
+                locationLine={customLocation}
               />
             </div>
           </div>

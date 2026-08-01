@@ -5,6 +5,14 @@ import { Document, Page, Text, View, StyleSheet, Font, PDFDownloadLink, PDFViewe
 import { Event } from '@/types/events';
 import { EventSpeakerPublic } from '@/lib/sanity';
 import { PageColumns, paginateSchedule, SPONSOR_PAGE_KEY } from '@/lib/schedule-pdf-layout';
+import { getCityAndState } from '@/utils/event-callout';
+
+/** "Hotel Polaris, Colorado Springs, Colorado" - venue plus city/state from the event */
+export const buildLocationLine = (event: Event): string => {
+  const venue = event.venueName?.trim();
+  const cityState = getCityAndState(event);
+  return [venue, cityState].filter(Boolean).join(', ') || (event.locationAddress ?? '');
+};
 
 // helper to get sanity image URL for PDF
 function getSanityImageUrl(ref: string, opts?: { width?: number; height?: number }) {
@@ -537,6 +545,7 @@ const SchedulePDF = ({
   showConferenceModerator = false,
   callout,
   sponsorPlacement,
+  locationLine,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -554,8 +563,11 @@ const SchedulePDF = ({
   callout?: ScheduleCalloutForPDF | null;
   /** pin the in-column logo block to a day's last page; omit for automatic */
   sponsorPlacement?: { date: string } | null;
+  /** overrides the venue line under the title; omit to derive it from the event */
+  locationLine?: string;
 }) => {
   const lo = { ...DEFAULT_PDF_LAYOUT, ...layoutOptions };
+  const venueLine = locationLine?.trim() || buildLocationLine(event);
 
   // Build sanity speaker lookup map - keyed by both slug and _id to handle
   // schedule items from the public GROQ (speakerId = slug.current)
@@ -1133,7 +1145,7 @@ const SchedulePDF = ({
               </View>
 
               <View style={styles.footer}>
-                <Text style={{ fontSize: 10, marginBottom: 2 }}>Norfolk Waterside Marriott, Norfolk, Virginia</Text>
+                <Text style={{ fontSize: 10, marginBottom: 2 }}>{venueLine}</Text>
               </View>
               {isPageOne && showConferenceModerator && (
                 <Text style={{ textAlign: 'center', fontSize: 10, marginBottom: 4 }}>
@@ -1217,7 +1229,7 @@ const SchedulePDF = ({
                 <Text style={{ fontSize: 12 }}>Presented by the <Text style={{ fontWeight: 'bold' }}>American Defense Alliance</Text> • <Text style={{ color: 'blue', textDecoration: 'underline' }}>www.americandefensealliance.org</Text></Text>
             </View>
             <View style={styles.footer}>
-              <Text style={{ fontSize: 10 }}>Norfolk Waterside Marriott, Norfolk, Virginia</Text>
+              <Text style={{ fontSize: 10 }}>{venueLine}</Text>
             </View>
             {calloutOnSponsorPage && (
               <View style={{ alignItems: 'center', marginTop: 10 }}>
@@ -1291,6 +1303,7 @@ export const PDFDownloadButton = ({
   showConferenceModerator = false,
   callout,
   sponsorPlacement,
+  locationLine,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -1308,6 +1321,7 @@ export const PDFDownloadButton = ({
   showConferenceModerator?: boolean;
   callout?: ScheduleCalloutForPDF | null;
   sponsorPlacement?: { date: string } | null;
+  locationLine?: string;
 }) => (
   <PDFDownloadLink
     document={
@@ -1327,6 +1341,7 @@ export const PDFDownloadButton = ({
         showConferenceModerator={showConferenceModerator}
         callout={callout}
         sponsorPlacement={sponsorPlacement}
+        locationLine={locationLine}
       />
     }
     fileName={fileName}
@@ -1353,6 +1368,7 @@ export const PDFPreview = ({
   showConferenceModerator = false,
   callout,
   sponsorPlacement,
+  locationLine,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -1369,6 +1385,7 @@ export const PDFPreview = ({
   showConferenceModerator?: boolean;
   callout?: ScheduleCalloutForPDF | null;
   sponsorPlacement?: { date: string } | null;
+  locationLine?: string;
 }) => (
   <div className="w-full h-screen">
     <PDFViewer width="100%" height="100%" style={{ border: 'none' }}>
@@ -1388,6 +1405,7 @@ export const PDFPreview = ({
         showConferenceModerator={showConferenceModerator}
         callout={callout}
         sponsorPlacement={sponsorPlacement}
+        locationLine={locationLine}
       />
     </PDFViewer>
   </div>
@@ -1410,6 +1428,7 @@ export const PDFPreviewButton = ({
   showConferenceModerator = false,
   callout,
   sponsorPlacement,
+  locationLine,
 }: {
   schedule: ScheduleDay[];
   event: Event;
@@ -1426,6 +1445,7 @@ export const PDFPreviewButton = ({
   showConferenceModerator?: boolean;
   callout?: ScheduleCalloutForPDF | null;
   sponsorPlacement?: { date: string } | null;
+  locationLine?: string;
 }) => (
   <BlobProvider document={
     <SchedulePDF
@@ -1444,6 +1464,7 @@ export const PDFPreviewButton = ({
       showConferenceModerator={showConferenceModerator}
       callout={callout}
       sponsorPlacement={sponsorPlacement}
+      locationLine={locationLine}
     />
   }>
     {({ blob, url, loading, error }) => {
