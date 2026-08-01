@@ -40,10 +40,11 @@ const resolveSpeaker = (speaker: Speaker, sanitySpeakerMap: Map<string, EventSpe
     return {
       // Start with schedule-specific data
       ...speaker,
-      // Override with resolved speaker data
-      name: speakerData.speakerName,
-      title: speakerData.speakerPosition,
-      affiliation: speakerData.speakerCompany,
+      // Per-session overrides from the schedule admin win; otherwise fall back
+      // to the speaker's Sanity profile
+      name: speaker.name?.trim() ? speaker.name : speakerData.speakerName,
+      title: speaker.title?.trim() ? speaker.title : speakerData.speakerPosition,
+      affiliation: speaker.affiliation?.trim() ? speaker.affiliation : speakerData.speakerCompany,
       photo: undefined, // Sanity uses sanityImage
       sanityImage: speakerData.speakerImage,
     };
