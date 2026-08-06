@@ -1,62 +1,43 @@
-# [American Defense Alliance Website](https://www.americandefensealliance.org/)
+# American Defense Alliance Website
 
-> A full-stack web application powering the digital presence of the American Defense Alliance—a U.S. startup supporting defense contractors, government agencies, and national security stakeholders through high-impact industry events.
+Production site for [americandefensealliance.org](https://www.americandefensealliance.org/), a U.S. company that runs industry conferences for defense contractors, government agencies, and national security stakeholders. I designed, built, and maintain this application solo as their sole engineer, from initial launch through ongoing feature work.
 
-## Overview
+## Background
 
-This platform serves as the central hub for all ADA-hosted events, including conference overviews, sponsorships, registration links, speaker rosters, and multimedia recaps. It replaces a legacy no-code prototype with a performant, scalable, and fully custom event infrastructure.
+The original ask was a push-to-market rebuild: replace a no-code prototype with a real site in about two weeks. That constraint shaped the early architecture (event content lives in typed data files rather than a CMS) and some of it is still working through the seams a year-plus later. Since launch the scope has grown well past the original site into a small internal platform: paid event registration, an admin back office non-technical staff use directly, automated attendee data pipelines, and a printable-schedule generator.
 
-This project was built in a hurry - I had about 2 weeks to build it from scratch, and I was learning TypeScript and Next.js as I went. The code is a bit messy, but it works! I plan to clean it up in the future, but for now, it's functional and serves its purpose. This was built as a push-to-market initiative for American Defense Alliance.
+## What it does
 
-## Features
+**Public site**
+- Per-event marketing pages (overview, agenda, speakers, sponsorships, venue/lodging) generated from structured event data
+- Multi-ticket-type event registration with Stripe Checkout, add-ons, tiered/early-bird pricing, and promo codes
+- Post-event recap galleries (photo/video, testimonials) built from S3-scanned media
+- Printable, print-CSS-driven event schedules with sponsor placement logic
 
-- 🔧 **Dynamic Event Architecture**  
-  Each event is dynamically generated from structured TypeScript data files—pages include overview, registration options, speaker lineups, agendas, and sponsorship packages.
+**Admin portal**
+- Password-gated internal tools for staff to manage speakers, sponsors, schedules, promo codes, and matchmaking-sponsor data without touching code
+- Direct-to-S3 uploads for speaker presentation PDFs and sponsor/event assets
+- A conference banner generator and a resend-confirmation-email tool
 
-- 🧾 **Speaker Management System**  
-  Speaker data is ingested from Google Sheets via a custom ETL pipeline and curated manually into per-event rosters using a reusable schema.
-
-- 📥 **Internal Admin Tools**  
-  Admin portal allows non-technical staff to upload speaker presentation PDFs directly to S3 for event distribution.
-
-- 💡 **Post-Event Media Galleries**  
-  Photo/video galleries with lightbox functionality and testimonial content, built for engagement and social proof.
-
-- 🚀 **Performance-Oriented Delivery**  
-  Assets delivered via CloudFront CDN and S3, optimized for low latency across the U.S. audience.
+**Behind the scenes**
+- Registration writes go through a Stripe webhook into per-event Google Sheets (the client's system of record for attendee lists), with a Playwright suite that exercises every ticket type against real Stripe test charges and Sheets rows before an event goes live
+- Speaker data is pulled from Google Sheets via a custom ETL script and curated into per-event rosters
+- A Sanity CMS integration is layered in for the content that outgrew static data files, alongside the original TypeScript event data
 
 ## Stack
 
-- **Frontend**: Next.js (App Router) + React  
-- **Styling**: Tailwind CSS  
-- **Language**: TypeScript  
-- **Infra**: AWS (CloudFront, S3), Vercel  
-- **Tooling**: Git, Neovim, custom CLI scripts
+- **Framework**: Next.js (App Router), React, TypeScript
+- **Styling**: Tailwind CSS
+- **Payments**: Stripe (Checkout, webhooks, promo codes)
+- **Data**: Sanity CMS, DynamoDB, Google Sheets API (as an attendee-data store), typed TypeScript data files
+- **Infra**: AWS S3 + CloudFront for asset delivery, Vercel for hosting, with an OpenNext/Cloudflare Workers build path for staging
+- **Testing**: Playwright (registration flow, config, and preflight smoke tests run against real Stripe/Sheets test accounts)
+- **Email**: Resend / Nodemailer for confirmations and admin notifications
 
-## Architecture Overview
+## Notes on the code
 
-- All event data is stored in structured TypeScript files, which are used for dynamic rendering. These files are stored under `src/constants`.
-- These files are _not_ fully typed, and honestly a little messy! Watch for inconsistencies in the data structure. I hope to clean them up in the future. This was my first TypeScript project, and I learned a lot about the language and its ecosystem while building this site.
-- Each event page is located at `/events/[slug]/page.tsx`.
-- Static assets are stored in S3 and served via CloudFront CDN. Generally speaking locally I use `aws s3 sync` to upload files to S3, and then use the CloudFront invalidation API to clear the cache. This is a bit of a pain, but it works.
-
-## Future Plans
-
-- **Event Registration System**  
-  Integrate a registration system for attendees to sign up for events, including payment processing and ticketing.
-- **Schedule Printing**  
-  Add a feature to automatically generate a printable schedule for each event, including all sessions and speakers. This will use data from `src/constants/schedules.ts`.
-- **Speaker Management System**  
-  Build a more robust speaker management system that allows for easy editing and updating of speaker information, including bios, photos, and presentation materials.
-- **A real DB/CMS**  
-  Integrate a real database or CMS for event data management, allowing for easier updates and content management. I still need to think more about what this might look like, and if it would be worth it.
-- **Improved Admin Tools**  
-  Build out the admin portal to include more features for managing events, speakers, and media. This will include a more robust upload system for speaker presentation PDFs, as well as a way to manage event details and schedules.
-
-## Screenshots
-
-_(To be added soon)_ – demo video + GIFs planned
+This started as my first TypeScript and Next.js project, written under a hard two-week deadline, and it shows in places — the earliest event data files are loosely typed and inconsistent, and some early routes predate patterns used later in the project. I've been steadily hardening it as I go (typed schemas, shared validation, the Playwright suite, moving content into Sanity) rather than doing a big-bang rewrite, since the site has to stay live for paying customers between conferences.
 
 ## License
 
-All rights reserved. This repository is provided for educational purposes only. You may not copy, distribute, or use this project for commercial purposes without explicit permission.
+All rights reserved. This repository is shared for portfolio purposes only; it is not licensed for reuse, redistribution, or commercial use.
