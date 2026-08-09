@@ -5,8 +5,6 @@ import { notFound } from 'next/navigation';
 import RegistrationCard from './RegistrationCard';
 import Link from 'next/link';
 import { Award, ChevronRight, Mail } from 'lucide-react';
-import SponsorProspectus from './SponsorProspectus';
-import ExhibitInstructionsButton from './ExhibitInstructionsButton';
 import { RegistrationType } from '@/types/event-registration/registration';
 import { getRegistrationsForEvent, getExhibitorsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
 

@@ -1,16 +1,10 @@
+import { s3Client, S3_BUCKET } from "@/lib/s3/client";
 import { NextRequest, NextResponse } from "next/server";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { EVENTS } from "@/constants/events";
 
 // Initialize S3 client
-const s3Client = new S3Client({
-  region: process.env.AWS_REGION || "us-west-2",
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
-  },
-});
 
 // Maximum file size (25MB)
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB in bytes
@@ -67,7 +61,7 @@ export async function POST(request: NextRequest) {
     // Create the command for generating a presigned URL
     // Note: We explicitly set the ContentType to match what the client will send
     const command = new PutObjectCommand({
-      Bucket: process.env.AWS_BUCKET_NAME || "americandefensealliance",
+      Bucket: S3_BUCKET,
       Key: s3Key,
       ContentType: fileType,
     });
@@ -76,7 +70,7 @@ export async function POST(request: NextRequest) {
     const presignedUrl = await getSignedUrl(s3Client, command, { expiresIn: 900 });
 
     // Generate the final S3 URL (for reference after upload)
-    const bucketName = process.env.AWS_BUCKET_NAME || "americandefensealliance";
+    const bucketName = S3_BUCKET;
     const region = process.env.AWS_REGION || "us-west-2";
     const fileUrl = `https://${bucketName}.s3.${region}.amazonaws.com/${s3Key}`;
 

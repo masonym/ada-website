@@ -1,28 +1,20 @@
 // utils/imageUtils.ts
-import { S3Client, ListObjectsV2Command } from "@aws-sdk/client-s3";
+import 'server-only';
+
+import { ListObjectsV2Command } from "@aws-sdk/client-s3";
 import { Event } from "@/types/events";
+import { s3Client, S3_BUCKET } from "@/lib/s3/client";
 
-export type EventImage = {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-  highlighted?: boolean;
-};
-
-const s3Client = new S3Client({
-  region: process.env.AWS_REGION || 'us-east-1',
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!
-  }
-});
+// Re-exported for existing importers; the type itself lives in @/types/eventImage
+// so client components can use it without reaching into this server-only module.
+export type { EventImage } from "@/types/eventImage";
+import type { EventImage } from "@/types/eventImage";
 
 export async function getEventImages(event: Event): Promise<EventImage[]> {
   try {
     // List all objects in the event's photos directory
     const command = new ListObjectsV2Command({
-      Bucket: process.env.AWS_S3_BUCKET_NAME!,
+      Bucket: S3_BUCKET,
       Prefix: `events/${event.eventShorthand}/photos/`,
     });
 
@@ -65,7 +57,7 @@ export async function getEventImages(event: Event): Promise<EventImage[]> {
     const images = await Promise.all(imageFiles.map(async (key, index) => {
       try {
         const headCommand = new HeadObjectCommand({
-          Bucket: process.env.AWS_S3_BUCKET_NAME!,
+          Bucket: S3_BUCKET,
           Key: key
         });
         const headResponse = await s3Client.send(headCommand);
@@ -101,7 +93,7 @@ export async function validateImagePaths(eventSlug: string): Promise<boolean> {
   try {
     // Check if there are any objects in the events/[eventSlug]/photos directory
     const command = new ListObjectsV2Command({
-      Bucket: process.env.AWS_S3_BUCKET_NAME!,
+      Bucket: S3_BUCKET,
       Prefix: `events/${eventSlug}/photos/`,
       MaxKeys: 1 // We only need to know if at least one image exists
     });

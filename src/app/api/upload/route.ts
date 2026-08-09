@@ -1,15 +1,9 @@
+import { s3Client, S3_BUCKET } from "@/lib/s3/client";
 import { NextRequest, NextResponse } from "next/server";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { EVENTS } from "@/constants/events";
 
 // Initialize S3 client
-const s3Client = new S3Client({
-  region: process.env.AWS_REGION || "us-west-2",
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
-  },
-});
 
 // Maximum file size (10MB)
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB in bytes
@@ -78,7 +72,7 @@ export async function POST(request: NextRequest) {
 
     // Upload to S3
     const command = new PutObjectCommand({
-      Bucket: process.env.AWS_BUCKET_NAME || "americandefensealliance",
+      Bucket: S3_BUCKET,
       Key: s3Key,
       Body: buffer,
       ContentType: "application/pdf",
@@ -88,7 +82,7 @@ export async function POST(request: NextRequest) {
     await s3Client.send(command);
 
     // Generate the S3 URL
-    const bucketName = process.env.AWS_BUCKET_NAME || "americandefensealliance";
+    const bucketName = S3_BUCKET;
     const region = process.env.AWS_REGION || "us-west-2";
     const fileUrl = `https://${bucketName}.s3.${region}.amazonaws.com/${s3Key}`;
 

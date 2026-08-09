@@ -1,14 +1,8 @@
-import { ListObjectsV2Command, S3Client } from "@aws-sdk/client-s3";
+import { s3Client, S3_BUCKET } from "@/lib/s3/client";
+import { ListObjectsV2Command } from "@aws-sdk/client-s3";
 import { NextRequest, NextResponse } from "next/server";
 import { EVENTS } from "@/constants/events";
 
-const s3Client = new S3Client({
-  region: process.env.AWS_REGION || "us-west-2",
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
-  },
-});
 
 export async function GET(request: NextRequest) {
   try {
@@ -28,7 +22,7 @@ export async function GET(request: NextRequest) {
 
     const prefix = `events/${event.eventShorthand}/presentations/`;
     const command = new ListObjectsV2Command({
-      Bucket: process.env.AWS_BUCKET_NAME || "americandefensealliance",
+      Bucket: S3_BUCKET,
       Prefix: prefix,
     });
 

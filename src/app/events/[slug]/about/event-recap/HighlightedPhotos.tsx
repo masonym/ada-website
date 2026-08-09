@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Masonry from 'react-masonry-css'; // Import Masonry
-import type { EventImage } from '@/utils/imageUtils';
+import type { EventImage } from '@/types/eventImage';
 import Lightbox from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";

@@ -4,6 +4,7 @@ import React from 'react'
 import ExhibitorOptions from '@/app/components/ExhibitorOptions';
 import SponsorLogos from '@/app/components/SponsorLogos';
 import { getEventSponsors } from '@/lib/sanity';
+import { getEventDocumentUrls } from '@/lib/s3/event-documents';
 
 
 
@@ -15,7 +16,10 @@ const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         notFound();
     }
 
-    const eventSponsors = await getEventSponsors(event.id);
+    const [eventSponsors, documents] = await Promise.all([
+        getEventSponsors(event.id),
+        getEventDocumentUrls(event.eventShorthand),
+    ]);
     const exhibitorTierStyles = eventSponsors?.tiers.reduce<Record<string, string>>((acc, tier) => {
         if (tier.style) {
             acc[tier.id] = tier.style;
@@ -40,6 +44,8 @@ const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
             <ExhibitorOptions
                 event={event}
                 exhibitorTierStyles={exhibitorTierStyles}
+                prospectusUrl={documents.prospectus}
+                exhibitInstructionsUrl={documents.exhibitInstructions}
             />
             
             <SponsorLogos event={event} showTiers={["Exhibitors", "Exhibitor Spotlight"]} />

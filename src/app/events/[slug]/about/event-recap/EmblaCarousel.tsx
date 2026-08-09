@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoHeight from 'embla-carousel-auto-height';
 import Autoplay from 'embla-carousel-autoplay';
-import { EventImage } from '@/utils/imageUtils';
+import type { EventImage } from '@/types/eventImage';
 import { EmblaCarouselType, EmblaEventType } from 'embla-carousel';
 import { getCdnPath } from '@/utils/image';
 import Image from 'next/image';

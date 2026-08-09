@@ -1,15 +1,9 @@
 // lib/eventRecap/metadataManager.ts
-import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
+import { s3Client, S3_BUCKET } from "@/lib/s3/client";
+import { GetObjectCommand } from "@aws-sdk/client-s3";
 import { EventRecapMetadata, SectionMetadata, PhotoMetadata } from './types';
 
 // Initialize S3 client
-const s3Client = new S3Client({
-  region: process.env.AWS_REGION || "us-west-2",
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
-  },
-});
 
 /**
  * Loads metadata overrides for an event from S3
@@ -17,7 +11,7 @@ const s3Client = new S3Client({
  */
 export async function loadEventMetadata(eventShorthand: string): Promise<EventRecapMetadata | null> {
   try {
-    const bucketName = process.env.AWS_BUCKET_NAME || "americandefensealliance";
+    const bucketName = S3_BUCKET;
     const key = `events/${eventShorthand}/metadata.json`;
     
     const command = new GetObjectCommand({

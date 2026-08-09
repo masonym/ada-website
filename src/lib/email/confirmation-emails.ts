@@ -12,7 +12,7 @@ import {
   AttendeeDetails,
   generateAttendeeDetailsHtml,
 } from './templates';
-import { fetchFileNamesFromCloud } from '@/lib/s3';
+import { listEventFiles } from '@/lib/s3/event-documents';
 import { RegistrationFormData } from '@/types/event-registration/registration';
 
 // Define ticket tiers in order of priority (highest to lowest)
@@ -265,7 +265,7 @@ export async function sendRegistrationConfirmationEmail({
   const hotelInfo = `https://americandefensealliance.org/events/${event.slug}/venue-and-lodging`;
   const vipNetworkingReception = event.vipNetworkingReception;
 
-  const bucketFiles = await fetchFileNamesFromCloud(event.eventShorthand);
+  const bucketFiles = await listEventFiles(event.eventShorthand);
   const exhibitorInstructions = bucketFiles.find(name => name.includes("Instructions"));
 
   // Get any ticket-specific attachments

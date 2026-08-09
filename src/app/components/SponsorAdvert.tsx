@@ -4,8 +4,11 @@ import { Award, ChevronRight, Mail } from "lucide-react";
 import ExhibitInstructionsButton from "./ExhibitInstructionsButton";
 import SponsorProspectus from "./SponsorProspectus";
 import { Event } from "@/types/events";
+import { getEventDocumentUrls } from "@/lib/s3/event-documents";
 
-export default function SponsorAdvert({ event }: { event: Event }) {
+export default async function SponsorAdvert({ event }: { event: Event }) {
+  const documents = await getEventDocumentUrls(event.eventShorthand);
+
   return (
     <div className="pt-6 items-center flex flex-col w-full">
       {/* Sponsorship Section */}
@@ -39,8 +42,8 @@ export default function SponsorAdvert({ event }: { event: Event }) {
         </>
       )}
 
-      <ExhibitInstructionsButton eventShorthand={event.eventShorthand} />
-      <SponsorProspectus eventShorthand={event.eventShorthand} />
+      <ExhibitInstructionsButton href={documents.exhibitInstructions} />
+      <SponsorProspectus href={documents.prospectus} />
 
       <div className="text-center w-full max-w-4xl mb-4">
         <div className="flex items-center justify-center text-gray-600 mb-2">

@@ -1,15 +1,9 @@
 // lib/eventRecap/s3Scanner.ts
-import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
+import { s3Client, S3_BUCKET } from "@/lib/s3/client";
+import { ListObjectsV2Command } from "@aws-sdk/client-s3";
 import { S3Object } from './types';
 
 // Initialize S3 client
-const s3Client = new S3Client({
-  region: process.env.AWS_REGION || "us-west-2",
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
-  },
-});
 
 export interface S3ScanOptions {
   bucketName: string;

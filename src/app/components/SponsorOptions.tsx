@@ -18,10 +18,18 @@ import EventFloorPlan from "./EventFloorPlan";
 
 export type SponsorProps = {
   event: Event;
+  /** Resolved on the server so the S3 lookup never runs in the browser. */
+  prospectusUrl?: string | null;
+  exhibitInstructionsUrl?: string | null;
   sponsorTierStyles?: Record<string, string>;
 };
 
-const SponsorOptions = ({ event, sponsorTierStyles }: SponsorProps) => {
+const SponsorOptions = ({
+  event,
+  sponsorTierStyles,
+  prospectusUrl,
+  exhibitInstructionsUrl,
+}: SponsorProps) => {
   const currentEvent = SPONSORSHIP_TYPES.find((e) => e.id === event.id);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { getSponsorCount } = useEventSponsorCounts(event.id);
@@ -124,8 +132,8 @@ const SponsorOptions = ({ event, sponsorTierStyles }: SponsorProps) => {
               className="max-w-xs sm:max-w-sm"
             />
           </div>
-          <ExhibitInstructionsButton eventShorthand={event.eventShorthand} />
-          <SponsorProspectus eventShorthand={event.eventShorthand} />
+          <ExhibitInstructionsButton href={exhibitInstructionsUrl} />
+          <SponsorProspectus href={prospectusUrl} />
           <p className="text-[20px] font-gotham text-slate-600 w-full mx-auto mb-2 text-center">
             Registered Sponsors: Please submit a high-quality logo for inclusion
             in the conference materials, along with the desired link for the
