@@ -6,12 +6,17 @@ import { sanitizeOptionalRichText } from '@/lib/html'
  * CMS-authored HTML is sanitised here, at the read boundary, rather than at each
  * of the sites that render it.
  *
- * Sponsor descriptions, speaker bios, positions and names, and schedule text all
- * reach the page through dangerouslySetInnerHTML. Sanitising on the way out of
- * this module means every consumer - the public pages, the PDF generators, the
- * printable schedule - gets clean values without each having to remember, and a
- * new consumer is safe by default. Values from src/constants are our own source
- * and are left alone.
+ * Sponsor descriptions, speaker bios and speaker names reach the page through
+ * dangerouslySetInnerHTML. Sanitising on the way out of this module means every
+ * consumer - the public pages, the PDF generators, the printable schedule - gets
+ * clean values without each having to remember, and a new consumer is safe by
+ * default. Values from src/constants are our own source and are left alone.
+ *
+ * Only fields that are genuinely authored as HTML are cleaned. A speaker's
+ * position, a session title and the keynote header are plain text in the CMS -
+ * "Founder & President" is stored with a literal ampersand - so escaping them
+ * here would have every text render show "&amp;". Those are rendered as text,
+ * which React escapes on its own.
  */
 const clean = sanitizeOptionalRichText
 export const client = createClient({
@@ -426,15 +431,13 @@ export async function getEventSpeakersPublic(eventId: number): Promise<{
       ? result.speakers
       : result.speakers.filter((s: EventSpeakerPublic) => s.isVisible)
 
-    // Name, position and bio are all rendered as HTML - names carry markup like
-    // <br/> for line breaks in the speaker cards, so they cannot simply be
-    // escaped.
+    // Name and bio are rendered as HTML - names carry markup like <br/> for line
+    // breaks in the speaker cards, so they cannot simply be escaped. Position
+    // and the keynote header are plain text, and stay that way.
     const filteredSpeakers: EventSpeakerPublic[] = visibleSpeakers.map(speaker => ({
       ...speaker,
       speakerName: clean(speaker.speakerName),
-      speakerPosition: clean(speaker.speakerPosition),
       speakerBio: clean(speaker.speakerBio),
-      keynoteHeaderText: clean(speaker.keynoteHeaderText),
     }))
 
     // separate keynotes and regular speakers
@@ -475,7 +478,6 @@ export async function getSpeakerBySlug(slug: string): Promise<SanitySpeakerPubli
     return {
       ...speaker,
       name: clean(speaker.name),
-      position: clean(speaker.position),
       bio: clean(speaker.bio),
     }
   } catch (error) {
@@ -520,8 +522,9 @@ export async function getEventSchedulePublic(eventId: number): Promise<EventSche
 
     if (!schedule) return null
 
-    // Session descriptions and the per-speaker title lines are rendered as HTML
-    // in the agenda and in the speaker modal.
+    // Session descriptions are rendered as HTML in the agenda. The per-speaker
+    // name and title lines are plain text overrides typed into the schedule
+    // admin, and are rendered as text.
     return {
       ...schedule,
       days: (schedule.days ?? []).map(day => ({
@@ -529,11 +532,6 @@ export async function getEventSchedulePublic(eventId: number): Promise<EventSche
         items: (day.items ?? []).map(item => ({
           ...item,
           description: clean(item.description),
-          speakers: (item.speakers ?? []).map(speaker => ({
-            ...speaker,
-            name: clean(speaker.name),
-            title: clean(speaker.title),
-          })),
         })),
       })),
     }

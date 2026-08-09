@@ -41,10 +41,10 @@ const ENTITY_PATTERN = /&(?:[a-zA-Z][a-zA-Z0-9]{1,31}|#\d{1,7}|#[xX][0-9a-fA-F]{
 /**
  * Escapes text that already lives in HTML, leaving existing entities alone.
  *
- * Plain escapeHtml would turn the `&amp;` in "Navy &amp; Marine Corps" - which
- * is how the CMS stores an ampersand - into `&amp;amp;`, so the page would show
- * the characters "&amp;". Entities are safe to keep: `&lt;` decodes to a literal
- * `<` in text, never to the start of a tag.
+ * Plain escapeHtml would turn an authored `&amp;` into `&amp;amp;`, so the page
+ * would show the characters "&amp;". Entities are safe to keep: `&lt;` decodes
+ * to a literal `<` in text, never to the start of a tag. Keeping them is also
+ * what makes sanitizeRichText idempotent.
  */
 function escapeHtmlPreservingEntities(value: string): string {
   // Split on entities so each run between them can be escaped in full.
@@ -149,4 +149,42 @@ export function sanitizeOptionalRichText<T extends string | undefined | null>(
   value: T
 ): T extends string ? string : T {
   return (typeof value === 'string' ? sanitizeRichText(value) : value) as never;
+}
+
+/** The entities sanitizeRichText and escapeHtml can produce, plus &nbsp;. */
+const NAMED_CHARACTERS: Record<string, string> = {
+  amp: '&',
+  lt: '<',
+  gt: '>',
+  quot: '"',
+  apos: "'",
+  nbsp: ' ',
+};
+
+/** Resolves character references in one pass, so `&amp;lt;` yields `&lt;`. */
+function decodeEntities(value: string): string {
+  return value.replace(ENTITY_PATTERN, entity => {
+    const body = entity.slice(1, -1);
+
+    if (body[0] !== '#') return NAMED_CHARACTERS[body.toLowerCase()] ?? entity;
+
+    const isHex = body[1] === 'x' || body[1] === 'X';
+    const code = parseInt(isHex ? body.slice(2) : body.slice(1), isHex ? 16 : 10);
+    return code > 0 && code <= 0x10ffff ? String.fromCodePoint(code) : entity;
+  });
+}
+
+/**
+ * Turns a sanitised HTML value back into plain text.
+ *
+ * Speaker names are authored as HTML - one carries a `<br/>` to split the
+ * parenthesised district onto its own line - but several places render a name as
+ * text rather than markup: the agenda cards, the printable schedule, and the PDF
+ * generator, which has no HTML renderer at all. Handing those the sanitised
+ * string directly shows the tags and, worse, the `&amp;` an ampersand escaped
+ * into. Tags become their text, `<br>` becomes a newline.
+ */
+export function htmlToText(html: string): string {
+  const withBreaks = html.replace(/<\/?br\s*\/?>/gi, '\n');
+  return decodeEntities(withBreaks.replace(/<[^>]*>/g, '')).trim();
 }

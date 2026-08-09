@@ -4,6 +4,7 @@ import KeynoteSpeaker from './KeynoteSpeaker';
 import { getCdnPath } from '@/utils/image';
 import { Event } from '@/types/events';
 import { EventSpeakerPublic } from '@/lib/sanity';
+import { htmlToText } from '@/lib/html';
 
 type SpeakerProps = {
     event: Event;
@@ -89,7 +90,7 @@ const Speakers = ({ event, isAuthenticated, onRequestPassword, sanitySpeakers, s
                     src={imageSrc}
                     width={256}
                     height={256}
-                    alt={speaker.name}
+                    alt={htmlToText(speaker.name)}
                     className="rounded-lg mb-4"
                     unoptimized={!!speaker.sanityImage}
                 />

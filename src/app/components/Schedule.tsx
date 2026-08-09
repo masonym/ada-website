@@ -8,6 +8,7 @@ import 'react-modal-video/css/modal-video.css';
 import { getCdnPath } from '@/utils/image';
 import { slugify } from '@/utils/slugify';
 import { EventSpeakerPublic } from '@/lib/sanity';
+import { htmlToText } from '@/lib/html';
 
 // helper to get sanity image URL
 function getSanityImageUrl(ref: string) {
@@ -41,8 +42,9 @@ const resolveSpeaker = (speaker: Speaker, sanitySpeakerMap: Map<string, EventSpe
       // Start with schedule-specific data
       ...speaker,
       // Per-session overrides from the schedule admin win; otherwise fall back
-      // to the speaker's Sanity profile
-      name: speaker.name?.trim() ? speaker.name : speakerData.speakerName,
+      // to the speaker's Sanity profile. A profile name is authored as HTML and
+      // shown here as text, so it has to be flattened first.
+      name: speaker.name?.trim() ? speaker.name : htmlToText(speakerData.speakerName),
       title: speaker.title?.trim() ? speaker.title : speakerData.speakerPosition,
       affiliation: speaker.affiliation?.trim() ? speaker.affiliation : speakerData.speakerCompany,
       photo: undefined, // Sanity uses sanityImage
@@ -131,7 +133,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
     const sanitySpeaker = sanitySpeakerMap.get(resolvedSpeaker.speakerId);
     if (sanitySpeaker) {
       setSelectedSpeaker({
-        name: sanitySpeaker.speakerName,
+        name: htmlToText(sanitySpeaker.speakerName),
         position: sanitySpeaker.speakerPosition || '',
         company: sanitySpeaker.speakerCompany || '',
         bio: sanitySpeaker.speakerBio || '',
@@ -282,7 +284,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                                   )}
                                 </div>
                               </div>
-                              {resolvedSpeaker.title && <div className="text-sm text-gray-600" dangerouslySetInnerHTML={{ __html: resolvedSpeaker.title }}></div>}
+                              {resolvedSpeaker.title && <div className="text-sm text-gray-600">{resolvedSpeaker.title}</div>}
                               {resolvedSpeaker.affiliation && <div className="text-sm text-gray-600">{resolvedSpeaker.affiliation}</div>}
                               {resolvedSpeaker.speakerId && sanitySpeakerMap.has(resolvedSpeaker.speakerId) && (
                                 <div className="text-xs text-blue-600 mt-1">Click to view bio</div>
@@ -382,7 +384,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                 {/* Speaker Info */}
                 <div className="flex-grow">
                   <h3 className="text-3xl font-bold text-navy-800 mb-2">{selectedSpeaker.name}</h3>
-                  <div className="text-lg text-gray-700 mb-2" dangerouslySetInnerHTML={{ __html: selectedSpeaker.position }}></div>
+                  <div className="text-lg text-gray-700 mb-2">{selectedSpeaker.position}</div>
                   <div className="text-lg text-gray-600 mb-4">{selectedSpeaker.company}</div>
                   
                   {selectedSpeaker.bio && (

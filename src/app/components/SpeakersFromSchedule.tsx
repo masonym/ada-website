@@ -7,6 +7,7 @@ import { EVENTS } from '@/constants/events';
 import { slugify } from '@/utils/slugify';
 import { getCdnPath } from '@/utils/image';
 import { EventSpeakerPublic } from '@/lib/sanity';
+import { htmlToText } from '@/lib/html';
 
 // helper to get sanity image URL
 function getSanityImageUrl(ref: string) {
@@ -45,7 +46,8 @@ const resolveSpeaker = (speaker: ScheduleSpeaker, sanitySpeakerMap: Map<string, 
     const s = sanitySpeakerMap.get(speaker.speakerId)!;
     return {
       ...speaker,
-      name: s.speakerName,
+      // The name is authored as HTML but shown as text on these cards.
+      name: htmlToText(s.speakerName),
       title: s.speakerPosition,
       affiliation: s.speakerCompany,
       photo: undefined, // Sanity uses sanityImage
@@ -111,7 +113,7 @@ const SpeakersFromSchedule: React.FC<Props> = ({ eventId, title, subtitle, maxSp
       const sanitySpeaker = sanitySpeakerMap.get(sp.speakerId);
       if (sanitySpeaker) {
         setSelectedSpeaker({
-          name: sanitySpeaker.speakerName,
+          name: htmlToText(sanitySpeaker.speakerName),
           position: sanitySpeaker.speakerPosition || '',
           company: sanitySpeaker.speakerCompany || '',
           bio: sanitySpeaker.speakerBio || '',
@@ -168,7 +170,7 @@ const SpeakersFromSchedule: React.FC<Props> = ({ eventId, title, subtitle, maxSp
               <div className="text-center">
                 <div className="font-semibold text-lg">{speaker.name}</div>
                 {speaker.title && (
-                  <div className="text-sm text-gray-600" dangerouslySetInnerHTML={{ __html: speaker.title }} />
+                  <div className="text-sm text-gray-600">{speaker.title}</div>
                 )}
                 {speaker.affiliation && (
                   <div className="text-sm text-gray-600">{speaker.affiliation}</div>
@@ -240,7 +242,7 @@ const SpeakersFromSchedule: React.FC<Props> = ({ eventId, title, subtitle, maxSp
                 </div>
                 <div className="flex-grow">
                   <h3 className="text-3xl font-bold text-navy-800 mb-2">{selectedSpeaker.name}</h3>
-                  <div className="text-lg text-gray-700 mb-2" dangerouslySetInnerHTML={{ __html: selectedSpeaker.position }}></div>
+                  <div className="text-lg text-gray-700 mb-2">{selectedSpeaker.position}</div>
                   <div className="text-lg text-gray-600 mb-4">{selectedSpeaker.company}</div>
                   {selectedSpeaker.bio && (
                     <div className="prose prose-lg max-w-none">

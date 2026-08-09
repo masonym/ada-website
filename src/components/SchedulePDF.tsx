@@ -4,6 +4,7 @@ import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Font, PDFDownloadLink, PDFViewer, Image, BlobProvider } from '@react-pdf/renderer';
 import { Event } from '@/types/events';
 import { EventSpeakerPublic } from '@/lib/sanity';
+import { htmlToText } from '@/lib/html';
 import { PageColumns, paginateSchedule, SPONSOR_PAGE_KEY } from '@/lib/schedule-pdf-layout';
 import { getCityAndState } from '@/utils/event-callout';
 
@@ -68,8 +69,9 @@ const resolveSpeaker = (speaker: Speaker, sanitySpeakerMap?: Map<string, EventSp
     const speakerData = sanitySpeakerMap.get(speaker.speakerId)!;
     return {
       ...speaker,
-      // Use manual overrides if they exist, otherwise fall back to Sanity data
-      name: speaker.name?.trim() ? speaker.name : speakerData.speakerName,
+      // Use manual overrides if they exist, otherwise fall back to Sanity data.
+      // react-pdf has no HTML renderer, so the authored name is flattened.
+      name: speaker.name?.trim() ? speaker.name : htmlToText(speakerData.speakerName),
       title: speaker.title?.trim() ? speaker.title : speakerData.speakerPosition,
       affiliation: speaker.affiliation?.trim() ? speaker.affiliation : speakerData.speakerCompany,
       photo: undefined, // Sanity uses sanityImage

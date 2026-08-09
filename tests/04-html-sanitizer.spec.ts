@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-import { escapeHtml, escapeHtmlWithBreaks, sanitizeRichText } from '@/lib/html';
+import { escapeHtml, escapeHtmlWithBreaks, htmlToText, sanitizeRichText } from '@/lib/html';
 
 /**
  * The sanitiser that stands between Sanity-authored copy and every event page.
@@ -95,5 +95,51 @@ test.describe('sanitizeRichText', () => {
   test('leaves plain prose exactly as written', () => {
     const input = 'Director, Office of Small Business Programs';
     expect(sanitizeRichText(input)).toBe(input);
+  });
+});
+
+/**
+ * The other half of the contract: a sanitised value is HTML, so anywhere it is
+ * rendered as text it has to come back through here first.
+ *
+ * Sanitising a speaker's position - which is plain text in the CMS, ampersand
+ * and all - turned "Founder & President" into "Founder &amp; President" on the
+ * speakers page, because that line is rendered as text. Positions are no longer
+ * sanitised; names still are, and these are the sites that flatten them.
+ */
+test.describe('htmlToText', () => {
+  test('decodes the entities escaping produced', () => {
+    expect(htmlToText(sanitizeRichText('Founder & President'))).toBe('Founder & President');
+    expect(htmlToText('Ben &amp; Co &lt;tag&gt; &quot;quoted&quot; &#39;s')).toBe(
+      `Ben & Co <tag> "quoted" 's`
+    );
+  });
+
+  test('decodes once, so an escaped entity stays visible', () => {
+    // "&amp;lt;" is how an author writes a literal "&lt;". Decoding twice would
+    // turn it into a "<" and reintroduce markup into supposedly plain text.
+    expect(htmlToText('&amp;lt;')).toBe('&lt;');
+  });
+
+  test('turns a line-break name into a real line break', () => {
+    // One CMS name splits the district onto its own line this way.
+    expect(htmlToText('Representative Neal Dunn <br/>(R-FL)')).toBe(
+      'Representative Neal Dunn \n(R-FL)'
+    );
+  });
+
+  test('drops tags and keeps their text', () => {
+    expect(htmlToText('<strong>Dr.</strong> Reynaldo A. Santana')).toBe('Dr. Reynaldo A. Santana');
+    expect(htmlToText('<a href="https://example.com">President</a>')).toBe('President');
+  });
+
+  test('leaves a name with no markup untouched', () => {
+    expect(htmlToText('Lieutenant General Darrell K. Williams, U.S. Army (Ret.)')).toBe(
+      'Lieutenant General Darrell K. Williams, U.S. Army (Ret.)'
+    );
+  });
+
+  test('decodes numeric references, including hex', () => {
+    expect(htmlToText('caf&#233; &#x2013; bar')).toBe('café – bar');
   });
 });

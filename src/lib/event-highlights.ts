@@ -1,5 +1,6 @@
 import { HIGHLIGHTS, findScheduleItem, HighlightItem } from '@/constants/highlights';
 import { getEventSpeakersPublic } from '@/lib/sanity';
+import { htmlToText } from '@/lib/html';
 
 /**
  * Resolves each highlight's session speakers ahead of render.
@@ -77,7 +78,8 @@ export async function getResolvedHighlights(
       return {
         ...ref,
         // Any name set directly on the schedule entry is a deliberate override.
-        name: ref.name?.trim() ? ref.name : sanity.speakerName,
+        // A Sanity name is authored as HTML; the modal shows it as text.
+        name: ref.name?.trim() ? ref.name : htmlToText(sanity.speakerName),
         title: ref.title?.trim() ? ref.title : sanity.speakerPosition,
         affiliation: ref.affiliation?.trim() ? ref.affiliation : sanity.speakerCompany,
         sanityImage: sanity.speakerImage,

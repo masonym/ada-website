@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { getCdnPath } from '@/utils/image';
 import { PDFDownloadButton, PDFPreviewButton, SponsorTierForPDF, PDFLayoutOptions, DEFAULT_PDF_LAYOUT, ScheduleCalloutForPDF, buildLocationLine } from './SchedulePDF';
 import { EventSpeakerPublic } from '@/lib/sanity';
+import { htmlToText } from '@/lib/html';
 import { generateQrDataUrl } from '@/utils/qr';
 import { buildCalloutFooter, buildCalloutHeading, findNextEvent, getEventRegistrationUrl } from '@/utils/event-callout';
 import { describePage, paginateSchedule, SPONSOR_PAGE_KEY } from '@/lib/schedule-pdf-layout';
@@ -49,8 +50,9 @@ const resolveSpeaker = (speaker: Speaker, sanitySpeakerMap: Map<string, EventSpe
     const speakerData = sanitySpeakerMap.get(speaker.speakerId)!;
     return {
       ...speaker,
-      // Use manual overrides if they exist, otherwise fall back to Sanity data
-      name: speaker.name?.trim() ? speaker.name : speakerData.speakerName,
+      // Use manual overrides if they exist, otherwise fall back to Sanity data.
+      // The profile name is authored as HTML and printed as text.
+      name: speaker.name?.trim() ? speaker.name : htmlToText(speakerData.speakerName),
       title: speaker.title?.trim() ? speaker.title : speakerData.speakerPosition,
       affiliation: speaker.affiliation?.trim() ? speaker.affiliation : speakerData.speakerCompany,
       photo: undefined, // Sanity uses sanityImage

@@ -135,7 +135,7 @@ const EventHighlights: React.FC<Props> = ({ highlights, title, subtitle }) => {
                       ) : null}
                       <div>
                         <div className="font-semibold">{sp.name}</div>
-                        {sp.title && <div className="text-sm text-gray-700" dangerouslySetInnerHTML={{ __html: sp.title }} />}
+                        {sp.title && <div className="text-sm text-gray-700">{sp.title}</div>}
                         {sp.affiliation && <div className="text-sm text-gray-600">{sp.affiliation}</div>}
                       </div>
                     </div>

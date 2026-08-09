@@ -6,6 +6,7 @@ import { EVENTS } from '@/constants/events';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { getCdnPath } from '@/utils/image';
 import { EventSpeakerPublic } from '@/lib/sanity';
+import { htmlToText } from '@/lib/html';
 
 type KeynoteSpeakerProps = {
   eventId: number;
@@ -99,7 +100,7 @@ const KeynoteSpeaker: React.FC<KeynoteSpeakerProps> = ({ eventId, eventShorthand
                     src={speaker.sanityImage?.asset?._ref 
                       ? getSanityImageUrl(speaker.sanityImage.asset._ref)
                       : ''}
-                    alt={speaker.name}
+                    alt={htmlToText(speaker.name)}
                     fill
                     className="rounded-full relative z-10 border-4 border-white shadow-lg object-cover"
                     unoptimized={!!speaker.sanityImage}
