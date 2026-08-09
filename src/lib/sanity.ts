@@ -490,8 +490,10 @@ export async function validatePromoCodeFromSanity(
   eventId: number
 ): Promise<{ valid: boolean; reason?: string; promoDetails?: PromoCodePublic }> {
   try {
-    const promoCode = await realtimeClient.fetch<PromoCodePublic | null>(`
-      *[_type == "promoCode" && code == $code && isActive == true][0] {
+    // the same code can exist as several documents (one per event/season), so fetch
+    // every active match and pick the one that covers the requested event
+    const promoCodes = await realtimeClient.fetch<PromoCodePublic[]>(`
+      *[_type == "promoCode" && code == $code && isActive == true] {
         _id,
         code,
         discountPercentage,
@@ -504,34 +506,42 @@ export async function validatePromoCodeFromSanity(
       }
     `, { code: code.toUpperCase() })
 
-    if (!promoCode) {
+    if (!promoCodes || promoCodes.length === 0) {
       console.log('[validatePromoCodeFromSanity] No promo code found in Sanity for code:', code.toUpperCase())
       return { valid: false, reason: 'invalid' }
     }
 
-    console.log('[validatePromoCodeFromSanity] Found promo code:', JSON.stringify({
-      code: promoCode.code,
-      eligibleEventIds: promoCode.eligibleEventIds,
-      eligibleEventIdTypes: promoCode.eligibleEventIds.map((id: any) => typeof id),
-      requestedEventId: eventId,
-      requestedEventIdType: typeof eventId,
+    // coerce to numbers to handle Sanity returning strings
+    const eventIdNum = typeof eventId === 'string' ? parseInt(eventId as string) : eventId;
+    const matchesEvent = (promo: PromoCodePublic) =>
+      (promo.eligibleEventIds || []).some(
+        (id: number | string) => (typeof id === 'string' ? parseInt(id) : id) === eventIdNum
+      );
+
+    const forEvent = promoCodes.filter(matchesEvent)
+
+    console.log('[validatePromoCodeFromSanity] Found promo codes:', JSON.stringify({
+      code: code.toUpperCase(),
+      matches: promoCodes.map(p => ({ _id: p._id, eligibleEventIds: p.eligibleEventIds })),
+      requestedEventId: eventIdNum,
+      matchingEventCount: forEvent.length,
     }))
 
-    // check expiration
-    if (new Date() > new Date(promoCode.expirationDate)) {
-      return { valid: false, reason: 'expired' }
-    }
-
-    // check if valid for this event (coerce to numbers to handle Sanity returning strings)
-    const eventIdNum = typeof eventId === 'string' ? parseInt(eventId as string) : eventId;
-    const hasEvent = promoCode.eligibleEventIds.some(
-      (id: number | string) => (typeof id === 'string' ? parseInt(id) : id) === eventIdNum
-    );
-    if (!hasEvent) {
+    if (forEvent.length === 0) {
       return { valid: false, reason: 'not_valid_for_event' }
     }
 
-    return { valid: true, promoDetails: promoCode }
+    const now = new Date()
+    // prefer an unexpired document; if several exist, take the one expiring last
+    const unexpired = forEvent
+      .filter(promo => now <= new Date(promo.expirationDate))
+      .sort((a, b) => new Date(b.expirationDate).getTime() - new Date(a.expirationDate).getTime())
+
+    if (unexpired.length === 0) {
+      return { valid: false, reason: 'expired' }
+    }
+
+    return { valid: true, promoDetails: unexpired[0] }
   } catch (error) {
     console.error('Error validating promo code:', error)
     return { valid: false, reason: 'error' }
