@@ -1,5 +1,6 @@
 import path from 'path';
 import dotenv from 'dotenv';
+import { EVENTS } from '@/constants/events';
 
 // Load env files the same way Next does, most specific first.
 // dotenv never overrides an already-set variable, so this order is the precedence order.
@@ -43,6 +44,19 @@ export const config = {
     return required('TEST_EVENT_ID');
   },
 
+  /**
+   * Events the offline specs (01-03) should check.
+   *
+   * With TEST_EVENT_ID set this is just that event, which is what you want when
+   * launching one. Unset - as in CI - it is every event, so one Playwright
+   * invocation covers the lot instead of paying ~40s of startup per event.
+   */
+  get targetEventIds(): number[] {
+    const explicit = process.env.TEST_EVENT_ID;
+    if (explicit) return [Number(explicit)];
+    return allEventIds();
+  },
+
   /** Only used in the Stripe payment description, so a placeholder is fine. */
   eventTitle: process.env.TEST_EVENT_TITLE || `Test Event ${process.env.TEST_EVENT_ID}`,
 
@@ -80,6 +94,10 @@ export const config = {
 
   runId: RUN_ID,
 };
+
+function allEventIds(): number[] {
+  return [...new Set(EVENTS.map((e) => e.id))].sort((a, b) => a - b);
+}
 
 export function isTestModeStripeKey(key: string): boolean {
   return key.startsWith('sk_test_');

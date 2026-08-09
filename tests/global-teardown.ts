@@ -9,6 +9,12 @@ import { readRows, testRows, deleteRows, sheetTarget } from './helpers/sheets';
  * inspection - they can be deleted by hand later, they all start with "ADA QA TEST".
  */
 export default async function globalTeardown() {
+  // Nothing to clean up unless a run actually targeted one event's sheet. The
+  // offline specs (01-03) write nothing, and CI runs them with neither
+  // TEST_EVENT_ID nor Google credentials.
+  if (!process.env.TEST_EVENT_ID) return;
+  if (!config.google.clientId || !config.google.refreshToken) return;
+
   if (!config.cleanupSheetRows) {
     console.log(`\n[teardown] TEST_CLEANUP_SHEET_ROWS=false - leaving "${TEST_ROW_MARKER}" rows in place.`);
     return;

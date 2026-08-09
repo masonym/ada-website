@@ -495,6 +495,9 @@ Ensure these are configured for payment processing:
 - [ ] Stripe products created (if using Stripe)
 
 ### Testing
+- [ ] Offline checks pass — `TEST_EVENT_ID=<id> npm run test:offline`
+      (config, order pricing, and the cross-file integrity check that lists every
+      registry the new event is still missing — no server or credentials needed)
 - [ ] Automated registration smoke tests pass — `TEST_EVENT_ID=<id> npm run test:registration`
       (covers every ticket/exhibit/sponsorship type against Stripe test mode and the event's
       Google Sheet, then cleans the rows up — see `tests/README.md`)

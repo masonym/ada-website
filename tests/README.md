@@ -19,11 +19,17 @@ TEST_EVENT_ID=7 npm run test:registration
 Useful variations:
 
 ```bash
+npm run test:offline                       # every offline check, every event, ~45s
+TEST_EVENT_ID=7 npm run test:offline       # the same checks for one event
 npm run test:preflight                     # credentials/connectivity only, no charges
-npx playwright test tests/01-event-config.spec.ts   # offline config checks, no server needed
 npx playwright test -g "Attendee Pass"     # one ticket type
 TEST_CLEANUP_SHEET_ROWS=false npm run test:registration   # keep the rows to eyeball them
 ```
+
+`test:offline` is what CI runs on every push (`.github/workflows/ci.yml`), alongside
+`npm run typecheck` and `npm run lint`. It needs no server, no Stripe key and no Google
+credentials, so it cannot charge anything or touch a live sheet. With `TEST_EVENT_ID`
+unset the specs cover every event in one run; set it to narrow to the one being launched.
 
 ## What each file covers
 
@@ -31,6 +37,8 @@ TEST_CLEANUP_SHEET_ROWS=false npm run test:registration   # keep the rows to eye
 | --- | --- | --- |
 | `00-preflight.spec.ts` | Stripe + Google + app | Env vars set, Stripe key is test mode and works, register/webhook routes reachable, event maps to a real spreadsheet + tab with the right columns, event has purchasable options. Prints the full ticket list with resolved prices. |
 | `01-event-config.spec.ts` | nothing | Unique ids and titles, every paid option resolves to a positive price, early-bird/tier pricing is coherent and climbs over time, price still resolves once all deadlines lapse. |
+| `03-event-data-integrity.spec.ts` | nothing | Cross-file integrity: every event has an entry in each core registry (or a declared reason in `KNOWN_ABSENT`), no registry points at an event that does not exist, `relatedEventId`/`testimonialsFromEventId`/`links` resolve, every nav item maps to a real route, and the sitemap derives the same URL segments the navbar does. This is the check that tells you what a new event is still missing. |
+| `02-order-pricing.spec.ts` | nothing | Server-side order pricing: the resolver prices every catalogue option correctly, ignores tampered `ticketPrices` (a $1 or $0 client price still charges the configured amount), rejects unknown ticket ids instead of pricing them at 0, enforces `maxQuantityPerOrder` and `saleEndTime`, and only allows complimentary sponsor passes alongside the sponsorship that includes them. |
 | `10-registration-flow.spec.ts` | Stripe + Google + app | The real thing, per ticket type — see below. |
 
 The flow spec generates one test per purchasable option, plus:
@@ -120,11 +128,9 @@ The preflight spec prints every endpoint Stripe delivers to.
 
 ## Known gaps
 
-- **Client-supplied prices are trusted.** `/api/event-registration/register` prefers
-  `body.ticketPrices[ticketId]` over the configured price, so a tampered request can set its
-  own amount. The tests deliberately don't assert on this — they'd fail against current
-  behaviour. Worth fixing separately (ignore the client price for known ticket ids).
 - Code-gated tickets (`requiresCode`) and order-id validation for additional passes are
-  enforced in the modal, not the API, so the tests don't exercise those gates.
+  enforced in the modal, not the API, so the tests don't exercise those gates. Quantity
+  limits, sale windows and complimentary sponsor passes *are* now enforced server-side —
+  see `02-order-pricing.spec.ts`.
 - The Stripe Elements card UI is not driven; payments are confirmed server-side with test
   payment methods.

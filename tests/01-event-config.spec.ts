@@ -6,8 +6,9 @@ import { getTestableItems, effectivePrice } from './helpers/tickets';
  * Offline checks on the event's registration configuration. These need no network,
  * no Stripe and no sheet - run them as soon as the constants for a new event are in.
  */
-test.describe(`event ${config.eventId} - registration config`, () => {
-  const items = getTestableItems(config.eventId);
+for (const eventId of config.targetEventIds) {
+test.describe(`event ${eventId} - registration config`, () => {
+  const items = getTestableItems(eventId);
   const now = new Date();
 
   test('every registration option has a unique id and title', () => {
@@ -88,3 +89,4 @@ test.describe(`event ${config.eventId} - registration config`, () => {
     expect(live.length, 'nothing is purchasable for this event today').toBeGreaterThan(0);
   });
 });
+}
