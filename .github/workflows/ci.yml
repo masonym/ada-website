@@ -1,0 +1,48 @@
+name: CI
+
+# Everything here runs without secrets: no Stripe key, no Google credentials, no
+# AWS. That is deliberate - it means CI runs on every push including from forks,
+# and nothing in the pipeline can charge a card or write to a live spreadsheet.
+# The charging tests (tests/10-registration-flow.spec.ts) stay a manual,
+# pre-launch step: see tests/README.md.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Typecheck, lint and offline tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      # Warnings are expected and do not fail the build - see the note in
+      # .eslintrc.js. Errors do.
+      - name: Lint
+        run: npm run lint
+
+      - name: Offline tests
+        # Config, order pricing and cross-file event data integrity, across
+        # every event. No TEST_EVENT_ID, so the specs cover all of them in one
+        # run rather than one invocation each.
+        run: npm run test:offline

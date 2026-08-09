@@ -46,12 +46,21 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Media lives in S3/CloudFront, not the repo. Fonts are the exception - they are
+# imported by globals.css and the build needs them.
 /public/*
 !/public/fonts
 !/public/fonts/**
 
-src/scripts/
+# Bulk image input/output for the conversion scripts. The scripts themselves are
+# code and ARE tracked - they used to be ignored along with their working
+# directories, so `npm run process-images` and `npm run convert-images` pointed
+# at files that were not in the repo.
+src/scripts/input/
+src/scripts/output/
+src/scripts/speakers-output/
 
-/scripts
+# Google service-account credentials used by the speaker import script.
+scripts/credentials.json
 
 
