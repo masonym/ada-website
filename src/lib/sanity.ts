@@ -1,5 +1,19 @@
 import { createClient } from '@sanity/client'
 import { createImageUrlBuilder } from '@sanity/image-url'
+import { sanitizeOptionalRichText } from '@/lib/html'
+
+/**
+ * CMS-authored HTML is sanitised here, at the read boundary, rather than at each
+ * of the sites that render it.
+ *
+ * Sponsor descriptions, speaker bios, positions and names, and schedule text all
+ * reach the page through dangerouslySetInnerHTML. Sanitising on the way out of
+ * this module means every consumer - the public pages, the PDF generators, the
+ * printable schedule - gets clean values without each having to remember, and a
+ * new consumer is safe by default. Values from src/constants are our own source
+ * and are left alone.
+ */
+const clean = sanitizeOptionalRichText
 export const client = createClient({
   projectId: 'nc4xlou0',
   dataset: 'production',
@@ -83,13 +97,22 @@ export async function getAllSponsors(): Promise<Record<string, SanitySponsor>> {
   `)
   
   return sponsors.reduce((acc, sponsor) => {
-    acc[sponsor._id] = sponsor
+    acc[sponsor._id] = cleanSponsor(sponsor)
     return acc
   }, {} as Record<string, SanitySponsor>)
 }
 
+/** Sponsor descriptions are rendered as HTML in the sponsor strips and cards. */
+function cleanSponsor(sponsor: SanitySponsor): SanitySponsor {
+  return {
+    ...sponsor,
+    description: clean(sponsor.description),
+    matchmakingDescription: clean(sponsor.matchmakingDescription),
+  }
+}
+
 export async function getEventSponsors(eventId: number): Promise<SanityEventSponsor | null> {
-  return await client.fetch<SanityEventSponsor | null>(
+  const eventSponsor = await client.fetch<SanityEventSponsor | null>(
     `*[_type == "eventSponsor" && eventId == $eventId][0] {
       _id,
       eventId,
@@ -110,6 +133,17 @@ export async function getEventSponsors(eventId: number): Promise<SanityEventSpon
     { eventId },
     { next: { revalidate: REVALIDATE_SECONDS } }
   )
+
+  if (!eventSponsor) return null
+
+  return {
+    ...eventSponsor,
+    description: clean(eventSponsor.description),
+    tiers: (eventSponsor.tiers ?? []).map(tier => ({
+      ...tier,
+      description: clean(tier.description),
+    })),
+  }
 }
 
 export async function getEventTierSponsors(eventId: number, tierId: string): Promise<SanitySponsor[]> {
@@ -119,7 +153,7 @@ export async function getEventTierSponsors(eventId: number, tierId: string): Pro
   const tier = event.tiers.find(t => t.id === tierId)
   if (!tier) return []
   
-  return await client.fetch<SanitySponsor[]>(
+  const sponsors = await client.fetch<SanitySponsor[]>(
     `*[_type == "sponsor" && _id in $sponsorIds] {
       _id,
       name,
@@ -135,6 +169,8 @@ export async function getEventTierSponsors(eventId: number, tierId: string): Pro
     { sponsorIds: tier.sponsors.map(s => s._ref) },
     { next: { revalidate: REVALIDATE_SECONDS } }
   )
+
+  return sponsors.map(cleanSponsor)
 }
 
 // matchmaking sponsors types
@@ -207,7 +243,7 @@ export async function getEventMatchmakingSponsors(eventSlug: string): Promise<{
     )
 
     // create a map for quick lookup
-    const sponsorMap = new Map(sponsorsData.map(s => [s._id, s]))
+    const sponsorMap = new Map(sponsorsData.map(s => [s._id, cleanSponsor(s)]))
 
     // preserve order from rawData.sponsors and include notes
     const sponsorsWithNotes: MatchmakingSponsorWithNote[] = rawData.sponsors
@@ -231,7 +267,7 @@ export async function getEventMatchmakingSponsors(eventSlug: string): Promise<{
     return {
       sponsors: sponsorsWithNotes,
       title: rawData.title,
-      description: rawData.description
+      description: clean(rawData.description)
     }
   } catch (error) {
     console.error('Error fetching matchmaking sponsors:', error)
@@ -386,9 +422,20 @@ export async function getEventSpeakersPublic(eventId: number): Promise<{
     // on staging, show all speakers regardless of visibility
     // on production, only show visible speakers
     const showAll = isStaging()
-    const filteredSpeakers = showAll 
-      ? result.speakers 
+    const visibleSpeakers: EventSpeakerPublic[] = showAll
+      ? result.speakers
       : result.speakers.filter((s: EventSpeakerPublic) => s.isVisible)
+
+    // Name, position and bio are all rendered as HTML - names carry markup like
+    // <br/> for line breaks in the speaker cards, so they cannot simply be
+    // escaped.
+    const filteredSpeakers: EventSpeakerPublic[] = visibleSpeakers.map(speaker => ({
+      ...speaker,
+      speakerName: clean(speaker.speakerName),
+      speakerPosition: clean(speaker.speakerPosition),
+      speakerBio: clean(speaker.speakerBio),
+      keynoteHeaderText: clean(speaker.keynoteHeaderText),
+    }))
 
     // separate keynotes and regular speakers
     const keynoteSpeakers = filteredSpeakers
@@ -411,7 +458,7 @@ export async function getEventSpeakersPublic(eventId: number): Promise<{
 // get a single speaker by slug (for speaker detail pages if needed)
 export async function getSpeakerBySlug(slug: string): Promise<SanitySpeakerPublic | null> {
   try {
-    return client.fetch(`
+    const speaker = await client.fetch<SanitySpeakerPublic | null>(`
       *[_type == "speaker" && slug.current == $slug][0] {
         _id,
         name,
@@ -422,6 +469,15 @@ export async function getSpeakerBySlug(slug: string): Promise<SanitySpeakerPubli
         bio
       }
     `, { slug })
+
+    if (!speaker) return null
+
+    return {
+      ...speaker,
+      name: clean(speaker.name),
+      position: clean(speaker.position),
+      bio: clean(speaker.bio),
+    }
   } catch (error) {
     console.error('Error fetching speaker:', error)
     return null
@@ -430,7 +486,7 @@ export async function getSpeakerBySlug(slug: string): Promise<SanitySpeakerPubli
 
 export async function getEventSchedulePublic(eventId: number): Promise<EventSchedulePublic | null> {
   try {
-    return client.fetch<EventSchedulePublic | null>(`
+    const schedule = await client.fetch<EventSchedulePublic | null>(`
       *[_type == "eventSchedule" && eventId == $eventId][0] {
         _id,
         eventId,
@@ -461,6 +517,26 @@ export async function getEventSchedulePublic(eventId: number): Promise<EventSche
         }, [])
       }
     `, { eventId }, { next: { revalidate: 60 } })
+
+    if (!schedule) return null
+
+    // Session descriptions and the per-speaker title lines are rendered as HTML
+    // in the agenda and in the speaker modal.
+    return {
+      ...schedule,
+      days: (schedule.days ?? []).map(day => ({
+        ...day,
+        items: (day.items ?? []).map(item => ({
+          ...item,
+          description: clean(item.description),
+          speakers: (item.speakers ?? []).map(speaker => ({
+            ...speaker,
+            name: clean(speaker.name),
+            title: clean(speaker.title),
+          })),
+        })),
+      })),
+    }
   } catch (error) {
     console.error('Error fetching event schedule:', error)
     return null
