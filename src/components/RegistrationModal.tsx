@@ -46,7 +46,6 @@ import {
 } from "@/lib/registration-adapters";
 import { useEventSponsorCounts } from "@/hooks/useEventSponsorCounts";
 import { isEligibleForPromoDiscount, type PromoCode } from "@/lib/promo-codes";
-import { getEnv } from "@/lib/env";
 
 interface EventWithContact extends Omit<Event, "id"> {
   contactInfo?: {
@@ -90,8 +89,7 @@ interface RegistrationModalProps {
   initialPromoCode?: string; // Optional promo code to auto-apply from URL
 }
 
-const env = getEnv();
-const stripePromise = loadStripe(env.STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");
 
 const initialModalAttendeeInfo: ModalAttendeeInfo = {
   firstName: "",

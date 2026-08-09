@@ -169,4 +169,6 @@ const StripePaymentForm = forwardRef<StripePaymentFormRef, StripePaymentFormProp
   );
 });
 
+StripePaymentForm.displayName = 'StripePaymentForm';
+
 export default StripePaymentForm;
