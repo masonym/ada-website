@@ -1,15 +1,22 @@
 import { NAV_LINKS } from "@/constants"
-import { EVENTS } from "@/constants/events"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { ChevronDown, X } from 'lucide-react'
+import type { EventLinkSummary } from "@/lib/events"
 
 type HamburgerMenuProps = {
   isOpen: boolean,
-  onClose: () => void
+  onClose: () => void,
+  /**
+   * Same list the desktop nav gets. This used to filter EVENTS itself on
+   * `timeStart >= now` while the desktop nav filtered on `timeEnd >= now`, so an
+   * event that had started but not finished disappeared from the mobile menu
+   * while still showing on desktop.
+   */
+  upcomingEvents?: EventLinkSummary[]
 }
 
-const Hamburger = ({ isOpen, onClose }: HamburgerMenuProps) => {
+const Hamburger = ({ isOpen, onClose, upcomingEvents = [] }: HamburgerMenuProps) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -33,14 +40,7 @@ const Hamburger = ({ isOpen, onClose }: HamburgerMenuProps) => {
     setIsDropdownOpen(!isDropdownOpen);
   }
 
-  const now = new Date();
-  const sortedEvents = [...EVENTS]
-    .filter(event => new Date(event.timeStart) >= now && event.shown !== false)
-    .sort((a, b) => {
-      const dateA = new Date(a.timeStart);
-      const dateB = new Date(b.timeStart);
-      return dateA.getTime() - dateB.getTime();
-    });
+  const sortedEvents = upcomingEvents;
 
   return (
     <div

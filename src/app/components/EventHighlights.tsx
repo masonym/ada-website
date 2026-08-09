@@ -2,60 +2,40 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { HIGHLIGHTS, findScheduleItem, HighlightItem } from '@/constants/highlights';
-import { EVENTS } from '@/constants/events';
+import type { ResolvedHighlight, HighlightSpeaker } from '@/lib/event-highlights';
 import { getCdnPath } from '@/utils/image';
-import { EventSpeakerPublic } from '@/lib/sanity';
+
+// Sanity image refs look like "image-<assetId>-<dimensions>-<format>".
+function getSanityImageUrl(ref: string) {
+  return `https://cdn.sanity.io/images/nc4xlou0/production/${ref
+    .replace('image-', '')
+    .replace('-webp', '.webp')
+    .replace('-jpg', '.jpg')
+    .replace('-png', '.png')}`;
+}
 
 type Props = {
-  sourceEventId: number;
+  /** Highlights with their session speakers already resolved on the server. */
+  highlights: ResolvedHighlight[];
   title?: string;
   subtitle?: string;
-  sanitySpeakers?: EventSpeakerPublic[] | null;
 };
 
-type ScheduleSpeaker = {
-  name?: string;
-  title?: string;
-  affiliation?: string;
-  photo?: string;
-  sanityImage?: { asset: { _ref: string } };
-  speakerId?: string;
-};
-
-const resolveSpeaker = (sp: ScheduleSpeaker, sanitySpeakerMap: Map<string, EventSpeakerPublic>): ScheduleSpeaker => {
-  // For past events, we don't have Sanity data, so return speaker as-is
-  // The schedule data should already have the speaker names populated
-  return sp;
-};
-
-const EventHighlights: React.FC<Props> = ({ sourceEventId, title, subtitle, sanitySpeakers }) => {
-  const items: HighlightItem[] = HIGHLIGHTS[sourceEventId] || [];
-  const sourceEvent = EVENTS.find((e) => e.id === sourceEventId);
-
+/**
+ * Highlights carry their speakers with them now. This component used to import
+ * constants/highlights to look them up on click - and that module imports
+ * SCHEDULES, so every event's full agenda shipped to the browser on a page where
+ * the modal is usually never opened.
+ */
+const EventHighlights: React.FC<Props> = ({ highlights, title, subtitle }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState<string>('');
-  const [modalSpeakers, setModalSpeakers] = useState<ScheduleSpeaker[]>([]);
+  const [modalSpeakers, setModalSpeakers] = useState<HighlightSpeaker[]>([]);
 
-  // build sanity speaker map
-  const sanitySpeakerMap = new Map<string, EventSpeakerPublic>();
-  if (sanitySpeakers) {
-    sanitySpeakers.forEach(s => {
-      if (s.speakerSlug) sanitySpeakerMap.set(s.speakerSlug, s);
-    });
-  }
+  if (highlights.length === 0) return null;
 
-  if (!sourceEvent || items.length === 0) return null;
-
-  const openSpeakersModal = (h: HighlightItem) => {
-    const dayArg = (h.sessionDayDate || typeof h.sessionDayIndex === 'number')
-      ? { date: h.sessionDayDate, index: h.sessionDayIndex }
-      : undefined;
-    const matched = findScheduleItem(sourceEventId, h.sessionTime, h.sessionTitle, dayArg);
-    const speakers = matched && 'speakers' in matched.item && matched.item.speakers
-      ? (matched.item.speakers as ScheduleSpeaker[]).map(sp => resolveSpeaker(sp, sanitySpeakerMap))
-      : [];
-    setModalSpeakers(speakers);
+  const openSpeakersModal = (h: ResolvedHighlight) => {
+    setModalSpeakers(h.speakers);
     setModalTitle(h.sessionTitle || 'Session');
     setIsModalOpen(true);
   };
@@ -75,7 +55,7 @@ const EventHighlights: React.FC<Props> = ({ sourceEventId, title, subtitle, sani
         {subtitle && <h4 className="text-lg text-center mb-8 text-slate-600">{subtitle}</h4>}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-          {items.map((h, idx) => (
+          {highlights.map((h, idx) => (
             <div
               key={idx}
               className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg flex flex-col h-full"
@@ -135,7 +115,16 @@ const EventHighlights: React.FC<Props> = ({ sourceEventId, title, subtitle, sani
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {modalSpeakers.map((sp, i) => (
                     <div key={i} className="flex items-center gap-4">
-                      {sp.photo && (
+                      {sp.sanityImage?.asset?._ref ? (
+                        <Image
+                          src={getSanityImageUrl(sp.sanityImage.asset._ref)}
+                          alt={sp.name || 'Speaker'}
+                          width={64}
+                          height={64}
+                          className="rounded-full object-cover"
+                          unoptimized
+                        />
+                      ) : sp.photo ? (
                         <Image
                           src={getCdnPath(`speakers/${sp.photo}`)}
                           alt={sp.name || 'Speaker'}
@@ -143,7 +132,7 @@ const EventHighlights: React.FC<Props> = ({ sourceEventId, title, subtitle, sani
                           height={64}
                           className="rounded-full object-cover"
                         />
-                      )}
+                      ) : null}
                       <div>
                         <div className="font-semibold">{sp.name}</div>
                         {sp.title && <div className="text-sm text-gray-700" dangerouslySetInnerHTML={{ __html: sp.title }} />}

@@ -5,8 +5,7 @@ import { Users, Clock, CheckCircle, UserPlus, Building2, Briefcase, GraduationCa
 import { RiGovernmentLine } from "react-icons/ri";
 import Link from 'next/link';
 import Image from 'next/image';
-import { EVENTS } from '@/constants/events';
-import { notFound, useParams } from 'next/navigation';
+import { Event } from '@/types/events';
 import { MatchmakingSponsorWithNote, SanitySponsor, urlFor } from '@/lib/sanity';
 import { getCdnPath } from '@/utils/image';
 
@@ -18,6 +17,12 @@ type MatchmakingData = {
 
 interface MatchmakingPageProps {
   matchmakingData: MatchmakingData;
+  /**
+   * Resolved by the server page, which already looks it up. This component used
+   * to import EVENTS and search it again by useParams().slug - a second lookup
+   * that also pulled every event's data into the browser bundle.
+   */
+  event: Event;
 }
 
 // helper to get logo URL - handles both Sanity images and legacy file paths
@@ -84,14 +89,7 @@ const MatchmakingSponsorCard: React.FC<{ sponsor: SanitySponsor; note?: string }
   );
 };
 
-const MatchmakingPage = ({ matchmakingData }: MatchmakingPageProps) => {
-  const { slug } = useParams();
-  const event = EVENTS.find(e => e.slug === slug);
-
-  if (!event) {
-    notFound();
-  }
-
+const MatchmakingPage = ({ matchmakingData, event }: MatchmakingPageProps) => {
   const benefits = [
     { title: "Direct Connections", description: "Establish direct connections that could lead to contracts and partnerships" },
     { title: "Enhanced Visibility", description: "Gain visibility for small businesses in a competitive market" },

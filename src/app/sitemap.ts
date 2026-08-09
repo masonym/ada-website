@@ -1,78 +1,80 @@
-// app/sitemap.ts
 import { MetadataRoute } from 'next';
-import { EVENTS } from '@/constants/events';
-import { EVENT_NAVS } from '@/constants/eventNavs';
+import { getAllEvents, getEventBundleForEvent } from '@/lib/events';
+import { eventNavPaths } from '@/lib/event-nav-path';
 
-// Helper function to extract paths from nav items
-function getEventPaths(eventId: number) {
-  const eventNav = EVENT_NAVS.find(nav => nav.eventId === eventId);
-  if (!eventNav) return [];
+/**
+ * The site's sitemap.
+ *
+ * This is now the only generator. next-sitemap used to run as a postbuild step
+ * and write public/sitemap.xml, and static files in public/ take precedence over
+ * App Router route handlers - so this file was dead code and Google was being
+ * served the generated one instead: 32 URLs with no event sub-pages, /admin and
+ * /dev/email-preview included, and /robots.txt listed as an indexable page.
+ *
+ * Sub-page URLs are derived from EVENT_NAVS through the same helper the navbar
+ * links with, so the sitemap cannot advertise a URL the navigation does not
+ * produce. tests/03-event-data-integrity.spec.ts checks those resolve to real
+ * routes on disk.
+ */
 
-  const paths: string[] = [];
-  
-  eventNav.items.forEach(item => {
-    if (item.path && item.path !== '/') {
-      paths.push(item.path);
-    }
-    if (item.subItems) {
-      item.subItems.forEach(subItem => {
-        // Convert parent label to URL-friendly format and use as prefix
-        const parentPath = item.label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-        paths.push(`${parentPath}/${subItem.path}`);
-      });
-    }
-  });
+const BASE_URL = 'https://www.americandefensealliance.org';
 
-  return paths;
-}
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.americandefensealliance.org';
+  const now = new Date();
 
-  // Generate URLs for each event and its sub-pages
-  const eventUrls = EVENTS.flatMap((event) => {
-    const eventPaths = getEventPaths(event.id);
-    
-    // Base event URL
-    const urls = [{
-      url: `${baseUrl}/events/${event.slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    }];
+  const eventUrls = getAllEvents()
+    // `shown: false` is how an event is staged before announcement. Advertising
+    // it to a crawler is exactly what that flag exists to prevent.
+    .filter(event => event.shown !== false)
+    .flatMap(event => {
+      const { navItems } = getEventBundleForEvent(event);
+      const hasFinished = Boolean(event.timeEnd) && new Date(event.timeEnd) < now;
 
-    // Add URLs for each path from navigation
-    const subPageUrls = eventPaths.map(path => ({
-      url: `${baseUrl}/events/${event.slug}/${path}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.6,
-    }));
+      // Finished events keep their pages - recaps, photos and agendas are what
+      // ranks for "2025 Navy & Marine Corps Procurement Conference" and is the
+      // evidence a prospective sponsor looks for. They are demoted rather than
+      // dropped, and crawled rarely, because the content stops changing.
+      const priority = hasFinished ? 0.4 : 0.8;
+      const changeFrequency = hasFinished ? ('yearly' as const) : ('weekly' as const);
 
-    return [...urls, ...subPageUrls];
-  });
+      return [
+        {
+          url: `${BASE_URL}/events/${event.slug}`,
+          lastModified: now,
+          changeFrequency,
+          priority,
+        },
+        ...eventNavPaths(navItems).map(path => ({
+          url: `${BASE_URL}/events/${event.slug}/${path}`,
+          lastModified: now,
+          changeFrequency,
+          priority: priority - 0.2,
+        })),
+      ];
+    });
 
   return [
     {
-      url: baseUrl,
-      lastModified: new Date(),
+      url: BASE_URL,
+      lastModified: now,
       changeFrequency: 'daily',
       priority: 1,
     },
     {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/about`,
+      lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/contact-us`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/contact-us`,
+      lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/events`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/events`,
+      lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.7,
     },

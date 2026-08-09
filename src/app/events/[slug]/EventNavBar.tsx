@@ -1,19 +1,29 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
-import { notFound } from "next/navigation";
 
-import { EVENTS } from "@/constants/events";
-import { EVENT_NAVS } from "@/constants/eventNavs";
+import { Event } from "@/types/events";
+import { eventPageUrl, navGroupPath } from "@/lib/event-nav-path";
 import Button from "@/app/components/Button";
 import RegistrationModal from "@/components/RegistrationModal";
 
-export default function Navbar() {
-    const params = useParams();
-    const event = EVENTS.find(event => event.slug === params?.slug);
+type NavItem = {
+    label: string;
+    path?: string;
+    subItems?: Array<{ label: string; path: string }>;
+};
+
+/**
+ * Per-event navigation.
+ *
+ * The event and its nav items are resolved on the server in the layout and
+ * passed in. This used to import EVENTS and EVENT_NAVS and search them by
+ * useParams().slug, which put every event's data in the browser bundle of every
+ * event sub-page.
+ */
+export default function EventNavBar({ event, navItems }: { event: Event; navItems: NavItem[] }) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [dropdownIndex, setDropdownIndex] = useState<number | null>(null);
 
@@ -44,23 +54,7 @@ export default function Navbar() {
         setDropdownIndex(null);
     };
 
-    if (!event) {
-        notFound();
-    }
 
-    const navItems = EVENT_NAVS.find((nav: any) => nav.eventId === event.id)?.items || [];
-
-
-
-    const labelToPath = (label: string) => {
-        // replace & with dash
-        // label = label.split(' ')[0];
-        label = label.replace('&', '-');
-        // replace all spaces with empty string
-        label = label.replace(/\s/g, '');
-        // get just first word
-        return label.toLowerCase();
-    }
 
     return (
         <nav className="z-40 py-3">
@@ -69,7 +63,7 @@ export default function Navbar() {
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center lg:gap-4">
                     {/* Navigation Items */}
                     <div className="flex flex-wrap items-start justify-center lg:justify-start gap-2 py-2 lg:py-0">
-                        {params?.slug && navItems.map((navItem: any, index: number) => (
+                        {navItems.map((navItem, index) => (
                             <div
                                 key={index}
                                 className="relative"
@@ -87,10 +81,10 @@ export default function Navbar() {
                                         {isDropdownOpen && dropdownIndex === index && (
                                             <div className="absolute top-full left-0 mt-2 w-48 sm:w-60 bg-white rounded-lg shadow-xl border border-gray-200 z-50">
                                                 <div className="py-2">
-                                                    {navItem.subItems.map((subItem: any) => (
+                                                    {navItem.subItems.map((subItem) => (
                                                         <Link
                                                             key={subItem.path}
-                                                            href={`/events/${params.slug}/${labelToPath(navItem.label)}/${subItem.path}`}
+                                                            href={eventPageUrl(event.slug, `${navGroupPath(navItem.label)}/${subItem.path}`)}
                                                             className="relative block px-4 py-3 text-sm text-gray-700 hover:bg-lightBlue-50 hover:text-lightBlue-700 hover:font-medium transition-all duration-200 border-l-4 border-transparent hover:border-lightBlue-400 group overflow-hidden"
                                                             onClick={handleLinkClick}
                                                         >
@@ -104,7 +98,7 @@ export default function Navbar() {
                                     </>
                                 ) : (
                                     <Link
-                                        href={`/events/${params.slug}/${navItem.path}`}
+                                        href={eventPageUrl(event.slug, navItem.path)}
                                         className="relative inline-block px-3 sm:px-4 py-2 text-sm sm:text-xl font-semibold text-navy-800 bg-white border border-navy-200 rounded-lg shadow-sm hover:shadow-md hover:border-lightBlue-400 transition-all duration-200 whitespace-nowrap group overflow-hidden"
                                         onClick={handleLinkClick}
                                     >
@@ -129,7 +123,7 @@ export default function Navbar() {
             </div>
 
             {/* Registration Modal */}
-            {event && (
+            {isModalOpen && (
                 <RegistrationModal
                     isOpen={isModalOpen}
                     onClose={() => setIsModalOpen(false)}

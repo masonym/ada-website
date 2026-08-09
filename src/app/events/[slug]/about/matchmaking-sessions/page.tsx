@@ -23,5 +23,5 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   // fetch matchmaking sponsors on the server
   const matchmakingData = await getEventMatchmakingSponsors(slug);
 
-  return <MatchmakingPage matchmakingData={matchmakingData} />;
+  return <MatchmakingPage matchmakingData={matchmakingData} event={event} />;
 }

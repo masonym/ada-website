@@ -1,16 +1,23 @@
 "use client"
 
 import { NAV_LINKS } from "@/constants"
-import { EVENTS } from "@/constants/events"
 import Image from "next/image"
 import Link from "next/link"
 import { Menu, ChevronDown } from 'lucide-react'
 import { useState, useRef, useEffect } from "react"
 import Hamburger from "./Hamburger"
 import { getCdnPath } from "@/utils/image"
-import { isEventUpcoming } from "@/app/components/UpcomingEvents"
+import type { EventLinkSummary } from "@/lib/events"
 
-const NavBar = () => {
+/**
+ * Site header.
+ *
+ * The events dropdown is handed a small {id, title, slug, timeStart} list
+ * resolved on the server. It used to import the whole EVENTS array and filter it
+ * here - and this component renders on every page, so that put all eight
+ * events' descriptions, JSX and topical coverage in the shared client bundle.
+ */
+const NavBar = ({ upcomingEvents = [] }: { upcomingEvents?: EventLinkSummary[] }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLLIElement>(null);
@@ -49,22 +56,6 @@ const NavBar = () => {
       }
     };
   }, []);
-
-  const now = new Date();
-  const upcomingEvents = [...EVENTS]
-    .filter(event => {
-      // First, check if the event has a timeStart
-      if (!event.timeStart) return false;
-      if (event.shown === false ) return false;
-
-      // Use the safer isEventUpcoming function
-      return isEventUpcoming(event.timeEnd, now);
-    })
-    .sort((a, b) => {
-      const dateA = new Date(a.timeStart);
-      const dateB = new Date(b.timeStart);
-      return dateA.getTime() - dateB.getTime();
-    });
 
   return (
     <nav className="flexBetween max-container padding-container py-5 relative z-30 border-b-gray-700">
@@ -132,6 +123,7 @@ const NavBar = () => {
       <Hamburger
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
+        upcomingEvents={upcomingEvents}
       />
     </nav>
   )

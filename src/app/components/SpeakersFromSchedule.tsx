@@ -56,8 +56,22 @@ const resolveSpeaker = (speaker: ScheduleSpeaker, sanitySpeakerMap: Map<string, 
 };
 
 const SpeakersFromSchedule: React.FC<Props> = ({ eventId, title, subtitle, maxSpeakers, sanitySpeakers }) => {
+  // Hooks must run before any early return. They used to sit below the
+  // `if (!scheduleEntry) return null` guard, so an event with no schedule entry
+  // (event 8 has none today) rendered a different number of hooks than one that
+  // has one - React throws "rendered fewer hooks than expected" the moment the
+  // same component instance is handed a different eventId.
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedSpeaker, setSelectedSpeaker] = useState<{
+    name: string;
+    position: string;
+    company: string;
+    bio: string;
+    image?: string;
+    sanityImage?: { asset: { _ref: string } };
+  } | null>(null);
+
   const scheduleEntry = SCHEDULES.find((s) => s.id === eventId);
-  if (!scheduleEntry) return null;
 
   // build a map of sanity speakers by slug for quick lookup
   const sanitySpeakerMap = new Map<string, EventSpeakerPublic>();
@@ -70,7 +84,7 @@ const SpeakersFromSchedule: React.FC<Props> = ({ eventId, title, subtitle, maxSp
   // Aggregate speakers with first-found session anchor
   const speakerMap = new Map<string, { speaker: ScheduleSpeaker; sessionAnchor?: string }>();
 
-  for (const day of scheduleEntry.schedule) {
+  for (const day of scheduleEntry?.schedule ?? []) {
     for (const item of day.items) {
       // Type guard: only proceed if this schedule item actually has speakers
       if (!('speakers' in item) || !item.speakers) continue;
@@ -90,16 +104,6 @@ const SpeakersFromSchedule: React.FC<Props> = ({ eventId, title, subtitle, maxSp
   if (maxSpeakers && speakers.length > maxSpeakers) {
     speakers = speakers.slice(0, maxSpeakers);
   }
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedSpeaker, setSelectedSpeaker] = useState<{
-    name: string;
-    position: string;
-    company: string;
-    bio: string;
-    image?: string;
-    sanityImage?: { asset: { _ref: string } };
-  } | null>(null);
 
   const openModal = (sp: ScheduleSpeaker) => {
     if (sp.speakerId) {

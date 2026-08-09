@@ -4,9 +4,8 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import { GoogleAnalytics } from '@next/third-parties/google'
-import Head from "next/head";
-import Script from "next/script";
 import StripeProvider from '@/components/StripeProvider';
+import { getUpcomingEventLinks } from '@/lib/events';
 
 
 export const metadata: Metadata = {
@@ -55,35 +54,47 @@ export const metadata: Metadata = {
 
 }
 
-const jsonData = `
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "American Defense Alliance",
-    "url": "https://www.americandefensealliance.org/"
-  }
-`;
+/**
+ * Site-level structured data.
+ *
+ * This was previously a template string that was then passed through
+ * JSON.stringify, which wraps a string in quotes and escapes its contents - so
+ * the tag emitted a quoted JSON string rather than a JSON-LD object, and
+ * parsers rejected it. It also sat inside a `next/head` element, which is a
+ * no-op in the App Router, so it never rendered at all.
+ */
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "American Defense Alliance",
+  url: "https://www.americandefensealliance.org/",
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Resolved here so the header does not have to import the events data.
+  const upcomingEvents = getUpcomingEventLinks();
+
   return (
     <html lang="en">
-      <Head>
-        <link rel="canonical" href="/" />
-        <Script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonData) }}
-        >
-        </Script>
-      </Head>
       <body className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-300">
+        {/*
+          A plain <script>, not next/script: next/script injects after hydration,
+          so the tag lands in the RSC payload rather than the served HTML and a
+          crawler reading the raw response never sees it. This is what the Next
+          docs recommend for JSON-LD.
+        */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
         <StripeProvider>
           <ScrollToTop />
           <div className="bg-navy-800">
-            <NavBar />
+            <NavBar upcomingEvents={upcomingEvents} />
           </div>
           <main className="relative overflow-hidden">
             {children}

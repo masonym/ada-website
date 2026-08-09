@@ -1,12 +1,12 @@
 
 import React from 'react';
 import { EVENTS } from '@/constants/events';
+import { Event } from '@/types/events';
 import RegistrationModalController from './RegistrationModalController';
 import { notFound } from 'next/navigation';
 import RegisterButtonModal from './RegisterButtonModal';
 import CountdownTimer from '@/app/components/CountdownTimer';
 import RegistrationOptions from '@/app/components/RegistrationOptions';
-import Script from 'next/script';
 import { Metadata } from 'next';
 import KeynoteSpeaker from '@/app/components/KeynoteSpeaker';
 import SponsorLogos from '@/app/components/SponsorLogos';
@@ -18,10 +18,45 @@ import { getCdnPath } from '@/utils/image';
 import RelatedEventLinks from '@/app/components/RelatedEventLinks';
 import EventTestimonials from '@/app/components/EventTestimonials';
 import EventHighlights from '@/app/components/EventHighlights';
-import { HIGHLIGHTS } from '@/constants/highlights';
+import { getResolvedHighlights } from '@/lib/event-highlights';
 import EventNoticeBanner from '@/app/components/EventNoticeBanner';
 import EventBadgeNotice from '@/app/components/EventBadgeNotice';
 import { getEventSpeakersPublic } from '@/lib/sanity';
+
+/**
+ * schema.org Event payload.
+ *
+ * `location` used to be the raw locationAddress string, which contains <br/>
+ * tags and is not a Place; `topicalCoverage` is not a schema.org property at
+ * all. Both are corrected here, and endDate/offers are added - event rich
+ * results are worth having for a conference business.
+ */
+function eventSchema(event: Event) {
+  const address = event.locationAddress?.replace(/<\/?br\s*\/?>/gi, ', ').replace(/\s+/g, ' ').trim();
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: event.title,
+    description: event.description,
+    startDate: event.timeStart,
+    endDate: event.timeEnd,
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    eventStatus: "https://schema.org/EventScheduled",
+    image: [getCdnPath(event.image)],
+    location: {
+      "@type": "Place",
+      name: event.venueName || event.title,
+      address: { "@type": "PostalAddress", streetAddress: address },
+    },
+    about: event.topicalCoverage?.map((t) => t.description).filter(Boolean),
+    organizer: {
+      "@type": "Organization",
+      name: "American Defense Alliance",
+      url: "https://www.americandefensealliance.org",
+    },
+  };
+}
 
 export async function generateStaticParams() {
   return EVENTS.map((event) => ({
@@ -79,6 +114,20 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
   const speakerData = await getEventSpeakersPublic(event.id);
   const sanityKeynoteSpeakers = speakerData?.keynoteSpeakers || [];
 
+  // Highlights are borrowed from an older related event. Resolved here rather
+  // than inside the JSX below, which cannot await.
+  const relatedEvent = event.relatedEventId
+    ? EVENTS.find(e => e.id === event.relatedEventId)
+    : undefined;
+
+  const relatedIsOlder =
+    !!relatedEvent &&
+    new Date(relatedEvent.timeEnd || relatedEvent.timeStart).getTime() <
+      new Date(event.timeStart).getTime();
+
+  const relatedHighlights =
+    relatedEvent && relatedIsOlder ? await getResolvedHighlights(relatedEvent.id) : [];
+
   const now = new Date().getTime();
   const targetTime = new Date(event.timeStart).getTime();
   const distance = targetTime - now;
@@ -95,23 +144,11 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
       {/* Add RegistrationModalController for URL-based modal control */}
       <RegistrationModalController event={event} />
       
-      <Script id="event-schema" type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Event",
-          "name": event.title,
-          "description": event.description,
-          "startDate": event.timeStart,
-          "location": event.locationAddress,
-          "topicalCoverage": event.topicalCoverage,
-          "organizer": {
-            "@type": "Organization",
-            "name": "American Defense Alliance",
-            "url": "https://www.americandefensealliance.org"
-          }
-
-        })}
-      </Script>
+      {/* Plain <script> so the schema is in the served HTML - see the note in app/layout.tsx */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema(event)) }}
+      />
       <div className="max-w-[91rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center">
           <div className="py-2 sm:py-2 flex flex-col items-center">
@@ -205,24 +242,13 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
               );
             })()}
 
-            {(() => {
-              if (!event.relatedEventId) return null;
-              const related = EVENTS.find(e => e.id === event.relatedEventId);
-              if (!related) return null;
-              // Only show if the related event is older than the current event
-              const relatedEnd = new Date(related.timeEnd || related.timeStart).getTime();
-              const currentStart = new Date(event.timeStart).getTime();
-              const isOlder = relatedEnd < currentStart;
-              const hasHighlights = Array.isArray(HIGHLIGHTS[related.id]) && HIGHLIGHTS[related.id].length > 0;
-              if (!isOlder || !hasHighlights) return null;
-              return (
-                <EventHighlights
-                  sourceEventId={related.id}
-                  title={`${related.title} Highlights`}
-                  subtitle={`Watch standout moments from the ${related.title}`}
-                />
-              );
-            })()}
+            {relatedEvent && relatedHighlights.length > 0 && (
+              <EventHighlights
+                highlights={relatedHighlights}
+                title={`${relatedEvent.title} Highlights`}
+                subtitle={`Watch standout moments from the ${relatedEvent.title}`}
+              />
+            )}
 
             <div className="mt-0 text-center flex flex-col items-center">
               <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Place at this Groundbreaking Event!</p>
