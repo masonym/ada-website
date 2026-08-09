@@ -2,10 +2,20 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 
-// Google Sheets API setup
-const apiKey = 'AIzaSyBJ5o87KpcVXliP3f4C0EQJ09I_l_Pn1ds'; // replace with your API key
-const sheetId = '1nXqc38whbDDE9BQzElO1E6kWd4QaZ21kI9VRaqDqSBc'; // replace with your sheet ID
+// Google Sheets API setup.
+//
+// The key and sheet id come from the environment. They were previously
+// hardcoded here, which put a live API key in the repository.
+const apiKey = process.env.GOOGLE_SHEETS_API_KEY;
+const sheetId = process.env.SPEAKERS_SHEET_ID;
 const sheetRange = 'Speakers!A:E'; // adjust the range if needed
+
+if (!apiKey || !sheetId) {
+  console.error(
+    'Set GOOGLE_SHEETS_API_KEY and SPEAKERS_SHEET_ID before running this script.'
+  );
+  process.exit(1);
+}
 
 // Google Sheets API URL
 const sheetUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetRange}?key=${apiKey}`;
