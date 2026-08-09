@@ -27,12 +27,11 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840, 4096],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 512],
   },
-  env: {
-    AWS_REGION: process.env.AWS_REGION,
-    AWS_S3_BUCKET_NAME: process.env.AWS_BUCKET_NAME,
-    AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
-    AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
-  },
+  // NOTE: do not add an `env` block here. Next inlines those values as string
+  // literals into every bundle that references them, including client bundles -
+  // which is how AWS_SECRET_ACCESS_KEY ended up shipping to browsers. Server
+  // code reads process.env directly at runtime and needs nothing declared here;
+  // anything the browser genuinely needs belongs behind a NEXT_PUBLIC_ prefix.
   async redirects() {
     return [
       {

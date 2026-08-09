@@ -1,6 +1,6 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, PutCommand, GetCommand } from '@aws-sdk/lib-dynamodb';
-import { getServerEnv } from '@/lib/env';
+import { getServerEnv } from '@/lib/server-env';
 import { RegistrationFormData } from '@/types/event-registration/registration';
 import { v4 as uuidv4 } from 'uuid';
 

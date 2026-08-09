@@ -1,5 +1,5 @@
 import { Resend } from 'resend';
-import { getServerEnv } from '../env';
+import { getServerEnv } from '../server-env';
 
 const env = getServerEnv();
 const resend = new Resend(env.RESEND_API_KEY);

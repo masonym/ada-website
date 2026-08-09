@@ -1,6 +1,5 @@
 import { MatchmakingSession, VipNetworkingReception } from '@/types/events';
-import { getServerEnv } from '../../env';
-import { getClientEnv } from '../../client-env';
+import { getClientEnv } from '../../env';
 import { getCdnPath } from '@/utils/image';
 
 function getMonthFromDate(dateString: string): string {
@@ -479,9 +478,17 @@ export function generateExhibitorInstructionsHtml(
 
 // Base template that all emails will use
 export function baseEmailTemplate(content: string, eventImage: string): string {
-  // Use server env for server-side, client env for client-side
-  const isServer = typeof window === 'undefined';
-  const env = isServer ? getServerEnv() : getClientEnv();
+  // This module is rendered both server-side (real confirmation emails) and
+  // client-side (/dev/email-preview), and the only env value it needs is the
+  // contact address in the footer. It used to call getServerEnv() on the server
+  // branch, which pulled every server secret into a module a client component
+  // imports. MY_EMAIL is unprefixed, so Next leaves it undefined in the browser
+  // and the preview falls through to the public address.
+  const env = {
+    MY_EMAIL:
+      process.env.MY_EMAIL ||
+      getClientEnv().MY_EMAIL,
+  };
 
   return `
     <!DOCTYPE html>

@@ -4,8 +4,10 @@ let stripePromise: Promise<Stripe | null>;
 
 export function getStripe(): Promise<Stripe | null> {
   if (!stripePromise) {
-    const env = require('../env').getEnv();
-    stripePromise = loadStripe(env.STRIPE_PUBLISHABLE_KEY);
+    // Read directly rather than through a helper: this runs in the browser, and
+    // a lazy require of a module that also holds server env is how secrets got
+    // into the client bundle in the first place.
+    stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
   }
   return stripePromise;
 }

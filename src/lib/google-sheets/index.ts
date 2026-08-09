@@ -1,6 +1,6 @@
 import { google } from 'googleapis';
 import { OAuth2Client } from 'google-auth-library';
-import { getServerEnv } from '../env';
+import { getServerEnv } from '../server-env';
 import { RegistrationFormData, TicketSelection, AttendeeInfo } from '@/types/event-registration/registration';
 import { EVENTS } from '@/constants/events';
 import {

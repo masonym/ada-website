@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { getServerEnv } from '../env';
+import { getServerEnv } from '../server-env';
 
 const env = getServerEnv();
 
