@@ -4,8 +4,16 @@ import { EXHIBITOR_TYPES } from '@/constants/exhibitors';
 import { SPONSORSHIP_TYPES } from '@/constants/sponsorships';
 import { StoredRegistrationData } from '@/types/event-registration/registration';
 
-// Master key for order validation - falls back to a default if not set
-const MASTER_ORDER_KEY = process.env.MASTER_ORDER_KEY || 'ADA-VALIDATION-KEY';
+/**
+ * Staff bypass for order validation, used to comp an additional pass without a
+ * real order id.
+ *
+ * No fallback: this previously defaulted to the literal 'ADA-VALIDATION-KEY'
+ * whenever MASTER_ORDER_KEY was unset - which it is - so anyone who typed that
+ * string was validated as a sponsor or exhibitor. An unset variable now disables
+ * the bypass rather than opening it.
+ */
+const MASTER_ORDER_KEY = process.env.MASTER_ORDER_KEY || '';
 
 // Helper function to get all exhibitor and sponsor IDs for a given event
 const getEligibleTicketIdsForEvent = (eventId: number): string[] => {
@@ -32,7 +40,7 @@ export async function POST(request: Request) {
     }
     
     // Check if the provided order ID matches the master key
-    if (orderId.trim() === MASTER_ORDER_KEY) {
+    if (MASTER_ORDER_KEY && orderId.trim() === MASTER_ORDER_KEY) {
       console.log('Master key used for validation');
       return NextResponse.json({ isValid: true, message: 'Master key validation successful' });
     }

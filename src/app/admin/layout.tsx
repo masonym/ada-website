@@ -1,83 +1,54 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import Link from 'next/link';
+import Link from "next/link";
 
+/**
+ * Chrome for the admin area.
+ *
+ * Access control lives in src/middleware.ts, which verifies the httpOnly session
+ * cookie before any admin page or API route runs. This used to gate on a
+ * `localStorage.admin_auth === "true"` flag instead - which any visitor could set
+ * from the console, and which said nothing about the API routes underneath. The
+ * flag is gone; if you are rendering this layout, the middleware already let you
+ * through.
+ */
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
-
-  useEffect(() => {
-    // Check if user is authenticated
-    const checkAuth = () => {
-      const auth = localStorage.getItem("admin_auth");
-      setIsAuthenticated(auth === "true");
-      setIsLoading(false);
-
-      // If not authenticated and not on login page, redirect to login with return URL
-      if (auth !== "true" && pathname !== "/admin/login") {
-        const returnUrl = encodeURIComponent(pathname);
-        router.push(`/admin/login?returnUrl=${returnUrl}`);
-      }
-    };
-
-    checkAuth();
-  }, [router, pathname]);
+  const isLoginPage = pathname === "/admin/login";
 
   const handleLogout = async () => {
-    // Clear authentication from localStorage
-    localStorage.removeItem("admin_auth");
-
-    // Also end the server-side session cookie that admin API routes check
     try {
       await fetch("/api/admin-auth", { method: "DELETE" });
     } catch (error) {
       console.error("Failed to clear admin session cookie:", error);
     }
 
-    setIsAuthenticated(false);
     router.push("/admin/login");
+    router.refresh();
   };
 
-  // Show loading state
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
+  return (
+    <div className="min-h-screen">
+      {!isLoginPage && (
+        <div className="bg-white shadow-sm p-4 flex justify-between items-center">
+          <h1 className="text-xl font-semibold">
+            <Link href="/admin">Admin Dashboard</Link>
+          </h1>
+          <button
+            onClick={handleLogout}
+            className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-md text-sm font-medium transition-colors"
+          >
+            Logout
+          </button>
         </div>
-      </div>
-    );
-  }
-
-  // If on login page or authenticated, show content
-  if (pathname === "/admin/login" || isAuthenticated) {
-    return (
-      <div className="min-h-screen">
-        {isAuthenticated && pathname !== "/admin/login" && (
-          <div className="bg-white shadow-sm p-4 flex justify-between items-center">
-            <h1 className="text-xl font-semibold"><Link href='/admin'>Admin Dashboard</Link></h1>
-            <button
-              onClick={handleLogout}
-              className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-md text-sm font-medium transition-colors"
-            >
-              Logout
-            </button>
-          </div>
-        )}
-        {children}
-      </div>
-    );
-  }
-
-  // This should never be reached due to the redirect in useEffect
-  return null;
+      )}
+      {children}
+    </div>
+  );
 }

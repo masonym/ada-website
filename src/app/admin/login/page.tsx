@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent, useEffect } from "react";
+import { useState, FormEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function LoginPage() {
@@ -10,14 +10,6 @@ export default function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const returnUrl = searchParams.get("returnUrl") || "/admin";
-
-  useEffect(() => {
-    // Check if already authenticated
-    const isAuthenticated = localStorage.getItem("admin_auth");
-    if (isAuthenticated === "true") {
-      router.push(returnUrl);
-    }
-  }, [router, returnUrl]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -36,11 +28,22 @@ export default function LoginPage() {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        // Store authentication in localStorage
-        localStorage.setItem("admin_auth", "true");
-        
-        // Redirect to original page or admin dashboard
+        // The session is the httpOnly cookie the route just set; middleware
+        // checks it on every admin request. Nothing to store client-side.
         router.push(returnUrl);
+        router.refresh();
+      } else if (response.status === 429) {
+        // Locked out by the login throttle. Say so rather than "invalid
+        // password", which would read as a wrong password to an admin who has
+        // since typed the right one.
+        const retryAfter = Number(response.headers.get("Retry-After"));
+        setError(
+          Number.isFinite(retryAfter) && retryAfter > 0
+            ? `Too many attempts. Try again in ${Math.ceil(retryAfter / 60)} minute(s).`
+            : "Too many attempts. Try again later."
+        );
+      } else if (response.status === 503) {
+        setError(data.error || "Admin login is not configured.");
       } else {
         setError("Invalid password");
       }
