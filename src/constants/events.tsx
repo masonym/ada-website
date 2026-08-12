@@ -2171,7 +2171,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       "8989 North Gate Boulevard, Colorado Springs, Colorado 80921",
     venueName: "Hotel Polaris at the U.S. Air Force Academy ",
     placeID: "ChIJPYwbhlNNE4cRiOsTMJkeI0o",
-    password: "ADA2026AFSFPC",
+    password: "COLORADOSPRINGS2026",
     eventShorthand: "2026AFSFPC",
     matchmakingSessions: {
       signUpTime: "7:30 AM",
