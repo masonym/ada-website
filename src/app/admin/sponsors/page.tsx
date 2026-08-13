@@ -34,8 +34,17 @@ type MatchmakingDoc = {
   eventName: string;
 };
 
+type UnconfiguredEvent = {
+  eventId: number;
+  title: string;
+  eventName: string;
+};
+
 export default function SponsorAdminPage() {
   const [events, setEvents] = useState<EventWithTiers[]>([]);
+  const [unconfiguredEvents, setUnconfiguredEvents] = useState<
+    UnconfiguredEvent[]
+  >([]);
   const [existingSponsors, setExistingSponsors] = useState<ExistingSponsor[]>(
     [],
   );
@@ -126,6 +135,7 @@ export default function SponsorAdminPage() {
       const res = await fetch("/api/admin/sponsors");
       const data = await res.json();
       setEvents(data.events || []);
+      setUnconfiguredEvents(data.unconfiguredEvents || []);
       setExistingSponsors(data.sponsors || []);
       setMatchmakingDocs(data.matchmakingDocs || []);
     } catch (error) {
@@ -995,12 +1005,34 @@ export default function SponsorAdminPage() {
                   required
                 >
                   <option value="">Select an event...</option>
-                  {events.map((event) => (
-                    <option key={event._id} value={event.eventId}>
-                      {event.eventName}
-                    </option>
-                  ))}
+                  {events.length > 0 && (
+                    <optgroup label="Existing events">
+                      {events.map((event) => (
+                        <option key={event._id} value={event.eventId}>
+                          {event.eventName}
+                        </option>
+                      ))}
+                    </optgroup>
+                  )}
+                  {unconfiguredEvents.length > 0 && (
+                    <optgroup label="Not yet set up in Sanity">
+                      {unconfiguredEvents.map((event) => (
+                        <option key={event.eventId} value={event.eventId}>
+                          {event.eventName} (new)
+                        </option>
+                      ))}
+                    </optgroup>
+                  )}
                 </select>
+                {newTierEventId != null &&
+                  unconfiguredEvents.some(
+                    (e) => e.eventId === newTierEventId,
+                  ) && (
+                    <p className="text-xs text-blue-600 mt-1">
+                      This event has no sponsor tiers in Sanity yet — creating
+                      this tier will set it up automatically.
+                    </p>
+                  )}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

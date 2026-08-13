@@ -38,6 +38,20 @@ export async function GET() {
         eventName: EVENT_NAMES[event.eventId] || event.title || `Event ${event.eventId}`
       }))
 
+    // events that exist in the site's event list but have no eventSponsor doc
+    // in Sanity yet - the "New Tier" form can still target these, and creating
+    // the first tier will create the doc on the fly
+    const unconfiguredEvents = EVENTS
+      .filter(e => !seenEventIds.has(e.id))
+      .map(e => ({
+        _id: null,
+        eventId: e.id,
+        title: e.title,
+        eventName: e.title,
+        tiers: [],
+        needsSetup: true,
+      }))
+
     // enrich matchmaking docs with event names from slugs
     const enrichedMatchmaking = (matchmakingDocs || []).map(doc => {
       const event = EVENTS.find(e => e.slug === doc.eventSlug)
@@ -48,7 +62,12 @@ export async function GET() {
       }
     })
     
-    return NextResponse.json({ events: enrichedEvents, sponsors, matchmakingDocs: enrichedMatchmaking })
+    return NextResponse.json({
+      events: enrichedEvents,
+      unconfiguredEvents,
+      sponsors,
+      matchmakingDocs: enrichedMatchmaking
+    })
   } catch (error) {
     console.error('Error fetching data:', error)
     return NextResponse.json({ error: 'Failed to fetch data' }, { status: 500 })

@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { addTierToEvent, updateEventTier } from '@/lib/sanity-admin'
+import { EVENTS } from '@/constants/events'
 
 // add a new tier to an event
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    
+
     const { eventId, tierId, tierName, tierStyle } = body as {
       eventId: number
       tierId: string
@@ -25,11 +26,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Tier name is required' }, { status: 400 })
     }
 
+    // pass the event's title so the eventSponsor doc can be created on the fly
+    // if this is the first time anything has been set up for this event in Sanity
+    const eventTitle = EVENTS.find(e => e.id === eventId)?.title
+
     await addTierToEvent(eventId, {
       id: tierId,
       name: tierName,
       style: tierStyle
-    })
+    }, eventTitle)
 
     return NextResponse.json({ 
       success: true, 

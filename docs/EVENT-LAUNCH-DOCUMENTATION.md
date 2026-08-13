@@ -8,13 +8,28 @@ This document provides a comprehensive guide for launching a new event on the AD
 2. [Registration Setup](#registration-setup)
 3. [Sponsorship Configuration](#sponsorship-configuration)
 4. [Exhibitor Setup](#exhibitor-setup)
-5. [Speaker Management](#speaker-management)
-6. [Schedule Creation](#schedule-creation)
-7. [Venue & Location Details](#venue--location-details)
-8. [Navigation Structure](#navigation-structure)
-9. [Supporting Content](#supporting-content)
-10. [Technical Requirements](#technical-requirements)
-11. [Launch Checklist](#launch-checklist)
+5. [Registration Sheet Mapping](#registration-sheet-mapping)
+6. [Speaker Management](#speaker-management)
+7. [Schedule Creation](#schedule-creation)
+8. [Venue & Location Details](#venue--location-details)
+9. [Navigation Structure](#navigation-structure)
+10. [Supporting Content](#supporting-content)
+11. [Technical Requirements](#technical-requirements)
+12. [Launch Checklist](#launch-checklist)
+
+## Quick Start
+
+```bash
+npm run create-event                      # scaffolds src/constants/events.tsx only
+# ...fill in the other registries by hand (see the sections below)
+npm run typecheck && npm run lint
+TEST_EVENT_ID=<id> npm run test:offline   # tells you which registries you still missed
+```
+
+`test:offline` is the fastest way to find out what a new event is missing — it needs no
+server, no credentials and no network, and `tests/03-event-data-integrity.spec.ts` prints
+every registry the event is still absent from. Work through [Launch Checklist](#launch-checklist)
+for the full sequence.
 
 ## Core Event Information
 
@@ -147,6 +162,30 @@ In `src/constants/registrations.ts`, create a new registration type object:
 4. Include reception pricing separately if applicable
 5. Set max quantities for limited availability items
 
+### How Orders Are Priced
+
+Pricing is resolved **on the server**, in `src/lib/event-registration/order.ts`. The browser
+submits ticket ids and quantities; it does not submit prices. What is written in the three
+constants files — registrations, sponsorships, exhibitors — is what the customer is charged.
+
+This makes several config fields load-bearing rather than cosmetic:
+
+| Field | Effect on a real order |
+| --- | --- |
+| `id` | Must be unique across all three catalogues for the event. An id the server cannot find is **rejected** ("… is not available for this event"), not priced at 0. |
+| `price` | Must parse to a number (`1295` or `"$1,295"`). A paid item with an unusable price refuses to sell and logs a data error. |
+| `earlyBirdPrice` + `earlyBirdDeadline` | Both required for the early-bird price to apply. A price with no deadline never takes effect. |
+| `isActive: false` | Blocks purchase server-side, not just in the UI. |
+| `saleEndTime` | After it passes, the order is refused. |
+| `maxQuantityPerOrder` | Enforced on the request, not only in the modal. |
+| `sponsorPasses` | Caps the complimentary `<sponsorshipId>-additional-pass` line items. The first included pass rides on the sponsorship line itself, so the separate line can only cover `sponsorPasses - 1` per sponsorship purchased, and only when that sponsorship is in the same order. |
+
+`tests/02-order-pricing.spec.ts` covers all of the above offline. A price typo shows up
+there before it shows up on a card statement.
+
+Still enforced in the modal only, not the API: `requiresCode` / `validationCode` gating and
+the order-id check for additional passes.
+
 ## Sponsorship Configuration
 
 ### Sponsorship Tiers
@@ -239,6 +278,50 @@ In `src/constants/exhibitors.ts`:
   }
 }
 ```
+## Registration Sheet Mapping
+
+Registrations are written to a Google Sheet chosen by event id in
+`src/lib/google-sheets/spreadsheet-mapping.ts`. **An event with no entry here silently falls
+back to the default spreadsheet** — nothing errors, the rows just land in the wrong place.
+
+Add an entry keyed by the event id (as a string):
+
+```typescript
+'9': {
+  spreadsheetId: env('GOOGLE_SHEETS_SPREADSHEET_ID_2026XXXX') || fallback,
+  registrationSheetName: DEFAULT_REGISTRATION_SHEET_NAME,
+  description: '2026 <Event Name> registrations',
+},
+```
+
+Then set `GOOGLE_SHEETS_SPREADSHEET_ID_2026XXXX` in the hosting environment and in your local
+`.env`. The module reads `process.env` directly, so that is the only place the variable has
+to be declared — it does not need adding to `src/lib/server-env.ts`.
+
+The sheet must already have the expected column layout and a tab named by
+`registrationSheetName`. `npm run test:preflight` verifies the event maps to a real
+spreadsheet, that the tab exists, and that its columns match.
+
+## Speaker Management
+
+Speakers and their session assignments live in **Sanity**, not in `src/constants` — see
+`docs/SANITY-CMS.md`. Two authoring rules matter at launch:
+
+- **`isVisible` must be set** for a speaker to appear in production. Staging deliberately
+  shows every speaker regardless, so "it looks right on staging" does not confirm this.
+- **Which fields accept HTML.** Speaker *name* and *bio* are treated as HTML (a name may
+  carry `<br/>` to split a district onto its own line) and are sanitised on read. Speaker
+  *position*, *session title* and the *keynote header* are plain text. Type a literal `&`
+  in those — writing `&amp;` renders as a visible `&amp;`.
+
+Bulk import from the speakers spreadsheet:
+
+```bash
+GOOGLE_SHEETS_API_KEY=... SPEAKERS_SHEET_ID=... npm run import-speakers
+```
+
+Both variables are required; the script exits if either is unset.
+
 ## Schedule Creation
 
 ### Event Schedule
@@ -382,6 +465,18 @@ In `src/constants/eventNavs.tsx`:
 }
 ```
 
+### Nav Group Labels Are URLs
+
+A group with `subItems` carries no path of its own — its URL segment is derived from its
+**label** by `navGroupPath()` in `src/lib/event-nav-path.ts` (`'Sponsorships & Exhibits'` →
+`sponsorships-exhibits`). Renaming a group therefore changes a live URL. The navbar and the
+sitemap both import that one function, so they cannot disagree, but an existing link into the
+old segment will 404.
+
+Leading slashes on `path` are normalised, so `'venue-and-lodging'` and `'/venue-and-lodging'`
+both work. `tests/03-event-data-integrity.spec.ts` checks that every nav item resolves to a
+real route and that the sitemap advertises the same segments the navbar links to.
+
 ## Supporting Content
 
 ### FAQs
@@ -425,11 +520,21 @@ In `src/constants/specialFeatures.ts`:
 ```
 
 ### Sponsors & Exhibitors Lists
-In `src/constants/sponsors.ts` and `src/constants/eventSponsors.ts`:
+
+**Sponsor logos and event-to-sponsor mappings live in Sanity**, not in `src/constants` — see
+`docs/SANITY-CMS.md` for the schema and the studio location. `SponsorLogos` and the recap
+grids read from there.
+
+The two constants files are legacy and no longer feed the public sponsor sections:
+
+| File | Status |
+| --- | --- |
+| `src/constants/sponsors.ts` | Still read, but only by `matchmaking-sponsors.ts`. Add a sponsor here if it needs to appear in a matchmaking session. |
+| `src/constants/eventSponsors.ts` | Not read by any page. `tests/03-event-data-integrity.spec.ts` still treats it as a core registry, so a new event needs an entry (or a `KNOWN_ABSENT` reason) for the offline suite to pass. |
 
 ```typescript
-// Sponsor database
-" sponsor-id": {
+// src/constants/sponsors.ts - sponsor database (matchmaking only)
+"sponsor-id": {
   id: string,
   name: string,
   logo: string,                 // Logo path
@@ -441,7 +546,7 @@ In `src/constants/sponsors.ts` and `src/constants/eventSponsors.ts`:
   priority?: boolean,
 }
 
-// Event-specific sponsors
+// src/constants/eventSponsors.ts - event-specific sponsors
 {
   eventId: [EVENT_ID],
   sponsors: ["sponsor-id-1", "sponsor-id-2"],
@@ -473,42 +578,112 @@ public/
 └── [pass-images].webp
 ```
 
+Upload an event's assets to S3 and invalidate CloudFront with:
+
+```bash
+npm run sync-event-assets --event=2026XXXX     # uses eventShorthand, not slug
+```
+
+### Event PDFs (Prospectus & Exhibit Instructions)
+
+These two are not registered anywhere in code. They are found at request time by scanning
+`events/<eventShorthand>/` in the bucket for a key containing a keyword
+(`src/lib/s3/event-documents.ts`):
+
+| Document | Filename must contain |
+| --- | --- |
+| Sponsorship prospectus | `Prospectus` |
+| Exhibitor instructions | `Instructions` |
+
+The match is **case-sensitive**. A misnamed file does not error — the download button simply
+never appears. The lookup runs on the server and the URLs are passed to the components as
+props; nothing about the bucket reaches the browser.
+
 ### Environment Variables
-Ensure these are configured for payment processing:
-- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
-- `STRIPE_SECRET_KEY`
-- `STRIPE_WEBHOOK_SECRET`
+
+Per-event, when launching:
+- `GOOGLE_SHEETS_SPREADSHEET_ID_<SHORTHAND>` — see [Registration Sheet Mapping](#registration-sheet-mapping)
+
+Site-wide (already set in each environment; `.env.local.example` is the starting point):
+- Stripe — `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`
+- Google Sheets — `GOOGLE_SHEETS_SPREADSHEET_ID` (default/fallback sheet), plus the Google
+  credentials in `src/lib/server-env.ts`
+- Admin — `ADMIN_PASSWORD` (no default; unset locks the admin area and every `/api/admin`
+  route returns 401) and optionally `ADMIN_SESSION_SECRET`, which signs session cookies and
+  lets you log every admin session out by rotating it without changing the password
+- AWS, DynamoDB, Resend, iContact, Sanity — see `src/lib/server-env.ts` for the full list
+
+**Where to declare things:**
+
+- Server-only secrets go in `src/lib/server-env.ts`, which is marked `server-only` —
+  importing it from a client component is a build error rather than a silent leak.
+- Client-safe values go in `src/lib/env.ts` and need the `NEXT_PUBLIC_` prefix.
+- **Never add secrets to an `env` block in `next.config.mjs`.** Next inlines those as string
+  literals into every bundle that references them, browser bundles included. That block is
+  gone; server code reads `process.env` at runtime and needs nothing declared there.
+- Anything a client component needs must arrive as props or as a `NEXT_PUBLIC_` value.
 
 ## Launch Checklist
 
-### Pre-Launch
-- [ ] Event object created with all required fields
-- [ ] Registration types configured
+### 1. Data
+
+- [ ] Event object created with all required fields (`npm run create-event` scaffolds this
+      one file — everything below is by hand)
+- [ ] Registration types configured, every `id` unique
 - [ ] Sponsorship packages defined
 - [ ] Exhibitor options set up
-- [ ] Speaker database updated
 - [ ] Schedule created with times and speakers
-- [ ] Location details and images added
+- [ ] Location details, lodging and images added
 - [ ] Navigation structure configured
 - [ ] FAQs written and approved
-- [ ] All images optimized and uploaded
-- [ ] Stripe products created (if using Stripe)
+- [ ] Event added to `src/lib/google-sheets/spreadsheet-mapping.ts`, sheet id set in the
+      environment
+- [ ] Speakers entered in Sanity and marked `isVisible`
+- [ ] Sponsor logos and the event-to-sponsor mapping created in Sanity
 
-### Testing
-- [ ] Offline checks pass — `TEST_EVENT_ID=<id> npm run test:offline`
-      (config, order pricing, and the cross-file integrity check that lists every
-      registry the new event is still missing — no server or credentials needed)
-- [ ] Automated registration smoke tests pass — `TEST_EVENT_ID=<id> npm run test:registration`
-      (covers every ticket/exhibit/sponsorship type against Stripe test mode and the event's
-      Google Sheet, then cleans the rows up — see `tests/README.md`)
-- [ ] Event page loads correctly
-- [ ] Registration flow works
-- [ ] Payment processing functional
-- [ ] Email confirmations sent
-- [ ] Navigation links work
-- [ ] Mobile responsive design
-- [ ] Images display properly
-- [ ] Forms validate correctly
+### 2. Assets
+
+- [ ] All images optimized and uploaded — `npm run sync-event-assets --event=<SHORTHAND>`
+- [ ] Prospectus / exhibit-instructions PDFs uploaded with `Prospectus` / `Instructions`
+      in the filename (case-sensitive)
+
+### 3. Offline checks — no server, no credentials, nothing can be charged
+
+- [ ] `npm run typecheck`
+- [ ] `npm run lint`
+- [ ] `TEST_EVENT_ID=<id> npm run test:offline`
+
+The last one is config validation, server-side order pricing, cross-file data integrity and
+the HTML sanitizer. `tests/03-event-data-integrity.spec.ts` names every registry the event is
+still missing from; if a gap is deliberate, record it in that spec's `KNOWN_ABSENT` with a
+reason so "intentional" and "forgotten" stop looking identical. CI runs all three on every
+push (`.github/workflows/ci.yml`).
+
+### 4. Registration smoke test — real payments, manual, pre-launch only
+
+```bash
+DISABLE_OUTBOUND_EMAILS=true npm run dev          # terminal 1
+TEST_EVENT_ID=<id> npm run test:registration      # terminal 2
+```
+
+- [ ] Every ticket / exhibit / sponsorship type charges the configured price and lands in
+      the sheet with the right amounts, then cleans up after itself
+- [ ] Run once per environment with `TEST_WEBHOOK_MODE=stripe` against staging — `direct`
+      mode passes even if no webhook endpoint is registered at all
+
+Two cautions before running, both expanded in `tests/README.md`: the suite writes to the
+**real spreadsheet mapped to that event**, so point the test environment at a copy rather than
+the live sheet; and against localhost it races staging's registered webhook endpoint for the
+same payment, which can fail a run that is not actually broken. Running against staging with
+`TEST_WEBHOOK_MODE=stripe` avoids both.
+
+### 5. Manual pass
+
+- [ ] Event page and every nav link load (no 404s, no redirects)
+- [ ] Registration modal shows the prices you configured
+- [ ] Email confirmations arrive and read correctly
+- [ ] Mobile responsive
+- [ ] Images and PDFs display
 
 ### Post-Launch
 - [ ] Monitor registrations
@@ -520,14 +695,24 @@ Ensure these are configured for payment processing:
 
 ## Common Pitfalls
 
-1. **Missing IDs**: Ensure all objects have unique, matching IDs
-2. **Image Paths**: Use correct relative paths starting with `/`
-3. **Time Zones**: Use ISO timestamps with UTC conversion
-4. **HTML Formatting**: Properly escape HTML in description fields
-5. **Navigation Mismatch**: Ensure navigation paths match actual routes
-6. **Registration Limits**: Set appropriate max quantities
-7. **Early Bird Deadlines**: Set realistic deadlines and test expiration
-8. **Speaker References**: Double-check speakerId references exist
+1. **Missing IDs**: Ensure all objects have unique, matching IDs. `test:offline` catches
+   both a duplicate id and an event absent from a registry.
+2. **Unmapped spreadsheet**: An event with no entry in `spreadsheet-mapping.ts` writes its
+   registrations to the default sheet without complaining.
+3. **Image Paths**: Use correct relative paths starting with `/`
+4. **Time Zones**: Use ISO timestamps with UTC conversion
+5. **Escaping CMS text**: Speaker name and bio are HTML; position, session title and the
+   keynote header are plain text — writing `&amp;` in those renders `&amp;` literally.
+6. **Renamed nav labels**: A nav group's label *is* its URL segment; renaming one changes a
+   live URL.
+7. **Registration Limits**: `maxQuantityPerOrder` and `saleEndTime` are enforced against real
+   orders now — a wrong value blocks a purchase, it does not just hide UI.
+8. **Early Bird Deadlines**: `earlyBirdPrice` without `earlyBirdDeadline` never applies. Set
+   realistic deadlines and test expiration.
+9. **Speaker References**: Double-check speakerId references exist, and that speakers are
+   marked `isVisible` — staging shows them either way.
+10. **PDF filenames**: `Prospectus` / `Instructions` matching is case-sensitive, and a miss is
+    silent.
 
 ## Support Contacts
 
@@ -541,4 +726,4 @@ For payment/registration issues:
 
 ---
 
-*This document should be updated as new features are added or processes change. Last updated: January 2025*
+*This document should be updated as new features are added or processes change. Last updated: August 2026*

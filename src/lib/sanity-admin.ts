@@ -259,11 +259,34 @@ export async function getSponsorDetails(sponsorId: string) {
   `, { sponsorId })
 }
 
-// add a new tier to an event
-export async function addTierToEvent(eventId: number, tier: { id: string; name: string; style?: string }) {
-  const eventSponsor = await adminClient.fetch<{ _id: string } | null>(`
+// get or create the eventSponsor document for an event, so tiers can be added
+// even before anyone has set one up in Sanity Studio
+export async function getOrCreateEventSponsorDoc(eventId: number, title: string) {
+  const existing = await adminClient.fetch<{ _id: string } | null>(`
     *[_type == "eventSponsor" && eventId == $eventId][0] { _id }
   `, { eventId })
+
+  if (existing) return existing
+
+  return adminClient.create({
+    _type: 'eventSponsor',
+    eventId,
+    title,
+    tiers: []
+  })
+}
+
+// add a new tier to an event
+export async function addTierToEvent(
+  eventId: number,
+  tier: { id: string; name: string; style?: string },
+  eventTitle?: string
+) {
+  const eventSponsor = eventTitle
+    ? await getOrCreateEventSponsorDoc(eventId, eventTitle)
+    : await adminClient.fetch<{ _id: string } | null>(`
+        *[_type == "eventSponsor" && eventId == $eventId][0] { _id }
+      `, { eventId })
 
   if (!eventSponsor) {
     throw new Error(`No event sponsor document found for event ${eventId}`)
