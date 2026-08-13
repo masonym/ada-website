@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe/server';
+import { fitStripeMetadata } from '@/lib/stripe/metadata';
 import { logRegistration } from '@/lib/google-sheets';
 import { validateRegistrationData, isGovOrMilEmail } from '@/lib/event-registration/validation';
 import { OrderSummary } from '@/lib/email/templates';
@@ -152,26 +153,38 @@ export async function POST(request: Request) {
 
     const pendingRegistrationId = await savePendingRegistration(validatedData);
 
+    // The webhook only ever asks whether a ticket *in this order* was eligible,
+    // so carry the intersection instead of the promo code's whole eligibility
+    // list - a code covering every ticket type serialized past Stripe's 500-char
+    // metadata limit and failed the whole payment intent.
+    const orderedTicketIds = new Set(resolved.items.map(item => item.ticketId));
+    const eligibleTicketTypesInOrder =
+      promoCodeDetails?.valid && promoCodeDetails.eligibleTicketTypes
+        ? promoCodeDetails.eligibleTicketTypes.filter(id => orderedTicketIds.has(id))
+        : [];
+
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(total * 100), // cents
       currency: 'usd',
       description: `Registration for event ${body.eventTitle} by ${validatedData.firstName} ${validatedData.lastName}`,
       receipt_email: email,
-      metadata: {
-        eventId: currentEventId,
-        orderType: 'event-registration',
-        email,
-        promoCode: promoCode || '',
-        contactName: `${validatedData.firstName} ${validatedData.lastName}`,
-        discountAmount: discount.toString(),
-        pendingRegistrationId,
-        eligibleTicketTypes: promoCodeDetails?.valid && promoCodeDetails.eligibleTicketTypes
-          ? JSON.stringify(promoCodeDetails.eligibleTicketTypes)
-          : '',
-        orderValidations: validatedData.orderValidations
-          ? JSON.stringify(validatedData.orderValidations)
-          : '',
-      },
+      // Everything here is length-checked: an oversized value would 400 the
+      // whole request rather than just losing that field.
+      metadata: fitStripeMetadata(
+        {
+          eventId: String(currentEventId),
+          orderType: 'event-registration',
+          email,
+          promoCode: promoCode || '',
+          contactName: `${validatedData.firstName} ${validatedData.lastName}`,
+          discountAmount: discount.toString(),
+          pendingRegistrationId,
+          eligibleTicketTypes: eligibleTicketTypesInOrder.length
+            ? JSON.stringify(eligibleTicketTypesInOrder)
+            : '',
+        },
+        'register'
+      ),
     });
 
     return NextResponse.json({
