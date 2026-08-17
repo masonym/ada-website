@@ -16,6 +16,7 @@
     "test:registration": "playwright test",
     "test:preflight": "playwright test tests/00-preflight.spec.ts tests/01-event-config.spec.ts tests/02-order-pricing.spec.ts",
     "create-event": "node scripts/createEvent.js",
+    "create-failed-registrations-table": "node scripts/create-failed-registrations-table.js",
     "import-speakers": "node scripts/speaker-update.js",
     "cf:build": "opennextjs-cloudflare build",
     "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
