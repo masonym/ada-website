@@ -144,8 +144,7 @@ const SponsorshipRow = ({
           <div className="p-6">
             <ul className="space-y-4 md:columns-2 md:gap-10 md:space-y-0">
               {item.perks.map((perk, index) => {
-                const liClass =
-                  "flex items-start md:break-inside-avoid md:mb-4";
+                const liClass = "flex items-start md:break-inside-avoid";
 
                 if (typeof perk === "string") {
                   return (
