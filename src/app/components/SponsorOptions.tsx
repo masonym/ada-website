@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { useEventSponsorCounts } from "@/hooks/useEventSponsorCounts";
 import { Event } from "@/types/events";
 import { notFound } from "next/navigation";
-import SponsorshipCard from "./SponsorshipCard";
+import SponsorshipRow from "./SponsorshipRow";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "./Button";
@@ -33,6 +33,11 @@ const SponsorOptions = ({
   const currentEvent = SPONSORSHIP_TYPES.find((e) => e.id === event.id);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { getSponsorCount } = useEventSponsorCounts(event.id);
+  // Rows are expanded by default; only explicit collapses are tracked.
+  const [collapsedIds, setCollapsedIds] = useState<Record<string, boolean>>({});
+
+  const toggleRow = (id: string) =>
+    setCollapsedIds((prev) => ({ ...prev, [id]: !prev[id] }));
 
   if (!currentEvent) {
     notFound();
@@ -81,6 +86,18 @@ const SponsorOptions = ({
     }
     groupedSponsorships[item.sponsorshipGroup].push(item);
   }
+
+  const allRowIds = [
+    ...(primeSponsor ? [primeSponsor.id] : []),
+    ...sponsorshipsWithCmsStyles.map((item) => item.id),
+  ];
+  const anyExpanded = allRowIds.some((id) => !collapsedIds[id]);
+  const toggleAllRows = () =>
+    setCollapsedIds(
+      anyExpanded
+        ? Object.fromEntries(allRowIds.map((id) => [id, true]))
+        : {},
+    );
 
   const defaultExhibitorText = (
     <>
@@ -153,36 +170,41 @@ const SponsorOptions = ({
               floorPlanImage={`/events/${event.eventShorthand}/event-floorplan.webp`}
             />
           )}
-          {primeSponsor && (
-            <div className="mb-8 w-full">
-              <div className="flex justify-center">
-                <SponsorshipCard
-                  item={primeSponsor}
-                  event={event}
-                  getSponsorCount={getSponsorCount}
-                />
-              </div>
+          {allRowIds.length > 0 && (
+            <div className="w-full flex justify-end mb-3">
+              <button
+                type="button"
+                onClick={toggleAllRows}
+                className="text-sm font-gotham text-slate-600 hover:text-slate-900 underline"
+              >
+                {anyExpanded ? "Collapse all" : "Expand all"}
+              </button>
             </div>
           )}
 
-          {/* Main sponsorship grid (grouped tiers are rendered in their own sections below). */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-            {ungroupedSponsorships.map((item, index) => (
-              <div
-                key={index}
-                className={`flex justify-center ${
-                  ungroupedSponsorships.length % 3 === 1 &&
-                  index === ungroupedSponsorships.length - 1
-                    ? "md:col-span-3"
-                    : ""
-                }`}
-              >
-                <SponsorshipCard
-                  item={item}
-                  event={event}
-                  getSponsorCount={getSponsorCount}
-                />
-              </div>
+          {primeSponsor && (
+            <div className="mb-8 w-full">
+              <SponsorshipRow
+                item={primeSponsor}
+                event={event}
+                getSponsorCount={getSponsorCount}
+                isOpen={!collapsedIds[primeSponsor.id]}
+                onToggle={() => toggleRow(primeSponsor.id)}
+              />
+            </div>
+          )}
+
+          {/* Main sponsorship rows (grouped tiers render in their own sections below). */}
+          <div className="flex flex-col gap-4 w-full">
+            {ungroupedSponsorships.map((item) => (
+              <SponsorshipRow
+                key={item.id}
+                item={item}
+                event={event}
+                getSponsorCount={getSponsorCount}
+                isOpen={!collapsedIds[item.id]}
+                onToggle={() => toggleRow(item.id)}
+              />
             ))}
           </div>
 
@@ -196,15 +218,16 @@ const SponsorOptions = ({
                 Each panel has a single Sponsor which may contribute the
                 Moderator for the panel discussion during the General Session.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full items-start">
-                {groupedSponsorships[groupName].map((item, index) => (
-                  <div key={index} className="flex justify-center">
-                    <SponsorshipCard
-                      item={item}
-                      event={event}
-                      getSponsorCount={getSponsorCount}
-                    />
-                  </div>
+              <div className="flex flex-col gap-4 w-full">
+                {groupedSponsorships[groupName].map((item) => (
+                  <SponsorshipRow
+                    key={item.id}
+                    item={item}
+                    event={event}
+                    getSponsorCount={getSponsorCount}
+                    isOpen={!collapsedIds[item.id]}
+                    onToggle={() => toggleRow(item.id)}
+                  />
                 ))}
               </div>
             </div>
