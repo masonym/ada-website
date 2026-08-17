@@ -185,14 +185,19 @@ const FormattedPerk: React.FC<FormattedPerkProps> = ({
     );
   };
 
-  // Render a nested list structure using actual <ul> and <li> elements
-  const renderNestedList = (items: any[]) => {
+  // Render a nested list structure using actual <ul> and <li> elements.
+  // Only the top-level list gets the wider bottom margin — the recursive call
+  // below renders grandchildren, which should stay tightly spaced.
+  const renderNestedList = (items: any[], isRoot = true) => {
     if (!items || items.length === 0) return null;
 
     return (
       <ul className="list-disc pl-5">
         {items.map((item, index) => (
-          <li key={index} className="mt-1 first:mt-0 md:mb-4">
+          <li
+            key={index}
+            className={`mt-1 first:mt-0 ${isRoot ? "md:mb-4" : ""}`}
+          >
             {item.content}
             {item.children && item.children.length > 0 && (
               <ul className="list-square pl-5 mt-1">
@@ -201,7 +206,7 @@ const FormattedPerk: React.FC<FormattedPerkProps> = ({
                     {child.content}
                     {child.children &&
                       child.children.length > 0 &&
-                      renderNestedList(child.children)}
+                      renderNestedList(child.children, false)}
                   </li>
                 ))}
               </ul>
