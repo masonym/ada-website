@@ -3014,109 +3014,112 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         },
       ],
     },
-    primeSponsor: {
-      id: "platinum-sponsor",
-      title: "Platinum Sponsorship",
-      cost: 15000,
-      sponsorPasses: 5,
-      requiresAttendeeInfo: true,
-      perks: [
-        {
-          formatted: [
-            { content: "Event Access: (5) VIP Attendee Passes", bold: true },
-            {
-              content:
-                "Additional Sponsor Passes can be purchased for $395 each",
-              indent: 1,
-            },
-          ],
-        },
-        {
-          formatted: [
-            {
-              content: "Exclusive Branding: Name Badges and Conference Materials",
-              bold: true,
-            },
-            {
-              content: "Company Logo displayed on Attendee Name Badges",
-              indent: 1,
-            },
-            {
-              content: "Prime Logo Placement on Conference Materials",
-              indent: 1,
-            },
-            { content: "Conference Pop-up Banners", indent: 2 },
-            { content: "Event Website", indent: 2 },
-            { content: "Digital Agenda & Printed Program", indent: 2 },
-            { content: "Conference Marketing Emails", indent: 2 },
-          ],
-        },
-        {
-          formatted: [
-            { content: "Speaking Opportunity", bold: true },
-            {
-              content: "20-Minute Speaking Opportunity during General Session",
-              indent: 1,
-            },
-          ],
-        },
-        {
-          // New for 2027: advertisement benefit for Gold and Platinum
-          formatted: [
-            { content: "Advertisement", bold: true },
-            {
-              content:
-                "Full Page Color Advertisement/Capabilities Statement in Printed Program",
-              indent: 1,
-            },
-            {
-              content:
-                "Please email your print-ready advertisement to events@americandefensealliance.org by the artwork submission deadline. Accepted file formats include high-resolution PDF (preferred), AI, or EPS.",
-              indent: 1,
-            },
-          ],
-        },
-        {
-          formatted: [
-            { content: "Recognition/Visibility", bold: true },
-            {
-              content: "Recognition during General Session & Networking Breaks",
-              indent: 1,
-            },
-            { content: "Social Media Recognition", indent: 1 },
-            {
-              content: "Photographs & Videos of your Participation",
-              indent: 1,
-            },
-          ],
-        },
-        {
-          formatted: [
-            { content: "Table-Top Exhibit Space", bold: true },
-            {
-              content: "Priority Placement for your 8’x10’ Exhibit Space",
-              indent: 1,
-            },
-            { content: "6' Tablecloth Table & Chairs", indent: 2 },
-          ],
-        },
-        {
-          formatted: [
-            { content: "Matchmaking Host Invitation", bold: true },
-            {
-              content:
-                "Opportunity to Host a Matchmaking Table on either or both days",
-              indent: 1,
-            },
-          ],
-        },
-      ],
-      colour: "bg-blue-600",
-      textColour: "text-white",
-      showRemaining: false,
-    },
 
     sponsorships: [
+      {
+        id: "platinum-sponsor",
+        title: "Platinum Sponsorship",
+        cost: 15000,
+        sponsorPasses: 5,
+        requiresAttendeeInfo: true,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (5) VIP Attendee Passes", bold: true },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $395 each",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              {
+                content:
+                  "Exclusive Branding: Name Badges and Conference Materials",
+                bold: true,
+              },
+              {
+                content: "Company Logo displayed on Attendee Name Badges",
+                indent: 1,
+              },
+              {
+                content: "Prime Logo Placement on Conference Materials",
+                indent: 1,
+              },
+              { content: "Conference Pop-up Banners", indent: 2 },
+              { content: "Event Website", indent: 2 },
+              { content: "Digital Agenda & Printed Program", indent: 2 },
+              { content: "Conference Marketing Emails", indent: 2 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              {
+                content:
+                  "20-Minute Speaking Opportunity during General Session",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            // New for 2027: advertisement benefit for Gold and Platinum
+            formatted: [
+              { content: "Advertisement", bold: true },
+              {
+                content:
+                  "Full Page Color Advertisement/Capabilities Statement in Printed Program",
+                indent: 1,
+              },
+              {
+                content:
+                  "Please email your print-ready advertisement to events@americandefensealliance.org by the artwork submission deadline. Accepted file formats include high-resolution PDF (preferred), AI, or EPS.",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
+              { content: "Social Media Recognition", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Table-Top Exhibit Space", bold: true },
+              {
+                content: "Priority Placement for your 8’x10’ Exhibit Space",
+                indent: 1,
+              },
+              { content: "6' Tablecloth Table & Chairs", indent: 2 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Matchmaking Host Invitation", bold: true },
+              {
+                content:
+                  "Opportunity to Host a Matchmaking Table on either or both days",
+                indent: 1,
+              },
+            ],
+          },
+        ],
+        colour: "bg-blue-600",
+        textColour: "text-white",
+        showRemaining: false,
+      },
       {
         id: "gold-sponsor",
         title: "Gold Sponsorship",

@@ -94,9 +94,7 @@ const SponsorOptions = ({
   const anyExpanded = allRowIds.some((id) => !collapsedIds[id]);
   const toggleAllRows = () =>
     setCollapsedIds(
-      anyExpanded
-        ? Object.fromEntries(allRowIds.map((id) => [id, true]))
-        : {},
+      anyExpanded ? Object.fromEntries(allRowIds.map((id) => [id, true])) : {},
     );
 
   const defaultExhibitorText = (
@@ -183,7 +181,7 @@ const SponsorOptions = ({
           )}
 
           {primeSponsor && (
-            <div className="mb-8 w-full">
+            <div className="mb-4 w-full">
               <SponsorshipRow
                 item={primeSponsor}
                 event={event}
