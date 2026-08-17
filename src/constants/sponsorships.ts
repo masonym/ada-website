@@ -3034,18 +3034,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         {
           formatted: [
             {
-              content:
-                "Exclusive Branding: Lanyards, Name Badges, and Conference Materials",
+              content: "Exclusive Branding: Name Badges and Conference Materials",
               bold: true,
             },
             {
-              content:
-                "Branded Lanyards used with all Attendee Name Badges (Sponsor Provided)",
-              indent: 1,
-            },
-            {
-              content:
-                "Company Logo prominently displayed on Attendee Name Badges",
+              content: "Company Logo displayed on Attendee Name Badges",
               indent: 1,
             },
             {
@@ -3071,7 +3064,16 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           // New for 2027: advertisement benefit for Gold and Platinum
           formatted: [
             { content: "Advertisement", bold: true },
-            { content: "Advertisement in Printed Program", indent: 1 },
+            {
+              content:
+                "Full Page Color Advertisement/Capabilities Statement in Printed Program",
+              indent: 1,
+            },
+            {
+              content:
+                "Please email your print-ready advertisement to events@americandefensealliance.org by the artwork submission deadline. Accepted file formats include high-resolution PDF (preferred), AI, or EPS.",
+              indent: 1,
+            },
           ],
         },
         {
@@ -3079,11 +3081,6 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             { content: "Recognition/Visibility", bold: true },
             {
               content: "Recognition during General Session & Networking Breaks",
-              indent: 1,
-            },
-            {
-              content:
-                "Sponsor Spotlight Email highlighting your Company's Capabilities to Attendees",
               indent: 1,
             },
             { content: "Social Media Recognition", indent: 1 },
@@ -3162,7 +3159,16 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             // New for 2027: advertisement benefit for Gold and Platinum
             formatted: [
               { content: "Advertisement", bold: true },
-              { content: "Advertisement in Printed Program", indent: 1 },
+              {
+                content:
+                  "Full Page Color Advertisement/Capabilities Statement in Printed Program",
+                indent: 1,
+              },
+              {
+                content:
+                  "Please email your print-ready advertisement to events@americandefensealliance.org by the artwork submission deadline. Accepted file formats include high-resolution PDF (preferred), AI, or EPS.",
+                indent: 1,
+              },
             ],
           },
           {
@@ -3317,10 +3323,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                 indent: 1,
               },
               { content: "Social Media Recognition", indent: 1 },
-              {
-                content: "Photographs & Videos of your Participation",
-                indent: 1,
-              },
+              { content: "Photographs of your Participation", indent: 1 },
             ],
           },
           {
@@ -3498,6 +3501,65 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           },
         ],
         colour: "bg-green-800",
+        textColour: "text-white",
+        showRemaining: false,
+      },
+      {
+        id: "lanyard-sponsor",
+        title: "Lanyard Sponsorship",
+        cost: 3000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $395 each",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              {
+                content: "Logo Branding: Lanyards and Conference Materials",
+                bold: true,
+              },
+              {
+                content:
+                  "Branded Lanyards used with all Attendee Name Badges (Sponsor Provided)",
+                indent: 1,
+              },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
+              { content: "Social Media Recognition", indent: 1 },
+              { content: "Photographs of your Participation", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Table-Top Exhibit Space", bold: true },
+              { content: "8’x10’ Exhibit Space", indent: 1 },
+              { content: "6' Tablecloth Table & Chairs", indent: 2 },
+            ],
+          },
+        ],
+        colour: "bg-purple-700",
         textColour: "text-white",
         showRemaining: false,
       },
@@ -3878,6 +3940,88 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               {
                 content:
                   "Moderate the Panel on Military Base Construction & Energy",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              {
+                content:
+                  "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                indent: 1,
+              },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
+              { content: "Social Media Recognition", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Table-Top Exhibit Space", bold: true },
+              {
+                content: "Priority Placement for your 8’x10’ Exhibit Space",
+                indent: 1,
+              },
+              { content: "6' Tablecloth Table & Chairs", indent: 2 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Matchmaking Host Invitation", bold: true },
+              {
+                content:
+                  "Opportunity to Host a Matchmaking Table on either or both days",
+                indent: 1,
+              },
+            ],
+          },
+        ],
+        colour: "#F33A6A",
+        showRemaining: false,
+        sponsorshipGroup: "Major Panel Sponsorships",
+      },
+      {
+        id: "major-panel-sponsor-securing-indo-pacific-logistics",
+        title: "Major Panel Sponsorship: Securing Indo-Pacific Logistics",
+        cost: 4000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $395 each",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              {
+                content:
+                  "Moderate the Panel on Securing Indo-Pacific Logistics",
                 indent: 1,
               },
             ],

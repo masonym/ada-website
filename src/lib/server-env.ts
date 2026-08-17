@@ -80,6 +80,10 @@ export function getServerEnv() {
     // DynamoDB
     DYNAMODB_TABLE_NAME: getRequiredEnv('DYNAMODB_TABLE_NAME', 'DynamoDB Table Name'),
     PERMANENT_REGISTRATIONS_TABLE_NAME: getRequiredEnv('PERMANENT_REGISTRATIONS_TABLE_NAME', 'Permanent Registrations Table Name'),
+    // Deliberately not required: a missing table name must never stop a
+    // registration, it only costs us the forensic record.
+    FAILED_REGISTRATIONS_TABLE_NAME:
+      process.env.FAILED_REGISTRATIONS_TABLE_NAME || 'failed-registrations',
     REGISTRATION_CONTACT_EMAIL_ADDRESS: getRequiredEnv('REGISTRATION_CONTACT_EMAIL_ADDRESS', 'Registration Contact Email Address'),
 
     // Sanity CMS

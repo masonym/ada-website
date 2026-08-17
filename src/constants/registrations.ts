@@ -593,12 +593,12 @@ export const REGISTRATION_TYPES = [
             formatted: [
               { content: "Event Access: (1) Attendee Pass", bold: true },
               { content: "Access to General Sessions", indent: 1 },
-              { content: "Access to Exhibit Area", indent: 1 },
+              { content: "Access to Exhibit Hall", indent: 1 },
               { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-              { content: "Breakfast & Buffet Lunch", indent: 1 },
+              { content: "Morning Coffee & Networking Lunch", indent: 1 },
               {
                 content:
-                  "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
+                  "Post-Event Access to Photographs, Recordings, and Presentation Slides",
                 indent: 1,
               },
             ],
@@ -625,12 +625,12 @@ export const REGISTRATION_TYPES = [
             formatted: [
               { content: "Event Access: (1) VIP Attendee Pass", bold: true },
               { content: "Access to General Sessions", indent: 1 },
-              { content: "Access to Exhibit Area", indent: 1 },
+              { content: "Access to Exhibit Hall", indent: 1 },
               { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-              { content: "Breakfast & Buffet Lunch", indent: 1 },
+              { content: "Morning Coffee & Networking Lunch", indent: 1 },
               {
                 content:
-                  "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
+                  "Post-Event Access to Photographs, Recordings, and Presentation Slides",
                 indent: 1,
               },
               { content: "Access to VIP Networking Reception", bold: true },
@@ -658,11 +658,12 @@ export const REGISTRATION_TYPES = [
             formatted: [
               { content: "Event Access: (1) Attendee Pass", bold: true },
               { content: "Access to General Sessions", indent: 1 },
-              { content: "Access to Exhibit Area", indent: 1 },
+              { content: "Access to Exhibit Hall", indent: 1 },
               { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
+              { content: "Morning Coffee & Networking Lunch", indent: 1 },
               {
                 content:
-                  "Post-Event Access to Photos, Videos, and Speaker Presentation Slides",
+                  "Post-Event Access to Photographs, Recordings, and Presentation Slides",
                 indent: 1,
               },
             ],

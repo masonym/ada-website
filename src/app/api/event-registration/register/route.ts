@@ -7,7 +7,7 @@ import { OrderSummary } from '@/lib/email/templates';
 import { sendRegistrationConfirmationEmails } from '@/lib/email/confirmation-emails';
 import { AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { EVENTS } from '@/constants/events';
-import { savePendingRegistration } from '@/lib/aws/dynamodb';
+import { savePendingRegistration, saveFailedRegistration } from '@/lib/aws/dynamodb';
 import { validatePromoCodeForOrder } from '@/lib/promo-codes/validate';
 import {
   resolveOrderPricing,
@@ -16,8 +16,15 @@ import {
 } from '@/lib/event-registration/order';
 
 export async function POST(request: Request) {
+  // Hoisted so the catch can record what was attempted. A failed registration
+  // otherwise leaves no trace: Stripe has no PaymentIntent, the sheet only logs
+  // successes, and the pending row expires after 24 hours.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let body: any;
+  let pendingRegistrationId: string | undefined;
+
   try {
-    const body = await request.json();
+    body = await request.json();
     const currentEventId = body.eventId;
     const eventId = Number(currentEventId);
 
@@ -151,7 +158,7 @@ export async function POST(request: Request) {
       });
     }
 
-    const pendingRegistrationId = await savePendingRegistration(validatedData);
+    pendingRegistrationId = await savePendingRegistration(validatedData);
 
     // The webhook only ever asks whether a ticket *in this order* was eligible,
     // so carry the intersection instead of the promo code's whole eligibility
@@ -195,11 +202,23 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     console.error('Error processing registration:', error);
+
+    // Outlives the 24-hour pending row and the host's log retention, so an order
+    // lost here is still reconstructable - and the customer still reachable -
+    // weeks later. saveFailedRegistration swallows its own errors.
+    const failureId = await saveFailedRegistration({
+      payload: body,
+      error,
+      pendingRegistrationId,
+    });
+
     return NextResponse.json(
       {
         success: false,
         error: 'An error occurred while processing your registration',
         details: error instanceof Error ? error.message : 'Unknown error',
+        // Gives support something to quote back to us.
+        reference: failureId ?? undefined,
       },
       { status: 500 }
     );
