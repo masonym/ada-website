@@ -3073,11 +3073,6 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Full Page Color Advertisement/Capabilities Statement in Printed Program",
                 indent: 1,
               },
-              {
-                content:
-                  "Please email your print-ready advertisement to events@americandefensealliance.org by the artwork submission deadline. Accepted file formats include high-resolution PDF (preferred), AI, or EPS.",
-                indent: 1,
-              },
             ],
           },
           {
@@ -3164,12 +3159,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Advertisement", bold: true },
               {
                 content:
-                  "Full Page Color Advertisement/Capabilities Statement in Printed Program",
-                indent: 1,
-              },
-              {
-                content:
-                  "Please email your print-ready advertisement to events@americandefensealliance.org by the artwork submission deadline. Accepted file formats include high-resolution PDF (preferred), AI, or EPS.",
+                  "Full Page Color Advertisement/Capabilities Statement in Program",
                 indent: 1,
               },
             ],
@@ -3528,13 +3518,17 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               {
-                content: "Logo Branding: Lanyards and Conference Materials",
+                content: "Exclusive Branding: Lanyards",
                 bold: true,
               },
               {
                 content:
                   "Branded Lanyards used with all Attendee Name Badges (Sponsor Provided)",
                 indent: 1,
+              },
+              {
+                content: "Logo Branding: Conference Materials",
+                bold: true,
               },
               { content: "Conference Pop-up Banners", indent: 1 },
               { content: "Event Website", indent: 1 },
