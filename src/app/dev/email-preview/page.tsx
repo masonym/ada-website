@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { attendeePassTemplate, vipAttendeePassTemplate, exhibitorTemplate, sponsorTemplate, generateOrderSummaryHtml, govMilPassTemplate, AttendeeDetails, generateAttendeeDetailsHtml } from '@/lib/email/templates';
 import { VipNetworkingReception } from '@/types/events';
+import { SPONSORSHIP_TYPES } from '@/constants/sponsorships';
 
 // Mock data for the email templates
 const mockData = {
@@ -130,24 +131,31 @@ const mockDataWithUrls = {
   vipNetworkingReceptionUrl: `${mockData.eventUrl}/about/vip-networking-reception`,
 };
 
-const sponsorLevels = [
-  'Small Business Sponsor',
-  'Small Business Sponsor without Exhibit Space',
-  'Bronze Sponsor',
-  'Silver Sponsor',
-  'Gold Sponsor',
-  'Platinum Sponsor',
-  'VIP Networking Reception Sponsor',
-  'Networking Luncheon Sponsor'
-]
+// Sponsor benefits are rendered from the perks in @/constants/sponsorships, so
+// the preview picks a real event + sponsorship rather than a hardcoded label.
+const sponsorEventIds = SPONSORSHIP_TYPES.map((tier) => tier.id);
+
+function sponsorsForEvent(eventId: number) {
+  const tier = SPONSORSHIP_TYPES.find((t) => t.id === eventId);
+  if (!tier) return [];
+  return [
+    ...(tier.primeSponsor ? [tier.primeSponsor] : []),
+    ...(tier.sponsorships || []),
+  ];
+}
 
 type TemplateName = keyof typeof templateFunctions;
-type SponsorLevel = typeof sponsorLevels[number];
 
 
 export default function EmailPreviewPage() {
   const [selectedTemplate, setSelectedTemplate] = useState<TemplateName>('Sponsor');
-  const [selectedSponsorLevel, setSelectedSponsorLevel] = useState<SponsorLevel>('Small Business Sponsor');
+  const [selectedEventId, setSelectedEventId] = useState<number>(
+    sponsorEventIds[sponsorEventIds.length - 1]
+  );
+  const sponsors = sponsorsForEvent(selectedEventId);
+  const [selectedSponsorId, setSelectedSponsorId] = useState<string>(sponsors[0]?.id ?? '');
+  const selectedSponsor =
+    sponsors.find((s) => s.id === selectedSponsorId) ?? sponsors[0];
 
   return (
     <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
@@ -166,15 +174,30 @@ export default function EmailPreviewPage() {
         </select>
         {selectedTemplate === 'Sponsor' && (
           <>
+            <label htmlFor="event-select" style={{ marginRight: '10px' }}>Select an event:</label>
+            <select
+              id="event-select"
+              value={selectedEventId}
+              onChange={(e) => {
+                const eventId = Number(e.target.value);
+                setSelectedEventId(eventId);
+                setSelectedSponsorId(sponsorsForEvent(eventId)[0]?.id ?? '');
+              }}
+              style={{ padding: '8px', fontSize: '16px' }}
+            >
+              {sponsorEventIds.map((id) => (
+                <option key={id} value={id}>Event {id}</option>
+              ))}
+            </select>
             <label htmlFor="sponsor-select" style={{ marginRight: '10px' }}>Select a sponsor level:</label>
             <select
               id="sponsor-select"
-              value={selectedSponsorLevel}
-              onChange={(e) => setSelectedSponsorLevel(e.target.value as SponsorLevel)}
+              value={selectedSponsor?.id ?? ''}
+              onChange={(e) => setSelectedSponsorId(e.target.value)}
           style={{ padding: '8px', fontSize: '16px' }}
         >
-          {sponsorLevels.map((name) => (
-            <option key={name} value={name}>{name}</option>
+          {sponsors.map((sponsor) => (
+            <option key={sponsor.id} value={sponsor.id}>{sponsor.title}</option>
           ))}
         </select>
           </>
@@ -186,7 +209,10 @@ export default function EmailPreviewPage() {
             // Only update sponsorshipLevel when selectedTemplate is 'Sponsor'
             selectedTemplate === 'Sponsor' ? {
               ...mockDataWithUrls,
-              sponsorshipLevel: selectedSponsorLevel,
+              eventId: selectedEventId,
+              sponsorshipId: selectedSponsor?.id,
+              sponsorshipLevel: selectedSponsor?.title ?? '',
+              attendeePasses: selectedSponsor?.sponsorPasses ?? 0,
               orderSummaryHtml,
               attendeeDetailsHtml,
             } : {

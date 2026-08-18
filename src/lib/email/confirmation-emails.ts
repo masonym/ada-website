@@ -315,6 +315,10 @@ export async function sendRegistrationConfirmationEmail({
           eventUrl,
           orderId,
           sponsorshipLevel: registration.title,
+          // Benefits are rendered from this sponsorship's perks in
+          // @/constants/sponsorships, so they always match what was sold.
+          sponsorshipId: registration.id,
+          eventId: event.id,
           attendeePasses: registration.sponsorPasses || attendeePasses || 0,
           eventImage: event.image,
           orderSummaryHtml,
