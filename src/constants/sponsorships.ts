@@ -3417,7 +3417,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         ],
         colour: "bg-yellow-300",
         textColour: "text-slate-900",
-        showRemaining: false,
+        showRemaining: true,
         slotsPerEvent: 1,
       },
       {
