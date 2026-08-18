@@ -1577,7 +1577,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             formatted: [
               { content: "Recognition/Visibility", bold: true },
               {
-                content: "Branded Coffee Napkins (Sponsor Provided)",
+                content: "Branded Coffee Cups/Napkins (Sponsor Provided)",
                 indent: 1,
               },
               { content: "Social Media Recognition", indent: 1 },
@@ -3070,7 +3070,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Advertisement", bold: true },
               {
                 content:
-                  "Full Page Color Advertisement/Capabilities Statement in Printed Program",
+                  "Full Page Color Advertisement/Capabilities Statement in Program",
                 indent: 1,
               },
             ],
