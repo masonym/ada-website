@@ -70,9 +70,6 @@ const KNOWN_ABSENT: Record<keyof typeof CORE_REGISTRIES, Partial<Record<number, 
   },
   FAQs: {
     3: '2025DTIOS used the partner organisation\'s own FAQ page',
-    // Not a deliberate gap: the nav has an FAQs item and the page renders its
-    // empty state. Awaiting copy from the events team.
-    9: '2026DIU FAQ copy has not been written yet',
   },
   EVENT_NAVS: {},
   SCHEDULES: {

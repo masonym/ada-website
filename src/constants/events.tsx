@@ -2665,8 +2665,22 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          Join us for the <b>Defense Industry Update</b> conference that the American Defense
-          Alliance will be hosting on Thursday, December 3, 2026. This will be an information-rich event covering developing requirements and priority contracting opportunities across the Pentagon, Military Services, and key acquisition commands and purchasing agencies. It will provide unique networking opportunities for Prime Defense Contractors and innovative Small Businesses to meet each other and explore teaming, subcontracting and Mentor-Protégé partnerships. As the U.S. Department of War reforms and streamlines procurement policies and procedures in response to National Security threats, speakers and panelists will inform the audience how they can support our Warfighters while growing their businesses. Don’t miss this chance to gain invaluable intel on current Defense needs and upcoming acquisition initiatives and purchasing programs, from IT, software and AI to weapons system integration, maintenance and sustainment to prototypes and training, to Military base construction!
+          Join us for the <b>Defense Industry Update</b> conference that the
+          American Defense Alliance will be hosting on Thursday, December 3,
+          2026. This will be an information-rich event covering developing
+          requirements and priority contracting opportunities across the
+          Pentagon, Military Services, and key acquisition commands and
+          purchasing agencies. It will provide unique networking opportunities
+          for Prime Defense Contractors and innovative Small Businesses to meet
+          each other and explore teaming, subcontracting and Mentor-Protégé
+          partnerships. As the U.S. Department of War reforms and streamlines
+          procurement policies and procedures in response to National Security
+          threats, speakers and panelists will inform the audience how they can
+          support our Warfighters while growing their businesses. Don’t miss
+          this chance to gain invaluable intel on current Defense needs and
+          upcoming acquisition initiatives and purchasing programs, from IT,
+          software and AI to weapons system integration, maintenance and
+          sustainment to prototypes and training, to Military base construction!
         </p>
         <p className="font-bold text-xl text-center font-gotham">
           Topical Coverage:
@@ -2674,17 +2688,44 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         <div className="">
           <ul className="list-inside">
             <li>NDAA/Defense Budget - Where the Money is Going</li>
-            <li>Maritime Industry Revival/Shipbuilding &amp; Fleet Readiness</li>
-            <li>Air Force &amp; Space Force Challenges, Requirements &amp; Priorities</li>
-            <li>Info-Pacific SITREP - Airfield &amp; Logistics Hub Reconstruction/Expansion</li>
-            <li>Advanced Battlespace Technologies – C6ISR, AI, Quantum, 3D Printing, UAS &amp; C-UAS</li>
-            <li>Investment Opportunities in Defense Manufacturing - the New Arsenal of Democracy</li>
-            <li>Military Base-Community Partnerships Promoting Local Build Contracts</li>
-            <li>Installation Energy Supply/Microgrid, Nuclear &amp; Geothermal Solutions</li>
+            <li>
+              Maritime Industry Revival/Shipbuilding &amp; Fleet Readiness
+            </li>
+            <li>
+              Air Force &amp; Space Force Challenges, Requirements &amp;
+              Priorities
+            </li>
+            <li>
+              Info-Pacific SITREP - Airfield &amp; Logistics Hub
+              Reconstruction/Expansion
+            </li>
+            <li>
+              Advanced Battlespace Technologies – C6ISR, AI, Quantum, 3D
+              Printing, UAS &amp; C-UAS
+            </li>
+            <li>
+              Investment Opportunities in Defense Manufacturing - the New
+              Arsenal of Democracy
+            </li>
+            <li>
+              Military Base-Community Partnerships Promoting Local Build
+              Contracts
+            </li>
+            <li>
+              Installation Energy Supply/Microgrid, Nuclear &amp; Geothermal
+              Solutions
+            </li>
             <li>Accelerated Contracting - DARPA, DIU, DEFENSEWERX</li>
-            <li>GovCon Toolkit - OTA’s, SBIR’s/STTR’s, GWAC’s, IDIQ’s &amp; MACC’s</li>
-            <li>Mentor-Protégé Programs as Super Business Accelerators for Smalls &amp; Primes</li>
-            <li>Administration Acquisition Reform - FAR/DFAR &amp; 8(a) Changes</li>
+            <li>
+              GovCon Toolkit - OTA’s, SBIR’s/STTR’s, GWAC’s, IDIQ’s &amp; MACC’s
+            </li>
+            <li>
+              Mentor-Protégé Programs as Super Business Accelerators for Smalls
+              &amp; Primes
+            </li>
+            <li>
+              Administration Acquisition Reform - FAR/DFAR &amp; 8(a) Changes
+            </li>
             <li>Cybersecurity/CMMC Update</li>
           </ul>
         </div>
@@ -2696,20 +2737,32 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
           Event Overview
         </h2>
         <p className="mb-4 leading-relaxed">
-          Join us for the <b>Defense Industry Update</b> conference that the American Defense
-          Alliance will be hosting on Thursday, December 3, 2026. This will be an information-rich event covering developing requirements and priority contracting opportunities across the Pentagon, Military Services, and key acquisition commands and purchasing agencies. It will provide unique networking opportunities for Prime Defense Contractors and innovative Small Businesses to meet each other and explore teaming, subcontracting and Mentor-Protégé partnerships. As the U.S. Department of War reforms and streamlines procurement policies and procedures in response to National Security threats, speakers and panelists will inform the audience how they can support our Warfighters while growing their businesses. Don’t miss this chance to gain invaluable intel on current Defense needs and upcoming acquisition initiatives and purchasing programs, from IT, software and AI to weapons system integration, maintenance and sustainment to prototypes and training, to Military base construction!
+          Join us for the <b>Defense Industry Update</b> conference that the
+          American Defense Alliance will be hosting on Thursday, December 3,
+          2026. This will be an information-rich event covering developing
+          requirements and priority contracting opportunities across the
+          Pentagon, Military Services, and key acquisition commands and
+          purchasing agencies. It will provide unique networking opportunities
+          for Prime Defense Contractors and innovative Small Businesses to meet
+          each other and explore teaming, subcontracting and Mentor-Protégé
+          partnerships. As the U.S. Department of War reforms and streamlines
+          procurement policies and procedures in response to National Security
+          threats, speakers and panelists will inform the audience how they can
+          support our Warfighters while growing their businesses. Don’t miss
+          this chance to gain invaluable intel on current Defense needs and
+          upcoming acquisition initiatives and purchasing programs, from IT,
+          software and AI to weapons system integration, maintenance and
+          sustainment to prototypes and training, to Military base construction!
         </p>
       </div>
     ),
     topicalCoverage: [
       {
-        tagline:
-          "NDAA/Defense Budget - Where the Money is Going",
+        tagline: "NDAA/Defense Budget - Where the Money is Going",
         description: "",
       },
       {
-        tagline:
-          "Maritime Industry Revival/Shipbuilding & Fleet Readiness",
+        tagline: "Maritime Industry Revival/Shipbuilding & Fleet Readiness",
         description: "",
       },
       {
@@ -2743,8 +2796,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         description: "",
       },
       {
-        tagline:
-          "Accelerated Contracting - DARPA, DIU, DEFENSEWERX",
+        tagline: "Accelerated Contracting - DARPA, DIU, DEFENSEWERX",
         description: "",
       },
       {
@@ -2758,13 +2810,11 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         description: "",
       },
       {
-        tagline:
-          "Administration Acquisition Reform - FAR/DFAR & 8(a) Changes",
+        tagline: "Administration Acquisition Reform - FAR/DFAR & 8(a) Changes",
         description: "",
       },
       {
-        tagline:
-          "Cybersecurity/CMMC Update",
+        tagline: "Cybersecurity/CMMC Update",
         description: "",
       },
     ],
@@ -2836,5 +2886,6 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         </>
       ),
     },
+    placeId: "ChIJV5Xuliu4t4kRyLi3Llx3n8k",
   },
 ];

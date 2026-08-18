@@ -4145,14 +4145,28 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         {
           formatted: [
             { content: "Event Access: (4) VIP Attendee Passes", bold: true },
-            { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+            {
+              content:
+                "Additional Sponsor Passes can be purchased for $195 each",
+              indent: 1,
+            },
           ],
         },
         {
           formatted: [
-            { content: "Exclusive Branding: Name Badges and Conference Materials", bold: true },
-            { content: "Company Logo displayed on Attendee Name Badges", indent: 1 },
-            { content: "Prime Logo Placement on Conference Materials", indent: 1 },
+            {
+              content:
+                "Exclusive Branding: Name Badges and Conference Materials",
+              bold: true,
+            },
+            {
+              content: "Company Logo displayed on Attendee Name Badges",
+              indent: 1,
+            },
+            {
+              content: "Prime Logo Placement on Conference Materials",
+              indent: 1,
+            },
             { content: "Conference Pop-up Banners", indent: 2 },
             { content: "Event Website", indent: 2 },
             { content: "Digital Agenda & Printed Program", indent: 2 },
@@ -4162,15 +4176,24 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         {
           formatted: [
             { content: "Speaking Opportunity", bold: true },
-            { content: "15-Minute Speaking Opportunity during General Session", indent: 1 },
+            {
+              content: "15-Minute Speaking Opportunity during General Session",
+              indent: 1,
+            },
           ],
         },
         {
           formatted: [
             { content: "Recognition/Visibility", bold: true },
-            { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+            {
+              content: "Recognition during General Session & Networking Breaks",
+              indent: 1,
+            },
             { content: "Social Media Recognition", indent: 1 },
-            { content: "Photographs & Videos of your Participation", indent: 1 },
+            {
+              content: "Photographs & Videos of your Participation",
+              indent: 1,
+            },
           ],
         },
       ],
@@ -4191,7 +4214,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $195 each",
+                indent: 1,
+              },
             ],
           },
           {
@@ -4206,15 +4233,25 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Speaking Opportunity", bold: true },
-              { content: "5-Minute Speaking Opportunity during General Session", indent: 1 },
+              {
+                content: "5-Minute Speaking Opportunity during General Session",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
               { content: "Recognition/Visibility", bold: true },
-              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
               { content: "Social Media Recognition", indent: 1 },
-              { content: "Photographs & Videos of your Participation", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
             ],
           },
         ],
@@ -4232,7 +4269,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $195 each",
+                indent: 1,
+              },
             ],
           },
           {
@@ -4247,14 +4288,24 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Host of the VIP Networking Reception", bold: true },
-              { content: "Provide Remarks at the VIP Networking Reception", indent: 1 },
-              { content: "Logo Placement at VIP Networking Reception", indent: 1 },
+              {
+                content: "Provide Remarks at the VIP Networking Reception",
+                indent: 1,
+              },
+              {
+                content: "Logo Placement at VIP Networking Reception",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
               { content: "Recognition/Visibility", bold: true },
-              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
               { content: "Social Media Recognition", indent: 1 },
               { content: "Photographs of your Participation", indent: 1 },
             ],
@@ -4275,13 +4326,24 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $195 each",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
-              { content: "Logo Branding: Lanyards and Conference Materials", bold: true },
-              { content: "Branded Lanyards used with all Attendee Name Badges (Sponsor Provided)", indent: 1 },
+              {
+                content: "Logo Branding: Lanyards and Conference Materials",
+                bold: true,
+              },
+              {
+                content:
+                  "Branded Lanyards used with all Attendee Name Badges (Sponsor Provided)",
+                indent: 1,
+              },
               { content: "Conference Pop-up Banners", indent: 1 },
               { content: "Event Website", indent: 1 },
               { content: "Digital Agenda & Printed Program", indent: 1 },
@@ -4291,7 +4353,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Recognition/Visibility", bold: true },
-              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
               { content: "Social Media Recognition", indent: 1 },
               { content: "Photographs of your Participation", indent: 1 },
             ],
@@ -4312,13 +4378,20 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $195 each",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
               { content: "Logo Branding: Conference Materials", bold: true },
-              { content: "Branded Coffee Cups/Napkins (Sponsor Provided)", indent: 1 },
+              {
+                content: "Branded Coffee Cups/Napkins (Sponsor Provided)",
+                indent: 1,
+              },
               { content: "Signage near Coffee Station", indent: 1 },
               { content: "Conference Pop-up Banners", indent: 1 },
               { content: "Event Website", indent: 1 },
@@ -4329,7 +4402,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Recognition/Visibility", bold: true },
-              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
               { content: "Social Media Recognition", indent: 1 },
               { content: "Photographs of your Participation", indent: 1 },
             ],
@@ -4340,8 +4417,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-maritime-industry-shipbuilding-fleet-readiness",
-        title: "Major Panel Sponsorship: Maritime Industry/Shipbuilding & Fleet Readiness",
-        cost: 4000,
+        title:
+          "Major Panel Sponsorship: Maritime Industry/Shipbuilding & Fleet Readiness",
+        cost: 2000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4349,7 +4427,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $195 each",
+                indent: 1,
+              },
             ],
           },
           {
@@ -4364,16 +4446,31 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Speaking Opportunity", bold: true },
-              { content: "Moderate the Panel on Maritime Industry/Shipbuilding & Fleet Readiness", indent: 1 },
+              {
+                content:
+                  "Moderate the Panel on Maritime Industry/Shipbuilding & Fleet Readiness",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
               { content: "Recognition/Visibility", bold: true },
-              { content: "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
-              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              {
+                content:
+                  "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                indent: 1,
+              },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
               { content: "Social Media Recognition", indent: 1 },
-              { content: "Photographs & Videos of your Participation", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
             ],
           },
         ],
@@ -4383,8 +4480,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-air-force-space-force-challenges-requirements-priorities",
-        title: "Major Panel Sponsorship: Air Force & Space Force Challenges/Requirements/Priorities",
-        cost: 4000,
+        title:
+          "Major Panel Sponsorship: Air Force & Space Force Challenges/Requirements/Priorities",
+        cost: 2000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4392,7 +4490,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $195 each",
+                indent: 1,
+              },
             ],
           },
           {
@@ -4407,16 +4509,31 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Speaking Opportunity", bold: true },
-              { content: "Moderate the Panel on Air Force & Space Force Challenges/Requirements/Priorities", indent: 1 },
+              {
+                content:
+                  "Moderate the Panel on Air Force & Space Force Challenges/Requirements/Priorities",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
               { content: "Recognition/Visibility", bold: true },
-              { content: "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
-              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              {
+                content:
+                  "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                indent: 1,
+              },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
               { content: "Social Media Recognition", indent: 1 },
-              { content: "Photographs & Videos of your Participation", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
             ],
           },
         ],
@@ -4426,8 +4543,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-army-transformation-installation-resilience",
-        title: "Major Panel Sponsorship: Army Transformation & Installation Resilience",
-        cost: 4000,
+        title:
+          "Major Panel Sponsorship: Army Transformation & Installation Resilience",
+        cost: 2000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4435,7 +4553,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $195 each",
+                indent: 1,
+              },
             ],
           },
           {
@@ -4450,16 +4572,31 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Speaking Opportunity", bold: true },
-              { content: "Moderate the Panel on Army Transformation & Installation Resilience", indent: 1 },
+              {
+                content:
+                  "Moderate the Panel on Army Transformation & Installation Resilience",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
               { content: "Recognition/Visibility", bold: true },
-              { content: "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
-              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              {
+                content:
+                  "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                indent: 1,
+              },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
               { content: "Social Media Recognition", indent: 1 },
-              { content: "Photographs & Videos of your Participation", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
             ],
           },
         ],
@@ -4469,8 +4606,9 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-advanced-technologies-on-the-warfighter-edge",
-        title: "Major Panel Sponsorship: Advanced Technologies on the Warfighter Edge",
-        cost: 4000,
+        title:
+          "Major Panel Sponsorship: Advanced Technologies on the Warfighter Edge",
+        cost: 2000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4478,7 +4616,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
-              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $195 each",
+                indent: 1,
+              },
             ],
           },
           {
@@ -4493,16 +4635,31 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Speaking Opportunity", bold: true },
-              { content: "Moderate the Panel on Advanced Technologies on the Warfighter Edge", indent: 1 },
+              {
+                content:
+                  "Moderate the Panel on Advanced Technologies on the Warfighter Edge",
+                indent: 1,
+              },
             ],
           },
           {
             formatted: [
               { content: "Recognition/Visibility", bold: true },
-              { content: "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
-              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              {
+                content:
+                  "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                indent: 1,
+              },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
               { content: "Social Media Recognition", indent: 1 },
-              { content: "Photographs & Videos of your Participation", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
             ],
           },
         ],
