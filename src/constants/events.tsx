@@ -2823,6 +2823,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     locationImage: "locations/temp_venue.webp",
     locationAddress: "300 First Street SE, Washington, DC 20003",
     venueName: "Capitol Hill Club",
+    placeID: "ChIJV5Xuliu4t4kRyLi3Llx3n8k",
     password: "DIUWASHINGTON2026",
     eventShorthand: "2026DIU",
     countdownColour: "#1C2D3D",
@@ -2886,6 +2887,5 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         </>
       ),
     },
-    placeId: "ChIJV5Xuliu4t4kRyLi3Llx3n8k",
   },
 ];
