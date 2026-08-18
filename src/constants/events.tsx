@@ -2372,17 +2372,6 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
           Event Overview
         </h2>
-        <p className="mb-0 leading-9">
-          Join us for the <b>2027 Navy & Marine Corps Procurement Conference</b>{" "}
-          on June 23-24, 2027 in Norfolk, Virginia, home to Naval Station
-          Norfolk and Norfolk Naval Shipyard. This is a premier opportunity to
-          engage directly with decision-makers from the Pentagon, Navy and
-          Marine Corps Commands, and leading Prime Defense Contractors. Don't
-          miss your chance to network with Defense Industry Leaders and
-          Government Program Managers and Contracting Officers, and gain
-          critical information on current Defense spending plans and procurement
-          priorities.
-        </p>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-gotham text-slate-700 mt-6 mb-2">
           What to Expect
         </h2>
