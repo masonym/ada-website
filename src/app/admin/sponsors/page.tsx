@@ -102,15 +102,16 @@ export default function SponsorAdminPage() {
   const [editTierStyle, setEditTierStyle] = useState("");
 
   const TIER_STYLE_PRESETS = [
+    { label: "Platinum", classes: "bg-blue-600 text-white" },
     { label: "Gold", classes: "bg-amber-400 text-slate-900" },
     { label: "Silver", classes: "bg-gray-300 text-slate-900" },
     { label: "Bronze", classes: "bg-amber-700 text-white" },
-    { label: "Platinum", classes: "bg-blue-600 text-white" },
     { label: "Coffee Station Sponsor", classes: "bg-[#966919] text-white" },
     { label: "Major Panel Sponsor", classes: "bg-[#F33A6A] text-white" },
     { label: "CMMC", classes: "bg-yellow-300 text-slate-900" },
+    { label: "Lanyard", classes: "bg-purple-700 text-white" },
     { label: "Small Business", classes: "bg-[#40E0D0] text-slate-900" },
-    { label: "Exhibitors", classes: "bg-navy-800 text-white" },
+    { label: "Exhibitors", classes: "bg-[#3FB4E6] text-white" },
   ];
 
   // replace logo form
