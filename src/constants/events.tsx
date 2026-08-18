@@ -2820,7 +2820,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     ],
     image: "2026DIU_wide.webp",
     slug: "2026-defense-industry-update",
-    locationImage: "locations/temp_venue.webp",
+    locationImage: "locations/capitol_hill_club.webp",
     locationAddress: "300 First Street SE, Washington, DC 20003",
     venueName: "Capitol Hill Club",
     placeID: "ChIJV5Xuliu4t4kRyLi3Llx3n8k",
