@@ -89,7 +89,9 @@ interface RegistrationModalProps {
   initialPromoCode?: string; // Optional promo code to auto-apply from URL
 }
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "",
+);
 
 const initialModalAttendeeInfo: ModalAttendeeInfo = {
   firstName: "",
@@ -871,11 +873,16 @@ const RegistrationModal = ({
         className={`mb-4 p-4 border rounded-lg shadow-sm ${ticketIsExpired ? "opacity-75 bg-gray-200" : ""}`}
       >
         <div className="flex justify-between items-start">
-          <div className="flex items-center flex-wrap gap-2">
-            <h4 className="text-lg font-medium text-gray-800">{reg.name}</h4>
-            <PriceDisplay registration={reg} />
+          <div className="min-w-0 flex-1">
+            <h4 className="text-lg font-medium text-gray-800 inline">
+              {reg.name}
+            </h4>
+            <PriceDisplay
+              registration={reg}
+              className="inline-block align-baseline ml-2"
+            />
             {ticketIsExpired && (
-              <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
+              <span className="text-center inline-flex items-center align-middle ml-2 px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
                 SOLD OUT
               </span>
             )}
@@ -1004,7 +1011,8 @@ const RegistrationModal = ({
   const getEffectivePrice = (
     registration: AdapterModalRegistrationType,
   ): number => {
-    const { earlyBirdPrice, earlyBirdDeadline } = resolveEarlyBird(registration);
+    const { earlyBirdPrice, earlyBirdDeadline } =
+      resolveEarlyBird(registration);
     const isEarlyBird =
       earlyBirdDeadline && new Date() < new Date(earlyBirdDeadline);
     const displayPrice =
@@ -1039,9 +1047,7 @@ const RegistrationModal = ({
     const isEarlyBird =
       earlyBirdDeadline && new Date() < new Date(earlyBirdDeadline);
     const originalPrice =
-      isEarlyBird && earlyBirdPrice !== undefined
-        ? earlyBirdPrice
-        : reg.price;
+      isEarlyBird && earlyBirdPrice !== undefined ? earlyBirdPrice : reg.price;
     const originalPriceNum =
       typeof originalPrice === "number"
         ? originalPrice
@@ -2898,24 +2904,27 @@ const RegistrationModal = ({
                             className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut || isSaleEnded ? "opacity-75 bg-gray-200" : ""}`}
                           >
                             <div className="flex justify-between items-start">
-                              <div className="flex items-center flex-wrap gap-2">
-                                <h4 className="text-lg font-medium text-gray-800">
+                              <div className="min-w-0 flex-1">
+                                <h4 className="text-lg font-medium text-gray-800 inline">
                                   {reg.name}
                                 </h4>
-                                <PriceDisplay registration={reg} />
+                                <PriceDisplay
+                                  registration={reg}
+                                  className="inline-block align-baseline ml-2"
+                                />
                                 {itemIsSoldOut ? (
-                                  <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                                  <span className="text-center inline-flex items-center align-middle ml-2 px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
                                     SOLD OUT
                                   </span>
                                 ) : isSaleEnded ? (
-                                  <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                  <span className="text-center inline-flex items-center align-middle ml-2 px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                     SALE ENDED
                                   </span>
                                 ) : shouldShowRemaining(
                                     reg,
                                     getSponsorCount,
                                   ) ? (
-                                  <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                  <span className="text-center inline-flex items-center align-middle ml-2 px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                     {getRemainingSlots(reg, getSponsorCount)}{" "}
                                     remaining
                                   </span>
@@ -3012,23 +3021,26 @@ const RegistrationModal = ({
                             className={`mb-4 p-4 border rounded-lg shadow-sm ${itemIsSoldOut || isSaleEnded ? "opacity-75 bg-gray-200" : ""}`}
                           >
                             <div className="flex justify-between items-start">
-                              <div className="flex items-center flex-wrap gap-2">
-                                <h4 className="text-lg font-medium text-gray-800">
+                              <div className="min-w-0 flex-1">
+                                <h4 className="text-lg font-medium text-gray-800 inline">
                                   {reg.name}
                                 </h4>
-                                <PriceDisplay registration={reg} />
+                                <PriceDisplay
+                                  registration={reg}
+                                  className="inline-block align-baseline ml-2"
+                                />
 
                                 {itemIsSoldOut ? (
-                                  <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
+                                  <span className="text-center inline-flex items-center align-middle ml-2 px-2 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
                                     SOLD OUT
                                   </span>
                                 ) : isSaleEnded ? (
-                                  <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                  <span className="text-center inline-flex items-center align-middle ml-2 px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                     SALE ENDED
                                   </span>
                                 ) : shouldShowRemaining(reg, getSponsorCount) &&
                                   reg.showRemaining ? (
-                                  <span className="text-center inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                  <span className="text-center inline-flex items-center align-middle ml-2 px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                     {getRemainingSlots(reg, getSponsorCount)}{" "}
                                     remaining
                                   </span>
