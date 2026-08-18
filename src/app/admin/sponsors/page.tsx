@@ -102,16 +102,66 @@ export default function SponsorAdminPage() {
   const [editTierStyle, setEditTierStyle] = useState("");
 
   const TIER_STYLE_PRESETS = [
-    { label: "Platinum", classes: "bg-blue-600 text-white" },
-    { label: "Gold", classes: "bg-amber-400 text-slate-900" },
-    { label: "Silver", classes: "bg-gray-300 text-slate-900" },
-    { label: "Bronze", classes: "bg-amber-700 text-white" },
-    { label: "Coffee Station Sponsor", classes: "bg-[#966919] text-white" },
-    { label: "Major Panel Sponsor", classes: "bg-[#F33A6A] text-white" },
-    { label: "CMMC", classes: "bg-yellow-300 text-slate-900" },
-    { label: "Lanyard", classes: "bg-purple-700 text-white" },
-    { label: "Small Business", classes: "bg-[#40E0D0] text-slate-900" },
-    { label: "Exhibitors", classes: "bg-[#3FB4E6] text-white" },
+    {
+      label: "Platinum",
+      id: "platinum-sponsor",
+      name: "Platinum Sponsor",
+      classes: "bg-blue-600 text-white",
+    },
+    {
+      label: "Gold",
+      id: "gold-sponsor",
+      name: "Gold Sponsor",
+      classes: "bg-amber-400 text-slate-900",
+    },
+    {
+      label: "Silver",
+      id: "silver-sponsor",
+      name: "Silver Sponsor",
+      classes: "bg-gray-300 text-slate-900",
+    },
+    {
+      label: "Bronze",
+      id: "bronze-sponsor",
+      name: "Bronze Sponsor",
+      classes: "bg-amber-700 text-white",
+    },
+    {
+      label: "Coffee Station Sponsor",
+      id: "coffee-station-sponsor",
+      name: "Coffee Station Sponsor",
+      classes: "bg-[#966919] text-white",
+    },
+    {
+      label: "Major Panel Sponsor",
+      id: "major-panel-sponsor",
+      name: "Major Panel Sponsor",
+      classes: "bg-[#F33A6A] text-white",
+    },
+    {
+      label: "CMMC",
+      id: "cybersecurity-cmmc-sponsor",
+      name: "Cybersecurity / CMMC Sponsor",
+      classes: "bg-yellow-300 text-slate-900",
+    },
+    {
+      label: "Lanyard",
+      id: "lanyard-sponsor",
+      name: "Lanyard Sponsor",
+      classes: "bg-purple-700 text-white",
+    },
+    {
+      label: "Small Business",
+      id: "small-business-sponsor",
+      name: "Small Business Sponsor",
+      classes: "bg-[#40E0D0] text-slate-900",
+    },
+    {
+      label: "Exhibitors",
+      id: "exhibit",
+      name: "Exhibitor Spotlight",
+      classes: "bg-[#3FB4E6] text-white",
+    },
   ];
 
   // replace logo form
@@ -1036,56 +1086,28 @@ export default function SponsorAdminPage() {
                   )}
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Tier ID *
-                  </label>
-                  <input
-                    type="text"
-                    value={newTierId}
-                    onChange={(e) => setNewTierId(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="small-business-sponsor"
-                    required
-                  />
-                  <p className="text-xs text-gray-400 mt-1">
-                    Lowercase with dashes, e.g., "small-business-sponsor"
-                  </p>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Tier Name *
-                  </label>
-                  <input
-                    type="text"
-                    value={newTierName}
-                    onChange={(e) => setNewTierName(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Small Business Sponsors"
-                    required
-                  />
-                </div>
-              </div>
-
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Style Classes{" "}
+                  Tier Preset & Style{" "}
                   <span className="text-gray-400 font-normal">(optional)</span>
                 </label>
 
                 {/* preset picker */}
                 <div className="mb-3">
                   <p className="text-xs text-gray-500 mb-2">
-                    Click a preset or type custom classes below
+                    Click a preset to fill in the Tier ID, Name and styling, or
+                    type custom classes below
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {TIER_STYLE_PRESETS.map((preset) => (
                       <button
                         key={preset.label}
                         type="button"
-                        onClick={() => setNewTierStyle(preset.classes)}
+                        onClick={() => {
+                          setNewTierId(preset.id);
+                          setNewTierName(preset.name);
+                          setNewTierStyle(preset.classes);
+                        }}
                         className={`px-3 py-1.5 rounded-full text-xs font-semibold border-2 transition-all ${
                           newTierStyle === preset.classes
                             ? "ring-2 ring-offset-1 ring-blue-500 border-transparent"
@@ -1131,6 +1153,39 @@ export default function SponsorAdminPage() {
                     </span>
                   </div>
                 )}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Tier ID *
+                  </label>
+                  <input
+                    type="text"
+                    value={newTierId}
+                    onChange={(e) => setNewTierId(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="small-business-sponsor"
+                    required
+                  />
+                  <p className="text-xs text-gray-400 mt-1">
+                    Lowercase with dashes, e.g., "small-business-sponsor"
+                  </p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Tier Name *
+                  </label>
+                  <input
+                    type="text"
+                    value={newTierName}
+                    onChange={(e) => setNewTierName(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Small Business Sponsors"
+                    required
+                  />
+                </div>
               </div>
 
               <button

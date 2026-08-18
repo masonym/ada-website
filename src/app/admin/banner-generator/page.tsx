@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Download, RefreshCw, Eye, Settings, Image as ImageIcon, CalendarDays, MapPin } from "lucide-react";
 import html2canvas from "html2canvas";
+import { pluraliseTierName } from "@/lib/sponsor-tier-styles";
 
 type SponsorData = {
   _id: string;
@@ -982,7 +983,7 @@ export default function BannerGeneratorPage() {
                               display: 'inline-block',
                             }}
                           >
-                            {tier.name}
+                            {pluraliseTierName(tier.name, tier.sponsors.length)}
                           </span>
                         </div>
 

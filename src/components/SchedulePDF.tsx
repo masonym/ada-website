@@ -7,6 +7,7 @@ import { EventSpeakerPublic } from '@/lib/sanity';
 import { htmlToText } from '@/lib/html';
 import { PageColumns, paginateSchedule, SPONSOR_PAGE_KEY } from '@/lib/schedule-pdf-layout';
 import { getCityAndState } from '@/utils/event-callout';
+import { pluraliseTierName } from '@/lib/sponsor-tier-styles';
 
 /** "Hotel Polaris, Colorado Springs, Colorado" - venue plus city/state from the event */
 export const buildLocationLine = (event: Event): string => {
@@ -1037,7 +1038,7 @@ const SchedulePDF = ({
               <Text style={[styles.sponsorTierHeader, {
                 backgroundColor: pillStyle.backgroundColor,
                 color: pillStyle.color,
-              }]}>{tier.name}</Text>
+              }]}>{pluraliseTierName(tier.name, tier.sponsors.length)}</Text>
             </View>
             {[...Array(rowCount)].map((_, rowIndex) => (
               <View key={rowIndex} style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 6 }}>
@@ -1067,7 +1068,7 @@ const SchedulePDF = ({
             <Text style={[styles.sponsorTierHeader, {
               backgroundColor: pillStyle.backgroundColor,
               color: pillStyle.color,
-            }]}>{tier.name}</Text>
+            }]}>{pluraliseTierName(tier.name, tier.sponsors.length)}</Text>
           </View>
           {tier.name.toLowerCase().includes('bronze') ? (
             <View>
@@ -1246,7 +1247,7 @@ const SchedulePDF = ({
                 return (
                   <View key={`fp-tier-${tier.id}`} style={{ marginBottom: 12 }} wrap={false}>
                     <View style={{ alignItems: 'center', marginBottom: 8 }}>
-                      <Text style={[styles.sponsorTierHeader, { backgroundColor: pillStyle.backgroundColor, color: pillStyle.color, fontSize: 10, paddingHorizontal: 12, paddingVertical: 4 }]}>{tier.name}</Text>
+                      <Text style={[styles.sponsorTierHeader, { backgroundColor: pillStyle.backgroundColor, color: pillStyle.color, fontSize: 10, paddingHorizontal: 12, paddingVertical: 4 }]}>{pluraliseTierName(tier.name, tier.sponsors.length)}</Text>
                     </View>
                     {tier.name.toLowerCase().includes('bronze') ? (
                       // Bronze sponsors: render in 2-per-row grid

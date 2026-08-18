@@ -99,3 +99,32 @@ export const findTierStyle = (
 
     return match ? tierStyles[match] : undefined;
 };
+
+/**
+ * Role nouns a tier name can end with. Only these get pluralised, so tiers
+ * named after the thing being sponsored ("Networking Luncheon") aren't turned
+ * into "Networking Luncheons" when two companies share the tier.
+ */
+const PLURALISABLE_TIER_NOUNS = [
+    'sponsor',
+    'partner',
+    'exhibitor',
+    'supporter',
+    'host',
+    'underwriter',
+];
+
+/**
+ * Pluralises a tier name when the tier holds more than one sponsor, e.g.
+ * "Bronze Sponsor" with 2 sponsors renders as "Bronze Sponsors". Names that
+ * are already plural, or that don't end in a role noun, are left untouched.
+ */
+export const pluraliseTierName = (tierName: string, count: number): string => {
+    if (count <= 1) return tierName;
+
+    return tierName.replace(/[A-Za-z]+$/, (lastWord) => {
+        const lower = lastWord.toLowerCase();
+        if (!PLURALISABLE_TIER_NOUNS.includes(lower)) return lastWord;
+        return `${lastWord}${lastWord === lastWord.toUpperCase() ? 'S' : 's'}`;
+    });
+};

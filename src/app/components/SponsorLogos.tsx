@@ -6,6 +6,7 @@ import { urlFor, getEventSponsors, getEventTierSponsors } from "@/lib/sanity";
 import {
   getDefaultTierStyle,
   getTierStyleProps,
+  pluraliseTierName,
 } from "@/lib/sponsor-tier-styles";
 
 type SponsorProps = {
@@ -27,6 +28,7 @@ const TIER_ORDER = [
   "networking",
   "luncheon",
   "beverage",
+  "lanyard",
   "small",
   "exhibitor",
   "partner",
@@ -185,7 +187,7 @@ const SponsorLogos = async ({
                   className={`px-4 md:px-6 py-2 text-lg md:text-xl lg:text-2xl font-bold rounded-full ${tierStyleProps.className} ${tierStyleProps.hasTextColour ? "" : "text-white"}`}
                   style={tierStyleProps.style}
                 >
-                  {tier.name}
+                  {pluraliseTierName(tier.name, tier.sponsors.length)}
                 </span>
               </div>
             </div>
