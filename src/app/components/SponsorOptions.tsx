@@ -230,10 +230,12 @@ const SponsorOptions = ({
               </div>
             </div>
           ))}
-          <p className="text-[16px] mt-4 font-gotham text-slate-600 text-center w-full max-w-6xl mx-auto mb-6">
-            <b>Exhibitor Spaces:</b>{" "}
-            {event.sponsorshipInfo?.exhibitorSpacesText || defaultExhibitorText}
-          </p>
+          {!event.sponsorshipInfo?.hideExhibitorSpaces && (
+            <p className="text-[16px] mt-4 font-gotham text-slate-600 text-center w-full max-w-6xl mx-auto mb-6">
+              <b>Exhibitor Spaces:</b>{" "}
+              {event.sponsorshipInfo?.exhibitorSpacesText || defaultExhibitorText}
+            </p>
+          )}
 
           <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mb-6">
             {event.sponsorshipInfo?.sponsorSection || defaultSponsorText}

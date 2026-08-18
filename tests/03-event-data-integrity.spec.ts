@@ -66,9 +66,13 @@ const KNOWN_ABSENT: Record<keyof typeof CORE_REGISTRIES, Partial<Record<number, 
   SPONSORSHIP_TYPES: {},
   EXHIBITOR_TYPES: {
     3: '2025DTIOS was a partner event with no exhibit floor',
+    9: '2026DIU has no exhibit floor - no Exhibitor Opportunities at this event',
   },
   FAQs: {
     3: '2025DTIOS used the partner organisation\'s own FAQ page',
+    // Not a deliberate gap: the nav has an FAQs item and the page renders its
+    // empty state. Awaiting copy from the events team.
+    9: '2026DIU FAQ copy has not been written yet',
   },
   EVENT_NAVS: {},
   SCHEDULES: {
@@ -76,11 +80,13 @@ const KNOWN_ABSENT: Record<keyof typeof CORE_REGISTRIES, Partial<Record<number, 
   },
   LODGING_INFO: {
     1: '2025DIF was a single-day event with no room block',
+    9: '2026DIU is a single-day event with no room block',
   },
   EVENT_SPONSORS: {
     1: '2025DIF sponsor logos were never backfilled after the event',
     7: '2026AFSFPC sponsors are managed in Sanity, not this file',
     8: '2027NMCPC has no sponsors signed yet',
+    9: '2026DIU has no sponsors signed yet',
   },
 };
 

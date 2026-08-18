@@ -4106,4 +4106,410 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
     ],
   },
+
+  {
+    id: 9, // 2026DIU
+    additionalPass: {
+      name: "Additional Sponsor Attendee Pass",
+      title: "Additional Sponsor Attendee Pass",
+      description:
+        "For registered Sponsors. Purchase additional Sponsor passes for your team at a discounted rate. A valid order ID from a previous Sponsor registration is required.",
+      price: 195,
+      headerImage: "vip.webp",
+      buttonText: "Add",
+      maxQuantityPerOrder: 10,
+      perks: [
+        {
+          formatted: [
+            { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+            { content: "Access to General Sessions", indent: 1 },
+            { content: "Morning Coffee & Networking Lunch", indent: 1 },
+            {
+              content:
+                "Post-Event Access to Photographs, Recordings, and Presentation Slides",
+              indent: 1,
+            },
+            { content: "Access to VIP Networking Reception", bold: true },
+          ],
+        },
+      ],
+    },
+    primeSponsor: {
+      id: "platinum-sponsor",
+      title: "Platinum Sponsorship",
+      cost: 15000,
+      slotsPerEvent: 1,
+      sponsorPasses: 4,
+      requiresAttendeeInfo: true,
+      perks: [
+        {
+          formatted: [
+            { content: "Event Access: (4) VIP Attendee Passes", bold: true },
+            { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+          ],
+        },
+        {
+          formatted: [
+            { content: "Exclusive Branding: Name Badges and Conference Materials", bold: true },
+            { content: "Company Logo displayed on Attendee Name Badges", indent: 1 },
+            { content: "Prime Logo Placement on Conference Materials", indent: 1 },
+            { content: "Conference Pop-up Banners", indent: 2 },
+            { content: "Event Website", indent: 2 },
+            { content: "Digital Agenda & Printed Program", indent: 2 },
+            { content: "Conference Marketing Emails", indent: 2 },
+          ],
+        },
+        {
+          formatted: [
+            { content: "Speaking Opportunity", bold: true },
+            { content: "15-Minute Speaking Opportunity during General Session", indent: 1 },
+          ],
+        },
+        {
+          formatted: [
+            { content: "Recognition/Visibility", bold: true },
+            { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+            { content: "Social Media Recognition", indent: 1 },
+            { content: "Photographs & Videos of your Participation", indent: 1 },
+          ],
+        },
+      ],
+      colour: "bg-blue-600",
+      textColour: "text-white",
+      showRemaining: false,
+    },
+
+    sponsorships: [
+      {
+        id: "gold-sponsor",
+        title: "Gold Sponsorship",
+        cost: 5000,
+        slotsPerEvent: 3,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              { content: "5-Minute Speaking Opportunity during General Session", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              { content: "Social Media Recognition", indent: 1 },
+              { content: "Photographs & Videos of your Participation", indent: 1 },
+            ],
+          },
+        ],
+        colour: "#ffaf00",
+        showRemaining: false,
+      },
+      {
+        id: "vip-networking-reception-sponsor",
+        title: "VIP Networking Reception Sponsorship",
+        cost: 3500,
+        slotsPerEvent: 2,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Host of the VIP Networking Reception", bold: true },
+              { content: "Provide Remarks at the VIP Networking Reception", indent: 1 },
+              { content: "Logo Placement at VIP Networking Reception", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              { content: "Social Media Recognition", indent: 1 },
+              { content: "Photographs of your Participation", indent: 1 },
+            ],
+          },
+        ],
+        colour: "bg-green-800",
+        textColour: "text-white",
+        showRemaining: false,
+      },
+      {
+        id: "lanyard-sponsor",
+        title: "Lanyard Sponsorship",
+        cost: 3000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Lanyards and Conference Materials", bold: true },
+              { content: "Branded Lanyards used with all Attendee Name Badges (Sponsor Provided)", indent: 1 },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              { content: "Social Media Recognition", indent: 1 },
+              { content: "Photographs of your Participation", indent: 1 },
+            ],
+          },
+        ],
+        colour: "bg-purple-700",
+        textColour: "text-white",
+        showRemaining: false,
+      },
+      {
+        id: "coffee-station-sponsor",
+        title: "Coffee Station Sponsorship",
+        cost: 2500,
+        slotsPerEvent: 2,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Branded Coffee Cups/Napkins (Sponsor Provided)", indent: 1 },
+              { content: "Signage near Coffee Station", indent: 1 },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              { content: "Social Media Recognition", indent: 1 },
+              { content: "Photographs of your Participation", indent: 1 },
+            ],
+          },
+        ],
+        colour: "#966919",
+        showRemaining: false,
+      },
+      {
+        id: "major-panel-sponsor-maritime-industry-shipbuilding-fleet-readiness",
+        title: "Major Panel Sponsorship: Maritime Industry/Shipbuilding & Fleet Readiness",
+        cost: 4000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              { content: "Moderate the Panel on Maritime Industry/Shipbuilding & Fleet Readiness", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              { content: "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
+              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              { content: "Social Media Recognition", indent: 1 },
+              { content: "Photographs & Videos of your Participation", indent: 1 },
+            ],
+          },
+        ],
+        colour: "#F33A6A",
+        showRemaining: false,
+        sponsorshipGroup: "Major Panel Sponsorships",
+      },
+      {
+        id: "major-panel-sponsor-air-force-space-force-challenges-requirements-priorities",
+        title: "Major Panel Sponsorship: Air Force & Space Force Challenges/Requirements/Priorities",
+        cost: 4000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              { content: "Moderate the Panel on Air Force & Space Force Challenges/Requirements/Priorities", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              { content: "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
+              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              { content: "Social Media Recognition", indent: 1 },
+              { content: "Photographs & Videos of your Participation", indent: 1 },
+            ],
+          },
+        ],
+        colour: "#F33A6A",
+        showRemaining: false,
+        sponsorshipGroup: "Major Panel Sponsorships",
+      },
+      {
+        id: "major-panel-sponsor-army-transformation-installation-resilience",
+        title: "Major Panel Sponsorship: Army Transformation & Installation Resilience",
+        cost: 4000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              { content: "Moderate the Panel on Army Transformation & Installation Resilience", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              { content: "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
+              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              { content: "Social Media Recognition", indent: 1 },
+              { content: "Photographs & Videos of your Participation", indent: 1 },
+            ],
+          },
+        ],
+        colour: "#F33A6A",
+        showRemaining: false,
+        sponsorshipGroup: "Major Panel Sponsorships",
+      },
+      {
+        id: "major-panel-sponsor-advanced-technologies-on-the-warfighter-edge",
+        title: "Major Panel Sponsorship: Advanced Technologies on the Warfighter Edge",
+        cost: 4000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              { content: "Additional Sponsor Passes can be purchased for $195 each", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              { content: "Moderate the Panel on Advanced Technologies on the Warfighter Edge", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              { content: "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise", indent: 1 },
+              { content: "Recognition during General Session & Networking Breaks", indent: 1 },
+              { content: "Social Media Recognition", indent: 1 },
+              { content: "Photographs & Videos of your Participation", indent: 1 },
+            ],
+          },
+        ],
+        colour: "#F33A6A",
+        showRemaining: false,
+        sponsorshipGroup: "Major Panel Sponsorships",
+      },
+    ],
+  },
 ];

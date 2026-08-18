@@ -720,4 +720,75 @@ export const REGISTRATION_TYPES = [
       },
     ],
   },
+
+  {
+    id: 9, // 2026DIU
+    registrations: [
+      {
+        id: "attendee-pass",
+        title: "Attendee Pass",
+        headerImage: "attendee-pass.webp",
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (1) Attendee Pass", bold: true },
+              { content: "Access to General Sessions", indent: 1 },
+              { content: "Morning Coffee & Networking Lunch", indent: 1 },
+              {
+                content:
+                  "Post-Event Access to Photographs, Recordings, and Presentation Slides",
+                indent: 1,
+              },
+            ],
+          },
+        ],
+        buttonText: "Register Now",
+        price: 395, // regular price after Early Bird ends
+        priceTiers: [
+          { price: 295, endDate: "2026-10-01T03:59:59Z" }, // Early Bird ends September 30, 2026 11:59 PM ET
+        ],
+        type: "paid",
+        saleEndTime: "2026-12-03T18:00:00Z",
+      },
+
+      {
+        id: "govt-official-military-pass",
+        title: "Government Official & Active-Duty Military Pass",
+        headerImage: "gov-pass.webp",
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (1) Attendee Pass", bold: true },
+              { content: "Access to General Sessions", indent: 1 },
+              {
+                content:
+                  "Post-Event Access to Photographs, Recordings, and Presentation Slides",
+                indent: 1,
+              },
+            ],
+          },
+        ],
+        buttonText: "Register Now",
+        type: "complimentary",
+        price: "Complimentary",
+      },
+
+      {
+        id: "reception-add-on",
+        title: "VIP Networking Reception Add-On",
+        description: "Add-on pass for the VIP Networking Reception.",
+        price: 100,
+        headerImage: "vip-reception.webp",
+        buttonText: "Add to Cart",
+        type: "paid",
+        maxQuantityPerOrder: 5,
+        isAddOn: true,
+        saleEndTime: "2026-12-03T18:00:00Z",
+        perks: [
+          "Access to VIP Networking Reception on December 3, 2026 from 5:00 PM - 7:00 PM",
+          "Please Note: This does <b>NOT</b> include event access. Event access must be purchased separately for anyone attending the event.",
+        ],
+      },
+    ],
+  },
 ];

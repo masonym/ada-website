@@ -2505,4 +2505,37 @@ export const SCHEDULES = [
             },
         ]
     },
+
+    {
+        id: 9, // 2026DIU
+        // High-level running order from the launch card. Session-level agenda
+        // items are still to come from the events team.
+        schedule: [
+            {
+                date: "December 3, 2026",
+                items: [
+                    {
+                        time: "8:00 AM",
+                        title: "On-Site Registration & Morning Networking Coffee",
+                    },
+                    {
+                        time: "9:00 AM",
+                        title: "Conference Launch/General Sessions",
+                    },
+                    {
+                        time: "1:00 PM",
+                        title: "Networking Lunch",
+                    },
+                    {
+                        time: "5:00 PM",
+                        title: "General Sessions End",
+                    },
+                    {
+                        time: "5:00 PM - 7:00 PM",
+                        title: "VIP Networking Reception",
+                    },
+                ],
+            },
+        ]
+    },
 ];

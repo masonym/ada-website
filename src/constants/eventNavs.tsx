@@ -203,4 +203,30 @@ export const EVENT_NAVS = [
       },
     ],
   },
+
+  {
+    eventId: 9, // 2026DIU
+    items: [
+      { label: 'Event Overview', path: '/' },
+      {
+        label: 'About',
+        subItems: [
+          { label: 'About the Event', path: 'about-the-event' },
+          { label: "VIP Networking Reception", path: 'vip-networking-reception' },
+          { label: 'FAQs', path: 'faqs' },
+          { label: 'Event Recap', path: 'event-recap' },
+        ],
+      },
+      // No Lodging, Matchmaking Sessions or Exhibitor Opportunities at this event.
+      { label: 'Venue', path: 'venue' },
+      { label: 'Agenda', path: 'agenda' },
+      { label: 'Speakers', path: 'speakers' },
+      {
+        label: 'Sponsorships',
+        subItems: [
+          { label: "Sponsorship Opportunities", path: 'sponsorship-opportunities' },
+        ],
+      },
+    ],
+  },
 ];

@@ -164,6 +164,8 @@ export interface Event {
         sponsorSection?: ReactNode;
         customContactText?: ReactNode;
         exhibitorSpacesText?: ReactNode;
+        /** Omit the "Exhibitor Spaces" paragraph entirely, for events with no exhibits. */
+        hideExhibitorSpaces?: boolean;
     };
     matchmakingSessions?: MatchmakingSession | undefined;
     customFooterText?: ReactNode;

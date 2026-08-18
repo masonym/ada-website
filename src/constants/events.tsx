@@ -2649,4 +2649,192 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       },
     ],
   },
+
+  {
+    id: 9,
+    shown: true,
+    title: "Defense Industry Update",
+    date: "December 3, 2026",
+    timeStart: "2026-12-03T13:00:00Z",
+    timeEnd: "2026-12-04T00:00:00Z",
+    description:
+      "Join us for the Defense Industry Update conference that the American Defense Alliance will be hosting on Thursday, December 3, 2026. This will be an information-rich event covering developing requirements and priority contracting opportunities across the Pentagon, Military Services, and key acquisition commands and purchasing agencies. It will provide unique networking opportunities for Prime Defense Contractors and innovative Small Businesses to meet each other and explore teaming, subcontracting and Mentor-Protégé partnerships. As the U.S. Department of War reforms and streamlines procurement policies and procedures in response to National Security threats, speakers and panelists will inform the audience how they can support our Warfighters while growing their businesses. Don’t miss this chance to gain invaluable intel on current Defense needs and upcoming acquisition initiatives and purchasing programs, from IT, software and AI to weapons system integration, maintenance and sustainment to prototypes and training, to Military base construction!",
+    eventText: (
+      <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Event Overview
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Join us for the <b>Defense Industry Update</b> conference that the American Defense
+          Alliance will be hosting on Thursday, December 3, 2026. This will be an information-rich event covering developing requirements and priority contracting opportunities across the Pentagon, Military Services, and key acquisition commands and purchasing agencies. It will provide unique networking opportunities for Prime Defense Contractors and innovative Small Businesses to meet each other and explore teaming, subcontracting and Mentor-Protégé partnerships. As the U.S. Department of War reforms and streamlines procurement policies and procedures in response to National Security threats, speakers and panelists will inform the audience how they can support our Warfighters while growing their businesses. Don’t miss this chance to gain invaluable intel on current Defense needs and upcoming acquisition initiatives and purchasing programs, from IT, software and AI to weapons system integration, maintenance and sustainment to prototypes and training, to Military base construction!
+        </p>
+        <p className="font-bold text-xl text-center font-gotham">
+          Topical Coverage:
+        </p>
+        <div className="">
+          <ul className="list-inside">
+            <li>NDAA/Defense Budget - Where the Money is Going</li>
+            <li>Maritime Industry Revival/Shipbuilding &amp; Fleet Readiness</li>
+            <li>Air Force &amp; Space Force Challenges, Requirements &amp; Priorities</li>
+            <li>Info-Pacific SITREP - Airfield &amp; Logistics Hub Reconstruction/Expansion</li>
+            <li>Advanced Battlespace Technologies – C6ISR, AI, Quantum, 3D Printing, UAS &amp; C-UAS</li>
+            <li>Investment Opportunities in Defense Manufacturing - the New Arsenal of Democracy</li>
+            <li>Military Base-Community Partnerships Promoting Local Build Contracts</li>
+            <li>Installation Energy Supply/Microgrid, Nuclear &amp; Geothermal Solutions</li>
+            <li>Accelerated Contracting - DARPA, DIU, DEFENSEWERX</li>
+            <li>GovCon Toolkit - OTA’s, SBIR’s/STTR’s, GWAC’s, IDIQ’s &amp; MACC’s</li>
+            <li>Mentor-Protégé Programs as Super Business Accelerators for Smalls &amp; Primes</li>
+            <li>Administration Acquisition Reform - FAR/DFAR &amp; 8(a) Changes</li>
+            <li>Cybersecurity/CMMC Update</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    aboutEventText: (
+      <div className="max-container font-light">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center font-gotham text-slate-700 mb-6">
+          Event Overview
+        </h2>
+        <p className="mb-4 leading-relaxed">
+          Join us for the <b>Defense Industry Update</b> conference that the American Defense
+          Alliance will be hosting on Thursday, December 3, 2026. This will be an information-rich event covering developing requirements and priority contracting opportunities across the Pentagon, Military Services, and key acquisition commands and purchasing agencies. It will provide unique networking opportunities for Prime Defense Contractors and innovative Small Businesses to meet each other and explore teaming, subcontracting and Mentor-Protégé partnerships. As the U.S. Department of War reforms and streamlines procurement policies and procedures in response to National Security threats, speakers and panelists will inform the audience how they can support our Warfighters while growing their businesses. Don’t miss this chance to gain invaluable intel on current Defense needs and upcoming acquisition initiatives and purchasing programs, from IT, software and AI to weapons system integration, maintenance and sustainment to prototypes and training, to Military base construction!
+        </p>
+      </div>
+    ),
+    topicalCoverage: [
+      {
+        tagline:
+          "NDAA/Defense Budget - Where the Money is Going",
+        description: "",
+      },
+      {
+        tagline:
+          "Maritime Industry Revival/Shipbuilding & Fleet Readiness",
+        description: "",
+      },
+      {
+        tagline:
+          "Air Force & Space Force Challenges, Requirements & Priorities",
+        description: "",
+      },
+      {
+        tagline:
+          "Info-Pacific SITREP - Airfield & Logistics Hub Reconstruction/Expansion",
+        description: "",
+      },
+      {
+        tagline:
+          "Advanced Battlespace Technologies – C6ISR, AI, Quantum, 3D Printing, UAS & C-UAS",
+        description: "",
+      },
+      {
+        tagline:
+          "Investment Opportunities in Defense Manufacturing - the New Arsenal of Democracy",
+        description: "",
+      },
+      {
+        tagline:
+          "Military Base-Community Partnerships Promoting Local Build Contracts",
+        description: "",
+      },
+      {
+        tagline:
+          "Installation Energy Supply/Microgrid, Nuclear & Geothermal Solutions",
+        description: "",
+      },
+      {
+        tagline:
+          "Accelerated Contracting - DARPA, DIU, DEFENSEWERX",
+        description: "",
+      },
+      {
+        tagline:
+          "GovCon Toolkit - OTA’s, SBIR’s/STTR’s, GWAC’s, IDIQ’s & MACC’s",
+        description: "",
+      },
+      {
+        tagline:
+          "Mentor-Protégé Programs as Super Business Accelerators for Smalls & Primes",
+        description: "",
+      },
+      {
+        tagline:
+          "Administration Acquisition Reform - FAR/DFAR & 8(a) Changes",
+        description: "",
+      },
+      {
+        tagline:
+          "Cybersecurity/CMMC Update",
+        description: "",
+      },
+    ],
+    image: "2026DIU_wide.webp",
+    slug: "2026-defense-industry-update",
+    locationImage: "locations/temp_venue.webp",
+    locationAddress: "300 First Street SE, Washington, DC 20003",
+    venueName: "Capitol Hill Club",
+    password: "DIUWASHINGTON2026",
+    eventShorthand: "2026DIU",
+    countdownColour: "#1C2D3D",
+    directions: [
+      {
+        title: "By Metro",
+        description: `Take the Orange, Blue, or Silver Line to Capitol South Metro Station. We are directly across the street with the green awning reading <b>The Capitol Hill Club</b>.`,
+      },
+      {
+        title: "From I-95 South",
+        description: `Take I-395 North across the 14th Street Bridge and follow to the SE/SW Freeway. Exit at C Street SW, turn right on Washington Street, left on D Street SE, then left on First Street SE. The Club is up one block on the right.`,
+      },
+      {
+        title: "From I-66 East",
+        description: `Exit at Route 110/US-1 and take the Parkway East to I-395 North, then follow the directions from I-95 South above.`,
+      },
+      {
+        title: "From I-95 North",
+        description: `Take I-495 East to I-295 South, exit onto New York Avenue and proceed through the Capitol area to First Street SE. The Club is on the left corner.`,
+      },
+      {
+        title: "From Rt. 50 (MD)",
+        description: `Follow signs for New York Avenue, turn left on North Capitol Street, then continue via Massachusetts Avenue.`,
+      },
+    ],
+    parkingInfo: [
+      {
+        title: "",
+        description: `<b>Valet Parking</b> is available at the Club. Hours of operation are Monday through Friday, 7:00 a.m. to 5:00 p.m. when Congress is in Session. During constituent work weeks, valet operates 10:00 a.m. to 3:00 p.m.
+        <br />
+        <br />
+        Valet is $30.00 for Members and $45.00 for Non-Members.
+        <br />
+        <br />
+        Limited metered and zoned parking is available on nearby streets.
+        `,
+      },
+    ],
+    vipNetworkingReception: {
+      title: "VIP Networking Reception",
+      description:
+        "The VIP Networking Reception at the end of the day on December 3 is available to all Speakers, Sponsors, VIP Attendee Passes, and Special Guests.",
+      date: "December 3, 2026",
+      timeStart: "5:00 PM",
+      timeEnd: "7:00 PM",
+    },
+    sponsorshipInfo: {
+      // No Exhibitor Opportunities at this event - see eventNavs entry for id 9.
+      hideExhibitorSpaces: true,
+      sponsorSection: (
+        <>
+          Explore our discounted Sponsorship Opportunities available when you
+          Register for Multiple Events. For more information and to secure your
+          sponsorship, contact:{" "}
+          <a
+            href="mailto:events@americandefensealliance.org"
+            className="underline break-words"
+          >
+            events@americandefensealliance.org
+          </a>
+        </>
+      ),
+    },
+  },
 ];
