@@ -6,6 +6,7 @@ import {
   sponsorshipIncludesExhibitSpace,
 } from '../sponsor-benefits';
 import {
+  eventHasExhibitSpace,
   findExhibitorType,
   generateExhibitorBenefitsHtml,
   getExhibitorAdditionalPass,
@@ -752,6 +753,7 @@ export function govMilPassTemplate({
   eventImage,
   orderSummaryHtml,
   attendeeDetailsHtml,
+  matchmakingSessions,
 }: {
   firstName: string;
   eventName: string;
@@ -761,18 +763,30 @@ export function govMilPassTemplate({
   eventUrl?: string;
   orderId: string;
   hotelInfo: string;
-  /** Used to look up whether the event has a hotel room block. */
+  /**
+   * Used to look up whether the event has a hotel room block, and whether it
+   * offers exhibit space.
+   */
   eventId?: number | string;
   eventImage: string;
   orderSummaryHtml?: string;
   attendeeDetailsHtml?: string;
+  matchmakingSessions?: MatchmakingSession;
 }): string {
+  /**
+   * The complimentary table-top offer only applies to events that actually run
+   * exhibits and matchmaking sessions - the 2026 Defense Industry Update has
+   * neither, so gov/mil registrants there only get the speaking-opportunity
+   * line.
+   */
+  const offersHostedTable = eventHasExhibitSpace(eventId) && !!matchmakingSessions;
+
   const content = `
     <p><strong>Dear ${firstName},</strong></p>
     
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
 
-    <p>We have very limited complimentary Table-Top Exhibit Spaces available for Government Agencies & Military Commands for those willing to host a Matchmaking Session Table on either one or both days of the conference. If you are interested in a Speaking Opportunity, please contact Charles Sills (<a href="mailto:csills@americandefensealliance.org">csills@americandefensealliance.org</a>).</p>
+    <p>${offersHostedTable ? 'We have very limited complimentary Table-Top Exhibit Spaces available for Government Agencies &amp; Military Commands for those willing to host a Matchmaking Session Table on either one or both days of the conference. ' : ''}If you are interested in a Speaking Opportunity, please contact Charles Sills at <a href="mailto:csills@americandefensealliance.org">csills@americandefensealliance.org</a>.</p>
     <p>Feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077</span> if you have any questions or need to make any changes to your registration.</p>
     <p>All event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
     <p>We look forward to welcoming you ${welcomeDestination(eventLocation)}!</p>

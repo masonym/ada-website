@@ -40,6 +40,18 @@ export function findExhibitorType(
   );
 }
 
+/**
+ * Whether the event offers exhibit space at all. Events like the 2026 Defense
+ * Industry Update have no exhibits, so emails must not offer them one.
+ */
+export function eventHasExhibitSpace(
+  eventId: number | string | undefined
+): boolean {
+  return (findEvent(eventId)?.exhibitors || []).some(
+    (e) => e.isActive !== false
+  );
+}
+
 /** The "Additional Exhibitor Attendee Pass" sold alongside this event's booths. */
 export function getExhibitorAdditionalPass(
   eventId: number | string | undefined

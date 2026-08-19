@@ -202,6 +202,7 @@ export function renderConfirmationEmail({
         html: govMilPassTemplate({
           ...common,
           orderSummaryHtml: '', // No order summary for free passes
+          matchmakingSessions: event.matchmakingSessions || undefined,
         }),
       };
 
