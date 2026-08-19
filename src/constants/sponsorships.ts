@@ -4114,7 +4114,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       title: "Additional Sponsor Attendee Pass",
       description:
         "For registered Sponsors. Purchase additional Sponsor passes for your team at a discounted rate. A valid order ID from a previous Sponsor registration is required.",
-      price: 195,
+      price: 295,
       headerImage: "vip.webp",
       buttonText: "Add",
       maxQuantityPerOrder: 10,
