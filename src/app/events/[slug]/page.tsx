@@ -1,27 +1,26 @@
-
-import React from 'react';
-import { EVENTS } from '@/constants/events';
-import { Event } from '@/types/events';
-import RegistrationModalController from './RegistrationModalController';
-import { notFound } from 'next/navigation';
-import RegisterButtonModal from './RegisterButtonModal';
-import CountdownTimer from '@/app/components/CountdownTimer';
-import RegistrationOptions from '@/app/components/RegistrationOptions';
-import { Metadata } from 'next';
-import KeynoteSpeaker from '@/app/components/KeynoteSpeaker';
-import SponsorLogos from '@/app/components/SponsorLogos';
-import SpecialFeatures from '@/app/components/SpecialFeatures';
-import FooterEventText from '@/app/components/FooterEventText';
-import { EventSaleBanner } from '@/app/components/EventSaleBanner';
-import SponsorAdvert from '@/app/components/SponsorAdvert';
-import { getCdnPath } from '@/utils/image';
-import RelatedEventLinks from '@/app/components/RelatedEventLinks';
-import EventTestimonials from '@/app/components/EventTestimonials';
-import EventHighlights from '@/app/components/EventHighlights';
-import { getResolvedHighlights } from '@/lib/event-highlights';
-import EventNoticeBanner from '@/app/components/EventNoticeBanner';
-import EventBadgeNotice from '@/app/components/EventBadgeNotice';
-import { getEventSpeakersPublic } from '@/lib/sanity';
+import React from "react";
+import { EVENTS } from "@/constants/events";
+import { Event } from "@/types/events";
+import RegistrationModalController from "./RegistrationModalController";
+import { notFound } from "next/navigation";
+import RegisterButtonModal from "./RegisterButtonModal";
+import CountdownTimer from "@/app/components/CountdownTimer";
+import RegistrationOptions from "@/app/components/RegistrationOptions";
+import { Metadata } from "next";
+import KeynoteSpeaker from "@/app/components/KeynoteSpeaker";
+import SponsorLogos from "@/app/components/SponsorLogos";
+import SpecialFeatures from "@/app/components/SpecialFeatures";
+import FooterEventText from "@/app/components/FooterEventText";
+import { EventSaleBanner } from "@/app/components/EventSaleBanner";
+import SponsorAdvert from "@/app/components/SponsorAdvert";
+import { getCdnPath } from "@/utils/image";
+import RelatedEventLinks from "@/app/components/RelatedEventLinks";
+import EventTestimonials from "@/app/components/EventTestimonials";
+import EventHighlights from "@/app/components/EventHighlights";
+import { getResolvedHighlights } from "@/lib/event-highlights";
+import EventNoticeBanner from "@/app/components/EventNoticeBanner";
+import EventBadgeNotice from "@/app/components/EventBadgeNotice";
+import { getEventSpeakersPublic } from "@/lib/sanity";
 
 /**
  * schema.org Event payload.
@@ -32,7 +31,10 @@ import { getEventSpeakersPublic } from '@/lib/sanity';
  * results are worth having for a conference business.
  */
 function eventSchema(event: Event) {
-  const address = event.locationAddress?.replace(/<\/?br\s*\/?>/gi, ', ').replace(/\s+/g, ' ').trim();
+  const address = event.locationAddress
+    ?.replace(/<\/?br\s*\/?>/gi, ", ")
+    .replace(/\s+/g, " ")
+    .trim();
 
   return {
     "@context": "https://schema.org",
@@ -65,23 +67,25 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: Promise<{ slug: string }>
-}
+  params: Promise<{ slug: string }>;
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const event = EVENTS.find(event => event.slug === slug)
+  const event = EVENTS.find((event) => event.slug === slug);
 
   if (!event) {
     return {
-      title: 'Event Not Found',
-      description: 'The requested event could not be found.',
-    }
+      title: "Event Not Found",
+      description: "The requested event could not be found.",
+    };
   }
 
   return {
     title: `${event.title} | American Defense Alliance`,
-    description: event.description.substring(0, 160) + (event.description.length > 160 ? '...' : ''),
+    description:
+      event.description.substring(0, 160) +
+      (event.description.length > 160 ? "..." : ""),
     openGraph: {
       title: event.title,
       description: event.description,
@@ -91,18 +95,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           width: 1200,
           height: 630,
           alt: event.title,
-        }
+        },
       ],
-      type: 'website',
+      type: "website",
     },
     other: {
-      'og:type': 'event',
-      'og:event:start_time': event.timeStart,
+      "og:type": "event",
+      "og:event:start_time": event.timeStart,
     },
-  }
+  };
 }
 
-export default async function EventPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function EventPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const event = EVENTS.find((e) => e.slug === slug);
 
@@ -117,7 +125,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
   // Highlights are borrowed from an older related event. Resolved here rather
   // than inside the JSX below, which cannot await.
   const relatedEvent = event.relatedEventId
-    ? EVENTS.find(e => e.id === event.relatedEventId)
+    ? EVENTS.find((e) => e.id === event.relatedEventId)
     : undefined;
 
   const relatedIsOlder =
@@ -126,7 +134,9 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
       new Date(event.timeStart).getTime();
 
   const relatedHighlights =
-    relatedEvent && relatedIsOlder ? await getResolvedHighlights(relatedEvent.id) : [];
+    relatedEvent && relatedIsOlder
+      ? await getResolvedHighlights(relatedEvent.id)
+      : [];
 
   const now = new Date().getTime();
   const targetTime = new Date(event.timeStart).getTime();
@@ -136,14 +146,14 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
     days: Math.floor(distance / (1000 * 60 * 60 * 24)),
     hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
     minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-    seconds: Math.floor((distance % (1000 * 60)) / 1000)
+    seconds: Math.floor((distance % (1000 * 60)) / 1000),
   };
 
   return (
     <>
       {/* Add RegistrationModalController for URL-based modal control */}
       <RegistrationModalController event={event} />
-      
+
       {/* Plain <script> so the schema is in the served HTML - see the note in app/layout.tsx */}
       <script
         type="application/ld+json"
@@ -156,7 +166,6 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           <ChevronLeft className="w-4 h-4 mr-1" />
           Back to Events
           </Link> */}
-
 
             {/* <Button
             title="SPONSORSHIP OPPORTUNITIES"
@@ -171,13 +180,21 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
             // className="w-full sm:w-auto"
             /> */}
 
-            {event.id != 5 && <CountdownTimer targetDate={event.timeStart} initialTimeLeft={initialTimeLeft} backgroundColor={event.countdownColour} />}
+            {event.id != 5 && (
+              <CountdownTimer
+                targetDate={event.timeStart}
+                initialTimeLeft={initialTimeLeft}
+                backgroundColor={event.countdownColour}
+              />
+            )}
 
             {/* Event notice banner (e.g., postponement, shutdown) - client-side time check */}
             <EventNoticeBanner event={event} />
 
             {/* Badge notice for special announcements like "New Dates!" */}
-            {event.badge && <EventBadgeNotice badge={event.badge} eventDate={event.date} />}
+            {event.badge && (
+              <EventBadgeNotice badge={event.badge} eventDate={event.date} />
+            )}
 
             {/* Related/Linked events section (e.g., previous year's recap) */}
             <RelatedEventLinks event={event} />
@@ -186,14 +203,18 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
               <EventSaleBanner sales={event.sales} />
             )}
 
-
-
             <div className="flex flex-col leading-relaxed text-slate-600 text-center text-lg px-4 sm:px-6 lg:px-8 max-w-[95vw] mx-auto mb-4">
               {event.eventText}
             </div>
 
-            {event.features?.showKeynoteSpeaker && <KeynoteSpeaker eventId={event.id} eventShorthand={event.eventShorthand} showExpandedBio={false} sanityKeynoteSpeakers={sanityKeynoteSpeakers} />}
-
+            {event.features?.showKeynoteSpeaker && (
+              <KeynoteSpeaker
+                eventId={event.id}
+                eventShorthand={event.eventShorthand}
+                showExpandedBio={false}
+                sanityKeynoteSpeakers={sanityKeynoteSpeakers}
+              />
+            )}
 
             <SpecialFeatures event={event} />
 
@@ -201,25 +222,28 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
 
             <RegistrationOptions event={event} />
 
-
             <SponsorLogos event={event} />
-
 
             {/* Testimonials section: only render when borrowing from explicit or older related event */}
             {(() => {
               let sourceEvent = null as typeof event | null;
               // 1) Explicit mapping takes precedence
               if (event.testimonialsFromEventId) {
-                const explicit = EVENTS.find(e => e.id === event.testimonialsFromEventId) || null;
+                const explicit =
+                  EVENTS.find((e) => e.id === event.testimonialsFromEventId) ||
+                  null;
                 if (explicit && (explicit.testimonials?.length ?? 0) > 0) {
                   sourceEvent = explicit;
                 }
               }
               // 2) Else fallback to older related event with testimonials
               if (!sourceEvent && event.relatedEventId) {
-                const related = EVENTS.find(e => e.id === event.relatedEventId) || null;
+                const related =
+                  EVENTS.find((e) => e.id === event.relatedEventId) || null;
                 if (related) {
-                  const relatedEnd = new Date(related.timeEnd || related.timeStart).getTime();
+                  const relatedEnd = new Date(
+                    related.timeEnd || related.timeStart,
+                  ).getTime();
                   const currentStart = new Date(event.timeStart).getTime();
                   const isOlder = relatedEnd < currentStart;
                   if (isOlder && (related.testimonials?.length ?? 0) > 0) {
@@ -250,16 +274,17 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
               />
             )}
 
-            <div className="mt-0 text-center flex flex-col items-center">
-              <p className="text-2xl text-navy-500 mb-6 text-center mx-8">Act Now and Secure your Place at this Groundbreaking Event!</p>
-                <RegisterButtonModal 
+            <div className="mt-8 text-center flex flex-col items-center">
+              <p className="text-2xl text-navy-500 mb-6 text-center mx-8">
+                Act Now and Secure your Place at this Groundbreaking Event!
+              </p>
+              <RegisterButtonModal
                 event={event}
                 title="REGISTER"
                 variant="btn_blue"
                 className="max-w-sm sm:max-w-xs"
               />
             </div>
-
 
             <FooterEventText event={event} />
           </div>

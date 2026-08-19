@@ -58,7 +58,8 @@ export default async function SponsorAdvert({ event }: { event: Event }) {
         <div className="flex items-center justify-center text-gray-600 mb-2">
           <Mail className="w-5 h-5 mr-2" />
           <p className="font-medium text-md md:text-base">
-            {event.contactInfo?.contactText || "Contact our Events Team"}{" "}
+            {event.contactInfo?.contactText ||
+              "Contact the American Defense Alliance Team"}{" "}
           </p>
         </div>
         <a
