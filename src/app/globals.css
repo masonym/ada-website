@@ -9,8 +9,13 @@ img {
   display: inline-block !important;
 }
 
-@import "yet-another-react-lightbox/styles.css";
-@import "yet-another-react-lightbox/plugins/thumbnails.css";
+/* The lightbox stylesheets used to be @imported here. They sat after the
+   Tailwind imports, which expand into thousands of rules - so per the CSS spec
+   these were @import rules following normal rules, which Turbopack rejects and
+   webpack silently tolerated. They were also redundant: every component that
+   renders a Lightbox already imports styles.css (and thumbnails.css/captions.css
+   where it uses those plugins) directly. See EventFloorPlan.tsx and the
+   event-recap sections. */
 
 /* @import 'node_modules/react-modal-video/scss/modal-video.scss'; */
 

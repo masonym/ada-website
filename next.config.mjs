@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // `next build` runs a full ESLint pass and a full `tsc` pass before it emits
+  // anything - about 31s of a ~2m deploy. Both already run as their own steps
+  // (`npm run typecheck`, `npm run lint`) and in .github/workflows/ci.yml, so
+  // paying for them again here only delays the deploy. The CI push trigger was
+  // widened to every branch at the same time as this change; if you narrow it
+  // back, restore these checks or type errors will reach a preview URL unseen.
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
   images: {
     unoptimized: true, // temporary due to vercel limits
     remotePatterns: [

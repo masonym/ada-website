@@ -7,13 +7,20 @@ name: CI
 # pre-launch step: see tests/README.md.
 
 on:
+  # Every branch, not just main. next.config.mjs stops `next build` from
+  # typechecking and linting on Vercel, so this workflow is now the only thing
+  # that catches a type error - it has to run on the feature branches where the
+  # work actually happens, not just once the change has already merged.
   push:
-    branches: [main]
+    branches: ['**']
   pull_request:
   workflow_dispatch:
 
 concurrency:
-  group: ci-${{ github.ref }}
+  # Keyed on the source branch rather than github.ref so that a branch push and
+  # the pull_request event for that same branch share a group, and the older run
+  # is cancelled instead of both burning a runner.
+  group: ci-${{ github.event.pull_request.head.ref || github.ref }}
   cancel-in-progress: true
 
 jobs:
