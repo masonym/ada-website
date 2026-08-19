@@ -231,15 +231,15 @@ export function generateVipNetworkingReceptionHtml(
   // shows, rather than a fixed list that named exhibitors regardless.
   //
   // The reception venue is often still TBD when an event opens for
-  // registration (2026 AFSFPC and the 2026 Defense Industry Update both are),
-  // so each line is only printed once its data exists - this block used to
-  // render "Location: undefined, undefined" for those events.
-  const location = [
-    vipNetworkingReception.locationName,
-    vipNetworkingReception.locationAddress,
-  ]
-    .filter(Boolean)
-    .join(', ');
+  // registration (2026 AFSFPC and the 2026 Defense Industry Update both are).
+  // Every other line is only printed once its data exists - this block used to
+  // render "Location: undefined, undefined" for those events - but the location
+  // line always shows, falling back to TBA so recipients know a venue is coming
+  // rather than wondering whether we left it out.
+  const location =
+    [vipNetworkingReception.locationName, vipNetworkingReception.locationAddress]
+      .filter(Boolean)
+      .join(', ') || 'TBA';
 
   const time =
     vipNetworkingReception.timeStart && vipNetworkingReception.timeEnd
@@ -250,7 +250,7 @@ export function generateVipNetworkingReceptionHtml(
     <div class="highlight">
       <h2>VIP Networking Reception</h2>
       ${vipNetworkingReception.description ? `<p>${vipNetworkingReception.description}</p>` : ''}
-      ${location ? `<p><strong>Location:</strong> ${location}</p>` : ''}
+      <p><strong>Location:</strong> ${location}</p>
       ${vipNetworkingReception.date ? `<p><strong>Date:</strong> ${vipNetworkingReception.date}${time}</p>` : ''}
       ${vipNetworkingReceptionUrl ? `<p><a href="${vipNetworkingReceptionUrl}">View VIP Networking Reception Details</a></p>` : ''}
       ${vipNetworkingReception.additionalInfo ? `<p>${vipNetworkingReception.additionalInfo}</p>` : ''}

@@ -74,29 +74,35 @@ const VIPReceptionSection: React.FC<{ vipNetworkingReception: VipNetworkingRecep
                     </div>
                   </div>
 
-                  { vipNetworkingReception.locationName && (
                   <div className="flex flex-row items-start justify-center">
                     <div className="text-center">
                       <div className="flex flex-row items-center justify-center mb-2">
                         <MapPin className="w-6 h-6 mr-2 text-blue-600 flex-shrink-0" />
                         <h4 className="font-semibold text-lg">Location</h4>
                       </div>
-                      <div>
-                        <p className="font-medium" dangerouslySetInnerHTML={{ __html: vipNetworkingReception.locationName || "" }} />
-                        <p dangerouslySetInnerHTML={{ __html: vipNetworkingReception.locationAddress || "" }} />
-                        {vipNetworkingReception.locationRoom && (
-                          <p className="font-medium">Room: {vipNetworkingReception.locationRoom}</p>
-                        )}
-                        <p>{vipNetworkingReception.locationPhone}</p>
-                        <p>
-                          <a href={vipNetworkingReception.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                            {vipNetworkingReception.locationName}
-                          </a>
-                        </p>
-                      </div>
+                      {/* The venue is often still unannounced when registration
+                          opens, so say TBA rather than hiding the block. */}
+                      {vipNetworkingReception.locationName ? (
+                        <div>
+                          <p className="font-medium" dangerouslySetInnerHTML={{ __html: vipNetworkingReception.locationName }} />
+                          <p dangerouslySetInnerHTML={{ __html: vipNetworkingReception.locationAddress || "" }} />
+                          {vipNetworkingReception.locationRoom && (
+                            <p className="font-medium">Room: {vipNetworkingReception.locationRoom}</p>
+                          )}
+                          <p>{vipNetworkingReception.locationPhone}</p>
+                          {vipNetworkingReception.website && (
+                            <p>
+                              <a href={vipNetworkingReception.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                                {vipNetworkingReception.locationName}
+                              </a>
+                            </p>
+                          )}
+                        </div>
+                      ) : (
+                        <p className="font-medium">TBA</p>
+                      )}
                     </div>
                   </div>
-                  )}
                 </>
               )}
             </div>

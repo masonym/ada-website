@@ -2565,7 +2565,14 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         },
       ],
     },
-    // vipNetworkingReception intentionally omitted — employer asked to leave the page blank for now
+    vipNetworkingReception: {
+      title: "VIP Networking Reception",
+      description:
+        "The VIP Networking Reception is available to all Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.",
+      date: "June 23, 2026",
+      timeStart: "6:30 PM",
+      timeEnd: "8:30 PM",
+    },
     parkingInfo: [
       {
         title: ``,
