@@ -544,6 +544,7 @@ export const EXHIBITOR_TYPES: ExhibitorEventType[] = [
                   "Additional Exhibitor Passes can be purchased for $395 each below.",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {

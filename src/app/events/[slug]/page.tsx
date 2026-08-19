@@ -197,10 +197,10 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
 
             <SpecialFeatures event={event} />
 
+            <SponsorAdvert event={event} />
+
             <RegistrationOptions event={event} />
 
-            <SponsorAdvert event={event} />
-            
 
             <SponsorLogos event={event} />
 

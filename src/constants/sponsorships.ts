@@ -3033,6 +3033,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Additional Sponsor Passes can be purchased for $395 each",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {
@@ -3133,6 +3134,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Additional Sponsor Passes can be purchased for $395 each",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {
@@ -3221,6 +3223,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Additional Sponsor Passes can be purchased for $395 each",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {
@@ -3298,6 +3301,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Additional Sponsor Passes can be purchased for $395 each",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {
@@ -3361,6 +3365,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Additional Sponsor Passes can be purchased for $395 each",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {
@@ -3438,6 +3443,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Additional Sponsor Passes can be purchased for $395 each",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {
@@ -3505,6 +3511,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         title: "Lanyard Sponsorship",
         cost: 3000,
         slotsPerEvent: 1,
+        isSoldOut: true,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
         perks: [
@@ -3516,6 +3523,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Additional Sponsor Passes can be purchased for $395 each",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {
@@ -3579,6 +3587,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Additional Sponsor Passes can be Purchased for $395 each",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {
@@ -3634,6 +3643,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Additional Sponsor Passes can be Purchased for $395 each",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {
@@ -3679,6 +3689,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Additional Sponsor Passes can be purchased for $395 each",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {
@@ -3762,6 +3773,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Additional Sponsor Passes can be purchased for $395 each",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {
@@ -3845,6 +3857,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Additional Sponsor Passes can be purchased for $395 each",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {
@@ -3928,6 +3941,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Additional Sponsor Passes can be purchased for $395 each",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {
@@ -4011,6 +4025,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Additional Sponsor Passes can be purchased for $395 each",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {
@@ -4093,6 +4108,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
                   "Additional Sponsor Passes can be Purchased for $395 each",
                 indent: 1,
               },
+              { content: "Access to VIP Networking Reception", indent: 1 },
             ],
           },
           {

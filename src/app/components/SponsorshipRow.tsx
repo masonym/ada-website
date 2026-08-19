@@ -41,8 +41,12 @@ const SponsorshipRow = ({
     );
     remainingCount = item.slotsPerEvent - used;
   }
+  // An explicit isSoldOut flag wins over the live slot count (which only knows
+  // about sponsors already recorded in the CMS).
+  const isSoldOut = item.isSoldOut || remainingCount === 0;
   const showBadge =
-    showRemainingFlag && remainingCount !== undefined && !hasEventEnded;
+    (item.isSoldOut || (showRemainingFlag && remainingCount !== undefined)) &&
+    !hasEventEnded;
 
   const priceInfo = getPriceDisplay({
     price: item.cost,
@@ -101,10 +105,10 @@ const SponsorshipRow = ({
         {showBadge && (
           <span
             className={`hidden sm:inline-block flex-shrink-0 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md ${
-              remainingCount! > 0 ? "bg-red-500" : "bg-gray-500"
+              isSoldOut ? "bg-gray-500" : "bg-red-500"
             }`}
           >
-            {remainingCount! > 0 ? `${remainingCount} remaining` : "Sold Out"}
+            {isSoldOut ? "Sold Out" : `${remainingCount} remaining`}
           </span>
         )}
         <div className="flex-shrink-0 text-right">
@@ -124,10 +128,10 @@ const SponsorshipRow = ({
           {showBadge && (
             <span
               className={`sm:hidden inline-block mt-1 text-white text-xs font-bold px-2 py-0.5 rounded-full ${
-                remainingCount! > 0 ? "bg-red-500" : "bg-gray-500"
+                isSoldOut ? "bg-gray-500" : "bg-red-500"
               }`}
             >
-              {remainingCount! > 0 ? `${remainingCount} remaining` : "Sold Out"}
+              {isSoldOut ? "Sold Out" : `${remainingCount} remaining`}
             </span>
           )}
         </div>

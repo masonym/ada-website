@@ -591,11 +591,12 @@ export const REGISTRATION_TYPES = [
         perks: [
           {
             formatted: [
-              { content: "Event Access: (1) Attendee Pass", bold: true },
+              { content: "Benefits", bold: true },
+              { content: "(1) Attendee Pass", bold: true, indent: 1 },
               { content: "Access to General Sessions", indent: 1 },
               { content: "Access to Exhibit Hall", indent: 1 },
               { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-              { content: "Morning Coffee & Networking Lunch", indent: 1 },
+              { content: "Morning Coffee/Refreshments & Networking Lunch", indent: 1 },
               {
                 content:
                   "Post-Event Access to Photographs, Recordings, and Presentation Slides",
@@ -623,17 +624,18 @@ export const REGISTRATION_TYPES = [
         perks: [
           {
             formatted: [
-              { content: "Event Access: (1) VIP Attendee Pass", bold: true },
+              { content: "Benefits", bold: true },
+              { content: "(1) VIP Attendee Pass", bold: true, indent: 1 },
               { content: "Access to General Sessions", indent: 1 },
               { content: "Access to Exhibit Hall", indent: 1 },
               { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-              { content: "Morning Coffee & Networking Lunch", indent: 1 },
+              { content: "Morning Coffee/Refreshments & Networking Lunch", indent: 1 },
               {
                 content:
                   "Post-Event Access to Photographs, Recordings, and Presentation Slides",
                 indent: 1,
               },
-              { content: "Access to VIP Networking Reception", bold: true },
+              { content: "Access to VIP Networking Reception", bold: true, indent: 1 },
             ],
           },
         ],
@@ -651,16 +653,17 @@ export const REGISTRATION_TYPES = [
 
       {
         id: "govt-official-military-pass",
-        title: "Government Official & Active-Duty Military Pass",
+        title: "Government Official & Active-Duty Military Attendee Pass",
         headerImage: "gov-pass.webp",
         perks: [
           {
             formatted: [
-              { content: "Event Access: (1) Attendee Pass", bold: true },
+              { content: "Benefits", bold: true },
+              { content: "(1) Attendee Pass", bold: true, indent: 1 },
               { content: "Access to General Sessions", indent: 1 },
               { content: "Access to Exhibit Hall", indent: 1 },
               { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-              { content: "Morning Coffee & Networking Lunch", indent: 1 },
+              { content: "Morning Coffee/Refreshments & Networking Lunch", indent: 1 },
               {
                 content:
                   "Post-Event Access to Photographs, Recordings, and Presentation Slides",
@@ -731,9 +734,10 @@ export const REGISTRATION_TYPES = [
         perks: [
           {
             formatted: [
-              { content: "Event Access: (1) Attendee Pass", bold: true },
+              { content: "Benefits", bold: true },
+              { content: "(1) Attendee Pass", bold: true, indent: 1 },
               { content: "Access to General Sessions", indent: 1 },
-              { content: "Morning Coffee & Networking Lunch", indent: 1 },
+              { content: "Morning Coffee/Refreshments & Networking Lunch", indent: 1 },
               {
                 content:
                   "Post-Event Access to Photographs, Recordings, and Presentation Slides",
@@ -753,14 +757,15 @@ export const REGISTRATION_TYPES = [
 
       {
         id: "govt-official-military-pass",
-        title: "Government Official & Active-Duty Military Pass",
+        title: "Government Official & Active-Duty Military Attendee Pass",
         headerImage: "gov-pass.webp",
         perks: [
           {
             formatted: [
-              { content: "Event Access: (1) Attendee Pass", bold: true },
+              { content: "Benefits", bold: true },
+              { content: "(1) Attendee Pass", bold: true, indent: 1 },
               { content: "Access to General Sessions", indent: 1 },
-              { content: "Morning Coffee & Networking Lunch", indent: 1 },
+              { content: "Morning Coffee/Refreshments & Networking Lunch", indent: 1 },
               {
                 content:
                   "Post-Event Access to Photographs, Recordings, and Presentation Slides",

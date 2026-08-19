@@ -6,7 +6,7 @@ import RegistrationCard from './RegistrationCard';
 import Link from 'next/link';
 import { Award, ChevronRight, Mail } from 'lucide-react';
 import { RegistrationType } from '@/types/event-registration/registration';
-import { getRegistrationsForEvent, getExhibitorsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
+import { getRegistrationsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
 
 export type RegistrationProps = {
     event: Event;
@@ -30,10 +30,10 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
     const registrationCards: AdapterModalRegistrationType[] = getRegistrationsForEvent(event.id)
         .filter(reg => !reg.requiresCode) // Hide code-validated add-ons from main registration page
         .filter(reg => !reg.isAddOn); // Add-ons live in the registration modal's "Add-ons" tab only
-    const exhibitorCards: AdapterModalRegistrationType[] = getExhibitorsForEvent(event.id).filter((e) => e.shownOnRegistrationPage);
 
-    // Combine registration and exhibitor cards
-    const allCards = [...registrationCards, ...exhibitorCards];
+    // Exhibit space is no longer advertised as a card here - the "Become a
+    // Sponsor and/or Exhibitor" section above links out to the exhibitor page.
+    const allCards = registrationCards;
 
     // Find any registration with an early bird deadline
     const registrationWithDeadline = allCards.find(reg => reg.earlyBirdDeadline);
