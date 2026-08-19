@@ -760,6 +760,7 @@ export const REGISTRATION_TYPES = [
             formatted: [
               { content: "Event Access: (1) Attendee Pass", bold: true },
               { content: "Access to General Sessions", indent: 1 },
+              { content: "Morning Coffee & Networking Lunch", indent: 1 },
               {
                 content:
                   "Post-Event Access to Photographs, Recordings, and Presentation Slides",
