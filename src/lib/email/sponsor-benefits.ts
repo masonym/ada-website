@@ -1,6 +1,11 @@
-import { SPONSORSHIP_TYPES } from '@/constants/sponsorships';
-import { Sponsorship } from '@/types/sponsorships';
-import { MatchmakingSession } from '@/types/events';
+import { SPONSORSHIP_TYPES } from "@/constants/sponsorships";
+import {
+  AdditionalPassType,
+  Sponsorship,
+  SponsorshipContact,
+} from "@/types/sponsorships";
+import { MatchmakingSession } from "@/types/events";
+import { CONTACT, joinList, perkText, renderPerks } from "./perks";
 
 /**
  * Sponsorship benefits for confirmation emails are generated from the perks
@@ -12,17 +17,22 @@ import { MatchmakingSession } from '@/types/events';
  * and split lanyards out into their own sponsorship).
  */
 
+/** The tier block for an event, keyed by the same id the event uses. */
+function findTier(eventId: number | string | undefined) {
+  if (eventId === undefined) return null;
+  return (
+    SPONSORSHIP_TYPES.find((t) => t.id.toString() === eventId.toString()) ??
+    null
+  );
+}
+
 /** Looks up the raw sponsorship definition backing a purchased registration. */
 export function findSponsorship(
   eventId: number | string | undefined,
   sponsorshipId: string | undefined,
-  title?: string
+  title?: string,
 ): Sponsorship | null {
-  if (eventId === undefined) return null;
-
-  const tier = SPONSORSHIP_TYPES.find(
-    (t) => t.id.toString() === eventId.toString()
-  );
+  const tier = findTier(eventId);
   if (!tier) return null;
 
   const all = [
@@ -38,17 +48,15 @@ export function findSponsorship(
   );
 }
 
-/** Flattens every perk of a sponsorship to plain text, for keyword checks. */
-function perkText(sponsorship: Sponsorship): string {
-  return sponsorship.perks
-    .map((perk) => {
-      if (perk.formatted?.length) {
-        return perk.formatted.map((f) => f.content).join(' ');
-      }
-      return [perk.tagline, perk.description].filter(Boolean).join(' ');
-    })
-    .join(' ')
-    .toLowerCase();
+/**
+ * The "Additional Sponsor Attendee Pass" sold alongside this event's
+ * sponsorships. Emails quote its price from here rather than repeating a
+ * number, which drifted once already when event 9 moved to $295.
+ */
+export function getSponsorAdditionalPass(
+  eventId: number | string | undefined,
+): AdditionalPassType | undefined {
+  return findTier(eventId)?.additionalPass;
 }
 
 /**
@@ -58,74 +66,11 @@ function perkText(sponsorship: Sponsorship): string {
  */
 export function sponsorshipIncludesExhibitSpace(
   sponsorship: Sponsorship | null,
-  title: string
+  title: string,
 ): boolean {
-  if (!sponsorship) return !title.toLowerCase().includes('without exhibit space');
-  return /exhibit space/.test(perkText(sponsorship));
-}
-
-interface PerkNode {
-  content: string;
-  bold?: boolean;
-  children: PerkNode[];
-}
-
-/** Groups a flat, indent-tagged perk list into a tree. */
-function buildPerkTree(items: Array<{ content: string; bold?: boolean; indent?: number }>): PerkNode[] {
-  const roots: PerkNode[] = [];
-  // stack[i] holds the node currently open at indent level i.
-  const stack: PerkNode[] = [];
-
-  for (const item of items) {
-    const node: PerkNode = { content: item.content, bold: item.bold, children: [] };
-    // Clamp to one level deeper than what's open, so a jump from indent 0 to 2
-    // (a data typo) still nests rather than dropping the item.
-    const depth = Math.min(item.indent ?? 0, stack.length);
-
-    if (depth === 0) {
-      roots.push(node);
-    } else {
-      stack[depth - 1].children.push(node);
-    }
-
-    stack.length = depth;
-    stack.push(node);
-  }
-
-  return roots;
-}
-
-function renderPerkNodes(nodes: PerkNode[]): string {
-  return nodes
-    .map(
-      (node) =>
-        `<li>${node.bold ? `<strong>${node.content}</strong>` : node.content}${
-          node.children.length ? `<ul>${renderPerkNodes(node.children)}</ul>` : ''
-        }</li>`
-    )
-    .join('');
-}
-
-/** Renders one perk group, nesting sub-items by their indent level. */
-function renderPerk(perk: Sponsorship['perks'][number]): string {
-  // Legacy tagline/description perks (events 1-3).
-  if (!perk.formatted?.length) {
-    if (!perk.description) return perk.tagline ? `<p><strong>${perk.tagline}</strong></p>` : '';
-    return perk.tagline
-      ? `<p><strong>${perk.tagline}:</strong> ${perk.description}</p>`
-      : `<p>${perk.description}</p>`;
-  }
-
-  return buildPerkTree(perk.formatted)
-    .map((node) => {
-      const heading = node.bold
-        ? `<p><strong>${node.content}</strong></p>`
-        : `<p>${node.content}</p>`;
-      return node.children.length
-        ? `${heading}<ul>${renderPerkNodes(node.children)}</ul>`
-        : heading;
-    })
-    .join('\n      ');
+  if (!sponsorship)
+    return !title.toLowerCase().includes("without exhibit space");
+  return /exhibit space/.test(perkText(sponsorship.perks));
 }
 
 interface BenefitFlags {
@@ -142,7 +87,9 @@ interface BenefitFlags {
 
 function detectBenefits(text: string): BenefitFlags {
   return {
-    speaking: /speaking opportunity|speaking session|audience address/.test(text),
+    speaking: /speaking opportunity|speaking session|audience address/.test(
+      text,
+    ),
     panel: /moderate the panel/.test(text),
     workshop: /workshop/.test(text),
     remarks: /remarks/.test(text),
@@ -154,94 +101,97 @@ function detectBenefits(text: string): BenefitFlags {
   };
 }
 
-/** "a, b, and c" */
-function joinList(items: string[]): string {
-  if (items.length === 0) return '';
-  if (items.length === 1) return items[0];
-  if (items.length === 2) return `${items[0]} and ${items[1]}`;
-  return `${items.slice(0, -1).join(', ')}, and ${items[items.length - 1]}`;
-}
-
-const CONTACT =
-  '<a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a>';
-
 /** The specific things we need back from the sponsor, per detected benefit. */
 function actionItemsHtml(flags: BenefitFlags): string {
   const items: string[] = [];
 
   if (flags.speaking || flags.panel) {
     items.push(
-      `<li>Your ${flags.panel ? 'panel moderator' : 'speaker'}'s name, bio (any length), high-resolution photo, and ${flags.panel ? 'panel focus' : 'session topic'} for approval and scheduling.</li>`
+      `<li>Your ${flags.panel ? "panel moderator" : "speaker"}'s name, bio (any length), high-resolution photo, and ${flags.panel ? "panel focus" : "session topic"} for approval and scheduling.</li>`,
     );
   } else if (flags.remarks) {
     items.push(
-      "<li>The name, bio, and high-resolution photo of whoever will be providing welcoming remarks, for inclusion on our website.</li>"
+      "<li>The name, bio, and high-resolution photo of whoever will be providing reception remarks, for inclusion on our website.</li>",
     );
   }
 
   if (flags.workshop) {
     items.push(
-      '<li>Your workshop title, description, and presenter details so we can schedule and promote the session.</li>'
+      "<li>Your workshop title, description, and presenter details so we can schedule and promote the session.</li>",
     );
   }
 
   if (flags.lanyards) {
     items.push(
-      '<li>Arrangements for the delivery of your branded lanyards, along with your branding specifications.</li>'
+      "<li>Arrangements for the delivery of your branded lanyards, along with your branding specifications.</li>",
     );
   }
 
   if (flags.advertisement) {
     items.push(
-      '<li>Your full-page color advertisement/capabilities statement artwork for the printed program.</li>'
+      "<li>Your full-page color advertisement/capabilities statement artwork for the printed program.</li>",
     );
   }
 
   if (flags.spotlight) {
     items.push(
-      '<li>A company description and capabilities statement for your Sponsor Spotlight Email.</li>'
+      "<li>A company description and capabilities statement for your Sponsor Spotlight Email.</li>",
     );
   }
 
   if (flags.matchmaking) {
     items.push(
-      '<li>The name of the representative who will host your Matchmaking Table, and a brief company description.</li>'
+      "<li>The name of the representative who will host your Matchmaking Table, and a brief company description.</li>",
     );
   }
 
-  if (items.length === 0) return '';
+  if (items.length === 0) return "";
 
   return `
       <p><strong>Please send us the following:</strong></p>
       <ul>
-        ${items.join('\n        ')}
+        ${items.join("\n        ")}
       </ul>`;
 }
 
-function nextStepsHtml(flags: BenefitFlags): string {
+/**
+ * Who to contact, as an mailto link. Some sponsorships are owned end to end by
+ * one person rather than the events@ inbox, so the sponsorship data may name
+ * them; see `contact` in `@/types/sponsorships`.
+ */
+function contactHtml(contact?: SponsorshipContact): string {
+  if (!contact) return `our team at ${CONTACT}`;
+  return `${contact.name} at <a href="mailto:${contact.email}">${contact.email}</a>`;
+}
+
+function nextStepsHtml(flags: BenefitFlags, contact?: SponsorshipContact): string {
   const coordination: string[] = [];
 
-  if (flags.speaking || flags.panel) coordination.push('scheduling your speaking opportunity');
-  if (flags.workshop) coordination.push('scheduling your workshop');
-  if (flags.branding || flags.lanyards) coordination.push('finalizing branding assets');
-  if (flags.matchmaking) coordination.push('reserving your matchmaking session(s)');
-  if (flags.spotlight) coordination.push('coordinating your spotlight email');
-  if (flags.advertisement) coordination.push('submitting your program advertisement');
+  if (flags.speaking || flags.panel)
+    coordination.push("scheduling your speaking opportunity");
+  if (flags.workshop) coordination.push("scheduling your workshop");
+  if (flags.branding || flags.lanyards)
+    coordination.push("finalizing branding assets");
+  if (flags.matchmaking)
+    coordination.push("reserving your matchmaking session(s)");
+  if (flags.spotlight) coordination.push("coordinating your spotlight email");
+  if (flags.advertisement)
+    coordination.push("submitting your program advertisement");
 
   const list = joinList(coordination);
 
-  return `<p>Please reach out to our team at ${CONTACT} to coordinate your benefits${list ? `, including ${list}` : ''}.</p>`;
+  return `<p>Please reach out to ${contactHtml(contact)} to coordinate your benefits${list ? `, including ${list}` : ""}.</p>`;
 }
 
 function matchmakingSessionsHtml(
-  matchmakingSessions?: MatchmakingSession
+  matchmakingSessions?: MatchmakingSession,
 ): string {
   const sessionList = (matchmakingSessions?.sessions || [])
     .filter((session) => session?.date && session?.sessionTime)
     .map((session) => `<li>${session.date} from ${session.sessionTime}</li>`)
-    .join('');
+    .join("");
 
-  if (!sessionList) return '';
+  if (!sessionList) return "";
 
   return `
       <p><strong>Matchmaking Sessions:</strong></p>
@@ -282,16 +232,15 @@ export function generateSponsorBenefitsHtml({
   `;
   }
 
-  const flags = detectBenefits(perkText(sponsorship));
-  const perksHtml = sponsorship.perks.map(renderPerk).join('\n      ');
+  const flags = detectBenefits(perkText(sponsorship.perks));
 
   return `
     <div class="highlight">
       <h2>${heading}</h2>
-      ${perksHtml}
-      ${flags.matchmaking ? matchmakingSessionsHtml(matchmakingSessions) : ''}
+      ${renderPerks(sponsorship.perks)}
+      ${flags.matchmaking ? matchmakingSessionsHtml(matchmakingSessions) : ""}
       <h4 style="margin-top: 20px; margin-bottom: 2px;">Next Steps</h4>
-      ${nextStepsHtml(flags)}
+      ${nextStepsHtml(flags, sponsorship.contact)}
       ${actionItemsHtml(flags)}
     </div>
   `;

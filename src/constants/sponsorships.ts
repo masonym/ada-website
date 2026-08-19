@@ -1547,6 +1547,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "coffee-station-sponsor",
+        contact: { name: "Lana Corrigan", email: "lana@americandefensealliance.org" },
         title: "Coffee Station Sponsorship",
         cost: 2500,
         slotsPerEvent: 1,
@@ -2853,6 +2854,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "coffee-station-sponsor",
+        contact: { name: "Lana Corrigan", email: "lana@americandefensealliance.org" },
         title: "Coffee Station Sponsorship",
         cost: 2500,
         slotsPerEvent: 2,
@@ -3499,6 +3501,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "lanyard-sponsor",
+        contact: { name: "Lana Corrigan", email: "lana@americandefensealliance.org" },
         title: "Lanyard Sponsorship",
         cost: 3000,
         slotsPerEvent: 1,
@@ -3562,6 +3565,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "coffee-station-sponsor",
+        contact: { name: "Lana Corrigan", email: "lana@americandefensealliance.org" },
         title: "Coffee Station Sponsorship",
         cost: 2500,
         slotsPerEvent: 2,
@@ -3660,6 +3664,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-navy-shipbuilding-fleet-readiness",
+        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
         title: "Major Panel Sponsorship: Navy Shipbuilding & Fleet Readiness",
         cost: 4000,
         slotsPerEvent: 1,
@@ -3742,6 +3747,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-how-to-do-business-with-the-primes",
+        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
         title: "Major Panel Sponsorship: How to do Business with the Primes",
         cost: 4000,
         slotsPerEvent: 1,
@@ -3824,6 +3830,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-advanced-battlespace-technologies",
+        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
         title: "Major Panel Sponsorship: Advanced Battlespace Technologies",
         cost: 4000,
         slotsPerEvent: 1,
@@ -3906,6 +3913,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-military-base-construction-energy",
+        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
         title: "Major Panel Sponsorship: Military Base Construction & Energy",
         cost: 4000,
         slotsPerEvent: 1,
@@ -3988,6 +3996,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-securing-indo-pacific-logistics",
+        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
         title: "Major Panel Sponsorship: Securing Indo-Pacific Logistics",
         cost: 4000,
         slotsPerEvent: 1,
@@ -4317,6 +4326,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "lanyard-sponsor",
+        contact: { name: "Lana Corrigan", email: "lana@americandefensealliance.org" },
         title: "Lanyard Sponsorship",
         cost: 3000,
         slotsPerEvent: 1,
@@ -4369,6 +4379,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "coffee-station-sponsor",
+        contact: { name: "Lana Corrigan", email: "lana@americandefensealliance.org" },
         title: "Coffee Station Sponsorship",
         cost: 2500,
         slotsPerEvent: 2,
@@ -4417,6 +4428,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-maritime-industry-revival-shipbuilding-fleet-readiness",
+        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
         title:
           "Major Panel Sponsorship: Maritime Industry Revival/Shipbuilding & Fleet Readiness",
         cost: 4000,
@@ -4480,6 +4492,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-air-force-space-force-challenges-requirements-priorities",
+        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
         title:
           "Major Panel Sponsorship: Air Force & Space Force Challenges, Requirements & Priorities",
         cost: 4000,
@@ -4543,6 +4556,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-indo-pacific-sitrep-airfield-logistics-hub-reconstruction-expansion",
+        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
         title:
           "Major Panel Sponsorship: Indo-Pacific SITREP – Airfield & Logistics Hub Reconstruction/Expansion",
         cost: 4000,
@@ -4606,6 +4620,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-advanced-battlespace-technologies",
+        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
         title:
           "Major Panel Sponsorship: Advanced Battlespace Technologies – C6ISR, AI, Quantum, 3D Printing, UAS & C-UAS",
         cost: 4000,
@@ -4669,6 +4684,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-investment-opportunities-in-defense-manufacturing",
+        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
         title:
           "Major Panel Sponsorship: Investment Opportunities in Defense Manufacturing – the New Arsenal of Democracy",
         cost: 4000,
@@ -4732,6 +4748,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-installation-energy-supply-microgrid-nuclear-geothermal-solutions",
+        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
         title:
           "Major Panel Sponsorship: Installation Energy Supply/Microgrid, Nuclear & Geothermal Solutions",
         cost: 4000,

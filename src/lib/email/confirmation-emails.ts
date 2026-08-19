@@ -2,96 +2,22 @@ import { AdapterModalRegistrationType } from '../registration-adapters';
 import { Event } from '@/types/events';
 import { sendEmail } from './index';
 import {
-  attendeePassTemplate,
-  vipAttendeePassTemplate,
-  exhibitorTemplate,
-  sponsorTemplate,
-  govMilPassTemplate,
   OrderSummary,
-  generateOrderSummaryHtml,
   AttendeeDetails,
-  generateAttendeeDetailsHtml,
 } from './templates';
+import {
+  TicketTier,
+  determineTicketTier,
+  findHighestTierRegistration,
+  renderConfirmationEmail,
+} from './render-confirmation';
 import { listEventFiles } from '@/lib/s3/event-documents';
 import { RegistrationFormData } from '@/types/event-registration/registration';
 
-// Define ticket tiers in order of priority (highest to lowest)
-export enum TicketTier {
-  PLATINUM_SPONSOR = 7,
-  GOLD_SPONSOR = 6,
-  SILVER_SPONSOR = 5,
-  BRONZE_SPONSOR = 4,
-  EXHIBITOR = 3,
-  VIP_ATTENDEE = 2,
-  GOV_MIL_PASS = 1,
-  STANDARD_ATTENDEE = 0
-}
-
-interface TicketInfo {
-  tier: TicketTier;
-  registration: AdapterModalRegistrationType;
-}
-
-/**
- * Determines the tier of a registration type
- * @param registration The registration type to check
- * @returns The ticket tier
- */
-export function determineTicketTier(registration: AdapterModalRegistrationType): TicketTier {
-  // Check category first
-  if (registration.category === 'sponsorship') {
-    // Check sponsorship level
-    const title = registration.title.toLowerCase();
-    if (title.includes('platinum')) {
-      return TicketTier.PLATINUM_SPONSOR;
-    } else if (title.includes('gold')) {
-      return TicketTier.GOLD_SPONSOR;
-    } else if (title.includes('silver')) {
-      return TicketTier.SILVER_SPONSOR;
-    } else {
-      // Bronze or other sponsorships
-      return TicketTier.BRONZE_SPONSOR;
-    }
-  } else if (registration.category === 'exhibit') {
-    return TicketTier.EXHIBITOR;
-  } else {
-    // It's a ticket category
-    if ('type' in registration && registration.type === 'complimentary') {
-      return TicketTier.GOV_MIL_PASS;
-    }
-    const title = registration.title.toLowerCase();
-    if (title.includes('vip')) {
-      return TicketTier.VIP_ATTENDEE;
-    } else {
-      return TicketTier.STANDARD_ATTENDEE;
-    }
-  }
-}
-
-/**
- * Finds the highest tier registration in an order
- * @param registrations Array of registrations in the order
- * @returns The highest tier registration info or null if no registrations
- */
-export function findHighestTierRegistration(registrations: AdapterModalRegistrationType[]): TicketInfo | null {
-  if (!registrations || registrations.length === 0) {
-    return null;
-  }
-
-  let highestTier: TicketInfo = {
-    tier: TicketTier.STANDARD_ATTENDEE,
-    registration: registrations[0]
-  };
-
-  for (const registration of registrations) {
-    const tier = determineTicketTier(registration);
-    if (tier > highestTier.tier) {
-      highestTier = { tier, registration };
-    }
-  }
-
-  return highestTier;
-}
+// Tier detection and template selection live in ./render-confirmation, which is
+// free of I/O so /dev/email-preview can render exactly what we send. Re-exported
+// here because this module is the historical home of both.
+export { TicketTier, determineTicketTier, findHighestTierRegistration };
 
 /**
  * Collects unique email addresses from a registration form data
@@ -258,12 +184,6 @@ export async function sendRegistrationConfirmationEmail({
   }
 
   const { tier, registration } = highestTierInfo;
-  const eventUrl = `https://americandefensealliance.org/events/${event.slug}`;
-  const eventDate = event.date || 'TBA';
-  const eventLocation = event.locationAddress || 'TBA';
-  const venueName = event.venueName || 'TBA';
-  const hotelInfo = `https://americandefensealliance.org/events/${event.slug}/venue-and-lodging`;
-  const vipNetworkingReception = event.vipNetworkingReception;
 
   const bucketFiles = await listEventFiles(event.eventShorthand);
   const exhibitorInstructions = bucketFiles.find(name => name.includes("Instructions"));
@@ -294,128 +214,22 @@ export async function sendRegistrationConfirmationEmail({
   // Combine any provided attachments with ticket-specific ones
   const emailAttachments = [...attachments, ...ticketAttachments];
 
-  const orderSummaryHtml = orderSummary ? generateOrderSummaryHtml(orderSummary) : '';
-  const attendeeDetailsHtml = attendees && attendees.length > 0 ? generateAttendeeDetailsHtml(attendees) : '';
+  const { subject, html } = renderConfirmationEmail({
+    firstName,
+    event,
+    tier,
+    registration,
+    orderId,
+    orderSummary,
+    attendees,
+    attendeePasses,
+    exhibitorInstructions: exhibitorInstructions || '',
+  });
 
-  // Send appropriate email template based on ticket tier
-  switch (tier) {
-    case TicketTier.PLATINUM_SPONSOR:
-    case TicketTier.GOLD_SPONSOR:
-    case TicketTier.SILVER_SPONSOR:
-    case TicketTier.BRONZE_SPONSOR:
-      return sendEmail({
-        to: email,
-        subject: `Your ${event.title} Sponsorship Confirmation`,
-        html: sponsorTemplate({
-          firstName,
-          eventName: event.title,
-          eventDate,
-          eventLocation,
-          venueName,
-          eventUrl,
-          orderId,
-          sponsorshipLevel: registration.title,
-          // Benefits are rendered from this sponsorship's perks in
-          // @/constants/sponsorships, so they always match what was sold.
-          sponsorshipId: registration.id,
-          eventId: event.id,
-          attendeePasses: registration.sponsorPasses || attendeePasses || 0,
-          eventImage: event.image,
-          orderSummaryHtml,
-          attendeeDetailsHtml,
-          hotelInfo,
-          vipNetworkingReception,
-          matchmakingSessions: event.matchmakingSessions || undefined,
-          exhibitorInstructions: exhibitorInstructions || '',
-          vipNetworkingReceptionUrl: `${eventUrl}/about/vip-networking-reception`,
-        }),
-        attachments: emailAttachments,
-      });
-
-    case TicketTier.EXHIBITOR:
-      return sendEmail({
-        to: email,
-        subject: `Your ${event.title} Exhibitor Confirmation`,
-        html: exhibitorTemplate({
-          firstName,
-          eventName: event.title,
-          eventDate,
-          eventLocation,
-          venueName,
-          eventUrl,
-          orderId,
-          exhibitorType: registration.title,
-          exhibitorInstructions: exhibitorInstructions || '',
-          eventImage: event.image,
-          orderSummaryHtml,
-          attendeeDetailsHtml,
-          hotelInfo,
-          vipNetworkingReception,
-          vipNetworkingReceptionUrl: `${eventUrl}/about/vip-networking-reception`,
-        }),
-        attachments: emailAttachments,
-      });
-
-    case TicketTier.GOV_MIL_PASS:
-      return sendEmail({
-        to: email,
-        subject: `Registration Confirmation - ${event.title}`,
-        html: govMilPassTemplate({
-          firstName,
-          eventName: event.title,
-          eventDate,
-          eventLocation,
-          venueName,
-          eventUrl,
-          orderId,
-          hotelInfo,
-          eventImage: event.image,
-          orderSummaryHtml: '', // No order summary for free passes
-          attendeeDetailsHtml,
-        }),
-        attachments: emailAttachments,
-      });
-
-    case TicketTier.VIP_ATTENDEE:
-      return sendEmail({
-        to: email,
-        subject: `Registration Confirmation - ${event.title}`,
-        html: vipAttendeePassTemplate({
-          firstName,
-          eventName: event.title,
-          eventDate,
-          eventLocation,
-          venueName,
-          eventUrl,
-          orderId,
-          eventImage: event.image,
-          orderSummaryHtml,
-          attendeeDetailsHtml,
-          hotelInfo,
-          vipNetworkingReception,
-          vipNetworkingReceptionUrl: `${eventUrl}/about/vip-networking-reception`,
-        }),
-        attachments: emailAttachments,
-      });
-
-    case TicketTier.STANDARD_ATTENDEE:
-    default:
-      return sendEmail({
-        to: email,
-        subject: `Registration Confirmation - ${event.title}`,
-        html: attendeePassTemplate({
-          firstName,
-          eventName: event.title,
-          eventDate,
-          eventLocation,
-          venueName,
-          eventUrl,
-          orderId,
-          hotelInfo: hotelInfo,
-          eventImage: event.image,
-          orderSummaryHtml,
-          attendeeDetailsHtml,
-        })
-      });
-  }
+  return sendEmail({
+    to: email,
+    subject,
+    html,
+    attachments: emailAttachments,
+  });
 }

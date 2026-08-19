@@ -2,10 +2,18 @@ import { MatchmakingSession, VipNetworkingReception } from '@/types/events';
 import {
   findSponsorship,
   generateSponsorBenefitsHtml,
+  getSponsorAdditionalPass,
   sponsorshipIncludesExhibitSpace,
 } from '../sponsor-benefits';
+import {
+  findExhibitorType,
+  generateExhibitorBenefitsHtml,
+  getExhibitorAdditionalPass,
+} from '../exhibitor-benefits';
+import { additionalPassLabel } from '../perks';
 import { getClientEnv } from '../../env';
 import { getCdnPath } from '@/utils/image';
+import { LODGING_INFO } from '@/constants/lodging';
 
 function getMonthFromDate(dateString: string): string {
   if (!dateString) return '';
@@ -23,6 +31,37 @@ function getMonthFromDate(dateString: string): string {
   } catch (e) {
     return '';
   }
+}
+
+/**
+ * "in Norfolk" from a full street address - the city is the second comma-
+ * separated field. Trimmed because the addresses carry a space after the
+ * comma, which otherwise rendered as "welcoming you in  Norfolk".
+ */
+function welcomeDestination(eventLocation: string): string {
+  const city = eventLocation?.split(',')[1]?.trim();
+  return city ? `in ${city}` : 'to this event';
+}
+
+/**
+ * The venue-and-lodging link. Only events with a hotel room block in
+ * `@/constants/lodging` get the "Hotel Accommodations" wording - the 2026
+ * Defense Industry Update is a one-day event with no block, and promising one
+ * in its confirmation emails sent registrants looking for something that does
+ * not exist. The page is still worth linking either way, for directions and
+ * parking.
+ */
+function venueAndLodgingHtml(hotelInfo?: string, eventId?: number | string): string {
+  if (!hotelInfo) return '';
+
+  const lodging =
+    eventId === undefined
+      ? undefined
+      : LODGING_INFO.find((entry) => entry.eventId.toString() === eventId.toString());
+
+  return lodging?.hotels?.length
+    ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here.</a></p>`
+    : `<p><strong>Venue Information:</strong> Venue details, directions and parking are available <a href="${hotelInfo}">here.</a></p>`;
 }
 
 export interface OrderSummaryItem {
@@ -106,32 +145,6 @@ export function generateAttendeeDetailsHtml(attendees: AttendeeDetails[]): strin
   `;
 }
 
-function generateExhibitorBenefitsHtml(exhibitorType: string): string {
-  return `
-    <div class="highlight">
-      <h2>Table-Top Exhibit Space Benefits</h2>
-      
-      <p><strong>Table-Top Exhibit Space:</strong></p>
-      <ul>
-        <li>8'x10' Table-Top Exhibit Space in Exhibit Hall/Foyer</li>
-        <li>6' Tablecloth Table & Chairs</li>
-      </ul>
-      
-      <p><strong>Logo Branding:</strong> Event Website, Digital Agenda and Printed Program, Conference Marketing Emails</p>
-      
-      <p><strong>Recognition & Visibility:</strong> Photographs of your participation for your marketing materials.</p>
-      
-      <p><strong>VIP Attendee Passes:</strong> Your registration includes (1) VIP Attendee Pass with access to all event sessions and the VIP Networking Reception. Additional Passes can be purchased for $395 each.</p>
-      
-      <p style="color: red;"><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
-      
-      <h4 style="margin-top: 20px; margin-bottom: 2px;">Next Steps</h4>
-      <p>Please reach out to our team at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> to coordinate your sponsorship benefits, including finalizing your branding assets.</p>
-    </div>
-  `;
-}
-
-
 export function generateOrderSummaryHtml(summary: OrderSummary): string {
   const formatCurrency = (amount: number) => `${amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`;
 
@@ -212,12 +225,33 @@ export function generateVipNetworkingReceptionHtml(
   //   introText = 'As a sponsor, you and your guests are invited to our exclusive VIP Networking Reception.';
   // }
 
+  // Who is invited differs per event - the 2026 Defense Industry Update has no
+  // exhibitors at all - so the invitee sentence comes from the event's own
+  // reception `description`, the same string the website's reception page
+  // shows, rather than a fixed list that named exhibitors regardless.
+  //
+  // The reception venue is often still TBD when an event opens for
+  // registration (2026 AFSFPC and the 2026 Defense Industry Update both are),
+  // so each line is only printed once its data exists - this block used to
+  // render "Location: undefined, undefined" for those events.
+  const location = [
+    vipNetworkingReception.locationName,
+    vipNetworkingReception.locationAddress,
+  ]
+    .filter(Boolean)
+    .join(', ');
+
+  const time =
+    vipNetworkingReception.timeStart && vipNetworkingReception.timeEnd
+      ? ` from ${vipNetworkingReception.timeStart} to ${vipNetworkingReception.timeEnd}`
+      : '';
+
   return `
     <div class="highlight">
       <h2>VIP Networking Reception</h2>
-      <p><strong>Who's Invited:</strong> Speakers, Sponsors, Exhibitors, VIP Attendee Passes, and Special Guests.</p>
-      <p><strong>Location:</strong> ${vipNetworkingReception.locationName}, ${vipNetworkingReception.locationAddress}</p>
-      <p><strong>Date:</strong> ${vipNetworkingReception.date} from ${vipNetworkingReception.timeStart} to ${vipNetworkingReception.timeEnd}</p>
+      ${vipNetworkingReception.description ? `<p>${vipNetworkingReception.description}</p>` : ''}
+      ${location ? `<p><strong>Location:</strong> ${location}</p>` : ''}
+      ${vipNetworkingReception.date ? `<p><strong>Date:</strong> ${vipNetworkingReception.date}${time}</p>` : ''}
       ${vipNetworkingReceptionUrl ? `<p><a href="${vipNetworkingReceptionUrl}">View VIP Networking Reception Details</a></p>` : ''}
       ${vipNetworkingReception.additionalInfo ? `<p>${vipNetworkingReception.additionalInfo}</p>` : ''}
     </div>
@@ -439,6 +473,7 @@ export function attendeePassTemplate({
   eventUrl,
   orderId,
   hotelInfo,
+  eventId,
   eventImage,
   orderSummaryHtml,
   attendeeDetailsHtml,
@@ -451,6 +486,8 @@ export function attendeePassTemplate({
   eventUrl?: string;
   orderId: string;
   hotelInfo: string;
+  /** Used to look up whether the event has a hotel room block. */
+  eventId?: number | string;
   eventImage: string;
   orderSummaryHtml?: string;
   attendeeDetailsHtml?: string;
@@ -461,7 +498,7 @@ export function attendeePassTemplate({
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
     <p>Feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077</span> if you have any questions or need to make any changes to your registration.</p>
     <p>Please note, all registrations are final. We are unable to offer refunds for this event. You can request an Event Credit up to one week from the event date. If you are unable to attend and would like to send a replacement attendee, please let us know at your earliest convenience. All event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
-    <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]}` : 'to this event'}!</p>
+    <p>We look forward to welcoming you ${welcomeDestination(eventLocation)}!</p>
     <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
 
     <div class="highlight">
@@ -469,7 +506,7 @@ export function attendeePassTemplate({
       <p><strong>Event:</strong> ${eventName}</p>
       <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
         <p><strong>Location:</strong> ${venueName}, ${eventLocation}</p>
-      ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here.</a></p>` : ''}
+      ${venueAndLodgingHtml(hotelInfo, eventId)}
     </div>
 
 
@@ -493,6 +530,7 @@ export function vipAttendeePassTemplate({
   eventImage,
   orderSummaryHtml,
   hotelInfo,
+  eventId,
   vipNetworkingReception,
   attendeeDetailsHtml,
   vipNetworkingReceptionUrl,
@@ -507,6 +545,8 @@ export function vipAttendeePassTemplate({
   eventImage: string;
   orderSummaryHtml?: string;
   hotelInfo: string;
+  /** Used to look up whether the event has a hotel room block. */
+  eventId?: number | string;
   vipNetworkingReception?: VipNetworkingReception;
   attendeeDetailsHtml?: string;
   vipNetworkingReceptionUrl?: string;
@@ -517,7 +557,7 @@ export function vipAttendeePassTemplate({
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
     <p>Feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077</span> if you have any questions or need to make any changes to your registration.</p>
     <p>Please note, all registrations are final. We are unable to offer refunds for this event. You can request an Event Credit up to one week from the event date. If you are unable to attend and would like to send a replacement attendee, please let us know at your earliest convenience. All event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
-    <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]}` : 'to this event'}!</p>
+    <p>We look forward to welcoming you ${welcomeDestination(eventLocation)}!</p>
     <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
 
     
@@ -526,7 +566,7 @@ export function vipAttendeePassTemplate({
       <p><strong>Event:</strong> ${eventName}</p>
       <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
         <p><strong>Location:</strong> ${venueName}, ${eventLocation}</p>
-      ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here.</a></p>` : ''}
+      ${venueAndLodgingHtml(hotelInfo, eventId)}
     </div>
 
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
@@ -550,6 +590,8 @@ export function exhibitorTemplate({
   eventUrl,
   orderId,
   exhibitorType,
+  exhibitorId,
+  eventId,
   exhibitorInstructions,
   eventImage,
   orderSummaryHtml,
@@ -566,6 +608,9 @@ export function exhibitorTemplate({
   eventUrl?: string;
   orderId: string;
   exhibitorType: string;
+  /** Exhibit space id in `@/constants/exhibitors`, used to look up its perks. */
+  exhibitorId?: string;
+  eventId?: number | string;
   exhibitorInstructions: string;
   eventImage: string;
   orderSummaryHtml?: string;
@@ -574,16 +619,19 @@ export function exhibitorTemplate({
   attendeeDetailsHtml?: string;
   vipNetworkingReceptionUrl?: string;
 }): string {
+  const exhibitor = findExhibitorType(eventId, exhibitorId, exhibitorType);
+  const additionalPass = getExhibitorAdditionalPass(eventId);
+
   const content = `
     <p><strong>Dear ${firstName},</strong></p>
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
 
-    <p>If you wish to purchase additional attendee passes, you can do so using the $395 registration Additional Exhibitor Attendee Pass option on our website.</p>
+    <p>If you wish to purchase additional attendee passes, you can do so using the ${additionalPassLabel(additionalPass, 'Additional Exhibitor Attendee Pass')} registration option on our website.</p>
     <p style="color: red;"><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
     
     <p>Feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077</span> if you have any questions or need to make any changes to your registration.</p>
     <p>Please note, all registrations are final. We are unable to offer refunds for this event. You can request an Event Credit up to one week from the event date. If you are unable to attend and would like to send a replacement attendee, please let us know at your earliest convenience. All event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
-    <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]}` : 'to this event'}!</p>
+    <p>We look forward to welcoming you ${welcomeDestination(eventLocation)}!</p>
     <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
 
     <div class="highlight">
@@ -591,14 +639,14 @@ export function exhibitorTemplate({
       <p><strong>Event:</strong> ${eventName}</p>
       <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
         <p><strong>Location:</strong> ${venueName}, ${eventLocation}</p>
-      ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here.</a></p>` : ''}
+      ${venueAndLodgingHtml(hotelInfo, eventId)}
     </div>
 
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
 
     ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'exhibitor', vipNetworkingReceptionUrl)}
 
-    ${generateExhibitorBenefitsHtml(exhibitorType)}
+    ${generateExhibitorBenefitsHtml({ exhibitor, exhibitorTitle: exhibitorType })}
 
     ${generateExhibitorInstructionsHtml(exhibitorInstructions)}
 
@@ -654,17 +702,18 @@ export function sponsorTemplate({
 }): string {
   const sponsorship = findSponsorship(eventId, sponsorshipId, sponsorshipLevel);
   const hasExhibitSpace = sponsorshipIncludesExhibitSpace(sponsorship, sponsorshipLevel);
+  const additionalPass = getSponsorAdditionalPass(eventId);
 
   const content = `
     <p><strong>Dear ${firstName},</strong></p>
     <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your participation in this important event. Please retain this email for your records.</p>
 
-    <p>You may register additional attendees not included in the (${attendeePasses}) complimentary VIP Attendee Passes for $395 each using the Additional Sponsorship Attendee Pass option on our website.</p>
+    <p>You may register additional attendees not included in the (${attendeePasses}) complimentary VIP Attendee Passes using the ${additionalPassLabel(additionalPass, 'Additional Sponsor Attendee Pass')} option on our website.</p>
     <p style="color: red;"><strong>Please respond to this email with a high-quality image of your company logo.</strong></p>
     
     <p>Feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077</span> if you have any questions or need to make any changes to your registration.</p>
     <p>Please note, all registrations are final. We are unable to offer refunds for this event. You can request an Event Credit up to one week from the event date. If you are unable to attend and would like to send a replacement attendee, please let us know at your earliest convenience. All event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
-    <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]}` : 'to this event'}!</p>
+    <p>We look forward to welcoming you ${welcomeDestination(eventLocation)}!</p>
     <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
 
     <div class="highlight">
@@ -672,7 +721,7 @@ export function sponsorTemplate({
       <p><strong>Event:</strong> ${eventName}</p>
       <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
         <p><strong>Location:</strong> ${venueName}, ${eventLocation}</p>
-      ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here.</a></p>` : ''}
+      ${venueAndLodgingHtml(hotelInfo, eventId)}
     </div>
 
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
@@ -699,6 +748,7 @@ export function govMilPassTemplate({
   eventUrl,
   orderId,
   hotelInfo,
+  eventId,
   eventImage,
   orderSummaryHtml,
   attendeeDetailsHtml,
@@ -711,6 +761,8 @@ export function govMilPassTemplate({
   eventUrl?: string;
   orderId: string;
   hotelInfo: string;
+  /** Used to look up whether the event has a hotel room block. */
+  eventId?: number | string;
   eventImage: string;
   orderSummaryHtml?: string;
   attendeeDetailsHtml?: string;
@@ -723,7 +775,7 @@ export function govMilPassTemplate({
     <p>We have very limited complimentary Table-Top Exhibit Spaces available for Government Agencies & Military Commands for those willing to host a Matchmaking Session Table on either one or both days of the conference. If you are interested in a Speaking Opportunity, please contact Charles Sills (<a href="mailto:csills@americandefensealliance.org">csills@americandefensealliance.org</a>).</p>
     <p>Feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077</span> if you have any questions or need to make any changes to your registration.</p>
     <p>All event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
-    <p>We look forward to welcoming you ${eventLocation ? `in ${eventLocation.split(',')[1]}` : 'to this event'}!</p>
+    <p>We look forward to welcoming you ${welcomeDestination(eventLocation)}!</p>
     <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
     
     <div class="highlight">
@@ -731,7 +783,7 @@ export function govMilPassTemplate({
       <p><strong>Event:</strong> ${eventName}</p>
       <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
       <p><strong>Location:</strong> ${venueName}, ${eventLocation}</p>
-      ${hotelInfo ? `<p><strong>Hotel Accommodations:</strong> Room Block information is available <a href="${hotelInfo}">here.</a></p>` : ''}
+      ${venueAndLodgingHtml(hotelInfo, eventId)}
     </div>
     ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
     ${orderSummaryHtml || ''}

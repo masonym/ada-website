@@ -2858,6 +2858,9 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       date: "December 3, 2026",
       timeStart: "5:00 PM",
       timeEnd: "7:00 PM",
+      // The reception is held at the conference venue itself.
+      locationName: "Capitol Hill Club",
+      locationAddress: "300 First Street SE, Washington, DC 20003",
     },
     sponsorshipInfo: {
       // No Exhibitor Opportunities at this event - see eventNavs entry for id 9.

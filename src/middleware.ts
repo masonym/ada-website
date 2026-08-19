@@ -18,8 +18,10 @@ const ADMIN_PREFIXES = [
   // writes to the production bucket are both a defacement and a storage-cost lever.
   '/api/upload',
   '/api/get-presigned-url',
-  // Renders every email template with mock data; useful internally, not publicly.
+  // Renders every email template with real event data; useful internally, not publicly.
   '/dev',
+  // Backs the /dev pages (e.g. resolving an event's exhibitor instructions PDF).
+  '/api/dev',
   // Reports whether AWS credentials are configured, plus bucket and region.
   // Consumed by the admin dashboard's status widget.
   '/api/s3-config',

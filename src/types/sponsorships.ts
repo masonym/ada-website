@@ -11,6 +11,11 @@ interface Perk {
     formatted?: FormattedPerk[]; // New formatted structure
 }
 
+export interface SponsorshipContact {
+    name: string;
+    email: string;
+}
+
 export interface Sponsorship {
     id: string;
     title: string;
@@ -35,6 +40,13 @@ export interface Sponsorship {
     isGovtFreeEligible?: boolean;
     shownOnRegistrationPage?: boolean;
     sponsorPasses?: number; // Number of attendee passes included with this sponsorship
+    /**
+     * Who a sponsor should contact about coordinating their benefits, shown in
+     * the confirmation email's Next Steps. Defaults to the events@ inbox; set
+     * this when one person owns the deliverable (e.g. lanyards and coffee
+     * stations, or the major panel sponsorships).
+     */
+    contact?: SponsorshipContact;
     /**
      * Optional grouping label. Sponsorships sharing a value are pulled out of the
      * main grid and rendered together in their own titled section below it (e.g.
