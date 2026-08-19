@@ -743,9 +743,9 @@ export const REGISTRATION_TYPES = [
           },
         ],
         buttonText: "Register Now",
-        price: 395, // regular price after Early Bird ends
+        price: 495, // regular price after Early Bird ends
         priceTiers: [
-          { price: 295, endDate: "2026-10-01T03:59:59Z" }, // Early Bird ends September 30, 2026 11:59 PM ET
+          { price: 395, endDate: "2026-10-01T03:59:59Z" }, // Early Bird ends September 30, 2026 11:59 PM ET
         ],
         type: "paid",
         saleEndTime: "2026-12-03T18:00:00Z",
