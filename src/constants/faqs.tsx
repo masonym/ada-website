@@ -165,7 +165,7 @@ Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
             },
             {
                 question: "Will photos or videos be taken at the event?",
-                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media. If you have any concerns, please contact us prior to the event. Access to Photos and Videos will be available post-event.",
+                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media. If you have any concerns, please contact us prior to the event. Access to photos and videos will be available post-event.",
             },
             {
                 question: "Does the American Defense Alliance sell or rent attendee lists?",
@@ -238,7 +238,7 @@ Venue: Renaissance Austin Hotel, 9721 Arboretum Blvd, Austin, Texas 78759
             },
             {
                 question: "Will photos or videos be taken at the event?",
-                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media.<br/> If you have any concerns, please contact us prior to the event. Access to Photos and Videos will be available post-event.",
+                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media.<br/> If you have any concerns, please contact us prior to the event. Access to photos and videos will be available post-event.",
             },
             {
                 question: "Does the American Defense Alliance sell or rent attendee lists?",
@@ -311,7 +311,7 @@ Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
             },
             {
                 question: "Will photos or videos be taken at the event?",
-                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media. If you have any concerns, please contact us prior to the event. Access to Photos and Videos will be available post-event.",
+                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media. If you have any concerns, please contact us prior to the event. Access to photos and videos will be available post-event.",
             },
             {
                 question: "Does the American Defense Alliance sell or rent attendee lists?",
@@ -384,7 +384,7 @@ Venue: Hotel Polaris at the U.S. Air Force Academy, 8989 North Gate Boulevard, C
             },
             {
                 question: "Will photos or videos be taken at the event?",
-                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media. If you have any concerns, please contact us prior to the event. Access to Photos and Videos will be available post-event.",
+                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media. If you have any concerns, please contact us prior to the event. Access to photos and videos will be available post-event.",
             },
             {
                 question: "Does the American Defense Alliance sell or rent attendee lists?",
@@ -457,7 +457,7 @@ Venue: Norfolk Waterside Marriott, 235 E Main St, Norfolk, Virginia 23510
             },
             {
                 question: "Will photos or videos be taken at the event?",
-                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media. If you have any concerns, please contact us prior to the event. Access to Photos and Videos will be available post-event.",
+                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media. If you have any concerns, please contact us prior to the event. Access to photos and videos will be available post-event.",
             },
             {
                 question: "Does the American Defense Alliance sell or rent attendee lists?",
@@ -538,7 +538,7 @@ Venue: Capitol Hill Club, 300 First Street SE, Washington, DC 20003
             },
             {
                 question: "Will photos or videos be taken at the event?",
-                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media. If you have any concerns, please contact us prior to the event. Access to Photos and Videos will be available post-event.",
+                answer: "Yes, photos and videos will be taken during the event for promotional and archival purposes. By attending, you consent to being photographed and recorded, with the understanding that these images and recordings may be used by the American Defense Alliance in future marketing, publications, or media. If you have any concerns, please contact us prior to the event. Access to photos and videos will be available post-event.",
             },
             {
                 question: "Does the American Defense Alliance sell or rent attendee lists?",

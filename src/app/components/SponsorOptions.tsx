@@ -237,7 +237,7 @@ const SponsorOptions = ({
             </p>
           )}
 
-          <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mb-6">
+          <p className="text-[16px] font-gotham text-slate-600 text-center w-full max-w-2xl mx-auto mt-8 mb-6">
             {event.sponsorshipInfo?.sponsorSection || defaultSponsorText}
           </p>
 

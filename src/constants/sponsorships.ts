@@ -4416,10 +4416,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         showRemaining: false,
       },
       {
-        id: "major-panel-sponsor-maritime-industry-shipbuilding-fleet-readiness",
+        id: "major-panel-sponsor-maritime-industry-revival-shipbuilding-fleet-readiness",
         title:
-          "Major Panel Sponsorship: Maritime Industry/Shipbuilding & Fleet Readiness",
-        cost: 2000,
+          "Major Panel Sponsorship: Maritime Industry Revival/Shipbuilding & Fleet Readiness",
+        cost: 4000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4448,7 +4448,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Speaking Opportunity", bold: true },
               {
                 content:
-                  "Moderate the Panel on Maritime Industry/Shipbuilding & Fleet Readiness",
+                  "Moderate the Panel on Maritime Industry Revival/Shipbuilding & Fleet Readiness",
                 indent: 1,
               },
             ],
@@ -4481,8 +4481,8 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       {
         id: "major-panel-sponsor-air-force-space-force-challenges-requirements-priorities",
         title:
-          "Major Panel Sponsorship: Air Force & Space Force Challenges/Requirements/Priorities",
-        cost: 2000,
+          "Major Panel Sponsorship: Air Force & Space Force Challenges, Requirements & Priorities",
+        cost: 4000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4511,7 +4511,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Speaking Opportunity", bold: true },
               {
                 content:
-                  "Moderate the Panel on Air Force & Space Force Challenges/Requirements/Priorities",
+                  "Moderate the Panel on Air Force & Space Force Challenges, Requirements & Priorities",
                 indent: 1,
               },
             ],
@@ -4542,10 +4542,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         sponsorshipGroup: "Major Panel Sponsorships",
       },
       {
-        id: "major-panel-sponsor-army-transformation-installation-resilience",
+        id: "major-panel-sponsor-indo-pacific-sitrep-airfield-logistics-hub-reconstruction-expansion",
         title:
-          "Major Panel Sponsorship: Army Transformation & Installation Resilience",
-        cost: 2000,
+          "Major Panel Sponsorship: Indo-Pacific SITREP – Airfield & Logistics Hub Reconstruction/Expansion",
+        cost: 4000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4574,7 +4574,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Speaking Opportunity", bold: true },
               {
                 content:
-                  "Moderate the Panel on Army Transformation & Installation Resilience",
+                  "Moderate the Panel on Indo-Pacific SITREP – Airfield & Logistics Hub Reconstruction/Expansion",
                 indent: 1,
               },
             ],
@@ -4605,10 +4605,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         sponsorshipGroup: "Major Panel Sponsorships",
       },
       {
-        id: "major-panel-sponsor-advanced-technologies-on-the-warfighter-edge",
+        id: "major-panel-sponsor-advanced-battlespace-technologies",
         title:
-          "Major Panel Sponsorship: Advanced Technologies on the Warfighter Edge",
-        cost: 2000,
+          "Major Panel Sponsorship: Advanced Battlespace Technologies – C6ISR, AI, Quantum, 3D Printing, UAS & C-UAS",
+        cost: 4000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4637,7 +4637,133 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Speaking Opportunity", bold: true },
               {
                 content:
-                  "Moderate the Panel on Advanced Technologies on the Warfighter Edge",
+                  "Moderate the Panel on Advanced Battlespace Technologies – C6ISR, AI, Quantum, 3D Printing, UAS & C-UAS",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              {
+                content:
+                  "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                indent: 1,
+              },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
+              { content: "Social Media Recognition", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
+            ],
+          },
+        ],
+        colour: "#F33A6A",
+        showRemaining: false,
+        sponsorshipGroup: "Major Panel Sponsorships",
+      },
+      {
+        id: "major-panel-sponsor-investment-opportunities-in-defense-manufacturing",
+        title:
+          "Major Panel Sponsorship: Investment Opportunities in Defense Manufacturing – the New Arsenal of Democracy",
+        cost: 4000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $195 each",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              {
+                content:
+                  "Moderate the Panel on Investment Opportunities in Defense Manufacturing – the New Arsenal of Democracy",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              {
+                content:
+                  "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                indent: 1,
+              },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
+              { content: "Social Media Recognition", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
+            ],
+          },
+        ],
+        colour: "#F33A6A",
+        showRemaining: false,
+        sponsorshipGroup: "Major Panel Sponsorships",
+      },
+      {
+        id: "major-panel-sponsor-installation-energy-supply-microgrid-nuclear-geothermal-solutions",
+        title:
+          "Major Panel Sponsorship: Installation Energy Supply/Microgrid, Nuclear & Geothermal Solutions",
+        cost: 4000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $195 each",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              {
+                content:
+                  "Moderate the Panel on Installation Energy Supply/Microgrid, Nuclear & Geothermal Solutions",
                 indent: 1,
               },
             ],

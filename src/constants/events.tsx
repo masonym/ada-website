@@ -2685,7 +2685,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
               Priorities
             </li>
             <li>
-              Info-Pacific SITREP - Airfield &amp; Logistics Hub
+              Indo-Pacific SITREP - Airfield &amp; Logistics Hub
               Reconstruction/Expansion
             </li>
             <li>
@@ -2761,7 +2761,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
       },
       {
         tagline:
-          "Info-Pacific SITREP - Airfield & Logistics Hub Reconstruction/Expansion",
+          "Indo-Pacific SITREP - Airfield & Logistics Hub Reconstruction/Expansion",
         description: "",
       },
       {

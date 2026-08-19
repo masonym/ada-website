@@ -110,7 +110,7 @@ export default function BannerGeneratorPage() {
   const [sponsorVerticalOffset, setSponsorVerticalOffset] = useState(0); // pixels offset
   const [eventImageMarginBottom, setEventImageMarginBottom] = useState(20); // pixels
   const [tierSizeMultipliers, setTierSizeMultipliers] = useState<Record<string, number>>({}); // per-tier size multipliers
-  const [tierGridColumns, setTierGridColumns] = useState<Record<string, 3 | 4>>({}); // per-tier column count
+  const [tierGridColumns, setTierGridColumns] = useState<Record<string, number>>({}); // per-tier column count (1 = one sponsor per row)
   const [tierLabelGap, setTierLabelGap] = useState<Record<string, number>>({}); // per-tier gap between tier label and logos
   const [tierDescGap, setTierDescGap] = useState<Record<string, number>>({}); // per-tier gap between logo and description
   const [descriptionFontSize, setDescriptionFontSize] = useState(6); // px at preview scale
@@ -422,20 +422,17 @@ export default function BannerGeneratorPage() {
                               <div className="flex items-center gap-2">
                                 <label className="text-xs text-gray-600 whitespace-nowrap">Columns:</label>
                                 <div className="flex gap-1">
-                                  <button
-                                    type="button"
-                                    onClick={() => setTierGridColumns(prev => ({ ...prev, [tier.id]: 3 }))}
-                                    className={`text-xs px-2 py-0.5 rounded ${(tierGridColumns[tier.id] || 4) === 3 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                                  >
-                                    3
-                                  </button>
-                                  <button
-                                    type="button"
-                                    onClick={() => setTierGridColumns(prev => ({ ...prev, [tier.id]: 4 }))}
-                                    className={`text-xs px-2 py-0.5 rounded ${(tierGridColumns[tier.id] || 4) === 4 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                                  >
-                                    4
-                                  </button>
+                                  {[1, 2, 3, 4].map((cols) => (
+                                    <button
+                                      key={cols}
+                                      type="button"
+                                      title={cols === 1 ? 'One sponsor per row' : `${cols} per row`}
+                                      onClick={() => setTierGridColumns(prev => ({ ...prev, [tier.id]: cols }))}
+                                      className={`text-xs px-2 py-0.5 rounded ${(tierGridColumns[tier.id] || 4) === cols ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+                                    >
+                                      {cols}
+                                    </button>
+                                  ))}
                                 </div>
                               </div>
                               <div className="flex items-center gap-2">
@@ -998,6 +995,8 @@ export default function BannerGeneratorPage() {
                         >
                           {tier.sponsors.map((sponsor) => {
                             const logoSize = getLogoSize(tier.name, tier.id, tier.sponsors.length);
+                            // never spread fewer sponsors across more columns than we have
+                            const columns = Math.min(tierGridColumns[tier.id] || 4, tier.sponsors.length);
                             return (
                               <div
                                 key={sponsor._id}
@@ -1005,15 +1004,17 @@ export default function BannerGeneratorPage() {
                                   display: 'flex',
                                   flexDirection: 'column',
                                   alignItems: 'center',
-                                  flex: `0 0 calc(${100 / (tierGridColumns[tier.id] || 4)}% - 12px)`,
-                                  maxWidth: `calc(${100 / (tierGridColumns[tier.id] || 4)}% - 12px)`,
+                                  flex: `0 0 calc(${100 / columns}% - 12px)`,
+                                  maxWidth: `calc(${100 / columns}% - 12px)`,
+                                  minWidth: 0,
                                 }}
                               >
-                                {tier.sponsors.length > 1 ? (
+                                {columns > 1 ? (
                                   // grid: fixed box normalizes every logo to a uniform footprint
                                   <div
                                     style={{
-                                      width: logoSize.width * 1.1,
+                                      width: '100%',
+                                      maxWidth: logoSize.width * 1.1,
                                       height: logoSize.height * 1.5,
                                       display: 'flex',
                                       alignItems: 'center',
@@ -1033,12 +1034,12 @@ export default function BannerGeneratorPage() {
                                     />
                                   </div>
                                 ) : (
-                                  // single logo: shrink-wrap so there's no dead space above/below
+                                  // one per row: shrink-wrap so a skinny logo leaves no dead space above/below
                                   <img
                                     src={`/api/admin/banner-generator/proxy-image?url=${encodeURIComponent(sponsor.logoUrl)}`}
                                     alt={sponsor.name}
                                     style={{
-                                      maxWidth: logoSize.width * 1.1,
+                                      maxWidth: `min(100%, ${logoSize.width * 1.1}px)`,
                                       maxHeight: logoSize.height * 1.5,
                                       width: 'auto',
                                       height: 'auto',
@@ -1050,7 +1051,8 @@ export default function BannerGeneratorPage() {
                                   <p
                                     style={{
                                       fontSize: descriptionFontSize,
-                                      width: descriptionMaxWidth,
+                                      width: '100%',
+                                      maxWidth: descriptionMaxWidth,
                                       textAlign: 'center',
                                       color: '#4b5563',
                                       marginTop: tierDescGap[tier.id] ?? 4,
