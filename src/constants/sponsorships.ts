@@ -4147,7 +4147,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
             { content: "Event Access: (4) VIP Attendee Passes", bold: true },
             {
               content:
-                "Additional Sponsor Passes can be purchased for $195 each",
+                "Additional Sponsor Passes can be purchased for $295 each",
               indent: 1,
             },
           ],
@@ -4216,7 +4216,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
               {
                 content:
-                  "Additional Sponsor Passes can be purchased for $195 each",
+                  "Additional Sponsor Passes can be purchased for $295 each",
                 indent: 1,
               },
             ],
@@ -4271,7 +4271,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
               {
                 content:
-                  "Additional Sponsor Passes can be purchased for $195 each",
+                  "Additional Sponsor Passes can be purchased for $295 each",
                 indent: 1,
               },
             ],
@@ -4328,7 +4328,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
               {
                 content:
-                  "Additional Sponsor Passes can be purchased for $195 each",
+                  "Additional Sponsor Passes can be purchased for $295 each",
                 indent: 1,
               },
             ],
@@ -4380,7 +4380,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
               {
                 content:
-                  "Additional Sponsor Passes can be purchased for $195 each",
+                  "Additional Sponsor Passes can be purchased for $295 each",
                 indent: 1,
               },
             ],
@@ -4429,7 +4429,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
               {
                 content:
-                  "Additional Sponsor Passes can be purchased for $195 each",
+                  "Additional Sponsor Passes can be purchased for $295 each",
                 indent: 1,
               },
             ],
@@ -4492,7 +4492,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
               {
                 content:
-                  "Additional Sponsor Passes can be purchased for $195 each",
+                  "Additional Sponsor Passes can be purchased for $295 each",
                 indent: 1,
               },
             ],
@@ -4555,7 +4555,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
               {
                 content:
-                  "Additional Sponsor Passes can be purchased for $195 each",
+                  "Additional Sponsor Passes can be purchased for $295 each",
                 indent: 1,
               },
             ],
@@ -4618,7 +4618,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
               {
                 content:
-                  "Additional Sponsor Passes can be purchased for $195 each",
+                  "Additional Sponsor Passes can be purchased for $295 each",
                 indent: 1,
               },
             ],
@@ -4681,7 +4681,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
               {
                 content:
-                  "Additional Sponsor Passes can be purchased for $195 each",
+                  "Additional Sponsor Passes can be purchased for $295 each",
                 indent: 1,
               },
             ],
@@ -4744,7 +4744,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Event Access: (2) VIP Attendee Passes", bold: true },
               {
                 content:
-                  "Additional Sponsor Passes can be purchased for $195 each",
+                  "Additional Sponsor Passes can be purchased for $295 each",
                 indent: 1,
               },
             ],
