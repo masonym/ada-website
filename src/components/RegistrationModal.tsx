@@ -1913,6 +1913,14 @@ const RegistrationModal = ({
             validatedOrderCompany: validatedOrder.company,
             validatedOrderEmail: validatedOrder.email,
             validatedOrderCreatedAt: validatedOrder.createdAt,
+            // Kept so the confirmation email can describe the sponsorship or
+            // exhibit space this pass hangs off, not just the order id.
+            validatedOrderTickets: Array.isArray(validatedOrder.tickets)
+              ? validatedOrder.tickets.map((t: any) => ({
+                  ticketId: t.ticketId,
+                  ticketName: t.ticketName,
+                }))
+              : undefined,
           };
         },
       ),

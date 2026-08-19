@@ -46,6 +46,13 @@ export interface OrderValidation {
   validatedOrderCompany: string;
   validatedOrderEmail: string;
   validatedOrderCreatedAt: string;
+  /**
+   * Ticket lines on the order that unlocked this pass, as /api/validate-order
+   * returned them. Carried so the confirmation email can name the sponsorship
+   * or exhibit space the pass belongs to; the email path falls back to reading
+   * the original order when an older submission has no copy of them.
+   */
+  validatedOrderTickets?: Array<{ ticketId: string; ticketName?: string }>;
 }
 
 // Interface for registration data as stored in DynamoDB (includes additional fields)

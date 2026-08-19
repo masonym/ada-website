@@ -14,6 +14,10 @@ import {
   renderConfirmationEmail,
 } from '@/lib/email/render-confirmation';
 import { AttendeeDetails, OrderSummary } from '@/lib/email/templates';
+import {
+  isAdditionalPassRegistration,
+  resolveLinkedPackage,
+} from '@/lib/email/additional-pass';
 import { getPriceDisplay } from '@/lib/price-formatting';
 
 /**
@@ -51,6 +55,8 @@ const SAMPLE_ATTENDEES: AttendeeDetails[] = [
 ];
 
 const SAMPLE_ORDER_ID = 'pi_3PreviewOrder0000000000';
+/** The sponsorship/exhibit order an additional pass would have been validated against. */
+const SAMPLE_LINKED_ORDER_ID = 'pi_3PreviewSponsorOrder00';
 
 const TIER_LABELS: Record<TicketTier, string> = {
   [TicketTier.PLATINUM_SPONSOR]: 'Sponsor (Platinum)',
@@ -58,6 +64,7 @@ const TIER_LABELS: Record<TicketTier, string> = {
   [TicketTier.SILVER_SPONSOR]: 'Sponsor (Silver)',
   [TicketTier.BRONZE_SPONSOR]: 'Sponsor (Bronze/other)',
   [TicketTier.EXHIBITOR]: 'Exhibitor',
+  [TicketTier.ADDITIONAL_PASS]: 'Additional Attendee Pass',
   [TicketTier.VIP_ATTENDEE]: 'VIP Attendee',
   [TicketTier.GOV_MIL_PASS]: 'Gov/Mil Pass',
   [TicketTier.STANDARD_ATTENDEE]: 'Standard Attendee',
@@ -151,6 +158,30 @@ export default function EmailPreviewPage() {
 
   const tier = registration ? determineTicketTier(registration) : null;
 
+  // Additional attendee passes are usually bought on their own, unlocked with
+  // the order id of the company's sponsorship or exhibit purchase. That link is
+  // what the email describes, so it is selectable here the same way a real
+  // order carries it.
+  const isAdditionalPass = registration ? isAdditionalPassRegistration(registration) : false;
+  const linkableItems = useMemo(
+    () =>
+      groups
+        .filter((group) => group.label !== 'Tickets')
+        .flatMap((group) => group.items)
+        .filter((item) => !isAdditionalPassRegistration(item)),
+    [groups]
+  );
+
+  const [linkedItemId, setLinkedItemId] = useState<string>('');
+  const linkedPackage = useMemo(() => {
+    if (!isAdditionalPass || !linkedItemId) return null;
+    return resolveLinkedPackage(eventId, {
+      tickets: [{ ticketId: linkedItemId }],
+      company: SAMPLE_ATTENDEES[0].company,
+      orderId: SAMPLE_LINKED_ORDER_ID,
+    });
+  }, [eventId, isAdditionalPass, linkedItemId]);
+
   const rendered =
     registration && tier !== null
       ? renderConfirmationEmail({
@@ -163,6 +194,7 @@ export default function EmailPreviewPage() {
           attendees: SAMPLE_ATTENDEES,
           attendeePasses: registration.sponsorPasses || 0,
           exhibitorInstructions,
+          linkedPackage,
         })
       : null;
 
@@ -219,6 +251,27 @@ export default function EmailPreviewPage() {
           </select>
         </div>
       </div>
+
+      {isAdditionalPass && linkableItems.length > 0 && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 16 }}>
+          <label htmlFor="linked-select" style={labelStyle}>
+            Linked package (the order this pass was validated against)
+          </label>
+          <select
+            id="linked-select"
+            value={linkedItemId}
+            onChange={(e) => setLinkedItemId(e.target.value)}
+            style={selectStyle}
+          >
+            <option value="">None (comped / master key)</option>
+            {linkableItems.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.title}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
 
       {rendered ? (
         <>

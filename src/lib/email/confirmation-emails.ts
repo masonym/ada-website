@@ -12,7 +12,16 @@ import {
   renderConfirmationEmail,
 } from './render-confirmation';
 import { listEventFiles } from '@/lib/s3/event-documents';
-import { RegistrationFormData } from '@/types/event-registration/registration';
+import { getConfirmedRegistration } from '@/lib/aws/dynamodb';
+import {
+  OrderValidation,
+  RegistrationFormData,
+} from '@/types/event-registration/registration';
+import {
+  LinkedOrderTicket,
+  LinkedPackage,
+  resolveLinkedPackage,
+} from './additional-pass';
 
 // Tier detection and template selection live in ./render-confirmation, which is
 // free of I/O so /dev/email-preview can render exactly what we send. Re-exported
@@ -47,6 +56,52 @@ export function collectUniqueEmails(registrationData: RegistrationFormData): str
   return Array.from(uniqueEmails);
 }
 
+
+/**
+ * The sponsorship or exhibit space an additional attendee pass was bought
+ * against, for an order that contains nothing else.
+ *
+ * The link is the order id the buyer entered to unlock the discounted pass
+ * (/api/validate-order). The modal now sends that order's ticket lines along
+ * with the validation, but orders placed before it did - and any that only
+ * recorded the id - are resolved by reading the original registration back.
+ * Returns null when there is nothing to name (a pass comped with the master
+ * key), leaving the email on its generic wording.
+ */
+export async function resolveLinkedPackageForOrder(
+  eventId: number | string,
+  passTicketId: string,
+  orderValidations: OrderValidation[] | undefined
+): Promise<LinkedPackage | null> {
+  if (!orderValidations || orderValidations.length === 0) return null;
+
+  const validation =
+    orderValidations.find(v => v.ticketId === passTicketId) ?? orderValidations[0];
+  if (!validation?.validatedOrderId) return null;
+
+  let tickets: LinkedOrderTicket[] = validation.validatedOrderTickets ?? [];
+
+  if (tickets.length === 0) {
+    try {
+      const original = await getConfirmedRegistration(validation.validatedOrderId);
+      tickets = (original?.tickets ?? []).map(t => ({
+        ticketId: t.ticketId,
+        ticketName: t.ticketName,
+      }));
+    } catch (error) {
+      // A confirmation email is worth sending without the linked package block.
+      console.error('Failed to load the order an additional pass was validated against:', error);
+      return null;
+    }
+  }
+
+  return resolveLinkedPackage(eventId, {
+    tickets,
+    company: validation.validatedOrderCompany,
+    orderId: validation.validatedOrderId,
+  });
+}
+
 /**
  * Sends confirmation emails to all unique attendee emails
  * @param registrationData Complete registration form data
@@ -74,6 +129,18 @@ export async function sendRegistrationConfirmationEmails({
 }) {
   const uniqueEmails = collectUniqueEmails(registrationData);
   const results: Array<{ email: string; result: any }> = [];
+
+  // Resolved once per order rather than per recipient: it can cost a read of
+  // the sponsorship order the pass was validated against.
+  const highestTier = findHighestTierRegistration(registrations);
+  const linkedPackage =
+    highestTier?.tier === TicketTier.ADDITIONAL_PASS
+      ? await resolveLinkedPackageForOrder(
+          event.id,
+          highestTier.registration.id,
+          registrationData.orderValidations
+        )
+      : null;
 
 
   // Collect all attendees to create attendee details
@@ -134,7 +201,8 @@ export async function sendRegistrationConfirmationEmails({
       orderSummary,
       attendeePasses,
       attachments,
-      attendees: allAttendees
+      attendees: allAttendees,
+      linkedPackage
     });
 
     results.push({ email, result });
@@ -164,7 +232,8 @@ export async function sendRegistrationConfirmationEmail({
   orderSummary,
   attendeePasses = 0,
   attachments = [],
-  attendees = []
+  attendees = [],
+  linkedPackage = null
 }: {
   email: string;
   firstName: string;
@@ -175,6 +244,8 @@ export async function sendRegistrationConfirmationEmail({
   attendeePasses?: number;
   attachments?: any[];
   attendees?: AttendeeDetails[];
+  /** The package an additional attendee pass belongs to, when there is one. */
+  linkedPackage?: LinkedPackage | null;
 }) {
   const highestTierInfo = findHighestTierRegistration(registrations);
 
@@ -224,6 +295,7 @@ export async function sendRegistrationConfirmationEmail({
     attendees,
     attendeePasses,
     exhibitorInstructions: exhibitorInstructions || '',
+    linkedPackage,
   });
 
   return sendEmail({

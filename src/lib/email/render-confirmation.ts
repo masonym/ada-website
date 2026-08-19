@@ -1,6 +1,7 @@
 import { AdapterModalRegistrationType } from '../registration-adapters';
 import { Event } from '@/types/events';
 import {
+  additionalAttendeePassTemplate,
   attendeePassTemplate,
   vipAttendeePassTemplate,
   exhibitorTemplate,
@@ -11,6 +12,7 @@ import {
   AttendeeDetails,
   generateAttendeeDetailsHtml,
 } from './templates';
+import { LinkedPackage, isAdditionalPassRegistration } from './additional-pass';
 
 /**
  * Turning an order into confirmation email HTML, with no I/O of its own.
@@ -24,11 +26,18 @@ import {
 
 // Define ticket tiers in order of priority (highest to lowest)
 export enum TicketTier {
-  PLATINUM_SPONSOR = 7,
-  GOLD_SPONSOR = 6,
-  SILVER_SPONSOR = 5,
-  BRONZE_SPONSOR = 4,
-  EXHIBITOR = 3,
+  PLATINUM_SPONSOR = 8,
+  GOLD_SPONSOR = 7,
+  SILVER_SPONSOR = 6,
+  BRONZE_SPONSOR = 5,
+  EXHIBITOR = 4,
+  /**
+   * The add-on attendee passes. Below every package tier, so an order that
+   * contains both a sponsorship and an add-on pass still sends the sponsor
+   * email; above the plain ticket tiers, so a pass-only order does not fall
+   * through to the standard attendee template.
+   */
+  ADDITIONAL_PASS = 3,
   VIP_ATTENDEE = 2,
   GOV_MIL_PASS = 1,
   STANDARD_ATTENDEE = 0
@@ -45,6 +54,14 @@ interface TicketInfo {
  * @returns The ticket tier
  */
 export function determineTicketTier(registration: AdapterModalRegistrationType): TicketTier {
+  // The additional attendee passes sit in the sponsorship and exhibit
+  // catalogues but are not packages themselves, so they are matched before the
+  // category checks - otherwise a pass-only order is treated as a sponsorship
+  // whose perks cannot be found.
+  if (isAdditionalPassRegistration(registration)) {
+    return TicketTier.ADDITIONAL_PASS;
+  }
+
   // Check category first
   if (registration.category === 'sponsorship') {
     // Check sponsorship level
@@ -122,6 +139,7 @@ export function renderConfirmationEmail({
   attendees = [],
   attendeePasses = 0,
   exhibitorInstructions = '',
+  linkedPackage = null,
 }: {
   firstName: string;
   event: Event;
@@ -133,6 +151,12 @@ export function renderConfirmationEmail({
   attendeePasses?: number;
   /** Path of the instructions PDF in the event's bucket folder, if one exists. */
   exhibitorInstructions?: string;
+  /**
+   * For an additional attendee pass bought on its own, the sponsorship or
+   * exhibit space it was validated against - resolved by the caller, which is
+   * the only part of this that needs the original order.
+   */
+  linkedPackage?: LinkedPackage | null;
 }): RenderedConfirmationEmail {
   const eventUrl = `https://americandefensealliance.org/events/${event.slug}`;
   const eventDate = event.date || 'TBA';
@@ -193,6 +217,21 @@ export function renderConfirmationEmail({
           exhibitorInstructions,
           vipNetworkingReception,
           vipNetworkingReceptionUrl,
+        }),
+      };
+
+    case TicketTier.ADDITIONAL_PASS:
+      return {
+        subject: `Registration Confirmation - ${event.title}`,
+        html: additionalAttendeePassTemplate({
+          ...common,
+          passTitle: registration.title,
+          passId: registration.id,
+          vipNetworkingReception,
+          vipNetworkingReceptionUrl,
+          matchmakingSessions: event.matchmakingSessions || undefined,
+          exhibitorInstructions,
+          linkedPackage,
         }),
       };
 

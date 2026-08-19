@@ -3,6 +3,7 @@ import {
   findSponsorship,
   generateSponsorBenefitsHtml,
   getSponsorAdditionalPass,
+  matchmakingSessionsHtml,
   sponsorshipIncludesExhibitSpace,
 } from '../sponsor-benefits';
 import {
@@ -11,7 +12,13 @@ import {
   generateExhibitorBenefitsHtml,
   getExhibitorAdditionalPass,
 } from '../exhibitor-benefits';
-import { additionalPassLabel } from '../perks';
+import { CONTACT, additionalPassLabel, renderPerks } from '../perks';
+import {
+  LinkedPackage,
+  additionalPassKind,
+  additionalPassPerks,
+  linkedPackageHasMatchmaking,
+} from '../additional-pass';
 import { getClientEnv } from '../../env';
 import { getCdnPath } from '@/utils/image';
 import { LODGING_INFO } from '@/constants/lodging';
@@ -731,6 +738,134 @@ export function sponsorTemplate({
     
     ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'sponsor', vipNetworkingReceptionUrl)}
     ${hasExhibitSpace ? generateExhibitorInstructionsHtml(exhibitorInstructions, true) : ''}
+
+    ${orderSummaryHtml || ''}
+    ${attendeeDetailsHtml || ''}
+  `;
+
+  return baseEmailTemplate(content, eventImage);
+}
+
+/**
+ * The benefits of the package an additional attendee pass hangs off, shown for
+ * reference rather than as a to-do list: the speaker bios, artwork and branding
+ * assets a sponsorship asks for are the primary contact's job, not this
+ * attendee's, so the sponsor template's "please send us the following" block is
+ * deliberately left out here.
+ */
+function generateLinkedPackageHtml(
+  linked: LinkedPackage,
+  matchmakingSessions: MatchmakingSession | undefined
+): string {
+  const perks = linked.sponsorship?.perks ?? linked.exhibitor?.perks ?? [];
+  const owner = linked.company ? `${linked.company}'s` : "Your organization's";
+
+  return `
+    <div class="highlight">
+      <h2>${owner} ${linked.title}</h2>
+      <p>Your pass was registered against this package${linked.orderId ? ` (Order <strong>${linked.orderId}</strong>)` : ''}. Here is what it includes at the event:</p>
+      ${perks.length ? renderPerks(perks) : '<p>The full details of this package are listed on the event website.</p>'}
+      ${linkedPackageHasMatchmaking(linked) ? matchmakingSessionsHtml(matchmakingSessions) : ''}
+      <p style="margin-top: 15px;">These benefits belong to the package as a whole and are coordinated with whoever purchased it. If that is you, or you need anything changed, contact us at ${CONTACT}.</p>
+    </div>
+  `;
+}
+
+/**
+ * Template for the "Additional Sponsor/Exhibitor Attendee Pass" add-ons when
+ * they are bought on their own, unlocked with the order id of the company's
+ * sponsorship or exhibit purchase.
+ *
+ * Sent instead of the sponsor/exhibitor templates, which speak to the buyer of
+ * the package: they asked this attendee for a company logo, offered them "(0)
+ * complimentary VIP Attendee Passes" and printed a generic benefits block,
+ * because the pass id is not a sponsorship id in `@/constants/sponsorships`.
+ */
+export function additionalAttendeePassTemplate({
+  firstName,
+  eventName,
+  eventDate,
+  eventLocation,
+  venueName,
+  eventUrl,
+  orderId,
+  passTitle,
+  passId,
+  eventId,
+  eventImage,
+  orderSummaryHtml,
+  hotelInfo,
+  vipNetworkingReception,
+  matchmakingSessions,
+  attendeeDetailsHtml,
+  vipNetworkingReceptionUrl,
+  exhibitorInstructions,
+  linkedPackage,
+}: {
+  firstName: string;
+  eventName: string;
+  eventDate: string;
+  eventLocation: string;
+  venueName: string;
+  eventUrl?: string;
+  orderId: string;
+  /** Title of the add-on as sold, e.g. "Additional Sponsor Attendee Pass". */
+  passTitle: string;
+  /** Catalogue id of the add-on, used to pick its perks and its wording. */
+  passId?: string;
+  eventId?: number | string;
+  eventImage: string;
+  orderSummaryHtml?: string;
+  hotelInfo?: string;
+  vipNetworkingReception?: VipNetworkingReception;
+  matchmakingSessions?: MatchmakingSession;
+  attendeeDetailsHtml?: string;
+  vipNetworkingReceptionUrl?: string;
+  exhibitorInstructions?: string;
+  /** The sponsorship or exhibit space this pass was validated against. */
+  linkedPackage?: LinkedPackage | null;
+}): string {
+  const kind = additionalPassKind(passId) ?? linkedPackage?.kind ?? 'sponsorship';
+  const passPerks = additionalPassPerks(eventId, kind);
+  const showInstructions = !!exhibitorInstructions && (linkedPackage?.includesExhibitSpace ?? false);
+
+  const linkSentence = linkedPackage
+    ? `<p>This pass is part of ${linkedPackage.company ? `<strong>${linkedPackage.company}</strong>'s` : 'your organization\'s'} <strong>${linkedPackage.title}</strong>${linkedPackage.orderId ? ` (Order <strong>${linkedPackage.orderId}</strong>)` : ''}, so you are registered as part of that team.</p>`
+    : `<p>This pass was purchased at the ${kind === 'exhibit' ? 'exhibitor' : 'sponsor'} rate against your organization's existing ${kind === 'exhibit' ? 'exhibit space' : 'sponsorship'} for this event, so you are registered as part of that team.</p>`;
+
+  const content = `
+    <p><strong>Dear ${firstName},</strong></p>
+    <p>Thank you for registering for the <strong>${eventName}</strong>. We are pleased to confirm your <strong>${passTitle}</strong>. Please retain this email for your records.</p>
+    ${linkSentence}
+
+    <p>Feel free to contact us at <a href="mailto:events@americandefensealliance.org">events@americandefensealliance.org</a> or call <span style="white-space: nowrap">(771) 474-1077</span> if you have any questions or need to make any changes to your registration.</p>
+    <p>Please note, all registrations are final. We are unable to offer refunds for this event. You can request an Event Credit up to one week from the event date. If you are unable to attend and would like to send a replacement attendee, please let us know at your earliest convenience. All event information can be found on our <a href="https://www.americandefensealliance.org/">website</a>.</p>
+    <p>We look forward to welcoming you ${welcomeDestination(eventLocation)}!</p>
+    <p>Warm Regards,<br><strong>The American Defense Alliance Team</strong></p>
+
+    <div class="highlight">
+      <h2>Event Details</h2>
+      <p><strong>Event:</strong> ${eventName}</p>
+      <p><strong>Date${eventDate.includes('-') ? 's' : ''}:</strong> ${eventDate}</p>
+        <p><strong>Location:</strong> ${venueName}, ${eventLocation}</p>
+      ${venueAndLodgingHtml(hotelInfo, eventId)}
+    </div>
+
+    ${eventUrl ? `<p><a href="${eventUrl}" class="button">View Event Details</a></p>` : ''}
+
+    ${passPerks.length
+      ? `
+    <div class="highlight">
+      <h2>Your Pass Includes</h2>
+      ${renderPerks(passPerks)}
+    </div>`
+      : ''
+    }
+
+    ${linkedPackage ? generateLinkedPackageHtml(linkedPackage, matchmakingSessions) : ''}
+
+    ${generateVipNetworkingReceptionHtml(vipNetworkingReception, 'attendee', vipNetworkingReceptionUrl)}
+    ${showInstructions ? generateExhibitorInstructionsHtml(exhibitorInstructions!, true) : ''}
 
     ${orderSummaryHtml || ''}
     ${attendeeDetailsHtml || ''}

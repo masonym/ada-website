@@ -183,7 +183,12 @@ function nextStepsHtml(flags: BenefitFlags, contact?: SponsorshipContact): strin
   return `<p>Please reach out to ${contactHtml(contact)} to coordinate your benefits${list ? `, including ${list}` : ""}.</p>`;
 }
 
-function matchmakingSessionsHtml(
+/**
+ * The event's matchmaking session times. Exported because the additional-pass
+ * template shows them too, for passes linked to a package that includes
+ * matchmaking.
+ */
+export function matchmakingSessionsHtml(
   matchmakingSessions?: MatchmakingSession,
 ): string {
   const sessionList = (matchmakingSessions?.sessions || [])
