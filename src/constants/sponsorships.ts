@@ -1547,7 +1547,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "coffee-station-sponsor",
-        contact: { name: "Lana Corrigan", email: "lana@americandefensealliance.org" },
+        contact: {
+          name: "Lana Corrigan",
+          email: "lana@americandefensealliance.org",
+        },
         title: "Coffee Station Sponsorship",
         cost: 2500,
         slotsPerEvent: 1,
@@ -2854,7 +2857,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "coffee-station-sponsor",
-        contact: { name: "Lana Corrigan", email: "lana@americandefensealliance.org" },
+        contact: {
+          name: "Lana Corrigan",
+          email: "lana@americandefensealliance.org",
+        },
         title: "Coffee Station Sponsorship",
         cost: 2500,
         slotsPerEvent: 2,
@@ -3507,7 +3513,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "lanyard-sponsor",
-        contact: { name: "Lana Corrigan", email: "lana@americandefensealliance.org" },
+        contact: {
+          name: "Lana Corrigan",
+          email: "lana@americandefensealliance.org",
+        },
         title: "Lanyard Sponsorship",
         cost: 3000,
         slotsPerEvent: 1,
@@ -3573,7 +3582,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "coffee-station-sponsor",
-        contact: { name: "Lana Corrigan", email: "lana@americandefensealliance.org" },
+        contact: {
+          name: "Lana Corrigan",
+          email: "lana@americandefensealliance.org",
+        },
         title: "Coffee Station Sponsorship",
         cost: 2500,
         slotsPerEvent: 2,
@@ -3674,7 +3686,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-navy-shipbuilding-fleet-readiness",
-        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
+        contact: {
+          name: "Charles Sills",
+          email: "csills@americandefensealliance.org",
+        },
         title: "Major Panel Sponsorship: Navy Shipbuilding & Fleet Readiness",
         cost: 4000,
         slotsPerEvent: 1,
@@ -3758,7 +3773,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-how-to-do-business-with-the-primes",
-        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
+        contact: {
+          name: "Charles Sills",
+          email: "csills@americandefensealliance.org",
+        },
         title: "Major Panel Sponsorship: How to do Business with the Primes",
         cost: 4000,
         slotsPerEvent: 1,
@@ -3842,7 +3860,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-advanced-battlespace-technologies",
-        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
+        contact: {
+          name: "Charles Sills",
+          email: "csills@americandefensealliance.org",
+        },
         title: "Major Panel Sponsorship: Advanced Battlespace Technologies",
         cost: 4000,
         slotsPerEvent: 1,
@@ -3926,7 +3947,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-military-base-construction-energy",
-        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
+        contact: {
+          name: "Charles Sills",
+          email: "csills@americandefensealliance.org",
+        },
         title: "Major Panel Sponsorship: Military Base Construction & Energy",
         cost: 4000,
         slotsPerEvent: 1,
@@ -4010,7 +4034,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-securing-indo-pacific-logistics",
-        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
+        contact: {
+          name: "Charles Sills",
+          email: "csills@americandefensealliance.org",
+        },
         title: "Major Panel Sponsorship: Securing Indo-Pacific Logistics",
         cost: 4000,
         slotsPerEvent: 1,
@@ -4342,7 +4369,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "lanyard-sponsor",
-        contact: { name: "Lana Corrigan", email: "lana@americandefensealliance.org" },
+        contact: {
+          name: "Lana Corrigan",
+          email: "lana@americandefensealliance.org",
+        },
         title: "Lanyard Sponsorship",
         cost: 3000,
         slotsPerEvent: 1,
@@ -4395,7 +4425,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "coffee-station-sponsor",
-        contact: { name: "Lana Corrigan", email: "lana@americandefensealliance.org" },
+        contact: {
+          name: "Lana Corrigan",
+          email: "lana@americandefensealliance.org",
+        },
         title: "Coffee Station Sponsorship",
         cost: 2500,
         slotsPerEvent: 2,
@@ -4444,7 +4477,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-maritime-industry-revival-shipbuilding-fleet-readiness",
-        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
+        contact: {
+          name: "Charles Sills",
+          email: "csills@americandefensealliance.org",
+        },
         title:
           "Major Panel Sponsorship: Maritime Industry Revival/Shipbuilding & Fleet Readiness",
         cost: 4000,
@@ -4508,7 +4544,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-air-force-space-force-challenges-requirements-priorities",
-        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
+        contact: {
+          name: "Charles Sills",
+          email: "csills@americandefensealliance.org",
+        },
         title:
           "Major Panel Sponsorship: Air Force & Space Force Challenges, Requirements & Priorities",
         cost: 4000,
@@ -4572,7 +4611,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-indo-pacific-sitrep-airfield-logistics-hub-reconstruction-expansion",
-        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
+        contact: {
+          name: "Charles Sills",
+          email: "csills@americandefensealliance.org",
+        },
         title:
           "Major Panel Sponsorship: Indo-Pacific SITREP – Airfield & Logistics Hub Reconstruction/Expansion",
         cost: 4000,
@@ -4636,7 +4678,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-advanced-battlespace-technologies",
-        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
+        contact: {
+          name: "Charles Sills",
+          email: "csills@americandefensealliance.org",
+        },
         title:
           "Major Panel Sponsorship: Advanced Battlespace Technologies – C6ISR, AI, Quantum, 3D Printing, UAS & C-UAS",
         cost: 4000,
@@ -4700,7 +4745,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-investment-opportunities-in-defense-manufacturing",
-        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
+        contact: {
+          name: "Charles Sills",
+          email: "csills@americandefensealliance.org",
+        },
         title:
           "Major Panel Sponsorship: Investment Opportunities in Defense Manufacturing – the New Arsenal of Democracy",
         cost: 4000,
@@ -4764,7 +4812,10 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       },
       {
         id: "major-panel-sponsor-installation-energy-supply-microgrid-nuclear-geothermal-solutions",
-        contact: { name: "Charles Sills", email: "csills@americandefensealliance.org" },
+        contact: {
+          name: "Charles Sills",
+          email: "csills@americandefensealliance.org",
+        },
         title:
           "Major Panel Sponsorship: Installation Energy Supply/Microgrid, Nuclear & Geothermal Solutions",
         cost: 4000,
@@ -4797,6 +4848,71 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               {
                 content:
                   "Moderate the Panel on Installation Energy Supply/Microgrid, Nuclear & Geothermal Solutions",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              {
+                content:
+                  "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                indent: 1,
+              },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
+              { content: "Social Media Recognition", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
+            ],
+          },
+        ],
+        colour: "#F33A6A",
+        showRemaining: false,
+        sponsorshipGroup: "Major Panel Sponsorships",
+      },
+      {
+        id: "major-panel-sponsor-cybersecurity-cmmc-update",
+        contact: {
+          name: "Charles Sills",
+          email: "csills@americandefensealliance.org",
+        },
+        title: "Major Panel Sponsorship: Cybersecurity/CMMC Update",
+        cost: 4000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $295 each",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              {
+                content: "Moderate the Panel on Cybersecurity/CMMC",
                 indent: 1,
               },
             ],
