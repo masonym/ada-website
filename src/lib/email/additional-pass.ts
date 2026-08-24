@@ -8,6 +8,11 @@ import {
 } from './sponsor-benefits';
 import { findExhibitorType, getExhibitorAdditionalPass } from './exhibitor-benefits';
 import { PerkLike, perkText } from './perks';
+import {
+  ADDITIONAL_EXHIBITOR_PASS_ID,
+  ADDITIONAL_SPONSOR_PASS_ID,
+  COMP_SPONSOR_PASS_ID,
+} from '@/lib/event-registration/pass-ids';
 
 /**
  * The "Additional Sponsor/Exhibitor Attendee Pass" add-ons, and the sponsorship
@@ -23,13 +28,14 @@ import { PerkLike, perkText } from './perks';
  * validation time is what lets us name the real package instead.
  */
 
-/** Catalogue ids the adapters give the two add-on passes. */
-export const ADDITIONAL_SPONSOR_PASS_ID = 'vip-discount-sponsor';
-export const ADDITIONAL_EXHIBITOR_PASS_ID = 'vip-discount-exhibitor';
+export { ADDITIONAL_SPONSOR_PASS_ID, ADDITIONAL_EXHIBITOR_PASS_ID };
 
 const ADDITIONAL_PASS_IDS: string[] = [
   ADDITIONAL_SPONSOR_PASS_ID,
   ADDITIONAL_EXHIBITOR_PASS_ID,
+  // The comped claim is the same pass, just unlocked by leftover entitlement
+  // rather than paid for, so it gets the same wording and package linkage.
+  COMP_SPONSOR_PASS_ID,
 ];
 
 export function isAdditionalPassId(ticketId: string | undefined): boolean {
@@ -47,6 +53,7 @@ export function additionalPassKind(
   ticketId: string | undefined
 ): 'sponsorship' | 'exhibit' | null {
   if (ticketId === ADDITIONAL_SPONSOR_PASS_ID) return 'sponsorship';
+  if (ticketId === COMP_SPONSOR_PASS_ID) return 'sponsorship';
   if (ticketId === ADDITIONAL_EXHIBITOR_PASS_ID) return 'exhibit';
   return null;
 }

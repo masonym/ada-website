@@ -44,6 +44,7 @@ import {
   getExhibitorsForEvent,
   AdapterModalRegistrationType,
 } from "@/lib/registration-adapters";
+import { isCompSponsorPassId } from "@/lib/event-registration/pass-ids";
 import { useEventSponsorCounts } from "@/hooks/useEventSponsorCounts";
 import { isEligibleForPromoDiscount, type PromoCode } from "@/lib/promo-codes";
 
@@ -455,6 +456,36 @@ const RegistrationModal = ({
     getSponsorCount,
   ]);
 
+  /**
+   * Complimentary sponsor passes still unclaimed on the order verified for this
+   * card, as /api/validate-order reported them. Zero until an order is verified.
+   */
+  const compPassesRemaining = (ticketId: string): number =>
+    validatedOrderInfo[ticketId]?.sponsorPasses?.remaining ?? 0;
+
+  /**
+   * The verified order was confirmed before pass counters existed, so we cannot
+   * tell how many it has left. Those are comped by hand rather than guessed at.
+   */
+  const compEntitlementUnknown = (ticketId: string): boolean =>
+    validationStatus[ticketId] === "valid" &&
+    validatedOrderInfo[ticketId]?.sponsorPasses?.known === false;
+
+  /** Upper bound on quantity: the comped pass can never exceed what is left. */
+  const maxSelectable = (reg: AdapterModalRegistrationType): number =>
+    isCompSponsorPassId(reg.id)
+      ? Math.min(reg.maxQuantityPerOrder, compPassesRemaining(reg.id))
+      : reg.maxQuantityPerOrder;
+
+  const incrementBlocked = (
+    reg: AdapterModalRegistrationType,
+    isSaleEnded: boolean,
+  ): boolean =>
+    isSoldOut(reg, getSponsorCount) ||
+    isSaleEnded ||
+    isLoading ||
+    (ticketQuantities[reg.id] || 0) >= maxSelectable(reg);
+
   const hasEligibleTicketInCart = () => {
     const eligibleInCart = [...exhibitors, ...sponsorships].some((reg) => {
       return (
@@ -490,8 +521,10 @@ const RegistrationModal = ({
       const isManuallyValidated = manuallyValidatedTickets[reg.id] === true;
 
       if (quantity > 0) {
-        // Ticket is in the cart, its validation depends on eligibility
-        if (isEligible) {
+        // Ticket is in the cart, its validation depends on eligibility. A comped
+        // claim is exempt: it is never unlocked by what is in the cart, only by
+        // an order id that carries unspent passes.
+        if (isEligible && !isCompSponsorPassId(reg.id)) {
           // If eligible, the pass should be marked valid
           if (currentStatus !== "valid") {
             statusUpdates[reg.id] = "valid";
@@ -509,7 +542,13 @@ const RegistrationModal = ({
       } else {
         // Ticket is not in the cart, ensure its validation state is reset
         // Also clear the manually validated flag since the ticket is no longer in cart
-        if (currentStatus !== "idle") {
+        //
+        // The comped claim is the exception: its whole verification happens *at*
+        // quantity zero - that is how the modal learns how many may be added - so
+        // its status does not belong to the cart at all. Resetting it here wiped
+        // a success the moment it was granted, pinning the quantity at zero, and
+        // wiped the "Order not found" off a failure before anyone could read it.
+        if (currentStatus !== "idle" && !isCompSponsorPassId(reg.id)) {
           statusUpdates[reg.id] = "idle";
           errorUpdates[reg.id] = null;
           needsUpdate = true;
@@ -539,6 +578,23 @@ const RegistrationModal = ({
     sponsorships,
     manuallyValidatedTickets,
   ]);
+
+  // Keep a comped claim inside its entitlement. The stepper caps growth, but the
+  // ceiling itself moves - verifying a different order id changes what is left,
+  // and adding a sponsorship to the cart hides the card altogether.
+  useEffect(() => {
+    const compPass = sponsorships.find((reg) => isCompSponsorPassId(reg.id));
+    if (!compPass) return;
+
+    const selected = ticketQuantities[compPass.id] || 0;
+    if (selected === 0) return;
+
+    const ceiling = hasEligibleTicketInCart() ? 0 : maxSelectable(compPass);
+    if (selected > ceiling) {
+      setTicketQuantities((prev) => ({ ...prev, [compPass.id]: ceiling }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ticketQuantities, sponsorships, validatedOrderInfo]);
 
   // Automatic promo code application (URL-based and event-based)
   useEffect(() => {
@@ -740,7 +796,16 @@ const RegistrationModal = ({
   };
 
   const renderValidationUI = (reg: AdapterModalRegistrationType) => {
-    if (!reg.requiresValidation || (ticketQuantities[reg.id] || 0) === 0) {
+    if (!reg.requiresValidation) {
+      return null;
+    }
+
+    const isCompPass = isCompSponsorPassId(reg.id);
+
+    // The paid pass is unlocked after it is added to the cart. The comped one is
+    // the other way round: how many you may add is what the order id tells us, so
+    // its box has to be there before the quantity can leave zero.
+    if (!isCompPass && (ticketQuantities[reg.id] || 0) === 0) {
       return null;
     }
 
@@ -759,7 +824,9 @@ const RegistrationModal = ({
           htmlFor={`order-id-${reg.id}`}
           className="block text-sm font-medium text-gray-700"
         >
-          Enter previous Order ID to unlock
+          {isCompPass
+            ? "Enter the Order ID from your sponsorship purchase"
+            : "Enter previous Order ID to unlock"}
         </label>
         <div className="mt-1 flex items-center space-x-2">
           <input
@@ -785,10 +852,40 @@ const RegistrationModal = ({
                 : "Verify"}
           </button>
         </div>
-        {status === "valid" && !isEligibleFromCart && (
+        {status === "valid" && !isEligibleFromCart && !isCompPass && (
           <p className="mt-2 text-sm text-green-600">
             ✓ Order ID verified. Discount applied.
           </p>
+        )}
+        {status === "valid" && isCompPass && (
+          <>
+            {compEntitlementUnknown(reg.id) ? (
+              <p className="mt-2 text-sm text-orange-600">
+                ✓ Order verified
+                {validatedOrderInfo[reg.id]?.company
+                  ? ` for ${validatedOrderInfo[reg.id].company}`
+                  : ""}
+                , but this order predates automatic pass tracking. Please contact
+                us and we will register your attendee for you.
+              </p>
+            ) : compPassesRemaining(reg.id) > 0 ? (
+              <p className="mt-2 text-sm text-green-600">
+                ✓ Order verified
+                {validatedOrderInfo[reg.id]?.company
+                  ? ` for ${validatedOrderInfo[reg.id].company}`
+                  : ""}
+                . {compPassesRemaining(reg.id)} complimentary pass
+                {compPassesRemaining(reg.id) === 1 ? "" : "es"} remaining on this
+                order.
+              </p>
+            ) : (
+              <p className="mt-2 text-sm text-orange-600">
+                ✓ Order verified, but all of its complimentary passes have
+                already been registered. Additional attendees can be added with
+                the paid Additional Sponsor Attendee Pass above.
+              </p>
+            )}
+          </>
         )}
         {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
       </div>
@@ -1156,6 +1253,15 @@ const RegistrationModal = ({
   }, [allRegistrations, sponsorships, selectedRegistration, isOpen]);
 
   const handleIncrement = (id: string, type?: string) => {
+    // The comped pass is capped by what the verified order has left, so the
+    // stepper cannot ask for more than the server would grant.
+    if (
+      isCompSponsorPassId(id) &&
+      (ticketQuantities[id] || 0) >= compPassesRemaining(id)
+    ) {
+      return;
+    }
+
     const newQuantity = (ticketQuantities[id] || 0) + 1;
     setTicketQuantities((prev) => ({
       ...prev,
@@ -2457,6 +2563,7 @@ const RegistrationModal = ({
                         reg.requiresAttendeeInfo &&
                         (ticketQuantities[reg.id] || 0) > 0 &&
                         (reg.category !== "sponsorship" ||
+                          isCompSponsorPassId(reg.id) ||
                           (reg.name &&
                             reg.name.includes("Additional Sponsor Attendee"))),
                     )
@@ -2996,13 +3103,7 @@ const RegistrationModal = ({
                                   onClick={() =>
                                     handleIncrement(reg.id, reg.type)
                                   }
-                                  disabled={
-                                    isSoldOut(reg, getSponsorCount) ||
-                                    isSaleEnded ||
-                                    isLoading ||
-                                    ticketQuantities[reg.id] >=
-                                      reg.maxQuantityPerOrder
-                                  }
+                                  disabled={incrementBlocked(reg, isSaleEnded)}
                                   className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                                 >
                                   +
@@ -3018,6 +3119,14 @@ const RegistrationModal = ({
                   {activeCategory === "sponsorship" &&
                     sponsorships
                       .filter((reg) => reg.isActive)
+                      // Claiming leftover passes is for sponsors coming back to a
+                      // finished order. Buying the sponsorship in this same cart
+                      // already offers its passes in the attendee-count step.
+                      .filter(
+                        (reg) =>
+                          !isCompSponsorPassId(reg.id) ||
+                          !hasEligibleTicketInCart(),
+                      )
                       .map((reg) => {
                         const itemIsSoldOut = isSoldOut(reg, getSponsorCount);
                         const isSaleEnded = isTicketExpired(reg);
@@ -3112,13 +3221,7 @@ const RegistrationModal = ({
                                   onClick={() =>
                                     handleIncrement(reg.id, reg.type)
                                   }
-                                  disabled={
-                                    isSoldOut(reg, getSponsorCount) ||
-                                    isSaleEnded ||
-                                    isLoading ||
-                                    ticketQuantities[reg.id] >=
-                                      reg.maxQuantityPerOrder
-                                  }
+                                  disabled={incrementBlocked(reg, isSaleEnded)}
                                   className="px-3 py-1 border rounded-r-md bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
                                 >
                                   +

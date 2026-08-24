@@ -1,7 +1,13 @@
-import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
-import { DynamoDBDocumentClient, PutCommand, GetCommand } from '@aws-sdk/lib-dynamodb';
+import { ConditionalCheckFailedException, DynamoDBClient } from '@aws-sdk/client-dynamodb';
+import { DynamoDBDocumentClient, PutCommand, GetCommand, UpdateCommand } from '@aws-sdk/lib-dynamodb';
 import { getServerEnv } from '@/lib/server-env';
-import { RegistrationFormData } from '@/types/event-registration/registration';
+import { RegistrationFormData, StoredRegistrationData } from '@/types/event-registration/registration';
+import {
+  GRANTED_ATTR,
+  USED_ATTR,
+  countGrantedPasses,
+  countUsedPasses,
+} from '@/lib/event-registration/sponsor-pass-entitlement';
 import { v4 as uuidv4 } from 'uuid';
 
 const env = getServerEnv();
@@ -76,16 +82,26 @@ export async function getPendingRegistration(id: string): Promise<RegistrationFo
 /**
  * Saves the final registration details to the permanent registrations table.
  * @param registrationData The user's registration form data.
- * @param paymentIntentId The payment intent ID.
+ * @param orderId The order id, which is also the primary key - the payment
+ *   intent id for a paid order, or the generated `ORDER-...` id for a free one.
  */
-export async function saveConfirmedRegistration(registrationData: RegistrationFormData, paymentIntentId: string): Promise<void> {
+export async function saveConfirmedRegistration(registrationData: RegistrationFormData, orderId: string): Promise<void> {
   const env = getServerEnv();
   const tableName = env.PERMANENT_REGISTRATIONS_TABLE_NAME;
 
+  // Written here rather than by the callers so no save path can forget them: an
+  // order without counters cannot have its leftover sponsor passes claimed later,
+  // and there is no way to tell that apart from an order with none left.
+  const granted = countGrantedPasses(registrationData.eventId, registrationData.tickets);
+
   const item = {
     ...registrationData,
-    id: paymentIntentId, // Use payment intent ID as the primary key
+    id: orderId, // Payment intent id (paid) or generated order id (free)
     createdAt: new Date().toISOString(),
+    [GRANTED_ATTR]: granted,
+    [USED_ATTR]: granted
+      ? Math.min(granted, countUsedPasses(registrationData.eventId, registrationData.tickets))
+      : 0,
   };
 
   const params = {
@@ -95,10 +111,46 @@ export async function saveConfirmedRegistration(registrationData: RegistrationFo
 
   try {
     await docClient.send(new PutCommand(params));
-    console.log(`Successfully saved confirmed registration ${paymentIntentId} to ${tableName}`);
+    console.log(`Successfully saved confirmed registration ${orderId} to ${tableName}`);
   } catch (error) {
     console.error(`Error saving confirmed registration to ${tableName}:`, error);
     throw new Error('Could not save confirmed registration.');
+  }
+}
+
+/**
+ * The post-payment fulfillment steps that a webhook retry can resume.
+ * Values are the attribute names on the confirmed-registration item.
+ */
+export type FulfillmentStep = 'sheetsLoggedAt' | 'confirmationEmailsSentAt';
+
+/**
+ * Stamps a fulfillment step as done on a confirmed registration.
+ *
+ * These markers, not the existence of the row, are what makes the webhook
+ * idempotent. The row is written before Sheets and email run, so a handler that
+ * dies midway leaves an order that looks processed but never reached the
+ * customer - Stripe retries, the retry sees the row, and the order goes silent.
+ *
+ * Failing to stamp is deliberately non-fatal: the step itself already
+ * succeeded, and the worst case is a later retry redoing it.
+ */
+export async function markFulfillmentStep(orderId: string, step: FulfillmentStep): Promise<void> {
+  const env = getServerEnv();
+  const tableName = env.PERMANENT_REGISTRATIONS_TABLE_NAME;
+
+  try {
+    await docClient.send(
+      new UpdateCommand({
+        TableName: tableName,
+        Key: { id: orderId },
+        UpdateExpression: 'SET #step = :now',
+        ExpressionAttributeNames: { '#step': step },
+        ExpressionAttributeValues: { ':now': new Date().toISOString() },
+      })
+    );
+  } catch (error) {
+    console.error(`Error marking ${step} on registration ${orderId}:`, error);
   }
 }
 
@@ -218,7 +270,7 @@ export async function saveFailedRegistration(
  * @param id The unique ID of the registration to retrieve (paymentIntentId).
  * @returns The registration data, or null if not found.
  */
-export async function getConfirmedRegistration(id: string): Promise<RegistrationFormData | null> {
+export async function getConfirmedRegistration(id: string): Promise<StoredRegistrationData | null> {
   const env = getServerEnv();
   const tableName = env.PERMANENT_REGISTRATIONS_TABLE_NAME;
 
@@ -234,11 +286,117 @@ export async function getConfirmedRegistration(id: string): Promise<Registration
     if (Item) {
       console.log(`Successfully retrieved confirmed registration ${id} from ${tableName}.`);
       // The entire item is the registration data, unlike pending which was nested.
-      return Item as RegistrationFormData;
+      return Item as StoredRegistrationData;
     }
     return null;
   } catch (error) {
     console.error(`Error retrieving from ${tableName}:`, error);
     throw new Error('Could not retrieve confirmed registration.');
+  }
+}
+
+export type ClaimSponsorPassesResult =
+  | { ok: true; remaining: number }
+  | {
+      ok: false;
+      reason: 'not-found' | 'wrong-event' | 'unknown-entitlement' | 'insufficient';
+      remaining: number;
+    };
+
+/**
+ * Spends `count` of an order's complimentary sponsor attendee passes.
+ *
+ * The conditional update is the whole point: two people claiming the last pass
+ * at the same moment both read `used = 1`, both compute a limit of 1, and only
+ * the first update lands - the second finds `used = 2` and fails its condition
+ * rather than overselling the sponsorship. `granted` is pinned in the condition
+ * too, so a concurrent write that changed the entitlement invalidates the claim
+ * instead of being silently overwritten.
+ *
+ * DynamoDB condition expressions cannot do arithmetic, hence the read-then-pin
+ * rather than a single `used <= granted - :n`.
+ */
+export async function claimSponsorPasses(
+  orderId: string,
+  count: number,
+  expectedEventId: string | number
+): Promise<ClaimSponsorPassesResult> {
+  const env = getServerEnv();
+  const tableName = env.PERMANENT_REGISTRATIONS_TABLE_NAME;
+
+  const order = await getConfirmedRegistration(orderId);
+  if (!order) return { ok: false, reason: 'not-found', remaining: 0 };
+
+  // Re-checked here and not just at validation time: the order id arrives back
+  // from the browser on submit, and nothing stops a crafted POST naming an order
+  // from a different event than the one it verified.
+  if (String(order.eventId) !== String(expectedEventId)) {
+    return { ok: false, reason: 'wrong-event', remaining: 0 };
+  }
+
+  const granted = order[GRANTED_ATTR];
+  const used = order[USED_ATTR];
+  if (typeof granted !== 'number' || typeof used !== 'number') {
+    return { ok: false, reason: 'unknown-entitlement', remaining: 0 };
+  }
+
+  const remaining = Math.max(0, granted - used);
+  if (count > remaining) {
+    return { ok: false, reason: 'insufficient', remaining };
+  }
+
+  try {
+    await docClient.send(
+      new UpdateCommand({
+        TableName: tableName,
+        Key: { id: orderId },
+        UpdateExpression: 'SET #used = #used + :count',
+        ConditionExpression: '#granted = :granted AND #used <= :maxUsedBefore',
+        ExpressionAttributeNames: { '#used': USED_ATTR, '#granted': GRANTED_ATTR },
+        ExpressionAttributeValues: {
+          ':count': count,
+          ':granted': granted,
+          ':maxUsedBefore': granted - count,
+        },
+      })
+    );
+  } catch (error) {
+    if (error instanceof ConditionalCheckFailedException) {
+      // Someone else claimed in the gap between the read and the update.
+      console.warn(`Sponsor pass claim on ${orderId} lost a race for ${count} pass(es).`);
+      return { ok: false, reason: 'insufficient', remaining: 0 };
+    }
+    console.error(`Error claiming sponsor passes on ${orderId}:`, error);
+    throw new Error('Could not claim sponsor passes.');
+  }
+
+  return { ok: true, remaining: remaining - count };
+}
+
+/**
+ * Hands back passes claimed for an order that then failed before it was placed.
+ *
+ * Best effort and never throws - the caller is already handling an error, and a
+ * pass stuck as spent is a support ticket, not a broken checkout. Floors at zero
+ * so a double release cannot mint entitlement.
+ */
+export async function releaseSponsorPasses(orderId: string, count: number): Promise<void> {
+  if (count <= 0) return;
+
+  try {
+    const env = getServerEnv();
+    await docClient.send(
+      new UpdateCommand({
+        TableName: env.PERMANENT_REGISTRATIONS_TABLE_NAME,
+        Key: { id: orderId },
+        UpdateExpression: 'SET #used = #used - :count',
+        ConditionExpression: '#used >= :count',
+        ExpressionAttributeNames: { '#used': USED_ATTR },
+        ExpressionAttributeValues: { ':count': count },
+      })
+    );
+    console.log(`Released ${count} sponsor pass(es) back to ${orderId}.`);
+  } catch (error) {
+    console.error(`Could not release ${count} sponsor pass(es) on ${orderId}:`, error);
   }
 }

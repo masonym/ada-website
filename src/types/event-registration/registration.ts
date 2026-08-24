@@ -59,6 +59,22 @@ export interface OrderValidation {
 export interface StoredRegistrationData extends RegistrationFormData {
   id: string;
   createdAt: string;
+  /**
+   * Complimentary sponsor attendee passes this order came with, and how many
+   * have been spent. Absent on orders confirmed before the counters existed -
+   * see lib/event-registration/sponsor-pass-entitlement.
+   */
+  sponsorPassesGranted?: number;
+  sponsorPassesUsed?: number;
+  /**
+   * When each post-payment fulfillment step finished, so a webhook retry can
+   * resume at the step that did not run rather than skipping the whole order.
+   * The confirmed-registration row is written before these steps, so its mere
+   * existence says nothing about whether the customer was actually served.
+   * Absent on orders confirmed before the markers existed.
+   */
+  sheetsLoggedAt?: string;
+  confirmationEmailsSentAt?: string;
 }
 
 export interface TicketSelection {

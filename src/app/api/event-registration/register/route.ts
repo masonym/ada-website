@@ -7,7 +7,18 @@ import { OrderSummary } from '@/lib/email/templates';
 import { sendRegistrationConfirmationEmails } from '@/lib/email/confirmation-emails';
 import { AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { EVENTS } from '@/constants/events';
-import { savePendingRegistration, saveFailedRegistration } from '@/lib/aws/dynamodb';
+import {
+  savePendingRegistration,
+  saveFailedRegistration,
+  saveConfirmedRegistration,
+  claimSponsorPasses,
+  releaseSponsorPasses,
+} from '@/lib/aws/dynamodb';
+import {
+  CompPassClaim,
+  isCompSponsorPassId,
+  planCompPassClaims,
+} from '@/lib/event-registration/sponsor-pass-entitlement';
 import { validatePromoCodeForOrder } from '@/lib/promo-codes/validate';
 import {
   resolveOrderPricing,
@@ -22,6 +33,9 @@ export async function POST(request: Request) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let body: any;
   let pendingRegistrationId: string | undefined;
+  // Passes already decremented off a sponsor's original order. Handed back if the
+  // request fails after the claim - see the catch.
+  const claimedPasses: CompPassClaim[] = [];
 
   try {
     body = await request.json();
@@ -68,7 +82,10 @@ export async function POST(request: Request) {
     const catalogue = getOrderCatalogue(eventId);
     for (const item of resolved.items) {
       if (item.type !== 'complimentary') continue;
-      if (item.ticketId.endsWith('-additional-pass')) continue; // sponsor passes are exempt
+      // Sponsor passes are exempt: bundled ones, and the comped claim of a
+      // pass the sponsorship already paid for.
+      if (item.ticketId.endsWith('-additional-pass')) continue;
+      if (isCompSponsorPassId(item.ticketId)) continue;
 
       const submitted = tickets.find(t => t.ticketId === item.ticketId);
       for (const attendee of submitted?.attendeeInfo ?? []) {
@@ -79,6 +96,45 @@ export async function POST(request: Request) {
           );
         }
       }
+    }
+
+    // A complimentary Additional Sponsor Attendee Pass is priced at 0 by the
+    // resolver like any other complimentary line, so this is the only thing
+    // standing between a crafted POST and unlimited free passes: each one must
+    // name a verified order, and the claim is decremented off that order under a
+    // conditional update before the registration is allowed to proceed.
+    const claimPlan = planCompPassClaims(resolved.items, body.orderValidations);
+    if (!claimPlan.ok) {
+      return NextResponse.json(
+        { success: false, errors: { tickets: claimPlan.error } },
+        { status: 400 }
+      );
+    }
+
+    for (const claim of claimPlan.claims) {
+      const result = await claimSponsorPasses(claim.orderId, claim.count, eventId);
+
+      if (!result.ok) {
+        // Nothing has been charged or recorded yet, but earlier claims in this
+        // same order have already been decremented.
+        await Promise.all(
+          claimedPasses.map(c => releaseSponsorPasses(c.orderId, c.count))
+        );
+
+        const message =
+          result.reason === 'insufficient'
+            ? `Order ${claim.orderId} has ${result.remaining} complimentary sponsor pass(es) remaining; ${claim.count} requested.`
+            : result.reason === 'unknown-entitlement'
+              ? `We cannot tell how many complimentary passes order ${claim.orderId} has left. Please contact us and we will register your attendee for you.`
+              : `Order ${claim.orderId} is not a sponsorship order for this event.`;
+
+        return NextResponse.json(
+          { success: false, errors: { tickets: message } },
+          { status: 400 }
+        );
+      }
+
+      claimedPasses.push(claim);
     }
 
     let promoCodeDetails: Awaited<ReturnType<typeof validatePromoCodeForOrder>> | null = null;
@@ -115,6 +171,23 @@ export async function POST(request: Request) {
 
     if (total === 0) {
       const orderId = `ORDER-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+
+      // Free orders used to stop at the sheet and the emails, leaving no row in
+      // the permanent table. That is fine for a comped attendee but not for a
+      // sponsorship: without a stored order there are no pass counters to claim
+      // against later, and a claim placed here would leave no record of itself.
+      //
+      // Only fatal for an order that spent someone's passes - handing those out
+      // with no record of it is worse than failing. A gov/mil comped attendee
+      // registered fine for years without this row and still should if the write
+      // fails, so there it is logged and the registration continues.
+      try {
+        await saveConfirmedRegistration(validatedData, orderId);
+      } catch (saveError) {
+        console.error(`Could not record free registration ${orderId}:`, saveError);
+        if (claimedPasses.length > 0) throw saveError;
+      }
+
       await logRegistration(
         currentEventId,
         validatedData,
@@ -202,6 +275,11 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     console.error('Error processing registration:', error);
+
+    // The order never happened, so passes claimed for it go back on the shelf.
+    await Promise.all(
+      claimedPasses.map(claim => releaseSponsorPasses(claim.orderId, claim.count))
+    );
 
     // Outlives the 24-hour pending row and the host's log retention, so an order
     // lost here is still reconstructable - and the customer still reachable -

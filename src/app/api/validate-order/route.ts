@@ -3,6 +3,7 @@ import { getConfirmedRegistration } from '@/lib/aws/dynamodb';
 import { EXHIBITOR_TYPES } from '@/constants/exhibitors';
 import { SPONSORSHIP_TYPES } from '@/constants/sponsorships';
 import { StoredRegistrationData } from '@/types/event-registration/registration';
+import { readEntitlement } from '@/lib/event-registration/sponsor-pass-entitlement';
 
 /**
  * Staff bypass for order validation, used to comp an additional pass without a
@@ -68,6 +69,13 @@ export async function POST(request: Request) {
     console.log('Is Eligible:', isEligible);
 
     if (isEligible) {
+      // Complimentary sponsor passes this order has not spent yet. `known: false`
+      // means the order predates the counters, not that it has none left - the
+      // modal says so rather than refusing, and those are comped by hand.
+      const sponsorPasses = readEntitlement(
+        registration as unknown as Record<string, unknown>
+      );
+
       // Return company information for tracking purposes
       return NextResponse.json({ 
         isValid: true,
@@ -77,7 +85,8 @@ export async function POST(request: Request) {
           email: registration.email,
           eventId: registration.eventId,
           createdAt: registration.createdAt,
-          tickets: registration.tickets
+          tickets: registration.tickets,
+          sponsorPasses
         }
       });
     } else {

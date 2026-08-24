@@ -9,7 +9,8 @@ import { RegistrationFormData } from '@/types/event-registration/registration';
 import { EVENTS } from '@/constants/events';
 import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { resolveEarlyBird } from '@/lib/pricing-tiers';
-import { getPendingRegistration, saveConfirmedRegistration, getConfirmedRegistration } from '@/lib/aws/dynamodb';
+import { getPendingRegistration, saveConfirmedRegistration, getConfirmedRegistration, markFulfillmentStep } from '@/lib/aws/dynamodb';
+import { StoredRegistrationData } from '@/types/event-registration/registration';
 
 async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent) {
   console.log(`PaymentIntent ${paymentIntent.id} succeeded.`);
@@ -23,14 +24,24 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
     return;
   }
   
-  // Idempotency check - see if this payment has already been processed
+  // Idempotency is per fulfillment step, not per order. The confirmed row is
+  // written before Sheets and email, so an earlier attempt that timed out mid-way
+  // leaves a row for an order the customer was never actually served - skipping on
+  // the row alone is what turns a partial failure into a permanently silent one.
+  let existingRegistration: StoredRegistrationData | null = null;
   try {
-    // Check if the registration is already confirmed with this payment ID
-    // Since we use the payment intent ID as the primary key in our confirmed registrations table
-    const existingRegistration = await getConfirmedRegistration(paymentIntent.id);
-    if (existingRegistration) {
-      console.log(`Payment ${paymentIntent.id} has already been processed. Skipping to prevent duplicates.`);
+    // The payment intent ID is the primary key in our confirmed registrations table
+    existingRegistration = await getConfirmedRegistration(paymentIntent.id);
+    if (existingRegistration?.sheetsLoggedAt && existingRegistration?.confirmationEmailsSentAt) {
+      console.log(`Payment ${paymentIntent.id} is fully processed. Skipping to prevent duplicates.`);
       return;
+    }
+    if (existingRegistration) {
+      console.log(
+        `Payment ${paymentIntent.id} was partially processed ` +
+        `(sheets: ${existingRegistration.sheetsLoggedAt ?? 'no'}, ` +
+        `emails: ${existingRegistration.confirmationEmailsSentAt ?? 'no'}). Resuming.`
+      );
     }
   } catch (error) {
     console.error('Error checking for existing registration:', error);
@@ -38,36 +49,46 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
   }
 
   try {
-    const registrationData = await getPendingRegistration(pendingRegistrationId);
+    // Prefer the stored copy on a retry: the pending record has a 24h TTL and may
+    // already be gone, and the stored copy is the one the customer actually paid for.
+    const registrationData = existingRegistration ?? await getPendingRegistration(pendingRegistrationId);
 
     if (!registrationData) {
       console.error(`Could not find pending registration with ID: ${pendingRegistrationId}`);
       return;
     }
 
-    // Save to permanent storage
-    await saveConfirmedRegistration(registrationData, paymentIntent.id);
+    // Save to permanent storage. Skipped when the row is already there, so a retry
+    // cannot reset the sponsor pass counters and wipe passes claimed since.
+    if (!existingRegistration) {
+      await saveConfirmedRegistration(registrationData, paymentIntent.id);
+    }
 
     // Log the registration to Google Sheets
-    try {
-      const logResult = await logRegistration(
-        eventId,
-        registrationData,
-        paymentIntent.id,
-        'succeeded',
-        paymentIntent.amount,
-        registrationData.promoCode,
-        Number(metadata.discountAmount) || 0
-      );
-      
-      if (!logResult.success) {
-        console.error(`Failed to log registration to Google Sheets: ${logResult.error}`);
-      } else {
-        console.log(`Successfully logged registration ${paymentIntent.id} to Google Sheets`);
+    if (existingRegistration?.sheetsLoggedAt) {
+      console.log(`Registration ${paymentIntent.id} was already logged to Google Sheets. Skipping.`);
+    } else {
+      try {
+        const logResult = await logRegistration(
+          eventId,
+          registrationData,
+          paymentIntent.id,
+          'succeeded',
+          paymentIntent.amount,
+          registrationData.promoCode,
+          Number(metadata.discountAmount) || 0
+        );
+
+        if (!logResult.success) {
+          console.error(`Failed to log registration to Google Sheets: ${logResult.error}`);
+        } else {
+          await markFulfillmentStep(paymentIntent.id, 'sheetsLoggedAt');
+          console.log(`Successfully logged registration ${paymentIntent.id} to Google Sheets`);
+        }
+      } catch (sheetError) {
+        console.error('Unexpected error logging to Google Sheets:', sheetError);
+        // Continue processing to still try sending emails
       }
-    } catch (sheetError) {
-      console.error('Unexpected error logging to Google Sheets:', sheetError);
-      // Continue processing to still try sending emails
     }
 
     // --- Prepare data for confirmation email ---
@@ -142,6 +163,11 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
       eligibleTicketTypes: eligibleTicketTypes.length > 0 ? eligibleTicketTypes : null
     };
 
+    if (existingRegistration?.confirmationEmailsSentAt) {
+      console.log(`Confirmation emails for ${paymentIntent.id} were already sent. Skipping.`);
+      return;
+    }
+
     // Send confirmation emails to all unique attendees
     try {
       const emailResult = await sendRegistrationConfirmationEmails({
@@ -155,6 +181,7 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
       if (!emailResult.success) {
         console.error(`Failed to send confirmation emails: ${JSON.stringify(emailResult.results)}`);
       } else {
+        await markFulfillmentStep(paymentIntent.id, 'confirmationEmailsSentAt');
         console.log(`Successfully sent confirmation emails for registration ${paymentIntent.id}`);
       }
     } catch (emailError) {
@@ -175,6 +202,15 @@ async function handleChargeRefunded(charge: Stripe.Charge) {
   console.log(`Charge ${charge.id} for ${charge.amount} was refunded.`);
   // Optional: Add logic to update registration status in your system.
 }
+
+/**
+ * Fulfillment runs synchronously inside the webhook response, and it is not fast:
+ * a Sheets append plus, per recipient, an S3 listing, a render, a send, and a
+ * deliberate 1200ms rate-limit pause. A multi-attendee order does not fit in the
+ * platform default, and a timeout here means Stripe records a delivery failure
+ * with the customer already charged.
+ */
+export const maxDuration = 60;
 
 export async function POST(request: Request) {
   const env = getServerEnv();

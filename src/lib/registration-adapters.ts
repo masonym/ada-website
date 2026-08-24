@@ -3,6 +3,7 @@ import { SPONSORSHIP_TYPES } from '@/constants/sponsorships';
 import { EXHIBITOR_TYPES, ExhibitorType, AdditionalPassType as ExhibitorAdditionalPassType } from '@/constants/exhibitors';
 import { ModalRegistrationType, PriceTier } from '@/types/registration';
 import { AdditionalPassType as SponsorAdditionalPassType } from '@/types/sponsorships';
+import { COMP_SPONSOR_PASS_ID } from '@/lib/event-registration/pass-ids';
 
 // Define types based on the structure of the constants files
 interface FormattedPerkType {
@@ -247,6 +248,38 @@ export function getSponsorshipsForEvent(eventId: number | string): AdapterModalR
         ],
       });
     }
+  }
+
+  // A sponsor whose package included attendee passes they did not all name at
+  // checkout claims the rest here, against their original order id. Offered only
+  // when some tier for this event actually grants passes; the entitlement itself
+  // is enforced server-side against the stored order, never by this card.
+  const grantsPasses = adaptedSponsors.some(s => (s.sponsorPasses ?? 0) > 0);
+
+  if (grantsPasses) {
+    const additionalPass: SponsorAdditionalPassType | undefined = eventData.additionalPass;
+
+    adaptedSponsors.push({
+      id: COMP_SPONSOR_PASS_ID,
+      name: 'Complimentary Additional Sponsor Attendee Pass',
+      title: 'Complimentary Additional Sponsor Attendee Pass',
+      description:
+        'For registered Sponsors whose package includes attendee passes they have not used yet. Enter the order ID from your sponsorship purchase to see how many passes you have left and register them at no charge.',
+      price: 0,
+      isActive: true,
+      requiresAttendeeInfo: true,
+      isGovtFreeEligible: false,
+      // 'complimentary' is what makes the order resolver price this at 0 without
+      // trusting anything the browser sent.
+      type: 'complimentary',
+      headerImage: additionalPass?.headerImage || 'vip.webp',
+      buttonText: 'Add',
+      category: 'sponsorship',
+      requiresValidation: true,
+      maxQuantityPerOrder: additionalPass?.maxQuantityPerOrder || 10,
+      perks: additionalPass?.perks || [],
+      shownOnRegistrationPage: false,
+    });
   }
 
   return adaptedSponsors;

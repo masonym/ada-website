@@ -24,7 +24,7 @@
     "cf:build": "opennextjs-cloudflare build",
     "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "cf:deploy:staging": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "test:offline": "playwright test tests/01-event-config.spec.ts tests/02-order-pricing.spec.ts tests/03-event-data-integrity.spec.ts tests/04-html-sanitizer.spec.ts tests/05-stripe-metadata.spec.ts tests/06-additional-pass-email.spec.ts",
+    "test:offline": "playwright test tests/01-event-config.spec.ts tests/02-order-pricing.spec.ts tests/03-event-data-integrity.spec.ts tests/04-html-sanitizer.spec.ts tests/05-stripe-metadata.spec.ts tests/06-additional-pass-email.spec.ts tests/07-sponsor-pass-entitlement.spec.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
