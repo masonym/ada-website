@@ -9,10 +9,30 @@ import { RegistrationFormData } from '@/types/event-registration/registration';
 import { EVENTS } from '@/constants/events';
 import { getRegistrationsForEvent, getSponsorshipsForEvent, getExhibitorsForEvent, AdapterModalRegistrationType } from '@/lib/registration-adapters';
 import { resolveEarlyBird } from '@/lib/pricing-tiers';
-import { getPendingRegistration, saveConfirmedRegistration, getConfirmedRegistration, markFulfillmentStep } from '@/lib/aws/dynamodb';
+import { getPendingRegistration, saveConfirmedRegistration, getConfirmedRegistration, markFulfillmentStep, saveFailedRegistration } from '@/lib/aws/dynamodb';
 import { StoredRegistrationData } from '@/types/event-registration/registration';
 
-async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent) {
+/**
+ * Whether an order was fully fulfilled, and if not, whether trying again could
+ * change the answer. `retryable` drives the webhook's status code: a step that
+ * failed for a transient reason should bring Stripe back, while a malformed or
+ * unrecognised order never will be fixed by repeating it.
+ */
+type FulfillmentOutcome =
+  | { ok: true }
+  | {
+      ok: false;
+      retryable: boolean;
+      /** Short slug, safe to use as an index-friendly stage on the failure record. */
+      code: string;
+      /** The long form - error text, per-recipient results - for the record's body. */
+      detail?: string;
+      error?: unknown;
+    };
+
+async function handlePaymentIntentSucceeded(
+  paymentIntent: Stripe.PaymentIntent
+): Promise<FulfillmentOutcome> {
   console.log(`PaymentIntent ${paymentIntent.id} succeeded.`);
 
   const metadata = paymentIntent.metadata;
@@ -21,7 +41,7 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
 
   if (!pendingRegistrationId || !eventId) {
     console.error('Error: Missing pendingRegistrationId or eventId in payment intent metadata.', { metadata });
-    return;
+    return { ok: false, retryable: false, code: 'missing-payment-intent-metadata' };
   }
   
   // Idempotency is per fulfillment step, not per order. The confirmed row is
@@ -34,7 +54,7 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
     existingRegistration = await getConfirmedRegistration(paymentIntent.id);
     if (existingRegistration?.sheetsLoggedAt && existingRegistration?.confirmationEmailsSentAt) {
       console.log(`Payment ${paymentIntent.id} is fully processed. Skipping to prevent duplicates.`);
-      return;
+      return { ok: true };
     }
     if (existingRegistration) {
       console.log(
@@ -55,7 +75,7 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
 
     if (!registrationData) {
       console.error(`Could not find pending registration with ID: ${pendingRegistrationId}`);
-      return;
+      return { ok: false, retryable: false, code: 'pending-registration-not-found' };
     }
 
     // Save to permanent storage. Skipped when the row is already there, so a retry
@@ -63,6 +83,11 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
     if (!existingRegistration) {
       await saveConfirmedRegistration(registrationData, paymentIntent.id);
     }
+
+    // Both steps are attempted even if the first fails - a customer who is in the
+    // sheet but got no email, or the reverse, is better than neither - and the
+    // failures are collected so the response can still tell Stripe to come back.
+    const failures: string[] = [];
 
     // Log the registration to Google Sheets
     if (existingRegistration?.sheetsLoggedAt) {
@@ -81,12 +106,14 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
 
         if (!logResult.success) {
           console.error(`Failed to log registration to Google Sheets: ${logResult.error}`);
+          failures.push(`google-sheets: ${logResult.error}`);
         } else {
           await markFulfillmentStep(paymentIntent.id, 'sheetsLoggedAt');
           console.log(`Successfully logged registration ${paymentIntent.id} to Google Sheets`);
         }
       } catch (sheetError) {
         console.error('Unexpected error logging to Google Sheets:', sheetError);
+        failures.push(`google-sheets: ${sheetError instanceof Error ? sheetError.message : String(sheetError)}`);
         // Continue processing to still try sending emails
       }
     }
@@ -95,7 +122,7 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
     const event = EVENTS.find(e => e.id.toString() === eventId);
     if (!event) {
       console.error(`Event with ID ${eventId} not found.`);
-      return;
+      return { ok: false, retryable: false, code: 'unknown-event' };
     }
 
     const allRegistrationTypes: AdapterModalRegistrationType[] = [
@@ -165,7 +192,9 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
 
     if (existingRegistration?.confirmationEmailsSentAt) {
       console.log(`Confirmation emails for ${paymentIntent.id} were already sent. Skipping.`);
-      return;
+      return failures.length
+        ? { ok: false, retryable: true, code: 'fulfillment-step-failed', detail: failures.join('; ') }
+        : { ok: true };
     }
 
     // Send confirmation emails to all unique attendees
@@ -180,16 +209,23 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
       
       if (!emailResult.success) {
         console.error(`Failed to send confirmation emails: ${JSON.stringify(emailResult.results)}`);
+        failures.push(`confirmation-emails: ${JSON.stringify(emailResult.results)}`);
       } else {
         await markFulfillmentStep(paymentIntent.id, 'confirmationEmailsSentAt');
         console.log(`Successfully sent confirmation emails for registration ${paymentIntent.id}`);
       }
     } catch (emailError) {
       console.error('Unexpected error sending confirmation emails:', emailError);
+      failures.push(`confirmation-emails: ${emailError instanceof Error ? emailError.message : String(emailError)}`);
     }
+
+    return failures.length
+      ? { ok: false, retryable: true, code: 'fulfillment-step-failed', detail: failures.join('; ') }
+      : { ok: true };
 
   } catch (error) {
     console.error('Error processing successful payment intent:', error);
+    return { ok: false, retryable: true, code: 'unexpected-fulfillment-error', error };
   }
 }
 
@@ -245,17 +281,50 @@ export async function POST(request: Request) {
   // For payment_intent.succeeded, we need to ensure emails and logging completes
   if (eventType === 'payment_intent.succeeded') {
     console.log(`Processing critical event ${eventId} of type ${eventType} synchronously`);
+
+    const paymentIntentId = (eventObject as Stripe.PaymentIntent)?.id;
+    let outcome: FulfillmentOutcome;
     try {
       // Process synchronously - wait for completion
-      await processStripeEvent(eventId, eventType, eventObject);
-      console.log(`Successfully completed processing of ${eventId}`);
-      return NextResponse.json({ received: true, processed: true });
+      outcome = await processStripeEvent(eventId, eventType, eventObject);
     } catch (error) {
       console.error(`Error processing Stripe event ${eventId}:`, error);
-      // Return 200 even on error to prevent Stripe from retrying
-      // We've already logged the error for investigation
-      return NextResponse.json({ received: true, error: 'Processing error occurred, check logs' });
+      outcome = { ok: false, retryable: true, code: 'unhandled-webhook-error', error };
     }
+
+    if (outcome.ok) {
+      console.log(`Successfully completed processing of ${eventId}`);
+      return NextResponse.json({ received: true, processed: true });
+    }
+
+    // A charged customer who was not fulfilled used to leave no trace outside the
+    // logs: Stripe showed the payment as succeeded, the sheet only records
+    // successes, and the pending row expires within a day. Record it durably
+    // first - the recorder swallows its own errors - then decide the status.
+    const failureId = await saveFailedRegistration({
+      payload: { paymentIntentId, eventId, eventType },
+      error: outcome.error ?? outcome.detail ?? outcome.code,
+      pendingRegistrationId: (eventObject as Stripe.PaymentIntent)?.metadata?.pendingRegistrationId,
+      stage: `webhook:${outcome.code}`,
+    });
+
+    console.error(
+      `Fulfillment incomplete for ${paymentIntentId} (${outcome.code}${outcome.detail ? `: ${outcome.detail}` : ''}). ` +
+      `Recorded as ${failureId ?? 'unrecorded'}.`
+    );
+
+    if (outcome.retryable) {
+      // Ask Stripe to come back. Safe now that fulfillment is idempotent per step:
+      // a retry resumes what did not finish instead of duplicating what did.
+      return NextResponse.json(
+        { received: true, processed: false, reason: outcome.code, failureId },
+        { status: 500 }
+      );
+    }
+
+    // Nothing a retry can fix, so take the event off Stripe's hands; the record
+    // above is what surfaces it for a human.
+    return NextResponse.json({ received: true, processed: false, reason: outcome.code, failureId });
   } else {
     // For non-critical events, continue with async processing
     // Fire and forget - don't await these operations
@@ -270,15 +339,18 @@ export async function POST(request: Request) {
 /**
  * Process a Stripe event in the background without blocking the webhook response
  */
-async function processStripeEvent(eventId: string, eventType: string, eventObject: any) {
+async function processStripeEvent(
+  eventId: string,
+  eventType: string,
+  eventObject: any
+): Promise<FulfillmentOutcome> {
   console.log(`Processing Stripe event ${eventId} of type ${eventType} in background`);
-  
+
   try {
     // Handle the event based on type
     switch (eventType) {
       case 'payment_intent.succeeded':
-        await handlePaymentIntentSucceeded(eventObject as Stripe.PaymentIntent);
-        break;
+        return await handlePaymentIntentSucceeded(eventObject as Stripe.PaymentIntent);
       case 'payment_intent.payment_failed':
         await handlePaymentIntentFailed(eventObject as Stripe.PaymentIntent);
         break;
@@ -289,8 +361,10 @@ async function processStripeEvent(eventId: string, eventType: string, eventObjec
         console.log(`Unhandled event type: ${eventType}`);
     }
     console.log(`Successfully processed Stripe event ${eventId}`);
+    return { ok: true };
   } catch (error) {
     console.error(`Error processing Stripe event ${eventId}:`, error);
-    // We intentionally don't rethrow here as this is background processing
+    // Background callers ignore this; the synchronous path turns it into a status.
+    return { ok: false, retryable: true, code: 'unexpected-event-error', error };
   }
 }

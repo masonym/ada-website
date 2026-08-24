@@ -103,6 +103,18 @@ export async function resolveLinkedPackageForOrder(
 }
 
 /**
+ * The exhibitor instructions document for an event, or '' when there is none.
+ *
+ * Hoisted out of the per-recipient send so a multi-attendee order pays for one
+ * S3 listing rather than one per address. Standalone senders that have no order
+ * to amortize it over can let sendRegistrationConfirmationEmail resolve it.
+ */
+export async function findExhibitorInstructions(event: Event): Promise<string> {
+  const bucketFiles = await listEventFiles(event.eventShorthand);
+  return bucketFiles.find(name => name.includes('Instructions')) ?? '';
+}
+
+/**
  * Sends confirmation emails to all unique attendee emails
  * @param registrationData Complete registration form data
  * @param event Event information
@@ -133,6 +145,11 @@ export async function sendRegistrationConfirmationEmails({
   // Resolved once per order rather than per recipient: it can cost a read of
   // the sponsorship order the pass was validated against.
   const highestTier = findHighestTierRegistration(registrations);
+
+  // Same reasoning, and the listing is identical for every recipient: one S3
+  // call per order instead of one per attendee, which on a large order was
+  // several round trips of pure latency inside the webhook's time budget.
+  const exhibitorInstructions = await findExhibitorInstructions(event);
   const linkedPackage =
     highestTier?.tier === TicketTier.ADDITIONAL_PASS
       ? await resolveLinkedPackageForOrder(
@@ -202,7 +219,8 @@ export async function sendRegistrationConfirmationEmails({
       attendeePasses,
       attachments,
       attendees: allAttendees,
-      linkedPackage
+      linkedPackage,
+      exhibitorInstructions
     });
 
     results.push({ email, result });
@@ -233,7 +251,8 @@ export async function sendRegistrationConfirmationEmail({
   attendeePasses = 0,
   attachments = [],
   attendees = [],
-  linkedPackage = null
+  linkedPackage = null,
+  exhibitorInstructions
 }: {
   email: string;
   firstName: string;
@@ -246,6 +265,11 @@ export async function sendRegistrationConfirmationEmail({
   attendees?: AttendeeDetails[];
   /** The package an additional attendee pass belongs to, when there is one. */
   linkedPackage?: LinkedPackage | null;
+  /**
+   * Pre-resolved by the caller when it is sending to a whole order, so the S3
+   * listing is not repeated per recipient. Omit to have it resolved here.
+   */
+  exhibitorInstructions?: string;
 }) {
   const highestTierInfo = findHighestTierRegistration(registrations);
 
@@ -256,8 +280,8 @@ export async function sendRegistrationConfirmationEmail({
 
   const { tier, registration } = highestTierInfo;
 
-  const bucketFiles = await listEventFiles(event.eventShorthand);
-  const exhibitorInstructions = bucketFiles.find(name => name.includes("Instructions"));
+  const resolvedExhibitorInstructions =
+    exhibitorInstructions ?? (await findExhibitorInstructions(event));
 
   // Get any ticket-specific attachments
   let ticketAttachments: Array<{
@@ -294,7 +318,7 @@ export async function sendRegistrationConfirmationEmail({
     orderSummary,
     attendees,
     attendeePasses,
-    exhibitorInstructions: exhibitorInstructions || '',
+    exhibitorInstructions: resolvedExhibitorInstructions,
     linkedPackage,
   });
 
