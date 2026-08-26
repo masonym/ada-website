@@ -4878,6 +4878,140 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         sponsorshipGroup: "Major Panel Sponsorships",
       },
       {
+        id: "major-panel-sponsor-govcon-toolkit-otas-sbirs-sttrs-gwacs-idiqs-macc",
+        contact: {
+          name: "Charles Sills",
+          email: "csills@americandefensealliance.org",
+        },
+        title:
+          "Major Panel Sponsorship: GovCon Toolkit - OTA's, SBIR's/STTR's, GWAC's, IDIQ's & MACC's",
+        cost: 4000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $295 each",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              {
+                content:
+                  "Moderate the Panel on GovCon Toolkit - OTA's, SBIR's/STTR's, GWAC's, IDIQ's & MACC's",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              {
+                content:
+                  "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                indent: 1,
+              },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
+              { content: "Social Media Recognition", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
+            ],
+          },
+        ],
+        colour: "#F33A6A",
+        showRemaining: false,
+        sponsorshipGroup: "Major Panel Sponsorships",
+      },
+      {
+        id: "major-panel-sponsor-administration-acquisition-reform-far-dfar-8a-changes",
+        contact: {
+          name: "Charles Sills",
+          email: "csills@americandefensealliance.org",
+        },
+        title:
+          "Major Panel Sponsorship: Administration Acquisition Reform - FAR/DFAR & 8(a) Changes",
+        cost: 4000,
+        slotsPerEvent: 1,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $295 each",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Conference Pop-up Banners", indent: 1 },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Speaking Opportunity", bold: true },
+              {
+                content:
+                  "Moderate the Panel on Administration Acquisition Reform - FAR/DFAR & 8(a) Changes",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              {
+                content:
+                  "Special Recognition for Industry Sector Leadership & Subject-Matter Expertise",
+                indent: 1,
+              },
+              {
+                content:
+                  "Recognition during General Session & Networking Breaks",
+                indent: 1,
+              },
+              { content: "Social Media Recognition", indent: 1 },
+              {
+                content: "Photographs & Videos of your Participation",
+                indent: 1,
+              },
+            ],
+          },
+        ],
+        colour: "#F33A6A",
+        showRemaining: false,
+        sponsorshipGroup: "Major Panel Sponsorships",
+      },
+      {
         id: "major-panel-sponsor-cybersecurity-cmmc-update",
         contact: {
           name: "Charles Sills",
