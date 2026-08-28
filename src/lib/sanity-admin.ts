@@ -757,18 +757,35 @@ export async function addSpeakerToEvent(
   }
 ) {
   const key = `speaker-${Date.now()}`
+  const entry = {
+    _type: 'eventSpeakerEntry',
+    _key: key,
+    speaker: { _type: 'reference', _ref: speakerId },
+    isVisible: options?.isVisible !== undefined ? options.isVisible : true,
+    isKeynote: options?.isKeynote || false,
+    keynoteHeaderText: options?.keynoteHeaderText || '',
+    label: options?.label || '',
+    sortOrder: options?.sortOrder || 0,
+  }
+
+  // .append() is `insert('after', 'speakers[-1]', ...)`, which is a no-op
+  // when speakers is empty (the [-1] selector matches nothing). Fall back
+  // to a plain set() in that case.
+  const doc = await adminClient.fetch<{ speakers?: unknown[] }>(
+    `*[_id == $id][0]{ speakers }`,
+    { id: eventSpeakersDocId }
+  )
+
+  if (!doc?.speakers || doc.speakers.length === 0) {
+    return adminClient
+      .patch(eventSpeakersDocId)
+      .set({ speakers: [entry] })
+      .commit()
+  }
+
   return adminClient
     .patch(eventSpeakersDocId)
-    .append('speakers', [{
-      _type: 'eventSpeakerEntry',
-      _key: key,
-      speaker: { _type: 'reference', _ref: speakerId },
-      isVisible: options?.isVisible !== undefined ? options.isVisible : true,
-      isKeynote: options?.isKeynote || false,
-      keynoteHeaderText: options?.keynoteHeaderText || '',
-      label: options?.label || '',
-      sortOrder: options?.sortOrder || 0,
-    }])
+    .append('speakers', [entry])
     .commit()
 }
 
