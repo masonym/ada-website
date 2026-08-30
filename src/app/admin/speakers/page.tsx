@@ -24,11 +24,13 @@ import Image from "next/image";
 const EVENTS = [
   { id: 1, slug: "2025-defense-industry-forecast", name: "2025 Defense Industry Forecast" },
   { id: 2, slug: "2025-southeast-defense-procurement-conference", name: "2025 Southeast Defense Procurement Conference" },
-  { id: 3, slug: "driving-the-industrialization-of-space", name: "Driving the Industrialization of Space" },
+  { id: 3, slug: "2025-driving-the-industrialization-of-space", name: "Driving the Industrialization of Space" },
   { id: 4, slug: "2025-navy-marine-corps-procurement-conference", name: "2025 Navy & Marine Corps Procurement Conference" },
   { id: 5, slug: "2026-defense-technology-aerospace-procurement-conference", name: "2026 Defense Technology & Aerospace Procurement Conference" },
   { id: 6, slug: "2026-navy-marine-corps-procurement-conference", name: "2026 Navy & Marine Corps Procurement Conference" },
   { id: 7, slug: "2026-air-force-space-force-procurement-conference", name: "2026 Air Force & Space Force Procurement Conference" },
+  { id: 8, slug: "2027-navy-marine-corps-procurement-conference", name: "2027 Navy & Marine Corps Procurement Conference" },
+  { id: 9, slug: "2026-defense-industry-update", name: "Defense Industry Update" },
 ];
 
 const SELECTED_EVENT_STORAGE_KEY = "adminSpeakersSelectedEventId";
