@@ -789,6 +789,7 @@ export const REGISTRATION_TYPES = [
         type: "paid",
         maxQuantityPerOrder: 5,
         isAddOn: true,
+        parentTicketId: "attendee-pass",
         saleEndTime: "2026-12-03T18:00:00Z",
         perks: [
           "Access to VIP Networking Reception on December 3, 2026 from 5:00 PM - 7:00 PM",

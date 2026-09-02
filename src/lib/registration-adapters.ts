@@ -72,6 +72,13 @@ export interface AdapterModalRegistrationType extends ModalRegistrationType {
    * grouped under the modal's "Add-ons" tab and hidden from the registration page.
    */
   isAddOn?: boolean;
+  /**
+   * When set on an add-on, its id must match a ticket's `id` in the same event.
+   * The modal then renders the add-on nested under that ticket in the General
+   * Admission tab instead of (or in addition to, if `shownOnRegistrationPage`-style
+   * standalone listing is also desired) the standalone "Add-ons" tab.
+   */
+  parentTicketId?: string;
   requiresValidation?: boolean; // New flag for special validation
   requiresCode?: boolean; // Flag for code validation
   validationCode?: string; // The required code
@@ -120,6 +127,7 @@ export function getRegistrationsForEvent(eventId: number | string): AdapterModal
     maxQuantityPerOrder: reg.maxQuantityPerOrder,
     category: 'ticket',
     isAddOn: reg.isAddOn ?? false,
+    parentTicketId: reg.parentTicketId,
     requiresCode: reg.requiresCode,
     validationCode: reg.validationCode,
     codeValidationMessage: reg.codeValidationMessage,

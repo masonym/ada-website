@@ -238,9 +238,22 @@ const RegistrationModal = ({
     [allRegistrations],
   );
   const addOns = useMemo(
-    () => allRegistrations.filter((reg) => reg.isAddOn),
+    // Add-ons with a `parentTicketId` render nested under that ticket in the
+    // General Admission tab instead, so they're excluded from the standalone
+    // "Add-ons" tab to avoid listing the same item twice.
+    () => allRegistrations.filter((reg) => reg.isAddOn && !reg.parentTicketId),
     [allRegistrations],
   );
+  const nestedAddOnsByParentId = useMemo(() => {
+    const map: Record<string, AdapterModalRegistrationType[]> = {};
+    allRegistrations
+      .filter((reg) => reg.isAddOn && reg.parentTicketId)
+      .forEach((reg) => {
+        const key = reg.parentTicketId!;
+        (map[key] ||= []).push(reg);
+      });
+    return map;
+  }, [allRegistrations]);
 
   // We'll use the original sponsorships list without sorting
   // State for active category tab
@@ -2997,7 +3010,18 @@ const RegistrationModal = ({
                   {activeCategory === "ticket" &&
                     generalRegistrations
                       .filter((reg) => reg.isActive)
-                      .map((reg) => renderTicketCard(reg))}
+                      .map((reg) => (
+                        <div key={reg.id}>
+                          {renderTicketCard(reg)}
+                          {(nestedAddOnsByParentId[reg.id] || [])
+                            .filter((addOn) => addOn.isActive)
+                            .map((addOn) => (
+                              <div key={addOn.id} className="-mt-2 mb-4 ml-4 sm:ml-8">
+                                {renderTicketCard(addOn)}
+                              </div>
+                            ))}
+                        </div>
+                      ))}
 
                   {/* Show add-ons when activeCategory is 'addon' */}
                   {activeCategory === "addon" &&
