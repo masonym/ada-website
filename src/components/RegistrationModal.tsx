@@ -249,8 +249,12 @@ const RegistrationModal = ({
     allRegistrations
       .filter((reg) => reg.isAddOn && reg.parentTicketId)
       .forEach((reg) => {
-        const key = reg.parentTicketId!;
-        (map[key] ||= []).push(reg);
+        const parentIds = Array.isArray(reg.parentTicketId)
+          ? reg.parentTicketId
+          : [reg.parentTicketId!];
+        parentIds.forEach((parentId) => {
+          (map[parentId] ||= []).push(reg);
+        });
       });
     return map;
   }, [allRegistrations]);

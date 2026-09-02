@@ -73,12 +73,12 @@ export interface AdapterModalRegistrationType extends ModalRegistrationType {
    */
   isAddOn?: boolean;
   /**
-   * When set on an add-on, its id must match a ticket's `id` in the same event.
-   * The modal then renders the add-on nested under that ticket in the General
-   * Admission tab instead of (or in addition to, if `shownOnRegistrationPage`-style
-   * standalone listing is also desired) the standalone "Add-ons" tab.
+   * When set on an add-on, its value must match one or more ticket `id`s in the
+   * same event (a single id, or an array to nest under several tickets). The
+   * modal then renders the add-on nested under each matching ticket in the
+   * General Admission tab instead of the standalone "Add-ons" tab.
    */
-  parentTicketId?: string;
+  parentTicketId?: string | string[];
   requiresValidation?: boolean; // New flag for special validation
   requiresCode?: boolean; // Flag for code validation
   validationCode?: string; // The required code
