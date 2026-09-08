@@ -514,7 +514,7 @@ Venue: Capitol Hill Club, 300 First Street SE, Washington, DC 20003
             },
             {
                 question: "How do I attend the VIP Networking Reception?",
-                answer: "The VIP Networking Reception takes place at the end of the day on December 3, 2026 from 5:00 PM - 7:00 PM and is available to all Speakers, Sponsors, VIP Attendee Passes, and Special Guests. It can also be purchased separately as an add-on during registration. Please note that the add-on covers the Reception only and does not include event access - a pass must be purchased separately for anyone attending the conference itself.",
+                answer: "The VIP Networking Reception takes place at the end of the day on December 3, 2026 from 5:00 PM - 7:00 PM and is available to all Speakers, Sponsors, VIP Attendee Passes, and Special Guests.",
             },
             {
                 question: "What is the agenda for the event?",

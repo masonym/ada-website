@@ -29,7 +29,10 @@ const RegistrationOptions = ({ event }: RegistrationProps) => {
     // Use the adapter functions to get properly typed registration and exhibitor data
     const registrationCards: AdapterModalRegistrationType[] = getRegistrationsForEvent(event.id)
         .filter(reg => !reg.requiresCode) // Hide code-validated add-ons from main registration page
-        .filter(reg => !reg.isAddOn); // Add-ons live in the registration modal's "Add-ons" tab only
+        .filter(reg => !reg.isAddOn) // Add-ons live in the registration modal's "Add-ons" tab only
+        // Opt-out for a normal ticket that has no card artwork yet: it stays
+        // selectable in the modal, it just gets no card here. Undefined means shown.
+        .filter(reg => reg.shownOnRegistrationPage !== false);
 
     // Exhibit space is no longer advertised as a card here - the "Become a
     // Sponsor and/or Exhibitor" section above links out to the exhibitor page.
