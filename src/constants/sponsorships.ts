@@ -3669,6 +3669,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Recognition/Visibility", bold: true },
+              { content: "Social Media Recognition", indent: 1 },
               { content: "Photographs of your Participation", indent: 1 },
             ],
           },
@@ -4149,6 +4150,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           {
             formatted: [
               { content: "Recognition/Visibility", bold: true },
+              { content: "Social Media Recognition", indent: 1 },
               { content: "Photographs of your Participation", indent: 1 },
             ],
           },
@@ -4190,7 +4192,6 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
       id: "platinum-sponsor",
       title: "Platinum Sponsorship",
       cost: 15000,
-      slotsPerEvent: 1,
       sponsorPasses: 4,
       requiresAttendeeInfo: true,
       perks: [
@@ -4259,7 +4260,6 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         id: "gold-sponsor",
         title: "Gold Sponsorship",
         cost: 5000,
-        slotsPerEvent: 3,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
         perks: [
@@ -4376,6 +4376,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         title: "Lanyard Sponsorship",
         cost: 3000,
         slotsPerEvent: 1,
+        isSoldOut: true,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
         perks: [
@@ -4473,6 +4474,43 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           },
         ],
         colour: "#966919",
+        showRemaining: false,
+      },
+      {
+        id: "small-business-sponsor",
+        title: "Small Business Sponsorship",
+        cost: 1250,
+        requiresAttendeeInfo: true,
+        sponsorPasses: 2,
+        perks: [
+          {
+            formatted: [
+              { content: "Event Access: (2) VIP Attendee Passes", bold: true },
+              {
+                content:
+                  "Additional Sponsor Passes can be purchased for $295 each",
+                indent: 1,
+              },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Logo Branding: Conference Materials", bold: true },
+              { content: "Event Website", indent: 1 },
+              { content: "Digital Agenda & Printed Program", indent: 1 },
+              { content: "Conference Marketing Emails", indent: 1 },
+            ],
+          },
+          {
+            formatted: [
+              { content: "Recognition/Visibility", bold: true },
+              { content: "Social Media Recognition", indent: 1 },
+              { content: "Photographs of your Participation", indent: 1 },
+            ],
+          },
+        ],
+        colour: "#40E0D0",
+        textColour: "text-slate-900",
         showRemaining: false,
       },
       {
