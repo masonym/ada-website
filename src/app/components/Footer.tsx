@@ -1,10 +1,14 @@
 import { FOOTER_CONTACT_INFO, FOOTER_LINKS, SOCIALS } from '@/constants'
+import { getUpcomingEventLinks } from '@/lib/events'
 import { getCdnPath } from '@/utils/image'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
 const Footer = () => {
+  // Same source as the header dropdown, so the two never disagree.
+  const upcomingEvents = getUpcomingEventLinks();
+
   return (
     <footer className="flexCenter mb-12 mt-12">
       <div className="padding-container max-container flex w-full flex-col gap-14">
@@ -32,6 +36,17 @@ const Footer = () => {
               </FooterColumn>
             ))}
 
+            {upcomingEvents.length > 0 && (
+              <FooterColumn title="Upcoming Events">
+                <ul className="regular-14 flex flex-col gap-4 text-gray-30">
+                  {upcomingEvents.map((event) => (
+                    <Link href={`/events/${event.slug}`} key={event.id}>
+                      {event.title}
+                    </Link>
+                  ))}
+                </ul>
+              </FooterColumn>
+            )}
 
             <div className="flex flex-col gap-5">
               <FooterColumn title={FOOTER_CONTACT_INFO.title}>
