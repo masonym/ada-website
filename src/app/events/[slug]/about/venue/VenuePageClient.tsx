@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { getCdnPath } from '@/utils/image';
 import { Event } from '@/types/events';
+import VenueInfoSection from '@/app/components/VenueInfoSection';
 
 /**
  * Location & parking. Client-side only for the directions accordion - the event
@@ -28,20 +29,31 @@ const VenuePageClient = ({ event }: { event: Event }) => {
                 Event Location & Parking
             </h2>
 
-            <div className="mb-2 flex flex-col items-center text-slate-700">
-                <h3 className="text-2xl font-bold mb-4">Address</h3>
-                <p className="text-lg text-center" dangerouslySetInnerHTML={{__html: event.locationAddress}}></p>
-            </div>
-            <div className="mt-6 flex justify-center">
-                <Image
-                    src={getCdnPath(event.locationImage)}
-                    className="rounded-lg mb-4"
-                    alt="Location Map"
-                    width={1000}
-                    height={400}
-                    priority={true}
+            {/* Events with venueDetails get the full venue card (photo, contact, description);
+                everything else keeps the original address + image header. */}
+            {event.venueDetails ? (
+                <VenueInfoSection
+                    venue={{ image: event.locationImage, ...event.venueDetails }}
+                    className="max-w-5xl mx-auto mb-10"
                 />
-            </div>
+            ) : (
+                <>
+                    <div className="mb-2 flex flex-col items-center text-slate-700">
+                        <h3 className="text-2xl font-bold mb-4">Address</h3>
+                        <p className="text-lg text-center" dangerouslySetInnerHTML={{__html: event.locationAddress}}></p>
+                    </div>
+                    <div className="mt-6 flex justify-center">
+                        <Image
+                            src={getCdnPath(event.locationImage)}
+                            className="rounded-lg mb-4"
+                            alt="Location Map"
+                            width={1000}
+                            height={400}
+                            priority={true}
+                        />
+                    </div>
+                </>
+            )}
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 lg:gap-20">
 

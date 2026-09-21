@@ -125,6 +125,30 @@ export interface EventBadge {
     color: 'green' | 'blue' | 'red' | 'yellow';
 }
 
+/**
+ * Venue "business card" shown at the top of the venue page: photo alongside the
+ * name/address/phone/website, with an optional note and a description below.
+ * Optional - events without it keep the plain address + image header.
+ */
+export interface VenueDetails {
+    name: string;
+    /** Street line, e.g. "300 First Street SE" */
+    address: string;
+    /** City/state/zip line, e.g. "Washington, DC 20003" */
+    addressLine2?: string;
+    phone?: string;
+    website?: {
+        href: string;
+        label: string;
+    };
+    /** Short callout under the contact block (e.g. parking guidance). Supports HTML. */
+    note?: string;
+    /** Longer "about the venue" copy below the contact block. Supports HTML. */
+    description?: string;
+    /** Venue photo. Falls back to the event's locationImage. */
+    image?: string;
+}
+
 export interface Event {
     id: number;
     title: string;
@@ -143,6 +167,7 @@ export interface Event {
     locationImage: string;
     locationAddress: string;
     venueName?: string;
+    venueDetails?: VenueDetails;
     testimonials?: EventTestimonial[];
     /** If set, pull testimonials from another event's id instead of this event */
     testimonialsFromEventId?: number;

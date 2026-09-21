@@ -2819,6 +2819,18 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
     locationImage: "locations/capitol_hill_club.webp",
     locationAddress: "300 First Street SE, Washington, DC 20003",
     venueName: "Capitol Hill Club",
+    venueDetails: {
+      name: "Capitol Hill Club",
+      address: "300 First Street SE",
+      addressLine2: "Washington, DC 20003",
+      phone: "(202) 484-4590",
+      website: {
+        href: "https://capitolhillclub.org",
+        label: "capitolhillclub.org",
+      },
+      note: "For all guests, limited metered and zoned parking is available on nearby streets.",
+      description: `The National Republican Club of Capitol Hill, also known as the Capitol Hill Club, is a private five-story clubhouse with 2 restaurants and 14 meeting rooms. From its inception, members of the Capitol Hill Club have included the Nation's most influential people &ndash; Presidents and Vice Presidents, GOP Members of Congress, Governors, and National Leaders of Business &amp; Industry.`,
+    },
     placeID: "ChIJV5Xuliu4t4kRyLi3Llx3n8k",
     password: "DIUWASHINGTON2026",
     eventShorthand: "2026DIU",
