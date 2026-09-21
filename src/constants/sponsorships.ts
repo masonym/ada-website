@@ -3692,7 +3692,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           email: "csills@americandefensealliance.org",
         },
         title: "Major Panel Sponsorship: Navy Shipbuilding & Fleet Readiness",
-        cost: 4000,
+        cost: 5000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -3723,6 +3723,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               {
                 content:
                   "Moderate the Panel on Navy Shipbuilding & Fleet Readiness",
+                indent: 1,
+              },
+              {
+                content:
+                  "Provide an Introduction/Capabilities Brief on your Company or Organization as the Panel Sponsor",
                 indent: 1,
               },
             ],
@@ -3779,7 +3784,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           email: "csills@americandefensealliance.org",
         },
         title: "Major Panel Sponsorship: How to do Business with the Primes",
-        cost: 4000,
+        cost: 5000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -3810,6 +3815,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               {
                 content:
                   "Moderate the Panel on How to do Business with the Primes",
+                indent: 1,
+              },
+              {
+                content:
+                  "Provide an Introduction/Capabilities Brief on your Company or Organization as the Panel Sponsor",
                 indent: 1,
               },
             ],
@@ -3866,7 +3876,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           email: "csills@americandefensealliance.org",
         },
         title: "Major Panel Sponsorship: Advanced Battlespace Technologies",
-        cost: 4000,
+        cost: 5000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -3897,6 +3907,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               {
                 content:
                   "Moderate the Panel on Advanced Battlespace Technologies",
+                indent: 1,
+              },
+              {
+                content:
+                  "Provide an Introduction/Capabilities Brief on your Company or Organization as the Panel Sponsor",
                 indent: 1,
               },
             ],
@@ -3953,7 +3968,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           email: "csills@americandefensealliance.org",
         },
         title: "Major Panel Sponsorship: Military Base Construction & Energy",
-        cost: 4000,
+        cost: 5000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -3984,6 +3999,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               {
                 content:
                   "Moderate the Panel on Military Base Construction & Energy",
+                indent: 1,
+              },
+              {
+                content:
+                  "Provide an Introduction/Capabilities Brief on your Company or Organization as the Panel Sponsor",
                 indent: 1,
               },
             ],
@@ -4040,7 +4060,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           email: "csills@americandefensealliance.org",
         },
         title: "Major Panel Sponsorship: Securing Indo-Pacific Logistics",
-        cost: 4000,
+        cost: 5000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4071,6 +4091,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               {
                 content:
                   "Moderate the Panel on Securing Indo-Pacific Logistics",
+                indent: 1,
+              },
+              {
+                content:
+                  "Provide an Introduction/Capabilities Brief on your Company or Organization as the Panel Sponsor",
                 indent: 1,
               },
             ],
@@ -4521,7 +4546,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         },
         title:
           "Major Panel Sponsorship: Maritime Industry Revival/Shipbuilding & Fleet Readiness",
-        cost: 4000,
+        cost: 5000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4551,6 +4576,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               {
                 content:
                   "Moderate the Panel on Maritime Industry Revival/Shipbuilding & Fleet Readiness",
+                indent: 1,
+              },
+              {
+                content:
+                  "Provide an Introduction/Capabilities Brief on your Company or Organization as the Panel Sponsor",
                 indent: 1,
               },
             ],
@@ -4588,7 +4618,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         },
         title:
           "Major Panel Sponsorship: Air Force & Space Force Challenges, Requirements & Priorities",
-        cost: 4000,
+        cost: 5000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4618,6 +4648,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               {
                 content:
                   "Moderate the Panel on Air Force & Space Force Challenges, Requirements & Priorities",
+                indent: 1,
+              },
+              {
+                content:
+                  "Provide an Introduction/Capabilities Brief on your Company or Organization as the Panel Sponsor",
                 indent: 1,
               },
             ],
@@ -4655,7 +4690,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         },
         title:
           "Major Panel Sponsorship: Indo-Pacific SITREP – Airfield & Logistics Hub Reconstruction/Expansion",
-        cost: 4000,
+        cost: 5000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4685,6 +4720,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               {
                 content:
                   "Moderate the Panel on Indo-Pacific SITREP – Airfield & Logistics Hub Reconstruction/Expansion",
+                indent: 1,
+              },
+              {
+                content:
+                  "Provide an Introduction/Capabilities Brief on your Company or Organization as the Panel Sponsor",
                 indent: 1,
               },
             ],
@@ -4722,7 +4762,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         },
         title:
           "Major Panel Sponsorship: Advanced Battlespace Technologies – C6ISR, AI, Quantum, 3D Printing, UAS & C-UAS",
-        cost: 4000,
+        cost: 5000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4752,6 +4792,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               {
                 content:
                   "Moderate the Panel on Advanced Battlespace Technologies – C6ISR, AI, Quantum, 3D Printing, UAS & C-UAS",
+                indent: 1,
+              },
+              {
+                content:
+                  "Provide an Introduction/Capabilities Brief on your Company or Organization as the Panel Sponsor",
                 indent: 1,
               },
             ],
@@ -4789,7 +4834,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         },
         title:
           "Major Panel Sponsorship: Investment Opportunities in Defense Manufacturing – the New Arsenal of Democracy",
-        cost: 4000,
+        cost: 5000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4819,6 +4864,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               {
                 content:
                   "Moderate the Panel on Investment Opportunities in Defense Manufacturing – the New Arsenal of Democracy",
+                indent: 1,
+              },
+              {
+                content:
+                  "Provide an Introduction/Capabilities Brief on your Company or Organization as the Panel Sponsor",
                 indent: 1,
               },
             ],
@@ -4856,7 +4906,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         },
         title:
           "Major Panel Sponsorship: Installation Energy Supply/Microgrid, Nuclear & Geothermal Solutions",
-        cost: 4000,
+        cost: 5000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4886,6 +4936,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               {
                 content:
                   "Moderate the Panel on Installation Energy Supply/Microgrid, Nuclear & Geothermal Solutions",
+                indent: 1,
+              },
+              {
+                content:
+                  "Provide an Introduction/Capabilities Brief on your Company or Organization as the Panel Sponsor",
                 indent: 1,
               },
             ],
@@ -4923,7 +4978,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         },
         title:
           "Major Panel Sponsorship: GovCon Toolkit - OTA's, SBIR's/STTR's, GWAC's, IDIQ's & MACC's",
-        cost: 4000,
+        cost: 5000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -4953,6 +5008,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               {
                 content:
                   "Moderate the Panel on GovCon Toolkit - OTA's, SBIR's/STTR's, GWAC's, IDIQ's & MACC's",
+                indent: 1,
+              },
+              {
+                content:
+                  "Provide an Introduction/Capabilities Brief on your Company or Organization as the Panel Sponsor",
                 indent: 1,
               },
             ],
@@ -4990,7 +5050,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         },
         title:
           "Major Panel Sponsorship: Administration Acquisition Reform - FAR/DFAR & 8(a) Changes",
-        cost: 4000,
+        cost: 5000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -5020,6 +5080,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               {
                 content:
                   "Moderate the Panel on Administration Acquisition Reform - FAR/DFAR & 8(a) Changes",
+                indent: 1,
+              },
+              {
+                content:
+                  "Provide an Introduction/Capabilities Brief on your Company or Organization as the Panel Sponsor",
                 indent: 1,
               },
             ],
@@ -5056,7 +5121,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           email: "csills@americandefensealliance.org",
         },
         title: "Major Panel Sponsorship: Cybersecurity/CMMC Update",
-        cost: 4000,
+        cost: 5000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
         sponsorPasses: 2,
@@ -5085,6 +5150,11 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Speaking Opportunity", bold: true },
               {
                 content: "Moderate the Panel on Cybersecurity/CMMC",
+                indent: 1,
+              },
+              {
+                content:
+                  "Provide an Introduction/Capabilities Brief on your Company or Organization as the Panel Sponsor",
                 indent: 1,
               },
             ],

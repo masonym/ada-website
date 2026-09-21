@@ -213,8 +213,11 @@ const SponsorOptions = ({
                 {groupName}
               </h2>
               <p className="text-[18px] font-gotham text-slate-600 text-center mb-6 max-w-4xl mx-auto">
-                Each panel has a single Sponsor which may contribute the
+                Each panel has a single Sponsor which may provide the
                 Moderator for the panel discussion during the General Session.
+                The Moderator (or a Sponsor Representative if not providing the
+                Moderator) can give an Introduction/Capabilities Brief on the
+                Sponsoring Company or Organization.
               </p>
               <div className="flex flex-col gap-4 w-full">
                 {groupedSponsorships[groupName].map((item) => (
