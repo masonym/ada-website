@@ -26,9 +26,9 @@ const Footer = () => {
           <div className="flex flex-wrap gap-10 sm:justify-around md:flex-1">
             {FOOTER_LINKS.map((columns, index) => (
               <FooterColumn key={index} title={columns.title}>
-                <ul className="regular-14 flex flex-col gap-4 text-gray-30">
+                <ul className="medium-14 flex flex-col gap-4 text-blue-70">
                   {columns.links.map((link) => (
-                    <Link href={link.href} key={link.label}>
+                    <Link href={link.href} key={link.label} className="hover:text-lightBlue-400 transition-colors">
                       {link.label}
                     </Link>
                   ))}
@@ -38,9 +38,9 @@ const Footer = () => {
 
             {upcomingEvents.length > 0 && (
               <FooterColumn title="Upcoming Events">
-                <ul className="regular-14 flex flex-col gap-4 text-gray-30">
+                <ul className="medium-14 flex flex-col gap-4 text-blue-70">
                   {upcomingEvents.map((event) => (
-                    <Link href={`/events/${event.slug}`} key={event.id}>
+                    <Link href={`/events/${event.slug}`} key={event.id} className="hover:text-lightBlue-400 transition-colors">
                       {event.title}
                     </Link>
                   ))}
