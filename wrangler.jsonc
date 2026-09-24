@@ -43,5 +43,39 @@
       "tag": "v1",
       "new_sqlite_classes": ["DOQueueHandler"]
     }
-  ]
+  ],
+  // Branch previews: the `ada-website-preview` Worker, with Vercel's Preview
+  // variables (Stripe test mode, outbound email off) and its own cache bucket so
+  // test data never lands in production's. Bindings aren't inherited from the
+  // top level, so each is repeated here. See docs/CLOUDFLARE-DEPLOY.md.
+  "env": {
+    "preview": {
+      "name": "ada-website-preview",
+      "services": [
+        {
+          "binding": "WORKER_SELF_REFERENCE",
+          "service": "ada-website-preview"
+        }
+      ],
+      "images": {
+        "binding": "IMAGES"
+      },
+      // Create once with: npx wrangler r2 bucket create ada-website-preview-cache
+      // Shared by every branch - entries are keyed by build ID, so they can't collide.
+      "r2_buckets": [
+        {
+          "binding": "NEXT_INC_CACHE_R2_BUCKET",
+          "bucket_name": "ada-website-preview-cache"
+        }
+      ],
+      "durable_objects": {
+        "bindings": [
+          {
+            "name": "NEXT_CACHE_DO_QUEUE",
+            "class_name": "DOQueueHandler"
+          }
+        ]
+      }
+    }
+  }
 }

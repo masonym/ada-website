@@ -1,6 +1,9 @@
 # Cloudflare Workers deploy
 
-The site builds with [OpenNext](https://opennext.js.org/cloudflare) and runs on the `ada-website` Worker. Production deploys come from `.github/workflows/deploy-cloudflare.yml`. It runs after CI passes on `main`, or when started by hand from the Actions tab.
+The site builds with [OpenNext](https://opennext.js.org/cloudflare) and runs on the `ada-website` Worker. `.github/workflows/deploy-cloudflare.yml` runs after CI passes on a pushed commit:
+
+- **`main`** deploys production (`ada-website`). You can also start it by hand from the Actions tab.
+- **Any other branch** uploads a version of `ada-website-preview` at its own URL, `https://<branch>-ada-website-preview.nosamleitch.workers.dev`. The link appears as a *Cloudflare preview* status on the commit and in the run summary. Production traffic is never affected.
 
 Deploy only from CI, never from your own machine. The OpenNext build copies any `.env` / `.env.local` it finds into the Worker as a fallback, and Next writes `NEXT_PUBLIC_*` values into the browser code from whichever machine runs the build. A deploy from your machine would ship your local dev values. `npm run cf:preview` is still fine for trying it locally.
 
@@ -51,9 +54,24 @@ Use Node 24 (`nvm use 24`). Wrangler won't run on Node 20.
 
 Until all three secrets are set, the workflow skips itself and leaves a notice. Having it on `main` early is harmless.
 
+## Previews
+
+Previews run on a separate Worker, `ada-website-preview`, with its own cache bucket (`ada-website-preview-cache`, shared by all branches; entries are keyed by build ID) and its own secret, `CLOUDFLARE_PREVIEW_ENV_FILE`. That secret holds Vercel's *Preview* variables: Stripe **test** keys and `DISABLE_OUTBOUND_EMAILS=true`. Registrations on a preview never charge a real card or email a real inbox. They do still write to the Google Sheets and DynamoDB tables named in that file.
+
+Set it up the same way as production:
+```
+npx vercel env pull /mnt/c/Users/Mason/ada-preview.env --environment=preview --yes
+# remove VERCEL_*, TURBO_*, NX_DAEMON, BLOB_READ_WRITE_TOKEN, MY_PASSWORD;
+# fill in the [SENSITIVE] placeholders
+gh secret set CLOUDFLARE_PREVIEW_ENV_FILE < /mnt/c/Users/Mason/ada-preview.env && rm /mnt/c/Users/Mason/ada-preview.env
+```
+Until it is set, preview runs skip themselves with a notice. The first preview run deploys the Worker outright, because a version upload can't create it. The bare `ada-website-preview.nosamleitch.workers.dev` URL serves that first branch; use the per-branch URLs.
+
+The Stripe test-mode webhook still points wherever it was set up in Stripe, so a preview registration's webhook goes there, not to the preview.
+
 ## Changing a variable
 
-Update `CLOUDFLARE_ENV_FILE` (`gh secret set` again), then re-run the deploy. That one secret is the only source of truth: the build reads it, and the deploy uploads it as the Worker's secrets. Uploads only add or overwrite, so a variable you delete from the file stays on the Worker until you run `npx wrangler secret delete NAME`.
+Update `CLOUDFLARE_ENV_FILE` or `CLOUDFLARE_PREVIEW_ENV_FILE` (`gh secret set` again), then re-run the deploy or push to the branch. Each secret is the only source of truth for its Worker: the build reads it, and the deploy uploads it as the Worker's secrets. Uploads only add or overwrite, so a variable you delete from the file stays on the Worker until you run `npx wrangler secret delete NAME` (add `--env preview` for previews).
 
 ## Caching
 

@@ -1,38 +1,49 @@
 name: Deploy to Cloudflare
 
-# Production deploys to the `ada-website` Worker. Setup: docs/CLOUDFLARE-DEPLOY.md
+# Setup and operations: docs/CLOUDFLARE-DEPLOY.md
 #
-# Runs only after CI has passed on main, so a type error or a failing offline
-# test never reaches production.
+#   main           -> deploys the `ada-website` Worker (production)
+#   any other branch -> uploads a version of `ada-website-preview` under a
+#                     per-branch alias URL, posted as a commit status
+#
+# Runs only after CI has passed on the pushed commit, so a type error or a
+# failing offline test never reaches production or a preview.
 #
 # Builds here rather than on a laptop on purpose. OpenNext bakes any .env /
 # .env.local it finds into the worker as a fallback for missing secrets, and Next
 # inlines NEXT_PUBLIC_* from whatever machine runs the build - a local deploy
 # would ship your dev values. This runner has no .env at all.
 #
-# Every variable comes from one repository secret, CLOUDFLARE_ENV_FILE (the
-# production .env, verbatim). The build reads it through a dotenv preload - it
-# needs the server vars too, since lib/stripe, lib/email, lib/google-sheets and
-# lib/aws/dynamodb call getServerEnv() at import time - and the deploy uploads
-# the same file as the Worker's secrets. One place to change a value.
+# Each target's variables come from one repository secret holding the whole
+# .env verbatim: CLOUDFLARE_ENV_FILE (production) or CLOUDFLARE_PREVIEW_ENV_FILE
+# (previews - Stripe test mode, outbound email off). The build reads it through a
+# dotenv preload - it needs the server vars too, since lib/stripe, lib/email,
+# lib/google-sheets and lib/aws/dynamodb call getServerEnv() at import time - and
+# the deploy uploads the same file as the Worker's secrets. One place to change
+# a value.
 
 on:
   workflow_run:
     workflows: [CI]
     types: [completed]
-    branches: [main]
   workflow_dispatch:
 
 concurrency:
-  # Never cancel a deploy halfway; queue the next one behind it instead.
-  group: deploy-cloudflare
-  cancel-in-progress: false
+  # One lane per branch. A newer push to a preview branch supersedes the older
+  # upload; production deploys are never cancelled halfway, only queued.
+  group: deploy-cloudflare-${{ github.event.workflow_run.head_branch || github.ref_name }}
+  cancel-in-progress: ${{ (github.event.workflow_run.head_branch || github.ref_name) != 'main' }}
+
+permissions:
+  contents: read
+  statuses: write # the preview URL is posted as a commit status
 
 jobs:
   deploy:
     name: Build and deploy
-    # workflow_run fires on every CI completion, including failures and PRs.
-    # Manual runs are restricted to main so a branch can't be pushed to production.
+    # workflow_run fires on every CI completion, including failures and PRs
+    # (fork PRs included - never build those with secrets). Manual runs are
+    # restricted to main so a branch can't be pushed to production.
     if: >-
       (github.event_name == 'workflow_run' &&
        github.event.workflow_run.conclusion == 'success' &&
@@ -41,17 +52,23 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
+    env:
+      BRANCH: ${{ github.event.workflow_run.head_branch || github.ref_name }}
+      SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+      IS_PRODUCTION: ${{ (github.event.workflow_run.head_branch || github.ref_name) == 'main' }}
+
     steps:
-      # Lets this workflow sit on main before the Cloudflare side is set up,
-      # without a red X on every push.
+      # Lets this workflow run before a target's secrets exist, without a red X
+      # on every push.
       - name: Check Cloudflare secrets are configured
         id: configured
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ENV_FILE: ${{ secrets.CLOUDFLARE_ENV_FILE }}
+          TARGET_ENV_FILE: ${{ (github.event.workflow_run.head_branch || github.ref_name) == 'main' && secrets.CLOUDFLARE_ENV_FILE || secrets.CLOUDFLARE_PREVIEW_ENV_FILE }}
         run: |
-          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ENV_FILE" ]; then
-            echo "::notice::Cloudflare deploy skipped - CLOUDFLARE_API_TOKEN / CLOUDFLARE_ENV_FILE not set. See docs/CLOUDFLARE-DEPLOY.md."
+          if [ "$IS_PRODUCTION" = "true" ]; then name=CLOUDFLARE_ENV_FILE; else name=CLOUDFLARE_PREVIEW_ENV_FILE; fi
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$TARGET_ENV_FILE" ]; then
+            echo "::notice::Cloudflare deploy skipped - CLOUDFLARE_API_TOKEN / $name not set. See docs/CLOUDFLARE-DEPLOY.md."
             echo "ok=false" >> "$GITHUB_OUTPUT"
           else
             echo "ok=true" >> "$GITHUB_OUTPUT"
@@ -60,9 +77,10 @@ jobs:
       - uses: actions/checkout@v4
         if: steps.configured.outputs.ok == 'true'
         with:
-          # workflow_run checks out main's HEAD by default, which may be newer
-          # than the commit CI actually passed. Deploy exactly that commit.
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          # workflow_run checks out the default branch's HEAD by default, which
+          # is the wrong code for a preview and may be newer than what CI passed
+          # on main. Deploy exactly the commit CI passed.
+          ref: ${{ env.SHA }}
 
       - uses: actions/setup-node@v4
         if: steps.configured.outputs.ok == 'true'
@@ -76,34 +94,75 @@ jobs:
 
       # Outside the checkout, and deliberately not named .env*: OpenNext would
       # bundle it into the worker if it could see it.
-      - name: Write production env file
+      - name: Write env file
         if: steps.configured.outputs.ok == 'true'
         env:
-          CLOUDFLARE_ENV_FILE: ${{ secrets.CLOUDFLARE_ENV_FILE }}
+          TARGET_ENV_FILE: ${{ (github.event.workflow_run.head_branch || github.ref_name) == 'main' && secrets.CLOUDFLARE_ENV_FILE || secrets.CLOUDFLARE_PREVIEW_ENV_FILE }}
         run: |
           umask 077
-          printf '%s\n' "$CLOUDFLARE_ENV_FILE" > "$RUNNER_TEMP/production.env"
+          printf '%s\n' "$TARGET_ENV_FILE" > "$RUNNER_TEMP/target.env"
 
       - name: Build
         if: steps.configured.outputs.ok == 'true'
         env:
           # Preloaded into every node process, including the `next build` that
-          # OpenNext spawns, so process.env matches production during the build.
+          # OpenNext spawns, so process.env matches the target during the build.
           NODE_OPTIONS: --require dotenv/config
-          DOTENV_CONFIG_PATH: ${{ runner.temp }}/production.env
+          DOTENV_CONFIG_PATH: ${{ runner.temp }}/target.env
           DOTENV_CONFIG_QUIET: 'true'
         run: npx opennextjs-cloudflare build
 
-      - name: Deploy
-        if: steps.configured.outputs.ok == 'true'
+      # --secrets-file is passed through to wrangler and uploaded with the
+      # version. Additive: a variable removed from the file stays on the Worker
+      # until deleted with `wrangler secret delete`.
+      - name: Deploy production
+        if: steps.configured.outputs.ok == 'true' && env.IS_PRODUCTION == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        # --secrets-file is passed through to `wrangler deploy` and uploaded with
-        # the version. Additive: a variable removed from the file stays on the
-        # Worker until deleted with `wrangler secret delete`.
-        run: npx opennextjs-cloudflare deploy --secrets-file "$RUNNER_TEMP/production.env"
+        run: npx opennextjs-cloudflare deploy --secrets-file "$RUNNER_TEMP/target.env"
+
+      - name: Upload preview
+        if: steps.configured.outputs.ok == 'true' && env.IS_PRODUCTION != 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+
+          # Alias becomes a DNS label: <alias>-ada-website-preview.<sub>.workers.dev.
+          # Lowercase alphanumerics and dashes, starting with a letter, and short
+          # enough that the whole label stays within 63 characters.
+          alias=$(printf '%s' "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+//')
+          case "$alias" in [a-z]*) ;; *) alias="br-$alias" ;; esac
+          alias=$(printf '%s' "$alias" | cut -c1-40 | sed -E 's/-+$//')
+
+          # A version upload can't create the Worker or apply its Durable Object
+          # migration, so the very first preview deploys the Worker outright.
+          if ! npx wrangler deployments list --env preview >/dev/null 2>&1; then
+            echo "Preview Worker doesn't exist yet - deploying it once."
+            npx opennextjs-cloudflare deploy --env preview --secrets-file "$RUNNER_TEMP/target.env"
+          fi
+
+          npx opennextjs-cloudflare upload --env preview \
+            --secrets-file "$RUNNER_TEMP/target.env" \
+            --preview-alias "$alias" \
+            --message "$BRANCH @ ${SHA:0:7}" 2>&1 | tee "$RUNNER_TEMP/upload.log"
+
+          url=$(grep -oE 'https://[a-z0-9-]+\.[a-z0-9-]+\.workers\.dev' "$RUNNER_TEMP/upload.log" | grep -- "^https://$alias-" | head -1)
+          if [ -z "$url" ]; then
+            url=$(grep -oE 'https://[a-z0-9-]+\.[a-z0-9-]+\.workers\.dev' "$RUNNER_TEMP/upload.log" | tail -1)
+          fi
+          echo "Preview: $url"
+          echo "### Preview for \`$BRANCH\`: $url" >> "$GITHUB_STEP_SUMMARY"
+
+          if [ -n "$url" ]; then
+            gh api "repos/$GITHUB_REPOSITORY/statuses/$SHA" \
+              -f state=success -f context="Cloudflare preview" \
+              -f target_url="$url" -f description="Preview ready" >/dev/null
+          fi
 
       - name: Remove env file
         if: always()
-        run: rm -f "$RUNNER_TEMP/production.env"
+        run: rm -f "$RUNNER_TEMP/target.env" "$RUNNER_TEMP/upload.log"
