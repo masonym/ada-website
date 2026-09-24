@@ -1,0 +1,109 @@
+name: Deploy to Cloudflare
+
+# Production deploys to the `ada-website` Worker. Setup: docs/CLOUDFLARE-DEPLOY.md
+#
+# Runs only after CI has passed on main, so a type error or a failing offline
+# test never reaches production.
+#
+# Builds here rather than on a laptop on purpose. OpenNext bakes any .env /
+# .env.local it finds into the worker as a fallback for missing secrets, and Next
+# inlines NEXT_PUBLIC_* from whatever machine runs the build - a local deploy
+# would ship your dev values. This runner has no .env at all.
+#
+# Every variable comes from one repository secret, CLOUDFLARE_ENV_FILE (the
+# production .env, verbatim). The build reads it through a dotenv preload - it
+# needs the server vars too, since lib/stripe, lib/email, lib/google-sheets and
+# lib/aws/dynamodb call getServerEnv() at import time - and the deploy uploads
+# the same file as the Worker's secrets. One place to change a value.
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  # Never cancel a deploy halfway; queue the next one behind it instead.
+  group: deploy-cloudflare
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and deploy
+    # workflow_run fires on every CI completion, including failures and PRs.
+    # Manual runs are restricted to main so a branch can't be pushed to production.
+    if: >-
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push') ||
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      # Lets this workflow sit on main before the Cloudflare side is set up,
+      # without a red X on every push.
+      - name: Check Cloudflare secrets are configured
+        id: configured
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ENV_FILE: ${{ secrets.CLOUDFLARE_ENV_FILE }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ENV_FILE" ]; then
+            echo "::notice::Cloudflare deploy skipped - CLOUDFLARE_API_TOKEN / CLOUDFLARE_ENV_FILE not set. See docs/CLOUDFLARE-DEPLOY.md."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.configured.outputs.ok == 'true'
+        with:
+          # workflow_run checks out main's HEAD by default, which may be newer
+          # than the commit CI actually passed. Deploy exactly that commit.
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - uses: actions/setup-node@v4
+        if: steps.configured.outputs.ok == 'true'
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        if: steps.configured.outputs.ok == 'true'
+        run: npm ci
+
+      # Outside the checkout, and deliberately not named .env*: OpenNext would
+      # bundle it into the worker if it could see it.
+      - name: Write production env file
+        if: steps.configured.outputs.ok == 'true'
+        env:
+          CLOUDFLARE_ENV_FILE: ${{ secrets.CLOUDFLARE_ENV_FILE }}
+        run: |
+          umask 077
+          printf '%s\n' "$CLOUDFLARE_ENV_FILE" > "$RUNNER_TEMP/production.env"
+
+      - name: Build
+        if: steps.configured.outputs.ok == 'true'
+        env:
+          # Preloaded into every node process, including the `next build` that
+          # OpenNext spawns, so process.env matches production during the build.
+          NODE_OPTIONS: --require dotenv/config
+          DOTENV_CONFIG_PATH: ${{ runner.temp }}/production.env
+          DOTENV_CONFIG_QUIET: 'true'
+        run: npx opennextjs-cloudflare build
+
+      - name: Deploy
+        if: steps.configured.outputs.ok == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        # --secrets-file is passed through to `wrangler deploy` and uploaded with
+        # the version. Additive: a variable removed from the file stays on the
+        # Worker until deleted with `wrangler secret delete`.
+        run: npx opennextjs-cloudflare deploy --secrets-file "$RUNNER_TEMP/production.env"
+
+      - name: Remove env file
+        if: always()
+        run: rm -f "$RUNNER_TEMP/production.env"

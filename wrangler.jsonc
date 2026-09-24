@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
-  "name": "ada-website-staging",
+  "name": "ada-website",
   "compatibility_date": "2026-04-15",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
@@ -11,11 +11,15 @@
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
-      "service": "ada-website-staging"
+      "service": "ada-website"
     }
   ],
   "images": {
     "binding": "IMAGES"
+  },
+  // Workers Logs: console output from route handlers, searchable in the dashboard.
+  "observability": {
+    "enabled": true
   },
   // Incremental (ISR / fetch) cache - see open-next.config.ts.
   // Create once with: npx wrangler r2 bucket create ada-website-cache

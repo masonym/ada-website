@@ -30,7 +30,7 @@ The original ask was a push-to-market rebuild: replace a no-code prototype with 
 - **Styling**: Tailwind CSS
 - **Payments**: Stripe (Checkout, webhooks, promo codes)
 - **Data**: Sanity CMS, DynamoDB, Google Sheets API (as an attendee-data store), typed TypeScript data files
-- **Infra**: AWS S3 + CloudFront for asset delivery, Vercel for hosting, with an OpenNext/Cloudflare Workers build path for staging
+- **Infra**: AWS S3 + CloudFront for asset delivery, Vercel for hosting, migrating to Cloudflare Workers via OpenNext (see docs/CLOUDFLARE-DEPLOY.md)
 - **Testing**: Playwright (registration flow, config, and preflight smoke tests run against real Stripe/Sheets test accounts)
 - **Email**: Resend / Nodemailer for confirmations and admin notifications
 
