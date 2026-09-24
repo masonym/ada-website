@@ -2,9 +2,13 @@ name: Deploy to Cloudflare
 
 # Setup and operations: docs/CLOUDFLARE-DEPLOY.md
 #
-#   main           -> deploys the `ada-website` Worker (production)
-#   any other branch -> uploads a version of `ada-website-preview` under a
-#                     per-branch alias URL, posted as a commit status
+#   main             -> deploys the `ada-website` Worker (production)
+#   any other branch -> deploys the shared `ada-website-preview` Worker; the
+#                       newest push wins. Its URL is posted as a commit status.
+#
+# One shared preview rather than a URL per branch: Cloudflare doesn't generate
+# version/alias URLs for Workers that implement a Durable Object, and the
+# revalidation queue (DOQueueHandler) is one.
 #
 # Runs only after CI has passed on the pushed commit, so a type error or a
 # failing offline test never reaches production or a preview.
@@ -29,9 +33,10 @@ on:
   workflow_dispatch:
 
 concurrency:
-  # One lane per branch. A newer push to a preview branch supersedes the older
-  # upload; production deploys are never cancelled halfway, only queued.
-  group: deploy-cloudflare-${{ github.event.workflow_run.head_branch || github.ref_name }}
+  # Two lanes: production and the shared preview. Production deploys are never
+  # cancelled halfway, only queued; a newer preview push supersedes an older one
+  # from any branch, since they'd overwrite each other anyway.
+  group: deploy-cloudflare-${{ (github.event.workflow_run.head_branch || github.ref_name) == 'main' && 'production' || 'preview' }}
   cancel-in-progress: ${{ (github.event.workflow_run.head_branch || github.ref_name) != 'main' }}
 
 permissions:
@@ -122,52 +127,24 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: npx opennextjs-cloudflare deploy --secrets-file "$RUNNER_TEMP/target.env"
 
-      - name: Upload preview
+      - name: Deploy preview
         if: steps.configured.outputs.ok == 'true' && env.IS_PRODUCTION != 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           GH_TOKEN: ${{ github.token }}
+          PREVIEW_URL: https://ada-website-preview.nosamleitch.workers.dev
         run: |
-          set -o pipefail
+          # OpenNext re-runs wrangler flags through a shell (spawnSync shell: true)
+          # without quoting them - keep $BRANCH and anything else user-controlled
+          # off this command line.
+          npx opennextjs-cloudflare deploy --env preview --secrets-file "$RUNNER_TEMP/target.env"
 
-          # Alias becomes a DNS label: <alias>-ada-website-preview.<sub>.workers.dev.
-          # Lowercase alphanumerics and dashes, starting with a letter, and short
-          # enough that the whole label stays within 63 characters.
-          alias=$(printf '%s' "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+//')
-          case "$alias" in [a-z]*) ;; *) alias="br-$alias" ;; esac
-          alias=$(printf '%s' "$alias" | cut -c1-40 | sed -E 's/-+$//')
-
-          # A version upload can't create the Worker or apply its Durable Object
-          # migration, so the very first preview deploys the Worker outright.
-          if ! npx wrangler deployments list --env preview >/dev/null 2>&1; then
-            echo "Preview Worker doesn't exist yet - deploying it once."
-            npx opennextjs-cloudflare deploy --env preview --secrets-file "$RUNNER_TEMP/target.env"
-          fi
-
-          # OpenNext re-runs these flags through a shell (spawnSync shell: true)
-          # without quoting them, so every value must be free of spaces and shell
-          # metacharacters: the sanitized alias and a hex SHA, never $BRANCH.
-          npx opennextjs-cloudflare upload --env preview \
-            --secrets-file "$RUNNER_TEMP/target.env" \
-            --preview-alias "$alias" \
-            --tag "${SHA:0:7}" 2>&1 | tee "$RUNNER_TEMP/upload.log"
-
-          # Printed by wrangler only when preview URLs are enabled on the Worker
-          # (`preview_urls` in wrangler.jsonc). `|| true`: no match must not fail
-          # an upload that has already succeeded.
-          url=$(grep -oE "Version Preview Alias URL: https://[^ ]+" "$RUNNER_TEMP/upload.log" | sed 's/.*URL: //' | head -1 || true)
-          if [ -z "$url" ]; then
-            echo "::warning::Version uploaded, but wrangler printed no preview URL - are preview URLs enabled on ada-website-preview?"
-            exit 0
-          fi
-          echo "Preview: $url"
-          echo "### Preview for \`$BRANCH\`: $url" >> "$GITHUB_STEP_SUMMARY"
-
+          echo "### Preview of \`$BRANCH\` (${SHA:0:7}): $PREVIEW_URL" >> "$GITHUB_STEP_SUMMARY"
           gh api "repos/$GITHUB_REPOSITORY/statuses/$SHA" \
             -f state=success -f context="Cloudflare preview" \
-            -f target_url="$url" -f description="Preview ready" >/dev/null
+            -f target_url="$PREVIEW_URL" -f description="Deployed to the shared preview" >/dev/null
 
       - name: Remove env file
         if: always()
-        run: rm -f "$RUNNER_TEMP/target.env" "$RUNNER_TEMP/upload.log"
+        run: rm -f "$RUNNER_TEMP/target.env"

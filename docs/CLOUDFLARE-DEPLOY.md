@@ -3,7 +3,7 @@
 The site builds with [OpenNext](https://opennext.js.org/cloudflare) and runs on the `ada-website` Worker. `.github/workflows/deploy-cloudflare.yml` runs after CI passes on a pushed commit:
 
 - **`main`** deploys production (`ada-website`). You can also start it by hand from the Actions tab.
-- **Any other branch** uploads a version of `ada-website-preview` at its own URL, `https://<branch>-ada-website-preview.nosamleitch.workers.dev`. The link appears as a *Cloudflare preview* status on the commit and in the run summary. Production traffic is never affected.
+- **Any other branch** deploys the shared preview Worker (`ada-website-preview`) at `https://ada-website-preview.nosamleitch.workers.dev`. The newest push from any branch replaces the previous preview. The link appears as a *Cloudflare preview* status on the commit and in the run summary. Production traffic is never affected.
 
 Deploy only from CI, never from your own machine. The OpenNext build copies any `.env` / `.env.local` it finds into the Worker as a fallback, and Next writes `NEXT_PUBLIC_*` values into the browser code from whichever machine runs the build. A deploy from your machine would ship your local dev values. `npm run cf:preview` is still fine for trying it locally.
 
@@ -56,7 +56,7 @@ Until all three secrets are set, the workflow skips itself and leaves a notice. 
 
 ## Previews
 
-Previews run on a separate Worker, `ada-website-preview`, with its own cache bucket (`ada-website-preview-cache`, shared by all branches; entries are keyed by build ID) and its own secret, `CLOUDFLARE_PREVIEW_ENV_FILE`. That secret holds Vercel's *Preview* variables: Stripe **test** keys and `DISABLE_OUTBOUND_EMAILS=true`. Registrations on a preview never charge a real card or email a real inbox. They do still write to the Google Sheets and DynamoDB tables named in that file.
+Previews run on a separate Worker, `ada-website-preview`, with its own cache bucket (`ada-website-preview-cache`) and its own secret, `CLOUDFLARE_PREVIEW_ENV_FILE`. That secret holds Vercel's *Preview* variables: Stripe **test** keys and `DISABLE_OUTBOUND_EMAILS=true`. Registrations on a preview never charge a real card or email a real inbox. They do still write to the Google Sheets and DynamoDB tables named in that file.
 
 Set it up the same way as production:
 ```
@@ -65,7 +65,9 @@ npx vercel env pull /mnt/c/Users/Mason/ada-preview.env --environment=preview --y
 # fill in the [SENSITIVE] placeholders
 gh secret set CLOUDFLARE_PREVIEW_ENV_FILE < /mnt/c/Users/Mason/ada-preview.env && rm /mnt/c/Users/Mason/ada-preview.env
 ```
-Until it is set, preview runs skip themselves with a notice. The first preview run deploys the Worker outright, because a version upload can't create it. The bare `ada-website-preview.nosamleitch.workers.dev` URL serves that first branch; use the per-branch URLs.
+Until it is set, preview runs skip themselves with a notice.
+
+There is one preview URL rather than one per branch. Cloudflare doesn't generate version URLs for Workers that include a Durable Object, and the revalidation queue is one. If two branches are in flight, the last push wins; push again (or re-run its deploy) to bring a branch back.
 
 The Stripe test-mode webhook still points wherever it was set up in Stripe, so a preview registration's webhook goes there, not to the preview.
 
