@@ -29,7 +29,6 @@ export function getServerEnv() {
   return {
     // Email Configuration
     MY_EMAIL: getRequiredEnv('MY_EMAIL', 'My Email Address for Sending'),
-    MY_PASSWORD: getRequiredEnv('MY_PASSWORD', 'My Email Password'),
 
     // iContact API
     ICONTACT_APP_ID: getRequiredEnv('ICONTACT_APP_ID', 'iContact App ID'),

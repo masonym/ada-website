@@ -16,5 +16,28 @@
   ],
   "images": {
     "binding": "IMAGES"
-  }
+  },
+  // Incremental (ISR / fetch) cache - see open-next.config.ts.
+  // Create once with: npx wrangler r2 bucket create ada-website-cache
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "ada-website-cache"
+    }
+  ],
+  // Background revalidation queue - see open-next.config.ts.
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "NEXT_CACHE_DO_QUEUE",
+        "class_name": "DOQueueHandler"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["DOQueueHandler"]
+    }
+  ]
 }

@@ -1,5 +1,3 @@
-import { promises as fs } from 'fs';
-import path from 'path';
 import { EventMetricsConfig } from '@/constants/eventMetrics';
 import { getCdnPath } from '@/utils/image';
 
@@ -299,6 +297,11 @@ function toRoleBreakdown(
   return { breakdown };
 }
 
+/**
+ * The CSVs live only on the CDN (`npm run sync-event-csv`). `public/` is
+ * gitignored, so there is no deployed copy to fall back to - and Workers have no
+ * filesystem to read one from anyway.
+ */
 async function loadCsvFromCdn(csvPath: string): Promise<string | null> {
   const cdnPath = getCdnPath(csvPath);
   if (!cdnPath) return null;
@@ -320,18 +323,8 @@ async function loadCsvFromCdn(csvPath: string): Promise<string | null> {
   }
 }
 
-async function loadCsvFromLocal(csvPath: string): Promise<string | null> {
-  const filePath = path.join(process.cwd(), 'public', csvPath);
-
-  try {
-    return await fs.readFile(filePath, 'utf8');
-  } catch {
-    return null;
-  }
-}
-
 export async function getEventMetricsData(config: EventMetricsConfig): Promise<EventMetricsData | null> {
-  const csvContent = (await loadCsvFromCdn(config.csvPath)) || (await loadCsvFromLocal(config.csvPath));
+  const csvContent = await loadCsvFromCdn(config.csvPath);
   if (!csvContent) return null;
 
   const parsed = parseCsv(csvContent);

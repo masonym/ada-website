@@ -1,7 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
-import Mail from 'nodemailer/lib/mailer';
-
+import { sendEmail } from '@/lib/email';
 import { escapeHtml, escapeHtmlWithBreaks } from '@/lib/html';
 import { createRateLimiter, getClientIdentifier, tooManyRequests } from '@/lib/rate-limit';
 
@@ -16,22 +14,6 @@ const limiter = createRateLimiter({ limit: 5, windowMs: 10 * 60 * 1000 });
 /** Enough for a real enquiry, short of a payload someone is using us to store. */
 const MAX_MESSAGE_LENGTH = 5000;
 const MAX_NAME_LENGTH = 200;
-
-/**
- * The SMTP transport is built once per isolate rather than per request.
- *
- * The route also used to call transport.verify() on every submission, which is a
- * full extra SMTP round-trip to Gmail before the one that sends the mail. A
- * connection problem shows up in sendMail anyway, where it is handled.
- */
-let cachedTransport: nodemailer.Transporter | null = null;
-
-function getTransport(user: string, pass: string) {
-  if (!cachedTransport) {
-    cachedTransport = nodemailer.createTransport({ service: 'gmail', auth: { user, pass } });
-  }
-  return cachedTransport;
-}
 
 export async function POST(request: NextRequest) {
   try {
@@ -68,23 +50,20 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Submission is too long' }, { status: 400 });
     }
 
-    const myEmail = process.env.MY_EMAIL;
-    const myPassword = process.env.MY_PASSWORD;
-
-    if (!myEmail || !myPassword) {
-      console.error('[contact] mail credentials are not configured');
+    // Sent through Resend like every other mail the site sends. This used to be
+    // nodemailer over Gmail SMTP, which needs raw TCP sockets that Cloudflare
+    // Workers only partly support.
+    const inbox = process.env.MY_EMAIL;
+    if (!inbox) {
+      console.error('[contact] MY_EMAIL is not configured');
       return NextResponse.json({ error: 'Email service not configured' }, { status: 500 });
     }
 
-    const transport = getTransport(myEmail, myPassword);
-
-    const mailOptions: Mail.Options = {
-      from: myEmail,
-      to: myEmail,
+    const result = await sendEmail({
+      to: inbox,
       replyTo: email,
       // The address reaches the subject line, so strip anything that could
-      // split the header. Nodemailer encodes this, but a submission has no
-      // business containing newlines in the first place.
+      // split the header. A submission has no business containing newlines.
       subject: `Message Received: American Defense Alliance Contact Form Submission (${email.replace(
         /[\r\n]/g,
         ' '
@@ -99,11 +78,17 @@ export async function POST(request: NextRequest) {
         <p><strong>Message:</strong></p>
         <p>${escapeHtmlWithBreaks(message)}</p>
       `,
-    };
+    });
 
-    const info = await transport.sendMail(mailOptions);
+    if (!result.success) {
+      console.error('Failed to send email:', result.error);
+      return NextResponse.json(
+        { error: 'Failed to send email. Please try again later.' },
+        { status: 500 }
+      );
+    }
 
-    return NextResponse.json({ message: 'Email sent successfully', id: info.messageId });
+    return NextResponse.json({ message: 'Email sent successfully', id: result.data?.id });
   } catch (error) {
     console.error('Failed to send email:', error);
     return NextResponse.json(

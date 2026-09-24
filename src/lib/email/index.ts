@@ -8,7 +8,9 @@ interface EmailParams {
   to: string | string[];
   subject: string;
   html: string;
+  text?: string; // Optional: plain-text alternative to `html`
   from?: string; // Optional: defaults to a value from .env or a standard address
+  replyTo?: string; // Optional: where replies go when that isn't `from`
   attachments?: Array<{
     filename: string;
     content: string | Buffer;
@@ -21,7 +23,9 @@ export async function sendEmail({
   to,
   subject,
   html,
+  text,
   from = 'events@americandefensealliance.org', // Default from address
+  replyTo,
   attachments = [], // Default to an empty array if not provided
 }: EmailParams) {
   // Escape hatch for the test environment: lets the registration smoke tests run
@@ -44,6 +48,8 @@ export async function sendEmail({
       to,
       subject,
       html,
+      text,
+      reply_to: replyTo,
       attachments,
     });
 
