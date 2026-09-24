@@ -153,18 +153,20 @@ jobs:
             --preview-alias "$alias" \
             --tag "${SHA:0:7}" 2>&1 | tee "$RUNNER_TEMP/upload.log"
 
-          url=$(grep -oE 'https://[a-z0-9-]+\.[a-z0-9-]+\.workers\.dev' "$RUNNER_TEMP/upload.log" | grep -- "^https://$alias-" | head -1)
+          # Printed by wrangler only when preview URLs are enabled on the Worker
+          # (`preview_urls` in wrangler.jsonc). `|| true`: no match must not fail
+          # an upload that has already succeeded.
+          url=$(grep -oE "Version Preview Alias URL: https://[^ ]+" "$RUNNER_TEMP/upload.log" | sed 's/.*URL: //' | head -1 || true)
           if [ -z "$url" ]; then
-            url=$(grep -oE 'https://[a-z0-9-]+\.[a-z0-9-]+\.workers\.dev' "$RUNNER_TEMP/upload.log" | tail -1)
+            echo "::warning::Version uploaded, but wrangler printed no preview URL - are preview URLs enabled on ada-website-preview?"
+            exit 0
           fi
           echo "Preview: $url"
           echo "### Preview for \`$BRANCH\`: $url" >> "$GITHUB_STEP_SUMMARY"
 
-          if [ -n "$url" ]; then
-            gh api "repos/$GITHUB_REPOSITORY/statuses/$SHA" \
-              -f state=success -f context="Cloudflare preview" \
-              -f target_url="$url" -f description="Preview ready" >/dev/null
-          fi
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$SHA" \
+            -f state=success -f context="Cloudflare preview" \
+            -f target_url="$url" -f description="Preview ready" >/dev/null
 
       - name: Remove env file
         if: always()
