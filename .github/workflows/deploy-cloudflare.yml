@@ -145,10 +145,13 @@ jobs:
             npx opennextjs-cloudflare deploy --env preview --secrets-file "$RUNNER_TEMP/target.env"
           fi
 
+          # OpenNext re-runs these flags through a shell (spawnSync shell: true)
+          # without quoting them, so every value must be free of spaces and shell
+          # metacharacters: the sanitized alias and a hex SHA, never $BRANCH.
           npx opennextjs-cloudflare upload --env preview \
             --secrets-file "$RUNNER_TEMP/target.env" \
             --preview-alias "$alias" \
-            --message "$BRANCH @ ${SHA:0:7}" 2>&1 | tee "$RUNNER_TEMP/upload.log"
+            --tag "${SHA:0:7}" 2>&1 | tee "$RUNNER_TEMP/upload.log"
 
           url=$(grep -oE 'https://[a-z0-9-]+\.[a-z0-9-]+\.workers\.dev' "$RUNNER_TEMP/upload.log" | grep -- "^https://$alias-" | head -1)
           if [ -z "$url" ]; then
