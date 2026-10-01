@@ -506,7 +506,7 @@ Venue: Capitol Hill Club, 300 First Street SE, Washington, DC 20003
             },
             {
                 question: "Is there a cost to attend the event?",
-                answer: "Yes, there is a registration fee to attend the event. Early Bird pricing is available through September 30, 2026. Please refer to the registration page for detailed pricing information and any available discounts. Government Official and Active-Duty Military attendance is complimentary.",
+                answer: "Yes, there is a registration fee to attend the event. Early Bird pricing is available through October 31, 2026. Please refer to the registration page for detailed pricing information and any available discounts. Government Official and Active-Duty Military attendance is complimentary.",
             },
             {
                 question: "Will there be networking opportunities?",
