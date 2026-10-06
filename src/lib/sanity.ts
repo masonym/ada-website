@@ -502,7 +502,7 @@ export async function getEventSchedulePublic(eventId: number): Promise<EventSche
             location,
             duration,
             description,
-            sponsorLogo,
+            "sponsorLogo": coalesce(sponsor->logo.asset->url, sponsorLogo),
             "speakers": coalesce(speakers[] {
               "speakerId": speaker->slug.current,
               name,

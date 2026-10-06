@@ -31,6 +31,12 @@ type Speaker = {
   image?: { asset: { _ref: string } };
 };
 
+type Sponsor = {
+  _id: string;
+  name: string;
+  logo?: { asset?: { _ref: string } };
+};
+
 type Presentation = {
   key: string;
   fileName: string;
@@ -59,6 +65,8 @@ type ScheduleItem = {
   location?: string;
   duration?: string;
   description?: string;
+  sponsorId?: string;
+  // legacy raw CDN path from before the sponsor picker
   sponsorLogo?: string;
   speakers?: ScheduleSpeaker[];
 };
@@ -78,10 +86,10 @@ type EventSchedule = {
 
 const SELECTED_EVENT_STORAGE_KEY = "adminSchedulesSelectedEventId";
 
-function getSanityImageUrl(ref: string, size = 64) {
+function getSanityImageUrl(ref: string, size = 64, fit = "crop") {
   return `https://cdn.sanity.io/images/nc4xlou0/production/${ref
     .replace("image-", "")
-    .replace(/-(\w+)$/, ".$1")}?w=${size}&h=${size}&fit=crop`;
+    .replace(/-(\w+)$/, ".$1")}?w=${size}&h=${size}&fit=${fit}`;
 }
 
 const emptyItem = (): ScheduleItem => ({
@@ -91,7 +99,7 @@ const emptyItem = (): ScheduleItem => ({
   location: "",
   duration: "",
   description: "",
-  sponsorLogo: "",
+  sponsorId: "",
   speakers: [],
 });
 
@@ -367,6 +375,7 @@ function SessionCard({
   dayIndex,
   totalItems,
   allSpeakers,
+  allSponsors,
   presentations,
   onUpdate,
   onRemove,
@@ -383,6 +392,7 @@ function SessionCard({
   dayIndex: number;
   totalItems: number;
   allSpeakers: Speaker[];
+  allSponsors: Sponsor[];
   presentations: Presentation[];
   onUpdate: (updates: Partial<ScheduleItem>) => void;
   onRemove: () => void;
@@ -399,6 +409,7 @@ function SessionCard({
   const linkedSpeakerPhotos = (item.speakers || [])
     .map((s) => allSpeakers.find((sp) => sp._id === s.speakerId))
     .filter(Boolean) as Speaker[];
+  const linkedSponsor = allSponsors.find((s) => s._id === item.sponsorId);
 
   return (
     <div className="rounded-lg border border-gray-200 bg-white shadow-sm">
@@ -543,13 +554,35 @@ function SessionCard({
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-gray-500">Sponsor logo CDN</label>
-              <input
-                value={item.sponsorLogo || ""}
-                onChange={(e) => onUpdate({ sponsorLogo: e.target.value })}
-                placeholder="path/to/logo.png"
-                className="w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm"
-              />
+              <label className="mb-1 block text-xs font-medium text-gray-500">Sponsor logo</label>
+              <div className="flex items-center gap-2">
+                {linkedSponsor?.logo?.asset?._ref && (
+                  <Image
+                    src={getSanityImageUrl(linkedSponsor.logo.asset._ref, 64, "max")}
+                    alt={linkedSponsor.name}
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 flex-shrink-0 object-contain"
+                  />
+                )}
+                <select
+                  value={item.sponsorId || ""}
+                  onChange={(e) => onUpdate({ sponsorId: e.target.value })}
+                  className="w-full min-w-0 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-900"
+                >
+                  <option value="">None</option>
+                  {allSponsors.map((s) => (
+                    <option key={s._id} value={s._id}>
+                      {s.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              {!item.sponsorId && item.sponsorLogo && (
+                <p className="mt-0.5 truncate text-xs text-amber-600" title={item.sponsorLogo}>
+                  Legacy path: {item.sponsorLogo}
+                </p>
+              )}
             </div>
             <div className="sm:col-span-4">
               <label className="mb-1 block text-xs font-medium text-gray-500">Description (HTML supported)</label>
@@ -638,6 +671,7 @@ export default function ScheduleAdminPage() {
   const [savedSchedule, setSavedSchedule] = useState<EventSchedule | null>(null);
   const [speakers, setSpeakers] = useState<Speaker[]>([]);
   const [presentations, setPresentations] = useState<Presentation[]>([]);
+  const [sponsors, setSponsors] = useState<Sponsor[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
@@ -652,6 +686,7 @@ export default function ScheduleAdminPage() {
 
   useEffect(() => {
     fetchSpeakers();
+    fetchSponsors();
     const storedEventId = window.localStorage.getItem(SELECTED_EVENT_STORAGE_KEY);
     const parsedEventId = storedEventId ? parseInt(storedEventId, 10) : NaN;
     if (EVENTS.some((event) => event.id === parsedEventId)) {
@@ -681,6 +716,16 @@ export default function ScheduleAdminPage() {
       setSpeakers(data.speakers || []);
     } catch (error) {
       console.error("Error fetching speakers:", error);
+    }
+  }
+
+  async function fetchSponsors() {
+    try {
+      const res = await fetch("/api/admin/sponsors");
+      const data = await res.json();
+      setSponsors(data.sponsors || []);
+    } catch (error) {
+      console.error("Error fetching sponsors:", error);
     }
   }
 
@@ -1017,6 +1062,7 @@ export default function ScheduleAdminPage() {
                                 dayIndex={dayIndex}
                                 totalItems={day.items.length}
                                 allSpeakers={speakers}
+                                allSponsors={sponsors}
                                 presentations={presentations}
                                 onUpdate={(updates) => updateItem(dayIndex, itemIndex, updates)}
                                 onRemove={() => removeItem(dayIndex, itemIndex)}

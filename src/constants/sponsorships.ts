@@ -5112,6 +5112,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
         ],
         colour: "#F33A6A",
         showRemaining: false,
+        isSoldOut: true,
         sponsorshipGroup: "Major Panel Sponsorships",
       },
       {

@@ -326,7 +326,7 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
                 <div className="flex-shrink-0 w-48 h-full flex items-center justify-center">
                   <div className="relative w-full h-24">
                     <Image
-                      src={getCdnPath(item.sponsorLogo)}
+                      src={item.sponsorLogo.startsWith('http') ? item.sponsorLogo : getCdnPath(item.sponsorLogo)}
                       alt="Sponsor Logo"
                       fill
                       className="object-contain"

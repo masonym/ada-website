@@ -187,11 +187,13 @@ export async function getAllSponsorsAdmin() {
     _id: string
     name: string
     slug: { current: string }
+    logo?: { asset?: { _ref: string } }
   }>>(`
     *[_type == "sponsor"] | order(name asc) {
       _id,
       name,
-      slug
+      slug,
+      logo
     }
   `)
 }
@@ -859,6 +861,8 @@ export type AdminScheduleItem = {
   location?: string
   duration?: string
   description?: string
+  sponsorId?: string
+  // legacy raw CDN path, kept for items saved before the sponsor picker
   sponsorLogo?: string
   speakers?: AdminScheduleSpeaker[]
 }
@@ -892,6 +896,7 @@ export async function getEventSchedule(eventId: number): Promise<AdminEventSched
           location,
           duration,
           description,
+          "sponsorId": sponsor->_id,
           sponsorLogo,
           "speakers": coalesce(speakers[] {
             _key,
@@ -934,7 +939,9 @@ export async function saveEventSchedule(scheduleId: string, days: AdminScheduleD
       location: item.location || '',
       duration: item.duration || '',
       description: item.description || '',
-      sponsorLogo: item.sponsorLogo || '',
+      ...(item.sponsorId
+        ? { sponsor: { _type: 'reference', _ref: item.sponsorId }, sponsorLogo: '' }
+        : { sponsorLogo: item.sponsorLogo || '' }),
       speakers: (item.speakers || []).map((speaker, speakerIndex) => ({
         _type: 'scheduleSpeaker',
         _key: speaker._key || `schedule-speaker-${Date.now()}-${dayIndex}-${itemIndex}-${speakerIndex}`,
