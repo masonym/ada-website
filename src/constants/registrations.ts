@@ -596,7 +596,10 @@ export const REGISTRATION_TYPES = [
               { content: "Access to General Sessions", indent: 1 },
               { content: "Access to Exhibit Hall", indent: 1 },
               { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-              { content: "Morning Coffee/Refreshments & Networking Lunch", indent: 1 },
+              {
+                content: "Morning Coffee/Refreshments & Networking Lunch",
+                indent: 1,
+              },
               {
                 content:
                   "Post-Event Access to Photographs, Recordings, and Presentation Slides",
@@ -629,13 +632,20 @@ export const REGISTRATION_TYPES = [
               { content: "Access to General Sessions", indent: 1 },
               { content: "Access to Exhibit Hall", indent: 1 },
               { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-              { content: "Morning Coffee/Refreshments & Networking Lunch", indent: 1 },
+              {
+                content: "Morning Coffee/Refreshments & Networking Lunch",
+                indent: 1,
+              },
               {
                 content:
                   "Post-Event Access to Photographs, Recordings, and Presentation Slides",
                 indent: 1,
               },
-              { content: "Access to VIP Networking Reception", bold: true, indent: 1 },
+              {
+                content: "Access to VIP Networking Reception",
+                bold: true,
+                indent: 1,
+              },
             ],
           },
         ],
@@ -663,7 +673,10 @@ export const REGISTRATION_TYPES = [
               { content: "Access to General Sessions", indent: 1 },
               { content: "Access to Exhibit Hall", indent: 1 },
               { content: "Onsite Sign-up for Matchmaking Sessions", indent: 1 },
-              { content: "Morning Coffee/Refreshments & Networking Lunch", indent: 1 },
+              {
+                content: "Morning Coffee/Refreshments & Networking Lunch",
+                indent: 1,
+              },
               {
                 content:
                   "Post-Event Access to Photographs, Recordings, and Presentation Slides",
@@ -737,7 +750,10 @@ export const REGISTRATION_TYPES = [
               { content: "Benefits", bold: true },
               { content: "(1) Attendee Pass", bold: true, indent: 1 },
               { content: "Access to General Sessions", indent: 1 },
-              { content: "Morning Coffee/Refreshments & Networking Lunch", indent: 1 },
+              {
+                content: "Morning Coffee/Refreshments & Networking Lunch",
+                indent: 1,
+              },
               {
                 content:
                   "Post-Event Access to Photographs, Recordings, and Presentation Slides",
@@ -797,7 +813,10 @@ export const REGISTRATION_TYPES = [
               { content: "Benefits", bold: true },
               { content: "(1) Attendee Pass", bold: true, indent: 1 },
               { content: "Access to General Sessions", indent: 1 },
-              { content: "Morning Coffee/Refreshments & Networking Lunch", indent: 1 },
+              {
+                content: "Morning Coffee/Refreshments & Networking Lunch",
+                indent: 1,
+              },
               {
                 content:
                   "Post-Event Access to Photographs, Recordings, and Presentation Slides",

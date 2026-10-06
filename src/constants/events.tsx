@@ -2720,7 +2720,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
               &amp; Primes
             </li>
             <li>
-              Administration Acquisition Reform - FAR/DFAR &amp; 8(a) Changes
+              Administration Acquisition Reforms – Small Business Contracting Changes
             </li>
             <li>Cybersecurity/CMMC Update</li>
           </ul>
@@ -2806,7 +2806,7 @@ A discounted parking rate of $22.00/Car/Night is offered with in and out privile
         description: "",
       },
       {
-        tagline: "Administration Acquisition Reform - FAR/DFAR & 8(a) Changes",
+        tagline: "Administration Acquisition Reforms – Small Business Contracting Changes",
         description: "",
       },
       {

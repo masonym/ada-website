@@ -5049,7 +5049,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
           email: "csills@americandefensealliance.org",
         },
         title:
-          "Major Panel Sponsorship: Administration Acquisition Reform - FAR/DFAR & 8(a) Changes",
+          "Major Panel Sponsorship: Administration Acquisition Reforms – Small Business Contracting Changes",
         cost: 5000,
         slotsPerEvent: 1,
         requiresAttendeeInfo: true,
@@ -5079,7 +5079,7 @@ export const SPONSORSHIP_TYPES: SponsorshipTier[] = [
               { content: "Speaking Opportunity", bold: true },
               {
                 content:
-                  "Moderate the Panel on Administration Acquisition Reform - FAR/DFAR & 8(a) Changes",
+                  "Moderate the Panel on Administration Acquisition Reforms – Small Business Contracting Changes",
                 indent: 1,
               },
               {
