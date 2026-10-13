@@ -373,6 +373,7 @@ export type ScheduleItemPublic = {
   duration?: string
   description?: string
   sponsorLogo?: string
+  sponsorLabel?: string
   speakers?: ScheduleSpeakerPublic[]
 }
 
@@ -503,6 +504,7 @@ export async function getEventSchedulePublic(eventId: number): Promise<EventSche
             duration,
             description,
             "sponsorLogo": coalesce(sponsor->logo.asset->url, sponsorLogo),
+            sponsorLabel,
             "speakers": coalesce(speakers[] {
               "speakerId": speaker->slug.current,
               name,

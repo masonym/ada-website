@@ -68,6 +68,7 @@ type ScheduleItem = {
   sponsorId?: string;
   // legacy raw CDN path from before the sponsor picker
   sponsorLogo?: string;
+  sponsorLabel?: string;
   speakers?: ScheduleSpeaker[];
 };
 
@@ -584,6 +585,17 @@ function SessionCard({
                 </p>
               )}
             </div>
+            {(item.sponsorId || item.sponsorLogo) && (
+              <div className="sm:col-span-4">
+                <label className="mb-1 block text-xs font-medium text-gray-500">Sponsor label (shown above logo)</label>
+                <input
+                  value={item.sponsorLabel || ""}
+                  onChange={(e) => onUpdate({ sponsorLabel: e.target.value })}
+                  placeholder="Panel Sponsored by:"
+                  className="w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm"
+                />
+              </div>
+            )}
             <div className="sm:col-span-4">
               <label className="mb-1 block text-xs font-medium text-gray-500">Description (HTML supported)</label>
               <textarea

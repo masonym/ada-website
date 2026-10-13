@@ -63,6 +63,7 @@ type ScheduleItem = {
   speakers?: Speaker[];
   description?: string;
   sponsorLogo?: string;
+  sponsorLabel?: string;
 };
 
 type ScheduleAtAGlanceProps = {
@@ -323,7 +324,10 @@ const ScheduleAtAGlance: React.FC<ScheduleAtAGlanceProps> = ({
               </div>
 
               {item.sponsorLogo && (
-                <div className="flex-shrink-0 w-48 h-full flex items-center justify-center">
+                <div className="flex-shrink-0 w-48 h-full flex flex-col items-center justify-center">
+                  {item.sponsorLabel && (
+                    <div className="mb-1 text-sm font-semibold text-gray-600 text-center">{item.sponsorLabel}</div>
+                  )}
                   <div className="relative w-full h-24">
                     <Image
                       src={item.sponsorLogo.startsWith('http') ? item.sponsorLogo : getCdnPath(item.sponsorLogo)}

@@ -14,6 +14,7 @@ type ScheduleItem = {
   speakers?: any[];
   description?: string;
   sponsorLogo?: string;
+  sponsorLabel?: string;
 };
 
 type Props = {
